@@ -30,6 +30,11 @@ Isolator: https://www.herostechnology.co.uk/pages/RF_Galvanic_Isolators.html    
 LNA: https://www.pasternack.com/1.5-db-1.3-ghz-low-noise-amplifier-35-db-gain-sma-pe15a1054-p.aspx      10MHz - 1.3GHz, 35dB, 1.5 NF<br>
 LNA: https://www.pasternack.com/1.7-db-550-mhz-low-noise-amplifier-29.7-db-gain-sma-pe15a1044-p.aspx    10MHz - 550 MHz, 30dB, 1.7 NF<br><br>
 
+<h3>Example design</h3>
+
+doc: https://www.xilinx.com/publications/products/board-kits/zcu208-dds-ila-2020p2.pdf<br>
+source: https://account.amd.com/en/forms/downloads/design-license-xef.html?filename=ZCU208_dds_ila_2020p2.zip<br>
+
 <h3>Important links</h3>
 https://www.amd.com/en/products/adaptive-socs-and-fpgas/evaluation-boards/zcu208.html<br>
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841823/Booting+via+Serial+ATA+SATA+on+ZCU102+Evaluation+Platform<br>
@@ -38,5 +43,3 @@ https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+T
 https://docs.amd.com/r/en-US/Vitis-Tutorials-Embedded-Software<br>
 https://numato.com/kb/styx-partitioning-sd-card-for-petalinux/<br>
 https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/rfdc/examples/xrfdc_mts_example.c<br>
-https://www.ic-xilinx.com/files/9c/ek-u1-zcu208-es1-g.pdf<br>
-https://www.xilinx.com/publications/products/board-kits/zcu208-dds-ila-2020p2.pdf<br>
