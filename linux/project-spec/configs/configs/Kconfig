@@ -1,0 +1,29 @@
+
+mainmenu "PetaLinux System Configuration"
+config SUBSYSTEM_TYPE_LINUX
+        bool
+        default y
+        select SYSTEM_ZYNQMP
+
+config SYSTEM_ZYNQMP
+        bool "ZYNQMP Configuration"
+        help
+          ZYNQMP Configuration for the project.
+          All these config options will be in /home/leif/radio-zcu208/linux/project-spec/configs/config
+
+config SUBSYSTEM_VARIANT_ZYNQMPDR
+        bool
+        default y
+        help
+
+config SUBSYSTEM_SDT_FLOW
+        bool
+        default y
+        help
+
+config SUBSYSTEM_DISTRO_PETALINUX
+        bool
+        default y
+        help
+
+source /home/leif/radio-zcu208/linux/project-spec/configs/configs/Kconfig.main

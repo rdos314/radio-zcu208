@@ -1,0 +1,26 @@
+menu "user packages " 
+config librfclk  
+	 bool "librfclk"
+	 help
+	
+config librfdc  
+	 bool "librfdc"
+	 help
+	
+config gpio-demo  
+	 bool "gpio-demo"
+	 help
+	
+config peekpoke  
+	 bool "peekpoke"
+	 help
+	
+config rfdc-read-write  
+	 bool "rfdc-read-write"
+	 help
+	
+config rfdc-selftest  
+	 bool "rfdc-selftest"
+	 help
+	
+endmenu
