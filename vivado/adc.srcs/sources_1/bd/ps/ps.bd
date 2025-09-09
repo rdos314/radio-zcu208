@@ -1,9 +1,9 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x8D26F0C1BDA045A0",
+      "boundary_crc": "0x0",
       "device": "xczu48dr-fsvg1517-2-e",
-      "gen_directory": "../../../../radio-vivado.gen/sources_1/bd/ps",
+      "gen_directory": "../../../../adc.gen/sources_1/bd/ps",
       "name": "ps",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
@@ -11,39 +11,7 @@
       "validated": "true"
     },
     "design_tree": {
-      "zynq_ultra_ps_e_0": "",
-      "system_ila": ""
-    },
-    "interface_ports": {
-      "default_sysclk_c0_300mhz": {
-        "mode": "Slave",
-        "vlnv_bus_definition": "xilinx.com:interface:diff_clock:1.0",
-        "vlnv": "xilinx.com:interface:diff_clock_rtl:1.0",
-        "parameters": {
-          "CAN_DEBUG": {
-            "value": "false",
-            "value_src": "default"
-          },
-          "FREQ_HZ": {
-            "value": "300000000"
-          }
-        }
-      }
-    },
-    "ports": {
-      "reset_rtl": {
-        "type": "rst",
-        "direction": "I",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_HIGH"
-          }
-        }
-      }
+      "zynq_ultra_ps_e_0": ""
     },
     "components": {
       "zynq_ultra_ps_e_0": {
@@ -617,36 +585,6 @@
           "PSU__FPGA_PL0_ENABLE": {
             "value": "1"
           },
-          "PSU__FTM__CTI_IN_0": {
-            "value": "1"
-          },
-          "PSU__FTM__CTI_IN_1": {
-            "value": "0"
-          },
-          "PSU__FTM__CTI_IN_2": {
-            "value": "0"
-          },
-          "PSU__FTM__CTI_IN_3": {
-            "value": "0"
-          },
-          "PSU__FTM__CTI_OUT_0": {
-            "value": "1"
-          },
-          "PSU__FTM__CTI_OUT_1": {
-            "value": "0"
-          },
-          "PSU__FTM__CTI_OUT_2": {
-            "value": "0"
-          },
-          "PSU__FTM__CTI_OUT_3": {
-            "value": "0"
-          },
-          "PSU__FTM__GPI": {
-            "value": "1"
-          },
-          "PSU__FTM__GPO": {
-            "value": "1"
-          },
           "PSU__GEM3_COHERENCY": {
             "value": "0"
           },
@@ -709,9 +647,6 @@
           },
           "PSU__LPD_SLCR__CSUPMU__ACT_FREQMHZ": {
             "value": "100.000000"
-          },
-          "PSU__MAXIGP0__DATA_WIDTH": {
-            "value": "128"
           },
           "PSU__OVERRIDE__BASIC_CLOCK": {
             "value": "0"
@@ -981,7 +916,7 @@
             "value": "1"
           },
           "PSU__USE__M_AXI_GP0": {
-            "value": "1"
+            "value": "0"
           },
           "PSU__USE__M_AXI_GP1": {
             "value": "0"
@@ -989,152 +924,7 @@
           "PSU__USE__M_AXI_GP2": {
             "value": "0"
           }
-        },
-        "interface_ports": {
-          "M_AXI_HPM0_FPD": {
-            "bd_attributes": {
-              "TYPE": {
-                "value": "END_POINT",
-                "value_src": "auto"
-              }
-            },
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "mode": "Master",
-            "address_space_ref": "Data",
-            "base_address": {
-              "minimum": "0xA0000000",
-              "maximum": "0x0047FFFFFFFF",
-              "width": "40"
-            }
-          }
-        },
-        "addressing": {
-          "address_spaces": {
-            "Data": {
-              "range": "1T",
-              "width": "64",
-              "local_memory_map": {
-                "name": "Data",
-                "description": "Address Space Segments",
-                "address_blocks": {
-                  "M_AXI_HPM0_LPD:LPD_AFI_FS": {
-                    "name": "M_AXI_HPM0_LPD:LPD_AFI_FS",
-                    "display_name": "M_AXI_HPM0_LPD/LPD_AFI_FS",
-                    "base_address": "0x80000000",
-                    "range": "512M",
-                    "width": "32",
-                    "usage": "register"
-                  },
-                  "M_AXI_HPM1_FPD:FPD_AFI_FS0_00": {
-                    "name": "M_AXI_HPM1_FPD:FPD_AFI_FS0_00",
-                    "display_name": "M_AXI_HPM1_FPD/FPD_AFI_FS0_00",
-                    "base_address": "0xB0000000",
-                    "range": "256M",
-                    "width": "32",
-                    "usage": "register"
-                  },
-                  "M_AXI_HPM1_FPD:FPD_AFI_FS0_01": {
-                    "name": "M_AXI_HPM1_FPD:FPD_AFI_FS0_01",
-                    "display_name": "M_AXI_HPM1_FPD/FPD_AFI_FS0_01",
-                    "base_address": "0x000500000000",
-                    "range": "4G",
-                    "width": "35",
-                    "usage": "register"
-                  },
-                  "M_AXI_HPM1_FPD:FPD_AFI_FS0_10": {
-                    "name": "M_AXI_HPM1_FPD:FPD_AFI_FS0_10",
-                    "display_name": "M_AXI_HPM1_FPD/FPD_AFI_FS0_10",
-                    "base_address": "0x004800000000",
-                    "range": "224G",
-                    "width": "39",
-                    "usage": "register"
-                  },
-                  "M_AXI_HPM0_FPD:FPD_AFI_FS1_00": {
-                    "name": "M_AXI_HPM0_FPD:FPD_AFI_FS1_00",
-                    "display_name": "M_AXI_HPM0_FPD/FPD_AFI_FS1_00",
-                    "base_address": "0xA0000000",
-                    "range": "256M",
-                    "width": "32",
-                    "usage": "register"
-                  },
-                  "M_AXI_HPM0_FPD:FPD_AFI_FS1_01": {
-                    "name": "M_AXI_HPM0_FPD:FPD_AFI_FS1_01",
-                    "display_name": "M_AXI_HPM0_FPD/FPD_AFI_FS1_01",
-                    "base_address": "0x000400000000",
-                    "range": "4G",
-                    "width": "35",
-                    "usage": "register"
-                  },
-                  "M_AXI_HPM0_FPD:FPD_AFI_FS1_10": {
-                    "name": "M_AXI_HPM0_FPD:FPD_AFI_FS1_10",
-                    "display_name": "M_AXI_HPM0_FPD/FPD_AFI_FS1_10",
-                    "base_address": "0x001000000000",
-                    "range": "224G",
-                    "width": "39",
-                    "usage": "register"
-                  }
-                }
-              }
-            }
-          }
         }
-      },
-      "system_ila": {
-        "vlnv": "xilinx.com:ip:system_ila:1.1",
-        "ip_revision": "21",
-        "xci_name": "ps_system_ila_0",
-        "xci_path": "ip\\ps_system_ila_0\\ps_system_ila_0.xci",
-        "inst_hier_path": "system_ila",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "C_TRIGIN_EN": {
-            "value": "true"
-          },
-          "C_TRIGOUT_EN": {
-            "value": "true"
-          }
-        },
-        "interface_ports": {
-          "SLOT_0_AXI": {
-            "mode": "Monitor",
-            "monitor_type": "SlaveType",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
-          },
-          "TRIG_IN": {
-            "mode": "Slave",
-            "vlnv_bus_definition": "xilinx.com:interface:trigger:1.0",
-            "vlnv": "xilinx.com:interface:trigger_rtl:1.0"
-          },
-          "TRIG_OUT": {
-            "mode": "Master",
-            "vlnv_bus_definition": "xilinx.com:interface:trigger:1.0",
-            "vlnv": "xilinx.com:interface:trigger_rtl:1.0"
-          }
-        }
-      }
-    },
-    "interface_nets": {
-      "system_ila_TRIG_OUT": {
-        "interface_ports": [
-          "zynq_ultra_ps_e_0/PL_PS_TRIGGER_0",
-          "system_ila/TRIG_OUT"
-        ]
-      },
-      "zynq_ultra_ps_e_0_PS_PL_TRIGGER_0": {
-        "interface_ports": [
-          "zynq_ultra_ps_e_0/PS_PL_TRIGGER_0",
-          "system_ila/TRIG_IN"
-        ]
-      }
-    },
-    "nets": {
-      "Net": {
-        "ports": [
-          "zynq_ultra_ps_e_0/pl_clk0",
-          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
-          "system_ila/clk"
-        ]
       }
     }
   }
