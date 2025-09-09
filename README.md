@@ -32,6 +32,9 @@ LNA: https://www.pasternack.com/1.7-db-550-mhz-low-noise-amplifier-29.7-db-gain-
 
 <h3>Example design</h3>
 
+doc: https://docs.amd.com/r/en-US/ug1309-rf-data-converter-interface<br>
+source: https://account.amd.com/en/forms/downloads/design-license-xef.html?filename=RF_Analyzer_2024_2.zip<br><br>
+
 doc: https://www.xilinx.com/publications/products/board-kits/zcu208-dds-ila-2020p2.pdf<br>
 source: https://account.amd.com/en/forms/downloads/design-license-xef.html?filename=ZCU208_dds_ila_2020p2.zip<br>
 
