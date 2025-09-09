@@ -44,5 +44,6 @@ https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841823/Booting+via+Seria
 https://adaptivesupport.amd.com/s/article/000037805?language=en_US<br>
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips#PetaLinuxYoctoTips-HowtoAutoRunApplicationatStartup<br>
 https://docs.amd.com/r/en-US/Vitis-Tutorials-Embedded-Software<br>
+https://docs.amd.com/r/en-US/ug1209-embedded-design-tutorial/Tutorial-Design-Files<br>
 https://numato.com/kb/styx-partitioning-sd-card-for-petalinux/<br>
 https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/rfdc/examples/xrfdc_mts_example.c<br>
