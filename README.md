@@ -48,9 +48,9 @@ PetaLinux RootFS Settings -→ (root:root;petalinux:petalinux:passwd-expire;)<br
 user: petalinux<br>
 passw: change on first connect<br><br>
 
-Set Filesystem Packages -→ tcf-agent to enabled
-Set Filesystem Packages -→ console -→ network -→ dropbear to enabled
-Set Filesystem Packages -→ console -→ network -→ OpenSSH -→ openssh-sftp-server to enabled
+Set Filesystem Packages -→ tcf-agent to enabled<br>
+Set Filesystem Packages -→ console -→ network -→ dropbear to enabled<br>
+Set Filesystem Packages -→ console -→ network -→ OpenSSH -→ openssh-sftp-server to enabled<br><br>
 
 Exit menuconfig and save configuration settings.<br><br>
 
