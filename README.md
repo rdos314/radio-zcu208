@@ -3,26 +3,32 @@ vivado - Vivado Verilog source<br>
 vitis - Vitis platform and control software<br>
 linux - Peta-linux source<br>
 
-<h3>Peta Linux build</h3>
-Ubuntu 22.04.5: https://releases.ubuntu.com/jammy/<br><br>
+<h3>PetaLinux build</h3>
+Ubuntu 22.04.5 must be used to build PetaLinux. Link: https://releases.ubuntu.com/jammy/<br><br>
 
+Install the required software modules before installing PetaLinux<br>
 sudo apt-get install iproute2 gawk python3 python build-essential gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex bison libselinux1 gnupg wget git-core diffstat chrpath socat xterm autoconf libtool tar unzip texinfo<br><br>
 
-Embedded Vitis: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html<br><br>
-
-cd /home/oem/xilinx/2025.1/Vitis/scripts<br>
-sudo ./installLibs.sh<br><br>
-
-cd /home/oem<br>
+Create a directory for PetaLinux:<br>
+cd /home/user<br>
 mkdir petalinux<br>
 cd petalinux<br><br>
 
-PetaLinux installer: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html<br>
-Download "PetaLinux installer", and "ZCU208 BSP" to petalinux<br><br>
+The PetaLinux installer can be downloaded here: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html<br>
+Download both the "PetaLinux installer", and the "ZCU208 BSP" to the petalinux directory<br><br>
 
+Install PetaLinux like this:<br>
 chmod 755 ./petalinux-v2025.1-final-installer.run<br>
 ./petalinux-v2025.1-final-installer.run --dir /home/oem/petalinux --platform "arm aarch64"<br>
 source /home/oem/petalinux/settings.sh<br><br>
+
+<h3>Embedded Vitis</h3>
+
+Embedded Vitis and Vivado can be installed either on Windows or on Linux. Link: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html<br><br>
+
+For Linux, download and install to /home/user/xilinx and then install the libs like this:<br>
+cd /home/user/xilinx/2025.1/Vitis/scripts<br>
+sudo ./installLibs.sh<br><br>
 
 <h3>Antennas and preamplifiers</h3>
 
