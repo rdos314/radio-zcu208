@@ -3,6 +3,7 @@
 */*/rootfs_config.old
 build/
 images/linux/rootfs*.*
+images/linux/boot*.*
 pre-built/linux/
 .petalinux/*
 !.petalinux/metadata

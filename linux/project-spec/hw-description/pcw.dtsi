@@ -184,19 +184,15 @@
 			xlnx,name = "psu_pmu_ram";
 		};
 		psu_pmu_iomodule: psu_pmu_iomodule@ffd40000 {
+			xlnx,gpo4-enable = <0>;
 			compatible = "xlnx,psu-pmu-iomodule-1.0";
-			xlnx,gpo4-polarity = <0>;
-			xlnx,gpo2-enable = <1>;
-			xlnx,gpo4-enable = <1>;
-			xlnx,ip-name = "psu_pmu_iomodule";
-			reg = <0x0 0xffd40000 0x0 0x20000>;
-			xlnx,gpo3-polarity = <0>;
-			xlnx,gpo5-polarity = <0>;
-			xlnx,gpo3-enable = <1>;
 			status = "okay";
-			xlnx,gpo5-enable = <1>;
+			xlnx,gpo5-enable = <0>;
+			xlnx,ip-name = "psu_pmu_iomodule";
+			xlnx,gpo2-enable = <0>;
+			reg = <0x0 0xffd40000 0x0 0x20000>;
+			xlnx,gpo3-enable = <0>;
 			xlnx,name = "psu_pmu_iomodule";
-			xlnx,gpo2-polarity = <0>;
 		};
 		psu_pmu_global_0: psu_pmu_global_0@ffd80000 {
 			compatible = "xlnx,psu-pmu-global-0-1.0";
@@ -334,7 +330,6 @@
 			xlnx,name = "psu_afi_2";
 		};
 		psu_afi_1: psu_afi@fd370000 {
-			xlnx,is-cache-coherent = <0>;
 			compatible = "xlnx,psu-afi-1.0";
 			status = "okay";
 			xlnx,ip-name = "psu_afi";
@@ -342,7 +337,6 @@
 			xlnx,name = "psu_afi_1";
 		};
 		psu_afi_0: psu_afi@fd360000 {
-			xlnx,is-cache-coherent = <0>;
 			compatible = "xlnx,psu-afi-1.0";
 			status = "okay";
 			xlnx,ip-name = "psu_afi";
@@ -917,7 +911,7 @@
 		status = "okay";
 		xlnx,buffer-index = <2>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <67>;
 		xlnx,bit-position = <0>;
 		xlnx,name = "psu_ipi_0";
@@ -970,20 +964,6 @@
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff9905c0>;
 		};
-		psu_ipi_0_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff9904e0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff9904c0>;
-		};
-		psu_ipi_0_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990520>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990500>;
-		};
 	};
 	&ipi1 {
 		xlnx,cpu-name = "RPU0";
@@ -992,7 +972,7 @@
 		status = "okay";
 		xlnx,buffer-index = <0>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <65>;
 		xlnx,bit-position = <8>;
 		xlnx,name = "psu_ipi_1";
@@ -1045,20 +1025,6 @@
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff9901c0>;
 		};
-		psu_ipi_1_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff9900e0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff9900c0>;
-		};
-		psu_ipi_1_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990120>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990100>;
-		};
 	};
 	&ipi2 {
 		xlnx,cpu-name = "RPU1";
@@ -1067,7 +1033,7 @@
 		status = "okay";
 		xlnx,buffer-index = <1>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <66>;
 		xlnx,bit-position = <9>;
 		xlnx,name = "psu_ipi_2";
@@ -1120,20 +1086,6 @@
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff9903c0>;
 		};
-		psu_ipi_2_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff9902e0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff9902c0>;
-		};
-		psu_ipi_2_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990320>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990300>;
-		};
 	};
 	&ipi3 {
 		xlnx,cpu-name = "PMU";
@@ -1142,7 +1094,7 @@
 		status = "okay";
 		xlnx,buffer-index = <7>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <0>;
 		xlnx,bit-position = <16>;
 		xlnx,name = "psu_ipi_3";
@@ -1195,20 +1147,6 @@
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff990fc0>;
 		};
-		psu_ipi_3_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff990ee0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff990ec0>;
-		};
-		psu_ipi_3_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990f20>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990f00>;
-		};
 	};
 	&ipi4 {
 		xlnx,cpu-name = "PMU";
@@ -1217,7 +1155,7 @@
 		status = "okay";
 		xlnx,buffer-index = <7>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <0>;
 		xlnx,bit-position = <17>;
 		xlnx,name = "psu_ipi_4";
@@ -1270,20 +1208,6 @@
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff990fc0>;
 		};
-		psu_ipi_4_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff990ee0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff990ec0>;
-		};
-		psu_ipi_4_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990f20>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990f00>;
-		};
 	};
 	&ipi5 {
 		xlnx,cpu-name = "PMU";
@@ -1292,7 +1216,7 @@
 		status = "okay";
 		xlnx,buffer-index = <7>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <0>;
 		xlnx,bit-position = <18>;
 		xlnx,name = "psu_ipi_5";
@@ -1345,20 +1269,6 @@
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff990fc0>;
 		};
-		psu_ipi_5_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff990ee0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff990ec0>;
-		};
-		psu_ipi_5_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990f20>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990f00>;
-		};
 	};
 	&ipi6 {
 		xlnx,cpu-name = "PMU";
@@ -1367,7 +1277,7 @@
 		status = "okay";
 		xlnx,buffer-index = <7>;
 		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
+		xlnx,ipi-target-count = <7>;
 		xlnx,int-id = <0>;
 		xlnx,bit-position = <19>;
 		xlnx,name = "psu_ipi_6";
@@ -1419,170 +1329,6 @@
 			xlnx,ipi-id = <6>;
 			xlnx,ipi-buf-index = <7>;
 			xlnx,ipi-req-msg-buf = <0xff990fc0>;
-		};
-		psu_ipi_6_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff990ee0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff990ec0>;
-		};
-		psu_ipi_6_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990f20>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990f00>;
-		};
-	};
-	&ipi7 {
-		xlnx,cpu-name = "APU";
-		xlnx,buffer-base = <0xff990600>;
-		xlnx,base-address = <0xff340000>;
-		status = "okay";
-		xlnx,buffer-index = <3>;
-		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
-		xlnx,int-id = <61>;
-		xlnx,bit-position = <24>;
-		xlnx,name = "psu_ipi_7";
-		psu_ipi_7_0: child@0 {
-			xlnx,ipi-bitmask = <1>;
-			xlnx,ipi-rsp-msg-buf = <0xff9906a0>;
-			xlnx,ipi-id = <0>;
-			xlnx,ipi-buf-index = <2>;
-			xlnx,ipi-req-msg-buf = <0xff990680>;
-		};
-		psu_ipi_7_1: child@1 {
-			xlnx,ipi-bitmask = <256>;
-			xlnx,ipi-rsp-msg-buf = <0xff990620>;
-			xlnx,ipi-id = <1>;
-			xlnx,ipi-buf-index = <0>;
-			xlnx,ipi-req-msg-buf = <0xff990600>;
-		};
-		psu_ipi_7_2: child@2 {
-			xlnx,ipi-bitmask = <512>;
-			xlnx,ipi-rsp-msg-buf = <0xff990660>;
-			xlnx,ipi-id = <2>;
-			xlnx,ipi-buf-index = <1>;
-			xlnx,ipi-req-msg-buf = <0xff990640>;
-		};
-		psu_ipi_7_3: child@3 {
-			xlnx,ipi-bitmask = <65536>;
-			xlnx,ipi-rsp-msg-buf = <0xff9907e0>;
-			xlnx,ipi-id = <3>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9907c0>;
-		};
-		psu_ipi_7_4: child@4 {
-			xlnx,ipi-bitmask = <131072>;
-			xlnx,ipi-rsp-msg-buf = <0xff9907e0>;
-			xlnx,ipi-id = <4>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9907c0>;
-		};
-		psu_ipi_7_5: child@5 {
-			xlnx,ipi-bitmask = <262144>;
-			xlnx,ipi-rsp-msg-buf = <0xff9907e0>;
-			xlnx,ipi-id = <5>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9907c0>;
-		};
-		psu_ipi_7_6: child@6 {
-			xlnx,ipi-bitmask = <524288>;
-			xlnx,ipi-rsp-msg-buf = <0xff9907e0>;
-			xlnx,ipi-id = <6>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9907c0>;
-		};
-		psu_ipi_7_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff9906e0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff9906c0>;
-		};
-		psu_ipi_7_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990720>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990700>;
-		};
-	};
-	&ipi8 {
-		xlnx,cpu-name = "APU";
-		xlnx,buffer-base = <0xff990800>;
-		xlnx,base-address = <0xff350000>;
-		status = "okay";
-		xlnx,buffer-index = <4>;
-		xlnx,ip-name = "psu_ipi";
-		xlnx,ipi-target-count = <9>;
-		xlnx,int-id = <62>;
-		xlnx,bit-position = <25>;
-		xlnx,name = "psu_ipi_8";
-		psu_ipi_8_0: child@0 {
-			xlnx,ipi-bitmask = <1>;
-			xlnx,ipi-rsp-msg-buf = <0xff9908a0>;
-			xlnx,ipi-id = <0>;
-			xlnx,ipi-buf-index = <2>;
-			xlnx,ipi-req-msg-buf = <0xff990880>;
-		};
-		psu_ipi_8_1: child@1 {
-			xlnx,ipi-bitmask = <256>;
-			xlnx,ipi-rsp-msg-buf = <0xff990820>;
-			xlnx,ipi-id = <1>;
-			xlnx,ipi-buf-index = <0>;
-			xlnx,ipi-req-msg-buf = <0xff990800>;
-		};
-		psu_ipi_8_2: child@2 {
-			xlnx,ipi-bitmask = <512>;
-			xlnx,ipi-rsp-msg-buf = <0xff990860>;
-			xlnx,ipi-id = <2>;
-			xlnx,ipi-buf-index = <1>;
-			xlnx,ipi-req-msg-buf = <0xff990840>;
-		};
-		psu_ipi_8_3: child@3 {
-			xlnx,ipi-bitmask = <65536>;
-			xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
-			xlnx,ipi-id = <3>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9909c0>;
-		};
-		psu_ipi_8_4: child@4 {
-			xlnx,ipi-bitmask = <131072>;
-			xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
-			xlnx,ipi-id = <4>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9909c0>;
-		};
-		psu_ipi_8_5: child@5 {
-			xlnx,ipi-bitmask = <262144>;
-			xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
-			xlnx,ipi-id = <5>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9909c0>;
-		};
-		psu_ipi_8_6: child@6 {
-			xlnx,ipi-bitmask = <524288>;
-			xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
-			xlnx,ipi-id = <6>;
-			xlnx,ipi-buf-index = <7>;
-			xlnx,ipi-req-msg-buf = <0xff9909c0>;
-		};
-		psu_ipi_8_7: child@7 {
-			xlnx,ipi-bitmask = <16777216>;
-			xlnx,ipi-rsp-msg-buf = <0xff9908e0>;
-			xlnx,ipi-id = <7>;
-			xlnx,ipi-buf-index = <3>;
-			xlnx,ipi-req-msg-buf = <0xff9908c0>;
-		};
-		psu_ipi_8_8: child@8 {
-			xlnx,ipi-bitmask = <33554432>;
-			xlnx,ipi-rsp-msg-buf = <0xff990920>;
-			xlnx,ipi-id = <8>;
-			xlnx,ipi-buf-index = <4>;
-			xlnx,ipi-req-msg-buf = <0xff990900>;
 		};
 	};
 	&mc {

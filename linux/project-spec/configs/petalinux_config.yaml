@@ -3,18 +3,8 @@ processor:
     psu_cortexa53_0:
         arch: aarch64
         ip_name: psu_cortexa53
-        slaves_strings: zynqmp_reset pinctrl0 gic_a53 fpd_dma_chan1 fpd_dma_chan2 fpd_dma_chan3 fpd_dma_chan4 fpd_dma_chan5 fpd_dma_chan6 fpd_dma_chan7 fpd_dma_chan8 lpd_dma_chan1 lpd_dma_chan2 lpd_dma_chan3 lpd_dma_chan4 lpd_dma_chan5 lpd_dma_chan6 lpd_dma_chan7 lpd_dma_chan8 mc gem3 gpio i2c0 i2c1 ocm perf_monitor_ocm perf_monitor_ddr perf_monitor_cci perf_monitor_lpd qspi psgtr rtc sata sdhci1 smmu ttc0 ttc1 ttc2 ttc3 uart0 usb0 dwc3_0 watchdog0 lpd_watchdog xilinx_ams ams_ps ams_pl coresight_0 csudma_0 ipi0 ipi7 ipi8 psu_r5_tcm_ram_global psu_r5_1_btcm_global psu_r5_1_atcm_global psu_r5_0_btcm_global psu_r5_0_atcm_global psu_pmu_global_0 psu_mbistjtag psu_rsa psu_efuse psu_csu_0 psu_fpd_gpv psu_cci_gpv psu_fpd_slcr_secure psu_fpd_slcr psu_smmu_reg psu_cci_reg psu_fpd_xmpu_cfg psu_apu psu_fpd_xmpu_sink psu_siou psu_afi_5 psu_afi_4 psu_afi_3 psu_afi_2 psu_afi_1 psu_afi_0 psu_crf_apb psu_ddr_qos_ctrl psu_ddr_phy psu_ddr_xmpu5_cfg psu_ddr_xmpu4_cfg psu_ddr_xmpu3_cfg psu_ddr_xmpu2_cfg psu_ddr_xmpu1_cfg psu_ddr_xmpu0_cfg psu_ocm_xmpu_cfg psu_lpd_xppu_sink psu_afi_6 psu_rpu psu_crl_apb psu_lpd_slcr_secure psu_lpd_slcr psu_iou_scntrs psu_iou_scntr psu_iousecure_slcr psu_iouslcr_0 lpd_xppu clocking_block_clk_wiz_dac3 clocking_block_clk_wiz_dac2 clocking_block_clk_wiz_dac1 clocking_block_clk_wiz_dac0 clocking_block_clk_wiz_adc3 clocking_block_clk_wiz_adc2 clocking_block_clk_wiz_adc1 clocking_block_clk_wiz_adc0 ADC_DDR_DMA_axi_dma_0 ADC_DDR_DMA_axis_inter_adc_xbar ADC_DDR_DMA_tlast_gen_v1_0_0 DAC_DDR_DMA_axi_dma_0 PS_Subsystem_axi_gpio_adc PS_Subsystem_axi_gpio_dac PS_Subsystem_axi_gpio_mts PS_Subsystem_axi_gpio_spi_mux ex_design_adc_sink_i ex_design_dac_source_i ex_design_rfip ex_design_tdd_module_i
+        slaves_strings: zynqmp_reset pinctrl0 gic_a53 fpd_dma_chan1 fpd_dma_chan2 fpd_dma_chan3 fpd_dma_chan4 fpd_dma_chan5 fpd_dma_chan6 fpd_dma_chan7 fpd_dma_chan8 lpd_dma_chan1 lpd_dma_chan2 lpd_dma_chan3 lpd_dma_chan4 lpd_dma_chan5 lpd_dma_chan6 lpd_dma_chan7 lpd_dma_chan8 mc gem3 gpio i2c0 i2c1 ocm perf_monitor_ocm perf_monitor_ddr perf_monitor_cci perf_monitor_lpd qspi psgtr rtc sata sdhci1 smmu ttc0 ttc1 ttc2 ttc3 uart0 usb0 dwc3_0 watchdog0 lpd_watchdog xilinx_ams ams_ps ams_pl coresight_0 csudma_0 ipi0 psu_r5_tcm_ram_global psu_r5_1_btcm_global psu_r5_1_atcm_global psu_r5_0_btcm_global psu_r5_0_atcm_global psu_pmu_global_0 psu_mbistjtag psu_rsa psu_efuse psu_csu_0 psu_fpd_gpv psu_cci_gpv psu_fpd_slcr_secure psu_fpd_slcr psu_smmu_reg psu_cci_reg psu_fpd_xmpu_cfg psu_apu psu_fpd_xmpu_sink psu_siou psu_afi_5 psu_afi_4 psu_afi_3 psu_afi_2 psu_afi_1 psu_afi_0 psu_crf_apb psu_ddr_qos_ctrl psu_ddr_phy psu_ddr_xmpu5_cfg psu_ddr_xmpu4_cfg psu_ddr_xmpu3_cfg psu_ddr_xmpu2_cfg psu_ddr_xmpu1_cfg psu_ddr_xmpu0_cfg psu_ocm_xmpu_cfg psu_lpd_xppu_sink psu_afi_6 psu_rpu psu_crl_apb psu_lpd_slcr_secure psu_lpd_slcr psu_iou_scntrs psu_iou_scntr psu_iousecure_slcr psu_iouslcr_0 lpd_xppu
         slaves:
-            ddr4_0:
-                device_type: memory
-                ip_name: ddr4
-                baseaddr: '0x1000000000'
-                highaddr: '0x1100000000'
-            ddr4_1:
-                device_type: memory
-                ip_name: ddr4
-                baseaddr: '0x400000000'
-                highaddr: '0x500000000'
             psu_ocm_0:
                 device_type: memory
                 ip_name: psu_ocm
@@ -132,10 +122,6 @@ processor:
                 ip_name: psu_csudma
             ipi0:
                 ip_name: psu_ipi
-            ipi7:
-                ip_name: psu_ipi
-            ipi8:
-                ip_name: psu_ipi
             psu_r5_tcm_ram_global:
                 ip_name: psu_r5_tcm_ram
             psu_r5_1_btcm_global:
@@ -230,43 +216,3 @@ processor:
                 ip_name: psu_iouslcr
             lpd_xppu:
                 ip_name: psu_lpd_xppu
-            clocking_block_clk_wiz_dac3:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_dac2:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_dac1:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_dac0:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_adc3:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_adc2:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_adc1:
-                ip_name: clk_wiz
-            clocking_block_clk_wiz_adc0:
-                ip_name: clk_wiz
-            ADC_DDR_DMA_axi_dma_0:
-                ip_name: axi_dma
-            ADC_DDR_DMA_axis_inter_adc_xbar:
-                ip_name: axis_switch
-            ADC_DDR_DMA_tlast_gen_v1_0_0:
-                ip_name: tlast_gen_v1_0
-            DAC_DDR_DMA_axi_dma_0:
-                ip_name: axi_dma
-            PS_Subsystem_axi_gpio_adc:
-                ip_name: axi_gpio
-            PS_Subsystem_axi_gpio_dac:
-                ip_name: axi_gpio
-            PS_Subsystem_axi_gpio_mts:
-                ip_name: axi_gpio
-            PS_Subsystem_axi_gpio_spi_mux:
-                ip_name: axi_gpio
-            ex_design_adc_sink_i:
-                ip_name: exdes_rfadc_data_bram_capture
-            ex_design_dac_source_i:
-                ip_name: exdes_rfdac_data_bram_stim
-            ex_design_rfip:
-                ip_name: usp_rf_data_converter
-            ex_design_tdd_module_i:
-                ip_name: exdes_tddrtsctrl

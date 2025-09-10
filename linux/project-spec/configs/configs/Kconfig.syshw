@@ -35,12 +35,6 @@ choice
 	you will need to specify base address and memory size.
 	To skip generating lower or upper memory node specify 0x0 offset to the memory size.
 
-config SUBSYSTEM_MEMORY_DDR4_0_SELECT
-	bool "ddr4_0"
-
-config SUBSYSTEM_MEMORY_DDR4_1_SELECT
-	bool "ddr4_1"
-
 config SUBSYSTEM_MEMORY_PSU_DDR_0_SELECT
 	bool "psu_ddr_0"
 
@@ -51,82 +45,6 @@ config SUBSYSTEM_MEMORY_MANUAL_SELECT
 	bool "manual"
 
 endchoice
-
-config SUBSYSTEM_MEMORY_DDR4_0_BASEADDR
-	hex "System memory base address"
-	default 0x1000000000
-	range 0x1000000000 0x10fe000000
-	depends on SUBSYSTEM_MEMORY_DDR4_0_SELECT
-	help
-	Start address of the system memory.
-	It has to be within the selected primary memory physical address range.
-	Make sure the DT memory entry should start with provided address.
-
-config SUBSYSTEM_MEMORY_DDR4_0_SIZE
-	hex "System memory size"
-	default 0x100000001
-	range 0x2000000 0x100000001
-	depends on SUBSYSTEM_MEMORY_DDR4_0_SELECT
-	help
-	Size of the system memory. Minimum is 32MB, maximum is the size of
-	the selected primary memory physical address range.
-
-config SUBSYSTEM_MEMORY_DDR4_0_U__BOOT_TEXTBASE_OFFSET
-	hex "u-boot text base address"
-	default 0x1040000000 if SYSTEM_VERSAL-2VE-2VM
-	default 0x1008000000 if SUBSYSTEM_ARCH_AARCH64
-	default 0x1004000000 if SUBSYSTEM_ARCH_ARM
-	default 0x1000100000 if SUBSYSTEM_ARCH_MICROBLAZE
-	range 0x1000100000 0x20fe100000
-	depends on SUBSYSTEM_MEMORY_DDR4_0_SELECT
-	depends on !SUBSYSTEM_COMPONENT_U__BOOT_NAME_NONE
-	help
-	u-boot text base address by specifying from the memory base address.
-	u-boot load address = bank base address + offset. And same value will
-	pass to TF-A also. Minimum suggested is 1MB.
-
-config SUBSYSTEM_MEMORY_IP_NAME
-	string
-	default ddr4_0
-	depends on SUBSYSTEM_MEMORY_DDR4_0_SELECT
-
-config SUBSYSTEM_MEMORY_DDR4_1_BASEADDR
-	hex "System memory base address"
-	default 0x400000000
-	range 0x400000000 0x4fe000000
-	depends on SUBSYSTEM_MEMORY_DDR4_1_SELECT
-	help
-	Start address of the system memory.
-	It has to be within the selected primary memory physical address range.
-	Make sure the DT memory entry should start with provided address.
-
-config SUBSYSTEM_MEMORY_DDR4_1_SIZE
-	hex "System memory size"
-	default 0x100000001
-	range 0x2000000 0x100000001
-	depends on SUBSYSTEM_MEMORY_DDR4_1_SELECT
-	help
-	Size of the system memory. Minimum is 32MB, maximum is the size of
-	the selected primary memory physical address range.
-
-config SUBSYSTEM_MEMORY_DDR4_1_U__BOOT_TEXTBASE_OFFSET
-	hex "u-boot text base address"
-	default 0x440000000 if SYSTEM_VERSAL-2VE-2VM
-	default 0x408000000 if SUBSYSTEM_ARCH_AARCH64
-	default 0x404000000 if SUBSYSTEM_ARCH_ARM
-	default 0x400100000 if SUBSYSTEM_ARCH_MICROBLAZE
-	range 0x400100000 0x8fe100000
-	depends on SUBSYSTEM_MEMORY_DDR4_1_SELECT
-	depends on !SUBSYSTEM_COMPONENT_U__BOOT_NAME_NONE
-	help
-	u-boot text base address by specifying from the memory base address.
-	u-boot load address = bank base address + offset. And same value will
-	pass to TF-A also. Minimum suggested is 1MB.
-
-config SUBSYSTEM_MEMORY_IP_NAME
-	string
-	default ddr4_1
-	depends on SUBSYSTEM_MEMORY_DDR4_1_SELECT
 
 config SUBSYSTEM_MEMORY_PSU_DDR_0_BASEADDR
 	hex "System memory base address"
