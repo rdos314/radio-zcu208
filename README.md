@@ -6,7 +6,7 @@ linux - Peta-linux source<br>
 <h3>PetaLinux build</h3>
 Ubuntu 22.04.5 must be used to build PetaLinux. Link: https://releases.ubuntu.com/jammy/<br><br>
 
-Install the required software modules before installing PetaLinux<br>
+Install the required software modules before installing PetaLinux:<br>
 sudo apt-get install iproute2 gawk python3 python build-essential gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex bison libselinux1 gnupg wget git-core diffstat chrpath socat xterm autoconf libtool tar unzip texinfo<br><br>
 
 Create a directory for PetaLinux:<br>
@@ -19,8 +19,40 @@ Download both the "PetaLinux installer", and the "ZCU208 BSP" to the petalinux d
 
 Install PetaLinux like this:<br>
 chmod 755 ./petalinux-v2025.1-final-installer.run<br>
-./petalinux-v2025.1-final-installer.run --dir /home/oem/petalinux --platform "arm aarch64"<br>
-source /home/oem/petalinux/settings.sh<br><br>
+./petalinux-v2025.1-final-installer.run --dir /home/user/petalinux --platform "arm aarch64"<br>
+
+Source PetaLinux before running commands:<br>
+source /home/user/petalinux/settings.sh<br><br>
+
+Create the project:<br>
+cd ..<br>
+mkdir radio-zcu208<br>
+cd radio-zcu208<br><br>
+
+petalinux-create -t project -s ../petalinux/zcu208-v2025.1.bsp -n linux<br>
+cd linux<br><br>
+
+Setup for SD boot without user/password:<br>
+
+petalinux-config<br><br>
+
+Select Image Packaging Configuration > Root file system type.<br>
+Select EXT4 (SD/eMMC/SATA/USB) as the root file system type.<br>
+Exit menuconfig and save configuration settings.<br><br>
+
+petalinux-config -c rootfs.<br>
+Select Image Features > serial-autologin-root.<br><br>
+
+PetaLinux RootFS Settings -→ (root:root;petalinux:petalinux:passwd-expire;)<br><br>
+
+user: petalinux<br>
+passw: change on first connect<br><br>
+
+Exit menuconfig and save configuration settings.<br><br>
+
+Build PetaLinux:<br>
+
+petalinux-build<br>
 
 <h3>Embedded Vitis</h3>
 
