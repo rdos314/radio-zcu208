@@ -488,4 +488,3 @@
 		#ranges-size-cells = <0x1>;
 	};
 };
-#include "zcu208-reva.dtsi"
