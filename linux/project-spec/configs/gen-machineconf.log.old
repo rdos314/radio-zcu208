@@ -1,13 +1,13 @@
-2025-09-10 19:55:31,018 - [INFO] Getting Platform info from HW file
-2025-09-10 19:55:31,018 - [DEBUG] Using the soc_family specified by user:zynqmp
-2025-09-10 19:55:31,019 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /home/leif/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-machine-name.dts /home/leif/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
-2025-09-10 19:55:31,743 - [DEBUG] 
+2025-09-11 22:37:55,173 - [INFO] Getting Platform info from HW file
+2025-09-11 22:37:55,173 - [DEBUG] Using the soc_family specified by user:zynqmp
+2025-09-11 22:37:55,174 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /home/leif/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-machine-name.dts /home/leif/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
+2025-09-11 22:37:55,830 - [DEBUG] 
 xlnx-zcu208 xczu48dr Xilinx ZynqMP
 
 
 
-2025-09-10 19:55:31,744 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /home/leif/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-xilinx-id-cpus.dts /home/leif/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
-2025-09-10 19:55:32,536 - [DEBUG] 
+2025-09-11 22:37:55,831 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /home/leif/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/leif/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-xilinx-id-cpus.dts /home/leif/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
+2025-09-11 22:37:56,637 - [DEBUG] 
 # global core_number no-domain cpu_name
 arm,cortex-a53 0 None psu_cortexa53_0 None
 arm,cortex-a53 1 None psu_cortexa53_1 None
@@ -19,23 +19,23 @@ pmu-microblaze 0 None psu_pmu_0 None
 
 
 
-2025-09-10 19:55:32,548 - [DEBUG] Hardware Configuration:
-2025-09-10 19:55:32,548 - [DEBUG] MODEL       = "Xilinx ZynqMP"
-2025-09-10 19:55:32,548 - [DEBUG] MACHINE     = "xlnx-zynqmp-zcu208-reva"
-2025-09-10 19:55:32,548 - [DEBUG] DEVICE_ID   = "xczu48dr"
-2025-09-10 19:55:32,548 - [DEBUG] SOC_FAMILY  = "zynqmp"
-2025-09-10 19:55:32,548 - [DEBUG] SOC_VARIANT = "dr"
-2025-09-10 19:55:32,548 - [DEBUG] CPUs:
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_cortexa53_0 arm cortex-a53 0
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_cortexa53_1 arm cortex-a53 1
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_cortexa53_2 arm cortex-a53 2
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_cortexa53_3 arm cortex-a53 3
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_cortexr5_0 arm cortex-r5 0
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_cortexr5_1 arm cortex-r5 1
-2025-09-10 19:55:32,548 - [DEBUG] 	= psu_pmu_0 zynqmp-pmu 0
-2025-09-10 19:55:32,549 - [INFO] Silentconfig project
-2025-09-10 19:55:32,549 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/leif/radio-zcu208/linux/project-spec/configs/config conf /home/leif/radio-zcu208/linux/project-spec/configs/configs/Kconfig
-2025-09-10 19:55:32,554 - [DEBUG] *
+2025-09-11 22:37:56,650 - [DEBUG] Hardware Configuration:
+2025-09-11 22:37:56,650 - [DEBUG] MODEL       = "Xilinx ZynqMP"
+2025-09-11 22:37:56,650 - [DEBUG] MACHINE     = "xlnx-zynqmp-zcu208-reva"
+2025-09-11 22:37:56,650 - [DEBUG] DEVICE_ID   = "xczu48dr"
+2025-09-11 22:37:56,650 - [DEBUG] SOC_FAMILY  = "zynqmp"
+2025-09-11 22:37:56,650 - [DEBUG] SOC_VARIANT = "dr"
+2025-09-11 22:37:56,650 - [DEBUG] CPUs:
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_cortexa53_0 arm cortex-a53 0
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_cortexa53_1 arm cortex-a53 1
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_cortexa53_2 arm cortex-a53 2
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_cortexa53_3 arm cortex-a53 3
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_cortexr5_0 arm cortex-r5 0
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_cortexr5_1 arm cortex-r5 1
+2025-09-11 22:37:56,650 - [DEBUG] 	= psu_pmu_0 zynqmp-pmu 0
+2025-09-11 22:37:56,650 - [INFO] Silentconfig project
+2025-09-11 22:37:56,650 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/leif/radio-zcu208/linux/project-spec/configs/config conf /home/leif/radio-zcu208/linux/project-spec/configs/configs/Kconfig
+2025-09-11 22:37:56,654 - [DEBUG] *
 * PetaLinux System Configuration
 *
 ZYNQMP Configuration (SYSTEM_ZYNQMP) [Y/?] y
@@ -314,9 +314,9 @@ user layer 0 (USER_LAYER_0) []
 #
 # configuration written to /home/leif/radio-zcu208/linux/project-spec/configs/config
 #
-2025-09-10 19:55:32,586 - [INFO] Silentconfig rootfs
-2025-09-10 19:55:32,586 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/leif/radio-zcu208/linux/project-spec/configs/rootfs_config conf /home/leif/radio-zcu208/linux/project-spec/configs/rootfsconfigs/Kconfig
-2025-09-10 19:55:32,593 - [DEBUG] *
+2025-09-11 22:37:56,683 - [INFO] Silentconfig rootfs
+2025-09-11 22:37:56,683 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/leif/radio-zcu208/linux/project-spec/configs/rootfs_config conf /home/leif/radio-zcu208/linux/project-spec/configs/rootfsconfigs/Kconfig
+2025-09-11 22:37:56,690 - [DEBUG] *
 * Configuration
 *
 *
@@ -3811,5 +3811,5 @@ Add Users to Sudo users (ADD_USERS_TO_SUDOERS) [petalinux]
 #
 # configuration written to /home/leif/radio-zcu208/linux/project-spec/configs/rootfs_config
 #
-2025-09-10 19:55:32,597 - [INFO] Generating configuration files
-2025-09-10 19:55:32,611 - [DEBUG] Shutting down bitbake
+2025-09-11 22:37:56,694 - [INFO] Generating configuration files
+2025-09-11 22:37:56,705 - [DEBUG] Shutting down bitbake

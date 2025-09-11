@@ -212,8 +212,8 @@
 		conf {
 			groups = "i2c0_3_grp";
 			bias-pull-up;
-			slew-rate = <SLEW_RATE_SLOW>;
-			power-source = <IO_STANDARD_LVCMOS18>;
+			slew-rate = <1>;
+			power-source = <1>;
 		};
 	};
 
@@ -225,8 +225,8 @@
 
 		conf {
 			groups = "gpio0_14_grp", "gpio0_15_grp";
-			slew-rate = <SLEW_RATE_SLOW>;
-			power-source = <IO_STANDARD_LVCMOS18>;
+			slew-rate = <1>;
+			power-source = <1>;
 		};
 	};
 
@@ -239,8 +239,8 @@
 		conf {
 			groups = "i2c1_4_grp";
 			bias-pull-up;
-			slew-rate = <SLEW_RATE_SLOW>;
-			power-source = <IO_STANDARD_LVCMOS18>;
+			slew-rate = <1>;
+			power-source = <1>;
 		};
 	};
 
@@ -252,8 +252,8 @@
 
 		conf {
 			groups = "gpio0_16_grp", "gpio0_17_grp";
-			slew-rate = <SLEW_RATE_SLOW>;
-			power-source = <IO_STANDARD_LVCMOS18>;
+			slew-rate = <1>;
+			power-source = <1>;
 		};
 	};
 };
