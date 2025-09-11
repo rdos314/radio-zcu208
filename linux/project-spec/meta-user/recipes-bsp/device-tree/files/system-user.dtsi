@@ -10,21 +10,6 @@
 
 /include/ "system-conf.dtsi"
 
-#define GPIO_ACTIVE_HIGH 0
-#define GPIO_ACTIVE_LOW 1
-
-#define PHY_NONE                0
-#define PHY_TYPE_SATA           1
-#define PHY_TYPE_PCIE           2
-#define PHY_TYPE_USB2           3
-#define PHY_TYPE_USB3           4
-#define PHY_TYPE_UFS            5
-#define PHY_TYPE_DP             6
-#define PHY_TYPE_XPCS           7
-#define PHY_TYPE_SGMII          8
-#define PHY_TYPE_QSGMII         9
-#define PHY_TYPE_DPHY           10
-#define PHY_TYPE_CPHY           11
 
 / {
 	model = "ZynqMP ZCU208 RevA";
@@ -52,6 +37,227 @@
 	};
 };
 
+&gpio {
+	gpio-line-names = "QSPI_LWR_CLK", "QSPI_LWR_DQ1", "QSPI_LWR_DQ2", "QSPI_LWR_DQ3", "QSPI_LWR_DQ0", /* 0 - 4 */
+		  "QSPI_LWR_CS_B", "", "QSPI_UPR_CS_B", "QSPI_UPR_DQ0", "QSPI_UPR_DQ1", /* 5 - 9 */
+		  "QSPI_UPR_DQ2", "QSPI_UPR_DQ3", "QSPI_UPR_CLK", "PS_GPIO2", "I2C0_SCL", /* 10 - 14 */
+		  "I2C0_SDA", "I2C1_SCL", "I2C1_SDA", "UART0_TXD", "UART0_RXD", /* 15 - 19 */
+		  "", "", "BUTTON", "LED", "", /* 20 - 24 */
+		  "", "PMU_INPUT", "", "", "", /* 25 - 29 */
+		  "", "", "PMU_GPO0", "PMU_GPO1", "PMU_GPO2", /* 30 - 34 */
+		  "PMU_GPO3", "PMU_GPO4", "PMU_GPO5", "PS_GPIO1", "SDIO_SEL", /* 35 - 39 */
+		  "SDIO_DIR_CMD", "SDIO_DIR_DAT0", "SDIO_DIR_DAT1", "", "", /* 40 - 44 */
+		  "SDIO_DETECT", "SDIO_DAT0", "SDIO_DAT1", "SDIO_DAT2", "SDIO_DAT3", /* 45 - 49 */
+		  "SDIO_CMD", "SDIO_CLK", "USB_CLK", "USB_DIR", "USB_DATA2", /* 50 - 54 */
+		  "USB_NXT", "USB_DATA0", "USB_DATA1", "USB_STP", "USB_DATA3", /* 55 - 59 */
+		  "USB_DATA4", "USB_DATA5", "USB_DATA6", "USB_DATA7", "ENET_TX_CLK", /* 60 - 64 */
+		  "ENET_TX_D0", "ENET_TX_D1", "ENET_TX_D2", "ENET_TX_D3", "ENET_TX_CTRL", /* 65 - 69 */
+		  "ENET_RX_CLK", "ENET_RX_D0", "ENET_RX_D1", "ENET_RX_D2", "ENET_RX_D3", /* 70 - 74 */
+		  "ENET_RX_CTRL", "ENET_MDC", "ENET_MDIO", /* 75 - 77, MIO end and EMIO start */
+		  "", "", /* 78 - 79 */
+		  "", "", "", "", "", /* 80 - 84 */
+		  "", "", "", "", "", /* 85 -89 */
+		  "", "", "", "", "", /* 90 - 94 */
+		  "", "", "", "", "", /* 95 - 99 */
+		  "", "", "", "", "", /* 100 - 104 */
+		  "", "", "", "", "", /* 105 - 109 */
+		  "", "", "", "", "", /* 110 - 114 */
+		  "", "", "", "", "", /* 115 - 119 */
+		  "", "", "", "", "", /* 120 - 124 */
+		  "", "", "", "", "", /* 125 - 129 */
+		  "", "", "", "", "", /* 130 - 134 */
+		  "", "", "", "", "", /* 135 - 139 */
+		  "", "", "", "", "", /* 140 - 144 */
+		  "", "", "", "", "", /* 145 - 149 */
+		  "", "", "", "", "", /* 150 - 154 */
+		  "", "", "", "", "", /* 155 - 159 */
+		  "", "", "", "", "", /* 160 - 164 */
+		  "", "", "", "", "", /* 165 - 169 */
+		  "", "", "", ""; /* 170 - 173 */
+};
+
+&i2c1 {
+	clock-frequency = <400000>;
+	pinctrl-names = "default", "gpio";
+	pinctrl-0 = <&pinctrl_i2c1_default>;
+	pinctrl-1 = <&pinctrl_i2c1_gpio>;
+	scl-gpios = <&gpio 16 6>;
+	sda-gpios = <&gpio 17 6>;
+
+	i2c-mux@74 {
+		compatible = "nxp,pca9548"; /* u20 */
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x74>;
+		i2c-mux-idle-disconnect;
+		i2c_eeprom: i2c@0 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <0>;
+			/*
+			 * IIC_EEPROM 1kB memory which uses 256B blocks
+			 * where every block has different address.
+			 *    0 - 256B address 0x54
+			 * 256B - 512B address 0x55
+			 * 512B - 768B address 0x56
+			 * 768B - 1024B address 0x57
+			 */
+			eeprom: eeprom@54 { /* u21 */
+				compatible = "atmel,24c128";
+				reg = <0x54>;
+			};
+		};
+		i2c_si5341: i2c@1 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <1>;
+			si5341: clock-generator@36 { /* SI5341 - u43 */
+				compatible = "silabs,si5341";
+				reg = <0x36>;
+				#clock-cells = <2>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				clocks = <&ref48>;
+				clock-names = "xtal";
+				clock-output-names = "si5341";
+
+				si5341_2: out@2 {
+					/* refclk2 for PS-GT, used for USB3 */
+					reg = <2>;
+					always-on;
+				};
+				si5341_3: out@3 {
+					/* refclk3 for PS-GT, used for SATA */
+					reg = <3>;
+					always-on;
+				};
+				si5341_5: out@5 {
+					/* refclk5 PL CLK100 */
+					reg = <5>;
+					always-on;
+				};
+				si5341_6: out@6 {
+					/* refclk6 PL CLK125 */
+					reg = <6>;
+					always-on;
+				};
+				si5341_9: out@9 {
+					/* refclk9 used for PS_REF_CLK 33.3 MHz */
+					reg = <9>;
+					always-on;
+				};
+			};
+		};
+		i2c_si570_user_c0: i2c@2 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <2>;
+			si570_1: clock-generator@5d { /* USER C0 SI570 - u47 */
+				#clock-cells = <0>;
+				compatible = "silabs,si570";
+				reg = <0x5d>;
+				temperature-stability = <50>;
+				factory-fout = <300000000>;
+				clock-frequency = <300000000>;
+				clock-output-names = "si570_user_c0";
+			};
+		};
+		i2c_si570_mgt: i2c@3 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <3>;
+			si570_2: clock-generator@5d { /* USER MGT SI570 - u48 */
+				#clock-cells = <0>;
+				compatible = "silabs,si570";
+				reg = <0x5d>;
+				temperature-stability = <50>;
+				factory-fout = <156250000>;
+				clock-frequency = <156250000>;
+				clock-output-names = "si570_mgt";
+			};
+		};
+		i2c_8a34001: i2c@4 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <4>;
+			idt_8a34001: phc@5b {
+				compatible = "idt,8a34001"; /* u409B */
+				reg = <0x5b>;
+			};
+		};
+		i2c_clk104: i2c@5 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <5>;
+			/* CLK104_SDA */
+		};
+		i2c@6 {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <6>;
+			/* RFMCP connector */
+		};
+		/* 7 NC */
+	};
+};
+
+&pinctrl0 {
+	status = "okay";
+	pinctrl_i2c0_default: i2c0-default {
+		mux {
+			groups = "i2c0_3_grp";
+			function = "i2c0";
+		};
+
+		conf {
+			groups = "i2c0_3_grp";
+			bias-pull-up;
+			slew-rate = <SLEW_RATE_SLOW>;
+			power-source = <IO_STANDARD_LVCMOS18>;
+		};
+	};
+
+	pinctrl_i2c0_gpio: i2c0-gpio-grp {
+		mux {
+			groups = "gpio0_14_grp", "gpio0_15_grp";
+			function = "gpio0";
+		};
+
+		conf {
+			groups = "gpio0_14_grp", "gpio0_15_grp";
+			slew-rate = <SLEW_RATE_SLOW>;
+			power-source = <IO_STANDARD_LVCMOS18>;
+		};
+	};
+
+	pinctrl_i2c1_default: i2c1-default {
+		mux {
+			groups = "i2c1_4_grp";
+			function = "i2c1";
+		};
+
+		conf {
+			groups = "i2c1_4_grp";
+			bias-pull-up;
+			slew-rate = <SLEW_RATE_SLOW>;
+			power-source = <IO_STANDARD_LVCMOS18>;
+		};
+	};
+
+	pinctrl_i2c1_gpio: i2c1-gpio-grp {
+		mux {
+			groups = "gpio0_16_grp", "gpio0_17_grp";
+			function = "gpio0";
+		};
+
+		conf {
+			groups = "gpio0_16_grp", "gpio0_17_grp";
+			slew-rate = <SLEW_RATE_SLOW>;
+			power-source = <IO_STANDARD_LVCMOS18>;
+		};
+	};
+};
+
 &gem3 {
 	phy-handle = <&phy0>;
 	phy-mode = "rgmii-id";
@@ -66,7 +272,6 @@
 			ti,tx-internal-delay = <0xa>;
 			ti,fifo-depth = <0x1>;
 			ti,dp83867-rxctrl-strap-quirk;
-			reset-gpios = <&tca6416_u15 6 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
@@ -104,7 +309,7 @@
 	ceva,p1-burst-params = /bits/ 8 <0x13 0x08 0x4A 0x06>;
 	ceva,p1-retry-params = /bits/ 16 <0x96A4 0x3FFC>;
 	phy-names = "sata-phy";
-	phys = <&psgtr 3 PHY_TYPE_SATA 1 3>;
+	phys = <&psgtr 3 1 1 3>;
 };
 
 /* SD1 with level shifter */
@@ -121,7 +326,7 @@
 /* ULPI SMSC USB3320 */
 &usb0 {
 	phy-names = "usb3-phy";
-	phys = <&psgtr 2 PHY_TYPE_USB3 0 2>;
+	phys = <&psgtr 2 4 0 2>;
 };
 
 &dwc3_0 {
