@@ -66,6 +66,10 @@ For Linux, download and install to /home/user/xilinx and then install the libs l
 cd /home/user/xilinx/2025.1/Vitis/scripts<br>
 sudo ./installLibs.sh<br><br>
 
+<h3>XRT and ZOCL</h3>
+
+https://adaptivesupport.amd.com/s/article/1138667?language=en_US
+
 <h3>Antennas and preamplifiers</h3>
 
 Isolator: https://www.herostechnology.co.uk/pages/RF_Galvanic_Isolators.html                            3 MHz - 2.5 GHz<br>
