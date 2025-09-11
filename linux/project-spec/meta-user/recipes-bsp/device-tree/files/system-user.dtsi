@@ -1,3 +1,5 @@
+#include "zcu208-reva.dtsi"
+
 /include/ "system-conf.dtsi"
 / {
 };
