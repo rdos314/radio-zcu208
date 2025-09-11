@@ -8,11 +8,11 @@
  * Michal Simek <michal.simek@amd.com>
  */
 
-
-#include "../../../../hw-description/include/dt-bindings/input/input.h"
-#include "../../../../hw-description/include/dt-bindings/gpio/gpio.h"
-#include "../../../../hw-description/include/dt-bindings/pinctrl/pinctrl-zynqmp.h"
-#include "../../../../hw-description/include/dt-bindings/phy/phy.h"
+/include/ "system-conf.dtsi"
+/include/ "include/dt-bindings/input/input.h"
+/include/ "include/dt-bindings/gpio/gpio.h"
+/include/ "include/dt-bindings/pinctrl/pinctrl-zynqmp.h"
+/include/ "include/dt-bindings/phy/phy.h"
 
 / {
 	model = "ZynqMP ZCU208 RevA";
