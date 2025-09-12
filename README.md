@@ -49,7 +49,6 @@ user: petalinux<br>
 passw: change on first connect<br><br>
 
 Set Filesystem Packages -→ tcf-agent to enabled<br>
-Set Filesystem Packages -→ console -→ network -→ dropbear to enabled<br>
 Set Filesystem Packages -→ console -→ network -→ OpenSSH -→ openssh-sftp-server to enabled<br><br>
 
 Exit menuconfig and save configuration settings.<br><br>
@@ -93,3 +92,4 @@ https://docs.amd.com/r/en-US/Vitis-Tutorials-Embedded-Software<br>
 https://docs.amd.com/r/en-US/ug1209-embedded-design-tutorial/Tutorial-Design-Files<br>
 https://numato.com/kb/styx-partitioning-sd-card-for-petalinux/<br>
 https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/rfdc/examples/xrfdc_mts_example.c<br>
+https://github.com/Xilinx/embeddedsw/tree/master/XilinxProcessorIPLib/drivers/board_common/src/rfclk<br>
