@@ -554,7 +554,7 @@ CONFIG_nfs-utils=y
 # CONFIG_openssh is not set
 # CONFIG_openssh-ssh is not set
 # CONFIG_openssh-sftp is not set
-# CONFIG_openssh-sftp-server is not set
+CONFIG_openssh-sftp-server=y
 # CONFIG_openssh-keygen is not set
 # CONFIG_openssh-dbg is not set
 # CONFIG_openssh-dev is not set
@@ -2152,7 +2152,7 @@ CONFIG_libdfx=y
 #
 # apache2
 #
-# CONFIG_apache2 is not set
+CONFIG_apache2=y
 # CONFIG_apache2-dbg is not set
 # CONFIG_apache2-dev is not set
 
@@ -3030,7 +3030,7 @@ CONFIG_packagegroup-core-boot=y
 #
 # rpm 
 #
-# CONFIG_rpm is not set
+CONFIG_rpm=y
 # CONFIG_rpm-build is not set
 # CONFIG_rpm-dbg is not set
 # CONFIG_rpm-dev is not set

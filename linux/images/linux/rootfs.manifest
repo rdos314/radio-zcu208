@@ -1,3 +1,5 @@
+apache2 cortexa72_cortexa53 2.4.62
+apache2-utils cortexa72_cortexa53 2.4.62
 base-files xlnx_zynqmp_zcu208_reva 3.0.14
 base-files-plnx xlnx_zynqmp_zcu208_reva 2025.1
 base-passwd cortexa72_cortexa53 3.6.3
@@ -115,8 +117,11 @@ kernel-modules xlnx_zynqmp_zcu208_reva 6.12.10+git0+0a0f70e531
 kmod cortexa72_cortexa53 31
 ldconfig cortexa72_cortexa53 2.39+git0+662516aca8
 libacl1 cortexa72_cortexa53 2.3.2
+libapr-1-0 cortexa72_cortexa53 1.7.5
+libaprutil-1-0 cortexa72_cortexa53 1.6.3
 libattr1 cortexa72_cortexa53 2.5.1
 libblkid1 cortexa72_cortexa53 2.40.4
+libbz2-1 cortexa72_cortexa53 1.0.8
 libc6 cortexa72_cortexa53 2.39+git0+662516aca8
 libcap cortexa72_cortexa53 2.69
 libcom-err2 cortexa72_cortexa53 1.47.0
@@ -130,8 +135,12 @@ libevent-2.1-7 cortexa72_cortexa53 2.1.12
 libexpat1 cortexa72_cortexa53 2.6.4
 libext2fs2 cortexa72_cortexa53 1.47.0
 libfdisk1 cortexa72_cortexa53 2.40.4
+libgcc1 cortexa72_cortexa53 13.3.0
+libgcrypt cortexa72_cortexa53 1.10.3
+libgdbm6 cortexa72_cortexa53 1.23
 libgmp10 cortexa72_cortexa53 6.3.0
 libgnutls30 cortexa72_cortexa53 3.8.4
+libgpg-error cortexa72_cortexa53 1.48
 libidn2-0 cortexa72_cortexa53 2.3.7
 libkmod2 cortexa72_cortexa53 31
 liblzma5 cortexa72_cortexa53 5.4.6
@@ -143,6 +152,8 @@ libnss-systemd2 cortexa72_cortexa53 255.17
 libpam cortexa72_cortexa53 1.5.3
 libpam-runtime cortexa72_cortexa53 1.5.3
 libpci3 cortexa72_cortexa53 3.11.1
+libpcre1 cortexa72_cortexa53 8.45
+libpopt0 cortexa72_cortexa53 1.19
 librfclk2 xlnx_zynqmp_zcu208_reva 2025.1+git
 librfdc13 xlnx_zynqmp_zcu208_reva 2025.1+git
 libseccomp cortexa72_cortexa53 2.5.5
@@ -179,6 +190,7 @@ openssh-scp cortexa72_cortexa53 9.6p1
 openssh-sftp-server cortexa72_cortexa53 9.6p1
 openssh-ssh cortexa72_cortexa53 9.6p1
 openssh-sshd cortexa72_cortexa53 9.6p1
+openssl cortexa72_cortexa53 3.2.4
 openssl-conf cortexa72_cortexa53 3.2.4
 openssl-ossl-module-legacy cortexa72_cortexa53 3.2.4
 os-release noarch 1.0
@@ -207,6 +219,8 @@ pciutils-ids cortexa72_cortexa53 3.11.1
 rfdc-read-write xlnx_zynqmp_zcu208_reva 2025.1+git
 rfdc-selftest xlnx_zynqmp_zcu208_reva 2025.1+git
 rpcbind cortexa72_cortexa53 1.2.6
+rpm cortexa72_cortexa53 4.19.1.1
+rpm-sign cortexa72_cortexa53 4.19.1.1
 shadow cortexa72_cortexa53 4.14.2
 shadow-base cortexa72_cortexa53 4.14.2
 shadow-securetty xlnx_zynqmp_zcu208_reva 4.6
