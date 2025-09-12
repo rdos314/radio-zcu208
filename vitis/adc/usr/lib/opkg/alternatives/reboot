@@ -1,0 +1,2 @@
+/usr/sbin/reboot
+/usr/bin/systemctl 300

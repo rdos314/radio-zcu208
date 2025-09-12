@@ -1,0 +1,7 @@
+ID=petalinux
+NAME="PetaLinux"
+VERSION="2025.1+release-S05180137 (scarthgap)"
+VERSION_ID=2025.1-release-s05180137
+VERSION_CODENAME="scarthgap"
+PRETTY_NAME="PetaLinux 2025.1+release-S05180137 (scarthgap)"
+CPE_NAME="cpe:/o:openembedded:petalinux:2025.1+release-S05180137"

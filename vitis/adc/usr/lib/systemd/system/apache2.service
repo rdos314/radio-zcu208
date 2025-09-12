@@ -1,0 +1,14 @@
+[Unit]
+Description=The Apache HTTP Server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+Environment=LANG=C
+ExecStart=/usr/sbin/httpd -DFOREGROUND -D SSL -D PHP5 -k start
+ExecStop=/usr/bin/kill -WINCH ${MAINPID}
+KillSignal=SIGCONT
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

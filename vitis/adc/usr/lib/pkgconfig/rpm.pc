@@ -1,0 +1,16 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+rpmhome=/usr/lib/rpm
+
+Name: rpm
+Description: The RPM Package Manager
+Version: 4.19.1.1
+URL: http://rpm.org
+Requires: popt
+Requires.private: 
+# Conflicts:
+Cflags: -I${includedir} -D_FILE_OFFSET_BITS=64
+Libs: -L${libdir} -lrpm -lrpmio
+Libs.private: -lpopt -lrt -lpthread    
