@@ -5,8 +5,8 @@
         <sdx:configuration sdx:defaultProcessorGroup="linux_psu_cortexa53" sdx:displayName="adc" sdx:name="adc" sdx:runtimes="cpp">
             <sdx:description/>
             <sdx:bootImages sdx:default="standard">
-                <sdx:image sdx:bif="boot\" sdx:imageData="linux_psu_cortexa53\image" sdx:name="standard" sdx:qemuArguments="qemu/pmu_args.txt:qemu/qemu_args.txt" sdx:readme=""/>
-                <sdx:image sdx:bif="boot\" sdx:imageData="linux_psu_cortexa53\image" sdx:name="linux_psu_cortexa53" sdx:qemuArguments="linux_psu_cortexa53\qemu\pmu_args.txt:linux_psu_cortexa53\qemu\qemu_args.txt" sdx:readme=""/>
+                <sdx:image sdx:bif="boot\adc.bif" sdx:imageData="linux_psu_cortexa53\image" sdx:name="standard" sdx:qemuArguments="qemu/pmu_args.txt:qemu/qemu_args.txt" sdx:readme=""/>
+                <sdx:image sdx:bif="boot\adc.bif" sdx:imageData="linux_psu_cortexa53\image" sdx:name="linux_psu_cortexa53" sdx:qemuArguments="linux_psu_cortexa53\qemu\pmu_args.txt:linux_psu_cortexa53\qemu\qemu_args.txt" sdx:readme=""/>
             </sdx:bootImages>
             <sdx:processorGroup sdx:cpuType="cortex-a53" sdx:displayName="linux_psu_cortexa53" sdx:name="linux_psu_cortexa53">
                 <sdx:os sdx:displayName="linux_psu_cortexa53" sdx:name="linux"/>

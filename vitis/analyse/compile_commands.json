@@ -1,0 +1,7 @@
+[
+  {
+    "file": "C:/radio-zcu208/vitis/analyse/src/helloworld.c",
+    "command": "C:/Xilinx/2025.1/Vitis/gnu/aarch64/nt/aarch64-linux/bin/aarch64-linux-gnu-gcc.exe -DVITIS_MAJOR_VERSION\u003d\"\" -DVITIS_MINOR_VERSION\u003d\"\" -DVITIS_VERSION\u003d\"\" -IC:/radio-zcu208/vitis/adc/usr/include -g \" -IC:\\radio-zcu208\\vitis\\adc\\usr\\include\\c++\\11.2.0\\aarch64-xilinx-linux -IC:\\radio-zcu208\\vitis\\adc\\usr\\include\\c++\\11.2.0\\backward -IC:\\radio-zcu208\\vitis\\adc\\usr\\lib\\aarch64-xilinx-linux\\11.2.0\\include -IC:\\radio-zcu208\\vitis\\adc\\usr\\include\\c++\\11.2.0 --sysroot\u003dC:\\\\radio-zcu208\\\\vitis\\\\adc\" -Wall -Wextra -O0 -g3 -o CMakeFiles/analyse.elf.dir/src/helloworld.c.obj -c C:/radio-zcu208/vitis/analyse/src/helloworld.c",
+    "directory": "c:\\radio-zcu208\\vitis\\analyse"
+  }
+]

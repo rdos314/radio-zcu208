@@ -1,0 +1,19 @@
+{
+  "name": "analyse",
+  "type": "HOST",
+  "platform": "adc",
+  "domain": "linux_psu_cortexa53",
+  "cpuInstance": "cortex-a53",
+  "cpuType": "cortex-a53",
+  "os": "linux",
+  "sysroot": "C:\\radio-zcu208\\vitis\\adc",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "linux_psu_cortexa53",
+  "useSysrootToolchain": true,
+  "sysrootToolchain": "",
+  "applicationFlow": "EMBEDDED",
+  "template": "linux_hello_world"
+}

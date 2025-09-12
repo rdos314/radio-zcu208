@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Tue Sep  9 22:35:10 2025
+# Process ID         : 10668
+# Current directory  : C:/radio-zcu208/vivado/adc.runs/impl_1
+# Command line       : vivado.exe -log ps_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source ps_wrapper.tcl -notrace
+# Log file           : C:/radio-zcu208/vivado/adc.runs/impl_1/ps_wrapper.vdi
+# Journal file       : C:/radio-zcu208/vivado/adc.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-SA3FM6F
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-13620H
+# CPU Frequency      : 2918 MHz
+# CPU Physical cores : 10
+# CPU Logical cores  : 16
+# Host memory        : 16765 MB
+# Swap memory        : 1082 MB
+# Total Virtual      : 17847 MB
+# Available Virtual  : 8438 MB
+#-----------------------------------------------------------
+source ps_wrapper.tcl -notrace

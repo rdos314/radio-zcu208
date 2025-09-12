@@ -7,7 +7,7 @@
     "xsaPathInPlatform": "adc\\hw\\ps_wrapper.xsa",
     "emulationXsa": "",
     "emulationXsaPathInPlatform": "",
-    "isCustomFSBL": false,
+    "isCustomFSBL": true,
     "fsblPath": "",
     "pmufwElf": "",
     "flow": "EMBEDDED",
@@ -51,20 +51,6 @@
     "componentType": "PLATFORM",
     "domains": [
       {
-        "name": "zynqmp_fsbl",
-        "displayName": "zynqmp_fsbl",
-        "processor": "psu_cortexa53_0",
-        "cpuType": "cortex-a53",
-        "cpuInstance": "psu_cortexa53_0",
-        "os": "standalone",
-        "appTemplate": "zynqmp_fsbl",
-        "isBootDomain": true,
-        "qemuData": "resources\\zynqmp_fsbl\\qemu",
-        "qemuArgsFile": "resources\\zynqmp_fsbl\\qemu\\qemu_args.txt",
-        "pmcQemuArgsFile": "resources\\zynqmp_fsbl\\qemu\\pmu_args.txt",
-        "isBSPGenReq": false
-      },
-      {
         "name": "linux_psu_cortexa53",
         "displayName": "linux_psu_cortexa53",
         "processor": "psu_cortexa53",
@@ -74,10 +60,10 @@
         "qemuData": "",
         "qemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\qemu_args.txt",
         "pmcQemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\pmu_args.txt",
-        "bifFile": "",
+        "bifFile": "..\\adc.bif",
         "bootDirectory": "",
         "sdCardDirectory": "",
-        "customDtb": "hw\\linux_dt\\system.dtb"
+        "customDtb": "..\\..\\linux\\images\\linux\\system.dtb"
       }
     ],
     "emptyToolchainConfiguration": []

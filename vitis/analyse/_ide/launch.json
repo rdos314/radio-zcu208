@@ -1,0 +1,32 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "tcf-debug",
+			"request": "launch",
+			"name": "analyse_hw_1",
+			"debugType": "emb-linux",
+			"attachToRunningProcessOptions": {
+				"linuxTargetMode": "standalone",
+				"attachToPid": []
+			},
+			"target": {
+				"targetConnectionId": "ZCU208",
+				"peersIniPath": "../../_ide/.peers.ini",
+				"file": "C:/radio-zcu208/vitis/analyse/build/analyse.elf",
+				"remoteFilePath": "/tmp/analyse.elf"
+			},
+			"env": {},
+			"pathMap": [],
+			"replaceNativeEnv": false,
+			"arguments": "",
+			"workingDirectory": "/tmp",
+			"stopAtMain": true,
+			"skipRevisionCheck": false,
+			"partialBitstream": false,
+			"stopAtProgramEntry": false,
+			"autoAttachProcessChildren": false,
+			"internalConsoleOptions": "openOnSessionStart"
+		}
+	]
+}
