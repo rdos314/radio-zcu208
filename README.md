@@ -48,6 +48,14 @@ petalinux-package boot --uboot --force<br>
 petalinux-build --sdk<br>
 petalinux-package sysroot<br><br>
 
+Copy linux/images/linux/b31.bin to radio-zcu208
+Copy linux/images/linux/system.dtb to radio-zcu208
+Copy linux/images/linux/u-boot.elf to radio-zcu208
+
+cp linux/images/linux/image.ub /media/ubuntu/boot
+cp linux/images/linux/boot.scr /media/ubuntu/boot
+sudo dd if=images/rootfs.ext4 of=/dev/sdb2
+
 <h3>Embedded Vitis</h3>
 
 Embedded Vitis and Vivado can be installed either on Windows or on Linux. Link: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html<br><br>
