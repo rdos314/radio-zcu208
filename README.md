@@ -6,51 +6,40 @@ linux - Peta-linux source<br>
 <h3>PetaLinux build</h3>
 Ubuntu 22.04.5 must be used to build PetaLinux. Link: https://releases.ubuntu.com/jammy/<br><br>
 
+Create a user "ubuntu" since full paths are used in the source.
+
 Install the required software modules before installing PetaLinux:<br>
 sudo apt-get install iproute2 gawk python3 python build-essential gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex bison libselinux1 gnupg wget git-core diffstat chrpath socat xterm autoconf libtool tar unzip texinfo<br><br>
 
-Create a directory for PetaLinux:<br>
-cd /home/user<br>
-mkdir petalinux<br>
-cd petalinux<br><br>
-
 The PetaLinux installer can be downloaded here: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html<br>
-Download both the "PetaLinux installer", and the "ZCU208 BSP" to the petalinux directory<br><br>
+Download the "PetaLinux installer" and the "ZCU208 BSP" to /home/ubuntu<br><br>
 
 Install PetaLinux like this:<br>
 chmod 755 ./petalinux-v2025.1-final-installer.run<br>
 ./petalinux-v2025.1-final-installer.run --dir /home/user/petalinux --platform "arm aarch64"<br>
 
 Source PetaLinux before running commands:<br>
-source /home/user/petalinux/settings.sh<br><br>
+source /home/ubuntu/petalinux/settings.sh<br><br>
 
 Create the project:<br>
 cd ..<br>
 mkdir radio-zcu208<br>
 cd radio-zcu208<br><br>
 
-petalinux-create -t project -s ../petalinux/zcu208-v2025.1.bsp -n linux<br>
+petalinux-create -t project -s zcu208-v2025.1.bsp -n linux<br>
 cd linux<br><br>
 
 petalinux-config --get-hw-description ../platform/export/platform/hw/sdt<br><br>
 
-Setup for SD boot without user/password:<br>
-
-petalinux-config<br><br>
+Setup for SD boot<br>
 
 Select Image Packaging Configuration > Root file system type.<br>
 Select EXT4 (SD/eMMC/SATA/USB) as the root file system type.<br>
 Exit menuconfig and save configuration settings.<br><br>
 
 petalinux-config -c rootfs.<br>
-Select Image Features > serial-autologin-root.<br><br>
 
-PetaLinux RootFS Settings -→ (root:root;petalinux:petalinux:passwd-expire;)<br><br>
-
-user: petalinux<br>
-passw: change on first connect<br><br>
-
-Set Filesystem Packages -→ tcf-agent to enabled<br>
+Set Filesystem Packages -→ misc -→ tcf-agent to enabled<br>
 Set Filesystem Packages -→ console -→ network -→ OpenSSH -→ openssh-sftp-server to enabled<br><br>
 
 Exit menuconfig and save configuration settings.<br><br>
