@@ -1,0 +1,16 @@
+{
+  "name": "control",
+  "type": "HOST",
+  "platform": "platform",
+  "domain": "standalone_psu_cortexr5_0",
+  "cpuInstance": "psu_cortexr5_0",
+  "cpuType": "cortex-r5",
+  "os": "standalone",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "standalone_psu_cortexr5_0",
+  "useSysrootToolchain": false,
+  "applicationFlow": "EMBEDDED"
+}

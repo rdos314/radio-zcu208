@@ -1,0 +1,40 @@
+# Additional clean files
+cmake_minimum_required(VERSION 3.16)
+
+if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
+  file(REMOVE_RECURSE
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\sleep.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xfpga_config.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilfpga.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilfpga_pcap.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilfpga_pcap_common.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilskey_bbramps_zynqmp_hw.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilskey_bsp_config.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilskey_eps_zynqmp.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilskey_eps_zynqmp_hw.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilskey_eps_zynqmp_puf.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xilskey_utils.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xiltimer.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_aes.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_aes_hw.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_aesalginfo.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_config.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_cryptochk.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_rsa.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_rsa_core.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_rsa_hw.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_rsaalginfo.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_sha.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_sha3alginfo.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_sha_hw.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_sss.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_utils.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xsecure_ver.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\include\\xtimer_config.h"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\lib\\libxilfpga.a"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\lib\\libxilsecure.a"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\lib\\libxilskey.a"
+  "C:\\radio-zcu208\\platform\\zynqmp_pmufw\\zynqmp_pmufw_bsp\\lib\\libxiltimer.a"
+  )
+endif()

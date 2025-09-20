@@ -1,0 +1,2982 @@
+/dts-v1/;
+/ {
+        compatible = "xlnx,zcu208";
+        #address-cells = <0x2>;
+        #size-cells = <0x2>;
+        model = "Xilinx ZynqMP";
+        board = "zcu208";
+        device_id = "xczu48dr";
+        slrcount = <0x1>;
+        family = "ZynqMP";
+        speed_grade = "2";
+        pruned-sdt = <0x1>;
+
+        options {
+
+                u-boot {
+                        compatible = "u-boot,config";
+                        bootscr-address = <0x0 0x20000000>;
+                };
+        };
+
+        cpus_microblaze_0: cpus_microblaze@0 {
+                #address-cells = <0x1>;
+                #size-cells = <0x0>;
+                compatible = "cpus,cluster";
+                address-map = <0xf0000000 &amba 0xf0000000 0x10000000>,
+                 <0x0 &zynqmp_reset 0x0 0x0>,
+                 <0xfffc0000 &psu_ocm_ram_0_memory 0xfffc0000 0x40000>,
+                 <0xff330000 &ipi3 0xff330000 0x1000>,
+                 <0xff331000 &ipi4 0xff331000 0x1000>,
+                 <0xff332000 &ipi5 0xff332000 0x1000>,
+                 <0xff333000 &ipi6 0xff333000 0x1000>,
+                 <0x0 &psu_ddr_0_memory 0x0 0x7ff00000>,
+                 <0x7ff00000 &psu_ddr_0_memory 0x7ff00000 0x100000>,
+                 <0x80000000 &gpio_led 0x80000000 0x10000>,
+                 <0x80010000 &r5_timer 0x80010000 0x10000>,
+                 <0xffa80000 &lpd_dma_chan1 0xffa80000 0x10000>,
+                 <0xffa90000 &lpd_dma_chan2 0xffa90000 0x10000>,
+                 <0xffaa0000 &lpd_dma_chan3 0xffaa0000 0x10000>,
+                 <0xffab0000 &lpd_dma_chan4 0xffab0000 0x10000>,
+                 <0xffac0000 &lpd_dma_chan5 0xffac0000 0x10000>,
+                 <0xffad0000 &lpd_dma_chan6 0xffad0000 0x10000>,
+                 <0xffae0000 &lpd_dma_chan7 0xffae0000 0x10000>,
+                 <0xffaf0000 &lpd_dma_chan8 0xffaf0000 0x10000>,
+                 <0xfd360000 &psu_afi_0 0xfd360000 0x10000>,
+                 <0xfd370000 &psu_afi_1 0xfd370000 0x10000>,
+                 <0xfd380000 &psu_afi_2 0xfd380000 0x10000>,
+                 <0xfd390000 &psu_afi_3 0xfd390000 0x10000>,
+                 <0xfd3a0000 &psu_afi_4 0xfd3a0000 0x10000>,
+                 <0xfd3b0000 &psu_afi_5 0xfd3b0000 0x10000>,
+                 <0xff9b0000 &psu_afi_6 0xff9b0000 0x10000>,
+                 <0xffa50000 &xilinx_ams 0xffa50000 0x10000>,
+                 <0xfd0b0000 &perf_monitor_ddr 0xfd0b0000 0x10000>,
+                 <0xffa00000 &perf_monitor_ocm 0xffa00000 0x10000>,
+                 <0xffa10000 &perf_monitor_lpd 0xffa10000 0x10000>,
+                 <0xfd490000 &perf_monitor_cci 0xfd490000 0x10000>,
+                 <0xfd5c0000 &psu_apu 0xfd5c0000 0x10000>,
+                 <0xfd6e0000 &psu_cci_gpv 0xfd6e0000 0x10000>,
+                 <0xfd5e0000 &psu_cci_reg 0xfd5e0000 0x10000>,
+                 <0xfd1a0000 &psu_crf_apb 0xfd1a0000 0x140000>,
+                 <0xff5e0000 &psu_crl_apb 0xff5e0000 0x280000>,
+                 <0xffca0000 &psu_csu_0 0xffca0000 0x10000>,
+                 <0xffc80000 &csudma_0 0xffc80000 0x20000>,
+                 <0xff380000 &psu_ctrl_ipi 0xff380000 0x80000>,
+                 <0xfd080000 &psu_ddr_phy 0xfd080000 0x10000>,
+                 <0xfd090000 &psu_ddr_qos_ctrl 0xfd090000 0x10000>,
+                 <0xfd000000 &psu_ddr_xmpu0_cfg 0xfd000000 0x10000>,
+                 <0xfd010000 &psu_ddr_xmpu1_cfg 0xfd010000 0x10000>,
+                 <0xfd020000 &psu_ddr_xmpu2_cfg 0xfd020000 0x10000>,
+                 <0xfd030000 &psu_ddr_xmpu3_cfg 0xfd030000 0x10000>,
+                 <0xfd040000 &psu_ddr_xmpu4_cfg 0xfd040000 0x10000>,
+                 <0xfd050000 &psu_ddr_xmpu5_cfg 0xfd050000 0x10000>,
+                 <0xfd070000 &mc 0xfd070000 0x1000>,
+                 <0xffcc0000 &psu_efuse 0xffcc0000 0x10000>,
+                 <0xff0e0000 &gem3 0xff0e0000 0x10000>,
+                 <0xfd700000 &psu_fpd_gpv 0xfd700000 0x100000>,
+                 <0xfd610000 &psu_fpd_slcr 0xfd610000 0x80000>,
+                 <0xfd690000 &psu_fpd_slcr_secure 0xfd690000 0x40000>,
+                 <0xfd5d0000 &psu_fpd_xmpu_cfg 0xfd5d0000 0x10000>,
+                 <0xfd4f0000 &psu_fpd_xmpu_sink 0xfd4f0000 0x10000>,
+                 <0xfd500000 &fpd_dma_chan1 0xfd500000 0x10000>,
+                 <0xfd510000 &fpd_dma_chan2 0xfd510000 0x10000>,
+                 <0xfd520000 &fpd_dma_chan3 0xfd520000 0x10000>,
+                 <0xfd530000 &fpd_dma_chan4 0xfd530000 0x10000>,
+                 <0xfd540000 &fpd_dma_chan5 0xfd540000 0x10000>,
+                 <0xfd550000 &fpd_dma_chan6 0xfd550000 0x10000>,
+                 <0xfd560000 &fpd_dma_chan7 0xfd560000 0x10000>,
+                 <0xfd570000 &fpd_dma_chan8 0xfd570000 0x10000>,
+                 <0xff0a0000 &gpio 0xff0a0000 0x10000>,
+                 <0xff020000 &i2c0 0xff020000 0x10000>,
+                 <0xff030000 &i2c1 0xff030000 0x10000>,
+                 <0xff250000 &psu_iou_scntr 0xff250000 0x10000>,
+                 <0xff260000 &psu_iou_scntrs 0xff260000 0x10000>,
+                 <0xff240000 &psu_iousecure_slcr 0xff240000 0x10000>,
+                 <0xff180000 &psu_iouslcr_0 0xff180000 0xc0000>,
+                 <0xff410000 &psu_lpd_slcr 0xff410000 0xa0000>,
+                 <0xff4b0000 &psu_lpd_slcr_secure 0xff4b0000 0x30000>,
+                 <0xff980000 &lpd_xppu 0xff980000 0x10000>,
+                 <0xff9c0000 &psu_lpd_xppu_sink 0xff9c0000 0x10000>,
+                 <0xffcf0000 &psu_mbistjtag 0xffcf0000 0x10000>,
+                 <0xff990000 &psu_message_buffers 0xff990000 0x10000>,
+                 <0xff960000 &ocm 0xff960000 0x10000>,
+                 <0xffa70000 &psu_ocm_xmpu_cfg 0xffa70000 0x10000>,
+                 <0xffd80000 &psu_pmu_global_0 0xffd80000 0x40000>,
+                 <0xff0f0000 &qspi 0xff0f0000 0x10000>,
+                 <0xc0000000 &psu_qspi_linear_0_memory 0xc0000000 0x20000000>,
+                 <0xffe00000 &psu_r5_0_atcm_global 0xffe00000 0x10000>,
+                 <0xffe20000 &psu_r5_0_btcm_global 0xffe20000 0x10000>,
+                 <0xffe90000 &psu_r5_1_atcm_global 0xffe90000 0x10000>,
+                 <0xffeb0000 &psu_r5_1_btcm_global 0xffeb0000 0x10000>,
+                 <0xffe00000 &psu_r5_tcm_ram_global 0xffe00000 0x40000>,
+                 <0xff9a0000 &psu_rpu 0xff9a0000 0x10000>,
+                 <0xffce0000 &psu_rsa 0xffce0000 0x10000>,
+                 <0xffa60000 &rtc 0xffa60000 0x10000>,
+                 <0xfd0c0000 &sata 0xfd0c0000 0x10000>,
+                 <0xff170000 &sdhci1 0xff170000 0x10000>,
+                 <0xfd400000 &psgtr 0xfd400000 0x80000>,
+                 <0xfd3d0000 &psu_siou 0xfd3d0000 0x10000>,
+                 <0xfd800000 &smmu 0xfd800000 0x800000>,
+                 <0xfd5f0000 &psu_smmu_reg 0xfd5f0000 0x10000>,
+                 <0xff110000 &ttc0 0xff110000 0x10000>,
+                 <0xff120000 &ttc3 0xff120000 0x10000>,
+                 <0xff130000 &ttc6 0xff130000 0x10000>,
+                 <0xff140000 &ttc9 0xff140000 0x10000>,
+                 <0xff000000 &uart0 0xff000000 0x10000>,
+                 <0xff9d0000 &usb0 0xff9d0000 0x10000>,
+                 <0xfe200000 &dwc3_0 0xfe200000 0x100000>,
+                 <0xff150000 &lpd_watchdog 0xff150000 0x10000>,
+                 <0xfd4d0000 &watchdog0 0xfd4d0000 0x10000>,
+                 <0xffcb0000 &csuwdt_0 0xffcb0000 0x10000>,
+                 <0xffcd0000 &psu_bbram_0 0xffcd0000 0x10000>,
+                 <0xffd40000 &psu_pmu_iomodule 0xffd40000 0x20000>,
+                 <0xffdc0000 &psu_pmu_ram 0xffdc0000 0x20000>;
+                #ranges-address-cells = <0x1>;
+                #ranges-size-cells = <0x1>;
+                phandle = <0x9c>;
+
+                psu_pmu_0: cpu@0 {
+                        compatible = "pmu-microblaze";
+                        device_type = "cpu";
+                        reg = <0x0>;
+                        operating-points-v2 = <&cpu_opp_table>;
+                        xlnx,psu-ep = <0x1>;
+                        xlnx,addr-tag-bits = <0x0>;
+                        xlnx,number-of-wr-addr-brk = <0x1>;
+                        xlnx,dynamic-bus-sizing = <0x0>;
+                        d-cache-highaddr = <0x3fffffff>;
+                        xlnx,ip-name = "psu_pmu";
+                        xlnx,use-interrupt = <0x1>;
+                        xlnx,dcache-force-tag-lutram = <0x0>;
+                        xlnx,pc-width = <0x20>;
+                        xlnx,async-interrupt = <0x1>;
+                        xlnx,interrupt-is-edge = <0x0>;
+                        xlnx,use-mmu = <0x0>;
+                        xlnx,icache-victims = <0x0>;
+                        xlnx,use-reorder-instr = <0x1>;
+                        xlnx,dcache-always-used = <0x0>;
+                        xlnx,ill-opcode-exception = <0x1>;
+                        xlnx,use-div = <0x0>;
+                        xlnx,psu-device = "PSSa";
+                        i-cache-baseaddr = <0x0>;
+                        xlnx,trace = <0x1>;
+                        xlnx,use-config-reset = <0x0>;
+                        xlnx,pvr = <0x0>;
+                        xlnx,dcache-byte-size = <0x2000>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,data-size = <0x20>;
+                        xlnx,fault-tolerant = <0x1>;
+                        xlnx,mmu-zones = <0x10>;
+                        d-cache-line-size = <0x10>;
+                        xlnx,enable-discrete-ports = <0x1>;
+                        xlnx,mmu-privileged-instr = <0x0>;
+                        xlnx,sco = <0x0>;
+                        clock-frequency = <0xaba9500>;
+                        xlnx,use-ext-brk = <0x0>;
+                        xlnx,debug-enabled = <0x1>;
+                        xlnx,endianness = <0x1>;
+                        i-cache-line-size = <0x10>;
+                        xlnx,fsl-exception = <0x0>;
+                        xlnx,use-extended-fsl-instr = <0x0>;
+                        xlnx,reset-msr = <0x0>;
+                        xlnx,branch-target-cache-size = <0x0>;
+                        xlnx,dcache-use-writeback = <0x0>;
+                        xlnx,div-zero-exception = <0x0>;
+                        xlnx,mmu-tlb-access = <0x3>;
+                        xlnx,cache-byte-size = <0x2000>;
+                        bus-handle = <0x1>;
+                        xlnx,pvr-user2 = <0x0>;
+                        xlnx,opcode-0x0-illegal = <0x1>;
+                        xlnx,base-vectors = <0xffd00000>;
+                        xlnx,ecc-use-ce-exception = <0x0>;
+                        xlnx,icache-line-len = <0x4>;
+                        microblaze_ddr_reserve_sa = <0x7ff00000>;
+                        xlnx,use-dcache = <0x0>;
+                        xlnx,use-barrel = <0x1>;
+                        xlnx,allow-dcache-wr = <0x1>;
+                        microblaze_ddr_reserve_ea = <0x7fffffff>;
+                        i-cache-highaddr = <0x3fffffff>;
+                        xlnx,allow-icache-wr = <0x1>;
+                        xlnx,fpu-exception = <0x0>;
+                        xlnx,g-use-exceptions = <0x1>;
+                        xlnx,dcache-line-len = <0x4>;
+                        xlnx,icache-streams = <0x0>;
+                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
+                        i-cache-size = <0x2000>;
+                        xlnx,use-stack-protection = <0x1>;
+                        xlnx,use-hw-mul = <0x0>;
+                        xlnx,pmu-board-interface = "custom";
+                        xlnx,use-fpu = <0x0>;
+                        xlnx,edge-is-positive = <0x0>;
+                        d-cache-size = <0x2000>;
+                        xlnx,use-pcmp-instr = <0x1>;
+                        xlnx,use-icache = <0x0>;
+                        xlnx,dcache-addr-tag = <0x0>;
+                        d-cache-baseaddr = <0x0>;
+                        xlnx,number-of-rd-addr-brk = <0x1>;
+                        xlnx,ddr-reserve-sa = <0x7ff00000>;
+                        xlnx,lockstep-slave = <0x0>;
+                        xlnx,ddr-reserve-ea = <0x7fffffff>;
+                        xlnx,use-ext-nm-brk = <0x0>;
+                        xlnx,icache-always-used = <0x0>;
+                        xlnx,lockstep-select = <0x0>;
+                        xlnx,mmu-dtlb-size = <0x4>;
+                        xlnx,fsl-links = <0x0>;
+                        xlnx,dcache-data-width = <0x0>;
+                        xlnx,dcache-victims = <0x0>;
+                        xlnx,icache-force-tag-lutram = <0x0>;
+                        xlnx,use-branch-target-cache = <0x0>;
+                        xlnx,unaligned-exceptions = <0x1>;
+                        xlnx,freq = <0xaba9500>;
+                        xlnx,number-of-pc-brk = <0x1>;
+                        xlnx,mmu-itlb-size = <0x2>;
+                        xlnx,use-msr-instr = <0x1>;
+                        xlnx,icache-data-width = <0x0>;
+                        phandle = <0x9d>;
+                };
+        };
+
+        cpu_opp_table: opp-table-cpu {
+                compatible = "operating-points-v2";
+                opp-shared;
+                phandle = <0x6c>;
+
+                opp-1200000000 {
+                        opp-hz = <0x0 0x47868c00>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+
+                opp-600000000 {
+                        opp-hz = <0x0 0x23c34600>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+
+                opp-400000000 {
+                        opp-hz = <0x0 0x17d78400>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+
+                opp-300000000 {
+                        opp-hz = <0x0 0x11e1a300>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+        };
+
+        zynqmp_ipi: zynqmp-ipi {
+                bootph-all;
+                compatible = "xlnx,zynqmp-ipi-mailbox";
+                interrupt-parent = <&imux>;
+                interrupts = <0x0 0x23 0x4>;
+                xlnx,ipi-id = <0x0>;
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                ranges;
+                phandle = <0x9e>;
+
+                ipi_mailbox_pmu1: mailbox@ff9905c0 {
+                        bootph-all;
+                        compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                        reg = <0x0 0xff9905c0 0x0 0x20 0x0 0xff9905e0 0x0 0x20 0x0 0xff990e80 0x0 0x20 0x0 0xff990ea0 0x0 0x20>;
+                        reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        #mbox-cells = <0x1>;
+                        xlnx,ipi-id = <0x4>;
+                        phandle = <0x88>;
+                };
+        };
+
+        pmu {
+                compatible = "arm,cortex-a53-pmu";
+                interrupt-parent = <&imux>;
+                interrupts = <0x0 0x8f 0x4 0x0 0x90 0x4 0x0 0x91 0x4 0x0 0x92 0x4>;
+        };
+
+        psci {
+                compatible = "arm,psci-0.2";
+                method = "smc";
+        };
+
+        firmware {
+
+                zynqmp_firmware: zynqmp-firmware {
+                        compatible = "xlnx,zynqmp-firmware";
+                        #power-domain-cells = <0x1>;
+                        method = "smc";
+                        bootph-all;
+                        phandle = <0x78>;
+
+                        zynqmp_power: power-management {
+                                bootph-all;
+                                compatible = "xlnx,zynqmp-power";
+                                interrupt-parent = <&imux>;
+                                interrupts = <0x0 0x23 0x4>;
+                                mboxes = <0x88 0x0 0x88 0x1>;
+                                mbox-names = "tx", "rx";
+                                phandle = <0xa0>;
+                        };
+
+                        soc-nvmem {
+                                compatible = "xlnx,zynqmp-nvmem-fw";
+
+                                nvmem-layout {
+                                        compatible = "fixed-layout";
+                                        #address-cells = <0x1>;
+                                        #size-cells = <0x1>;
+
+                                        soc_revision: soc-revision@0 {
+                                                reg = <0x0 0x4>;
+                                                phandle = <0xa1>;
+                                        };
+
+                                        efuse_dna: efuse-dna@c {
+                                                reg = <0xc 0xc>;
+                                                phandle = <0xa2>;
+                                        };
+
+                                        efuse_usr0: efuse-usr0@20 {
+                                                reg = <0x20 0x4>;
+                                                phandle = <0xa3>;
+                                        };
+
+                                        efuse_usr1: efuse-usr1@24 {
+                                                reg = <0x24 0x4>;
+                                                phandle = <0xa4>;
+                                        };
+
+                                        efuse_usr2: efuse-usr2@28 {
+                                                reg = <0x28 0x4>;
+                                                phandle = <0xa5>;
+                                        };
+
+                                        efuse_usr3: efuse-usr3@2c {
+                                                reg = <0x2c 0x4>;
+                                                phandle = <0xa6>;
+                                        };
+
+                                        efuse_usr4: efuse-usr4@30 {
+                                                reg = <0x30 0x4>;
+                                                phandle = <0xa7>;
+                                        };
+
+                                        efuse_usr5: efuse-usr5@34 {
+                                                reg = <0x34 0x4>;
+                                                phandle = <0xa8>;
+                                        };
+
+                                        efuse_usr6: efuse-usr6@38 {
+                                                reg = <0x38 0x4>;
+                                                phandle = <0xa9>;
+                                        };
+
+                                        efuse_usr7: efuse-usr7@3c {
+                                                reg = <0x3c 0x4>;
+                                                phandle = <0xaa>;
+                                        };
+
+                                        efuse_miscusr: efuse-miscusr@40 {
+                                                reg = <0x40 0x4>;
+                                                phandle = <0xab>;
+                                        };
+
+                                        efuse_chash: efuse-chash@50 {
+                                                reg = <0x50 0x4>;
+                                                phandle = <0xac>;
+                                        };
+
+                                        efuse_pufmisc: efuse-pufmisc@54 {
+                                                reg = <0x54 0x4>;
+                                                phandle = <0xad>;
+                                        };
+
+                                        efuse_sec: efuse-sec@58 {
+                                                reg = <0x58 0x4>;
+                                                phandle = <0xae>;
+                                        };
+
+                                        efuse_spkid: efuse-spkid@5c {
+                                                reg = <0x5c 0x4>;
+                                                phandle = <0xaf>;
+                                        };
+
+                                        efuse_aeskey: efuse-aeskey@60 {
+                                                reg = <0x60 0x20>;
+                                                phandle = <0xb0>;
+                                        };
+
+                                        efuse_ppk0hash: efuse-ppk0hash@a0 {
+                                                reg = <0xa0 0x30>;
+                                                phandle = <0xb1>;
+                                        };
+
+                                        efuse_ppk1hash: efuse-ppk1hash@d0 {
+                                                reg = <0xd0 0x30>;
+                                                phandle = <0xb2>;
+                                        };
+
+                                        efuse_pufuser: efuse-pufuser@100 {
+                                                reg = <0x100 0x7f>;
+                                                phandle = <0xb3>;
+                                        };
+                                };
+                        };
+
+                        zynqmp_pcap: pcap {
+                                compatible = "xlnx,zynqmp-pcap-fpga";
+                                phandle = <0x8e>;
+                        };
+
+                        zynqmp_reset: reset-controller {
+                                compatible = "xlnx,zynqmp-reset";
+                                #reset-cells = <0x1>;
+                                status = "okay";
+                                phandle = <0x3>;
+                        };
+
+                        modepin_gpio: gpio {
+                                compatible = "xlnx,zynqmp-gpio-modepin";
+                                gpio-controller;
+                                #gpio-cells = <0x2>;
+                                phandle = <0x95>;
+                        };
+
+                        zynqmp_clk: clock-controller {
+                                bootph-all;
+                                #clock-cells = <0x1>;
+                                compatible = "xlnx,zynqmp-clk";
+                                clocks = <&pss_ref_clk>,
+                                 <&video_clk>,
+                                 <&pss_alt_ref_clk>,
+                                 <&aux_ref_clk>,
+                                 <&gt_crx_ref_clk>;
+                                clock-names = "pss_ref_clk", "video_clk", "pss_alt_ref_clk", "aux_ref_clk", "gt_crx_ref_clk";
+                                phandle = <0x6f>;
+                        };
+                };
+        };
+
+        timer {
+                compatible = "arm,armv8-timer";
+                interrupt-parent = <&imux>;
+                interrupts = <0x1 0xd 0xf08 0x1 0xe 0xf08 0x1 0xb 0xf08 0x1 0xa 0xf08>;
+        };
+
+        fpga_full: fpga-region {
+                compatible = "fpga-region";
+                fpga-mgr = <&zynqmp_pcap>;
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                ranges;
+                phandle = <0xb4>;
+        };
+
+        ams {
+                compatible = "iio-hwmon";
+                io-channels = <0x1d 0x0 0x1d 0x1 0x1d 0x2 0x1d 0x3 0x1d 0x4 0x1d 0x5 0x1d 0x6 0x1d 0x7 0x1d 0x8 0x1d 0x9 0x1d 0xa 0x1d 0xb 0x1d 0xc 0x1d 0xd 0x1d 0xe 0x1d 0xf 0x1d 0x10 0x1d 0x11 0x1d 0x12 0x1d 0x13 0x1d 0x14 0x1d 0x15 0x1d 0x16 0x1d 0x17 0x1d 0x18 0x1d 0x19 0x1d 0x1a 0x1d 0x1b 0x1d 0x1c 0x1d 0x1d>;
+        };
+
+        tsens_apu: thermal-sensor-apu {
+                compatible = "generic-adc-thermal";
+                #thermal-sensor-cells = <0x0>;
+                io-channels = <0x1d 0x7>;
+                io-channel-names = "sensor-channel";
+                phandle = <0x8f>;
+        };
+
+        tsens_rpu: thermal-sensor-rpu {
+                compatible = "generic-adc-thermal";
+                #thermal-sensor-cells = <0x0>;
+                io-channels = <0x1d 0x8>;
+                io-channel-names = "sensor-channel";
+                phandle = <0x91>;
+        };
+
+        tsens_pl: thermal-sensor-pl {
+                compatible = "generic-adc-thermal";
+                #thermal-sensor-cells = <0x0>;
+                io-channels = <0x1d 0x14>;
+                io-channel-names = "sensor-channel";
+                phandle = <0x92>;
+        };
+
+        thermal-zones {
+
+                apu-thermal {
+                        polling-delay-passive = <0x3e8>;
+                        polling-delay = <0x1388>;
+                        thermal-sensors = <0x8f>;
+
+                        trips {
+
+                                apu_passive: passive {
+                                        temperature = <0x16b48>;
+                                        hysteresis = <0xdac>;
+                                        type = "passive";
+                                        phandle = <0x90>;
+                                };
+
+                                apu_critical: critical {
+                                        temperature = <0x178f4>;
+                                        hysteresis = <0xdac>;
+                                        type = "critical";
+                                        phandle = <0xb5>;
+                                };
+                        };
+
+                        cooling-maps {
+
+                                map {
+                                        trip = <0x90>;
+                                        cooling-device = <0x84 0xffffffff 0xffffffff 0x85 0xffffffff 0xffffffff 0x86 0xffffffff 0xffffffff 0x87 0xffffffff 0xffffffff>;
+                                };
+                        };
+                };
+
+                rpu-thermal {
+                        polling-delay = <0x2710>;
+                        thermal-sensors = <0x91>;
+
+                        trips {
+
+                                critical {
+                                        temperature = <0x178f4>;
+                                        hysteresis = <0xdac>;
+                                        type = "critical";
+                                };
+                        };
+                };
+
+                pl-thermal {
+                        polling-delay = <0x2710>;
+                        thermal-sensors = <0x92>;
+
+                        trips {
+
+                                critical {
+                                        temperature = <0x178f4>;
+                                        hysteresis = <0xdac>;
+                                        type = "critical";
+                                };
+                        };
+                };
+        };
+
+        amba_apu: apu-bus {
+                compatible = "simple-bus";
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                ranges;
+                phandle = <0x2>;
+        };
+
+        amba_rpu: rpu-bus {
+                compatible = "indirect-bus";
+                #address-cells = <0x2>;
+                #size-cells = <0x1>;
+                phandle = <0x70>;
+        };
+
+        amba: axi {
+                compatible = "simple-bus";
+                bootph-all;
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                ranges;
+                interrupt-parent = <&imux>;
+                phandle = <0x1>;
+
+                imux: interrupt-multiplex {
+                        compatible = "interrupt-multiplex";
+                        #address-cells = <0x0>;
+                        #interrupt-cells = <0x3>;
+                        interrupt-controller;
+                        interrupt-map-mask = <0x0 0xffff 0x0>;
+                        interrupt-map = <0x0 0x17 0x0 0xd 0x0 0x17 0x1 0x0 0x18 0x0 0xd 0x0 0x18 0x1 0x0 0x7b 0x0 0xd 0x0 0x7b 0x4 0x0 0x56 0x0 0xd 0x0 0x56 0x4 0x0 0x7c 0x0 0xd 0x0 0x7c 0x4 0x0 0x7d 0x0 0xd 0x0 0x7d 0x4 0x0 0x7e 0x0 0xd 0x0 0x8e 0x4 0x0 0x7f 0x0 0xd 0x0 0x7f 0x4 0x0 0x80 0x0 0xd 0x0 0x80 0x4 0x0 0x81 0x0 0xd 0x0 0x81 0x4 0x0 0x82 0x0 0xd 0x0 0x82 0x4 0x0 0x83 0x0 0xd 0x0 0x83 0x4 0x0 0x84 0x0 0xd 0x0 0x84 0x4 0x0 0x4d 0x0 0xd 0x0 0x4d 0x4 0x0 0x4e 0x0 0xd 0x0 0x4e 0x4 0x0 0x4f 0x0 0xd 0x0 0x4f 0x4 0x0 0x50 0x0 0xd 0x0 0x50 0x4 0x0 0x51 0x0 0xd 0x0 0x51 0x4 0x0 0x52 0x0 0xd 0x0 0x52 0x4 0x0 0x53 0x0 0xd 0x0 0x53 0x4 0x0 0x54 0x0 0xd 0x0 0x54 0x4 0x0 0x70 0x0 0xd 0x0 0x70 0x4 0x0 0xe 0x0 0xd 0x0 0xe 0x4 0x0 0x39 0x0 0xd 0x0 0x39 0x4 0x0 0x3b 0x0 0xd 0x0 0x3b 0x4 0x0 0x3d 0x0 0xd 0x0 0x3d 0x4 0x0 0x3f 0x0 0xd 0x0 0x3f 0x4 0x0 0x10 0x0 0xd 0x0 0x10 0x4 0x0 0x11 0x0 0xd 0x0 0x11 0x4 0x0 0x12 0x0 0xd 0x0 0x12 0x4 0x0 0xa 0x0 0xd 0x0 0xa 0x4 0x0 0x72 0x0 0xd 0x0 0x72 0x4 0x0 0x73 0x0 0xd 0x0 0x73 0x4 0x0 0x74 0x0 0xd 0x0 0x74 0x1 0x0 0x75 0x0 0xd 0x0 0x75 0x1 0x0 0x76 0x0 0xd 0x0 0x76 0x4 0x0 0xf 0x0 0xd 0x0 0xf 0x4 0x0 0x1a 0x0 0xd 0x0 0x1a 0x4 0x0 0x1b 0x0 0xd 0x0 0x1b 0x4 0x0 0x85 0x0 0xd 0x0 0x85 0x4 0x0 0x30 0x0 0xd 0x0 0x30 0x4 0x0 0x31 0x0 0xd 0x0 0x31 0x4 0x0 0x13 0x0 0xd 0x0 0x13 0x4 0x0 0x14 0x0 0xd 0x0 0x14 0x4 0x0 0x24 0x0 0xd 0x0 0x24 0x4 0x0 0x25 0x0 0xd 0x0 0x25 0x4 0x0 0x26 0x0 0xd 0x0 0x26 0x4 0x0 0x27 0x0 0xd 0x0 0x27 0x4 0x0 0x28 0x0 0xd 0x0 0x28 0x4 0x0 0x29 0x0 0xd 0x0 0x29 0x4 0x0 0x2a 0x0 0xd 0x0 0x2a 0x4 0x0 0x2b 0x0 0xd 0x0 0x2b 0x4 0x0 0x2c 0x0 0xd 0x0 0x2c 0x4 0x0 0x2d 0x0 0xd 0x0 0x2d 0x4 0x0 0x2e 0x0 0xd 0x0 0x2e 0x4 0x0 0x2f 0x0 0xd 0x0 0x2f 0x4 0x0 0x15 0x0 0xd 0x0 0x15 0x4 0x0 0x16 0x0 0xd 0x0 0x16 0x4 0x0 0x41 0x0 0xd 0x0 0x41 0x4 0x0 0x45 0x0 0xd 0x0 0x45 0x4 0x0 0x4b 0x0 0xd 0x0 0x4b 0x4 0x0 0x46 0x0 0xd 0x0 0x46 0x4 0x0 0x4a 0x0 0xd 0x0 0x4a 0x4 0x0 0x4c 0x0 0xd 0x0 0x4c 0x4 0x0 0x35 0x0 0xd 0x0 0x35 0x4 0x0 0x71 0x0 0xd 0x0 0x71 0x4 0x0 0x77 0x0 0xd 0x0 0x77 0x4 0x0 0x1d 0x0 0xd 0x0 0x1d 0x4 0x0 0x1e 0x0 0xd 0x0 0x1e 0x4 0x0 0x1f 0x0 0xd 0x0 0x1f 0x4 0x0 0x20 0x0 0xd 0x0 0x20 0x4 0x0 0x21 0x0 0xd 0x0 0x21 0x4 0x0 0x22 0x0 0xd 0x0 0x22 0x4 0x0 0x23 0x0 0xd 0x0 0x23 0x4 0x0 0x7a 0x0 0xd 0x0 0x7a 0x4 0x0 0x17 0x0 0x77 0x0 0x17 0x1 0x0 0x18 0x0 0x77 0x0 0x18 0x1 0x0 0x7b 0x0 0x77 0x0 0x7b 0x4 0x0 0x56 0x0 0x77 0x0 0x56 0x4 0x0 0x7c 0x0 0x77 0x0 0x7c 0x4 0x0 0x7d 0x0 0x77 0x0 0x7d 0x4 0x0 0x7e 0x0 0x77 0x0 0x8e 0x4 0x0 0x7f 0x0 0x77 0x0 0x7f 0x4 0x0 0x80 0x0 0x77 0x0 0x80 0x4 0x0 0x81 0x0 0x77 0x0 0x81 0x4 0x0 0x82 0x0 0x77 0x0 0x82 0x4 0x0 0x83 0x0 0x77 0x0 0x83 0x4 0x0 0x84 0x0 0x77 0x0 0x84 0x4 0x0 0x4d 0x0 0x77 0x0 0x4d 0x4 0x0 0x4e 0x0 0x77 0x0 0x4e 0x4 0x0 0x4f 0x0 0x77 0x0 0x4f 0x4 0x0 0x50 0x0 0x77 0x0 0x50 0x4 0x0 0x51 0x0 0x77 0x0 0x51 0x4 0x0 0x52 0x0 0x77 0x0 0x52 0x4 0x0 0x53 0x0 0x77 0x0 0x53 0x4 0x0 0x54 0x0 0x77 0x0 0x54 0x4 0x0 0x70 0x0 0x77 0x0 0x70 0x4 0x0 0xe 0x0 0x77 0x0 0xe 0x4 0x0 0x39 0x0 0x77 0x0 0x39 0x4 0x0 0x3b 0x0 0x77 0x0 0x3b 0x4 0x0 0x3d 0x0 0x77 0x0 0x3d 0x4 0x0 0x3f 0x0 0x77 0x0 0x3f 0x4 0x0 0x10 0x0 0x77 0x0 0x10 0x4 0x0 0x11 0x0 0x77 0x0 0x11 0x4 0x0 0x12 0x0 0x77 0x0 0x12 0x4 0x0 0xa 0x0 0x77 0x0 0xa 0x4 0x0 0x72 0x0 0x77 0x0 0x72 0x4 0x0 0x73 0x0 0x77 0x0 0x73 0x4 0x0 0x74 0x0 0x77 0x0 0x74 0x1 0x0 0x75 0x0 0x77 0x0 0x75 0x1 0x0 0x76 0x0 0x77 0x0 0x76 0x4 0x0 0xf 0x0 0x77 0x0 0xf 0x4 0x0 0x1a 0x0 0x77 0x0 0x1a 0x4 0x0 0x1b 0x0 0x77 0x0 0x1b 0x4 0x0 0x85 0x0 0x77 0x0 0x85 0x4 0x0 0x30 0x0 0x77 0x0 0x30 0x4 0x0 0x31 0x0 0x77 0x0 0x31 0x4 0x0 0x13 0x0 0x77 0x0 0x13 0x4 0x0 0x14 0x0 0x77 0x0 0x14 0x4 0x0 0x24 0x0 0x77 0x0 0x24 0x4 0x0 0x25 0x0 0x77 0x0 0x25 0x4 0x0 0x26 0x0 0x77 0x0 0x26 0x4 0x0 0x27 0x0 0x77 0x0 0x27 0x4 0x0 0x28 0x0 0x77 0x0 0x28 0x4 0x0 0x29 0x0 0x77 0x0 0x29 0x4 0x0 0x2a 0x0 0x77 0x0 0x2a 0x4 0x0 0x2b 0x0 0x77 0x0 0x2b 0x4 0x0 0x2c 0x0 0x77 0x0 0x2c 0x4 0x0 0x2d 0x0 0x77 0x0 0x2d 0x4 0x0 0x2e 0x0 0x77 0x0 0x2e 0x4 0x0 0x2f 0x0 0x77 0x0 0x2f 0x4 0x0 0x15 0x0 0x77 0x0 0x15 0x4 0x0 0x16 0x0 0x77 0x0 0x16 0x4 0x0 0x41 0x0 0x77 0x0 0x41 0x4 0x0 0x45 0x0 0x77 0x0 0x45 0x4 0x0 0x4b 0x0 0x77 0x0 0x4b 0x4 0x0 0x46 0x0 0x77 0x0 0x46 0x4 0x0 0x4a 0x0 0x77 0x0 0x4a 0x4 0x0 0x4c 0x0 0x77 0x0 0x4c 0x4 0x0 0x35 0x0 0x77 0x0 0x35 0x4 0x0 0x71 0x0 0x77 0x0 0x71 0x4 0x0 0x77 0x0 0x77 0x0 0x77 0x4 0x0 0x1d 0x0 0x77 0x0 0x1d 0x4 0x0 0x1e 0x0 0x77 0x0 0x1e 0x4 0x0 0x1f 0x0 0x77 0x0 0x1f 0x4 0x0 0x20 0x0 0x77 0x0 0x20 0x4 0x0 0x21 0x0 0x77 0x0 0x21 0x4 0x0 0x22 0x0 0x77 0x0 0x22 0x4 0x0 0x23 0x0 0x77 0x0 0x23 0x4 0x0 0x7a 0x0 0x77 0x0 0x7a 0x4>;
+                        phandle = <0x83>;
+                };
+
+                psu_cortexa53_0_debug: debug@fec10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfec10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x84>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xb9>;
+                };
+
+                psu_cortexa53_1_debug: debug@fed10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfed10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x85>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xba>;
+                };
+
+                psu_cortexa53_2_debug: debug@fee10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfee10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x86>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xbb>;
+                };
+
+                psu_cortexa53_3_debug: debug@fef10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfef10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x87>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xbc>;
+                };
+
+                fpd_dma_chan1: dma-controller@fd500000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd500000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x7c 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_0";
+                        phandle = <0x3b>;
+                };
+
+                fpd_dma_chan2: dma-controller@fd510000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd510000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x7d 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_1";
+                        phandle = <0x3c>;
+                };
+
+                fpd_dma_chan3: dma-controller@fd520000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd520000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x7e 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_2";
+                        phandle = <0x3d>;
+                };
+
+                fpd_dma_chan4: dma-controller@fd530000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd530000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x7f 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_3";
+                        phandle = <0x3e>;
+                };
+
+                fpd_dma_chan5: dma-controller@fd540000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd540000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x80 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_4";
+                        phandle = <0x3f>;
+                };
+
+                fpd_dma_chan6: dma-controller@fd550000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd550000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x81 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_5";
+                        phandle = <0x40>;
+                };
+
+                fpd_dma_chan7: dma-controller@fd560000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd560000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x82 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_6";
+                        phandle = <0x41>;
+                };
+
+                fpd_dma_chan8: dma-controller@fd570000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xfd570000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x83 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x80>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
+                        clocks = <&zynqmp_clk 0x13>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,ip-name = "psu_gdma";
+                        xlnx,dma-mode = <0x0>;
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_gdma_7";
+                        phandle = <0x42>;
+                };
+
+                lpd_dma_chan1: dma-controller@ffa80000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffa80000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x4d 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_0";
+                        phandle = <0xe>;
+                };
+
+                lpd_dma_chan2: dma-controller@ffa90000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffa90000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x4e 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_1";
+                        phandle = <0xf>;
+                };
+
+                lpd_dma_chan3: dma-controller@ffaa0000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffaa0000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x4f 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_2";
+                        phandle = <0x10>;
+                };
+
+                lpd_dma_chan4: dma-controller@ffab0000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffab0000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x50 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_3";
+                        phandle = <0x11>;
+                };
+
+                lpd_dma_chan5: dma-controller@ffac0000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffac0000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x51 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_4";
+                        phandle = <0x12>;
+                };
+
+                lpd_dma_chan6: dma-controller@ffad0000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffad0000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x52 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_5";
+                        phandle = <0x13>;
+                };
+
+                lpd_dma_chan7: dma-controller@ffae0000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffae0000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x53 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_6";
+                        phandle = <0x14>;
+                };
+
+                lpd_dma_chan8: dma-controller@ffaf0000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dma-1.0";
+                        reg = <0x0 0xffaf0000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x54 0x4>;
+                        clock-names = "clk_main", "clk_apb";
+                        #dma-cells = <0x1>;
+                        xlnx,bus-width = <0x40>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
+                        clocks = <&zynqmp_clk 0x44>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,ip-name = "psu_adma";
+                        xlnx,dma-mode = <0x1>;
+                        xlnx,dma-type = <0x1>;
+                        xlnx,name = "psu_adma_7";
+                        phandle = <0x15>;
+                };
+
+                mc: memory-controller@fd070000 {
+                        compatible = "xlnx,zynqmp-ddrc-2.40a";
+                        reg = <0x0 0xfd070000 0x0 0x30000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x70 0x4>;
+                        xlnx,bank-addr-bits = <0x2>;
+                        xlnx,ddrc-parity = <0x0>;
+                        xlnx,addr-mapping = <0x0>;
+                        xlnx,has-ecc = <0x0>;
+                        xlnx,ddr-freq = <0x3e95917d>;
+                        xlnx,row-addr-bits = <0x10>;
+                        xlnx,ddrc-low-power-auto-self-refresh = <0x0>;
+                        xlnx,ip-name = "psu_ddrc";
+                        xlnx,ddrc-2nd-clock = <0x0>;
+                        xlnx,brc-mapping = <0x0>;
+                        xlnx,ddrc-address-copy = <0x0>;
+                        xlnx,ddrc-data-mask-and-dbi = <0x7>;
+                        xlnx,ddrc-fine-granularity-refresh-mode = <0x0>;
+                        xlnx,ddrc-memory-type = <0x4>;
+                        xlnx,col-addr-bits = <0xa>;
+                        xlnx,ddrc-self-refresh-abort = <0x0>;
+                        xlnx,ddrc-max-operating-temparature = <0x0>;
+                        status = "okay";
+                        xlnx,ddrc-address-mirroring = <0x0>;
+                        xlnx,ddrc-clk-freq-hz = <0x1f4ac8be>;
+                        xlnx,qos-enable = <0x0>;
+                        xlnx,ddrc-temp-controlled-refresh = <0x0>;
+                        xlnx,bg-addr-bits = <0x1>;
+                        xlnx,ddrc-power-down-enable = <0x0>;
+                        xlnx,video-buf-size = <0x0>;
+                        xlnx,ddrc-memory-address-map = <0x0>;
+                        xlnx,name = "psu_ddrc_0";
+                        xlnx,dddrc-ecc = <0x0>;
+                        xlnx,ddrc-clock-stop = <0x0>;
+                        xlnx,ddrc-dynamic-ddr-config-enabled = <0x1>;
+                        phandle = <0x33>;
+                };
+
+                gem3: ethernet@ff0e0000 {
+                        compatible = "xlnx,zynqmp-gem", "cdns,gem";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x3f 0x4 0x0 0x3f 0x4>;
+                        reg = <0x0 0xff0e0000 0x0 0x1000>;
+                        clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
+                        power-domains = <&zynqmp_firmware 0x20>;
+                        resets = <&zynqmp_reset 0x20>;
+                        reset-names = "gem3_rst";
+                        clocks = <&zynqmp_clk 0x1f>,
+                         <&zynqmp_clk 0x6b>,
+                         <&zynqmp_clk 0x30>,
+                         <&zynqmp_clk 0x34>,
+                         <&zynqmp_clk 0x2c>;
+                        assigned-clocks = <&zynqmp_clk 0x2c>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,has-mdio = <0x2faf080>;
+                        xlnx,gem-board-interface = "custom";
+                        phy-mode = "rgmii-id";
+                        xlnx,tz-nonsecure = <0x1>;
+                        xlnx,enet-slcr-1000mbps-div0 = <0xc>;
+                        xlnx,enet-slcr-10mbps-div0 = <0x3c>;
+                        xlnx,enet-slcr-1000mbps-div1 = <0x1>;
+                        xlnx,enet-slcr-10mbps-div1 = <0xa>;
+                        xlnx,enet-tsu-clk-freq-hz = <0xee6a8ba>;
+                        xlnx,ip-name = "psu_ethernet";
+                        xlnx,eth-mode = <0x1>;
+                        xlnx,enet-reset = <0x2faf080>;
+                        xlnx,enet-clk-freq-hz = <0x773545d>;
+                        xlnx,enet-slcr-100mbps-div0 = <0x3c>;
+                        xlnx,ptp-enet-clock = <0x0>;
+                        xlnx,enet-slcr-100mbps-div1 = <0x1>;
+                        xlnx,name = "psu_ethernet_3";
+                        phandle = <0x35>;
+                };
+
+                gpio: gpio@ff0a0000 {
+                        compatible = "xlnx,zynqmp-gpio-1.0";
+                        status = "okay";
+                        #gpio-cells = <0x2>;
+                        gpio-controller;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x10 0x4>;
+                        interrupt-controller;
+                        #interrupt-cells = <0x2>;
+                        reg = <0x0 0xff0a0000 0x0 0x1000>;
+                        power-domains = <&zynqmp_firmware 0x2e>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,gpio-board-interface = "custom";
+                        xlnx,mio-gpio-mask = <0x5600>;
+                        gpio-mask-high = <0x0>;
+                        xlnx,emio-gpio-width = <0x20>;
+                        xlnx,ip-name = "psu_gpio";
+                        gpio-mask-low = <0x5600>;
+                        emio-gpio-width = <0x20>;
+                        xlnx,name = "psu_gpio_0";
+                        phandle = <0x43>;
+                };
+
+                i2c0: i2c@ff020000 {
+                        compatible = "cdns,i2c-r1p14";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x11 0x4>;
+                        clock-frequency = <0x61a80>;
+                        reg = <0x0 0xff020000 0x0 0x1000>;
+                        #address-cells = <0x1>;
+                        #size-cells = <0x0>;
+                        power-domains = <&zynqmp_firmware 0x25>;
+                        clocks = <&zynqmp_clk 0x3d>;
+                        xlnx,i2c-reset = <0x0>;
+                        xlnx,has-interrupt = <0x2faf080>;
+                        xlnx,clock-freq = <0x5f5dd19>;
+                        xlnx,i2c-clk-freq-hz = <0x5f5dd19>;
+                        xlnx,ip-name = "psu_i2c";
+                        xlnx,iic-board-interface = "custom";
+                        xlnx,name = "psu_i2c_0";
+                        phandle = <0x44>;
+                };
+
+                i2c1: i2c@ff030000 {
+                        compatible = "cdns,i2c-r1p14";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x12 0x4>;
+                        clock-frequency = <0x61a80>;
+                        reg = <0x0 0xff030000 0x0 0x1000>;
+                        #address-cells = <0x1>;
+                        #size-cells = <0x0>;
+                        power-domains = <&zynqmp_firmware 0x26>;
+                        clocks = <&zynqmp_clk 0x3e>;
+                        xlnx,i2c-reset = <0x0>;
+                        xlnx,has-interrupt = <0x2faf080>;
+                        xlnx,clock-freq = <0x5f5dd19>;
+                        xlnx,i2c-clk-freq-hz = <0x5f5dd19>;
+                        xlnx,ip-name = "psu_i2c";
+                        xlnx,iic-board-interface = "custom";
+                        xlnx,name = "psu_i2c_1";
+                        phandle = <0x45>;
+                };
+
+                ocm: memory-controller@ff960000 {
+                        compatible = "xlnx,zynqmp-ocmc-1.0";
+                        reg = <0x0 0xff960000 0x0 0x1000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0xa 0x4>;
+                        status = "okay";
+                        xlnx,ip-name = "psu_ocm";
+                        xlnx,name = "psu_ocm";
+                        phandle = <0x50>;
+                };
+
+                perf_monitor_ocm: perf-monitor@ffa00000 {
+                        compatible = "xlnx,axi-perf-monitor";
+                        reg = <0x0 0xffa00000 0x0 0x10000>;
+                        interrupts = <0x0 0x19 0x4>;
+                        interrupt-parent = <&imux>;
+                        xlnx,enable-profile = <0x0>;
+                        xlnx,enable-trace = <0x0>;
+                        xlnx,num-monitor-slots = <0x1>;
+                        xlnx,enable-event-count = <0x1>;
+                        xlnx,enable-event-log = <0x0>;
+                        xlnx,have-sampled-metric-cnt = <0x1>;
+                        xlnx,num-of-counters = <0x3>;
+                        xlnx,metric-count-width = <0x20>;
+                        xlnx,metrics-sample-count-width = <0x20>;
+                        xlnx,global-count-width = <0x20>;
+                        xlnx,metric-count-scale = <0x1>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,enable-32bit-filter-id = <0x1>;
+                        xlnx,ip-name = "psu_apm";
+                        xlnx,fifo-axis-tid-width = <0x1>;
+                        xlnx,enable-advanced = <0x1>;
+                        xlnx,can-clk-freq-hz = <0x2faf080>;
+                        status = "okay";
+                        xlnx,fifo-axis-tdata-width = <0x38>;
+                        xlnx,fifo-axis-depth = <0x20>;
+                        xlnx,name = "psu_apm_1";
+                        phandle = <0x1f>;
+                };
+
+                perf_monitor_ddr: perf-monitor@fd0b0000 {
+                        compatible = "xlnx,axi-perf-monitor";
+                        reg = <0x0 0xfd0b0000 0x0 0x10000>;
+                        interrupts = <0x0 0x7b 0x4>;
+                        interrupt-parent = <&imux>;
+                        xlnx,enable-profile = <0x0>;
+                        xlnx,enable-trace = <0x0>;
+                        xlnx,num-monitor-slots = <0x6>;
+                        xlnx,enable-event-count = <0x1>;
+                        xlnx,enable-event-log = <0x0>;
+                        xlnx,have-sampled-metric-cnt = <0x1>;
+                        xlnx,num-of-counters = <0xa>;
+                        xlnx,metric-count-width = <0x20>;
+                        xlnx,metrics-sample-count-width = <0x20>;
+                        xlnx,global-count-width = <0x20>;
+                        xlnx,metric-count-scale = <0x1>;
+                        clocks = <&zynqmp_clk 0x1c>;
+                        xlnx,enable-32bit-filter-id = <0x1>;
+                        xlnx,ip-name = "psu_apm";
+                        xlnx,fifo-axis-tid-width = <0x1>;
+                        xlnx,enable-advanced = <0x1>;
+                        xlnx,can-clk-freq-hz = <0x2faf080>;
+                        status = "okay";
+                        xlnx,fifo-axis-tdata-width = <0x38>;
+                        xlnx,fifo-axis-depth = <0x20>;
+                        xlnx,name = "psu_apm_0";
+                        phandle = <0x1e>;
+                };
+
+                perf_monitor_cci: perf-monitor@fd490000 {
+                        compatible = "xlnx,axi-perf-monitor";
+                        reg = <0x0 0xfd490000 0x0 0x10000>;
+                        interrupts = <0x0 0x7b 0x4>;
+                        interrupt-parent = <&imux>;
+                        xlnx,enable-profile = <0x0>;
+                        xlnx,enable-trace = <0x0>;
+                        xlnx,num-monitor-slots = <0x1>;
+                        xlnx,enable-event-count = <0x1>;
+                        xlnx,enable-event-log = <0x0>;
+                        xlnx,have-sampled-metric-cnt = <0x1>;
+                        xlnx,num-of-counters = <0x3>;
+                        xlnx,metric-count-width = <0x20>;
+                        xlnx,metrics-sample-count-width = <0x20>;
+                        xlnx,global-count-width = <0x20>;
+                        xlnx,metric-count-scale = <0x1>;
+                        clocks = <&zynqmp_clk 0x1c>;
+                        xlnx,enable-32bit-filter-id = <0x1>;
+                        xlnx,ip-name = "psu_apm";
+                        xlnx,fifo-axis-tid-width = <0x1>;
+                        xlnx,enable-advanced = <0x1>;
+                        xlnx,can-clk-freq-hz = <0x2faf080>;
+                        status = "okay";
+                        xlnx,fifo-axis-tdata-width = <0x38>;
+                        xlnx,fifo-axis-depth = <0x20>;
+                        xlnx,name = "psu_apm_5";
+                        phandle = <0x21>;
+                };
+
+                perf_monitor_lpd: perf-monitor@ffa10000 {
+                        compatible = "xlnx,axi-perf-monitor";
+                        reg = <0x0 0xffa10000 0x0 0x10000>;
+                        interrupts = <0x0 0x19 0x4>;
+                        interrupt-parent = <&imux>;
+                        xlnx,enable-profile = <0x0>;
+                        xlnx,enable-trace = <0x0>;
+                        xlnx,num-monitor-slots = <0x1>;
+                        xlnx,enable-event-count = <0x1>;
+                        xlnx,enable-event-log = <0x0>;
+                        xlnx,have-sampled-metric-cnt = <0x1>;
+                        xlnx,num-of-counters = <0x3>;
+                        xlnx,metric-count-width = <0x20>;
+                        xlnx,metrics-sample-count-width = <0x20>;
+                        xlnx,global-count-width = <0x20>;
+                        xlnx,metric-count-scale = <0x1>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,enable-32bit-filter-id = <0x1>;
+                        xlnx,ip-name = "psu_apm";
+                        xlnx,fifo-axis-tid-width = <0x1>;
+                        xlnx,enable-advanced = <0x1>;
+                        xlnx,can-clk-freq-hz = <0x2faf080>;
+                        status = "okay";
+                        xlnx,fifo-axis-tdata-width = <0x38>;
+                        xlnx,fifo-axis-depth = <0x20>;
+                        xlnx,name = "psu_apm_2";
+                        phandle = <0x20>;
+                };
+
+                qspi: spi@ff0f0000 {
+                        bootph-all;
+                        compatible = "xlnx,zynqmp-qspi-1.0";
+                        status = "okay";
+                        clock-names = "ref_clk", "pclk";
+                        interrupts = <0x0 0xf 0x4>;
+                        interrupt-parent = <&imux>;
+                        num-cs = <0x2>;
+                        reg = <0x0 0xff0f0000 0x0 0x1000 0x0 0xc0000000 0x0 0x8000000>;
+                        #address-cells = <0x1>;
+                        #size-cells = <0x0>;
+                        power-domains = <&zynqmp_firmware 0x2d>;
+                        clocks = <&zynqmp_clk 0x35>,
+                         <&zynqmp_clk 0x1f>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,qspi-fbclk = <0x0>;
+                        xlnx,tz-nonsecure = <0x1>;
+                        xlnx,qspi-clk-freq-hz = <0x773545d>;
+                        xlnx,bus-width = <0x2>;
+                        xlnx,ip-name = "psu_qspi";
+                        xlnx,qspi-board-interface = "custom";
+                        spi-rx-bus-width = <0x4>;
+                        xlnx,connection-mode = <0x2>;
+                        spi-tx-bus-width = <0x4>;
+                        xlnx,clock-freq = <0x773545d>;
+                        xlnx,fb-clk = <0x1>;
+                        xlnx,qspi-mode = <0x2>;
+                        xlnx,name = "psu_qspi_0";
+                        xlnx,qspi-bus-width = <0x2>;
+                        is-dual = <0x1>;
+                        phandle = <0x53>;
+                };
+
+                psgtr: phy@fd400000 {
+                        compatible = "xlnx,zynqmp-psgtr-v1.1";
+                        status = "okay";
+                        reg = <0x0 0xfd400000 0x0 0x40000 0x0 0xfd3d0000 0x0 0x1000>;
+                        reg-names = "serdes", "siou";
+                        #phy-cells = <0x4>;
+                        xlnx,ip-name = "psu_serdes";
+                        xlnx,name = "psu_serdes";
+                        phandle = <0x5f>;
+                };
+
+                rtc: rtc@ffa60000 {
+                        compatible = "xlnx,zynqmp-rtc";
+                        status = "okay";
+                        reg = <0x0 0xffa60000 0x0 0x100>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x1a 0x4 0x0 0x1b 0x4>;
+                        interrupt-names = "alarm", "sec";
+                        calibration = <0x7fff>;
+                        xlnx,ip-name = "psu_rtc";
+                        xlnx,name = "psu_rtc";
+                        phandle = <0x5c>;
+                };
+
+                sata: ahci@fd0c0000 {
+                        compatible = "ceva,ahci-1v84";
+                        status = "okay";
+                        reg = <0x0 0xfd0c0000 0x0 0x2000>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x85 0x4>;
+                        power-domains = <&zynqmp_firmware 0x1c>;
+                        resets = <&zynqmp_reset 0x10>;
+                        clocks = <&zynqmp_clk 0x16>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,tz-nonsecure-sata0 = <0x0>;
+                        xlnx,ip-name = "psu_sata";
+                        xlnx,sata-board-interface = "custom";
+                        xlnx,tz-nonsecure-sata1 = <0x0>;
+                        xlnx,name = "psu_sata";
+                        phandle = <0x5d>;
+                };
+
+                sdhci1: mmc@ff170000 {
+                        bootph-all;
+                        compatible = "xlnx,zynqmp-8.9a", "arasan,sdhci-8.9a";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x31 0x4>;
+                        reg = <0x0 0xff170000 0x0 0x1000>;
+                        clock-names = "clk_xin", "clk_ahb";
+                        #clock-cells = <0x1>;
+                        clock-output-names = "clk_out_sd1", "clk_in_sd1";
+                        power-domains = <&zynqmp_firmware 0x28>;
+                        resets = <&zynqmp_reset 0x27>;
+                        clocks = <&zynqmp_clk 0x37>,
+                         <&zynqmp_clk 0x1f>;
+                        assigned-clocks = <&zynqmp_clk 0x37>;
+                        xlnx,sd-board-interface = "custom";
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,clk-50-ddr-otap-dly = <0x4>;
+                        xlnx,clk-50-sdr-itap-dly = <0x15>;
+                        xlnx,has-emio = <0x0>;
+                        clock-frequency = <0xb2cfe8b>;
+                        xlnx,tz-nonsecure = <0x1>;
+                        xlnx,clk-100-sdr-otap-dly = <0x3>;
+                        xlnx,mio-bank = <0x1>;
+                        xlnx,ip-name = "psu_sd";
+                        xlnx,bus-width = <0x8>;
+                        xlnx,card-detect = <0x1>;
+                        xlnx,has-wp = <0x0>;
+                        xlnx,has-cd = <0x1>;
+                        xlnx,slot-type = <0x3>;
+                        xlnx,clk-50-sdr-otap-dly = <0x5>;
+                        xlnx,clk-50-ddr-itap-dly = <0x3d>;
+                        xlnx,has-power = <0x0>;
+                        xlnx,clk-200-sdr-otap-dly = <0x3>;
+                        xlnx,sdio-clk-freq-hz = <0xb2cfe8b>;
+                        xlnx,write-protect = <0x0>;
+                        xlnx,name = "psu_sd_1";
+                        phandle = <0x5e>;
+                };
+
+                smmu: iommu@fd800000 {
+                        compatible = "arm,mmu-500";
+                        reg = <0x0 0xfd800000 0x0 0x20000>;
+                        #iommu-cells = <0x1>;
+                        status = "okay";
+                        #global-interrupts = <0x1>;
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4>;
+                        xlnx,ip-name = "psu_smmu_gpv";
+                        xlnx,name = "psu_smmu_gpv";
+                        phandle = <0x61>;
+                };
+
+                ttc0: timer@ff110000 {
+                        compatible = "cdns,ttc";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x24 0x4 0x0 0x25 0x4 0x0 0x26 0x4>;
+                        reg = <0x0 0xff110000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x18>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,name = "psu_ttc_0";
+                        phandle = <0x63>;
+                };
+
+                ttc1: timer@ff110004 {
+                        phandle = <0x10e>;
+                        xlnx,name = "psu_ttc_1";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x18>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff110004 0x0 0xffc>;
+                        interrupts = <0x0 0x25 0x4 0x0 0x26 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc2: timer@ff110008 {
+                        phandle = <0x10f>;
+                        xlnx,name = "psu_ttc_2";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x18>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff110008 0x0 0xff8>;
+                        interrupts = <0x0 0x26 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc3: timer@ff120000 {
+                        compatible = "cdns,ttc";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x27 0x4 0x0 0x28 0x4 0x0 0x29 0x4>;
+                        reg = <0x0 0xff120000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x19>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,name = "psu_ttc_3";
+                        phandle = <0x64>;
+                };
+
+                ttc4: timer@ff120004 {
+                        phandle = <0x110>;
+                        xlnx,name = "psu_ttc_4";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x19>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff120004 0x0 0xffc>;
+                        interrupts = <0x0 0x28 0x4 0x0 0x29 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc5: timer@ff120008 {
+                        phandle = <0x111>;
+                        xlnx,name = "psu_ttc_5";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x19>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff120008 0x0 0xff8>;
+                        interrupts = <0x0 0x29 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc6: timer@ff130000 {
+                        compatible = "cdns,ttc";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
+                        reg = <0x0 0xff130000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x1a>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,name = "psu_ttc_6";
+                        phandle = <0x65>;
+                };
+
+                ttc7: timer@ff130004 {
+                        phandle = <0x112>;
+                        xlnx,name = "psu_ttc_7";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x1a>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff130004 0x0 0xffc>;
+                        interrupts = <0x0 0x2b 0x4 0x0 0x2c 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc8: timer@ff130008 {
+                        phandle = <0x113>;
+                        xlnx,name = "psu_ttc_8";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x1a>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff130008 0x0 0xff8>;
+                        interrupts = <0x0 0x2c 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc9: timer@ff140000 {
+                        compatible = "cdns,ttc";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x2d 0x4 0x0 0x2e 0x4 0x0 0x2f 0x4>;
+                        reg = <0x0 0xff140000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x1b>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,name = "psu_ttc_9";
+                        phandle = <0x66>;
+                };
+
+                ttc10: timer@ff140004 {
+                        phandle = <0x114>;
+                        xlnx,name = "psu_ttc_10";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x1b>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff140004 0x0 0xffc>;
+                        interrupts = <0x0 0x2e 0x4 0x0 0x2f 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                ttc11: timer@ff140008 {
+                        phandle = <0x115>;
+                        xlnx,name = "psu_ttc_11";
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-board-interface = "custom";
+                        clocks = <&zynqmp_clk 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x1b>;
+                        timer-width = <0x20>;
+                        reg = <0x0 0xff140008 0x0 0xff8>;
+                        interrupts = <0x0 0x2f 0x4>;
+                        interrupt-parent = <&imux>;
+                        status = "okay";
+                        compatible = "cdns,ttc";
+                        lop-dynamic-ttc-node = <0x1>;
+                };
+
+                uart0: serial@ff000000 {
+                        bootph-all;
+                        compatible = "xlnx,zynqmp-uart", "cdns,uart-r1p12";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x15 0x4>;
+                        reg = <0x0 0xff000000 0x0 0x1000>;
+                        clock-names = "uart_clk", "pclk";
+                        power-domains = <&zynqmp_firmware 0x21>;
+                        resets = <&zynqmp_reset 0x22>;
+                        clocks = <&zynqmp_clk 0x38>,
+                         <&zynqmp_clk 0x1f>;
+                        assigned-clocks = <&zynqmp_clk 0x38>;
+                        xlnx,clock-freq = <0x5f5dd19>;
+                        u-boot,dm-pre-reloc;
+                        xlnx,uart-board-interface = "custom";
+                        xlnx,has-modem = <0x0>;
+                        xlnx,ip-name = "psu_uart";
+                        xlnx,baudrate = <0x1c200>;
+                        cts-override;
+                        port-number = <0x0>;
+                        xlnx,uart-clk-freq-hz = <0x5f5dd19>;
+                        xlnx,name = "psu_uart_0";
+                        phandle = <0x67>;
+                };
+
+                usb0: usb@ff9d0000 {
+                        #address-cells = <0x2>;
+                        #size-cells = <0x2>;
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-dwc3";
+                        reg = <0x0 0xff9d0000 0x0 0x100>;
+                        clock-names = "bus_clk", "ref_clk";
+                        power-domains = <&zynqmp_firmware 0x16>;
+                        resets = <&zynqmp_reset 0x3b>,
+                         <&zynqmp_reset 0x3d>,
+                         <&zynqmp_reset 0x3f>;
+                        reset-names = "usb_crst", "usb_hibrst", "usb_apbrst";
+                        reset-gpios = <&modepin_gpio 0x1 0x1>;
+                        ranges;
+                        clocks = <&zynqmp_clk 0x20>,
+                         <&zynqmp_clk 0x22>;
+                        assigned-clocks = <&zynqmp_clk 0x20>,
+                         <&zynqmp_clk 0x22>;
+                        xlnx,is-cache-coherent = <0x0>;
+                        xlnx,usb-polarity = <0x0>;
+                        xlnx,ip-name = "psu_usb";
+                        xlnx,usb-reset-mode = <0x0>;
+                        xlnx,usb-board-interface = "custom";
+                        xlnx,tz-nonsecure = <0x1>;
+                        xlnx,name = "psu_usb_0";
+                        phandle = <0x68>;
+
+                        dwc3_0: usb@fe200000 {
+                                compatible = "snps,dwc3";
+                                status = "okay";
+                                reg = <0x0 0xfe200000 0x0 0x40000>;
+                                interrupt-parent = <&imux>;
+                                interrupt-names = "host", "peripheral", "otg", "wakeup";
+                                interrupts = <0x0 0x41 0x4 0x0 0x41 0x4 0x0 0x45 0x4 0x0 0x4b 0x4>;
+                                clock-names = "ref";
+                                snps,quirk-frame-length-adjustment = <0x20>;
+                                snps,resume-hs-terminations;
+                                clocks = <&zynqmp_clk 0x22>;
+                                xlnx,is-cache-coherent = <0x0>;
+                                xlnx,ip-name = "psu_usb_xhci";
+                                xlnx,enable-superspeed = <0x1>;
+                                xlnx,usb-board-interface = "custom";
+                                xlnx,name = "psu_usb_xhci_0";
+                                phandle = <0x69>;
+                        };
+                };
+
+                watchdog0: watchdog@fd4d0000 {
+                        compatible = "cdns,wdt-r1p2";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x71 0x1>;
+                        reg = <0x0 0xfd4d0000 0x0 0x1000>;
+                        timeout-sec = <0x3c>;
+                        reset-on-timeout;
+                        clocks = <&zynqmp_clk 0x4b>;
+                        xlnx,ip-name = "psu_wdt";
+                        xlnx,wdt-clk-freq-hz = <0x5f5dd19>;
+                        xlnx,swdt-board-interface = "custom";
+                        xlnx,name = "psu_wdt_1";
+                        phandle = <0x6b>;
+                };
+
+                lpd_watchdog: watchdog@ff150000 {
+                        compatible = "cdns,wdt-r1p2";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x34 0x1>;
+                        reg = <0x0 0xff150000 0x0 0x1000>;
+                        timeout-sec = <0xa>;
+                        clocks = <&zynqmp_clk 0x70>;
+                        xlnx,ip-name = "psu_wdt";
+                        xlnx,wdt-clk-freq-hz = <0x5f5dd19>;
+                        xlnx,swdt-board-interface = "custom";
+                        xlnx,name = "psu_wdt_0";
+                        phandle = <0x6a>;
+                };
+
+                xilinx_ams: ams@ffa50000 {
+                        compatible = "xlnx,zynqmp-ams";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x38 0x4>;
+                        reg = <0x0 0xffa50000 0x0 0x800>;
+                        #address-cells = <0x1>;
+                        #size-cells = <0x1>;
+                        #io-channel-cells = <0x1>;
+                        ranges = <0x0 0x0 0xffa50800 0x800>;
+                        clocks = <&zynqmp_clk 0x46>;
+                        status = "okay";
+                        xlnx,clock-freq = <0x31>;
+                        xlnx,ip-name = "psu_ams";
+                        xlnx,name = "psu_ams";
+                        phandle = <0x1d>;
+                };
+
+                csuwdt_0: watchdog@ffcb0000 {
+                        compatible = "cdns,wdt-r1p2";
+                        status = "okay";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x35 0x1>;
+                        reg = <0x0 0xffcb0000 0x0 0x1000>;
+                        timeout-sec = <0x3c>;
+                        reset-on-timeout;
+                        xlnx,clock-freq = <0x5f5b9f5>;
+                        xlnx,ip-name = "psu_wdt";
+                        xlnx,wdt-clk-freq-hz = <0x5f5e100>;
+                        xlnx,name = "psu_csu_wdt";
+                        phandle = <0x73>;
+                };
+
+                csudma_0: dma@ffc80000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-csudma-1.0";
+                        interrupt-parent = <&imux>;
+                        interrupts = <0x0 0x56 0x4>;
+                        reg = <0x0 0xffc80000 0x0 0x40000>;
+                        xlnx,ip-name = "psu_csudma";
+                        xlnx,dma-type = <0x0>;
+                        xlnx,name = "psu_csudma";
+                        phandle = <0x29>;
+                };
+
+                ipi3: ipi@ff330000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-ipi-mailbox";
+                        reg = <0x0 0xff330000 0x0 0x20>;
+                        xlnx,ipi-bitmask = <0x10000>;
+                        xlnx,ipi-id = <0x3>;
+                        xlnx,ipi-buf-index = <0x7>;
+                        #address-cells = <0x2>;
+                        #size-cells = <0x2>;
+                        bootph-all;
+                        ranges;
+                        xlnx,cpu-name = "PMU";
+                        xlnx,buffer-base = <0xff990e00>;
+                        xlnx,base-address = <0xff330000>;
+                        xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x10>;
+                        xlnx,name = "psu_ipi_3";
+                        phandle = <0x7c>;
+
+                        psu_ipi_3_0: child@0 {
+                                xlnx,ipi-bitmask = <0x1>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990ea0>;
+                                xlnx,ipi-id = <0x0>;
+                                xlnx,ipi-buf-index = <0x2>;
+                                xlnx,ipi-req-msg-buf = <0xff990e80>;
+                                phandle = <0xe4>;
+                        };
+
+                        psu_ipi_3_1: child@1 {
+                                xlnx,ipi-bitmask = <0x100>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e20>;
+                                xlnx,ipi-id = <0x1>;
+                                xlnx,ipi-buf-index = <0x0>;
+                                xlnx,ipi-req-msg-buf = <0xff990e00>;
+                                phandle = <0xe5>;
+                        };
+
+                        psu_ipi_3_2: child@2 {
+                                xlnx,ipi-bitmask = <0x200>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e60>;
+                                xlnx,ipi-id = <0x2>;
+                                xlnx,ipi-buf-index = <0x1>;
+                                xlnx,ipi-req-msg-buf = <0xff990e40>;
+                                phandle = <0xe6>;
+                        };
+
+                        psu_ipi_3_3: child@3 {
+                                xlnx,ipi-bitmask = <0x10000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x3>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xe7>;
+                        };
+
+                        psu_ipi_3_4: child@4 {
+                                xlnx,ipi-bitmask = <0x20000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x4>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xe8>;
+                        };
+
+                        psu_ipi_3_5: child@5 {
+                                xlnx,ipi-bitmask = <0x40000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x5>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xe9>;
+                        };
+
+                        psu_ipi_3_6: child@6 {
+                                xlnx,ipi-bitmask = <0x80000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x6>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xea>;
+                        };
+                };
+
+                ipi4: ipi@ff331000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-ipi-mailbox";
+                        reg = <0x0 0xff331000 0x0 0x20>;
+                        xlnx,ipi-bitmask = <0x20000>;
+                        xlnx,ipi-id = <0x4>;
+                        xlnx,ipi-buf-index = <0x7>;
+                        #address-cells = <0x2>;
+                        #size-cells = <0x2>;
+                        bootph-all;
+                        ranges;
+                        xlnx,cpu-name = "PMU";
+                        xlnx,buffer-base = <0xff990e00>;
+                        xlnx,base-address = <0xff331000>;
+                        xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x11>;
+                        xlnx,name = "psu_ipi_4";
+                        phandle = <0x7d>;
+
+                        psu_ipi_4_0: child@0 {
+                                xlnx,ipi-bitmask = <0x1>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990ea0>;
+                                xlnx,ipi-id = <0x0>;
+                                xlnx,ipi-buf-index = <0x2>;
+                                xlnx,ipi-req-msg-buf = <0xff990e80>;
+                                phandle = <0xeb>;
+                        };
+
+                        psu_ipi_4_1: child@1 {
+                                xlnx,ipi-bitmask = <0x100>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e20>;
+                                xlnx,ipi-id = <0x1>;
+                                xlnx,ipi-buf-index = <0x0>;
+                                xlnx,ipi-req-msg-buf = <0xff990e00>;
+                                phandle = <0xec>;
+                        };
+
+                        psu_ipi_4_2: child@2 {
+                                xlnx,ipi-bitmask = <0x200>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e60>;
+                                xlnx,ipi-id = <0x2>;
+                                xlnx,ipi-buf-index = <0x1>;
+                                xlnx,ipi-req-msg-buf = <0xff990e40>;
+                                phandle = <0xed>;
+                        };
+
+                        psu_ipi_4_3: child@3 {
+                                xlnx,ipi-bitmask = <0x10000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x3>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xee>;
+                        };
+
+                        psu_ipi_4_4: child@4 {
+                                xlnx,ipi-bitmask = <0x20000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x4>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xef>;
+                        };
+
+                        psu_ipi_4_5: child@5 {
+                                xlnx,ipi-bitmask = <0x40000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x5>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xf0>;
+                        };
+
+                        psu_ipi_4_6: child@6 {
+                                xlnx,ipi-bitmask = <0x80000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x6>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xf1>;
+                        };
+                };
+
+                ipi5: ipi@ff332000 {
+                        compatible = "xlnx,zynqmp-ipi-mailbox";
+                        status = "okay";
+                        reg = <0x0 0xff332000 0x0 0x20>;
+                        xlnx,ipi-bitmask = <0x40000>;
+                        xlnx,ipi-id = <0x5>;
+                        xlnx,ipi-buf-index = <0x7>;
+                        #address-cells = <0x2>;
+                        #size-cells = <0x2>;
+                        bootph-all;
+                        ranges;
+                        xlnx,cpu-name = "PMU";
+                        xlnx,buffer-base = <0xff990e00>;
+                        xlnx,base-address = <0xff332000>;
+                        xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x12>;
+                        xlnx,name = "psu_ipi_5";
+                        phandle = <0x7e>;
+
+                        psu_ipi_5_0: child@0 {
+                                xlnx,ipi-bitmask = <0x1>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990ea0>;
+                                xlnx,ipi-id = <0x0>;
+                                xlnx,ipi-buf-index = <0x2>;
+                                xlnx,ipi-req-msg-buf = <0xff990e80>;
+                                phandle = <0xf2>;
+                        };
+
+                        psu_ipi_5_1: child@1 {
+                                xlnx,ipi-bitmask = <0x100>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e20>;
+                                xlnx,ipi-id = <0x1>;
+                                xlnx,ipi-buf-index = <0x0>;
+                                xlnx,ipi-req-msg-buf = <0xff990e00>;
+                                phandle = <0xf3>;
+                        };
+
+                        psu_ipi_5_2: child@2 {
+                                xlnx,ipi-bitmask = <0x200>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e60>;
+                                xlnx,ipi-id = <0x2>;
+                                xlnx,ipi-buf-index = <0x1>;
+                                xlnx,ipi-req-msg-buf = <0xff990e40>;
+                                phandle = <0xf4>;
+                        };
+
+                        psu_ipi_5_3: child@3 {
+                                xlnx,ipi-bitmask = <0x10000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x3>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xf5>;
+                        };
+
+                        psu_ipi_5_4: child@4 {
+                                xlnx,ipi-bitmask = <0x20000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x4>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xf6>;
+                        };
+
+                        psu_ipi_5_5: child@5 {
+                                xlnx,ipi-bitmask = <0x40000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x5>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xf7>;
+                        };
+
+                        psu_ipi_5_6: child@6 {
+                                xlnx,ipi-bitmask = <0x80000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x6>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xf8>;
+                        };
+                };
+
+                ipi6: ipi@ff333000 {
+                        status = "okay";
+                        compatible = "xlnx,zynqmp-ipi-mailbox";
+                        reg = <0x0 0xff333000 0x0 0x20>;
+                        xlnx,ipi-bitmask = <0x80000>;
+                        xlnx,ipi-id = <0x6>;
+                        xlnx,ipi-buf-index = <0x7>;
+                        #address-cells = <0x2>;
+                        #size-cells = <0x2>;
+                        bootph-all;
+                        ranges;
+                        xlnx,cpu-name = "PMU";
+                        xlnx,buffer-base = <0xff990e00>;
+                        xlnx,base-address = <0xff333000>;
+                        xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x13>;
+                        xlnx,name = "psu_ipi_6";
+                        phandle = <0x7f>;
+
+                        psu_ipi_6_0: child@0 {
+                                xlnx,ipi-bitmask = <0x1>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990ea0>;
+                                xlnx,ipi-id = <0x0>;
+                                xlnx,ipi-buf-index = <0x2>;
+                                xlnx,ipi-req-msg-buf = <0xff990e80>;
+                                phandle = <0xf9>;
+                        };
+
+                        psu_ipi_6_1: child@1 {
+                                xlnx,ipi-bitmask = <0x100>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e20>;
+                                xlnx,ipi-id = <0x1>;
+                                xlnx,ipi-buf-index = <0x0>;
+                                xlnx,ipi-req-msg-buf = <0xff990e00>;
+                                phandle = <0xfa>;
+                        };
+
+                        psu_ipi_6_2: child@2 {
+                                xlnx,ipi-bitmask = <0x200>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990e60>;
+                                xlnx,ipi-id = <0x2>;
+                                xlnx,ipi-buf-index = <0x1>;
+                                xlnx,ipi-req-msg-buf = <0xff990e40>;
+                                phandle = <0xfb>;
+                        };
+
+                        psu_ipi_6_3: child@3 {
+                                xlnx,ipi-bitmask = <0x10000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x3>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xfc>;
+                        };
+
+                        psu_ipi_6_4: child@4 {
+                                xlnx,ipi-bitmask = <0x20000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x4>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xfd>;
+                        };
+
+                        psu_ipi_6_5: child@5 {
+                                xlnx,ipi-bitmask = <0x40000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x5>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xfe>;
+                        };
+
+                        psu_ipi_6_6: child@6 {
+                                xlnx,ipi-bitmask = <0x80000>;
+                                xlnx,ipi-rsp-msg-buf = <0xff990fe0>;
+                                xlnx,ipi-id = <0x6>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff990fc0>;
+                                phandle = <0xff>;
+                        };
+                };
+
+                psu_r5_tcm_ram_global: psu_r5_tcm_ram@ffe00000 {
+                        compatible = "xlnx,psu-r5-tcm-ram-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0xf>;
+                        xlnx,ip-name = "psu_r5_tcm_ram";
+                        reg = <0x0 0xffe00000 0x0 0x40000>;
+                        xlnx,name = "psu_r5_tcm_ram_global";
+                        phandle = <0x59>;
+                };
+
+                psu_r5_tcm_ram_0: psu_r5_tcm_ram@0 {
+                        compatible = "xlnx,psu-r5-tcm-ram-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0xf>;
+                        xlnx,ip-name = "psu_r5_tcm_ram";
+                        reg = <0x0 0x0 0x0 0x40000>;
+                        xlnx,name = "psu_r5_tcm_ram_0";
+                        phandle = <0x76>;
+                };
+
+                psu_r5_1_btcm: psu_r5_1_btcm@20000 {
+                        xlnx,power-domain = <0x10>;
+                        compatible = "xlnx,psu-r5-1-btcm-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x12>;
+                        xlnx,ip-name = "psu_r5_1_btcm";
+                        xlnx,bank-size = <0x10000>;
+                        reg = <0x0 0x20000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_1_btcm";
+                        phandle = <0x7b>;
+                };
+
+                psu_r5_1_btcm_global: psu_r5_1_btcm_global@ffeb0000 {
+                        compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x12>;
+                        xlnx,ip-name = "psu_r5_1_btcm_global";
+                        reg = <0x0 0xffeb0000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_1_btcm_global";
+                        phandle = <0x58>;
+                };
+
+                psu_r5_1_atcm: psu_r5_1_atcm@0 {
+                        xlnx,power-domain = <0xf>;
+                        compatible = "xlnx,psu-r5-1-atcm-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x11>;
+                        xlnx,ip-name = "psu_r5_1_atcm";
+                        xlnx,bank-size = <0x10000>;
+                        reg = <0x0 0x0 0x0 0x10000>;
+                        xlnx,name = "psu_r5_1_atcm";
+                        phandle = <0x7a>;
+                };
+
+                psu_r5_1_atcm_global: psu_r5_1_atcm_global@ffe90000 {
+                        compatible = "xlnx,psu-r5-1-atcm-global-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x11>;
+                        xlnx,ip-name = "psu_r5_1_atcm_global";
+                        reg = <0x0 0xffe90000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_1_atcm_global";
+                        phandle = <0x57>;
+                };
+
+                psu_r5_0_btcm_lockstep: psu_r5_0_btcm_lockstep@ffe30000 {
+                        compatible = "xlnx,psu-r5-0-btcm-lockstep-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x10>;
+                        xlnx,ip-name = "psu_r5_0_btcm_lockstep";
+                        xlnx,is-hierarchy;
+                        reg = <0x0 0xffe30000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_0_btcm_lockstep";
+                        phandle = <0x105>;
+                };
+
+                psu_r5_0_btcm: psu_r5_0_btcm@20000 {
+                        xlnx,power-domain = <0x12>;
+                        compatible = "xlnx,psu-r5-0-btcm-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x10>;
+                        xlnx,ip-name = "psu_r5_0_btcm";
+                        xlnx,bank-size = <0x10000>;
+                        reg = <0x0 0x20000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_0_btcm";
+                        phandle = <0x75>;
+                };
+
+                psu_r5_0_btcm_global: psu_r5_0_btcm_global@ffe20000 {
+                        compatible = "xlnx,psu-r5-0-btcm-global-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x10>;
+                        xlnx,ip-name = "psu_r5_0_btcm_global";
+                        reg = <0x0 0xffe20000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_0_btcm_global";
+                        phandle = <0x56>;
+                };
+
+                psu_r5_0_atcm_lockstep: psu_r5_0_atcm_lockstep@ffe10000 {
+                        compatible = "xlnx,psu-r5-0-atcm-lockstep-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0xf>;
+                        xlnx,ip-name = "psu_r5_0_atcm_lockstep";
+                        xlnx,is-hierarchy;
+                        reg = <0x0 0xffe10000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_0_atcm_lockstep";
+                        phandle = <0x106>;
+                };
+
+                psu_r5_0_atcm: psu_r5_0_atcm@0 {
+                        xlnx,power-domain = <0x11>;
+                        compatible = "xlnx,psu-r5-0-atcm-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0xf>;
+                        xlnx,ip-name = "psu_r5_0_atcm";
+                        xlnx,bank-size = <0x10000>;
+                        reg = <0x0 0x0 0x0 0x10000>;
+                        xlnx,name = "psu_r5_0_atcm";
+                        phandle = <0x74>;
+                };
+
+                psu_r5_0_atcm_global: psu_r5_0_atcm_global@ffe00000 {
+                        compatible = "xlnx,psu-r5-0-atcm-global-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0xf>;
+                        xlnx,ip-name = "psu_r5_0_atcm_global";
+                        reg = <0x0 0xffe00000 0x0 0x10000>;
+                        xlnx,name = "psu_r5_0_atcm_global";
+                        phandle = <0x55>;
+                };
+
+                psu_bbram_0: psu_bbram_0@ffcd0000 {
+                        compatible = "xlnx,psu-bbram-0-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_bbram_0";
+                        reg = <0x0 0xffcd0000 0x0 0x10000>;
+                        xlnx,name = "psu_bbram_0";
+                        phandle = <0x80>;
+                };
+
+                psu_pmu_ram: psu_pmu_ram@ffdc0000 {
+                        compatible = "xlnx,psu-pmu-ram-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_pmu_ram";
+                        reg = <0x0 0xffdc0000 0x0 0x20000>;
+                        xlnx,name = "psu_pmu_ram";
+                        phandle = <0x82>;
+                };
+
+                psu_pmu_iomodule: psu_pmu_iomodule@ffd40000 {
+                        xlnx,gpo4-enable = <0x0>;
+                        compatible = "xlnx,psu-pmu-iomodule-1.0";
+                        status = "okay";
+                        xlnx,gpo5-enable = <0x0>;
+                        xlnx,ip-name = "psu_pmu_iomodule";
+                        xlnx,gpo2-enable = <0x0>;
+                        reg = <0x0 0xffd40000 0x0 0x20000>;
+                        xlnx,gpo3-enable = <0x0>;
+                        xlnx,name = "psu_pmu_iomodule";
+                        phandle = <0x81>;
+                };
+
+                psu_pmu_global_0: psu_pmu_global_0@ffd80000 {
+                        compatible = "xlnx,psu-pmu-global-0-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_pmu_global_0";
+                        reg = <0x0 0xffd80000 0x0 0x40000>;
+                        xlnx,name = "psu_pmu_global_0";
+                        phandle = <0x52>;
+                };
+
+                psu_mbistjtag: psu_mbistjtag@ffcf0000 {
+                        compatible = "xlnx,psu-mbistjtag-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_mbistjtag";
+                        reg = <0x0 0xffcf0000 0x0 0x10000>;
+                        xlnx,name = "psu_mbistjtag";
+                        phandle = <0x4e>;
+                };
+
+                psu_rsa: psu_rsa@ffce0000 {
+                        compatible = "xlnx,psu-rsa-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_rsa";
+                        reg = <0x0 0xffce0000 0x0 0x10000>;
+                        xlnx,name = "psu_rsa";
+                        phandle = <0x5b>;
+                };
+
+                psu_efuse: psu_efuse@ffcc0000 {
+                        compatible = "xlnx,psu-efuse-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_efuse";
+                        reg = <0x0 0xffcc0000 0x0 0x10000>;
+                        xlnx,name = "psu_efuse";
+                        phandle = <0x34>;
+                };
+
+                psu_csu_0: psu_csu@ffca0000 {
+                        xlnx,csu-board-interface = "custom";
+                        compatible = "xlnx,psu-csu-1.0";
+                        status = "okay";
+                        xlnx,can-clk-freq-hz = <0xaba9500>;
+                        xlnx,ip-name = "psu_csu";
+                        reg = <0x0 0xffca0000 0x0 0x10000>;
+                        xlnx,name = "psu_csu_0";
+                        phandle = <0x28>;
+                };
+
+                psu_fpd_gpv: psu_fpd_gpv@fd700000 {
+                        compatible = "xlnx,psu-fpd-gpv-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_fpd_gpv";
+                        reg = <0x0 0xfd700000 0x0 0x100000>;
+                        xlnx,name = "psu_fpd_gpv";
+                        phandle = <0x36>;
+                };
+
+                psu_cci_gpv: psu_cci_gpv@fd6e0000 {
+                        compatible = "xlnx,psu-cci-gpv-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_cci_gpv";
+                        reg = <0x0 0xfd6e0000 0x0 0x10000>;
+                        xlnx,name = "psu_cci_gpv";
+                        phandle = <0x23>;
+                };
+
+                psu_fpd_slcr_secure: psu_fpd_slcr_secure@fd690000 {
+                        compatible = "xlnx,psu-fpd-slcr-secure-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_fpd_slcr_secure";
+                        reg = <0x0 0xfd690000 0x0 0x40000>;
+                        xlnx,name = "psu_fpd_slcr_secure";
+                        phandle = <0x38>;
+                };
+
+                psu_fpd_slcr: psu_fpd_slcr@fd610000 {
+                        compatible = "xlnx,psu-fpd-slcr-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_fpd_slcr";
+                        reg = <0x0 0xfd610000 0x0 0x80000>;
+                        xlnx,name = "psu_fpd_slcr";
+                        phandle = <0x37>;
+                };
+
+                psu_smmu_reg: psu_smmu_reg@fd5f0000 {
+                        compatible = "xlnx,psu-smmu-reg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_smmu_reg";
+                        reg = <0x0 0xfd5f0000 0x0 0x10000>;
+                        xlnx,name = "psu_smmu_reg";
+                        phandle = <0x62>;
+                };
+
+                psu_cci_reg: psu_cci_reg@fd5e0000 {
+                        compatible = "xlnx,psu-cci-reg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_cci_reg";
+                        reg = <0x0 0xfd5e0000 0x0 0x10000>;
+                        xlnx,name = "psu_cci_reg";
+                        phandle = <0x24>;
+                };
+
+                psu_fpd_xmpu_cfg: psu_fpd_xmpu_cfg@fd5d0000 {
+                        compatible = "xlnx,psu-fpd-xmpu-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_fpd_xmpu_cfg";
+                        reg = <0x0 0xfd5d0000 0x0 0x10000>;
+                        xlnx,name = "psu_fpd_xmpu_cfg";
+                        phandle = <0x39>;
+                };
+
+                psu_apu: psu_apu@fd5c0000 {
+                        compatible = "xlnx,psu-apu-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_apu";
+                        reg = <0x0 0xfd5c0000 0x0 0x10000>;
+                        xlnx,name = "psu_apu";
+                        phandle = <0x22>;
+                };
+
+                psu_fpd_xmpu_sink: psu_fpd_xmpu_sink@fd4f0000 {
+                        compatible = "xlnx,psu-fpd-xmpu-sink-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_fpd_xmpu_sink";
+                        reg = <0x0 0xfd4f0000 0x0 0x10000>;
+                        xlnx,name = "psu_fpd_xmpu_sink";
+                        phandle = <0x3a>;
+                };
+
+                psu_siou: psu_siou@fd3d0000 {
+                        compatible = "xlnx,psu-siou-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_siou";
+                        reg = <0x0 0xfd3d0000 0x0 0x10000>;
+                        xlnx,name = "psu_siou";
+                        phandle = <0x60>;
+                };
+
+                psu_afi_5: psu_afi@fd3b0000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xfd3b0000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_5";
+                        phandle = <0x1b>;
+                };
+
+                psu_afi_4: psu_afi@fd3a0000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xfd3a0000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_4";
+                        phandle = <0x1a>;
+                };
+
+                psu_afi_3: psu_afi@fd390000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xfd390000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_3";
+                        phandle = <0x19>;
+                };
+
+                psu_afi_2: psu_afi@fd380000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xfd380000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_2";
+                        phandle = <0x18>;
+                };
+
+                psu_afi_1: psu_afi@fd370000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xfd370000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_1";
+                        phandle = <0x17>;
+                };
+
+                psu_afi_0: psu_afi@fd360000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xfd360000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_0";
+                        phandle = <0x16>;
+                };
+
+                psu_crf_apb: psu_crf_apb@fd1a0000 {
+                        compatible = "xlnx,psu-crf-apb-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_crf_apb";
+                        reg = <0x0 0xfd1a0000 0x0 0x140000>;
+                        xlnx,name = "psu_crf_apb";
+                        phandle = <0x26>;
+                };
+
+                psu_ddr_qos_ctrl: psu_ddr_qos_ctrl@fd090000 {
+                        compatible = "xlnx,psu-ddr-qos-ctrl-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_qos_ctrl";
+                        reg = <0x0 0xfd090000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_qos_ctrl";
+                        phandle = <0x2c>;
+                };
+
+                psu_ddr_phy: psu_ddr_phy@fd080000 {
+                        compatible = "xlnx,psu-ddr-phy-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_phy";
+                        reg = <0x0 0xfd080000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_phy";
+                        phandle = <0x2b>;
+                };
+
+                psu_ddr_xmpu5_cfg: psu_ddr_xmpu5_cfg@fd050000 {
+                        compatible = "xlnx,psu-ddr-xmpu5-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_xmpu5_cfg";
+                        reg = <0x0 0xfd050000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_xmpu5_cfg";
+                        phandle = <0x32>;
+                };
+
+                psu_ddr_xmpu4_cfg: psu_ddr_xmpu4_cfg@fd040000 {
+                        compatible = "xlnx,psu-ddr-xmpu4-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_xmpu4_cfg";
+                        reg = <0x0 0xfd040000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_xmpu4_cfg";
+                        phandle = <0x31>;
+                };
+
+                psu_ddr_xmpu3_cfg: psu_ddr_xmpu3_cfg@fd030000 {
+                        compatible = "xlnx,psu-ddr-xmpu3-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_xmpu3_cfg";
+                        reg = <0x0 0xfd030000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_xmpu3_cfg";
+                        phandle = <0x30>;
+                };
+
+                psu_ddr_xmpu2_cfg: psu_ddr_xmpu2_cfg@fd020000 {
+                        compatible = "xlnx,psu-ddr-xmpu2-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_xmpu2_cfg";
+                        reg = <0x0 0xfd020000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_xmpu2_cfg";
+                        phandle = <0x2f>;
+                };
+
+                psu_ddr_xmpu1_cfg: psu_ddr_xmpu1_cfg@fd010000 {
+                        compatible = "xlnx,psu-ddr-xmpu1-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_xmpu1_cfg";
+                        reg = <0x0 0xfd010000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_xmpu1_cfg";
+                        phandle = <0x2e>;
+                };
+
+                psu_ddr_xmpu0_cfg: psu_ddr_xmpu0_cfg@fd000000 {
+                        compatible = "xlnx,psu-ddr-xmpu0-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ddr_xmpu0_cfg";
+                        reg = <0x0 0xfd000000 0x0 0x10000>;
+                        xlnx,name = "psu_ddr_xmpu0_cfg";
+                        phandle = <0x2d>;
+                };
+
+                psu_ocm_xmpu_cfg: psu_ocm_xmpu_cfg@ffa70000 {
+                        compatible = "xlnx,psu-ocm-xmpu-cfg-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_ocm_xmpu_cfg";
+                        reg = <0x0 0xffa70000 0x0 0x10000>;
+                        xlnx,name = "psu_ocm_xmpu_cfg";
+                        phandle = <0x51>;
+                };
+
+                psu_lpd_xppu_sink: psu_lpd_xppu_sink@ff9c0000 {
+                        compatible = "xlnx,psu-lpd-xppu-sink-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_lpd_xppu_sink";
+                        reg = <0x0 0xff9c0000 0x0 0x10000>;
+                        xlnx,name = "psu_lpd_xppu_sink";
+                        phandle = <0x4d>;
+                };
+
+                psu_afi_6: psu_afi@ff9b0000 {
+                        compatible = "xlnx,psu-afi-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_afi";
+                        reg = <0x0 0xff9b0000 0x0 0x10000>;
+                        xlnx,name = "psu_afi_6";
+                        phandle = <0x1c>;
+                };
+
+                psu_rpu: psu_rpu@ff9a0000 {
+                        xlnx,is-cache-coherent = <0x0>;
+                        compatible = "xlnx,psu-rpu-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_rpu";
+                        reg = <0x0 0xff9a0000 0x0 0x10000>;
+                        xlnx,name = "psu_rpu";
+                        phandle = <0x5a>;
+                };
+
+                psu_crl_apb: psu_crl_apb@ff5e0000 {
+                        compatible = "xlnx,psu-crl-apb-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_crl_apb";
+                        reg = <0x0 0xff5e0000 0x0 0x280000>;
+                        xlnx,name = "psu_crl_apb";
+                        phandle = <0x27>;
+                };
+
+                psu_lpd_slcr_secure: psu_lpd_slcr_secure@ff4b0000 {
+                        compatible = "xlnx,psu-lpd-slcr-secure-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_lpd_slcr_secure";
+                        reg = <0x0 0xff4b0000 0x0 0x30000>;
+                        xlnx,name = "psu_lpd_slcr_secure";
+                        phandle = <0x4b>;
+                };
+
+                psu_lpd_slcr: psu_lpd_slcr@ff410000 {
+                        compatible = "xlnx,psu-lpd-slcr-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_lpd_slcr";
+                        reg = <0x0 0xff410000 0x0 0xa0000>;
+                        xlnx,name = "psu_lpd_slcr";
+                        phandle = <0x4a>;
+                };
+
+                psu_ctrl_ipi: PERIPHERAL@ff380000 {
+                        compatible = "xlnx,PERIPHERAL-1.0";
+                        reg = <0x0 0xff380000 0x0 0x80000>;
+                        phandle = <0x2a>;
+                };
+
+                psu_message_buffers: PERIPHERAL@ff990000 {
+                        compatible = "xlnx,PERIPHERAL-1.0";
+                        reg = <0x0 0xff990000 0x0 0x10000>;
+                        phandle = <0x4f>;
+                };
+
+                psu_iou_scntrs: psu_iou_scntrs@ff260000 {
+                        compatible = "xlnx,psu-iou-scntrs-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_iou_scntrs";
+                        reg = <0x0 0xff260000 0x0 0x10000>;
+                        xlnx,name = "psu_iou_scntrs";
+                        phandle = <0x47>;
+                };
+
+                psu_iou_scntr: psu_iou_scntr@ff250000 {
+                        compatible = "xlnx,psu-iou-scntr-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_iou_scntr";
+                        reg = <0x0 0xff250000 0x0 0x10000>;
+                        xlnx,name = "psu_iou_scntr";
+                        phandle = <0x46>;
+                };
+
+                psu_iousecure_slcr: psu_iousecure_slcr@ff240000 {
+                        compatible = "xlnx,psu-iousecure-slcr-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_iousecure_slcr";
+                        reg = <0x0 0xff240000 0x0 0x10000>;
+                        xlnx,name = "psu_iousecure_slcr";
+                        phandle = <0x48>;
+                };
+
+                psu_iouslcr_0: psu_iouslcr@ff180000 {
+                        compatible = "xlnx,psu-iouslcr-1.0";
+                        status = "okay";
+                        xlnx,ip-name = "psu_iouslcr";
+                        reg = <0x0 0xff180000 0x0 0xc0000>;
+                        xlnx,name = "psu_iouslcr_0";
+                        phandle = <0x49>;
+                };
+
+                psu_qspi_linear_0: psu_qspi_linear@c0000000 {
+                        reg = <0x0 0xc0000000 0x0 0x20000000>;
+                        phandle = <0x10a>;
+                };
+        };
+
+        amba_xppu: indirect-bus@1 {
+                compatible = "indirect-bus";
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                phandle = <0x10b>;
+
+                lpd_xppu: xppu@ff980000 {
+                        compatible = "xlnx,xppu";
+                        #firewall-cells = <0x0>;
+                        reg = <0x0 0xff980000 0x0 0x1000>;
+                        status = "okay";
+                        xlnx,ip-name = "psu_lpd_xppu";
+                        xlnx,name = "psu_lpd_xppu";
+                        phandle = <0x4c>;
+                };
+        };
+
+        binman: binman {
+                phandle = <0x10c>;
+        };
+
+        pss_ref_clk: pss-ref-clk {
+                bootph-all;
+                compatible = "fixed-clock";
+                #clock-cells = <0x0>;
+                clock-frequency = <0x1fca055>;
+                clock-output-names = "pss_ref_clk";
+                phandle = <0x89>;
+        };
+
+        video_clk: video-clk {
+                bootph-all;
+                compatible = "fixed-clock";
+                #clock-cells = <0x0>;
+                clock-frequency = <0x19bfcc0>;
+                clock-output-names = "video_clk";
+                phandle = <0x8a>;
+        };
+
+        pss_alt_ref_clk: pss-alt-ref-clk {
+                bootph-all;
+                compatible = "fixed-clock";
+                #clock-cells = <0x0>;
+                clock-frequency = <0x0>;
+                clock-output-names = "pss_alt_ref_clk";
+                phandle = <0x8b>;
+        };
+
+        gt_crx_ref_clk: gt-crx-ref-clk {
+                bootph-all;
+                compatible = "fixed-clock";
+                #clock-cells = <0x0>;
+                clock-frequency = <0x66ff300>;
+                clock-output-names = "gt_crx_ref_clk";
+                phandle = <0x8d>;
+        };
+
+        aux_ref_clk: aux-ref-clk {
+                bootph-all;
+                compatible = "fixed-clock";
+                #clock-cells = <0x0>;
+                clock-frequency = <0x19bfcc0>;
+                clock-output-names = "aux_ref_clk";
+                phandle = <0x8c>;
+        };
+
+        amba_pl: amba_pl {
+                ranges;
+                compatible = "simple-bus";
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                firmware-name = "ps_wrapper.bit.bin";
+                phandle = <0x10d>;
+
+                gpio_led: gpio@80000000 {
+                        xlnx,gpio-board-interface = "led_8bits";
+                        compatible = "xlnx,axi-gpio-2.0", "xlnx,xps-gpio-1.00.a";
+                        xlnx,all-outputs = <0x1>;
+                        #gpio-cells = <0x2>;
+                        xlnx,gpio-width = <0x8>;
+                        xlnx,dout-default = <0x0>;
+                        xlnx,is-dual = <0x0>;
+                        xlnx,ip-name = "axi_gpio";
+                        xlnx,tri-default-2 = <0xffffffff>;
+                        reg = <0x0 0x80000000 0x0 0x10000>;
+                        xlnx,all-inputs-2 = <0x0>;
+                        clocks = <&zynqmp_clk 0x47>;
+                        xlnx,all-outputs-2 = <0x0>;
+                        gpio-controller;
+                        xlnx,interrupt-present = <0x0>;
+                        xlnx,gpio2-board-interface = "Custom";
+                        xlnx,edk-iptype = "PERIPHERAL";
+                        xlnx,dout-default-2 = <0x0>;
+                        status = "okay";
+                        xlnx,gpio2-width = <0x20>;
+                        clock-names = "s_axi_aclk";
+                        xlnx,use-board-flow;
+                        xlnx,tri-default = <0xffffffff>;
+                        xlnx,name = "gpio_led";
+                        xlnx,all-inputs = <0x0>;
+                        phandle = <0xb>;
+                };
+
+                r5_timer: timer@80010000 {
+                        interrupts = <0x0 0x59 0x4>;
+                        compatible = "xlnx,axi-timer-2.0", "xlnx,xps-timer-1.00.a";
+                        xlnx,gen1-assert = <0x1>;
+                        clock-frequency = <0x5f5dd19>;
+                        xlnx,trig0-assert = <0x1>;
+                        interrupt-parent = <&imux>;
+                        xlnx,count-width = <0x20>;
+                        xlnx,ip-name = "axi_timer";
+                        xlnx,one-timer-only = <0x1>;
+                        reg = <0x0 0x80010000 0x0 0x10000>;
+                        clocks = <&zynqmp_clk 0x47>;
+                        xlnx,gen0-assert = <0x1>;
+                        xlnx,mode-64bit = <0x0>;
+                        xlnx,edk-iptype = "PERIPHERAL";
+                        status = "okay";
+                        xlnx,trig1-assert = <0x1>;
+                        clock-names = "s_axi_aclk";
+                        xlnx,enable-timer2 = <0x0>;
+                        interrupt-names = "interrupt";
+                        xlnx,name = "r5_timer";
+                        phandle = <0xc>;
+                };
+        };
+
+        psu_ocm_ram_0_memory: memory@FFFC0000 {
+                compatible = "xlnx,psu-ocm-ram-0-1.0", "mmio-sram";
+                xlnx,ip-name = "psu_ocm_ram_0";
+                device_type = "memory";
+                memory_type = "memory";
+                reg = <0x0 0xfffc0000 0x0 0x40000>;
+                phandle = <0x7>;
+        };
+
+        psu_ddr_0_memory: memory@0 {
+                compatible = "xlnx,psu-ddr-1.0";
+                xlnx,ip-name = "psu_ddr";
+                device_type = "memory";
+                memory_type = "memory";
+                reg = <0x0 0x0 0x0 0x7ff00000 0x0 0x7ff00000 0x0 0x100000>;
+                phandle = <0x9>;
+        };
+
+        psu_qspi_linear_0_memory: memory@c0000000 {
+                compatible = "xlnx,psu-qspi-linear-1.0-memory";
+                xlnx,ip-name = "psu_qspi_linear";
+                device_type = "memory";
+                memory_type = "linear_flash";
+                reg = <0x0 0xc0000000 0x0 0x20000000>;
+                phandle = <0x54>;
+        };
+
+        chosen {
+                bootargs = "earlycon console=ttyPS0,115200 clk_ignore_unused init_fatal_sh=1";
+                stdout-path = "serial0:115200n8";
+        };
+
+        aliases {
+                serial0 = "/axi/serial@ff000000";
+                spi0 = "/axi/spi@ff0f0000";
+                serial1 = "/axi/coresight@fe800000";
+                i2c0 = "/axi/i2c@ff030000";
+                i2c1 = "/axi/i2c@ff020000";
+                ethernet0 = "/axi/ethernet@ff0e0000";
+        };
+
+        __symbols__ {
+                cpus_microblaze_0 = "/cpus_microblaze@0";
+                psu_pmu_0 = "/cpus_microblaze@0/cpu@0";
+                cpu_opp_table = "/opp-table-cpu";
+                zynqmp_ipi = "/zynqmp-ipi";
+                ipi_mailbox_pmu1 = "/zynqmp-ipi/mailbox@ff9905c0";
+                zynqmp_firmware = "/firmware/zynqmp-firmware";
+                zynqmp_power = "/firmware/zynqmp-firmware/power-management";
+                soc_revision = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/soc-revision@0";
+                efuse_dna = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-dna@c";
+                efuse_usr0 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr0@20";
+                efuse_usr1 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr1@24";
+                efuse_usr2 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr2@28";
+                efuse_usr3 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr3@2c";
+                efuse_usr4 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr4@30";
+                efuse_usr5 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr5@34";
+                efuse_usr6 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr6@38";
+                efuse_usr7 = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-usr7@3c";
+                efuse_miscusr = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-miscusr@40";
+                efuse_chash = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-chash@50";
+                efuse_pufmisc = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-pufmisc@54";
+                efuse_sec = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-sec@58";
+                efuse_spkid = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-spkid@5c";
+                efuse_aeskey = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-aeskey@60";
+                efuse_ppk0hash = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-ppk0hash@a0";
+                efuse_ppk1hash = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-ppk1hash@d0";
+                efuse_pufuser = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/efuse-pufuser@100";
+                zynqmp_pcap = "/firmware/zynqmp-firmware/pcap";
+                zynqmp_reset = "/firmware/zynqmp-firmware/reset-controller";
+                modepin_gpio = "/firmware/zynqmp-firmware/gpio";
+                zynqmp_clk = "/firmware/zynqmp-firmware/clock-controller";
+                fpga_full = "/fpga-region";
+                tsens_apu = "/thermal-sensor-apu";
+                tsens_rpu = "/thermal-sensor-rpu";
+                tsens_pl = "/thermal-sensor-pl";
+                apu_passive = "/thermal-zones/apu-thermal/trips/passive";
+                apu_critical = "/thermal-zones/apu-thermal/trips/critical";
+                amba_apu = "/apu-bus";
+                amba_rpu = "/rpu-bus";
+                amba = "/axi";
+                imux = "/axi/interrupt-multiplex";
+                psu_cortexa53_0_debug = "/axi/debug@fec10000";
+                psu_cortexa53_1_debug = "/axi/debug@fed10000";
+                psu_cortexa53_2_debug = "/axi/debug@fee10000";
+                psu_cortexa53_3_debug = "/axi/debug@fef10000";
+                fpd_dma_chan1 = "/axi/dma-controller@fd500000";
+                fpd_dma_chan2 = "/axi/dma-controller@fd510000";
+                fpd_dma_chan3 = "/axi/dma-controller@fd520000";
+                fpd_dma_chan4 = "/axi/dma-controller@fd530000";
+                fpd_dma_chan5 = "/axi/dma-controller@fd540000";
+                fpd_dma_chan6 = "/axi/dma-controller@fd550000";
+                fpd_dma_chan7 = "/axi/dma-controller@fd560000";
+                fpd_dma_chan8 = "/axi/dma-controller@fd570000";
+                lpd_dma_chan1 = "/axi/dma-controller@ffa80000";
+                lpd_dma_chan2 = "/axi/dma-controller@ffa90000";
+                lpd_dma_chan3 = "/axi/dma-controller@ffaa0000";
+                lpd_dma_chan4 = "/axi/dma-controller@ffab0000";
+                lpd_dma_chan5 = "/axi/dma-controller@ffac0000";
+                lpd_dma_chan6 = "/axi/dma-controller@ffad0000";
+                lpd_dma_chan7 = "/axi/dma-controller@ffae0000";
+                lpd_dma_chan8 = "/axi/dma-controller@ffaf0000";
+                mc = "/axi/memory-controller@fd070000";
+                gem3 = "/axi/ethernet@ff0e0000";
+                gpio = "/axi/gpio@ff0a0000";
+                i2c0 = "/axi/i2c@ff020000";
+                i2c1 = "/axi/i2c@ff030000";
+                ocm = "/axi/memory-controller@ff960000";
+                perf_monitor_ocm = "/axi/perf-monitor@ffa00000";
+                perf_monitor_ddr = "/axi/perf-monitor@fd0b0000";
+                perf_monitor_cci = "/axi/perf-monitor@fd490000";
+                perf_monitor_lpd = "/axi/perf-monitor@ffa10000";
+                qspi = "/axi/spi@ff0f0000";
+                psgtr = "/axi/phy@fd400000";
+                rtc = "/axi/rtc@ffa60000";
+                sata = "/axi/ahci@fd0c0000";
+                sdhci1 = "/axi/mmc@ff170000";
+                smmu = "/axi/iommu@fd800000";
+                uart0 = "/axi/serial@ff000000";
+                usb0 = "/axi/usb@ff9d0000";
+                dwc3_0 = "/axi/usb@ff9d0000/usb@fe200000";
+                watchdog0 = "/axi/watchdog@fd4d0000";
+                lpd_watchdog = "/axi/watchdog@ff150000";
+                xilinx_ams = "/axi/ams@ffa50000";
+                csuwdt_0 = "/axi/watchdog@ffcb0000";
+                csudma_0 = "/axi/dma@ffc80000";
+                ipi3 = "/axi/ipi@ff330000";
+                psu_ipi_3_0 = "/axi/ipi@ff330000/child@0";
+                psu_ipi_3_1 = "/axi/ipi@ff330000/child@1";
+                psu_ipi_3_2 = "/axi/ipi@ff330000/child@2";
+                psu_ipi_3_3 = "/axi/ipi@ff330000/child@3";
+                psu_ipi_3_4 = "/axi/ipi@ff330000/child@4";
+                psu_ipi_3_5 = "/axi/ipi@ff330000/child@5";
+                psu_ipi_3_6 = "/axi/ipi@ff330000/child@6";
+                ipi4 = "/axi/ipi@ff331000";
+                psu_ipi_4_0 = "/axi/ipi@ff331000/child@0";
+                psu_ipi_4_1 = "/axi/ipi@ff331000/child@1";
+                psu_ipi_4_2 = "/axi/ipi@ff331000/child@2";
+                psu_ipi_4_3 = "/axi/ipi@ff331000/child@3";
+                psu_ipi_4_4 = "/axi/ipi@ff331000/child@4";
+                psu_ipi_4_5 = "/axi/ipi@ff331000/child@5";
+                psu_ipi_4_6 = "/axi/ipi@ff331000/child@6";
+                ipi5 = "/axi/ipi@ff332000";
+                psu_ipi_5_0 = "/axi/ipi@ff332000/child@0";
+                psu_ipi_5_1 = "/axi/ipi@ff332000/child@1";
+                psu_ipi_5_2 = "/axi/ipi@ff332000/child@2";
+                psu_ipi_5_3 = "/axi/ipi@ff332000/child@3";
+                psu_ipi_5_4 = "/axi/ipi@ff332000/child@4";
+                psu_ipi_5_5 = "/axi/ipi@ff332000/child@5";
+                psu_ipi_5_6 = "/axi/ipi@ff332000/child@6";
+                ipi6 = "/axi/ipi@ff333000";
+                psu_ipi_6_0 = "/axi/ipi@ff333000/child@0";
+                psu_ipi_6_1 = "/axi/ipi@ff333000/child@1";
+                psu_ipi_6_2 = "/axi/ipi@ff333000/child@2";
+                psu_ipi_6_3 = "/axi/ipi@ff333000/child@3";
+                psu_ipi_6_4 = "/axi/ipi@ff333000/child@4";
+                psu_ipi_6_5 = "/axi/ipi@ff333000/child@5";
+                psu_ipi_6_6 = "/axi/ipi@ff333000/child@6";
+                psu_r5_tcm_ram_global = "/axi/psu_r5_tcm_ram@ffe00000";
+                psu_r5_tcm_ram_0 = "/axi/psu_r5_tcm_ram@0";
+                psu_r5_1_btcm = "/axi/psu_r5_1_btcm@20000";
+                psu_r5_1_btcm_global = "/axi/psu_r5_1_btcm_global@ffeb0000";
+                psu_r5_1_atcm = "/axi/psu_r5_1_atcm@0";
+                psu_r5_1_atcm_global = "/axi/psu_r5_1_atcm_global@ffe90000";
+                psu_r5_0_btcm_lockstep = "/axi/psu_r5_0_btcm_lockstep@ffe30000";
+                psu_r5_0_btcm = "/axi/psu_r5_0_btcm@20000";
+                psu_r5_0_btcm_global = "/axi/psu_r5_0_btcm_global@ffe20000";
+                psu_r5_0_atcm_lockstep = "/axi/psu_r5_0_atcm_lockstep@ffe10000";
+                psu_r5_0_atcm = "/axi/psu_r5_0_atcm@0";
+                psu_r5_0_atcm_global = "/axi/psu_r5_0_atcm_global@ffe00000";
+                psu_bbram_0 = "/axi/psu_bbram_0@ffcd0000";
+                psu_pmu_ram = "/axi/psu_pmu_ram@ffdc0000";
+                psu_pmu_iomodule = "/axi/psu_pmu_iomodule@ffd40000";
+                psu_pmu_global_0 = "/axi/psu_pmu_global_0@ffd80000";
+                psu_mbistjtag = "/axi/psu_mbistjtag@ffcf0000";
+                psu_rsa = "/axi/psu_rsa@ffce0000";
+                psu_efuse = "/axi/psu_efuse@ffcc0000";
+                psu_csu_0 = "/axi/psu_csu@ffca0000";
+                psu_fpd_gpv = "/axi/psu_fpd_gpv@fd700000";
+                psu_cci_gpv = "/axi/psu_cci_gpv@fd6e0000";
+                psu_fpd_slcr_secure = "/axi/psu_fpd_slcr_secure@fd690000";
+                psu_fpd_slcr = "/axi/psu_fpd_slcr@fd610000";
+                psu_smmu_reg = "/axi/psu_smmu_reg@fd5f0000";
+                psu_cci_reg = "/axi/psu_cci_reg@fd5e0000";
+                psu_fpd_xmpu_cfg = "/axi/psu_fpd_xmpu_cfg@fd5d0000";
+                psu_apu = "/axi/psu_apu@fd5c0000";
+                psu_fpd_xmpu_sink = "/axi/psu_fpd_xmpu_sink@fd4f0000";
+                psu_siou = "/axi/psu_siou@fd3d0000";
+                psu_afi_5 = "/axi/psu_afi@fd3b0000";
+                psu_afi_4 = "/axi/psu_afi@fd3a0000";
+                psu_afi_3 = "/axi/psu_afi@fd390000";
+                psu_afi_2 = "/axi/psu_afi@fd380000";
+                psu_afi_1 = "/axi/psu_afi@fd370000";
+                psu_afi_0 = "/axi/psu_afi@fd360000";
+                psu_crf_apb = "/axi/psu_crf_apb@fd1a0000";
+                psu_ddr_qos_ctrl = "/axi/psu_ddr_qos_ctrl@fd090000";
+                psu_ddr_phy = "/axi/psu_ddr_phy@fd080000";
+                psu_ddr_xmpu5_cfg = "/axi/psu_ddr_xmpu5_cfg@fd050000";
+                psu_ddr_xmpu4_cfg = "/axi/psu_ddr_xmpu4_cfg@fd040000";
+                psu_ddr_xmpu3_cfg = "/axi/psu_ddr_xmpu3_cfg@fd030000";
+                psu_ddr_xmpu2_cfg = "/axi/psu_ddr_xmpu2_cfg@fd020000";
+                psu_ddr_xmpu1_cfg = "/axi/psu_ddr_xmpu1_cfg@fd010000";
+                psu_ddr_xmpu0_cfg = "/axi/psu_ddr_xmpu0_cfg@fd000000";
+                psu_ocm_xmpu_cfg = "/axi/psu_ocm_xmpu_cfg@ffa70000";
+                psu_lpd_xppu_sink = "/axi/psu_lpd_xppu_sink@ff9c0000";
+                psu_afi_6 = "/axi/psu_afi@ff9b0000";
+                psu_rpu = "/axi/psu_rpu@ff9a0000";
+                psu_crl_apb = "/axi/psu_crl_apb@ff5e0000";
+                psu_lpd_slcr_secure = "/axi/psu_lpd_slcr_secure@ff4b0000";
+                psu_lpd_slcr = "/axi/psu_lpd_slcr@ff410000";
+                psu_ctrl_ipi = "/axi/PERIPHERAL@ff380000";
+                psu_message_buffers = "/axi/PERIPHERAL@ff990000";
+                psu_iou_scntrs = "/axi/psu_iou_scntrs@ff260000";
+                psu_iou_scntr = "/axi/psu_iou_scntr@ff250000";
+                psu_iousecure_slcr = "/axi/psu_iousecure_slcr@ff240000";
+                psu_iouslcr_0 = "/axi/psu_iouslcr@ff180000";
+                psu_qspi_linear_0 = "/axi/psu_qspi_linear@c0000000";
+                amba_xppu = "/indirect-bus@1";
+                lpd_xppu = "/indirect-bus@1/xppu@ff980000";
+                binman = "/binman";
+                pss_ref_clk = "/pss-ref-clk";
+                video_clk = "/video-clk";
+                pss_alt_ref_clk = "/pss-alt-ref-clk";
+                gt_crx_ref_clk = "/gt-crx-ref-clk";
+                aux_ref_clk = "/aux-ref-clk";
+                amba_pl = "/amba_pl";
+                gpio_led = "/amba_pl/gpio@80000000";
+                r5_timer = "/amba_pl/timer@80010000";
+                psu_ocm_ram_0_memory = "/memory@FFFC0000";
+                psu_ddr_0_memory = "/memory@0";
+                psu_qspi_linear_0_memory = "/memory@c0000000";
+        };
+};

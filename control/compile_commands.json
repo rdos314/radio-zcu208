@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/radio-zcu208/control/build",
+  "command": "C:\\Xilinx\\2025.1\\Vitis\\gnu\\armr5\\nt\\gcc-arm-none-eabi\\bin\\armr5-none-eabi-gcc.exe -isystem C:/radio-zcu208/platform/export/platform/sw/standalone_psu_cortexr5_0/include -isystem C:/Xilinx/2025.1/gnu/armr5/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include -isystem C:/Xilinx/2025.1/gnu/armr5/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.3.0/include-fixed -isystem C:/Xilinx/2025.1/Vitis/gnu/armr5/nt/gcc-arm-none-eabi/armrm-xilinx-eabi/usr/include   -DSDT -mcpu=cortex-r5 -mfloat-abi=hard -mfpu=vfpv3-d16 -DARMR5  -MMD -MP -specs=C:/radio-zcu208/platform/export/platform/sw/standalone_psu_cortexr5_0/Xilinx.spec -IC:/radio-zcu208/platform/export/platform/sw/standalone_psu_cortexr5_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles\\control.elf.dir\\C_\\radio-zcu208\\control\\control.c.obj -c C:\\radio-zcu208\\control\\control.c",
+  "file": "C:\\radio-zcu208\\control\\control.c"
+}
+]

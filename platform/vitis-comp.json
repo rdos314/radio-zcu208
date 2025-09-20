@@ -1,0 +1,95 @@
+{
+  "name": "platform",
+  "type": "PLATFORM",
+  "configuration": {
+    "description": "",
+    "xsa": "C:\\radio-zcu208\\ps_wrapper.xsa",
+    "xsaPathInPlatform": "platform\\hw\\ps_wrapper.xsa",
+    "emulationXsa": "",
+    "emulationXsaPathInPlatform": "",
+    "isCustomFSBL": false,
+    "fsblPath": "",
+    "pmufwElf": "",
+    "flow": "EMBEDDED",
+    "processorsMap": {
+      "psu_cortexa53_0": "psu_cortexa53",
+      "psu_cortexa53_1": "psu_cortexa53",
+      "psu_cortexa53_2": "psu_cortexa53",
+      "psu_cortexa53_3": "psu_cortexa53",
+      "psu_cortexr5_0": "psu_cortexr5",
+      "psu_cortexr5_1": "psu_cortexr5",
+      "psu_pmu_0": "psu_pmu"
+    },
+    "supportedOS": [
+      "standalone",
+      "freertos",
+      "linux"
+    ],
+    "supportedFamily": "zynquplus",
+    "stdGenHookList": [
+      {
+        "key": "VITIS_SDT_REPO",
+        "value": ""
+      },
+      {
+        "key": "VITIS_SDT_BOARD_DTS",
+        "value": ""
+      },
+      {
+        "key": "VITIS_SDT_INCLUDE_DTS",
+        "value": ""
+      },
+      {
+        "key": "-dt_overlay",
+        "value": "0"
+      }
+    ],
+    "componentType": "PLATFORM",
+    "domains": [
+      {
+        "name": "zynqmp_fsbl",
+        "displayName": "zynqmp_fsbl",
+        "processor": "psu_cortexa53_0",
+        "cpuType": "cortex-a53",
+        "cpuInstance": "psu_cortexa53_0",
+        "os": "standalone",
+        "appTemplate": "zynqmp_fsbl",
+        "isBootDomain": true,
+        "qemuData": "resources\\zynqmp_fsbl\\qemu",
+        "qemuArgsFile": "resources\\zynqmp_fsbl\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\zynqmp_fsbl\\qemu\\pmu_args.txt",
+        "isBSPGenReq": false
+      },
+      {
+        "name": "zynqmp_pmufw",
+        "displayName": "zynqmp_pmufw",
+        "processor": "psu_pmu_0",
+        "cpuType": "psu_pmu",
+        "cpuInstance": "psu_pmu_0",
+        "os": "standalone",
+        "appTemplate": "zynqmp_pmufw",
+        "isBootDomain": true,
+        "qemuData": "resources\\zynqmp_pmufw\\qemu",
+        "qemuArgsFile": "resources\\zynqmp_pmufw\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\zynqmp_pmufw\\qemu\\pmu_args.txt",
+        "isBSPGenReq": false
+      },
+      {
+        "name": "standalone_psu_cortexr5_0",
+        "displayName": "standalone_psu_cortexr5_0",
+        "processor": "psu_cortexr5_0",
+        "cpuType": "cortex-r5",
+        "cpuInstance": "psu_cortexr5_0",
+        "os": "standalone",
+        "appTemplate": "empty_application",
+        "isBootDomain": false,
+        "qemuData": "resources\\standalone_psu_cortexr5_0\\qemu",
+        "qemuArgsFile": "resources\\standalone_psu_cortexr5_0\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\standalone_psu_cortexr5_0\\qemu\\pmu_args.txt",
+        "isBSPGenReq": false
+      }
+    ],
+    "emptyToolchainConfiguration": []
+  },
+  "useSysrootToolchain": false
+}

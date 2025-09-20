@@ -1,0 +1,4 @@
+domain_path: C:\radio-zcu208\platform\export\platform\sw\standalone_psu_cortexr5_0
+app_src_dir: C:\Xilinx\2025.1\Vitis\data\embeddedsw\lib\sw_apps\empty_application
+template: empty_application
+lang: c
