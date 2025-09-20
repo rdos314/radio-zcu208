@@ -1,0 +1,7 @@
+# Ignore temporary directories
+/adc.cache
+/adc.sim
+/adc.runs
+
+
+
