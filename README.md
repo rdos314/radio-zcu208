@@ -16,13 +16,12 @@ Download the "PetaLinux installer" and the "ZCU208 BSP" to /home/ubuntu<br><br>
 
 Install PetaLinux like this:<br>
 chmod 755 ./petalinux-v2025.1-final-installer.run<br>
-./petalinux-v2025.1-final-installer.run --dir /home/user/petalinux --platform "arm aarch64"<br>
+./petalinux-v2025.1-final-installer.run --dir /home/ubuntu/petalinux --platform "arm aarch64"<br>
 
 Source PetaLinux before running commands:<br>
 source /home/ubuntu/petalinux/settings.sh<br><br>
 
 Create the project:<br>
-cd ..<br>
 mkdir radio-zcu208<br>
 cd radio-zcu208<br><br>
 
