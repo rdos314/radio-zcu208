@@ -87,6 +87,20 @@
         "qemuArgsFile": "resources\\standalone_psu_cortexr5_0\\qemu\\qemu_args.txt",
         "pmcQemuArgsFile": "resources\\standalone_psu_cortexr5_0\\qemu\\pmu_args.txt",
         "isBSPGenReq": false
+      },
+      {
+        "name": "linux_psu_cortexa53",
+        "displayName": "linux_psu_cortexa53",
+        "processor": "psu_cortexa53",
+        "cpuType": "cortex-a53",
+        "cpuInstance": "psu_cortexa53",
+        "os": "linux",
+        "qemuData": "",
+        "qemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\pmu_args.txt",
+        "bifFile": "",
+        "bootDirectory": "",
+        "sdCardDirectory": ""
       }
     ],
     "emptyToolchainConfiguration": []
