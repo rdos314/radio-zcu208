@@ -1,0 +1,2 @@
+/usr/sbin/halt
+/usr/bin/systemctl 300
