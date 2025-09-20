@@ -43,9 +43,10 @@ Set Filesystem Packages -→ console -→ network -→ OpenSSH -→ openssh-sftp
 
 Exit menuconfig and save configuration settings.<br><br>
 
-Build PetaLinux:<br>
-
 petalinux-build<br>
+petalinux-package boot --uboot --force<br>
+petalinux-build --sdk<br>
+petalinux-package sysroot<br><br>
 
 <h3>Embedded Vitis</h3>
 
