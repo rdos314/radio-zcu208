@@ -32,6 +32,8 @@ cd radio-zcu208<br><br>
 petalinux-create -t project -s ../petalinux/zcu208-v2025.1.bsp -n linux<br>
 cd linux<br><br>
 
+petalinux-config --get-hw-description ../platform/export/platform/hw/sdt<br><br>
+
 Setup for SD boot without user/password:<br>
 
 petalinux-config<br><br>
