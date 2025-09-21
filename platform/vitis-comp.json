@@ -73,6 +73,34 @@
         "bifFile": "",
         "bootDirectory": "",
         "sdCardDirectory": ""
+      },
+      {
+        "name": "standalone_psu_cortexa53",
+        "displayName": "standalone_psu_cortexa53",
+        "processor": "psu_cortexa53_0",
+        "cpuType": "cortex-a53",
+        "cpuInstance": "psu_cortexa53_0",
+        "os": "standalone",
+        "appTemplate": "zynqmp_fsbl",
+        "isBootDomain": false,
+        "qemuData": "resources\\standalone_psu_cortexa53\\qemu",
+        "qemuArgsFile": "resources\\standalone_psu_cortexa53\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\standalone_psu_cortexa53\\qemu\\pmu_args.txt",
+        "isBSPGenReq": false
+      },
+      {
+        "name": "psu_pmu",
+        "displayName": "psu_pmu",
+        "processor": "psu_pmu_0",
+        "cpuType": "psu_pmu",
+        "cpuInstance": "psu_pmu_0",
+        "os": "standalone",
+        "appTemplate": "zynqmp_pmufw",
+        "isBootDomain": false,
+        "qemuData": "resources\\psu_pmu\\qemu",
+        "qemuArgsFile": "resources\\psu_pmu\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\psu_pmu\\qemu\\pmu_args.txt",
+        "isBSPGenReq": false
       }
     ],
     "emptyToolchainConfiguration": []

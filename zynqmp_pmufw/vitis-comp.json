@@ -1,0 +1,17 @@
+{
+  "name": "zynqmp_pmufw",
+  "type": "HOST",
+  "platform": "platform",
+  "domain": "psu_pmu",
+  "cpuInstance": "psu_pmu_0",
+  "cpuType": "psu_pmu",
+  "os": "standalone",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "psu_pmu",
+  "useSysrootToolchain": false,
+  "applicationFlow": "EMBEDDED",
+  "template": "zynqmp_pmufw"
+}
