@@ -51,13 +51,15 @@ petalinux-package boot --uboot --force<br>
 petalinux-build --sdk<br>
 petalinux-package sysroot<br><br>
 
-Copy linux/images/linux/b31.bin to radio-zcu208<br>
-Copy linux/images/linux/system.dtb to radio-zcu208<br>
-Copy linux/images/linux/u-boot.elf to radio-zcu208<br><br>
+Copy linux/images/linux/b31.bin to project roo<br>
+Copy linux/images/linux/system.dtb to project root<br>
+Copy linux/images/linux/u-boot.elf to project root<br><br>
+Copy linux/images/linux/sdk/sysroots/cortexa72-cotexa53-amd-linux/usr/include to project platform/usr/include<br><br>
+Copy linux/images/linux/sdk/sysroots/cortexa72-cotexa53-amd-linux/usr/lib to project platform/usr/lib<br><br>
 
 cp linux/images/linux/image.ub /media/ubuntu/boot<br>
 cp linux/images/linux/boot.scr /media/ubuntu/boot<br>
-sudo dd if=images/rootfs.ext4 of=/dev/sdb2<br><br>
+sudo dd if=linux/images/linux/rootfs.ext4 of=/dev/sdb2<br><br>
 
 <h3>Embedded Vitis</h3>
 
