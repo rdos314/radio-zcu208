@@ -53,8 +53,8 @@ petalinux-package sysroot<br><br>
 
 Copy linux/images/linux/b31.bin to project roo<br>
 Copy linux/images/linux/system.dtb to project root<br>
-Copy linux/images/linux/u-boot.elf to project root<br><br>
-Copy linux/images/linux/sdk/sysroots/cortexa72-cotexa53-amd-linux/usr/include to project platform/usr/include<br><br>
+Copy linux/images/linux/u-boot.elf to project root<br><
+Copy linux/images/linux/sdk/sysroots/cortexa72-cotexa53-amd-linux/usr/include to project platform/usr/include<br>
 Copy linux/images/linux/sdk/sysroots/cortexa72-cotexa53-amd-linux/usr/lib to project platform/usr/lib<br><br>
 
 cp linux/images/linux/image.ub /media/ubuntu/boot<br>
