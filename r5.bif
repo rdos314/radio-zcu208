@@ -1,0 +1,8 @@
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader, destination_cpu = a53-0]C:\radio-zcu208\zynqmp_fsbl\build\zynqmp_fsbl.elf
+	[pmufw_image]C:\radio-zcu208\zynqmp_pmufw\build\zynqmp_pmufw.elf
+	[destination_device = pl]C:\radio-zcu208\vivado\adc.runs\impl_1\ps_wrapper.bit
+	[destination_cpu = r5-0]C:\radio-zcu208\dummy\build\dummy.elf
+}
