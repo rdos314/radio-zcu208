@@ -29,7 +29,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe0[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AR_CNT"/>
@@ -51,7 +51,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe34[1:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -73,7 +73,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe1[39:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARADDR"/>
@@ -133,7 +133,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe2[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARBURST"/>
@@ -159,7 +159,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe3[3:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARCACHE"/>
@@ -183,7 +183,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe4[15:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARID"/>
@@ -219,7 +219,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe5[7:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARLEN"/>
@@ -247,7 +247,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe6[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARLOCK"/>
@@ -268,7 +268,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe7[2:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARPROT"/>
@@ -299,7 +299,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe8[3:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARQOS"/>
@@ -323,7 +323,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe34[1]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARREADY"/>
@@ -344,7 +344,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe9[2:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARSIZE"/>
@@ -375,7 +375,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe10[15:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARUSER"/>
@@ -411,7 +411,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe34[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : ARVALID"/>
@@ -432,7 +432,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe11[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AW_CNT"/>
@@ -454,7 +454,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe31[1:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -476,7 +476,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe12[39:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWADDR"/>
@@ -536,7 +536,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe13[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWBURST"/>
@@ -562,7 +562,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe14[3:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWCACHE"/>
@@ -586,7 +586,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe15[15:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWID"/>
@@ -622,7 +622,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe16[7:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWLEN"/>
@@ -650,7 +650,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe17[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWLOCK"/>
@@ -671,7 +671,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe18[2:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWPROT"/>
@@ -702,7 +702,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe19[3:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWQOS"/>
@@ -726,7 +726,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe31[1]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWREADY"/>
@@ -747,7 +747,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe20[2:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWSIZE"/>
@@ -778,7 +778,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe21[15:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWUSER"/>
@@ -814,7 +814,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe31[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : AWVALID"/>
@@ -835,7 +835,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe22[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : B_CNT"/>
@@ -857,7 +857,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe33[1:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -879,7 +879,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe23[15:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : BID"/>
@@ -915,7 +915,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe33[1]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : BREADY"/>
@@ -936,7 +936,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe24[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : BRESP"/>
@@ -962,7 +962,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe33[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : BVALID"/>
@@ -983,7 +983,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe25[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : R_CNT"/>
@@ -1005,7 +1005,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe35[2:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -1028,7 +1028,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe26[31:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : RDATA"/>
@@ -1080,7 +1080,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe27[15:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : RID"/>
@@ -1116,7 +1116,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe35[2]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : RLAST"/>
@@ -1137,7 +1137,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe35[1]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : RREADY"/>
@@ -1158,7 +1158,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe28[1:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : RRESP"/>
@@ -1184,7 +1184,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe35[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : RVALID"/>
@@ -1205,7 +1205,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe32[2:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -1228,7 +1228,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe29[31:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : WDATA"/>
@@ -1280,7 +1280,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe32[2]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : WLAST"/>
@@ -1301,7 +1301,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe32[1]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : WREADY"/>
@@ -1322,7 +1322,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe30[3:0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : WSTRB"/>
@@ -1346,7 +1346,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="ps_i/system_ila_0/inst/ila_lib"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe32[0]"/>
         <Option Id="NAME.CUSTOM" value="slot_0 : zynq_ultra_ps_e_0_M_AXI_HPM0_LPD : WVALID"/>

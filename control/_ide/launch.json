@@ -29,7 +29,7 @@
 				},
 				"enableRPUSplitMode": true,
 				"resetAPU": false,
-				"resetRPU": false,
+				"resetRPU": true,
 				"bitstreamFile": "",
 				"zuInitialization": {
 					"isFsbl": false,

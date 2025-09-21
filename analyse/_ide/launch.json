@@ -11,7 +11,7 @@
 				"attachToPid": []
 			},
 			"target": {
-				"targetConnectionId": "Linux Agent",
+				"targetConnectionId": "LinuxDebug",
 				"peersIniPath": "../../_ide/.peers.ini",
 				"file": "C:/radio-zcu208/analyse/build/analyse.elf",
 				"remoteFilePath": "/tmp/analyse.elf"
