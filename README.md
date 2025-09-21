@@ -30,16 +30,19 @@ cd linux<br><br>
 
 petalinux-config --get-hw-description ../platform/export/platform/hw/sdt<br><br>
 
-Setup for SD boot<br>
+Subsystem Hardware Settings -→ Memory settings -→ Set Memory size to 0x70000000<br>
+Subsystem Hardware Settings -→ Ethernet settings -→ Disable obtain IP address automatically
+Subsystem Hardware Settings -→ Ethernet settings -→ Set Static IP address to 192.168.1.90
+Subsystem Hardware Settings -→ Ethernet settings -→ Set Static IP gateway to 192.168.1.1
+Image Packaging Configuration  -→  Set Root file system type to EXT4 (SD/eMMC/SATA/USB)<br>
 
-Select Image Packaging Configuration > Root file system type.<br>
-Select EXT4 (SD/eMMC/SATA/USB) as the root file system type.<br>
 Exit menuconfig and save configuration settings.<br><br>
 
 petalinux-config -c rootfs.<br>
 
-Set Filesystem Packages -→ misc -→ tcf-agent to enabled<br>
-Set Filesystem Packages -→ console -→ network -→ OpenSSH -→ openssh-sftp-server to enabled<br><br>
+Filesystem Packages -→ console -→ network -→ OpenSSH -→ set openssh-sftp-server to enabled<br><br>
+Filesystem Packages -→ misc -→ set tcf-agent to enabled<br>
+Filesystem Packages -→ misc -→ set apache2 to enabled<br>
 
 Exit menuconfig and save configuration settings.<br><br>
 
