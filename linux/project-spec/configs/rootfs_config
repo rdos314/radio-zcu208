@@ -2152,7 +2152,7 @@ CONFIG_libdfx=y
 #
 # apache2
 #
-# CONFIG_apache2 is not set
+CONFIG_apache2=y
 # CONFIG_apache2-dbg is not set
 # CONFIG_apache2-dev is not set
 
