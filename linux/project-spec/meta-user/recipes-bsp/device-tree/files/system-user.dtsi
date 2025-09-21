@@ -488,9 +488,7 @@
 	maximum-speed = "super-speed";
 };
 
-&pspl_0 {
-	status = "okay";
-	/* nc, nc, usb3, sata */
-	clocks = <&clkc 71>;
-	clock-names = "pl-0";
+&ams_pl {
+	clocks = <&zynqmp_clk 71>;
 };
+
