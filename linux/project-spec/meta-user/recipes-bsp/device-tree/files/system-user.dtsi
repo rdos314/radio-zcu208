@@ -487,3 +487,10 @@
 	snps,usb3_lpm_capable;
 	maximum-speed = "super-speed";
 };
+
+&pspl_0 {
+	status = "okay";
+	/* nc, nc, usb3, sata */
+	clocks = <&clkc 71>;
+	clock-names = "pl-0";
+};
