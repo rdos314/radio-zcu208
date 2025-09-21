@@ -40,7 +40,7 @@ Exit menuconfig and save configuration settings.<br><br>
 
 petalinux-config -c rootfs.<br>
 
-Filesystem Packages -→ console -→ network -→ OpenSSH -→ set openssh-sftp-server to enabled<br><br>
+Filesystem Packages -→ console -→ network -→ OpenSSH -→ set openssh-sftp-server to enabled<br>
 Filesystem Packages -→ misc -→ set tcf-agent to enabled<br>
 Filesystem Packages -→ misc -→ set apache2 to enabled<br><br>
 
@@ -51,13 +51,13 @@ petalinux-package boot --uboot --force<br>
 petalinux-build --sdk<br>
 petalinux-package sysroot<br><br>
 
-Copy linux/images/linux/b31.bin to radio-zcu208
-Copy linux/images/linux/system.dtb to radio-zcu208
-Copy linux/images/linux/u-boot.elf to radio-zcu208
+Copy linux/images/linux/b31.bin to radio-zcu208<br>
+Copy linux/images/linux/system.dtb to radio-zcu208<br>
+Copy linux/images/linux/u-boot.elf to radio-zcu208<br><br>
 
-cp linux/images/linux/image.ub /media/ubuntu/boot
-cp linux/images/linux/boot.scr /media/ubuntu/boot
-sudo dd if=images/rootfs.ext4 of=/dev/sdb2
+cp linux/images/linux/image.ub /media/ubuntu/boot<br>
+cp linux/images/linux/boot.scr /media/ubuntu/boot<br>
+sudo dd if=images/rootfs.ext4 of=/dev/sdb2<br><br>
 
 <h3>Embedded Vitis</h3>
 
