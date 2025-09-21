@@ -446,8 +446,8 @@
 &psgtr {
 	status = "okay";
 	/* nc, nc, usb3, sata */
-	clocks = <&si5341 0 2>, <&si5341 0 3>;
-	clock-names = "ref2", "ref3";
+	clocks = <&si5341 0 2>, <&si5341 0 3>, <&zynqmp_clk 71>;
+	clock-names = "ref2", "ref3", "pl-0";
 };
 
 
@@ -486,9 +486,5 @@
 	dr_mode = "host";
 	snps,usb3_lpm_capable;
 	maximum-speed = "super-speed";
-};
-
-&ams_pl {
-	clocks = <&zynqmp_clk 71>;
 };
 
