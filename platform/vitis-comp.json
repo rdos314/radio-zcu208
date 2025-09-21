@@ -7,7 +7,7 @@
     "xsaPathInPlatform": "platform\\hw\\ps_wrapper.xsa",
     "emulationXsa": "",
     "emulationXsaPathInPlatform": "",
-    "isCustomFSBL": false,
+    "isCustomFSBL": true,
     "fsblPath": "",
     "pmufwElf": "",
     "flow": "EMBEDDED",
@@ -46,34 +46,6 @@
     ],
     "componentType": "PLATFORM",
     "domains": [
-      {
-        "name": "zynqmp_fsbl",
-        "displayName": "zynqmp_fsbl",
-        "processor": "psu_cortexa53_0",
-        "cpuType": "cortex-a53",
-        "cpuInstance": "psu_cortexa53_0",
-        "os": "standalone",
-        "appTemplate": "zynqmp_fsbl",
-        "isBootDomain": true,
-        "qemuData": "resources\\zynqmp_fsbl\\qemu",
-        "qemuArgsFile": "resources\\zynqmp_fsbl\\qemu\\qemu_args.txt",
-        "pmcQemuArgsFile": "resources\\zynqmp_fsbl\\qemu\\pmu_args.txt",
-        "isBSPGenReq": false
-      },
-      {
-        "name": "zynqmp_pmufw",
-        "displayName": "zynqmp_pmufw",
-        "processor": "psu_pmu_0",
-        "cpuType": "psu_pmu",
-        "cpuInstance": "psu_pmu_0",
-        "os": "standalone",
-        "appTemplate": "zynqmp_pmufw",
-        "isBootDomain": true,
-        "qemuData": "resources\\zynqmp_pmufw\\qemu",
-        "qemuArgsFile": "resources\\zynqmp_pmufw\\qemu\\qemu_args.txt",
-        "pmcQemuArgsFile": "resources\\zynqmp_pmufw\\qemu\\pmu_args.txt",
-        "isBSPGenReq": false
-      },
       {
         "name": "standalone_psu_cortexr5_0",
         "displayName": "standalone_psu_cortexr5_0",
