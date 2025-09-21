@@ -10,3 +10,16 @@ status = platform.build()
 comp = client.get_component(name="control")
 comp.build()
 
+status = platform.build()
+
+comp = client.get_component(name="zynqmp_pmufw")
+comp.build()
+
+status = platform.build()
+
+comp.build()
+
+vitis.dispose()
+
+vitis.dispose()
+
