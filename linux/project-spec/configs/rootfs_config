@@ -38,7 +38,7 @@ CONFIG_subsystem-sdt-flow=y
 #
 # base-files 
 #
-# CONFIG_base-files is not set
+CONFIG_base-files=y
 # CONFIG_base-files-dbg is not set
 # CONFIG_base-files-dev is not set
 
