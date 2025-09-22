@@ -83,13 +83,13 @@ const u32 LMX2594[] =
 #define INTC            XScuGic
 #define INTC_HANDLER    XScuGic_InterruptHandler
 
-#define RESET_VALUE             0xFA0A1F01                      //Time Interval of 1 sec
+#define RESET_VALUE             0xFFF0BDC1                      //Time Interval of 10 msec
 
 static XGpioPs PsGpio;
 extern XGpioPs_Config XGpioPs_ConfigTable[XPAR_XGPIOPS_NUM_INSTANCES];
-#define GPIO_BASEADDR   XPAR_XGPIOPS_0_BASEADDR
+#define GPIO_BASEADDR   XPAR_GPIO_LED_BASEADDR
 
-#define OUTPUT_PIN              23      /* Pin connected to LED/Output */
+#define OUTPUT_PIN              0      /* Pin connected to LED/Output */
 
 /************************** Variable Definitions *****************************/
 
@@ -305,11 +305,9 @@ int main(void)
 {
     int Status;
     int val;
+    char cnt = 0;
+    char *led = (char *)GPIO_BASEADDR;
 
-    Status = PsGpioSetup(&PsGpio, GPIO_BASEADDR);
-
-    if (XST_SUCCESS != Status)
-        return XST_FAILURE;
 
 /*
      Status = TmrControllerSetup(&InterruptController,
@@ -331,10 +329,8 @@ int main(void)
 
     while (1)
     {
-        if (1== XGpioPs_ReadPin(&PsGpio,OUTPUT_PIN))
-            XGpioPs_WritePin(&PsGpio,OUTPUT_PIN,0);
-        else
-            XGpioPs_WritePin(&PsGpio,OUTPUT_PIN,1);
+        *led = cnt;
+        cnt++;
 
         XTmrCtr_Start(&TimerCounterInst, TIMER_CNTR_0);
 
