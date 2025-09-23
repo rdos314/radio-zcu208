@@ -4000,12 +4000,12 @@ CONFIG_Init-manager-systemd=y
 #
 # user packages 
 #
-CONFIG_librfclk=y
-CONFIG_librfdc=y
 # CONFIG_gpio-demo is not set
+CONFIG_mariadb=y
+CONFIG_modphp=y
 # CONFIG_peekpoke is not set
-CONFIG_rfdc-read-write=y
-CONFIG_rfdc-selftest=y
+CONFIG_php=y
+CONFIG_phpmyadmin=y
 
 #
 # PetaLinux RootFS Settings

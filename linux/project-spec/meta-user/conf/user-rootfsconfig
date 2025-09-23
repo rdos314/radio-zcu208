@@ -3,7 +3,7 @@
 
 CONFIG_gpio-demo
 CONFIG_peekpoke
-CONFIG_librfdc
-CONFIG_rfdc-read-write
-CONFIG_rfdc-selftest
-CONFIG_librfclk
+CONFIG_mariadb
+CONFIG_php
+CONFIG_phpmyadmin
+
