@@ -29,6 +29,7 @@
 
 #include "clk104.h"
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -123,7 +124,7 @@ static int getConfigAll()
 	return true;
 }
 
-int ConfigAdc()
+bool ConfigAdc()
 {
 	u32 d;
 

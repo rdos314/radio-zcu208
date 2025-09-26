@@ -1,6 +1,7 @@
 #include "xparameters.h"
 #include "xtmrctr.h"
 #include "xil_exception.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include "math.h"
 #include "xplatform_info.h"
@@ -10,6 +11,8 @@
 #include "xil_io.h"
 #include "xgpio.h"
 #include "xscugic.h"
+
+bool ConfigAdc();
 
 /* File name reference: 250M_PL_125M_SYSREF_10M.txt */
 /* DAC refclk, ADC refclk, and LMX input: 250MHz
@@ -308,6 +311,7 @@ int main(void)
     char cnt = 0;
     char *led = (char *)GPIO_BASEADDR;
 
+    ConfigAdc();
 
 /*
      Status = TmrControllerSetup(&InterruptController,
