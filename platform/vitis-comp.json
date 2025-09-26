@@ -72,7 +72,8 @@
         "pmcQemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\pmu_args.txt",
         "bifFile": "",
         "bootDirectory": "",
-        "sdCardDirectory": ""
+        "sdCardDirectory": "",
+        "customDtb": "hw\\linux_dt\\system.dtb"
       },
       {
         "name": "standalone_psu_cortexa53",

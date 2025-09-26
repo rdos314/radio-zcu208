@@ -40,7 +40,6 @@
 #include "xil_assert.h"
 #include "xil_types.h"
 #include "xstatus.h"
-#include "xil_printf.h"
 #include "xiicps.h"
 XIicPs Iic1;
 #define FD_BRIDGE (&Iic1) /* I2C1 driver descriptor address */
@@ -363,12 +362,8 @@ static bool XRFClk_I2CRdData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 		if (mux == I2C_SWITCH_SELECT_I2C2SPI_BRIDGE)
 			break;
 		else 
-		{
-			printf("warrning: i2c1 MUX status change");
-                        
 			/* Add delay before the next attempt */
 			usleep(DELAY_100uS * (i + 1));
-		}
 	}
 	
 	if (i < NUM_IIC_RETRIES)
@@ -419,12 +414,8 @@ static bool XRFClk_I2CWrData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 		if (mux == I2C_SWITCH_SELECT_I2C2SPI_BRIDGE)
 			break;
 		else 
-		{
-			printf("warrning: i2c1 MUX status change");
-			
 			/* Add delay before the next attempt */
 			usleep(DELAY_100uS * (i + 1));
-		}
 	}
 	
 	if (i < NUM_IIC_RETRIES)
@@ -466,10 +457,7 @@ static bool XRFClk_MuxSPISDO(u8 ChipId)
 
 	ok = XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
 	if (!ok) 
-	{
-		printf("write I2C2SPI bridge");
 		return false;
-	}
 
 	/* Set the MUX_SEL GPIOs to connect appropriate SPI SDO */
 	XRFClk_MUX_SPI_SDO_GPIOPin(ChipId); 
@@ -502,12 +490,8 @@ static bool XRFClk_MuxSPISDORevert(u32 ChipId)
 	tx[3] = MuxOutRegStorage[ChipId] & 0xff;
 
 	ok = XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
-	if (!ok) 
-	{
-		printf("revert back a bridge MUX");
-		return false;
-	}
-	return true;
+
+	return ok;
 }
 
 /****************************************************************************/
@@ -591,31 +575,19 @@ bool XRFClk_ReadReg(u32 ChipId, u32 *d)
 
 	/* Setup environment for read */
 	if (XRFClk_MuxSPISDO(ChipId) == XST_FAILURE)
-	{
-		printf("Setup SPISDO for read");
 		return false;
-	}
 
 	/* Read register */
 	tx[1] = data[0] | RF_DATA_READ_BIT;
 	if (!XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
-	{
-		printf("set bridge for read");
 		return false;
-	}
 	
 	if (!XRFClk_I2CRdData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, data, 3))
-	{
-		printf("read register");
 		return false;
-	}
 	
 	/* Revert the environment */
 	if (!XRFClk_MuxSPISDORevert(ChipId)) 
-	{
-		printf("revert the environment");
 		return false;
-	}
 	
 	*d = (data[0] << 16) + (data[1] << 8) + data[2];
 	return true;
@@ -639,22 +611,14 @@ bool XRFClk_Init(u32 GpioMuxBaseAddress)
 	XRFClk_GpioMuxBaseAddress = GpioMuxBaseAddress;
 
 	if (!XRFClk_InitI2C()) 
-	{
-		printf("i2c init");
 		return false;
-	}
 	
 	if (!XRFClk_InitGPIO()) 
-	{
-		printf("gpio init");
 		return false;
-	}
 	
 	if (!XRFClk_InitSPI()) 
-	{
-		printf("spi init");
 		return false;
-	}
+
 	return true;
 }
 
@@ -698,16 +662,11 @@ bool XRFClk_ResetChip(u32 ChipId)
 		val = LMX_RESET_VAL;
 
 	if (!XRFClk_WriteReg(ChipId, val)) 
-	{
-		printf("reset chip");
 		return false;
-	}
 	
 	if (!XRFClk_WriteReg(ChipId, 0)) 
-	{
-		printf("undo reset");
 		return false;
-	}
+
 	return true;
 }
 
@@ -732,10 +691,7 @@ static bool XRFClk_SetConfigLMK(u32 ConfigId)
 	for (i = 0; i < LMK_COUNT; i++) 
 	{
 		if (!XRFClk_WriteReg(RFCLK_LMK, LMK_CKin[ConfigId][i])) 
-		{
-			printf("write reg in LMK");
 			return false;
-		}
 	}
 	return true;
 }
@@ -762,10 +718,7 @@ static bool XRFClk_SetConfigLMX(u32 ChipID, u32 ConfigId)
 	for (i = 0; i < LMX2594_COUNT; i++) 
 	{
 		if (!XRFClk_WriteReg(ChipID, LMX2594[ConfigId][i])) 
-		{
-			printf("write reg in LMX");
 			return false;
-		}
 	}
 	return true;
 }
@@ -821,10 +774,7 @@ bool XRFClk_SetConfigOnOneChip(u32 ChipId, u32 *CfgData, u32 Len)
 	for (i = 0; i < Len; i++, d++) 
 	{
 		if (!XRFClk_WriteReg(ChipId, *d)) 
-		{
-			printf("write reg");
 			return false;
-		}
 	}
 	return true;
 }
@@ -850,22 +800,14 @@ bool XRFClk_SetConfigOnOneChip(u32 ChipId, u32 *CfgData, u32 Len)
 bool XRFClk_SetConfigOnAllChipsFromConfigId(u32 ConfigId_LMK, u32 ConfigId_1, u32 ConfigId_2)
 {
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMK, ConfigId_LMK)) 
-	{
-		printf("set config to LMK");
 		return false;
-	}
 	
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1, ConfigId_1)) 
-	{
-		printf("set config to LMX1");
 		return false;
-	}
 	
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_2, ConfigId_2))
-	{
-		printf("set config to LMX2");
 		return false;
-	}
+
 	return true;
 }
 
@@ -908,16 +850,10 @@ static bool XRFClk_getConfig_fromLMK(u32 ChipId, u32 *in, u32 *out)
 		/* Read register */
 		tx[1] = data[0] | RF_DATA_READ_BIT;
 		if (!XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
-		{
-			printf("write reg");
 			return false;
-		}
 		
 		if (!XRFClk_I2CRdData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, data, 3)) 
-		{
-			printf("read reg");
 			return false;
-		}
 
 		out[i] = (data[0] << 16) + (data[1] << 8) + data[2];
 	}
@@ -958,16 +894,10 @@ static bool XRFClk_getConfig_fromLMX(u32 ChipId, u32 *d)
 		/* Read register */
 		tx[1] = data[0] | RF_DATA_READ_BIT;
 		if (!XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
-		{
-			printf("write reg");
 			return false;
-		}
 		
 		if (!XRFClk_I2CRdData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, data, 3)) 
-		{
-			printf("read reg");
 			return false;
-		}
 
 		*d = (data[0] << 16) + (data[1] << 8) + data[2];
 	}
@@ -997,10 +927,7 @@ bool XRFClk_GetConfigFromOneChip(u32 ChipId, u32 *CfgData)
 
 	/* Setup environment for read */
 	if (!XRFClk_MuxSPISDO(ChipId)) 
-	{
-		printf("mux SPISDO");
 		return false;
-	}
 
 	if (ChipId == RFCLK_LMK)
 		ok = XRFClk_getConfig_fromLMK(ChipId, (u32 *const)LMK_CKin, d);
@@ -1009,10 +936,7 @@ bool XRFClk_GetConfigFromOneChip(u32 ChipId, u32 *CfgData)
 
 	/* Revert the environment */
 	if (!XRFClk_MuxSPISDORevert(ChipId)) 
-	{
-		printf("revert SPISDO");
 		ok = false;
-	}
 	return ok;
 }
 
@@ -1039,10 +963,8 @@ bool XRFClk_ControlOutputPortLMK(u32 PortId, u32 State)
 	u8 data = State;
 	
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
-	{
-		printf("write reg");
 		return false;
-}
+
 	return true;
 }
 
@@ -1079,54 +1001,37 @@ bool XRFClk_ConfigOutputDividerAndMUXOnLMK(u32 PortId, u32 DCLKoutX_DIV,
             (SDCLKoutY_MUX > LMK_SDCLKOUTY_MUX_MAX) ||
             (SYSREF_DIV < LMK_SYSREF_DIV_MIN) ||
             (SYSREF_DIV > LMK_SYSREF_DIV_MAX)) 
-	{
-		printf("wrong LMK settings");
 		return false;
-	}
 
 	/* Set DCLKoutX_DIV */
 	Addr = (LMK_DCLKOUTX_DIV_PORT0_ADDR + LMK_ADDRESS_STEP * PortId) << LMK_ADDRESS_SHIFT;
     data = DCLKoutX_DIV;
     if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
-	{
-		printf("Set DCLKoutX_DIV");
 		return false;
-	}
 
 	/* Set DCLKoutX_MUX */
 	Addr = (LMK_DCLKOUTX_MUX_PORT0_ADDR + LMK_ADDRESS_STEP * PortId) << LMK_ADDRESS_SHIFT;
 	data = DCLKoutX_MUX;
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
-	{
-		printf("Set DCLKoutX_MUX");
 		return false;
-	}
 
 	/* Set SDCLKoutY_MUX */
 	Addr = (LMK_SDCLKOUTY_MUX_PORT0_ADDR + LMK_ADDRESS_STEP * PortId) << LMK_ADDRESS_SHIFT;
 	data = DCLKoutX_MUX;
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
-	{
-		printf("Set DCLKoutY_DIV");
 		return false;
-	}
 
 	/* Set SYSREF_DIV */
 	Addr = LMK_SYSREF_DIV_MSB_PORT0_ADDR << LMK_ADDRESS_SHIFT;
 	data = (SYSREF_DIV >> 8) & 0xff;
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
-	{
-		printf("Set SYSREF_DIV");
 		return false;
-	}
 	
 	Addr = LMK_SYSREF_DIV_LSB_PORT0_ADDR << LMK_ADDRESS_SHIFT;
 	data = SYSREF_DIV & 0xff;
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
-	{
-		printf("update SYSREF_DIV");
 		return false;
-	}
+
 	return true;
 }
 /** @} */

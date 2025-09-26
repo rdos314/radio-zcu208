@@ -36,41 +36,27 @@
 #include "clk104.h"
 
 #include "xstatus.h"
-#include "xil_printf.h"
 
 #define LMK_CONFIG_ID	1
 #define LMX_CONFIG_ID	12
+
+#define XPAR_PS_SUBSYSTEM_AXI_GPIO_SPI_MUX_BASEADDR 0xA0205000
 
 static u32 data[256];
 
 static bool resetAll()
 {
-	printf("\nReset LMK");
+//	printf("\nReset LMK");
 	if (!XRFClk_ResetChip(RFCLK_LMK)) 
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMK)");
 		return false;
-	} 
-	else
-		printf("      Pass");
 
-	printf("\nReset LMX2594_1");
+//	printf("\nReset LMX2594_1");
 	if (!XRFClk_ResetChip(RFCLK_LMX2594_1)) 
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMX2594_1)");
 		return false;
-	} 
-	else
-		printf("      Pass");
         
-	printf("\nReset LMX2594_2");
+//	printf("\nReset LMX2594_2");
 	if (!XRFClk_ResetChip(RFCLK_LMX2594_2)) 
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMX2594_2)");
 		return false;
-	} 
-	else
-		printf("      Pass");
         
 	return true;
 }
@@ -79,47 +65,35 @@ static int getConfigAll()
 {
 	int i;
 
-	printf("\nGet config from ID on LMX2594_1");
+//	printf("\nGet config from ID on LMX2594_1");
 
 	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_1, data))
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMX2594_1)");
         return false;
-	} 
 	else 
 	{
-		printf("      Pass");
-		printf("\nLMX2594 config data are:\n");
-		for (i = 0; i < LMX2594_COUNT; i++)
-			printf("%x,", data[i]);
+//		printf("\nLMX2594 config data are:\n");
+//		for (i = 0; i < LMX2594_COUNT; i++)
+//			printf("%x,", data[i]);
 	}
 	
-	printf("\nGet config from ID on LMX2594_2");
+//	printf("\nGet config from ID on LMX2594_2");
 	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_2, data))
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMX2594_2)");
-        return false;
-	} 
+      return false;
 	else 
 	{
-		printf("      Pass");
-		printf("\nLMX2594 config data are:\n");
-		for (i = 0; i < LMX2594_COUNT; i++)
-			printf("%x,", data[i]);
+//		printf("\nLMX2594 config data are:\n");
+//		for (i = 0; i < LMX2594_COUNT; i++)
+//			printf("%x,", data[i]);
 	}
 	
-	printf("\nGet config from ID on LMK");
+//	printf("\nGet config from ID on LMK");
 	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMK, data))
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMK)");
-        return false;
-	} 
+      return false;
 	else 
 	{
-		printf("      Pass");
-		printf("\nLMK config data are:\n");
-		for (i = 0; i < LMK_COUNT; i++)
-			printf("%x,", data[i]);
+//		printf("\nLMK config data are:\n");
+//		for (i = 0; i < LMK_COUNT; i++)
+//			printf("%x,", data[i]);
 	}
 
 	return true;
@@ -129,7 +103,7 @@ bool ConfigAdc()
 {
 	u32 d;
 
-	printf("\n----------- START ------------\n");
+//	printf("\n----------- START ------------\n");
 
 	/* The base address is defined in xparameters.h */
 	XRFClk_Init(XPAR_PS_SUBSYSTEM_AXI_GPIO_SPI_MUX_BASEADDR);
@@ -140,71 +114,40 @@ bool ConfigAdc()
 
 	/* Write/Read dummy value to LMX2594 */
 	d = 0x20112;
-	printf("\nWrite dummy data to register in LMX2594_1");
+//	printf("\nWrite dummy data to register in LMX2594_1");
 	if (!XRFClk_WriteReg(RFCLK_LMX2594_1, d))
-	{
-		printf("\nFailure in XRFClk_WriteReg(RFCLK_LMX2594_1)");
 		return false;
-	} 
-	else
-		printf("      Pass");
 
-	printf("\nRead and validate register value in LMX2594_1");
+//	printf("\nRead and validate register value in LMX2594_1");
 	if (!XRFClk_ReadReg(RFCLK_LMX2594_1, &d))
-	{
-		printf("\nFailure in XRFClk_ReadReg(RFCLK_LMX2594_1)");
 		return false;
-	} 
-	else
-        printf("\nread value = %x      Pass", d);
+//	else
+//        printf("\nread value = %x      Pass", d);
 
 	d = 0x20212;
 	/* Write/Read dummy value to LMX2594 */
-	printf("\nWrite dummy data to register in LMX2594_1");
+//	printf("\nWrite dummy data to register in LMX2594_1");
 	if (!XRFClk_WriteReg(RFCLK_LMX2594_2, d))
-	{
-		printf("\nFailure in XRFClk_WriteReg(RFCLK_LMX2594_2)");
 		return false;
-	} 
-	else
-		printf("      Pass");
 	
-	printf("\nRead and validate register value in LMX2594_1");
+//	printf("\nRead and validate register value in LMX2594_1");
 	if (!XRFClk_ReadReg(RFCLK_LMX2594_2, &d))
-	{
-		printf("\nFailure in XRFClk_ReadReg(RFCLK_LMX2594_2)");
 		return false;
-	} 
-	else
-		printf("\nread value = %x      Pass", d);
+//	else
+//		printf("\nread value = %x      Pass", d);
 
 	/* Set config with ID */
-	printf("\nSet config from ID on LMK");
+//	printf("\nSet config from ID on LMK");
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMK, LMK_CONFIG_ID))
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMK)");
 		return false;
-	} 
-	else
-		printf("      Pass");
 	
-	printf("\nSet config from ID on LMX2594_1");
+//	printf("\nSet config from ID on LMX2594_1");
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1, LMX_CONFIG_ID)) 
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMX2594_1)");
 		return false;
-	} 
-	else
-		printf("      Pass");
 
-	printf("\nSet config from ID on LMX2594_2");
+//	printf("\nSet config from ID on LMX2594_2");
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_2, LMX_CONFIG_ID))
-	{
-		printf("\nFailure in XRFClk_ResetChip(RFCLK_LMX2594_2)");
 		return false;
-	} 
-	else
-		printf("      Pass");
 
 	/* Get config from chip */
 	if (!getConfigAll())
@@ -217,20 +160,15 @@ bool ConfigAdc()
 		return false;
 
 	/* Set config on all chips */
-	printf("\nSet config on all RF chips");
+//	printf("\nSet config on all RF chips");
 	if (!XRFClk_SetConfigOnAllChipsFromConfigId(LMK_CONFIG_ID, LMX_CONFIG_ID, LMX_CONFIG_ID))
-	{
-		printf("\nFailure in XRFClk_SetConfigOnAllChipsFromConfigId()");
 		return false;
-	} 
-	else
-		printf("      Pass");
 
 	/* Get config from chip */
 	if (!getConfigAll())
 		return false;
 
-	printf("\n----------- STOP ------------\n");
+//	printf("\n----------- STOP ------------\n");
 	XRFClk_Close();
 
 	return true;
