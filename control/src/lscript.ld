@@ -17,7 +17,7 @@ MEMORY
 	psu_r5_0_atcm_MEM_0 : ORIGIN = 0x0, LENGTH = 0x10000
 	psu_r5_0_btcm_MEM_0 : ORIGIN = 0x20000, LENGTH = 0x10000
 	psu_r5_tcm_ram_0_MEM_0 : ORIGIN = 0x0, LENGTH = 0x40000
-	psu_r5_ddr_0_memory_0 : ORIGIN = 0x70000000, LENGTH = 0x10000000
+	psu_r5_ddr_0_memory_0 : ORIGIN = 0x70001000, LENGTH = 0x07efffff
 	psu_qspi_linear_0_memory_0 : ORIGIN = 0xc0000000, LENGTH = 0x20000000
 	psu_ocm_ram_0_memory_0 : ORIGIN = 0xfffc0000, LENGTH = 0x40000
 }
