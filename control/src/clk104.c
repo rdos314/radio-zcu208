@@ -281,14 +281,8 @@ static bool XRFClk_I2CWrData_sub(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 ****************************************************************************/
 static bool XRFClk_GetBusSwitchI2C1(u8 *val)
 {
-	s32 ret;
-
 	/* Read I2C bus switch configuration */
-	ret = XRFClk_I2CRdData_sub(FD_I2C1, I2C_ADDR_BUS_SWITCH, val, 1);
-	if (ret == XST_FAILURE)
-		return false;
-	else
-        return true;
+	return XRFClk_I2CRdData_sub(FD_I2C1, I2C_ADDR_BUS_SWITCH, val, 1);
 }
 
 /****************************************************************************/
@@ -308,16 +302,11 @@ static bool XRFClk_GetBusSwitchI2C1(u8 *val)
 static bool XRFClk_SetBusSwitchI2C1()
 {
 	u8 val;
-	s32 ret;
 
 	/* Enable i2c2spi bridge */
 	val = I2C_SWITCH_SELECT_I2C2SPI_BRIDGE;
 	/* Write new I2C bus switch configuration */
-	ret = XRFClk_I2CWrData_sub(FD_I2C1, I2C_ADDR_BUS_SWITCH, &val, 1);
-	if (ret == XST_FAILURE)
-		return false;
-	else
-        return true;
+	return XRFClk_I2CWrData_sub(FD_I2C1, I2C_ADDR_BUS_SWITCH, &val, 1);
 }
 
 /****************************************************************************/
@@ -347,21 +336,22 @@ static bool XRFClk_I2CRdData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 	for (i = 0; i < NUM_IIC_RETRIES; i++) 
 	{
 		/* Set MUX */
-		if (XST_FAILURE == XRFClk_SetBusSwitchI2C1())
+		if (!XRFClk_SetBusSwitchI2C1())
 			continue;
 
 		/* Read Register */
-		if (XST_FAILURE == XRFClk_I2CRdData_sub(Iic, Addr, Val, Len))
+		if (!XRFClk_I2CRdData_sub(Iic, Addr, Val, Len))
 			continue;
 
 		/* Read MUX status */
-		if (XST_FAILURE == XRFClk_GetBusSwitchI2C1(&mux))
+		if (!XRFClk_GetBusSwitchI2C1(&mux))
 			continue;
 
 		/* Check is MUX as expected */
 		if (mux == I2C_SWITCH_SELECT_I2C2SPI_BRIDGE)
 			break;
 		else 
+                        
 			/* Add delay before the next attempt */
 			usleep(DELAY_100uS * (i + 1));
 	}
@@ -399,21 +389,21 @@ static bool XRFClk_I2CWrData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 	for (i = 0; i < NUM_IIC_RETRIES; i++) 
 	{
 		/* Set MUX */
-		if (XST_FAILURE == XRFClk_SetBusSwitchI2C1())
+		if (!XRFClk_SetBusSwitchI2C1())
 			continue;
 
 		/* Write Register */
-		if (XST_FAILURE == XRFClk_I2CWrData_sub(Iic, Addr, Val, Len))
+		if (!XRFClk_I2CWrData_sub(Iic, Addr, Val, Len))
 			continue;
 
 		/* Read MUX status */
-		if (XST_FAILURE == XRFClk_GetBusSwitchI2C1(&mux))
+		if (!XRFClk_GetBusSwitchI2C1(&mux))
 			continue;
 
 		/* Check is MUX as expected */
 		if (mux == I2C_SWITCH_SELECT_I2C2SPI_BRIDGE)
 			break;
-		else 
+		else 			
 			/* Add delay before the next attempt */
 			usleep(DELAY_100uS * (i + 1));
 	}
@@ -481,7 +471,6 @@ static bool XRFClk_MuxSPISDO(u8 ChipId)
 ****************************************************************************/
 static bool XRFClk_MuxSPISDORevert(u32 ChipId)
 {
-	bool ok;
 	u8 tx[4];
 	
 	tx[0] = SELECT_SPI_SDO(ChipId);
@@ -489,9 +478,7 @@ static bool XRFClk_MuxSPISDORevert(u32 ChipId)
 	tx[2] = (MuxOutRegStorage[ChipId] >> 8) & 0xff;
 	tx[3] = MuxOutRegStorage[ChipId] & 0xff;
 
-	ok = XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
-
-	return ok;
+	return XRFClk_I2CWrData(FD_BRIDGE, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
 }
 
 /****************************************************************************/
@@ -574,7 +561,7 @@ bool XRFClk_ReadReg(u32 ChipId, u32 *d)
 	u8 tx[4] = { SELECT_SPI_SDO(ChipId), data[0], data[1], data[2] };
 
 	/* Setup environment for read */
-	if (XRFClk_MuxSPISDO(ChipId) == XST_FAILURE)
+	if (!XRFClk_MuxSPISDO(ChipId))
 		return false;
 
 	/* Read register */
@@ -618,7 +605,6 @@ bool XRFClk_Init(u32 GpioMuxBaseAddress)
 	
 	if (!XRFClk_InitSPI()) 
 		return false;
-
 	return true;
 }
 
@@ -666,7 +652,6 @@ bool XRFClk_ResetChip(u32 ChipId)
 	
 	if (!XRFClk_WriteReg(ChipId, 0)) 
 		return false;
-
 	return true;
 }
 
@@ -807,7 +792,6 @@ bool XRFClk_SetConfigOnAllChipsFromConfigId(u32 ConfigId_LMK, u32 ConfigId_1, u3
 	
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_2, ConfigId_2))
 		return false;
-
 	return true;
 }
 
@@ -964,7 +948,6 @@ bool XRFClk_ControlOutputPortLMK(u32 PortId, u32 State)
 	
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
 		return false;
-
 	return true;
 }
 
@@ -1031,7 +1014,6 @@ bool XRFClk_ConfigOutputDividerAndMUXOnLMK(u32 PortId, u32 DCLKoutX_DIV,
 	data = SYSREF_DIV & 0xff;
 	if (!XRFClk_WriteReg(RFCLK_LMK, Addr + data)) 
 		return false;
-
 	return true;
 }
 /** @} */

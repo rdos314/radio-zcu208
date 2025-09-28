@@ -1,3 +1,6 @@
+clk104_mux:
+- axi_gpio
+- gpio
 gpio_led:
 - axi_gpio
 - gpio
