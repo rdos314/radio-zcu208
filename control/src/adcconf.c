@@ -34,8 +34,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "clk104.h"
-
 #include "xstatus.h"
 #include "xil_assert.h"
 #include "xil_types.h"
@@ -99,9 +97,6 @@ static u32 XRFClk_GpioMuxBaseAddress; /* GPIO base address */
 #define GPIO_DATA_REG 0 /* GPIO data register offset address */
 #define GPIO_CONTROL_REG 4 /* GPIO control register offset address */
 #define GPIO_REG_MASK 0xfffffffC /* GPIO control register mask */
-
-static bool XRFClk_I2CWrData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len);
-static bool XRFClk_I2CRdData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len);
 
 #define RFCLK_LMX2594_1 0 /* I0 on MUX and SS3 on Bridge */
 #define RFCLK_LMX2594_2 1 /* I1 on MUX and SS2 on Bridge */
@@ -569,7 +564,6 @@ static bool XRFClk_InitI2C(void)
 
 	return true;
 }
-
 /****************************************************************************/
 /**
 *
@@ -588,27 +582,6 @@ static bool XRFClk_InitGPIO(void)
 {
 	Xil_Out32(XRFClk_GpioMuxBaseAddress + GPIO_CONTROL_REG, GPIO_REG_MASK);
 	return true;
-}
-
-/****************************************************************************/
-/**
-*
-* This function is used to configure SPI.
-*
-* @param        None
-*
-* @return
-*       - XST_SUCCESS if successful.
-*       - XST_FAILURE if failed.
-*
-* @note         None
-*
-****************************************************************************/
-static bool XRFClk_InitSPI()
-{
-	u8 tx[2] = { 0xf0, 0x03 };
-
-	return XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 2);
 }
 
 /****************************************************************************/
@@ -648,15 +621,15 @@ static void XRFClk_MUX_SPI_SDO_GPIOPin(u8 ChipId)
 * @note         None
 *
 ****************************************************************************/
-static bool XRFClk_I2CRdData_sub(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
+static bool XRFClk_I2CRdData_sub(u8 Addr, u8 *Val, u8 Len)
 {
 	int Status;
 	
-	Status = XIicPs_MasterRecvPolled(Iic, Val, Len, Addr);
+	Status = XIicPs_MasterRecvPolled(&Iic1, Val, Len, Addr);
 	if (Status != XST_SUCCESS)
 		return false;
 
-	while (XIicPs_BusIsBusy(Iic))
+	while (XIicPs_BusIsBusy(&Iic1))
 		;
 			
 	usleep(I2C_SLEEP_US);
@@ -680,15 +653,15 @@ static bool XRFClk_I2CRdData_sub(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 * @note         None
 *
 ****************************************************************************/
-static bool XRFClk_I2CWrData_sub(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
+static bool XRFClk_I2CWrData_sub(u8 Addr, u8 *Val, u8 Len)
 {
 	int Status;
 	
-	Status = XIicPs_MasterSendPolled(Iic, Val, Len, Addr);
+	Status = XIicPs_MasterSendPolled(&Iic1, Val, Len, Addr);
 	if (Status != XST_SUCCESS)
 		return false;
 
-	while (XIicPs_BusIsBusy(Iic))
+	while (XIicPs_BusIsBusy(&Iic1))
 		;
 
 	usleep(I2C_SLEEP_US);
@@ -712,7 +685,7 @@ static bool XRFClk_I2CWrData_sub(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 static bool XRFClk_GetBusSwitchI2C1(u8 *val)
 {
 	/* Read I2C bus switch configuration */
-	return XRFClk_I2CRdData_sub(&Iic1, I2C_ADDR_BUS_SWITCH, val, 1);
+	return XRFClk_I2CRdData_sub(I2C_ADDR_BUS_SWITCH, val, 1);
 }
 
 /****************************************************************************/
@@ -736,7 +709,7 @@ static bool XRFClk_SetBusSwitchI2C1()
 	/* Enable i2c2spi bridge */
 	val = I2C_SWITCH_SELECT_I2C2SPI_BRIDGE;
 	/* Write new I2C bus switch configuration */
-	return XRFClk_I2CWrData_sub(&Iic1, I2C_ADDR_BUS_SWITCH, &val, 1);
+	return XRFClk_I2CWrData_sub(I2C_ADDR_BUS_SWITCH, &val, 1);
 }
 
 /****************************************************************************/
@@ -758,7 +731,7 @@ static bool XRFClk_SetBusSwitchI2C1()
 * @note         None
 *
 ****************************************************************************/
-static bool XRFClk_I2CRdData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
+static bool XRFClk_I2CRdData(u8 Addr, u8 *Val, u8 Len)
 {
 	u8 mux = 0;
 	u32 i;
@@ -770,7 +743,7 @@ static bool XRFClk_I2CRdData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 			continue;
 
 		/* Read Register */
-		if (!XRFClk_I2CRdData_sub(Iic, Addr, Val, Len))
+		if (!XRFClk_I2CRdData_sub(Addr, Val, Len))
 			continue;
 
 		/* Read MUX status */
@@ -811,7 +784,7 @@ static bool XRFClk_I2CRdData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 * @note         None
 *
 ****************************************************************************/
-static bool XRFClk_I2CWrData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
+static bool XRFClk_I2CWrData(u8 Addr, u8 *Val, u8 Len)
 {
 	u8 mux = 0;
 	u32 i;
@@ -823,7 +796,7 @@ static bool XRFClk_I2CWrData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 			continue;
 
 		/* Write Register */
-		if (!XRFClk_I2CWrData_sub(Iic, Addr, Val, Len))
+		if (!XRFClk_I2CWrData_sub(Addr, Val, Len))
 			continue;
 
 		/* Read MUX status */
@@ -842,6 +815,27 @@ static bool XRFClk_I2CWrData(XIicPs *Iic, u8 Addr, u8 *Val, u8 Len)
 		return true;
 	else
 		return false;
+}
+
+/****************************************************************************/
+/**
+*
+* This function is used to configure SPI.
+*
+* @param        None
+*
+* @return
+*       - XST_SUCCESS if successful.
+*       - XST_FAILURE if failed.
+*
+* @note         None
+*
+****************************************************************************/
+static bool XRFClk_InitSPI()
+{
+	u8 tx[2] = { 0xf0, 0x03 };
+
+	return XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 2);
 }
 
 /****************************************************************************/
@@ -875,7 +869,7 @@ static bool XRFClk_MuxSPISDO(u8 ChipId)
 	else
 		tx[3] = (MuxOutRegStorage[ChipId] & 0xff) & ~MUXOUT_LD_SEL_BIT;
 
-	ok = XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
+	ok = XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
 	if (!ok) 
 		return false;
 
@@ -908,7 +902,7 @@ static bool XRFClk_MuxSPISDORevert(u32 ChipId)
 	tx[2] = (MuxOutRegStorage[ChipId] >> 8) & 0xff;
 	tx[3] = MuxOutRegStorage[ChipId] & 0xff;
 
-	return XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
+	return XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
 }
 
 /****************************************************************************/
@@ -957,7 +951,7 @@ bool XRFClk_WriteReg(u32 ChipId, u32 d)
 	}
 		
 	/* Write register */
-	return XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
+	return XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 4);
 }
 
 /****************************************************************************/
@@ -996,10 +990,10 @@ bool XRFClk_ReadReg(u32 ChipId, u32 *d)
 
 	/* Read register */
 	tx[1] = data[0] | RF_DATA_READ_BIT;
-	if (!XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
+	if (!XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
 		return false;
 	
-	if (!XRFClk_I2CRdData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, data, 3))
+	if (!XRFClk_I2CRdData(I2C_ADDR_I2C2SPI_BRIDGE, data, 3))
 		return false;
 	
 	/* Revert the environment */
@@ -1263,10 +1257,10 @@ static bool XRFClk_getConfig_fromLMK(u32 ChipId, u32 *in, u32 *out)
 
 		/* Read register */
 		tx[1] = data[0] | RF_DATA_READ_BIT;
-		if (!XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
+		if (!XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
 			return false;
 		
-		if (!XRFClk_I2CRdData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, data, 3)) 
+		if (!XRFClk_I2CRdData(I2C_ADDR_I2C2SPI_BRIDGE, data, 3)) 
 			return false;
 
 		out[i] = (data[0] << 16) + (data[1] << 8) + data[2];
@@ -1307,10 +1301,10 @@ static bool XRFClk_getConfig_fromLMX(u32 ChipId, u32 *d)
 
 		/* Read register */
 		tx[1] = data[0] | RF_DATA_READ_BIT;
-		if (!XRFClk_I2CWrData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
+		if (!XRFClk_I2CWrData(I2C_ADDR_I2C2SPI_BRIDGE, tx, 4)) 
 			return false;
 		
-		if (!XRFClk_I2CRdData(&Iic1, I2C_ADDR_I2C2SPI_BRIDGE, data, 3)) 
+		if (!XRFClk_I2CRdData(I2C_ADDR_I2C2SPI_BRIDGE, data, 3)) 
 			return false;
 
 		*d = (data[0] << 16) + (data[1] << 8) + data[2];
