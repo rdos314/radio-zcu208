@@ -1035,22 +1035,6 @@ bool XRFClk_Init(u32 GpioMuxBaseAddress)
 /****************************************************************************/
 /**
 *
-* This function is used to close RFCLK devices.
-*
-* @param        none
-*
-* @return       none
-*
-* @note         None
-*
-****************************************************************************/
-void XRFClk_Close(void)
-{
-}
-
-/****************************************************************************/
-/**
-*
 * This function is used to reset one of LMX2594 or LMK04828.
 *
 * @param        ChipId indicates the RF clock chip Id.
@@ -1185,37 +1169,6 @@ bool XRFClk_SetConfigOnOneChip(u32 ChipId, u32 *CfgData, u32 Len)
 		if (!XRFClk_WriteReg(ChipId, *d)) 
 			return false;
 	}
-	return true;
-}
-
-/****************************************************************************/
-/**
-*
-* This function is used to set a full configuration on all LMX2594
-* and LMK04828 or LMK04208 for the requested frequency.
-*
-* @param        ConfigId_LMK indicates the LMK configuration Id.
-* @param        ConfigId_RF1 indicates the LMX RF1 configuration Id.
-* @param        ConfigId_RF2 indicates the LMX RF2 configuration Id.
-* @param        ConfigId_RF3 indicates the LMX RF3 configuration Id.
-*
-* @return
-*       - XST_SUCCESS if successful.
-*       - XST_FAILURE if failed.
-*
-* @note         None
-*
-****************************************************************************/
-bool XRFClk_SetConfigOnAllChipsFromConfigId(u32 ConfigId_LMK, u32 ConfigId_1, u32 ConfigId_2)
-{
-	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMK, ConfigId_LMK)) 
-		return false;
-	
-	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1, ConfigId_1)) 
-		return false;
-	
-	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_2, ConfigId_2))
-		return false;
 	return true;
 }
 
@@ -1441,9 +1394,15 @@ bool XRFClk_ConfigOutputDividerAndMUXOnLMK(u32 PortId, u32 DCLKoutX_DIV,
 	return true;
 }
 
-
-static bool resetAll()
+bool ConfigAdc()
 {
+	u32 d;
+	u32 data[LMK_COUNT];
+
+	/* The base address is defined in xparameters.h */
+	XRFClk_Init(XPAR_CLK104_MUX_BASEADDR);
+
+	/* Reset */
 	if (!XRFClk_ResetChip(RFCLK_LMK)) 
 		return false;
 
@@ -1451,55 +1410,6 @@ static bool resetAll()
 		return false;
         
 	if (!XRFClk_ResetChip(RFCLK_LMX2594_2)) 
-		return false;
-        
-	return true;
-}
-
-static int getConfigAll()
-{
-	int i;
-	u32 data[LMK_COUNT];
-
-	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_1, data))
-        return false;
-	
-	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_2, data))
-        return false;
-	
-	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMK, data))
-        return false;
-
-	return true;
-}
-
-bool ConfigAdc()
-{
-	u32 d;
-
-	/* The base address is defined in xparameters.h */
-	XRFClk_Init(XPAR_CLK104_MUX_BASEADDR);
-
-	/* Reset */
-    if (!resetAll())
-		return false;
-
-	/* Write/Read dummy value to LMX2594 */
-	d = 0x20112;
-	if (!XRFClk_WriteReg(RFCLK_LMX2594_1, d))
-		return false;
-
-	d = 0;
-	if (!XRFClk_ReadReg(RFCLK_LMX2594_1, &d))
-		return false;
-
-	d = 0x20212;
-	/* Write/Read dummy value to LMX2594 */
-	if (!XRFClk_WriteReg(RFCLK_LMX2594_2, d))
-		return false;
-	
-	d = 0;
-	if (!XRFClk_ReadReg(RFCLK_LMX2594_2, &d))
 		return false;
 
 	/* Set config with ID */
@@ -1513,24 +1423,14 @@ bool ConfigAdc()
 		return false;
 
 	/* Get config from chip */
-	if (!getConfigAll())
-		return false;
-
-	sleep(1);
-
-    /* Reset */
-    if (!resetAll())
-		return false;
-
-	/* Set config on all chips */
-	if (!XRFClk_SetConfigOnAllChipsFromConfigId(LMK_CONFIG_ID, LMX_CONFIG_ID, LMX_CONFIG_ID))
-		return false;
-
-	/* Get config from chip */
-	if (!getConfigAll())
-		return false;
-
-	XRFClk_Close();
+	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_1, data))
+        return false;
+	
+	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_2, data))
+        return false;
+	
+	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMK, data))
+        return false;
 
 	return true;
 }
