@@ -91,9 +91,6 @@ XIicPs Iic1;
 #define LMK_SYSREF_DIV_MSB_PORT0_ADDR 0X13A /* MSB divider port 0 address */
 #define LMK_SYSREF_DIV_LSB_PORT0_ADDR 0X13B /* LSB divider port 0 address */
 
-u32 MuxOutRegStorage[RFCLK_CHIP_NUM];
-
-static u32 XRFClk_GpioMuxBaseAddress; /* GPIO base address */
 #define GPIO_DATA_REG 0 /* GPIO data register offset address */
 #define GPIO_CONTROL_REG 4 /* GPIO control register offset address */
 #define GPIO_REG_MASK 0xfffffffC /* GPIO control register mask */
@@ -102,6 +99,9 @@ static u32 XRFClk_GpioMuxBaseAddress; /* GPIO base address */
 #define RFCLK_LMX2594_2 1 /* I1 on MUX and SS2 on Bridge */
 #define RFCLK_LMK 2 /* I2 on MUX and SS1 on Bridge */
 #define RFCLK_CHIP_NUM 3
+
+static u32 MuxOutRegStorage[RFCLK_CHIP_NUM];
+static u32 XRFClk_GpioMuxBaseAddress; /* GPIO base address */
 
 #define FREQ_LIST_STR_SIZE 50 /* Frequency string size */
 
