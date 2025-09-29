@@ -1,5 +1,6 @@
 # Ignore build output directory
 /build
+/.cache
 /export
 
 # Ignore object files and dependent files
