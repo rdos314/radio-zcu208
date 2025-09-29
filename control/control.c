@@ -248,7 +248,8 @@ int main(void)
     char cnt = 0;
     char *led = (char *)GPIO_BASEADDR;
 
-    ConfigAdc();
+    if (!ConfigAdc())
+        return -1;
 
 /*
      Status = TmrControllerSetup(&InterruptController,

@@ -1422,15 +1422,5 @@ bool ConfigAdc()
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_2, LMX_CONFIG_ID))
 		return false;
 
-	/* Get config from chip */
-	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_1, data))
-        return false;
-	
-	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMX2594_2, data))
-        return false;
-	
-	if (!XRFClk_GetConfigFromOneChip(RFCLK_LMK, data))
-        return false;
-
 	return true;
 }

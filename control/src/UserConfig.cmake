@@ -30,9 +30,6 @@ set(USER_INCLUDE_DIRECTORIES
 set(USER_COMPILE_SOURCES
 "../control.c"
 "adcconf.c"
-"clk104.c"
-"lmkconf.h"
-"lmxconf.h"
 )
 
 # -----------------------------------------
