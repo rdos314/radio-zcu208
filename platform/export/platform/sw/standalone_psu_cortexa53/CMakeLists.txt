@@ -18,7 +18,7 @@ endif()
 if (EXISTS ${metal_BINARY_DIR})
 include_directories(${metal_BINARY_DIR}/lib/include)
 endif()
-set (BSP_LIBSRC_SUBDIRS libsrc standalone xiltimer xilffs xilsecure xilpm)
+set (BSP_LIBSRC_SUBDIRS libsrc standalone xiltimer xilffs xilsecure xilpm libmetal)
 
 if (SUBDIR_LIST STREQUAL "ALL")
     set (SUBDIR_LIST ${BSP_LIBSRC_SUBDIRS})

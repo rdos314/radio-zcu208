@@ -35,6 +35,7 @@
                  <0x0 0x80000000 &gpio_led 0x0 0x80000000 0x0 0x10000>,
                  <0x0 0x80010000 &r5_timer 0x0 0x80010000 0x0 0x10000>,
                  <0x0 0x80020000 &clk104_mux 0x0 0x80020000 0x0 0x10000>,
+                 <0x0 0x80040000 &usp_rf_data_converter_0 0x0 0x80040000 0x0 0x40000>,
                  <0x0 0xf9010000 &gic 0x0 0xf9010000 0x0 0x70000>,
                  <0x0 0xffa80000 &lpd_dma_chan1 0x0 0xffa80000 0x0 0x10000>,
                  <0x0 0xffa90000 &lpd_dma_chan2 0x0 0xffa90000 0x0 0x10000>,
@@ -132,7 +133,7 @@
                  <0x0 0xfd4d0000 &watchdog0 0x0 0xfd4d0000 0x0 0x10000>;
                 #ranges-address-cells = <0x2>;
                 #ranges-size-cells = <0x2>;
-                phandle = <0x98>;
+                phandle = <0x9a>;
 
                 psu_cortexa53_0: cpu@0 {
                         #cooling-cells = <0x2>;
@@ -159,7 +160,7 @@
                         xlnx,timestamp-clk-freq = <0x5f5dd19>;
                         stamp-frequency = <0x5f5dd19>;
                         xlnx,pss-alt-ref-clk-freq = <0x1fc9f08>;
-                        phandle = <0x85>;
+                        phandle = <0x86>;
                 };
 
                 psu_cortexa53_1: cpu@1 {
@@ -182,7 +183,7 @@
                         xlnx,cpu-clk-freq-hz = <0x47865d45>;
                         bus-handle = <0x1>;
                         cpu-frequency = <0x47865d45>;
-                        phandle = <0x86>;
+                        phandle = <0x87>;
                 };
 
                 psu_cortexa53_2: cpu@2 {
@@ -205,7 +206,7 @@
                         xlnx,cpu-clk-freq-hz = <0x47865d45>;
                         bus-handle = <0x1>;
                         cpu-frequency = <0x47865d45>;
-                        phandle = <0x87>;
+                        phandle = <0x88>;
                 };
 
                 psu_cortexa53_3: cpu@3 {
@@ -228,14 +229,14 @@
                         xlnx,cpu-clk-freq-hz = <0x47865d45>;
                         bus-handle = <0x1>;
                         cpu-frequency = <0x47865d45>;
-                        phandle = <0x88>;
+                        phandle = <0x89>;
                 };
 
                 L2: l2-cache {
                         compatible = "cache";
                         cache-level = <0x2>;
                         cache-unified;
-                        phandle = <0x6f>;
+                        phandle = <0x70>;
                 };
 
                 idle-states {
@@ -248,7 +249,7 @@
                                 entry-latency-us = <0x12c>;
                                 exit-latency-us = <0x258>;
                                 min-residency-us = <0x2710>;
-                                phandle = <0x6e>;
+                                phandle = <0x6f>;
                         };
                 };
         };
@@ -256,7 +257,7 @@
         cpu_opp_table: opp-table-cpu {
                 compatible = "operating-points-v2";
                 opp-shared;
-                phandle = <0x6d>;
+                phandle = <0x6e>;
 
                 opp-1200000000 {
                         opp-hz = <0x0 0x47868c00>;
@@ -292,7 +293,7 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 ranges;
-                phandle = <0x9f>;
+                phandle = <0xa1>;
 
                 ipi_mailbox_pmu1: mailbox@ff9905c0 {
                         bootph-all;
@@ -301,7 +302,7 @@
                         reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
                         #mbox-cells = <0x1>;
                         xlnx,ipi-id = <0x4>;
-                        phandle = <0x89>;
+                        phandle = <0x8a>;
                 };
         };
 
@@ -327,16 +328,16 @@
                         #power-domain-cells = <0x1>;
                         method = "smc";
                         bootph-all;
-                        phandle = <0x79>;
+                        phandle = <0x7a>;
 
                         zynqmp_power: power-management {
                                 bootph-all;
                                 compatible = "xlnx,zynqmp-power";
                                 interrupt-parent = <&gic>;
                                 interrupts = <0x0 0x23 0x4>;
-                                mboxes = <0x89 0x0 0x89 0x1>;
+                                mboxes = <0x8a 0x0 0x8a 0x1>;
                                 mbox-names = "tx", "rx";
-                                phandle = <0xa1>;
+                                phandle = <0xa3>;
                         };
 
                         soc-nvmem {
@@ -349,104 +350,104 @@
 
                                         soc_revision: soc-revision@0 {
                                                 reg = <0x0 0x4>;
-                                                phandle = <0xa2>;
+                                                phandle = <0xa4>;
                                         };
 
                                         efuse_dna: efuse-dna@c {
                                                 reg = <0xc 0xc>;
-                                                phandle = <0xa3>;
+                                                phandle = <0xa5>;
                                         };
 
                                         efuse_usr0: efuse-usr0@20 {
                                                 reg = <0x20 0x4>;
-                                                phandle = <0xa4>;
+                                                phandle = <0xa6>;
                                         };
 
                                         efuse_usr1: efuse-usr1@24 {
                                                 reg = <0x24 0x4>;
-                                                phandle = <0xa5>;
+                                                phandle = <0xa7>;
                                         };
 
                                         efuse_usr2: efuse-usr2@28 {
                                                 reg = <0x28 0x4>;
-                                                phandle = <0xa6>;
+                                                phandle = <0xa8>;
                                         };
 
                                         efuse_usr3: efuse-usr3@2c {
                                                 reg = <0x2c 0x4>;
-                                                phandle = <0xa7>;
+                                                phandle = <0xa9>;
                                         };
 
                                         efuse_usr4: efuse-usr4@30 {
                                                 reg = <0x30 0x4>;
-                                                phandle = <0xa8>;
+                                                phandle = <0xaa>;
                                         };
 
                                         efuse_usr5: efuse-usr5@34 {
                                                 reg = <0x34 0x4>;
-                                                phandle = <0xa9>;
+                                                phandle = <0xab>;
                                         };
 
                                         efuse_usr6: efuse-usr6@38 {
                                                 reg = <0x38 0x4>;
-                                                phandle = <0xaa>;
+                                                phandle = <0xac>;
                                         };
 
                                         efuse_usr7: efuse-usr7@3c {
                                                 reg = <0x3c 0x4>;
-                                                phandle = <0xab>;
+                                                phandle = <0xad>;
                                         };
 
                                         efuse_miscusr: efuse-miscusr@40 {
                                                 reg = <0x40 0x4>;
-                                                phandle = <0xac>;
+                                                phandle = <0xae>;
                                         };
 
                                         efuse_chash: efuse-chash@50 {
                                                 reg = <0x50 0x4>;
-                                                phandle = <0xad>;
+                                                phandle = <0xaf>;
                                         };
 
                                         efuse_pufmisc: efuse-pufmisc@54 {
                                                 reg = <0x54 0x4>;
-                                                phandle = <0xae>;
+                                                phandle = <0xb0>;
                                         };
 
                                         efuse_sec: efuse-sec@58 {
                                                 reg = <0x58 0x4>;
-                                                phandle = <0xaf>;
+                                                phandle = <0xb1>;
                                         };
 
                                         efuse_spkid: efuse-spkid@5c {
                                                 reg = <0x5c 0x4>;
-                                                phandle = <0xb0>;
+                                                phandle = <0xb2>;
                                         };
 
                                         efuse_aeskey: efuse-aeskey@60 {
                                                 reg = <0x60 0x20>;
-                                                phandle = <0xb1>;
+                                                phandle = <0xb3>;
                                         };
 
                                         efuse_ppk0hash: efuse-ppk0hash@a0 {
                                                 reg = <0xa0 0x30>;
-                                                phandle = <0xb2>;
+                                                phandle = <0xb4>;
                                         };
 
                                         efuse_ppk1hash: efuse-ppk1hash@d0 {
                                                 reg = <0xd0 0x30>;
-                                                phandle = <0xb3>;
+                                                phandle = <0xb5>;
                                         };
 
                                         efuse_pufuser: efuse-pufuser@100 {
                                                 reg = <0x100 0x7f>;
-                                                phandle = <0xb4>;
+                                                phandle = <0xb6>;
                                         };
                                 };
                         };
 
                         zynqmp_pcap: pcap {
                                 compatible = "xlnx,zynqmp-pcap-fpga";
-                                phandle = <0x8f>;
+                                phandle = <0x90>;
                         };
 
                         zynqmp_reset: reset-controller {
@@ -466,7 +467,7 @@
                                 compatible = "xlnx,zynqmp-gpio-modepin";
                                 gpio-controller;
                                 #gpio-cells = <0x2>;
-                                phandle = <0x96>;
+                                phandle = <0x97>;
                         };
 
                         zynqmp_clk: clock-controller {
@@ -479,7 +480,7 @@
                                  <&aux_ref_clk>,
                                  <&gt_crx_ref_clk>;
                                 clock-names = "pss_ref_clk", "video_clk", "pss_alt_ref_clk", "aux_ref_clk", "gt_crx_ref_clk";
-                                phandle = <0x70>;
+                                phandle = <0x71>;
                         };
                 };
         };
@@ -496,36 +497,36 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 ranges;
-                phandle = <0xb5>;
+                phandle = <0xb7>;
         };
 
         ams {
                 compatible = "iio-hwmon";
-                io-channels = <0x1e 0x0 0x1e 0x1 0x1e 0x2 0x1e 0x3 0x1e 0x4 0x1e 0x5 0x1e 0x6 0x1e 0x7 0x1e 0x8 0x1e 0x9 0x1e 0xa 0x1e 0xb 0x1e 0xc 0x1e 0xd 0x1e 0xe 0x1e 0xf 0x1e 0x10 0x1e 0x11 0x1e 0x12 0x1e 0x13 0x1e 0x14 0x1e 0x15 0x1e 0x16 0x1e 0x17 0x1e 0x18 0x1e 0x19 0x1e 0x1a 0x1e 0x1b 0x1e 0x1c 0x1e 0x1d>;
+                io-channels = <0x1f 0x0 0x1f 0x1 0x1f 0x2 0x1f 0x3 0x1f 0x4 0x1f 0x5 0x1f 0x6 0x1f 0x7 0x1f 0x8 0x1f 0x9 0x1f 0xa 0x1f 0xb 0x1f 0xc 0x1f 0xd 0x1f 0xe 0x1f 0xf 0x1f 0x10 0x1f 0x11 0x1f 0x12 0x1f 0x13 0x1f 0x14 0x1f 0x15 0x1f 0x16 0x1f 0x17 0x1f 0x18 0x1f 0x19 0x1f 0x1a 0x1f 0x1b 0x1f 0x1c 0x1f 0x1d>;
         };
 
         tsens_apu: thermal-sensor-apu {
                 compatible = "generic-adc-thermal";
                 #thermal-sensor-cells = <0x0>;
-                io-channels = <0x1e 0x7>;
+                io-channels = <0x1f 0x7>;
                 io-channel-names = "sensor-channel";
-                phandle = <0x90>;
+                phandle = <0x91>;
         };
 
         tsens_rpu: thermal-sensor-rpu {
                 compatible = "generic-adc-thermal";
                 #thermal-sensor-cells = <0x0>;
-                io-channels = <0x1e 0x8>;
+                io-channels = <0x1f 0x8>;
                 io-channel-names = "sensor-channel";
-                phandle = <0x92>;
+                phandle = <0x93>;
         };
 
         tsens_pl: thermal-sensor-pl {
                 compatible = "generic-adc-thermal";
                 #thermal-sensor-cells = <0x0>;
-                io-channels = <0x1e 0x14>;
+                io-channels = <0x1f 0x14>;
                 io-channel-names = "sensor-channel";
-                phandle = <0x93>;
+                phandle = <0x94>;
         };
 
         thermal-zones {
@@ -533,7 +534,7 @@
                 apu-thermal {
                         polling-delay-passive = <0x3e8>;
                         polling-delay = <0x1388>;
-                        thermal-sensors = <0x90>;
+                        thermal-sensors = <0x91>;
 
                         trips {
 
@@ -541,29 +542,29 @@
                                         temperature = <0x16b48>;
                                         hysteresis = <0xdac>;
                                         type = "passive";
-                                        phandle = <0x91>;
+                                        phandle = <0x92>;
                                 };
 
                                 apu_critical: critical {
                                         temperature = <0x178f4>;
                                         hysteresis = <0xdac>;
                                         type = "critical";
-                                        phandle = <0xb6>;
+                                        phandle = <0xb8>;
                                 };
                         };
 
                         cooling-maps {
 
                                 map {
-                                        trip = <0x91>;
-                                        cooling-device = <0x85 0xffffffff 0xffffffff 0x86 0xffffffff 0xffffffff 0x87 0xffffffff 0xffffffff 0x88 0xffffffff 0xffffffff>;
+                                        trip = <0x92>;
+                                        cooling-device = <0x86 0xffffffff 0xffffffff 0x87 0xffffffff 0xffffffff 0x88 0xffffffff 0xffffffff 0x89 0xffffffff 0xffffffff>;
                                 };
                         };
                 };
 
                 rpu-thermal {
                         polling-delay = <0x2710>;
-                        thermal-sensors = <0x92>;
+                        thermal-sensors = <0x93>;
 
                         trips {
 
@@ -577,7 +578,7 @@
 
                 pl-thermal {
                         polling-delay = <0x2710>;
-                        thermal-sensors = <0x93>;
+                        thermal-sensors = <0x94>;
 
                         trips {
 
@@ -594,7 +595,7 @@
                 compatible = "indirect-bus";
                 #address-cells = <0x2>;
                 #size-cells = <0x1>;
-                phandle = <0x71>;
+                phandle = <0x72>;
         };
 
         amba: axi {
@@ -610,36 +611,36 @@
                         compatible = "arm,coresight-cpu-debug", "arm,primecell";
                         reg = <0x0 0xfec10000 0x0 0x1000>;
                         clock-names = "apb_pclk";
-                        cpu = <0x85>;
+                        cpu = <0x86>;
                         clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xba>;
+                        phandle = <0xbc>;
                 };
 
                 psu_cortexa53_1_debug: debug@fed10000 {
                         compatible = "arm,coresight-cpu-debug", "arm,primecell";
                         reg = <0x0 0xfed10000 0x0 0x1000>;
                         clock-names = "apb_pclk";
-                        cpu = <0x86>;
+                        cpu = <0x87>;
                         clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xbb>;
+                        phandle = <0xbd>;
                 };
 
                 psu_cortexa53_2_debug: debug@fee10000 {
                         compatible = "arm,coresight-cpu-debug", "arm,primecell";
                         reg = <0x0 0xfee10000 0x0 0x1000>;
                         clock-names = "apb_pclk";
-                        cpu = <0x87>;
+                        cpu = <0x88>;
                         clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xbc>;
+                        phandle = <0xbe>;
                 };
 
                 psu_cortexa53_3_debug: debug@fef10000 {
                         compatible = "arm,coresight-cpu-debug", "arm,primecell";
                         reg = <0x0 0xfef10000 0x0 0x1000>;
                         clock-names = "apb_pclk";
-                        cpu = <0x88>;
+                        cpu = <0x89>;
                         clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xbd>;
+                        phandle = <0xbf>;
                 };
 
                 fpd_dma_chan1: dma-controller@fd500000 {
@@ -658,7 +659,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_0";
-                        phandle = <0x3c>;
+                        phandle = <0x3d>;
                 };
 
                 fpd_dma_chan2: dma-controller@fd510000 {
@@ -677,7 +678,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_1";
-                        phandle = <0x3d>;
+                        phandle = <0x3e>;
                 };
 
                 fpd_dma_chan3: dma-controller@fd520000 {
@@ -696,7 +697,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_2";
-                        phandle = <0x3e>;
+                        phandle = <0x3f>;
                 };
 
                 fpd_dma_chan4: dma-controller@fd530000 {
@@ -715,7 +716,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_3";
-                        phandle = <0x3f>;
+                        phandle = <0x40>;
                 };
 
                 fpd_dma_chan5: dma-controller@fd540000 {
@@ -734,7 +735,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_4";
-                        phandle = <0x40>;
+                        phandle = <0x41>;
                 };
 
                 fpd_dma_chan6: dma-controller@fd550000 {
@@ -753,7 +754,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_5";
-                        phandle = <0x41>;
+                        phandle = <0x42>;
                 };
 
                 fpd_dma_chan7: dma-controller@fd560000 {
@@ -772,7 +773,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_6";
-                        phandle = <0x42>;
+                        phandle = <0x43>;
                 };
 
                 fpd_dma_chan8: dma-controller@fd570000 {
@@ -791,7 +792,7 @@
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_gdma_7";
-                        phandle = <0x43>;
+                        phandle = <0x44>;
                 };
 
                 lpd_dma_chan1: dma-controller@ffa80000 {
@@ -811,7 +812,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_0";
-                        phandle = <0xf>;
+                        phandle = <0x10>;
                 };
 
                 lpd_dma_chan2: dma-controller@ffa90000 {
@@ -831,7 +832,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_1";
-                        phandle = <0x10>;
+                        phandle = <0x11>;
                 };
 
                 lpd_dma_chan3: dma-controller@ffaa0000 {
@@ -851,7 +852,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_2";
-                        phandle = <0x11>;
+                        phandle = <0x12>;
                 };
 
                 lpd_dma_chan4: dma-controller@ffab0000 {
@@ -871,7 +872,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_3";
-                        phandle = <0x12>;
+                        phandle = <0x13>;
                 };
 
                 lpd_dma_chan5: dma-controller@ffac0000 {
@@ -891,7 +892,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_4";
-                        phandle = <0x13>;
+                        phandle = <0x14>;
                 };
 
                 lpd_dma_chan6: dma-controller@ffad0000 {
@@ -911,7 +912,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_5";
-                        phandle = <0x14>;
+                        phandle = <0x15>;
                 };
 
                 lpd_dma_chan7: dma-controller@ffae0000 {
@@ -931,7 +932,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_6";
-                        phandle = <0x15>;
+                        phandle = <0x16>;
                 };
 
                 lpd_dma_chan8: dma-controller@ffaf0000 {
@@ -951,7 +952,7 @@
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
                         xlnx,name = "psu_adma_7";
-                        phandle = <0x16>;
+                        phandle = <0x17>;
                 };
 
                 mc: memory-controller@fd070000 {
@@ -989,7 +990,7 @@
                         xlnx,dddrc-ecc = <0x0>;
                         xlnx,ddrc-clock-stop = <0x0>;
                         xlnx,ddrc-dynamic-ddr-config-enabled = <0x1>;
-                        phandle = <0x34>;
+                        phandle = <0x35>;
                 };
 
                 gem3: ethernet@ff0e0000 {
@@ -1026,7 +1027,7 @@
                         xlnx,ptp-enet-clock = <0x0>;
                         xlnx,enet-slcr-100mbps-div1 = <0x1>;
                         xlnx,name = "psu_ethernet_3";
-                        phandle = <0x36>;
+                        phandle = <0x37>;
                 };
 
                 gpio: gpio@ff0a0000 {
@@ -1049,7 +1050,7 @@
                         gpio-mask-low = <0x5600>;
                         emio-gpio-width = <0x20>;
                         xlnx,name = "psu_gpio_0";
-                        phandle = <0x44>;
+                        phandle = <0x45>;
                 };
 
                 i2c0: i2c@ff020000 {
@@ -1070,7 +1071,7 @@
                         xlnx,ip-name = "psu_i2c";
                         xlnx,iic-board-interface = "custom";
                         xlnx,name = "psu_i2c_0";
-                        phandle = <0x45>;
+                        phandle = <0x46>;
                 };
 
                 i2c1: i2c@ff030000 {
@@ -1091,7 +1092,7 @@
                         xlnx,ip-name = "psu_i2c";
                         xlnx,iic-board-interface = "custom";
                         xlnx,name = "psu_i2c_1";
-                        phandle = <0x46>;
+                        phandle = <0x47>;
                 };
 
                 ocm: memory-controller@ff960000 {
@@ -1102,7 +1103,7 @@
                         status = "okay";
                         xlnx,ip-name = "psu_ocm";
                         xlnx,name = "psu_ocm";
-                        phandle = <0x51>;
+                        phandle = <0x52>;
                 };
 
                 perf_monitor_ocm: perf-monitor@ffa00000 {
@@ -1131,7 +1132,7 @@
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_1";
-                        phandle = <0x20>;
+                        phandle = <0x21>;
                 };
 
                 perf_monitor_ddr: perf-monitor@fd0b0000 {
@@ -1160,7 +1161,7 @@
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_0";
-                        phandle = <0x1f>;
+                        phandle = <0x20>;
                 };
 
                 perf_monitor_cci: perf-monitor@fd490000 {
@@ -1189,7 +1190,7 @@
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_5";
-                        phandle = <0x22>;
+                        phandle = <0x23>;
                 };
 
                 perf_monitor_lpd: perf-monitor@ffa10000 {
@@ -1218,7 +1219,7 @@
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_2";
-                        phandle = <0x21>;
+                        phandle = <0x22>;
                 };
 
                 qspi: spi@ff0f0000 {
@@ -1251,7 +1252,7 @@
                         xlnx,name = "psu_qspi_0";
                         xlnx,qspi-bus-width = <0x2>;
                         is-dual = <0x1>;
-                        phandle = <0x54>;
+                        phandle = <0x55>;
                 };
 
                 psgtr: phy@fd400000 {
@@ -1262,7 +1263,7 @@
                         #phy-cells = <0x4>;
                         xlnx,ip-name = "psu_serdes";
                         xlnx,name = "psu_serdes";
-                        phandle = <0x60>;
+                        phandle = <0x61>;
                 };
 
                 rtc: rtc@ffa60000 {
@@ -1275,7 +1276,7 @@
                         calibration = <0x7fff>;
                         xlnx,ip-name = "psu_rtc";
                         xlnx,name = "psu_rtc";
-                        phandle = <0x5d>;
+                        phandle = <0x5e>;
                 };
 
                 sata: ahci@fd0c0000 {
@@ -1293,7 +1294,7 @@
                         xlnx,sata-board-interface = "custom";
                         xlnx,tz-nonsecure-sata1 = <0x0>;
                         xlnx,name = "psu_sata";
-                        phandle = <0x5e>;
+                        phandle = <0x5f>;
                 };
 
                 sdhci1: mmc@ff170000 {
@@ -1333,7 +1334,7 @@
                         xlnx,sdio-clk-freq-hz = <0xb2cfe8b>;
                         xlnx,write-protect = <0x0>;
                         xlnx,name = "psu_sd_1";
-                        phandle = <0x5f>;
+                        phandle = <0x60>;
                 };
 
                 smmu: iommu@fd800000 {
@@ -1346,7 +1347,7 @@
                         interrupts = <0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4>;
                         xlnx,ip-name = "psu_smmu_gpv";
                         xlnx,name = "psu_smmu_gpv";
-                        phandle = <0x62>;
+                        phandle = <0x63>;
                 };
 
                 ttc0: timer@ff110000 {
@@ -1365,11 +1366,11 @@
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,name = "psu_ttc_0";
-                        phandle = <0x64>;
+                        phandle = <0x65>;
                 };
 
                 ttc1: timer@ff110004 {
-                        phandle = <0x10f>;
+                        phandle = <0x111>;
                         xlnx,name = "psu_ttc_1";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1389,7 +1390,7 @@
                 };
 
                 ttc2: timer@ff110008 {
-                        phandle = <0x110>;
+                        phandle = <0x112>;
                         xlnx,name = "psu_ttc_2";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1424,11 +1425,11 @@
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,name = "psu_ttc_3";
-                        phandle = <0x65>;
+                        phandle = <0x66>;
                 };
 
                 ttc4: timer@ff120004 {
-                        phandle = <0x111>;
+                        phandle = <0x113>;
                         xlnx,name = "psu_ttc_4";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1448,7 +1449,7 @@
                 };
 
                 ttc5: timer@ff120008 {
-                        phandle = <0x112>;
+                        phandle = <0x114>;
                         xlnx,name = "psu_ttc_5";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1483,11 +1484,11 @@
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,name = "psu_ttc_6";
-                        phandle = <0x66>;
+                        phandle = <0x67>;
                 };
 
                 ttc7: timer@ff130004 {
-                        phandle = <0x113>;
+                        phandle = <0x115>;
                         xlnx,name = "psu_ttc_7";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1507,7 +1508,7 @@
                 };
 
                 ttc8: timer@ff130008 {
-                        phandle = <0x114>;
+                        phandle = <0x116>;
                         xlnx,name = "psu_ttc_8";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1542,11 +1543,11 @@
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,name = "psu_ttc_9";
-                        phandle = <0x67>;
+                        phandle = <0x68>;
                 };
 
                 ttc10: timer@ff140004 {
-                        phandle = <0x115>;
+                        phandle = <0x117>;
                         xlnx,name = "psu_ttc_10";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1566,7 +1567,7 @@
                 };
 
                 ttc11: timer@ff140008 {
-                        phandle = <0x116>;
+                        phandle = <0x118>;
                         xlnx,name = "psu_ttc_11";
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
@@ -1608,7 +1609,7 @@
                         port-number = <0x0>;
                         xlnx,uart-clk-freq-hz = <0x5f5dd19>;
                         xlnx,name = "psu_uart_0";
-                        phandle = <0x68>;
+                        phandle = <0x69>;
                 };
 
                 usb0: usb@ff9d0000 {
@@ -1636,7 +1637,7 @@
                         xlnx,usb-board-interface = "custom";
                         xlnx,tz-nonsecure = <0x1>;
                         xlnx,name = "psu_usb_0";
-                        phandle = <0x69>;
+                        phandle = <0x6a>;
 
                         dwc3_0: usb@fe200000 {
                                 compatible = "snps,dwc3";
@@ -1654,7 +1655,7 @@
                                 xlnx,enable-superspeed = <0x1>;
                                 xlnx,usb-board-interface = "custom";
                                 xlnx,name = "psu_usb_xhci_0";
-                                phandle = <0x6a>;
+                                phandle = <0x6b>;
                         };
                 };
 
@@ -1671,7 +1672,7 @@
                         xlnx,wdt-clk-freq-hz = <0x5f5dd19>;
                         xlnx,swdt-board-interface = "custom";
                         xlnx,name = "psu_wdt_1";
-                        phandle = <0x6c>;
+                        phandle = <0x6d>;
                 };
 
                 lpd_watchdog: watchdog@ff150000 {
@@ -1686,7 +1687,7 @@
                         xlnx,wdt-clk-freq-hz = <0x5f5dd19>;
                         xlnx,swdt-board-interface = "custom";
                         xlnx,name = "psu_wdt_0";
-                        phandle = <0x6b>;
+                        phandle = <0x6c>;
                 };
 
                 xilinx_ams: ams@ffa50000 {
@@ -1703,7 +1704,7 @@
                         xlnx,clock-freq = <0x31>;
                         xlnx,ip-name = "psu_ams";
                         xlnx,name = "psu_ams";
-                        phandle = <0x1e>;
+                        phandle = <0x1f>;
 
                         ams_ps: ams-ps@0 {
                                 compatible = "xlnx,zynqmp-ams-ps";
@@ -1726,7 +1727,7 @@
                         reg = <0x0 0xfe800000 0x0 0x10000>;
                         xlnx,ip-name = "psu_coresight_0";
                         xlnx,name = "psu_coresight_0";
-                        phandle = <0x26>;
+                        phandle = <0x27>;
                 };
 
                 csudma_0: dma@ffc80000 {
@@ -1738,7 +1739,7 @@
                         xlnx,ip-name = "psu_csudma";
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_csudma";
-                        phandle = <0x2a>;
+                        phandle = <0x2b>;
                 };
 
                 ipi0: ipi@ff300000 {
@@ -1771,7 +1772,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990480>;
-                                phandle = <0xd0>;
+                                phandle = <0xd2>;
                         };
 
                         psu_ipi_0_1: child@1 {
@@ -1780,7 +1781,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990400>;
-                                phandle = <0xd1>;
+                                phandle = <0xd3>;
                         };
 
                         psu_ipi_0_2: child@2 {
@@ -1789,7 +1790,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990440>;
-                                phandle = <0xd2>;
+                                phandle = <0xd4>;
                         };
 
                         psu_ipi_0_3: child@3 {
@@ -1798,7 +1799,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd3>;
+                                phandle = <0xd5>;
                         };
 
                         psu_ipi_0_4: child@4 {
@@ -1807,7 +1808,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd4>;
+                                phandle = <0xd6>;
                         };
 
                         psu_ipi_0_5: child@5 {
@@ -1816,7 +1817,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd5>;
+                                phandle = <0xd7>;
                         };
 
                         psu_ipi_0_6: child@6 {
@@ -1825,7 +1826,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd6>;
+                                phandle = <0xd8>;
                         };
                 };
 
@@ -1836,7 +1837,7 @@
                         xlnx,ip-name = "psu_r5_tcm_ram";
                         reg = <0x0 0xffe00000 0x0 0x40000>;
                         xlnx,name = "psu_r5_tcm_ram_global";
-                        phandle = <0x5a>;
+                        phandle = <0x5b>;
                 };
 
                 psu_r5_tcm_ram_0: psu_r5_tcm_ram@0 {
@@ -1846,7 +1847,7 @@
                         xlnx,ip-name = "psu_r5_tcm_ram";
                         reg = <0x0 0x0 0x0 0x40000>;
                         xlnx,name = "psu_r5_tcm_ram_0";
-                        phandle = <0x77>;
+                        phandle = <0x78>;
                 };
 
                 psu_r5_1_btcm: psu_r5_1_btcm@20000 {
@@ -1858,7 +1859,7 @@
                         xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_btcm";
-                        phandle = <0x7c>;
+                        phandle = <0x7d>;
                 };
 
                 psu_r5_1_btcm_global: psu_r5_1_btcm_global@ffeb0000 {
@@ -1868,7 +1869,7 @@
                         xlnx,ip-name = "psu_r5_1_btcm_global";
                         reg = <0x0 0xffeb0000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_btcm_global";
-                        phandle = <0x59>;
+                        phandle = <0x5a>;
                 };
 
                 psu_r5_1_atcm: psu_r5_1_atcm@0 {
@@ -1880,7 +1881,7 @@
                         xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x0 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_atcm";
-                        phandle = <0x7b>;
+                        phandle = <0x7c>;
                 };
 
                 psu_r5_1_atcm_global: psu_r5_1_atcm_global@ffe90000 {
@@ -1890,7 +1891,7 @@
                         xlnx,ip-name = "psu_r5_1_atcm_global";
                         reg = <0x0 0xffe90000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_atcm_global";
-                        phandle = <0x58>;
+                        phandle = <0x59>;
                 };
 
                 psu_r5_0_btcm_lockstep: psu_r5_0_btcm_lockstep@ffe30000 {
@@ -1901,7 +1902,7 @@
                         xlnx,is-hierarchy;
                         reg = <0x0 0xffe30000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm_lockstep";
-                        phandle = <0x106>;
+                        phandle = <0x108>;
                 };
 
                 psu_r5_0_btcm: psu_r5_0_btcm@20000 {
@@ -1913,7 +1914,7 @@
                         xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm";
-                        phandle = <0x76>;
+                        phandle = <0x77>;
                 };
 
                 psu_r5_0_btcm_global: psu_r5_0_btcm_global@ffe20000 {
@@ -1923,7 +1924,7 @@
                         xlnx,ip-name = "psu_r5_0_btcm_global";
                         reg = <0x0 0xffe20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm_global";
-                        phandle = <0x57>;
+                        phandle = <0x58>;
                 };
 
                 psu_r5_0_atcm_lockstep: psu_r5_0_atcm_lockstep@ffe10000 {
@@ -1934,7 +1935,7 @@
                         xlnx,is-hierarchy;
                         reg = <0x0 0xffe10000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm_lockstep";
-                        phandle = <0x107>;
+                        phandle = <0x109>;
                 };
 
                 psu_r5_0_atcm: psu_r5_0_atcm@0 {
@@ -1946,7 +1947,7 @@
                         xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x0 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm";
-                        phandle = <0x75>;
+                        phandle = <0x76>;
                 };
 
                 psu_r5_0_atcm_global: psu_r5_0_atcm_global@ffe00000 {
@@ -1956,7 +1957,7 @@
                         xlnx,ip-name = "psu_r5_0_atcm_global";
                         reg = <0x0 0xffe00000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm_global";
-                        phandle = <0x56>;
+                        phandle = <0x57>;
                 };
 
                 psu_pmu_global_0: psu_pmu_global_0@ffd80000 {
@@ -1965,7 +1966,7 @@
                         xlnx,ip-name = "psu_pmu_global_0";
                         reg = <0x0 0xffd80000 0x0 0x40000>;
                         xlnx,name = "psu_pmu_global_0";
-                        phandle = <0x53>;
+                        phandle = <0x54>;
                 };
 
                 psu_mbistjtag: psu_mbistjtag@ffcf0000 {
@@ -1974,7 +1975,7 @@
                         xlnx,ip-name = "psu_mbistjtag";
                         reg = <0x0 0xffcf0000 0x0 0x10000>;
                         xlnx,name = "psu_mbistjtag";
-                        phandle = <0x4f>;
+                        phandle = <0x50>;
                 };
 
                 psu_rsa: psu_rsa@ffce0000 {
@@ -1983,7 +1984,7 @@
                         xlnx,ip-name = "psu_rsa";
                         reg = <0x0 0xffce0000 0x0 0x10000>;
                         xlnx,name = "psu_rsa";
-                        phandle = <0x5c>;
+                        phandle = <0x5d>;
                 };
 
                 psu_efuse: psu_efuse@ffcc0000 {
@@ -1992,7 +1993,7 @@
                         xlnx,ip-name = "psu_efuse";
                         reg = <0x0 0xffcc0000 0x0 0x10000>;
                         xlnx,name = "psu_efuse";
-                        phandle = <0x35>;
+                        phandle = <0x36>;
                 };
 
                 psu_csu_0: psu_csu@ffca0000 {
@@ -2003,7 +2004,7 @@
                         xlnx,ip-name = "psu_csu";
                         reg = <0x0 0xffca0000 0x0 0x10000>;
                         xlnx,name = "psu_csu_0";
-                        phandle = <0x29>;
+                        phandle = <0x2a>;
                 };
 
                 psu_fpd_gpv: psu_fpd_gpv@fd700000 {
@@ -2012,7 +2013,7 @@
                         xlnx,ip-name = "psu_fpd_gpv";
                         reg = <0x0 0xfd700000 0x0 0x100000>;
                         xlnx,name = "psu_fpd_gpv";
-                        phandle = <0x37>;
+                        phandle = <0x38>;
                 };
 
                 psu_cci_gpv: psu_cci_gpv@fd6e0000 {
@@ -2021,7 +2022,7 @@
                         xlnx,ip-name = "psu_cci_gpv";
                         reg = <0x0 0xfd6e0000 0x0 0x10000>;
                         xlnx,name = "psu_cci_gpv";
-                        phandle = <0x24>;
+                        phandle = <0x25>;
                 };
 
                 psu_fpd_slcr_secure: psu_fpd_slcr_secure@fd690000 {
@@ -2030,7 +2031,7 @@
                         xlnx,ip-name = "psu_fpd_slcr_secure";
                         reg = <0x0 0xfd690000 0x0 0x40000>;
                         xlnx,name = "psu_fpd_slcr_secure";
-                        phandle = <0x39>;
+                        phandle = <0x3a>;
                 };
 
                 psu_fpd_slcr: psu_fpd_slcr@fd610000 {
@@ -2039,7 +2040,7 @@
                         xlnx,ip-name = "psu_fpd_slcr";
                         reg = <0x0 0xfd610000 0x0 0x80000>;
                         xlnx,name = "psu_fpd_slcr";
-                        phandle = <0x38>;
+                        phandle = <0x39>;
                 };
 
                 psu_smmu_reg: psu_smmu_reg@fd5f0000 {
@@ -2048,7 +2049,7 @@
                         xlnx,ip-name = "psu_smmu_reg";
                         reg = <0x0 0xfd5f0000 0x0 0x10000>;
                         xlnx,name = "psu_smmu_reg";
-                        phandle = <0x63>;
+                        phandle = <0x64>;
                 };
 
                 psu_cci_reg: psu_cci_reg@fd5e0000 {
@@ -2057,7 +2058,7 @@
                         xlnx,ip-name = "psu_cci_reg";
                         reg = <0x0 0xfd5e0000 0x0 0x10000>;
                         xlnx,name = "psu_cci_reg";
-                        phandle = <0x25>;
+                        phandle = <0x26>;
                 };
 
                 psu_fpd_xmpu_cfg: psu_fpd_xmpu_cfg@fd5d0000 {
@@ -2066,7 +2067,7 @@
                         xlnx,ip-name = "psu_fpd_xmpu_cfg";
                         reg = <0x0 0xfd5d0000 0x0 0x10000>;
                         xlnx,name = "psu_fpd_xmpu_cfg";
-                        phandle = <0x3a>;
+                        phandle = <0x3b>;
                 };
 
                 psu_apu: psu_apu@fd5c0000 {
@@ -2075,7 +2076,7 @@
                         xlnx,ip-name = "psu_apu";
                         reg = <0x0 0xfd5c0000 0x0 0x10000>;
                         xlnx,name = "psu_apu";
-                        phandle = <0x23>;
+                        phandle = <0x24>;
                 };
 
                 psu_fpd_xmpu_sink: psu_fpd_xmpu_sink@fd4f0000 {
@@ -2084,7 +2085,7 @@
                         xlnx,ip-name = "psu_fpd_xmpu_sink";
                         reg = <0x0 0xfd4f0000 0x0 0x10000>;
                         xlnx,name = "psu_fpd_xmpu_sink";
-                        phandle = <0x3b>;
+                        phandle = <0x3c>;
                 };
 
                 psu_siou: psu_siou@fd3d0000 {
@@ -2093,7 +2094,7 @@
                         xlnx,ip-name = "psu_siou";
                         reg = <0x0 0xfd3d0000 0x0 0x10000>;
                         xlnx,name = "psu_siou";
-                        phandle = <0x61>;
+                        phandle = <0x62>;
                 };
 
                 psu_afi_5: psu_afi@fd3b0000 {
@@ -2102,7 +2103,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd3b0000 0x0 0x10000>;
                         xlnx,name = "psu_afi_5";
-                        phandle = <0x1c>;
+                        phandle = <0x1d>;
                 };
 
                 psu_afi_4: psu_afi@fd3a0000 {
@@ -2111,7 +2112,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd3a0000 0x0 0x10000>;
                         xlnx,name = "psu_afi_4";
-                        phandle = <0x1b>;
+                        phandle = <0x1c>;
                 };
 
                 psu_afi_3: psu_afi@fd390000 {
@@ -2120,7 +2121,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd390000 0x0 0x10000>;
                         xlnx,name = "psu_afi_3";
-                        phandle = <0x1a>;
+                        phandle = <0x1b>;
                 };
 
                 psu_afi_2: psu_afi@fd380000 {
@@ -2129,7 +2130,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd380000 0x0 0x10000>;
                         xlnx,name = "psu_afi_2";
-                        phandle = <0x19>;
+                        phandle = <0x1a>;
                 };
 
                 psu_afi_1: psu_afi@fd370000 {
@@ -2138,7 +2139,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd370000 0x0 0x10000>;
                         xlnx,name = "psu_afi_1";
-                        phandle = <0x18>;
+                        phandle = <0x19>;
                 };
 
                 psu_afi_0: psu_afi@fd360000 {
@@ -2147,7 +2148,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd360000 0x0 0x10000>;
                         xlnx,name = "psu_afi_0";
-                        phandle = <0x17>;
+                        phandle = <0x18>;
                 };
 
                 psu_crf_apb: psu_crf_apb@fd1a0000 {
@@ -2156,7 +2157,7 @@
                         xlnx,ip-name = "psu_crf_apb";
                         reg = <0x0 0xfd1a0000 0x0 0x140000>;
                         xlnx,name = "psu_crf_apb";
-                        phandle = <0x27>;
+                        phandle = <0x28>;
                 };
 
                 psu_ddr_qos_ctrl: psu_ddr_qos_ctrl@fd090000 {
@@ -2165,7 +2166,7 @@
                         xlnx,ip-name = "psu_ddr_qos_ctrl";
                         reg = <0x0 0xfd090000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_qos_ctrl";
-                        phandle = <0x2d>;
+                        phandle = <0x2e>;
                 };
 
                 psu_ddr_phy: psu_ddr_phy@fd080000 {
@@ -2174,7 +2175,7 @@
                         xlnx,ip-name = "psu_ddr_phy";
                         reg = <0x0 0xfd080000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_phy";
-                        phandle = <0x2c>;
+                        phandle = <0x2d>;
                 };
 
                 psu_ddr_xmpu5_cfg: psu_ddr_xmpu5_cfg@fd050000 {
@@ -2183,7 +2184,7 @@
                         xlnx,ip-name = "psu_ddr_xmpu5_cfg";
                         reg = <0x0 0xfd050000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu5_cfg";
-                        phandle = <0x33>;
+                        phandle = <0x34>;
                 };
 
                 psu_ddr_xmpu4_cfg: psu_ddr_xmpu4_cfg@fd040000 {
@@ -2192,7 +2193,7 @@
                         xlnx,ip-name = "psu_ddr_xmpu4_cfg";
                         reg = <0x0 0xfd040000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu4_cfg";
-                        phandle = <0x32>;
+                        phandle = <0x33>;
                 };
 
                 psu_ddr_xmpu3_cfg: psu_ddr_xmpu3_cfg@fd030000 {
@@ -2201,7 +2202,7 @@
                         xlnx,ip-name = "psu_ddr_xmpu3_cfg";
                         reg = <0x0 0xfd030000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu3_cfg";
-                        phandle = <0x31>;
+                        phandle = <0x32>;
                 };
 
                 psu_ddr_xmpu2_cfg: psu_ddr_xmpu2_cfg@fd020000 {
@@ -2210,7 +2211,7 @@
                         xlnx,ip-name = "psu_ddr_xmpu2_cfg";
                         reg = <0x0 0xfd020000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu2_cfg";
-                        phandle = <0x30>;
+                        phandle = <0x31>;
                 };
 
                 psu_ddr_xmpu1_cfg: psu_ddr_xmpu1_cfg@fd010000 {
@@ -2219,7 +2220,7 @@
                         xlnx,ip-name = "psu_ddr_xmpu1_cfg";
                         reg = <0x0 0xfd010000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu1_cfg";
-                        phandle = <0x2f>;
+                        phandle = <0x30>;
                 };
 
                 psu_ddr_xmpu0_cfg: psu_ddr_xmpu0_cfg@fd000000 {
@@ -2228,7 +2229,7 @@
                         xlnx,ip-name = "psu_ddr_xmpu0_cfg";
                         reg = <0x0 0xfd000000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu0_cfg";
-                        phandle = <0x2e>;
+                        phandle = <0x2f>;
                 };
 
                 psu_ocm_xmpu_cfg: psu_ocm_xmpu_cfg@ffa70000 {
@@ -2237,7 +2238,7 @@
                         xlnx,ip-name = "psu_ocm_xmpu_cfg";
                         reg = <0x0 0xffa70000 0x0 0x10000>;
                         xlnx,name = "psu_ocm_xmpu_cfg";
-                        phandle = <0x52>;
+                        phandle = <0x53>;
                 };
 
                 psu_lpd_xppu_sink: psu_lpd_xppu_sink@ff9c0000 {
@@ -2246,7 +2247,7 @@
                         xlnx,ip-name = "psu_lpd_xppu_sink";
                         reg = <0x0 0xff9c0000 0x0 0x10000>;
                         xlnx,name = "psu_lpd_xppu_sink";
-                        phandle = <0x4e>;
+                        phandle = <0x4f>;
                 };
 
                 psu_afi_6: psu_afi@ff9b0000 {
@@ -2255,7 +2256,7 @@
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xff9b0000 0x0 0x10000>;
                         xlnx,name = "psu_afi_6";
-                        phandle = <0x1d>;
+                        phandle = <0x1e>;
                 };
 
                 psu_rpu: psu_rpu@ff9a0000 {
@@ -2265,7 +2266,7 @@
                         xlnx,ip-name = "psu_rpu";
                         reg = <0x0 0xff9a0000 0x0 0x10000>;
                         xlnx,name = "psu_rpu";
-                        phandle = <0x5b>;
+                        phandle = <0x5c>;
                 };
 
                 psu_crl_apb: psu_crl_apb@ff5e0000 {
@@ -2274,7 +2275,7 @@
                         xlnx,ip-name = "psu_crl_apb";
                         reg = <0x0 0xff5e0000 0x0 0x280000>;
                         xlnx,name = "psu_crl_apb";
-                        phandle = <0x28>;
+                        phandle = <0x29>;
                 };
 
                 psu_lpd_slcr_secure: psu_lpd_slcr_secure@ff4b0000 {
@@ -2283,7 +2284,7 @@
                         xlnx,ip-name = "psu_lpd_slcr_secure";
                         reg = <0x0 0xff4b0000 0x0 0x30000>;
                         xlnx,name = "psu_lpd_slcr_secure";
-                        phandle = <0x4c>;
+                        phandle = <0x4d>;
                 };
 
                 psu_lpd_slcr: psu_lpd_slcr@ff410000 {
@@ -2292,19 +2293,19 @@
                         xlnx,ip-name = "psu_lpd_slcr";
                         reg = <0x0 0xff410000 0x0 0xa0000>;
                         xlnx,name = "psu_lpd_slcr";
-                        phandle = <0x4b>;
+                        phandle = <0x4c>;
                 };
 
                 psu_ctrl_ipi: PERIPHERAL@ff380000 {
                         compatible = "xlnx,PERIPHERAL-1.0";
                         reg = <0x0 0xff380000 0x0 0x80000>;
-                        phandle = <0x2b>;
+                        phandle = <0x2c>;
                 };
 
                 psu_message_buffers: PERIPHERAL@ff990000 {
                         compatible = "xlnx,PERIPHERAL-1.0";
                         reg = <0x0 0xff990000 0x0 0x10000>;
-                        phandle = <0x50>;
+                        phandle = <0x51>;
                 };
 
                 psu_iou_scntrs: psu_iou_scntrs@ff260000 {
@@ -2313,7 +2314,7 @@
                         xlnx,ip-name = "psu_iou_scntrs";
                         reg = <0x0 0xff260000 0x0 0x10000>;
                         xlnx,name = "psu_iou_scntrs";
-                        phandle = <0x48>;
+                        phandle = <0x49>;
                 };
 
                 psu_iou_scntr: psu_iou_scntr@ff250000 {
@@ -2322,7 +2323,7 @@
                         xlnx,ip-name = "psu_iou_scntr";
                         reg = <0x0 0xff250000 0x0 0x10000>;
                         xlnx,name = "psu_iou_scntr";
-                        phandle = <0x47>;
+                        phandle = <0x48>;
                 };
 
                 psu_iousecure_slcr: psu_iousecure_slcr@ff240000 {
@@ -2331,7 +2332,7 @@
                         xlnx,ip-name = "psu_iousecure_slcr";
                         reg = <0x0 0xff240000 0x0 0x10000>;
                         xlnx,name = "psu_iousecure_slcr";
-                        phandle = <0x49>;
+                        phandle = <0x4a>;
                 };
 
                 psu_iouslcr_0: psu_iouslcr@ff180000 {
@@ -2340,16 +2341,16 @@
                         xlnx,ip-name = "psu_iouslcr";
                         reg = <0x0 0xff180000 0x0 0xc0000>;
                         xlnx,name = "psu_iouslcr_0";
-                        phandle = <0x4a>;
+                        phandle = <0x4b>;
                 };
 
                 psu_qspi_linear_0: psu_qspi_linear@c0000000 {
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
-                        phandle = <0x10b>;
+                        phandle = <0x10d>;
                 };
 
                 gic: interrupt-controller@f9010000 {
-                        phandle = <0xe>;
+                        phandle = <0xf>;
                         xlnx,name = "psu_acpu_gic";
                         xlnx,ip-name = "psu_acpu_gic";
                         status = "okay";
@@ -2366,7 +2367,7 @@
                 compatible = "indirect-bus";
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
-                phandle = <0x10c>;
+                phandle = <0x10e>;
 
                 lpd_xppu: xppu@ff980000 {
                         compatible = "xlnx,xppu";
@@ -2375,12 +2376,12 @@
                         status = "okay";
                         xlnx,ip-name = "psu_lpd_xppu";
                         xlnx,name = "psu_lpd_xppu";
-                        phandle = <0x4d>;
+                        phandle = <0x4e>;
                 };
         };
 
         binman: binman {
-                phandle = <0x10d>;
+                phandle = <0x10f>;
         };
 
         pss_ref_clk: pss-ref-clk {
@@ -2389,7 +2390,7 @@
                 #clock-cells = <0x0>;
                 clock-frequency = <0x1fca055>;
                 clock-output-names = "pss_ref_clk";
-                phandle = <0x8a>;
+                phandle = <0x8b>;
         };
 
         video_clk: video-clk {
@@ -2398,7 +2399,7 @@
                 #clock-cells = <0x0>;
                 clock-frequency = <0x19bfcc0>;
                 clock-output-names = "video_clk";
-                phandle = <0x8b>;
+                phandle = <0x8c>;
         };
 
         pss_alt_ref_clk: pss-alt-ref-clk {
@@ -2407,7 +2408,7 @@
                 #clock-cells = <0x0>;
                 clock-frequency = <0x0>;
                 clock-output-names = "pss_alt_ref_clk";
-                phandle = <0x8c>;
+                phandle = <0x8d>;
         };
 
         gt_crx_ref_clk: gt-crx-ref-clk {
@@ -2416,7 +2417,7 @@
                 #clock-cells = <0x0>;
                 clock-frequency = <0x66ff300>;
                 clock-output-names = "gt_crx_ref_clk";
-                phandle = <0x8e>;
+                phandle = <0x8f>;
         };
 
         aux_ref_clk: aux-ref-clk {
@@ -2425,7 +2426,7 @@
                 #clock-cells = <0x0>;
                 clock-frequency = <0x19bfcc0>;
                 clock-output-names = "aux_ref_clk";
-                phandle = <0x8d>;
+                phandle = <0x8e>;
         };
 
         amba_pl: amba_pl {
@@ -2434,7 +2435,16 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 firmware-name = "ps_wrapper.bit.bin";
-                phandle = <0x10e>;
+                phandle = <0x110>;
+
+                misc_clk_0: misc_clk_0 {
+                        clock-div = <0x1>;
+                        compatible = "fixed-factor-clock";
+                        clock-mult = <0x5>;
+                        clocks = <&zynqmp_clk 0x47>;
+                        #clock-cells = <0x0>;
+                        phandle = <0x99>;
+                };
 
                 clk104_mux: gpio@80020000 {
                         xlnx,gpio-board-interface = "Custom";
@@ -2516,6 +2526,1365 @@
                         xlnx,name = "r5_timer";
                         phandle = <0xc>;
                 };
+
+                usp_rf_data_converter_0: usp_rf_data_converter@80040000 {
+                        xlnx,adc-tdd-rts21 = <0x0>;
+                        xlnx,adc3-fabric-freq = <0x1f4>;
+                        xlnx,adc-dither32;
+                        xlnx,dac2-clock-source-mx = <0x6>;
+                        xlnx,adc-tdd-rts22 = <0x0>;
+                        xlnx,adc-dither33;
+                        xlnx,mdac-refclk-freq = <0x1900>;
+                        xlnx,adc-tdd-rts23 = <0x0>;
+                        xlnx,adc-slice31-enable;
+                        xlnx,adc-nyquist30 = <0x0>;
+                        xlnx,adc-nyquist31 = <0x0>;
+                        xlnx,dac3-refclk-div = <0x1>;
+                        xlnx,axiclk-freq = <0x64>;
+                        xlnx,adc-nyquist32 = <0x0>;
+                        xlnx,adc-nyquist33 = <0x0>;
+                        reg = <0x0 0x80040000 0x0 0x40000>;
+                        xlnx,adc-tdd-rts30 = <0x0>;
+                        xlnx,adc-slice10-enable;
+                        xlnx,adc2-slices = <0x2>;
+                        xlnx,adc-tdd-rts31 = <0x0>;
+                        xlnx,adc2-fs-max = <0x5>;
+                        xlnx,mdac-fabric-freq = <0x0>;
+                        xlnx,dac0-enable = <0x0>;
+                        xlnx,adc-tdd-rts32 = <0x0>;
+                        xlnx,sysref-master = <0x0>;
+                        xlnx,adc-tdd-rts33 = <0x0>;
+                        xlnx,adc3-link-coupling = <0x0>;
+                        xlnx,adc2-refclk-div = <0x1>;
+                        xlnx,dac-coarse-mixer-freq00 = <0x0>;
+                        xlnx,dac-coarse-mixer-freq01 = <0x0>;
+                        xlnx,adc0-slices = <0x2>;
+                        xlnx,dac-coarse-mixer-freq02 = <0x0>;
+                        xlnx,dac0-sampling-rate = <0x61a800>;
+                        xlnx,adc0-fs-max = <0x5>;
+                        xlnx,adc2-refclk-freq = <0x1388>;
+                        xlnx,dac-coarse-mixer-freq03 = <0x0>;
+                        xlnx,dac2-outclk-freq = <0x32>;
+                        xlnx,adc30-dig-port = <0x1>;
+                        xlnx,adc22-dig-port = <0x1>;
+                        xlnx,dac-coarse-mixer-freq10 = <0x0>;
+                        xlnx,dac3-vco = <0x2134>;
+                        xlnx,dac-coarse-mixer-freq11 = <0x0>;
+                        xlnx,name = "usp_rf_data_converter_0";
+                        xlnx,adc2-fabric-freq = <0x1f4>;
+                        xlnx,dac-coarse-mixer-freq12 = <0x0>;
+                        xlnx,dac-coarse-mixer-freq13 = <0x0>;
+                        xlnx,adc-data-width00 = <0xa>;
+                        xlnx,adc-data-width01 = <0xa>;
+                        xlnx,adc2-enable = <0x1>;
+                        xlnx,adc-data-width02 = <0xa>;
+                        xlnx,adc-data-width03 = <0xa>;
+                        xlnx,adc0-obs-fabric-freq = <0x0>;
+                        xlnx,dac-coarse-mixer-freq20 = <0x0>;
+                        xlnx,dac-coarse-mixer-freq21 = <0x0>;
+                        xlnx,adc2-obs-fabric-freq = <0x0>;
+                        xlnx,dac-coarse-mixer-freq22 = <0x0>;
+                        xlnx,dac3-outdiv = <0x1>;
+                        xlnx,adc1-band = <0x0>;
+                        xlnx,adc3-fbdiv = <0xa>;
+                        xlnx,madc-refclk-freq = <0x7d0>;
+                        xlnx,dac-coarse-mixer-freq23 = <0x0>;
+                        xlnx,dac3-link-coupling = <0x0>;
+                        xlnx,dac2-band = <0x0>;
+                        xlnx,adc-data-width10 = <0xa>;
+                        xlnx,adc1-multi-tile-sync;
+                        xlnx,adc-data-width11 = <0xa>;
+                        clock-names = "m0_axis_aclk", "m1_axis_aclk", "m2_axis_aclk", "m3_axis_aclk", "s_axi_aclk";
+                        xlnx,adc3-refclk-div = <0x1>;
+                        xlnx,adc-data-width12 = <0x9>;
+                        xlnx,adc3-multi-tile-sync;
+                        xlnx,adc-data-width13 = <0x9>;
+                        xlnx,madc-decimation-mode00 = <0x0>;
+                        xlnx,madc-decimation-mode01 = <0x0>;
+                        xlnx,dac-coarse-mixer-freq30 = <0x0>;
+                        xlnx,adc1-sampling-rate = <0x5>;
+                        xlnx,madc-decimation-mode02 = <0x0>;
+                        xlnx,dac-coarse-mixer-freq31 = <0x0>;
+                        xlnx,madc-fabric-freq = <0x0>;
+                        xlnx,madc-decimation-mode03 = <0x0>;
+                        xlnx,dac-coarse-mixer-freq32 = <0x0>;
+                        xlnx,adc-slice03-enable;
+                        xlnx,adc0-enable = <0x1>;
+                        xlnx,dac-coarse-mixer-freq33 = <0x0>;
+                        xlnx,adc-obs-data-width00 = <0x8>;
+                        xlnx,adc-obs-data-width01 = <0x8>;
+                        xlnx,adc-data-width20 = <0xa>;
+                        xlnx,adc-obs-data-width02 = <0x8>;
+                        xlnx,adc-data-width21 = <0xa>;
+                        xlnx,mdac-nco-phase00 = <0x0>;
+                        xlnx,adc-obs-data-width03 = <0x8>;
+                        xlnx,adc1-refclk-freq = <0x1388>;
+                        xlnx,adc-data-width22 = <0xa>;
+                        xlnx,production-simulation = <0x0>;
+                        xlnx,mdac-nco-phase01 = <0x0>;
+                        xlnx,dac1-outdiv = <0x1>;
+                        xlnx,adc-data-width23 = <0xa>;
+                        xlnx,mdac-nco-phase02 = <0x0>;
+                        xlnx,adc2-fbdiv = <0xa>;
+                        xlnx,mdac-nco-phase03 = <0x0>;
+                        xlnx,mdac-data-type00 = <0x0>;
+                        xlnx,dac1-outclk-freq = <0x32>;
+                        xlnx,use-bram = <0x1>;
+                        xlnx,mdac-data-type01 = <0x0>;
+                        xlnx,mdac-data-type02 = <0x0>;
+                        xlnx,dac0-vco = <0x2134>;
+                        xlnx,adc-slice22-enable;
+                        xlnx,mdac-link-coupling = <0x0>;
+                        xlnx,mdac-data-type03 = <0x0>;
+                        xlnx,adc-obs-data-width10 = <0x8>;
+                        xlnx,disable-bg-cal-en = <0x1>;
+                        xlnx,adc-obs-data-width11 = <0x8>;
+                        xlnx,adc-coarse-mixer-freq00 = <0x3>;
+                        xlnx,adc-data-width30 = <0xa>;
+                        xlnx,adc-obs-data-width12 = <0x8>;
+                        xlnx,adc1-fabric-freq = <0x1f4>;
+                        xlnx,adc-coarse-mixer-freq01 = <0x3>;
+                        xlnx,adc-data-width31 = <0xa>;
+                        xlnx,adc-obs-data-width13 = <0x8>;
+                        xlnx,adc-coarse-mixer-freq02 = <0x3>;
+                        xlnx,adc-data-width32 = <0x9>;
+                        xlnx,dac-nyquist00 = <0x0>;
+                        xlnx,dac-mode00 = <0x0>;
+                        xlnx,adc-slice01-enable;
+                        xlnx,adc-calopt-mode00 = <0x1>;
+                        xlnx,adc-coarse-mixer-freq03 = <0x3>;
+                        xlnx,adc-data-width33 = <0x9>;
+                        xlnx,dac-nyquist01 = <0x0>;
+                        xlnx,dac-nco-phase00 = <0x0>;
+                        xlnx,dac-mode01 = <0x0>;
+                        xlnx,dac3-fbdiv = <0xa>;
+                        xlnx,adc-calopt-mode01 = <0x1>;
+                        xlnx,dac-nyquist02 = <0x0>;
+                        xlnx,dac-nco-phase01 = <0x0>;
+                        xlnx,dac-mode02 = <0x0>;
+                        xlnx,adc-calopt-mode02 = <0x1>;
+                        xlnx,silicon-revision = <0x1>;
+                        xlnx,dac-nyquist03 = <0x0>;
+                        xlnx,dac-nco-phase02 = <0x0>;
+                        xlnx,dac-mode03 = <0x0>;
+                        xlnx,dac0-interpolation = <0x0>;
+                        xlnx,adc11-dig-port = <0x0>;
+                        xlnx,adc-calopt-mode03 = <0x1>;
+                        xlnx,dac-nco-phase03 = <0x0>;
+                        xlnx,dac-data-type00 = <0x0>;
+                        xlnx,adc03-dig-port = <0x0>;
+                        xlnx,adc1-vco = <0x2134>;
+                        xlnx,dac-tdd-rts00 = <0x0>;
+                        xlnx,dac-data-type01 = <0x0>;
+                        xlnx,adc-obs-data-width20 = <0x8>;
+                        xlnx,dac-tdd-rts01 = <0x0>;
+                        xlnx,dac-data-type02 = <0x0>;
+                        xlnx,adc-obs-data-width21 = <0x8>;
+                        xlnx,adc-nco-freq00 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq10 = <0x3>;
+                        xlnx,dac-tdd-rts02 = <0x0>;
+                        xlnx,dac-data-type03 = <0x0>;
+                        xlnx,adc-obs-data-width22 = <0x8>;
+                        xlnx,adc-nco-freq01 = <0x0>;
+                        xlnx,adc1-fbdiv = <0xa>;
+                        xlnx,adc-coarse-mixer-freq11 = <0x3>;
+                        xlnx,dac-tdd-rts03 = <0x0>;
+                        xlnx,dac1-sampling-rate = <0x61a800>;
+                        xlnx,adc-obs-data-width23 = <0x8>;
+                        xlnx,adc-nco-freq02 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq12 = <0x0>;
+                        xlnx,dac-nyquist10 = <0x0>;
+                        xlnx,dac-mode10 = <0x0>;
+                        xlnx,dac1-vop = <0x14>;
+                        xlnx,adc-slice20-enable;
+                        xlnx,adc-nco-freq03 = <0x0>;
+                        xlnx,adc-calopt-mode10 = <0x1>;
+                        xlnx,adc-coarse-mixer-freq13 = <0x0>;
+                        param-list = <0x0 0x480 0x0 0x1000000 0x0 0x0 0x1000000 0x1000000 0x2000000 0x1000000 0x0 0x0 0x9a999999 0x99991940 0x0 0xb940 0x0 0x0 0xa000000 0x1000000 0x1000000 0x0 0x0 0x2440 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x0 0x9a999999 0x99991940 0x0 0xb940 0x0 0x0 0xa000000 0x1000000 0x1000000 0x0 0x0 0x2440 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x0 0x9a999999 0x99991940 0x0 0xb940 0x0 0x0 0xa000000 0x1000000 0x1000000 0x0 0x0 0x2440 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x0 0x9a999999 0x99991940 0x0 0xb940 0x0 0x0 0xa000000 0x1000000 0x1000000 0x0 0x0 0x2440 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x0 0x2000000 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x0 0x10000000 0x0 0x0 0x0 0x3000000 0x0 0x0 0x1000000 0x0 0x0 0x1440 0x0 0x88b340 0x0 0x407f40 0xa000000 0x1000000 0x1000000 0x0 0x0 0x1440 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x1000000 0x0 0x0 0x1440 0x0 0x88b340 0x0 0x407f40 0xa000000 0x1000000 0x1000000 0x0 0x0 0x1440 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x0 0x2000000 0x0 0x2000000 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0x9000000 0x0 0x0 0x3000000 0x0 0x0 0x0 0x9000000 0x0 0x0 0x3000000 0x0 0x0 0x1000000 0x0 0x0 0x1440 0x0 0x88b340 0x0 0x407f40 0xa000000 0x1000000 0x1000000 0x0 0x0 0x1440 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x1000000 0x0 0x0 0x1440 0x0 0x88b340 0x0 0x407f40 0xa000000 0x1000000 0x1000000 0x0 0x0 0x1440 0x2000000 0x1000000 0x2000000 0x1000000 0x2000000 0x0 0x2000000 0x0 0x2000000 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0xa000000 0x1000000 0x0 0x1000000 0x0 0x0 0x0 0x9000000 0x0 0x0 0x3000000 0x0 0x0 0x0 0x9000000 0x0 0x0 0x3000000 0x0 0x0>;
+                        xlnx,mdac-coarse-mixer-freq00 = <0x0>;
+                        xlnx,dac-nyquist11 = <0x0>;
+                        xlnx,dac-nco-phase10 = <0x0>;
+                        xlnx,dac-mode11 = <0x0>;
+                        xlnx,dac-mixer-mode00 = <0x2>;
+                        xlnx,adc-calopt-mode11 = <0x1>;
+                        xlnx,mdac-coarse-mixer-freq01 = <0x0>;
+                        xlnx,dac-nyquist12 = <0x0>;
+                        xlnx,dac-nco-phase11 = <0x0>;
+                        xlnx,dac-mode12 = <0x0>;
+                        xlnx,dac-mixer-mode01 = <0x2>;
+                        xlnx,adc-calopt-mode12 = <0x1>;
+                        xlnx,mdac-coarse-mixer-freq02 = <0x0>;
+                        xlnx,dac-nyquist13 = <0x0>;
+                        xlnx,dac-nco-phase12 = <0x0>;
+                        xlnx,dac-mode13 = <0x0>;
+                        xlnx,dac-mixer-mode02 = <0x2>;
+                        xlnx,adc-calopt-mode13 = <0x1>;
+                        xlnx,mdac-coarse-mixer-freq03 = <0x0>;
+                        xlnx,madc-nyquist00 = <0x0>;
+                        xlnx,dac-nco-phase13 = <0x0>;
+                        xlnx,dac-mixer-mode03 = <0x2>;
+                        xlnx,dac-data-type10 = <0x0>;
+                        xlnx,madc-nyquist01 = <0x0>;
+                        xlnx,dac-tdd-rts10 = <0x0>;
+                        xlnx,dac-data-type11 = <0x0>;
+                        xlnx,adc-obs-data-width30 = <0x8>;
+                        xlnx,madc-refclk-div = <0x1>;
+                        xlnx,madc-nyquist02 = <0x0>;
+                        xlnx,madc-mixer-mode00 = <0x2>;
+                        xlnx,dac-tdd-rts11 = <0x0>;
+                        xlnx,dac-data-type12 = <0x0>;
+                        xlnx,adc-obs-data-width31 = <0x8>;
+                        xlnx,adc-nco-freq10 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq20 = <0x3>;
+                        xlnx,madc-nyquist03 = <0x0>;
+                        xlnx,madc-mixer-mode01 = <0x2>;
+                        xlnx,dac-tdd-rts12 = <0x0>;
+                        xlnx,dac-data-type13 = <0x0>;
+                        xlnx,dac2-fbdiv = <0xa>;
+                        xlnx,adc-obs-data-width32 = <0x8>;
+                        xlnx,adc-nco-freq11 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq21 = <0x3>;
+                        xlnx,madc-mixer-mode02 = <0x2>;
+                        xlnx,dac-tdd-rts13 = <0x0>;
+                        xlnx,adc-obs-data-width33 = <0x8>;
+                        xlnx,adc-nco-freq12 = <0x0>;
+                        xlnx,adc3-outdiv = <0x1>;
+                        xlnx,adc-coarse-mixer-freq22 = <0x3>;
+                        xlnx,madc-tdd-rts00 = <0x0>;
+                        xlnx,madc-mixer-mode03 = <0x2>;
+                        xlnx,dac-nyquist20 = <0x0>;
+                        xlnx,dac-mode20 = <0x0>;
+                        xlnx,adc-nco-freq13 = <0x0>;
+                        xlnx,adc-calopt-mode20 = <0x1>;
+                        xlnx,adc-coarse-mixer-freq23 = <0x3>;
+                        xlnx,madc-tdd-rts01 = <0x0>;
+                        xlnx,dac-nyquist21 = <0x0>;
+                        xlnx,dac-nco-phase20 = <0x0>;
+                        xlnx,dac-mode21 = <0x0>;
+                        xlnx,dac-mixer-mode10 = <0x2>;
+                        xlnx,adc-calopt-mode21 = <0x1>;
+                        xlnx,madc-tdd-rts02 = <0x0>;
+                        xlnx,dac-nyquist22 = <0x0>;
+                        xlnx,dac-nco-phase21 = <0x0>;
+                        xlnx,dac-mode22 = <0x0>;
+                        xlnx,dac-mixer-mode11 = <0x2>;
+                        xlnx,converter-setup = <0x1>;
+                        xlnx,adc-calopt-mode22 = <0x1>;
+                        xlnx,mdac-band = <0x0>;
+                        xlnx,madc-tdd-rts03 = <0x0>;
+                        xlnx,dac-nyquist23 = <0x0>;
+                        xlnx,dac-nco-phase22 = <0x0>;
+                        xlnx,dac-mode23 = <0x0>;
+                        xlnx,dac-mixer-mode12 = <0x2>;
+                        xlnx,adc0-refclk-freq = <0x1388>;
+                        xlnx,adc-calopt-mode23 = <0x1>;
+                        xlnx,dac-nco-phase23 = <0x0>;
+                        xlnx,dac-mixer-mode13 = <0x2>;
+                        xlnx,dac-data-type20 = <0x0>;
+                        xlnx,adc0-fbdiv = <0xa>;
+                        xlnx,mdac-data-width00 = <0x10>;
+                        xlnx,dac-tdd-rts20 = <0x0>;
+                        xlnx,dac-data-type21 = <0x0>;
+                        xlnx,mdac-data-width01 = <0x10>;
+                        xlnx,dac-tdd-rts21 = <0x0>;
+                        xlnx,dac-data-type22 = <0x0>;
+                        xlnx,dac0-outclk-freq = <0x32>;
+                        xlnx,adc-nco-freq20 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq30 = <0x3>;
+                        xlnx,mdac-data-width02 = <0x10>;
+                        xlnx,dac-tdd-rts22 = <0x0>;
+                        xlnx,dac-data-type23 = <0x0>;
+                        xlnx,dac3-slices = <0x2>;
+                        xlnx,adc-nco-freq21 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq31 = <0x3>;
+                        xlnx,mdac-data-width03 = <0x10>;
+                        xlnx,dac-tdd-rts23 = <0x0>;
+                        xlnx,dac3-fs-max = <0xa>;
+                        xlnx,adc-nco-freq22 = <0x0>;
+                        xlnx,adc-coarse-mixer-freq32 = <0x0>;
+                        xlnx,dac-nyquist30 = <0x0>;
+                        xlnx,dac-mode30 = <0x0>;
+                        xlnx,adc-nco-freq23 = <0x0>;
+                        xlnx,adc-calopt-mode30 = <0x1>;
+                        xlnx,adc-coarse-mixer-freq33 = <0x0>;
+                        xlnx,dac-nyquist31 = <0x0>;
+                        xlnx,dac-nco-phase30 = <0x0>;
+                        xlnx,dac-mode31 = <0x0>;
+                        xlnx,dac-mixer-mode20 = <0x2>;
+                        status = "okay";
+                        xlnx,adc-calopt-mode31 = <0x1>;
+                        xlnx,dac-nyquist32 = <0x0>;
+                        xlnx,dac-nco-phase31 = <0x0>;
+                        xlnx,dac-mode32 = <0x0>;
+                        xlnx,dac-mixer-mode21 = <0x2>;
+                        xlnx,adc0-fabric-freq = <0x1f4>;
+                        xlnx,adc-calopt-mode32 = <0x1>;
+                        xlnx,madc-nco-phase00 = <0x0>;
+                        xlnx,dac-nyquist33 = <0x0>;
+                        xlnx,dac-nco-phase32 = <0x0>;
+                        xlnx,dac-nco-freq00 = <0x0>;
+                        xlnx,dac-mode33 = <0x0>;
+                        xlnx,dac-mixer-mode22 = <0x2>;
+                        xlnx,adc-calopt-mode33 = <0x1>;
+                        xlnx,madc-nco-phase01 = <0x0>;
+                        xlnx,dac-nco-phase33 = <0x0>;
+                        xlnx,dac-nco-freq01 = <0x0>;
+                        xlnx,dac-mixer-type00 = <0x3>;
+                        xlnx,dac-mixer-mode23 = <0x2>;
+                        xlnx,dac-data-type30 = <0x0>;
+                        xlnx,dac1-fbdiv = <0xa>;
+                        xlnx,adc1-outdiv = <0x1>;
+                        xlnx,madc-nco-phase02 = <0x0>;
+                        xlnx,madc-dither00;
+                        xlnx,dac-tdd-rts30 = <0x0>;
+                        xlnx,dac-nco-freq02 = <0x0>;
+                        xlnx,dac-mixer-type01 = <0x3>;
+                        xlnx,dac-data-type31 = <0x0>;
+                        xlnx,dac0-clock-dist = <0x0>;
+                        xlnx,adc3-clock-source = <0x3>;
+                        xlnx,madc-nco-phase03 = <0x0>;
+                        xlnx,madc-dither01;
+                        xlnx,madc-data-type00 = <0x0>;
+                        xlnx,dac-tdd-rts31 = <0x0>;
+                        xlnx,dac-nco-freq03 = <0x0>;
+                        xlnx,dac-mixer-type02 = <0x3>;
+                        xlnx,dac-data-type32 = <0x0>;
+                        xlnx,adc-nco-freq30 = <0x0>;
+                        xlnx,adc2-sampling-rate = <0x5>;
+                        xlnx,mdac-interpolation-mode00 = <0x0>;
+                        xlnx,madc-dither02;
+                        xlnx,madc-data-type01 = <0x0>;
+                        xlnx,dac-tdd-rts32 = <0x0>;
+                        xlnx,dac-mixer-type03 = <0x3>;
+                        xlnx,dac-data-type33 = <0x0>;
+                        xlnx,adc-nco-freq31 = <0x0>;
+                        xlnx,mdac-interpolation-mode01 = <0x0>;
+                        xlnx,madc-dither03;
+                        xlnx,madc-data-type02 = <0x0>;
+                        xlnx,dac-tdd-rts33 = <0x0>;
+                        xlnx,adc-nco-freq32 = <0x0>;
+                        xlnx,adc3-outclk-freq = <0x12a05f20>;
+                        xlnx,mdac-interpolation-mode02 = <0x0>;
+                        xlnx,madc-sampling-rate = <0x2>;
+                        xlnx,madc-mixer-type00 = <0x3>;
+                        xlnx,madc-data-type03 = <0x0>;
+                        xlnx,dac-output-current = <0x0>;
+                        xlnx,adc-nco-freq33 = <0x0>;
+                        xlnx,mdac-interpolation-mode03 = <0x0>;
+                        xlnx,madc-mixer-type01 = <0x3>;
+                        xlnx,dac-mixer-mode30 = <0x2>;
+                        xlnx,adc31-dig-port = <0x0>;
+                        xlnx,madc-mixer-type02 = <0x3>;
+                        xlnx,pl-clock-freq = <0x64>;
+                        xlnx,dac-mixer-mode31 = <0x2>;
+                        xlnx,adc23-dig-port = <0x0>;
+                        xlnx,mdac-refclk-div = <0x1>;
+                        xlnx,madc-mixer-type03 = <0x3>;
+                        xlnx,dac-nco-freq10 = <0x0>;
+                        xlnx,dac-mixer-mode32 = <0x2>;
+                        xlnx,dac1-slices = <0x2>;
+                        xlnx,adc0-clock-source-mx = <0x0>;
+                        xlnx,mdac-decoder-mode00 = <0x0>;
+                        xlnx,dac-nco-freq11 = <0x0>;
+                        xlnx,dac-mixer-type10 = <0x3>;
+                        xlnx,dac-mixer-mode33 = <0x2>;
+                        xlnx,dac1-fs-max = <0xa>;
+                        xlnx,mdac-decoder-mode01 = <0x0>;
+                        xlnx,dac-nco-freq12 = <0x0>;
+                        xlnx,dac-mixer-type11 = <0x3>;
+                        xlnx,adc-nco-phase00 = <0x0>;
+                        xlnx,adc00-dig-port = <0x1>;
+                        xlnx,adc2-clock-source-mx = <0x2>;
+                        xlnx,mdac-decoder-mode02 = <0x0>;
+                        xlnx,edk-iptype = "PERIPHERAL";
+                        xlnx,dac-nco-freq13 = <0x0>;
+                        xlnx,dac-mixer-type12 = <0x3>;
+                        xlnx,adc-nco-phase01 = <0x0>;
+                        xlnx,mdac-decoder-mode03 = <0x0>;
+                        xlnx,dac-mixer-type13 = <0x3>;
+                        xlnx,adc-nco-phase02 = <0x0>;
+                        xlnx,adc-nco-phase03 = <0x0>;
+                        xlnx,adc-data-type00 = <0x0>;
+                        xlnx,mdac-outclk-freq = <0x32>;
+                        xlnx,adc-data-type01 = <0x0>;
+                        xlnx,dac0-fbdiv = <0xa>;
+                        xlnx,adc-data-type02 = <0x0>;
+                        xlnx,adc-data-type03 = <0x0>;
+                        xlnx,dac-nco-freq20 = <0x0>;
+                        xlnx,adc0-decimation = <0x1>;
+                        xlnx,dac-nco-freq21 = <0x0>;
+                        xlnx,dac-mixer-type20 = <0x3>;
+                        xlnx,madc-coarse-mixer-freq00 = <0x0>;
+                        xlnx,dac-nco-freq22 = <0x0>;
+                        xlnx,dac-mixer-type21 = <0x3>;
+                        xlnx,adc-nco-phase10 = <0x0>;
+                        xlnx,madc-coarse-mixer-freq01 = <0x0>;
+                        xlnx,dac-nco-freq23 = <0x0>;
+                        xlnx,dac-mixer-type22 = <0x3>;
+                        xlnx,adc-nco-phase11 = <0x0>;
+                        xlnx,madc-coarse-mixer-freq02 = <0x0>;
+                        xlnx,dac-mixer-type23 = <0x3>;
+                        xlnx,dac1-interpolation = <0x0>;
+                        xlnx,adc-nco-phase12 = <0x0>;
+                        xlnx,madc-coarse-mixer-freq03 = <0x0>;
+                        xlnx,dac3-enable = <0x0>;
+                        xlnx,adc-nco-phase13 = <0x0>;
+                        xlnx,adc-data-type10 = <0x0>;
+                        xlnx,adc-data-type11 = <0x0>;
+                        xlnx,adc2-clock-source = <0x2>;
+                        xlnx,adc-data-type12 = <0x0>;
+                        xlnx,adc-data-type13 = <0x0>;
+                        xlnx,preset = "None";
+                        xlnx,vnc-include-ois-change;
+                        xlnx,dac-nco-freq30 = <0x0>;
+                        xlnx,dac2-sampling-rate = <0x61a800>;
+                        xlnx,dac1-clock-dist = <0x0>;
+                        xlnx,dac-nco-freq31 = <0x0>;
+                        xlnx,dac-mixer-type30 = <0x3>;
+                        xlnx,dac-nco-freq32 = <0x0>;
+                        xlnx,dac-mixer-type31 = <0x3>;
+                        xlnx,adc-nco-phase20 = <0x0>;
+                        xlnx,adc3-band = <0x0>;
+                        xlnx,dac-nco-freq33 = <0x0>;
+                        xlnx,dac-mixer-type32 = <0x3>;
+                        xlnx,adc-nco-phase21 = <0x0>;
+                        xlnx,mdac-vop = <0x14>;
+                        xlnx,dac-mixer-type33 = <0x3>;
+                        xlnx,dac2-vco = <0x2134>;
+                        xlnx,adc-nco-phase22 = <0x0>;
+                        xlnx,adc-nco-phase23 = <0x0>;
+                        xlnx,adc-data-type20 = <0x0>;
+                        xlnx,madc-enable = <0x0>;
+                        xlnx,adc0-link-coupling = <0x0>;
+                        xlnx,adc-data-type21 = <0x0>;
+                        xlnx,dac1-clock-source-mx = <0x5>;
+                        xlnx,adc0-band = <0x0>;
+                        xlnx,adc-data-type22 = <0x0>;
+                        xlnx,dac1-band = <0x0>;
+                        xlnx,adc-slice11-enable;
+                        xlnx,adc3-slices = <0x2>;
+                        xlnx,adc-data-type23 = <0x0>;
+                        xlnx,dac3-clock-source-mx = <0x7>;
+                        xlnx,adc2-outclk-freq = <0x12a05f20>;
+                        xlnx,adc3-fs-max = <0x5>;
+                        xlnx,dac1-enable = <0x0>;
+                        xlnx,adc-nco-phase30 = <0x0>;
+                        xlnx,dac-interpolation-mode00 = <0x0>;
+                        xlnx,adc-nco-phase31 = <0x0>;
+                        xlnx,dac-interpolation-mode01 = <0x0>;
+                        xlnx,adc-nco-phase32 = <0x0>;
+                        xlnx,adc3-vco = <0x2134>;
+                        xlnx,dac-interpolation-mode02 = <0x0>;
+                        xlnx,adc-nco-phase33 = <0x0>;
+                        xlnx,adc-data-type30 = <0x0>;
+                        xlnx,dac-interpolation-mode03 = <0x0>;
+                        xlnx,adc0-clock-dist = <0x0>;
+                        xlnx,adc-data-type31 = <0x0>;
+                        xlnx,adc1-decimation = <0x1>;
+                        xlnx,adc-data-type32 = <0x0>;
+                        xlnx,adc-slice30-enable;
+                        xlnx,adc-data-type33 = <0x0>;
+                        xlnx,adc-decimation-mode00 = <0x1>;
+                        xlnx,dac3-vop = <0x14>;
+                        xlnx,adc20-dig-port = <0x1>;
+                        xlnx,adc-decimation-mode01 = <0x1>;
+                        xlnx,adc12-dig-port = <0x0>;
+                        xlnx,adc-decimation-mode02 = <0x1>;
+                        xlnx,adc-decimation-mode03 = <0x1>;
+                        xlnx,ip-type = <0x2>;
+                        xlnx,dac-interpolation-mode10 = <0x0>;
+                        xlnx,adc1-clock-source = <0x1>;
+                        xlnx,dac-interpolation-mode11 = <0x0>;
+                        xlnx,adc1-slices = <0x2>;
+                        xlnx,dac-interpolation-mode12 = <0x0>;
+                        xlnx,dac3-refclk-freq = <0x1900>;
+                        xlnx,adc1-fs-max = <0x5>;
+                        compatible = "xlnx,usp-rf-data-converter-2.6";
+                        xlnx,dac-interpolation-mode13 = <0x0>;
+                        xlnx,dac2-clock-dist = <0x0>;
+                        xlnx,adc3-sampling-rate = <0x5>;
+                        xlnx,adc-decimation-mode10 = <0x1>;
+                        xlnx,adc-decimation-mode11 = <0x1>;
+                        xlnx,madc-outclk-freq = <0xee6b28>;
+                        xlnx,adc-decimation-mode12 = <0x0>;
+                        xlnx,adc-decimation-mode13 = <0x0>;
+                        xlnx,mdac-enable = <0x0>;
+                        xlnx,dac-interpolation-mode20 = <0x0>;
+                        xlnx,dac0-link-coupling = <0x0>;
+                        xlnx,dac-interpolation-mode21 = <0x0>;
+                        xlnx,dac3-fabric-freq = <0x0>;
+                        xlnx,high-speed-adc = <0x1>;
+                        xlnx,dac-interpolation-mode22 = <0x0>;
+                        xlnx,dac-interpolation-mode23 = <0x0>;
+                        xlnx,adc-decimation-mode20 = <0x1>;
+                        xlnx,adc3-enable = <0x1>;
+                        xlnx,adc-decimation-mode21 = <0x1>;
+                        xlnx,adc-decimation-mode22 = <0x1>;
+                        xlnx,adc-decimation-mode23 = <0x1>;
+                        xlnx,dac-interpolation-mode30 = <0x0>;
+                        xlnx,dac-interpolation-mode31 = <0x0>;
+                        xlnx,adc1-outclk-freq = <0x12a05f20>;
+                        xlnx,adc1-clock-dist = <0x0>;
+                        xlnx,dac-interpolation-mode32 = <0x0>;
+                        xlnx,adc2-decimation = <0x1>;
+                        xlnx,dac-interpolation-mode33 = <0x0>;
+                        xlnx,adc0-vco = <0x2134>;
+                        xlnx,mdac-nyquist00 = <0x0>;
+                        xlnx,dac2-interpolation = <0x0>;
+                        xlnx,adc0-clock-source = <0x0>;
+                        xlnx,adc-decimation-mode30 = <0x1>;
+                        xlnx,mdac-nyquist01 = <0x0>;
+                        xlnx,adc-decimation-mode31 = <0x1>;
+                        xlnx,mdac-nyquist02 = <0x0>;
+                        xlnx,adc1-obs-fabric-freq = <0x0>;
+                        xlnx,adc-decimation-mode32 = <0x0>;
+                        xlnx,mdac-nyquist03 = <0x0>;
+                        xlnx,dac0-vop = <0x14>;
+                        xlnx,adc-decimation-mode33 = <0x0>;
+                        xlnx,adc3-obs-fabric-freq = <0x0>;
+                        xlnx,mdac-tdd-rts00 = <0x0>;
+                        xlnx,dac3-sampling-rate = <0x61a800>;
+                        xlnx,mdac-tdd-rts01 = <0x0>;
+                        xlnx,dac3-clock-dist = <0x0>;
+                        xlnx,adc1-enable = <0x1>;
+                        xlnx,adc0-multi-tile-sync;
+                        xlnx,mdac-tdd-rts02 = <0x0>;
+                        xlnx,mdac-tdd-rts03 = <0x0>;
+                        xlnx,mdac-mode00 = <0x0>;
+                        xlnx,adc2-multi-tile-sync;
+                        xlnx,mdac-mode01 = <0x0>;
+                        xlnx,reserved-3 = <0x1adb0>;
+                        xlnx,adc32-dig-port = <0x0>;
+                        xlnx,mdac-mode02 = <0x0>;
+                        xlnx,dac2-refclk-freq = <0x1900>;
+                        xlnx,mdac-mode03 = <0x0>;
+                        xlnx,dac2-outdiv = <0x1>;
+                        xlnx,adc1-link-coupling = <0x0>;
+                        xlnx,adc-mixer-mode00 = <0x2>;
+                        xlnx,adc01-dig-port = <0x0>;
+                        xlnx,adc-mixer-mode01 = <0x2>;
+                        xlnx,adc-slice23-enable;
+                        xlnx,adc-mixer-mode02 = <0x2>;
+                        xlnx,adc-mixer-mode03 = <0x2>;
+                        xlnx,tb-dac-fft;
+                        xlnx,dac2-fabric-freq = <0x0>;
+                        xlnx,dac3-clock-source = <0x7>;
+                        xlnx,vnc-include-fs2-change;
+                        xlnx,adc-slice02-enable;
+                        xlnx,dac-data-width00 = <0x10>;
+                        xlnx,dac0-refclk-div = <0x1>;
+                        xlnx,adc2-clock-dist = <0x0>;
+                        xlnx,dac-decoder-mode00 = <0x0>;
+                        xlnx,dac-data-width01 = <0x10>;
+                        xlnx,adc-mixer-mode10 = <0x2>;
+                        xlnx,adc3-decimation = <0x1>;
+                        xlnx,mdac-sampling-rate = <0x61a800>;
+                        xlnx,dac-decoder-mode01 = <0x0>;
+                        xlnx,dac-data-width02 = <0x10>;
+                        xlnx,analog-detection = <0x1>;
+                        xlnx,adc-mixer-mode11 = <0x2>;
+                        xlnx,madc-band = <0x0>;
+                        xlnx,dac-decoder-mode02 = <0x0>;
+                        xlnx,dac-data-width03 = <0x10>;
+                        xlnx,adc-mixer-mode12 = <0x2>;
+                        num-insts = <0x1>;
+                        xlnx,dac-decoder-mode03 = <0x0>;
+                        xlnx,dac0-outdiv = <0x1>;
+                        xlnx,adc-mixer-mode13 = <0x2>;
+                        xlnx,madc-data-width00 = <0x8>;
+                        xlnx,madc-data-width01 = <0x8>;
+                        xlnx,sysref-source = <0x1>;
+                        xlnx,adc0-outclk-freq = <0x12a05f20>;
+                        xlnx,madc-data-width02 = <0x8>;
+                        xlnx,madc-data-width03 = <0x8>;
+                        xlnx,dac-vop-mode = <0x1>;
+                        xlnx,adc-slice21-enable;
+                        xlnx,dac-data-width10 = <0x10>;
+                        xlnx,adc-obs-decimation-mode00 = <0x1>;
+                        xlnx,dac-decoder-mode10 = <0x0>;
+                        xlnx,dac-data-width11 = <0x10>;
+                        xlnx,adc-obs-decimation-mode01 = <0x1>;
+                        xlnx,adc-mixer-mode20 = <0x2>;
+                        xlnx,madc-calopt-mode00 = <0x1>;
+                        xlnx,dac-decoder-mode11 = <0x0>;
+                        xlnx,dac-data-width12 = <0x10>;
+                        xlnx,adc-obs-decimation-mode02 = <0x0>;
+                        xlnx,adc-mixer-mode21 = <0x2>;
+                        xlnx,ip-name = "usp_rf_data_converter";
+                        xlnx,madc-calopt-mode01 = <0x1>;
+                        xlnx,dac-decoder-mode12 = <0x0>;
+                        xlnx,dac-data-width13 = <0x10>;
+                        xlnx,adc-obs-decimation-mode03 = <0x0>;
+                        xlnx,adc-mixer-mode22 = <0x2>;
+                        xlnx,madc-calopt-mode02 = <0x1>;
+                        xlnx,dac-decoder-mode13 = <0x0>;
+                        xlnx,adc-slice00-enable;
+                        xlnx,adc-mixer-type00 = <0x1>;
+                        xlnx,adc-mixer-mode23 = <0x2>;
+                        xlnx,madc-calopt-mode03 = <0x1>;
+                        xlnx,dac1-link-coupling = <0x0>;
+                        xlnx,adc-mixer-type01 = <0x1>;
+                        xlnx,adc-mixer-type02 = <0x1>;
+                        xlnx,adc-mixer-type03 = <0x1>;
+                        xlnx,dac-data-width20 = <0x10>;
+                        xlnx,adc-obs-decimation-mode10 = <0x1>;
+                        xlnx,dac-decoder-mode20 = <0x0>;
+                        xlnx,dac-data-width21 = <0x10>;
+                        xlnx,adc-obs-decimation-mode11 = <0x1>;
+                        xlnx,adc-mixer-mode30 = <0x2>;
+                        xlnx,dac-decoder-mode21 = <0x0>;
+                        xlnx,dac-data-width22 = <0x10>;
+                        xlnx,dac1-refclk-freq = <0x1900>;
+                        xlnx,adc-obs-decimation-mode12 = <0x1>;
+                        xlnx,adc-mixer-mode31 = <0x2>;
+                        xlnx,dac-decoder-mode22 = <0x0>;
+                        xlnx,dac-data-width23 = <0x10>;
+                        xlnx,dac2-clock-source = <0x6>;
+                        xlnx,adc-obs-decimation-mode13 = <0x1>;
+                        xlnx,adc-mixer-mode32 = <0x2>;
+                        xlnx,dac-decoder-mode23 = <0x0>;
+                        xlnx,adc-mixer-type10 = <0x1>;
+                        xlnx,adc-mixer-mode33 = <0x2>;
+                        xlnx,adc-mixer-type11 = <0x1>;
+                        xlnx,adc-mixer-type12 = <0x3>;
+                        xlnx,adc2-band = <0x0>;
+                        xlnx,madc-nco-freq00 = <0x0>;
+                        xlnx,dac3-band = <0x0>;
+                        xlnx,dac1-refclk-div = <0x1>;
+                        xlnx,adc-mixer-type13 = <0x3>;
+                        xlnx,adc3-clock-dist = <0x0>;
+                        xlnx,madc-nco-freq01 = <0x0>;
+                        xlnx,adc21-dig-port = <0x0>;
+                        xlnx,madc-nco-freq02 = <0x0>;
+                        xlnx,dac-data-width30 = <0x10>;
+                        xlnx,adc-obs-decimation-mode20 = <0x1>;
+                        xlnx,adc13-dig-port = <0x0>;
+                        xlnx,madc-nco-freq03 = <0x0>;
+                        xlnx,dac-decoder-mode30 = <0x0>;
+                        xlnx,dac-data-width31 = <0x10>;
+                        xlnx,dac3-interpolation = <0x0>;
+                        xlnx,dac1-fabric-freq = <0x0>;
+                        xlnx,adc-obs-decimation-mode21 = <0x1>;
+                        xlnx,dac-decoder-mode31 = <0x0>;
+                        xlnx,dac-data-width32 = <0x10>;
+                        xlnx,adc-obs-decimation-mode22 = <0x1>;
+                        xlnx,dac-decoder-mode32 = <0x0>;
+                        xlnx,dac-data-width33 = <0x10>;
+                        xlnx,dac0-band = <0x0>;
+                        xlnx,adc-obs-decimation-mode23 = <0x1>;
+                        xlnx,adc2-outdiv = <0x1>;
+                        xlnx,dac-decoder-mode33 = <0x0>;
+                        xlnx,adc-mixer-type20 = <0x1>;
+                        xlnx,ams-factory-var = <0x0>;
+                        xlnx,adc-mixer-type21 = <0x1>;
+                        xlnx,adc-mixer-type22 = <0x1>;
+                        xlnx,dac1-vco = <0x2134>;
+                        xlnx,adc-mixer-type23 = <0x1>;
+                        xlnx,tb-adc-fft;
+                        xlnx,adc-obs-decimation-mode30 = <0x1>;
+                        xlnx,adc-obs-decimation-mode31 = <0x1>;
+                        xlnx,dac2-slices = <0x2>;
+                        xlnx,adc-obs-decimation-mode32 = <0x1>;
+                        xlnx,rf-analyzer = <0x0>;
+                        xlnx,dac2-fs-max = <0xa>;
+                        xlnx,adc-obs-decimation-mode33 = <0x1>;
+                        xlnx,adc2-link-coupling = <0x0>;
+                        xlnx,adc-mixer-type30 = <0x1>;
+                        xlnx,adc0-refclk-div = <0x1>;
+                        xlnx,adc-mixer-type31 = <0x1>;
+                        xlnx,adc-dither00;
+                        xlnx,madc-link-coupling = <0x0>;
+                        xlnx,adc-mixer-type32 = <0x3>;
+                        xlnx,adc-dither01;
+                        xlnx,adc-mixer-type33 = <0x3>;
+                        xlnx,adc2-vco = <0x2134>;
+                        xlnx,adc-dither02;
+                        xlnx,dac1-clock-source = <0x5>;
+                        xlnx,adc0-outdiv = <0x1>;
+                        xlnx,adc-dither03;
+                        clocks = <&misc_clk_0>,
+                         <&misc_clk_0>,
+                         <&misc_clk_0>,
+                         <&misc_clk_0>,
+                         <&zynqmp_clk 0x47>;
+                        xlnx,mdac-mixer-mode00 = <0x2>;
+                        xlnx,mdac-mixer-mode01 = <0x2>;
+                        xlnx,adc-nyquist00 = <0x0>;
+                        xlnx,adc1-clock-source-mx = <0x1>;
+                        xlnx,mdac-mixer-mode02 = <0x2>;
+                        xlnx,adc-nyquist01 = <0x0>;
+                        xlnx,mdac-mixer-mode03 = <0x2>;
+                        xlnx,dac2-vop = <0x14>;
+                        xlnx,adc-nyquist02 = <0x0>;
+                        xlnx,adc3-clock-source-mx = <0x3>;
+                        xlnx,mdac-nco-freq00 = <0x0>;
+                        xlnx,adc-nyquist03 = <0x0>;
+                        xlnx,mdac-nco-freq01 = <0x0>;
+                        xlnx,dac2-refclk-div = <0x1>;
+                        xlnx,adc-dither10;
+                        xlnx,mdac-nco-freq02 = <0x0>;
+                        xlnx,dac0-refclk-freq = <0x1900>;
+                        xlnx,adc-tdd-rts00 = <0x0>;
+                        xlnx,adc-dither11;
+                        xlnx,mdac-nco-freq03 = <0x0>;
+                        xlnx,dac0-slices = <0x2>;
+                        xlnx,adc-tdd-rts01 = <0x0>;
+                        xlnx,adc-dither12;
+                        xlnx,dac0-fs-max = <0xa>;
+                        xlnx,adc-tdd-rts02 = <0x0>;
+                        xlnx,adc-dither13;
+                        xlnx,adc-tdd-rts03 = <0x0>;
+                        xlnx,adc-nyquist10 = <0x0>;
+                        xlnx,adc-nyquist11 = <0x0>;
+                        xlnx,adc-nyquist12 = <0x0>;
+                        xlnx,adc-nyquist13 = <0x0>;
+                        xlnx,dac0-fabric-freq = <0x0>;
+                        xlnx,adc-dither20;
+                        xlnx,adc-tdd-rts10 = <0x0>;
+                        xlnx,adc-dither21;
+                        xlnx,adc-tdd-rts11 = <0x0>;
+                        xlnx,adc33-dig-port = <0x0>;
+                        xlnx,adc-dither22;
+                        xlnx,adc-tdd-rts12 = <0x0>;
+                        xlnx,adc3-refclk-freq = <0x1388>;
+                        xlnx,adc-dither23;
+                        xlnx,dac2-link-coupling = <0x0>;
+                        xlnx,adc-tdd-rts13 = <0x0>;
+                        xlnx,calibration-time = <0xa>;
+                        xlnx,adc-nyquist20 = <0x0>;
+                        xlnx,adc10-dig-port = <0x1>;
+                        xlnx,dac3-outclk-freq = <0x32>;
+                        xlnx,adc-nyquist21 = <0x0>;
+                        xlnx,adc1-refclk-div = <0x1>;
+                        xlnx,adc02-dig-port = <0x1>;
+                        xlnx,mdac-mixer-type00 = <0x3>;
+                        xlnx,dac2-enable = <0x0>;
+                        xlnx,adc-nyquist22 = <0x0>;
+                        xlnx,mdac-mixer-type01 = <0x3>;
+                        xlnx,dac0-clock-source = <0x4>;
+                        xlnx,adc-nyquist23 = <0x0>;
+                        xlnx,mdac-mixer-type02 = <0x3>;
+                        xlnx,adc-dither30;
+                        xlnx,mdac-mixer-type03 = <0x3>;
+                        xlnx,dac0-clock-source-mx = <0x4>;
+                        xlnx,component-name = "ps_usp_rf_data_converter_0_0";
+                        xlnx,adc-tdd-rts20 = <0x0>;
+                        xlnx,adc0-sampling-rate = <0x5>;
+                        xlnx,adc-dither31;
+                        phandle = <0xe>;
+
+                        dac@0 {
+                                xlnx,fabric-freq = "0.0";
+                                xlnx,outdiv = <0x1>;
+                                xlnx,slices = <0x2>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,sampling-rate = "6.4";
+                                xlnx,fs-max = "10.000";
+                                xlnx,link-coupling = <0x0>;
+                                xlnx,refclk-freq = "6400.000";
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,band = <0x0>;
+                                xlnx,enable = <0x0>;
+                                xlnx,refclk-div = <0x1>;
+
+                                dac0ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac0ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac0ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac0ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac0dp@0 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac0dp@1 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac0dp@2 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac0dp@3 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        dac@1 {
+                                xlnx,fabric-freq = "0.0";
+                                xlnx,outdiv = <0x1>;
+                                xlnx,slices = <0x2>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,sampling-rate = "6.4";
+                                xlnx,fs-max = "10.000";
+                                xlnx,link-coupling = <0x0>;
+                                xlnx,refclk-freq = "6400.000";
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,band = <0x0>;
+                                xlnx,enable = <0x0>;
+                                xlnx,refclk-div = <0x1>;
+
+                                dac1ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac1ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac1ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac1ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac1dp@0 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac1dp@1 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac1dp@2 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac1dp@3 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        dac@2 {
+                                xlnx,fabric-freq = "0.0";
+                                xlnx,outdiv = <0x1>;
+                                xlnx,slices = <0x2>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,sampling-rate = "6.4";
+                                xlnx,fs-max = "10.000";
+                                xlnx,link-coupling = <0x0>;
+                                xlnx,refclk-freq = "6400.000";
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,band = <0x0>;
+                                xlnx,enable = <0x0>;
+                                xlnx,refclk-div = <0x1>;
+
+                                dac2ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac2ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac2ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac2ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac2dp@0 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac2dp@1 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac2dp@2 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac2dp@3 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        dac@3 {
+                                xlnx,fabric-freq = "0.0";
+                                xlnx,outdiv = <0x1>;
+                                xlnx,slices = <0x2>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,sampling-rate = "6.4";
+                                xlnx,fs-max = "10.000";
+                                xlnx,link-coupling = <0x0>;
+                                xlnx,refclk-freq = "6400.000";
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,band = <0x0>;
+                                xlnx,enable = <0x0>;
+                                xlnx,refclk-div = <0x1>;
+
+                                dac3ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac3ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac3ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac3ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,decoder-mode = <0x0>;
+                                        xlnx,invsinc-ctrl = <0x0>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                dac3dp@0 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac3dp@1 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac3dp@2 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                dac3dp@3 {
+                                        xlnx,interpolation-mode = <0x0>;
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,data-width = <0x10>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,adder-enable = <0x0>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        adc@0 {
+                                xlnx,fabric-freq = "500.000";
+                                xlnx,refclk-freq = "5000.000";
+                                xlnx,slices = <0x2>;
+                                xlnx,refclk-div = <0x1>;
+                                xlnx,outdiv = <0x1>;
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,enable = <0x1>;
+                                xlnx,fs-max = "5.000";
+                                xlnx,sampling-rate = <0x5>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,band = <0x0>;
+
+                                adc0ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc0ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc0ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc0ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc0dp@0 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc0dp@1 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc0dp@2 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc0dp@3 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        adc@1 {
+                                xlnx,fabric-freq = "500.000";
+                                xlnx,refclk-freq = "5000.000";
+                                xlnx,slices = <0x2>;
+                                xlnx,refclk-div = <0x1>;
+                                xlnx,outdiv = <0x1>;
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,enable = <0x1>;
+                                xlnx,fs-max = "5.000";
+                                xlnx,sampling-rate = <0x5>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,band = <0x0>;
+
+                                adc1ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc1ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc1ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                adc1ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                adc1dp@0 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc1dp@1 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc1dp@2 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x0>;
+                                        xlnx,data-width = <0x9>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc1dp@3 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x0>;
+                                        xlnx,data-width = <0x9>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        adc@2 {
+                                xlnx,fabric-freq = "500.000";
+                                xlnx,refclk-freq = "5000.000";
+                                xlnx,slices = <0x2>;
+                                xlnx,refclk-div = <0x1>;
+                                xlnx,outdiv = <0x1>;
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,enable = <0x1>;
+                                xlnx,fs-max = "5.000";
+                                xlnx,sampling-rate = <0x5>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,band = <0x0>;
+
+                                adc2ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc2ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc2ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc2ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc2dp@0 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc2dp@1 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc2dp@2 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc2dp@3 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+
+                        adc@3 {
+                                xlnx,fabric-freq = "500.000";
+                                xlnx,refclk-freq = "5000.000";
+                                xlnx,slices = <0x2>;
+                                xlnx,refclk-div = <0x1>;
+                                xlnx,outdiv = <0x1>;
+                                xlnx,fbdiv = <0xa>;
+                                xlnx,enable = <0x1>;
+                                xlnx,fs-max = "5.000";
+                                xlnx,sampling-rate = <0x5>;
+                                xlnx,pll-enable = <0x0>;
+                                xlnx,band = <0x0>;
+
+                                adc3ap@0 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc3ap@1 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x1>;
+                                };
+
+                                adc3ap@2 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                adc3ap@3 {
+                                        xlnx,mixer-mode = <0x2>;
+                                        xlnx,slice-enable = <0x0>;
+                                };
+
+                                adc3dp@0 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc3dp@1 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x1>;
+                                        xlnx,data-width = <0xa>;
+                                        xlnx,mixer-type = <0x1>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc3dp@2 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x0>;
+                                        xlnx,data-width = <0x9>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+
+                                adc3dp@3 {
+                                        xlnx,nco-freq = "0.0";
+                                        xlnx,decimation-mode = <0x0>;
+                                        xlnx,data-width = <0x9>;
+                                        xlnx,mixer-type = <0x3>;
+                                        xlnx,fifo-enable = <0x0>;
+                                        xlnx,data-type = <0x0>;
+                                };
+                        };
+                };
         };
 
         psu_ocm_ram_0_memory: memory@FFFC0000 {
@@ -2551,7 +3920,7 @@
                 device_type = "memory";
                 memory_type = "linear_flash";
                 reg = <0x0 0xc0000000 0x0 0x20000000>;
-                phandle = <0x55>;
+                phandle = <0x56>;
         };
 
         chosen {
@@ -2734,9 +4103,11 @@
                 gt_crx_ref_clk = "/gt-crx-ref-clk";
                 aux_ref_clk = "/aux-ref-clk";
                 amba_pl = "/amba_pl";
+                misc_clk_0 = "/amba_pl/misc_clk_0";
                 clk104_mux = "/amba_pl/gpio@80020000";
                 gpio_led = "/amba_pl/gpio@80000000";
                 r5_timer = "/amba_pl/timer@80010000";
+                usp_rf_data_converter_0 = "/amba_pl/usp_rf_data_converter@80040000";
                 psu_ocm_ram_0_memory = "/memory@FFFC0000";
                 psu_ddr_0_memory = "/memory@0";
                 psu_ddr_1_memory = "/memory@800000000";

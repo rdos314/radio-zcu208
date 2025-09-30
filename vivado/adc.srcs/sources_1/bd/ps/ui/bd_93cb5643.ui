@@ -1,35 +1,66 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.823406",
-   "Default View_TopLeft":"260,-327",
+   "Default View_ScaleFactor":"0.697262",
+   "Default View_TopLeft":"-129,412",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
-preplace port led_8bits -pg 1 -lvl 5 -x 1640 -y -230 -defaultsOSRD
-preplace port GPIO_0 -pg 1 -lvl 5 -x 1640 -y -210 -defaultsOSRD
-preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 2 -x 640 -y -60 -defaultsOSRD
-preplace inst r5_timer -pg 1 -lvl 1 -x 160 -y 20 -defaultsOSRD
-preplace inst gpio_led -pg 1 -lvl 2 -x 640 -y -220 -defaultsOSRD
-preplace inst axi_smc -pg 1 -lvl 4 -x 1460 -y -30 -defaultsOSRD
-preplace inst rst_ps8_0_99M -pg 1 -lvl 3 -x 1130 -y -110 -defaultsOSRD
-preplace inst system_ila_0 -pg 1 -lvl 2 -x 640 -y 190 -defaultsOSRD
-preplace inst clk104_mux -pg 1 -lvl 1 -x 160 -y -210 -defaultsOSRD
-preplace netloc r5_timer_interrupt 1 1 1 280 -50n
-preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 0 4 30 -90 300 30 NJ 30 1310
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 4 40 -100 290 -310 960 0 1320
-preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 2 1 950 -130n
-preplace netloc axi_gpio_0_GPIO 1 2 3 NJ -220 N -220 1620
-preplace netloc axi_smc_M00_AXI 1 1 4 330 50 NJ 50 NJ 50 1600
-preplace netloc axi_smc_M01_AXI 1 0 5 20 130 320J 110 NJ 110 NJ 110 1620
-preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 1 3 340 40 940J -10 1300
-preplace netloc clk104_mux_GPIO 1 1 4 280J -300 NJ -300 NJ -300 1610J
-preplace netloc axi_smc_M02_AXI 1 0 5 10 140 310J 100 NJ 100 NJ 100 1610
-levelinfo -pg 1 -20 160 640 1130 1460 1640
-pagesize -pg 1 -db -bbox -sgen -20 -380 1810 270
+preplace port led_8bits -pg 1 -lvl 5 -x 1540 -y 260 -defaultsOSRD
+preplace port GPIO_0 -pg 1 -lvl 5 -x 1540 -y 400 -defaultsOSRD
+preplace port sysref_in -pg 1 -lvl 0 -x 0 -y 790 -defaultsOSRD
+preplace port adc0_clk -pg 1 -lvl 0 -x 0 -y 590 -defaultsOSRD
+preplace port vin0_01 -pg 1 -lvl 0 -x 0 -y 670 -defaultsOSRD
+preplace port vin0_23 -pg 1 -lvl 0 -x 0 -y 690 -defaultsOSRD
+preplace port adc1_clk -pg 1 -lvl 0 -x 0 -y 610 -defaultsOSRD
+preplace port vin1_01 -pg 1 -lvl 0 -x 0 -y 710 -defaultsOSRD
+preplace port adc2_clk -pg 1 -lvl 0 -x 0 -y 630 -defaultsOSRD
+preplace port vin2_01 -pg 1 -lvl 0 -x 0 -y 730 -defaultsOSRD
+preplace port vin2_23 -pg 1 -lvl 0 -x 0 -y 750 -defaultsOSRD
+preplace port adc3_clk -pg 1 -lvl 0 -x 0 -y 650 -defaultsOSRD
+preplace port vin3_01 -pg 1 -lvl 0 -x 0 -y 770 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 330 -y 90 -defaultsOSRD
+preplace inst r5_timer -pg 1 -lvl 3 -x 1140 -y 390 -defaultsOSRD
+preplace inst gpio_led -pg 1 -lvl 4 -x 1410 -y 260 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 2 -x 810 -y 270 -defaultsOSRD
+preplace inst rst_ps8_0_99M -pg 1 -lvl 1 -x 330 -y 300 -defaultsOSRD
+preplace inst system_ila_0 -pg 1 -lvl 2 -x 810 -y 100 -defaultsOSRD
+preplace inst clk104_mux -pg 1 -lvl 4 -x 1410 -y 400 -defaultsOSRD
+preplace inst usp_rf_data_converter_0 -pg 1 -lvl 3 -x 1140 -y 790 -defaultsOSRD
+preplace inst adc0_clk_wiz -pg 1 -lvl 2 -x 810 -y 940 -defaultsOSRD
+preplace inst adc2_clk_wiz -pg 1 -lvl 2 -x 810 -y 1140 -defaultsOSRD
+preplace netloc r5_timer_interrupt 1 0 4 30 180 640J 20 NJ 20 1270
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 3 670 360 980 510 1290
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 4 20 190 660 180 1010 260 1280
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 30 200 630
+preplace netloc adc0_clk_wiz_clk_out1 1 2 1 980 890n
+preplace netloc usp_rf_data_converter_0_clk_adc0 1 1 3 670 1060 960J 1070 1290
+preplace netloc adc2_clk_wiz_clk_out1 1 2 1 1010 970n
+preplace netloc usp_rf_data_converter_0_clk_adc2 1 1 3 670 1070 950J 1080 1270
+preplace netloc axi_gpio_0_GPIO 1 4 1 NJ 260
+preplace netloc axi_smc_M00_AXI 1 2 2 N 240 NJ
+preplace netloc axi_smc_M01_AXI 1 2 1 950 260n
+preplace netloc axi_smc_M02_AXI 1 2 2 1000J 500 1300
+preplace netloc clk104_mux_GPIO 1 4 1 NJ 400
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 1 1 650 70n
+preplace netloc sysref_in_1 1 0 3 NJ 790 NJ 790 NJ
+preplace netloc adc0_clk_1 1 0 3 NJ 590 NJ 590 NJ
+preplace netloc vin0_01_1 1 0 3 NJ 670 NJ 670 NJ
+preplace netloc vin0_23_1 1 0 3 NJ 690 NJ 690 NJ
+preplace netloc adc1_clk_1 1 0 3 NJ 610 NJ 610 NJ
+preplace netloc vin1_01_1 1 0 3 NJ 710 NJ 710 NJ
+preplace netloc adc2_clk_1 1 0 3 NJ 630 NJ 630 NJ
+preplace netloc vin2_01_1 1 0 3 NJ 730 NJ 730 NJ
+preplace netloc vin2_23_1 1 0 3 NJ 750 NJ 750 NJ
+preplace netloc adc3_clk_1 1 0 3 NJ 650 NJ 650 NJ
+preplace netloc vin3_01_1 1 0 3 NJ 770 NJ 770 NJ
+preplace netloc axi_smc_M03_AXI 1 2 1 990 300n
+levelinfo -pg 1 0 330 810 1140 1410 1540
+pagesize -pg 1 -db -bbox -sgen -120 0 1650 1220
 "
 }
 {
-   "da_axi4_cnt":"6",
-   "da_board_cnt":"1",
+   "da_axi4_cnt":"7",
+   "da_board_cnt":"3",
+   "da_rf_converter_usp_cnt":"2",
    "da_zynq_ultra_ps_e_cnt":"1"
 }

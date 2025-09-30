@@ -6,6 +6,7 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\diskio.h"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\ff.h"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\ffconf.h"
+  "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\metal"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\pm_api_sys.h"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\pm_apu.h"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\pm_callbacks.h"
@@ -36,9 +37,11 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\xsecure_utils.h"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\xsecure_ver.h"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\include\\xtimer_config.h"
+  "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\lib\\libmetal.a"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\lib\\libxilffs.a"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\lib\\libxilpm.a"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\lib\\libxilsecure.a"
   "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\lib\\libxiltimer.a"
+  "C:\\radio-zcu208\\platform\\psu_cortexa53_0\\standalone_psu_cortexa53\\bsp\\lib\\metal.a"
   )
 endif()

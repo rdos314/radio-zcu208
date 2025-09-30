@@ -12,6 +12,11 @@
 -- Detecting CXX compile features - done
 -- The ASM compiler identification is GNU
 -- Found assembler: C:/Xilinx/2025.1/Vitis/gnu/microblaze/nt/bin/mb-gcc.exe
+-- libmetal version: 1.7.0 (C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp)
+-- Looking for include file stdatomic.h
+-- Looking for include file stdatomic.h - found
+-- Looking for include file xintc.h
+-- Looking for include file xintc.h - not found
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp
@@ -22,11 +27,14 @@ BOARD:STRING=zcu208
 // Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=
 
-// Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/bsp
+// 
+CMAKE_INSTALL_PREFIX:STRING=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/build-libmetal
 
 // cmake machine
 CMAKE_MACHINE:STRING=ZynqMP
+
+// 
+CMAKE_REQUIRED_FLAGS:STRING=-c
 
 // Size
 CMAKE_SIZE:FILEPATH=mb-size
@@ -34,11 +42,20 @@ CMAKE_SIZE:FILEPATH=mb-size
 // Specs file path for using CMAKE toolchain files
 CMAKE_SPECS_FILE:STRING=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/Xilinx.spec
 
+// 
+CMAKE_SYSTEM_PROCESSOR:STRING=microblaze
+
 // The CMake toolchain file
 CMAKE_TOOLCHAIN_FILE:FILEPATH=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/microblaze-pmu_toolchain.cmake
 
+// 
+CROSS_PREFIX:STRING=mb-
+
 // Device Id
 DEVICE_ID:STRING=xczu48dr
+
+// 
+MACHINE:STRING=microblaze_generic
 
 // Number of slrs
 NUMBER_OF_SLRS:STRING=0x1
@@ -63,6 +80,15 @@ TOOLCHAIN_DEP_FLAGS:STRING= -MMD -MP
 
 // Extra CFLAGS
 TOOLCHAIN_EXTRA_C_FLAGS:STRING= -g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns
+
+// Build with default logger
+WITH_DEFAULT_LOGGER:BOOL=ON
+
+// Log with function name, line number prefix
+WITH_FUNC_LINE_LOG:BOOL=ON
+
+// Build with a static library
+WITH_STATIC_LIB:BOOL=ON
 
 // Bitstream Image Base Address
 XILFPGA_base_address:STRING=0x80000

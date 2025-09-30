@@ -10,7 +10,7 @@ project(${APP_NAME})
 
 find_package(common)
 enable_language(C ASM)
-collect(PROJECT_LIB_DEPS xilstandalone;xiltimer;xilfpga;xilsecure;xilskey)
+collect(PROJECT_LIB_DEPS xilstandalone;xiltimer;xilfpga;xilsecure;xilskey;metal;m)
 collect(PROJECT_LIB_DEPS xil)
 collect(PROJECT_LIB_DEPS xiltimer)
 collect(PROJECT_LIB_DEPS xilsecure)

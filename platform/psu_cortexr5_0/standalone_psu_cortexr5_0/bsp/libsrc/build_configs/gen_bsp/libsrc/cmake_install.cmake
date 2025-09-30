@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/bsp")
+  set(CMAKE_INSTALL_PREFIX "C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/build-libmetal")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -100,6 +100,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/resetps/src/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/rfdc/src/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

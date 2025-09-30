@@ -438,6 +438,10 @@ drv_info:
     driver: tmrctr
     ip_name: axi_timer
     path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\XilinxProcessorIPLib\drivers\tmrctr_v4_13
+  usp_rf_data_converter_0:
+    driver: rfdc
+    ip_name: usp_rf_data_converter
+    path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\XilinxProcessorIPLib\drivers\rfdc_v13_0
 lib_info:
   xiltimer:
     path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\lib\sw_services\xiltimer_v2_2
@@ -469,6 +473,8 @@ lib_info:
       xilskey_puf_registration_example.c:
       - xilskey_puf_registration.h
       xilskey_puf_regeneration_example.c: []
+  libmetal:
+    path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\ThirdParty\sw_services\libmetal_v2_9
 lib_config:
   xiltimer:
     XILTIMER_en_interval_timer:
@@ -776,3 +782,4 @@ lib_config:
       - 'true'
       - 'false'
       description: Enables API's to use PUF Helper Data efuses as user efuses
+  libmetal: {}

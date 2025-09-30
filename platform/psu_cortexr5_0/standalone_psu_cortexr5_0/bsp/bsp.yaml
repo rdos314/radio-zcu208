@@ -461,9 +461,15 @@ drv_info:
     driver: tmrctr
     ip_name: axi_timer
     path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\XilinxProcessorIPLib\drivers\tmrctr_v4_13
+  usp_rf_data_converter_0:
+    driver: rfdc
+    ip_name: usp_rf_data_converter
+    path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\XilinxProcessorIPLib\drivers\rfdc_v13_0
 lib_info:
   xiltimer:
     path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\lib\sw_services\xiltimer_v2_2
+  libmetal:
+    path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\ThirdParty\sw_services\libmetal_v2_9
 lib_config:
   xiltimer:
     XILTIMER_en_interval_timer:
@@ -504,3 +510,4 @@ lib_config:
       - psu_ttc_3
       - psu_ttc_0
       description: This parameter is used to select specific timer for tick functionality
+  libmetal: {}

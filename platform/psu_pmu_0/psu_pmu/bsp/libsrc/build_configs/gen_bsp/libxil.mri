@@ -8,6 +8,7 @@ addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_b
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/sysmonpsu/src/libsysmonpsu.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/sdps/src/libsdps.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/rtcpsu/src/librtcpsu.a
+addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/rfdc/src/librfdc.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/resetps/src/libresetps.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/qspipsu/src/libqspipsu.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/ipipsu/src/libipipsu.a

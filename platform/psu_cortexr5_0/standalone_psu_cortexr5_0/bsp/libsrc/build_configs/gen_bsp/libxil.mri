@@ -9,6 +9,7 @@ addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/lib
 addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/sdps/src/libsdps.a
 addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/scugic/src/libscugic.a
 addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/rtcpsu/src/librtcpsu.a
+addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/rfdc/src/librfdc.a
 addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/resetps/src/libresetps.a
 addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/qspipsu/src/libqspipsu.a
 addlib C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/ipipsu/src/libipipsu.a

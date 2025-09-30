@@ -120,8 +120,7 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0
 //No help, variable specified on the command line.
 CMAKE_INCLUDE_PATH:UNINITIALIZED=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/include
 
-//Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/bsp
+CMAKE_INSTALL_PREFIX:STRING=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/build_configs/gen_bsp/build-libmetal
 
 //No help, variable specified on the command line.
 CMAKE_LIBRARY_PATH:UNINITIALIZED=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/lib
@@ -179,6 +178,8 @@ CMAKE_RANLIB:FILEPATH=C:/Xilinx/2025.1/Vitis/gnu/aarch64/nt/aarch64-none/bin/aar
 //Path to a program.
 CMAKE_READELF:FILEPATH=C:/Xilinx/2025.1/Vitis/gnu/aarch64/nt/aarch64-none/bin/aarch64-none-elf-readelf.exe
 
+CMAKE_REQUIRED_FLAGS:STRING=-c
+
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
 CMAKE_SHARED_LINKER_FLAGS:STRING=
@@ -235,6 +236,8 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Path to a program.
 CMAKE_STRIP:FILEPATH=C:/Xilinx/2025.1/Vitis/gnu/aarch64/nt/aarch64-none/bin/aarch64-none-elf-strip.exe
 
+CMAKE_SYSTEM_PROCESSOR:STRING=aarch64
+
 //No help, variable specified on the command line.
 CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/cortexa53_toolchain.cmake
 
@@ -244,8 +247,12 @@ CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=C:/radio-zcu208/platform/psu_cortexa53_0/stan
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=ON
 
+CROSS_PREFIX:STRING=aarch64-none-elf-
+
 //Device Id
 DEVICE_ID:STRING=xczu48dr
+
+MACHINE:STRING=zynqmp_a53
 
 //Number of slrs
 NUMBER_OF_SLRS:STRING=0x1
@@ -270,6 +277,15 @@ TOOLCHAIN_DEP_FLAGS:STRING= -MMD -MP
 
 //Extra CFLAGS
 TOOLCHAIN_EXTRA_C_FLAGS:STRING= -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns
+
+//Build with default logger
+WITH_DEFAULT_LOGGER:BOOL=ON
+
+//Log with function name, line number prefix
+WITH_FUNC_LINE_LOG:BOOL=ON
+
+//Build with a static library
+WITH_STATIC_LIB:BOOL=ON
 
 //0:Disable exFAT, 1:Enable exFAT(Also Enables LFN)
 XILFFS_enable_exfat:BOOL=OFF
@@ -521,6 +537,15 @@ libxil_IS_TOP_LEVEL:STATIC=OFF
 //Value Computed by CMake
 libxil_SOURCE_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc
 
+//Value Computed by CMake
+metal_BINARY_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/build_configs/gen_bsp/libsrc/libmetal/src
+
+//Value Computed by CMake
+metal_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+metal_SOURCE_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/libmetal/src
+
 //Archiver used to archive libraries for both BSP generation as
 // well as applications.
 proc_archiver:STRING=aarch64-none-elf-gcc-ar.exe
@@ -558,6 +583,15 @@ resetps_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 resetps_SOURCE_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/resetps/src
+
+//Value Computed by CMake
+rfdc_BINARY_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/build_configs/gen_bsp/libsrc/rfdc/src
+
+//Value Computed by CMake
+rfdc_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rfdc_SOURCE_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/rfdc/src
 
 //Value Computed by CMake
 rtcpsu_BINARY_DIR:STATIC=C:/radio-zcu208/platform/psu_cortexa53_0/standalone_psu_cortexa53/bsp/libsrc/build_configs/gen_bsp/libsrc/rtcpsu/src
@@ -851,7 +885,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=51
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=62
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -892,6 +926,10 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Have include aarch64/cpu.h
+HAVE_PROCESSOR_CPU_H:INTERNAL=1
+//Have include stdatomic.h
+HAVE_STDATOMIC_H:INTERNAL=1
 //STRINGS property for variable: XILFFS_fs_interface
 XILFFS_fs_interface-STRINGS:INTERNAL=1;2
 //STRINGS property for variable: XILFFS_set_fs_rpath

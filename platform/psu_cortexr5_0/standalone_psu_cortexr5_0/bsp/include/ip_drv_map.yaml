@@ -334,3 +334,6 @@ psu_wdt_1:
 r5_timer:
 - axi_timer
 - tmrctr
+usp_rf_data_converter_0:
+- usp_rf_data_converter
+- rfdc
