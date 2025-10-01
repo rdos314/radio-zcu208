@@ -59,7 +59,7 @@
 #######################################################################
 # Clock frequencies for OOC flow - maximum supported                  #
 #######################################################################
-# Set AXI-Lite Clock to 100.0MHz
+# Set AXI-Lite Clock to 100MHz
 create_clock -period 10.000 -name ps_usp_rf_data_converter_0_0_axi_aclk [get_ports s_axi_aclk]
 
 # ADC Reference Clock for Tile 0 running at 5000.000 MHz

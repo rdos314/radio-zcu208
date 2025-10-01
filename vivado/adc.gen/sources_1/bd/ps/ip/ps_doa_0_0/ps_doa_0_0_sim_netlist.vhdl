@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Sep 30 22:50:22 2025
+-- Date        : Wed Oct  1 22:16:48 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_0_0/ps_doa_0_0_sim_netlist.vhdl
@@ -18,14 +18,12 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ps_doa_0_0_doa is
   port (
     clk : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    data_1 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    data_2 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    ready_0 : in STD_LOGIC;
-    ready_1 : in STD_LOGIC;
-    ready_2 : in STD_LOGIC;
-    started : in STD_LOGIC;
-    running : out STD_LOGIC
+    data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_N : in STD_LOGIC;
+    data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_E : in STD_LOGIC;
+    data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_W : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_doa_0_0_doa : entity is "doa";
@@ -47,82 +45,82 @@ architecture STRUCTURE of ps_doa_0_0_doa is
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe33 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_doa_0_0_ila_0;
-  signal \<const0>\ : STD_LOGIC;
+  component ps_doa_0_0_ila_0_HD1 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component ps_doa_0_0_ila_0_HD1;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of ila_0_inst : label is "ila_0,ila,{}";
+  attribute CHECK_LICENSE_TYPE of ila_E : label is "ila_0,ila,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of ila_0_inst : label is "yes";
+  attribute DowngradeIPIdentifiedWarnings of ila_E : label is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of ila_0_inst : label is "ila,Vivado 2025.1";
+  attribute X_CORE_INFO of ila_E : label is "ila,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_N : label is "ila_0,ila,{}";
+  attribute DowngradeIPIdentifiedWarnings of ila_N : label is "yes";
+  attribute X_CORE_INFO of ila_N : label is "ila,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_W : label is "ila_0,ila,{}";
+  attribute DowngradeIPIdentifiedWarnings of ila_W : label is "yes";
+  attribute X_CORE_INFO of ila_W : label is "ila,Vivado 2025.1";
 begin
-  running <= \<const0>\;
-GND: unisim.vcomponents.GND
-     port map (
-      G => \<const0>\
-    );
-ila_0_inst: component ps_doa_0_0_ila_0
+ila_E: component ps_doa_0_0_ila_0
      port map (
       clk => clk,
-      probe0(15 downto 0) => data_0(15 downto 0),
-      probe1(15 downto 0) => data_0(31 downto 16),
-      probe10(15 downto 0) => data_1(15 downto 0),
-      probe11(15 downto 0) => data_1(31 downto 16),
-      probe12(15 downto 0) => data_1(47 downto 32),
-      probe13(15 downto 0) => data_1(63 downto 48),
-      probe14(15 downto 0) => data_1(79 downto 64),
-      probe15(15 downto 0) => data_1(95 downto 80),
-      probe16(15 downto 0) => data_1(111 downto 96),
-      probe17(15 downto 0) => data_1(127 downto 112),
-      probe18(15 downto 0) => data_1(143 downto 128),
-      probe19(15 downto 0) => data_1(159 downto 144),
-      probe2(15 downto 0) => data_0(47 downto 32),
-      probe20(15 downto 0) => data_2(15 downto 0),
-      probe21(15 downto 0) => data_2(31 downto 16),
-      probe22(15 downto 0) => data_2(47 downto 32),
-      probe23(15 downto 0) => data_2(63 downto 48),
-      probe24(15 downto 0) => data_2(79 downto 64),
-      probe25(15 downto 0) => data_2(95 downto 80),
-      probe26(15 downto 0) => data_2(111 downto 96),
-      probe27(15 downto 0) => data_2(127 downto 112),
-      probe28(15 downto 0) => data_2(143 downto 128),
-      probe29(15 downto 0) => data_2(159 downto 144),
-      probe3(15 downto 0) => data_0(63 downto 48),
-      probe30(0) => ready_0,
-      probe31(0) => ready_1,
-      probe32(0) => ready_2,
-      probe33(0) => started,
-      probe4(15 downto 0) => data_0(79 downto 64),
-      probe5(15 downto 0) => data_0(95 downto 80),
-      probe6(15 downto 0) => data_0(111 downto 96),
-      probe7(15 downto 0) => data_0(127 downto 112),
-      probe8(15 downto 0) => data_0(143 downto 128),
-      probe9(15 downto 0) => data_0(159 downto 144)
+      probe0(15 downto 0) => data_E(15 downto 0),
+      probe1(15 downto 0) => data_E(31 downto 16),
+      probe10(0) => ready_E,
+      probe2(15 downto 0) => data_E(47 downto 32),
+      probe3(15 downto 0) => data_E(63 downto 48),
+      probe4(15 downto 0) => data_E(79 downto 64),
+      probe5(15 downto 0) => data_E(95 downto 80),
+      probe6(15 downto 0) => data_E(111 downto 96),
+      probe7(15 downto 0) => data_E(127 downto 112),
+      probe8(15 downto 0) => data_E(143 downto 128),
+      probe9(15 downto 0) => data_E(159 downto 144)
+    );
+ila_N: component ps_doa_0_0_ila_0
+     port map (
+      clk => clk,
+      probe0(15 downto 0) => data_N(15 downto 0),
+      probe1(15 downto 0) => data_N(31 downto 16),
+      probe10(0) => ready_N,
+      probe2(15 downto 0) => data_N(47 downto 32),
+      probe3(15 downto 0) => data_N(63 downto 48),
+      probe4(15 downto 0) => data_N(79 downto 64),
+      probe5(15 downto 0) => data_N(95 downto 80),
+      probe6(15 downto 0) => data_N(111 downto 96),
+      probe7(15 downto 0) => data_N(127 downto 112),
+      probe8(15 downto 0) => data_N(143 downto 128),
+      probe9(15 downto 0) => data_N(159 downto 144)
+    );
+ila_W: component ps_doa_0_0_ila_0_HD1
+     port map (
+      clk => clk,
+      probe0(15 downto 0) => data_W(15 downto 0),
+      probe1(15 downto 0) => data_W(31 downto 16),
+      probe10(0) => ready_W,
+      probe2(15 downto 0) => data_W(47 downto 32),
+      probe3(15 downto 0) => data_W(63 downto 48),
+      probe4(15 downto 0) => data_W(79 downto 64),
+      probe5(15 downto 0) => data_W(95 downto 80),
+      probe6(15 downto 0) => data_W(111 downto 96),
+      probe7(15 downto 0) => data_W(127 downto 112),
+      probe8(15 downto 0) => data_W(143 downto 128),
+      probe9(15 downto 0) => data_W(159 downto 144)
     );
 end STRUCTURE;
 library IEEE;
@@ -132,14 +130,12 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ps_doa_0_0 is
   port (
     clk : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    data_1 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    data_2 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    ready_0 : in STD_LOGIC;
-    ready_1 : in STD_LOGIC;
-    ready_2 : in STD_LOGIC;
-    started : in STD_LOGIC;
-    running : out STD_LOGIC
+    data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_N : in STD_LOGIC;
+    data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_E : in STD_LOGIC;
+    data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_W : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ps_doa_0_0 : entity is true;
@@ -154,8 +150,6 @@ entity ps_doa_0_0 is
 end ps_doa_0_0;
 
 architecture STRUCTURE of ps_doa_0_0 is
-  signal \<const1>\ : STD_LOGIC;
-  signal NLW_inst_running_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -163,21 +157,14 @@ architecture STRUCTURE of ps_doa_0_0 is
   attribute X_INTERFACE_PARAMETER : string;
   attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_adc0_clk_wiz_0_clk_out1, INSERT_VIP 0";
 begin
-  running <= \<const1>\;
-VCC: unisim.vcomponents.VCC
-     port map (
-      P => \<const1>\
-    );
 inst: entity work.ps_doa_0_0_doa
      port map (
       clk => clk,
-      data_0(159 downto 0) => data_0(159 downto 0),
-      data_1(159 downto 0) => data_1(159 downto 0),
-      data_2(159 downto 0) => data_2(159 downto 0),
-      ready_0 => ready_0,
-      ready_1 => ready_1,
-      ready_2 => ready_2,
-      running => NLW_inst_running_UNCONNECTED,
-      started => started
+      data_E(159 downto 0) => data_E(159 downto 0),
+      data_N(159 downto 0) => data_N(159 downto 0),
+      data_W(159 downto 0) => data_W(159 downto 0),
+      ready_E => ready_E,
+      ready_N => ready_N,
+      ready_W => ready_W
     );
 end STRUCTURE;

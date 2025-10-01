@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Tue Sep 30 22:50:22 2025
+// Date        : Wed Oct  1 22:16:48 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_0_0/ps_doa_0_0_sim_netlist.v
@@ -18,123 +18,111 @@
 (* NotValidForBitStream *)
 module ps_doa_0_0
    (clk,
-    data_0,
-    data_1,
-    data_2,
-    ready_0,
-    ready_1,
-    ready_2,
-    started,
-    running);
+    data_N,
+    ready_N,
+    data_E,
+    ready_E,
+    data_W,
+    ready_W);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_adc0_clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
-  input [159:0]data_0;
-  input [159:0]data_1;
-  input [159:0]data_2;
-  input ready_0;
-  input ready_1;
-  input ready_2;
-  input started;
-  output running;
+  input [159:0]data_N;
+  input ready_N;
+  input [159:0]data_E;
+  input ready_E;
+  input [159:0]data_W;
+  input ready_W;
 
-  wire \<const1> ;
   wire clk;
-  wire [159:0]data_0;
-  wire [159:0]data_1;
-  wire [159:0]data_2;
-  wire ready_0;
-  wire ready_1;
-  wire ready_2;
-  wire started;
-  wire NLW_inst_running_UNCONNECTED;
+  wire [159:0]data_E;
+  wire [159:0]data_N;
+  wire [159:0]data_W;
+  wire ready_E;
+  wire ready_N;
+  wire ready_W;
 
-  assign running = \<const1> ;
-  VCC VCC
-       (.P(\<const1> ));
   ps_doa_0_0_doa inst
        (.clk(clk),
-        .data_0(data_0),
-        .data_1(data_1),
-        .data_2(data_2),
-        .ready_0(ready_0),
-        .ready_1(ready_1),
-        .ready_2(ready_2),
-        .running(NLW_inst_running_UNCONNECTED),
-        .started(started));
+        .data_E(data_E),
+        .data_N(data_N),
+        .data_W(data_W),
+        .ready_E(ready_E),
+        .ready_N(ready_N),
+        .ready_W(ready_W));
 endmodule
 
 (* ORIG_REF_NAME = "doa" *) (* keep_hierarchy = "soft" *) 
 module ps_doa_0_0_doa
    (clk,
-    data_0,
-    data_1,
-    data_2,
-    ready_0,
-    ready_1,
-    ready_2,
-    started,
-    running);
+    data_N,
+    ready_N,
+    data_E,
+    ready_E,
+    data_W,
+    ready_W);
   input clk;
-  input [159:0]data_0;
-  input [159:0]data_1;
-  input [159:0]data_2;
-  input ready_0;
-  input ready_1;
-  input ready_2;
-  input started;
-  output running;
+  input [159:0]data_N;
+  input ready_N;
+  input [159:0]data_E;
+  input ready_E;
+  input [159:0]data_W;
+  input ready_W;
 
-  wire \<const0> ;
   wire clk;
-  (* MARK_DEBUG *) wire [159:0]data_0;
-  (* MARK_DEBUG *) wire [159:0]data_1;
-  (* MARK_DEBUG *) wire [159:0]data_2;
-  (* MARK_DEBUG *) wire ready_0;
-  (* MARK_DEBUG *) wire ready_1;
-  (* MARK_DEBUG *) wire ready_2;
-  (* MARK_DEBUG *) wire started;
+  (* MARK_DEBUG *) wire [159:0]data_E;
+  (* MARK_DEBUG *) wire [159:0]data_N;
+  (* MARK_DEBUG *) wire [159:0]data_W;
+  (* MARK_DEBUG *) wire ready_E;
+  (* MARK_DEBUG *) wire ready_N;
+  (* MARK_DEBUG *) wire ready_W;
 
-  assign running = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
   (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
-  ps_doa_0_0_ila_0 ila_0_inst
+  ps_doa_0_0_ila_0 ila_E
        (.clk(clk),
-        .probe0(data_0[15:0]),
-        .probe1(data_0[31:16]),
-        .probe10(data_1[15:0]),
-        .probe11(data_1[31:16]),
-        .probe12(data_1[47:32]),
-        .probe13(data_1[63:48]),
-        .probe14(data_1[79:64]),
-        .probe15(data_1[95:80]),
-        .probe16(data_1[111:96]),
-        .probe17(data_1[127:112]),
-        .probe18(data_1[143:128]),
-        .probe19(data_1[159:144]),
-        .probe2(data_0[47:32]),
-        .probe20(data_2[15:0]),
-        .probe21(data_2[31:16]),
-        .probe22(data_2[47:32]),
-        .probe23(data_2[63:48]),
-        .probe24(data_2[79:64]),
-        .probe25(data_2[95:80]),
-        .probe26(data_2[111:96]),
-        .probe27(data_2[127:112]),
-        .probe28(data_2[143:128]),
-        .probe29(data_2[159:144]),
-        .probe3(data_0[63:48]),
-        .probe30(ready_0),
-        .probe31(ready_1),
-        .probe32(ready_2),
-        .probe33(started),
-        .probe4(data_0[79:64]),
-        .probe5(data_0[95:80]),
-        .probe6(data_0[111:96]),
-        .probe7(data_0[127:112]),
-        .probe8(data_0[143:128]),
-        .probe9(data_0[159:144]));
+        .probe0(data_E[15:0]),
+        .probe1(data_E[31:16]),
+        .probe10(ready_E),
+        .probe2(data_E[47:32]),
+        .probe3(data_E[63:48]),
+        .probe4(data_E[79:64]),
+        .probe5(data_E[95:80]),
+        .probe6(data_E[111:96]),
+        .probe7(data_E[127:112]),
+        .probe8(data_E[143:128]),
+        .probe9(data_E[159:144]));
+  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+  ps_doa_0_0_ila_0 ila_N
+       (.clk(clk),
+        .probe0(data_N[15:0]),
+        .probe1(data_N[31:16]),
+        .probe10(ready_N),
+        .probe2(data_N[47:32]),
+        .probe3(data_N[63:48]),
+        .probe4(data_N[79:64]),
+        .probe5(data_N[95:80]),
+        .probe6(data_N[111:96]),
+        .probe7(data_N[127:112]),
+        .probe8(data_N[143:128]),
+        .probe9(data_N[159:144]));
+  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+  ps_doa_0_0_ila_0_HD1 ila_W
+       (.clk(clk),
+        .probe0(data_W[15:0]),
+        .probe1(data_W[31:16]),
+        .probe10(ready_W),
+        .probe2(data_W[47:32]),
+        .probe3(data_W[63:48]),
+        .probe4(data_W[79:64]),
+        .probe5(data_W[95:80]),
+        .probe6(data_W[111:96]),
+        .probe7(data_W[127:112]),
+        .probe8(data_W[143:128]),
+        .probe9(data_W[159:144]));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
@@ -151,30 +139,7 @@ module ps_doa_0_0_ila_0
     probe7,
     probe8,
     probe9,
-    probe10,
-    probe11,
-    probe12,
-    probe13,
-    probe14,
-    probe15,
-    probe16,
-    probe17,
-    probe18,
-    probe19,
-    probe20,
-    probe21,
-    probe22,
-    probe23,
-    probe24,
-    probe25,
-    probe26,
-    probe27,
-    probe28,
-    probe29,
-    probe30,
-    probe31,
-    probe32,
-    probe33);
+    probe10);
   (* syn_isclock = "1" *) input clk;
   input [15:0]probe0;
   input [15:0]probe1;
@@ -186,30 +151,38 @@ module ps_doa_0_0_ila_0
   input [15:0]probe7;
   input [15:0]probe8;
   input [15:0]probe9;
-  input [15:0]probe10;
-  input [15:0]probe11;
-  input [15:0]probe12;
-  input [15:0]probe13;
-  input [15:0]probe14;
-  input [15:0]probe15;
-  input [15:0]probe16;
-  input [15:0]probe17;
-  input [15:0]probe18;
-  input [15:0]probe19;
-  input [15:0]probe20;
-  input [15:0]probe21;
-  input [15:0]probe22;
-  input [15:0]probe23;
-  input [15:0]probe24;
-  input [15:0]probe25;
-  input [15:0]probe26;
-  input [15:0]probe27;
-  input [15:0]probe28;
-  input [15:0]probe29;
-  input [0:0]probe30;
-  input [0:0]probe31;
-  input [0:0]probe32;
-  input [0:0]probe33;
+  input [0:0]probe10;
+
+
+endmodule
+
+(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
+(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+module ps_doa_0_0_ila_0_HD1
+   (clk,
+    probe0,
+    probe1,
+    probe10,
+    probe2,
+    probe3,
+    probe4,
+    probe5,
+    probe6,
+    probe7,
+    probe8,
+    probe9);
+  (* syn_isclock = "1" *) input clk;
+  input [15:0]probe0;
+  input [15:0]probe1;
+  input [0:0]probe10;
+  input [15:0]probe2;
+  input [15:0]probe3;
+  input [15:0]probe4;
+  input [15:0]probe5;
+  input [15:0]probe6;
+  input [15:0]probe7;
+  input [15:0]probe8;
+  input [15:0]probe9;
 
 
 endmodule

@@ -37,14 +37,12 @@
     "boundary": {
       "ports": {
         "clk": [ { "direction": "in" } ],
-        "data_0": [ { "direction": "in", "size_left": "159", "size_right": "0" } ],
-        "data_1": [ { "direction": "in", "size_left": "159", "size_right": "0" } ],
-        "data_2": [ { "direction": "in", "size_left": "159", "size_right": "0" } ],
-        "ready_0": [ { "direction": "in" } ],
-        "ready_1": [ { "direction": "in" } ],
-        "ready_2": [ { "direction": "in" } ],
-        "started": [ { "direction": "in" } ],
-        "running": [ { "direction": "out" } ]
+        "data_N": [ { "direction": "in", "size_left": "159", "size_right": "0" } ],
+        "ready_N": [ { "direction": "in" } ],
+        "data_E": [ { "direction": "in", "size_left": "159", "size_right": "0" } ],
+        "ready_E": [ { "direction": "in" } ],
+        "data_W": [ { "direction": "in", "size_left": "159", "size_right": "0" } ],
+        "ready_W": [ { "direction": "in" } ]
       },
       "interfaces": {
         "clk": {

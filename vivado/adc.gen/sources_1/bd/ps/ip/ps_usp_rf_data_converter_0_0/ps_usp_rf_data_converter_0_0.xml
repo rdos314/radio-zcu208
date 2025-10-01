@@ -9815,7 +9815,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.adc0_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Enable&apos;)) == 1 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Clock_Source&apos;)) == 0 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.adc0_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Enable&apos;)) == 1 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Clock_Source&apos;)) == 0 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -9967,7 +9967,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.adc1_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Enable&apos;)) == 1 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Clock_Source&apos;)) == 1)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.adc1_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Enable&apos;)) == 1 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Clock_Source&apos;)) == 1)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -10271,7 +10271,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.adc3_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Enable&apos;)) == 1 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Clock_Source&apos;)) == 3)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.adc3_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Enable&apos;)) == 1 &amp;&amp; spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Clock_Source&apos;)) == 3)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -19202,11 +19202,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 30 18:15:35 UTC 2025</spirit:value>
+            <spirit:value>Wed Oct 01 22:36:00 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b3fa6ac3</spirit:value>
+            <spirit:value>9:f0192eb7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19221,11 +19221,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 30 18:15:35 UTC 2025</spirit:value>
+            <spirit:value>Wed Oct 01 22:35:59 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:15db08d9</spirit:value>
+            <spirit:value>9:abc4597f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19236,7 +19236,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:15db08d9</spirit:value>
+            <spirit:value>9:abc4597f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19250,11 +19250,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 30 18:17:56 UTC 2025</spirit:value>
+            <spirit:value>Wed Oct 01 22:37:59 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:15db08d9</spirit:value>
+            <spirit:value>9:abc4597f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19265,7 +19265,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:15db08d9</spirit:value>
+            <spirit:value>9:abc4597f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19281,11 +19281,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 30 18:15:35 UTC 2025</spirit:value>
+            <spirit:value>Wed Oct 01 22:35:59 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b3fa6ac3</spirit:value>
+            <spirit:value>9:f0192eb7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19301,11 +19301,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 30 18:15:35 UTC 2025</spirit:value>
+            <spirit:value>Wed Oct 01 22:35:59 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:15db08d9</spirit:value>
+            <spirit:value>9:abc4597f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19329,7 +19329,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc0_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Clock_Source&apos;)) == 0) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc0_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Clock_Source&apos;)) == 0) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19352,7 +19352,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc0_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Clock_Source&apos;)) == 0) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc0_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC0_Clock_Source&apos;)) == 0) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19395,7 +19395,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc1_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Clock_Source&apos;)) == 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc1_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Clock_Source&apos;)) == 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19418,7 +19418,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc1_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Clock_Source&apos;)) == 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc1_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC1_Clock_Source&apos;)) == 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19527,7 +19527,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc3_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Clock_Source&apos;)) == 3)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc3_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Clock_Source&apos;)) == 3)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19550,7 +19550,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc3_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Clock_Source&apos;)) == 3)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.adc3_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Enable&apos;)) == 1) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Clock_Source&apos;)) == 3)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -46614,7 +46614,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_Axiclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_Axiclk_Freq">100.0</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_Axiclk_Freq">100</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_Sysref_Source</spirit:name>
@@ -46762,7 +46762,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC0_Clock_Source</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Clock_Source">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Clock_Source">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC0_Clock_Source_MX</spirit:name>
@@ -47162,7 +47162,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC1_Clock_Source</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Clock_Source">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Clock_Source">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC1_Clock_Source_MX</spirit:name>
@@ -47570,7 +47570,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC2_Clock_Dist</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Clock_Dist">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Clock_Dist">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>C_ADC_Slice20_Enable</spirit:name>
@@ -47962,7 +47962,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC3_Clock_Source</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Clock_Source">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Clock_Source">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADC3_Clock_Source_MX</spirit:name>
@@ -49670,7 +49670,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_PL_Clock_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PL_Clock_Freq">100.0</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PL_Clock_Freq">125</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>tb_dac_fft</spirit:name>
@@ -49783,6 +49783,11 @@
       <spirit:enumeration>12</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_pairs_0525139e</spirit:name>
+      <spirit:enumeration spirit:text="Tile224">0</spirit:enumeration>
+      <spirit:enumeration spirit:text="Tile226">2</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_pairs_0d7a4b90</spirit:name>
       <spirit:enumeration spirit:text="Off">0</spirit:enumeration>
       <spirit:enumeration spirit:text="1x">1</spirit:enumeration>
@@ -49800,14 +49805,20 @@
       <spirit:enumeration spirit:text="40x">40</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_pairs_193d15db</spirit:name>
+      <spirit:enumeration spirit:text="Tile225">1</spirit:enumeration>
+      <spirit:enumeration spirit:text="Tile226">2</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_pairs_210d1951</spirit:name>
+      <spirit:enumeration spirit:text="Tile227">3</spirit:enumeration>
+      <spirit:enumeration spirit:text="Tile226">2</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_pairs_2164ec7a</spirit:name>
       <spirit:enumeration spirit:text="Off">0</spirit:enumeration>
       <spirit:enumeration spirit:text="Input Refclk">1</spirit:enumeration>
       <spirit:enumeration spirit:text="PLL output">2</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_pairs_28a2908a</spirit:name>
-      <spirit:enumeration spirit:text="Tile227">3</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_2b5de876</spirit:name>
@@ -49921,10 +49932,6 @@
       <spirit:enumeration spirit:text="Tile231">7</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_pairs_b3ed7f69</spirit:name>
-      <spirit:enumeration spirit:text="Tile224">0</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
       <spirit:name>choice_pairs_b8a35c0f</spirit:name>
       <spirit:enumeration spirit:text="Disabled">0</spirit:enumeration>
       <spirit:enumeration spirit:text="Enabled">1</spirit:enumeration>
@@ -49941,10 +49948,6 @@
       <spirit:name>choice_pairs_c0e9184b</spirit:name>
       <spirit:enumeration spirit:text="Simple">0</spirit:enumeration>
       <spirit:enumeration spirit:text="Advanced">1</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_pairs_c52825c8</spirit:name>
-      <spirit:enumeration spirit:text="Tile225">1</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_cb5f18b5</spirit:name>
@@ -50362,7 +50365,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Axiclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.Axiclk_Freq" spirit:order="4" spirit:minimum="10.0" spirit:maximum="250.0">100.0</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.Axiclk_Freq" spirit:order="4" spirit:minimum="10.0" spirit:maximum="250.0">100</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -50828,7 +50831,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC0_Clock_Source</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Clock_Source" spirit:choiceRef="choice_pairs_b3ed7f69" spirit:order="44">0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Clock_Source" spirit:choiceRef="choice_pairs_0525139e" spirit:order="44">2</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51891,7 +51894,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC1_Clock_Source</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Clock_Source" spirit:choiceRef="choice_pairs_c52825c8" spirit:order="134">1</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Clock_Source" spirit:choiceRef="choice_pairs_193d15db" spirit:order="134">2</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52976,7 +52979,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC2_Clock_Dist</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Clock_Dist" spirit:choiceRef="choice_pairs_2164ec7a" spirit:order="226">0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Clock_Dist" spirit:choiceRef="choice_pairs_2164ec7a" spirit:order="226">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -54017,7 +54020,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC3_Clock_Source</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Clock_Source" spirit:choiceRef="choice_pairs_28a2908a" spirit:order="314">3</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Clock_Source" spirit:choiceRef="choice_pairs_210d1951" spirit:order="314">2</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -60558,7 +60561,7 @@
     <spirit:parameter>
       <spirit:name>PL_Clock_Freq</spirit:name>
       <spirit:displayName>PL Clock Frequency (MHz)</spirit:displayName>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.PL_Clock_Freq" spirit:order="866" spirit:minimum="10.0" spirit:maximum="800.0">100.0</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.PL_Clock_Freq" spirit:order="866" spirit:minimum="10.0" spirit:maximum="800.0">125</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -60768,7 +60771,7 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_RRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_WSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
@@ -60778,7 +60781,7 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.READ_WRITE_MODE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_BITS_PER_BYTE" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.SUPPORTS_NARROW_BURST" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.SUPPORTS_NARROW_BURST" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_BITS_PER_BYTE" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
@@ -60789,15 +60792,23 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ARESETN.POLARITY" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC0_Clock_Dist" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC0_Clock_Source" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC0_Multi_Tile_Sync" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC0_Outclk_Freq" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC0_Sampling_Rate" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC1_Clock_Dist" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC1_Clock_Source" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC1_Multi_Tile_Sync" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC1_Outclk_Freq" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC1_Sampling_Rate" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC2_Clock_Dist" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC2_Clock_Source" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC2_Multi_Tile_Sync" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC2_Outclk_Freq" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC2_Sampling_Rate" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC3_Clock_Dist" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC3_Clock_Source" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC3_Multi_Tile_Sync" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC3_Outclk_Freq" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC3_Sampling_Rate" xilinx:valueSource="user"/>
@@ -60813,6 +60824,8 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC_Slice20_Enable" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC_Slice22_Enable" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC_Slice30_Enable" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Axiclk_Freq" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.RF_Analyzer" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

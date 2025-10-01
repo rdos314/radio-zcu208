@@ -57,38 +57,32 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_doa_0_0 (
   clk,
-  data_0,
-  data_1,
-  data_2,
-  ready_0,
-  ready_1,
-  ready_2,
-  started,
-  running
+  data_N,
+  ready_N,
+  data_E,
+  ready_E,
+  data_W,
+  ready_W
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_adc0_clk_wiz_0_clk_out1, INSERT_VIP 0" *)
 input wire clk;
-input wire [159 : 0] data_0;
-input wire [159 : 0] data_1;
-input wire [159 : 0] data_2;
-input wire ready_0;
-input wire ready_1;
-input wire ready_2;
-input wire started;
-output wire running;
+input wire [159 : 0] data_N;
+input wire ready_N;
+input wire [159 : 0] data_E;
+input wire ready_E;
+input wire [159 : 0] data_W;
+input wire ready_W;
 
   doa inst (
     .clk(clk),
-    .data_0(data_0),
-    .data_1(data_1),
-    .data_2(data_2),
-    .ready_0(ready_0),
-    .ready_1(ready_1),
-    .ready_2(ready_2),
-    .started(started),
-    .running(running)
+    .data_N(data_N),
+    .ready_N(ready_N),
+    .data_E(data_E),
+    .ready_E(ready_E),
+    .data_W(data_W),
+    .ready_W(ready_W)
   );
 endmodule

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Sep 30 22:50:22 2025
+-- Date        : Wed Oct  1 22:16:48 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_1_0/ps_doa_1_0_stub.vhdl
@@ -16,14 +16,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ps_doa_1_0 is
   Port ( 
     clk : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    data_1 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    data_2 : in STD_LOGIC_VECTOR ( 159 downto 0 );
-    ready_0 : in STD_LOGIC;
-    ready_1 : in STD_LOGIC;
-    ready_2 : in STD_LOGIC;
-    started : in STD_LOGIC;
-    running : out STD_LOGIC
+    data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_N : in STD_LOGIC;
+    data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_E : in STD_LOGIC;
+    data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    ready_W : in STD_LOGIC
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -40,7 +38,7 @@ architecture stub of ps_doa_1_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,data_0[159:0],data_1[159:0],data_2[159:0],ready_0,ready_1,ready_2,started,running";
+  attribute black_box_pad_pin of stub : architecture is "clk,data_N[159:0],ready_N,data_E[159:0],ready_E,data_W[159:0],ready_W";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

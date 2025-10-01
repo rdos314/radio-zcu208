@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Sep 30 23:02:20 2025
+//Date        : Thu Oct  2 00:56:41 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,18 +10,16 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=2,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=6,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
-    adc0_clk_clk_n,
-    adc0_clk_clk_p,
-    adc1_clk_clk_n,
-    adc1_clk_clk_p,
     adc2_clk_clk_n,
     adc2_clk_clk_p,
-    adc3_clk_clk_n,
-    adc3_clk_clk_p,
     led_8bits_tri_o,
+    pl_clk_n,
+    pl_clk_p,
+    pl_sysref_n,
+    pl_sysref_p,
     sysref_in_diff_n,
     sysref_in_diff_p,
     vin0_01_v_n,
@@ -37,15 +35,13 @@ module ps
     vin3_01_v_n,
     vin3_01_v_p);
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO_0 TRI_O" *) (* X_INTERFACE_MODE = "Master" *) output [1:0]GPIO_0_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc0_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME adc0_clk, CAN_DEBUG false, FREQ_HZ 2000000000.0" *) input adc0_clk_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc0_clk CLK_P" *) input adc0_clk_clk_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc1_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME adc1_clk, CAN_DEBUG false, FREQ_HZ 5000000000.0" *) input adc1_clk_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc1_clk CLK_P" *) input adc1_clk_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc2_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME adc2_clk, CAN_DEBUG false, FREQ_HZ 5000000000.0" *) input adc2_clk_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc2_clk CLK_P" *) input adc2_clk_clk_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc3_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME adc3_clk, CAN_DEBUG false, FREQ_HZ 5000000000.0" *) input adc3_clk_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc3_clk CLK_P" *) input adc3_clk_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 led_8bits TRI_O" *) (* X_INTERFACE_MODE = "Master" *) output [7:0]led_8bits_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_CLK_N, CLK_DOMAIN ps_pl_clk_n, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_CLK_P, CLK_DOMAIN ps_pl_clk_p, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_SYSREF_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_SYSREF_N, CLK_DOMAIN ps_pl_sysref_n, FREQ_HZ 10000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_sysref_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_SYSREF_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_SYSREF_P, CLK_DOMAIN ps_pl_sysref_p, FREQ_HZ 10000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_sysref_p;
   (* X_INTERFACE_INFO = "xilinx.com:display_usp_rf_data_converter:diff_pins:1.0 sysref_in diff_n" *) (* X_INTERFACE_MODE = "Slave" *) input sysref_in_diff_n;
   (* X_INTERFACE_INFO = "xilinx.com:display_usp_rf_data_converter:diff_pins:1.0 sysref_in diff_p" *) input sysref_in_diff_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vin0_01 V_N" *) (* X_INTERFACE_MODE = "Slave" *) input vin0_01_v_n;
@@ -62,16 +58,12 @@ module ps
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vin3_01 V_P" *) input vin3_01_v_p;
 
   wire [1:0]GPIO_0_tri_o;
-  wire adc0_clk_clk_n;
-  wire adc0_clk_clk_p;
   wire adc0_clk_wiz_clk_out1;
-  wire adc1_clk_clk_n;
-  wire adc1_clk_clk_p;
+  wire adc0_clk_wiz_locked;
   wire adc2_clk_clk_n;
   wire adc2_clk_clk_p;
   wire adc2_clk_wiz_clk_out1;
-  wire adc3_clk_clk_n;
-  wire adc3_clk_clk_p;
+  wire adc2_clk_wiz_locked;
   wire [8:0]axi_smc_M00_AXI_ARADDR;
   wire axi_smc_M00_AXI_ARREADY;
   wire axi_smc_M00_AXI_ARVALID;
@@ -141,12 +133,16 @@ module ps
   wire [3:0]axi_smc_M03_AXI_WSTRB;
   wire axi_smc_M03_AXI_WVALID;
   wire [7:0]led_8bits_tri_o;
+  wire mts_0_pl_clk;
+  wire mts_0_user_sysref_adc;
+  wire pl_clk_n;
+  wire pl_clk_p;
+  wire pl_sysref_n;
+  wire pl_sysref_p;
   wire r5_timer_interrupt;
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
   wire sysref_in_diff_n;
   wire sysref_in_diff_p;
-  wire usp_rf_data_converter_0_clk_adc0;
-  wire usp_rf_data_converter_0_clk_adc2;
   wire [159:0]usp_rf_data_converter_0_m00_axis_tdata;
   wire usp_rf_data_converter_0_m00_axis_tvalid;
   wire [159:0]usp_rf_data_converter_0_m02_axis_tdata;
@@ -214,11 +210,13 @@ module ps
   wire zynq_ultra_ps_e_0_pl_resetn0;
 
   ps_adc0_clk_wiz_0 adc0_clk_wiz
-       (.clk_in1(usp_rf_data_converter_0_clk_adc0),
-        .clk_out1(adc0_clk_wiz_clk_out1));
+       (.clk_in1(mts_0_pl_clk),
+        .clk_out1(adc0_clk_wiz_clk_out1),
+        .locked(adc0_clk_wiz_locked));
   ps_adc2_clk_wiz_0 adc2_clk_wiz
-       (.clk_in1(usp_rf_data_converter_0_clk_adc2),
-        .clk_out1(adc2_clk_wiz_clk_out1));
+       (.clk_in1(mts_0_pl_clk),
+        .clk_out1(adc2_clk_wiz_clk_out1),
+        .locked(adc2_clk_wiz_locked));
   ps_axi_smc_0 axi_smc
        (.M00_AXI_araddr(axi_smc_M00_AXI_ARADDR),
         .M00_AXI_arready(axi_smc_M00_AXI_ARREADY),
@@ -352,22 +350,20 @@ module ps
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
   ps_doa_0_0 doa_0
        (.clk(adc0_clk_wiz_clk_out1),
-        .data_0(usp_rf_data_converter_0_m00_axis_tdata),
-        .data_1(usp_rf_data_converter_0_m02_axis_tdata),
-        .data_2(usp_rf_data_converter_0_m10_axis_tdata),
-        .ready_0(usp_rf_data_converter_0_m00_axis_tvalid),
-        .ready_1(usp_rf_data_converter_0_m02_axis_tvalid),
-        .ready_2(usp_rf_data_converter_0_m10_axis_tvalid),
-        .started(1'b0));
+        .data_E(usp_rf_data_converter_0_m02_axis_tdata),
+        .data_N(usp_rf_data_converter_0_m00_axis_tdata),
+        .data_W(usp_rf_data_converter_0_m10_axis_tdata),
+        .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
+        .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
+        .ready_W(usp_rf_data_converter_0_m10_axis_tvalid));
   ps_doa_1_0 doa_1
        (.clk(adc2_clk_wiz_clk_out1),
-        .data_0(usp_rf_data_converter_0_m20_axis_tdata),
-        .data_1(usp_rf_data_converter_0_m22_axis_tdata),
-        .data_2(usp_rf_data_converter_0_m30_axis_tdata),
-        .ready_0(usp_rf_data_converter_0_m20_axis_tvalid),
-        .ready_1(usp_rf_data_converter_0_m22_axis_tvalid),
-        .ready_2(usp_rf_data_converter_0_m30_axis_tvalid),
-        .started(1'b0));
+        .data_E(usp_rf_data_converter_0_m22_axis_tdata),
+        .data_N(usp_rf_data_converter_0_m20_axis_tdata),
+        .data_W(usp_rf_data_converter_0_m30_axis_tdata),
+        .ready_E(usp_rf_data_converter_0_m22_axis_tvalid),
+        .ready_N(usp_rf_data_converter_0_m20_axis_tvalid),
+        .ready_W(usp_rf_data_converter_0_m30_axis_tvalid));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -389,6 +385,14 @@ module ps
         .s_axi_wready(axi_smc_M00_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M00_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M00_AXI_WVALID));
+  ps_mts_0_0 mts_0
+       (.m0_axis_aclk(adc0_clk_wiz_clk_out1),
+        .pl_clk(mts_0_pl_clk),
+        .pl_clk_n(pl_clk_n),
+        .pl_clk_p(pl_clk_p),
+        .pl_sysref_n(pl_sysref_n),
+        .pl_sysref_p(pl_sysref_p),
+        .user_sysref_adc(mts_0_user_sysref_adc));
   ps_axi_timer_0_0 r5_timer
        (.capturetrig0(1'b0),
         .capturetrig1(1'b0),
@@ -421,16 +425,8 @@ module ps
         .peripheral_aresetn(rst_ps8_0_99M_peripheral_aresetn),
         .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
   ps_usp_rf_data_converter_0_0 usp_rf_data_converter_0
-       (.adc0_clk_n(adc0_clk_clk_n),
-        .adc0_clk_p(adc0_clk_clk_p),
-        .adc1_clk_n(adc1_clk_clk_n),
-        .adc1_clk_p(adc1_clk_clk_p),
-        .adc2_clk_n(adc2_clk_clk_n),
+       (.adc2_clk_n(adc2_clk_clk_n),
         .adc2_clk_p(adc2_clk_clk_p),
-        .adc3_clk_n(adc3_clk_clk_n),
-        .adc3_clk_p(adc3_clk_clk_p),
-        .clk_adc0(usp_rf_data_converter_0_clk_adc0),
-        .clk_adc2(usp_rf_data_converter_0_clk_adc2),
         .m00_axis_tdata(usp_rf_data_converter_0_m00_axis_tdata),
         .m00_axis_tready(1'b1),
         .m00_axis_tvalid(usp_rf_data_converter_0_m00_axis_tvalid),
@@ -438,12 +434,12 @@ module ps
         .m02_axis_tready(1'b1),
         .m02_axis_tvalid(usp_rf_data_converter_0_m02_axis_tvalid),
         .m0_axis_aclk(adc0_clk_wiz_clk_out1),
-        .m0_axis_aresetn(1'b1),
+        .m0_axis_aresetn(adc0_clk_wiz_locked),
         .m10_axis_tdata(usp_rf_data_converter_0_m10_axis_tdata),
         .m10_axis_tready(1'b1),
         .m10_axis_tvalid(usp_rf_data_converter_0_m10_axis_tvalid),
         .m1_axis_aclk(adc0_clk_wiz_clk_out1),
-        .m1_axis_aresetn(1'b1),
+        .m1_axis_aresetn(adc0_clk_wiz_locked),
         .m20_axis_tdata(usp_rf_data_converter_0_m20_axis_tdata),
         .m20_axis_tready(1'b1),
         .m20_axis_tvalid(usp_rf_data_converter_0_m20_axis_tvalid),
@@ -451,12 +447,12 @@ module ps
         .m22_axis_tready(1'b1),
         .m22_axis_tvalid(usp_rf_data_converter_0_m22_axis_tvalid),
         .m2_axis_aclk(adc2_clk_wiz_clk_out1),
-        .m2_axis_aresetn(1'b1),
+        .m2_axis_aresetn(adc2_clk_wiz_locked),
         .m30_axis_tdata(usp_rf_data_converter_0_m30_axis_tdata),
         .m30_axis_tready(1'b1),
         .m30_axis_tvalid(usp_rf_data_converter_0_m30_axis_tvalid),
         .m3_axis_aclk(adc2_clk_wiz_clk_out1),
-        .m3_axis_aresetn(1'b1),
+        .m3_axis_aresetn(adc2_clk_wiz_locked),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .s_axi_araddr(axi_smc_M03_AXI_ARADDR),
         .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),
@@ -478,7 +474,7 @@ module ps
         .s_axi_wvalid(axi_smc_M03_AXI_WVALID),
         .sysref_in_n(sysref_in_diff_n),
         .sysref_in_p(sysref_in_diff_p),
-        .user_sysref_adc(1'b0),
+        .user_sysref_adc(mts_0_user_sysref_adc),
         .vin0_01_n(vin0_01_v_n),
         .vin0_01_p(vin0_01_v_p),
         .vin0_23_n(vin0_23_v_n),

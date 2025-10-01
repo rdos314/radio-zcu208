@@ -4060,7 +4060,7 @@ module ps_usp_rf_data_converter_0_0_block (
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc0_clk_detect   <= 16'h1;
+      adc0_clk_detect   <= 16'h38;
     end
     else if (bank9_write[32])
     begin
@@ -4620,7 +4620,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc1_clk_detect   <= 16'h4;
+      adc1_clk_detect   <= 16'h30;
     end
     else if (bank11_write[32])
     begin
@@ -5751,7 +5751,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc3_clk_detect   <= 16'h40;
+      adc3_clk_detect   <= 16'h30;
     end
     else if (bank15_write[32])
     begin

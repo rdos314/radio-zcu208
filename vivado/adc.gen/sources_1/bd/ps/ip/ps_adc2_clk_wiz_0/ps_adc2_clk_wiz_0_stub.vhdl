@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Sep 30 20:44:10 2025
+-- Date        : Thu Oct  2 00:36:44 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_adc2_clk_wiz_0/ps_adc2_clk_wiz_0_stub.vhdl
@@ -21,7 +21,7 @@ entity ps_adc2_clk_wiz_0 is
   );
 
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of ps_adc2_clk_wiz_0 : entity is "ps_adc2_clk_wiz_0,clk_wiz_v6_0_16_0_0,{component_name=ps_adc2_clk_wiz_0,use_phase_alignment=false,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=3.200,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
+  attribute CORE_GENERATION_INFO of ps_adc2_clk_wiz_0 : entity is "ps_adc2_clk_wiz_0,clk_wiz_v6_0_16_0_0,{component_name=ps_adc2_clk_wiz_0,use_phase_alignment=false,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=8.000,clkin2_period=10.000,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
 end ps_adc2_clk_wiz_0;
 
 architecture stub of ps_adc2_clk_wiz_0 is

@@ -78,12 +78,12 @@ module ps_usp_rf_data_converter_0_0_device_rom (
 
     (* rom_style = "distributed" *) reg [29:0] data_array [0:248] = '{
        30'h07230000,  // Clock Network Control 0 (ADC0)
-       30'h07240024,  // Clock Network Control 1 (ADC0)
-       30'h07223000,  // Clock Distribution Control (ADC0)
+       30'h07240008,  // Clock Network Control 1 (ADC0)
+       30'h07226028,  // Clock Distribution Control (ADC0)
        30'h070c0000,  // PLL Output Divide (ADC0)
        30'h072c0022,  // CLK_DIV (ADC0)
        30'h07280280,  // SYSREF Distribution (ADC0)
-       30'h072df2fc,  // HSCOM_PWR_MASK (ADC0)
+       30'h072df0fe,  // HSCOM_PWR_MASK (ADC0)
        30'h07310062,  // CLOCK_DETECT_CTRL0 (ADC0)
        30'h07320032,  // CLOCK_DETECT_CTRL1 (ADC0)
        30'h07300000,  // FIFO_START (ADC0)
@@ -156,12 +156,12 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h0348012c,  // ADC03_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
        30'h0306000a,  // ADC03 FABRIC_DEBUG
        30'h0f230000,  // Clock Network Control 0 (ADC1)
-       30'h0f240024,  // Clock Network Control 1 (ADC1)
-       30'h0f223000,  // Clock Distribution Control (ADC1)
+       30'h0f240008,  // Clock Network Control 1 (ADC1)
+       30'h0f2260a0,  // Clock Distribution Control (ADC1)
        30'h0f0c0000,  // PLL Output Divide (ADC1)
        30'h0f2c0022,  // CLK_DIV (ADC1)
        30'h0f280600,  // SYSREF Distribution (ADC1)
-       30'h0f2df2fc,  // HSCOM_PWR_MASK (ADC1)
+       30'h0f2df0fe,  // HSCOM_PWR_MASK (ADC1)
        30'h0f310062,  // CLOCK_DETECT_CTRL0 (ADC1)
        30'h0f320032,  // CLOCK_DETECT_CTRL1 (ADC1)
        30'h0f300000,  // FIFO_START (ADC1)
@@ -200,8 +200,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h0948012c,  // ADC11_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
        30'h0906000a,  // ADC11 FABRIC_DEBUG
        30'h17230000,  // Clock Network Control 0 (ADC2)
-       30'h17240024,  // Clock Network Control 1 (ADC2)
-       30'h17223000,  // Clock Distribution Control (ADC2)
+       30'h17240008,  // Clock Network Control 1 (ADC2)
+       30'h1722a368,  // Clock Distribution Control (ADC2)
        30'h170c0000,  // PLL Output Divide (ADC2)
        30'h172c0022,  // CLK_DIV (ADC2)
        30'h17288880,  // SYSREF Distribution (ADC2)
@@ -278,12 +278,12 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h1348012c,  // ADC23_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
        30'h1306000a,  // ADC23 FABRIC_DEBUG
        30'h1f230000,  // Clock Network Control 0 (ADC3)
-       30'h1f240024,  // Clock Network Control 1 (ADC3)
-       30'h1f223000,  // Clock Distribution Control (ADC3)
+       30'h1f240008,  // Clock Network Control 1 (ADC3)
+       30'h1f222060,  // Clock Distribution Control (ADC3)
        30'h1f0c0000,  // PLL Output Divide (ADC3)
        30'h1f2c0022,  // CLK_DIV (ADC3)
        30'h1f280700,  // SYSREF Distribution (ADC3)
-       30'h1f2df2fc,  // HSCOM_PWR_MASK (ADC3)
+       30'h1f2df0fe,  // HSCOM_PWR_MASK (ADC3)
        30'h1f310062,  // CLOCK_DETECT_CTRL0 (ADC3)
        30'h1f320032,  // CLOCK_DETECT_CTRL1 (ADC3)
        30'h1f300000,  // FIFO_START (ADC3)

@@ -10,7 +10,7 @@
       "component_parameters": {
         "AMS_Factory_Var": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "Component_Name": [ { "value": "ps_usp_rf_data_converter_0_0", "resolve_type": "user", "usage": "all" } ],
-        "Axiclk_Freq": [ { "value": "100.0", "resolve_type": "user", "format": "float", "usage": "all" } ],
+        "Axiclk_Freq": [ { "value": "100", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ],
         "Sysref_Source": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "PRESET": [ { "value": "None", "resolve_type": "user", "usage": "all" } ],
         "Converter_Setup": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -50,9 +50,9 @@
         "ADC0_Multi_Tile_Sync": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC0_Band": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "ADC0_Refclk_Div": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "ADC0_Clock_Source": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "ADC0_Clock_Source": [ { "value": "2", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC0_Clock_Source_MX": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "ADC0_Clock_Dist": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "ADC0_Clock_Dist": [ { "value": "0", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC_Slice00_Enable": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Dither00": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Data_Type00": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
@@ -140,9 +140,9 @@
         "ADC1_Multi_Tile_Sync": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC1_Band": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "ADC1_Refclk_Div": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "ADC1_Clock_Source": [ { "value": "1", "resolve_type": "user", "usage": "all" } ],
+        "ADC1_Clock_Source": [ { "value": "2", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC1_Clock_Source_MX": [ { "value": "1", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "ADC1_Clock_Dist": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "ADC1_Clock_Dist": [ { "value": "0", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC_Slice10_Enable": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Dither10": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Data_Type10": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
@@ -230,9 +230,9 @@
         "ADC2_Multi_Tile_Sync": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC2_Band": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "ADC2_Refclk_Div": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "ADC2_Clock_Source": [ { "value": "2", "resolve_type": "user", "usage": "all" } ],
+        "ADC2_Clock_Source": [ { "value": "2", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC2_Clock_Source_MX": [ { "value": "2", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "ADC2_Clock_Dist": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "ADC2_Clock_Dist": [ { "value": "1", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC_Slice20_Enable": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Dither20": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Data_Type20": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
@@ -320,9 +320,9 @@
         "ADC3_Multi_Tile_Sync": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC3_Band": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "ADC3_Refclk_Div": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "ADC3_Clock_Source": [ { "value": "3", "resolve_type": "user", "usage": "all" } ],
+        "ADC3_Clock_Source": [ { "value": "2", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC3_Clock_Source_MX": [ { "value": "3", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "ADC3_Clock_Dist": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "ADC3_Clock_Dist": [ { "value": "0", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "ADC_Slice30_Enable": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Dither30": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Data_Type30": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
@@ -871,8 +871,8 @@
         "RESERVED_3": [ { "value": "110000", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "VNC_Include_OIS_Change": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "VNC_Include_Fs2_Change": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "RF_Analyzer": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "PL_Clock_Freq": [ { "value": "100.0", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
+        "RF_Analyzer": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "PL_Clock_Freq": [ { "value": "125", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
         "tb_dac_fft": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "tb_adc_fft": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "use_bram": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ]
@@ -882,7 +882,7 @@
         "C_COMPONENT_NAME": [ { "value": "ps_usp_rf_data_converter_0_0", "resolve_type": "generated", "usage": "all" } ],
         "C_High_Speed_ADC": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_IP_Type": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_Axiclk_Freq": [ { "value": "100.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_Axiclk_Freq": [ { "value": "100", "resolve_type": "generated", "format": "float", "usage": "all" } ],
         "C_Sysref_Source": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_Converter_Setup": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC_Debug": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
@@ -919,7 +919,7 @@
         "C_ADC0_Refclk_Div": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC0_Slices": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC0_Decimation": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_ADC0_Clock_Source": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_ADC0_Clock_Source": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC0_Clock_Source_MX": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC0_Clock_Dist": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC_Slice00_Enable": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
@@ -1019,7 +1019,7 @@
         "C_ADC1_Refclk_Div": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC1_Slices": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC1_Decimation": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_ADC1_Clock_Source": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_ADC1_Clock_Source": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC1_Clock_Source_MX": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC1_Clock_Dist": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC_Slice10_Enable": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
@@ -1121,7 +1121,7 @@
         "C_ADC2_Decimation": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC2_Clock_Source": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC2_Clock_Source_MX": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_ADC2_Clock_Dist": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_ADC2_Clock_Dist": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC_Slice20_Enable": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_ADC_Dither20": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_ADC_Data_Type20": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -1219,7 +1219,7 @@
         "C_ADC3_Refclk_Div": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC3_Slices": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC3_Decimation": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_ADC3_Clock_Source": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_ADC3_Clock_Source": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC3_Clock_Source_MX": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC3_Clock_Dist": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC_Slice30_Enable": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
@@ -1646,7 +1646,7 @@
         "C_VNC_Include_OIS_Change": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_VNC_Include_Fs2_Change": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_RF_Analyzer": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_PL_Clock_Freq": [ { "value": "100.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_PL_Clock_Freq": [ { "value": "125", "resolve_type": "generated", "format": "float", "usage": "all" } ],
         "tb_dac_fft": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "tb_adc_fft": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "use_bram": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -1678,17 +1678,11 @@
     },
     "boundary": {
       "ports": {
-        "adc0_clk_p": [ { "direction": "in", "driver_value": "0" } ],
-        "adc0_clk_n": [ { "direction": "in", "driver_value": "0" } ],
         "clk_adc0": [ { "direction": "out" } ],
-        "adc1_clk_p": [ { "direction": "in", "driver_value": "0" } ],
-        "adc1_clk_n": [ { "direction": "in", "driver_value": "0" } ],
         "clk_adc1": [ { "direction": "out" } ],
         "adc2_clk_p": [ { "direction": "in", "driver_value": "0" } ],
         "adc2_clk_n": [ { "direction": "in", "driver_value": "0" } ],
         "clk_adc2": [ { "direction": "out" } ],
-        "adc3_clk_p": [ { "direction": "in", "driver_value": "0" } ],
-        "adc3_clk_n": [ { "direction": "in", "driver_value": "0" } ],
         "clk_adc3": [ { "direction": "out" } ],
         "s_axi_aclk": [ { "direction": "in", "driver_value": "0" } ],
         "s_axi_aresetn": [ { "direction": "in", "driver_value": "1" } ],
@@ -1779,10 +1773,10 @@
             "HAS_WSTRB": [ { "value": "1", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_BRESP": [ { "value": "1", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_RRESP": [ { "value": "1", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "SUPPORTS_NARROW_BURST": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "SUPPORTS_NARROW_BURST": [ { "value": "0", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "NUM_READ_OUTSTANDING": [ { "value": "8", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "NUM_WRITE_OUTSTANDING": [ { "value": "8", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "MAX_BURST_LENGTH": [ { "value": "1", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "MAX_BURST_LENGTH": [ { "value": "1", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "NUM_READ_THREADS": [ { "value": "1", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -2123,19 +2117,6 @@
             "INTERRUPT": [ { "physical_name": "irq" } ]
           }
         },
-        "adc0_clk": {
-          "vlnv": "xilinx.com:interface:diff_clock:1.0",
-          "abstraction_type": "xilinx.com:interface:diff_clock_rtl:1.0",
-          "mode": "slave",
-          "parameters": {
-            "CAN_DEBUG": [ { "value": "false", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_HZ": [ { "value": "2000000000.0", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ]
-          },
-          "port_maps": {
-            "CLK_N": [ { "physical_name": "adc0_clk_n" } ],
-            "CLK_P": [ { "physical_name": "adc0_clk_p" } ]
-          }
-        },
         "clk_adc0": {
           "vlnv": "xilinx.com:signal:clock:1.0",
           "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
@@ -2152,19 +2133,6 @@
           },
           "port_maps": {
             "CLK": [ { "physical_name": "clk_adc0" } ]
-          }
-        },
-        "adc1_clk": {
-          "vlnv": "xilinx.com:interface:diff_clock:1.0",
-          "abstraction_type": "xilinx.com:interface:diff_clock_rtl:1.0",
-          "mode": "slave",
-          "parameters": {
-            "CAN_DEBUG": [ { "value": "false", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_HZ": [ { "value": "5000000000.0", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ]
-          },
-          "port_maps": {
-            "CLK_N": [ { "physical_name": "adc1_clk_n" } ],
-            "CLK_P": [ { "physical_name": "adc1_clk_p" } ]
           }
         },
         "clk_adc1": {
@@ -2214,19 +2182,6 @@
           },
           "port_maps": {
             "CLK": [ { "physical_name": "clk_adc2" } ]
-          }
-        },
-        "adc3_clk": {
-          "vlnv": "xilinx.com:interface:diff_clock:1.0",
-          "abstraction_type": "xilinx.com:interface:diff_clock_rtl:1.0",
-          "mode": "slave",
-          "parameters": {
-            "CAN_DEBUG": [ { "value": "false", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_HZ": [ { "value": "5000000000.0", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ]
-          },
-          "port_maps": {
-            "CLK_N": [ { "physical_name": "adc3_clk_n" } ],
-            "CLK_P": [ { "physical_name": "adc3_clk_p" } ]
           }
         },
         "clk_adc3": {
