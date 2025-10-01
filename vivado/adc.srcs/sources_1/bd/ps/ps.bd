@@ -16,11 +16,12 @@
       "gpio_led": "",
       "axi_smc": "",
       "rst_ps8_0_99M": "",
-      "system_ila_0": "",
       "clk104_mux": "",
       "usp_rf_data_converter_0": "",
       "adc0_clk_wiz": "",
-      "adc2_clk_wiz": ""
+      "adc2_clk_wiz": "",
+      "doa_0": "",
+      "doa_1": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1466,22 +1467,6 @@
         "inst_hier_path": "rst_ps8_0_99M",
         "has_run_ip_tcl": "true"
       },
-      "system_ila_0": {
-        "vlnv": "xilinx.com:ip:system_ila:1.1",
-        "ip_revision": "21",
-        "xci_name": "ps_system_ila_0_0",
-        "xci_path": "ip\\ps_system_ila_0_0\\ps_system_ila_0_0.xci",
-        "inst_hier_path": "system_ila_0",
-        "has_run_ip_tcl": "true",
-        "interface_ports": {
-          "SLOT_0_AXI": {
-            "mode": "Monitor",
-            "monitor_type": "SlaveType",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
-          }
-        }
-      },
       "clk104_mux": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
@@ -1629,6 +1614,132 @@
             "value": "false"
           }
         }
+      },
+      "doa_0": {
+        "vlnv": "xilinx.com:module_ref:doa:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_doa_0_0",
+        "xci_path": "ip\\ps_doa_0_0\\ps_doa_0_0.xci",
+        "inst_hier_path": "doa_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "doa",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_adc0_clk_wiz_0_clk_out1",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "data_0": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "data_1": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "data_2": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_0": {
+            "direction": "I"
+          },
+          "ready_1": {
+            "direction": "I"
+          },
+          "ready_2": {
+            "direction": "I"
+          },
+          "started": {
+            "direction": "I"
+          },
+          "running": {
+            "direction": "O"
+          }
+        }
+      },
+      "doa_1": {
+        "vlnv": "xilinx.com:module_ref:doa:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_doa_1_0",
+        "xci_path": "ip\\ps_doa_1_0\\ps_doa_1_0.xci",
+        "inst_hier_path": "doa_1",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "doa",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_adc2_clk_wiz_0_clk_out1",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "data_0": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "data_1": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "data_2": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_0": {
+            "direction": "I"
+          },
+          "ready_1": {
+            "direction": "I"
+          },
+          "ready_2": {
+            "direction": "I"
+          },
+          "started": {
+            "direction": "I"
+          },
+          "running": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1737,8 +1848,7 @@
       "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD": {
         "interface_ports": [
           "zynq_ultra_ps_e_0/M_AXI_HPM0_LPD",
-          "axi_smc/S00_AXI",
-          "system_ila_0/SLOT_0_AXI"
+          "axi_smc/S00_AXI"
         ]
       }
     },
@@ -1747,14 +1857,16 @@
         "ports": [
           "adc0_clk_wiz/clk_out1",
           "usp_rf_data_converter_0/m1_axis_aclk",
-          "usp_rf_data_converter_0/m0_axis_aclk"
+          "usp_rf_data_converter_0/m0_axis_aclk",
+          "doa_0/clk"
         ]
       },
       "adc2_clk_wiz_clk_out1": {
         "ports": [
           "adc2_clk_wiz/clk_out1",
           "usp_rf_data_converter_0/m2_axis_aclk",
-          "usp_rf_data_converter_0/m3_axis_aclk"
+          "usp_rf_data_converter_0/m3_axis_aclk",
+          "doa_1/clk"
         ]
       },
       "r5_timer_interrupt": {
@@ -1769,7 +1881,6 @@
           "gpio_led/s_axi_aresetn",
           "axi_smc/aresetn",
           "r5_timer/s_axi_aresetn",
-          "system_ila_0/resetn",
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn"
         ]
@@ -1786,6 +1897,78 @@
           "adc2_clk_wiz/clk_in1"
         ]
       },
+      "usp_rf_data_converter_0_m00_axis_tdata": {
+        "ports": [
+          "usp_rf_data_converter_0/m00_axis_tdata",
+          "doa_0/data_0"
+        ]
+      },
+      "usp_rf_data_converter_0_m00_axis_tvalid": {
+        "ports": [
+          "usp_rf_data_converter_0/m00_axis_tvalid",
+          "doa_0/ready_0"
+        ]
+      },
+      "usp_rf_data_converter_0_m02_axis_tdata": {
+        "ports": [
+          "usp_rf_data_converter_0/m02_axis_tdata",
+          "doa_0/data_1"
+        ]
+      },
+      "usp_rf_data_converter_0_m02_axis_tvalid": {
+        "ports": [
+          "usp_rf_data_converter_0/m02_axis_tvalid",
+          "doa_0/ready_1"
+        ]
+      },
+      "usp_rf_data_converter_0_m10_axis_tdata": {
+        "ports": [
+          "usp_rf_data_converter_0/m10_axis_tdata",
+          "doa_0/data_2"
+        ]
+      },
+      "usp_rf_data_converter_0_m10_axis_tvalid": {
+        "ports": [
+          "usp_rf_data_converter_0/m10_axis_tvalid",
+          "doa_0/ready_2"
+        ]
+      },
+      "usp_rf_data_converter_0_m20_axis_tdata": {
+        "ports": [
+          "usp_rf_data_converter_0/m20_axis_tdata",
+          "doa_1/data_0"
+        ]
+      },
+      "usp_rf_data_converter_0_m20_axis_tvalid": {
+        "ports": [
+          "usp_rf_data_converter_0/m20_axis_tvalid",
+          "doa_1/ready_0"
+        ]
+      },
+      "usp_rf_data_converter_0_m22_axis_tdata": {
+        "ports": [
+          "usp_rf_data_converter_0/m22_axis_tdata",
+          "doa_1/data_1"
+        ]
+      },
+      "usp_rf_data_converter_0_m22_axis_tvalid": {
+        "ports": [
+          "usp_rf_data_converter_0/m22_axis_tvalid",
+          "doa_1/ready_1"
+        ]
+      },
+      "usp_rf_data_converter_0_m30_axis_tdata": {
+        "ports": [
+          "usp_rf_data_converter_0/m30_axis_tdata",
+          "doa_1/data_2"
+        ]
+      },
+      "usp_rf_data_converter_0_m30_axis_tvalid": {
+        "ports": [
+          "usp_rf_data_converter_0/m30_axis_tvalid",
+          "doa_1/ready_2"
+        ]
+      },
       "zynq_ultra_ps_e_0_pl_clk0": {
         "ports": [
           "zynq_ultra_ps_e_0/pl_clk0",
@@ -1794,7 +1977,6 @@
           "rst_ps8_0_99M/slowest_sync_clk",
           "r5_timer/s_axi_aclk",
           "zynq_ultra_ps_e_0/maxihpm0_lpd_aclk",
-          "system_ila_0/clk",
           "clk104_mux/s_axi_aclk",
           "usp_rf_data_converter_0/s_axi_aclk"
         ]

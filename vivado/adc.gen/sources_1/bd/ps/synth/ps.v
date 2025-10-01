@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Sep 30 20:43:24 2025
+//Date        : Tue Sep 30 23:02:20 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=10,numReposBlks=10,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=2,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=2,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc0_clk_clk_n,
@@ -147,6 +147,18 @@ module ps
   wire sysref_in_diff_p;
   wire usp_rf_data_converter_0_clk_adc0;
   wire usp_rf_data_converter_0_clk_adc2;
+  wire [159:0]usp_rf_data_converter_0_m00_axis_tdata;
+  wire usp_rf_data_converter_0_m00_axis_tvalid;
+  wire [159:0]usp_rf_data_converter_0_m02_axis_tdata;
+  wire usp_rf_data_converter_0_m02_axis_tvalid;
+  wire [159:0]usp_rf_data_converter_0_m10_axis_tdata;
+  wire usp_rf_data_converter_0_m10_axis_tvalid;
+  wire [159:0]usp_rf_data_converter_0_m20_axis_tdata;
+  wire usp_rf_data_converter_0_m20_axis_tvalid;
+  wire [159:0]usp_rf_data_converter_0_m22_axis_tdata;
+  wire usp_rf_data_converter_0_m22_axis_tvalid;
+  wire [159:0]usp_rf_data_converter_0_m30_axis_tdata;
+  wire usp_rf_data_converter_0_m30_axis_tvalid;
   wire vin0_01_v_n;
   wire vin0_01_v_p;
   wire vin0_23_v_n;
@@ -159,45 +171,45 @@ module ps
   wire vin2_23_v_p;
   wire vin3_01_v_n;
   wire vin3_01_v_p;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARADDR" *) (* DONT_TOUCH *) wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARBURST" *) (* DONT_TOUCH *) wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARBURST;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARCACHE" *) (* DONT_TOUCH *) wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARCACHE;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARID" *) (* DONT_TOUCH *) wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARLEN" *) (* DONT_TOUCH *) wire [7:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARLEN;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARLOCK" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARLOCK;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARPROT" *) (* DONT_TOUCH *) wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARPROT;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARQOS" *) (* DONT_TOUCH *) wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARQOS;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARREADY" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARREADY;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARSIZE" *) (* DONT_TOUCH *) wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARSIZE;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARUSER" *) (* DONT_TOUCH *) wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARUSER;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 ARVALID" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARVALID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWADDR" *) (* DONT_TOUCH *) wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWADDR;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWBURST" *) (* DONT_TOUCH *) wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWBURST;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWCACHE" *) (* DONT_TOUCH *) wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWCACHE;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWID" *) (* DONT_TOUCH *) wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWLEN" *) (* DONT_TOUCH *) wire [7:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWLEN;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWLOCK" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWLOCK;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWPROT" *) (* DONT_TOUCH *) wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWPROT;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWQOS" *) (* DONT_TOUCH *) wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWQOS;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWREADY" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWREADY;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWSIZE" *) (* DONT_TOUCH *) wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWSIZE;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWUSER" *) (* DONT_TOUCH *) wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWUSER;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 AWVALID" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWVALID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 BID" *) (* DONT_TOUCH *) wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 BREADY" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BREADY;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 BRESP" *) (* DONT_TOUCH *) wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BRESP;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 BVALID" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BVALID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 RDATA" *) (* DONT_TOUCH *) wire [31:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RDATA;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 RID" *) (* DONT_TOUCH *) wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 RLAST" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RLAST;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 RREADY" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RREADY;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 RRESP" *) (* DONT_TOUCH *) wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RRESP;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 RVALID" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RVALID;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 WDATA" *) (* DONT_TOUCH *) wire [31:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WDATA;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 WLAST" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WLAST;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 WREADY" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WREADY;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 WSTRB" *) (* DONT_TOUCH *) wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WSTRB;
-  (* CONN_BUS_INFO = "zynq_ultra_ps_e_0_M_AXI_HPM0_LPD xilinx.com:interface:aximm:1.0 AXI4 WVALID" *) (* DONT_TOUCH *) wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WVALID;
+  wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARBURST;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARCACHE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARID;
+  wire [7:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARLEN;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARLOCK;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARPROT;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARQOS;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARREADY;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARSIZE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARUSER;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARVALID;
+  wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWADDR;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWBURST;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWCACHE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWID;
+  wire [7:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWLEN;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWLOCK;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWPROT;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWQOS;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWREADY;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWSIZE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWUSER;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWVALID;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BID;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BREADY;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BRESP;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BVALID;
+  wire [31:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RDATA;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RID;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RLAST;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RREADY;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RRESP;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RVALID;
+  wire [31:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WDATA;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WLAST;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WREADY;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WSTRB;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WVALID;
   wire zynq_ultra_ps_e_0_pl_clk0;
   wire zynq_ultra_ps_e_0_pl_resetn0;
 
@@ -338,6 +350,24 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
+  ps_doa_0_0 doa_0
+       (.clk(adc0_clk_wiz_clk_out1),
+        .data_0(usp_rf_data_converter_0_m00_axis_tdata),
+        .data_1(usp_rf_data_converter_0_m02_axis_tdata),
+        .data_2(usp_rf_data_converter_0_m10_axis_tdata),
+        .ready_0(usp_rf_data_converter_0_m00_axis_tvalid),
+        .ready_1(usp_rf_data_converter_0_m02_axis_tvalid),
+        .ready_2(usp_rf_data_converter_0_m10_axis_tvalid),
+        .started(1'b0));
+  ps_doa_1_0 doa_1
+       (.clk(adc2_clk_wiz_clk_out1),
+        .data_0(usp_rf_data_converter_0_m20_axis_tdata),
+        .data_1(usp_rf_data_converter_0_m22_axis_tdata),
+        .data_2(usp_rf_data_converter_0_m30_axis_tdata),
+        .ready_0(usp_rf_data_converter_0_m20_axis_tvalid),
+        .ready_1(usp_rf_data_converter_0_m22_axis_tvalid),
+        .ready_2(usp_rf_data_converter_0_m30_axis_tvalid),
+        .started(1'b0));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -390,48 +420,6 @@ module ps
         .mb_debug_sys_rst(1'b0),
         .peripheral_aresetn(rst_ps8_0_99M_peripheral_aresetn),
         .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
-  ps_system_ila_0_0 system_ila_0
-       (.SLOT_0_AXI_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR),
-        .SLOT_0_AXI_arburst(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARBURST),
-        .SLOT_0_AXI_arcache(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARCACHE),
-        .SLOT_0_AXI_arid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARID),
-        .SLOT_0_AXI_arlen(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARLEN),
-        .SLOT_0_AXI_arlock(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARLOCK),
-        .SLOT_0_AXI_arprot(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARPROT),
-        .SLOT_0_AXI_arqos(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARQOS),
-        .SLOT_0_AXI_arready(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARREADY),
-        .SLOT_0_AXI_arsize(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARSIZE),
-        .SLOT_0_AXI_aruser(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARUSER),
-        .SLOT_0_AXI_arvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARVALID),
-        .SLOT_0_AXI_awaddr(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWADDR),
-        .SLOT_0_AXI_awburst(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWBURST),
-        .SLOT_0_AXI_awcache(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWCACHE),
-        .SLOT_0_AXI_awid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWID),
-        .SLOT_0_AXI_awlen(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWLEN),
-        .SLOT_0_AXI_awlock(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWLOCK),
-        .SLOT_0_AXI_awprot(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWPROT),
-        .SLOT_0_AXI_awqos(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWQOS),
-        .SLOT_0_AXI_awready(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWREADY),
-        .SLOT_0_AXI_awsize(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWSIZE),
-        .SLOT_0_AXI_awuser(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWUSER),
-        .SLOT_0_AXI_awvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_AWVALID),
-        .SLOT_0_AXI_bid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BID),
-        .SLOT_0_AXI_bready(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BREADY),
-        .SLOT_0_AXI_bresp(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BRESP),
-        .SLOT_0_AXI_bvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_BVALID),
-        .SLOT_0_AXI_rdata(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RDATA),
-        .SLOT_0_AXI_rid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RID),
-        .SLOT_0_AXI_rlast(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RLAST),
-        .SLOT_0_AXI_rready(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RREADY),
-        .SLOT_0_AXI_rresp(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RRESP),
-        .SLOT_0_AXI_rvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_RVALID),
-        .SLOT_0_AXI_wdata(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WDATA),
-        .SLOT_0_AXI_wlast(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WLAST),
-        .SLOT_0_AXI_wready(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WREADY),
-        .SLOT_0_AXI_wstrb(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WSTRB),
-        .SLOT_0_AXI_wvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WVALID),
-        .clk(zynq_ultra_ps_e_0_pl_clk0),
-        .resetn(rst_ps8_0_99M_peripheral_aresetn));
   ps_usp_rf_data_converter_0_0 usp_rf_data_converter_0
        (.adc0_clk_n(adc0_clk_clk_n),
         .adc0_clk_p(adc0_clk_clk_p),
@@ -443,18 +431,30 @@ module ps
         .adc3_clk_p(adc3_clk_clk_p),
         .clk_adc0(usp_rf_data_converter_0_clk_adc0),
         .clk_adc2(usp_rf_data_converter_0_clk_adc2),
+        .m00_axis_tdata(usp_rf_data_converter_0_m00_axis_tdata),
         .m00_axis_tready(1'b1),
+        .m00_axis_tvalid(usp_rf_data_converter_0_m00_axis_tvalid),
+        .m02_axis_tdata(usp_rf_data_converter_0_m02_axis_tdata),
         .m02_axis_tready(1'b1),
+        .m02_axis_tvalid(usp_rf_data_converter_0_m02_axis_tvalid),
         .m0_axis_aclk(adc0_clk_wiz_clk_out1),
         .m0_axis_aresetn(1'b1),
+        .m10_axis_tdata(usp_rf_data_converter_0_m10_axis_tdata),
         .m10_axis_tready(1'b1),
+        .m10_axis_tvalid(usp_rf_data_converter_0_m10_axis_tvalid),
         .m1_axis_aclk(adc0_clk_wiz_clk_out1),
         .m1_axis_aresetn(1'b1),
+        .m20_axis_tdata(usp_rf_data_converter_0_m20_axis_tdata),
         .m20_axis_tready(1'b1),
+        .m20_axis_tvalid(usp_rf_data_converter_0_m20_axis_tvalid),
+        .m22_axis_tdata(usp_rf_data_converter_0_m22_axis_tdata),
         .m22_axis_tready(1'b1),
+        .m22_axis_tvalid(usp_rf_data_converter_0_m22_axis_tvalid),
         .m2_axis_aclk(adc2_clk_wiz_clk_out1),
         .m2_axis_aresetn(1'b1),
+        .m30_axis_tdata(usp_rf_data_converter_0_m30_axis_tdata),
         .m30_axis_tready(1'b1),
+        .m30_axis_tvalid(usp_rf_data_converter_0_m30_axis_tvalid),
         .m3_axis_aclk(adc2_clk_wiz_clk_out1),
         .m3_axis_aresetn(1'b1),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
