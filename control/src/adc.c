@@ -76,6 +76,8 @@ bool StartAdc()
 {
 	int status;
 	u32 factor;
+	u32 pll;
+	XRFdc_PLL_Settings pllc;
 	XRFdc_Config *ConfigPtr;
     XRFdc_MultiConverter_Sync_Config ADC_Sync_Config;
 	XRFdc_IPStatus IPStatus;
@@ -92,8 +94,22 @@ bool StartAdc()
     if (status != XRFDC_SUCCESS)
 		return false;
 
+	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID0, &pll);	
+	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID1, &pll);	
+	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID2, &pll);	
+	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID4, &pll);	
+	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID5, &pll);	
+	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID6, &pll);	
+
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID0, &pllc);
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID1, &pllc);
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID2, &pllc);
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID4, &pllc);
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID5, &pllc);
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID6, &pllc);
+
     /* Initialize ADC MTS Settings */
-    XRFdc_MultiConverter_Init (&ADC_Sync_Config, 0, 0, XRFDC_TILE_ID0);
+    XRFdc_MultiConverter_Init(&ADC_Sync_Config, 0, 0, XRFDC_TILE_ID0);
  
 	ADC_Sync_Config.Tiles = 0x77;	/* Sync ADC tiles 0, 1, 2, 4, 5 and 6 */
     status = XRFdc_MultiConverter_Sync(&RFdcInst, XRFDC_ADC_TILE, &ADC_Sync_Config);
