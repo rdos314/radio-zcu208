@@ -5,6 +5,7 @@
 #include "math.h"
 
 bool ConfigAdc();
+bool StartAdc();
 
 #define TIMER_CNTR_0     0
 #define RESET_VALUE             0xFFF0BDC1                      //Time Interval of 10 msec
@@ -30,6 +31,9 @@ int main(void)
     XTmrCtr TimerCounterInst;
 
     if (!ConfigAdc())
+        return -1;
+
+    if (!StartAdc())
         return -1;
 
     Status = XTmrCtr_Initialize(&TimerCounterInst, XPAR_R5_TIMER_BASEADDR);
