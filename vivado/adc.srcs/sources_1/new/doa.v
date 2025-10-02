@@ -22,7 +22,6 @@
 
 module doa(
     input wire	clk,
-	input wire	reset,
     input wire	[159:0] data_N,
     input wire	ready_N,
     input wire	[159:0] data_E,
@@ -31,15 +30,9 @@ module doa(
     input wire	ready_W
     );
 
-	wire 	pl_clk;
-
-	BUFG pl_clk_i (
-		.I			(clk),
-		.O			(pl_clk)
-	);
 
 	ila_0 ila_N (
-		.clk(pl_clk),                 // input wire clk
+		.clk(clk),                 // input wire clk
 		.probe0(data_N[15:0]),        // input wire [15:0]  probe3
 		.probe1(data_N[31:16]),       // input wire [15:0]  probe3
 		.probe2(data_N[47:32]),       // input wire [15:0]  probe3
@@ -54,7 +47,7 @@ module doa(
 	);
 
 	ila_0 ila_E (
-		.clk(pl_clk),                 // input wire clk
+		.clk(clk),                 // input wire clk
 		.probe0(data_E[15:0]),        // input wire [15:0]  probe3
 		.probe1(data_E[31:16]),       // input wire [15:0]  probe3
 		.probe2(data_E[47:32]),       // input wire [15:0]  probe3
@@ -69,7 +62,7 @@ module doa(
 	);
 
 	ila_0 ila_W (
-		.clk(pl_clk),                 // input wire clk
+		.clk(clk),                 // input wire clk
 		.probe0(data_W[15:0]),        // input wire [15:0]  probe3
 		.probe1(data_W[31:16]),       // input wire [15:0]  probe3
 		.probe2(data_W[47:32]),       // input wire [15:0]  probe3

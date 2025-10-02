@@ -55,45 +55,27 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_mts_0_0 (
-  pl_clk_p,
-  pl_clk_n,
   pl_clk,
-  pl_sysref_p,
-  pl_sysref_n,
+  m_clk,
   pl_sysref,
-  user_sysref_adc,
-  m0_axis_aclk
+  user_sysref_adc
 );
 
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk_p CLK" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk_p, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_p, INSERT_VIP 0" *)
-input wire pl_clk_p;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk_n CLK" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk_n, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *)
-input wire pl_clk_n;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_pl_clk, INSERT_VIP 0" *)
-output wire pl_clk;
-input wire pl_sysref_p;
-input wire pl_sysref_n;
-output wire pl_sysref;
-output wire user_sysref_adc;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m0_axis_aclk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m0_axis_aclk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_adc0_clk_wiz_0_clk_out1, INSERT_VIP 0" *)
-input wire m0_axis_aclk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *)
+input wire pl_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_clk_wiz_0_0_clk_out1, INSERT_VIP 0" *)
+input wire m_clk;
+input wire pl_sysref;
+output wire user_sysref_adc;
 
   mts inst (
-    .pl_clk_p(pl_clk_p),
-    .pl_clk_n(pl_clk_n),
     .pl_clk(pl_clk),
-    .pl_sysref_p(pl_sysref_p),
-    .pl_sysref_n(pl_sysref_n),
+    .m_clk(m_clk),
     .pl_sysref(pl_sysref),
-    .user_sysref_adc(user_sysref_adc),
-    .m0_axis_aclk(m0_axis_aclk)
+    .user_sysref_adc(user_sysref_adc)
   );
 endmodule

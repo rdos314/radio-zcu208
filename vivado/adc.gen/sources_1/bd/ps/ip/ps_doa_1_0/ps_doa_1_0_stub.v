@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Oct  1 22:16:48 2025
+// Date        : Thu Oct  2 23:40:24 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_1_0/ps_doa_1_0_stub.v
@@ -19,7 +19,7 @@
 module ps_doa_1_0(clk, data_N, ready_N, data_E, ready_E, data_W, 
   ready_W)
 /* synthesis syn_black_box black_box_pad_pin="clk,data_N[159:0],ready_N,data_E[159:0],ready_E,data_W[159:0],ready_W" */;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_adc2_clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_m_clk, INSERT_VIP 0" *) input clk;
   input [159:0]data_N;
   input ready_N;
   input [159:0]data_E;

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Oct  2 00:57:19 2025
+// Date        : Fri Oct  3 00:39:27 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -17,102 +17,70 @@
 (* X_CORE_INFO = "mts,Vivado 2025.1" *) 
 (* NotValidForBitStream *)
 module ps_mts_0_0
-   (pl_clk_p,
-    pl_clk_n,
-    pl_clk,
-    pl_sysref_p,
-    pl_sysref_n,
+   (pl_clk,
+    m_clk,
     pl_sysref,
-    user_sysref_adc,
-    m0_axis_aclk);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk_p CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk_p, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_p, INSERT_VIP 0" *) input pl_clk_p;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk_n CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk_n, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *) input pl_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_pl_clk, INSERT_VIP 0" *) output pl_clk;
-  input pl_sysref_p;
-  input pl_sysref_n;
-  output pl_sysref;
+    user_sysref_adc);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *) input pl_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_clk_wiz_0_0_clk_out1, INSERT_VIP 0" *) input m_clk;
+  input pl_sysref;
   output user_sysref_adc;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m0_axis_aclk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m0_axis_aclk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_adc0_clk_wiz_0_clk_out1, INSERT_VIP 0" *) input m0_axis_aclk;
 
-  wire m0_axis_aclk;
-  (* IBUF_LOW_PWR *) wire pl_clk;
-  (* IBUF_LOW_PWR *) wire pl_clk_n;
-  (* IBUF_LOW_PWR *) wire pl_clk_p;
-  (* IBUF_LOW_PWR *) wire pl_sysref;
-  (* IBUF_LOW_PWR *) wire pl_sysref_n;
-  (* IBUF_LOW_PWR *) wire pl_sysref_p;
+  wire m_clk;
+  wire pl_clk;
+  wire pl_sysref;
   wire user_sysref_adc;
 
   ps_mts_0_0_mts inst
-       (.m0_axis_aclk(m0_axis_aclk),
+       (.m_clk(m_clk),
         .pl_clk(pl_clk),
-        .pl_clk_n(pl_clk_n),
-        .pl_clk_p(pl_clk_p),
         .pl_sysref(pl_sysref),
-        .pl_sysref_n(pl_sysref_n),
-        .pl_sysref_p(pl_sysref_p),
         .user_sysref_adc(user_sysref_adc));
 endmodule
 
-(* ORIG_REF_NAME = "mts" *) 
+(* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_1" *) 
+(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+module ps_mts_0_0_ila_1
+   (clk,
+    probe0);
+  (* syn_isclock = "1" *) input clk;
+  input [0:0]probe0;
+
+
+endmodule
+
+(* ORIG_REF_NAME = "mts" *) (* keep_hierarchy = "soft" *) 
 module ps_mts_0_0_mts
    (pl_clk,
+    m_clk,
     pl_sysref,
-    user_sysref_adc,
-    pl_clk_p,
-    pl_clk_n,
-    pl_sysref_p,
-    pl_sysref_n,
-    m0_axis_aclk);
-  output pl_clk;
-  output pl_sysref;
+    user_sysref_adc);
+  input pl_clk;
+  input m_clk;
+  input pl_sysref;
   output user_sysref_adc;
-  input pl_clk_p;
-  input pl_clk_n;
-  input pl_sysref_p;
-  input pl_sysref_n;
-  input m0_axis_aclk;
 
-  wire m0_axis_aclk;
+  wire m_clk;
   wire pl_clk;
-  wire pl_clk_n;
-  wire pl_clk_p;
   wire pl_sysref;
-  wire pl_sysref_n;
-  wire pl_sysref_p;
   wire pl_sysref_r;
-  wire user_sysref_adc;
+  (* MARK_DEBUG *) wire user_sysref_adc;
 
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  (* CAPACITANCE = "DONT_CARE" *) 
-  (* IBUF_DELAY_VALUE = "0" *) 
-  (* XILINX_LEGACY_PRIM = "IBUFGDS" *) 
-  IBUFDS #(
-    .DIFF_TERM("FALSE"),
-    .IOSTANDARD("DEFAULT")) 
-    \mts.pl_clk_i 
-       (.I(pl_clk_p),
-        .IB(pl_clk_n),
-        .O(pl_clk));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  (* CAPACITANCE = "DONT_CARE" *) 
-  (* IBUF_DELAY_VALUE = "0" *) 
-  (* XILINX_LEGACY_PRIM = "IBUFGDS" *) 
-  IBUFDS #(
-    .DIFF_TERM("FALSE"),
-    .IOSTANDARD("DEFAULT")) 
-    \mts.pl_sysref_i 
-       (.I(pl_sysref_p),
-        .IB(pl_sysref_n),
-        .O(pl_sysref));
+  (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+  ps_mts_0_0_ila_1 ila_i
+       (.clk(m_clk),
+        .probe0(user_sysref_adc));
   FDRE \mts.pl_sysref_r_reg 
        (.C(pl_clk),
         .CE(1'b1),
         .D(pl_sysref),
         .Q(pl_sysref_r),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \mts.user_sysref_adc_reg 
-       (.C(m0_axis_aclk),
+       (.C(m_clk),
         .CE(1'b1),
         .D(pl_sysref_r),
         .Q(user_sysref_adc),

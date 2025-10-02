@@ -18,11 +18,12 @@
       "rst_ps8_0_99M": "",
       "clk104_mux": "",
       "usp_rf_data_converter_0": "",
-      "adc0_clk_wiz": "",
-      "adc2_clk_wiz": "",
       "doa_0": "",
       "doa_1": "",
-      "mts_0": ""
+      "mts_0": "",
+      "clk_wiz_0": "",
+      "pl_clk_util_ds_buf": "",
+      "pl_sysref_ds_buf": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1650,98 +1651,6 @@
           }
         }
       },
-      "adc0_clk_wiz": {
-        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-        "ip_revision": "16",
-        "xci_name": "ps_adc0_clk_wiz_0",
-        "xci_path": "ip\\ps_adc0_clk_wiz_0\\ps_adc0_clk_wiz_0.xci",
-        "inst_hier_path": "adc0_clk_wiz",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "CLKIN1_JITTER_PS": {
-            "value": "80.0"
-          },
-          "CLKOUT1_JITTER": {
-            "value": "83.555"
-          },
-          "CLKOUT1_PHASE_ERROR": {
-            "value": "86.070"
-          },
-          "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "500.000"
-          },
-          "MMCM_CLKFBOUT_MULT_F": {
-            "value": "9.500"
-          },
-          "MMCM_CLKIN1_PERIOD": {
-            "value": "8.000"
-          },
-          "MMCM_CLKIN2_PERIOD": {
-            "value": "10.000"
-          },
-          "MMCM_DIVCLK_DIVIDE": {
-            "value": "1"
-          },
-          "PRIM_IN_FREQ": {
-            "value": "125"
-          },
-          "RESET_BOARD_INTERFACE": {
-            "value": "Custom"
-          },
-          "USE_BOARD_FLOW": {
-            "value": "true"
-          },
-          "USE_RESET": {
-            "value": "false"
-          }
-        }
-      },
-      "adc2_clk_wiz": {
-        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-        "ip_revision": "16",
-        "xci_name": "ps_adc2_clk_wiz_0",
-        "xci_path": "ip\\ps_adc2_clk_wiz_0\\ps_adc2_clk_wiz_0.xci",
-        "inst_hier_path": "adc2_clk_wiz",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "CLKIN1_JITTER_PS": {
-            "value": "80.0"
-          },
-          "CLKOUT1_JITTER": {
-            "value": "83.555"
-          },
-          "CLKOUT1_PHASE_ERROR": {
-            "value": "86.070"
-          },
-          "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "500.000"
-          },
-          "MMCM_CLKFBOUT_MULT_F": {
-            "value": "9.500"
-          },
-          "MMCM_CLKIN1_PERIOD": {
-            "value": "8.000"
-          },
-          "MMCM_CLKIN2_PERIOD": {
-            "value": "10.000"
-          },
-          "MMCM_DIVCLK_DIVIDE": {
-            "value": "1"
-          },
-          "PRIM_IN_FREQ": {
-            "value": "125"
-          },
-          "RESET_BOARD_INTERFACE": {
-            "value": "Custom"
-          },
-          "USE_BOARD_FLOW": {
-            "value": "true"
-          },
-          "USE_RESET": {
-            "value": "false"
-          }
-        }
-      },
       "doa_0": {
         "vlnv": "xilinx.com:module_ref:doa:1.0",
         "ip_revision": "1",
@@ -1768,7 +1677,7 @@
                 "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_adc0_clk_wiz_0_clk_out1",
+                "value": "ps_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             }
@@ -1825,7 +1734,7 @@
                 "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_adc2_clk_wiz_0_clk_out1",
+                "value": "ps_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             }
@@ -1869,93 +1778,25 @@
           "boundary_crc": "0x0"
         },
         "ports": {
-          "pl_clk_p": {
+          "pl_clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
               "FREQ_HZ": {
                 "value": "125000000",
-                "value_src": "user_prop"
+                "value_src": "ip_prop"
               },
-              "CLK_DOMAIN": {
-                "value": "ps_pl_clk_p",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "pl_clk_n": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "user_prop"
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
                 "value": "ps_pl_clk_n",
-                "value_src": "default_prop"
+                "value_src": "ip_prop"
               }
             }
           },
-          "pl_clk": {
-            "type": "clk",
-            "direction": "O",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "constant"
-              },
-              "FREQ_TOLERANCE_HZ": {
-                "value": "0",
-                "value_src": "constant"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "constant"
-              }
-            }
-          },
-          "pl_sysref_p": {
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "10000000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_pl_sysref_p",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "pl_sysref_n": {
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "10000000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_pl_sysref_n",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "pl_sysref": {
-            "direction": "O"
-          },
-          "user_sysref_adc": {
-            "direction": "O"
-          },
-          "m0_axis_aclk": {
+          "m_clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
@@ -1968,12 +1809,124 @@
                 "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_adc0_clk_wiz_0_clk_out1",
+                "value": "ps_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             }
+          },
+          "pl_sysref": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "10000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_pl_sysref_n",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "user_sysref_adc": {
+            "direction": "O"
           }
         }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "16",
+        "xci_name": "ps_clk_wiz_0_0",
+        "xci_path": "ip\\ps_clk_wiz_0_0\\ps_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "CLKIN1_JITTER_PS": {
+            "value": "80.0"
+          },
+          "CLKOUT1_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "83.555"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "86.070"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "500"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "FEEDBACK_SOURCE": {
+            "value": "FDBK_AUTO"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "9.500"
+          },
+          "MMCM_CLKIN1_PERIOD": {
+            "value": "8.000"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "2.375"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "PRIM_IN_FREQ": {
+            "value": "125"
+          },
+          "PRIM_SOURCE": {
+            "value": "Global_buffer"
+          },
+          "SECONDARY_SOURCE": {
+            "value": "Single_ended_clock_capable_pin"
+          },
+          "USE_PHASE_ALIGNMENT": {
+            "value": "false"
+          },
+          "USE_RESET": {
+            "value": "false"
+          },
+          "USE_SAFE_CLOCK_STARTUP": {
+            "value": "true"
+          }
+        }
+      },
+      "pl_clk_util_ds_buf": {
+        "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
+        "ip_revision": "8",
+        "xci_name": "ps_util_ds_buf_0_0",
+        "xci_path": "ip\\ps_util_ds_buf_0_0\\ps_util_ds_buf_0_0.xci",
+        "inst_hier_path": "pl_clk_util_ds_buf",
+        "has_run_ip_tcl": "true"
+      },
+      "pl_sysref_ds_buf": {
+        "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
+        "ip_revision": "8",
+        "xci_name": "ps_util_ds_buf_0_1",
+        "xci_path": "ip\\ps_util_ds_buf_0_1\\ps_util_ds_buf_0_1.xci",
+        "inst_hier_path": "pl_sysref_ds_buf",
+        "has_run_ip_tcl": "true"
       }
     },
     "interface_nets": {
@@ -2071,40 +2024,14 @@
     "nets": {
       "adc0_clk_wiz_clk_out1": {
         "ports": [
-          "adc0_clk_wiz/clk_out1",
+          "clk_wiz_0/clk_out1",
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m0_axis_aclk",
-          "doa_0/clk",
-          "mts_0/m0_axis_aclk"
-        ]
-      },
-      "adc0_clk_wiz_locked": {
-        "ports": [
-          "adc0_clk_wiz/locked",
-          "usp_rf_data_converter_0/m0_axis_aresetn",
-          "usp_rf_data_converter_0/m1_axis_aresetn"
-        ]
-      },
-      "adc2_clk_wiz_clk_out1": {
-        "ports": [
-          "adc2_clk_wiz/clk_out1",
-          "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "doa_1/clk"
-        ]
-      },
-      "adc2_clk_wiz_locked": {
-        "ports": [
-          "adc2_clk_wiz/locked",
-          "usp_rf_data_converter_0/m2_axis_aresetn",
-          "usp_rf_data_converter_0/m3_axis_aresetn"
-        ]
-      },
-      "mts_0_pl_clk": {
-        "ports": [
-          "mts_0/pl_clk",
-          "adc2_clk_wiz/clk_in1",
-          "adc0_clk_wiz/clk_in1"
+          "usp_rf_data_converter_0/m2_axis_aclk",
+          "doa_0/clk",
+          "doa_1/clk",
+          "mts_0/m_clk"
         ]
       },
       "mts_0_user_sysref_adc": {
@@ -2116,25 +2043,25 @@
       "pl_clk_n_1": {
         "ports": [
           "pl_clk_n",
-          "mts_0/pl_clk_n"
+          "pl_clk_util_ds_buf/IBUF_DS_N"
         ]
       },
       "pl_clk_p_1": {
         "ports": [
           "pl_clk_p",
-          "mts_0/pl_clk_p"
+          "pl_clk_util_ds_buf/IBUF_DS_P"
         ]
       },
       "pl_sysref_n_1": {
         "ports": [
           "pl_sysref_n",
-          "mts_0/pl_sysref_n"
+          "pl_sysref_ds_buf/IBUF_DS_N"
         ]
       },
       "pl_sysref_p_1": {
         "ports": [
           "pl_sysref_p",
-          "mts_0/pl_sysref_p"
+          "pl_sysref_ds_buf/IBUF_DS_P"
         ]
       },
       "r5_timer_interrupt": {
@@ -2223,6 +2150,19 @@
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tvalid",
           "doa_1/ready_W"
+        ]
+      },
+      "util_ds_buf_0_IBUF_OUT": {
+        "ports": [
+          "pl_clk_util_ds_buf/IBUF_OUT",
+          "clk_wiz_0/clk_in1",
+          "mts_0/pl_clk"
+        ]
+      },
+      "util_ds_buf_0_IBUF_OUT1": {
+        "ports": [
+          "pl_sysref_ds_buf/IBUF_OUT",
+          "mts_0/pl_sysref"
         ]
       },
       "zynq_ultra_ps_e_0_pl_clk0": {
