@@ -23,10 +23,16 @@ module mts(
     input wire 	pl_clk,
     input wire 	m_clk,
     input wire	pl_sysref,
-    output reg 	user_sysref_adc
+    output wire user_sysref_adc
  );
 
-    reg pl_sysref_r;
+// clock domain crossings
+
+	(* ASYNC_REG="TRUE" *)  reg  pl_sysref_r;
+	(* ASYNC_REG="TRUE" *)  reg  m_sysref_1;
+	(* ASYNC_REG="TRUE" *)  reg  m_sysref;
+ 
+	assign user_sysref_adc = m_sysref;
 		    		
 	ila_1 ila_i (
 		.clk(m_clk),  	                  // input wire clk
@@ -43,8 +49,10 @@ generate
 
 	always @(posedge m_clk) 
 	begin
-		user_sysref_adc <= pl_sysref_r;
+		m_sysref_1 <= pl_sysref_r;
+		m_sysref <= m_sysref_1;
 	end
+
 
   end
     
