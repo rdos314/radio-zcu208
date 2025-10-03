@@ -20,39 +20,138 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module mts(
-    input wire 	pl_clk,
-    input wire 	m_clk,
-    input wire	pl_sysref,
-    output wire user_sysref_adc
- );
+    input  wire pl_clk,
+    input  wire	pl_sysref,
+	input  wire sys_reset,     // active-high external reset (async)
 
-// clock domain crossings
+    output wire adc_clk,
+    output wire doa0_clk,
+    output wire doa1_clk,
+    output reg 	user_sysref_adc,
+
+    output reg  adc_resetn, 
+    output reg  doa0_reset, 
+    output reg  doa1_reset
+ );
+ 
+    wire 		pl_clk_buf;	
+	wire		m_clk;
+	wire		m_clk_buf;
+	wire 		mmcm_locked;
+	wire 		rst_async = sys_reset | (~mmcm_locked);
 
 	(* ASYNC_REG="TRUE" *)  reg  pl_sysref_r;
-	(* ASYNC_REG="TRUE" *)  reg  m_sysref_1;
-	(* ASYNC_REG="TRUE" *)  reg  m_sysref;
- 
-	assign user_sysref_adc = m_sysref;
+	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
+ 	(* ASYNC_REG="TRUE" *)  reg  m_sysref;
+	(* ASYNC_REG="TRUE" *)  reg  [1:0] rst_async_msync;
+	(* ASYNC_REG="TRUE" *)	reg  master_reset_async;
+	(* ASYNC_REG="TRUE" *)	reg  [3:0] release_cnt;
+	(* ASYNC_REG="TRUE" *)	reg  master_reset;
+	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_2;
+
+	assign adc_clk = m_clk_buf;
+	assign user_sysref_adc = sysref[2];
 		    		
+	BUFG p_clk_i (
+		.I			(pl_clk),
+		.O			(pl_clk_buf));
+    
+	clk_wiz pl_clk_wiz_i (
+		.clk_in1	(pl_clk_buf),
+		.clk_out1	(m_clk),
+		.locked		(mmcm_locked));
+		
+	BUFG m_clk_i (
+		.I			(m_clk),
+		.O			(m_clk_buf));
+		
+	BUFG doa0_clk_i (
+		.I			(m_clk),
+		.O			(doa0_clk));
+
+	BUFG doa1_clk_i (
+		.I			(m_clk),
+		.O			(doa1_clk));
+
 	ila_1 ila_i (
-		.clk(m_clk),  	                  // input wire clk
-		.probe0(user_sysref_adc)          // input wire [0:0]  probe2
+		.clk(m_clk_buf),  	              // input wire clk
+		.probe0(user_sysref_adc),         // input wire [0:0]  probe2
+		.probe1(adc_resetn)               // input wire [0:0]  probe2
 	);
 	
 generate
   begin : mts
 
-	always @(posedge pl_clk) 
+	always @(posedge pl_clk_buf) 
 	begin
 		pl_sysref_r <= pl_sysref;
 	end
 
-	always @(posedge m_clk) 
+	always @(posedge m_clk_buf) 
 	begin
-		m_sysref_1 <= pl_sysref_r;
-		m_sysref <= m_sysref_1;
+		sysref_sync <= { sysref_sync[1:0], pl_sysref_r };
 	end
 
+	always @(posedge m_clk_buf or posedge rst_async) 
+	begin
+		if (rst_async)
+			rst_async_msync <= 2'b11;
+		else
+			rst_async_msync <= {rst_async_msync[0], 1'b0};
+	end
+
+	always @(posedge m_clk_buf or posedge rst_async) 
+	begin
+		if (rst_async) 
+		begin
+			release_cnt <= 0;
+			master_reset_async <= 1;
+		end 
+		else 
+		begin
+			if (master_reset_async) 
+			begin
+				if (release_cnt == 4'b1111)
+					master_reset_async <= 0;
+				else 
+				begin
+					release_cnt <= release_cnt + 1;
+					master_reset_async <= 1;
+				end
+			end 
+			else 
+			begin
+				master_reset_async <= 0;
+			end
+		end
+	end
+
+	always @(posedge m_clk_buf) 
+	begin
+		master_reset <= master_reset_async;
+	end
+
+	always @(posedge m_clk_buf) 
+	begin
+		adc_resetn <= ~master_reset;
+	end
+
+	always @(posedge doa0_clk) 
+	begin
+		doa0_reset_1 <= master_reset;
+		doa0_reset_2 <= doa0_reset_1;
+		doa0_reset <= doa0_reset_2;
+	end
+
+	always @(posedge doa1_clk) 
+	begin
+		doa1_reset_1 <= master_reset;
+		doa1_reset_2 <= doa1_reset_1;
+		doa1_reset <= doa1_reset_2;
+	end
 
   end
     
