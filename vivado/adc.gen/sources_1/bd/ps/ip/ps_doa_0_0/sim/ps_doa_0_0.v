@@ -56,6 +56,7 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_doa_0_0 (
   clk,
+  resetn,
   data_N,
   ready_N,
   data_E,
@@ -66,8 +67,12 @@ module ps_doa_0_0 (
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_m_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *)
 input wire clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+input wire resetn;
 input wire [159 : 0] data_N;
 input wire ready_N;
 input wire [159 : 0] data_E;
@@ -77,6 +82,7 @@ input wire ready_W;
 
   doa inst (
     .clk(clk),
+    .resetn(resetn),
     .data_N(data_N),
     .ready_N(ready_N),
     .data_E(data_E),

@@ -22,6 +22,7 @@
 
 module doa(
     input wire	clk,
+    input wire  resetn,
     input wire	[159:0] data_N,
     input wire	ready_N,
     input wire	[159:0] data_E,

@@ -22,16 +22,16 @@
 module mts(
     input  wire pl_clk,
     input  wire	pl_sysref,
-	input  wire sys_reset,     // active-high external reset (async)
+	input  wire sys_reset,
 
-    output wire adc_clk,
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DOA0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
     output wire doa0_clk,
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DOA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
     output wire doa1_clk,
-    output reg 	user_sysref_adc,
-
-    output reg  adc_resetn, 
-    output reg  doa0_reset, 
-    output reg  doa1_reset
+    
+    output wire	user_sysref_adc,
+    output reg  doa0_resetn, 
+    output reg  doa1_resetn
  );
  
     wire 		pl_clk_buf;	
@@ -42,7 +42,6 @@ module mts(
 
 	(* ASYNC_REG="TRUE" *)  reg  pl_sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
- 	(* ASYNC_REG="TRUE" *)  reg  m_sysref;
 	(* ASYNC_REG="TRUE" *)  reg  [1:0] rst_async_msync;
 	(* ASYNC_REG="TRUE" *)	reg  master_reset_async;
 	(* ASYNC_REG="TRUE" *)	reg  [3:0] release_cnt;
@@ -53,13 +52,13 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_2;
 
 	assign adc_clk = m_clk_buf;
-	assign user_sysref_adc = sysref[2];
+	assign user_sysref_adc = sysref_sync[2];
 		    		
 	BUFG p_clk_i (
 		.I			(pl_clk),
 		.O			(pl_clk_buf));
     
-	clk_wiz pl_clk_wiz_i (
+	clk_wiz_0 pl_clk_wiz_i (
 		.clk_in1	(pl_clk_buf),
 		.clk_out1	(m_clk),
 		.locked		(mmcm_locked));
@@ -134,28 +133,22 @@ generate
 		master_reset <= master_reset_async;
 	end
 
-	always @(posedge m_clk_buf) 
-	begin
-		adc_resetn <= ~master_reset;
-	end
-
 	always @(posedge doa0_clk) 
 	begin
 		doa0_reset_1 <= master_reset;
 		doa0_reset_2 <= doa0_reset_1;
-		doa0_reset <= doa0_reset_2;
+		doa0_resetn <= ~doa0_reset_2;
 	end
 
 	always @(posedge doa1_clk) 
 	begin
 		doa1_reset_1 <= master_reset;
 		doa1_reset_2 <= doa1_reset_1;
-		doa1_reset <= doa1_reset_2;
+		doa1_resetn <= ~doa1_reset_2;
 	end
 
   end
     
 endgenerate
-    
-    
+        
 endmodule

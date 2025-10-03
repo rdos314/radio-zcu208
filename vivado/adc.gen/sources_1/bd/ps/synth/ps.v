@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Oct  3 00:38:44 2025
+//Date        : Fri Oct  3 21:37:18 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=13,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=6,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=6,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc2_clk_clk_n,
@@ -130,12 +130,16 @@ module ps
   wire [3:0]axi_smc_M03_AXI_WSTRB;
   wire axi_smc_M03_AXI_WVALID;
   wire [7:0]led_8bits_tri_o;
+  wire mts_0_doa0_resetn;
+  wire mts_0_doa1_clk;
+  wire mts_0_doa1_resetn;
   wire mts_0_user_sysref_adc;
   wire pl_clk_n;
   wire pl_clk_p;
   wire pl_sysref_n;
   wire pl_sysref_p;
   wire r5_timer_interrupt;
+  wire rst_ps8_0_99M_mb_reset;
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
   wire sysref_in_diff_n;
   wire sysref_in_diff_p;
@@ -338,9 +342,6 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
-  ps_clk_wiz_0_0 clk_wiz_0
-       (.clk_in1(util_ds_buf_0_IBUF_OUT),
-        .clk_out1(adc0_clk_wiz_clk_out1));
   ps_doa_0_0 doa_0
        (.clk(adc0_clk_wiz_clk_out1),
         .data_E(usp_rf_data_converter_0_m02_axis_tdata),
@@ -348,15 +349,17 @@ module ps
         .data_W(usp_rf_data_converter_0_m10_axis_tdata),
         .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
-        .ready_W(usp_rf_data_converter_0_m10_axis_tvalid));
+        .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
+        .resetn(mts_0_doa0_resetn));
   ps_doa_1_0 doa_1
-       (.clk(adc0_clk_wiz_clk_out1),
+       (.clk(mts_0_doa1_clk),
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),
         .data_W(usp_rf_data_converter_0_m30_axis_tdata),
         .ready_E(usp_rf_data_converter_0_m22_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m20_axis_tvalid),
-        .ready_W(usp_rf_data_converter_0_m30_axis_tvalid));
+        .ready_W(usp_rf_data_converter_0_m30_axis_tvalid),
+        .resetn(mts_0_doa1_resetn));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -379,9 +382,13 @@ module ps
         .s_axi_wstrb(axi_smc_M00_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M00_AXI_WVALID));
   ps_mts_0_0 mts_0
-       (.m_clk(adc0_clk_wiz_clk_out1),
+       (.doa0_clk(adc0_clk_wiz_clk_out1),
+        .doa0_resetn(mts_0_doa0_resetn),
+        .doa1_clk(mts_0_doa1_clk),
+        .doa1_resetn(mts_0_doa1_resetn),
         .pl_clk(util_ds_buf_0_IBUF_OUT),
         .pl_sysref(util_ds_buf_0_IBUF_OUT1),
+        .sys_reset(rst_ps8_0_99M_mb_reset),
         .user_sysref_adc(mts_0_user_sysref_adc));
   ps_util_ds_buf_0_0 pl_clk_util_ds_buf
        (.IBUF_DS_N(pl_clk_n),
@@ -420,6 +427,7 @@ module ps
         .dcm_locked(1'b1),
         .ext_reset_in(zynq_ultra_ps_e_0_pl_resetn0),
         .mb_debug_sys_rst(1'b0),
+        .mb_reset(rst_ps8_0_99M_mb_reset),
         .peripheral_aresetn(rst_ps8_0_99M_peripheral_aresetn),
         .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
   ps_usp_rf_data_converter_0_0 usp_rf_data_converter_0
@@ -432,25 +440,25 @@ module ps
         .m02_axis_tready(1'b1),
         .m02_axis_tvalid(usp_rf_data_converter_0_m02_axis_tvalid),
         .m0_axis_aclk(adc0_clk_wiz_clk_out1),
-        .m0_axis_aresetn(1'b1),
+        .m0_axis_aresetn(mts_0_doa0_resetn),
         .m10_axis_tdata(usp_rf_data_converter_0_m10_axis_tdata),
         .m10_axis_tready(1'b1),
         .m10_axis_tvalid(usp_rf_data_converter_0_m10_axis_tvalid),
         .m1_axis_aclk(adc0_clk_wiz_clk_out1),
-        .m1_axis_aresetn(1'b1),
+        .m1_axis_aresetn(mts_0_doa0_resetn),
         .m20_axis_tdata(usp_rf_data_converter_0_m20_axis_tdata),
         .m20_axis_tready(1'b1),
         .m20_axis_tvalid(usp_rf_data_converter_0_m20_axis_tvalid),
         .m22_axis_tdata(usp_rf_data_converter_0_m22_axis_tdata),
         .m22_axis_tready(1'b1),
         .m22_axis_tvalid(usp_rf_data_converter_0_m22_axis_tvalid),
-        .m2_axis_aclk(adc0_clk_wiz_clk_out1),
-        .m2_axis_aresetn(1'b1),
+        .m2_axis_aclk(mts_0_doa1_clk),
+        .m2_axis_aresetn(mts_0_doa1_resetn),
         .m30_axis_tdata(usp_rf_data_converter_0_m30_axis_tdata),
         .m30_axis_tready(1'b1),
         .m30_axis_tvalid(usp_rf_data_converter_0_m30_axis_tvalid),
-        .m3_axis_aclk(adc0_clk_wiz_clk_out1),
-        .m3_axis_aresetn(1'b1),
+        .m3_axis_aclk(mts_0_doa1_clk),
+        .m3_axis_aresetn(mts_0_doa1_resetn),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .s_axi_araddr(axi_smc_M03_AXI_ARADDR),
         .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),

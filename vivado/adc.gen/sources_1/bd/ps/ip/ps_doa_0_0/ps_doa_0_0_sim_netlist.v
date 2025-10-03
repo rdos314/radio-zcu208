@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Oct  2 23:40:24 2025
+// Date        : Fri Oct  3 21:38:05 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_0_0/ps_doa_0_0_sim_netlist.v
@@ -18,13 +18,15 @@
 (* NotValidForBitStream *)
 module ps_doa_0_0
    (clk,
+    resetn,
     data_N,
     ready_N,
     data_E,
     ready_E,
     data_W,
     ready_W);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_m_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   input [159:0]data_N;
   input ready_N;
   input [159:0]data_E;
@@ -47,12 +49,14 @@ module ps_doa_0_0
         .data_W(data_W),
         .ready_E(ready_E),
         .ready_N(ready_N),
-        .ready_W(ready_W));
+        .ready_W(ready_W),
+        .resetn(1'b0));
 endmodule
 
 (* ORIG_REF_NAME = "doa" *) (* keep_hierarchy = "soft" *) 
 module ps_doa_0_0_doa
    (clk,
+    resetn,
     data_N,
     ready_N,
     data_E,
@@ -60,6 +64,7 @@ module ps_doa_0_0_doa
     data_W,
     ready_W);
   input clk;
+  input resetn;
   input [159:0]data_N;
   input ready_N;
   input [159:0]data_E;

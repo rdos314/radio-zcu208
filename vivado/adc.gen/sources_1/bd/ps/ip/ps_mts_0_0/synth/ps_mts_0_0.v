@@ -57,26 +57,50 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_mts_0_0 (
   pl_clk,
-  m_clk,
   pl_sysref,
-  user_sysref_adc
+  sys_reset,
+  doa0_clk,
+  doa1_clk,
+  user_sysref_adc,
+  doa0_resetn,
+  doa1_resetn
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *)
 input wire pl_clk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m_clk CLK" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_clk_wiz_0_0_clk_out1, INSERT_VIP 0" *)
-input wire m_clk;
 input wire pl_sysref;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+input wire sys_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa0_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa0_clk, ASSOCIATED_RESET doa0_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *)
+output wire doa0_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa1_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa1_clk, ASSOCIATED_RESET doa1_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa1_clk, INSERT_VIP 0" *)
+output wire doa1_clk;
 output wire user_sysref_adc;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 doa0_resetn RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa0_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire doa0_resetn;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 doa1_resetn RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa1_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire doa1_resetn;
 
   mts inst (
     .pl_clk(pl_clk),
-    .m_clk(m_clk),
     .pl_sysref(pl_sysref),
-    .user_sysref_adc(user_sysref_adc)
+    .sys_reset(sys_reset),
+    .doa0_clk(doa0_clk),
+    .doa1_clk(doa1_clk),
+    .user_sysref_adc(user_sysref_adc),
+    .doa0_resetn(doa0_resetn),
+    .doa1_resetn(doa1_resetn)
   );
 endmodule

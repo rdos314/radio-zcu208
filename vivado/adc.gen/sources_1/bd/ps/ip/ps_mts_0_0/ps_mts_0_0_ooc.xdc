@@ -52,7 +52,9 @@
 # #########################################################
 
 
-create_clock -period 2 -name m_clk [get_ports m_clk]
+create_clock -period 2 -name doa0_clk [get_ports doa0_clk]
+
+create_clock -period 2 -name doa1_clk [get_ports doa1_clk]
 
 create_clock -period 8 -name pl_clk [get_ports pl_clk]
 

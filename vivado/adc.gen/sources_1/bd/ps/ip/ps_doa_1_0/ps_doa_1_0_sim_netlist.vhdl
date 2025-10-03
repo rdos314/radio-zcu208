@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Oct  2 23:40:24 2025
+-- Date        : Fri Oct  3 21:38:06 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_1_0/ps_doa_1_0_sim_netlist.vhdl
@@ -18,6 +18,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ps_doa_1_0_doa is
   port (
     clk : in STD_LOGIC;
+    resetn : in STD_LOGIC;
     data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_N : in STD_LOGIC;
     data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
@@ -130,6 +131,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ps_doa_1_0 is
   port (
     clk : in STD_LOGIC;
+    resetn : in STD_LOGIC;
     data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_N : in STD_LOGIC;
     data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
@@ -155,7 +157,10 @@ architecture STRUCTURE of ps_doa_1_0 is
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_m_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa1_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 resetn RST";
+  attribute X_INTERFACE_MODE of resetn : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
 inst: entity work.ps_doa_1_0_doa
      port map (
@@ -165,6 +170,7 @@ inst: entity work.ps_doa_1_0_doa
       data_W(159 downto 0) => data_W(159 downto 0),
       ready_E => ready_E,
       ready_N => ready_N,
-      ready_W => ready_W
+      ready_W => ready_W,
+      resetn => '0'
     );
 end STRUCTURE;
