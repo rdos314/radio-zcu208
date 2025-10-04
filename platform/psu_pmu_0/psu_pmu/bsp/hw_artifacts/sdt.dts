@@ -4387,7 +4387,7 @@
                         xlnx,dac-mixer-type01 = <0x3>;
                         xlnx,dac-data-type31 = <0x0>;
                         xlnx,dac0-clock-dist = <0x0>;
-                        xlnx,adc3-clock-source = <0x3>;
+                        xlnx,adc3-clock-source = <0x2>;
                         xlnx,madc-nco-phase03 = <0x0>;
                         xlnx,madc-dither01;
                         xlnx,madc-data-type00 = <0x0>;
@@ -4421,7 +4421,7 @@
                         xlnx,dac-mixer-mode30 = <0x2>;
                         xlnx,adc31-dig-port = <0x0>;
                         xlnx,madc-mixer-type02 = <0x3>;
-                        xlnx,pl-clock-freq = <0x64>;
+                        xlnx,pl-clock-freq = <0x7d>;
                         xlnx,dac-mixer-mode31 = <0x2>;
                         xlnx,adc23-dig-port = <0x0>;
                         xlnx,mdac-refclk-div = <0x1>;
@@ -4539,7 +4539,7 @@
                         xlnx,adc-decimation-mode03 = <0x1>;
                         xlnx,ip-type = <0x2>;
                         xlnx,dac-interpolation-mode10 = <0x0>;
-                        xlnx,adc1-clock-source = <0x1>;
+                        xlnx,adc1-clock-source = <0x2>;
                         xlnx,dac-interpolation-mode11 = <0x0>;
                         xlnx,adc1-slices = <0x2>;
                         xlnx,dac-interpolation-mode12 = <0x0>;
@@ -4577,7 +4577,7 @@
                         xlnx,adc0-vco = <0x2134>;
                         xlnx,mdac-nyquist00 = <0x0>;
                         xlnx,dac2-interpolation = <0x0>;
-                        xlnx,adc0-clock-source = <0x0>;
+                        xlnx,adc0-clock-source = <0x2>;
                         xlnx,adc-decimation-mode30 = <0x1>;
                         xlnx,mdac-nyquist01 = <0x0>;
                         xlnx,adc-decimation-mode31 = <0x1>;
@@ -4619,7 +4619,7 @@
                         xlnx,adc-slice02-enable;
                         xlnx,dac-data-width00 = <0x10>;
                         xlnx,dac0-refclk-div = <0x1>;
-                        xlnx,adc2-clock-dist = <0x0>;
+                        xlnx,adc2-clock-dist = <0x1>;
                         xlnx,dac-decoder-mode00 = <0x0>;
                         xlnx,dac-data-width01 = <0x10>;
                         xlnx,adc-mixer-mode10 = <0x2>;

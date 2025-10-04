@@ -47,9 +47,7 @@
 #include "xrfdc.h"
 #include <stdbool.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 
 static XRFdc RFdcInst;      /* RFdc driver instance */
 
@@ -94,19 +92,10 @@ bool StartAdc()
     if (status != XRFDC_SUCCESS)
 		return false;
 
-	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID0, &pll);	
-	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID1, &pll);	
-	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID2, &pll);	
-	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID4, &pll);	
-	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID5, &pll);	
-	status = XRFdc_GetPLLStatus(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID6, &pll);	
-
 	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID0, &pllc);
 	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID1, &pllc);
 	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID2, &pllc);
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID4, &pllc);
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID5, &pllc);
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID6, &pllc);
+	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID3, &pllc);
 
     /* Initialize ADC MTS Settings */
     XRFdc_MultiConverter_Init(&ADC_Sync_Config, 0, 0, XRFDC_TILE_ID0);

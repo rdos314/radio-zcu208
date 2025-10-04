@@ -416,7 +416,7 @@
 			xlnx,dac-mixer-type01 = <3>;
 			xlnx,dac-data-type31 = <0>;
 			xlnx,dac0-clock-dist = <0>;
-			xlnx,adc3-clock-source = <3>;
+			xlnx,adc3-clock-source = <2>;
 			xlnx,madc-nco-phase03 = <0>;
 			xlnx,madc-dither01;
 			xlnx,madc-data-type00 = <0>;
@@ -450,7 +450,7 @@
 			xlnx,dac-mixer-mode30 = <2>;
 			xlnx,adc31-dig-port = <0>;
 			xlnx,madc-mixer-type02 = <3>;
-			xlnx,pl-clock-freq = <100>;
+			xlnx,pl-clock-freq = <125>;
 			xlnx,dac-mixer-mode31 = <2>;
 			xlnx,adc23-dig-port = <0>;
 			xlnx,mdac-refclk-div = <1>;
@@ -568,7 +568,7 @@
 			xlnx,adc-decimation-mode03 = <1>;
 			xlnx,ip-type = <2>;
 			xlnx,dac-interpolation-mode10 = <0>;
-			xlnx,adc1-clock-source = <1>;
+			xlnx,adc1-clock-source = <2>;
 			xlnx,dac-interpolation-mode11 = <0>;
 			xlnx,adc1-slices = <2>;
 			xlnx,dac-interpolation-mode12 = <0>;
@@ -606,7 +606,7 @@
 			xlnx,adc0-vco = <8500>;
 			xlnx,mdac-nyquist00 = <0>;
 			xlnx,dac2-interpolation = <0>;
-			xlnx,adc0-clock-source = <0>;
+			xlnx,adc0-clock-source = <2>;
 			xlnx,adc-decimation-mode30 = <1>;
 			xlnx,mdac-nyquist01 = <0>;
 			xlnx,adc-decimation-mode31 = <1>;
@@ -648,7 +648,7 @@
 			xlnx,adc-slice02-enable;
 			xlnx,dac-data-width00 = <16>;
 			xlnx,dac0-refclk-div = <1>;
-			xlnx,adc2-clock-dist = <0>;
+			xlnx,adc2-clock-dist = <1>;
 			xlnx,dac-decoder-mode00 = <0>;
 			xlnx,dac-data-width01 = <16>;
 			xlnx,adc-mixer-mode10 = <2>;
