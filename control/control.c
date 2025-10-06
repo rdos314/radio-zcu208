@@ -5,6 +5,7 @@
 #include "math.h"
 
 bool ConfigAdc2500();
+bool ConfigAdc3000();
 bool ConfigAdc5000();
 bool StartAdc();
 
