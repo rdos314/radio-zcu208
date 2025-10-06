@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct  3 21:37:21 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Oct  6 21:38:05 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -9,14 +9,14 @@
         <CONNECTION INSTANCE="clk104_mux" PORT="gpio_io_o"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="5000000000.0" DIR="I" NAME="adc2_clk_clk_n" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc2_clk_n">
+    <PORT CLKFREQUENCY="500000000.0" DIR="I" NAME="adc1_clk_clk_n" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc1_clk_n">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="adc2_clk_n"/>
+        <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="adc1_clk_n"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="5000000000.0" DIR="I" NAME="adc2_clk_clk_p" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc2_clk_p">
+    <PORT CLKFREQUENCY="500000000.0" DIR="I" NAME="adc1_clk_clk_p" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc1_clk_p">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="adc2_clk_p"/>
+        <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="adc1_clk_p"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="7" NAME="led_8bits_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="gpio_led_gpio_io_o">
@@ -169,12 +169,12 @@
         <PORTMAP LOGICAL="diff_p" PHYSICAL="sysref_in_diff_p"/>
       </PORTMAPS>
     </BUSINTERFACE>
-    <BUSINTERFACE BUSNAME="External_Interface_adc2_clk" NAME="adc2_clk" TYPE="TARGET">
+    <BUSINTERFACE BUSNAME="External_Interface_adc1_clk" NAME="adc1_clk" TYPE="TARGET">
       <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
-      <PARAMETER NAME="FREQ_HZ" VALUE="5000000000.0"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="500000000.0"/>
       <PORTMAPS>
-        <PORTMAP LOGICAL="CLK_N" PHYSICAL="adc2_clk_clk_n"/>
-        <PORTMAP LOGICAL="CLK_P" PHYSICAL="adc2_clk_clk_p"/>
+        <PORTMAP LOGICAL="CLK_N" PHYSICAL="adc1_clk_clk_n"/>
+        <PORTMAP LOGICAL="CLK_P" PHYSICAL="adc1_clk_clk_p"/>
       </PORTMAPS>
     </BUSINTERFACE>
   </EXTERNALINTERFACES>
@@ -1889,11 +1889,7 @@
             <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="mb_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="user_sysref_adc" SIGIS="undef" SIGNAME="mts_0_user_sysref_adc">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="user_sysref_adc"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="user_sysref_adc" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -2579,96 +2575,96 @@
         <PARAMETER NAME="C_ADC03_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC0_Band" VALUE="0"/>
         <PARAMETER NAME="C_ADC0_Clock_Dist" VALUE="0"/>
-        <PARAMETER NAME="C_ADC0_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="C_ADC0_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="C_ADC0_Clock_Source_MX" VALUE="0"/>
         <PARAMETER NAME="C_ADC0_Decimation" VALUE="1"/>
         <PARAMETER NAME="C_ADC0_Enable" VALUE="1"/>
-        <PARAMETER NAME="C_ADC0_FBDIV" VALUE="10"/>
+        <PARAMETER NAME="C_ADC0_FBDIV" VALUE="24"/>
         <PARAMETER NAME="C_ADC0_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="C_ADC0_Fs_Max" VALUE="5.000"/>
         <PARAMETER NAME="C_ADC0_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="C_ADC0_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="C_ADC0_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="C_ADC0_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC0_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC0_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="C_ADC0_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="C_ADC0_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC0_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="C_ADC0_Refclk_Freq" VALUE="5000.000"/>
         <PARAMETER NAME="C_ADC0_Sampling_Rate" VALUE="5"/>
         <PARAMETER NAME="C_ADC0_Slices" VALUE="2"/>
-        <PARAMETER NAME="C_ADC0_Vco" VALUE="8500.0"/>
+        <PARAMETER NAME="C_ADC0_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC10_Dig_Port" VALUE="1"/>
         <PARAMETER NAME="C_ADC11_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC12_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC13_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC1_Band" VALUE="0"/>
-        <PARAMETER NAME="C_ADC1_Clock_Dist" VALUE="0"/>
-        <PARAMETER NAME="C_ADC1_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="C_ADC1_Clock_Dist" VALUE="1"/>
+        <PARAMETER NAME="C_ADC1_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="C_ADC1_Clock_Source_MX" VALUE="1"/>
         <PARAMETER NAME="C_ADC1_Decimation" VALUE="1"/>
         <PARAMETER NAME="C_ADC1_Enable" VALUE="1"/>
-        <PARAMETER NAME="C_ADC1_FBDIV" VALUE="10"/>
+        <PARAMETER NAME="C_ADC1_FBDIV" VALUE="24"/>
         <PARAMETER NAME="C_ADC1_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="C_ADC1_Fs_Max" VALUE="5.000"/>
         <PARAMETER NAME="C_ADC1_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="C_ADC1_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="C_ADC1_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="C_ADC1_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC1_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC1_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="C_ADC1_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="C_ADC1_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC1_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="C_ADC1_Refclk_Freq" VALUE="5000.000"/>
         <PARAMETER NAME="C_ADC1_Sampling_Rate" VALUE="5"/>
         <PARAMETER NAME="C_ADC1_Slices" VALUE="2"/>
-        <PARAMETER NAME="C_ADC1_Vco" VALUE="8500.0"/>
+        <PARAMETER NAME="C_ADC1_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC20_Dig_Port" VALUE="1"/>
         <PARAMETER NAME="C_ADC21_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC22_Dig_Port" VALUE="1"/>
         <PARAMETER NAME="C_ADC23_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC2_Band" VALUE="0"/>
-        <PARAMETER NAME="C_ADC2_Clock_Dist" VALUE="1"/>
-        <PARAMETER NAME="C_ADC2_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="C_ADC2_Clock_Dist" VALUE="0"/>
+        <PARAMETER NAME="C_ADC2_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="C_ADC2_Clock_Source_MX" VALUE="2"/>
         <PARAMETER NAME="C_ADC2_Decimation" VALUE="1"/>
         <PARAMETER NAME="C_ADC2_Enable" VALUE="1"/>
-        <PARAMETER NAME="C_ADC2_FBDIV" VALUE="10"/>
+        <PARAMETER NAME="C_ADC2_FBDIV" VALUE="24"/>
         <PARAMETER NAME="C_ADC2_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="C_ADC2_Fs_Max" VALUE="5.000"/>
         <PARAMETER NAME="C_ADC2_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="C_ADC2_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="C_ADC2_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="C_ADC2_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC2_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC2_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="C_ADC2_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="C_ADC2_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC2_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="C_ADC2_Refclk_Freq" VALUE="5000.000"/>
         <PARAMETER NAME="C_ADC2_Sampling_Rate" VALUE="5"/>
         <PARAMETER NAME="C_ADC2_Slices" VALUE="2"/>
-        <PARAMETER NAME="C_ADC2_Vco" VALUE="8500.0"/>
+        <PARAMETER NAME="C_ADC2_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC30_Dig_Port" VALUE="1"/>
         <PARAMETER NAME="C_ADC31_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC32_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC33_Dig_Port" VALUE="0"/>
         <PARAMETER NAME="C_ADC3_Band" VALUE="0"/>
         <PARAMETER NAME="C_ADC3_Clock_Dist" VALUE="0"/>
-        <PARAMETER NAME="C_ADC3_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="C_ADC3_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="C_ADC3_Clock_Source_MX" VALUE="3"/>
         <PARAMETER NAME="C_ADC3_Decimation" VALUE="1"/>
         <PARAMETER NAME="C_ADC3_Enable" VALUE="1"/>
-        <PARAMETER NAME="C_ADC3_FBDIV" VALUE="10"/>
+        <PARAMETER NAME="C_ADC3_FBDIV" VALUE="24"/>
         <PARAMETER NAME="C_ADC3_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="C_ADC3_Fs_Max" VALUE="5.000"/>
         <PARAMETER NAME="C_ADC3_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="C_ADC3_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="C_ADC3_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="C_ADC3_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC3_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC3_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="C_ADC3_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="C_ADC3_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC3_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="C_ADC3_Refclk_Freq" VALUE="5000.000"/>
         <PARAMETER NAME="C_ADC3_Sampling_Rate" VALUE="5"/>
         <PARAMETER NAME="C_ADC3_Slices" VALUE="2"/>
-        <PARAMETER NAME="C_ADC3_Vco" VALUE="8500.0"/>
+        <PARAMETER NAME="C_ADC3_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC_Bypass_BG_Cal00" VALUE="false"/>
         <PARAMETER NAME="C_ADC_Bypass_BG_Cal01" VALUE="false"/>
         <PARAMETER NAME="C_ADC_Bypass_BG_Cal02" VALUE="false"/>
@@ -3348,28 +3344,28 @@
         <PARAMETER NAME="use_bram" VALUE="1"/>
         <PARAMETER NAME="ADC0_Band" VALUE="0"/>
         <PARAMETER NAME="ADC0_Clock_Dist" VALUE="0"/>
-        <PARAMETER NAME="ADC0_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="ADC0_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="ADC0_Clock_Source_MX" VALUE="0"/>
         <PARAMETER NAME="ADC0_Enable" VALUE="1"/>
         <PARAMETER NAME="ADC0_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="ADC0_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="ADC0_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="ADC0_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="ADC0_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC0_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="ADC0_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="ADC0_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC0_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="ADC0_Refclk_Freq" VALUE="5000.000"/>
         <PARAMETER NAME="ADC0_Sampling_Rate" VALUE="5"/>
         <PARAMETER NAME="ADC1_Band" VALUE="0"/>
-        <PARAMETER NAME="ADC1_Clock_Dist" VALUE="0"/>
-        <PARAMETER NAME="ADC1_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="ADC1_Clock_Dist" VALUE="1"/>
+        <PARAMETER NAME="ADC1_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="ADC1_Clock_Source_MX" VALUE="1"/>
         <PARAMETER NAME="ADC1_Enable" VALUE="1"/>
         <PARAMETER NAME="ADC1_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="ADC1_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="ADC1_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="ADC1_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="ADC1_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC1_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="ADC1_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="ADC1_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC1_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="ADC1_Refclk_Freq" VALUE="5000.000"/>
@@ -3379,29 +3375,29 @@
         <PARAMETER NAME="ADC226_En" VALUE="false"/>
         <PARAMETER NAME="ADC227_En" VALUE="false"/>
         <PARAMETER NAME="ADC2_Band" VALUE="0"/>
-        <PARAMETER NAME="ADC2_Clock_Dist" VALUE="1"/>
-        <PARAMETER NAME="ADC2_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="ADC2_Clock_Dist" VALUE="0"/>
+        <PARAMETER NAME="ADC2_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="ADC2_Clock_Source_MX" VALUE="2"/>
         <PARAMETER NAME="ADC2_Enable" VALUE="1"/>
         <PARAMETER NAME="ADC2_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="ADC2_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="ADC2_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="ADC2_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="ADC2_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC2_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="ADC2_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="ADC2_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC2_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="ADC2_Refclk_Freq" VALUE="5000.000"/>
         <PARAMETER NAME="ADC2_Sampling_Rate" VALUE="5"/>
         <PARAMETER NAME="ADC3_Band" VALUE="0"/>
         <PARAMETER NAME="ADC3_Clock_Dist" VALUE="0"/>
-        <PARAMETER NAME="ADC3_Clock_Source" VALUE="2"/>
+        <PARAMETER NAME="ADC3_Clock_Source" VALUE="1"/>
         <PARAMETER NAME="ADC3_Clock_Source_MX" VALUE="3"/>
         <PARAMETER NAME="ADC3_Enable" VALUE="1"/>
         <PARAMETER NAME="ADC3_Fabric_Freq" VALUE="500.000"/>
         <PARAMETER NAME="ADC3_Link_Coupling" VALUE="0"/>
-        <PARAMETER NAME="ADC3_Multi_Tile_Sync" VALUE="true"/>
+        <PARAMETER NAME="ADC3_Multi_Tile_Sync" VALUE="false"/>
         <PARAMETER NAME="ADC3_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC3_Outclk_Freq" VALUE="312.500"/>
+        <PARAMETER NAME="ADC3_Outclk_Freq" VALUE="39.063"/>
         <PARAMETER NAME="ADC3_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC3_Refclk_Div" VALUE="1"/>
         <PARAMETER NAME="ADC3_Refclk_Freq" VALUE="5000.000"/>
@@ -4214,20 +4210,20 @@
         <PARAMETER NAME="C_HIGHADDR" VALUE="0x8007FFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="adc2_clk_n" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc2_clk_n">
+        <PORT DIR="I" NAME="adc1_clk_n" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc1_clk_n">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ps_imp" PORT="adc2_clk_clk_n"/>
+            <CONNECTION INSTANCE="ps_imp" PORT="adc1_clk_clk_n"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="adc2_clk_p" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc2_clk_p">
+        <PORT DIR="I" NAME="adc1_clk_p" SIGIS="clk" SIGNAME="usp_rf_data_converter_0_adc1_clk_p">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ps_imp" PORT="adc2_clk_clk_p"/>
+            <CONNECTION INSTANCE="ps_imp" PORT="adc1_clk_clk_p"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="312500000" DIR="O" NAME="clk_adc0" SIGIS="clk"/>
-        <PORT CLKFREQUENCY="312500000" DIR="O" NAME="clk_adc1" SIGIS="clk"/>
-        <PORT CLKFREQUENCY="312500000" DIR="O" NAME="clk_adc2" SIGIS="clk"/>
-        <PORT CLKFREQUENCY="312500000" DIR="O" NAME="clk_adc3" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc0" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc1" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc2" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc3" SIGIS="clk"/>
         <PORT DIR="O" NAME="irq" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
         <PORT DIR="O" LEFT="159" NAME="m00_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
           <CONNECTIONS>
@@ -4438,11 +4434,6 @@
         <PORT DIR="I" NAME="sysref_in_p" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_sysref_in_p">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps_imp" PORT="sysref_in_diff_p"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="user_sysref_adc" SIGIS="undef" SIGNAME="mts_0_user_sysref_adc">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="user_sysref_adc"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="vin0_01_n" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_vin0_01_n">
@@ -4679,12 +4670,12 @@
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m30_axis_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="External_Interface_adc2_clk" NAME="adc2_clk" TYPE="TARGET" VLNV="xilinx.com:interface:diff_clock:1.0">
+        <BUSINTERFACE BUSNAME="External_Interface_adc1_clk" NAME="adc1_clk" TYPE="TARGET" VLNV="xilinx.com:interface:diff_clock:1.0">
           <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="5000000000.0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="500000000.0"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="CLK_N" PHYSICAL="adc2_clk_n"/>
-            <PORTMAP LOGICAL="CLK_P" PHYSICAL="adc2_clk_p"/>
+            <PORTMAP LOGICAL="CLK_N" PHYSICAL="adc1_clk_n"/>
+            <PORTMAP LOGICAL="CLK_P" PHYSICAL="adc1_clk_p"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="External_Interface_vin0_01" NAME="vin0_01" TYPE="TARGET" VLNV="xilinx.com:interface:diff_analog_io:1.0">

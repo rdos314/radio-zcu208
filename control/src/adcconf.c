@@ -797,13 +797,13 @@ static bool XRFClk_SetConfigLMK()
 * @note         None
 *
 ****************************************************************************/
-static bool XRFClk_SetConfigLMX(u32 ChipID, const u32 Config[LMX2594_COUNT])
+static bool XRFClk_SetConfigLMX(u32 ChipID)
 {
 	int i;
 	
 	for (i = 0; i < LMX2594_COUNT; i++) 
 	{
-		if (!XRFClk_WriteReg(ChipID, Config[i])) 
+		if (!XRFClk_WriteReg(ChipID, LMX2594G5000[i])) 
 			return false;
 	}
 	return true;
@@ -1067,7 +1067,7 @@ bool XRFClk_ConfigOutputDividerAndMUXOnLMK(u32 PortId, u32 DCLKoutX_DIV,
 #   Returns....: *
 #
 ##########################################################################*/
-static bool ConfigAdc(const u32 Config[LMX2594_COUNT])
+bool ConfigAdc()
 {
 	u32 d;
 	u32 data[LMK_COUNT];
@@ -1089,56 +1089,8 @@ static bool ConfigAdc(const u32 Config[LMX2594_COUNT])
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMK))
 		return false;
 	
-	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1, Config)) 
+	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1)) 
 		return false;
 
 	return true;
-}
-
-/*##########################################################################
-#
-#   Name       : ConfigAdc2500
-#
-#   Purpose....: Config ADC for 2.5 G
-#
-#   In params..: *
-#   Out params.: *
-#   Returns....: *
-#
-##########################################################################*/
-bool ConfigAdc2500()
-{
-	return ConfigAdc(LMX2594G2500);
-}
-
-/*##########################################################################
-#
-#   Name       : ConfigAdc3000
-#
-#   Purpose....: Config ADC for 3 G
-#
-#   In params..: *
-#   Out params.: *
-#   Returns....: *
-#
-##########################################################################*/
-bool ConfigAdc3000()
-{
-	return ConfigAdc(LMX2594G3000);
-}
-
-/*##########################################################################
-#
-#   Name       : ConfigAdc5000
-#
-#   Purpose....: Config ADC for 5.0 G
-#
-#   In params..: *
-#   Out params.: *
-#   Returns....: *
-#
-##########################################################################*/
-bool ConfigAdc5000()
-{
-	return ConfigAdc(LMX2594G5000);
 }

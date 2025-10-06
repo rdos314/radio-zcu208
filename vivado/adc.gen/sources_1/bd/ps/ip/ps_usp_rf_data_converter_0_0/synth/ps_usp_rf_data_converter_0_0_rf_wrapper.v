@@ -1071,8 +1071,6 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
   wire                            adc33_valid_out;
   wire                            adc33_obs_valid_out;
 
-  wire [3:0] adc_fifo_en;
-  wire [3:0] adc_mt_common_ctrl;
 
   wire clk_dac_to_adc;
 
@@ -1131,10 +1129,6 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
   assign adc_drpdi       = {adc3_drpdi, adc2_drpdi, adc1_drpdi, adc0_drpdi};
   assign adc_common_ctrl = {adc3_done_sync, adc2_done_sync, adc1_done_sync, adc0_done_sync};
   assign adc_common_ctrl_bit9 = {adc3_obs_done_sync, adc2_obs_done_sync, adc1_obs_done_sync, adc0_obs_done_sync};
-  assign adc_mt_common_ctrl[0]  = adc0_done_sync;
-  assign adc_mt_common_ctrl[1]  = adc1_done_sync;
-  assign adc_mt_common_ctrl[2]  = adc2_done_sync;
-  assign adc_mt_common_ctrl[3]  = adc3_done_sync;
 
   // Synchronize common control bus onto the fabric clock for input
   // to the common control bus of the converters
@@ -1273,24 +1267,24 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
   assign adc32_data_out  = data_adc2[767 :576];
   assign adc33_data_out  = data_adc3[767 :576];
 
-  assign adc00_valid_out = adc_fifo_en[0];
+  assign adc00_valid_out = adc0_done_sync;
   assign adc00_obs_valid_out = adc0_obs_done_sync;
   assign adc01_valid_out = 1'b0;
-  assign adc02_valid_out = adc_fifo_en[0];
+  assign adc02_valid_out = adc0_done_sync;
   assign adc02_obs_valid_out = adc0_obs_done_sync;
   assign adc03_valid_out = 1'b0;
-  assign adc10_valid_out = adc_fifo_en[1];
+  assign adc10_valid_out = adc1_done_sync;
   assign adc10_obs_valid_out = adc1_obs_done_sync;
   assign adc11_valid_out = 1'b0;
   assign adc12_valid_out = 1'b0;
   assign adc13_valid_out = 1'b0;
-  assign adc20_valid_out = adc_fifo_en[2];
+  assign adc20_valid_out = adc2_done_sync;
   assign adc20_obs_valid_out = adc2_obs_done_sync;
   assign adc21_valid_out = 1'b0;
-  assign adc22_valid_out = adc_fifo_en[2];
+  assign adc22_valid_out = adc2_done_sync;
   assign adc22_obs_valid_out = adc2_obs_done_sync;
   assign adc23_valid_out = 1'b0;
-  assign adc30_valid_out = adc_fifo_en[3];
+  assign adc30_valid_out = adc3_done_sync;
   assign adc30_obs_valid_out = adc3_obs_done_sync;
   assign adc31_valid_out = 1'b0;
   assign adc32_valid_out = 1'b0;
@@ -1889,18 +1883,6 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
     por_sm_reset <= por_sm_reset_i;
   end
 
-  ps_usp_rf_data_converter_0_0_mt_fifo_ctrl #(
-    .MTS_NUM_TILES(4)
-  )
-  i_fifo_ctrl_adc(
-    .ip_startup_done  (adc_mt_common_ctrl),
-    .clk              (adc_fabric_clk[0] ),
-    .mts_fifo_en      (mt_adc_fifo_en    ),
-    .mts_fifo_src     (mt_adc_fifo_src   ),
-    .reset_b          (1'b1              ), // TODO - do we need a reset?
-    .fifo_en          (adc_fifo_en       )
-  );
-
   RFDAC #(
     .OPT_CLK_DIST         (228),
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
@@ -2206,7 +2188,7 @@ RFADC #(
     .XPA_ACTIVE_DUTYCYCLE (100),
     .LD_DEVICE            (0)
   ) rx0_u_adc (
-    .CONTROL_COMMON       ( {adc_fifo_en[0], adc0_cmn_control[14:4], (adc0_dsa_update | adc0_cmn_control[3]), adc0_sysref_gate, adc0_cmn_control[1:0]} ),   // input  [15:0]
+    .CONTROL_COMMON       ( {adc_common_ctrl[0], adc0_cmn_control[14:4], (adc0_dsa_update | adc0_cmn_control[3]), adc0_cmn_control[2:0]} ),   // input  [15:0]
     .CONTROL_ADC0         ( adc00_control ),                         // input  [15:0]
     .CONTROL_ADC1         ( adc01_control ),                         // input  [15:0]
     .CONTROL_ADC2         ( adc02_control ),                         // input  [15:0]
@@ -2279,14 +2261,14 @@ RFADC #(
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
     .XPA_SAMPLE_RATE_MSPS (5000.0),
     .XPA_NUM_ADCS         ("1I"),
-    .XPA_PLL_USED         ("DISTRIBUTED_T1"),
+    .XPA_PLL_USED         ("EXTERNAL"),
     .XPA_NUM_DDCS         (1),
     .XPA_CFG0             (1),
     .XPA_CFG1             (0),
     .XPA_ACTIVE_DUTYCYCLE (100),
     .LD_DEVICE            (0)
   ) rx1_u_adc (
-    .CONTROL_COMMON       ( {adc_fifo_en[1], adc1_cmn_control[14:4], (adc1_dsa_update | adc1_cmn_control[3]), adc1_sysref_gate, adc1_cmn_control[1:0]} ),   // input  [15:0]
+    .CONTROL_COMMON       ( {adc_common_ctrl[1], adc1_cmn_control[14:4], (adc1_dsa_update | adc1_cmn_control[3]), adc1_cmn_control[2:0]} ),   // input  [15:0]
     .CONTROL_ADC0         ( adc10_control ),                         // input  [15:0]
     .CONTROL_ADC1         ( adc11_control ),                         // input  [15:0]
     .CONTROL_ADC2         ( adc12_control ),                         // input  [15:0]
@@ -2359,14 +2341,14 @@ RFADC #(
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
     .XPA_SAMPLE_RATE_MSPS (5000.0),
     .XPA_NUM_ADCS         ("2I"),
-    .XPA_PLL_USED         ("EXTERNAL"),
+    .XPA_PLL_USED         ("DISTRIBUTED_T1"),
     .XPA_NUM_DDCS         (2),
     .XPA_CFG0             (1),
     .XPA_CFG1             (0),
     .XPA_ACTIVE_DUTYCYCLE (100),
     .LD_DEVICE            (0)
   ) rx2_u_adc (
-    .CONTROL_COMMON       ( {adc_fifo_en[2], adc2_cmn_control[14:4], (adc2_dsa_update | adc2_cmn_control[3]), adc2_sysref_gate, adc2_cmn_control[1:0]} ),   // input  [15:0]
+    .CONTROL_COMMON       ( {adc_common_ctrl[2], adc2_cmn_control[14:4], (adc2_dsa_update | adc2_cmn_control[3]), adc2_cmn_control[2:0]} ),   // input  [15:0]
     .CONTROL_ADC0         ( adc20_control ),                         // input  [15:0]
     .CONTROL_ADC1         ( adc21_control ),                         // input  [15:0]
     .CONTROL_ADC2         ( adc22_control ),                         // input  [15:0]
@@ -2446,7 +2428,7 @@ RFADC #(
     .XPA_ACTIVE_DUTYCYCLE (100),
     .LD_DEVICE            (0)
   ) rx3_u_adc (
-    .CONTROL_COMMON       ( {adc_fifo_en[3], adc3_cmn_control[14:4], (adc3_dsa_update | adc3_cmn_control[3]), adc3_sysref_gate, adc3_cmn_control[1:0]} ),   // input  [15:0]
+    .CONTROL_COMMON       ( {adc_common_ctrl[3], adc3_cmn_control[14:4], (adc3_dsa_update | adc3_cmn_control[3]), adc3_cmn_control[2:0]} ),   // input  [15:0]
     .CONTROL_ADC0         ( adc30_control ),                         // input  [15:0]
     .CONTROL_ADC1         ( adc31_control ),                         // input  [15:0]
     .CONTROL_ADC2         ( adc32_control ),                         // input  [15:0]

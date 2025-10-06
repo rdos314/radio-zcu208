@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Oct  3 21:41:03 2025
+// Date        : Mon Oct  6 21:29:30 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -100,7 +100,6 @@ module ps_mts_0_0_mts
   output doa0_resetn;
   output doa1_resetn;
 
-  (* MARK_DEBUG *) wire adc_resetn;
   wire doa0_clk;
   (* async_reg = "true" *) wire doa0_reset_1;
   (* async_reg = "true" *) wire doa0_reset_2;
@@ -111,7 +110,7 @@ module ps_mts_0_0_mts
   wire doa1_resetn;
   wire m_clk;
   wire m_clk_buf;
-  (* async_reg = "true" *) wire master_reset;
+  (* RTL_KEEP = "yes" *) (* async_reg = "true" *) wire master_reset;
   (* async_reg = "true" *) wire master_reset_async;
   wire mmcm_locked;
   wire \mts.doa0_resetn_i_1_n_0 ;
@@ -150,18 +149,13 @@ module ps_mts_0_0_mts
        (.CE(1'b1),
         .I(m_clk),
         .O(doa1_clk));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i_0
-       (.I0(1'b0),
-        .O(adc_resetn));
   (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_mts_0_0_ila_1 ila_i
        (.clk(m_clk_buf),
         .probe0(user_sysref_adc),
-        .probe1(adc_resetn));
+        .probe1(master_reset));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* XILINX_LEGACY_PRIM = "BUFG" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 

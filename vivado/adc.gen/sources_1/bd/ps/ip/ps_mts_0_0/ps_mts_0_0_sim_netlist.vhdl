@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Oct  3 21:41:03 2025
+-- Date        : Mon Oct  6 21:29:30 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -48,9 +48,6 @@ architecture STRUCTURE of ps_mts_0_0_mts is
     clk_in1 : in STD_LOGIC
   );
   end component ps_mts_0_0_clk_wiz_0;
-  signal adc_resetn : STD_LOGIC;
-  attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of adc_resetn : signal is std.standard.true;
   signal \^doa0_clk\ : STD_LOGIC;
   signal doa0_reset_1 : STD_LOGIC;
   attribute async_reg : string;
@@ -65,6 +62,8 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal m_clk : STD_LOGIC;
   signal m_clk_buf : STD_LOGIC;
   signal master_reset : STD_LOGIC;
+  attribute RTL_KEEP : string;
+  attribute RTL_KEEP of master_reset : signal is "yes";
   attribute async_reg of master_reset : signal is "true";
   signal master_reset_async : STD_LOGIC;
   attribute async_reg of master_reset_async : signal is "true";
@@ -84,6 +83,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal sysref_sync : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute async_reg of sysref_sync : signal is "true";
   signal \^user_sysref_adc\ : STD_LOGIC;
+  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of user_sysref_adc : signal is std.standard.true;
   signal NLW_pl_clk_wiz_i_reset_UNCONNECTED : STD_LOGIC;
   attribute BOX_TYPE : string;
@@ -168,19 +168,11 @@ doa1_clk_i: unisim.vcomponents.BUFGCE
       I => m_clk,
       O => \^doa1_clk\
     );
-i_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => adc_resetn
-    );
 ila_i: component ps_mts_0_0_ila_1
      port map (
       clk => m_clk_buf,
       probe0(0) => \^user_sysref_adc\,
-      probe1(0) => adc_resetn
+      probe1(0) => master_reset
     );
 m_clk_i: unisim.vcomponents.BUFGCE
     generic map(

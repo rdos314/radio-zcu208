@@ -333,7 +333,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 				5, /* xlnx,sampling-rate */
 				5000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
-				10, /* xlnx,fbdiv */
+				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
 				1, /* xlnx,refclk-div */
 				0, /* xlnx,band */
@@ -398,7 +398,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 				5, /* xlnx,sampling-rate */
 				5000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
-				10, /* xlnx,fbdiv */
+				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
 				1, /* xlnx,refclk-div */
 				0, /* xlnx,band */
@@ -463,7 +463,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 				5, /* xlnx,sampling-rate */
 				5000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
-				10, /* xlnx,fbdiv */
+				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
 				1, /* xlnx,refclk-div */
 				0, /* xlnx,band */
@@ -528,7 +528,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 				5, /* xlnx,sampling-rate */
 				5000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
-				10, /* xlnx,fbdiv */
+				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
 				1, /* xlnx,refclk-div */
 				0, /* xlnx,band */

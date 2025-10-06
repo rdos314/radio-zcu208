@@ -10,6 +10,6 @@ create_clock -name pl_clk_p -period 8 [get_ports pl_clk_p]
 create_clock -name pl_clk_n -period 8 [get_ports pl_clk_n]
 create_clock -name pl_sysref_p -period 100 [get_ports pl_sysref_p]
 create_clock -name pl_sysref_n -period 100 [get_ports pl_sysref_n]
-create_clock -name adc2_clk_clk_p -period 0.200 [get_ports adc2_clk_clk_p]
+create_clock -name adc1_clk_clk_p -period 2 [get_ports adc1_clk_clk_p]
 
 ################################################################################

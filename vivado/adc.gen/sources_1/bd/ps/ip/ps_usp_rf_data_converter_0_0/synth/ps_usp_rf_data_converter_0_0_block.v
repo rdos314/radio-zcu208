@@ -89,9 +89,6 @@ module ps_usp_rf_data_converter_0_0_block (
   input             sysref_in_p,
   input             sysref_in_n,
 
-  // ADC User SYSREF Input
-  input             user_sysref_adc,
-
   // ADC Reference Clock for Tile 0
   input             adc0_clk_p,
   input             adc0_clk_n,
@@ -562,11 +559,6 @@ module ps_usp_rf_data_converter_0_0_block (
   localparam [5:0] adc33_decimation    = 6'd0;
   localparam [1:0] adc33_mixer         = 2'd2;
 
-  localparam       MAX_ADC_T1_DLY    = 32; // Maximum supported number of ADC data aligner T1 delays
-  localparam       MRK_LOC_BITS           = 4;  // Number of bits in marker locations
-  localparam       MRK_CNTR_BITS          = 16; // NUmber of bits in marker counters
-  localparam       MTS_SYSREF_COUNT_NBITS = 8;  // Max count value for the sysref counters
-  localparam       MTS_SYSREF_FREQ_NBITS  = 15; // Max count value for the sysref counters
 
   reg   [11:0]     drp_addr;
   reg   [15:0]     drp_di;
@@ -1724,72 +1716,6 @@ module ps_usp_rf_data_converter_0_0_block (
   wire  [191:0]    adc22_data_i;
   wire  [191:0]    adc30_data_i;
 
-  // ADC Multitile Sync Signals
-  reg              mt_adc_fifo_en_ff;      // Retimed before use in the ADCs
-  reg              mt_adc_fifo_src_ff;     // Source of MT ADC FIFO enables: 0 = non-multitile, 1 = multitile
-
-  reg  [10:0]      adc00_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc00_data_aligned;       // Aligned ADC data
-
-  wire             mrk_cntr_done_slice00;    // Marker has completed counting
-  wire             mrk_cntr_done_slice00_sync;
-  wire [MRK_LOC_BITS-1:0]         mrk_loc_slice00;          // Marker location 0-7; 'hF indicates location has not been captured
-  wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice00;         // Marker counter value
-
-  reg  [10:0]      adc02_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc02_data_aligned;       // Aligned ADC data
-
-  wire             mrk_cntr_done_slice02;    // Marker has completed counting
-  wire             mrk_cntr_done_slice02_sync;
-  wire [MRK_LOC_BITS-1:0]         mrk_loc_slice02;          // Marker location 0-7; 'hF indicates location has not been captured
-  wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice02;         // Marker counter value
-
-  reg  [10:0]      adc10_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc10_data_aligned;       // Aligned ADC data
-
-  wire             mrk_cntr_done_slice10;    // Marker has completed counting
-  wire             mrk_cntr_done_slice10_sync;
-  wire [MRK_LOC_BITS-1:0]         mrk_loc_slice10;          // Marker location 0-7; 'hF indicates location has not been captured
-  wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice10;         // Marker counter value
-
-  reg  [10:0]      adc20_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc20_data_aligned;       // Aligned ADC data
-
-  wire             mrk_cntr_done_slice20;    // Marker has completed counting
-  wire             mrk_cntr_done_slice20_sync;
-  wire [MRK_LOC_BITS-1:0]         mrk_loc_slice20;          // Marker location 0-7; 'hF indicates location has not been captured
-  wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice20;         // Marker counter value
-
-  reg  [10:0]      adc22_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc22_data_aligned;       // Aligned ADC data
-
-  wire             mrk_cntr_done_slice22;    // Marker has completed counting
-  wire             mrk_cntr_done_slice22_sync;
-  wire [MRK_LOC_BITS-1:0]         mrk_loc_slice22;          // Marker location 0-7; 'hF indicates location has not been captured
-  wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice22;         // Marker counter value
-
-  reg  [10:0]      adc30_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc30_data_aligned;       // Aligned ADC data
-
-  wire             mrk_cntr_done_slice30;    // Marker has completed counting
-  wire             mrk_cntr_done_slice30_sync;
-  wire [MRK_LOC_BITS-1:0]         mrk_loc_slice30;          // Marker location 0-7; 'hF indicates location has not been captured
-  wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice30;         // Marker counter value
-
-  reg  [14:0]      adc0_cmn_control_ff;     // ADC common control
-  reg  [14:0]      adc1_cmn_control_ff;     // ADC common control
-  reg  [14:0]      adc2_cmn_control_ff;     // ADC common control
-  reg  [14:0]      adc3_cmn_control_ff;     // ADC common control
-
-  reg              mt_mrk_rst_ff;          // Marker counter synchronous reset
-  wire             mt_mrk_sync_rst;        // mt_mrk_rst_ff resynced to one of the ADC multitile clocks
-
-  wire [MTS_SYSREF_COUNT_NBITS-1:0]            mts_adc_sysref_count;    // SysRef Counter Value
-  wire [MTS_SYSREF_FREQ_NBITS-1:0]             mts_adc_sysref_freq;     // SysRef Frequency Value
-  wire                                         mts_adc_sysref_freq_done;
-
-  reg  [1:0]      mts_sysref_count_start; // SysRef counter start pulse
-
 
   ps_usp_rf_data_converter_0_0_rf_wrapper
   ps_usp_rf_data_converter_0_0_rf_wrapper_i(
@@ -2333,9 +2259,9 @@ module ps_usp_rf_data_converter_0_0_block (
     .sysref_in_p            (sysref_in_p),
     .sysref_in_n            (sysref_in_n),
 
-    .user_sysref_adc        (user_sysref_adc),
-    .mt_adc_fifo_en         (mt_adc_fifo_en_ff),
-    .mt_adc_fifo_src        (mt_adc_fifo_src_ff),
+    .user_sysref_adc        (1'b0),
+    .mt_adc_fifo_en         (1'b0),
+    .mt_adc_fifo_src        (1'b0),
 
     .user_sysref_dac        (1'b0),
     .mt_dac_fifo_en         (1'b0),
@@ -2492,7 +2418,7 @@ module ps_usp_rf_data_converter_0_0_block (
 
   // ADC Debug Ports
     // ADC0
-    .adc0_cmn_control       ({adc0_cmn_control_ff[14:4], (adc00_dsa_update_i | adc01_dsa_update_i | adc02_dsa_update_i | adc03_dsa_update_i), adc0_cmn_control_ff[2:0]}),
+    .adc0_cmn_control       ({adc0_cmn_control[14:4], (adc00_dsa_update_i | adc01_dsa_update_i | adc02_dsa_update_i | adc03_dsa_update_i), adc0_cmn_control[2:0]}),
     .adc00_control          (adc00_control_i),
     .adc01_control          (adc01_control_i),
     .adc02_control          (adc02_control_i),
@@ -2512,7 +2438,7 @@ module ps_usp_rf_data_converter_0_0_block (
     .adc0_powerup_state_interrupt (adc0_powerup_state_interrupt),
 
     // ADC1
-    .adc1_cmn_control       ({adc1_cmn_control_ff[14:4], (adc10_dsa_update_i | adc11_dsa_update_i | adc12_dsa_update_i | adc13_dsa_update_i), adc1_cmn_control_ff[2:0]}),
+    .adc1_cmn_control       ({adc1_cmn_control[14:4], (adc10_dsa_update_i | adc11_dsa_update_i | adc12_dsa_update_i | adc13_dsa_update_i), adc1_cmn_control[2:0]}),
     .adc10_control          (adc10_control_i),
     .adc11_control          (adc11_control_i),
     .adc12_control          (adc12_control_i),
@@ -2532,7 +2458,7 @@ module ps_usp_rf_data_converter_0_0_block (
     .adc1_powerup_state_interrupt (adc1_powerup_state_interrupt),
 
     // ADC2
-    .adc2_cmn_control       ({adc2_cmn_control_ff[14:4], (adc20_dsa_update_i | adc21_dsa_update_i | adc22_dsa_update_i | adc23_dsa_update_i), adc2_cmn_control_ff[2:0]}),
+    .adc2_cmn_control       ({adc2_cmn_control[14:4], (adc20_dsa_update_i | adc21_dsa_update_i | adc22_dsa_update_i | adc23_dsa_update_i), adc2_cmn_control[2:0]}),
     .adc20_control          (adc20_control_i),
     .adc21_control          (adc21_control_i),
     .adc22_control          (adc22_control_i),
@@ -2552,7 +2478,7 @@ module ps_usp_rf_data_converter_0_0_block (
     .adc2_powerup_state_interrupt (adc2_powerup_state_interrupt),
 
     // ADC3
-    .adc3_cmn_control       ({adc3_cmn_control_ff[14:4], (adc30_dsa_update_i | adc31_dsa_update_i | adc32_dsa_update_i | adc33_dsa_update_i), adc3_cmn_control_ff[2:0]}),
+    .adc3_cmn_control       ({adc3_cmn_control[14:4], (adc30_dsa_update_i | adc31_dsa_update_i | adc32_dsa_update_i | adc33_dsa_update_i), adc3_cmn_control[2:0]}),
     .adc30_control          (adc30_control_i),
     .adc31_control          (adc31_control_i),
     .adc32_control          (adc32_control_i),
@@ -2581,24 +2507,24 @@ module ps_usp_rf_data_converter_0_0_block (
     .reset                  (master_reset)
  );
 
-  assign  m00_axis_tdata  =  adc00_data_aligned;
+  assign  m00_axis_tdata  =  adc00_data_i[159:0];
 
 
-  assign  m02_axis_tdata  =  adc02_data_aligned;
+  assign  m02_axis_tdata  =  adc02_data_i[159:0];
 
 
-  assign  m10_axis_tdata  =  adc10_data_aligned;
+  assign  m10_axis_tdata  =  adc10_data_i[159:0];
 
 
 
 
-  assign  m20_axis_tdata  =  adc20_data_aligned;
+  assign  m20_axis_tdata  =  adc20_data_i[159:0];
 
 
-  assign  m22_axis_tdata  =  adc22_data_aligned;
+  assign  m22_axis_tdata  =  adc22_data_i[159:0];
 
 
-  assign  m30_axis_tdata  =  adc30_data_aligned;
+  assign  m30_axis_tdata  =  adc30_data_i[159:0];
 
 
 
@@ -2891,49 +2817,6 @@ module ps_usp_rf_data_converter_0_0_block (
     end
 
   assign sm_start = 1'b1;
-
-  // 0x010 MT ADC FIFO Enable Control Register
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      mt_adc_fifo_en_ff  <= 1'b0;
-      mt_adc_fifo_src_ff <= 1'b0;
-    end
-    else if (bank0_write[4])
-    begin
-      mt_adc_fifo_en_ff  <= Bus2IP_Data[0];
-      mt_adc_fifo_src_ff <= Bus2IP_Data[1];
-    end
-
-  // Control logic for marker counter asynchronous reset
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      mt_mrk_rst_ff <= 1'b0;
-    end
-    else if (bank0_write[6])
-    begin
-      mt_mrk_rst_ff <= Bus2IP_Data[0];
-    end
-    else
-    begin
-      mt_mrk_rst_ff <= 1'b0;
-    end
-
-  // 0x04C Multitile SysRef Count Start
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      mts_sysref_count_start   <= 2'b00;
-    end
-    else if (bank0_write[19])
-    begin
-      mts_sysref_count_start   <= Bus2IP_Data[1:0];
-    end
-    else
-    begin
-      mts_sysref_count_start   <= 2'b00;
-    end
 
   // 0x104 Interrupt Enables
   always @(posedge Bus2IP_Clk)
@@ -4023,44 +3906,11 @@ module ps_usp_rf_data_converter_0_0_block (
       adc0_start_stage <= Bus2IP_Data[11:8];
     end
 
-  // 0x024 Common Control Register
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      adc0_cmn_control_ff <= 15'h0;
-    end
-    else if (bank9_write[9])
-    begin
-      adc0_cmn_control_ff <=  Bus2IP_Data[14:0];
-    end
-
-    // 0x028 Delay Align Control FIFO00
-    always @(posedge Bus2IP_Clk)
-      if (~Bus2IP_Resetn)
-      begin
-        adc00_data_align_ctrl_ff <= {1'b0,5'd8,5'd0};
-      end
-      else if (bank9_write[10])
-      begin
-        adc00_data_align_ctrl_ff <=  Bus2IP_Data[10:0];
-      end
-
-    // 0x030 Delay Align Control FIFO02
-    always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-      begin
-        adc02_data_align_ctrl_ff <= {1'b0,5'd8,5'd0};
-      end
-      else if (bank9_write[12])
-      begin
-        adc02_data_align_ctrl_ff <=  Bus2IP_Data[10:0];
-      end
-
   // 0x080 Clock Detection Map
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc0_clk_detect   <= 16'h38;
+      adc0_clk_detect   <= 16'hc;
     end
     else if (bank9_write[32])
     begin
@@ -4594,33 +4444,11 @@ always @(posedge Bus2IP_Clk)
       adc1_start_stage <= Bus2IP_Data[11:8];
     end
 
-  // 0x024 Common Control Register
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      adc1_cmn_control_ff <= 15'h0;
-    end
-    else if (bank11_write[9])
-    begin
-      adc1_cmn_control_ff <=  Bus2IP_Data[14:0];
-    end
-
-    // 0x028 Delay Align Control FIFO10
-    always @(posedge Bus2IP_Clk)
-      if (~Bus2IP_Resetn)
-      begin
-        adc10_data_align_ctrl_ff <= {1'b0,5'd8,5'd0};
-      end
-      else if (bank11_write[10])
-      begin
-        adc10_data_align_ctrl_ff <=  Bus2IP_Data[10:0];
-      end
-
   // 0x080 Clock Detection Map
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc1_clk_detect   <= 16'h30;
+      adc1_clk_detect   <= 16'h4;
     end
     else if (bank11_write[32])
     begin
@@ -5154,44 +4982,11 @@ always @(posedge Bus2IP_Clk)
       adc2_start_stage <= Bus2IP_Data[11:8];
     end
 
-  // 0x024 Common Control Register
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      adc2_cmn_control_ff <= 15'h0;
-    end
-    else if (bank13_write[9])
-    begin
-      adc2_cmn_control_ff <=  Bus2IP_Data[14:0];
-    end
-
-    // 0x028 Delay Align Control FIFO20
-    always @(posedge Bus2IP_Clk)
-      if (~Bus2IP_Resetn)
-      begin
-        adc20_data_align_ctrl_ff <= {1'b0,5'd8,5'd0};
-      end
-      else if (bank13_write[10])
-      begin
-        adc20_data_align_ctrl_ff <=  Bus2IP_Data[10:0];
-      end
-
-    // 0x030 Delay Align Control FIFO22
-    always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-      begin
-        adc22_data_align_ctrl_ff <= {1'b0,5'd8,5'd0};
-      end
-      else if (bank13_write[12])
-      begin
-        adc22_data_align_ctrl_ff <=  Bus2IP_Data[10:0];
-      end
-
   // 0x080 Clock Detection Map
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc2_clk_detect   <= 16'h10;
+      adc2_clk_detect   <= 16'hc;
     end
     else if (bank13_write[32])
     begin
@@ -5725,33 +5520,11 @@ always @(posedge Bus2IP_Clk)
       adc3_start_stage <= Bus2IP_Data[11:8];
     end
 
-  // 0x024 Common Control Register
-  always @(posedge Bus2IP_Clk)
-    if (~Bus2IP_Resetn)
-    begin
-      adc3_cmn_control_ff <= 15'h0;
-    end
-    else if (bank15_write[9])
-    begin
-      adc3_cmn_control_ff <=  Bus2IP_Data[14:0];
-    end
-
-    // 0x028 Delay Align Control FIFO30
-    always @(posedge Bus2IP_Clk)
-      if (~Bus2IP_Resetn)
-      begin
-        adc30_data_align_ctrl_ff <= {1'b0,5'd8,5'd0};
-      end
-      else if (bank15_write[10])
-      begin
-        adc30_data_align_ctrl_ff <=  Bus2IP_Data[10:0];
-      end
-
   // 0x080 Clock Detection Map
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc3_clk_detect   <= 16'h30;
+      adc3_clk_detect   <= 16'h2c;
     end
     else if (bank15_write[32])
     begin
@@ -6661,8 +6434,6 @@ always @(posedge Bus2IP_Clk)
   assign IP2Bus_Data_control = bank0_read[0] ? {8'd2, 8'd6, 8'd11, 8'h00} :
                                bank0_read[1] ? {31'b0, master_reset} :
                                bank0_read[2] ? {16'b0, startup_delay} :
-                               bank0_read[4] ? {30'b0, mt_adc_fifo_src_ff, mt_adc_fifo_en_ff} :
-                               bank0_read[6] ? {31'b0, mt_mrk_rst_ff } :
                                bank0_read[8] ? {16'b0, 8'd228, 7'b0, 1'b1} :
                                // DAC Tile Config Bit 0:DAC Tile 0 Enable, Bit 1 Tile 0 PLL Enable Bits 3:2 Reserved, Bit 4: DAC Tile 1 Enabled, Bit 5: Tile 1 PLL Enable Bits 7:6 Reserved...
                                bank0_read[9] ? {4'h0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0} :
@@ -6674,9 +6445,6 @@ always @(posedge Bus2IP_Clk)
                                bank0_read[15] ? {3'b000, dac23_sinc, 2'b00, dac23_mixer, dac23_interpolation, dac23_data_type, dac23_enable,  3'b000, dac22_sinc, 2'b00, dac22_mixer, dac22_interpolation, dac22_data_type, dac22_enable} :
                                bank0_read[16] ? {3'b000, dac31_sinc, 2'b00, dac31_mixer, dac31_interpolation, dac31_data_type, dac31_enable,  3'b000, dac30_sinc, 2'b00, dac30_mixer, dac30_interpolation, dac30_data_type, dac30_enable} :
                                bank0_read[17] ? {3'b000, dac33_sinc, 2'b00, dac33_mixer, dac33_interpolation, dac33_data_type, dac33_enable,  3'b000, dac32_sinc, 2'b00, dac32_mixer, dac32_interpolation, dac32_data_type, dac32_enable} :
-                               bank0_read[19] ? {30'h00000000, mts_sysref_count_start} :
-                               bank0_read[20] ? {16'h0000, 8'h00, mts_adc_sysref_count} :
-                               bank0_read[21] ? {16'h0000, mts_adc_sysref_freq, mts_adc_sysref_freq_done} :
                                // ADC Tile Config Bit 0:ADC Tile 0 Enable, Bit 1 ADC Tile 0 PLL Enable Bits 3:2 Reserved, Bit 4: ADC Tile 1 Enabled, Bit 5: ADC Tile 1 PLL Enable Bits 7:6 Reserved...
                                bank0_read[25] ? {4'h0, 2'b00, 1'b0, 1'b1, 2'b00, 1'b0, 1'b1, 2'b00, 1'b0, 1'b1, 2'b00, 1'b0, 1'b1} :
                                bank0_read[26] ? {6'b0, adc01_mixer, adc01_decimation, adc01_data_type, adc01_enable,  6'b0, adc00_mixer, adc00_decimation, adc00_data_type, adc00_enable} :
@@ -6843,11 +6611,6 @@ always @(posedge Bus2IP_Clk)
                                     bank9_read[1]    ? {31'b0, ~adc0_done_i} :
                                     bank9_read[2]    ? {20'b0, adc0_start_stage, 4'h0, adc0_end_stage} :
                                     bank9_read[3]    ? {28'b0, adc0_current_stage} :
-                                    bank9_read[4]    ? {11'b0, mrk_cntr_done_slice00_sync, mrk_loc_slice00, mrk_cntr_slice00} :
-                                    bank9_read[6]    ? {11'b0, mrk_cntr_done_slice02_sync, mrk_loc_slice02, mrk_cntr_slice02} :
-                                    bank9_read[9]    ? {17'b0, adc0_cmn_control_ff} :
-                                    bank9_read[10]   ? {21'b0, adc00_data_align_ctrl_ff} :
-                                    bank9_read[12]   ? {21'b0, adc02_data_align_ctrl_ff} :
                                     bank9_read[14]   ? {24'b0, adc0_reset_cnt} :
                                     bank9_read[32]   ? {16'h0000, adc0_clk_detect} :
                                     bank9_read[33]   ? {31'b0, adc0_common_stat[22]} :
@@ -6899,9 +6662,6 @@ always @(posedge Bus2IP_Clk)
                                     bank11_read[1]    ? {31'b0, ~adc1_done_i} :
                                     bank11_read[2]    ? {20'b0, adc1_start_stage, 4'h0, adc1_end_stage} :
                                     bank11_read[3]    ? {28'b0, adc1_current_stage} :
-                                    bank11_read[4]    ? {11'b0, mrk_cntr_done_slice10_sync, mrk_loc_slice10, mrk_cntr_slice10} :
-                                    bank11_read[9]    ? {17'b0, adc1_cmn_control_ff} :
-                                    bank11_read[10]   ? {21'b0, adc10_data_align_ctrl_ff} :
                                     bank11_read[14]   ? {24'b0, adc1_reset_cnt} :
                                     bank11_read[32]   ? {16'h0000, adc1_clk_detect} :
                                     bank11_read[33]   ? {31'b0, adc1_common_stat[22]} :
@@ -6950,11 +6710,6 @@ always @(posedge Bus2IP_Clk)
                                     bank13_read[1]    ? {31'b0, ~adc2_done_i} :
                                     bank13_read[2]    ? {20'b0, adc2_start_stage, 4'h0, adc2_end_stage} :
                                     bank13_read[3]    ? {28'b0, adc2_current_stage} :
-                                    bank13_read[4]    ? {11'b0, mrk_cntr_done_slice20_sync, mrk_loc_slice20, mrk_cntr_slice20} :
-                                    bank13_read[6]    ? {11'b0, mrk_cntr_done_slice22_sync, mrk_loc_slice22, mrk_cntr_slice22} :
-                                    bank13_read[9]    ? {17'b0, adc2_cmn_control_ff} :
-                                    bank13_read[10]   ? {21'b0, adc20_data_align_ctrl_ff} :
-                                    bank13_read[12]   ? {21'b0, adc22_data_align_ctrl_ff} :
                                     bank13_read[14]   ? {24'b0, adc2_reset_cnt} :
                                     bank13_read[32]   ? {16'h0000, adc2_clk_detect} :
                                     bank13_read[33]   ? {31'b0, adc2_common_stat[22]} :
@@ -7006,9 +6761,6 @@ always @(posedge Bus2IP_Clk)
                                     bank15_read[1]    ? {31'b0, ~adc3_done_i} :
                                     bank15_read[2]    ? {20'b0, adc3_start_stage, 4'h0, adc3_end_stage} :
                                     bank15_read[3]    ? {28'b0, adc3_current_stage} :
-                                    bank15_read[4]    ? {11'b0, mrk_cntr_done_slice30_sync, mrk_loc_slice30, mrk_cntr_slice30} :
-                                    bank15_read[9]    ? {17'b0, adc3_cmn_control_ff} :
-                                    bank15_read[10]   ? {21'b0, adc30_data_align_ctrl_ff} :
                                     bank15_read[14]   ? {24'b0, adc3_reset_cnt} :
                                     bank15_read[32]   ? {16'h0000, adc3_clk_detect} :
                                     bank15_read[33]   ? {31'b0, adc3_common_stat[22]} :
@@ -7526,196 +7278,6 @@ always @(posedge Bus2IP_Clk)
   assign adc3_status         = adc3_current_stage;
   assign adc3_done           = adc3_done_i;
   assign adc3_powerup_state  = adc3_common_stat[2] & adc3_done_i;
-
-  // SysRef Count for ADC
-  ps_usp_rf_data_converter_0_0_mt_sysref_count #(
-    .COUNT_NBITS  (MTS_SYSREF_COUNT_NBITS),
-    .FREQ_NBITS   (MTS_SYSREF_FREQ_NBITS)
-  ) i_mts_sysref_count_adc(
-    .clk_fbrc         (m0_axis_aclk              ),
-    .reset_fbrc_b     (m0_axis_aresetn           ),
-    .clk              (Bus2IP_Clk                ),
-    .reset_b          (Bus2IP_Resetn             ),
-    .start_pulse      (mts_sysref_count_start[0] ),
-    .sysref           (user_sysref_adc           ),
-    .sysref_count     (mts_adc_sysref_count      ),
-    .sysref_freq      (mts_adc_sysref_freq       ),
-    .sysref_freq_done (mts_adc_sysref_freq_done  )
-  );
-
-  // Retimer
-  xpm_cdc_async_rst #(
-    .DEST_SYNC_FF     (4),
-    .INIT_SYNC_FF     (0),
-    .RST_ACTIVE_HIGH  (1)
-  )
-  i_xpm_cdc_single_mt_mrk_rst (
-    .dest_arst(mt_mrk_sync_rst),
-    .dest_clk(m0_axis_aclk),
-    .src_arst(mt_mrk_rst_ff)
-  );
-
-  // Marker counter slice00
-  ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
-    .MRK_LOC_BITS  (MRK_LOC_BITS),
-    .MRK_CNTR_BITS (MRK_CNTR_BITS)
-  ) i_rf_conv_mt_mrk_counter_adc00 (
-    .clk           (m0_axis_aclk          ), // Clock
-    .rst_n         (m0_axis_aresetn       ), // Asynchronous reset
-
-    .sync_rst      (mt_mrk_sync_rst       ), // Synchronous reset
-    .adc_status    (adc00_status[15:0]    ), // [8] starts the counter, [11:9] marker location
-    .sysref_sync   (user_sysref_adc       ), // Stops the marker counter
-
-    .mrk_cntr_done (mrk_cntr_done_slice00 ), // Marker has completed counting
-    .mrk_loc       (mrk_loc_slice00       ), // Marker location 0-11, 'hF indicates location has not been captured
-    .mrk_cntr      (mrk_cntr_slice00      )  // Marker counter value
-  );
-
-  xpm_cdc_single #(.SRC_INPUT_REG(0))
-  cdc_adc00_mrk_cntr_done_i (
-    .src_clk  (1'b0                              ),
-    .src_in   (mrk_cntr_done_slice00             ),
-    .dest_clk (s_axi_aclk                        ),
-    .dest_out (mrk_cntr_done_slice00_sync        )
-  );
-
-  assign adc00_data_aligned = adc00_data_i[159:0];
-
-  // Marker counter slice02
-  ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
-    .MRK_LOC_BITS  (MRK_LOC_BITS),
-    .MRK_CNTR_BITS (MRK_CNTR_BITS)
-  ) i_rf_conv_mt_mrk_counter_adc02 (
-    .clk           (m0_axis_aclk          ), // Clock
-    .rst_n         (m0_axis_aresetn       ), // Asynchronous reset
-
-    .sync_rst      (mt_mrk_sync_rst       ), // Synchronous reset
-    .adc_status    (adc02_status[15:0]    ), // [8] starts the counter, [11:9] marker location
-    .sysref_sync   (user_sysref_adc       ), // Stops the marker counter
-
-    .mrk_cntr_done (mrk_cntr_done_slice02 ), // Marker has completed counting
-    .mrk_loc       (mrk_loc_slice02       ), // Marker location 0-11, 'hF indicates location has not been captured
-    .mrk_cntr      (mrk_cntr_slice02      )  // Marker counter value
-  );
-
-  xpm_cdc_single #(.SRC_INPUT_REG(0))
-  cdc_adc02_mrk_cntr_done_i (
-    .src_clk  (1'b0                              ),
-    .src_in   (mrk_cntr_done_slice02             ),
-    .dest_clk (s_axi_aclk                        ),
-    .dest_out (mrk_cntr_done_slice02_sync        )
-  );
-
-  assign adc02_data_aligned = adc02_data_i[159:0];
-
-  // Marker counter slice10
-  ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
-    .MRK_LOC_BITS  (MRK_LOC_BITS),
-    .MRK_CNTR_BITS (MRK_CNTR_BITS)
-  ) i_rf_conv_mt_mrk_counter_adc10 (
-    .clk           (m1_axis_aclk          ), // Clock
-    .rst_n         (m1_axis_aresetn       ), // Asynchronous reset
-
-    .sync_rst      (mt_mrk_sync_rst       ), // Synchronous reset
-    .adc_status    (adc10_status[15:0]    ), // [8] starts the counter, [11:9] marker location
-    .sysref_sync   (user_sysref_adc       ), // Stops the marker counter
-
-    .mrk_cntr_done (mrk_cntr_done_slice10 ), // Marker has completed counting
-    .mrk_loc       (mrk_loc_slice10       ), // Marker location 0-11, 'hF indicates location has not been captured
-    .mrk_cntr      (mrk_cntr_slice10      )  // Marker counter value
-  );
-
-  xpm_cdc_single #(.SRC_INPUT_REG(0))
-  cdc_adc10_mrk_cntr_done_i (
-    .src_clk  (1'b0                              ),
-    .src_in   (mrk_cntr_done_slice10             ),
-    .dest_clk (s_axi_aclk                        ),
-    .dest_out (mrk_cntr_done_slice10_sync        )
-  );
-
-  assign adc10_data_aligned = adc10_data_i[159:0];
-
-  // Marker counter slice20
-  ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
-    .MRK_LOC_BITS  (MRK_LOC_BITS),
-    .MRK_CNTR_BITS (MRK_CNTR_BITS)
-  ) i_rf_conv_mt_mrk_counter_adc20 (
-    .clk           (m2_axis_aclk          ), // Clock
-    .rst_n         (m2_axis_aresetn       ), // Asynchronous reset
-
-    .sync_rst      (mt_mrk_sync_rst       ), // Synchronous reset
-    .adc_status    (adc20_status[15:0]    ), // [8] starts the counter, [11:9] marker location
-    .sysref_sync   (user_sysref_adc       ), // Stops the marker counter
-
-    .mrk_cntr_done (mrk_cntr_done_slice20 ), // Marker has completed counting
-    .mrk_loc       (mrk_loc_slice20       ), // Marker location 0-11, 'hF indicates location has not been captured
-    .mrk_cntr      (mrk_cntr_slice20      )  // Marker counter value
-  );
-
-  xpm_cdc_single #(.SRC_INPUT_REG(0))
-  cdc_adc20_mrk_cntr_done_i (
-    .src_clk  (1'b0                              ),
-    .src_in   (mrk_cntr_done_slice20             ),
-    .dest_clk (s_axi_aclk                        ),
-    .dest_out (mrk_cntr_done_slice20_sync        )
-  );
-
-  assign adc20_data_aligned = adc20_data_i[159:0];
-
-  // Marker counter slice22
-  ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
-    .MRK_LOC_BITS  (MRK_LOC_BITS),
-    .MRK_CNTR_BITS (MRK_CNTR_BITS)
-  ) i_rf_conv_mt_mrk_counter_adc22 (
-    .clk           (m2_axis_aclk          ), // Clock
-    .rst_n         (m2_axis_aresetn       ), // Asynchronous reset
-
-    .sync_rst      (mt_mrk_sync_rst       ), // Synchronous reset
-    .adc_status    (adc22_status[15:0]    ), // [8] starts the counter, [11:9] marker location
-    .sysref_sync   (user_sysref_adc       ), // Stops the marker counter
-
-    .mrk_cntr_done (mrk_cntr_done_slice22 ), // Marker has completed counting
-    .mrk_loc       (mrk_loc_slice22       ), // Marker location 0-11, 'hF indicates location has not been captured
-    .mrk_cntr      (mrk_cntr_slice22      )  // Marker counter value
-  );
-
-  xpm_cdc_single #(.SRC_INPUT_REG(0))
-  cdc_adc22_mrk_cntr_done_i (
-    .src_clk  (1'b0                              ),
-    .src_in   (mrk_cntr_done_slice22             ),
-    .dest_clk (s_axi_aclk                        ),
-    .dest_out (mrk_cntr_done_slice22_sync        )
-  );
-
-  assign adc22_data_aligned = adc22_data_i[159:0];
-
-  // Marker counter slice30
-  ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
-    .MRK_LOC_BITS  (MRK_LOC_BITS),
-    .MRK_CNTR_BITS (MRK_CNTR_BITS)
-  ) i_rf_conv_mt_mrk_counter_adc30 (
-    .clk           (m3_axis_aclk          ), // Clock
-    .rst_n         (m3_axis_aresetn       ), // Asynchronous reset
-
-    .sync_rst      (mt_mrk_sync_rst       ), // Synchronous reset
-    .adc_status    (adc30_status[15:0]    ), // [8] starts the counter, [11:9] marker location
-    .sysref_sync   (user_sysref_adc       ), // Stops the marker counter
-
-    .mrk_cntr_done (mrk_cntr_done_slice30 ), // Marker has completed counting
-    .mrk_loc       (mrk_loc_slice30       ), // Marker location 0-11, 'hF indicates location has not been captured
-    .mrk_cntr      (mrk_cntr_slice30      )  // Marker counter value
-  );
-
-  xpm_cdc_single #(.SRC_INPUT_REG(0))
-  cdc_adc30_mrk_cntr_done_i (
-    .src_clk  (1'b0                              ),
-    .src_in   (mrk_cntr_done_slice30             ),
-    .dest_clk (s_axi_aclk                        ),
-    .dest_out (mrk_cntr_done_slice30_sync        )
-  );
-
-  assign adc30_data_aligned = adc30_data_i[159:0];
 
 
   assign adc00_clk_detector_ok_b = adc00_stat_sync[5] | adc00_stat_sync[6];
