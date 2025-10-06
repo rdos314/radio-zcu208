@@ -78,7 +78,7 @@ module mts(
 	ila_1 ila_i (
 		.clk(m_clk_buf),  	              // input wire clk
 		.probe0(user_sysref_adc),         // input wire [0:0]  probe2
-		.probe1(adc_resetn)               // input wire [0:0]  probe2
+		.probe1(master_reset)               // input wire [0:0]  probe2
 	);
 	
 generate
