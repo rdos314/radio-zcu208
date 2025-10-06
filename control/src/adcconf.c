@@ -145,9 +145,33 @@ const u32 LMK_CKin[LMK_COUNT] =
 
 #define LMX2594_COUNT 116
 
-const u32 LMX2594[LMX2594_COUNT] = 
+const u32 LMX2594G2500[LMX2594_COUNT] = 
 {
+	/* LMX2594_REF-250M__2500M.txt */
+	0x000002, 0x000000, 0x700000, 0x6F0000, 0x6E0000, 0x6D0000,
+	0x6C0000, 0x6B0000, 0x6A0000, 0x690021, 0x680000, 0x670000,
+	0x663F80, 0x650011, 0x640000, 0x630000, 0x620200, 0x610888,
+	0x600000, 0x5F0000, 0x5E0000, 0x5D0000, 0x5C0000, 0x5B0000,
+	0x5A0000, 0x590000, 0x580000, 0x570000, 0x560000, 0x55D300,
+	0x540001, 0x530000, 0x521E00, 0x510000, 0x506666, 0x4F0026,
+	0x4E0105, 0x4D0000, 0x4C000C, 0x4B0840, 0x4A0000, 0x49003F,
+	0x480001, 0x470081, 0x46C350, 0x450000, 0x4403E8, 0x430000,
+	0x4201F4, 0x410000, 0x401388, 0x3F0000, 0x3E0322, 0x3D00A8,
+	0x3C0000, 0x3B0001, 0x3A8001, 0x390020, 0x380000, 0x370000,
+	0x360000, 0x350000, 0x340820, 0x330080, 0x320000, 0x314180,
+	0x300300, 0x2F0300, 0x2E07FC, 0x2DC0DF, 0x2C1FA0, 0x2B0000,
+	0x2A0000, 0x290000, 0x280000, 0x270001, 0x260000, 0x250104,
+	0x240190, 0x230004, 0x220000, 0x211E21, 0x200393, 0x1F43EC,
+	0x1E318C, 0x1D318C, 0x1C0488, 0x1B0002, 0x1A0DB0, 0x190624,
+	0x18071A, 0x17007C, 0x160001, 0x150401, 0x14D848, 0x1327B7,
+	0x120064, 0x110130, 0x100080, 0x0F064F, 0x0E1E40, 0x0D4000,
+	0x0C5001, 0x0B00A8, 0x0A10D8, 0x090604, 0x082000, 0x0740B2,
+	0x06C802, 0x0500C8, 0x040C43, 0x030642, 0x020500, 0x010809,
+	0x00241C, 0x00241C,
+};
 
+const u32 LMX2594G5000[LMX2594_COUNT] = 
+{
 	/* LMX2594_REF-250M__5000M.txt */
 	0x000002, 0x000000, 0x700000, 0x6F0000, 0x6E0000, 0x6D0000,
 	0x6C0000, 0x6B0000, 0x6A0000, 0x690021, 0x680000, 0x670000,
@@ -748,13 +772,13 @@ static bool XRFClk_SetConfigLMK()
 * @note         None
 *
 ****************************************************************************/
-static bool XRFClk_SetConfigLMX(u32 ChipID)
+static bool XRFClk_SetConfigLMX(u32 ChipID, const u32 Config[LMX2594_COUNT])
 {
 	int i;
 	
 	for (i = 0; i < LMX2594_COUNT; i++) 
 	{
-		if (!XRFClk_WriteReg(ChipID, LMX2594[i])) 
+		if (!XRFClk_WriteReg(ChipID, Config[i])) 
 			return false;
 	}
 	return true;
@@ -1007,7 +1031,18 @@ bool XRFClk_ConfigOutputDividerAndMUXOnLMK(u32 PortId, u32 DCLKoutX_DIV,
 	return true;
 }
 
-bool ConfigAdc()
+/*##########################################################################
+#
+#   Name       : ConfigAdc
+#
+#   Purpose....: Config ADC
+#
+#   In params..: *
+#   Out params.: *
+#   Returns....: *
+#
+##########################################################################*/
+static bool ConfigAdc(const u32 Config[LMX2594_COUNT])
 {
 	u32 d;
 	u32 data[LMK_COUNT];
@@ -1029,11 +1064,40 @@ bool ConfigAdc()
 	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMK))
 		return false;
 	
-	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1)) 
-		return false;
-
-	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_2))
+	if (!XRFClk_SetConfigOnOneChipFromConfigId(RFCLK_LMX2594_1, Config)) 
 		return false;
 
 	return true;
+}
+
+/*##########################################################################
+#
+#   Name       : ConfigAdc2500
+#
+#   Purpose....: Config ADC for 2.5 G
+#
+#   In params..: *
+#   Out params.: *
+#   Returns....: *
+#
+##########################################################################*/
+bool ConfigAdc2500()
+{
+	return ConfigAdc(LMX2594G2500);
+}
+
+/*##########################################################################
+#
+#   Name       : ConfigAdc5000
+#
+#   Purpose....: Config ADC for 5.0 G
+#
+#   In params..: *
+#   Out params.: *
+#   Returns....: *
+#
+##########################################################################*/
+bool ConfigAdc5000()
+{
+	return ConfigAdc(LMX2594G5000);
 }

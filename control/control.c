@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include "math.h"
 
-bool ConfigAdc();
+bool ConfigAdc2500();
+bool ConfigAdc5000();
 bool StartAdc();
 
 #define TIMER_CNTR_0     0
@@ -30,7 +31,7 @@ int main(void)
     char *led = (char *)XPAR_GPIO_LED_BASEADDR;
     XTmrCtr TimerCounterInst;
 
-    if (!ConfigAdc())
+    if (!ConfigAdc2500())
         return -1;
 
     if (!StartAdc())
