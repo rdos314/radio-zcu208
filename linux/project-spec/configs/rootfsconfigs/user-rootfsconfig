@@ -4,7 +4,7 @@
 CONFIG_gpio-demo
 CONFIG_peekpoke
 CONFIG_mariadb
+CONFIG_apache2
 CONFIG_php
-CONFIG_modphp
 CONFIG_phpmyadmin
 
