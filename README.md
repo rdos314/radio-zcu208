@@ -101,3 +101,6 @@ https://docs.amd.com/r/en-US/pg269-rf-data-converter/MTS-Sequencing<br>
 https://docs.amd.com/r/en-US/ug835-vivado-tcl-commands/<br>
 https://github.com/Xilinx/embeddedsw/tree/master/XilinxProcessorIPLib/drivers/board_common/src/rfclk<br>
 https://layers.openembedded.org/layerindex/branch/master/layers/<br>
+https://www.analog.com/en/products/adl5569.html<br>
+https://ez.analog.com/rf/f/q-a/115814/adl5569-single-ended-input<br>
+
