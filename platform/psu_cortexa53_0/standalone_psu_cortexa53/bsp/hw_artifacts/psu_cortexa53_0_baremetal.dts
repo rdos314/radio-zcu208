@@ -2592,10 +2592,12 @@
                         xlnx,dac3-link-coupling = <0x0>;
                         xlnx,dac2-band = <0x0>;
                         xlnx,adc-data-width10 = <0xa>;
+                        xlnx,adc1-multi-tile-sync;
                         xlnx,adc-data-width11 = <0xa>;
                         clock-names = "m0_axis_aclk", "m1_axis_aclk", "m2_axis_aclk", "m3_axis_aclk", "s_axi_aclk";
                         xlnx,adc3-refclk-div = <0x1>;
                         xlnx,adc-data-width12 = <0x9>;
+                        xlnx,adc3-multi-tile-sync;
                         xlnx,adc-data-width13 = <0x9>;
                         xlnx,madc-decimation-mode00 = <0x0>;
                         xlnx,madc-decimation-mode01 = <0x0>;
@@ -3045,9 +3047,11 @@
                         xlnx,mdac-tdd-rts01 = <0x0>;
                         xlnx,dac3-clock-dist = <0x0>;
                         xlnx,adc1-enable = <0x1>;
+                        xlnx,adc0-multi-tile-sync;
                         xlnx,mdac-tdd-rts02 = <0x0>;
                         xlnx,mdac-tdd-rts03 = <0x0>;
                         xlnx,mdac-mode00 = <0x0>;
+                        xlnx,adc2-multi-tile-sync;
                         xlnx,mdac-mode01 = <0x0>;
                         xlnx,reserved-3 = <0x1adb0>;
                         xlnx,adc32-dig-port = <0x0>;
@@ -3056,8 +3060,8 @@
                         xlnx,mdac-mode03 = <0x0>;
                         xlnx,dac2-outdiv = <0x1>;
                         xlnx,adc1-link-coupling = <0x0>;
-                        xlnx,adc01-dig-port = <0x0>;
                         xlnx,adc-mixer-mode00 = <0x2>;
+                        xlnx,adc01-dig-port = <0x0>;
                         xlnx,adc-mixer-mode01 = <0x2>;
                         xlnx,adc-slice23-enable;
                         xlnx,adc-mixer-mode02 = <0x2>;

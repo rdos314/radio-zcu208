@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Oct  6 21:38:46 2025
+// Date        : Mon Oct  6 22:27:35 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_1_0/ps_doa_1_0_sim_netlist.v
@@ -41,6 +41,7 @@ module ps_doa_1_0
   wire ready_E;
   wire ready_N;
   wire ready_W;
+  wire resetn;
 
   ps_doa_1_0_doa inst
        (.clk(clk),
@@ -50,7 +51,7 @@ module ps_doa_1_0
         .ready_E(ready_E),
         .ready_N(ready_N),
         .ready_W(ready_W),
-        .resetn(1'b0));
+        .resetn(resetn));
 endmodule
 
 (* ORIG_REF_NAME = "doa" *) (* keep_hierarchy = "soft" *) 
@@ -79,6 +80,7 @@ module ps_doa_1_0_doa
   (* MARK_DEBUG *) wire ready_E;
   (* MARK_DEBUG *) wire ready_N;
   (* MARK_DEBUG *) wire ready_W;
+  (* MARK_DEBUG *) wire resetn;
 
   (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
@@ -88,6 +90,7 @@ module ps_doa_1_0_doa
         .probe0(data_E[15:0]),
         .probe1(data_E[31:16]),
         .probe10(ready_E),
+        .probe11(resetn),
         .probe2(data_E[47:32]),
         .probe3(data_E[63:48]),
         .probe4(data_E[79:64]),
@@ -104,6 +107,7 @@ module ps_doa_1_0_doa
         .probe0(data_N[15:0]),
         .probe1(data_N[31:16]),
         .probe10(ready_N),
+        .probe11(resetn),
         .probe2(data_N[47:32]),
         .probe3(data_N[63:48]),
         .probe4(data_N[79:64]),
@@ -120,6 +124,7 @@ module ps_doa_1_0_doa
         .probe0(data_W[15:0]),
         .probe1(data_W[31:16]),
         .probe10(ready_W),
+        .probe11(resetn),
         .probe2(data_W[47:32]),
         .probe3(data_W[63:48]),
         .probe4(data_W[79:64]),
@@ -144,7 +149,8 @@ module ps_doa_1_0_ila_0
     probe7,
     probe8,
     probe9,
-    probe10);
+    probe10,
+    probe11);
   (* syn_isclock = "1" *) input clk;
   input [15:0]probe0;
   input [15:0]probe1;
@@ -157,6 +163,7 @@ module ps_doa_1_0_ila_0
   input [15:0]probe8;
   input [15:0]probe9;
   input [0:0]probe10;
+  input [0:0]probe11;
 
 
 endmodule
@@ -168,6 +175,7 @@ module ps_doa_1_0_ila_0_HD1
     probe0,
     probe1,
     probe10,
+    probe11,
     probe2,
     probe3,
     probe4,
@@ -180,6 +188,7 @@ module ps_doa_1_0_ila_0_HD1
   input [15:0]probe0;
   input [15:0]probe1;
   input [0:0]probe10;
+  input [0:0]probe11;
   input [15:0]probe2;
   input [15:0]probe3;
   input [15:0]probe4;

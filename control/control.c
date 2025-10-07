@@ -33,6 +33,8 @@ int main(void)
     if (!ConfigAdc())
         return -1;
 
+    sleep(2);
+    
     if (!StartAdc())
         return -1;
 

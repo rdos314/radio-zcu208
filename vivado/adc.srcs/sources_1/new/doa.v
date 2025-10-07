@@ -44,7 +44,8 @@ module doa(
 		.probe7(data_N[127:112]),     // input wire [15:0]  probe3
 		.probe8(data_N[143:128]),     // input wire [15:0]  probe3
 		.probe9(data_N[159:144]),     // input wire [15:0]  probe3
-		.probe10(ready_N)             // input wire [0:0]  probe3
+		.probe10(ready_N),             // input wire [0:0]  probe3
+		.probe11(resetn)             // input wire [0:0]  probe3
 	);
 
 	ila_0 ila_E (
@@ -59,7 +60,8 @@ module doa(
 		.probe7(data_E[127:112]),     // input wire [15:0]  probe3
 		.probe8(data_E[143:128]),     // input wire [15:0]  probe3
 		.probe9(data_E[159:144]),     // input wire [15:0]  probe3
-		.probe10(ready_E)             // input wire [0:0]  probe3
+		.probe10(ready_E),             // input wire [0:0]  probe3
+		.probe11(resetn)             // input wire [0:0]  probe3
 	);
 
 	ila_0 ila_W (
@@ -74,7 +76,8 @@ module doa(
 		.probe7(data_W[127:112]),     // input wire [15:0]  probe3
 		.probe8(data_W[143:128]),     // input wire [15:0]  probe3
 		.probe9(data_W[159:144]),     // input wire [15:0]  probe3
-		.probe10(ready_W)             // input wire [0:0]  probe3
+		.probe10(ready_W),             // input wire [0:0]  probe3
+		.probe11(resetn)             // input wire [0:0]  probe3
 	);
     
 generate

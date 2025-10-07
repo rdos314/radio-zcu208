@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Oct  6 21:38:46 2025
+-- Date        : Mon Oct  6 22:27:35 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_1_0/ps_doa_1_0_sim_netlist.vhdl
@@ -46,7 +46,8 @@ architecture STRUCTURE of ps_doa_1_0_doa is
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_doa_1_0_ila_0;
   component ps_doa_1_0_ila_0_HD1 is
@@ -55,6 +56,7 @@ architecture STRUCTURE of ps_doa_1_0_doa is
     probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -84,6 +86,7 @@ ila_E: component ps_doa_1_0_ila_0
       probe0(15 downto 0) => data_E(15 downto 0),
       probe1(15 downto 0) => data_E(31 downto 16),
       probe10(0) => ready_E,
+      probe11(0) => resetn,
       probe2(15 downto 0) => data_E(47 downto 32),
       probe3(15 downto 0) => data_E(63 downto 48),
       probe4(15 downto 0) => data_E(79 downto 64),
@@ -99,6 +102,7 @@ ila_N: component ps_doa_1_0_ila_0
       probe0(15 downto 0) => data_N(15 downto 0),
       probe1(15 downto 0) => data_N(31 downto 16),
       probe10(0) => ready_N,
+      probe11(0) => resetn,
       probe2(15 downto 0) => data_N(47 downto 32),
       probe3(15 downto 0) => data_N(63 downto 48),
       probe4(15 downto 0) => data_N(79 downto 64),
@@ -114,6 +118,7 @@ ila_W: component ps_doa_1_0_ila_0_HD1
       probe0(15 downto 0) => data_W(15 downto 0),
       probe1(15 downto 0) => data_W(31 downto 16),
       probe10(0) => ready_W,
+      probe11(0) => resetn,
       probe2(15 downto 0) => data_W(47 downto 32),
       probe3(15 downto 0) => data_W(63 downto 48),
       probe4(15 downto 0) => data_W(79 downto 64),
@@ -171,6 +176,6 @@ inst: entity work.ps_doa_1_0_doa
       ready_E => ready_E,
       ready_N => ready_N,
       ready_W => ready_W,
-      resetn => '0'
+      resetn => resetn
     );
 end STRUCTURE;

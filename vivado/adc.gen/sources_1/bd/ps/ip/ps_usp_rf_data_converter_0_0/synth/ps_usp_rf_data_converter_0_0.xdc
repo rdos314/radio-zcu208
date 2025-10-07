@@ -272,6 +272,58 @@ create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-4 \
   -from [list [get_pins -filter {REF_PIN_NAME==INTERNAL_FBRC_MUX} -of [get_cells -hier -filter {name =~ "*ps_usp_rf_data_converter_0_0_rf_wrapper_i/tx3_u_dac"}]]] \
   -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
 
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~mrk_*} -of [get_cells -hier -filter {name =~  *i_rf_conv_mt_mrk_counter_adc*}]] -to $ipif_read
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the marker counter signals from the fabric to the management clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME=~C} -of [get_cells -hier -filter {name =~  *i_rf_conv_mt_mrk_counter_adc*mrk_cntr_ff_reg[*]}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the marker counter signals from the fabric to the management clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME=~C} -of [get_cells -hier -filter {name =~  *i_rf_conv_mt_mrk_counter_adc*mrk_loc_ff_reg[*]}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the marker counter signals from the fabric to the management clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME=~C} -of [get_cells -hier -filter {name =~  *i_rf_conv_mt_mrk_counter_adc*mrk_cntr_done_ff}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME =~ sysref_freq[*]} -of [get_cells -hier -filter {name =~ *i_mts_sysref_count_adc*}]] -to $ipif_read
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-4 \
+  -tags "1033132" \
+  -description "Passing the SYSREF frequency from the fabric to the management clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME =~ sysref_freq[*]} -of [get_cells -hier -filter {name =~ *i_mts_sysref_count_adc*}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+set_false_path -from [get_cells -hier -filter {name =~ */i_mts_sysref_count_adc/sysref_freq_ff_reg* && IS_SEQUENTIAL}] -to [get_cells -hier -filter {name =~ */i_mts_sysref_count_adc/sysref_freq_r_reg* && IS_SEQUENTIAL}]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-4 \
+  -tags "1033132" \
+  -description "Passing SYSREF frequency count from fabric to management clocks" \
+  -from [list [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~ */i_mts_sysref_count_adc/sysref_freq_ff_reg* && IS_SEQUENTIAL}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ */i_mts_sysref_count_adc/sysref_freq_r_reg* && IS_SEQUENTIAL}]]]
+set_false_path -from [get_cells -hier -filter {name =~ */adc0_cmn_control_ff_reg[12] && IS_SEQUENTIAL}] -through [get_pins -filter {REF_PIN_NAME==CONTROL_COMMON[12]} -of [get_cells -hier rx0_u_adc]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the MTS FIFO enable from the management to the fabric clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~ */adc0_cmn_control_ff_reg[12] && IS_SEQUENTIAL}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+set_false_path -from [get_cells -hier -filter {name =~ */adc1_cmn_control_ff_reg[12] && IS_SEQUENTIAL}] -through [get_pins -filter {REF_PIN_NAME==CONTROL_COMMON[12]} -of [get_cells -hier rx1_u_adc]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the MTS FIFO enable from the management to the fabric clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~ */adc1_cmn_control_ff_reg[12] && IS_SEQUENTIAL}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+set_false_path -from [get_cells -hier -filter {name =~ */adc2_cmn_control_ff_reg[12] && IS_SEQUENTIAL}] -through [get_pins -filter {REF_PIN_NAME==CONTROL_COMMON[12]} -of [get_cells -hier rx2_u_adc]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the MTS FIFO enable from the management to the fabric clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~ */adc2_cmn_control_ff_reg[12] && IS_SEQUENTIAL}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
+set_false_path -from [get_cells -hier -filter {name =~ */adc3_cmn_control_ff_reg[12] && IS_SEQUENTIAL}] -through [get_pins -filter {REF_PIN_NAME==CONTROL_COMMON[12]} -of [get_cells -hier rx3_u_adc]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Passing the MTS FIFO enable from the management to the fabric clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~ */adc3_cmn_control_ff_reg[12] && IS_SEQUENTIAL}]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME==D} -of [get_cells -hier -filter {name =~ *IP2Bus_Data_reg* && IS_SEQUENTIAL}]]]
 
 ###############################################################################
 # Fabric clock timing constraints
@@ -316,3 +368,9 @@ create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
 #set_multicycle_path -from [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~  *tile_config/ram/data_reg[*]}]] -to [get_pins -hierarchical -regexp {.*rf_wrapper_i\/.*_u_.*c\/DADDR\[[0-9][0]*\]}] -setup 3
 #set_multicycle_path -from [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~  *tile_config/ram/data_reg[*]}]] -to [get_pins -hierarchical -regexp {.*rf_wrapper_i\/.*_u_.*c\/DADDR\[[0-9][0]*\]}] -hold  2
 
+# Value TBD
+# set_data_check -from [get_pins -filter {REF_PIN_NAME =~ CONTROL_COMMON[15]} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx0_u_adc]] -to [get_pins -filter {REF_PIN_NAME =~ CONTROL_COMMON[15]} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx1_u_adc]] 2.0
+# Value TBD
+# set_data_check -from [get_pins -filter {REF_PIN_NAME =~ CONTROL_COMMON[15]} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx0_u_adc]] -to [get_pins -filter {REF_PIN_NAME =~ CONTROL_COMMON[15]} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx2_u_adc]] 2.0
+# Value TBD
+# set_data_check -from [get_pins -filter {REF_PIN_NAME =~ CONTROL_COMMON[15]} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx0_u_adc]] -to [get_pins -filter {REF_PIN_NAME =~ CONTROL_COMMON[15]} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx3_u_adc]] 2.0

@@ -1553,7 +1553,7 @@
             "value": "1"
           },
           "ADC0_Multi_Tile_Sync": {
-            "value": "false"
+            "value": "true"
           },
           "ADC0_Outclk_Freq": {
             "value": "39.063"
@@ -1573,6 +1573,9 @@
           "ADC1_Clock_Source": {
             "value": "1"
           },
+          "ADC1_Multi_Tile_Sync": {
+            "value": "true"
+          },
           "ADC1_Outclk_Freq": {
             "value": "39.063"
           },
@@ -1591,6 +1594,9 @@
           "ADC2_Clock_Source": {
             "value": "1"
           },
+          "ADC2_Multi_Tile_Sync": {
+            "value": "true"
+          },
           "ADC2_Outclk_Freq": {
             "value": "39.063"
           },
@@ -1608,6 +1614,9 @@
           },
           "ADC3_Clock_Source": {
             "value": "1"
+          },
+          "ADC3_Multi_Tile_Sync": {
+            "value": "true"
           },
           "ADC3_Outclk_Freq": {
             "value": "39.063"
@@ -2074,6 +2083,12 @@
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
           "doa_1/resetn"
+        ]
+      },
+      "mts_0_user_sysref_adc": {
+        "ports": [
+          "mts_0/user_sysref_adc",
+          "usp_rf_data_converter_0/user_sysref_adc"
         ]
       },
       "pl_clk_n_1": {

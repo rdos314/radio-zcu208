@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Mon Oct  6 21:38:02 2025
+//Date        : Mon Oct  6 22:26:45 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -133,6 +133,7 @@ module ps
   wire mts_0_doa0_resetn;
   wire mts_0_doa1_clk;
   wire mts_0_doa1_resetn;
+  wire mts_0_user_sysref_adc;
   wire pl_clk_n;
   wire pl_clk_p;
   wire pl_sysref_n;
@@ -387,7 +388,8 @@ module ps
         .doa1_resetn(mts_0_doa1_resetn),
         .pl_clk(util_ds_buf_0_IBUF_OUT),
         .pl_sysref(util_ds_buf_0_IBUF_OUT1),
-        .sys_reset(rst_ps8_0_99M_mb_reset));
+        .sys_reset(rst_ps8_0_99M_mb_reset),
+        .user_sysref_adc(mts_0_user_sysref_adc));
   ps_util_ds_buf_0_0 pl_clk_util_ds_buf
        (.IBUF_DS_N(pl_clk_n),
         .IBUF_DS_P(pl_clk_p),
@@ -478,6 +480,7 @@ module ps
         .s_axi_wvalid(axi_smc_M03_AXI_WVALID),
         .sysref_in_n(sysref_in_diff_n),
         .sysref_in_p(sysref_in_diff_p),
+        .user_sysref_adc(mts_0_user_sysref_adc),
         .vin0_01_n(vin0_01_v_n),
         .vin0_01_p(vin0_01_v_p),
         .vin0_23_n(vin0_23_v_n),
