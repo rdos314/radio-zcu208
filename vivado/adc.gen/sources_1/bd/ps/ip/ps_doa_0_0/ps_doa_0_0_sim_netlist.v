@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Oct  6 22:27:35 2025
+// Date        : Tue Oct 28 19:01:39 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_0_0/ps_doa_0_0_sim_netlist.v
@@ -45,9 +45,9 @@ module ps_doa_0_0
 
   ps_doa_0_0_doa inst
        (.clk(clk),
-        .data_E(data_E),
-        .data_N(data_N),
-        .data_W(data_W),
+        .data_E({data_E[159:146],1'b0,1'b0,data_E[143:130],1'b0,1'b0,data_E[127:114],1'b0,1'b0,data_E[111:98],1'b0,1'b0,data_E[95:82],1'b0,1'b0,data_E[79:66],1'b0,1'b0,data_E[63:50],1'b0,1'b0,data_E[47:34],1'b0,1'b0,data_E[31:18],1'b0,1'b0,data_E[15:2],1'b0,1'b0}),
+        .data_N({data_N[159:146],1'b0,1'b0,data_N[143:130],1'b0,1'b0,data_N[127:114],1'b0,1'b0,data_N[111:98],1'b0,1'b0,data_N[95:82],1'b0,1'b0,data_N[79:66],1'b0,1'b0,data_N[63:50],1'b0,1'b0,data_N[47:34],1'b0,1'b0,data_N[31:18],1'b0,1'b0,data_N[15:2],1'b0,1'b0}),
+        .data_W({data_W[159:146],1'b0,1'b0,data_W[143:130],1'b0,1'b0,data_W[127:114],1'b0,1'b0,data_W[111:98],1'b0,1'b0,data_W[95:82],1'b0,1'b0,data_W[79:66],1'b0,1'b0,data_W[63:50],1'b0,1'b0,data_W[47:34],1'b0,1'b0,data_W[31:18],1'b0,1'b0,data_W[15:2],1'b0,1'b0}),
         .ready_E(ready_E),
         .ready_N(ready_N),
         .ready_W(ready_W),
@@ -73,66 +73,123 @@ module ps_doa_0_0_doa
   input [159:0]data_W;
   input ready_W;
 
+  (* MARK_DEBUG *) wire [13:0]E0;
+  (* MARK_DEBUG *) wire [13:0]E1;
+  (* MARK_DEBUG *) wire [13:0]E2;
+  (* MARK_DEBUG *) wire [13:0]E3;
+  (* MARK_DEBUG *) wire [13:0]E4;
+  (* MARK_DEBUG *) wire [13:0]E5;
+  (* MARK_DEBUG *) wire [13:0]E6;
+  (* MARK_DEBUG *) wire [13:0]E7;
+  (* MARK_DEBUG *) wire [13:0]E8;
+  (* MARK_DEBUG *) wire [13:0]E9;
+  (* MARK_DEBUG *) wire [13:0]N0;
+  (* MARK_DEBUG *) wire [13:0]N1;
+  (* MARK_DEBUG *) wire [13:0]N2;
+  (* MARK_DEBUG *) wire [13:0]N3;
+  (* MARK_DEBUG *) wire [13:0]N4;
+  (* MARK_DEBUG *) wire [13:0]N5;
+  (* MARK_DEBUG *) wire [13:0]N6;
+  (* MARK_DEBUG *) wire [13:0]N7;
+  (* MARK_DEBUG *) wire [13:0]N8;
+  (* MARK_DEBUG *) wire [13:0]N9;
+  (* MARK_DEBUG *) wire [13:0]W0;
+  (* MARK_DEBUG *) wire [13:0]W1;
+  (* MARK_DEBUG *) wire [13:0]W2;
+  (* MARK_DEBUG *) wire [13:0]W3;
+  (* MARK_DEBUG *) wire [13:0]W4;
+  (* MARK_DEBUG *) wire [13:0]W5;
+  (* MARK_DEBUG *) wire [13:0]W6;
+  (* MARK_DEBUG *) wire [13:0]W7;
+  (* MARK_DEBUG *) wire [13:0]W8;
+  (* MARK_DEBUG *) wire [13:0]W9;
   wire clk;
-  (* MARK_DEBUG *) wire [159:0]data_E;
-  (* MARK_DEBUG *) wire [159:0]data_N;
-  (* MARK_DEBUG *) wire [159:0]data_W;
   (* MARK_DEBUG *) wire ready_E;
   (* MARK_DEBUG *) wire ready_N;
   (* MARK_DEBUG *) wire ready_W;
   (* MARK_DEBUG *) wire resetn;
 
+  assign E0 = data_E[15:2];
+  assign E1 = data_E[31:18];
+  assign E2 = data_E[47:34];
+  assign E3 = data_E[63:50];
+  assign E4 = data_E[79:66];
+  assign E5 = data_E[95:82];
+  assign E6 = data_E[111:98];
+  assign E7 = data_E[127:114];
+  assign E8 = data_E[143:130];
+  assign E9 = data_E[159:146];
+  assign N0 = data_N[15:2];
+  assign N1 = data_N[31:18];
+  assign N2 = data_N[47:34];
+  assign N3 = data_N[63:50];
+  assign N4 = data_N[79:66];
+  assign N5 = data_N[95:82];
+  assign N6 = data_N[111:98];
+  assign N7 = data_N[127:114];
+  assign N8 = data_N[143:130];
+  assign N9 = data_N[159:146];
+  assign W0 = data_W[15:2];
+  assign W1 = data_W[31:18];
+  assign W2 = data_W[47:34];
+  assign W3 = data_W[63:50];
+  assign W4 = data_W[79:66];
+  assign W5 = data_W[95:82];
+  assign W6 = data_W[111:98];
+  assign W7 = data_W[127:114];
+  assign W8 = data_W[143:130];
+  assign W9 = data_W[159:146];
   (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_doa_0_0_ila_0 ila_E
        (.clk(clk),
-        .probe0(data_E[15:0]),
-        .probe1(data_E[31:16]),
+        .probe0(E0),
+        .probe1(E1),
         .probe10(ready_E),
         .probe11(resetn),
-        .probe2(data_E[47:32]),
-        .probe3(data_E[63:48]),
-        .probe4(data_E[79:64]),
-        .probe5(data_E[95:80]),
-        .probe6(data_E[111:96]),
-        .probe7(data_E[127:112]),
-        .probe8(data_E[143:128]),
-        .probe9(data_E[159:144]));
+        .probe2(E2),
+        .probe3(E3),
+        .probe4(E4),
+        .probe5(E5),
+        .probe6(E6),
+        .probe7(E7),
+        .probe8(E8),
+        .probe9(E9));
   (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_doa_0_0_ila_0 ila_N
        (.clk(clk),
-        .probe0(data_N[15:0]),
-        .probe1(data_N[31:16]),
+        .probe0(N0),
+        .probe1(N1),
         .probe10(ready_N),
         .probe11(resetn),
-        .probe2(data_N[47:32]),
-        .probe3(data_N[63:48]),
-        .probe4(data_N[79:64]),
-        .probe5(data_N[95:80]),
-        .probe6(data_N[111:96]),
-        .probe7(data_N[127:112]),
-        .probe8(data_N[143:128]),
-        .probe9(data_N[159:144]));
+        .probe2(N2),
+        .probe3(N3),
+        .probe4(N4),
+        .probe5(N5),
+        .probe6(N6),
+        .probe7(N7),
+        .probe8(N8),
+        .probe9(N9));
   (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_doa_0_0_ila_0_HD1 ila_W
        (.clk(clk),
-        .probe0(data_W[15:0]),
-        .probe1(data_W[31:16]),
+        .probe0(W0),
+        .probe1(W1),
         .probe10(ready_W),
         .probe11(resetn),
-        .probe2(data_W[47:32]),
-        .probe3(data_W[63:48]),
-        .probe4(data_W[79:64]),
-        .probe5(data_W[95:80]),
-        .probe6(data_W[111:96]),
-        .probe7(data_W[127:112]),
-        .probe8(data_W[143:128]),
-        .probe9(data_W[159:144]));
+        .probe2(W2),
+        .probe3(W3),
+        .probe4(W4),
+        .probe5(W5),
+        .probe6(W6),
+        .probe7(W7),
+        .probe8(W8),
+        .probe9(W9));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
@@ -152,16 +209,16 @@ module ps_doa_0_0_ila_0
     probe10,
     probe11);
   (* syn_isclock = "1" *) input clk;
-  input [15:0]probe0;
-  input [15:0]probe1;
-  input [15:0]probe2;
-  input [15:0]probe3;
-  input [15:0]probe4;
-  input [15:0]probe5;
-  input [15:0]probe6;
-  input [15:0]probe7;
-  input [15:0]probe8;
-  input [15:0]probe9;
+  input [13:0]probe0;
+  input [13:0]probe1;
+  input [13:0]probe2;
+  input [13:0]probe3;
+  input [13:0]probe4;
+  input [13:0]probe5;
+  input [13:0]probe6;
+  input [13:0]probe7;
+  input [13:0]probe8;
+  input [13:0]probe9;
   input [0:0]probe10;
   input [0:0]probe11;
 
@@ -185,18 +242,18 @@ module ps_doa_0_0_ila_0_HD1
     probe8,
     probe9);
   (* syn_isclock = "1" *) input clk;
-  input [15:0]probe0;
-  input [15:0]probe1;
+  input [13:0]probe0;
+  input [13:0]probe1;
   input [0:0]probe10;
   input [0:0]probe11;
-  input [15:0]probe2;
-  input [15:0]probe3;
-  input [15:0]probe4;
-  input [15:0]probe5;
-  input [15:0]probe6;
-  input [15:0]probe7;
-  input [15:0]probe8;
-  input [15:0]probe9;
+  input [13:0]probe2;
+  input [13:0]probe3;
+  input [13:0]probe4;
+  input [13:0]probe5;
+  input [13:0]probe6;
+  input [13:0]probe7;
+  input [13:0]probe8;
+  input [13:0]probe9;
 
 
 endmodule

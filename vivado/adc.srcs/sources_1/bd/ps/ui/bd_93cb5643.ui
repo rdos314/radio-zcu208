@@ -35,6 +35,7 @@ preplace netloc adc0_clk_wiz_clk_out1 1 2 2 1040 580 1440J
 preplace netloc mts_0_doa0_resetn 1 2 2 990 20 1480J
 preplace netloc mts_0_doa1_clk 1 2 2 1000 590 1480
 preplace netloc mts_0_doa1_resetn 1 2 2 1070 600 1490
+preplace netloc mts_0_user_sysref_adc 1 2 1 1060 330n
 preplace netloc pl_clk_n_1 1 0 1 NJ 1040
 preplace netloc pl_clk_p_1 1 0 1 NJ 1060
 preplace netloc pl_sysref_n_1 1 0 1 NJ 1180
@@ -58,7 +59,6 @@ preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 640 850n
 preplace netloc util_ds_buf_0_IBUF_OUT1 1 1 1 690 870n
 preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 40 770 650 770 1010 850 NJ 850 1710
 preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 30 780 640
-preplace netloc mts_0_user_sysref_adc 1 2 1 1060 330n
 preplace netloc adc1_clk_1 1 0 3 20J 130 NJ 130 NJ
 preplace netloc axi_gpio_0_GPIO 1 5 1 NJ 990
 preplace netloc axi_smc_M00_AXI 1 2 3 1030 970 NJ 970 NJ
@@ -75,7 +75,7 @@ preplace netloc vin2_23_1 1 0 3 20J 230 NJ 230 NJ
 preplace netloc vin3_01_1 1 0 3 20J 250 NJ 250 NJ
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 1 1 N 660
 levelinfo -pg 1 0 340 830 1240 1600 1830 1960
-pagesize -pg 1 -db -bbox -sgen -130 0 2070 1260
+pagesize -pg 1 -db -bbox -sgen -130 0 2080 1260
 "
 }
 {
