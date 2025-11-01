@@ -13,19 +13,17 @@ set_property IOSTANDARD LVDS_25 [get_ports pl_sysref_p]
 set_property IOSTANDARD LVDS_25 [get_ports pl_sysref_n]
 
 create_clock -period 8.0 -name pl_clk [get_ports pl_clk_p]
-create_generated_clock -name doa0_clk -source [get_ports pl_clk_p] -multiply_by 4 [get_pins ps_i/mts_0/inst/doa0_clk]
-create_generated_clock -name doa1_clk -source [get_ports pl_clk_p] -multiply_by 4 [get_pins ps_i/mts_0/inst/doa1_clk]
-
-set_clock_groups -name async_groups -asynchronous -group [get_clocks pl_clk] -group [get_clocks clk_out1_clk_wiz_0] -group [get_clocks doa0_clk] -group [get_clocks doa1_clk]
+create_generated_clock -name deci_clk [get_pins ps_i/mts_0/inst/clk_wiz_deci_i/inst/plle4_adv_inst/CLKOUT0]
 
 set_input_delay -clock [get_clocks pl_clk] -min -add_delay 7.931 [get_ports pl_sysref_p]
 set_input_delay -clock [get_clocks pl_clk] -max -add_delay 7.985 [get_ports pl_sysref_p]
 
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/pl_clk_util_ds_buf/U0/USE_IBUFDS.GEN_IBUFDS[0].IBUFDS_I/O]
+
+set_false_path -from [get_ports pl_sysref_p] -to [get_pins ps_i/mts_0/inst/mts.sysref_r_reg/D]
  
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.master_reset_reg/C] -to [get_pins ps_i/mts_0/inst/mts.doa0_reset_1_reg/D]
-set_false_path -from [get_pins ps_i/rst_ps8_0_99M/U0/FDRE_inst/C] -to [get_pins {ps_i/mts_0/inst/mts.release_cnt_reg[*]/CLR}]
-set_false_path -from [get_pins ps_i/rst_ps8_0_99M/U0/FDRE_inst/C] -to [get_pins ps_i/mts_0/inst/mts.master_reset_async_reg/PRE]
+set_false_path -from [get_pins ps_i/rst_ps8_0_99M/U0/FDRE_inst/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CLR}]
+set_false_path -from [get_pins ps_i/rst_ps8_0_99M/U0/FDRE_inst/C] -to [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/PRE]
 
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]

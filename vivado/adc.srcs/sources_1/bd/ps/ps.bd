@@ -1704,7 +1704,7 @@
                 "value_src": "const_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_doa0_clk",
+                "value": "ps_mts_0_0_deci_clk",
                 "value_src": "default_prop"
               }
             }
@@ -1775,7 +1775,7 @@
                 "value_src": "const_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_doa1_clk",
+                "value": "ps_mts_0_0_deci_clk",
                 "value_src": "default_prop"
               }
             }
@@ -1874,12 +1874,12 @@
               }
             }
           },
-          "doa0_clk": {
+          "deci_clk": {
             "type": "clk",
             "direction": "O",
             "parameters": {
               "ASSOCIATED_RESET": {
-                "value": "doa0_resetn",
+                "value": "deci_resetn",
                 "value_src": "constant"
               },
               "FREQ_HZ": {
@@ -1896,50 +1896,18 @@
               }
             }
           },
-          "doa1_clk": {
-            "type": "clk",
+          "deci_resetn": {
+            "type": "rst",
             "direction": "O",
             "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "doa1_resetn",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "constant"
-              },
-              "FREQ_TOLERANCE_HZ": {
-                "value": "0",
-                "value_src": "constant"
-              },
-              "PHASE": {
-                "value": "0.0",
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
                 "value_src": "constant"
               }
             }
           },
           "user_sysref_adc": {
             "direction": "O"
-          },
-          "doa0_resetn": {
-            "type": "rst",
-            "direction": "O",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "constant"
-              }
-            }
-          },
-          "doa1_resetn": {
-            "type": "rst",
-            "direction": "O",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "constant"
-              }
-            }
           }
         }
       },
@@ -2053,36 +2021,26 @@
       }
     },
     "nets": {
-      "adc0_clk_wiz_clk_out1": {
+      "mts_0_deci_clk": {
         "ports": [
-          "mts_0/doa0_clk",
-          "usp_rf_data_converter_0/m1_axis_aclk",
+          "mts_0/deci_clk",
+          "doa_0/clk",
+          "doa_1/clk",
           "usp_rf_data_converter_0/m0_axis_aclk",
-          "doa_0/clk"
+          "usp_rf_data_converter_0/m1_axis_aclk",
+          "usp_rf_data_converter_0/m2_axis_aclk",
+          "usp_rf_data_converter_0/m3_axis_aclk"
         ]
       },
-      "mts_0_doa0_resetn": {
+      "mts_0_deci_resetn": {
         "ports": [
-          "mts_0/doa0_resetn",
+          "mts_0/deci_resetn",
+          "doa_0/resetn",
+          "doa_1/resetn",
           "usp_rf_data_converter_0/m0_axis_aresetn",
           "usp_rf_data_converter_0/m1_axis_aresetn",
-          "doa_0/resetn"
-        ]
-      },
-      "mts_0_doa1_clk": {
-        "ports": [
-          "mts_0/doa1_clk",
-          "usp_rf_data_converter_0/m2_axis_aclk",
-          "usp_rf_data_converter_0/m3_axis_aclk",
-          "doa_1/clk"
-        ]
-      },
-      "mts_0_doa1_resetn": {
-        "ports": [
-          "mts_0/doa1_resetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
-          "usp_rf_data_converter_0/m3_axis_aresetn",
-          "doa_1/resetn"
+          "usp_rf_data_converter_0/m3_axis_aresetn"
         ]
       },
       "mts_0_user_sysref_adc": {

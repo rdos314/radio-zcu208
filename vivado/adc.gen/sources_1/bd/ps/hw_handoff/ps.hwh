@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Oct 28 19:00:58 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov  1 23:35:09 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -1390,9 +1390,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="159" NAME="data_E" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
@@ -1425,9 +1425,9 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m10_axis_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_resetn">
+        <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_resetn"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1440,9 +1440,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="159" NAME="data_E" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
@@ -1475,9 +1475,9 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m30_axis_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa1_resetn">
+        <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_resetn"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1846,32 +1846,24 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa0_clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="deci_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aclk"/>
-            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m0_axis_aclk"/>
             <CONNECTION INSTANCE="doa_0" PORT="clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="doa0_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_resetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m0_axis_aresetn"/>
-            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aresetn"/>
-            <CONNECTION INSTANCE="doa_0" PORT="resetn"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa1_clk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
-          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_1" PORT="clk"/>
+            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m0_axis_aclk"/>
+            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aclk"/>
-            <CONNECTION INSTANCE="doa_1" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="doa1_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa1_resetn">
+        <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_0" PORT="resetn"/>
+            <CONNECTION INSTANCE="doa_1" PORT="resetn"/>
+            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m0_axis_aresetn"/>
+            <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aresetn"/>
-            <CONNECTION INSTANCE="doa_1" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="125000000" DIR="I" NAME="pl_clk" SIGIS="clk" SIGNAME="pl_clk_util_ds_buf_IBUF_OUT">
@@ -4251,14 +4243,14 @@
             <CONNECTION INSTANCE="doa_0" PORT="ready_E"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m0_axis_aclk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m0_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m0_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_resetn">
+        <PORT DIR="I" NAME="m0_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_resetn"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m10_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
@@ -4272,14 +4264,14 @@
             <CONNECTION INSTANCE="doa_0" PORT="ready_W"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m1_axis_aclk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m1_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m1_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_resetn">
+        <PORT DIR="I" NAME="m1_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_resetn"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m20_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
@@ -4304,14 +4296,14 @@
             <CONNECTION INSTANCE="doa_1" PORT="ready_E"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m2_axis_aclk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m2_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m2_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa1_resetn">
+        <PORT DIR="I" NAME="m2_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_resetn"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m30_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
@@ -4325,14 +4317,14 @@
             <CONNECTION INSTANCE="doa_1" PORT="ready_W"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m3_axis_aclk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m3_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m3_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa1_resetn">
+        <PORT DIR="I" NAME="m3_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_resetn"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="99999001" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
@@ -4560,7 +4552,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m00_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_doa0_clk"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_deci_clk"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="500000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
@@ -4580,7 +4572,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m02_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_doa0_clk"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_deci_clk"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="500000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
@@ -4600,7 +4592,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m10_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_doa0_clk"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_deci_clk"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="500000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
@@ -4620,7 +4612,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m20_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_doa1_clk"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_deci_clk"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="500000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
@@ -4640,7 +4632,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m22_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_doa1_clk"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_deci_clk"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="500000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
@@ -4660,7 +4652,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m30_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_doa1_clk"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="ps_mts_0_0_deci_clk"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="500000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>

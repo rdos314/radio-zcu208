@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Oct  6 21:29:30 2025
+-- Date        : Sat Nov  1 23:35:47 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_stub.vhdl
@@ -18,11 +18,9 @@ entity ps_mts_0_0 is
     pl_clk : in STD_LOGIC;
     pl_sysref : in STD_LOGIC;
     sys_reset : in STD_LOGIC;
-    doa0_clk : out STD_LOGIC;
-    doa1_clk : out STD_LOGIC;
-    user_sysref_adc : out STD_LOGIC;
-    doa0_resetn : out STD_LOGIC;
-    doa1_resetn : out STD_LOGIC
+    deci_clk : out STD_LOGIC;
+    deci_resetn : out STD_LOGIC;
+    user_sysref_adc : out STD_LOGIC
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -39,7 +37,7 @@ architecture stub of ps_mts_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "pl_clk,pl_sysref,sys_reset,doa0_clk,doa1_clk,user_sysref_adc,doa0_resetn,doa1_resetn";
+  attribute black_box_pad_pin of stub : architecture is "pl_clk,pl_sysref,sys_reset,deci_clk,deci_resetn,user_sysref_adc";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of pl_clk : signal is "xilinx.com:signal:clock:1.0 pl_clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -49,18 +47,12 @@ architecture stub of ps_mts_0_0 is
   attribute X_INTERFACE_INFO of sys_reset : signal is "xilinx.com:signal:reset:1.0 sys_reset RST";
   attribute X_INTERFACE_MODE of sys_reset : signal is "slave";
   attribute X_INTERFACE_PARAMETER of sys_reset : signal is "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of doa0_clk : signal is "xilinx.com:signal:clock:1.0 doa0_clk CLK";
-  attribute X_INTERFACE_MODE of doa0_clk : signal is "master";
-  attribute X_INTERFACE_PARAMETER of doa0_clk : signal is "XIL_INTERFACENAME doa0_clk, ASSOCIATED_RESET doa0_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of doa1_clk : signal is "xilinx.com:signal:clock:1.0 doa1_clk CLK";
-  attribute X_INTERFACE_MODE of doa1_clk : signal is "master";
-  attribute X_INTERFACE_PARAMETER of doa1_clk : signal is "XIL_INTERFACENAME doa1_clk, ASSOCIATED_RESET doa1_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa1_clk, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of doa0_resetn : signal is "xilinx.com:signal:reset:1.0 doa0_resetn RST";
-  attribute X_INTERFACE_MODE of doa0_resetn : signal is "master";
-  attribute X_INTERFACE_PARAMETER of doa0_resetn : signal is "XIL_INTERFACENAME doa0_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of doa1_resetn : signal is "xilinx.com:signal:reset:1.0 doa1_resetn RST";
-  attribute X_INTERFACE_MODE of doa1_resetn : signal is "master";
-  attribute X_INTERFACE_PARAMETER of doa1_resetn : signal is "XIL_INTERFACENAME doa1_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of deci_clk : signal is "xilinx.com:signal:clock:1.0 deci_clk CLK";
+  attribute X_INTERFACE_MODE of deci_clk : signal is "master";
+  attribute X_INTERFACE_PARAMETER of deci_clk : signal is "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of deci_resetn : signal is "xilinx.com:signal:reset:1.0 deci_resetn RST";
+  attribute X_INTERFACE_MODE of deci_resetn : signal is "master";
+  attribute X_INTERFACE_PARAMETER of deci_resetn : signal is "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_CORE_INFO : string;
   attribute X_CORE_INFO of stub : architecture is "mts,Vivado 2025.1";
 begin
