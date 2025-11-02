@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Nov  1 23:35:47 2025
+// Date        : Sun Nov  2 18:54:19 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -22,14 +22,26 @@ module ps_mts_0_0
     sys_reset,
     deci_clk,
     deci_resetn,
+    comp0_clk,
+    comp0_reset,
+    comp1_clk,
+    comp1_reset,
     user_sysref_adc);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *) input pl_clk;
   input pl_sysref;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input sys_reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) output deci_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 deci_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output deci_resetn;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp0_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_clk, ASSOCIATED_RESET comp0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) output comp0_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp0_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output comp0_reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp1_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_clk, ASSOCIATED_RESET comp1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *) output comp1_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp1_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output comp1_reset;
   output user_sysref_adc;
 
+  wire comp0_clk;
+  wire comp0_reset;
+  wire comp1_clk;
+  wire comp1_reset;
   wire deci_clk;
   wire deci_resetn;
   wire pl_clk;
@@ -38,12 +50,30 @@ module ps_mts_0_0
   wire user_sysref_adc;
 
   ps_mts_0_0_mts inst
-       (.deci_clk(deci_clk),
+       (.comp0_clk(comp0_clk),
+        .comp0_reset(comp0_reset),
+        .comp1_clk(comp1_clk),
+        .comp1_reset(comp1_reset),
+        .deci_clk(deci_clk),
         .deci_resetn(deci_resetn),
         .pl_clk(pl_clk),
         .pl_sysref(pl_sysref),
         .sys_reset(sys_reset),
         .user_sysref_adc(user_sysref_adc));
+endmodule
+
+(* ORIG_REF_NAME = "clk_wiz_adc" *) 
+module ps_mts_0_0_clk_wiz_adc
+   (clk_out1,
+    clk_out2,
+    locked,
+    clk_in1);
+  (* syn_isclock = "1" *) output clk_out1;
+  (* syn_isclock = "1" *) output clk_out2;
+  output locked;
+  input clk_in1;
+
+
 endmodule
 
 (* ORIG_REF_NAME = "clk_wiz_deci" *) 
@@ -65,14 +95,31 @@ module ps_mts_0_0_mts
     sys_reset,
     deci_clk,
     deci_resetn,
+    comp0_clk,
+    comp0_reset,
+    comp1_clk,
+    comp1_reset,
     user_sysref_adc);
   input pl_clk;
   input pl_sysref;
   input sys_reset;
   (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *) output deci_clk;
   output deci_resetn;
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *) output comp0_clk;
+  output comp0_reset;
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *) output comp1_clk;
+  output comp1_reset;
   output user_sysref_adc;
 
+  wire comp0_clk;
+  wire comp0_reset;
+  (* async_reg = "true" *) wire comp0_reset_1;
+  (* async_reg = "true" *) wire comp0_reset_2;
+  wire comp1_clk;
+  wire comp1_reset;
+  (* async_reg = "true" *) wire comp1_reset_1;
+  (* async_reg = "true" *) wire comp1_reset_2;
+  wire comp_locked;
   wire deci_clk;
   wire deci_locked;
   (* async_reg = "true" *) wire [3:0]deci_release_cnt;
@@ -81,6 +128,7 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire deci_reset_2;
   (* async_reg = "true" *) wire deci_reset_async;
   wire deci_resetn;
+  wire \mts.comp0_reset_1_reg0 ;
   wire \mts.deci_reset_async_i_1_n_0 ;
   wire \mts.deci_resetn_i_1_n_0 ;
   wire pl_clk;
@@ -92,10 +140,65 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire [2:0]sysref_sync;
 
   assign user_sysref_adc = sysref_sync[2];
+  ps_mts_0_0_clk_wiz_adc clk_wiz_comp_i
+       (.clk_in1(pl_clk_buf),
+        .clk_out1(comp0_clk),
+        .clk_out2(comp1_clk),
+        .locked(comp_locked));
   ps_mts_0_0_clk_wiz_deci clk_wiz_deci_i
        (.clk_in1(pl_clk_buf),
         .clk_out1(deci_clk),
         .locked(deci_locked));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \mts.comp0_reset_1_i_1 
+       (.I0(deci_reset_async),
+        .I1(comp_locked),
+        .O(\mts.comp0_reset_1_reg0 ));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE \mts.comp0_reset_1_reg 
+       (.C(comp0_clk),
+        .CE(1'b1),
+        .D(\mts.comp0_reset_1_reg0 ),
+        .Q(comp0_reset_1),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE \mts.comp0_reset_2_reg 
+       (.C(comp0_clk),
+        .CE(1'b1),
+        .D(comp0_reset_1),
+        .Q(comp0_reset_2),
+        .R(1'b0));
+  FDRE \mts.comp0_reset_reg 
+       (.C(comp0_clk),
+        .CE(1'b1),
+        .D(comp0_reset_2),
+        .Q(comp0_reset),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE \mts.comp1_reset_1_reg 
+       (.C(comp1_clk),
+        .CE(1'b1),
+        .D(\mts.comp0_reset_1_reg0 ),
+        .Q(comp1_reset_1),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE \mts.comp1_reset_2_reg 
+       (.C(comp1_clk),
+        .CE(1'b1),
+        .D(comp1_reset_1),
+        .Q(comp1_reset_2),
+        .R(1'b0));
+  FDRE \mts.comp1_reset_reg 
+       (.C(comp1_clk),
+        .CE(1'b1),
+        .D(comp1_reset_2),
+        .Q(comp1_reset),
+        .R(1'b0));
   LUT4 #(
     .INIT(16'h8F0F)) 
     \mts.deci_release_cnt[0]_i_1 

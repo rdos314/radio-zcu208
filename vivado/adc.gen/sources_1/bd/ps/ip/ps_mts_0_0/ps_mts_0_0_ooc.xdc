@@ -52,6 +52,10 @@
 # #########################################################
 
 
+create_clock -period 2 -name comp0_clk [get_ports comp0_clk]
+
+create_clock -period 2 -name comp1_clk [get_ports comp1_clk]
+
 create_clock -period 2 -name deci_clk [get_ports deci_clk]
 
 create_clock -period 8 -name pl_clk [get_ports pl_clk]

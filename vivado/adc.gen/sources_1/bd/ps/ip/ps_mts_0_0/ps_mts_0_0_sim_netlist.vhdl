@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Nov  1 23:35:47 2025
+-- Date        : Sun Nov  2 18:54:19 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -22,6 +22,10 @@ entity ps_mts_0_0_mts is
     sys_reset : in STD_LOGIC;
     deci_clk : out STD_LOGIC;
     deci_resetn : out STD_LOGIC;
+    comp0_clk : out STD_LOGIC;
+    comp0_reset : out STD_LOGIC;
+    comp1_clk : out STD_LOGIC;
+    comp1_reset : out STD_LOGIC;
     user_sysref_adc : out STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -29,6 +33,14 @@ entity ps_mts_0_0_mts is
 end ps_mts_0_0_mts;
 
 architecture STRUCTURE of ps_mts_0_0_mts is
+  component ps_mts_0_0_clk_wiz_adc is
+  port (
+    clk_out1 : out STD_LOGIC;
+    clk_out2 : out STD_LOGIC;
+    locked : out STD_LOGIC;
+    clk_in1 : in STD_LOGIC
+  );
+  end component ps_mts_0_0_clk_wiz_adc;
   component ps_mts_0_0_clk_wiz_deci is
   port (
     clk_out1 : out STD_LOGIC;
@@ -36,10 +48,21 @@ architecture STRUCTURE of ps_mts_0_0_mts is
     clk_in1 : in STD_LOGIC
   );
   end component ps_mts_0_0_clk_wiz_deci;
+  signal \^comp0_clk\ : STD_LOGIC;
+  signal comp0_reset_1 : STD_LOGIC;
+  attribute async_reg : string;
+  attribute async_reg of comp0_reset_1 : signal is "true";
+  signal comp0_reset_2 : STD_LOGIC;
+  attribute async_reg of comp0_reset_2 : signal is "true";
+  signal \^comp1_clk\ : STD_LOGIC;
+  signal comp1_reset_1 : STD_LOGIC;
+  attribute async_reg of comp1_reset_1 : signal is "true";
+  signal comp1_reset_2 : STD_LOGIC;
+  attribute async_reg of comp1_reset_2 : signal is "true";
+  signal comp_locked : STD_LOGIC;
   signal \^deci_clk\ : STD_LOGIC;
   signal deci_locked : STD_LOGIC;
   signal deci_release_cnt : STD_LOGIC_VECTOR ( 3 downto 0 );
-  attribute async_reg : string;
   attribute async_reg of deci_release_cnt : signal is "true";
   signal \deci_release_cnt__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal deci_reset_1 : STD_LOGIC;
@@ -48,6 +71,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of deci_reset_2 : signal is "true";
   signal deci_reset_async : STD_LOGIC;
   attribute async_reg of deci_reset_async : signal is "true";
+  signal \mts.comp0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.deci_reset_async_i_1_n_0\ : STD_LOGIC;
   signal \mts.deci_resetn_i_1_n_0\ : STD_LOGIC;
   signal pl_clk_buf : STD_LOGIC;
@@ -57,8 +81,16 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal sysref_sync : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute async_reg of sysref_sync : signal is "true";
   attribute ASYNC_REG_boolean : boolean;
-  attribute ASYNC_REG_boolean of \mts.deci_release_cnt_reg[0]\ : label is std.standard.true;
+  attribute ASYNC_REG_boolean of \mts.comp0_reset_1_reg\ : label is std.standard.true;
   attribute KEEP : string;
+  attribute KEEP of \mts.comp0_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.comp0_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.comp0_reset_2_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.comp1_reset_1_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.comp1_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.comp1_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.comp1_reset_2_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.deci_release_cnt_reg[0]\ : label is std.standard.true;
   attribute KEEP of \mts.deci_release_cnt_reg[0]\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_release_cnt_reg[1]\ : label is std.standard.true;
   attribute KEEP of \mts.deci_release_cnt_reg[1]\ : label is "yes";
@@ -87,15 +119,83 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute XILINX_TRANSFORM_PINMAP : string;
   attribute XILINX_TRANSFORM_PINMAP of p_clk_i : label is "VCC:CE";
   attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of comp0_clk : signal is "XIL_INTERFACENAME COMP0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
+  attribute X_INTERFACE_PARAMETER of comp1_clk : signal is "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
   attribute X_INTERFACE_PARAMETER of deci_clk : signal is "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
 begin
+  comp0_clk <= \^comp0_clk\;
+  comp1_clk <= \^comp1_clk\;
   deci_clk <= \^deci_clk\;
   user_sysref_adc <= sysref_sync(2);
+clk_wiz_comp_i: component ps_mts_0_0_clk_wiz_adc
+     port map (
+      clk_in1 => pl_clk_buf,
+      clk_out1 => \^comp0_clk\,
+      clk_out2 => \^comp1_clk\,
+      locked => comp_locked
+    );
 clk_wiz_deci_i: component ps_mts_0_0_clk_wiz_deci
      port map (
       clk_in1 => pl_clk_buf,
       clk_out1 => \^deci_clk\,
       locked => deci_locked
+    );
+\mts.comp0_reset_1_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => deci_reset_async,
+      I1 => comp_locked,
+      O => \mts.comp0_reset_1_reg0\
+    );
+\mts.comp0_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^comp0_clk\,
+      CE => '1',
+      D => \mts.comp0_reset_1_reg0\,
+      Q => comp0_reset_1,
+      R => '0'
+    );
+\mts.comp0_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^comp0_clk\,
+      CE => '1',
+      D => comp0_reset_1,
+      Q => comp0_reset_2,
+      R => '0'
+    );
+\mts.comp0_reset_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^comp0_clk\,
+      CE => '1',
+      D => comp0_reset_2,
+      Q => comp0_reset,
+      R => '0'
+    );
+\mts.comp1_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^comp1_clk\,
+      CE => '1',
+      D => \mts.comp0_reset_1_reg0\,
+      Q => comp1_reset_1,
+      R => '0'
+    );
+\mts.comp1_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^comp1_clk\,
+      CE => '1',
+      D => comp1_reset_1,
+      Q => comp1_reset_2,
+      R => '0'
+    );
+\mts.comp1_reset_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^comp1_clk\,
+      CE => '1',
+      D => comp1_reset_2,
+      Q => comp1_reset,
+      R => '0'
     );
 \mts.deci_release_cnt[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -288,6 +388,10 @@ entity ps_mts_0_0 is
     sys_reset : in STD_LOGIC;
     deci_clk : out STD_LOGIC;
     deci_resetn : out STD_LOGIC;
+    comp0_clk : out STD_LOGIC;
+    comp0_reset : out STD_LOGIC;
+    comp1_clk : out STD_LOGIC;
+    comp1_reset : out STD_LOGIC;
     user_sysref_adc : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -304,10 +408,22 @@ end ps_mts_0_0;
 
 architecture STRUCTURE of ps_mts_0_0 is
   attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of deci_clk : signal is "xilinx.com:signal:clock:1.0 deci_clk CLK";
+  attribute X_INTERFACE_INFO of comp0_clk : signal is "xilinx.com:signal:clock:1.0 comp0_clk CLK";
   attribute X_INTERFACE_MODE : string;
-  attribute X_INTERFACE_MODE of deci_clk : signal is "master";
+  attribute X_INTERFACE_MODE of comp0_clk : signal is "master";
   attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of comp0_clk : signal is "XIL_INTERFACENAME comp0_clk, ASSOCIATED_RESET comp0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of comp0_reset : signal is "xilinx.com:signal:reset:1.0 comp0_reset RST";
+  attribute X_INTERFACE_MODE of comp0_reset : signal is "master";
+  attribute X_INTERFACE_PARAMETER of comp0_reset : signal is "XIL_INTERFACENAME comp0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of comp1_clk : signal is "xilinx.com:signal:clock:1.0 comp1_clk CLK";
+  attribute X_INTERFACE_MODE of comp1_clk : signal is "master";
+  attribute X_INTERFACE_PARAMETER of comp1_clk : signal is "XIL_INTERFACENAME comp1_clk, ASSOCIATED_RESET comp1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of comp1_reset : signal is "xilinx.com:signal:reset:1.0 comp1_reset RST";
+  attribute X_INTERFACE_MODE of comp1_reset : signal is "master";
+  attribute X_INTERFACE_PARAMETER of comp1_reset : signal is "XIL_INTERFACENAME comp1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of deci_clk : signal is "xilinx.com:signal:clock:1.0 deci_clk CLK";
+  attribute X_INTERFACE_MODE of deci_clk : signal is "master";
   attribute X_INTERFACE_PARAMETER of deci_clk : signal is "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of deci_resetn : signal is "xilinx.com:signal:reset:1.0 deci_resetn RST";
   attribute X_INTERFACE_MODE of deci_resetn : signal is "master";
@@ -321,6 +437,10 @@ architecture STRUCTURE of ps_mts_0_0 is
 begin
 inst: entity work.ps_mts_0_0_mts
      port map (
+      comp0_clk => comp0_clk,
+      comp0_reset => comp0_reset,
+      comp1_clk => comp1_clk,
+      comp1_reset => comp1_reset,
       deci_clk => deci_clk,
       deci_resetn => deci_resetn,
       pl_clk => pl_clk,

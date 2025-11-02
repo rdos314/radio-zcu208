@@ -22,7 +22,11 @@
       "pl_clk_util_ds_buf": "",
       "pl_sysref_ds_buf": "",
       "decimate_0": "",
-      "decimate_1": ""
+      "decimate_1": "",
+      "raw_fifo_0": "",
+      "raw_fifo_1": "",
+      "composite_0": "",
+      "composite_1": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1764,6 +1768,58 @@
               }
             }
           },
+          "comp0_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "comp0_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "comp0_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "comp1_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "comp1_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "comp1_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
           "user_sysref_adc": {
             "direction": "O"
           }
@@ -1942,6 +1998,139 @@
             "right": "0"
           }
         }
+      },
+      "raw_fifo_0": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "ip_revision": "13",
+        "xci_name": "ps_fifo_generator_0_0",
+        "xci_path": "ip\\ps_fifo_generator_0_0\\ps_fifo_generator_0_0.xci",
+        "inst_hier_path": "raw_fifo_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Block_RAM"
+          },
+          "Input_Data_Width": {
+            "value": "448"
+          },
+          "Read_Data_Count": {
+            "value": "false"
+          }
+        }
+      },
+      "raw_fifo_1": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "ip_revision": "13",
+        "xci_name": "ps_fifo_generator_0_1",
+        "xci_path": "ip\\ps_fifo_generator_0_1\\ps_fifo_generator_0_1.xci",
+        "inst_hier_path": "raw_fifo_1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Block_RAM"
+          },
+          "Input_Data_Width": {
+            "value": "448"
+          }
+        }
+      },
+      "composite_0": {
+        "vlnv": "xilinx.com:module_ref:composite:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_composite_0_0",
+        "xci_path": "ip\\ps_composite_0_0\\ps_composite_0_0.xci",
+        "inst_hier_path": "composite_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "composite",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp0_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "fifo_rd": {
+            "direction": "O"
+          },
+          "fifo": {
+            "direction": "I",
+            "left": "447",
+            "right": "0"
+          }
+        }
+      },
+      "composite_1": {
+        "vlnv": "xilinx.com:module_ref:composite:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_composite_1_0",
+        "xci_path": "ip\\ps_composite_1_0\\ps_composite_1_0.xci",
+        "inst_hier_path": "composite_1",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "composite",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp1_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "fifo_rd": {
+            "direction": "O"
+          },
+          "fifo": {
+            "direction": "I",
+            "left": "447",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -2037,6 +2226,70 @@
       }
     },
     "nets": {
+      "composite_0_fifo_rd": {
+        "ports": [
+          "composite_0/fifo_rd",
+          "raw_fifo_0/rd_en"
+        ]
+      },
+      "composite_1_fifo_rd": {
+        "ports": [
+          "composite_1/fifo_rd",
+          "raw_fifo_1/rd_en"
+        ]
+      },
+      "decimate_0_fifo": {
+        "ports": [
+          "decimate_0/fifo",
+          "raw_fifo_0/din"
+        ]
+      },
+      "decimate_0_fifo_wr": {
+        "ports": [
+          "decimate_0/fifo_wr",
+          "raw_fifo_0/wr_en"
+        ]
+      },
+      "decimate_1_fifo": {
+        "ports": [
+          "decimate_1/fifo",
+          "raw_fifo_1/din"
+        ]
+      },
+      "decimate_1_fifo_wr": {
+        "ports": [
+          "decimate_1/fifo_wr",
+          "raw_fifo_1/wr_en"
+        ]
+      },
+      "mts_0_comp0_clk": {
+        "ports": [
+          "mts_0/comp0_clk",
+          "raw_fifo_0/rd_clk",
+          "composite_0/clk"
+        ]
+      },
+      "mts_0_comp0_reset": {
+        "ports": [
+          "mts_0/comp0_reset",
+          "raw_fifo_0/rst",
+          "composite_0/reset"
+        ]
+      },
+      "mts_0_comp1_clk": {
+        "ports": [
+          "mts_0/comp1_clk",
+          "raw_fifo_1/rd_clk",
+          "composite_1/clk"
+        ]
+      },
+      "mts_0_comp1_reset": {
+        "ports": [
+          "mts_0/comp1_reset",
+          "raw_fifo_1/rst",
+          "composite_1/reset"
+        ]
+      },
       "mts_0_deci_clk": {
         "ports": [
           "mts_0/deci_clk",
@@ -2045,7 +2298,9 @@
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
           "decimate_0/clk",
-          "decimate_1/clk"
+          "decimate_1/clk",
+          "raw_fifo_0/wr_clk",
+          "raw_fifo_1/wr_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -2093,6 +2348,18 @@
         "ports": [
           "r5_timer/interrupt",
           "zynq_ultra_ps_e_0/pl_ps_irq0"
+        ]
+      },
+      "raw_fifo_0_dout": {
+        "ports": [
+          "raw_fifo_0/dout",
+          "composite_0/fifo"
+        ]
+      },
+      "raw_fifo_1_dout": {
+        "ports": [
+          "raw_fifo_1/dout",
+          "composite_1/fifo"
         ]
       },
       "rst_ps8_0_99M_mb_reset": {
