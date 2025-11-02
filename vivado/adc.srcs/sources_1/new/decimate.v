@@ -24,10 +24,18 @@ module decimate(
     input wire  resetn,
     input wire	[159:0] data_N,
     input wire	ready_N,
+    input wire	[23:0] fir_N,
+    input wire	valid_N,
+    
     input wire	[159:0] data_E,
     input wire	ready_E,
+    input wire	[23:0] fir_E,
+    input wire	valid_E,
+
     input wire	[159:0] data_W,
     input wire	ready_W,
+    input wire	[23:0] fir_W,
+    input wire	valid_W,
 
     output reg fifo_wr,
     output reg	[447:0] fifo
@@ -72,7 +80,7 @@ module decimate(
   wire [13:0] W8 = data_W[143:130];
   wire [13:0] W9 = data_W[159:146];
 
-	ila_0 ila_N (
+ila_0 ila_N (
 		.clk(clk),                 // input wire clk
 		.probe0(N0),        // input wire [15:0]  probe3
 		.probe1(N1),       // input wire [15:0]  probe3
@@ -84,8 +92,9 @@ module decimate(
 		.probe7(N7),     // input wire [15:0]  probe3
 		.probe8(N8),     // input wire [15:0]  probe3
 		.probe9(N9),     // input wire [15:0]  probe3
-		.probe10(ready_N),             // input wire [0:0]  probe3
-		.probe11(resetn)             // input wire [0:0]  probe3
+		.probe10(ready_N),     // input wire [0:0]  probe3
+		.probe11(fir_N),             // input wire [23:0]  probe3
+		.probe12(valid_N)             // input wire [0:0]  probe3
 	);
 
 	ila_0 ila_E (
@@ -100,8 +109,9 @@ module decimate(
 		.probe7(E7),     // input wire [15:0]  probe3
 		.probe8(E8),     // input wire [15:0]  probe3
 		.probe9(E9),     // input wire [15:0]  probe3
-		.probe10(ready_E),             // input wire [0:0]  probe3
-		.probe11(resetn)             // input wire [0:0]  probe3
+		.probe10(ready_E),     // input wire [0:0]  probe3
+		.probe11(fir_E),             // input wire [23:0]  probe3
+		.probe12(valid_E)             // input wire [0:0]  probe3
 	);
 
 	ila_0 ila_W (
@@ -116,9 +126,11 @@ module decimate(
 		.probe7(W7),     // input wire [15:0]  probe3
 		.probe8(W8),     // input wire [15:0]  probe3
 		.probe9(W9),     // input wire [15:0]  probe3
-		.probe10(ready_W),             // input wire [0:0]  probe3
-		.probe11(resetn)             // input wire [0:0]  probe3
+		.probe10(ready_W),     // input wire [0:0]  probe3
+		.probe11(fir_W),             // input wire [23:0]  probe3
+		.probe12(valid_W)             // input wire [0:0]  probe3
 	);
+
 
 generate
   begin : decimate

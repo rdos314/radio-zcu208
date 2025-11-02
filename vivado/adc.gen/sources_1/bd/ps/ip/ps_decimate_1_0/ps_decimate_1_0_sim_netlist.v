@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Nov  2 17:44:18 2025
+// Date        : Sun Nov  2 22:09:53 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_decimate_1_0/ps_decimate_1_0_sim_netlist.v
@@ -21,20 +21,32 @@ module ps_decimate_1_0
     resetn,
     data_N,
     ready_N,
+    fir_N,
+    valid_N,
     data_E,
     ready_E,
+    fir_E,
+    valid_E,
     data_W,
     ready_W,
+    fir_W,
+    valid_W,
     fifo_wr,
     fifo);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   input [159:0]data_N;
   input ready_N;
+  input [23:0]fir_N;
+  input valid_N;
   input [159:0]data_E;
   input ready_E;
+  input [23:0]fir_E;
+  input valid_E;
   input [159:0]data_W;
   input ready_W;
+  input [23:0]fir_W;
+  input valid_W;
   output fifo_wr;
   output [447:0]fifo;
 
@@ -44,10 +56,16 @@ module ps_decimate_1_0
   wire [159:0]data_W;
   wire [447:0]fifo;
   wire fifo_wr;
+  wire [23:0]fir_E;
+  wire [23:0]fir_N;
+  wire [23:0]fir_W;
   wire ready_E;
   wire ready_N;
   wire ready_W;
   wire resetn;
+  wire valid_E;
+  wire valid_N;
+  wire valid_W;
 
   ps_decimate_1_0_decimate inst
        (.clk(clk),
@@ -56,10 +74,16 @@ module ps_decimate_1_0
         .data_W({data_W[159:146],1'b0,1'b0,data_W[143:130],1'b0,1'b0,data_W[127:114],1'b0,1'b0,data_W[111:98],1'b0,1'b0,data_W[95:82],1'b0,1'b0,data_W[79:66],1'b0,1'b0,data_W[63:50],1'b0,1'b0,data_W[47:34],1'b0,1'b0,data_W[31:18],1'b0,1'b0,data_W[15:2],1'b0,1'b0}),
         .fifo(fifo),
         .fifo_wr(fifo_wr),
+        .fir_E(fir_E),
+        .fir_N(fir_N),
+        .fir_W(fir_W),
         .ready_E(ready_E),
         .ready_N(ready_N),
         .ready_W(ready_W),
-        .resetn(resetn));
+        .resetn(resetn),
+        .valid_E(valid_E),
+        .valid_N(valid_N),
+        .valid_W(valid_W));
 endmodule
 
 (* ORIG_REF_NAME = "decimate" *) (* keep_hierarchy = "soft" *) 
@@ -68,20 +92,32 @@ module ps_decimate_1_0_decimate
     resetn,
     data_N,
     ready_N,
+    fir_N,
+    valid_N,
     data_E,
     ready_E,
+    fir_E,
+    valid_E,
     data_W,
     ready_W,
+    fir_W,
+    valid_W,
     fifo_wr,
     fifo);
   input clk;
   input resetn;
   input [159:0]data_N;
   input ready_N;
+  input [23:0]fir_N;
+  input valid_N;
   input [159:0]data_E;
   input ready_E;
+  input [23:0]fir_E;
+  input valid_E;
   input [159:0]data_W;
   input ready_W;
+  input [23:0]fir_W;
+  input valid_W;
   output fifo_wr;
   output [447:0]fifo;
 
@@ -180,10 +216,16 @@ module ps_decimate_1_0_decimate
   wire \decimate.counter_reg[8]_i_1_n_9 ;
   wire [447:0]fifo;
   wire fifo_wr;
+  (* MARK_DEBUG *) wire [23:0]fir_E;
+  (* MARK_DEBUG *) wire [23:0]fir_N;
+  (* MARK_DEBUG *) wire [23:0]fir_W;
   (* MARK_DEBUG *) wire ready_E;
   (* MARK_DEBUG *) wire ready_N;
   (* MARK_DEBUG *) wire ready_W;
-  (* MARK_DEBUG *) wire resetn;
+  wire resetn;
+  (* MARK_DEBUG *) wire valid_E;
+  (* MARK_DEBUG *) wire valid_N;
+  (* MARK_DEBUG *) wire valid_W;
   wire [7:3]\NLW_decimate.counter_reg[24]_i_1_CO_UNCONNECTED ;
   wire [7:4]\NLW_decimate.counter_reg[24]_i_1_O_UNCONNECTED ;
 
@@ -3153,7 +3195,8 @@ module ps_decimate_1_0_decimate
         .probe0(E0),
         .probe1(E1),
         .probe10(ready_E),
-        .probe11(resetn),
+        .probe11(fir_E),
+        .probe12(valid_E),
         .probe2(E2),
         .probe3(E3),
         .probe4(E4),
@@ -3170,7 +3213,8 @@ module ps_decimate_1_0_decimate
         .probe0(N0),
         .probe1(N1),
         .probe10(ready_N),
-        .probe11(resetn),
+        .probe11(fir_N),
+        .probe12(valid_N),
         .probe2(N2),
         .probe3(N3),
         .probe4(N4),
@@ -3187,7 +3231,8 @@ module ps_decimate_1_0_decimate
         .probe0(W0),
         .probe1(W1),
         .probe10(ready_W),
-        .probe11(resetn),
+        .probe11(fir_W),
+        .probe12(valid_W),
         .probe2(W2),
         .probe3(W3),
         .probe4(W4),
@@ -3213,7 +3258,8 @@ module ps_decimate_1_0_ila_0
     probe8,
     probe9,
     probe10,
-    probe11);
+    probe11,
+    probe12);
   (* syn_isclock = "1" *) input clk;
   input [13:0]probe0;
   input [13:0]probe1;
@@ -3226,7 +3272,8 @@ module ps_decimate_1_0_ila_0
   input [13:0]probe8;
   input [13:0]probe9;
   input [0:0]probe10;
-  input [0:0]probe11;
+  input [23:0]probe11;
+  input [0:0]probe12;
 
 
 endmodule
@@ -3239,6 +3286,7 @@ module ps_decimate_1_0_ila_0_HD1
     probe1,
     probe10,
     probe11,
+    probe12,
     probe2,
     probe3,
     probe4,
@@ -3251,7 +3299,8 @@ module ps_decimate_1_0_ila_0_HD1
   input [13:0]probe0;
   input [13:0]probe1;
   input [0:0]probe10;
-  input [0:0]probe11;
+  input [23:0]probe11;
+  input [0:0]probe12;
   input [13:0]probe2;
   input [13:0]probe3;
   input [13:0]probe4;

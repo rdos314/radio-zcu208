@@ -26,7 +26,13 @@
       "raw_fifo_0": "",
       "raw_fifo_1": "",
       "composite_0": "",
-      "composite_1": ""
+      "composite_1": "",
+      "fir_deci_N0": "",
+      "fir_deci_E0": "",
+      "fir_deci_W0": "",
+      "fir_deci_E1": "",
+      "fir_deci_N1": "",
+      "fir_deci_W1": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1894,6 +1900,14 @@
           "ready_N": {
             "direction": "I"
           },
+          "fir_N": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "valid_N": {
+            "direction": "I"
+          },
           "data_E": {
             "direction": "I",
             "left": "159",
@@ -1902,12 +1916,28 @@
           "ready_E": {
             "direction": "I"
           },
+          "fir_E": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "valid_E": {
+            "direction": "I"
+          },
           "data_W": {
             "direction": "I",
             "left": "159",
             "right": "0"
           },
           "ready_W": {
+            "direction": "I"
+          },
+          "fir_W": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "valid_W": {
             "direction": "I"
           },
           "fifo_wr": {
@@ -1973,6 +2003,14 @@
           "ready_N": {
             "direction": "I"
           },
+          "fir_N": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "valid_N": {
+            "direction": "I"
+          },
           "data_E": {
             "direction": "I",
             "left": "159",
@@ -1981,12 +2019,28 @@
           "ready_E": {
             "direction": "I"
           },
+          "fir_E": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "valid_E": {
+            "direction": "I"
+          },
           "data_W": {
             "direction": "I",
             "left": "159",
             "right": "0"
           },
           "ready_W": {
+            "direction": "I"
+          },
+          "fir_W": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "valid_W": {
             "direction": "I"
           },
           "fifo_wr": {
@@ -2131,6 +2185,516 @@
             "right": "0"
           }
         }
+      },
+      "fir_deci_N0": {
+        "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+        "ip_revision": "24",
+        "xci_name": "ps_fir_compiler_0_0",
+        "xci_path": "ip\\ps_fir_compiler_0_0\\ps_fir_compiler_0_0.xci",
+        "inst_hier_path": "fir_deci_N0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Channel_Sequence": {
+            "value": "Basic"
+          },
+          "Clock_Frequency": {
+            "value": "500.0"
+          },
+          "Coefficient_Structure": {
+            "value": "Inferred"
+          },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "11"
+          },
+          "DATA_Has_TLAST": {
+            "value": "Not_Required"
+          },
+          "Data_Width": {
+            "value": "14"
+          },
+          "Decimation_Rate": {
+            "value": "10"
+          },
+          "Filter_Architecture": {
+            "value": "Systolic_Multiply_Accumulate"
+          },
+          "Filter_Type": {
+            "value": "Decimation"
+          },
+          "Interpolation_Rate": {
+            "value": "1"
+          },
+          "M_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Number_Channels": {
+            "value": "1"
+          },
+          "Number_Paths": {
+            "value": "1"
+          },
+          "Output_Rounding_Mode": {
+            "value": "Truncate_LSBs"
+          },
+          "Output_Width": {
+            "value": "21"
+          },
+          "Passband_Max": {
+            "value": "0.5"
+          },
+          "RateSpecification": {
+            "value": "Frequency_Specification"
+          },
+          "S_DATA_Has_FIFO": {
+            "value": "false"
+          },
+          "S_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Sample_Frequency": {
+            "value": "5000"
+          },
+          "Select_Pattern": {
+            "value": "All"
+          },
+          "Stopband_Max": {
+            "value": "1.0"
+          },
+          "Stopband_Min": {
+            "value": "0.5"
+          },
+          "Zero_Pack_Factor": {
+            "value": "1"
+          }
+        }
+      },
+      "fir_deci_E0": {
+        "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+        "ip_revision": "24",
+        "xci_name": "ps_fir_deci_N_0",
+        "xci_path": "ip\\ps_fir_deci_N_0\\ps_fir_deci_N_0.xci",
+        "inst_hier_path": "fir_deci_E0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Channel_Sequence": {
+            "value": "Basic"
+          },
+          "Clock_Frequency": {
+            "value": "500.0"
+          },
+          "Coefficient_Structure": {
+            "value": "Inferred"
+          },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "11"
+          },
+          "DATA_Has_TLAST": {
+            "value": "Not_Required"
+          },
+          "Data_Width": {
+            "value": "14"
+          },
+          "Decimation_Rate": {
+            "value": "10"
+          },
+          "Filter_Architecture": {
+            "value": "Systolic_Multiply_Accumulate"
+          },
+          "Filter_Type": {
+            "value": "Decimation"
+          },
+          "Interpolation_Rate": {
+            "value": "1"
+          },
+          "M_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Number_Channels": {
+            "value": "1"
+          },
+          "Number_Paths": {
+            "value": "1"
+          },
+          "Output_Rounding_Mode": {
+            "value": "Truncate_LSBs"
+          },
+          "Output_Width": {
+            "value": "21"
+          },
+          "Passband_Max": {
+            "value": "0.5"
+          },
+          "RateSpecification": {
+            "value": "Frequency_Specification"
+          },
+          "S_DATA_Has_FIFO": {
+            "value": "false"
+          },
+          "S_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Sample_Frequency": {
+            "value": "5000"
+          },
+          "Select_Pattern": {
+            "value": "All"
+          },
+          "Stopband_Max": {
+            "value": "1.0"
+          },
+          "Stopband_Min": {
+            "value": "0.5"
+          },
+          "Zero_Pack_Factor": {
+            "value": "1"
+          }
+        }
+      },
+      "fir_deci_W0": {
+        "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+        "ip_revision": "24",
+        "xci_name": "ps_fir_deci_E0_0",
+        "xci_path": "ip\\ps_fir_deci_E0_0\\ps_fir_deci_E0_0.xci",
+        "inst_hier_path": "fir_deci_W0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Channel_Sequence": {
+            "value": "Basic"
+          },
+          "Clock_Frequency": {
+            "value": "500.0"
+          },
+          "Coefficient_Structure": {
+            "value": "Inferred"
+          },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "11"
+          },
+          "DATA_Has_TLAST": {
+            "value": "Not_Required"
+          },
+          "Data_Width": {
+            "value": "14"
+          },
+          "Decimation_Rate": {
+            "value": "10"
+          },
+          "Filter_Architecture": {
+            "value": "Systolic_Multiply_Accumulate"
+          },
+          "Filter_Type": {
+            "value": "Decimation"
+          },
+          "Interpolation_Rate": {
+            "value": "1"
+          },
+          "M_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Number_Channels": {
+            "value": "1"
+          },
+          "Number_Paths": {
+            "value": "1"
+          },
+          "Output_Rounding_Mode": {
+            "value": "Truncate_LSBs"
+          },
+          "Output_Width": {
+            "value": "21"
+          },
+          "Passband_Max": {
+            "value": "0.5"
+          },
+          "RateSpecification": {
+            "value": "Frequency_Specification"
+          },
+          "S_DATA_Has_FIFO": {
+            "value": "false"
+          },
+          "S_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Sample_Frequency": {
+            "value": "5000"
+          },
+          "Select_Pattern": {
+            "value": "All"
+          },
+          "Stopband_Max": {
+            "value": "1.0"
+          },
+          "Stopband_Min": {
+            "value": "0.5"
+          },
+          "Zero_Pack_Factor": {
+            "value": "1"
+          }
+        }
+      },
+      "fir_deci_E1": {
+        "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+        "ip_revision": "24",
+        "xci_name": "ps_fir_deci_E0_1",
+        "xci_path": "ip\\ps_fir_deci_E0_1\\ps_fir_deci_E0_1.xci",
+        "inst_hier_path": "fir_deci_E1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Channel_Sequence": {
+            "value": "Basic"
+          },
+          "Clock_Frequency": {
+            "value": "500.0"
+          },
+          "Coefficient_Structure": {
+            "value": "Inferred"
+          },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "11"
+          },
+          "DATA_Has_TLAST": {
+            "value": "Not_Required"
+          },
+          "Data_Width": {
+            "value": "14"
+          },
+          "Decimation_Rate": {
+            "value": "10"
+          },
+          "Filter_Architecture": {
+            "value": "Systolic_Multiply_Accumulate"
+          },
+          "Filter_Type": {
+            "value": "Decimation"
+          },
+          "Interpolation_Rate": {
+            "value": "1"
+          },
+          "M_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Number_Channels": {
+            "value": "1"
+          },
+          "Number_Paths": {
+            "value": "1"
+          },
+          "Output_Rounding_Mode": {
+            "value": "Truncate_LSBs"
+          },
+          "Output_Width": {
+            "value": "21"
+          },
+          "Passband_Max": {
+            "value": "0.5"
+          },
+          "RateSpecification": {
+            "value": "Frequency_Specification"
+          },
+          "S_DATA_Has_FIFO": {
+            "value": "false"
+          },
+          "S_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Sample_Frequency": {
+            "value": "5000"
+          },
+          "Select_Pattern": {
+            "value": "All"
+          },
+          "Stopband_Max": {
+            "value": "1.0"
+          },
+          "Stopband_Min": {
+            "value": "0.5"
+          },
+          "Zero_Pack_Factor": {
+            "value": "1"
+          }
+        }
+      },
+      "fir_deci_N1": {
+        "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+        "ip_revision": "24",
+        "xci_name": "ps_fir_deci_N0_0",
+        "xci_path": "ip\\ps_fir_deci_N0_0\\ps_fir_deci_N0_0.xci",
+        "inst_hier_path": "fir_deci_N1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Channel_Sequence": {
+            "value": "Basic"
+          },
+          "Clock_Frequency": {
+            "value": "500.0"
+          },
+          "Coefficient_Structure": {
+            "value": "Inferred"
+          },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "11"
+          },
+          "DATA_Has_TLAST": {
+            "value": "Not_Required"
+          },
+          "Data_Width": {
+            "value": "14"
+          },
+          "Decimation_Rate": {
+            "value": "10"
+          },
+          "Filter_Architecture": {
+            "value": "Systolic_Multiply_Accumulate"
+          },
+          "Filter_Type": {
+            "value": "Decimation"
+          },
+          "Interpolation_Rate": {
+            "value": "1"
+          },
+          "M_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Number_Channels": {
+            "value": "1"
+          },
+          "Number_Paths": {
+            "value": "1"
+          },
+          "Output_Rounding_Mode": {
+            "value": "Truncate_LSBs"
+          },
+          "Output_Width": {
+            "value": "21"
+          },
+          "Passband_Max": {
+            "value": "0.5"
+          },
+          "RateSpecification": {
+            "value": "Frequency_Specification"
+          },
+          "S_DATA_Has_FIFO": {
+            "value": "false"
+          },
+          "S_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Sample_Frequency": {
+            "value": "5000"
+          },
+          "Select_Pattern": {
+            "value": "All"
+          },
+          "Stopband_Max": {
+            "value": "1.0"
+          },
+          "Stopband_Min": {
+            "value": "0.5"
+          },
+          "Zero_Pack_Factor": {
+            "value": "1"
+          }
+        }
+      },
+      "fir_deci_W1": {
+        "vlnv": "xilinx.com:ip:fir_compiler:7.2",
+        "ip_revision": "24",
+        "xci_name": "ps_fir_deci_W0_0",
+        "xci_path": "ip\\ps_fir_deci_W0_0\\ps_fir_deci_W0_0.xci",
+        "inst_hier_path": "fir_deci_W1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Channel_Sequence": {
+            "value": "Basic"
+          },
+          "Clock_Frequency": {
+            "value": "500.0"
+          },
+          "Coefficient_Structure": {
+            "value": "Inferred"
+          },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "11"
+          },
+          "DATA_Has_TLAST": {
+            "value": "Not_Required"
+          },
+          "Data_Width": {
+            "value": "14"
+          },
+          "Decimation_Rate": {
+            "value": "10"
+          },
+          "Filter_Architecture": {
+            "value": "Systolic_Multiply_Accumulate"
+          },
+          "Filter_Type": {
+            "value": "Decimation"
+          },
+          "Interpolation_Rate": {
+            "value": "1"
+          },
+          "M_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Number_Channels": {
+            "value": "1"
+          },
+          "Number_Paths": {
+            "value": "1"
+          },
+          "Output_Rounding_Mode": {
+            "value": "Truncate_LSBs"
+          },
+          "Output_Width": {
+            "value": "21"
+          },
+          "Passband_Max": {
+            "value": "0.5"
+          },
+          "RateSpecification": {
+            "value": "Frequency_Specification"
+          },
+          "S_DATA_Has_FIFO": {
+            "value": "false"
+          },
+          "S_DATA_Has_TUSER": {
+            "value": "Not_Required"
+          },
+          "Sample_Frequency": {
+            "value": "5000"
+          },
+          "Select_Pattern": {
+            "value": "All"
+          },
+          "Stopband_Max": {
+            "value": "1.0"
+          },
+          "Stopband_Min": {
+            "value": "0.5"
+          },
+          "Zero_Pack_Factor": {
+            "value": "1"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -2262,6 +2826,78 @@
           "raw_fifo_1/wr_en"
         ]
       },
+      "fir_deci_E0_m_axis_data_tdata": {
+        "ports": [
+          "fir_deci_E0/m_axis_data_tdata",
+          "decimate_0/fir_E"
+        ]
+      },
+      "fir_deci_E0_m_axis_data_tvalid": {
+        "ports": [
+          "fir_deci_E0/m_axis_data_tvalid",
+          "decimate_0/valid_E"
+        ]
+      },
+      "fir_deci_E1_m_axis_data_tdata": {
+        "ports": [
+          "fir_deci_E1/m_axis_data_tdata",
+          "decimate_1/fir_E"
+        ]
+      },
+      "fir_deci_E1_m_axis_data_tvalid": {
+        "ports": [
+          "fir_deci_E1/m_axis_data_tvalid",
+          "decimate_1/valid_E"
+        ]
+      },
+      "fir_deci_N0_m_axis_data_tdata": {
+        "ports": [
+          "fir_deci_N0/m_axis_data_tdata",
+          "decimate_0/fir_N"
+        ]
+      },
+      "fir_deci_N0_m_axis_data_tvalid": {
+        "ports": [
+          "fir_deci_N0/m_axis_data_tvalid",
+          "decimate_0/valid_N"
+        ]
+      },
+      "fir_deci_N1_m_axis_data_tdata": {
+        "ports": [
+          "fir_deci_N1/m_axis_data_tdata",
+          "decimate_1/fir_N"
+        ]
+      },
+      "fir_deci_N1_m_axis_data_tvalid": {
+        "ports": [
+          "fir_deci_N1/m_axis_data_tvalid",
+          "decimate_1/valid_N"
+        ]
+      },
+      "fir_deci_W0_m_axis_data_tdata": {
+        "ports": [
+          "fir_deci_W0/m_axis_data_tdata",
+          "decimate_0/fir_W"
+        ]
+      },
+      "fir_deci_W0_m_axis_data_tvalid": {
+        "ports": [
+          "fir_deci_W0/m_axis_data_tvalid",
+          "decimate_0/valid_W"
+        ]
+      },
+      "fir_deci_W1_m_axis_data_tdata": {
+        "ports": [
+          "fir_deci_W1/m_axis_data_tdata",
+          "decimate_1/fir_W"
+        ]
+      },
+      "fir_deci_W1_m_axis_data_tvalid": {
+        "ports": [
+          "fir_deci_W1/m_axis_data_tvalid",
+          "decimate_1/valid_W"
+        ]
+      },
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
@@ -2297,10 +2933,16 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "decimate_0/clk",
-          "decimate_1/clk",
           "raw_fifo_0/wr_clk",
-          "raw_fifo_1/wr_clk"
+          "raw_fifo_1/wr_clk",
+          "fir_deci_W1/aclk",
+          "fir_deci_W0/aclk",
+          "fir_deci_N1/aclk",
+          "fir_deci_N0/aclk",
+          "fir_deci_E1/aclk",
+          "fir_deci_E0/aclk",
+          "decimate_0/clk",
+          "decimate_1/clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -2381,73 +3023,85 @@
       "usp_rf_data_converter_0_m00_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m00_axis_tdata",
-          "decimate_0/data_N"
+          "decimate_0/data_N",
+          "fir_deci_N0/s_axis_data_tdata"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m00_axis_tvalid",
-          "decimate_0/ready_N"
+          "decimate_0/ready_N",
+          "fir_deci_N0/s_axis_data_tvalid"
         ]
       },
       "usp_rf_data_converter_0_m02_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m02_axis_tdata",
-          "decimate_0/data_E"
+          "decimate_0/data_E",
+          "fir_deci_E0/s_axis_data_tdata"
         ]
       },
       "usp_rf_data_converter_0_m02_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m02_axis_tvalid",
-          "decimate_0/ready_E"
+          "decimate_0/ready_E",
+          "fir_deci_E0/s_axis_data_tvalid"
         ]
       },
       "usp_rf_data_converter_0_m10_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m10_axis_tdata",
-          "decimate_0/data_W"
+          "decimate_0/data_W",
+          "fir_deci_W0/s_axis_data_tdata"
         ]
       },
       "usp_rf_data_converter_0_m10_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m10_axis_tvalid",
-          "decimate_0/ready_W"
+          "decimate_0/ready_W",
+          "fir_deci_W0/s_axis_data_tvalid"
         ]
       },
       "usp_rf_data_converter_0_m20_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m20_axis_tdata",
-          "decimate_1/data_N"
+          "decimate_1/data_N",
+          "fir_deci_N1/s_axis_data_tdata"
         ]
       },
       "usp_rf_data_converter_0_m20_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m20_axis_tvalid",
-          "decimate_1/ready_N"
+          "decimate_1/ready_N",
+          "fir_deci_N1/s_axis_data_tvalid"
         ]
       },
       "usp_rf_data_converter_0_m22_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m22_axis_tdata",
-          "decimate_1/data_E"
+          "decimate_1/data_E",
+          "fir_deci_E1/s_axis_data_tdata"
         ]
       },
       "usp_rf_data_converter_0_m22_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m22_axis_tvalid",
-          "decimate_1/ready_E"
+          "decimate_1/ready_E",
+          "fir_deci_E1/s_axis_data_tvalid"
         ]
       },
       "usp_rf_data_converter_0_m30_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tdata",
-          "decimate_1/data_W"
+          "decimate_1/data_W",
+          "fir_deci_W1/s_axis_data_tdata"
         ]
       },
       "usp_rf_data_converter_0_m30_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tvalid",
-          "decimate_1/ready_W"
+          "decimate_1/ready_W",
+          "fir_deci_W1/s_axis_data_tvalid"
         ]
       },
       "util_ds_buf_0_IBUF_OUT": {

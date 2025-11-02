@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov  2 17:44:18 2025
+-- Date        : Sun Nov  2 22:09:53 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_decimate_0_0/ps_decimate_0_0_sim_netlist.vhdl
@@ -21,10 +21,16 @@ entity ps_decimate_0_0_decimate is
     resetn : in STD_LOGIC;
     data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_N : in STD_LOGIC;
+    fir_N : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    valid_N : in STD_LOGIC;
     data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_E : in STD_LOGIC;
+    fir_E : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    valid_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_W : in STD_LOGIC;
+    fir_W : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    valid_W : in STD_LOGIC;
     fifo_wr : out STD_LOGIC;
     fifo : out STD_LOGIC_VECTOR ( 447 downto 0 )
   );
@@ -49,7 +55,8 @@ architecture STRUCTURE of ps_decimate_0_0_decimate is
     probe8 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe11 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_decimate_0_0_ila_0;
   component ps_decimate_0_0_ila_0_HD1 is
@@ -58,7 +65,8 @@ architecture STRUCTURE of ps_decimate_0_0_decimate is
     probe0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -4205,7 +4213,8 @@ ila_E: component ps_decimate_0_0_ila_0
       probe0(13 downto 0) => E0(13 downto 0),
       probe1(13 downto 0) => E1(13 downto 0),
       probe10(0) => ready_E,
-      probe11(0) => resetn,
+      probe11(23 downto 0) => fir_E(23 downto 0),
+      probe12(0) => valid_E,
       probe2(13 downto 0) => E2(13 downto 0),
       probe3(13 downto 0) => E3(13 downto 0),
       probe4(13 downto 0) => E4(13 downto 0),
@@ -4221,7 +4230,8 @@ ila_N: component ps_decimate_0_0_ila_0
       probe0(13 downto 0) => N0(13 downto 0),
       probe1(13 downto 0) => N1(13 downto 0),
       probe10(0) => ready_N,
-      probe11(0) => resetn,
+      probe11(23 downto 0) => fir_N(23 downto 0),
+      probe12(0) => valid_N,
       probe2(13 downto 0) => N2(13 downto 0),
       probe3(13 downto 0) => N3(13 downto 0),
       probe4(13 downto 0) => N4(13 downto 0),
@@ -4237,7 +4247,8 @@ ila_W: component ps_decimate_0_0_ila_0_HD1
       probe0(13 downto 0) => W0(13 downto 0),
       probe1(13 downto 0) => W1(13 downto 0),
       probe10(0) => ready_W,
-      probe11(0) => resetn,
+      probe11(23 downto 0) => fir_W(23 downto 0),
+      probe12(0) => valid_W,
       probe2(13 downto 0) => W2(13 downto 0),
       probe3(13 downto 0) => W3(13 downto 0),
       probe4(13 downto 0) => W4(13 downto 0),
@@ -4258,10 +4269,16 @@ entity ps_decimate_0_0 is
     resetn : in STD_LOGIC;
     data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_N : in STD_LOGIC;
+    fir_N : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    valid_N : in STD_LOGIC;
     data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_E : in STD_LOGIC;
+    fir_E : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    valid_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_W : in STD_LOGIC;
+    fir_W : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    valid_W : in STD_LOGIC;
     fifo_wr : out STD_LOGIC;
     fifo : out STD_LOGIC_VECTOR ( 447 downto 0 )
   );
@@ -4353,9 +4370,15 @@ inst: entity work.ps_decimate_0_0_decimate
       data_W(1 downto 0) => B"00",
       fifo(447 downto 0) => fifo(447 downto 0),
       fifo_wr => fifo_wr,
+      fir_E(23 downto 0) => fir_E(23 downto 0),
+      fir_N(23 downto 0) => fir_N(23 downto 0),
+      fir_W(23 downto 0) => fir_W(23 downto 0),
       ready_E => ready_E,
       ready_N => ready_N,
       ready_W => ready_W,
-      resetn => resetn
+      resetn => resetn,
+      valid_E => valid_E,
+      valid_N => valid_N,
+      valid_W => valid_W
     );
 end STRUCTURE;

@@ -60,10 +60,16 @@ module ps_decimate_1_0 (
   resetn,
   data_N,
   ready_N,
+  fir_N,
+  valid_N,
   data_E,
   ready_E,
+  fir_E,
+  valid_E,
   data_W,
   ready_W,
+  fir_W,
+  valid_W,
   fifo_wr,
   fifo
 );
@@ -78,10 +84,16 @@ input wire clk;
 input wire resetn;
 input wire [159 : 0] data_N;
 input wire ready_N;
+input wire [23 : 0] fir_N;
+input wire valid_N;
 input wire [159 : 0] data_E;
 input wire ready_E;
+input wire [23 : 0] fir_E;
+input wire valid_E;
 input wire [159 : 0] data_W;
 input wire ready_W;
+input wire [23 : 0] fir_W;
+input wire valid_W;
 output wire fifo_wr;
 output wire [447 : 0] fifo;
 
@@ -90,10 +102,16 @@ output wire [447 : 0] fifo;
     .resetn(resetn),
     .data_N(data_N),
     .ready_N(ready_N),
+    .fir_N(fir_N),
+    .valid_N(valid_N),
     .data_E(data_E),
     .ready_E(ready_E),
+    .fir_E(fir_E),
+    .valid_E(valid_E),
     .data_W(data_W),
     .ready_W(ready_W),
+    .fir_W(fir_W),
+    .valid_W(valid_W),
     .fifo_wr(fifo_wr),
     .fifo(fifo)
   );
