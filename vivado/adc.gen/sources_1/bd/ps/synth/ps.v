@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sat Nov  1 23:35:06 2025
+//Date        : Sun Nov  2 17:43:15 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -340,7 +340,7 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
-  ps_doa_0_0 doa_0
+  ps_decimate_0_0 decimate_0
        (.clk(mts_0_deci_clk),
         .data_E(usp_rf_data_converter_0_m02_axis_tdata),
         .data_N(usp_rf_data_converter_0_m00_axis_tdata),
@@ -349,7 +349,7 @@ module ps
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
         .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
         .resetn(mts_0_deci_resetn));
-  ps_doa_1_0 doa_1
+  ps_decimate_1_0 decimate_1
        (.clk(mts_0_deci_clk),
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),

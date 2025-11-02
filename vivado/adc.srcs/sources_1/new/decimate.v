@@ -19,8 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module doa(
+module decimate(
     input wire	clk,
     input wire  resetn,
     input wire	[159:0] data_N,
@@ -28,8 +27,17 @@ module doa(
     input wire	[159:0] data_E,
     input wire	ready_E,
     input wire	[159:0] data_W,
-    input wire	ready_W
+    input wire	ready_W,
+
+    output reg fifo_wr,
+    output reg	[447:0] fifo
     );
+
+  reg [27:0]  counter;
+  reg active;
+
+  (* ASYNC_REG="TRUE" *)	reg  active_1;
+  (* ASYNC_REG="TRUE" *)	reg  active_2;
 
   wire [13:0] N0 = data_N[15:2];
   wire [13:0] N1 = data_N[31:18];
@@ -111,10 +119,59 @@ module doa(
 		.probe10(ready_W),             // input wire [0:0]  probe3
 		.probe11(resetn)             // input wire [0:0]  probe3
 	);
-    
-generate
-  begin : doa
 
+generate
+  begin : decimate
+
+	always @(posedge clk) 
+	begin
+	  active <= resetn & ready_N & ready_E & ready_W;
+	end
+
+    always @(posedge clk) 
+	begin
+	  if (active)
+	  begin
+         fifo_wr <= 1;
+         counter <= counter + 1;
+         fifo[27:0] <= counter;
+         fifo[41:28] <= N0;
+         fifo[55:42] <= N1;
+         fifo[69:56] <= N2;
+         fifo[83:70] <= N3;
+         fifo[97:84] <= N4;
+         fifo[111:98] <= N5;
+         fifo[125:112] <= N6;
+         fifo[139:126] <= N7;
+         fifo[153:140] <= N8;
+         fifo[167:154] <= N9;
+         fifo[181:168] <= E0;
+         fifo[195:182] <= E1;
+         fifo[209:196] <= E2;
+         fifo[223:210] <= E3;
+         fifo[237:224] <= E4;
+         fifo[251:238] <= E5;
+         fifo[265:252] <= E6;
+         fifo[279:266] <= E7;
+         fifo[293:280] <= E8;
+         fifo[307:294] <= E9;
+         fifo[321:308] <= W0;
+         fifo[335:322] <= W1;
+         fifo[349:336] <= W2;
+         fifo[363:350] <= W3;
+         fifo[377:364] <= W4;
+         fifo[391:378] <= W5;
+         fifo[405:392] <= W6;
+         fifo[419:406] <= W7;
+         fifo[433:420] <= W8;
+         fifo[447:434] <= W9;
+	  end
+	  else
+	  begin
+	      fifo_wr <= 0;
+	      counter <= 0;
+	  end
+	end
 
   end
     

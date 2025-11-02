@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov  1 23:35:09 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov  2 17:43:18 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -1383,10 +1383,10 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/doa_0" HWVERSION="1.0" INSTANCE="doa_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="doa" VLNV="xilinx.com:module_ref:doa:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/decimate_0" HWVERSION="1.0" INSTANCE="decimate_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decimate" VLNV="xilinx.com:module_ref:decimate:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_doa_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="ps_decimate_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -1410,6 +1410,8 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m10_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="447" NAME="fifo" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="fifo_wr" SIGIS="undef"/>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m02_axis_tvalid"/>
@@ -1433,10 +1435,10 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/doa_1" HWVERSION="1.0" INSTANCE="doa_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="doa" VLNV="xilinx.com:module_ref:doa:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/decimate_1" HWVERSION="1.0" INSTANCE="decimate_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decimate" VLNV="xilinx.com:module_ref:decimate:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_doa_1_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="ps_decimate_1_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -1460,6 +1462,8 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m30_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="447" NAME="fifo" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="fifo_wr" SIGIS="undef"/>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m22_axis_tvalid"/>
@@ -1848,22 +1852,22 @@
       <PORTS>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="deci_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="clk"/>
-            <CONNECTION INSTANCE="doa_1" PORT="clk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m0_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aclk"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="clk"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="resetn"/>
-            <CONNECTION INSTANCE="doa_1" PORT="resetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m0_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aresetn"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="resetn"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="125000000" DIR="I" NAME="pl_clk" SIGIS="clk" SIGNAME="pl_clk_util_ds_buf_IBUF_OUT">
@@ -4223,24 +4227,24 @@
         <PORT DIR="O" NAME="irq" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
         <PORT DIR="O" LEFT="159" NAME="m00_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="data_N"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="data_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m00_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m00_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="ready_N"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="ready_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m02_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="data_E"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="data_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m02_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m02_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="ready_E"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="ready_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m0_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -4255,13 +4259,13 @@
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m10_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="data_W"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="data_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m10_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m10_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_0" PORT="ready_W"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="ready_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m1_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -4276,24 +4280,24 @@
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m20_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_1" PORT="data_N"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="data_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m20_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m20_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_1" PORT="ready_N"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="ready_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m22_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_1" PORT="data_E"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="data_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m22_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m22_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_1" PORT="ready_E"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="ready_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m2_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -4308,13 +4312,13 @@
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m30_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_1" PORT="data_W"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="data_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m30_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m30_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_1" PORT="ready_W"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="ready_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m3_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">

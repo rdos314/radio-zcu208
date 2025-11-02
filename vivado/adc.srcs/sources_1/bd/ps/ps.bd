@@ -18,11 +18,11 @@
       "rst_ps8_0_99M": "",
       "clk104_mux": "",
       "usp_rf_data_converter_0": "",
-      "doa_0": "",
-      "doa_1": "",
       "mts_0": "",
       "pl_clk_util_ds_buf": "",
-      "pl_sysref_ds_buf": ""
+      "pl_sysref_ds_buf": "",
+      "decimate_0": "",
+      "decimate_1": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1674,148 +1674,6 @@
           }
         }
       },
-      "doa_0": {
-        "vlnv": "xilinx.com:module_ref:doa:1.0",
-        "ip_revision": "1",
-        "xci_name": "ps_doa_0_0",
-        "xci_path": "ip\\ps_doa_0_0\\ps_doa_0_0.xci",
-        "inst_hier_path": "doa_0",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "doa",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "resetn",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "const_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_deci_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "resetn": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "constant"
-              }
-            }
-          },
-          "data_N": {
-            "direction": "I",
-            "left": "159",
-            "right": "0"
-          },
-          "ready_N": {
-            "direction": "I"
-          },
-          "data_E": {
-            "direction": "I",
-            "left": "159",
-            "right": "0"
-          },
-          "ready_E": {
-            "direction": "I"
-          },
-          "data_W": {
-            "direction": "I",
-            "left": "159",
-            "right": "0"
-          },
-          "ready_W": {
-            "direction": "I"
-          }
-        }
-      },
-      "doa_1": {
-        "vlnv": "xilinx.com:module_ref:doa:1.0",
-        "ip_revision": "1",
-        "xci_name": "ps_doa_1_0",
-        "xci_path": "ip\\ps_doa_1_0\\ps_doa_1_0.xci",
-        "inst_hier_path": "doa_1",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "doa",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "resetn",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "const_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_deci_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "resetn": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "constant"
-              }
-            }
-          },
-          "data_N": {
-            "direction": "I",
-            "left": "159",
-            "right": "0"
-          },
-          "ready_N": {
-            "direction": "I"
-          },
-          "data_E": {
-            "direction": "I",
-            "left": "159",
-            "right": "0"
-          },
-          "ready_E": {
-            "direction": "I"
-          },
-          "data_W": {
-            "direction": "I",
-            "left": "159",
-            "right": "0"
-          },
-          "ready_W": {
-            "direction": "I"
-          }
-        }
-      },
       "mts_0": {
         "vlnv": "xilinx.com:module_ref:mts:1.0",
         "ip_revision": "1",
@@ -1926,6 +1784,164 @@
         "xci_path": "ip\\ps_util_ds_buf_0_1\\ps_util_ds_buf_0_1.xci",
         "inst_hier_path": "pl_sysref_ds_buf",
         "has_run_ip_tcl": "true"
+      },
+      "decimate_0": {
+        "vlnv": "xilinx.com:module_ref:decimate:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_decimate_0_0",
+        "xci_path": "ip\\ps_decimate_0_0\\ps_decimate_0_0.xci",
+        "inst_hier_path": "decimate_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "decimate",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "resetn",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_deci_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "data_N": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_N": {
+            "direction": "I"
+          },
+          "data_E": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_E": {
+            "direction": "I"
+          },
+          "data_W": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_W": {
+            "direction": "I"
+          },
+          "fifo_wr": {
+            "direction": "O"
+          },
+          "fifo": {
+            "direction": "O",
+            "left": "447",
+            "right": "0"
+          }
+        }
+      },
+      "decimate_1": {
+        "vlnv": "xilinx.com:module_ref:decimate:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_decimate_1_0",
+        "xci_path": "ip\\ps_decimate_1_0\\ps_decimate_1_0.xci",
+        "inst_hier_path": "decimate_1",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "decimate",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "resetn",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_deci_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "data_N": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_N": {
+            "direction": "I"
+          },
+          "data_E": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_E": {
+            "direction": "I"
+          },
+          "data_W": {
+            "direction": "I",
+            "left": "159",
+            "right": "0"
+          },
+          "ready_W": {
+            "direction": "I"
+          },
+          "fifo_wr": {
+            "direction": "O"
+          },
+          "fifo": {
+            "direction": "O",
+            "left": "447",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -2024,23 +2040,23 @@
       "mts_0_deci_clk": {
         "ports": [
           "mts_0/deci_clk",
-          "doa_0/clk",
-          "doa_1/clk",
           "usp_rf_data_converter_0/m0_axis_aclk",
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
-          "usp_rf_data_converter_0/m3_axis_aclk"
+          "usp_rf_data_converter_0/m3_axis_aclk",
+          "decimate_0/clk",
+          "decimate_1/clk"
         ]
       },
       "mts_0_deci_resetn": {
         "ports": [
           "mts_0/deci_resetn",
-          "doa_0/resetn",
-          "doa_1/resetn",
           "usp_rf_data_converter_0/m0_axis_aresetn",
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
-          "usp_rf_data_converter_0/m3_axis_aresetn"
+          "usp_rf_data_converter_0/m3_axis_aresetn",
+          "decimate_0/resetn",
+          "decimate_1/resetn"
         ]
       },
       "mts_0_user_sysref_adc": {
@@ -2098,73 +2114,73 @@
       "usp_rf_data_converter_0_m00_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m00_axis_tdata",
-          "doa_0/data_N"
+          "decimate_0/data_N"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m00_axis_tvalid",
-          "doa_0/ready_N"
+          "decimate_0/ready_N"
         ]
       },
       "usp_rf_data_converter_0_m02_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m02_axis_tdata",
-          "doa_0/data_E"
+          "decimate_0/data_E"
         ]
       },
       "usp_rf_data_converter_0_m02_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m02_axis_tvalid",
-          "doa_0/ready_E"
+          "decimate_0/ready_E"
         ]
       },
       "usp_rf_data_converter_0_m10_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m10_axis_tdata",
-          "doa_0/data_W"
+          "decimate_0/data_W"
         ]
       },
       "usp_rf_data_converter_0_m10_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m10_axis_tvalid",
-          "doa_0/ready_W"
+          "decimate_0/ready_W"
         ]
       },
       "usp_rf_data_converter_0_m20_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m20_axis_tdata",
-          "doa_1/data_N"
+          "decimate_1/data_N"
         ]
       },
       "usp_rf_data_converter_0_m20_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m20_axis_tvalid",
-          "doa_1/ready_N"
+          "decimate_1/ready_N"
         ]
       },
       "usp_rf_data_converter_0_m22_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m22_axis_tdata",
-          "doa_1/data_E"
+          "decimate_1/data_E"
         ]
       },
       "usp_rf_data_converter_0_m22_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m22_axis_tvalid",
-          "doa_1/ready_E"
+          "decimate_1/ready_E"
         ]
       },
       "usp_rf_data_converter_0_m30_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tdata",
-          "doa_1/data_W"
+          "decimate_1/data_W"
         ]
       },
       "usp_rf_data_converter_0_m30_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tvalid",
-          "doa_1/ready_W"
+          "decimate_1/ready_W"
         ]
       },
       "util_ds_buf_0_IBUF_OUT": {

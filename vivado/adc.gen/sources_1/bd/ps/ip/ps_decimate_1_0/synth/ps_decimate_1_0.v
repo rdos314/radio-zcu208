@@ -47,15 +47,15 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:doa:1.0
+// IP VLNV: xilinx.com:module_ref:decimate:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "doa,Vivado 2025.1" *)
-(* CHECK_LICENSE_TYPE = "ps_doa_0_0,doa,{}" *)
-(* CORE_GENERATION_INFO = "ps_doa_0_0,doa,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=doa,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* X_CORE_INFO = "decimate,Vivado 2025.1" *)
+(* CHECK_LICENSE_TYPE = "ps_decimate_1_0,decimate,{}" *)
+(* CORE_GENERATION_INFO = "ps_decimate_1_0,decimate,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=decimate,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module ps_doa_0_0 (
+module ps_decimate_1_0 (
   clk,
   resetn,
   data_N,
@@ -63,12 +63,14 @@ module ps_doa_0_0 (
   data_E,
   ready_E,
   data_W,
-  ready_W
+  ready_W,
+  fifo_wr,
+  fifo
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -80,8 +82,10 @@ input wire [159 : 0] data_E;
 input wire ready_E;
 input wire [159 : 0] data_W;
 input wire ready_W;
+output wire fifo_wr;
+output wire [447 : 0] fifo;
 
-  doa inst (
+  decimate inst (
     .clk(clk),
     .resetn(resetn),
     .data_N(data_N),
@@ -89,6 +93,8 @@ input wire ready_W;
     .data_E(data_E),
     .ready_E(ready_E),
     .data_W(data_W),
-    .ready_W(ready_W)
+    .ready_W(ready_W),
+    .fifo_wr(fifo_wr),
+    .fifo(fifo)
   );
 endmodule
