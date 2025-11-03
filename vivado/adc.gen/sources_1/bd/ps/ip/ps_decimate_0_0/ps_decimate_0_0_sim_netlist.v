@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Nov  2 22:09:53 2025
+// Date        : Mon Nov  3 23:11:32 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_decimate_0_0/ps_decimate_0_0_sim_netlist.v
@@ -37,15 +37,15 @@ module ps_decimate_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   input [159:0]data_N;
   input ready_N;
-  input [23:0]fir_N;
+  input [31:0]fir_N;
   input valid_N;
   input [159:0]data_E;
   input ready_E;
-  input [23:0]fir_E;
+  input [31:0]fir_E;
   input valid_E;
   input [159:0]data_W;
   input ready_W;
-  input [23:0]fir_W;
+  input [31:0]fir_W;
   input valid_W;
   output fifo_wr;
   output [447:0]fifo;
@@ -56,9 +56,9 @@ module ps_decimate_0_0
   wire [159:0]data_W;
   wire [447:0]fifo;
   wire fifo_wr;
-  wire [23:0]fir_E;
-  wire [23:0]fir_N;
-  wire [23:0]fir_W;
+  wire [31:0]fir_E;
+  wire [31:0]fir_N;
+  wire [31:0]fir_W;
   wire ready_E;
   wire ready_N;
   wire ready_W;
@@ -74,9 +74,9 @@ module ps_decimate_0_0
         .data_W({data_W[159:146],1'b0,1'b0,data_W[143:130],1'b0,1'b0,data_W[127:114],1'b0,1'b0,data_W[111:98],1'b0,1'b0,data_W[95:82],1'b0,1'b0,data_W[79:66],1'b0,1'b0,data_W[63:50],1'b0,1'b0,data_W[47:34],1'b0,1'b0,data_W[31:18],1'b0,1'b0,data_W[15:2],1'b0,1'b0}),
         .fifo(fifo),
         .fifo_wr(fifo_wr),
-        .fir_E(fir_E),
-        .fir_N(fir_N),
-        .fir_W(fir_W),
+        .fir_E({1'b0,fir_E[30:17],1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .fir_N({1'b0,fir_N[30:17],1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .fir_W({1'b0,fir_W[30:17],1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .ready_E(ready_E),
         .ready_N(ready_N),
         .ready_W(ready_W),
@@ -108,15 +108,15 @@ module ps_decimate_0_0_decimate
   input resetn;
   input [159:0]data_N;
   input ready_N;
-  input [23:0]fir_N;
+  input [31:0]fir_N;
   input valid_N;
   input [159:0]data_E;
   input ready_E;
-  input [23:0]fir_E;
+  input [31:0]fir_E;
   input valid_E;
   input [159:0]data_W;
   input ready_W;
-  input [23:0]fir_W;
+  input [31:0]fir_W;
   input valid_W;
   output fifo_wr;
   output [447:0]fifo;
@@ -156,6 +156,9 @@ module ps_decimate_0_0_decimate
   (* async_reg = "true" *) wire active_2;
   wire clear;
   wire clk;
+  (* MARK_DEBUG *) wire [13:0]dE;
+  (* MARK_DEBUG *) wire [13:0]dN;
+  (* MARK_DEBUG *) wire [13:0]dW;
   wire \decimate.active_i_1_n_0 ;
   wire \decimate.counter[0]_i_3_n_0 ;
   wire [27:0]\decimate.counter_reg ;
@@ -216,9 +219,6 @@ module ps_decimate_0_0_decimate
   wire \decimate.counter_reg[8]_i_1_n_9 ;
   wire [447:0]fifo;
   wire fifo_wr;
-  (* MARK_DEBUG *) wire [23:0]fir_E;
-  (* MARK_DEBUG *) wire [23:0]fir_N;
-  (* MARK_DEBUG *) wire [23:0]fir_W;
   (* MARK_DEBUG *) wire ready_E;
   (* MARK_DEBUG *) wire ready_N;
   (* MARK_DEBUG *) wire ready_W;
@@ -259,6 +259,9 @@ module ps_decimate_0_0_decimate
   assign W7 = data_W[127:114];
   assign W8 = data_W[143:130];
   assign W9 = data_W[159:146];
+  assign dE = fir_E[30:17];
+  assign dN = fir_N[30:17];
+  assign dW = fir_W[30:17];
   LUT4 #(
     .INIT(16'h8000)) 
     \decimate.active_i_1 
@@ -3195,7 +3198,7 @@ module ps_decimate_0_0_decimate
         .probe0(E0),
         .probe1(E1),
         .probe10(ready_E),
-        .probe11(fir_E),
+        .probe11(dE),
         .probe12(valid_E),
         .probe2(E2),
         .probe3(E3),
@@ -3213,7 +3216,7 @@ module ps_decimate_0_0_decimate
         .probe0(N0),
         .probe1(N1),
         .probe10(ready_N),
-        .probe11(fir_N),
+        .probe11(dN),
         .probe12(valid_N),
         .probe2(N2),
         .probe3(N3),
@@ -3231,7 +3234,7 @@ module ps_decimate_0_0_decimate
         .probe0(W0),
         .probe1(W1),
         .probe10(ready_W),
-        .probe11(fir_W),
+        .probe11(dW),
         .probe12(valid_W),
         .probe2(W2),
         .probe3(W3),
@@ -3272,7 +3275,7 @@ module ps_decimate_0_0_ila_0
   input [13:0]probe8;
   input [13:0]probe9;
   input [0:0]probe10;
-  input [23:0]probe11;
+  input [13:0]probe11;
   input [0:0]probe12;
 
 
@@ -3299,7 +3302,7 @@ module ps_decimate_0_0_ila_0_HD1
   input [13:0]probe0;
   input [13:0]probe1;
   input [0:0]probe10;
-  input [23:0]probe11;
+  input [13:0]probe11;
   input [0:0]probe12;
   input [13:0]probe2;
   input [13:0]probe3;

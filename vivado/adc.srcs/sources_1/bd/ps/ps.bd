@@ -1902,7 +1902,7 @@
           },
           "fir_N": {
             "direction": "I",
-            "left": "23",
+            "left": "31",
             "right": "0"
           },
           "valid_N": {
@@ -1918,7 +1918,7 @@
           },
           "fir_E": {
             "direction": "I",
-            "left": "23",
+            "left": "31",
             "right": "0"
           },
           "valid_E": {
@@ -1934,7 +1934,7 @@
           },
           "fir_W": {
             "direction": "I",
-            "left": "23",
+            "left": "31",
             "right": "0"
           },
           "valid_W": {
@@ -2005,7 +2005,7 @@
           },
           "fir_N": {
             "direction": "I",
-            "left": "23",
+            "left": "31",
             "right": "0"
           },
           "valid_N": {
@@ -2021,7 +2021,7 @@
           },
           "fir_E": {
             "direction": "I",
-            "left": "23",
+            "left": "31",
             "right": "0"
           },
           "valid_E": {
@@ -2037,7 +2037,7 @@
           },
           "fir_W": {
             "direction": "I",
-            "left": "23",
+            "left": "31",
             "right": "0"
           },
           "valid_W": {
@@ -2200,6 +2200,18 @@
           "Clock_Frequency": {
             "value": "500.0"
           },
+          "CoefficientVector": {
+            "value": "-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202"
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
@@ -2207,7 +2219,7 @@
             "value": "16"
           },
           "ColumnConfig": {
-            "value": "11"
+            "value": "26"
           },
           "DATA_Has_TLAST": {
             "value": "Not_Required"
@@ -2237,13 +2249,16 @@
             "value": "1"
           },
           "Output_Rounding_Mode": {
-            "value": "Truncate_LSBs"
+            "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "21"
+            "value": "30"
           },
           "Passband_Max": {
             "value": "0.5"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "RateSpecification": {
             "value": "Frequency_Specification"
@@ -2285,6 +2300,18 @@
           "Clock_Frequency": {
             "value": "500.0"
           },
+          "CoefficientVector": {
+            "value": "-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202"
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
@@ -2292,7 +2319,7 @@
             "value": "16"
           },
           "ColumnConfig": {
-            "value": "11"
+            "value": "26"
           },
           "DATA_Has_TLAST": {
             "value": "Not_Required"
@@ -2322,13 +2349,16 @@
             "value": "1"
           },
           "Output_Rounding_Mode": {
-            "value": "Truncate_LSBs"
+            "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "21"
+            "value": "30"
           },
           "Passband_Max": {
             "value": "0.5"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "RateSpecification": {
             "value": "Frequency_Specification"
@@ -2370,6 +2400,18 @@
           "Clock_Frequency": {
             "value": "500.0"
           },
+          "CoefficientVector": {
+            "value": "-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202"
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
@@ -2377,7 +2419,7 @@
             "value": "16"
           },
           "ColumnConfig": {
-            "value": "11"
+            "value": "26"
           },
           "DATA_Has_TLAST": {
             "value": "Not_Required"
@@ -2407,13 +2449,16 @@
             "value": "1"
           },
           "Output_Rounding_Mode": {
-            "value": "Truncate_LSBs"
+            "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "21"
+            "value": "30"
           },
           "Passband_Max": {
             "value": "0.5"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "RateSpecification": {
             "value": "Frequency_Specification"
@@ -2455,6 +2500,18 @@
           "Clock_Frequency": {
             "value": "500.0"
           },
+          "CoefficientVector": {
+            "value": "70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70"
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
@@ -2462,7 +2519,7 @@
             "value": "16"
           },
           "ColumnConfig": {
-            "value": "11"
+            "value": "36"
           },
           "DATA_Has_TLAST": {
             "value": "Not_Required"
@@ -2492,13 +2549,16 @@
             "value": "1"
           },
           "Output_Rounding_Mode": {
-            "value": "Truncate_LSBs"
+            "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "21"
+            "value": "30"
           },
           "Passband_Max": {
             "value": "0.5"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "RateSpecification": {
             "value": "Frequency_Specification"
@@ -2540,6 +2600,18 @@
           "Clock_Frequency": {
             "value": "500.0"
           },
+          "CoefficientVector": {
+            "value": "70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70"
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
@@ -2547,7 +2619,7 @@
             "value": "16"
           },
           "ColumnConfig": {
-            "value": "11"
+            "value": "36"
           },
           "DATA_Has_TLAST": {
             "value": "Not_Required"
@@ -2577,13 +2649,16 @@
             "value": "1"
           },
           "Output_Rounding_Mode": {
-            "value": "Truncate_LSBs"
+            "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "21"
+            "value": "30"
           },
           "Passband_Max": {
             "value": "0.5"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "RateSpecification": {
             "value": "Frequency_Specification"
@@ -2625,6 +2700,18 @@
           "Clock_Frequency": {
             "value": "500.0"
           },
+          "CoefficientVector": {
+            "value": "70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70"
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
@@ -2632,7 +2719,7 @@
             "value": "16"
           },
           "ColumnConfig": {
-            "value": "11"
+            "value": "36"
           },
           "DATA_Has_TLAST": {
             "value": "Not_Required"
@@ -2662,13 +2749,16 @@
             "value": "1"
           },
           "Output_Rounding_Mode": {
-            "value": "Truncate_LSBs"
+            "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "21"
+            "value": "30"
           },
           "Passband_Max": {
             "value": "0.5"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "RateSpecification": {
             "value": "Frequency_Specification"
@@ -3023,85 +3113,85 @@
       "usp_rf_data_converter_0_m00_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m00_axis_tdata",
-          "decimate_0/data_N",
-          "fir_deci_N0/s_axis_data_tdata"
+          "fir_deci_N0/s_axis_data_tdata",
+          "decimate_0/data_N"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m00_axis_tvalid",
-          "decimate_0/ready_N",
-          "fir_deci_N0/s_axis_data_tvalid"
+          "fir_deci_N0/s_axis_data_tvalid",
+          "decimate_0/ready_N"
         ]
       },
       "usp_rf_data_converter_0_m02_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m02_axis_tdata",
-          "decimate_0/data_E",
-          "fir_deci_E0/s_axis_data_tdata"
+          "fir_deci_E0/s_axis_data_tdata",
+          "decimate_0/data_E"
         ]
       },
       "usp_rf_data_converter_0_m02_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m02_axis_tvalid",
-          "decimate_0/ready_E",
-          "fir_deci_E0/s_axis_data_tvalid"
+          "fir_deci_E0/s_axis_data_tvalid",
+          "decimate_0/ready_E"
         ]
       },
       "usp_rf_data_converter_0_m10_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m10_axis_tdata",
-          "decimate_0/data_W",
-          "fir_deci_W0/s_axis_data_tdata"
+          "fir_deci_W0/s_axis_data_tdata",
+          "decimate_0/data_W"
         ]
       },
       "usp_rf_data_converter_0_m10_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m10_axis_tvalid",
-          "decimate_0/ready_W",
-          "fir_deci_W0/s_axis_data_tvalid"
+          "fir_deci_W0/s_axis_data_tvalid",
+          "decimate_0/ready_W"
         ]
       },
       "usp_rf_data_converter_0_m20_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m20_axis_tdata",
-          "decimate_1/data_N",
-          "fir_deci_N1/s_axis_data_tdata"
+          "fir_deci_N1/s_axis_data_tdata",
+          "decimate_1/data_N"
         ]
       },
       "usp_rf_data_converter_0_m20_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m20_axis_tvalid",
-          "decimate_1/ready_N",
-          "fir_deci_N1/s_axis_data_tvalid"
+          "fir_deci_N1/s_axis_data_tvalid",
+          "decimate_1/ready_N"
         ]
       },
       "usp_rf_data_converter_0_m22_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m22_axis_tdata",
-          "decimate_1/data_E",
-          "fir_deci_E1/s_axis_data_tdata"
+          "fir_deci_E1/s_axis_data_tdata",
+          "decimate_1/data_E"
         ]
       },
       "usp_rf_data_converter_0_m22_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m22_axis_tvalid",
-          "decimate_1/ready_E",
-          "fir_deci_E1/s_axis_data_tvalid"
+          "fir_deci_E1/s_axis_data_tvalid",
+          "decimate_1/ready_E"
         ]
       },
       "usp_rf_data_converter_0_m30_axis_tdata": {
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tdata",
-          "decimate_1/data_W",
-          "fir_deci_W1/s_axis_data_tdata"
+          "fir_deci_W1/s_axis_data_tdata",
+          "decimate_1/data_W"
         ]
       },
       "usp_rf_data_converter_0_m30_axis_tvalid": {
         "ports": [
           "usp_rf_data_converter_0/m30_axis_tvalid",
-          "decimate_1/ready_W",
-          "fir_deci_W1/s_axis_data_tvalid"
+          "fir_deci_W1/s_axis_data_tvalid",
+          "decimate_1/ready_W"
         ]
       },
       "util_ds_buf_0_IBUF_OUT": {

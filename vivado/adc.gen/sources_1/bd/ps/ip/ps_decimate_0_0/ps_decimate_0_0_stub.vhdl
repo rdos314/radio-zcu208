@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov  2 22:09:53 2025
+-- Date        : Mon Nov  3 23:11:32 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_decimate_0_0/ps_decimate_0_0_stub.vhdl
@@ -19,15 +19,15 @@ entity ps_decimate_0_0 is
     resetn : in STD_LOGIC;
     data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_N : in STD_LOGIC;
-    fir_N : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    fir_N : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid_N : in STD_LOGIC;
     data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_E : in STD_LOGIC;
-    fir_E : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    fir_E : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
     ready_W : in STD_LOGIC;
-    fir_W : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    fir_W : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid_W : in STD_LOGIC;
     fifo_wr : out STD_LOGIC;
     fifo : out STD_LOGIC_VECTOR ( 447 downto 0 )
@@ -47,7 +47,7 @@ architecture stub of ps_decimate_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[159:0],ready_N,fir_N[23:0],valid_N,data_E[159:0],ready_E,fir_E[23:0],valid_E,data_W[159:0],ready_W,fir_W[23:0],valid_W,fifo_wr,fifo[447:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[159:0],ready_N,fir_N[31:0],valid_N,data_E[159:0],ready_E,fir_E[31:0],valid_E,data_W[159:0],ready_W,fir_W[31:0],valid_W,fifo_wr,fifo[447:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sun Nov  2 22:29:31 2025
+//Date        : Mon Nov  3 23:09:35 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -134,17 +134,17 @@ module ps
   wire decimate_0_fifo_wr;
   wire [447:0]decimate_1_fifo;
   wire decimate_1_fifo_wr;
-  wire [23:0]fir_deci_E0_m_axis_data_tdata;
+  wire [31:0]fir_deci_E0_m_axis_data_tdata;
   wire fir_deci_E0_m_axis_data_tvalid;
-  wire [23:0]fir_deci_E1_m_axis_data_tdata;
+  wire [31:0]fir_deci_E1_m_axis_data_tdata;
   wire fir_deci_E1_m_axis_data_tvalid;
-  wire [23:0]fir_deci_N0_m_axis_data_tdata;
+  wire [31:0]fir_deci_N0_m_axis_data_tdata;
   wire fir_deci_N0_m_axis_data_tvalid;
-  wire [23:0]fir_deci_N1_m_axis_data_tdata;
+  wire [31:0]fir_deci_N1_m_axis_data_tdata;
   wire fir_deci_N1_m_axis_data_tvalid;
-  wire [23:0]fir_deci_W0_m_axis_data_tdata;
+  wire [31:0]fir_deci_W0_m_axis_data_tdata;
   wire fir_deci_W0_m_axis_data_tvalid;
-  wire [23:0]fir_deci_W1_m_axis_data_tdata;
+  wire [31:0]fir_deci_W1_m_axis_data_tdata;
   wire fir_deci_W1_m_axis_data_tvalid;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;

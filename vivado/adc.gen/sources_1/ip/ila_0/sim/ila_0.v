@@ -79,7 +79,7 @@ input [13 : 0] probe7;
 input [13 : 0] probe8;
 input [13 : 0] probe9;
 input [0 : 0] probe10;
-input [23 : 0] probe11;
+input [13 : 0] probe11;
 input [0 : 0] probe12;
 
 

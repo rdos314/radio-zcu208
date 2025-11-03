@@ -51,7 +51,7 @@
 //
 //------------------------------------------------------------------------------
 //
-// coefficients: 6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6
+// coefficients: 70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70
 // chanpats: 173
 // name: ps_fir_deci_E0_1
 // filter_type: 2
@@ -60,7 +60,7 @@
 // decim_rate: 10
 // zero_pack_factor: 1
 // coeff_padding: 0
-// num_coeffs: 21
+// num_coeffs: 71
 // coeff_sets: 1
 // reloadable: 0
 // is_halfband: 0
@@ -72,12 +72,12 @@
 // num_paths: 1
 // data_width: 14
 // data_fract_width: 0
-// output_rounding_mode: 1
-// output_width: 21
+// output_rounding_mode: 0
+// output_width: 30
 // output_fract_width: 0
 // config_method: 0
 
-const double ps_fir_deci_E0_1_coefficients[21] = {6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6};
+const double ps_fir_deci_E0_1_coefficients[71] = {70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70};
 
 const xip_fir_v7_2_pattern ps_fir_deci_E0_1_chanpats[1] = {P_BASIC};
 
@@ -91,7 +91,7 @@ static xip_fir_v7_2_config gen_ps_fir_deci_E0_1_config() {
   config.zero_pack_factor    = 1;
   config.coeff               = &ps_fir_deci_E0_1_coefficients[0];
   config.coeff_padding       = 0;
-  config.num_coeffs          = 21;
+  config.num_coeffs          = 71;
   config.coeff_sets          = 1;
   config.reloadable          = 0;
   config.is_halfband         = 0;
@@ -104,8 +104,8 @@ static xip_fir_v7_2_config gen_ps_fir_deci_E0_1_config() {
   config.num_paths           = 1;
   config.data_width          = 14;
   config.data_fract_width    = 0;
-  config.output_rounding_mode= XIP_FIR_TRUNCATE_LSBS;
-  config.output_width        = 21;
+  config.output_rounding_mode= XIP_FIR_FULL_PRECISION;
+  config.output_width        = 30;
   config.output_fract_width  = 0,
   config.config_method       = XIP_FIR_CONFIG_SINGLE;
   return config;

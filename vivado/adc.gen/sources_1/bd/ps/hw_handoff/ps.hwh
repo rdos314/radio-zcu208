@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov  2 22:29:34 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Nov  3 23:09:38 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -1480,17 +1480,17 @@
             <CONNECTION INSTANCE="raw_fifo_0" PORT="wr_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="fir_E" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E0_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="31" NAME="fir_E" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E0_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_deci_E0" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="fir_N" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N0_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="31" NAME="fir_N" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N0_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_deci_N0" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="fir_W" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W0_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="31" NAME="fir_W" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W0_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_deci_W0" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
@@ -1570,17 +1570,17 @@
             <CONNECTION INSTANCE="raw_fifo_1" PORT="wr_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="fir_E" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E1_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="31" NAME="fir_E" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E1_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_deci_E1" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="fir_N" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N1_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="31" NAME="fir_N" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N1_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_deci_N1" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="fir_W" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W1_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="31" NAME="fir_W" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W1_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_deci_W1" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
@@ -1628,11 +1628,11 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=fir_compiler;v=v7_2;d=pg149-fir-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="22"/>
-        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="22,22,22,22,22,22,22,22,22,22"/>
+        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="30"/>
+        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="30,30,30,30,30,30,30,30,30,30"/>
         <PARAMETER NAME="C_CHANNEL_PATTERN" VALUE="fixed"/>
         <PARAMETER NAME="C_COEF_FILE" VALUE="ps_fir_deci_N_0.mif"/>
-        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="11"/>
+        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="26"/>
         <PARAMETER NAME="C_COEF_MEMTYPE" VALUE="2"/>
         <PARAMETER NAME="C_COEF_MEM_PACKING" VALUE="0"/>
         <PARAMETER NAME="C_COEF_PATH_SIGN" VALUE="0,0,0,0,0,0,0,0,0,0"/>
@@ -1640,7 +1640,7 @@
         <PARAMETER NAME="C_COEF_PATH_WIDTHS" VALUE="16,16,16,16,16,16,16,16,16,16"/>
         <PARAMETER NAME="C_COEF_RELOAD" VALUE="0"/>
         <PARAMETER NAME="C_COEF_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_COL_CONFIG" VALUE="11"/>
+        <PARAMETER NAME="C_COL_CONFIG" VALUE="26"/>
         <PARAMETER NAME="C_COL_MODE" VALUE="1"/>
         <PARAMETER NAME="C_COL_PIPE_LEN" VALUE="4"/>
         <PARAMETER NAME="C_COMPONENT_NAME" VALUE="ps_fir_deci_N_0"/>
@@ -1669,28 +1669,28 @@
         <PARAMETER NAME="C_INPUT_RATE" VALUE="1"/>
         <PARAMETER NAME="C_INTERP_RATE" VALUE="1"/>
         <PARAMETER NAME="C_IPBUFF_MEMTYPE" VALUE="2"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="17"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="32"/>
         <PARAMETER NAME="C_MEM_ARRANGEMENT" VALUE="1"/>
         <PARAMETER NAME="C_M_DATA_HAS_TREADY" VALUE="0"/>
         <PARAMETER NAME="C_M_DATA_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NUM_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_NUM_FILTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MADDS" VALUE="11"/>
+        <PARAMETER NAME="C_NUM_MADDS" VALUE="26"/>
         <PARAMETER NAME="C_NUM_RELOAD_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_TAPS" VALUE="21"/>
+        <PARAMETER NAME="C_NUM_TAPS" VALUE="51"/>
         <PARAMETER NAME="C_OPBUFF_MEMTYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPTIMIZATION" VALUE="0"/>
         <PARAMETER NAME="C_OPT_MADDS" VALUE="none"/>
         <PARAMETER NAME="C_OP_PATH_PSAMP_SRC" VALUE="0,1,2,3,4,5,6,7,8,-9"/>
-        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="30"/>
         <PARAMETER NAME="C_OUTPUT_RATE" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="30"/>
         <PARAMETER NAME="C_OVERSAMPLING_RATE" VALUE="1"/>
         <PARAMETER NAME="C_PX_PATH_SRC" VALUE="9,9,9,9,9,9,9,9,9,9"/>
         <PARAMETER NAME="C_RELOAD_TDATA_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_ROUND_MODE" VALUE="1"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SYMMETRY" VALUE="1"/>
         <PARAMETER NAME="C_S_DATA_HAS_FIFO" VALUE="0"/>
         <PARAMETER NAME="C_S_DATA_HAS_TUSER" VALUE="0"/>
@@ -1703,7 +1703,7 @@
         <PARAMETER NAME="Channel_Sequence" VALUE="Basic"/>
         <PARAMETER NAME="Clock_Frequency" VALUE="500.0"/>
         <PARAMETER NAME="CoefficientSource" VALUE="Vector"/>
-        <PARAMETER NAME="CoefficientVector" VALUE="6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6"/>
+        <PARAMETER NAME="CoefficientVector" VALUE="-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202"/>
         <PARAMETER NAME="Coefficient_Buffer_Type" VALUE="Automatic"/>
         <PARAMETER NAME="Coefficient_Fanout" VALUE="false"/>
         <PARAMETER NAME="Coefficient_File" VALUE="no_coe_file_loaded"/>
@@ -1713,7 +1713,7 @@
         <PARAMETER NAME="Coefficient_Sign" VALUE="Signed"/>
         <PARAMETER NAME="Coefficient_Structure" VALUE="Inferred"/>
         <PARAMETER NAME="Coefficient_Width" VALUE="16"/>
-        <PARAMETER NAME="ColumnConfig" VALUE="11"/>
+        <PARAMETER NAME="ColumnConfig" VALUE="26"/>
         <PARAMETER NAME="Component_Name" VALUE="ps_fir_deci_N_0"/>
         <PARAMETER NAME="Control_Broadcast_Fanout" VALUE="false"/>
         <PARAMETER NAME="Control_Column_Fanout" VALUE="false"/>
@@ -1757,8 +1757,8 @@
         <PARAMETER NAME="Optimization_Selection" VALUE="None"/>
         <PARAMETER NAME="Other" VALUE="false"/>
         <PARAMETER NAME="Output_Buffer_Type" VALUE="Automatic"/>
-        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Truncate_LSBs"/>
-        <PARAMETER NAME="Output_Width" VALUE="21"/>
+        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Full_Precision"/>
+        <PARAMETER NAME="Output_Width" VALUE="30"/>
         <PARAMETER NAME="Passband_Max" VALUE="0.5"/>
         <PARAMETER NAME="Passband_Min" VALUE="0.0"/>
         <PARAMETER NAME="Pattern_List" VALUE="P4-0,P4-1,P4-2,P4-3,P4-4"/>
@@ -1787,7 +1787,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E0_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E0_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decimate_0" PORT="fir_E"/>
           </CONNECTIONS>
@@ -1838,9 +1838,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -1856,11 +1856,11 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=fir_compiler;v=v7_2;d=pg149-fir-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="22"/>
-        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="22,22,22,22,22,22,22,22,22,22"/>
+        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="30"/>
+        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="30,30,30,30,30,30,30,30,30,30"/>
         <PARAMETER NAME="C_CHANNEL_PATTERN" VALUE="fixed"/>
         <PARAMETER NAME="C_COEF_FILE" VALUE="ps_fir_deci_E0_1.mif"/>
-        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="11"/>
+        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="36"/>
         <PARAMETER NAME="C_COEF_MEMTYPE" VALUE="2"/>
         <PARAMETER NAME="C_COEF_MEM_PACKING" VALUE="0"/>
         <PARAMETER NAME="C_COEF_PATH_SIGN" VALUE="0,0,0,0,0,0,0,0,0,0"/>
@@ -1868,7 +1868,7 @@
         <PARAMETER NAME="C_COEF_PATH_WIDTHS" VALUE="16,16,16,16,16,16,16,16,16,16"/>
         <PARAMETER NAME="C_COEF_RELOAD" VALUE="0"/>
         <PARAMETER NAME="C_COEF_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_COL_CONFIG" VALUE="11"/>
+        <PARAMETER NAME="C_COL_CONFIG" VALUE="36"/>
         <PARAMETER NAME="C_COL_MODE" VALUE="1"/>
         <PARAMETER NAME="C_COL_PIPE_LEN" VALUE="4"/>
         <PARAMETER NAME="C_COMPONENT_NAME" VALUE="ps_fir_deci_E0_1"/>
@@ -1897,28 +1897,28 @@
         <PARAMETER NAME="C_INPUT_RATE" VALUE="1"/>
         <PARAMETER NAME="C_INTERP_RATE" VALUE="1"/>
         <PARAMETER NAME="C_IPBUFF_MEMTYPE" VALUE="2"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="17"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="42"/>
         <PARAMETER NAME="C_MEM_ARRANGEMENT" VALUE="1"/>
         <PARAMETER NAME="C_M_DATA_HAS_TREADY" VALUE="0"/>
         <PARAMETER NAME="C_M_DATA_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NUM_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_NUM_FILTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MADDS" VALUE="11"/>
+        <PARAMETER NAME="C_NUM_MADDS" VALUE="36"/>
         <PARAMETER NAME="C_NUM_RELOAD_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_TAPS" VALUE="21"/>
+        <PARAMETER NAME="C_NUM_TAPS" VALUE="71"/>
         <PARAMETER NAME="C_OPBUFF_MEMTYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPTIMIZATION" VALUE="0"/>
         <PARAMETER NAME="C_OPT_MADDS" VALUE="none"/>
         <PARAMETER NAME="C_OP_PATH_PSAMP_SRC" VALUE="0,1,2,3,4,5,6,7,8,-9"/>
-        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="30"/>
         <PARAMETER NAME="C_OUTPUT_RATE" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="30"/>
         <PARAMETER NAME="C_OVERSAMPLING_RATE" VALUE="1"/>
         <PARAMETER NAME="C_PX_PATH_SRC" VALUE="9,9,9,9,9,9,9,9,9,9"/>
         <PARAMETER NAME="C_RELOAD_TDATA_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_ROUND_MODE" VALUE="1"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SYMMETRY" VALUE="1"/>
         <PARAMETER NAME="C_S_DATA_HAS_FIFO" VALUE="0"/>
         <PARAMETER NAME="C_S_DATA_HAS_TUSER" VALUE="0"/>
@@ -1931,7 +1931,7 @@
         <PARAMETER NAME="Channel_Sequence" VALUE="Basic"/>
         <PARAMETER NAME="Clock_Frequency" VALUE="500.0"/>
         <PARAMETER NAME="CoefficientSource" VALUE="Vector"/>
-        <PARAMETER NAME="CoefficientVector" VALUE="6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6"/>
+        <PARAMETER NAME="CoefficientVector" VALUE="70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70"/>
         <PARAMETER NAME="Coefficient_Buffer_Type" VALUE="Automatic"/>
         <PARAMETER NAME="Coefficient_Fanout" VALUE="false"/>
         <PARAMETER NAME="Coefficient_File" VALUE="no_coe_file_loaded"/>
@@ -1941,7 +1941,7 @@
         <PARAMETER NAME="Coefficient_Sign" VALUE="Signed"/>
         <PARAMETER NAME="Coefficient_Structure" VALUE="Inferred"/>
         <PARAMETER NAME="Coefficient_Width" VALUE="16"/>
-        <PARAMETER NAME="ColumnConfig" VALUE="11"/>
+        <PARAMETER NAME="ColumnConfig" VALUE="36"/>
         <PARAMETER NAME="Component_Name" VALUE="ps_fir_deci_E0_1"/>
         <PARAMETER NAME="Control_Broadcast_Fanout" VALUE="false"/>
         <PARAMETER NAME="Control_Column_Fanout" VALUE="false"/>
@@ -1985,8 +1985,8 @@
         <PARAMETER NAME="Optimization_Selection" VALUE="None"/>
         <PARAMETER NAME="Other" VALUE="false"/>
         <PARAMETER NAME="Output_Buffer_Type" VALUE="Automatic"/>
-        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Truncate_LSBs"/>
-        <PARAMETER NAME="Output_Width" VALUE="21"/>
+        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Full_Precision"/>
+        <PARAMETER NAME="Output_Width" VALUE="30"/>
         <PARAMETER NAME="Passband_Max" VALUE="0.5"/>
         <PARAMETER NAME="Passband_Min" VALUE="0.0"/>
         <PARAMETER NAME="Pattern_List" VALUE="P4-0,P4-1,P4-2,P4-3,P4-4"/>
@@ -2015,7 +2015,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E1_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_E1_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decimate_1" PORT="fir_E"/>
           </CONNECTIONS>
@@ -2066,9 +2066,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -2084,11 +2084,11 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=fir_compiler;v=v7_2;d=pg149-fir-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="22"/>
-        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="22,22,22,22,22,22,22,22,22,22"/>
+        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="30"/>
+        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="30,30,30,30,30,30,30,30,30,30"/>
         <PARAMETER NAME="C_CHANNEL_PATTERN" VALUE="fixed"/>
         <PARAMETER NAME="C_COEF_FILE" VALUE="ps_fir_compiler_0_0.mif"/>
-        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="11"/>
+        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="26"/>
         <PARAMETER NAME="C_COEF_MEMTYPE" VALUE="2"/>
         <PARAMETER NAME="C_COEF_MEM_PACKING" VALUE="0"/>
         <PARAMETER NAME="C_COEF_PATH_SIGN" VALUE="0,0,0,0,0,0,0,0,0,0"/>
@@ -2096,7 +2096,7 @@
         <PARAMETER NAME="C_COEF_PATH_WIDTHS" VALUE="16,16,16,16,16,16,16,16,16,16"/>
         <PARAMETER NAME="C_COEF_RELOAD" VALUE="0"/>
         <PARAMETER NAME="C_COEF_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_COL_CONFIG" VALUE="11"/>
+        <PARAMETER NAME="C_COL_CONFIG" VALUE="26"/>
         <PARAMETER NAME="C_COL_MODE" VALUE="1"/>
         <PARAMETER NAME="C_COL_PIPE_LEN" VALUE="4"/>
         <PARAMETER NAME="C_COMPONENT_NAME" VALUE="ps_fir_compiler_0_0"/>
@@ -2125,28 +2125,28 @@
         <PARAMETER NAME="C_INPUT_RATE" VALUE="1"/>
         <PARAMETER NAME="C_INTERP_RATE" VALUE="1"/>
         <PARAMETER NAME="C_IPBUFF_MEMTYPE" VALUE="2"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="17"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="32"/>
         <PARAMETER NAME="C_MEM_ARRANGEMENT" VALUE="1"/>
         <PARAMETER NAME="C_M_DATA_HAS_TREADY" VALUE="0"/>
         <PARAMETER NAME="C_M_DATA_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NUM_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_NUM_FILTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MADDS" VALUE="11"/>
+        <PARAMETER NAME="C_NUM_MADDS" VALUE="26"/>
         <PARAMETER NAME="C_NUM_RELOAD_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_TAPS" VALUE="21"/>
+        <PARAMETER NAME="C_NUM_TAPS" VALUE="51"/>
         <PARAMETER NAME="C_OPBUFF_MEMTYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPTIMIZATION" VALUE="0"/>
         <PARAMETER NAME="C_OPT_MADDS" VALUE="none"/>
         <PARAMETER NAME="C_OP_PATH_PSAMP_SRC" VALUE="0,1,2,3,4,5,6,7,8,-9"/>
-        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="30"/>
         <PARAMETER NAME="C_OUTPUT_RATE" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="30"/>
         <PARAMETER NAME="C_OVERSAMPLING_RATE" VALUE="1"/>
         <PARAMETER NAME="C_PX_PATH_SRC" VALUE="9,9,9,9,9,9,9,9,9,9"/>
         <PARAMETER NAME="C_RELOAD_TDATA_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_ROUND_MODE" VALUE="1"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SYMMETRY" VALUE="1"/>
         <PARAMETER NAME="C_S_DATA_HAS_FIFO" VALUE="0"/>
         <PARAMETER NAME="C_S_DATA_HAS_TUSER" VALUE="0"/>
@@ -2159,7 +2159,7 @@
         <PARAMETER NAME="Channel_Sequence" VALUE="Basic"/>
         <PARAMETER NAME="Clock_Frequency" VALUE="500.0"/>
         <PARAMETER NAME="CoefficientSource" VALUE="Vector"/>
-        <PARAMETER NAME="CoefficientVector" VALUE="6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6"/>
+        <PARAMETER NAME="CoefficientVector" VALUE="-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202"/>
         <PARAMETER NAME="Coefficient_Buffer_Type" VALUE="Automatic"/>
         <PARAMETER NAME="Coefficient_Fanout" VALUE="false"/>
         <PARAMETER NAME="Coefficient_File" VALUE="no_coe_file_loaded"/>
@@ -2169,7 +2169,7 @@
         <PARAMETER NAME="Coefficient_Sign" VALUE="Signed"/>
         <PARAMETER NAME="Coefficient_Structure" VALUE="Inferred"/>
         <PARAMETER NAME="Coefficient_Width" VALUE="16"/>
-        <PARAMETER NAME="ColumnConfig" VALUE="11"/>
+        <PARAMETER NAME="ColumnConfig" VALUE="26"/>
         <PARAMETER NAME="Component_Name" VALUE="ps_fir_compiler_0_0"/>
         <PARAMETER NAME="Control_Broadcast_Fanout" VALUE="false"/>
         <PARAMETER NAME="Control_Column_Fanout" VALUE="false"/>
@@ -2213,8 +2213,8 @@
         <PARAMETER NAME="Optimization_Selection" VALUE="None"/>
         <PARAMETER NAME="Other" VALUE="false"/>
         <PARAMETER NAME="Output_Buffer_Type" VALUE="Automatic"/>
-        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Truncate_LSBs"/>
-        <PARAMETER NAME="Output_Width" VALUE="21"/>
+        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Full_Precision"/>
+        <PARAMETER NAME="Output_Width" VALUE="30"/>
         <PARAMETER NAME="Passband_Max" VALUE="0.5"/>
         <PARAMETER NAME="Passband_Min" VALUE="0.0"/>
         <PARAMETER NAME="Pattern_List" VALUE="P4-0,P4-1,P4-2,P4-3,P4-4"/>
@@ -2243,7 +2243,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N0_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N0_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decimate_0" PORT="fir_N"/>
           </CONNECTIONS>
@@ -2294,9 +2294,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -2312,11 +2312,11 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=fir_compiler;v=v7_2;d=pg149-fir-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="22"/>
-        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="22,22,22,22,22,22,22,22,22,22"/>
+        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="30"/>
+        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="30,30,30,30,30,30,30,30,30,30"/>
         <PARAMETER NAME="C_CHANNEL_PATTERN" VALUE="fixed"/>
         <PARAMETER NAME="C_COEF_FILE" VALUE="ps_fir_deci_N0_0.mif"/>
-        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="11"/>
+        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="36"/>
         <PARAMETER NAME="C_COEF_MEMTYPE" VALUE="2"/>
         <PARAMETER NAME="C_COEF_MEM_PACKING" VALUE="0"/>
         <PARAMETER NAME="C_COEF_PATH_SIGN" VALUE="0,0,0,0,0,0,0,0,0,0"/>
@@ -2324,7 +2324,7 @@
         <PARAMETER NAME="C_COEF_PATH_WIDTHS" VALUE="16,16,16,16,16,16,16,16,16,16"/>
         <PARAMETER NAME="C_COEF_RELOAD" VALUE="0"/>
         <PARAMETER NAME="C_COEF_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_COL_CONFIG" VALUE="11"/>
+        <PARAMETER NAME="C_COL_CONFIG" VALUE="36"/>
         <PARAMETER NAME="C_COL_MODE" VALUE="1"/>
         <PARAMETER NAME="C_COL_PIPE_LEN" VALUE="4"/>
         <PARAMETER NAME="C_COMPONENT_NAME" VALUE="ps_fir_deci_N0_0"/>
@@ -2353,28 +2353,28 @@
         <PARAMETER NAME="C_INPUT_RATE" VALUE="1"/>
         <PARAMETER NAME="C_INTERP_RATE" VALUE="1"/>
         <PARAMETER NAME="C_IPBUFF_MEMTYPE" VALUE="2"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="17"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="42"/>
         <PARAMETER NAME="C_MEM_ARRANGEMENT" VALUE="1"/>
         <PARAMETER NAME="C_M_DATA_HAS_TREADY" VALUE="0"/>
         <PARAMETER NAME="C_M_DATA_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NUM_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_NUM_FILTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MADDS" VALUE="11"/>
+        <PARAMETER NAME="C_NUM_MADDS" VALUE="36"/>
         <PARAMETER NAME="C_NUM_RELOAD_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_TAPS" VALUE="21"/>
+        <PARAMETER NAME="C_NUM_TAPS" VALUE="71"/>
         <PARAMETER NAME="C_OPBUFF_MEMTYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPTIMIZATION" VALUE="0"/>
         <PARAMETER NAME="C_OPT_MADDS" VALUE="none"/>
         <PARAMETER NAME="C_OP_PATH_PSAMP_SRC" VALUE="0,1,2,3,4,5,6,7,8,-9"/>
-        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="30"/>
         <PARAMETER NAME="C_OUTPUT_RATE" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="30"/>
         <PARAMETER NAME="C_OVERSAMPLING_RATE" VALUE="1"/>
         <PARAMETER NAME="C_PX_PATH_SRC" VALUE="9,9,9,9,9,9,9,9,9,9"/>
         <PARAMETER NAME="C_RELOAD_TDATA_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_ROUND_MODE" VALUE="1"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SYMMETRY" VALUE="1"/>
         <PARAMETER NAME="C_S_DATA_HAS_FIFO" VALUE="0"/>
         <PARAMETER NAME="C_S_DATA_HAS_TUSER" VALUE="0"/>
@@ -2387,7 +2387,7 @@
         <PARAMETER NAME="Channel_Sequence" VALUE="Basic"/>
         <PARAMETER NAME="Clock_Frequency" VALUE="500.0"/>
         <PARAMETER NAME="CoefficientSource" VALUE="Vector"/>
-        <PARAMETER NAME="CoefficientVector" VALUE="6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6"/>
+        <PARAMETER NAME="CoefficientVector" VALUE="70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70"/>
         <PARAMETER NAME="Coefficient_Buffer_Type" VALUE="Automatic"/>
         <PARAMETER NAME="Coefficient_Fanout" VALUE="false"/>
         <PARAMETER NAME="Coefficient_File" VALUE="no_coe_file_loaded"/>
@@ -2397,7 +2397,7 @@
         <PARAMETER NAME="Coefficient_Sign" VALUE="Signed"/>
         <PARAMETER NAME="Coefficient_Structure" VALUE="Inferred"/>
         <PARAMETER NAME="Coefficient_Width" VALUE="16"/>
-        <PARAMETER NAME="ColumnConfig" VALUE="11"/>
+        <PARAMETER NAME="ColumnConfig" VALUE="36"/>
         <PARAMETER NAME="Component_Name" VALUE="ps_fir_deci_N0_0"/>
         <PARAMETER NAME="Control_Broadcast_Fanout" VALUE="false"/>
         <PARAMETER NAME="Control_Column_Fanout" VALUE="false"/>
@@ -2441,8 +2441,8 @@
         <PARAMETER NAME="Optimization_Selection" VALUE="None"/>
         <PARAMETER NAME="Other" VALUE="false"/>
         <PARAMETER NAME="Output_Buffer_Type" VALUE="Automatic"/>
-        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Truncate_LSBs"/>
-        <PARAMETER NAME="Output_Width" VALUE="21"/>
+        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Full_Precision"/>
+        <PARAMETER NAME="Output_Width" VALUE="30"/>
         <PARAMETER NAME="Passband_Max" VALUE="0.5"/>
         <PARAMETER NAME="Passband_Min" VALUE="0.0"/>
         <PARAMETER NAME="Pattern_List" VALUE="P4-0,P4-1,P4-2,P4-3,P4-4"/>
@@ -2471,7 +2471,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N1_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_N1_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decimate_1" PORT="fir_N"/>
           </CONNECTIONS>
@@ -2522,9 +2522,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -2540,11 +2540,11 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=fir_compiler;v=v7_2;d=pg149-fir-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="22"/>
-        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="22,22,22,22,22,22,22,22,22,22"/>
+        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="30"/>
+        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="30,30,30,30,30,30,30,30,30,30"/>
         <PARAMETER NAME="C_CHANNEL_PATTERN" VALUE="fixed"/>
         <PARAMETER NAME="C_COEF_FILE" VALUE="ps_fir_deci_E0_0.mif"/>
-        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="11"/>
+        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="26"/>
         <PARAMETER NAME="C_COEF_MEMTYPE" VALUE="2"/>
         <PARAMETER NAME="C_COEF_MEM_PACKING" VALUE="0"/>
         <PARAMETER NAME="C_COEF_PATH_SIGN" VALUE="0,0,0,0,0,0,0,0,0,0"/>
@@ -2552,7 +2552,7 @@
         <PARAMETER NAME="C_COEF_PATH_WIDTHS" VALUE="16,16,16,16,16,16,16,16,16,16"/>
         <PARAMETER NAME="C_COEF_RELOAD" VALUE="0"/>
         <PARAMETER NAME="C_COEF_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_COL_CONFIG" VALUE="11"/>
+        <PARAMETER NAME="C_COL_CONFIG" VALUE="26"/>
         <PARAMETER NAME="C_COL_MODE" VALUE="1"/>
         <PARAMETER NAME="C_COL_PIPE_LEN" VALUE="4"/>
         <PARAMETER NAME="C_COMPONENT_NAME" VALUE="ps_fir_deci_E0_0"/>
@@ -2581,28 +2581,28 @@
         <PARAMETER NAME="C_INPUT_RATE" VALUE="1"/>
         <PARAMETER NAME="C_INTERP_RATE" VALUE="1"/>
         <PARAMETER NAME="C_IPBUFF_MEMTYPE" VALUE="2"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="17"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="32"/>
         <PARAMETER NAME="C_MEM_ARRANGEMENT" VALUE="1"/>
         <PARAMETER NAME="C_M_DATA_HAS_TREADY" VALUE="0"/>
         <PARAMETER NAME="C_M_DATA_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NUM_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_NUM_FILTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MADDS" VALUE="11"/>
+        <PARAMETER NAME="C_NUM_MADDS" VALUE="26"/>
         <PARAMETER NAME="C_NUM_RELOAD_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_TAPS" VALUE="21"/>
+        <PARAMETER NAME="C_NUM_TAPS" VALUE="51"/>
         <PARAMETER NAME="C_OPBUFF_MEMTYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPTIMIZATION" VALUE="0"/>
         <PARAMETER NAME="C_OPT_MADDS" VALUE="none"/>
         <PARAMETER NAME="C_OP_PATH_PSAMP_SRC" VALUE="0,1,2,3,4,5,6,7,8,-9"/>
-        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="30"/>
         <PARAMETER NAME="C_OUTPUT_RATE" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="30"/>
         <PARAMETER NAME="C_OVERSAMPLING_RATE" VALUE="1"/>
         <PARAMETER NAME="C_PX_PATH_SRC" VALUE="9,9,9,9,9,9,9,9,9,9"/>
         <PARAMETER NAME="C_RELOAD_TDATA_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_ROUND_MODE" VALUE="1"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SYMMETRY" VALUE="1"/>
         <PARAMETER NAME="C_S_DATA_HAS_FIFO" VALUE="0"/>
         <PARAMETER NAME="C_S_DATA_HAS_TUSER" VALUE="0"/>
@@ -2615,7 +2615,7 @@
         <PARAMETER NAME="Channel_Sequence" VALUE="Basic"/>
         <PARAMETER NAME="Clock_Frequency" VALUE="500.0"/>
         <PARAMETER NAME="CoefficientSource" VALUE="Vector"/>
-        <PARAMETER NAME="CoefficientVector" VALUE="6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6"/>
+        <PARAMETER NAME="CoefficientVector" VALUE="-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202"/>
         <PARAMETER NAME="Coefficient_Buffer_Type" VALUE="Automatic"/>
         <PARAMETER NAME="Coefficient_Fanout" VALUE="false"/>
         <PARAMETER NAME="Coefficient_File" VALUE="no_coe_file_loaded"/>
@@ -2625,7 +2625,7 @@
         <PARAMETER NAME="Coefficient_Sign" VALUE="Signed"/>
         <PARAMETER NAME="Coefficient_Structure" VALUE="Inferred"/>
         <PARAMETER NAME="Coefficient_Width" VALUE="16"/>
-        <PARAMETER NAME="ColumnConfig" VALUE="11"/>
+        <PARAMETER NAME="ColumnConfig" VALUE="26"/>
         <PARAMETER NAME="Component_Name" VALUE="ps_fir_deci_E0_0"/>
         <PARAMETER NAME="Control_Broadcast_Fanout" VALUE="false"/>
         <PARAMETER NAME="Control_Column_Fanout" VALUE="false"/>
@@ -2669,8 +2669,8 @@
         <PARAMETER NAME="Optimization_Selection" VALUE="None"/>
         <PARAMETER NAME="Other" VALUE="false"/>
         <PARAMETER NAME="Output_Buffer_Type" VALUE="Automatic"/>
-        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Truncate_LSBs"/>
-        <PARAMETER NAME="Output_Width" VALUE="21"/>
+        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Full_Precision"/>
+        <PARAMETER NAME="Output_Width" VALUE="30"/>
         <PARAMETER NAME="Passband_Max" VALUE="0.5"/>
         <PARAMETER NAME="Passband_Min" VALUE="0.0"/>
         <PARAMETER NAME="Pattern_List" VALUE="P4-0,P4-1,P4-2,P4-3,P4-4"/>
@@ -2699,7 +2699,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W0_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W0_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decimate_0" PORT="fir_W"/>
           </CONNECTIONS>
@@ -2750,9 +2750,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -2768,11 +2768,11 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=fir_compiler;v=v7_2;d=pg149-fir-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="22"/>
-        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="22,22,22,22,22,22,22,22,22,22"/>
+        <PARAMETER NAME="C_ACCUM_OP_PATH_WIDTHS" VALUE="30"/>
+        <PARAMETER NAME="C_ACCUM_PATH_WIDTHS" VALUE="30,30,30,30,30,30,30,30,30,30"/>
         <PARAMETER NAME="C_CHANNEL_PATTERN" VALUE="fixed"/>
         <PARAMETER NAME="C_COEF_FILE" VALUE="ps_fir_deci_W0_0.mif"/>
-        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="11"/>
+        <PARAMETER NAME="C_COEF_FILE_LINES" VALUE="36"/>
         <PARAMETER NAME="C_COEF_MEMTYPE" VALUE="2"/>
         <PARAMETER NAME="C_COEF_MEM_PACKING" VALUE="0"/>
         <PARAMETER NAME="C_COEF_PATH_SIGN" VALUE="0,0,0,0,0,0,0,0,0,0"/>
@@ -2780,7 +2780,7 @@
         <PARAMETER NAME="C_COEF_PATH_WIDTHS" VALUE="16,16,16,16,16,16,16,16,16,16"/>
         <PARAMETER NAME="C_COEF_RELOAD" VALUE="0"/>
         <PARAMETER NAME="C_COEF_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_COL_CONFIG" VALUE="11"/>
+        <PARAMETER NAME="C_COL_CONFIG" VALUE="36"/>
         <PARAMETER NAME="C_COL_MODE" VALUE="1"/>
         <PARAMETER NAME="C_COL_PIPE_LEN" VALUE="4"/>
         <PARAMETER NAME="C_COMPONENT_NAME" VALUE="ps_fir_deci_W0_0"/>
@@ -2809,28 +2809,28 @@
         <PARAMETER NAME="C_INPUT_RATE" VALUE="1"/>
         <PARAMETER NAME="C_INTERP_RATE" VALUE="1"/>
         <PARAMETER NAME="C_IPBUFF_MEMTYPE" VALUE="2"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="17"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="42"/>
         <PARAMETER NAME="C_MEM_ARRANGEMENT" VALUE="1"/>
         <PARAMETER NAME="C_M_DATA_HAS_TREADY" VALUE="0"/>
         <PARAMETER NAME="C_M_DATA_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NUM_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_NUM_FILTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MADDS" VALUE="11"/>
+        <PARAMETER NAME="C_NUM_MADDS" VALUE="36"/>
         <PARAMETER NAME="C_NUM_RELOAD_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_TAPS" VALUE="21"/>
+        <PARAMETER NAME="C_NUM_TAPS" VALUE="71"/>
         <PARAMETER NAME="C_OPBUFF_MEMTYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPTIMIZATION" VALUE="0"/>
         <PARAMETER NAME="C_OPT_MADDS" VALUE="none"/>
         <PARAMETER NAME="C_OP_PATH_PSAMP_SRC" VALUE="0,1,2,3,4,5,6,7,8,-9"/>
-        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_PATH_WIDTHS" VALUE="30"/>
         <PARAMETER NAME="C_OUTPUT_RATE" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="21"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="30"/>
         <PARAMETER NAME="C_OVERSAMPLING_RATE" VALUE="1"/>
         <PARAMETER NAME="C_PX_PATH_SRC" VALUE="9,9,9,9,9,9,9,9,9,9"/>
         <PARAMETER NAME="C_RELOAD_TDATA_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_ROUND_MODE" VALUE="1"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SYMMETRY" VALUE="1"/>
         <PARAMETER NAME="C_S_DATA_HAS_FIFO" VALUE="0"/>
         <PARAMETER NAME="C_S_DATA_HAS_TUSER" VALUE="0"/>
@@ -2843,7 +2843,7 @@
         <PARAMETER NAME="Channel_Sequence" VALUE="Basic"/>
         <PARAMETER NAME="Clock_Frequency" VALUE="500.0"/>
         <PARAMETER NAME="CoefficientSource" VALUE="Vector"/>
-        <PARAMETER NAME="CoefficientVector" VALUE="6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6"/>
+        <PARAMETER NAME="CoefficientVector" VALUE="70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70"/>
         <PARAMETER NAME="Coefficient_Buffer_Type" VALUE="Automatic"/>
         <PARAMETER NAME="Coefficient_Fanout" VALUE="false"/>
         <PARAMETER NAME="Coefficient_File" VALUE="no_coe_file_loaded"/>
@@ -2853,7 +2853,7 @@
         <PARAMETER NAME="Coefficient_Sign" VALUE="Signed"/>
         <PARAMETER NAME="Coefficient_Structure" VALUE="Inferred"/>
         <PARAMETER NAME="Coefficient_Width" VALUE="16"/>
-        <PARAMETER NAME="ColumnConfig" VALUE="11"/>
+        <PARAMETER NAME="ColumnConfig" VALUE="36"/>
         <PARAMETER NAME="Component_Name" VALUE="ps_fir_deci_W0_0"/>
         <PARAMETER NAME="Control_Broadcast_Fanout" VALUE="false"/>
         <PARAMETER NAME="Control_Column_Fanout" VALUE="false"/>
@@ -2897,8 +2897,8 @@
         <PARAMETER NAME="Optimization_Selection" VALUE="None"/>
         <PARAMETER NAME="Other" VALUE="false"/>
         <PARAMETER NAME="Output_Buffer_Type" VALUE="Automatic"/>
-        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Truncate_LSBs"/>
-        <PARAMETER NAME="Output_Width" VALUE="21"/>
+        <PARAMETER NAME="Output_Rounding_Mode" VALUE="Full_Precision"/>
+        <PARAMETER NAME="Output_Width" VALUE="30"/>
         <PARAMETER NAME="Passband_Max" VALUE="0.5"/>
         <PARAMETER NAME="Passband_Min" VALUE="0.0"/>
         <PARAMETER NAME="Pattern_List" VALUE="P4-0,P4-1,P4-2,P4-3,P4-4"/>
@@ -2927,7 +2927,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W1_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_deci_W1_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decimate_1" PORT="fir_W"/>
           </CONNECTIONS>
@@ -2978,9 +2978,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 21} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value vect} size {attribs {resolve_type generated dependency vect_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency vect_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 30} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -6631,28 +6631,28 @@
         <PORT DIR="O" NAME="irq" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
         <PORT DIR="O" LEFT="159" NAME="m00_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_0" PORT="data_N"/>
             <CONNECTION INSTANCE="fir_deci_N0" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="data_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m00_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m00_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_0" PORT="ready_N"/>
             <CONNECTION INSTANCE="fir_deci_N0" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="ready_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m02_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_0" PORT="data_E"/>
             <CONNECTION INSTANCE="fir_deci_E0" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="data_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m02_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m02_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_0" PORT="ready_E"/>
             <CONNECTION INSTANCE="fir_deci_E0" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="ready_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m0_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -6667,15 +6667,15 @@
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m10_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_0" PORT="data_W"/>
             <CONNECTION INSTANCE="fir_deci_W0" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="data_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m10_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m10_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_0" PORT="ready_W"/>
             <CONNECTION INSTANCE="fir_deci_W0" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="decimate_0" PORT="ready_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m1_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -6690,28 +6690,28 @@
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m20_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_1" PORT="data_N"/>
             <CONNECTION INSTANCE="fir_deci_N1" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="data_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m20_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m20_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_1" PORT="ready_N"/>
             <CONNECTION INSTANCE="fir_deci_N1" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="ready_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m22_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_1" PORT="data_E"/>
             <CONNECTION INSTANCE="fir_deci_E1" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="data_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m22_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m22_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_1" PORT="ready_E"/>
             <CONNECTION INSTANCE="fir_deci_E1" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="ready_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m2_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -6726,15 +6726,15 @@
         </PORT>
         <PORT DIR="O" LEFT="159" NAME="m30_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_1" PORT="data_W"/>
             <CONNECTION INSTANCE="fir_deci_W1" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="data_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m30_axis_tready" SIGIS="undef"/>
         <PORT DIR="O" NAME="m30_axis_tvalid" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimate_1" PORT="ready_W"/>
             <CONNECTION INSTANCE="fir_deci_W1" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="decimate_1" PORT="ready_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="m3_axis_aclk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
