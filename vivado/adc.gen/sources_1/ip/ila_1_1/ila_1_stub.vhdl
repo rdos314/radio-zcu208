@@ -2,9 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov  2 18:49:53 2025
+-- Date        : Sun Nov  2 18:49:51 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub c:/radio-zcu208/vivado/adc.gen/sources_1/ip/ila_1_1/ila_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top ila_1 -prefix
+--               ila_1_ ila_1_stub.vhdl
 -- Design      : ila_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xczu48dr-fsvg1517-2-e

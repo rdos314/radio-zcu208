@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Mon Nov  3 23:09:35 2025
+//Date        : Tue Nov  4 22:42:58 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=22,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=7,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=16,numReposBlks=16,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=7,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -130,22 +130,10 @@ module ps
   wire axi_smc_M03_AXI_WVALID;
   wire composite_0_fifo_rd;
   wire composite_1_fifo_rd;
-  wire [447:0]decimate_0_fifo;
-  wire decimate_0_fifo_wr;
-  wire [447:0]decimate_1_fifo;
-  wire decimate_1_fifo_wr;
-  wire [31:0]fir_deci_E0_m_axis_data_tdata;
-  wire fir_deci_E0_m_axis_data_tvalid;
-  wire [31:0]fir_deci_E1_m_axis_data_tdata;
-  wire fir_deci_E1_m_axis_data_tvalid;
-  wire [31:0]fir_deci_N0_m_axis_data_tdata;
-  wire fir_deci_N0_m_axis_data_tvalid;
-  wire [31:0]fir_deci_N1_m_axis_data_tdata;
-  wire fir_deci_N1_m_axis_data_tvalid;
-  wire [31:0]fir_deci_W0_m_axis_data_tdata;
-  wire fir_deci_W0_m_axis_data_tvalid;
-  wire [31:0]fir_deci_W1_m_axis_data_tdata;
-  wire fir_deci_W1_m_axis_data_tvalid;
+  wire [447:0]deci_high_fifo;
+  wire deci_high_fifo_wr;
+  wire deci_low_0_fifo_wr;
+  wire [447:0]deci_low_fifo;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
   wire mts_0_comp0_reset;
@@ -374,76 +362,28 @@ module ps
         .fifo(raw_fifo_1_dout),
         .fifo_rd(composite_1_fifo_rd),
         .reset(mts_0_comp1_reset));
-  ps_decimate_0_0 decimate_0
-       (.clk(mts_0_deci_clk),
-        .data_E(usp_rf_data_converter_0_m02_axis_tdata),
-        .data_N(usp_rf_data_converter_0_m00_axis_tdata),
-        .data_W(usp_rf_data_converter_0_m10_axis_tdata),
-        .fifo(decimate_0_fifo),
-        .fifo_wr(decimate_0_fifo_wr),
-        .fir_E(fir_deci_E0_m_axis_data_tdata),
-        .fir_N(fir_deci_N0_m_axis_data_tdata),
-        .fir_W(fir_deci_W0_m_axis_data_tdata),
-        .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
-        .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
-        .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
-        .resetn(mts_0_deci_resetn),
-        .valid_E(fir_deci_E0_m_axis_data_tvalid),
-        .valid_N(fir_deci_N0_m_axis_data_tvalid),
-        .valid_W(fir_deci_W0_m_axis_data_tvalid));
-  ps_decimate_1_0 decimate_1
+  ps_deci_high_0_0 deci_high
        (.clk(mts_0_deci_clk),
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),
         .data_W(usp_rf_data_converter_0_m30_axis_tdata),
-        .fifo(decimate_1_fifo),
-        .fifo_wr(decimate_1_fifo_wr),
-        .fir_E(fir_deci_E1_m_axis_data_tdata),
-        .fir_N(fir_deci_N1_m_axis_data_tdata),
-        .fir_W(fir_deci_W1_m_axis_data_tdata),
+        .fifo(deci_high_fifo),
+        .fifo_wr(deci_high_fifo_wr),
         .ready_E(usp_rf_data_converter_0_m22_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m20_axis_tvalid),
         .ready_W(usp_rf_data_converter_0_m30_axis_tvalid),
-        .resetn(mts_0_deci_resetn),
-        .valid_E(fir_deci_E1_m_axis_data_tvalid),
-        .valid_N(fir_deci_N1_m_axis_data_tvalid),
-        .valid_W(fir_deci_W1_m_axis_data_tvalid));
-  ps_fir_deci_N_0 fir_deci_E0
-       (.aclk(mts_0_deci_clk),
-        .m_axis_data_tdata(fir_deci_E0_m_axis_data_tdata),
-        .m_axis_data_tvalid(fir_deci_E0_m_axis_data_tvalid),
-        .s_axis_data_tdata(usp_rf_data_converter_0_m02_axis_tdata),
-        .s_axis_data_tvalid(usp_rf_data_converter_0_m02_axis_tvalid));
-  ps_fir_deci_E0_1 fir_deci_E1
-       (.aclk(mts_0_deci_clk),
-        .m_axis_data_tdata(fir_deci_E1_m_axis_data_tdata),
-        .m_axis_data_tvalid(fir_deci_E1_m_axis_data_tvalid),
-        .s_axis_data_tdata(usp_rf_data_converter_0_m22_axis_tdata),
-        .s_axis_data_tvalid(usp_rf_data_converter_0_m22_axis_tvalid));
-  ps_fir_compiler_0_0 fir_deci_N0
-       (.aclk(mts_0_deci_clk),
-        .m_axis_data_tdata(fir_deci_N0_m_axis_data_tdata),
-        .m_axis_data_tvalid(fir_deci_N0_m_axis_data_tvalid),
-        .s_axis_data_tdata(usp_rf_data_converter_0_m00_axis_tdata),
-        .s_axis_data_tvalid(usp_rf_data_converter_0_m00_axis_tvalid));
-  ps_fir_deci_N0_0 fir_deci_N1
-       (.aclk(mts_0_deci_clk),
-        .m_axis_data_tdata(fir_deci_N1_m_axis_data_tdata),
-        .m_axis_data_tvalid(fir_deci_N1_m_axis_data_tvalid),
-        .s_axis_data_tdata(usp_rf_data_converter_0_m20_axis_tdata),
-        .s_axis_data_tvalid(usp_rf_data_converter_0_m20_axis_tvalid));
-  ps_fir_deci_E0_0 fir_deci_W0
-       (.aclk(mts_0_deci_clk),
-        .m_axis_data_tdata(fir_deci_W0_m_axis_data_tdata),
-        .m_axis_data_tvalid(fir_deci_W0_m_axis_data_tvalid),
-        .s_axis_data_tdata(usp_rf_data_converter_0_m10_axis_tdata),
-        .s_axis_data_tvalid(usp_rf_data_converter_0_m10_axis_tvalid));
-  ps_fir_deci_W0_0 fir_deci_W1
-       (.aclk(mts_0_deci_clk),
-        .m_axis_data_tdata(fir_deci_W1_m_axis_data_tdata),
-        .m_axis_data_tvalid(fir_deci_W1_m_axis_data_tvalid),
-        .s_axis_data_tdata(usp_rf_data_converter_0_m30_axis_tdata),
-        .s_axis_data_tvalid(usp_rf_data_converter_0_m30_axis_tvalid));
+        .resetn(mts_0_deci_resetn));
+  ps_deci_low_0_0 deci_low
+       (.clk(mts_0_deci_clk),
+        .data_E(usp_rf_data_converter_0_m02_axis_tdata),
+        .data_N(usp_rf_data_converter_0_m00_axis_tdata),
+        .data_W(usp_rf_data_converter_0_m10_axis_tdata),
+        .fifo(deci_low_fifo),
+        .fifo_wr(deci_low_0_fifo_wr),
+        .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
+        .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
+        .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
+        .resetn(mts_0_deci_resetn));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -509,21 +449,21 @@ module ps
         .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M01_AXI_WVALID));
   ps_fifo_generator_0_0 raw_fifo_0
-       (.din(decimate_0_fifo),
+       (.din(deci_low_fifo),
         .dout(raw_fifo_0_dout),
         .rd_clk(mts_0_comp0_clk),
         .rd_en(composite_0_fifo_rd),
         .rst(mts_0_comp0_reset),
         .wr_clk(mts_0_deci_clk),
-        .wr_en(decimate_0_fifo_wr));
+        .wr_en(deci_low_0_fifo_wr));
   ps_fifo_generator_0_1 raw_fifo_1
-       (.din(decimate_1_fifo),
+       (.din(deci_high_fifo),
         .dout(raw_fifo_1_dout),
         .rd_clk(mts_0_comp1_clk),
         .rd_en(composite_1_fifo_rd),
         .rst(mts_0_comp1_reset),
         .wr_clk(mts_0_deci_clk),
-        .wr_en(decimate_1_fifo_wr));
+        .wr_en(deci_high_fifo_wr));
   ps_rst_ps8_0_99M_0 rst_ps8_0_99M
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),
