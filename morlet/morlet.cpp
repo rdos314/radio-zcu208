@@ -56,13 +56,17 @@ void main()
     double sum = 0.0;
     double norm;
     double i, r;
-    double fs = 500.0;
     double f;
+    double fs;
     double scale;
     int periods;
     double *SinArr;
     double *CosArr;
     int rot;
+
+    printf("Input sampling frequency\r\n");
+    scanf("%d", &ival);
+    fs = (double)ival;
 
     printf("Input frequency\r\n");
     scanf("%d", &ival);
@@ -113,7 +117,7 @@ void main()
         scale = scale / 2.0;
     }
 
-    printf("rot: %d\r\n", rot);
+    printf("rot: %d, size: %d\r\n", rot, size);
 
     printf("real: ");
 
