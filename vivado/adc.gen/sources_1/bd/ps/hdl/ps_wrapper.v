@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Oct  3 21:37:18 2025
+//Date        : Tue Nov  4 22:42:58 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps_wrapper.bd
 //Design      : ps_wrapper
@@ -12,8 +12,8 @@
 
 module ps_wrapper
    (GPIO_0_tri_o,
-    adc2_clk_clk_n,
-    adc2_clk_clk_p,
+    adc1_clk_clk_n,
+    adc1_clk_clk_p,
     led_8bits_tri_o,
     pl_clk_n,
     pl_clk_p,
@@ -34,8 +34,8 @@ module ps_wrapper
     vin3_01_v_n,
     vin3_01_v_p);
   output [1:0]GPIO_0_tri_o;
-  input adc2_clk_clk_n;
-  input adc2_clk_clk_p;
+  input adc1_clk_clk_n;
+  input adc1_clk_clk_p;
   output [7:0]led_8bits_tri_o;
   input pl_clk_n;
   input pl_clk_p;
@@ -57,8 +57,8 @@ module ps_wrapper
   input vin3_01_v_p;
 
   wire [1:0]GPIO_0_tri_o;
-  wire adc2_clk_clk_n;
-  wire adc2_clk_clk_p;
+  wire adc1_clk_clk_n;
+  wire adc1_clk_clk_p;
   wire [7:0]led_8bits_tri_o;
   wire pl_clk_n;
   wire pl_clk_p;
@@ -81,8 +81,8 @@ module ps_wrapper
 
   ps ps_i
        (.GPIO_0_tri_o(GPIO_0_tri_o),
-        .adc2_clk_clk_n(adc2_clk_clk_n),
-        .adc2_clk_clk_p(adc2_clk_clk_p),
+        .adc1_clk_clk_n(adc1_clk_clk_n),
+        .adc1_clk_clk_p(adc1_clk_clk_p),
         .led_8bits_tri_o(led_8bits_tri_o),
         .pl_clk_n(pl_clk_n),
         .pl_clk_p(pl_clk_p),

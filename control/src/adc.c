@@ -92,11 +92,6 @@ bool StartAdc()
     if (status != XRFDC_SUCCESS)
 		return false;
 
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID0, &pllc);
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID1, &pllc);
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID2, &pllc);
-	status = XRFdc_GetPLLConfig(&RFdcInst, XRFDC_ADC_TILE, XRFDC_TILE_ID3, &pllc);
-
     /* Initialize ADC MTS Settings */
     XRFdc_MultiConverter_Init(&ADC_Sync_Config, 0, 0, XRFDC_TILE_ID0);
  
@@ -104,10 +99,6 @@ bool StartAdc()
     status = XRFdc_MultiConverter_Sync(&RFdcInst, XRFDC_ADC_TILE, &ADC_Sync_Config);
 					
     if (status != XRFDC_MTS_OK)
-		return false;
-
-	status = XRFdc_SetupFIFO(&RFdcInst, XRFDC_ADC_TILE, -1, 1);
-    if (status != XRFDC_SUCCESS)
 		return false;
 
 	return true;

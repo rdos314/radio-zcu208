@@ -4002,7 +4002,6 @@ CONFIG_Init-manager-systemd=y
 #
 # CONFIG_gpio-demo is not set
 CONFIG_mariadb=y
-CONFIG_modphp=y
 # CONFIG_peekpoke is not set
 CONFIG_php=y
 CONFIG_phpmyadmin=y
