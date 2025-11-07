@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Nov  4 22:44:01 2025
+-- Date        : Fri Nov  7 22:21:57 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_composite_1_0/ps_composite_1_0_sim_netlist.vhdl
@@ -19,7 +19,7 @@ entity ps_composite_1_0_composite is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    fifo_rd : out STD_LOGIC;
+    active : in STD_LOGIC;
     fifo : in STD_LOGIC_VECTOR ( 447 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -42,9 +42,8 @@ architecture STRUCTURE of ps_composite_1_0_composite is
     probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 27 downto 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 27 downto 0 )
   );
   end component ps_composite_1_0_ila_1;
   component ps_composite_1_0_ila_1_HD1 is
@@ -52,9 +51,8 @@ architecture STRUCTURE of ps_composite_1_0_composite is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 27 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 27 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -126,43 +124,8 @@ architecture STRUCTURE of ps_composite_1_0_composite is
   attribute MARK_DEBUG of W8 : signal is std.standard.true;
   signal W9 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of W9 : signal is std.standard.true;
-  signal active : STD_LOGIC;
-  signal \composite.active_i_1_n_0\ : STD_LOGIC;
-  signal \composite.active_i_2_n_0\ : STD_LOGIC;
-  signal \composite.delay[11]_i_1_n_0\ : STD_LOGIC;
-  signal \composite.delay[11]_i_3_n_0\ : STD_LOGIC;
-  signal \composite.delay[11]_i_4_n_0\ : STD_LOGIC;
-  signal \composite.delay[11]_i_5_n_0\ : STD_LOGIC;
-  signal \composite.delay[11]_i_6_n_0\ : STD_LOGIC;
-  signal \composite.delay[11]_i_7_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_2_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_3_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_4_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_5_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_6_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_7_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_8_n_0\ : STD_LOGIC;
-  signal \composite.delay[8]_i_9_n_0\ : STD_LOGIC;
-  signal \composite.delay_reg0\ : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal \composite.delay_reg[11]_i_2_n_6\ : STD_LOGIC;
-  signal \composite.delay_reg[11]_i_2_n_7\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_0\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_1\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_2\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_3\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_4\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_5\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_6\ : STD_LOGIC;
-  signal \composite.delay_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal counter : STD_LOGIC_VECTOR ( 27 downto 0 );
   attribute MARK_DEBUG of counter : signal is std.standard.true;
-  signal delay : STD_LOGIC_VECTOR ( 11 downto 0 );
-  attribute MARK_DEBUG of delay : signal is std.standard.true;
-  signal empty : STD_LOGIC;
-  signal \^fifo_rd\ : STD_LOGIC;
-  attribute MARK_DEBUG of fifo_rd : signal is std.standard.true;
-  signal \NLW_composite.delay_reg[11]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
-  signal \NLW_composite.delay_reg[11]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute KEEP : string;
   attribute KEEP of \composite.E0_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -1061,34 +1024,6 @@ architecture STRUCTURE of ps_composite_1_0_composite is
   attribute mark_debug_string of \composite.counter_reg[8]\ : label is "yes";
   attribute KEEP of \composite.counter_reg[9]\ : label is "yes";
   attribute mark_debug_string of \composite.counter_reg[9]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[0]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[10]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[11]\ : label is "yes";
-  attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \composite.delay_reg[11]_i_2\ : label is 35;
-  attribute KEEP of \composite.delay_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[1]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[2]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[3]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[4]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[5]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[6]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[7]\ : label is "yes";
-  attribute KEEP of \composite.delay_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[8]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \composite.delay_reg[8]_i_1\ : label is 35;
-  attribute KEEP of \composite.delay_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \composite.delay_reg[9]\ : label is "yes";
-  attribute KEEP of \composite.fifo_rd_reg\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_E : label is "ila_1,ila,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
@@ -1102,7 +1037,6 @@ architecture STRUCTURE of ps_composite_1_0_composite is
   attribute DowngradeIPIdentifiedWarnings of ila_W : label is "yes";
   attribute X_CORE_INFO of ila_W : label is "ila,Vivado 2025.1";
 begin
-  fifo_rd <= \^fifo_rd\;
 \composite.E0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -4463,36 +4397,6 @@ begin
       Q => W9(9),
       R => '0'
     );
-\composite.active_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => empty,
-      I1 => \composite.delay[11]_i_4_n_0\,
-      I2 => \composite.delay[11]_i_3_n_0\,
-      I3 => \composite.active_i_2_n_0\,
-      O => \composite.active_i_1_n_0\
-    );
-\composite.active_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => delay(1),
-      I1 => delay(0),
-      I2 => delay(3),
-      I3 => delay(2),
-      O => \composite.active_i_2_n_0\
-    );
-\composite.active_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \composite.active_i_1_n_0\,
-      Q => active,
-      R => '0'
-    );
 \composite.counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -4717,296 +4621,13 @@ begin
       Q => counter(9),
       R => '0'
     );
-\composite.delay[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(0),
-      O => \composite.delay_reg0\(0)
-    );
-\composite.delay[11]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => delay(2),
-      I1 => delay(3),
-      I2 => delay(0),
-      I3 => delay(1),
-      I4 => \composite.delay[11]_i_3_n_0\,
-      I5 => \composite.delay[11]_i_4_n_0\,
-      O => \composite.delay[11]_i_1_n_0\
-    );
-\composite.delay[11]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => delay(9),
-      I1 => delay(8),
-      I2 => delay(11),
-      I3 => delay(10),
-      O => \composite.delay[11]_i_3_n_0\
-    );
-\composite.delay[11]_i_4\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => delay(5),
-      I1 => delay(4),
-      I2 => delay(7),
-      I3 => delay(6),
-      O => \composite.delay[11]_i_4_n_0\
-    );
-\composite.delay[11]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(11),
-      O => \composite.delay[11]_i_5_n_0\
-    );
-\composite.delay[11]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(10),
-      O => \composite.delay[11]_i_6_n_0\
-    );
-\composite.delay[11]_i_7\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(9),
-      O => \composite.delay[11]_i_7_n_0\
-    );
-\composite.delay[8]_i_2\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(8),
-      O => \composite.delay[8]_i_2_n_0\
-    );
-\composite.delay[8]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(7),
-      O => \composite.delay[8]_i_3_n_0\
-    );
-\composite.delay[8]_i_4\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(6),
-      O => \composite.delay[8]_i_4_n_0\
-    );
-\composite.delay[8]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(5),
-      O => \composite.delay[8]_i_5_n_0\
-    );
-\composite.delay[8]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(4),
-      O => \composite.delay[8]_i_6_n_0\
-    );
-\composite.delay[8]_i_7\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(3),
-      O => \composite.delay[8]_i_7_n_0\
-    );
-\composite.delay[8]_i_8\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(2),
-      O => \composite.delay[8]_i_8_n_0\
-    );
-\composite.delay[8]_i_9\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => delay(1),
-      O => \composite.delay[8]_i_9_n_0\
-    );
-\composite.delay_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(0),
-      Q => delay(0),
-      R => empty
-    );
-\composite.delay_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(10),
-      Q => delay(10),
-      R => empty
-    );
-\composite.delay_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(11),
-      Q => delay(11),
-      R => empty
-    );
-\composite.delay_reg[11]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \composite.delay_reg[8]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 2) => \NLW_composite.delay_reg[11]_i_2_CO_UNCONNECTED\(7 downto 2),
-      CO(1) => \composite.delay_reg[11]_i_2_n_6\,
-      CO(0) => \composite.delay_reg[11]_i_2_n_7\,
-      DI(7 downto 2) => B"000000",
-      DI(1 downto 0) => delay(10 downto 9),
-      O(7 downto 3) => \NLW_composite.delay_reg[11]_i_2_O_UNCONNECTED\(7 downto 3),
-      O(2 downto 0) => \composite.delay_reg0\(11 downto 9),
-      S(7 downto 3) => B"00000",
-      S(2) => \composite.delay[11]_i_5_n_0\,
-      S(1) => \composite.delay[11]_i_6_n_0\,
-      S(0) => \composite.delay[11]_i_7_n_0\
-    );
-\composite.delay_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(1),
-      Q => delay(1),
-      R => empty
-    );
-\composite.delay_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(2),
-      Q => delay(2),
-      R => empty
-    );
-\composite.delay_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(3),
-      Q => delay(3),
-      R => empty
-    );
-\composite.delay_reg[4]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(4),
-      Q => delay(4),
-      S => empty
-    );
-\composite.delay_reg[5]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(5),
-      Q => delay(5),
-      S => empty
-    );
-\composite.delay_reg[6]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(6),
-      Q => delay(6),
-      S => empty
-    );
-\composite.delay_reg[7]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(7),
-      Q => delay(7),
-      S => empty
-    );
-\composite.delay_reg[8]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(8),
-      Q => delay(8),
-      S => empty
-    );
-\composite.delay_reg[8]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => delay(0),
-      CI_TOP => '0',
-      CO(7) => \composite.delay_reg[8]_i_1_n_0\,
-      CO(6) => \composite.delay_reg[8]_i_1_n_1\,
-      CO(5) => \composite.delay_reg[8]_i_1_n_2\,
-      CO(4) => \composite.delay_reg[8]_i_1_n_3\,
-      CO(3) => \composite.delay_reg[8]_i_1_n_4\,
-      CO(2) => \composite.delay_reg[8]_i_1_n_5\,
-      CO(1) => \composite.delay_reg[8]_i_1_n_6\,
-      CO(0) => \composite.delay_reg[8]_i_1_n_7\,
-      DI(7 downto 0) => delay(8 downto 1),
-      O(7 downto 0) => \composite.delay_reg0\(8 downto 1),
-      S(7) => \composite.delay[8]_i_2_n_0\,
-      S(6) => \composite.delay[8]_i_3_n_0\,
-      S(5) => \composite.delay[8]_i_4_n_0\,
-      S(4) => \composite.delay[8]_i_5_n_0\,
-      S(3) => \composite.delay[8]_i_6_n_0\,
-      S(2) => \composite.delay[8]_i_7_n_0\,
-      S(1) => \composite.delay[8]_i_8_n_0\,
-      S(0) => \composite.delay[8]_i_9_n_0\
-    );
-\composite.delay_reg[9]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => \composite.delay[11]_i_1_n_0\,
-      D => \composite.delay_reg0\(9),
-      Q => delay(9),
-      S => empty
-    );
-\composite.empty_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => reset,
-      Q => empty,
-      R => '0'
-    );
-\composite.fifo_rd_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => active,
-      Q => \^fifo_rd\,
-      R => '0'
-    );
 ila_E: component ps_composite_1_0_ila_1
      port map (
       clk => clk,
       probe0(13 downto 0) => E0(13 downto 0),
       probe1(13 downto 0) => E1(13 downto 0),
-      probe10(11 downto 0) => delay(11 downto 0),
-      probe11(0) => \^fifo_rd\,
-      probe12(27 downto 0) => counter(27 downto 0),
+      probe10(0) => active,
+      probe11(27 downto 0) => counter(27 downto 0),
       probe2(13 downto 0) => E2(13 downto 0),
       probe3(13 downto 0) => E3(13 downto 0),
       probe4(13 downto 0) => E4(13 downto 0),
@@ -5021,9 +4642,8 @@ ila_N: component ps_composite_1_0_ila_1
       clk => clk,
       probe0(13 downto 0) => N0(13 downto 0),
       probe1(13 downto 0) => N1(13 downto 0),
-      probe10(11 downto 0) => delay(11 downto 0),
-      probe11(0) => \^fifo_rd\,
-      probe12(27 downto 0) => counter(27 downto 0),
+      probe10(0) => active,
+      probe11(27 downto 0) => counter(27 downto 0),
       probe2(13 downto 0) => N2(13 downto 0),
       probe3(13 downto 0) => N3(13 downto 0),
       probe4(13 downto 0) => N4(13 downto 0),
@@ -5038,9 +4658,8 @@ ila_W: component ps_composite_1_0_ila_1_HD1
       clk => clk,
       probe0(13 downto 0) => W0(13 downto 0),
       probe1(13 downto 0) => W1(13 downto 0),
-      probe10(11 downto 0) => delay(11 downto 0),
-      probe11(0) => \^fifo_rd\,
-      probe12(27 downto 0) => counter(27 downto 0),
+      probe10(0) => active,
+      probe11(27 downto 0) => counter(27 downto 0),
       probe2(13 downto 0) => W2(13 downto 0),
       probe3(13 downto 0) => W3(13 downto 0),
       probe4(13 downto 0) => W4(13 downto 0),
@@ -5059,7 +4678,7 @@ entity ps_composite_1_0 is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    fifo_rd : out STD_LOGIC;
+    active : in STD_LOGIC;
     fifo : in STD_LOGIC_VECTOR ( 447 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
@@ -5087,9 +4706,9 @@ architecture STRUCTURE of ps_composite_1_0 is
 begin
 inst: entity work.ps_composite_1_0_composite
      port map (
+      active => active,
       clk => clk,
       fifo(447 downto 0) => fifo(447 downto 0),
-      fifo_rd => fifo_rd,
-      reset => reset
+      reset => '0'
     );
 end STRUCTURE;

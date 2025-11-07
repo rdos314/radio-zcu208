@@ -38,7 +38,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
-        "fifo_rd": [ { "direction": "out" } ],
+        "active": [ { "direction": "in" } ],
         "fifo": [ { "direction": "in", "size_left": "447", "size_right": "0" } ]
       },
       "interfaces": {

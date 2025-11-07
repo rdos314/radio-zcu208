@@ -23,14 +23,10 @@
 module composite(
     input wire	clk,
     input wire  reset,
-    output reg  fifo_rd,
+    input wire active,
     input wire	[447:0] fifo
     );
     
-  reg [11:0]  delay;
-  reg empty;
-  reg active;
-
   reg [27:0] counter;
   reg [13:0] N0;
   reg [13:0] N1;
@@ -75,9 +71,8 @@ module composite(
 		.probe7(N7),     // input wire [13:0]  probe3
 		.probe8(N8),     // input wire [13:0]  probe3
 		.probe9(N9),     // input wire [13:0]  probe3
-		.probe10(delay),             // input wire [11:0]  probe3
-		.probe11(fifo_rd),             // input wire [0:0]  probe3
-		.probe12(counter)             // input wire [27:0]  probe3
+		.probe10(active),             // input wire [11:0]  probe3
+		.probe11(counter)             // input wire [27:0]  probe3
 	);
 
 	ila_1 ila_E (
@@ -92,9 +87,8 @@ module composite(
 		.probe7(E7),     // input wire [13:0]  probe3
 		.probe8(E8),     // input wire [13:0]  probe3
 		.probe9(E9),     // input wire [13:0]  probe3
-		.probe10(delay),             // input wire [11:0]  probe3
-		.probe11(fifo_rd),             // input wire [0:0]  probe3
-		.probe12(counter)             // input wire [27:0]  probe3
+		.probe10(active),             // input wire [11:0]  probe3
+		.probe11(counter)             // input wire [27:0]  probe3
 	);
 
 	ila_1 ila_W (
@@ -109,43 +103,17 @@ module composite(
 		.probe7(W7),     // input wire [13:0]  probe3
 		.probe8(W8),     // input wire [13:0]  probe3
 		.probe9(W9),     // input wire [13:0]  probe3
-		.probe10(delay),             // input wire [11:0]  probe3
-		.probe11(fifo_rd),             // input wire [0:0]  probe3
-		.probe12(counter)             // input wire [27:0]  probe3
+		.probe10(active),             // input wire [11:0]  probe3
+		.probe11(counter)             // input wire [27:0]  probe3
 	);
 
 generate
   begin : composite
 
     always @(posedge clk) 
-    begin
-      empty <= reset;
-    end
-
-    always @(posedge clk) 
-	begin
-	   if (empty)
-	   begin
-	       delay <= 12'h3F0;
-	       active <= 0;
-	   end
-	   else
-	   begin
-	       if (delay)
-	       begin
-	           delay <= delay - 1;
-	           active <= 0;
-	       end
-	       else
-	           active <= 1;
-	   end
-	end
-
-    always @(posedge clk) 
 	begin
 	   if (active)
 	   begin
-	       fifo_rd <= 1;
             counter <= fifo[27:0];
             N0 <= fifo[41:28];
             N1 <= fifo[55:42];
@@ -178,8 +146,6 @@ generate
             W8 <= fifo[433:420];
             W9 <= fifo[447:434];
         end
-        else
-            fifo_rd <= 0;
 	end
 
   end

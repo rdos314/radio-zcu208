@@ -97,7 +97,7 @@ architecture tb of tb_fir_deci_high is
 
   -- Data master channel signals
   signal m_axis_data_tvalid              : std_logic := '0';  -- payload is valid
-  signal m_axis_data_tdata               : std_logic_vector(31 downto 0) := (others => '0');  -- data payload
+  signal m_axis_data_tdata               : std_logic_vector(63 downto 0) := (others => '0');  -- data payload
 
   -----------------------------------------------------------------------
   -- Aliases for AXI channel TDATA and TUSER fields
@@ -119,7 +119,8 @@ architecture tb of tb_fir_deci_high is
   signal s_axis_data_tdata_vect9        : std_logic_vector(13 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_data        : std_logic_vector(29 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect0        : std_logic_vector(29 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect1        : std_logic_vector(29 downto 0) := (others => '0');
 
 
 begin
@@ -191,7 +192,7 @@ begin
 
     -- Procedure to drive an impulse and let the impulse response emerge on the data master channel
     -- samples is the number of input samples to drive; default is enough for impulse response output to emerge
-    procedure drive_impulse ( samples : natural := 119 ) is
+    procedure drive_impulse ( samples : natural := 44 ) is
       variable impulse : std_logic_vector(159 downto 0);
     begin
       impulse := (others => '0');  -- initialize unused bits to zero
@@ -215,11 +216,11 @@ begin
     drive_impulse(2);  -- start of impulse; data is now zero
     s_axis_data_tvalid <= '0';
     wait for CLOCK_PERIOD * 5;  -- provide no data for 5 input samples worth
-    drive_zeros(117);  -- back to normal operation
+    drive_zeros(42);  -- back to normal operation
 
     -- Drive another impulse, during which demonstrate:
     --   reset (aresetn)
-    drive_impulse(60);  -- to partway through impulse response
+    drive_impulse(22);  -- to partway through impulse response
     s_axis_data_tvalid <= '0';
     aresetn <= '0';  -- assert reset (active low)
     wait for CLOCK_PERIOD * 2;  -- hold reset active for 2 clock cycles, as recommended in FIR Compiler Datasheet
@@ -279,6 +280,7 @@ begin
   s_axis_data_tdata_vect9        <= s_axis_data_tdata(157 downto 144);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_data        <= m_axis_data_tdata(29 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect0        <= m_axis_data_tdata(29 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect1        <= m_axis_data_tdata(61 downto 32) when m_axis_data_tvalid = '1';
 
 end tb;

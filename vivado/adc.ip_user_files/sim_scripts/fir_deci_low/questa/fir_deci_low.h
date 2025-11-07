@@ -51,7 +51,7 @@
 //
 //------------------------------------------------------------------------------
 //
-// coefficients: -202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202
+// coefficients: 115,-368,-1575,958,9610,15112,9610,958,-1575,-368,115
 // chanpats: 173
 // name: fir_deci_low
 // filter_type: 2
@@ -60,7 +60,7 @@
 // decim_rate: 10
 // zero_pack_factor: 1
 // coeff_padding: 0
-// num_coeffs: 51
+// num_coeffs: 11
 // coeff_sets: 1
 // reloadable: 0
 // is_halfband: 0
@@ -77,7 +77,7 @@
 // output_fract_width: 0
 // config_method: 0
 
-const double fir_deci_low_coefficients[51] = {-202,-95,-109,-116,-116,-104,-79,-39,18,94,189,302,433,580,739,909,1083,1258,1430,1591,1738,1865,1969,2046,2094,2110,2094,2046,1969,1865,1738,1591,1430,1258,1083,909,739,580,433,302,189,94,18,-39,-79,-104,-116,-116,-109,-95,-202};
+const double fir_deci_low_coefficients[11] = {115,-368,-1575,958,9610,15112,9610,958,-1575,-368,115};
 
 const xip_fir_v7_2_pattern fir_deci_low_chanpats[1] = {P_BASIC};
 
@@ -91,7 +91,7 @@ static xip_fir_v7_2_config gen_fir_deci_low_config() {
   config.zero_pack_factor    = 1;
   config.coeff               = &fir_deci_low_coefficients[0];
   config.coeff_padding       = 0;
-  config.num_coeffs          = 51;
+  config.num_coeffs          = 11;
   config.coeff_sets          = 1;
   config.reloadable          = 0;
   config.is_halfband         = 0;

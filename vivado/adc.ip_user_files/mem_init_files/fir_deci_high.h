@@ -51,16 +51,16 @@
 //
 //------------------------------------------------------------------------------
 //
-// coefficients: 70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70
+// coefficients: -35,-218,65,468,-642,-426,1911,-1167,-3386,9471,20442,9471,-3386,-1167,1911,-426,-642,468,65,-218,-35
 // chanpats: 173
 // name: fir_deci_high
 // filter_type: 2
 // rate_change: 0
 // interp_rate: 1
-// decim_rate: 10
+// decim_rate: 5
 // zero_pack_factor: 1
 // coeff_padding: 0
-// num_coeffs: 71
+// num_coeffs: 21
 // coeff_sets: 1
 // reloadable: 0
 // is_halfband: 0
@@ -77,7 +77,7 @@
 // output_fract_width: 0
 // config_method: 0
 
-const double fir_deci_high_coefficients[71] = {70,249,177,285,336,402,451,487,501,489,450,380,282,158,16,-137,-289,-430,-545,-623,-651,-622,-527,-364,-135,155,497,877,1278,1681,2067,2415,2708,2930,3067,3114,3067,2930,2708,2415,2067,1681,1278,877,497,155,-135,-364,-527,-622,-651,-623,-545,-430,-289,-137,16,158,282,380,450,489,501,487,451,402,336,285,177,249,70};
+const double fir_deci_high_coefficients[21] = {-35,-218,65,468,-642,-426,1911,-1167,-3386,9471,20442,9471,-3386,-1167,1911,-426,-642,468,65,-218,-35};
 
 const xip_fir_v7_2_pattern fir_deci_high_chanpats[1] = {P_BASIC};
 
@@ -87,11 +87,11 @@ static xip_fir_v7_2_config gen_fir_deci_high_config() {
   config.filter_type         = 2;
   config.rate_change         = XIP_FIR_INTEGER_RATE;
   config.interp_rate         = 1;
-  config.decim_rate          = 10;
+  config.decim_rate          = 5;
   config.zero_pack_factor    = 1;
   config.coeff               = &fir_deci_high_coefficients[0];
   config.coeff_padding       = 0;
-  config.num_coeffs          = 71;
+  config.num_coeffs          = 21;
   config.coeff_sets          = 1;
   config.reloadable          = 0;
   config.is_halfband         = 0;

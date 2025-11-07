@@ -31,12 +31,21 @@ module deci_low(
     input wire	[159:0] data_W,
     input wire	ready_W,
 
-    output reg fifo_wr,
-    output reg	[447:0] fifo
+    input wire  raw_clk,
+    output reg raw_ready,
+    output reg	[447:0] raw_data
     );
 
   reg [27:0]  counter;
   reg active;
+
+  reg raw_fifo_wr;
+  reg  [447:0] raw_in_data;
+
+  wire raw_fifo_empty;
+  reg  [11:0] raw_delay;
+  wire [447:0] raw_out_data;
+  reg raw_active;
 
   (* ASYNC_REG="TRUE" *)	reg  active_1;
   (* ASYNC_REG="TRUE" *)	reg  active_2;
@@ -113,6 +122,17 @@ fir_deci_low fir_W_i (
   .m_axis_data_tdata(fir_W)      // output wire [31 : 0] m_axis_data_tdata
 );
 
+fifo_raw fifo_raw_i (
+  .rst(~resetn),              // input wire rst
+  .wr_clk(clk),               // input wire wr_clk
+  .rd_clk(raw_clk),          // input wire rd_clk
+  .din(raw_in_data),        // input wire [447 : 0] din
+  .wr_en(raw_fifo_wr),        // input wire wr_en
+  .rd_en(raw_ready),          // input wire rd_en
+  .dout(raw_out_data),       // output wire [447 : 0] dout
+  .empty(raw_fifo_empty)      // output wire empty
+);
+
 ila_0 ila_N (
 		.clk(clk),                 // input wire clk
 		.probe0(N0),        // input wire [13:0]  probe3
@@ -177,47 +197,76 @@ generate
 	begin
 	  if (active)
 	  begin
-         fifo_wr <= 1;
+         raw_fifo_wr <= 1;
          counter <= counter + 1;
-         fifo[27:0] <= counter;
-         fifo[41:28] <= N0;
-         fifo[55:42] <= N1;
-         fifo[69:56] <= N2;
-         fifo[83:70] <= N3;
-         fifo[97:84] <= N4;
-         fifo[111:98] <= N5;
-         fifo[125:112] <= N6;
-         fifo[139:126] <= N7;
-         fifo[153:140] <= N8;
-         fifo[167:154] <= N9;
-         fifo[181:168] <= E0;
-         fifo[195:182] <= E1;
-         fifo[209:196] <= E2;
-         fifo[223:210] <= E3;
-         fifo[237:224] <= E4;
-         fifo[251:238] <= E5;
-         fifo[265:252] <= E6;
-         fifo[279:266] <= E7;
-         fifo[293:280] <= E8;
-         fifo[307:294] <= E9;
-         fifo[321:308] <= W0;
-         fifo[335:322] <= W1;
-         fifo[349:336] <= W2;
-         fifo[363:350] <= W3;
-         fifo[377:364] <= W4;
-         fifo[391:378] <= W5;
-         fifo[405:392] <= W6;
-         fifo[419:406] <= W7;
-         fifo[433:420] <= W8;
-         fifo[447:434] <= W9;
+         raw_in_data[27:0] <= counter;
+         raw_in_data[41:28] <= N0;
+         raw_in_data[55:42] <= N1;
+         raw_in_data[69:56] <= N2;
+         raw_in_data[83:70] <= N3;
+         raw_in_data[97:84] <= N4;
+         raw_in_data[111:98] <= N5;
+         raw_in_data[125:112] <= N6;
+         raw_in_data[139:126] <= N7;
+         raw_in_data[153:140] <= N8;
+         raw_in_data[167:154] <= N9;
+         raw_in_data[181:168] <= E0;
+         raw_in_data[195:182] <= E1;
+         raw_in_data[209:196] <= E2;
+         raw_in_data[223:210] <= E3;
+         raw_in_data[237:224] <= E4;
+         raw_in_data[251:238] <= E5;
+         raw_in_data[265:252] <= E6;
+         raw_in_data[279:266] <= E7;
+         raw_in_data[293:280] <= E8;
+         raw_in_data[307:294] <= E9;
+         raw_in_data[321:308] <= W0;
+         raw_in_data[335:322] <= W1;
+         raw_in_data[349:336] <= W2;
+         raw_in_data[363:350] <= W3;
+         raw_in_data[377:364] <= W4;
+         raw_in_data[391:378] <= W5;
+         raw_in_data[405:392] <= W6;
+         raw_in_data[419:406] <= W7;
+         raw_in_data[433:420] <= W8;
+         raw_in_data[447:434] <= W9;
 	  end
 	  else
 	  begin
-	      fifo_wr <= 0;
+	      raw_fifo_wr <= 0;
 	      counter <= 0;
 	  end
 	end
+  end
 
+  always @(posedge raw_clk) 
+  begin
+    if (raw_fifo_empty)
+	begin
+	   raw_delay <= 12'h3F0;
+	   raw_active <= 0;
+    end
+	else
+    begin
+	   if (raw_delay)
+	   begin
+	     raw_delay <= raw_delay - 1;
+	     raw_active <= 0;
+	   end
+	   else
+	      raw_active <= 1;
+	end
+  end
+
+  always @(posedge raw_clk) 
+  begin
+	 if (raw_active)
+	 begin
+       raw_data <= raw_out_data;
+       raw_ready <= 1;
+     end
+     else
+       raw_ready <= 0;
   end
     
 endgenerate

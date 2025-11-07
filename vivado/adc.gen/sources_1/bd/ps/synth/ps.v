@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Nov  4 22:42:58 2025
+//Date        : Fri Nov  7 22:20:00 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=16,numReposBlks=16,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=7,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=14,numReposBlks=14,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=7,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -128,12 +128,10 @@ module ps
   wire axi_smc_M03_AXI_WREADY;
   wire [3:0]axi_smc_M03_AXI_WSTRB;
   wire axi_smc_M03_AXI_WVALID;
-  wire composite_0_fifo_rd;
-  wire composite_1_fifo_rd;
-  wire [447:0]deci_high_fifo;
-  wire deci_high_fifo_wr;
-  wire deci_low_0_fifo_wr;
-  wire [447:0]deci_low_fifo;
+  wire [447:0]deci_high_raw_data;
+  wire deci_high_raw_ready;
+  wire [447:0]deci_low_raw_data;
+  wire deci_low_raw_ready;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
   wire mts_0_comp0_reset;
@@ -147,8 +145,6 @@ module ps
   wire pl_sysref_n;
   wire pl_sysref_p;
   wire r5_timer_interrupt;
-  wire [447:0]raw_fifo_0_dout;
-  wire [447:0]raw_fifo_1_dout;
   wire rst_ps8_0_99M_mb_reset;
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
   wire sysref_in_diff_n;
@@ -353,22 +349,23 @@ module ps
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
   ps_composite_0_0 composite_0
-       (.clk(mts_0_comp0_clk),
-        .fifo(raw_fifo_0_dout),
-        .fifo_rd(composite_0_fifo_rd),
+       (.active(deci_low_raw_ready),
+        .clk(mts_0_comp0_clk),
+        .fifo(deci_low_raw_data),
         .reset(mts_0_comp0_reset));
   ps_composite_1_0 composite_1
-       (.clk(mts_0_comp1_clk),
-        .fifo(raw_fifo_1_dout),
-        .fifo_rd(composite_1_fifo_rd),
+       (.active(deci_high_raw_ready),
+        .clk(mts_0_comp1_clk),
+        .fifo(deci_high_raw_data),
         .reset(mts_0_comp1_reset));
   ps_deci_high_0_0 deci_high
        (.clk(mts_0_deci_clk),
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),
         .data_W(usp_rf_data_converter_0_m30_axis_tdata),
-        .fifo(deci_high_fifo),
-        .fifo_wr(deci_high_fifo_wr),
+        .raw_clk(mts_0_comp1_clk),
+        .raw_data(deci_high_raw_data),
+        .raw_ready(deci_high_raw_ready),
         .ready_E(usp_rf_data_converter_0_m22_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m20_axis_tvalid),
         .ready_W(usp_rf_data_converter_0_m30_axis_tvalid),
@@ -378,8 +375,9 @@ module ps
         .data_E(usp_rf_data_converter_0_m02_axis_tdata),
         .data_N(usp_rf_data_converter_0_m00_axis_tdata),
         .data_W(usp_rf_data_converter_0_m10_axis_tdata),
-        .fifo(deci_low_fifo),
-        .fifo_wr(deci_low_0_fifo_wr),
+        .raw_clk(mts_0_comp0_clk),
+        .raw_data(deci_low_raw_data),
+        .raw_ready(deci_low_raw_ready),
         .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
         .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
@@ -448,22 +446,6 @@ module ps
         .s_axi_wready(axi_smc_M01_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M01_AXI_WVALID));
-  ps_fifo_generator_0_0 raw_fifo_0
-       (.din(deci_low_fifo),
-        .dout(raw_fifo_0_dout),
-        .rd_clk(mts_0_comp0_clk),
-        .rd_en(composite_0_fifo_rd),
-        .rst(mts_0_comp0_reset),
-        .wr_clk(mts_0_deci_clk),
-        .wr_en(deci_low_0_fifo_wr));
-  ps_fifo_generator_0_1 raw_fifo_1
-       (.din(deci_high_fifo),
-        .dout(raw_fifo_1_dout),
-        .rd_clk(mts_0_comp1_clk),
-        .rd_en(composite_1_fifo_rd),
-        .rst(mts_0_comp1_reset),
-        .wr_clk(mts_0_deci_clk),
-        .wr_en(deci_high_fifo_wr));
   ps_rst_ps8_0_99M_0 rst_ps8_0_99M
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),

@@ -58,7 +58,7 @@
 module ps_composite_1_0 (
   clk,
   reset,
-  fifo_rd,
+  active,
   fifo
 );
 
@@ -70,13 +70,13 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
-output wire fifo_rd;
+input wire active;
 input wire [447 : 0] fifo;
 
   composite inst (
     .clk(clk),
     .reset(reset),
-    .fifo_rd(fifo_rd),
+    .active(active),
     .fifo(fifo)
   );
 endmodule

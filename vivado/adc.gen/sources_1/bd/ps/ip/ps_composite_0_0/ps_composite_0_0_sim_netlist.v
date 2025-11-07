@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Tue Nov  4 22:44:01 2025
+// Date        : Fri Nov  7 22:21:57 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_composite_0_0/ps_composite_0_0_sim_netlist.v
@@ -19,34 +19,33 @@
 module ps_composite_0_0
    (clk,
     reset,
-    fifo_rd,
+    active,
     fifo);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
-  output fifo_rd;
+  input active;
   input [447:0]fifo;
 
+  wire active;
   wire clk;
   wire [447:0]fifo;
-  wire fifo_rd;
-  wire reset;
 
   ps_composite_0_0_composite inst
-       (.clk(clk),
+       (.active(active),
+        .clk(clk),
         .fifo(fifo),
-        .fifo_rd(fifo_rd),
-        .reset(reset));
+        .reset(1'b0));
 endmodule
 
 (* ORIG_REF_NAME = "composite" *) (* keep_hierarchy = "soft" *) 
 module ps_composite_0_0_composite
    (clk,
     reset,
-    fifo_rd,
+    active,
     fifo);
   input clk;
   input reset;
-  output fifo_rd;
+  input active;
   input [447:0]fifo;
 
   (* MARK_DEBUG *) wire [13:0]E0;
@@ -79,43 +78,10 @@ module ps_composite_0_0_composite
   (* MARK_DEBUG *) wire [13:0]W7;
   (* MARK_DEBUG *) wire [13:0]W8;
   (* MARK_DEBUG *) wire [13:0]W9;
-  wire active;
+  (* MARK_DEBUG *) wire active;
   wire clk;
-  wire \composite.active_i_1_n_0 ;
-  wire \composite.active_i_2_n_0 ;
-  wire \composite.delay[11]_i_1_n_0 ;
-  wire \composite.delay[11]_i_3_n_0 ;
-  wire \composite.delay[11]_i_4_n_0 ;
-  wire \composite.delay[11]_i_5_n_0 ;
-  wire \composite.delay[11]_i_6_n_0 ;
-  wire \composite.delay[11]_i_7_n_0 ;
-  wire \composite.delay[8]_i_2_n_0 ;
-  wire \composite.delay[8]_i_3_n_0 ;
-  wire \composite.delay[8]_i_4_n_0 ;
-  wire \composite.delay[8]_i_5_n_0 ;
-  wire \composite.delay[8]_i_6_n_0 ;
-  wire \composite.delay[8]_i_7_n_0 ;
-  wire \composite.delay[8]_i_8_n_0 ;
-  wire \composite.delay[8]_i_9_n_0 ;
-  wire [11:0]\composite.delay_reg0 ;
-  wire \composite.delay_reg[11]_i_2_n_6 ;
-  wire \composite.delay_reg[11]_i_2_n_7 ;
-  wire \composite.delay_reg[8]_i_1_n_0 ;
-  wire \composite.delay_reg[8]_i_1_n_1 ;
-  wire \composite.delay_reg[8]_i_1_n_2 ;
-  wire \composite.delay_reg[8]_i_1_n_3 ;
-  wire \composite.delay_reg[8]_i_1_n_4 ;
-  wire \composite.delay_reg[8]_i_1_n_5 ;
-  wire \composite.delay_reg[8]_i_1_n_6 ;
-  wire \composite.delay_reg[8]_i_1_n_7 ;
   (* MARK_DEBUG *) wire [27:0]counter;
-  (* MARK_DEBUG *) wire [11:0]delay;
-  wire empty;
   wire [447:0]fifo;
-  (* MARK_DEBUG *) wire fifo_rd;
-  wire reset;
-  wire [7:2]\NLW_composite.delay_reg[11]_i_2_CO_UNCONNECTED ;
-  wire [7:3]\NLW_composite.delay_reg[11]_i_2_O_UNCONNECTED ;
 
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -3477,28 +3443,6 @@ module ps_composite_0_0_composite
         .D(fifo[443]),
         .Q(W9[9]),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \composite.active_i_1 
-       (.I0(empty),
-        .I1(\composite.delay[11]_i_4_n_0 ),
-        .I2(\composite.delay[11]_i_3_n_0 ),
-        .I3(\composite.active_i_2_n_0 ),
-        .O(\composite.active_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \composite.active_i_2 
-       (.I0(delay[1]),
-        .I1(delay[0]),
-        .I2(delay[3]),
-        .I3(delay[2]),
-        .O(\composite.active_i_2_n_0 ));
-  FDRE \composite.active_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\composite.active_i_1_n_0 ),
-        .Q(active),
-        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \composite.counter_reg[0] 
@@ -3723,217 +3667,6 @@ module ps_composite_0_0_composite
         .D(fifo[9]),
         .Q(counter[9]),
         .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[0]_i_1 
-       (.I0(delay[0]),
-        .O(\composite.delay_reg0 [0]));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \composite.delay[11]_i_1 
-       (.I0(delay[2]),
-        .I1(delay[3]),
-        .I2(delay[0]),
-        .I3(delay[1]),
-        .I4(\composite.delay[11]_i_3_n_0 ),
-        .I5(\composite.delay[11]_i_4_n_0 ),
-        .O(\composite.delay[11]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \composite.delay[11]_i_3 
-       (.I0(delay[9]),
-        .I1(delay[8]),
-        .I2(delay[11]),
-        .I3(delay[10]),
-        .O(\composite.delay[11]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \composite.delay[11]_i_4 
-       (.I0(delay[5]),
-        .I1(delay[4]),
-        .I2(delay[7]),
-        .I3(delay[6]),
-        .O(\composite.delay[11]_i_4_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[11]_i_5 
-       (.I0(delay[11]),
-        .O(\composite.delay[11]_i_5_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[11]_i_6 
-       (.I0(delay[10]),
-        .O(\composite.delay[11]_i_6_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[11]_i_7 
-       (.I0(delay[9]),
-        .O(\composite.delay[11]_i_7_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_2 
-       (.I0(delay[8]),
-        .O(\composite.delay[8]_i_2_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_3 
-       (.I0(delay[7]),
-        .O(\composite.delay[8]_i_3_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_4 
-       (.I0(delay[6]),
-        .O(\composite.delay[8]_i_4_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_5 
-       (.I0(delay[5]),
-        .O(\composite.delay[8]_i_5_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_6 
-       (.I0(delay[4]),
-        .O(\composite.delay[8]_i_6_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_7 
-       (.I0(delay[3]),
-        .O(\composite.delay[8]_i_7_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_8 
-       (.I0(delay[2]),
-        .O(\composite.delay[8]_i_8_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \composite.delay[8]_i_9 
-       (.I0(delay[1]),
-        .O(\composite.delay[8]_i_9_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.delay_reg[0] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [0]),
-        .Q(delay[0]),
-        .R(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.delay_reg[10] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [10]),
-        .Q(delay[10]),
-        .R(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.delay_reg[11] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [11]),
-        .Q(delay[11]),
-        .R(empty));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \composite.delay_reg[11]_i_2 
-       (.CI(\composite.delay_reg[8]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_composite.delay_reg[11]_i_2_CO_UNCONNECTED [7:2],\composite.delay_reg[11]_i_2_n_6 ,\composite.delay_reg[11]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,delay[10:9]}),
-        .O({\NLW_composite.delay_reg[11]_i_2_O_UNCONNECTED [7:3],\composite.delay_reg0 [11:9]}),
-        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\composite.delay[11]_i_5_n_0 ,\composite.delay[11]_i_6_n_0 ,\composite.delay[11]_i_7_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.delay_reg[1] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [1]),
-        .Q(delay[1]),
-        .R(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.delay_reg[2] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [2]),
-        .Q(delay[2]),
-        .R(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.delay_reg[3] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [3]),
-        .Q(delay[3]),
-        .R(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \composite.delay_reg[4] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [4]),
-        .Q(delay[4]),
-        .S(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \composite.delay_reg[5] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [5]),
-        .Q(delay[5]),
-        .S(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \composite.delay_reg[6] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [6]),
-        .Q(delay[6]),
-        .S(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \composite.delay_reg[7] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [7]),
-        .Q(delay[7]),
-        .S(empty));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \composite.delay_reg[8] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [8]),
-        .Q(delay[8]),
-        .S(empty));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \composite.delay_reg[8]_i_1 
-       (.CI(delay[0]),
-        .CI_TOP(1'b0),
-        .CO({\composite.delay_reg[8]_i_1_n_0 ,\composite.delay_reg[8]_i_1_n_1 ,\composite.delay_reg[8]_i_1_n_2 ,\composite.delay_reg[8]_i_1_n_3 ,\composite.delay_reg[8]_i_1_n_4 ,\composite.delay_reg[8]_i_1_n_5 ,\composite.delay_reg[8]_i_1_n_6 ,\composite.delay_reg[8]_i_1_n_7 }),
-        .DI(delay[8:1]),
-        .O(\composite.delay_reg0 [8:1]),
-        .S({\composite.delay[8]_i_2_n_0 ,\composite.delay[8]_i_3_n_0 ,\composite.delay[8]_i_4_n_0 ,\composite.delay[8]_i_5_n_0 ,\composite.delay[8]_i_6_n_0 ,\composite.delay[8]_i_7_n_0 ,\composite.delay[8]_i_8_n_0 ,\composite.delay[8]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \composite.delay_reg[9] 
-       (.C(clk),
-        .CE(\composite.delay[11]_i_1_n_0 ),
-        .D(\composite.delay_reg0 [9]),
-        .Q(delay[9]),
-        .S(empty));
-  FDRE \composite.empty_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(reset),
-        .Q(empty),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \composite.fifo_rd_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(active),
-        .Q(fifo_rd),
-        .R(1'b0));
   (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
@@ -3941,9 +3674,8 @@ module ps_composite_0_0_composite
        (.clk(clk),
         .probe0(E0),
         .probe1(E1),
-        .probe10(delay),
-        .probe11(fifo_rd),
-        .probe12(counter),
+        .probe10(active),
+        .probe11(counter),
         .probe2(E2),
         .probe3(E3),
         .probe4(E4),
@@ -3959,9 +3691,8 @@ module ps_composite_0_0_composite
        (.clk(clk),
         .probe0(N0),
         .probe1(N1),
-        .probe10(delay),
-        .probe11(fifo_rd),
-        .probe12(counter),
+        .probe10(active),
+        .probe11(counter),
         .probe2(N2),
         .probe3(N3),
         .probe4(N4),
@@ -3977,9 +3708,8 @@ module ps_composite_0_0_composite
        (.clk(clk),
         .probe0(W0),
         .probe1(W1),
-        .probe10(delay),
-        .probe11(fifo_rd),
-        .probe12(counter),
+        .probe10(active),
+        .probe11(counter),
         .probe2(W2),
         .probe3(W3),
         .probe4(W4),
@@ -4005,8 +3735,7 @@ module ps_composite_0_0_ila_1
     probe8,
     probe9,
     probe10,
-    probe11,
-    probe12);
+    probe11);
   (* syn_isclock = "1" *) input clk;
   input [13:0]probe0;
   input [13:0]probe1;
@@ -4018,9 +3747,8 @@ module ps_composite_0_0_ila_1
   input [13:0]probe7;
   input [13:0]probe8;
   input [13:0]probe9;
-  input [11:0]probe10;
-  input [0:0]probe11;
-  input [27:0]probe12;
+  input [0:0]probe10;
+  input [27:0]probe11;
 
 
 endmodule
@@ -4033,7 +3761,6 @@ module ps_composite_0_0_ila_1_HD1
     probe1,
     probe10,
     probe11,
-    probe12,
     probe2,
     probe3,
     probe4,
@@ -4045,9 +3772,8 @@ module ps_composite_0_0_ila_1_HD1
   (* syn_isclock = "1" *) input clk;
   input [13:0]probe0;
   input [13:0]probe1;
-  input [11:0]probe10;
-  input [0:0]probe11;
-  input [27:0]probe12;
+  input [0:0]probe10;
+  input [27:0]probe11;
   input [13:0]probe2;
   input [13:0]probe3;
   input [13:0]probe4;

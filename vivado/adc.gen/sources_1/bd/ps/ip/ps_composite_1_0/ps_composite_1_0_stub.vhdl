@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Nov  4 22:44:01 2025
+-- Date        : Fri Nov  7 22:21:57 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_composite_1_0/ps_composite_1_0_stub.vhdl
@@ -17,7 +17,7 @@ entity ps_composite_1_0 is
   Port ( 
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    fifo_rd : out STD_LOGIC;
+    active : in STD_LOGIC;
     fifo : in STD_LOGIC_VECTOR ( 447 downto 0 )
   );
 
@@ -35,7 +35,7 @@ architecture stub of ps_composite_1_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,reset,fifo_rd,fifo[447:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,reset,active,fifo[447:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

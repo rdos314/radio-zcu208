@@ -64,13 +64,14 @@ module ps_deci_low_0_0 (
   ready_E,
   data_W,
   ready_W,
-  fifo_wr,
-  fifo
+  raw_clk,
+  raw_ready,
+  raw_data
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -82,8 +83,12 @@ input wire [159 : 0] data_E;
 input wire ready_E;
 input wire [159 : 0] data_W;
 input wire ready_W;
-output wire fifo_wr;
-output wire [447 : 0] fifo;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
+input wire raw_clk;
+output wire raw_ready;
+output wire [447 : 0] raw_data;
 
   deci_low inst (
     .clk(clk),
@@ -94,7 +99,8 @@ output wire [447 : 0] fifo;
     .ready_E(ready_E),
     .data_W(data_W),
     .ready_W(ready_W),
-    .fifo_wr(fifo_wr),
-    .fifo(fifo)
+    .raw_clk(raw_clk),
+    .raw_ready(raw_ready),
+    .raw_data(raw_data)
   );
 endmodule
