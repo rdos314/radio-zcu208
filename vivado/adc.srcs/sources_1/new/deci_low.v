@@ -33,18 +33,18 @@ module deci_low(
 
     input wire  raw_clk,
     output reg raw_ready,
-    output reg	[447:0] raw_data
+    output reg	[237:0] raw_data
     );
 
   reg [27:0]  counter;
   reg active;
 
   reg raw_fifo_wr;
-  reg  [447:0] raw_in_data;
+  reg  [237:0] raw_in_data;
 
   wire raw_fifo_empty;
   reg  [11:0] raw_delay;
-  wire [447:0] raw_out_data;
+  wire [237:0] raw_out_data;
   reg raw_active;
 
   (* ASYNC_REG="TRUE" *)	reg  active_1;
@@ -57,7 +57,7 @@ module deci_low(
   wire	valid_N;
   wire	valid_E;
   wire	valid_W;
-  
+
   wire [13:0] dN = fir_N[30:17];
   wire [13:0] dE = fir_E[30:17];
   wire [13:0] dW = fir_W[30:17];
@@ -95,6 +95,59 @@ module deci_low(
   wire [13:0] W8 = data_W[143:130];
   wire [13:0] W9 = data_W[159:146];
 
+  wire	[159:0] fir_raw_N;
+  wire	[159:0] fir_raw_E;
+  wire	[159:0] fir_raw_W;
+
+  wire	valid_raw_N;
+  wire	valid_raw_E;
+  wire	valid_raw_W;
+
+  wire [13:0] drN0 = fir_raw_N[30:17];
+  wire [13:0] drN1 = fir_raw_N[62:49];
+  wire [13:0] drN2 = fir_raw_N[94:81];
+  wire [13:0] drN3 = fir_raw_N[126:113];
+  wire [13:0] drN4 = fir_raw_N[158:145];
+
+  wire [13:0] drE0 = fir_raw_E[30:17];
+  wire [13:0] drE1 = fir_raw_E[62:49];
+  wire [13:0] drE2 = fir_raw_E[94:81];
+  wire [13:0] drE3 = fir_raw_E[126:113];
+  wire [13:0] drE4 = fir_raw_E[158:145];
+
+  wire [13:0] drW0 = fir_raw_W[30:17];
+  wire [13:0] drW1 = fir_raw_W[62:49];
+  wire [13:0] drW2 = fir_raw_W[94:81];
+  wire [13:0] drW3 = fir_raw_W[126:113];
+  wire [13:0] drW4 = fir_raw_W[158:145];
+
+fir_raw_deci fir_deci_N_i (
+  .aresetn(resetn),              // input wire aresetn
+  .aclk(clk),                    // input wire aclk
+  .s_axis_data_tvalid(ready_N),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(data_N),    // input wire [159 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_raw_N),  // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_raw_N)      // output wire [159 : 0] m_axis_data_tdata
+);
+
+fir_raw_deci fir_deci_E_i (
+  .aresetn(resetn),              // input wire aresetn
+  .aclk(clk),                    // input wire aclk
+  .s_axis_data_tvalid(ready_E),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(data_E),    // input wire [159 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_raw_E),  // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_raw_E)      // output wire [159 : 0] m_axis_data_tdata
+);
+
+fir_raw_deci fir_deci_W_i (
+  .aresetn(resetn),              // input wire aresetn
+  .aclk(clk),                    // input wire aclk
+  .s_axis_data_tvalid(ready_W),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(data_W),    // input wire [159 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_raw_W),  // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_raw_W)      // output wire [159 : 0] m_axis_data_tdata
+);
+
 fir_deci_low fir_N_i (
   .aresetn(resetn),              // input wire aresetn
   .aclk(clk),                    // input wire aclk
@@ -126,10 +179,10 @@ fifo_raw fifo_raw_i (
   .rst(~resetn),              // input wire rst
   .wr_clk(clk),               // input wire wr_clk
   .rd_clk(raw_clk),          // input wire rd_clk
-  .din(raw_in_data),        // input wire [447 : 0] din
+  .din(raw_in_data),        // input wire [237 : 0] din
   .wr_en(raw_fifo_wr),        // input wire wr_en
   .rd_en(raw_ready),          // input wire rd_en
-  .dout(raw_out_data),       // output wire [447 : 0] dout
+  .dout(raw_out_data),       // output wire [237 : 0] dout
   .empty(raw_fifo_empty)      // output wire empty
 );
 
@@ -190,7 +243,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  active <= resetn & ready_N & ready_E & ready_W;
+	  active <= resetn & valid_raw_N & valid_raw_E & valid_raw_W;
 	end
 
     always @(posedge clk) 
@@ -200,36 +253,21 @@ generate
          raw_fifo_wr <= 1;
          counter <= counter + 1;
          raw_in_data[27:0] <= counter;
-         raw_in_data[41:28] <= N0;
-         raw_in_data[55:42] <= N1;
-         raw_in_data[69:56] <= N2;
-         raw_in_data[83:70] <= N3;
-         raw_in_data[97:84] <= N4;
-         raw_in_data[111:98] <= N5;
-         raw_in_data[125:112] <= N6;
-         raw_in_data[139:126] <= N7;
-         raw_in_data[153:140] <= N8;
-         raw_in_data[167:154] <= N9;
-         raw_in_data[181:168] <= E0;
-         raw_in_data[195:182] <= E1;
-         raw_in_data[209:196] <= E2;
-         raw_in_data[223:210] <= E3;
-         raw_in_data[237:224] <= E4;
-         raw_in_data[251:238] <= E5;
-         raw_in_data[265:252] <= E6;
-         raw_in_data[279:266] <= E7;
-         raw_in_data[293:280] <= E8;
-         raw_in_data[307:294] <= E9;
-         raw_in_data[321:308] <= W0;
-         raw_in_data[335:322] <= W1;
-         raw_in_data[349:336] <= W2;
-         raw_in_data[363:350] <= W3;
-         raw_in_data[377:364] <= W4;
-         raw_in_data[391:378] <= W5;
-         raw_in_data[405:392] <= W6;
-         raw_in_data[419:406] <= W7;
-         raw_in_data[433:420] <= W8;
-         raw_in_data[447:434] <= W9;
+         raw_in_data[41:28] <= drN0;
+         raw_in_data[55:42] <= drN1;
+         raw_in_data[69:56] <= drN2;
+         raw_in_data[83:70] <= drN3;
+         raw_in_data[97:84] <= drN4;
+         raw_in_data[111:98] <= drE0;
+         raw_in_data[125:112] <= drE1;
+         raw_in_data[139:126] <= drE2;
+         raw_in_data[153:140] <= drE3;
+         raw_in_data[167:154] <= drE4;
+         raw_in_data[181:168] <= drW0;
+         raw_in_data[195:182] <= drW1;
+         raw_in_data[209:196] <= drW2;
+         raw_in_data[223:210] <= drW3;
+         raw_in_data[237:224] <= drW4;
 	  end
 	  else
 	  begin

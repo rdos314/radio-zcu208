@@ -21,10 +21,10 @@
       "mts_0": "",
       "pl_clk_util_ds_buf": "",
       "pl_sysref_ds_buf": "",
-      "composite_0": "",
-      "composite_1": "",
       "deci_low": "",
-      "deci_high": ""
+      "deci_high": "",
+      "comp_low_0": "",
+      "comp_high_0": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1839,104 +1839,6 @@
         "inst_hier_path": "pl_sysref_ds_buf",
         "has_run_ip_tcl": "true"
       },
-      "composite_0": {
-        "vlnv": "xilinx.com:module_ref:composite:1.0",
-        "ip_revision": "1",
-        "xci_name": "ps_composite_0_0",
-        "xci_path": "ip\\ps_composite_0_0\\ps_composite_0_0.xci",
-        "inst_hier_path": "composite_0",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "composite",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "const_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_comp0_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "reset": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "active": {
-            "direction": "I"
-          },
-          "fifo": {
-            "direction": "I",
-            "left": "447",
-            "right": "0"
-          }
-        }
-      },
-      "composite_1": {
-        "vlnv": "xilinx.com:module_ref:composite:1.0",
-        "ip_revision": "1",
-        "xci_name": "ps_composite_1_0",
-        "xci_path": "ip\\ps_composite_1_0\\ps_composite_1_0.xci",
-        "inst_hier_path": "composite_1",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "composite",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "const_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_comp1_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "reset": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "active": {
-            "direction": "I"
-          },
-          "fifo": {
-            "direction": "I",
-            "left": "447",
-            "right": "0"
-          }
-        }
-      },
       "deci_low": {
         "vlnv": "xilinx.com:module_ref:deci_low:1.0",
         "ip_revision": "1",
@@ -2025,7 +1927,7 @@
           },
           "raw_data": {
             "direction": "O",
-            "left": "447",
+            "left": "237",
             "right": "0"
           }
         }
@@ -2118,6 +2020,104 @@
           },
           "raw_data": {
             "direction": "O",
+            "left": "447",
+            "right": "0"
+          }
+        }
+      },
+      "comp_low_0": {
+        "vlnv": "xilinx.com:module_ref:comp_low:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_comp_low_0_0",
+        "xci_path": "ip\\ps_comp_low_0_0\\ps_comp_low_0_0.xci",
+        "inst_hier_path": "comp_low_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "comp_low",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp0_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "active": {
+            "direction": "I"
+          },
+          "fifo": {
+            "direction": "I",
+            "left": "237",
+            "right": "0"
+          }
+        }
+      },
+      "comp_high_0": {
+        "vlnv": "xilinx.com:module_ref:comp_high:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_comp_high_0_0",
+        "xci_path": "ip\\ps_comp_high_0_0\\ps_comp_high_0_0.xci",
+        "inst_hier_path": "comp_high_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "comp_high",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp1_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "active": {
+            "direction": "I"
+          },
+          "fifo": {
+            "direction": "I",
             "left": "447",
             "right": "0"
           }
@@ -2220,51 +2220,51 @@
       "deci_high_raw_data": {
         "ports": [
           "deci_high/raw_data",
-          "composite_1/fifo"
+          "comp_high_0/fifo"
         ]
       },
       "deci_high_raw_ready": {
         "ports": [
           "deci_high/raw_ready",
-          "composite_1/active"
+          "comp_high_0/active"
         ]
       },
       "deci_low_raw_data": {
         "ports": [
           "deci_low/raw_data",
-          "composite_0/fifo"
+          "comp_low_0/fifo"
         ]
       },
       "deci_low_raw_ready": {
         "ports": [
           "deci_low/raw_ready",
-          "composite_0/active"
+          "comp_low_0/active"
         ]
       },
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
-          "composite_0/clk",
-          "deci_low/raw_clk"
+          "deci_low/raw_clk",
+          "comp_low_0/clk"
         ]
       },
       "mts_0_comp0_reset": {
         "ports": [
           "mts_0/comp0_reset",
-          "composite_0/reset"
+          "comp_low_0/reset"
         ]
       },
       "mts_0_comp1_clk": {
         "ports": [
           "mts_0/comp1_clk",
-          "composite_1/clk",
-          "deci_high/raw_clk"
+          "deci_high/raw_clk",
+          "comp_high_0/clk"
         ]
       },
       "mts_0_comp1_reset": {
         "ports": [
           "mts_0/comp1_reset",
-          "composite_1/reset"
+          "comp_high_0/reset"
         ]
       },
       "mts_0_deci_clk": {

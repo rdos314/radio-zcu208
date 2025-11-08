@@ -1,12 +1,12 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.772586",
-   "Default View_TopLeft":"611,17",
+   "Default View_TopLeft":"611,118",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
-preplace port led_8bits -pg 1 -lvl 6 -x 2090 -y 1090 -defaultsOSRD
-preplace port GPIO_0 -pg 1 -lvl 6 -x 2090 -y 950 -defaultsOSRD
+preplace port led_8bits -pg 1 -lvl 6 -x 2100 -y 1090 -defaultsOSRD
+preplace port GPIO_0 -pg 1 -lvl 6 -x 2100 -y 950 -defaultsOSRD
 preplace port vin0_01 -pg 1 -lvl 0 -x 0 -y 270 -defaultsOSRD
 preplace port vin0_23 -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
 preplace port vin1_01 -pg 1 -lvl 0 -x 0 -y 310 -defaultsOSRD
@@ -21,22 +21,20 @@ preplace port port-id_pl_sysref_p -pg 1 -lvl 0 -x 0 -y 1230 -defaultsOSRD
 preplace port port-id_pl_sysref_n -pg 1 -lvl 0 -x 0 -y 1210 -defaultsOSRD
 preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 340 -y 870 -defaultsOSRD
 preplace inst r5_timer -pg 1 -lvl 3 -x 1250 -y 810 -defaultsOSRD
-preplace inst gpio_led -pg 1 -lvl 5 -x 1960 -y 1090 -defaultsOSRD
+preplace inst gpio_led -pg 1 -lvl 5 -x 1970 -y 1090 -defaultsOSRD
 preplace inst axi_smc -pg 1 -lvl 2 -x 820 -y 870 -defaultsOSRD
 preplace inst rst_ps8_0_99M -pg 1 -lvl 1 -x 340 -y 690 -defaultsOSRD
-preplace inst clk104_mux -pg 1 -lvl 5 -x 1960 -y 950 -defaultsOSRD
+preplace inst clk104_mux -pg 1 -lvl 5 -x 1970 -y 950 -defaultsOSRD
 preplace inst usp_rf_data_converter_0 -pg 1 -lvl 3 -x 1250 -y 420 -defaultsOSRD
 preplace inst mts_0 -pg 1 -lvl 2 -x 820 -y 470 -defaultsOSRD
 preplace inst pl_clk_util_ds_buf -pg 1 -lvl 1 -x 340 -y 1050 -defaultsOSRD
 preplace inst pl_sysref_ds_buf -pg 1 -lvl 1 -x 340 -y 1210 -defaultsOSRD
-preplace inst composite_0 -pg 1 -lvl 5 -x 1960 -y 90 -defaultsOSRD
-preplace inst composite_1 -pg 1 -lvl 5 -x 1960 -y 460 -defaultsOSRD
 preplace inst deci_low -pg 1 -lvl 4 -x 1670 -y 200 -defaultsOSRD
 preplace inst deci_high -pg 1 -lvl 4 -x 1670 -y 480 -defaultsOSRD
-preplace netloc mts_0_comp0_clk 1 2 3 970 110 1520 60 N
-preplace netloc mts_0_comp0_reset 1 2 3 960 50 NJ 50 1850J
-preplace netloc mts_0_comp1_clk 1 2 3 990J 130 1460 340 1820J
-preplace netloc mts_0_comp1_reset 1 2 3 980J 40 NJ 40 1840
+preplace inst comp_low_0 -pg 1 -lvl 5 -x 1970 -y 250 -defaultsOSRD
+preplace inst comp_high_0 -pg 1 -lvl 5 -x 1970 -y 440 -defaultsOSRD
+preplace netloc mts_0_comp0_clk 1 2 3 970 110 1520 60 1850
+preplace netloc mts_0_comp1_clk 1 2 3 990J 130 1460 340 1820
 preplace netloc mts_0_deci_clk 1 2 2 1050 120 1500
 preplace netloc mts_0_deci_resetn 1 2 2 1070 140 1490
 preplace netloc mts_0_user_sysref_adc 1 2 1 1040 450n
@@ -61,12 +59,14 @@ preplace netloc usp_rf_data_converter_0_m30_axis_tdata 1 3 1 N 520
 preplace netloc usp_rf_data_converter_0_m30_axis_tvalid 1 3 1 N 540
 preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 650 450n
 preplace netloc util_ds_buf_0_IBUF_OUT1 1 1 1 680 470n
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 30 960 660 960 1060 1080 NJ 1080 1850
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 30 960 660 960 1060 1080 NJ 1080 1860
 preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 20 970 640
-preplace netloc deci_low_raw_data 1 4 1 1830 120n
-preplace netloc deci_low_raw_ready 1 4 1 1820 100n
-preplace netloc deci_high_raw_data 1 4 1 N 490
-preplace netloc deci_high_raw_ready 1 4 1 N 470
+preplace netloc mts_0_comp0_reset 1 2 3 960J 40 NJ 40 1860
+preplace netloc deci_low_raw_ready 1 4 1 1840 190n
+preplace netloc deci_low_raw_data 1 4 1 1820 210n
+preplace netloc mts_0_comp1_reset 1 2 3 980J 50 NJ 50 1830
+preplace netloc deci_high_raw_ready 1 4 1 1820 450n
+preplace netloc deci_high_raw_data 1 4 1 1860 470n
 preplace netloc adc1_clk_1 1 0 3 NJ 230 NJ 230 1020J
 preplace netloc axi_gpio_0_GPIO 1 5 1 NJ 1090
 preplace netloc axi_smc_M00_AXI 1 2 3 990 1070 NJ 1070 NJ
@@ -82,8 +82,8 @@ preplace netloc vin2_01_1 1 0 3 NJ 330 NJ 330 NJ
 preplace netloc vin2_23_1 1 0 3 NJ 350 NJ 350 NJ
 preplace netloc vin3_01_1 1 0 3 30J 340 NJ 340 1000J
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 1 1 N 850
-levelinfo -pg 1 0 340 820 1250 1670 1960 2090
-pagesize -pg 1 -db -bbox -sgen -130 0 2200 1290
+levelinfo -pg 1 0 340 820 1250 1670 1970 2100
+pagesize -pg 1 -db -bbox -sgen -130 0 2210 1290
 "
 }
 {

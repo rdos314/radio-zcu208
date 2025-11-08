@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov  7 22:20:03 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov  8 15:10:59 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -1383,40 +1383,10 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/composite_0" HWVERSION="1.0" INSTANCE="composite_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="composite" VLNV="xilinx.com:module_ref:composite:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/comp_high_0" HWVERSION="1.0" INSTANCE="comp_high_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comp_high" VLNV="xilinx.com:module_ref:comp_high:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_composite_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" NAME="active" SIGIS="undef" SIGNAME="deci_low_raw_ready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_ready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="447" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="comp0_reset"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/composite_1" HWVERSION="1.0" INSTANCE="composite_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="composite" VLNV="xilinx.com:module_ref:composite:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_composite_1_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="ps_comp_high_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -1438,6 +1408,36 @@
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp1_reset"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/comp_low_0" HWVERSION="1.0" INSTANCE="comp_low_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comp_low" VLNV="xilinx.com:module_ref:comp_low:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_comp_low_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="active" SIGIS="undef" SIGNAME="deci_low_raw_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="237" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp0_reset"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1477,12 +1477,12 @@
         </PORT>
         <PORT DIR="O" LEFT="447" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_1" PORT="fifo"/>
+            <CONNECTION INSTANCE="comp_high_0" PORT="fifo"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="raw_ready" SIGIS="undef" SIGNAME="deci_high_raw_ready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_1" PORT="active"/>
+            <CONNECTION INSTANCE="comp_high_0" PORT="active"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
@@ -1540,14 +1540,14 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="447" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
+        <PORT DIR="O" LEFT="237" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_0" PORT="fifo"/>
+            <CONNECTION INSTANCE="comp_low_0" PORT="fifo"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="raw_ready" SIGIS="undef" SIGNAME="deci_low_raw_ready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_0" PORT="active"/>
+            <CONNECTION INSTANCE="comp_low_0" PORT="active"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
@@ -1938,24 +1938,24 @@
       <PORTS>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp0_clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_0" PORT="clk"/>
             <CONNECTION INSTANCE="deci_low" PORT="raw_clk"/>
+            <CONNECTION INSTANCE="comp_low_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_0" PORT="reset"/>
+            <CONNECTION INSTANCE="comp_low_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp1_clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_1" PORT="clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="raw_clk"/>
+            <CONNECTION INSTANCE="comp_high_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="composite_1" PORT="reset"/>
+            <CONNECTION INSTANCE="comp_high_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="deci_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">

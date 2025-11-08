@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Nov  7 22:20:00 2025
+//Date        : Sat Nov  8 15:10:56 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -130,7 +130,7 @@ module ps
   wire axi_smc_M03_AXI_WVALID;
   wire [447:0]deci_high_raw_data;
   wire deci_high_raw_ready;
-  wire [447:0]deci_low_raw_data;
+  wire [237:0]deci_low_raw_data;
   wire deci_low_raw_ready;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
@@ -348,16 +348,16 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
-  ps_composite_0_0 composite_0
-       (.active(deci_low_raw_ready),
-        .clk(mts_0_comp0_clk),
-        .fifo(deci_low_raw_data),
-        .reset(mts_0_comp0_reset));
-  ps_composite_1_0 composite_1
+  ps_comp_high_0_0 comp_high_0
        (.active(deci_high_raw_ready),
         .clk(mts_0_comp1_clk),
         .fifo(deci_high_raw_data),
         .reset(mts_0_comp1_reset));
+  ps_comp_low_0_0 comp_low_0
+       (.active(deci_low_raw_ready),
+        .clk(mts_0_comp0_clk),
+        .fifo(deci_low_raw_data),
+        .reset(mts_0_comp0_reset));
   ps_deci_high_0_0 deci_high
        (.clk(mts_0_deci_clk),
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
