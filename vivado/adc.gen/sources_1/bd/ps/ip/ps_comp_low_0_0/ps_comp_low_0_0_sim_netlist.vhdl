@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Nov  8 15:11:51 2025
+-- Date        : Tue Nov 11 22:18:02 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -20,7 +20,7 @@ entity ps_comp_low_0_0_comp_low is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     active : in STD_LOGIC;
-    fifo : in STD_LOGIC_VECTOR ( 237 downto 0 )
+    fifo : in STD_LOGIC_VECTOR ( 195 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_comp_low_0_0_comp_low : entity is "comp_low";
@@ -36,9 +36,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 27 downto 0 )
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 27 downto 0 )
   );
   end component ps_comp_low_0_0_ila_3;
   component ps_comp_low_0_0_ila_3_HD1 is
@@ -48,9 +47,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 27 downto 0 )
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 27 downto 0 )
   );
   end component ps_comp_low_0_0_ila_3_HD1;
   signal E0 : STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -62,8 +60,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute MARK_DEBUG of E2 : signal is std.standard.true;
   signal E3 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of E3 : signal is std.standard.true;
-  signal E4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E4 : signal is std.standard.true;
   signal N0 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of N0 : signal is std.standard.true;
   signal N1 : STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -72,8 +68,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute MARK_DEBUG of N2 : signal is std.standard.true;
   signal N3 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of N3 : signal is std.standard.true;
-  signal N4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N4 : signal is std.standard.true;
   signal W0 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of W0 : signal is std.standard.true;
   signal W1 : STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -82,8 +76,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute MARK_DEBUG of W2 : signal is std.standard.true;
   signal W3 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of W3 : signal is std.standard.true;
-  signal W4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W4 : signal is std.standard.true;
   signal counter : STD_LOGIC_VECTOR ( 27 downto 0 );
   attribute MARK_DEBUG of counter : signal is std.standard.true;
   attribute KEEP : string;
@@ -200,34 +192,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute mark_debug_string of \composite.E3_reg[8]\ : label is "yes";
   attribute KEEP of \composite.E3_reg[9]\ : label is "yes";
   attribute mark_debug_string of \composite.E3_reg[9]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[0]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[10]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[11]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[12]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[13]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[1]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[2]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[3]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[4]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[5]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[6]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[7]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[8]\ : label is "yes";
-  attribute KEEP of \composite.E4_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \composite.E4_reg[9]\ : label is "yes";
   attribute KEEP of \composite.N0_reg[0]\ : label is "yes";
   attribute mark_debug_string of \composite.N0_reg[0]\ : label is "yes";
   attribute KEEP of \composite.N0_reg[10]\ : label is "yes";
@@ -340,34 +304,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute mark_debug_string of \composite.N3_reg[8]\ : label is "yes";
   attribute KEEP of \composite.N3_reg[9]\ : label is "yes";
   attribute mark_debug_string of \composite.N3_reg[9]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[0]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[10]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[11]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[12]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[13]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[1]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[2]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[3]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[4]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[5]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[6]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[7]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[8]\ : label is "yes";
-  attribute KEEP of \composite.N4_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \composite.N4_reg[9]\ : label is "yes";
   attribute KEEP of \composite.W0_reg[0]\ : label is "yes";
   attribute mark_debug_string of \composite.W0_reg[0]\ : label is "yes";
   attribute KEEP of \composite.W0_reg[10]\ : label is "yes";
@@ -480,34 +416,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute mark_debug_string of \composite.W3_reg[8]\ : label is "yes";
   attribute KEEP of \composite.W3_reg[9]\ : label is "yes";
   attribute mark_debug_string of \composite.W3_reg[9]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[0]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[10]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[11]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[12]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[13]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[1]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[2]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[3]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[4]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[5]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[6]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[7]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[8]\ : label is "yes";
-  attribute KEEP of \composite.W4_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \composite.W4_reg[9]\ : label is "yes";
   attribute KEEP of \composite.counter_reg[0]\ : label is "yes";
   attribute mark_debug_string of \composite.counter_reg[0]\ : label is "yes";
   attribute KEEP of \composite.counter_reg[10]\ : label is "yes";
@@ -581,7 +489,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(98),
+      D => fifo(84),
       Q => E0(0),
       R => '0'
     );
@@ -589,7 +497,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(108),
+      D => fifo(94),
       Q => E0(10),
       R => '0'
     );
@@ -597,7 +505,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(109),
+      D => fifo(95),
       Q => E0(11),
       R => '0'
     );
@@ -605,7 +513,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(110),
+      D => fifo(96),
       Q => E0(12),
       R => '0'
     );
@@ -613,7 +521,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(111),
+      D => fifo(97),
       Q => E0(13),
       R => '0'
     );
@@ -621,7 +529,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(99),
+      D => fifo(85),
       Q => E0(1),
       R => '0'
     );
@@ -629,7 +537,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(100),
+      D => fifo(86),
       Q => E0(2),
       R => '0'
     );
@@ -637,7 +545,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(101),
+      D => fifo(87),
       Q => E0(3),
       R => '0'
     );
@@ -645,7 +553,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(102),
+      D => fifo(88),
       Q => E0(4),
       R => '0'
     );
@@ -653,7 +561,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(103),
+      D => fifo(89),
       Q => E0(5),
       R => '0'
     );
@@ -661,7 +569,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(104),
+      D => fifo(90),
       Q => E0(6),
       R => '0'
     );
@@ -669,7 +577,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(105),
+      D => fifo(91),
       Q => E0(7),
       R => '0'
     );
@@ -677,7 +585,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(106),
+      D => fifo(92),
       Q => E0(8),
       R => '0'
     );
@@ -685,7 +593,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(107),
+      D => fifo(93),
       Q => E0(9),
       R => '0'
     );
@@ -693,7 +601,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(112),
+      D => fifo(98),
       Q => E1(0),
       R => '0'
     );
@@ -701,7 +609,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(122),
+      D => fifo(108),
       Q => E1(10),
       R => '0'
     );
@@ -709,7 +617,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(123),
+      D => fifo(109),
       Q => E1(11),
       R => '0'
     );
@@ -717,7 +625,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(124),
+      D => fifo(110),
       Q => E1(12),
       R => '0'
     );
@@ -725,7 +633,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(125),
+      D => fifo(111),
       Q => E1(13),
       R => '0'
     );
@@ -733,7 +641,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(113),
+      D => fifo(99),
       Q => E1(1),
       R => '0'
     );
@@ -741,7 +649,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(114),
+      D => fifo(100),
       Q => E1(2),
       R => '0'
     );
@@ -749,7 +657,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(115),
+      D => fifo(101),
       Q => E1(3),
       R => '0'
     );
@@ -757,7 +665,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(116),
+      D => fifo(102),
       Q => E1(4),
       R => '0'
     );
@@ -765,7 +673,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(117),
+      D => fifo(103),
       Q => E1(5),
       R => '0'
     );
@@ -773,7 +681,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(118),
+      D => fifo(104),
       Q => E1(6),
       R => '0'
     );
@@ -781,7 +689,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(119),
+      D => fifo(105),
       Q => E1(7),
       R => '0'
     );
@@ -789,7 +697,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(120),
+      D => fifo(106),
       Q => E1(8),
       R => '0'
     );
@@ -797,7 +705,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(121),
+      D => fifo(107),
       Q => E1(9),
       R => '0'
     );
@@ -805,7 +713,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(126),
+      D => fifo(112),
       Q => E2(0),
       R => '0'
     );
@@ -813,7 +721,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(136),
+      D => fifo(122),
       Q => E2(10),
       R => '0'
     );
@@ -821,7 +729,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(137),
+      D => fifo(123),
       Q => E2(11),
       R => '0'
     );
@@ -829,7 +737,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(138),
+      D => fifo(124),
       Q => E2(12),
       R => '0'
     );
@@ -837,7 +745,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(139),
+      D => fifo(125),
       Q => E2(13),
       R => '0'
     );
@@ -845,7 +753,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(127),
+      D => fifo(113),
       Q => E2(1),
       R => '0'
     );
@@ -853,7 +761,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(128),
+      D => fifo(114),
       Q => E2(2),
       R => '0'
     );
@@ -861,7 +769,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(129),
+      D => fifo(115),
       Q => E2(3),
       R => '0'
     );
@@ -869,7 +777,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(130),
+      D => fifo(116),
       Q => E2(4),
       R => '0'
     );
@@ -877,7 +785,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(131),
+      D => fifo(117),
       Q => E2(5),
       R => '0'
     );
@@ -885,7 +793,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(132),
+      D => fifo(118),
       Q => E2(6),
       R => '0'
     );
@@ -893,7 +801,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(133),
+      D => fifo(119),
       Q => E2(7),
       R => '0'
     );
@@ -901,7 +809,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(134),
+      D => fifo(120),
       Q => E2(8),
       R => '0'
     );
@@ -909,7 +817,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(135),
+      D => fifo(121),
       Q => E2(9),
       R => '0'
     );
@@ -917,7 +825,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(140),
+      D => fifo(126),
       Q => E3(0),
       R => '0'
     );
@@ -925,7 +833,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(150),
+      D => fifo(136),
       Q => E3(10),
       R => '0'
     );
@@ -933,7 +841,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(151),
+      D => fifo(137),
       Q => E3(11),
       R => '0'
     );
@@ -941,7 +849,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(152),
+      D => fifo(138),
       Q => E3(12),
       R => '0'
     );
@@ -949,7 +857,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(153),
+      D => fifo(139),
       Q => E3(13),
       R => '0'
     );
@@ -957,7 +865,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(141),
+      D => fifo(127),
       Q => E3(1),
       R => '0'
     );
@@ -965,7 +873,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(142),
+      D => fifo(128),
       Q => E3(2),
       R => '0'
     );
@@ -973,7 +881,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(143),
+      D => fifo(129),
       Q => E3(3),
       R => '0'
     );
@@ -981,7 +889,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(144),
+      D => fifo(130),
       Q => E3(4),
       R => '0'
     );
@@ -989,7 +897,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(145),
+      D => fifo(131),
       Q => E3(5),
       R => '0'
     );
@@ -997,7 +905,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(146),
+      D => fifo(132),
       Q => E3(6),
       R => '0'
     );
@@ -1005,7 +913,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(147),
+      D => fifo(133),
       Q => E3(7),
       R => '0'
     );
@@ -1013,7 +921,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(148),
+      D => fifo(134),
       Q => E3(8),
       R => '0'
     );
@@ -1021,120 +929,8 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(149),
+      D => fifo(135),
       Q => E3(9),
-      R => '0'
-    );
-\composite.E4_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(154),
-      Q => E4(0),
-      R => '0'
-    );
-\composite.E4_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(164),
-      Q => E4(10),
-      R => '0'
-    );
-\composite.E4_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(165),
-      Q => E4(11),
-      R => '0'
-    );
-\composite.E4_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(166),
-      Q => E4(12),
-      R => '0'
-    );
-\composite.E4_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(167),
-      Q => E4(13),
-      R => '0'
-    );
-\composite.E4_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(155),
-      Q => E4(1),
-      R => '0'
-    );
-\composite.E4_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(156),
-      Q => E4(2),
-      R => '0'
-    );
-\composite.E4_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(157),
-      Q => E4(3),
-      R => '0'
-    );
-\composite.E4_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(158),
-      Q => E4(4),
-      R => '0'
-    );
-\composite.E4_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(159),
-      Q => E4(5),
-      R => '0'
-    );
-\composite.E4_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(160),
-      Q => E4(6),
-      R => '0'
-    );
-\composite.E4_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(161),
-      Q => E4(7),
-      R => '0'
-    );
-\composite.E4_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(162),
-      Q => E4(8),
-      R => '0'
-    );
-\composite.E4_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(163),
-      Q => E4(9),
       R => '0'
     );
 \composite.N0_reg[0]\: unisim.vcomponents.FDRE
@@ -1585,123 +1381,11 @@ begin
       Q => N3(9),
       R => '0'
     );
-\composite.N4_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(84),
-      Q => N4(0),
-      R => '0'
-    );
-\composite.N4_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(94),
-      Q => N4(10),
-      R => '0'
-    );
-\composite.N4_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(95),
-      Q => N4(11),
-      R => '0'
-    );
-\composite.N4_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(96),
-      Q => N4(12),
-      R => '0'
-    );
-\composite.N4_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(97),
-      Q => N4(13),
-      R => '0'
-    );
-\composite.N4_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(85),
-      Q => N4(1),
-      R => '0'
-    );
-\composite.N4_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(86),
-      Q => N4(2),
-      R => '0'
-    );
-\composite.N4_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(87),
-      Q => N4(3),
-      R => '0'
-    );
-\composite.N4_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(88),
-      Q => N4(4),
-      R => '0'
-    );
-\composite.N4_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(89),
-      Q => N4(5),
-      R => '0'
-    );
-\composite.N4_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(90),
-      Q => N4(6),
-      R => '0'
-    );
-\composite.N4_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(91),
-      Q => N4(7),
-      R => '0'
-    );
-\composite.N4_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(92),
-      Q => N4(8),
-      R => '0'
-    );
-\composite.N4_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(93),
-      Q => N4(9),
-      R => '0'
-    );
 \composite.W0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => active,
-      D => fifo(168),
+      D => fifo(140),
       Q => W0(0),
       R => '0'
     );
@@ -1709,7 +1393,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(178),
+      D => fifo(150),
       Q => W0(10),
       R => '0'
     );
@@ -1717,7 +1401,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(179),
+      D => fifo(151),
       Q => W0(11),
       R => '0'
     );
@@ -1725,7 +1409,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(180),
+      D => fifo(152),
       Q => W0(12),
       R => '0'
     );
@@ -1733,7 +1417,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(181),
+      D => fifo(153),
       Q => W0(13),
       R => '0'
     );
@@ -1741,7 +1425,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(169),
+      D => fifo(141),
       Q => W0(1),
       R => '0'
     );
@@ -1749,7 +1433,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(170),
+      D => fifo(142),
       Q => W0(2),
       R => '0'
     );
@@ -1757,7 +1441,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(171),
+      D => fifo(143),
       Q => W0(3),
       R => '0'
     );
@@ -1765,7 +1449,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(172),
+      D => fifo(144),
       Q => W0(4),
       R => '0'
     );
@@ -1773,7 +1457,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(173),
+      D => fifo(145),
       Q => W0(5),
       R => '0'
     );
@@ -1781,7 +1465,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(174),
+      D => fifo(146),
       Q => W0(6),
       R => '0'
     );
@@ -1789,7 +1473,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(175),
+      D => fifo(147),
       Q => W0(7),
       R => '0'
     );
@@ -1797,7 +1481,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(176),
+      D => fifo(148),
       Q => W0(8),
       R => '0'
     );
@@ -1805,7 +1489,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(177),
+      D => fifo(149),
       Q => W0(9),
       R => '0'
     );
@@ -1813,7 +1497,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(182),
+      D => fifo(154),
       Q => W1(0),
       R => '0'
     );
@@ -1821,7 +1505,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(192),
+      D => fifo(164),
       Q => W1(10),
       R => '0'
     );
@@ -1829,7 +1513,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(193),
+      D => fifo(165),
       Q => W1(11),
       R => '0'
     );
@@ -1837,7 +1521,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(194),
+      D => fifo(166),
       Q => W1(12),
       R => '0'
     );
@@ -1845,7 +1529,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(195),
+      D => fifo(167),
       Q => W1(13),
       R => '0'
     );
@@ -1853,7 +1537,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(183),
+      D => fifo(155),
       Q => W1(1),
       R => '0'
     );
@@ -1861,7 +1545,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(184),
+      D => fifo(156),
       Q => W1(2),
       R => '0'
     );
@@ -1869,7 +1553,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(185),
+      D => fifo(157),
       Q => W1(3),
       R => '0'
     );
@@ -1877,7 +1561,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(186),
+      D => fifo(158),
       Q => W1(4),
       R => '0'
     );
@@ -1885,7 +1569,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(187),
+      D => fifo(159),
       Q => W1(5),
       R => '0'
     );
@@ -1893,7 +1577,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(188),
+      D => fifo(160),
       Q => W1(6),
       R => '0'
     );
@@ -1901,7 +1585,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(189),
+      D => fifo(161),
       Q => W1(7),
       R => '0'
     );
@@ -1909,7 +1593,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(190),
+      D => fifo(162),
       Q => W1(8),
       R => '0'
     );
@@ -1917,7 +1601,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(191),
+      D => fifo(163),
       Q => W1(9),
       R => '0'
     );
@@ -1925,7 +1609,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(196),
+      D => fifo(168),
       Q => W2(0),
       R => '0'
     );
@@ -1933,7 +1617,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(206),
+      D => fifo(178),
       Q => W2(10),
       R => '0'
     );
@@ -1941,7 +1625,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(207),
+      D => fifo(179),
       Q => W2(11),
       R => '0'
     );
@@ -1949,7 +1633,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(208),
+      D => fifo(180),
       Q => W2(12),
       R => '0'
     );
@@ -1957,7 +1641,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(209),
+      D => fifo(181),
       Q => W2(13),
       R => '0'
     );
@@ -1965,7 +1649,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(197),
+      D => fifo(169),
       Q => W2(1),
       R => '0'
     );
@@ -1973,7 +1657,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(198),
+      D => fifo(170),
       Q => W2(2),
       R => '0'
     );
@@ -1981,7 +1665,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(199),
+      D => fifo(171),
       Q => W2(3),
       R => '0'
     );
@@ -1989,7 +1673,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(200),
+      D => fifo(172),
       Q => W2(4),
       R => '0'
     );
@@ -1997,7 +1681,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(201),
+      D => fifo(173),
       Q => W2(5),
       R => '0'
     );
@@ -2005,7 +1689,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(202),
+      D => fifo(174),
       Q => W2(6),
       R => '0'
     );
@@ -2013,7 +1697,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(203),
+      D => fifo(175),
       Q => W2(7),
       R => '0'
     );
@@ -2021,7 +1705,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(204),
+      D => fifo(176),
       Q => W2(8),
       R => '0'
     );
@@ -2029,7 +1713,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(205),
+      D => fifo(177),
       Q => W2(9),
       R => '0'
     );
@@ -2037,7 +1721,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(210),
+      D => fifo(182),
       Q => W3(0),
       R => '0'
     );
@@ -2045,7 +1729,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(220),
+      D => fifo(192),
       Q => W3(10),
       R => '0'
     );
@@ -2053,7 +1737,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(221),
+      D => fifo(193),
       Q => W3(11),
       R => '0'
     );
@@ -2061,7 +1745,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(222),
+      D => fifo(194),
       Q => W3(12),
       R => '0'
     );
@@ -2069,7 +1753,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(223),
+      D => fifo(195),
       Q => W3(13),
       R => '0'
     );
@@ -2077,7 +1761,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(211),
+      D => fifo(183),
       Q => W3(1),
       R => '0'
     );
@@ -2085,7 +1769,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(212),
+      D => fifo(184),
       Q => W3(2),
       R => '0'
     );
@@ -2093,7 +1777,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(213),
+      D => fifo(185),
       Q => W3(3),
       R => '0'
     );
@@ -2101,7 +1785,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(214),
+      D => fifo(186),
       Q => W3(4),
       R => '0'
     );
@@ -2109,7 +1793,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(215),
+      D => fifo(187),
       Q => W3(5),
       R => '0'
     );
@@ -2117,7 +1801,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(216),
+      D => fifo(188),
       Q => W3(6),
       R => '0'
     );
@@ -2125,7 +1809,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(217),
+      D => fifo(189),
       Q => W3(7),
       R => '0'
     );
@@ -2133,7 +1817,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(218),
+      D => fifo(190),
       Q => W3(8),
       R => '0'
     );
@@ -2141,120 +1825,8 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fifo(219),
+      D => fifo(191),
       Q => W3(9),
-      R => '0'
-    );
-\composite.W4_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(224),
-      Q => W4(0),
-      R => '0'
-    );
-\composite.W4_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(234),
-      Q => W4(10),
-      R => '0'
-    );
-\composite.W4_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(235),
-      Q => W4(11),
-      R => '0'
-    );
-\composite.W4_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(236),
-      Q => W4(12),
-      R => '0'
-    );
-\composite.W4_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(237),
-      Q => W4(13),
-      R => '0'
-    );
-\composite.W4_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(225),
-      Q => W4(1),
-      R => '0'
-    );
-\composite.W4_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(226),
-      Q => W4(2),
-      R => '0'
-    );
-\composite.W4_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(227),
-      Q => W4(3),
-      R => '0'
-    );
-\composite.W4_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(228),
-      Q => W4(4),
-      R => '0'
-    );
-\composite.W4_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(229),
-      Q => W4(5),
-      R => '0'
-    );
-\composite.W4_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(230),
-      Q => W4(6),
-      R => '0'
-    );
-\composite.W4_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(231),
-      Q => W4(7),
-      R => '0'
-    );
-\composite.W4_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(232),
-      Q => W4(8),
-      R => '0'
-    );
-\composite.W4_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fifo(233),
-      Q => W4(9),
       R => '0'
     );
 \composite.counter_reg[0]\: unisim.vcomponents.FDRE
@@ -2488,9 +2060,8 @@ ila_E: component ps_comp_low_0_0_ila_3
       probe1(13 downto 0) => E1(13 downto 0),
       probe2(13 downto 0) => E2(13 downto 0),
       probe3(13 downto 0) => E3(13 downto 0),
-      probe4(13 downto 0) => E4(13 downto 0),
-      probe5(0) => active,
-      probe6(27 downto 0) => counter(27 downto 0)
+      probe4(0) => active,
+      probe5(27 downto 0) => counter(27 downto 0)
     );
 ila_N: component ps_comp_low_0_0_ila_3
      port map (
@@ -2499,9 +2070,8 @@ ila_N: component ps_comp_low_0_0_ila_3
       probe1(13 downto 0) => N1(13 downto 0),
       probe2(13 downto 0) => N2(13 downto 0),
       probe3(13 downto 0) => N3(13 downto 0),
-      probe4(13 downto 0) => N4(13 downto 0),
-      probe5(0) => active,
-      probe6(27 downto 0) => counter(27 downto 0)
+      probe4(0) => active,
+      probe5(27 downto 0) => counter(27 downto 0)
     );
 ila_W: component ps_comp_low_0_0_ila_3_HD1
      port map (
@@ -2510,9 +2080,8 @@ ila_W: component ps_comp_low_0_0_ila_3_HD1
       probe1(13 downto 0) => W1(13 downto 0),
       probe2(13 downto 0) => W2(13 downto 0),
       probe3(13 downto 0) => W3(13 downto 0),
-      probe4(13 downto 0) => W4(13 downto 0),
-      probe5(0) => active,
-      probe6(27 downto 0) => counter(27 downto 0)
+      probe4(0) => active,
+      probe5(27 downto 0) => counter(27 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -2524,7 +2093,7 @@ entity ps_comp_low_0_0 is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     active : in STD_LOGIC;
-    fifo : in STD_LOGIC_VECTOR ( 237 downto 0 )
+    fifo : in STD_LOGIC_VECTOR ( 195 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ps_comp_low_0_0 : entity is true;
@@ -2553,7 +2122,7 @@ inst: entity work.ps_comp_low_0_0_comp_low
      port map (
       active => active,
       clk => clk,
-      fifo(237 downto 0) => fifo(237 downto 0),
+      fifo(195 downto 0) => fifo(195 downto 0),
       reset => '0'
     );
 end STRUCTURE;

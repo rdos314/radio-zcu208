@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Nov  8 15:11:51 2025
+-- Date        : Tue Nov 11 22:18:03 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_high_0_0/ps_deci_high_0_0_stub.vhdl
@@ -17,15 +17,15 @@ entity ps_deci_high_0_0 is
   Port ( 
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
-    data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_N : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_N : in STD_LOGIC;
-    data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_E : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_E : in STD_LOGIC;
-    data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
     raw_clk : in STD_LOGIC;
     raw_ready : out STD_LOGIC;
-    raw_data : out STD_LOGIC_VECTOR ( 447 downto 0 )
+    raw_data : out STD_LOGIC_VECTOR ( 363 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -42,7 +42,7 @@ architecture stub of ps_deci_high_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[159:0],ready_N,data_E[159:0],ready_E,data_W[159:0],ready_W,raw_clk,raw_ready,raw_data[447:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,raw_clk,raw_ready,raw_data[363:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

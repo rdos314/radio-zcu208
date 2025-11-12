@@ -76,18 +76,18 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire resetn;
-input wire [159 : 0] data_N;
+input wire [127 : 0] data_N;
 input wire ready_N;
-input wire [159 : 0] data_E;
+input wire [127 : 0] data_E;
 input wire ready_E;
-input wire [159 : 0] data_W;
+input wire [127 : 0] data_W;
 input wire ready_W;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
 input wire raw_clk;
 output wire raw_ready;
-output wire [237 : 0] raw_data;
+output wire [195 : 0] raw_data;
 
   deci_low inst (
     .clk(clk),

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Nov  8 15:11:51 2025
+// Date        : Tue Nov 11 22:18:02 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -24,11 +24,11 @@ module ps_comp_low_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   input active;
-  input [237:0]fifo;
+  input [195:0]fifo;
 
   wire active;
   wire clk;
-  wire [237:0]fifo;
+  wire [195:0]fifo;
 
   ps_comp_low_0_0_comp_low inst
        (.active(active),
@@ -46,34 +46,31 @@ module ps_comp_low_0_0_comp_low
   input clk;
   input reset;
   input active;
-  input [237:0]fifo;
+  input [195:0]fifo;
 
   (* MARK_DEBUG *) wire [13:0]E0;
   (* MARK_DEBUG *) wire [13:0]E1;
   (* MARK_DEBUG *) wire [13:0]E2;
   (* MARK_DEBUG *) wire [13:0]E3;
-  (* MARK_DEBUG *) wire [13:0]E4;
   (* MARK_DEBUG *) wire [13:0]N0;
   (* MARK_DEBUG *) wire [13:0]N1;
   (* MARK_DEBUG *) wire [13:0]N2;
   (* MARK_DEBUG *) wire [13:0]N3;
-  (* MARK_DEBUG *) wire [13:0]N4;
   (* MARK_DEBUG *) wire [13:0]W0;
   (* MARK_DEBUG *) wire [13:0]W1;
   (* MARK_DEBUG *) wire [13:0]W2;
   (* MARK_DEBUG *) wire [13:0]W3;
-  (* MARK_DEBUG *) wire [13:0]W4;
   (* MARK_DEBUG *) wire active;
   wire clk;
   (* MARK_DEBUG *) wire [27:0]counter;
-  wire [237:0]fifo;
+  wire [195:0]fifo;
 
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \composite.E0_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[98]),
+        .D(fifo[84]),
         .Q(E0[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -81,7 +78,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[108]),
+        .D(fifo[94]),
         .Q(E0[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -89,7 +86,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[109]),
+        .D(fifo[95]),
         .Q(E0[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -97,7 +94,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[110]),
+        .D(fifo[96]),
         .Q(E0[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -105,7 +102,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[111]),
+        .D(fifo[97]),
         .Q(E0[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -113,7 +110,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[99]),
+        .D(fifo[85]),
         .Q(E0[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -121,7 +118,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[100]),
+        .D(fifo[86]),
         .Q(E0[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -129,7 +126,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[101]),
+        .D(fifo[87]),
         .Q(E0[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -137,7 +134,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[102]),
+        .D(fifo[88]),
         .Q(E0[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -145,7 +142,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[103]),
+        .D(fifo[89]),
         .Q(E0[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -153,7 +150,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[104]),
+        .D(fifo[90]),
         .Q(E0[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -161,7 +158,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[105]),
+        .D(fifo[91]),
         .Q(E0[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -169,7 +166,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[106]),
+        .D(fifo[92]),
         .Q(E0[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -177,7 +174,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E0_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[107]),
+        .D(fifo[93]),
         .Q(E0[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -185,7 +182,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[112]),
+        .D(fifo[98]),
         .Q(E1[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -193,7 +190,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[122]),
+        .D(fifo[108]),
         .Q(E1[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -201,7 +198,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[123]),
+        .D(fifo[109]),
         .Q(E1[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -209,7 +206,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[124]),
+        .D(fifo[110]),
         .Q(E1[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -217,7 +214,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[125]),
+        .D(fifo[111]),
         .Q(E1[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -225,7 +222,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[113]),
+        .D(fifo[99]),
         .Q(E1[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -233,7 +230,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[114]),
+        .D(fifo[100]),
         .Q(E1[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -241,7 +238,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[115]),
+        .D(fifo[101]),
         .Q(E1[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -249,7 +246,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[116]),
+        .D(fifo[102]),
         .Q(E1[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -257,7 +254,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[117]),
+        .D(fifo[103]),
         .Q(E1[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -265,7 +262,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[118]),
+        .D(fifo[104]),
         .Q(E1[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -273,7 +270,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[119]),
+        .D(fifo[105]),
         .Q(E1[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -281,7 +278,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[120]),
+        .D(fifo[106]),
         .Q(E1[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -289,7 +286,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E1_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[121]),
+        .D(fifo[107]),
         .Q(E1[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -297,7 +294,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[126]),
+        .D(fifo[112]),
         .Q(E2[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -305,7 +302,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[136]),
+        .D(fifo[122]),
         .Q(E2[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -313,7 +310,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[137]),
+        .D(fifo[123]),
         .Q(E2[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -321,7 +318,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[138]),
+        .D(fifo[124]),
         .Q(E2[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -329,7 +326,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[139]),
+        .D(fifo[125]),
         .Q(E2[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -337,7 +334,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[127]),
+        .D(fifo[113]),
         .Q(E2[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -345,7 +342,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[128]),
+        .D(fifo[114]),
         .Q(E2[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -353,7 +350,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[129]),
+        .D(fifo[115]),
         .Q(E2[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -361,7 +358,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[130]),
+        .D(fifo[116]),
         .Q(E2[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -369,7 +366,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[131]),
+        .D(fifo[117]),
         .Q(E2[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -377,7 +374,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[132]),
+        .D(fifo[118]),
         .Q(E2[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -385,7 +382,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[133]),
+        .D(fifo[119]),
         .Q(E2[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -393,7 +390,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[134]),
+        .D(fifo[120]),
         .Q(E2[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -401,7 +398,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E2_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[135]),
+        .D(fifo[121]),
         .Q(E2[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -409,7 +406,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[140]),
+        .D(fifo[126]),
         .Q(E3[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -417,7 +414,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[150]),
+        .D(fifo[136]),
         .Q(E3[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -425,7 +422,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[151]),
+        .D(fifo[137]),
         .Q(E3[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -433,7 +430,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[152]),
+        .D(fifo[138]),
         .Q(E3[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -441,7 +438,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[153]),
+        .D(fifo[139]),
         .Q(E3[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -449,7 +446,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[141]),
+        .D(fifo[127]),
         .Q(E3[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -457,7 +454,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[142]),
+        .D(fifo[128]),
         .Q(E3[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -465,7 +462,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[143]),
+        .D(fifo[129]),
         .Q(E3[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -473,7 +470,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[144]),
+        .D(fifo[130]),
         .Q(E3[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -481,7 +478,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[145]),
+        .D(fifo[131]),
         .Q(E3[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -489,7 +486,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[146]),
+        .D(fifo[132]),
         .Q(E3[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -497,7 +494,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[147]),
+        .D(fifo[133]),
         .Q(E3[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -505,7 +502,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[148]),
+        .D(fifo[134]),
         .Q(E3[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -513,120 +510,8 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.E3_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[149]),
+        .D(fifo[135]),
         .Q(E3[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[0] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[154]),
-        .Q(E4[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[10] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[164]),
-        .Q(E4[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[11] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[165]),
-        .Q(E4[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[12] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[166]),
-        .Q(E4[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[13] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[167]),
-        .Q(E4[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[1] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[155]),
-        .Q(E4[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[2] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[156]),
-        .Q(E4[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[3] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[157]),
-        .Q(E4[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[4] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[158]),
-        .Q(E4[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[5] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[159]),
-        .Q(E4[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[6] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[160]),
-        .Q(E4[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[7] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[161]),
-        .Q(E4[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[8] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[162]),
-        .Q(E4[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.E4_reg[9] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[163]),
-        .Q(E4[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -1078,122 +963,10 @@ module ps_comp_low_0_0_comp_low
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[0] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[84]),
-        .Q(N4[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[10] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[94]),
-        .Q(N4[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[11] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[95]),
-        .Q(N4[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[12] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[96]),
-        .Q(N4[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[13] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[97]),
-        .Q(N4[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[1] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[85]),
-        .Q(N4[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[2] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[86]),
-        .Q(N4[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[3] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[87]),
-        .Q(N4[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[4] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[88]),
-        .Q(N4[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[5] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[89]),
-        .Q(N4[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[6] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[90]),
-        .Q(N4[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[7] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[91]),
-        .Q(N4[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[8] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[92]),
-        .Q(N4[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.N4_reg[9] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[93]),
-        .Q(N4[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \composite.W0_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[168]),
+        .D(fifo[140]),
         .Q(W0[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1201,7 +974,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[178]),
+        .D(fifo[150]),
         .Q(W0[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1209,7 +982,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[179]),
+        .D(fifo[151]),
         .Q(W0[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1217,7 +990,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[180]),
+        .D(fifo[152]),
         .Q(W0[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1225,7 +998,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[181]),
+        .D(fifo[153]),
         .Q(W0[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1233,7 +1006,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[169]),
+        .D(fifo[141]),
         .Q(W0[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1241,7 +1014,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[170]),
+        .D(fifo[142]),
         .Q(W0[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1249,7 +1022,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[171]),
+        .D(fifo[143]),
         .Q(W0[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1257,7 +1030,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[172]),
+        .D(fifo[144]),
         .Q(W0[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1265,7 +1038,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[173]),
+        .D(fifo[145]),
         .Q(W0[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1273,7 +1046,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[174]),
+        .D(fifo[146]),
         .Q(W0[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1281,7 +1054,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[175]),
+        .D(fifo[147]),
         .Q(W0[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1289,7 +1062,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[176]),
+        .D(fifo[148]),
         .Q(W0[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1297,7 +1070,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W0_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[177]),
+        .D(fifo[149]),
         .Q(W0[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1305,7 +1078,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[182]),
+        .D(fifo[154]),
         .Q(W1[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1313,7 +1086,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[192]),
+        .D(fifo[164]),
         .Q(W1[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1321,7 +1094,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[193]),
+        .D(fifo[165]),
         .Q(W1[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1329,7 +1102,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[194]),
+        .D(fifo[166]),
         .Q(W1[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1337,7 +1110,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[195]),
+        .D(fifo[167]),
         .Q(W1[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1345,7 +1118,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[183]),
+        .D(fifo[155]),
         .Q(W1[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1353,7 +1126,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[184]),
+        .D(fifo[156]),
         .Q(W1[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1361,7 +1134,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[185]),
+        .D(fifo[157]),
         .Q(W1[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1369,7 +1142,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[186]),
+        .D(fifo[158]),
         .Q(W1[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1377,7 +1150,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[187]),
+        .D(fifo[159]),
         .Q(W1[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1385,7 +1158,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[188]),
+        .D(fifo[160]),
         .Q(W1[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1393,7 +1166,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[189]),
+        .D(fifo[161]),
         .Q(W1[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1401,7 +1174,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[190]),
+        .D(fifo[162]),
         .Q(W1[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1409,7 +1182,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W1_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[191]),
+        .D(fifo[163]),
         .Q(W1[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1417,7 +1190,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[196]),
+        .D(fifo[168]),
         .Q(W2[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1425,7 +1198,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[206]),
+        .D(fifo[178]),
         .Q(W2[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1433,7 +1206,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[207]),
+        .D(fifo[179]),
         .Q(W2[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1441,7 +1214,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[208]),
+        .D(fifo[180]),
         .Q(W2[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1449,7 +1222,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[209]),
+        .D(fifo[181]),
         .Q(W2[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1457,7 +1230,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[197]),
+        .D(fifo[169]),
         .Q(W2[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1465,7 +1238,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[198]),
+        .D(fifo[170]),
         .Q(W2[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1473,7 +1246,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[199]),
+        .D(fifo[171]),
         .Q(W2[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1481,7 +1254,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[200]),
+        .D(fifo[172]),
         .Q(W2[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1489,7 +1262,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[201]),
+        .D(fifo[173]),
         .Q(W2[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1497,7 +1270,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[202]),
+        .D(fifo[174]),
         .Q(W2[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1505,7 +1278,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[203]),
+        .D(fifo[175]),
         .Q(W2[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1513,7 +1286,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[204]),
+        .D(fifo[176]),
         .Q(W2[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1521,7 +1294,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W2_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[205]),
+        .D(fifo[177]),
         .Q(W2[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1529,7 +1302,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[0] 
        (.C(clk),
         .CE(active),
-        .D(fifo[210]),
+        .D(fifo[182]),
         .Q(W3[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1537,7 +1310,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[10] 
        (.C(clk),
         .CE(active),
-        .D(fifo[220]),
+        .D(fifo[192]),
         .Q(W3[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1545,7 +1318,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[11] 
        (.C(clk),
         .CE(active),
-        .D(fifo[221]),
+        .D(fifo[193]),
         .Q(W3[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1553,7 +1326,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[12] 
        (.C(clk),
         .CE(active),
-        .D(fifo[222]),
+        .D(fifo[194]),
         .Q(W3[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1561,7 +1334,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[13] 
        (.C(clk),
         .CE(active),
-        .D(fifo[223]),
+        .D(fifo[195]),
         .Q(W3[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1569,7 +1342,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[1] 
        (.C(clk),
         .CE(active),
-        .D(fifo[211]),
+        .D(fifo[183]),
         .Q(W3[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1577,7 +1350,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[2] 
        (.C(clk),
         .CE(active),
-        .D(fifo[212]),
+        .D(fifo[184]),
         .Q(W3[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1585,7 +1358,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[3] 
        (.C(clk),
         .CE(active),
-        .D(fifo[213]),
+        .D(fifo[185]),
         .Q(W3[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1593,7 +1366,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[4] 
        (.C(clk),
         .CE(active),
-        .D(fifo[214]),
+        .D(fifo[186]),
         .Q(W3[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1601,7 +1374,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[5] 
        (.C(clk),
         .CE(active),
-        .D(fifo[215]),
+        .D(fifo[187]),
         .Q(W3[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1609,7 +1382,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[6] 
        (.C(clk),
         .CE(active),
-        .D(fifo[216]),
+        .D(fifo[188]),
         .Q(W3[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1617,7 +1390,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[7] 
        (.C(clk),
         .CE(active),
-        .D(fifo[217]),
+        .D(fifo[189]),
         .Q(W3[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1625,7 +1398,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[8] 
        (.C(clk),
         .CE(active),
-        .D(fifo[218]),
+        .D(fifo[190]),
         .Q(W3[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1633,120 +1406,8 @@ module ps_comp_low_0_0_comp_low
   FDRE \composite.W3_reg[9] 
        (.C(clk),
         .CE(active),
-        .D(fifo[219]),
+        .D(fifo[191]),
         .Q(W3[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[0] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[224]),
-        .Q(W4[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[10] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[234]),
-        .Q(W4[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[11] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[235]),
-        .Q(W4[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[12] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[236]),
-        .Q(W4[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[13] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[237]),
-        .Q(W4[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[1] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[225]),
-        .Q(W4[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[2] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[226]),
-        .Q(W4[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[3] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[227]),
-        .Q(W4[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[4] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[228]),
-        .Q(W4[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[5] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[229]),
-        .Q(W4[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[6] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[230]),
-        .Q(W4[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[7] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[231]),
-        .Q(W4[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[8] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[232]),
-        .Q(W4[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \composite.W4_reg[9] 
-       (.C(clk),
-        .CE(active),
-        .D(fifo[233]),
-        .Q(W4[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -1981,9 +1642,8 @@ module ps_comp_low_0_0_comp_low
         .probe1(E1),
         .probe2(E2),
         .probe3(E3),
-        .probe4(E4),
-        .probe5(active),
-        .probe6(counter));
+        .probe4(active),
+        .probe5(counter));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
@@ -1993,9 +1653,8 @@ module ps_comp_low_0_0_comp_low
         .probe1(N1),
         .probe2(N2),
         .probe3(N3),
-        .probe4(N4),
-        .probe5(active),
-        .probe6(counter));
+        .probe4(active),
+        .probe5(counter));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
@@ -2005,9 +1664,8 @@ module ps_comp_low_0_0_comp_low
         .probe1(W1),
         .probe2(W2),
         .probe3(W3),
-        .probe4(W4),
-        .probe5(active),
-        .probe6(counter));
+        .probe4(active),
+        .probe5(counter));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_3" *) 
@@ -2019,16 +1677,14 @@ module ps_comp_low_0_0_ila_3
     probe2,
     probe3,
     probe4,
-    probe5,
-    probe6);
+    probe5);
   (* syn_isclock = "1" *) input clk;
   input [13:0]probe0;
   input [13:0]probe1;
   input [13:0]probe2;
   input [13:0]probe3;
-  input [13:0]probe4;
-  input [0:0]probe5;
-  input [27:0]probe6;
+  input [0:0]probe4;
+  input [27:0]probe5;
 
 
 endmodule
@@ -2042,16 +1698,14 @@ module ps_comp_low_0_0_ila_3_HD1
     probe2,
     probe3,
     probe4,
-    probe5,
-    probe6);
+    probe5);
   (* syn_isclock = "1" *) input clk;
   input [13:0]probe0;
   input [13:0]probe1;
   input [13:0]probe2;
   input [13:0]probe3;
-  input [13:0]probe4;
-  input [0:0]probe5;
-  input [27:0]probe6;
+  input [0:0]probe4;
+  input [27:0]probe5;
 
 
 endmodule

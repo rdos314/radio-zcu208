@@ -87,7 +87,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h07310062,  // CLOCK_DETECT_CTRL0 (ADC0)
        30'h07320032,  // CLOCK_DETECT_CTRL1 (ADC0)
        30'h07300000,  // FIFO_START (ADC0)
-       30'h00020a08,  // ADC00 Data Width
+       30'h00020808,  // ADC00 Data Width
        30'h00100003,  // ADC00 Decimation Config
        30'h00110001,  // ADC00 Decimation Mode
        30'h00200000,  // ADC00 Mixer Config 0
@@ -103,8 +103,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h00460148,  // ADC00_SIG_DET_THRESHOLD_LEVEL0
        30'h0047012c,  // ADC00_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h0048012c,  // ADC00_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h0006000a,  // ADC00 FABRIC_DEBUG
-       30'h01020a08,  // ADC01 Data Width
+       30'h00060008,  // ADC00 FABRIC_DEBUG
+       30'h01020808,  // ADC01 Data Width
        30'h01100003,  // ADC01 Decimation Config
        30'h01110001,  // ADC01 Decimation Mode
        30'h01200000,  // ADC01 Mixer Config 0
@@ -120,8 +120,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h01460148,  // ADC01_SIG_DET_THRESHOLD_LEVEL0
        30'h0147012c,  // ADC01_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h0148012c,  // ADC01_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h0106000a,  // ADC01 FABRIC_DEBUG
-       30'h02020a08,  // ADC02 Data Width
+       30'h01060008,  // ADC01 FABRIC_DEBUG
+       30'h02020808,  // ADC02 Data Width
        30'h02100003,  // ADC02 Decimation Config
        30'h02110001,  // ADC02 Decimation Mode
        30'h02200000,  // ADC02 Mixer Config 0
@@ -137,8 +137,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h02460148,  // ADC02_SIG_DET_THRESHOLD_LEVEL0
        30'h0247012c,  // ADC02_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h0248012c,  // ADC02_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h0206000a,  // ADC02 FABRIC_DEBUG
-       30'h03020a08,  // ADC03 Data Width
+       30'h02060008,  // ADC02 FABRIC_DEBUG
+       30'h03020808,  // ADC03 Data Width
        30'h03100003,  // ADC03 Decimation Config
        30'h03110001,  // ADC03 Decimation Mode
        30'h03200000,  // ADC03 Mixer Config 0
@@ -154,7 +154,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h03460148,  // ADC03_SIG_DET_THRESHOLD_LEVEL0
        30'h0347012c,  // ADC03_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h0348012c,  // ADC03_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h0306000a,  // ADC03 FABRIC_DEBUG
+       30'h03060008,  // ADC03 FABRIC_DEBUG
        30'h0f230000,  // Clock Network Control 0 (ADC1)
        30'h0f240008,  // Clock Network Control 1 (ADC1)
        30'h0f22a4e0,  // Clock Distribution Control (ADC1)
@@ -165,7 +165,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h0f310062,  // CLOCK_DETECT_CTRL0 (ADC1)
        30'h0f320032,  // CLOCK_DETECT_CTRL1 (ADC1)
        30'h0f300000,  // FIFO_START (ADC1)
-       30'h08020a08,  // ADC10 Data Width
+       30'h08020808,  // ADC10 Data Width
        30'h08100003,  // ADC10 Decimation Config
        30'h08110001,  // ADC10 Decimation Mode
        30'h08200000,  // ADC10 Mixer Config 0
@@ -181,8 +181,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h08460148,  // ADC10_SIG_DET_THRESHOLD_LEVEL0
        30'h0847012c,  // ADC10_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h0848012c,  // ADC10_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h0806000a,  // ADC10 FABRIC_DEBUG
-       30'h09020a08,  // ADC11 Data Width
+       30'h08060008,  // ADC10 FABRIC_DEBUG
+       30'h09020808,  // ADC11 Data Width
        30'h09100003,  // ADC11 Decimation Config
        30'h09110001,  // ADC11 Decimation Mode
        30'h09200000,  // ADC11 Mixer Config 0
@@ -198,7 +198,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h09460148,  // ADC11_SIG_DET_THRESHOLD_LEVEL0
        30'h0947012c,  // ADC11_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h0948012c,  // ADC11_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h0906000a,  // ADC11 FABRIC_DEBUG
+       30'h09060008,  // ADC11 FABRIC_DEBUG
        30'h17230000,  // Clock Network Control 0 (ADC2)
        30'h17240008,  // Clock Network Control 1 (ADC2)
        30'h1722a228,  // Clock Distribution Control (ADC2)
@@ -209,7 +209,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h17310062,  // CLOCK_DETECT_CTRL0 (ADC2)
        30'h17320032,  // CLOCK_DETECT_CTRL1 (ADC2)
        30'h17300000,  // FIFO_START (ADC2)
-       30'h10020a08,  // ADC20 Data Width
+       30'h10020808,  // ADC20 Data Width
        30'h10100003,  // ADC20 Decimation Config
        30'h10110001,  // ADC20 Decimation Mode
        30'h10200000,  // ADC20 Mixer Config 0
@@ -225,8 +225,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h10460148,  // ADC20_SIG_DET_THRESHOLD_LEVEL0
        30'h1047012c,  // ADC20_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1048012c,  // ADC20_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h1006000a,  // ADC20 FABRIC_DEBUG
-       30'h11020a08,  // ADC21 Data Width
+       30'h10060008,  // ADC20 FABRIC_DEBUG
+       30'h11020808,  // ADC21 Data Width
        30'h11100003,  // ADC21 Decimation Config
        30'h11110001,  // ADC21 Decimation Mode
        30'h11200000,  // ADC21 Mixer Config 0
@@ -242,8 +242,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h11460148,  // ADC21_SIG_DET_THRESHOLD_LEVEL0
        30'h1147012c,  // ADC21_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1148012c,  // ADC21_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h1106000a,  // ADC21 FABRIC_DEBUG
-       30'h12020a08,  // ADC22 Data Width
+       30'h11060008,  // ADC21 FABRIC_DEBUG
+       30'h12020808,  // ADC22 Data Width
        30'h12100003,  // ADC22 Decimation Config
        30'h12110001,  // ADC22 Decimation Mode
        30'h12200000,  // ADC22 Mixer Config 0
@@ -259,8 +259,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h12460148,  // ADC22_SIG_DET_THRESHOLD_LEVEL0
        30'h1247012c,  // ADC22_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1248012c,  // ADC22_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h1206000a,  // ADC22 FABRIC_DEBUG
-       30'h13020a08,  // ADC23 Data Width
+       30'h12060008,  // ADC22 FABRIC_DEBUG
+       30'h13020808,  // ADC23 Data Width
        30'h13100003,  // ADC23 Decimation Config
        30'h13110001,  // ADC23 Decimation Mode
        30'h13200000,  // ADC23 Mixer Config 0
@@ -276,7 +276,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h13460148,  // ADC23_SIG_DET_THRESHOLD_LEVEL0
        30'h1347012c,  // ADC23_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1348012c,  // ADC23_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h1306000a,  // ADC23 FABRIC_DEBUG
+       30'h13060008,  // ADC23 FABRIC_DEBUG
        30'h1f230000,  // Clock Network Control 0 (ADC3)
        30'h1f240008,  // Clock Network Control 1 (ADC3)
        30'h1f222060,  // Clock Distribution Control (ADC3)
@@ -287,7 +287,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h1f310062,  // CLOCK_DETECT_CTRL0 (ADC3)
        30'h1f320032,  // CLOCK_DETECT_CTRL1 (ADC3)
        30'h1f300000,  // FIFO_START (ADC3)
-       30'h18020a08,  // ADC30 Data Width
+       30'h18020808,  // ADC30 Data Width
        30'h18100003,  // ADC30 Decimation Config
        30'h18110001,  // ADC30 Decimation Mode
        30'h18200000,  // ADC30 Mixer Config 0
@@ -303,8 +303,8 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h18460148,  // ADC30_SIG_DET_THRESHOLD_LEVEL0
        30'h1847012c,  // ADC30_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1848012c,  // ADC30_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h1806000a,  // ADC30 FABRIC_DEBUG
-       30'h19020a08,  // ADC31 Data Width
+       30'h18060008,  // ADC30 FABRIC_DEBUG
+       30'h19020808,  // ADC31 Data Width
        30'h19100003,  // ADC31 Decimation Config
        30'h19110001,  // ADC31 Decimation Mode
        30'h19200000,  // ADC31 Mixer Config 0
@@ -320,7 +320,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h19460148,  // ADC31_SIG_DET_THRESHOLD_LEVEL0
        30'h1947012c,  // ADC31_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1948012c,  // ADC31_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
-       30'h1906000a,  // ADC31 FABRIC_DEBUG
+       30'h19060008,  // ADC31 FABRIC_DEBUG
        30'h2728ca80,  // SYSREF Distribution (DAC0)
        30'h2f282400,  // SYSREF Distribution (DAC1)
        30'h37280980,  // SYSREF Distribution (DAC2)

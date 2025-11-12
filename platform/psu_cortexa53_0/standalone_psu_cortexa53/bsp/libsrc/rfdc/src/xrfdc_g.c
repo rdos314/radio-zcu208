@@ -330,8 +330,8 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			{
 				1, /* xlnx,enable */
 				0, /* xlnx,pll-enable */
-				5, /* xlnx,sampling-rate */
-				5000.000, /* xlnx,refclk-freq */
+				4, /* xlnx,sampling-rate */
+				4000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
 				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
@@ -360,7 +360,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 {
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -368,7 +368,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -376,7 +376,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -384,7 +384,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -395,8 +395,8 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			{
 				1, /* xlnx,enable */
 				0, /* xlnx,pll-enable */
-				5, /* xlnx,sampling-rate */
-				5000.000, /* xlnx,refclk-freq */
+				4, /* xlnx,sampling-rate */
+				4000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
 				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
@@ -425,7 +425,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 {
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -433,7 +433,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -460,8 +460,8 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			{
 				1, /* xlnx,enable */
 				0, /* xlnx,pll-enable */
-				5, /* xlnx,sampling-rate */
-				5000.000, /* xlnx,refclk-freq */
+				4, /* xlnx,sampling-rate */
+				4000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
 				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
@@ -490,7 +490,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 {
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -498,7 +498,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -506,7 +506,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -514,7 +514,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -525,8 +525,8 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			{
 				1, /* xlnx,enable */
 				0, /* xlnx,pll-enable */
-				5, /* xlnx,sampling-rate */
-				5000.000, /* xlnx,refclk-freq */
+				4, /* xlnx,sampling-rate */
+				4000.000, /* xlnx,refclk-freq */
 				500.000, /* xlnx,fabric-freq */
 				24, /* xlnx,fbdiv */
 				1, /* xlnx,outdiv */
@@ -555,7 +555,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 {
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */
@@ -563,7 +563,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 			},
 			{
 				0, /* xlnx,data-type */
-				10, /* xlnx,data-width */
+				8, /* xlnx,data-width */
 				1, /* xlnx,decimation-mode */
 				0, /* xlnx,fifo-enable */
 				1, /* xlnx,mixer-type */

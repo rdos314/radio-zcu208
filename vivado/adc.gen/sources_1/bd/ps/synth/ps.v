@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sat Nov  8 15:10:56 2025
+//Date        : Wed Nov 12 23:42:38 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=14,numReposBlks=14,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=7,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=14,numReposBlks=14,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_board_cnt=3,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -128,9 +128,9 @@ module ps
   wire axi_smc_M03_AXI_WREADY;
   wire [3:0]axi_smc_M03_AXI_WSTRB;
   wire axi_smc_M03_AXI_WVALID;
-  wire [447:0]deci_high_raw_data;
+  wire [363:0]deci_high_raw_data;
   wire deci_high_raw_ready;
-  wire [237:0]deci_low_raw_data;
+  wire [195:0]deci_low_raw_data;
   wire deci_low_raw_ready;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
@@ -149,17 +149,17 @@ module ps
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
   wire sysref_in_diff_n;
   wire sysref_in_diff_p;
-  wire [159:0]usp_rf_data_converter_0_m00_axis_tdata;
+  wire [127:0]usp_rf_data_converter_0_m00_axis_tdata;
   wire usp_rf_data_converter_0_m00_axis_tvalid;
-  wire [159:0]usp_rf_data_converter_0_m02_axis_tdata;
+  wire [127:0]usp_rf_data_converter_0_m02_axis_tdata;
   wire usp_rf_data_converter_0_m02_axis_tvalid;
-  wire [159:0]usp_rf_data_converter_0_m10_axis_tdata;
+  wire [127:0]usp_rf_data_converter_0_m10_axis_tdata;
   wire usp_rf_data_converter_0_m10_axis_tvalid;
-  wire [159:0]usp_rf_data_converter_0_m20_axis_tdata;
+  wire [127:0]usp_rf_data_converter_0_m20_axis_tdata;
   wire usp_rf_data_converter_0_m20_axis_tvalid;
-  wire [159:0]usp_rf_data_converter_0_m22_axis_tdata;
+  wire [127:0]usp_rf_data_converter_0_m22_axis_tdata;
   wire usp_rf_data_converter_0_m22_axis_tvalid;
-  wire [159:0]usp_rf_data_converter_0_m30_axis_tdata;
+  wire [127:0]usp_rf_data_converter_0_m30_axis_tdata;
   wire usp_rf_data_converter_0_m30_axis_tvalid;
   wire [0:0]util_ds_buf_0_IBUF_OUT;
   wire [0:0]util_ds_buf_0_IBUF_OUT1;

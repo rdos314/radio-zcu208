@@ -51,7 +51,7 @@
 //
 //------------------------------------------------------------------------------
 //
-// coefficients: -398,-1032,-281,3512,8898,11522,8898,3512,-281,-1032,-398
+// coefficients: 69,-613,-1726,1212,9703,14866,9703,1212,-1726,-613,69
 // chanpats: 173
 // name: fir_raw_deci
 // filter_type: 2
@@ -77,7 +77,7 @@
 // output_fract_width: 0
 // config_method: 0
 
-const double fir_raw_deci_coefficients[11] = {-398,-1032,-281,3512,8898,11522,8898,3512,-281,-1032,-398};
+const double fir_raw_deci_coefficients[11] = {69,-613,-1726,1212,9703,14866,9703,1212,-1726,-613,69};
 
 const xip_fir_v7_2_pattern fir_raw_deci_chanpats[1] = {P_BASIC};
 

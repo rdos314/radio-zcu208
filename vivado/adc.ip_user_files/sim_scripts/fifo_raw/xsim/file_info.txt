@@ -1,2 +1,0 @@
-fifo_raw.v,verilog,xil_defaultlib,../../../../adc.gen/sources_1/ip/fifo_raw/sim/fifo_raw.v,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
-glbl.v,Verilog,xil_defaultlib,glbl.v

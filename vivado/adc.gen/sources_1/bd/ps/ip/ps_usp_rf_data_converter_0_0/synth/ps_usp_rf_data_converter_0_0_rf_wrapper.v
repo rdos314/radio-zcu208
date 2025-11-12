@@ -2197,7 +2197,7 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
 RFADC #(
     .OPT_CLK_DIST         (224),
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
-    .XPA_SAMPLE_RATE_MSPS (5000.0),
+    .XPA_SAMPLE_RATE_MSPS (4000.0),
     .XPA_NUM_ADCS         ("2I"),
     .XPA_PLL_USED         ("DISTRIBUTED_T1"),
     .XPA_NUM_DDCS         (2),
@@ -2277,7 +2277,7 @@ RFADC #(
 RFADC #(
     .OPT_CLK_DIST         (225),
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
-    .XPA_SAMPLE_RATE_MSPS (5000.0),
+    .XPA_SAMPLE_RATE_MSPS (4000.0),
     .XPA_NUM_ADCS         ("1I"),
     .XPA_PLL_USED         ("EXTERNAL"),
     .XPA_NUM_DDCS         (1),
@@ -2357,7 +2357,7 @@ RFADC #(
 RFADC #(
     .OPT_CLK_DIST         (226),
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
-    .XPA_SAMPLE_RATE_MSPS (5000.0),
+    .XPA_SAMPLE_RATE_MSPS (4000.0),
     .XPA_NUM_ADCS         ("2I"),
     .XPA_PLL_USED         ("DISTRIBUTED_T1"),
     .XPA_NUM_DDCS         (2),
@@ -2437,7 +2437,7 @@ RFADC #(
 RFADC #(
     .OPT_CLK_DIST         (227),
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
-    .XPA_SAMPLE_RATE_MSPS (5000.0),
+    .XPA_SAMPLE_RATE_MSPS (4000.0),
     .XPA_NUM_ADCS         ("1I"),
     .XPA_PLL_USED         ("DISTRIBUTED_T1"),
     .XPA_NUM_DDCS         (1),

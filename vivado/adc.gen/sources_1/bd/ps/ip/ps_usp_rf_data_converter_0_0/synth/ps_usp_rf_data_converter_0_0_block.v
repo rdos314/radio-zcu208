@@ -187,32 +187,32 @@ module ps_usp_rf_data_converter_0_0_block (
 
 
   // ADC AXI Streaming Data for ADC00
-  output [159:0]    m00_axis_tdata,
+  output [127:0]    m00_axis_tdata,
   output            m00_axis_tvalid,
   input             m00_axis_tready,
 
   // ADC AXI Streaming Data for ADC02
-  output [159:0]    m02_axis_tdata,
+  output [127:0]    m02_axis_tdata,
   output            m02_axis_tvalid,
   input             m02_axis_tready,
 
   // ADC AXI Streaming Data for ADC10
-  output [159:0]    m10_axis_tdata,
+  output [127:0]    m10_axis_tdata,
   output            m10_axis_tvalid,
   input             m10_axis_tready,
 
   // ADC AXI Streaming Data for ADC20
-  output [159:0]    m20_axis_tdata,
+  output [127:0]    m20_axis_tdata,
   output            m20_axis_tvalid,
   input             m20_axis_tready,
 
   // ADC AXI Streaming Data for ADC22
-  output [159:0]    m22_axis_tdata,
+  output [127:0]    m22_axis_tdata,
   output            m22_axis_tvalid,
   input             m22_axis_tready,
 
   // ADC AXI Streaming Data for ADC30
-  output [159:0]    m30_axis_tdata,
+  output [127:0]    m30_axis_tdata,
   output            m30_axis_tvalid,
   input             m30_axis_tready,
 
@@ -1729,7 +1729,7 @@ module ps_usp_rf_data_converter_0_0_block (
   reg              mt_adc_fifo_src_ff;     // Source of MT ADC FIFO enables: 0 = non-multitile, 1 = multitile
 
   reg  [10:0]      adc00_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc00_data_aligned;       // Aligned ADC data
+  wire [127:0]     adc00_data_aligned;       // Aligned ADC data
 
   wire             mrk_cntr_done_slice00;    // Marker has completed counting
   wire             mrk_cntr_done_slice00_sync;
@@ -1737,7 +1737,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice00;         // Marker counter value
 
   reg  [10:0]      adc02_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc02_data_aligned;       // Aligned ADC data
+  wire [127:0]     adc02_data_aligned;       // Aligned ADC data
 
   wire             mrk_cntr_done_slice02;    // Marker has completed counting
   wire             mrk_cntr_done_slice02_sync;
@@ -1745,7 +1745,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice02;         // Marker counter value
 
   reg  [10:0]      adc10_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc10_data_aligned;       // Aligned ADC data
+  wire [127:0]     adc10_data_aligned;       // Aligned ADC data
 
   wire             mrk_cntr_done_slice10;    // Marker has completed counting
   wire             mrk_cntr_done_slice10_sync;
@@ -1753,7 +1753,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice10;         // Marker counter value
 
   reg  [10:0]      adc20_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc20_data_aligned;       // Aligned ADC data
+  wire [127:0]     adc20_data_aligned;       // Aligned ADC data
 
   wire             mrk_cntr_done_slice20;    // Marker has completed counting
   wire             mrk_cntr_done_slice20_sync;
@@ -1761,7 +1761,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice20;         // Marker counter value
 
   reg  [10:0]      adc22_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc22_data_aligned;       // Aligned ADC data
+  wire [127:0]     adc22_data_aligned;       // Aligned ADC data
 
   wire             mrk_cntr_done_slice22;    // Marker has completed counting
   wire             mrk_cntr_done_slice22_sync;
@@ -1769,7 +1769,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire [MRK_CNTR_BITS-1:0]        mrk_cntr_slice22;         // Marker counter value
 
   reg  [10:0]      adc30_data_align_ctrl_ff; // ADC data aligner control signals
-  wire [159:0]     adc30_data_aligned;       // Aligned ADC data
+  wire [127:0]     adc30_data_aligned;       // Aligned ADC data
 
   wire             mrk_cntr_done_slice30;    // Marker has completed counting
   wire             mrk_cntr_done_slice30_sync;
@@ -4313,7 +4313,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc0_ref_clk_freq <= 32'd5000000;
+      adc0_ref_clk_freq <= 32'd4000000;
     end
     else if (bank9_write[192])
     begin
@@ -4324,7 +4324,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc0_sample_rate <= 32'd5000000;
+      adc0_sample_rate <= 32'd4000000;
     end
     else if (bank9_write[193])
     begin
@@ -4873,7 +4873,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc1_ref_clk_freq <= 32'd5000000;
+      adc1_ref_clk_freq <= 32'd4000000;
     end
     else if (bank11_write[192])
     begin
@@ -4884,7 +4884,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc1_sample_rate <= 32'd5000000;
+      adc1_sample_rate <= 32'd4000000;
     end
     else if (bank11_write[193])
     begin
@@ -5444,7 +5444,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc2_ref_clk_freq <= 32'd5000000;
+      adc2_ref_clk_freq <= 32'd4000000;
     end
     else if (bank13_write[192])
     begin
@@ -5455,7 +5455,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc2_sample_rate <= 32'd5000000;
+      adc2_sample_rate <= 32'd4000000;
     end
     else if (bank13_write[193])
     begin
@@ -6004,7 +6004,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc3_ref_clk_freq <= 32'd5000000;
+      adc3_ref_clk_freq <= 32'd4000000;
     end
     else if (bank15_write[192])
     begin
@@ -6015,7 +6015,7 @@ always @(posedge Bus2IP_Clk)
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      adc3_sample_rate <= 32'd5000000;
+      adc3_sample_rate <= 32'd4000000;
     end
     else if (bank15_write[193])
     begin
@@ -7580,7 +7580,7 @@ always @(posedge Bus2IP_Clk)
     .dest_out (mrk_cntr_done_slice00_sync        )
   );
 
-  assign adc00_data_aligned = adc00_data_i[159:0];
+  assign adc00_data_aligned = adc00_data_i[127:0];
 
   // Marker counter slice02
   ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
@@ -7607,7 +7607,7 @@ always @(posedge Bus2IP_Clk)
     .dest_out (mrk_cntr_done_slice02_sync        )
   );
 
-  assign adc02_data_aligned = adc02_data_i[159:0];
+  assign adc02_data_aligned = adc02_data_i[127:0];
 
   // Marker counter slice10
   ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
@@ -7634,7 +7634,7 @@ always @(posedge Bus2IP_Clk)
     .dest_out (mrk_cntr_done_slice10_sync        )
   );
 
-  assign adc10_data_aligned = adc10_data_i[159:0];
+  assign adc10_data_aligned = adc10_data_i[127:0];
 
   // Marker counter slice20
   ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
@@ -7661,7 +7661,7 @@ always @(posedge Bus2IP_Clk)
     .dest_out (mrk_cntr_done_slice20_sync        )
   );
 
-  assign adc20_data_aligned = adc20_data_i[159:0];
+  assign adc20_data_aligned = adc20_data_i[127:0];
 
   // Marker counter slice22
   ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
@@ -7688,7 +7688,7 @@ always @(posedge Bus2IP_Clk)
     .dest_out (mrk_cntr_done_slice22_sync        )
   );
 
-  assign adc22_data_aligned = adc22_data_i[159:0];
+  assign adc22_data_aligned = adc22_data_i[127:0];
 
   // Marker counter slice30
   ps_usp_rf_data_converter_0_0_mt_mrk_counter #(
@@ -7715,7 +7715,7 @@ always @(posedge Bus2IP_Clk)
     .dest_out (mrk_cntr_done_slice30_sync        )
   );
 
-  assign adc30_data_aligned = adc30_data_i[159:0];
+  assign adc30_data_aligned = adc30_data_i[127:0];
 
 
   assign adc00_clk_detector_ok_b = adc00_stat_sync[5] | adc00_stat_sync[6];

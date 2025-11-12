@@ -62,9 +62,9 @@ ENTITY fir_raw_deci IS
     aclk : IN STD_LOGIC;
     s_axis_data_tvalid : IN STD_LOGIC;
     s_axis_data_tready : OUT STD_LOGIC;
-    s_axis_data_tdata : IN STD_LOGIC_VECTOR(159 DOWNTO 0);
+    s_axis_data_tdata : IN STD_LOGIC_VECTOR(127 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
-    m_axis_data_tdata : OUT STD_LOGIC_VECTOR(159 DOWNTO 0)
+    m_axis_data_tdata : OUT STD_LOGIC_VECTOR(127 DOWNTO 0)
   );
 END fir_raw_deci;
 
@@ -152,7 +152,7 @@ ARCHITECTURE fir_raw_deci_arch OF fir_raw_deci IS
       s_axis_data_tready : OUT STD_LOGIC;
       s_axis_data_tlast : IN STD_LOGIC;
       s_axis_data_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      s_axis_data_tdata : IN STD_LOGIC_VECTOR(159 DOWNTO 0);
+      s_axis_data_tdata : IN STD_LOGIC_VECTOR(127 DOWNTO 0);
       s_axis_config_tvalid : IN STD_LOGIC;
       s_axis_config_tready : OUT STD_LOGIC;
       s_axis_config_tlast : IN STD_LOGIC;
@@ -165,7 +165,7 @@ ARCHITECTURE fir_raw_deci_arch OF fir_raw_deci IS
       m_axis_data_tready : IN STD_LOGIC;
       m_axis_data_tlast : OUT STD_LOGIC;
       m_axis_data_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      m_axis_data_tdata : OUT STD_LOGIC_VECTOR(159 DOWNTO 0);
+      m_axis_data_tdata : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
       event_s_data_tlast_missing : OUT STD_LOGIC;
       event_s_data_tlast_unexpected : OUT STD_LOGIC;
       event_s_data_chanid_incorrect : OUT STD_LOGIC;
@@ -187,12 +187,12 @@ ARCHITECTURE fir_raw_deci_arch OF fir_raw_deci IS
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_MODE OF m_axis_data_tvalid: SIGNAL IS "master M_AXIS_DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DATA, TDATA_NUM_BYTES 20, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DATA, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_MODE OF s_axis_data_tvalid: SIGNAL IS "slave S_AXIS_DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_DATA, TDATA_NUM_BYTES 20, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_DATA, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
 BEGIN
   U0 : fir_compiler_v7_2_24
     GENERIC MAP (
@@ -217,24 +217,24 @@ BEGIN
       C_COL_PIPE_LEN => 4,
       C_COL_CONFIG => "6",
       C_OPTIMIZATION => 0,
-      C_DATA_PATH_WIDTHS => "14,14,14,14,14,14,14,14,14,14",
-      C_DATA_IP_PATH_WIDTHS => "14,14,14,14,14,14,14,14,14,14",
-      C_DATA_PX_PATH_WIDTHS => "14,14,14,14,14,14,14,14,14,14",
+      C_DATA_PATH_WIDTHS => "14,14,14,14,14,14,14,14",
+      C_DATA_IP_PATH_WIDTHS => "14,14,14,14,14,14,14,14",
+      C_DATA_PX_PATH_WIDTHS => "14,14,14,14,14,14,14,14",
       C_DATA_WIDTH => 14,
-      C_COEF_PATH_WIDTHS => "16,16,16,16,16,16,16,16,16,16",
+      C_COEF_PATH_WIDTHS => "16,16,16,16,16,16,16,16",
       C_COEF_WIDTH => 16,
-      C_DATA_PATH_SRC => "0,1,2,3,4,5,6,7,8,9",
-      C_COEF_PATH_SRC => "0,0,0,0,0,0,0,0,0,0",
-      C_PX_PATH_SRC => "1,1,3,3,5,5,7,7,9,9",
-      C_DATA_PATH_SIGN => "0,0,0,0,0,0,0,0,0,0",
-      C_COEF_PATH_SIGN => "0,0,0,0,0,0,0,0,0,0",
-      C_ACCUM_PATH_WIDTHS => "30,30,30,30,30,30,30,30,30,30",
+      C_DATA_PATH_SRC => "0,1,2,3,4,5,6,7",
+      C_COEF_PATH_SRC => "0,0,0,0,0,0,0,0",
+      C_PX_PATH_SRC => "1,1,3,3,5,5,7,7",
+      C_DATA_PATH_SIGN => "0,0,0,0,0,0,0,0",
+      C_COEF_PATH_SIGN => "0,0,0,0,0,0,0,0",
+      C_ACCUM_PATH_WIDTHS => "30,30,30,30,30,30,30,30",
       C_OUTPUT_WIDTH => 30,
-      C_OUTPUT_PATH_WIDTHS => "30,30,30,30,30",
-      C_ACCUM_OP_PATH_WIDTHS => "30,30,30,30,30",
+      C_OUTPUT_PATH_WIDTHS => "30,30,30,30",
+      C_ACCUM_OP_PATH_WIDTHS => "30,30,30,30",
       C_EXT_MULT_CNFG => "none",
-      C_DATA_PATH_PSAMP_SRC => "-0,1,2,3,4,5,6,7,8,9;0,-1,2,3,4,5,6,7,8,9;0,1,-2,3,4,5,6,7,8,9;0,1,2,-3,4,5,6,7,8,9;0,1,2,3,-4,5,6,7,8,9;0,1,2,3,4,-5,6,7,8,9;0,1,2,3,4,5,-6,7,8,9;0,1,2,3,4,5,6,-7,8,9;0,1,2,3,4,5,6,7,-8,9;0,1,2,3,4,5,6,7,8,-9",
-      C_OP_PATH_PSAMP_SRC => "0,-1,2,3,4,5,6,7,8,9;0,1,2,-3,4,5,6,7,8,9;0,1,2,3,4,-5,6,7,8,9;0,1,2,3,4,5,6,-7,8,9;0,1,2,3,4,5,6,7,8,-9",
+      C_DATA_PATH_PSAMP_SRC => "-0,1,2,3,4,5,6,7;0,-1,2,3,4,5,6,7;0,1,-2,3,4,5,6,7;0,1,2,-3,4,5,6,7;0,1,2,3,-4,5,6,7;0,1,2,3,4,-5,6,7;0,1,2,3,4,5,-6,7;0,1,2,3,4,5,6,-7",
+      C_OP_PATH_PSAMP_SRC => "0,-1,2,3,4,5,6,7;0,1,2,-3,4,5,6,7;0,1,2,3,4,-5,6,7;0,1,2,3,4,5,6,-7",
       C_NUM_MADDS => 6,
       C_OPT_MADDS => "none",
       C_OVERSAMPLING_RATE => 1,
@@ -255,11 +255,11 @@ BEGIN
       C_DATA_HAS_TLAST => 0,
       C_S_DATA_HAS_FIFO => 1,
       C_S_DATA_HAS_TUSER => 0,
-      C_S_DATA_TDATA_WIDTH => 160,
+      C_S_DATA_TDATA_WIDTH => 128,
       C_S_DATA_TUSER_WIDTH => 1,
       C_M_DATA_HAS_TREADY => 0,
       C_M_DATA_HAS_TUSER => 0,
-      C_M_DATA_TDATA_WIDTH => 160,
+      C_M_DATA_TDATA_WIDTH => 128,
       C_M_DATA_TUSER_WIDTH => 1,
       C_HAS_CONFIG_CHANNEL => 0,
       C_CONFIG_SYNC_MODE => 0,

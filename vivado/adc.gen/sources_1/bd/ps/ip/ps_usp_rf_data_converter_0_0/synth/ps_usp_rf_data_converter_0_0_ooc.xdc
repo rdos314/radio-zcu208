@@ -62,17 +62,17 @@
 # Set AXI-Lite Clock to 100MHz
 create_clock -period 10.000 -name ps_usp_rf_data_converter_0_0_axi_aclk [get_ports s_axi_aclk]
 
-# ADC Reference Clock for Tile 0 running at 5000.000 MHz
-create_clock -period 0.200 -name ps_usp_rf_data_converter_0_0_adc0_clk [get_ports adc0_clk_p]
+# ADC Reference Clock for Tile 0 running at 4000.000 MHz
+create_clock -period 0.250 -name ps_usp_rf_data_converter_0_0_adc0_clk [get_ports adc0_clk_p]
 
-# ADC Reference Clock for Tile 1 running at 5000.000 MHz
-create_clock -period 0.200 -name ps_usp_rf_data_converter_0_0_adc1_clk [get_ports adc1_clk_p]
+# ADC Reference Clock for Tile 1 running at 4000.000 MHz
+create_clock -period 0.250 -name ps_usp_rf_data_converter_0_0_adc1_clk [get_ports adc1_clk_p]
 
-# ADC Reference Clock for Tile 2 running at 5000.000 MHz
-create_clock -period 0.200 -name ps_usp_rf_data_converter_0_0_adc2_clk [get_ports adc2_clk_p]
+# ADC Reference Clock for Tile 2 running at 4000.000 MHz
+create_clock -period 0.250 -name ps_usp_rf_data_converter_0_0_adc2_clk [get_ports adc2_clk_p]
 
-# ADC Reference Clock for Tile 3 running at 5000.000 MHz
-create_clock -period 0.200 -name ps_usp_rf_data_converter_0_0_adc3_clk [get_ports adc3_clk_p]
+# ADC Reference Clock for Tile 3 running at 4000.000 MHz
+create_clock -period 0.250 -name ps_usp_rf_data_converter_0_0_adc3_clk [get_ports adc3_clk_p]
 
 
 #AXI Streaming Clock for ADC0

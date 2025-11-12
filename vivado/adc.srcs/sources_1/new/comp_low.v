@@ -24,7 +24,7 @@ module comp_low(
     input wire	clk,
     input wire  reset,
     input wire active,
-    input wire	[237:0] fifo
+    input wire	[195:0] fifo
     );
     
   reg [27:0] counter;
@@ -32,17 +32,14 @@ module comp_low(
   reg [13:0] N1;
   reg [13:0] N2;
   reg [13:0] N3;
-  reg [13:0] N4;
   reg [13:0] E0;
   reg [13:0] E1;
   reg [13:0] E2;
   reg [13:0] E3;
-  reg [13:0] E4;
   reg [13:0] W0;
   reg [13:0] W1;
   reg [13:0] W2;
   reg [13:0] W3;
-  reg [13:0] W4;
 
 	ila_3 ila_N (
 		.clk(clk),                 // input wire clk
@@ -50,9 +47,8 @@ module comp_low(
 		.probe1(N1),       // input wire [13:0]  probe3
 		.probe2(N2),       // input wire [13:0]  probe3
 		.probe3(N3),       // input wire [13:0]  probe3
-		.probe4(N4),       // input wire [13:0]  probe3
-		.probe5(active),             // input wire [0:0]  probe3
-		.probe6(counter)             // input wire [27:0]  probe3
+		.probe4(active),             // input wire [0:0]  probe3
+		.probe5(counter)             // input wire [27:0]  probe3
 	);
 
 	ila_3 ila_E (
@@ -61,9 +57,8 @@ module comp_low(
 		.probe1(E1),       // input wire [13:0]  probe3
 		.probe2(E2),       // input wire [13:0]  probe3
 		.probe3(E3),       // input wire [13:0]  probe3
-		.probe4(E4),       // input wire [13:0]  probe3
-		.probe5(active),             // input wire [0:0]  probe3
-		.probe6(counter)             // input wire [27:0]  probe3
+		.probe4(active),             // input wire [0:0]  probe3
+		.probe5(counter)             // input wire [27:0]  probe3
 	);
 
 	ila_3 ila_W (
@@ -72,9 +67,8 @@ module comp_low(
 		.probe1(W1),       // input wire [13:0]  probe3
 		.probe2(W2),       // input wire [13:0]  probe3
 		.probe3(W3),       // input wire [13:0]  probe3
-		.probe4(W4),       // input wire [13:0]  probe3
-		.probe5(active),             // input wire [11:0]  probe3
-		.probe6(counter)             // input wire [27:0]  probe3
+		.probe4(active),             // input wire [11:0]  probe3
+		.probe5(counter)             // input wire [27:0]  probe3
 	);
 
 generate
@@ -89,17 +83,14 @@ generate
             N1 <= fifo[55:42];
             N2 <= fifo[69:56];
             N3 <= fifo[83:70];
-            N4 <= fifo[97:84];
-            E0 <= fifo[111:98];
-            E1 <= fifo[125:112];
-            E2 <= fifo[139:126];
-            E3 <= fifo[153:140];
-            E4 <= fifo[167:154];
-            W0 <= fifo[181:168];
-            W1 <= fifo[195:182];
-            W2 <= fifo[209:196];
-            W3 <= fifo[223:210];
-            W4 <= fifo[237:224];
+            E0 <= fifo[97:84];
+            E1 <= fifo[111:98];
+            E2 <= fifo[125:112];
+            E3 <= fifo[139:126];
+            W0 <= fifo[153:140];
+            W1 <= fifo[167:154];
+            W2 <= fifo[181:168];
+            W3 <= fifo[195:182];
         end
 	end
 

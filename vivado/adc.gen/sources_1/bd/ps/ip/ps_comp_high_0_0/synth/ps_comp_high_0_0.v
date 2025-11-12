@@ -71,7 +71,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
 input wire active;
-input wire [447 : 0] fifo;
+input wire [363 : 0] fifo;
 
   comp_high inst (
     .clk(clk),

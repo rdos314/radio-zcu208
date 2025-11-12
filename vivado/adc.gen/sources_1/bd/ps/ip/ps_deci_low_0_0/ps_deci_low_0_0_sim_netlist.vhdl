@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Nov  8 15:11:51 2025
+-- Date        : Tue Nov 11 22:18:03 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -19,15 +19,15 @@ entity ps_deci_low_0_0_deci_low is
   port (
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
-    data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_N : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_N : in STD_LOGIC;
-    data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_E : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_E : in STD_LOGIC;
-    data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
     raw_clk : in STD_LOGIC;
     raw_ready : out STD_LOGIC;
-    raw_data : out STD_LOGIC_VECTOR ( 237 downto 0 )
+    raw_data : out STD_LOGIC_VECTOR ( 195 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_deci_low_0_0_deci_low : entity is "deci_low";
@@ -36,28 +36,28 @@ entity ps_deci_low_0_0_deci_low is
 end ps_deci_low_0_0_deci_low;
 
 architecture STRUCTURE of ps_deci_low_0_0_deci_low is
-  component ps_deci_low_0_0_fifo_raw is
+  component ps_deci_low_0_0_fifo_raw_low is
   port (
     rst : in STD_LOGIC;
     wr_clk : in STD_LOGIC;
     rd_clk : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 447 downto 0 );
+    din : in STD_LOGIC_VECTOR ( 195 downto 0 );
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 447 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 195 downto 0 );
     full : out STD_LOGIC;
     empty : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
     rd_rst_busy : out STD_LOGIC
   );
-  end component ps_deci_low_0_0_fifo_raw;
+  end component ps_deci_low_0_0_fifo_raw_low;
   component ps_deci_low_0_0_fir_deci_low is
   port (
     aresetn : in STD_LOGIC;
     aclk : in STD_LOGIC;
     s_axis_data_tvalid : in STD_LOGIC;
     s_axis_data_tready : out STD_LOGIC;
-    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 );
     m_axis_data_tvalid : out STD_LOGIC;
     m_axis_data_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -70,7 +70,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     s_axis_data_tready : out STD_LOGIC;
     s_axis_data_tvalid : in STD_LOGIC;
     m_axis_data_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 159 downto 0 )
+    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   end component ps_deci_low_0_0_fir_deci_low_HD1;
   component ps_deci_low_0_0_fir_raw_deci is
@@ -79,9 +79,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     aclk : in STD_LOGIC;
     s_axis_data_tvalid : in STD_LOGIC;
     s_axis_data_tready : out STD_LOGIC;
-    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 );
     m_axis_data_tvalid : out STD_LOGIC;
-    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 159 downto 0 )
+    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   end component ps_deci_low_0_0_fir_raw_deci;
   component ps_deci_low_0_0_fir_raw_deci_HD2 is
@@ -91,8 +91,8 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     m_axis_data_tvalid : out STD_LOGIC;
     s_axis_data_tready : out STD_LOGIC;
     s_axis_data_tvalid : in STD_LOGIC;
-    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 159 downto 0 );
-    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 159 downto 0 )
+    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   end component ps_deci_low_0_0_fir_raw_deci_HD2;
   component ps_deci_low_0_0_ila_0 is
@@ -106,11 +106,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe5 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_deci_low_0_0_ila_0;
   component ps_deci_low_0_0_ila_0_HD3 is
@@ -119,15 +117,13 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component ps_deci_low_0_0_ila_0_HD3;
@@ -148,10 +144,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of E6 : signal is std.standard.true;
   signal E7 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of E7 : signal is std.standard.true;
-  signal E8 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E8 : signal is std.standard.true;
-  signal E9 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E9 : signal is std.standard.true;
   signal N0 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of N0 : signal is std.standard.true;
   signal N1 : STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -168,10 +160,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of N6 : signal is std.standard.true;
   signal N7 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of N7 : signal is std.standard.true;
-  signal N8 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N8 : signal is std.standard.true;
-  signal N9 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N9 : signal is std.standard.true;
   signal W0 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of W0 : signal is std.standard.true;
   signal W1 : STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -188,10 +176,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of W6 : signal is std.standard.true;
   signal W7 : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of W7 : signal is std.standard.true;
-  signal W8 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W8 : signal is std.standard.true;
-  signal W9 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W9 : signal is std.standard.true;
   signal active : STD_LOGIC;
   signal active_1 : STD_LOGIC;
   attribute async_reg : string;
@@ -205,9 +189,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of dN : signal is std.standard.true;
   signal dW : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute MARK_DEBUG of dW : signal is std.standard.true;
-  signal \^data_e\ : STD_LOGIC_VECTOR ( 145 downto 0 );
-  signal \^data_n\ : STD_LOGIC_VECTOR ( 145 downto 0 );
-  signal \^data_w\ : STD_LOGIC_VECTOR ( 145 downto 0 );
+  signal \^data_e\ : STD_LOGIC_VECTOR ( 113 downto 0 );
+  signal \^data_n\ : STD_LOGIC_VECTOR ( 113 downto 0 );
+  signal \^data_w\ : STD_LOGIC_VECTOR ( 113 downto 0 );
   signal \deci_low.active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.counter[0]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.counter_reg\ : STD_LOGIC_VECTOR ( 27 downto 0 );
@@ -267,9 +251,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.counter_reg[8]_i_1_n_8\ : STD_LOGIC;
   signal \deci_low.counter_reg[8]_i_1_n_9\ : STD_LOGIC;
   signal fifo_raw_i_i_1_n_0 : STD_LOGIC;
-  signal fir_raw_E : STD_LOGIC_VECTOR ( 158 downto 17 );
-  signal fir_raw_N : STD_LOGIC_VECTOR ( 158 downto 17 );
-  signal fir_raw_W : STD_LOGIC_VECTOR ( 158 downto 17 );
+  signal fir_raw_E : STD_LOGIC_VECTOR ( 126 downto 17 );
+  signal fir_raw_N : STD_LOGIC_VECTOR ( 126 downto 17 );
+  signal fir_raw_W : STD_LOGIC_VECTOR ( 126 downto 17 );
   signal raw_active : STD_LOGIC;
   signal raw_active_i_1_n_0 : STD_LOGIC;
   signal raw_active_i_2_n_0 : STD_LOGIC;
@@ -301,8 +285,8 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \raw_delay_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal raw_fifo_empty : STD_LOGIC;
   signal raw_fifo_wr : STD_LOGIC;
-  signal raw_in_data : STD_LOGIC_VECTOR ( 237 downto 0 );
-  signal raw_out_data : STD_LOGIC_VECTOR ( 237 downto 0 );
+  signal raw_in_data : STD_LOGIC_VECTOR ( 195 downto 0 );
+  signal raw_out_data : STD_LOGIC_VECTOR ( 195 downto 0 );
   signal \^raw_ready\ : STD_LOGIC;
   signal valid_E : STD_LOGIC;
   attribute MARK_DEBUG of valid_E : signal is std.standard.true;
@@ -318,7 +302,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal NLW_fifo_raw_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
-  signal NLW_fifo_raw_i_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 447 downto 238 );
   signal NLW_fir_E_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_E_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_fir_N_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
@@ -326,11 +309,11 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal NLW_fir_W_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_fir_deci_E_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 159 downto 0 );
+  signal NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal NLW_fir_deci_N_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 159 downto 0 );
+  signal NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal NLW_fir_deci_W_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 159 downto 0 );
+  signal NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal \NLW_raw_delay_reg[11]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_raw_delay_reg[11]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute SOFT_HLUTNM : string;
@@ -341,7 +324,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute ADDER_THRESHOLD of \deci_low.counter_reg[24]_i_1\ : label is 16;
   attribute ADDER_THRESHOLD of \deci_low.counter_reg[8]_i_1\ : label is 16;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw,fifo_generator_v13_2_13,{}";
+  attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of fifo_raw_i : label is "yes";
   attribute x_core_info : string;
@@ -385,8 +368,6 @@ begin
   E5(13 downto 0) <= data_E(95 downto 82);
   E6(13 downto 0) <= data_E(111 downto 98);
   E7(13 downto 0) <= data_E(127 downto 114);
-  E8(13 downto 0) <= data_E(143 downto 130);
-  E9(13 downto 0) <= data_E(159 downto 146);
   N0(13 downto 0) <= data_N(15 downto 2);
   N1(13 downto 0) <= data_N(31 downto 18);
   N2(13 downto 0) <= data_N(47 downto 34);
@@ -395,8 +376,6 @@ begin
   N5(13 downto 0) <= data_N(95 downto 82);
   N6(13 downto 0) <= data_N(111 downto 98);
   N7(13 downto 0) <= data_N(127 downto 114);
-  N8(13 downto 0) <= data_N(143 downto 130);
-  N9(13 downto 0) <= data_N(159 downto 146);
   W0(13 downto 0) <= data_W(15 downto 2);
   W1(13 downto 0) <= data_W(31 downto 18);
   W2(13 downto 0) <= data_W(47 downto 34);
@@ -405,10 +384,6 @@ begin
   W5(13 downto 0) <= data_W(95 downto 82);
   W6(13 downto 0) <= data_W(111 downto 98);
   W7(13 downto 0) <= data_W(127 downto 114);
-  W8(13 downto 0) <= data_W(143 downto 130);
-  W9(13 downto 0) <= data_W(159 downto 146);
-  \^data_e\(145 downto 144) <= data_E(145 downto 144);
-  \^data_e\(129 downto 128) <= data_E(129 downto 128);
   \^data_e\(113 downto 112) <= data_E(113 downto 112);
   \^data_e\(97 downto 96) <= data_E(97 downto 96);
   \^data_e\(81 downto 80) <= data_E(81 downto 80);
@@ -417,8 +392,6 @@ begin
   \^data_e\(33 downto 32) <= data_E(33 downto 32);
   \^data_e\(17 downto 16) <= data_E(17 downto 16);
   \^data_e\(1 downto 0) <= data_E(1 downto 0);
-  \^data_n\(145 downto 144) <= data_N(145 downto 144);
-  \^data_n\(129 downto 128) <= data_N(129 downto 128);
   \^data_n\(113 downto 112) <= data_N(113 downto 112);
   \^data_n\(97 downto 96) <= data_N(97 downto 96);
   \^data_n\(81 downto 80) <= data_N(81 downto 80);
@@ -427,8 +400,6 @@ begin
   \^data_n\(33 downto 32) <= data_N(33 downto 32);
   \^data_n\(17 downto 16) <= data_N(17 downto 16);
   \^data_n\(1 downto 0) <= data_N(1 downto 0);
-  \^data_w\(145 downto 144) <= data_W(145 downto 144);
-  \^data_w\(129 downto 128) <= data_W(129 downto 128);
   \^data_w\(113 downto 112) <= data_W(113 downto 112);
   \^data_w\(97 downto 96) <= data_W(97 downto 96);
   \^data_w\(81 downto 80) <= data_W(81 downto 80);
@@ -804,7 +775,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(19),
+      D => fir_raw_E(51),
       Q => raw_in_data(100),
       R => '0'
     );
@@ -812,7 +783,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(20),
+      D => fir_raw_E(52),
       Q => raw_in_data(101),
       R => '0'
     );
@@ -820,7 +791,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(21),
+      D => fir_raw_E(53),
       Q => raw_in_data(102),
       R => '0'
     );
@@ -828,7 +799,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(22),
+      D => fir_raw_E(54),
       Q => raw_in_data(103),
       R => '0'
     );
@@ -836,7 +807,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(23),
+      D => fir_raw_E(55),
       Q => raw_in_data(104),
       R => '0'
     );
@@ -844,7 +815,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(24),
+      D => fir_raw_E(56),
       Q => raw_in_data(105),
       R => '0'
     );
@@ -852,7 +823,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(25),
+      D => fir_raw_E(57),
       Q => raw_in_data(106),
       R => '0'
     );
@@ -860,7 +831,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(26),
+      D => fir_raw_E(58),
       Q => raw_in_data(107),
       R => '0'
     );
@@ -868,7 +839,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(27),
+      D => fir_raw_E(59),
       Q => raw_in_data(108),
       R => '0'
     );
@@ -876,7 +847,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(28),
+      D => fir_raw_E(60),
       Q => raw_in_data(109),
       R => '0'
     );
@@ -892,7 +863,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(29),
+      D => fir_raw_E(61),
       Q => raw_in_data(110),
       R => '0'
     );
@@ -900,7 +871,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(30),
+      D => fir_raw_E(62),
       Q => raw_in_data(111),
       R => '0'
     );
@@ -908,7 +879,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(49),
+      D => fir_raw_E(81),
       Q => raw_in_data(112),
       R => '0'
     );
@@ -916,7 +887,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(50),
+      D => fir_raw_E(82),
       Q => raw_in_data(113),
       R => '0'
     );
@@ -924,7 +895,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(51),
+      D => fir_raw_E(83),
       Q => raw_in_data(114),
       R => '0'
     );
@@ -932,7 +903,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(52),
+      D => fir_raw_E(84),
       Q => raw_in_data(115),
       R => '0'
     );
@@ -940,7 +911,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(53),
+      D => fir_raw_E(85),
       Q => raw_in_data(116),
       R => '0'
     );
@@ -948,7 +919,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(54),
+      D => fir_raw_E(86),
       Q => raw_in_data(117),
       R => '0'
     );
@@ -956,7 +927,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(55),
+      D => fir_raw_E(87),
       Q => raw_in_data(118),
       R => '0'
     );
@@ -964,7 +935,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(56),
+      D => fir_raw_E(88),
       Q => raw_in_data(119),
       R => '0'
     );
@@ -980,7 +951,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(57),
+      D => fir_raw_E(89),
       Q => raw_in_data(120),
       R => '0'
     );
@@ -988,7 +959,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(58),
+      D => fir_raw_E(90),
       Q => raw_in_data(121),
       R => '0'
     );
@@ -996,7 +967,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(59),
+      D => fir_raw_E(91),
       Q => raw_in_data(122),
       R => '0'
     );
@@ -1004,7 +975,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(60),
+      D => fir_raw_E(92),
       Q => raw_in_data(123),
       R => '0'
     );
@@ -1012,7 +983,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(61),
+      D => fir_raw_E(93),
       Q => raw_in_data(124),
       R => '0'
     );
@@ -1020,7 +991,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(62),
+      D => fir_raw_E(94),
       Q => raw_in_data(125),
       R => '0'
     );
@@ -1028,7 +999,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(81),
+      D => fir_raw_E(113),
       Q => raw_in_data(126),
       R => '0'
     );
@@ -1036,7 +1007,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(82),
+      D => fir_raw_E(114),
       Q => raw_in_data(127),
       R => '0'
     );
@@ -1044,7 +1015,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(83),
+      D => fir_raw_E(115),
       Q => raw_in_data(128),
       R => '0'
     );
@@ -1052,7 +1023,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(84),
+      D => fir_raw_E(116),
       Q => raw_in_data(129),
       R => '0'
     );
@@ -1068,7 +1039,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(85),
+      D => fir_raw_E(117),
       Q => raw_in_data(130),
       R => '0'
     );
@@ -1076,7 +1047,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(86),
+      D => fir_raw_E(118),
       Q => raw_in_data(131),
       R => '0'
     );
@@ -1084,7 +1055,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(87),
+      D => fir_raw_E(119),
       Q => raw_in_data(132),
       R => '0'
     );
@@ -1092,7 +1063,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(88),
+      D => fir_raw_E(120),
       Q => raw_in_data(133),
       R => '0'
     );
@@ -1100,7 +1071,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(89),
+      D => fir_raw_E(121),
       Q => raw_in_data(134),
       R => '0'
     );
@@ -1108,7 +1079,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(90),
+      D => fir_raw_E(122),
       Q => raw_in_data(135),
       R => '0'
     );
@@ -1116,7 +1087,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(91),
+      D => fir_raw_E(123),
       Q => raw_in_data(136),
       R => '0'
     );
@@ -1124,7 +1095,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(92),
+      D => fir_raw_E(124),
       Q => raw_in_data(137),
       R => '0'
     );
@@ -1132,7 +1103,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(93),
+      D => fir_raw_E(125),
       Q => raw_in_data(138),
       R => '0'
     );
@@ -1140,7 +1111,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(94),
+      D => fir_raw_E(126),
       Q => raw_in_data(139),
       R => '0'
     );
@@ -1156,7 +1127,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(113),
+      D => fir_raw_W(17),
       Q => raw_in_data(140),
       R => '0'
     );
@@ -1164,7 +1135,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(114),
+      D => fir_raw_W(18),
       Q => raw_in_data(141),
       R => '0'
     );
@@ -1172,7 +1143,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(115),
+      D => fir_raw_W(19),
       Q => raw_in_data(142),
       R => '0'
     );
@@ -1180,7 +1151,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(116),
+      D => fir_raw_W(20),
       Q => raw_in_data(143),
       R => '0'
     );
@@ -1188,7 +1159,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(117),
+      D => fir_raw_W(21),
       Q => raw_in_data(144),
       R => '0'
     );
@@ -1196,7 +1167,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(118),
+      D => fir_raw_W(22),
       Q => raw_in_data(145),
       R => '0'
     );
@@ -1204,7 +1175,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(119),
+      D => fir_raw_W(23),
       Q => raw_in_data(146),
       R => '0'
     );
@@ -1212,7 +1183,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(120),
+      D => fir_raw_W(24),
       Q => raw_in_data(147),
       R => '0'
     );
@@ -1220,7 +1191,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(121),
+      D => fir_raw_W(25),
       Q => raw_in_data(148),
       R => '0'
     );
@@ -1228,7 +1199,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(122),
+      D => fir_raw_W(26),
       Q => raw_in_data(149),
       R => '0'
     );
@@ -1244,7 +1215,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(123),
+      D => fir_raw_W(27),
       Q => raw_in_data(150),
       R => '0'
     );
@@ -1252,7 +1223,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(124),
+      D => fir_raw_W(28),
       Q => raw_in_data(151),
       R => '0'
     );
@@ -1260,7 +1231,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(125),
+      D => fir_raw_W(29),
       Q => raw_in_data(152),
       R => '0'
     );
@@ -1268,7 +1239,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(126),
+      D => fir_raw_W(30),
       Q => raw_in_data(153),
       R => '0'
     );
@@ -1276,7 +1247,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(145),
+      D => fir_raw_W(49),
       Q => raw_in_data(154),
       R => '0'
     );
@@ -1284,7 +1255,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(146),
+      D => fir_raw_W(50),
       Q => raw_in_data(155),
       R => '0'
     );
@@ -1292,7 +1263,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(147),
+      D => fir_raw_W(51),
       Q => raw_in_data(156),
       R => '0'
     );
@@ -1300,7 +1271,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(148),
+      D => fir_raw_W(52),
       Q => raw_in_data(157),
       R => '0'
     );
@@ -1308,7 +1279,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(149),
+      D => fir_raw_W(53),
       Q => raw_in_data(158),
       R => '0'
     );
@@ -1316,7 +1287,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(150),
+      D => fir_raw_W(54),
       Q => raw_in_data(159),
       R => '0'
     );
@@ -1332,7 +1303,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(151),
+      D => fir_raw_W(55),
       Q => raw_in_data(160),
       R => '0'
     );
@@ -1340,7 +1311,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(152),
+      D => fir_raw_W(56),
       Q => raw_in_data(161),
       R => '0'
     );
@@ -1348,7 +1319,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(153),
+      D => fir_raw_W(57),
       Q => raw_in_data(162),
       R => '0'
     );
@@ -1356,7 +1327,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(154),
+      D => fir_raw_W(58),
       Q => raw_in_data(163),
       R => '0'
     );
@@ -1364,7 +1335,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(155),
+      D => fir_raw_W(59),
       Q => raw_in_data(164),
       R => '0'
     );
@@ -1372,7 +1343,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(156),
+      D => fir_raw_W(60),
       Q => raw_in_data(165),
       R => '0'
     );
@@ -1380,7 +1351,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(157),
+      D => fir_raw_W(61),
       Q => raw_in_data(166),
       R => '0'
     );
@@ -1388,7 +1359,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(158),
+      D => fir_raw_W(62),
       Q => raw_in_data(167),
       R => '0'
     );
@@ -1396,7 +1367,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(17),
+      D => fir_raw_W(81),
       Q => raw_in_data(168),
       R => '0'
     );
@@ -1404,7 +1375,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(18),
+      D => fir_raw_W(82),
       Q => raw_in_data(169),
       R => '0'
     );
@@ -1420,7 +1391,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(19),
+      D => fir_raw_W(83),
       Q => raw_in_data(170),
       R => '0'
     );
@@ -1428,7 +1399,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(20),
+      D => fir_raw_W(84),
       Q => raw_in_data(171),
       R => '0'
     );
@@ -1436,7 +1407,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(21),
+      D => fir_raw_W(85),
       Q => raw_in_data(172),
       R => '0'
     );
@@ -1444,7 +1415,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(22),
+      D => fir_raw_W(86),
       Q => raw_in_data(173),
       R => '0'
     );
@@ -1452,7 +1423,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(23),
+      D => fir_raw_W(87),
       Q => raw_in_data(174),
       R => '0'
     );
@@ -1460,7 +1431,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(24),
+      D => fir_raw_W(88),
       Q => raw_in_data(175),
       R => '0'
     );
@@ -1468,7 +1439,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(25),
+      D => fir_raw_W(89),
       Q => raw_in_data(176),
       R => '0'
     );
@@ -1476,7 +1447,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(26),
+      D => fir_raw_W(90),
       Q => raw_in_data(177),
       R => '0'
     );
@@ -1484,7 +1455,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(27),
+      D => fir_raw_W(91),
       Q => raw_in_data(178),
       R => '0'
     );
@@ -1492,7 +1463,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(28),
+      D => fir_raw_W(92),
       Q => raw_in_data(179),
       R => '0'
     );
@@ -1508,7 +1479,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(29),
+      D => fir_raw_W(93),
       Q => raw_in_data(180),
       R => '0'
     );
@@ -1516,7 +1487,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(30),
+      D => fir_raw_W(94),
       Q => raw_in_data(181),
       R => '0'
     );
@@ -1524,7 +1495,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(49),
+      D => fir_raw_W(113),
       Q => raw_in_data(182),
       R => '0'
     );
@@ -1532,7 +1503,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(50),
+      D => fir_raw_W(114),
       Q => raw_in_data(183),
       R => '0'
     );
@@ -1540,7 +1511,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(51),
+      D => fir_raw_W(115),
       Q => raw_in_data(184),
       R => '0'
     );
@@ -1548,7 +1519,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(52),
+      D => fir_raw_W(116),
       Q => raw_in_data(185),
       R => '0'
     );
@@ -1556,7 +1527,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(53),
+      D => fir_raw_W(117),
       Q => raw_in_data(186),
       R => '0'
     );
@@ -1564,7 +1535,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(54),
+      D => fir_raw_W(118),
       Q => raw_in_data(187),
       R => '0'
     );
@@ -1572,7 +1543,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(55),
+      D => fir_raw_W(119),
       Q => raw_in_data(188),
       R => '0'
     );
@@ -1580,7 +1551,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(56),
+      D => fir_raw_W(120),
       Q => raw_in_data(189),
       R => '0'
     );
@@ -1596,7 +1567,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(57),
+      D => fir_raw_W(121),
       Q => raw_in_data(190),
       R => '0'
     );
@@ -1604,7 +1575,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(58),
+      D => fir_raw_W(122),
       Q => raw_in_data(191),
       R => '0'
     );
@@ -1612,7 +1583,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(59),
+      D => fir_raw_W(123),
       Q => raw_in_data(192),
       R => '0'
     );
@@ -1620,7 +1591,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(60),
+      D => fir_raw_W(124),
       Q => raw_in_data(193),
       R => '0'
     );
@@ -1628,7 +1599,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(61),
+      D => fir_raw_W(125),
       Q => raw_in_data(194),
       R => '0'
     );
@@ -1636,40 +1607,8 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_W(62),
+      D => fir_raw_W(126),
       Q => raw_in_data(195),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[196]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(81),
-      Q => raw_in_data(196),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[197]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(82),
-      Q => raw_in_data(197),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[198]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(83),
-      Q => raw_in_data(198),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[199]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(84),
-      Q => raw_in_data(199),
       R => '0'
     );
 \deci_low.raw_in_data_reg[19]\: unisim.vcomponents.FDRE
@@ -1688,172 +1627,12 @@ begin
       Q => raw_in_data(1),
       R => '0'
     );
-\deci_low.raw_in_data_reg[200]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(85),
-      Q => raw_in_data(200),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[201]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(86),
-      Q => raw_in_data(201),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[202]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(87),
-      Q => raw_in_data(202),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[203]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(88),
-      Q => raw_in_data(203),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[204]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(89),
-      Q => raw_in_data(204),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[205]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(90),
-      Q => raw_in_data(205),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[206]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(91),
-      Q => raw_in_data(206),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[207]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(92),
-      Q => raw_in_data(207),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[208]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(93),
-      Q => raw_in_data(208),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[209]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(94),
-      Q => raw_in_data(209),
-      R => '0'
-    );
 \deci_low.raw_in_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => active,
       D => \deci_low.counter_reg\(20),
       Q => raw_in_data(20),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[210]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(113),
-      Q => raw_in_data(210),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[211]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(114),
-      Q => raw_in_data(211),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[212]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(115),
-      Q => raw_in_data(212),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[213]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(116),
-      Q => raw_in_data(213),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[214]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(117),
-      Q => raw_in_data(214),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[215]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(118),
-      Q => raw_in_data(215),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[216]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(119),
-      Q => raw_in_data(216),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[217]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(120),
-      Q => raw_in_data(217),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[218]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(121),
-      Q => raw_in_data(218),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[219]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(122),
-      Q => raw_in_data(219),
       R => '0'
     );
 \deci_low.raw_in_data_reg[21]\: unisim.vcomponents.FDRE
@@ -1864,156 +1643,12 @@ begin
       Q => raw_in_data(21),
       R => '0'
     );
-\deci_low.raw_in_data_reg[220]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(123),
-      Q => raw_in_data(220),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[221]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(124),
-      Q => raw_in_data(221),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[222]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(125),
-      Q => raw_in_data(222),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[223]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(126),
-      Q => raw_in_data(223),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[224]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(145),
-      Q => raw_in_data(224),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[225]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(146),
-      Q => raw_in_data(225),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[226]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(147),
-      Q => raw_in_data(226),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[227]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(148),
-      Q => raw_in_data(227),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[228]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(149),
-      Q => raw_in_data(228),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[229]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(150),
-      Q => raw_in_data(229),
-      R => '0'
-    );
 \deci_low.raw_in_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => active,
       D => \deci_low.counter_reg\(22),
       Q => raw_in_data(22),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[230]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(151),
-      Q => raw_in_data(230),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[231]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(152),
-      Q => raw_in_data(231),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[232]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(153),
-      Q => raw_in_data(232),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[233]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(154),
-      Q => raw_in_data(233),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[234]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(155),
-      Q => raw_in_data(234),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[235]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(156),
-      Q => raw_in_data(235),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[236]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(157),
-      Q => raw_in_data(236),
-      R => '0'
-    );
-\deci_low.raw_in_data_reg[237]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => active,
-      D => fir_raw_W(158),
-      Q => raw_in_data(237),
       R => '0'
     );
 \deci_low.raw_in_data_reg[23]\: unisim.vcomponents.FDRE
@@ -2556,7 +2191,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(145),
+      D => fir_raw_E(17),
       Q => raw_in_data(84),
       R => '0'
     );
@@ -2564,7 +2199,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(146),
+      D => fir_raw_E(18),
       Q => raw_in_data(85),
       R => '0'
     );
@@ -2572,7 +2207,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(147),
+      D => fir_raw_E(19),
       Q => raw_in_data(86),
       R => '0'
     );
@@ -2580,7 +2215,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(148),
+      D => fir_raw_E(20),
       Q => raw_in_data(87),
       R => '0'
     );
@@ -2588,7 +2223,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(149),
+      D => fir_raw_E(21),
       Q => raw_in_data(88),
       R => '0'
     );
@@ -2596,7 +2231,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(150),
+      D => fir_raw_E(22),
       Q => raw_in_data(89),
       R => '0'
     );
@@ -2612,7 +2247,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(151),
+      D => fir_raw_E(23),
       Q => raw_in_data(90),
       R => '0'
     );
@@ -2620,7 +2255,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(152),
+      D => fir_raw_E(24),
       Q => raw_in_data(91),
       R => '0'
     );
@@ -2628,7 +2263,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(153),
+      D => fir_raw_E(25),
       Q => raw_in_data(92),
       R => '0'
     );
@@ -2636,7 +2271,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(154),
+      D => fir_raw_E(26),
       Q => raw_in_data(93),
       R => '0'
     );
@@ -2644,7 +2279,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(155),
+      D => fir_raw_E(27),
       Q => raw_in_data(94),
       R => '0'
     );
@@ -2652,7 +2287,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(156),
+      D => fir_raw_E(28),
       Q => raw_in_data(95),
       R => '0'
     );
@@ -2660,7 +2295,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(157),
+      D => fir_raw_E(29),
       Q => raw_in_data(96),
       R => '0'
     );
@@ -2668,7 +2303,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_N(158),
+      D => fir_raw_E(30),
       Q => raw_in_data(97),
       R => '0'
     );
@@ -2676,7 +2311,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(17),
+      D => fir_raw_E(49),
       Q => raw_in_data(98),
       R => '0'
     );
@@ -2684,7 +2319,7 @@ begin
      port map (
       C => clk,
       CE => active,
-      D => fir_raw_E(18),
+      D => fir_raw_E(50),
       Q => raw_in_data(99),
       R => '0'
     );
@@ -2696,12 +2331,10 @@ begin
       Q => raw_in_data(9),
       R => '0'
     );
-fifo_raw_i: component ps_deci_low_0_0_fifo_raw
+fifo_raw_i: component ps_deci_low_0_0_fifo_raw_low
      port map (
-      din(447 downto 238) => B"000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      din(237 downto 0) => raw_in_data(237 downto 0),
-      dout(447 downto 238) => NLW_fifo_raw_i_dout_UNCONNECTED(447 downto 238),
-      dout(237 downto 0) => raw_out_data(237 downto 0),
+      din(195 downto 0) => raw_in_data(195 downto 0),
+      dout(195 downto 0) => raw_out_data(195 downto 0),
       empty => raw_fifo_empty,
       full => NLW_fifo_raw_i_full_UNCONNECTED,
       rd_clk => raw_clk,
@@ -2728,10 +2361,6 @@ fir_E_i: component ps_deci_low_0_0_fir_deci_low
       m_axis_data_tdata(30 downto 17) => dE(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_E_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_E,
-      s_axis_data_tdata(159 downto 146) => E9(13 downto 0),
-      s_axis_data_tdata(145 downto 144) => \^data_e\(145 downto 144),
-      s_axis_data_tdata(143 downto 130) => E8(13 downto 0),
-      s_axis_data_tdata(129 downto 128) => \^data_e\(129 downto 128),
       s_axis_data_tdata(127 downto 114) => E7(13 downto 0),
       s_axis_data_tdata(113 downto 112) => \^data_e\(113 downto 112),
       s_axis_data_tdata(111 downto 98) => E6(13 downto 0),
@@ -2759,10 +2388,6 @@ fir_N_i: component ps_deci_low_0_0_fir_deci_low
       m_axis_data_tdata(30 downto 17) => dN(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_N_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_N,
-      s_axis_data_tdata(159 downto 146) => N9(13 downto 0),
-      s_axis_data_tdata(145 downto 144) => \^data_n\(145 downto 144),
-      s_axis_data_tdata(143 downto 130) => N8(13 downto 0),
-      s_axis_data_tdata(129 downto 128) => \^data_n\(129 downto 128),
       s_axis_data_tdata(127 downto 114) => N7(13 downto 0),
       s_axis_data_tdata(113 downto 112) => \^data_n\(113 downto 112),
       s_axis_data_tdata(111 downto 98) => N6(13 downto 0),
@@ -2790,10 +2415,6 @@ fir_W_i: component ps_deci_low_0_0_fir_deci_low_HD1
       m_axis_data_tdata(30 downto 17) => dW(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_W_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_W,
-      s_axis_data_tdata(159 downto 146) => W9(13 downto 0),
-      s_axis_data_tdata(145 downto 144) => \^data_w\(145 downto 144),
-      s_axis_data_tdata(143 downto 130) => W8(13 downto 0),
-      s_axis_data_tdata(129 downto 128) => \^data_w\(129 downto 128),
       s_axis_data_tdata(127 downto 114) => W7(13 downto 0),
       s_axis_data_tdata(113 downto 112) => \^data_w\(113 downto 112),
       s_axis_data_tdata(111 downto 98) => W6(13 downto 0),
@@ -2817,9 +2438,7 @@ fir_deci_E_i: component ps_deci_low_0_0_fir_raw_deci
      port map (
       aclk => clk,
       aresetn => resetn,
-      m_axis_data_tdata(159) => NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED(159),
-      m_axis_data_tdata(158 downto 145) => fir_raw_E(158 downto 145),
-      m_axis_data_tdata(144 downto 127) => NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED(144 downto 127),
+      m_axis_data_tdata(127) => NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED(127),
       m_axis_data_tdata(126 downto 113) => fir_raw_E(126 downto 113),
       m_axis_data_tdata(112 downto 95) => NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED(112 downto 95),
       m_axis_data_tdata(94 downto 81) => fir_raw_E(94 downto 81),
@@ -2829,10 +2448,6 @@ fir_deci_E_i: component ps_deci_low_0_0_fir_raw_deci
       m_axis_data_tdata(30 downto 17) => fir_raw_E(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_E,
-      s_axis_data_tdata(159 downto 146) => E9(13 downto 0),
-      s_axis_data_tdata(145 downto 144) => \^data_e\(145 downto 144),
-      s_axis_data_tdata(143 downto 130) => E8(13 downto 0),
-      s_axis_data_tdata(129 downto 128) => \^data_e\(129 downto 128),
       s_axis_data_tdata(127 downto 114) => E7(13 downto 0),
       s_axis_data_tdata(113 downto 112) => \^data_e\(113 downto 112),
       s_axis_data_tdata(111 downto 98) => E6(13 downto 0),
@@ -2856,9 +2471,7 @@ fir_deci_N_i: component ps_deci_low_0_0_fir_raw_deci
      port map (
       aclk => clk,
       aresetn => resetn,
-      m_axis_data_tdata(159) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(159),
-      m_axis_data_tdata(158 downto 145) => fir_raw_N(158 downto 145),
-      m_axis_data_tdata(144 downto 127) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(144 downto 127),
+      m_axis_data_tdata(127) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(127),
       m_axis_data_tdata(126 downto 113) => fir_raw_N(126 downto 113),
       m_axis_data_tdata(112 downto 95) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(112 downto 95),
       m_axis_data_tdata(94 downto 81) => fir_raw_N(94 downto 81),
@@ -2868,10 +2481,6 @@ fir_deci_N_i: component ps_deci_low_0_0_fir_raw_deci
       m_axis_data_tdata(30 downto 17) => fir_raw_N(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_N,
-      s_axis_data_tdata(159 downto 146) => N9(13 downto 0),
-      s_axis_data_tdata(145 downto 144) => \^data_n\(145 downto 144),
-      s_axis_data_tdata(143 downto 130) => N8(13 downto 0),
-      s_axis_data_tdata(129 downto 128) => \^data_n\(129 downto 128),
       s_axis_data_tdata(127 downto 114) => N7(13 downto 0),
       s_axis_data_tdata(113 downto 112) => \^data_n\(113 downto 112),
       s_axis_data_tdata(111 downto 98) => N6(13 downto 0),
@@ -2895,9 +2504,7 @@ fir_deci_W_i: component ps_deci_low_0_0_fir_raw_deci_HD2
      port map (
       aclk => clk,
       aresetn => resetn,
-      m_axis_data_tdata(159) => NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED(159),
-      m_axis_data_tdata(158 downto 145) => fir_raw_W(158 downto 145),
-      m_axis_data_tdata(144 downto 127) => NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED(144 downto 127),
+      m_axis_data_tdata(127) => NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED(127),
       m_axis_data_tdata(126 downto 113) => fir_raw_W(126 downto 113),
       m_axis_data_tdata(112 downto 95) => NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED(112 downto 95),
       m_axis_data_tdata(94 downto 81) => fir_raw_W(94 downto 81),
@@ -2907,10 +2514,6 @@ fir_deci_W_i: component ps_deci_low_0_0_fir_raw_deci_HD2
       m_axis_data_tdata(30 downto 17) => fir_raw_W(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_W,
-      s_axis_data_tdata(159 downto 146) => W9(13 downto 0),
-      s_axis_data_tdata(145 downto 144) => \^data_w\(145 downto 144),
-      s_axis_data_tdata(143 downto 130) => W8(13 downto 0),
-      s_axis_data_tdata(129 downto 128) => \^data_w\(129 downto 128),
       s_axis_data_tdata(127 downto 114) => W7(13 downto 0),
       s_axis_data_tdata(113 downto 112) => \^data_w\(113 downto 112),
       s_axis_data_tdata(111 downto 98) => W6(13 downto 0),
@@ -2951,51 +2554,45 @@ ila_E: component ps_deci_low_0_0_ila_0
       clk => clk,
       probe0(13 downto 0) => E0(13 downto 0),
       probe1(13 downto 0) => E1(13 downto 0),
-      probe10(0) => ready_E,
-      probe11(13 downto 0) => dE(13 downto 0),
-      probe12(0) => valid_E,
+      probe10(0) => valid_E,
       probe2(13 downto 0) => E2(13 downto 0),
       probe3(13 downto 0) => E3(13 downto 0),
       probe4(13 downto 0) => E4(13 downto 0),
       probe5(13 downto 0) => E5(13 downto 0),
       probe6(13 downto 0) => E6(13 downto 0),
       probe7(13 downto 0) => E7(13 downto 0),
-      probe8(13 downto 0) => E8(13 downto 0),
-      probe9(13 downto 0) => E9(13 downto 0)
+      probe8(0) => ready_E,
+      probe9(13 downto 0) => dE(13 downto 0)
     );
 ila_N: component ps_deci_low_0_0_ila_0
      port map (
       clk => clk,
       probe0(13 downto 0) => N0(13 downto 0),
       probe1(13 downto 0) => N1(13 downto 0),
-      probe10(0) => ready_N,
-      probe11(13 downto 0) => dN(13 downto 0),
-      probe12(0) => valid_N,
+      probe10(0) => valid_N,
       probe2(13 downto 0) => N2(13 downto 0),
       probe3(13 downto 0) => N3(13 downto 0),
       probe4(13 downto 0) => N4(13 downto 0),
       probe5(13 downto 0) => N5(13 downto 0),
       probe6(13 downto 0) => N6(13 downto 0),
       probe7(13 downto 0) => N7(13 downto 0),
-      probe8(13 downto 0) => N8(13 downto 0),
-      probe9(13 downto 0) => N9(13 downto 0)
+      probe8(0) => ready_N,
+      probe9(13 downto 0) => dN(13 downto 0)
     );
 ila_W: component ps_deci_low_0_0_ila_0_HD3
      port map (
       clk => clk,
       probe0(13 downto 0) => W0(13 downto 0),
       probe1(13 downto 0) => W1(13 downto 0),
-      probe10(0) => ready_W,
-      probe11(13 downto 0) => dW(13 downto 0),
-      probe12(0) => valid_W,
+      probe10(0) => valid_W,
       probe2(13 downto 0) => W2(13 downto 0),
       probe3(13 downto 0) => W3(13 downto 0),
       probe4(13 downto 0) => W4(13 downto 0),
       probe5(13 downto 0) => W5(13 downto 0),
       probe6(13 downto 0) => W6(13 downto 0),
       probe7(13 downto 0) => W7(13 downto 0),
-      probe8(13 downto 0) => W8(13 downto 0),
-      probe9(13 downto 0) => W9(13 downto 0)
+      probe8(0) => ready_W,
+      probe9(13 downto 0) => dW(13 downto 0)
     );
 raw_active_i_1: unisim.vcomponents.LUT4
     generic map(
@@ -3875,38 +3472,6 @@ raw_active_reg: unisim.vcomponents.FDRE
       Q => raw_data(195),
       R => '0'
     );
-\raw_data_reg[196]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(196),
-      Q => raw_data(196),
-      R => '0'
-    );
-\raw_data_reg[197]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(197),
-      Q => raw_data(197),
-      R => '0'
-    );
-\raw_data_reg[198]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(198),
-      Q => raw_data(198),
-      R => '0'
-    );
-\raw_data_reg[199]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(199),
-      Q => raw_data(199),
-      R => '0'
-    );
 \raw_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
@@ -3923,172 +3488,12 @@ raw_active_reg: unisim.vcomponents.FDRE
       Q => raw_data(1),
       R => '0'
     );
-\raw_data_reg[200]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(200),
-      Q => raw_data(200),
-      R => '0'
-    );
-\raw_data_reg[201]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(201),
-      Q => raw_data(201),
-      R => '0'
-    );
-\raw_data_reg[202]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(202),
-      Q => raw_data(202),
-      R => '0'
-    );
-\raw_data_reg[203]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(203),
-      Q => raw_data(203),
-      R => '0'
-    );
-\raw_data_reg[204]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(204),
-      Q => raw_data(204),
-      R => '0'
-    );
-\raw_data_reg[205]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(205),
-      Q => raw_data(205),
-      R => '0'
-    );
-\raw_data_reg[206]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(206),
-      Q => raw_data(206),
-      R => '0'
-    );
-\raw_data_reg[207]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(207),
-      Q => raw_data(207),
-      R => '0'
-    );
-\raw_data_reg[208]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(208),
-      Q => raw_data(208),
-      R => '0'
-    );
-\raw_data_reg[209]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(209),
-      Q => raw_data(209),
-      R => '0'
-    );
 \raw_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => raw_active,
       D => raw_out_data(20),
       Q => raw_data(20),
-      R => '0'
-    );
-\raw_data_reg[210]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(210),
-      Q => raw_data(210),
-      R => '0'
-    );
-\raw_data_reg[211]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(211),
-      Q => raw_data(211),
-      R => '0'
-    );
-\raw_data_reg[212]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(212),
-      Q => raw_data(212),
-      R => '0'
-    );
-\raw_data_reg[213]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(213),
-      Q => raw_data(213),
-      R => '0'
-    );
-\raw_data_reg[214]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(214),
-      Q => raw_data(214),
-      R => '0'
-    );
-\raw_data_reg[215]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(215),
-      Q => raw_data(215),
-      R => '0'
-    );
-\raw_data_reg[216]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(216),
-      Q => raw_data(216),
-      R => '0'
-    );
-\raw_data_reg[217]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(217),
-      Q => raw_data(217),
-      R => '0'
-    );
-\raw_data_reg[218]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(218),
-      Q => raw_data(218),
-      R => '0'
-    );
-\raw_data_reg[219]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(219),
-      Q => raw_data(219),
       R => '0'
     );
 \raw_data_reg[21]\: unisim.vcomponents.FDRE
@@ -4099,156 +3504,12 @@ raw_active_reg: unisim.vcomponents.FDRE
       Q => raw_data(21),
       R => '0'
     );
-\raw_data_reg[220]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(220),
-      Q => raw_data(220),
-      R => '0'
-    );
-\raw_data_reg[221]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(221),
-      Q => raw_data(221),
-      R => '0'
-    );
-\raw_data_reg[222]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(222),
-      Q => raw_data(222),
-      R => '0'
-    );
-\raw_data_reg[223]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(223),
-      Q => raw_data(223),
-      R => '0'
-    );
-\raw_data_reg[224]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(224),
-      Q => raw_data(224),
-      R => '0'
-    );
-\raw_data_reg[225]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(225),
-      Q => raw_data(225),
-      R => '0'
-    );
-\raw_data_reg[226]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(226),
-      Q => raw_data(226),
-      R => '0'
-    );
-\raw_data_reg[227]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(227),
-      Q => raw_data(227),
-      R => '0'
-    );
-\raw_data_reg[228]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(228),
-      Q => raw_data(228),
-      R => '0'
-    );
-\raw_data_reg[229]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(229),
-      Q => raw_data(229),
-      R => '0'
-    );
 \raw_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => raw_active,
       D => raw_out_data(22),
       Q => raw_data(22),
-      R => '0'
-    );
-\raw_data_reg[230]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(230),
-      Q => raw_data(230),
-      R => '0'
-    );
-\raw_data_reg[231]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(231),
-      Q => raw_data(231),
-      R => '0'
-    );
-\raw_data_reg[232]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(232),
-      Q => raw_data(232),
-      R => '0'
-    );
-\raw_data_reg[233]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(233),
-      Q => raw_data(233),
-      R => '0'
-    );
-\raw_data_reg[234]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(234),
-      Q => raw_data(234),
-      R => '0'
-    );
-\raw_data_reg[235]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(235),
-      Q => raw_data(235),
-      R => '0'
-    );
-\raw_data_reg[236]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(236),
-      Q => raw_data(236),
-      R => '0'
-    );
-\raw_data_reg[237]\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => raw_active,
-      D => raw_out_data(237),
-      Q => raw_data(237),
       R => '0'
     );
 \raw_data_reg[23]\: unisim.vcomponents.FDRE
@@ -5214,15 +4475,15 @@ entity ps_deci_low_0_0 is
   port (
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
-    data_N : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_N : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_N : in STD_LOGIC;
-    data_E : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_E : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_E : in STD_LOGIC;
-    data_W : in STD_LOGIC_VECTOR ( 159 downto 0 );
+    data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
     raw_clk : in STD_LOGIC;
     raw_ready : out STD_LOGIC;
-    raw_data : out STD_LOGIC_VECTOR ( 237 downto 0 )
+    raw_data : out STD_LOGIC_VECTOR ( 195 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ps_deci_low_0_0 : entity is true;
@@ -5253,11 +4514,11 @@ begin
 inst: entity work.ps_deci_low_0_0_deci_low
      port map (
       clk => clk,
-      data_E(159 downto 0) => data_E(159 downto 0),
-      data_N(159 downto 0) => data_N(159 downto 0),
-      data_W(159 downto 0) => data_W(159 downto 0),
+      data_E(127 downto 0) => data_E(127 downto 0),
+      data_N(127 downto 0) => data_N(127 downto 0),
+      data_W(127 downto 0) => data_W(127 downto 0),
       raw_clk => raw_clk,
-      raw_data(237 downto 0) => raw_data(237 downto 0),
+      raw_data(195 downto 0) => raw_data(195 downto 0),
       raw_ready => raw_ready,
       ready_E => ready_E,
       ready_N => ready_N,

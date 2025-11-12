@@ -57,7 +57,7 @@
 // filter_type: 2
 // rate_change: 0
 // interp_rate: 1
-// decim_rate: 10
+// decim_rate: 8
 // zero_pack_factor: 1
 // coeff_padding: 0
 // num_coeffs: 11
@@ -87,7 +87,7 @@ static xip_fir_v7_2_config gen_fir_deci_low_config() {
   config.filter_type         = 2;
   config.rate_change         = XIP_FIR_INTEGER_RATE;
   config.interp_rate         = 1;
-  config.decim_rate          = 10;
+  config.decim_rate          = 8;
   config.zero_pack_factor    = 1;
   config.coeff               = &fir_deci_low_coefficients[0];
   config.coeff_padding       = 0;

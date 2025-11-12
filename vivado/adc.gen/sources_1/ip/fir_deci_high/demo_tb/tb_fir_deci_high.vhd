@@ -93,7 +93,7 @@ architecture tb of tb_fir_deci_high is
   -- Data slave channel signals
   signal s_axis_data_tvalid              : std_logic := '0';  -- payload is valid
   signal s_axis_data_tready              : std_logic := '1';  -- slave is ready
-  signal s_axis_data_tdata               : std_logic_vector(159 downto 0) := (others => '0');  -- data payload
+  signal s_axis_data_tdata               : std_logic_vector(127 downto 0) := (others => '0');  -- data payload
 
   -- Data master channel signals
   signal m_axis_data_tvalid              : std_logic := '0';  -- payload is valid
@@ -115,8 +115,6 @@ architecture tb of tb_fir_deci_high is
   signal s_axis_data_tdata_vect5        : std_logic_vector(13 downto 0) := (others => '0');
   signal s_axis_data_tdata_vect6        : std_logic_vector(13 downto 0) := (others => '0');
   signal s_axis_data_tdata_vect7        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect8        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect9        : std_logic_vector(13 downto 0) := (others => '0');
 
   -- Data master channel alias signals
   signal m_axis_data_tdata_vect0        : std_logic_vector(29 downto 0) := (others => '0');
@@ -165,7 +163,7 @@ begin
     -- Procedure to drive a number of input samples with specific data
     -- data is the data value to drive on the tdata signal
     -- samples is the number of zero-data input samples to drive
-    procedure drive_data ( data    : std_logic_vector(159 downto 0);
+    procedure drive_data ( data    : std_logic_vector(127 downto 0);
                            samples : natural := 1 ) is
       variable ip_count : integer := 0;
     begin
@@ -193,7 +191,7 @@ begin
     -- Procedure to drive an impulse and let the impulse response emerge on the data master channel
     -- samples is the number of input samples to drive; default is enough for impulse response output to emerge
     procedure drive_impulse ( samples : natural := 44 ) is
-      variable impulse : std_logic_vector(159 downto 0);
+      variable impulse : std_logic_vector(127 downto 0);
     begin
       impulse := (others => '0');  -- initialize unused bits to zero
       impulse(13 downto 0) := "01000000000000";
@@ -276,8 +274,6 @@ begin
   s_axis_data_tdata_vect5        <= s_axis_data_tdata(93 downto 80);
   s_axis_data_tdata_vect6        <= s_axis_data_tdata(109 downto 96);
   s_axis_data_tdata_vect7        <= s_axis_data_tdata(125 downto 112);
-  s_axis_data_tdata_vect8        <= s_axis_data_tdata(141 downto 128);
-  s_axis_data_tdata_vect9        <= s_axis_data_tdata(157 downto 144);
 
   -- Data master channel alias signals: update these only when they are valid
   m_axis_data_tdata_vect0        <= m_axis_data_tdata(29 downto 0) when m_axis_data_tvalid = '1';

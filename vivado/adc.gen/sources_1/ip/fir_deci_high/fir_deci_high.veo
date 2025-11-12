@@ -59,7 +59,7 @@ fir_deci_high your_instance_name (
   .aclk(aclk),                              // input wire aclk
   .s_axis_data_tvalid(s_axis_data_tvalid),  // input wire s_axis_data_tvalid
   .s_axis_data_tready(s_axis_data_tready),  // output wire s_axis_data_tready
-  .s_axis_data_tdata(s_axis_data_tdata),    // input wire [159 : 0] s_axis_data_tdata
+  .s_axis_data_tdata(s_axis_data_tdata),    // input wire [127 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(m_axis_data_tvalid),  // output wire m_axis_data_tvalid
   .m_axis_data_tdata(m_axis_data_tdata)    // output wire [63 : 0] m_axis_data_tdata
 );

@@ -709,7 +709,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M00_AXIS.TDATA_NUM_BYTES">20</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M00_AXIS.TDATA_NUM_BYTES">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1027,7 +1027,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M02_AXIS.TDATA_NUM_BYTES">20</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M02_AXIS.TDATA_NUM_BYTES">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -2242,7 +2242,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M10_AXIS.TDATA_NUM_BYTES">20</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M10_AXIS.TDATA_NUM_BYTES">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -3775,7 +3775,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M20_AXIS.TDATA_NUM_BYTES">20</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M20_AXIS.TDATA_NUM_BYTES">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -4093,7 +4093,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M22_AXIS.TDATA_NUM_BYTES">20</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M22_AXIS.TDATA_NUM_BYTES">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -5308,7 +5308,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M30_AXIS.TDATA_NUM_BYTES">20</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M30_AXIS.TDATA_NUM_BYTES">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -9804,7 +9804,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ADC0_CLK.FREQ_HZ">2000000000.0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ADC0_CLK.FREQ_HZ">4000000000.0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -9840,7 +9840,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC0.FREQ_HZ">39063000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC0.FREQ_HZ">31250000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -9992,7 +9992,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC1.FREQ_HZ">39063000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC1.FREQ_HZ">31250000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10108,7 +10108,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ADC2_CLK.FREQ_HZ">5000000000.0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ADC2_CLK.FREQ_HZ">4000000000.0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10144,7 +10144,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC2.FREQ_HZ">39063000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC2.FREQ_HZ">31250000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10260,7 +10260,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ADC3_CLK.FREQ_HZ">5000000000.0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ADC3_CLK.FREQ_HZ">4000000000.0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10296,7 +10296,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC3.FREQ_HZ">39063000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_ADC3.FREQ_HZ">31250000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -19202,11 +19202,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Oct 06 20:26:50 UTC 2025</spirit:value>
+            <spirit:value>Wed Nov 12 22:42:43 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2a6cdf16</spirit:value>
+            <spirit:value>9:6d00e36c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19221,11 +19221,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Oct 06 20:26:50 UTC 2025</spirit:value>
+            <spirit:value>Wed Nov 12 22:42:43 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:482eadad</spirit:value>
+            <spirit:value>9:dd0bf436</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19236,7 +19236,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:482eadad</spirit:value>
+            <spirit:value>9:dd0bf436</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19250,11 +19250,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Nov 01 17:41:22 UTC 2025</spirit:value>
+            <spirit:value>Wed Nov 12 22:44:40 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:482eadad</spirit:value>
+            <spirit:value>9:dd0bf436</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19265,7 +19265,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:482eadad</spirit:value>
+            <spirit:value>9:dd0bf436</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19281,11 +19281,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Oct 06 20:26:50 UTC 2025</spirit:value>
+            <spirit:value>Wed Nov 12 22:42:43 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2a6cdf16</spirit:value>
+            <spirit:value>9:6d00e36c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19301,11 +19301,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Oct 06 20:26:50 UTC 2025</spirit:value>
+            <spirit:value>Wed Nov 12 22:42:43 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:482eadad</spirit:value>
+            <spirit:value>9:dd0bf436</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -22047,7 +22047,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width00&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width00&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -22114,7 +22114,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width01&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width01&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -22181,7 +22181,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width02&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width02&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -22248,7 +22248,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width03&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width03&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -22675,7 +22675,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width10&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width10&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -22742,7 +22742,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width11&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width11&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -23303,7 +23303,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width20&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width20&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -23370,7 +23370,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width21&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width21&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -23437,7 +23437,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width22&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width22&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -23504,7 +23504,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width23&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width23&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -23931,7 +23931,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width30&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width30&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -23998,7 +23998,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width31&apos;)) * 16) - 1)">159</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC_Data_Width31&apos;)) * 16) - 1)">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -46702,7 +46702,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC0_Sampling_Rate</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Sampling_Rate">5</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Sampling_Rate">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC0_Fs_Max</spirit:name>
@@ -46710,11 +46710,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC0_Refclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Refclk_Freq">5000.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Refclk_Freq">4000.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC0_Outclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Outclk_Freq">39.063</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC0_Outclk_Freq">31.250</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC0_FBDIV</spirit:name>
@@ -46806,7 +46806,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width00</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width00">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width00">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width00</spirit:name>
@@ -46886,7 +46886,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width01</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width01">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width01">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width01</spirit:name>
@@ -46966,7 +46966,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width02</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width02">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width02">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width02</spirit:name>
@@ -47046,7 +47046,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width03</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width03">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width03">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width03</spirit:name>
@@ -47102,7 +47102,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC1_Sampling_Rate</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Sampling_Rate">5</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Sampling_Rate">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC1_Fs_Max</spirit:name>
@@ -47110,11 +47110,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC1_Refclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Refclk_Freq">5000.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Refclk_Freq">4000.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC1_Outclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Outclk_Freq">39.063</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC1_Outclk_Freq">31.250</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC1_FBDIV</spirit:name>
@@ -47206,7 +47206,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width10</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width10">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width10">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width10</spirit:name>
@@ -47286,7 +47286,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width11</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width11">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width11">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width11</spirit:name>
@@ -47502,7 +47502,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC2_Sampling_Rate</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Sampling_Rate">5</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Sampling_Rate">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC2_Fs_Max</spirit:name>
@@ -47510,11 +47510,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC2_Refclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Refclk_Freq">5000.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Refclk_Freq">4000.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC2_Outclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Outclk_Freq">39.063</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC2_Outclk_Freq">31.250</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC2_FBDIV</spirit:name>
@@ -47606,7 +47606,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width20</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width20">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width20">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width20</spirit:name>
@@ -47686,7 +47686,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width21</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width21">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width21">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width21</spirit:name>
@@ -47766,7 +47766,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width22</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width22">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width22">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width22</spirit:name>
@@ -47846,7 +47846,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width23</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width23">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width23">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width23</spirit:name>
@@ -47902,7 +47902,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC3_Sampling_Rate</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Sampling_Rate">5</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Sampling_Rate">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC3_Fs_Max</spirit:name>
@@ -47910,11 +47910,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC3_Refclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Refclk_Freq">5000.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Refclk_Freq">4000.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_ADC3_Outclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Outclk_Freq">39.063</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC3_Outclk_Freq">31.250</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC3_FBDIV</spirit:name>
@@ -48006,7 +48006,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width30</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width30">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width30">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width30</spirit:name>
@@ -48086,7 +48086,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_Data_Width31</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width31">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADC_Data_Width31">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_ADC_OBS_Data_Width31</spirit:name>
@@ -49715,16 +49715,19 @@
       <spirit:enumeration>12</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_list_22ed5366</spirit:name>
+      <spirit:enumeration>4000.000</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_list_43b6ede9</spirit:name>
       <spirit:enumeration>2000.000</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_list_6330c9d2</spirit:name>
-      <spirit:enumeration>10</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_list_69e198bb</spirit:name>
-      <spirit:enumeration>5000.000</spirit:enumeration>
+      <spirit:name>choice_list_45be4ec6</spirit:name>
+      <spirit:enumeration>31.250</spirit:enumeration>
+      <spirit:enumeration>62.500</spirit:enumeration>
+      <spirit:enumeration>125.000</spirit:enumeration>
+      <spirit:enumeration>250.000</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_list_948aac48</spirit:name>
@@ -49751,11 +49754,13 @@
       <spirit:enumeration>9</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_list_c78d617a</spirit:name>
-      <spirit:enumeration>39.063</spirit:enumeration>
-      <spirit:enumeration>78.125</spirit:enumeration>
-      <spirit:enumeration>156.250</spirit:enumeration>
-      <spirit:enumeration>312.500</spirit:enumeration>
+      <spirit:name>choice_list_c058a0e8</spirit:name>
+      <spirit:enumeration>7</spirit:enumeration>
+      <spirit:enumeration>8</spirit:enumeration>
+      <spirit:enumeration>9</spirit:enumeration>
+      <spirit:enumeration>10</spirit:enumeration>
+      <spirit:enumeration>11</spirit:enumeration>
+      <spirit:enumeration>12</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_list_c83186bc</spirit:name>
@@ -49774,13 +49779,6 @@
     <spirit:choice>
       <spirit:name>choice_list_d8920bdd</spirit:name>
       <spirit:enumeration>8</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_list_eba88d7c</spirit:name>
-      <spirit:enumeration>9</spirit:enumeration>
-      <spirit:enumeration>10</spirit:enumeration>
-      <spirit:enumeration>11</spirit:enumeration>
-      <spirit:enumeration>12</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_0d7a4b90</spirit:name>
@@ -50728,7 +50726,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC0_Sampling_Rate</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Sampling_Rate" spirit:order="35" spirit:minimum="1.0" spirit:maximum="5.0">5</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Sampling_Rate" spirit:order="35" spirit:minimum="1.0" spirit:maximum="5.0">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -50739,7 +50737,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC0_Refclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Refclk_Freq" spirit:choiceRef="choice_list_69e198bb" spirit:order="36">5000.000</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Refclk_Freq" spirit:choiceRef="choice_list_22ed5366" spirit:order="36">4000.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -50750,7 +50748,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC0_Outclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Outclk_Freq" spirit:choiceRef="choice_list_c78d617a" spirit:order="37">39.063</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC0_Outclk_Freq" spirit:choiceRef="choice_list_45be4ec6" spirit:order="37">31.250</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -50960,7 +50958,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width00</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width00" spirit:choiceRef="choice_list_eba88d7c" spirit:order="55">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width00" spirit:choiceRef="choice_list_c058a0e8" spirit:order="55">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51047,7 +51045,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -51186,7 +51184,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width01</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width01" spirit:choiceRef="choice_list_6330c9d2" spirit:order="74">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width01" spirit:choiceRef="choice_list_d8920bdd" spirit:order="74">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51412,7 +51410,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width02</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width02" spirit:choiceRef="choice_list_eba88d7c" spirit:order="93">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width02" spirit:choiceRef="choice_list_c058a0e8" spirit:order="93">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51499,7 +51497,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal02">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal02">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -51638,7 +51636,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width03</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width03" spirit:choiceRef="choice_list_6330c9d2" spirit:order="112">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width03" spirit:choiceRef="choice_list_d8920bdd" spirit:order="112">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51791,7 +51789,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC1_Sampling_Rate</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Sampling_Rate" spirit:order="125" spirit:minimum="1.0" spirit:maximum="5.0">5</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Sampling_Rate" spirit:order="125" spirit:minimum="1.0" spirit:maximum="5.0">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51802,7 +51800,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC1_Refclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Refclk_Freq" spirit:choiceRef="choice_list_69e198bb" spirit:order="126">5000.000</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Refclk_Freq" spirit:choiceRef="choice_list_22ed5366" spirit:order="126">4000.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -51813,7 +51811,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC1_Outclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Outclk_Freq" spirit:choiceRef="choice_list_c78d617a" spirit:order="127">39.063</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC1_Outclk_Freq" spirit:choiceRef="choice_list_45be4ec6" spirit:order="127">31.250</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52023,7 +52021,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width10</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width10" spirit:choiceRef="choice_list_eba88d7c" spirit:order="145">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width10" spirit:choiceRef="choice_list_c058a0e8" spirit:order="145">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52110,7 +52108,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal10">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal10">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -52249,7 +52247,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width11</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width11" spirit:choiceRef="choice_list_6330c9d2" spirit:order="164">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width11" spirit:choiceRef="choice_list_d8920bdd" spirit:order="164">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52475,7 +52473,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width12</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width12" spirit:choiceRef="choice_list_eba88d7c" spirit:order="183">9</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width12" spirit:choiceRef="choice_list_c058a0e8" spirit:order="183">9</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52854,7 +52852,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC2_Sampling_Rate</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Sampling_Rate" spirit:order="215" spirit:minimum="1.0" spirit:maximum="5.0">5</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Sampling_Rate" spirit:order="215" spirit:minimum="1.0" spirit:maximum="5.0">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52865,7 +52863,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC2_Refclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Refclk_Freq" spirit:choiceRef="choice_list_69e198bb" spirit:order="216">5000.000</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Refclk_Freq" spirit:choiceRef="choice_list_22ed5366" spirit:order="216">4000.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -52876,7 +52874,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC2_Outclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Outclk_Freq" spirit:choiceRef="choice_list_c78d617a" spirit:order="217">39.063</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC2_Outclk_Freq" spirit:choiceRef="choice_list_45be4ec6" spirit:order="217">31.250</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53086,7 +53084,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width20</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width20" spirit:choiceRef="choice_list_eba88d7c" spirit:order="235">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width20" spirit:choiceRef="choice_list_c058a0e8" spirit:order="235">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53173,7 +53171,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal20">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal20">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -53312,7 +53310,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width21</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width21" spirit:choiceRef="choice_list_6330c9d2" spirit:order="254">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width21" spirit:choiceRef="choice_list_d8920bdd" spirit:order="254">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53538,7 +53536,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width22</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width22" spirit:choiceRef="choice_list_eba88d7c" spirit:order="273">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width22" spirit:choiceRef="choice_list_c058a0e8" spirit:order="273">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53625,7 +53623,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal22">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal22">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -53764,7 +53762,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width23</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width23" spirit:choiceRef="choice_list_6330c9d2" spirit:order="292">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width23" spirit:choiceRef="choice_list_d8920bdd" spirit:order="292">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53917,7 +53915,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC3_Sampling_Rate</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Sampling_Rate" spirit:order="305" spirit:minimum="1.0" spirit:maximum="5.0">5</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Sampling_Rate" spirit:order="305" spirit:minimum="1.0" spirit:maximum="5.0">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53928,7 +53926,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC3_Refclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Refclk_Freq" spirit:choiceRef="choice_list_69e198bb" spirit:order="306">5000.000</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Refclk_Freq" spirit:choiceRef="choice_list_22ed5366" spirit:order="306">4000.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -53939,7 +53937,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC3_Outclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Outclk_Freq" spirit:choiceRef="choice_list_c78d617a" spirit:order="307">39.063</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC3_Outclk_Freq" spirit:choiceRef="choice_list_45be4ec6" spirit:order="307">31.250</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -54149,7 +54147,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width30</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width30" spirit:choiceRef="choice_list_eba88d7c" spirit:order="325">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width30" spirit:choiceRef="choice_list_c058a0e8" spirit:order="325">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -54236,7 +54234,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal30">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.ADC_Bypass_BG_Cal30">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -54375,7 +54373,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width31</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width31" spirit:choiceRef="choice_list_6330c9d2" spirit:order="344">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width31" spirit:choiceRef="choice_list_d8920bdd" spirit:order="344">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -54601,7 +54599,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADC_Data_Width32</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width32" spirit:choiceRef="choice_list_eba88d7c" spirit:order="363">9</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ADC_Data_Width32" spirit:choiceRef="choice_list_c058a0e8" spirit:order="363">9</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>

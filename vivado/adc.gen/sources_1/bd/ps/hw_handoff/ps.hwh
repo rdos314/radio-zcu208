@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov  8 15:10:59 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov 12 23:42:43 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -176,6 +176,21 @@
         <PORTMAP LOGICAL="CLK_N" PHYSICAL="adc1_clk_clk_n"/>
         <PORTMAP LOGICAL="CLK_P" PHYSICAL="adc1_clk_clk_p"/>
       </PORTMAPS>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="__NOC__" NAME="adc0_clk" TYPE="TARGET">
+      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="4000000000.0"/>
+      <PORTMAPS/>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="__NOC__" NAME="adc2_clk" TYPE="TARGET">
+      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="4000000000.0"/>
+      <PORTMAPS/>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="__NOC__" NAME="adc3_clk" TYPE="TARGET">
+      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="4000000000.0"/>
+      <PORTMAPS/>
     </BUSINTERFACE>
   </EXTERNALINTERFACES>
 
@@ -1400,7 +1415,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="447" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
+        <PORT DIR="I" LEFT="363" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_high" PORT="raw_data"/>
           </CONNECTIONS>
@@ -1430,7 +1445,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="237" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
+        <PORT DIR="I" LEFT="195" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="raw_data"/>
           </CONNECTIONS>
@@ -1455,17 +1470,17 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="159" NAME="data_E" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
+        <PORT DIR="I" LEFT="127" NAME="data_E" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m22_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="159" NAME="data_N" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
+        <PORT DIR="I" LEFT="127" NAME="data_N" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m20_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="159" NAME="data_W" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
+        <PORT DIR="I" LEFT="127" NAME="data_W" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m30_axis_tdata"/>
           </CONNECTIONS>
@@ -1475,7 +1490,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="447" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
+        <PORT DIR="O" LEFT="363" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_high_0" PORT="fifo"/>
           </CONNECTIONS>
@@ -1520,17 +1535,17 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="159" NAME="data_E" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
+        <PORT DIR="I" LEFT="127" NAME="data_E" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m02_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="159" NAME="data_N" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
+        <PORT DIR="I" LEFT="127" NAME="data_N" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m00_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="159" NAME="data_W" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
+        <PORT DIR="I" LEFT="127" NAME="data_W" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m10_axis_tdata"/>
           </CONNECTIONS>
@@ -1540,7 +1555,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="237" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
+        <PORT DIR="O" LEFT="195" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_low_0" PORT="fifo"/>
           </CONNECTIONS>
@@ -2694,11 +2709,11 @@
         <PARAMETER NAME="C_ADC0_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="C_ADC0_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC0_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC0_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="C_ADC0_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="C_ADC0_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC0_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="C_ADC0_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="C_ADC0_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="C_ADC0_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="C_ADC0_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="C_ADC0_Slices" VALUE="2"/>
         <PARAMETER NAME="C_ADC0_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC10_Dig_Port" VALUE="1"/>
@@ -2718,11 +2733,11 @@
         <PARAMETER NAME="C_ADC1_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="C_ADC1_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC1_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC1_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="C_ADC1_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="C_ADC1_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC1_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="C_ADC1_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="C_ADC1_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="C_ADC1_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="C_ADC1_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="C_ADC1_Slices" VALUE="2"/>
         <PARAMETER NAME="C_ADC1_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC20_Dig_Port" VALUE="1"/>
@@ -2742,11 +2757,11 @@
         <PARAMETER NAME="C_ADC2_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="C_ADC2_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC2_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC2_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="C_ADC2_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="C_ADC2_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC2_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="C_ADC2_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="C_ADC2_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="C_ADC2_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="C_ADC2_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="C_ADC2_Slices" VALUE="2"/>
         <PARAMETER NAME="C_ADC2_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC30_Dig_Port" VALUE="1"/>
@@ -2766,11 +2781,11 @@
         <PARAMETER NAME="C_ADC3_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="C_ADC3_OBS_Fabric_Freq" VALUE="0.0"/>
         <PARAMETER NAME="C_ADC3_OutDiv" VALUE="1"/>
-        <PARAMETER NAME="C_ADC3_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="C_ADC3_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="C_ADC3_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="C_ADC3_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="C_ADC3_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="C_ADC3_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="C_ADC3_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="C_ADC3_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="C_ADC3_Slices" VALUE="2"/>
         <PARAMETER NAME="C_ADC3_Vco" VALUE="12000"/>
         <PARAMETER NAME="C_ADC_Bypass_BG_Cal00" VALUE="false"/>
@@ -2838,20 +2853,20 @@
         <PARAMETER NAME="C_ADC_Data_Type31" VALUE="0"/>
         <PARAMETER NAME="C_ADC_Data_Type32" VALUE="0"/>
         <PARAMETER NAME="C_ADC_Data_Type33" VALUE="0"/>
-        <PARAMETER NAME="C_ADC_Data_Width00" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width01" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width02" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width03" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width10" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width11" VALUE="10"/>
+        <PARAMETER NAME="C_ADC_Data_Width00" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width01" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width02" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width03" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width10" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width11" VALUE="8"/>
         <PARAMETER NAME="C_ADC_Data_Width12" VALUE="9"/>
         <PARAMETER NAME="C_ADC_Data_Width13" VALUE="9"/>
-        <PARAMETER NAME="C_ADC_Data_Width20" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width21" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width22" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width23" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width30" VALUE="10"/>
-        <PARAMETER NAME="C_ADC_Data_Width31" VALUE="10"/>
+        <PARAMETER NAME="C_ADC_Data_Width20" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width21" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width22" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width23" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width30" VALUE="8"/>
+        <PARAMETER NAME="C_ADC_Data_Width31" VALUE="8"/>
         <PARAMETER NAME="C_ADC_Data_Width32" VALUE="9"/>
         <PARAMETER NAME="C_ADC_Data_Width33" VALUE="9"/>
         <PARAMETER NAME="C_ADC_Debug" VALUE="false"/>
@@ -3459,11 +3474,11 @@
         <PARAMETER NAME="ADC0_Link_Coupling" VALUE="0"/>
         <PARAMETER NAME="ADC0_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="ADC0_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC0_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="ADC0_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="ADC0_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC0_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="ADC0_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="ADC0_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="ADC0_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="ADC0_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="ADC1_Band" VALUE="0"/>
         <PARAMETER NAME="ADC1_Clock_Dist" VALUE="1"/>
         <PARAMETER NAME="ADC1_Clock_Source" VALUE="1"/>
@@ -3473,11 +3488,11 @@
         <PARAMETER NAME="ADC1_Link_Coupling" VALUE="0"/>
         <PARAMETER NAME="ADC1_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="ADC1_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC1_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="ADC1_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="ADC1_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC1_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="ADC1_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="ADC1_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="ADC1_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="ADC1_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="ADC224_En" VALUE="false"/>
         <PARAMETER NAME="ADC225_En" VALUE="false"/>
         <PARAMETER NAME="ADC226_En" VALUE="false"/>
@@ -3491,11 +3506,11 @@
         <PARAMETER NAME="ADC2_Link_Coupling" VALUE="0"/>
         <PARAMETER NAME="ADC2_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="ADC2_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC2_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="ADC2_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="ADC2_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC2_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="ADC2_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="ADC2_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="ADC2_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="ADC2_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="ADC3_Band" VALUE="0"/>
         <PARAMETER NAME="ADC3_Clock_Dist" VALUE="0"/>
         <PARAMETER NAME="ADC3_Clock_Source" VALUE="1"/>
@@ -3505,11 +3520,11 @@
         <PARAMETER NAME="ADC3_Link_Coupling" VALUE="0"/>
         <PARAMETER NAME="ADC3_Multi_Tile_Sync" VALUE="true"/>
         <PARAMETER NAME="ADC3_OBS_Fabric_Freq" VALUE="0.0"/>
-        <PARAMETER NAME="ADC3_Outclk_Freq" VALUE="39.063"/>
+        <PARAMETER NAME="ADC3_Outclk_Freq" VALUE="31.250"/>
         <PARAMETER NAME="ADC3_PLL_Enable" VALUE="false"/>
         <PARAMETER NAME="ADC3_Refclk_Div" VALUE="1"/>
-        <PARAMETER NAME="ADC3_Refclk_Freq" VALUE="5000.000"/>
-        <PARAMETER NAME="ADC3_Sampling_Rate" VALUE="5"/>
+        <PARAMETER NAME="ADC3_Refclk_Freq" VALUE="4000.000"/>
+        <PARAMETER NAME="ADC3_Sampling_Rate" VALUE="4"/>
         <PARAMETER NAME="ADC_Bypass_BG_Cal00" VALUE="false"/>
         <PARAMETER NAME="ADC_Bypass_BG_Cal01" VALUE="false"/>
         <PARAMETER NAME="ADC_Bypass_BG_Cal02" VALUE="false"/>
@@ -3575,20 +3590,20 @@
         <PARAMETER NAME="ADC_Data_Type31" VALUE="0"/>
         <PARAMETER NAME="ADC_Data_Type32" VALUE="0"/>
         <PARAMETER NAME="ADC_Data_Type33" VALUE="0"/>
-        <PARAMETER NAME="ADC_Data_Width00" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width01" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width02" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width03" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width10" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width11" VALUE="10"/>
+        <PARAMETER NAME="ADC_Data_Width00" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width01" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width02" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width03" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width10" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width11" VALUE="8"/>
         <PARAMETER NAME="ADC_Data_Width12" VALUE="9"/>
         <PARAMETER NAME="ADC_Data_Width13" VALUE="9"/>
-        <PARAMETER NAME="ADC_Data_Width20" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width21" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width22" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width23" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width30" VALUE="10"/>
-        <PARAMETER NAME="ADC_Data_Width31" VALUE="10"/>
+        <PARAMETER NAME="ADC_Data_Width20" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width21" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width22" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width23" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width30" VALUE="8"/>
+        <PARAMETER NAME="ADC_Data_Width31" VALUE="8"/>
         <PARAMETER NAME="ADC_Data_Width32" VALUE="9"/>
         <PARAMETER NAME="ADC_Data_Width33" VALUE="9"/>
         <PARAMETER NAME="ADC_Debug" VALUE="false"/>
@@ -4328,12 +4343,12 @@
             <CONNECTION INSTANCE="ps_imp" PORT="adc1_clk_clk_p"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc0" SIGIS="clk"/>
-        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc1" SIGIS="clk"/>
-        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc2" SIGIS="clk"/>
-        <PORT CLKFREQUENCY="39063000" DIR="O" NAME="clk_adc3" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="31250000" DIR="O" NAME="clk_adc0" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="31250000" DIR="O" NAME="clk_adc1" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="31250000" DIR="O" NAME="clk_adc2" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="31250000" DIR="O" NAME="clk_adc3" SIGIS="clk"/>
         <PORT DIR="O" NAME="irq" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" LEFT="159" NAME="m00_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
+        <PORT DIR="O" LEFT="127" NAME="m00_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m00_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="data_N"/>
           </CONNECTIONS>
@@ -4344,7 +4359,7 @@
             <CONNECTION INSTANCE="deci_low" PORT="ready_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="159" NAME="m02_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
+        <PORT DIR="O" LEFT="127" NAME="m02_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="data_E"/>
           </CONNECTIONS>
@@ -4365,7 +4380,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="159" NAME="m10_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
+        <PORT DIR="O" LEFT="127" NAME="m10_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m10_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="data_W"/>
           </CONNECTIONS>
@@ -4386,7 +4401,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="159" NAME="m20_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
+        <PORT DIR="O" LEFT="127" NAME="m20_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m20_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_high" PORT="data_N"/>
           </CONNECTIONS>
@@ -4397,7 +4412,7 @@
             <CONNECTION INSTANCE="deci_high" PORT="ready_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="159" NAME="m22_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
+        <PORT DIR="O" LEFT="127" NAME="m22_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_high" PORT="data_E"/>
           </CONNECTIONS>
@@ -4418,7 +4433,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="159" NAME="m30_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
+        <PORT DIR="O" LEFT="127" NAME="m30_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m30_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_high" PORT="data_W"/>
           </CONNECTIONS>
@@ -4673,7 +4688,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="20"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -4693,7 +4708,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="20"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -4713,7 +4728,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="20"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -4733,7 +4748,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="20"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -4753,7 +4768,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="20"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -4773,7 +4788,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="20"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
