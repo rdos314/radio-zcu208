@@ -65,6 +65,10 @@ module ps_mts_0_0 (
   comp0_reset,
   comp1_clk,
   comp1_reset,
+  doa0_clk,
+  doa0_reset,
+  doa1_clk,
+  doa1_reset,
   user_sysref_adc
 );
 
@@ -101,6 +105,22 @@ output wire comp1_clk;
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire comp1_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa0_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa0_clk, ASSOCIATED_RESET doa0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *)
+output wire doa0_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 doa0_reset RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire doa0_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa1_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa1_clk, ASSOCIATED_RESET doa1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa1_clk, INSERT_VIP 0" *)
+output wire doa1_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 doa1_reset RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire doa1_reset;
 output wire user_sysref_adc;
 
   mts inst (
@@ -113,6 +133,10 @@ output wire user_sysref_adc;
     .comp0_reset(comp0_reset),
     .comp1_clk(comp1_clk),
     .comp1_reset(comp1_reset),
+    .doa0_clk(doa0_clk),
+    .doa0_reset(doa0_reset),
+    .doa1_clk(doa1_clk),
+    .doa1_reset(doa1_reset),
     .user_sysref_adc(user_sysref_adc)
   );
 endmodule

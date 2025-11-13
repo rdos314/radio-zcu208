@@ -35,6 +35,14 @@ module mts(
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	output wire comp1_clk,
     output reg  comp1_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DOA0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire doa0_clk,
+    output reg  doa0_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DOA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire doa1_clk,
+    output reg  doa1_reset,
     
     output wire	user_sysref_adc
  ); 
@@ -42,6 +50,7 @@ module mts(
 	wire		pl_clk_buf;
 	wire 		rst_async = sys_reset | (~deci_locked);
     wire        comp_locked;
+    wire        doa_locked;
 
 	(* ASYNC_REG="TRUE" *)  reg  sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
@@ -54,6 +63,10 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_2;
 
 	assign user_sysref_adc = sysref_sync[2];
 		    		
@@ -71,6 +84,13 @@ module mts(
 		.clk_out1	(comp0_clk),
 		.clk_out2	(comp1_clk),
 		.locked		(comp_locked)
+		);
+
+	clk_wiz_adc clk_wiz_doa_i (
+		.clk_in1	(pl_clk_buf),
+		.clk_out1	(doa0_clk),
+		.clk_out2	(doa1_clk),
+		.locked		(doa_locked)
 		);
 
 /*
@@ -113,6 +133,20 @@ generate
 		deci_reset_1 <= deci_reset_async;
 		deci_reset_2 <= deci_reset_1;
 		deci_resetn <= ~deci_reset_2;
+	end
+
+	always @(posedge doa0_clk) 
+	begin
+		doa0_reset_1 <= deci_reset_async | (~doa_locked);
+		doa0_reset_2 <= doa0_reset_1;
+		doa0_reset <= doa0_reset_2;
+	end
+
+	always @(posedge doa1_clk) 
+	begin
+		doa1_reset_1 <= deci_reset_async | (~doa_locked);
+		doa1_reset_2 <= doa1_reset_1;
+		doa1_reset <= doa1_reset_2;
 	end
 
 	always @(posedge comp0_clk) 

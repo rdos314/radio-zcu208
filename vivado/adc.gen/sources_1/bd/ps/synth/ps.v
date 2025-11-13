@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Wed Nov 12 23:42:38 2025
+//Date        : Thu Nov 13 23:53:35 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -139,6 +139,8 @@ module ps
   wire mts_0_comp1_reset;
   wire mts_0_deci_clk;
   wire mts_0_deci_resetn;
+  wire mts_0_doa0_clk;
+  wire mts_0_doa1_clk;
   wire mts_0_user_sysref_adc;
   wire pl_clk_n;
   wire pl_clk_p;
@@ -363,6 +365,7 @@ module ps
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),
         .data_W(usp_rf_data_converter_0_m30_axis_tdata),
+        .doa_clk(mts_0_doa1_clk),
         .raw_clk(mts_0_comp1_clk),
         .raw_data(deci_high_raw_data),
         .raw_ready(deci_high_raw_ready),
@@ -375,6 +378,7 @@ module ps
         .data_E(usp_rf_data_converter_0_m02_axis_tdata),
         .data_N(usp_rf_data_converter_0_m00_axis_tdata),
         .data_W(usp_rf_data_converter_0_m10_axis_tdata),
+        .doa_clk(mts_0_doa0_clk),
         .raw_clk(mts_0_comp0_clk),
         .raw_data(deci_low_raw_data),
         .raw_ready(deci_low_raw_ready),
@@ -410,6 +414,8 @@ module ps
         .comp1_reset(mts_0_comp1_reset),
         .deci_clk(mts_0_deci_clk),
         .deci_resetn(mts_0_deci_resetn),
+        .doa0_clk(mts_0_doa0_clk),
+        .doa1_clk(mts_0_doa1_clk),
         .pl_clk(util_ds_buf_0_IBUF_OUT),
         .pl_sysref(util_ds_buf_0_IBUF_OUT1),
         .sys_reset(rst_ps8_0_99M_mb_reset),

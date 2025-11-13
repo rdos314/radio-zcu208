@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Nov 11 22:18:03 2025
+-- Date        : Thu Nov 13 23:54:23 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_stub.vhdl
@@ -25,7 +25,10 @@ entity ps_deci_low_0_0 is
     ready_W : in STD_LOGIC;
     raw_clk : in STD_LOGIC;
     raw_ready : out STD_LOGIC;
-    raw_data : out STD_LOGIC_VECTOR ( 195 downto 0 )
+    raw_data : out STD_LOGIC_VECTOR ( 195 downto 0 );
+    doa_clk : in STD_LOGIC;
+    doa_ready : out STD_LOGIC;
+    doa_data : out STD_LOGIC_VECTOR ( 69 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -42,7 +45,7 @@ architecture stub of ps_deci_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,raw_clk,raw_ready,raw_data[195:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,raw_clk,raw_ready,raw_data[195:0],doa_clk,doa_ready,doa_data[69:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -55,6 +58,9 @@ architecture stub of ps_deci_low_0_0 is
   attribute X_INTERFACE_INFO of raw_clk : signal is "xilinx.com:signal:clock:1.0 raw_clk CLK";
   attribute X_INTERFACE_MODE of raw_clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER of raw_clk : signal is "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of doa_clk : signal is "xilinx.com:signal:clock:1.0 doa_clk CLK";
+  attribute X_INTERFACE_MODE of doa_clk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of doa_clk : signal is "XIL_INTERFACENAME doa_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0";
   attribute X_CORE_INFO : string;
   attribute X_CORE_INFO of stub : architecture is "deci_low,Vivado 2025.1";
 begin

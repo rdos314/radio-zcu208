@@ -1860,6 +1860,58 @@
             "type": "rst",
             "direction": "O"
           },
+          "doa0_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "doa0_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "doa0_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "doa1_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "doa1_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "doa1_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
           "user_sysref_adc": {
             "direction": "O"
           }
@@ -1971,6 +2023,32 @@
             "direction": "O",
             "left": "195",
             "right": "0"
+          },
+          "doa_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_doa0_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "doa_ready": {
+            "direction": "O"
+          },
+          "doa_data": {
+            "direction": "O",
+            "left": "69",
+            "right": "0"
           }
         }
       },
@@ -2063,6 +2141,32 @@
           "raw_data": {
             "direction": "O",
             "left": "363",
+            "right": "0"
+          },
+          "doa_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_doa1_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "doa_ready": {
+            "direction": "O"
+          },
+          "doa_data": {
+            "direction": "O",
+            "left": "111",
             "right": "0"
           }
         }
@@ -2286,8 +2390,8 @@
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
-          "deci_low/raw_clk",
-          "comp_low_0/clk"
+          "comp_low_0/clk",
+          "deci_low/raw_clk"
         ]
       },
       "mts_0_comp0_reset": {
@@ -2299,8 +2403,8 @@
       "mts_0_comp1_clk": {
         "ports": [
           "mts_0/comp1_clk",
-          "deci_high/raw_clk",
-          "comp_high_0/clk"
+          "comp_high_0/clk",
+          "deci_high/raw_clk"
         ]
       },
       "mts_0_comp1_reset": {
@@ -2329,6 +2433,18 @@
           "usp_rf_data_converter_0/m3_axis_aresetn",
           "deci_low/resetn",
           "deci_high/resetn"
+        ]
+      },
+      "mts_0_doa0_clk": {
+        "ports": [
+          "mts_0/doa0_clk",
+          "deci_low/doa_clk"
+        ]
+      },
+      "mts_0_doa1_clk": {
+        "ports": [
+          "mts_0/doa1_clk",
+          "deci_high/doa_clk"
         ]
       },
       "mts_0_user_sysref_adc": {

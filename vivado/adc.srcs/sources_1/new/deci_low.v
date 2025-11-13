@@ -33,7 +33,11 @@ module deci_low(
 
     input wire  raw_clk,
     output reg raw_ready,
-    output reg	[195:0] raw_data
+    output reg	[195:0] raw_data,
+
+    input wire  doa_clk,
+    output reg doa_ready,
+    output reg [69:0] doa_data
     );
 
   reg [27:0]  counter;
@@ -46,6 +50,16 @@ module deci_low(
   reg  [11:0] raw_delay;
   wire [195:0] raw_out_data;
   reg raw_active;
+
+  reg [27:0] doa_counter;
+  reg doa_active;
+
+  reg doa_fifo_wr;
+  reg [69:0] doa_in_data;
+
+  wire doa_fifo_empty;
+  wire [69:0] doa_out_data;
+  reg doa_out_active;
 
   (* ASYNC_REG="TRUE" *)	reg  active_1;
   (* ASYNC_REG="TRUE" *)	reg  active_2;
@@ -177,6 +191,17 @@ fifo_raw_low fifo_raw_i (
   .empty(raw_fifo_empty)      // output wire empty
 );
 
+fifo_doa_low fifo_doa_i (
+  .rst(~resetn),              // input wire rst
+  .wr_clk(clk),               // input wire wr_clk
+  .rd_clk(doa_clk),          // input wire rd_clk
+  .din(doa_in_data),        // input wire [69 : 0] din
+  .wr_en(doa_fifo_wr),        // input wire wr_en
+  .rd_en(doa_ready),          // input wire rd_en
+  .dout(doa_out_data),       // output wire [69 : 0] dout
+  .empty(doa_fifo_empty)      // output wire empty
+);
+
 ila_0 ila_N (
 		.clk(clk),                 // input wire clk
 		.probe0(N0),        // input wire [13:0]  probe3
@@ -257,38 +282,81 @@ generate
 	      counter <= 0;
 	  end
 	end
-  end
 
-  always @(posedge raw_clk) 
-  begin
-    if (raw_fifo_empty)
+	always @(posedge clk) 
 	begin
-	   raw_delay <= 12'h3F0;
-	   raw_active <= 0;
-    end
-	else
-    begin
-	   if (raw_delay)
-	   begin
-	     raw_delay <= raw_delay - 1;
-	     raw_active <= 0;
-	   end
-	   else
-	      raw_active <= 1;
+	  doa_active <= resetn & valid_N & valid_E & valid_W;
 	end
-  end
 
-  always @(posedge raw_clk) 
-  begin
-	 if (raw_active)
-	 begin
-       raw_data <= raw_out_data;
-       raw_ready <= 1;
-     end
-     else
-       raw_ready <= 0;
+    always @(posedge clk) 
+	begin
+	  if (doa_active)
+	  begin
+         doa_fifo_wr <= 1;
+         doa_counter <= doa_counter + 1;
+         doa_in_data[27:0] <= doa_counter;
+         doa_in_data[41:28] <= dN;
+         doa_in_data[55:42] <= dE;
+         doa_in_data[69:56] <= dW;
+	  end
+	  else
+	  begin
+	      doa_fifo_wr <= 0;
+	      doa_counter <= 0;
+	  end
+	end
+         
+    always @(posedge raw_clk) 
+     begin
+      if (raw_fifo_empty)
+  	  begin
+	     raw_delay <= 12'h3F0;
+	     raw_active <= 0;
+      end
+	  else
+      begin
+	     if (raw_delay)
+	     begin
+	       raw_delay <= raw_delay - 1;
+	       raw_active <= 0;
+	     end
+	     else
+	       raw_active <= 1;
+  	  end
+    end
+
+    always @(posedge raw_clk) 
+    begin
+	   if (raw_active)
+	   begin
+         raw_data <= raw_out_data;
+         raw_ready <= 1;
+       end
+       else
+         raw_ready <= 0;
+    end
+
+    always @(posedge doa_clk) 
+     begin
+      if (doa_fifo_empty)
+	     doa_out_active <= 0;
+	  else
+	     doa_out_active <= 1;
+    end
+
+    always @(posedge doa_clk) 
+    begin
+	   if (doa_out_active)
+	   begin
+         doa_data <= doa_out_data;
+         doa_ready <= 1;
+       end
+       else
+         doa_ready <= 0;
+    end
+
   end
-    
+     
 endgenerate
     
 endmodule

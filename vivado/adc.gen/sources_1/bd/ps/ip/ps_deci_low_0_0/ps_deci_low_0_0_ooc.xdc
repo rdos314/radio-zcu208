@@ -54,6 +54,8 @@
 
 create_clock -period 2 -name clk [get_ports clk]
 
+create_clock -period 2 -name doa_clk [get_ports doa_clk]
+
 create_clock -period 2 -name raw_clk [get_ports raw_clk]
 
 
