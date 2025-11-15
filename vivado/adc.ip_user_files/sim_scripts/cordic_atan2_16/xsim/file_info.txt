@@ -1,0 +1,2 @@
+cordic_atan2_16.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/cordic_atan2_16/sim/cordic_atan2_16.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

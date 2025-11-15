@@ -58,7 +58,19 @@ module ps_doa_high_189_0_0 (
   clk,
   reset,
   fifo_valid,
-  fifo_data
+  fifo_data,
+  valid_N,
+  env_N,
+  phase_N,
+  diff_N,
+  valid_E,
+  env_E,
+  phase_E,
+  diff_E,
+  valid_W,
+  env_W,
+  phase_W,
+  diff_W
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
@@ -71,11 +83,35 @@ input wire clk;
 input wire reset;
 input wire fifo_valid;
 input wire [111 : 0] fifo_data;
+output wire valid_N;
+output wire [15 : 0] env_N;
+output wire [15 : 0] phase_N;
+output wire [15 : 0] diff_N;
+output wire valid_E;
+output wire [15 : 0] env_E;
+output wire [15 : 0] phase_E;
+output wire [15 : 0] diff_E;
+output wire valid_W;
+output wire [15 : 0] env_W;
+output wire [15 : 0] phase_W;
+output wire [15 : 0] diff_W;
 
   doa_high_189 inst (
     .clk(clk),
     .reset(reset),
     .fifo_valid(fifo_valid),
-    .fifo_data(fifo_data)
+    .fifo_data(fifo_data),
+    .valid_N(valid_N),
+    .env_N(env_N),
+    .phase_N(phase_N),
+    .diff_N(diff_N),
+    .valid_E(valid_E),
+    .env_E(env_E),
+    .phase_E(phase_E),
+    .diff_E(diff_E),
+    .valid_W(valid_W),
+    .env_W(env_W),
+    .phase_W(phase_W),
+    .diff_W(diff_W)
   );
 endmodule

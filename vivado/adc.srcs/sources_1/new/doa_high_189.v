@@ -23,7 +23,22 @@ module doa_high_189(
     input wire clk,
     input wire reset,
     input wire fifo_valid,
-    input wire [111:0] fifo_data
+    input wire [111:0] fifo_data,
+
+    output wire valid_N,
+    output wire [15:0] env_N,
+    output wire [15:0] phase_N,
+    output reg [15:0] diff_N,
+
+    output wire valid_E,
+    output wire [15:0] env_E,
+    output wire [15:0] phase_E,
+    output reg [15:0] diff_E,
+
+    output wire valid_W,
+    output wire [15:0] env_W,
+    output wire [15:0] phase_W,
+    output reg [15:0] diff_W
     );
 
   reg [27:0] counter;
@@ -47,6 +62,10 @@ module doa_high_189(
   assign E[31:18] = E1;
   assign E[17:4] = E0;
   assign E[3:0] = 0;
+
+  reg [15:0] prevN;
+  reg [15:0] prevE;
+  reg [15:0] prevW;
 
   wire ready_re_N;
   wire valid_re_N;
@@ -132,28 +151,60 @@ fir_doa_high_im_189 fir_doa_low_im_W_i (
   .m_axis_data_tdata(fir_im_W)             // output wire [39 : 0] m_axis_data_tdata
 );
 
+morlet_to_phase_env doa_N_i (
+  .clk(clk),                               // input wire aclk
+  .active(fifo_valid),
+  .re(fir_re_N[38:23]),
+  .im(fir_im_N[38:23]),
+  .valid(valid_N),
+  .env(env_N),
+  .phase(phase_N)
+  );
+
+morlet_to_phase_env doa_E_i (
+  .clk(clk),                               // input wire aclk
+  .active(fifo_valid),
+  .re(fir_re_E[38:23]),
+  .im(fir_im_E[38:23]),
+  .valid(valid_E),
+  .env(env_E),
+  .phase(phase_E)
+  );
+
+morlet_to_phase_env doa_W_i (
+  .clk(clk),                               // input wire aclk
+  .active(fifo_valid),
+  .re(fir_re_W[38:23]),
+  .im(fir_im_W[38:23]),
+  .valid(valid_W),
+  .env(env_W),
+  .phase(phase_W)
+  );
 
 ila_2 ila_2_i (
 		.clk(clk),                  // input wire clk
 		.probe0(N0),                // input wire [13:0]  probe3
 		.probe1(N1),                // input wire [13:0]  probe3
-		.probe2(valid_re_N),        // input wire [0:0]  probe3
-		.probe3(fir_re_N[39:24]),   // input wire [15:0]  probe3
-		.probe4(valid_im_N),        // input wire [0:0]  probe3
-		.probe5(fir_im_N[39:24]),   // input wire [15:0]  probe3
-		.probe6(E0),                // input wire [13:0]  probe3
-		.probe7(E1),                // input wire [13:0]  probe3
-		.probe8(valid_re_E),        // input wire [0:0]  probe3
-		.probe9(fir_re_E[39:24]),   // input wire [15:0]  probe3
-		.probe10(valid_im_E),       // input wire [0:0]  probe3
-		.probe11(fir_im_E[39:24]),  // input wire [15:0]  probe3
-		.probe12(W0),               // input wire [13:0]  probe3
-		.probe13(W1),               // input wire [13:0]  probe3
-		.probe14(valid_re_W),       // input wire [0:0]  probe3
-		.probe15(fir_re_W[39:24]),  // input wire [15:0]  probe3
-		.probe16(valid_im_W),       // input wire [0:0]  probe3
-		.probe17(fir_im_W[39:24]),  // input wire [15:0]  probe3
-		.probe18(fifo_valid)        // input wire [0:0]  probe3
+		.probe2(fir_re_N[38:23]),   // input wire [15:0]  probe3
+		.probe3(fir_im_N[38:23]),   // input wire [15:0]  probe3
+		.probe4(env_N),             // input wire [15:0]  probe3
+		.probe5(phase_N),           // input wire [15:0]  probe3
+		.probe6(diff_N),           // input wire [15:0]  probe3
+		.probe7(E0),                // input wire [13:0]  probe3
+		.probe8(E1),                // input wire [13:0]  probe3
+		.probe9(fir_re_E[38:23]),   // input wire [15:0]  probe3
+		.probe10(fir_im_E[38:23]),   // input wire [15:0]  probe3
+		.probe11(env_E),             // input wire [15:0]  probe3
+		.probe12(phase_E),           // input wire [15:0]  probe3
+		.probe13(diff_E),           // input wire [15:0]  probe3
+		.probe14(W0),                // input wire [13:0]  probe3
+		.probe15(W1),                // input wire [13:0]  probe3
+		.probe16(fir_re_W[38:23]),   // input wire [15:0]  probe3
+		.probe17(fir_im_W[38:23]),   // input wire [15:0]  probe3
+		.probe18(env_W),             // input wire [15:0]  probe3
+		.probe19(phase_W),           // input wire [15:0]  probe3
+		.probe20(diff_W),           // input wire [15:0]  probe3
+		.probe21(fifo_valid)        // input wire [0:0]  probe3
 	);
 
   
@@ -167,13 +218,26 @@ generate
          counter <= fifo_data[27:0];
          N0 <= fifo_data[41:28];
          N1 <= fifo_data[55:42];
+         diff_N <= phase_N - prevN;
+         prevN <= phase_N;
+         
          E0 <= fifo_data[69:56];
          E1 <= fifo_data[83:70];
+         diff_E <= phase_E - prevE;
+         prevE <= phase_E;
+
          W0 <= fifo_data[97:84];
          W1 <= fifo_data[111:98];
+         diff_W <= phase_W - prevW;
+         prevW <= phase_W;
 	  end
 	  else
-	      counter <= 0;
+      begin
+        counter <= 0;
+        prevN <= 0;
+        prevE <= 0;
+        prevW <= 0;
+      end
 	end
 
   end

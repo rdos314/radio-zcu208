@@ -10,7 +10,7 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="15"></ZoomEndTime>
+      <ZoomEndTime time="1,024"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>

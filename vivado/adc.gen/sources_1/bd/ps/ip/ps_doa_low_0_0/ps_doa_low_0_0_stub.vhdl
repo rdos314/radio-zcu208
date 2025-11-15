@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Nov 15 00:25:13 2025
+-- Date        : Sat Nov 15 16:12:20 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_stub.vhdl
@@ -18,7 +18,19 @@ entity ps_doa_low_0_0 is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     fifo_valid : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 69 downto 0 )
+    fifo_data : in STD_LOGIC_VECTOR ( 69 downto 0 );
+    valid_N : out STD_LOGIC;
+    env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    diff_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid_E : out STD_LOGIC;
+    env_E : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_E : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    diff_E : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid_W : out STD_LOGIC;
+    env_W : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_W : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    diff_W : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -35,7 +47,7 @@ architecture stub of ps_doa_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,reset,fifo_valid,fifo_data[69:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,reset,fifo_valid,fifo_data[69:0],valid_N,env_N[15:0],phase_N[15:0],diff_N[15:0],valid_E,env_E[15:0],phase_E[15:0],diff_E[15:0],valid_W,env_W[15:0],phase_W[15:0],diff_W[15:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

@@ -2317,6 +2317,60 @@
             "direction": "I",
             "left": "69",
             "right": "0"
+          },
+          "valid_N": {
+            "direction": "O"
+          },
+          "env_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "diff_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "valid_E": {
+            "direction": "O"
+          },
+          "env_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "diff_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "valid_W": {
+            "direction": "O"
+          },
+          "env_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "diff_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
           }
         }
       },
@@ -2365,6 +2419,60 @@
           "fifo_data": {
             "direction": "I",
             "left": "111",
+            "right": "0"
+          },
+          "valid_N": {
+            "direction": "O"
+          },
+          "env_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "diff_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "valid_E": {
+            "direction": "O"
+          },
+          "env_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "diff_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "valid_W": {
+            "direction": "O"
+          },
+          "env_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "diff_W": {
+            "direction": "O",
+            "left": "15",
             "right": "0"
           }
         }

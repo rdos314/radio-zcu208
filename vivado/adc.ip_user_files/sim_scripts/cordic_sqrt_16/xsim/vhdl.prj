@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../adc.gen/sources_1/ip/cordic_sqrt_16/sim/cordic_sqrt_16.vhd" \
+
+# Do not sort compile order
+nosort

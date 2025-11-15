@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Nov 15 00:25:13 2025
+// Date        : Sat Nov 15 16:12:18 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_high_189_0_0/ps_doa_high_189_0_0_stub.v
@@ -16,11 +16,24 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* CHECK_LICENSE_TYPE = "ps_doa_high_189_0_0,doa_high_189,{}" *) (* CORE_GENERATION_INFO = "ps_doa_high_189_0_0,doa_high_189,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=doa_high_189,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "doa_high_189,Vivado 2025.1" *) 
-module ps_doa_high_189_0_0(clk, reset, fifo_valid, fifo_data)
-/* synthesis syn_black_box black_box_pad_pin="reset,fifo_valid,fifo_data[111:0]" */
+module ps_doa_high_189_0_0(clk, reset, fifo_valid, fifo_data, valid_N, env_N, 
+  phase_N, diff_N, valid_E, env_E, phase_E, diff_E, valid_W, env_W, phase_W, diff_W)
+/* synthesis syn_black_box black_box_pad_pin="reset,fifo_valid,fifo_data[111:0],valid_N,env_N[15:0],phase_N[15:0],diff_N[15:0],valid_E,env_E[15:0],phase_E[15:0],diff_E[15:0],valid_W,env_W[15:0],phase_W[15:0],diff_W[15:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa1_clk, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   input fifo_valid;
   input [111:0]fifo_data;
+  output valid_N;
+  output [15:0]env_N;
+  output [15:0]phase_N;
+  output [15:0]diff_N;
+  output valid_E;
+  output [15:0]env_E;
+  output [15:0]phase_E;
+  output [15:0]diff_E;
+  output valid_W;
+  output [15:0]env_W;
+  output [15:0]phase_W;
+  output [15:0]diff_W;
 endmodule
