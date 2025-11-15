@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../adc.gen/sources_1/ip/fir_doa_low_re/sim/fir_doa_low_re.vhd" \
+
+# Do not sort compile order
+nosort

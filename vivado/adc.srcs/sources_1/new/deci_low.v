@@ -202,52 +202,6 @@ fifo_doa_low fifo_doa_i (
   .empty(doa_fifo_empty)      // output wire empty
 );
 
-ila_0 ila_N (
-		.clk(clk),                 // input wire clk
-		.probe0(N0),        // input wire [13:0]  probe3
-		.probe1(N1),       // input wire [13:0]  probe3
-		.probe2(N2),       // input wire [13:0]  probe3
-		.probe3(N3),       // input wire [13:0]  probe3
-		.probe4(N4),       // input wire [13:0]  probe3
-		.probe5(N5),       // input wire [13:0]  probe3
-		.probe6(N6),      // input wire [13:0]  probe3
-		.probe7(N7),     // input wire [13:0]  probe3
-		.probe8(ready_N),     // input wire [0:0]  probe3
-		.probe9(dN),             // input wire [13:0]  probe3
-		.probe10(valid_N)             // input wire [0:0]  probe3
-	);
-
-	ila_0 ila_E (
-		.clk(clk),                 // input wire clk
-		.probe0(E0),        // input wire [13:0]  probe3
-		.probe1(E1),       // input wire [13:0]  probe3
-		.probe2(E2),       // input wire [13:0]  probe3
-		.probe3(E3),       // input wire [13:0]  probe3
-		.probe4(E4),       // input wire [13:0]  probe3
-		.probe5(E5),       // input wire [13:0]  probe3
-		.probe6(E6),      // input wire [13:0]  probe3
-		.probe7(E7),     // input wire [13:0]  probe3
-		.probe8(ready_E),     // input wire [0:0]  probe3
-		.probe9(dE),             // input wire [13:0]  probe3
-		.probe10(valid_E)             // input wire [0:0]  probe3
-	);
-
-	ila_0 ila_W (
-		.clk(clk),                 // input wire clk
-		.probe0(W0),        // input wire [13:0]  probe3
-		.probe1(W1),       // input wire [13:0]  probe3
-		.probe2(W2),       // input wire [13:0]  probe3
-		.probe3(W3),       // input wire [13:0]  probe3
-		.probe4(W4),       // input wire [13:0]  probe3
-		.probe5(W5),       // input wire [13:0]  probe3
-		.probe6(W6),      // input wire [13:0]  probe3
-		.probe7(W7),     // input wire [13:0]  probe3
-		.probe8(ready_W),     // input wire [0:0]  probe3
-		.probe9(dW),             // input wire [13:0]  probe3
-		.probe10(valid_W)             // input wire [0:0]  probe3
-	);
-
-
 generate
   begin : deci_low
 

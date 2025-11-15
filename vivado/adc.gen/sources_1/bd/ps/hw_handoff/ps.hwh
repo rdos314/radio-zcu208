@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Nov 13 23:53:38 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov 15 00:24:29 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -1490,8 +1490,16 @@
             <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="111" NAME="doa_data" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="doa_ready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="111" NAME="doa_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_doa_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_high_189_0" PORT="fifo_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="doa_ready" SIGIS="undef" SIGNAME="deci_high_doa_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_high_189_0" PORT="fifo_valid"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
@@ -1562,8 +1570,16 @@
             <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="69" NAME="doa_data" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="doa_ready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="69" NAME="doa_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_low_0" PORT="fifo_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="doa_ready" SIGIS="undef" SIGNAME="deci_low_doa_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_low_0" PORT="fifo_valid"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
@@ -1597,6 +1613,66 @@
         <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="deci_resetn"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/doa_high_189_0" HWVERSION="1.0" INSTANCE="doa_high_189_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="doa_high_189" VLNV="xilinx.com:module_ref:doa_high_189:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_doa_high_189_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="111" NAME="fifo_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_doa_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_high" PORT="doa_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="fifo_valid" SIGIS="undef" SIGNAME="deci_high_doa_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_high" PORT="doa_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa1_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="doa1_reset"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/doa_low_0" HWVERSION="1.0" INSTANCE="doa_low_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="doa_low" VLNV="xilinx.com:module_ref:doa_low:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_doa_low_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="69" NAME="fifo_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="doa_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="fifo_valid" SIGIS="undef" SIGNAME="deci_low_doa_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="doa_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="doa0_reset"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2010,15 +2086,25 @@
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa0_clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="doa_clk"/>
+            <CONNECTION INSTANCE="doa_low_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="doa0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="O" NAME="doa0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_low_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa1_clk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_high" PORT="doa_clk"/>
+            <CONNECTION INSTANCE="doa_high_189_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="doa1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="O" NAME="doa1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa1_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="doa_high_189_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="125000000" DIR="I" NAME="pl_clk" SIGIS="clk" SIGNAME="pl_clk_util_ds_buf_IBUF_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="pl_clk_util_ds_buf" PORT="IBUF_OUT"/>

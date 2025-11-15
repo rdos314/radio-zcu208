@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Nov 13 23:54:23 2025
+-- Date        : Fri Nov 14 23:26:01 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -34,8 +34,6 @@ entity ps_deci_low_0_0_deci_low is
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_deci_low_0_0_deci_low : entity is "deci_low";
-  attribute keep_hierarchy : string;
-  attribute keep_hierarchy of ps_deci_low_0_0_deci_low : entity is "soft";
 end ps_deci_low_0_0_deci_low;
 
 architecture STRUCTURE of ps_deci_low_0_0_deci_low is
@@ -113,87 +111,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   end component ps_deci_low_0_0_fir_raw_deci_HD2;
-  component ps_deci_low_0_0_ila_0 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component ps_deci_low_0_0_ila_0;
-  component ps_deci_low_0_0_ila_0_HD3 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 )
-  );
-  end component ps_deci_low_0_0_ila_0_HD3;
-  signal E0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of E0 : signal is std.standard.true;
-  signal E1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E1 : signal is std.standard.true;
-  signal E2 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E2 : signal is std.standard.true;
-  signal E3 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E3 : signal is std.standard.true;
-  signal E4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E4 : signal is std.standard.true;
-  signal E5 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E5 : signal is std.standard.true;
-  signal E6 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E6 : signal is std.standard.true;
-  signal E7 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of E7 : signal is std.standard.true;
-  signal N0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N0 : signal is std.standard.true;
-  signal N1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N1 : signal is std.standard.true;
-  signal N2 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N2 : signal is std.standard.true;
-  signal N3 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N3 : signal is std.standard.true;
-  signal N4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N4 : signal is std.standard.true;
-  signal N5 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N5 : signal is std.standard.true;
-  signal N6 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N6 : signal is std.standard.true;
-  signal N7 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of N7 : signal is std.standard.true;
-  signal W0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W0 : signal is std.standard.true;
-  signal W1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W1 : signal is std.standard.true;
-  signal W2 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W2 : signal is std.standard.true;
-  signal W3 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W3 : signal is std.standard.true;
-  signal W4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W4 : signal is std.standard.true;
-  signal W5 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W5 : signal is std.standard.true;
-  signal W6 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W6 : signal is std.standard.true;
-  signal W7 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of W7 : signal is std.standard.true;
   signal active : STD_LOGIC;
   signal active0 : STD_LOGIC;
   signal active_1 : STD_LOGIC;
@@ -203,14 +120,8 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute async_reg of active_2 : signal is "true";
   signal clear : STD_LOGIC;
   signal dE : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of dE : signal is std.standard.true;
   signal dN : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of dN : signal is std.standard.true;
   signal dW : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of dW : signal is std.standard.true;
-  signal \^data_e\ : STD_LOGIC_VECTOR ( 113 downto 0 );
-  signal \^data_n\ : STD_LOGIC_VECTOR ( 113 downto 0 );
-  signal \^data_w\ : STD_LOGIC_VECTOR ( 113 downto 0 );
   signal \deci_low.counter[0]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.counter_reg\ : STD_LOGIC_VECTOR ( 27 downto 0 );
   signal \deci_low.counter_reg[0]_i_2_n_0\ : STD_LOGIC;
@@ -374,11 +285,8 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal raw_out_data : STD_LOGIC_VECTOR ( 195 downto 0 );
   signal \^raw_ready\ : STD_LOGIC;
   signal valid_E : STD_LOGIC;
-  attribute MARK_DEBUG of valid_E : signal is std.standard.true;
   signal valid_N : STD_LOGIC;
-  attribute MARK_DEBUG of valid_N : signal is std.standard.true;
   signal valid_W : STD_LOGIC;
-  attribute MARK_DEBUG of valid_W : signal is std.standard.true;
   signal valid_raw_E : STD_LOGIC;
   signal valid_raw_N : STD_LOGIC;
   signal valid_raw_W : STD_LOGIC;
@@ -447,64 +355,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute CHECK_LICENSE_TYPE of fir_deci_W_i : label is "fir_raw_deci,fir_compiler_v7_2_24,{}";
   attribute downgradeipidentifiedwarnings of fir_deci_W_i : label is "yes";
   attribute x_core_info of fir_deci_W_i : label is "fir_compiler_v7_2_24,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_E : label is "ila_0,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_E : label is "yes";
-  attribute x_core_info of ila_E : label is "ila,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_N : label is "ila_0,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_N : label is "yes";
-  attribute x_core_info of ila_N : label is "ila,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_W : label is "ila_0,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_W : label is "yes";
-  attribute x_core_info of ila_W : label is "ila,Vivado 2025.1";
 begin
-  E0(13 downto 0) <= data_E(15 downto 2);
-  E1(13 downto 0) <= data_E(31 downto 18);
-  E2(13 downto 0) <= data_E(47 downto 34);
-  E3(13 downto 0) <= data_E(63 downto 50);
-  E4(13 downto 0) <= data_E(79 downto 66);
-  E5(13 downto 0) <= data_E(95 downto 82);
-  E6(13 downto 0) <= data_E(111 downto 98);
-  E7(13 downto 0) <= data_E(127 downto 114);
-  N0(13 downto 0) <= data_N(15 downto 2);
-  N1(13 downto 0) <= data_N(31 downto 18);
-  N2(13 downto 0) <= data_N(47 downto 34);
-  N3(13 downto 0) <= data_N(63 downto 50);
-  N4(13 downto 0) <= data_N(79 downto 66);
-  N5(13 downto 0) <= data_N(95 downto 82);
-  N6(13 downto 0) <= data_N(111 downto 98);
-  N7(13 downto 0) <= data_N(127 downto 114);
-  W0(13 downto 0) <= data_W(15 downto 2);
-  W1(13 downto 0) <= data_W(31 downto 18);
-  W2(13 downto 0) <= data_W(47 downto 34);
-  W3(13 downto 0) <= data_W(63 downto 50);
-  W4(13 downto 0) <= data_W(79 downto 66);
-  W5(13 downto 0) <= data_W(95 downto 82);
-  W6(13 downto 0) <= data_W(111 downto 98);
-  W7(13 downto 0) <= data_W(127 downto 114);
-  \^data_e\(113 downto 112) <= data_E(113 downto 112);
-  \^data_e\(97 downto 96) <= data_E(97 downto 96);
-  \^data_e\(81 downto 80) <= data_E(81 downto 80);
-  \^data_e\(65 downto 64) <= data_E(65 downto 64);
-  \^data_e\(49 downto 48) <= data_E(49 downto 48);
-  \^data_e\(33 downto 32) <= data_E(33 downto 32);
-  \^data_e\(17 downto 16) <= data_E(17 downto 16);
-  \^data_e\(1 downto 0) <= data_E(1 downto 0);
-  \^data_n\(113 downto 112) <= data_N(113 downto 112);
-  \^data_n\(97 downto 96) <= data_N(97 downto 96);
-  \^data_n\(81 downto 80) <= data_N(81 downto 80);
-  \^data_n\(65 downto 64) <= data_N(65 downto 64);
-  \^data_n\(49 downto 48) <= data_N(49 downto 48);
-  \^data_n\(33 downto 32) <= data_N(33 downto 32);
-  \^data_n\(17 downto 16) <= data_N(17 downto 16);
-  \^data_n\(1 downto 0) <= data_N(1 downto 0);
-  \^data_w\(113 downto 112) <= data_W(113 downto 112);
-  \^data_w\(97 downto 96) <= data_W(97 downto 96);
-  \^data_w\(81 downto 80) <= data_W(81 downto 80);
-  \^data_w\(65 downto 64) <= data_W(65 downto 64);
-  \^data_w\(49 downto 48) <= data_W(49 downto 48);
-  \^data_w\(33 downto 32) <= data_W(33 downto 32);
-  \^data_w\(17 downto 16) <= data_W(17 downto 16);
-  \^data_w\(1 downto 0) <= data_W(1 downto 0);
   doa_ready <= \^doa_ready\;
   raw_ready <= \^raw_ready\;
 \deci_low.active_i_1\: unisim.vcomponents.LUT4
@@ -5843,22 +5694,7 @@ fir_E_i: component ps_deci_low_0_0_fir_deci_low
       m_axis_data_tdata(30 downto 17) => dE(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_E_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_E,
-      s_axis_data_tdata(127 downto 114) => E7(13 downto 0),
-      s_axis_data_tdata(113 downto 112) => \^data_e\(113 downto 112),
-      s_axis_data_tdata(111 downto 98) => E6(13 downto 0),
-      s_axis_data_tdata(97 downto 96) => \^data_e\(97 downto 96),
-      s_axis_data_tdata(95 downto 82) => E5(13 downto 0),
-      s_axis_data_tdata(81 downto 80) => \^data_e\(81 downto 80),
-      s_axis_data_tdata(79 downto 66) => E4(13 downto 0),
-      s_axis_data_tdata(65 downto 64) => \^data_e\(65 downto 64),
-      s_axis_data_tdata(63 downto 50) => E3(13 downto 0),
-      s_axis_data_tdata(49 downto 48) => \^data_e\(49 downto 48),
-      s_axis_data_tdata(47 downto 34) => E2(13 downto 0),
-      s_axis_data_tdata(33 downto 32) => \^data_e\(33 downto 32),
-      s_axis_data_tdata(31 downto 18) => E1(13 downto 0),
-      s_axis_data_tdata(17 downto 16) => \^data_e\(17 downto 16),
-      s_axis_data_tdata(15 downto 2) => E0(13 downto 0),
-      s_axis_data_tdata(1 downto 0) => \^data_e\(1 downto 0),
+      s_axis_data_tdata(127 downto 0) => data_E(127 downto 0),
       s_axis_data_tready => NLW_fir_E_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => ready_E
     );
@@ -5870,22 +5706,7 @@ fir_N_i: component ps_deci_low_0_0_fir_deci_low
       m_axis_data_tdata(30 downto 17) => dN(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_N_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_N,
-      s_axis_data_tdata(127 downto 114) => N7(13 downto 0),
-      s_axis_data_tdata(113 downto 112) => \^data_n\(113 downto 112),
-      s_axis_data_tdata(111 downto 98) => N6(13 downto 0),
-      s_axis_data_tdata(97 downto 96) => \^data_n\(97 downto 96),
-      s_axis_data_tdata(95 downto 82) => N5(13 downto 0),
-      s_axis_data_tdata(81 downto 80) => \^data_n\(81 downto 80),
-      s_axis_data_tdata(79 downto 66) => N4(13 downto 0),
-      s_axis_data_tdata(65 downto 64) => \^data_n\(65 downto 64),
-      s_axis_data_tdata(63 downto 50) => N3(13 downto 0),
-      s_axis_data_tdata(49 downto 48) => \^data_n\(49 downto 48),
-      s_axis_data_tdata(47 downto 34) => N2(13 downto 0),
-      s_axis_data_tdata(33 downto 32) => \^data_n\(33 downto 32),
-      s_axis_data_tdata(31 downto 18) => N1(13 downto 0),
-      s_axis_data_tdata(17 downto 16) => \^data_n\(17 downto 16),
-      s_axis_data_tdata(15 downto 2) => N0(13 downto 0),
-      s_axis_data_tdata(1 downto 0) => \^data_n\(1 downto 0),
+      s_axis_data_tdata(127 downto 0) => data_N(127 downto 0),
       s_axis_data_tready => NLW_fir_N_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => ready_N
     );
@@ -5897,22 +5718,7 @@ fir_W_i: component ps_deci_low_0_0_fir_deci_low_HD1
       m_axis_data_tdata(30 downto 17) => dW(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_W_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_W,
-      s_axis_data_tdata(127 downto 114) => W7(13 downto 0),
-      s_axis_data_tdata(113 downto 112) => \^data_w\(113 downto 112),
-      s_axis_data_tdata(111 downto 98) => W6(13 downto 0),
-      s_axis_data_tdata(97 downto 96) => \^data_w\(97 downto 96),
-      s_axis_data_tdata(95 downto 82) => W5(13 downto 0),
-      s_axis_data_tdata(81 downto 80) => \^data_w\(81 downto 80),
-      s_axis_data_tdata(79 downto 66) => W4(13 downto 0),
-      s_axis_data_tdata(65 downto 64) => \^data_w\(65 downto 64),
-      s_axis_data_tdata(63 downto 50) => W3(13 downto 0),
-      s_axis_data_tdata(49 downto 48) => \^data_w\(49 downto 48),
-      s_axis_data_tdata(47 downto 34) => W2(13 downto 0),
-      s_axis_data_tdata(33 downto 32) => \^data_w\(33 downto 32),
-      s_axis_data_tdata(31 downto 18) => W1(13 downto 0),
-      s_axis_data_tdata(17 downto 16) => \^data_w\(17 downto 16),
-      s_axis_data_tdata(15 downto 2) => W0(13 downto 0),
-      s_axis_data_tdata(1 downto 0) => \^data_w\(1 downto 0),
+      s_axis_data_tdata(127 downto 0) => data_W(127 downto 0),
       s_axis_data_tready => NLW_fir_W_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => ready_W
     );
@@ -5930,22 +5736,7 @@ fir_deci_E_i: component ps_deci_low_0_0_fir_raw_deci
       m_axis_data_tdata(30 downto 17) => fir_raw_E(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_E,
-      s_axis_data_tdata(127 downto 114) => E7(13 downto 0),
-      s_axis_data_tdata(113 downto 112) => \^data_e\(113 downto 112),
-      s_axis_data_tdata(111 downto 98) => E6(13 downto 0),
-      s_axis_data_tdata(97 downto 96) => \^data_e\(97 downto 96),
-      s_axis_data_tdata(95 downto 82) => E5(13 downto 0),
-      s_axis_data_tdata(81 downto 80) => \^data_e\(81 downto 80),
-      s_axis_data_tdata(79 downto 66) => E4(13 downto 0),
-      s_axis_data_tdata(65 downto 64) => \^data_e\(65 downto 64),
-      s_axis_data_tdata(63 downto 50) => E3(13 downto 0),
-      s_axis_data_tdata(49 downto 48) => \^data_e\(49 downto 48),
-      s_axis_data_tdata(47 downto 34) => E2(13 downto 0),
-      s_axis_data_tdata(33 downto 32) => \^data_e\(33 downto 32),
-      s_axis_data_tdata(31 downto 18) => E1(13 downto 0),
-      s_axis_data_tdata(17 downto 16) => \^data_e\(17 downto 16),
-      s_axis_data_tdata(15 downto 2) => E0(13 downto 0),
-      s_axis_data_tdata(1 downto 0) => \^data_e\(1 downto 0),
+      s_axis_data_tdata(127 downto 0) => data_E(127 downto 0),
       s_axis_data_tready => NLW_fir_deci_E_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => ready_E
     );
@@ -5963,22 +5754,7 @@ fir_deci_N_i: component ps_deci_low_0_0_fir_raw_deci
       m_axis_data_tdata(30 downto 17) => fir_raw_N(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_N,
-      s_axis_data_tdata(127 downto 114) => N7(13 downto 0),
-      s_axis_data_tdata(113 downto 112) => \^data_n\(113 downto 112),
-      s_axis_data_tdata(111 downto 98) => N6(13 downto 0),
-      s_axis_data_tdata(97 downto 96) => \^data_n\(97 downto 96),
-      s_axis_data_tdata(95 downto 82) => N5(13 downto 0),
-      s_axis_data_tdata(81 downto 80) => \^data_n\(81 downto 80),
-      s_axis_data_tdata(79 downto 66) => N4(13 downto 0),
-      s_axis_data_tdata(65 downto 64) => \^data_n\(65 downto 64),
-      s_axis_data_tdata(63 downto 50) => N3(13 downto 0),
-      s_axis_data_tdata(49 downto 48) => \^data_n\(49 downto 48),
-      s_axis_data_tdata(47 downto 34) => N2(13 downto 0),
-      s_axis_data_tdata(33 downto 32) => \^data_n\(33 downto 32),
-      s_axis_data_tdata(31 downto 18) => N1(13 downto 0),
-      s_axis_data_tdata(17 downto 16) => \^data_n\(17 downto 16),
-      s_axis_data_tdata(15 downto 2) => N0(13 downto 0),
-      s_axis_data_tdata(1 downto 0) => \^data_n\(1 downto 0),
+      s_axis_data_tdata(127 downto 0) => data_N(127 downto 0),
       s_axis_data_tready => NLW_fir_deci_N_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => ready_N
     );
@@ -5996,22 +5772,7 @@ fir_deci_W_i: component ps_deci_low_0_0_fir_raw_deci_HD2
       m_axis_data_tdata(30 downto 17) => fir_raw_W(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_W,
-      s_axis_data_tdata(127 downto 114) => W7(13 downto 0),
-      s_axis_data_tdata(113 downto 112) => \^data_w\(113 downto 112),
-      s_axis_data_tdata(111 downto 98) => W6(13 downto 0),
-      s_axis_data_tdata(97 downto 96) => \^data_w\(97 downto 96),
-      s_axis_data_tdata(95 downto 82) => W5(13 downto 0),
-      s_axis_data_tdata(81 downto 80) => \^data_w\(81 downto 80),
-      s_axis_data_tdata(79 downto 66) => W4(13 downto 0),
-      s_axis_data_tdata(65 downto 64) => \^data_w\(65 downto 64),
-      s_axis_data_tdata(63 downto 50) => W3(13 downto 0),
-      s_axis_data_tdata(49 downto 48) => \^data_w\(49 downto 48),
-      s_axis_data_tdata(47 downto 34) => W2(13 downto 0),
-      s_axis_data_tdata(33 downto 32) => \^data_w\(33 downto 32),
-      s_axis_data_tdata(31 downto 18) => W1(13 downto 0),
-      s_axis_data_tdata(17 downto 16) => \^data_w\(17 downto 16),
-      s_axis_data_tdata(15 downto 2) => W0(13 downto 0),
-      s_axis_data_tdata(1 downto 0) => \^data_w\(1 downto 0),
+      s_axis_data_tdata(127 downto 0) => data_W(127 downto 0),
       s_axis_data_tready => NLW_fir_deci_W_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => ready_W
     );
@@ -6030,51 +5791,6 @@ i_1: unisim.vcomponents.LUT1
         port map (
       I0 => '0',
       O => active_2
-    );
-ila_E: component ps_deci_low_0_0_ila_0
-     port map (
-      clk => clk,
-      probe0(13 downto 0) => E0(13 downto 0),
-      probe1(13 downto 0) => E1(13 downto 0),
-      probe10(0) => valid_E,
-      probe2(13 downto 0) => E2(13 downto 0),
-      probe3(13 downto 0) => E3(13 downto 0),
-      probe4(13 downto 0) => E4(13 downto 0),
-      probe5(13 downto 0) => E5(13 downto 0),
-      probe6(13 downto 0) => E6(13 downto 0),
-      probe7(13 downto 0) => E7(13 downto 0),
-      probe8(0) => ready_E,
-      probe9(13 downto 0) => dE(13 downto 0)
-    );
-ila_N: component ps_deci_low_0_0_ila_0
-     port map (
-      clk => clk,
-      probe0(13 downto 0) => N0(13 downto 0),
-      probe1(13 downto 0) => N1(13 downto 0),
-      probe10(0) => valid_N,
-      probe2(13 downto 0) => N2(13 downto 0),
-      probe3(13 downto 0) => N3(13 downto 0),
-      probe4(13 downto 0) => N4(13 downto 0),
-      probe5(13 downto 0) => N5(13 downto 0),
-      probe6(13 downto 0) => N6(13 downto 0),
-      probe7(13 downto 0) => N7(13 downto 0),
-      probe8(0) => ready_N,
-      probe9(13 downto 0) => dN(13 downto 0)
-    );
-ila_W: component ps_deci_low_0_0_ila_0_HD3
-     port map (
-      clk => clk,
-      probe0(13 downto 0) => W0(13 downto 0),
-      probe1(13 downto 0) => W1(13 downto 0),
-      probe10(0) => valid_W,
-      probe2(13 downto 0) => W2(13 downto 0),
-      probe3(13 downto 0) => W3(13 downto 0),
-      probe4(13 downto 0) => W4(13 downto 0),
-      probe5(13 downto 0) => W5(13 downto 0),
-      probe6(13 downto 0) => W6(13 downto 0),
-      probe7(13 downto 0) => W7(13 downto 0),
-      probe8(0) => ready_W,
-      probe9(13 downto 0) => dW(13 downto 0)
     );
 end STRUCTURE;
 library IEEE;

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Nov 13 23:54:23 2025
+// Date        : Fri Nov 14 23:26:01 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -78,7 +78,7 @@ module ps_deci_low_0_0
         .resetn(resetn));
 endmodule
 
-(* ORIG_REF_NAME = "deci_low" *) (* keep_hierarchy = "soft" *) 
+(* ORIG_REF_NAME = "deci_low" *) 
 module ps_deci_low_0_0_deci_low
    (clk,
     resetn,
@@ -109,42 +109,18 @@ module ps_deci_low_0_0_deci_low
   output doa_ready;
   output [69:0]doa_data;
 
-  (* MARK_DEBUG *) wire [13:0]E0;
-  (* MARK_DEBUG *) wire [13:0]E1;
-  (* MARK_DEBUG *) wire [13:0]E2;
-  (* MARK_DEBUG *) wire [13:0]E3;
-  (* MARK_DEBUG *) wire [13:0]E4;
-  (* MARK_DEBUG *) wire [13:0]E5;
-  (* MARK_DEBUG *) wire [13:0]E6;
-  (* MARK_DEBUG *) wire [13:0]E7;
-  (* MARK_DEBUG *) wire [13:0]N0;
-  (* MARK_DEBUG *) wire [13:0]N1;
-  (* MARK_DEBUG *) wire [13:0]N2;
-  (* MARK_DEBUG *) wire [13:0]N3;
-  (* MARK_DEBUG *) wire [13:0]N4;
-  (* MARK_DEBUG *) wire [13:0]N5;
-  (* MARK_DEBUG *) wire [13:0]N6;
-  (* MARK_DEBUG *) wire [13:0]N7;
-  (* MARK_DEBUG *) wire [13:0]W0;
-  (* MARK_DEBUG *) wire [13:0]W1;
-  (* MARK_DEBUG *) wire [13:0]W2;
-  (* MARK_DEBUG *) wire [13:0]W3;
-  (* MARK_DEBUG *) wire [13:0]W4;
-  (* MARK_DEBUG *) wire [13:0]W5;
-  (* MARK_DEBUG *) wire [13:0]W6;
-  (* MARK_DEBUG *) wire [13:0]W7;
   wire active;
   wire active0;
   (* async_reg = "true" *) wire active_1;
   (* async_reg = "true" *) wire active_2;
   wire clear;
   wire clk;
-  (* MARK_DEBUG *) wire [13:0]dE;
-  (* MARK_DEBUG *) wire [13:0]dN;
-  (* MARK_DEBUG *) wire [13:0]dW;
-  wire [113:0]\^data_E ;
-  wire [113:0]\^data_N ;
-  wire [113:0]\^data_W ;
+  wire [13:0]dE;
+  wire [13:0]dN;
+  wire [13:0]dW;
+  wire [127:0]data_E;
+  wire [127:0]data_N;
+  wire [127:0]data_W;
   wire \deci_low.counter[0]_i_3_n_0 ;
   wire [27:0]\deci_low.counter_reg ;
   wire \deci_low.counter_reg[0]_i_2_n_0 ;
@@ -311,13 +287,13 @@ module ps_deci_low_0_0_deci_low
   wire [195:0]raw_in_data;
   wire [195:0]raw_out_data;
   wire raw_ready;
-  (* MARK_DEBUG *) wire ready_E;
-  (* MARK_DEBUG *) wire ready_N;
-  (* MARK_DEBUG *) wire ready_W;
+  wire ready_E;
+  wire ready_N;
+  wire ready_W;
   wire resetn;
-  (* MARK_DEBUG *) wire valid_E;
-  (* MARK_DEBUG *) wire valid_N;
-  (* MARK_DEBUG *) wire valid_W;
+  wire valid_E;
+  wire valid_N;
+  wire valid_W;
   wire valid_raw_E;
   wire valid_raw_N;
   wire valid_raw_W;
@@ -346,54 +322,6 @@ module ps_deci_low_0_0_deci_low
   wire NLW_fir_deci_W_i_s_axis_data_tready_UNCONNECTED;
   wire [127:0]NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED;
 
-  assign E0 = data_E[15:2];
-  assign E1 = data_E[31:18];
-  assign E2 = data_E[47:34];
-  assign E3 = data_E[63:50];
-  assign E4 = data_E[79:66];
-  assign E5 = data_E[95:82];
-  assign E6 = data_E[111:98];
-  assign E7 = data_E[127:114];
-  assign N0 = data_N[15:2];
-  assign N1 = data_N[31:18];
-  assign N2 = data_N[47:34];
-  assign N3 = data_N[63:50];
-  assign N4 = data_N[79:66];
-  assign N5 = data_N[95:82];
-  assign N6 = data_N[111:98];
-  assign N7 = data_N[127:114];
-  assign W0 = data_W[15:2];
-  assign W1 = data_W[31:18];
-  assign W2 = data_W[47:34];
-  assign W3 = data_W[63:50];
-  assign W4 = data_W[79:66];
-  assign W5 = data_W[95:82];
-  assign W6 = data_W[111:98];
-  assign W7 = data_W[127:114];
-  assign \^data_E [113:112] = data_E[113:112];
-  assign \^data_E [97:96] = data_E[97:96];
-  assign \^data_E [81:80] = data_E[81:80];
-  assign \^data_E [65:64] = data_E[65:64];
-  assign \^data_E [49:48] = data_E[49:48];
-  assign \^data_E [33:32] = data_E[33:32];
-  assign \^data_E [17:16] = data_E[17:16];
-  assign \^data_E [1:0] = data_E[1:0];
-  assign \^data_N [113:112] = data_N[113:112];
-  assign \^data_N [97:96] = data_N[97:96];
-  assign \^data_N [81:80] = data_N[81:80];
-  assign \^data_N [65:64] = data_N[65:64];
-  assign \^data_N [49:48] = data_N[49:48];
-  assign \^data_N [33:32] = data_N[33:32];
-  assign \^data_N [17:16] = data_N[17:16];
-  assign \^data_N [1:0] = data_N[1:0];
-  assign \^data_W [113:112] = data_W[113:112];
-  assign \^data_W [97:96] = data_W[97:96];
-  assign \^data_W [81:80] = data_W[81:80];
-  assign \^data_W [65:64] = data_W[65:64];
-  assign \^data_W [49:48] = data_W[49:48];
-  assign \^data_W [33:32] = data_W[33:32];
-  assign \^data_W [17:16] = data_W[17:16];
-  assign \^data_W [1:0] = data_W[1:0];
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h8000)) 
@@ -4310,7 +4238,7 @@ module ps_deci_low_0_0_deci_low
         .aresetn(resetn),
         .m_axis_data_tdata({NLW_fir_E_i_m_axis_data_tdata_UNCONNECTED[31],dE,NLW_fir_E_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
         .m_axis_data_tvalid(valid_E),
-        .s_axis_data_tdata({E7,\^data_E [113:112],E6,\^data_E [97:96],E5,\^data_E [81:80],E4,\^data_E [65:64],E3,\^data_E [49:48],E2,\^data_E [33:32],E1,\^data_E [17:16],E0,\^data_E [1:0]}),
+        .s_axis_data_tdata(data_E),
         .s_axis_data_tready(NLW_fir_E_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(ready_E));
   (* CHECK_LICENSE_TYPE = "fir_deci_low,fir_compiler_v7_2_24,{}" *) 
@@ -4321,7 +4249,7 @@ module ps_deci_low_0_0_deci_low
         .aresetn(resetn),
         .m_axis_data_tdata({NLW_fir_N_i_m_axis_data_tdata_UNCONNECTED[31],dN,NLW_fir_N_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
         .m_axis_data_tvalid(valid_N),
-        .s_axis_data_tdata({N7,\^data_N [113:112],N6,\^data_N [97:96],N5,\^data_N [81:80],N4,\^data_N [65:64],N3,\^data_N [49:48],N2,\^data_N [33:32],N1,\^data_N [17:16],N0,\^data_N [1:0]}),
+        .s_axis_data_tdata(data_N),
         .s_axis_data_tready(NLW_fir_N_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(ready_N));
   (* CHECK_LICENSE_TYPE = "fir_deci_low,fir_compiler_v7_2_24,{}" *) 
@@ -4332,7 +4260,7 @@ module ps_deci_low_0_0_deci_low
         .aresetn(resetn),
         .m_axis_data_tdata({NLW_fir_W_i_m_axis_data_tdata_UNCONNECTED[31],dW,NLW_fir_W_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
         .m_axis_data_tvalid(valid_W),
-        .s_axis_data_tdata({W7,\^data_W [113:112],W6,\^data_W [97:96],W5,\^data_W [81:80],W4,\^data_W [65:64],W3,\^data_W [49:48],W2,\^data_W [33:32],W1,\^data_W [17:16],W0,\^data_W [1:0]}),
+        .s_axis_data_tdata(data_W),
         .s_axis_data_tready(NLW_fir_W_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(ready_W));
   (* CHECK_LICENSE_TYPE = "fir_raw_deci,fir_compiler_v7_2_24,{}" *) 
@@ -4343,7 +4271,7 @@ module ps_deci_low_0_0_deci_low
         .aresetn(resetn),
         .m_axis_data_tdata({NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED[127],fir_raw_E,NLW_fir_deci_E_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
         .m_axis_data_tvalid(valid_raw_E),
-        .s_axis_data_tdata({E7,\^data_E [113:112],E6,\^data_E [97:96],E5,\^data_E [81:80],E4,\^data_E [65:64],E3,\^data_E [49:48],E2,\^data_E [33:32],E1,\^data_E [17:16],E0,\^data_E [1:0]}),
+        .s_axis_data_tdata(data_E),
         .s_axis_data_tready(NLW_fir_deci_E_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(ready_E));
   (* CHECK_LICENSE_TYPE = "fir_raw_deci,fir_compiler_v7_2_24,{}" *) 
@@ -4354,7 +4282,7 @@ module ps_deci_low_0_0_deci_low
         .aresetn(resetn),
         .m_axis_data_tdata({NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED[127],fir_raw_N,NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
         .m_axis_data_tvalid(valid_raw_N),
-        .s_axis_data_tdata({N7,\^data_N [113:112],N6,\^data_N [97:96],N5,\^data_N [81:80],N4,\^data_N [65:64],N3,\^data_N [49:48],N2,\^data_N [33:32],N1,\^data_N [17:16],N0,\^data_N [1:0]}),
+        .s_axis_data_tdata(data_N),
         .s_axis_data_tready(NLW_fir_deci_N_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(ready_N));
   (* CHECK_LICENSE_TYPE = "fir_raw_deci,fir_compiler_v7_2_24,{}" *) 
@@ -4365,7 +4293,7 @@ module ps_deci_low_0_0_deci_low
         .aresetn(resetn),
         .m_axis_data_tdata({NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED[127],fir_raw_W,NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
         .m_axis_data_tvalid(valid_raw_W),
-        .s_axis_data_tdata({W7,\^data_W [113:112],W6,\^data_W [97:96],W5,\^data_W [81:80],W4,\^data_W [65:64],W3,\^data_W [49:48],W2,\^data_W [33:32],W1,\^data_W [17:16],W0,\^data_W [1:0]}),
+        .s_axis_data_tdata(data_W),
         .s_axis_data_tready(NLW_fir_deci_W_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(ready_W));
   LUT1 #(
@@ -4378,54 +4306,6 @@ module ps_deci_low_0_0_deci_low
     i_1
        (.I0(1'b0),
         .O(active_2));
-  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_deci_low_0_0_ila_0 ila_E
-       (.clk(clk),
-        .probe0(E0),
-        .probe1(E1),
-        .probe10(valid_E),
-        .probe2(E2),
-        .probe3(E3),
-        .probe4(E4),
-        .probe5(E5),
-        .probe6(E6),
-        .probe7(E7),
-        .probe8(ready_E),
-        .probe9(dE));
-  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_deci_low_0_0_ila_0 ila_N
-       (.clk(clk),
-        .probe0(N0),
-        .probe1(N1),
-        .probe10(valid_N),
-        .probe2(N2),
-        .probe3(N3),
-        .probe4(N4),
-        .probe5(N5),
-        .probe6(N6),
-        .probe7(N7),
-        .probe8(ready_N),
-        .probe9(dN));
-  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_deci_low_0_0_ila_0_HD3 ila_W
-       (.clk(clk),
-        .probe0(W0),
-        .probe1(W1),
-        .probe10(valid_W),
-        .probe2(W2),
-        .probe3(W3),
-        .probe4(W4),
-        .probe5(W5),
-        .probe6(W6),
-        .probe7(W7),
-        .probe8(ready_W),
-        .probe9(dW));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa_low" *) 
@@ -4574,68 +4454,6 @@ module ps_deci_low_0_0_fir_raw_deci_HD2
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_DATA TVALID" *) (* X_INTERFACE_MODE = "slave S_AXIS_DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXIS_DATA, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0" *) input s_axis_data_tvalid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS_DATA TDATA" *) output [127:0]m_axis_data_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_DATA TDATA" *) input [127:0]s_axis_data_tdata;
-
-
-endmodule
-
-(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
-(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
-module ps_deci_low_0_0_ila_0
-   (clk,
-    probe0,
-    probe1,
-    probe2,
-    probe3,
-    probe4,
-    probe5,
-    probe6,
-    probe7,
-    probe8,
-    probe9,
-    probe10);
-  (* syn_isclock = "1" *) input clk;
-  input [13:0]probe0;
-  input [13:0]probe1;
-  input [13:0]probe2;
-  input [13:0]probe3;
-  input [13:0]probe4;
-  input [13:0]probe5;
-  input [13:0]probe6;
-  input [13:0]probe7;
-  input [0:0]probe8;
-  input [13:0]probe9;
-  input [0:0]probe10;
-
-
-endmodule
-
-(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
-(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
-module ps_deci_low_0_0_ila_0_HD3
-   (clk,
-    probe0,
-    probe1,
-    probe10,
-    probe2,
-    probe3,
-    probe4,
-    probe5,
-    probe6,
-    probe7,
-    probe8,
-    probe9);
-  (* syn_isclock = "1" *) input clk;
-  input [13:0]probe0;
-  input [13:0]probe1;
-  input [0:0]probe10;
-  input [13:0]probe2;
-  input [13:0]probe3;
-  input [13:0]probe4;
-  input [13:0]probe5;
-  input [13:0]probe6;
-  input [13:0]probe7;
-  input [0:0]probe8;
-  input [13:0]probe9;
 
 
 endmodule

@@ -1,0 +1,2 @@
+fir_doa_high_re_189.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/fir_doa_high_re_189/sim/fir_doa_high_re_189.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v
