@@ -244,7 +244,7 @@ generate
 	begin
 	  if (validN & validE & validW)
 	  begin
-	    phase_sum <= diffN + diffN + diffN;
+	    phase_sum <= diffN + diffE + diffW;
 	    mul <= 1;
 	  end
 	  else

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov 16 12:22:07 2025
+-- Date        : Sun Nov 16 14:56:45 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.vhdl
@@ -3651,6 +3651,45 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   attribute MARK_DEBUG of N : signal is std.standard.true;
   signal W : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of W : signal is std.standard.true;
+  signal \deci_low.diffE[15]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_5_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_6_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_7_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_8_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[15]_i_9_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[19]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[19]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[19]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[19]_i_5_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_5_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_6_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_7_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_8_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE[7]_i_9_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[19]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[19]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[19]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.diffE_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \deci_low.diffN[15]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.diffN[15]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.diffN[15]_i_4_n_0\ : STD_LOGIC;
@@ -3690,8 +3729,55 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   signal \deci_low.diffN_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \deci_low.diffN_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \deci_low.diffN_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_5_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_6_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_7_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_8_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[15]_i_9_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[19]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[19]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[19]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[19]_i_5_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_5_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_6_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_7_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_8_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW[7]_i_9_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[19]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[19]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[19]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.diffW_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \deci_low.freq[27]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mul_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_10_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_11_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_12_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_13_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_14_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_15_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_16_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[15]_i_17_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[15]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[15]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[15]_i_4_n_0\ : STD_LOGIC;
@@ -3700,12 +3786,22 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   signal \deci_low.phase_sum[15]_i_7_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[15]_i_8_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[15]_i_9_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[21]_i_10_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[21]_i_11_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[21]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[21]_i_4_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[21]_i_5_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[21]_i_6_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[21]_i_7_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[21]_i_8_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[21]_i_9_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_10_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_11_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_12_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_13_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_14_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_15_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_16_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[7]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[7]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[7]_i_4_n_0\ : STD_LOGIC;
@@ -3713,6 +3809,7 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   signal \deci_low.phase_sum[7]_i_6_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[7]_i_7_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum[7]_i_8_n_0\ : STD_LOGIC;
+  signal \deci_low.phase_sum[7]_i_9_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[15]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[15]_i_1_n_1\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[15]_i_1_n_2\ : STD_LOGIC;
@@ -3734,9 +3831,13 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   signal \deci_low.phase_sum_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \deci_low.prevN[19]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.prevE[19]_i_1_n_0\ : STD_LOGIC;
+  signal diffE : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diffE02_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal diffN : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal diffN00_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diffN04_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diffW : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diffW00_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal envE : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal envN : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal envW : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -3775,14 +3876,20 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   attribute MARK_DEBUG of \^phase_w\ : signal is std.standard.true;
   signal phase_sum : STD_LOGIC_VECTOR ( 21 downto 0 );
   signal phase_sum0 : STD_LOGIC_VECTOR ( 21 downto 0 );
+  signal prevE : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal prevN : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal prevW : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \^valid\ : STD_LOGIC;
   attribute MARK_DEBUG of valid : signal is std.standard.true;
   signal validE : STD_LOGIC;
   signal validN : STD_LOGIC;
   signal validW : STD_LOGIC;
+  signal \NLW_deci_low.diffE_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_deci_low.diffE_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_deci_low.diffN_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_deci_low.diffN_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_deci_low.diffW_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_deci_low.diffW_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_deci_low.phase_sum_reg[21]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
   signal \NLW_deci_low.phase_sum_reg[21]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
   signal NLW_doa_freq_P_UNCONNECTED : STD_LOGIC_VECTOR ( 49 downto 0 );
@@ -3897,9 +4004,15 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   attribute KEEP of \deci_low.W_reg[9]\ : label is "yes";
   attribute mark_debug_string of \deci_low.W_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \deci_low.diffE_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \deci_low.diffE_reg[19]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \deci_low.diffE_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \deci_low.diffN_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \deci_low.diffN_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \deci_low.diffN_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \deci_low.diffW_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \deci_low.diffW_reg[19]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \deci_low.diffW_reg[7]_i_1\ : label is 35;
   attribute KEEP of \deci_low.env_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \deci_low.env_E_reg[0]\ : label is "yes";
   attribute KEEP of \deci_low.env_E_reg[10]\ : label is "yes";
@@ -4571,6 +4684,410 @@ begin
       Q => W(9),
       R => '0'
     );
+\deci_low.diffE[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(15),
+      I1 => prevE(15),
+      O => \deci_low.diffE[15]_i_2_n_0\
+    );
+\deci_low.diffE[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(14),
+      I1 => prevE(14),
+      O => \deci_low.diffE[15]_i_3_n_0\
+    );
+\deci_low.diffE[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(13),
+      I1 => prevE(13),
+      O => \deci_low.diffE[15]_i_4_n_0\
+    );
+\deci_low.diffE[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(12),
+      I1 => prevE(12),
+      O => \deci_low.diffE[15]_i_5_n_0\
+    );
+\deci_low.diffE[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(11),
+      I1 => prevE(11),
+      O => \deci_low.diffE[15]_i_6_n_0\
+    );
+\deci_low.diffE[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(10),
+      I1 => prevE(10),
+      O => \deci_low.diffE[15]_i_7_n_0\
+    );
+\deci_low.diffE[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(9),
+      I1 => prevE(9),
+      O => \deci_low.diffE[15]_i_8_n_0\
+    );
+\deci_low.diffE[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(8),
+      I1 => prevE(8),
+      O => \deci_low.diffE[15]_i_9_n_0\
+    );
+\deci_low.diffE[19]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(19),
+      I1 => prevE(19),
+      O => \deci_low.diffE[19]_i_2_n_0\
+    );
+\deci_low.diffE[19]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(18),
+      I1 => prevE(18),
+      O => \deci_low.diffE[19]_i_3_n_0\
+    );
+\deci_low.diffE[19]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(17),
+      I1 => prevE(17),
+      O => \deci_low.diffE[19]_i_4_n_0\
+    );
+\deci_low.diffE[19]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(16),
+      I1 => prevE(16),
+      O => \deci_low.diffE[19]_i_5_n_0\
+    );
+\deci_low.diffE[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(7),
+      I1 => prevE(7),
+      O => \deci_low.diffE[7]_i_2_n_0\
+    );
+\deci_low.diffE[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(6),
+      I1 => prevE(6),
+      O => \deci_low.diffE[7]_i_3_n_0\
+    );
+\deci_low.diffE[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(5),
+      I1 => prevE(5),
+      O => \deci_low.diffE[7]_i_4_n_0\
+    );
+\deci_low.diffE[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(4),
+      I1 => prevE(4),
+      O => \deci_low.diffE[7]_i_5_n_0\
+    );
+\deci_low.diffE[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(3),
+      I1 => prevE(3),
+      O => \deci_low.diffE[7]_i_6_n_0\
+    );
+\deci_low.diffE[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(2),
+      I1 => prevE(2),
+      O => \deci_low.diffE[7]_i_7_n_0\
+    );
+\deci_low.diffE[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(1),
+      I1 => prevE(1),
+      O => \deci_low.diffE[7]_i_8_n_0\
+    );
+\deci_low.diffE[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_e\(0),
+      I1 => prevE(0),
+      O => \deci_low.diffE[7]_i_9_n_0\
+    );
+\deci_low.diffE_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(0),
+      Q => diffE(0),
+      R => '0'
+    );
+\deci_low.diffE_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(10),
+      Q => diffE(10),
+      R => '0'
+    );
+\deci_low.diffE_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(11),
+      Q => diffE(11),
+      R => '0'
+    );
+\deci_low.diffE_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(12),
+      Q => diffE(12),
+      R => '0'
+    );
+\deci_low.diffE_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(13),
+      Q => diffE(13),
+      R => '0'
+    );
+\deci_low.diffE_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(14),
+      Q => diffE(14),
+      R => '0'
+    );
+\deci_low.diffE_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(15),
+      Q => diffE(15),
+      R => '0'
+    );
+\deci_low.diffE_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \deci_low.diffE_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \deci_low.diffE_reg[15]_i_1_n_0\,
+      CO(6) => \deci_low.diffE_reg[15]_i_1_n_1\,
+      CO(5) => \deci_low.diffE_reg[15]_i_1_n_2\,
+      CO(4) => \deci_low.diffE_reg[15]_i_1_n_3\,
+      CO(3) => \deci_low.diffE_reg[15]_i_1_n_4\,
+      CO(2) => \deci_low.diffE_reg[15]_i_1_n_5\,
+      CO(1) => \deci_low.diffE_reg[15]_i_1_n_6\,
+      CO(0) => \deci_low.diffE_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => \^phase_e\(15 downto 8),
+      O(7 downto 0) => diffE02_out(15 downto 8),
+      S(7) => \deci_low.diffE[15]_i_2_n_0\,
+      S(6) => \deci_low.diffE[15]_i_3_n_0\,
+      S(5) => \deci_low.diffE[15]_i_4_n_0\,
+      S(4) => \deci_low.diffE[15]_i_5_n_0\,
+      S(3) => \deci_low.diffE[15]_i_6_n_0\,
+      S(2) => \deci_low.diffE[15]_i_7_n_0\,
+      S(1) => \deci_low.diffE[15]_i_8_n_0\,
+      S(0) => \deci_low.diffE[15]_i_9_n_0\
+    );
+\deci_low.diffE_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(16),
+      Q => diffE(16),
+      R => '0'
+    );
+\deci_low.diffE_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(17),
+      Q => diffE(17),
+      R => '0'
+    );
+\deci_low.diffE_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(18),
+      Q => diffE(18),
+      R => '0'
+    );
+\deci_low.diffE_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(19),
+      Q => diffE(19),
+      R => '0'
+    );
+\deci_low.diffE_reg[19]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \deci_low.diffE_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_deci_low.diffE_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \deci_low.diffE_reg[19]_i_1_n_5\,
+      CO(1) => \deci_low.diffE_reg[19]_i_1_n_6\,
+      CO(0) => \deci_low.diffE_reg[19]_i_1_n_7\,
+      DI(7 downto 3) => B"00000",
+      DI(2 downto 0) => \^phase_e\(18 downto 16),
+      O(7 downto 4) => \NLW_deci_low.diffE_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => diffE02_out(19 downto 16),
+      S(7 downto 4) => B"0000",
+      S(3) => \deci_low.diffE[19]_i_2_n_0\,
+      S(2) => \deci_low.diffE[19]_i_3_n_0\,
+      S(1) => \deci_low.diffE[19]_i_4_n_0\,
+      S(0) => \deci_low.diffE[19]_i_5_n_0\
+    );
+\deci_low.diffE_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(1),
+      Q => diffE(1),
+      R => '0'
+    );
+\deci_low.diffE_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(2),
+      Q => diffE(2),
+      R => '0'
+    );
+\deci_low.diffE_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(3),
+      Q => diffE(3),
+      R => '0'
+    );
+\deci_low.diffE_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(4),
+      Q => diffE(4),
+      R => '0'
+    );
+\deci_low.diffE_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(5),
+      Q => diffE(5),
+      R => '0'
+    );
+\deci_low.diffE_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(6),
+      Q => diffE(6),
+      R => '0'
+    );
+\deci_low.diffE_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(7),
+      Q => diffE(7),
+      R => '0'
+    );
+\deci_low.diffE_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \deci_low.diffE_reg[7]_i_1_n_0\,
+      CO(6) => \deci_low.diffE_reg[7]_i_1_n_1\,
+      CO(5) => \deci_low.diffE_reg[7]_i_1_n_2\,
+      CO(4) => \deci_low.diffE_reg[7]_i_1_n_3\,
+      CO(3) => \deci_low.diffE_reg[7]_i_1_n_4\,
+      CO(2) => \deci_low.diffE_reg[7]_i_1_n_5\,
+      CO(1) => \deci_low.diffE_reg[7]_i_1_n_6\,
+      CO(0) => \deci_low.diffE_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => \^phase_e\(7 downto 0),
+      O(7 downto 0) => diffE02_out(7 downto 0),
+      S(7) => \deci_low.diffE[7]_i_2_n_0\,
+      S(6) => \deci_low.diffE[7]_i_3_n_0\,
+      S(5) => \deci_low.diffE[7]_i_4_n_0\,
+      S(4) => \deci_low.diffE[7]_i_5_n_0\,
+      S(3) => \deci_low.diffE[7]_i_6_n_0\,
+      S(2) => \deci_low.diffE[7]_i_7_n_0\,
+      S(1) => \deci_low.diffE[7]_i_8_n_0\,
+      S(0) => \deci_low.diffE[7]_i_9_n_0\
+    );
+\deci_low.diffE_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(8),
+      Q => diffE(8),
+      R => '0'
+    );
+\deci_low.diffE_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffE02_out(9),
+      Q => diffE(9),
+      R => '0'
+    );
 \deci_low.diffN[15]_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
@@ -4755,7 +5272,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(0),
+      D => diffN04_out(0),
       Q => diffN(0),
       R => '0'
     );
@@ -4763,7 +5280,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(10),
+      D => diffN04_out(10),
       Q => diffN(10),
       R => '0'
     );
@@ -4771,7 +5288,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(11),
+      D => diffN04_out(11),
       Q => diffN(11),
       R => '0'
     );
@@ -4779,7 +5296,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(12),
+      D => diffN04_out(12),
       Q => diffN(12),
       R => '0'
     );
@@ -4787,7 +5304,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(13),
+      D => diffN04_out(13),
       Q => diffN(13),
       R => '0'
     );
@@ -4795,7 +5312,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(14),
+      D => diffN04_out(14),
       Q => diffN(14),
       R => '0'
     );
@@ -4803,7 +5320,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(15),
+      D => diffN04_out(15),
       Q => diffN(15),
       R => '0'
     );
@@ -4820,7 +5337,7 @@ begin
       CO(1) => \deci_low.diffN_reg[15]_i_1_n_6\,
       CO(0) => \deci_low.diffN_reg[15]_i_1_n_7\,
       DI(7 downto 0) => \^phase_n\(15 downto 8),
-      O(7 downto 0) => diffN00_out(15 downto 8),
+      O(7 downto 0) => diffN04_out(15 downto 8),
       S(7) => \deci_low.diffN[15]_i_2_n_0\,
       S(6) => \deci_low.diffN[15]_i_3_n_0\,
       S(5) => \deci_low.diffN[15]_i_4_n_0\,
@@ -4834,7 +5351,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(16),
+      D => diffN04_out(16),
       Q => diffN(16),
       R => '0'
     );
@@ -4842,7 +5359,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(17),
+      D => diffN04_out(17),
       Q => diffN(17),
       R => '0'
     );
@@ -4850,7 +5367,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(18),
+      D => diffN04_out(18),
       Q => diffN(18),
       R => '0'
     );
@@ -4858,7 +5375,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(19),
+      D => diffN04_out(19),
       Q => diffN(19),
       R => '0'
     );
@@ -4873,7 +5390,7 @@ begin
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => \^phase_n\(18 downto 16),
       O(7 downto 4) => \NLW_deci_low.diffN_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => diffN00_out(19 downto 16),
+      O(3 downto 0) => diffN04_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3) => \deci_low.diffN[19]_i_2_n_0\,
       S(2) => \deci_low.diffN[19]_i_3_n_0\,
@@ -4884,7 +5401,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(1),
+      D => diffN04_out(1),
       Q => diffN(1),
       R => '0'
     );
@@ -4892,7 +5409,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(2),
+      D => diffN04_out(2),
       Q => diffN(2),
       R => '0'
     );
@@ -4900,7 +5417,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(3),
+      D => diffN04_out(3),
       Q => diffN(3),
       R => '0'
     );
@@ -4908,7 +5425,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(4),
+      D => diffN04_out(4),
       Q => diffN(4),
       R => '0'
     );
@@ -4916,7 +5433,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(5),
+      D => diffN04_out(5),
       Q => diffN(5),
       R => '0'
     );
@@ -4924,7 +5441,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(6),
+      D => diffN04_out(6),
       Q => diffN(6),
       R => '0'
     );
@@ -4932,7 +5449,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(7),
+      D => diffN04_out(7),
       Q => diffN(7),
       R => '0'
     );
@@ -4949,7 +5466,7 @@ begin
       CO(1) => \deci_low.diffN_reg[7]_i_1_n_6\,
       CO(0) => \deci_low.diffN_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^phase_n\(7 downto 0),
-      O(7 downto 0) => diffN00_out(7 downto 0),
+      O(7 downto 0) => diffN04_out(7 downto 0),
       S(7) => \deci_low.diffN[7]_i_2_n_0\,
       S(6) => \deci_low.diffN[7]_i_3_n_0\,
       S(5) => \deci_low.diffN[7]_i_4_n_0\,
@@ -4963,7 +5480,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(8),
+      D => diffN04_out(8),
       Q => diffN(8),
       R => '0'
     );
@@ -4971,8 +5488,412 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => diffN00_out(9),
+      D => diffN04_out(9),
       Q => diffN(9),
+      R => '0'
+    );
+\deci_low.diffW[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(15),
+      I1 => prevW(15),
+      O => \deci_low.diffW[15]_i_2_n_0\
+    );
+\deci_low.diffW[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(14),
+      I1 => prevW(14),
+      O => \deci_low.diffW[15]_i_3_n_0\
+    );
+\deci_low.diffW[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(13),
+      I1 => prevW(13),
+      O => \deci_low.diffW[15]_i_4_n_0\
+    );
+\deci_low.diffW[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(12),
+      I1 => prevW(12),
+      O => \deci_low.diffW[15]_i_5_n_0\
+    );
+\deci_low.diffW[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(11),
+      I1 => prevW(11),
+      O => \deci_low.diffW[15]_i_6_n_0\
+    );
+\deci_low.diffW[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(10),
+      I1 => prevW(10),
+      O => \deci_low.diffW[15]_i_7_n_0\
+    );
+\deci_low.diffW[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(9),
+      I1 => prevW(9),
+      O => \deci_low.diffW[15]_i_8_n_0\
+    );
+\deci_low.diffW[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(8),
+      I1 => prevW(8),
+      O => \deci_low.diffW[15]_i_9_n_0\
+    );
+\deci_low.diffW[19]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(19),
+      I1 => prevW(19),
+      O => \deci_low.diffW[19]_i_2_n_0\
+    );
+\deci_low.diffW[19]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(18),
+      I1 => prevW(18),
+      O => \deci_low.diffW[19]_i_3_n_0\
+    );
+\deci_low.diffW[19]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(17),
+      I1 => prevW(17),
+      O => \deci_low.diffW[19]_i_4_n_0\
+    );
+\deci_low.diffW[19]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(16),
+      I1 => prevW(16),
+      O => \deci_low.diffW[19]_i_5_n_0\
+    );
+\deci_low.diffW[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(7),
+      I1 => prevW(7),
+      O => \deci_low.diffW[7]_i_2_n_0\
+    );
+\deci_low.diffW[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(6),
+      I1 => prevW(6),
+      O => \deci_low.diffW[7]_i_3_n_0\
+    );
+\deci_low.diffW[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(5),
+      I1 => prevW(5),
+      O => \deci_low.diffW[7]_i_4_n_0\
+    );
+\deci_low.diffW[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(4),
+      I1 => prevW(4),
+      O => \deci_low.diffW[7]_i_5_n_0\
+    );
+\deci_low.diffW[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(3),
+      I1 => prevW(3),
+      O => \deci_low.diffW[7]_i_6_n_0\
+    );
+\deci_low.diffW[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(2),
+      I1 => prevW(2),
+      O => \deci_low.diffW[7]_i_7_n_0\
+    );
+\deci_low.diffW[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(1),
+      I1 => prevW(1),
+      O => \deci_low.diffW[7]_i_8_n_0\
+    );
+\deci_low.diffW[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^phase_w\(0),
+      I1 => prevW(0),
+      O => \deci_low.diffW[7]_i_9_n_0\
+    );
+\deci_low.diffW_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(0),
+      Q => diffW(0),
+      R => '0'
+    );
+\deci_low.diffW_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(10),
+      Q => diffW(10),
+      R => '0'
+    );
+\deci_low.diffW_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(11),
+      Q => diffW(11),
+      R => '0'
+    );
+\deci_low.diffW_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(12),
+      Q => diffW(12),
+      R => '0'
+    );
+\deci_low.diffW_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(13),
+      Q => diffW(13),
+      R => '0'
+    );
+\deci_low.diffW_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(14),
+      Q => diffW(14),
+      R => '0'
+    );
+\deci_low.diffW_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(15),
+      Q => diffW(15),
+      R => '0'
+    );
+\deci_low.diffW_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \deci_low.diffW_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \deci_low.diffW_reg[15]_i_1_n_0\,
+      CO(6) => \deci_low.diffW_reg[15]_i_1_n_1\,
+      CO(5) => \deci_low.diffW_reg[15]_i_1_n_2\,
+      CO(4) => \deci_low.diffW_reg[15]_i_1_n_3\,
+      CO(3) => \deci_low.diffW_reg[15]_i_1_n_4\,
+      CO(2) => \deci_low.diffW_reg[15]_i_1_n_5\,
+      CO(1) => \deci_low.diffW_reg[15]_i_1_n_6\,
+      CO(0) => \deci_low.diffW_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => \^phase_w\(15 downto 8),
+      O(7 downto 0) => diffW00_out(15 downto 8),
+      S(7) => \deci_low.diffW[15]_i_2_n_0\,
+      S(6) => \deci_low.diffW[15]_i_3_n_0\,
+      S(5) => \deci_low.diffW[15]_i_4_n_0\,
+      S(4) => \deci_low.diffW[15]_i_5_n_0\,
+      S(3) => \deci_low.diffW[15]_i_6_n_0\,
+      S(2) => \deci_low.diffW[15]_i_7_n_0\,
+      S(1) => \deci_low.diffW[15]_i_8_n_0\,
+      S(0) => \deci_low.diffW[15]_i_9_n_0\
+    );
+\deci_low.diffW_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(16),
+      Q => diffW(16),
+      R => '0'
+    );
+\deci_low.diffW_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(17),
+      Q => diffW(17),
+      R => '0'
+    );
+\deci_low.diffW_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(18),
+      Q => diffW(18),
+      R => '0'
+    );
+\deci_low.diffW_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(19),
+      Q => diffW(19),
+      R => '0'
+    );
+\deci_low.diffW_reg[19]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \deci_low.diffW_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_deci_low.diffW_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \deci_low.diffW_reg[19]_i_1_n_5\,
+      CO(1) => \deci_low.diffW_reg[19]_i_1_n_6\,
+      CO(0) => \deci_low.diffW_reg[19]_i_1_n_7\,
+      DI(7 downto 3) => B"00000",
+      DI(2 downto 0) => \^phase_w\(18 downto 16),
+      O(7 downto 4) => \NLW_deci_low.diffW_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => diffW00_out(19 downto 16),
+      S(7 downto 4) => B"0000",
+      S(3) => \deci_low.diffW[19]_i_2_n_0\,
+      S(2) => \deci_low.diffW[19]_i_3_n_0\,
+      S(1) => \deci_low.diffW[19]_i_4_n_0\,
+      S(0) => \deci_low.diffW[19]_i_5_n_0\
+    );
+\deci_low.diffW_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(1),
+      Q => diffW(1),
+      R => '0'
+    );
+\deci_low.diffW_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(2),
+      Q => diffW(2),
+      R => '0'
+    );
+\deci_low.diffW_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(3),
+      Q => diffW(3),
+      R => '0'
+    );
+\deci_low.diffW_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(4),
+      Q => diffW(4),
+      R => '0'
+    );
+\deci_low.diffW_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(5),
+      Q => diffW(5),
+      R => '0'
+    );
+\deci_low.diffW_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(6),
+      Q => diffW(6),
+      R => '0'
+    );
+\deci_low.diffW_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(7),
+      Q => diffW(7),
+      R => '0'
+    );
+\deci_low.diffW_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \deci_low.diffW_reg[7]_i_1_n_0\,
+      CO(6) => \deci_low.diffW_reg[7]_i_1_n_1\,
+      CO(5) => \deci_low.diffW_reg[7]_i_1_n_2\,
+      CO(4) => \deci_low.diffW_reg[7]_i_1_n_3\,
+      CO(3) => \deci_low.diffW_reg[7]_i_1_n_4\,
+      CO(2) => \deci_low.diffW_reg[7]_i_1_n_5\,
+      CO(1) => \deci_low.diffW_reg[7]_i_1_n_6\,
+      CO(0) => \deci_low.diffW_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => \^phase_w\(7 downto 0),
+      O(7 downto 0) => diffW00_out(7 downto 0),
+      S(7) => \deci_low.diffW[7]_i_2_n_0\,
+      S(6) => \deci_low.diffW[7]_i_3_n_0\,
+      S(5) => \deci_low.diffW[7]_i_4_n_0\,
+      S(4) => \deci_low.diffW[7]_i_5_n_0\,
+      S(3) => \deci_low.diffW[7]_i_6_n_0\,
+      S(2) => \deci_low.diffW[7]_i_7_n_0\,
+      S(1) => \deci_low.diffW[7]_i_8_n_0\,
+      S(0) => \deci_low.diffW[7]_i_9_n_0\
+    );
+\deci_low.diffW_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(8),
+      Q => diffW(8),
+      R => '0'
+    );
+\deci_low.diffW_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => fifo_valid,
+      D => diffW00_out(9),
+      Q => diffW(9),
       R => '0'
     );
 \deci_low.env_E_reg[0]\: unisim.vcomponents.FDRE
@@ -6089,76 +7010,188 @@ begin
       Q => \^phase_w\(9),
       R => '0'
     );
-\deci_low.phase_sum[15]_i_2\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_10\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
+    )
+        port map (
+      I0 => diffN(14),
+      I1 => diffW(14),
+      I2 => diffE(14),
+      I3 => diffW(15),
+      I4 => diffE(15),
+      I5 => diffN(15),
+      O => \deci_low.phase_sum[15]_i_10_n_0\
+    );
+\deci_low.phase_sum[15]_i_11\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(13),
-      I1 => diffN(15),
-      O => \deci_low.phase_sum[15]_i_2_n_0\
+      I1 => diffW(13),
+      I2 => diffE(13),
+      I3 => diffW(14),
+      I4 => diffE(14),
+      I5 => diffN(14),
+      O => \deci_low.phase_sum[15]_i_11_n_0\
     );
-\deci_low.phase_sum[15]_i_3\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_12\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(12),
-      I1 => diffN(14),
-      O => \deci_low.phase_sum[15]_i_3_n_0\
+      I1 => diffW(12),
+      I2 => diffE(12),
+      I3 => diffW(13),
+      I4 => diffE(13),
+      I5 => diffN(13),
+      O => \deci_low.phase_sum[15]_i_12_n_0\
     );
-\deci_low.phase_sum[15]_i_4\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_13\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(11),
-      I1 => diffN(13),
-      O => \deci_low.phase_sum[15]_i_4_n_0\
+      I1 => diffW(11),
+      I2 => diffE(11),
+      I3 => diffW(12),
+      I4 => diffE(12),
+      I5 => diffN(12),
+      O => \deci_low.phase_sum[15]_i_13_n_0\
     );
-\deci_low.phase_sum[15]_i_5\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_14\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(10),
-      I1 => diffN(12),
-      O => \deci_low.phase_sum[15]_i_5_n_0\
+      I1 => diffW(10),
+      I2 => diffE(10),
+      I3 => diffW(11),
+      I4 => diffE(11),
+      I5 => diffN(11),
+      O => \deci_low.phase_sum[15]_i_14_n_0\
     );
-\deci_low.phase_sum[15]_i_6\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_15\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(9),
-      I1 => diffN(11),
-      O => \deci_low.phase_sum[15]_i_6_n_0\
+      I1 => diffW(9),
+      I2 => diffE(9),
+      I3 => diffW(10),
+      I4 => diffE(10),
+      I5 => diffN(10),
+      O => \deci_low.phase_sum[15]_i_15_n_0\
     );
-\deci_low.phase_sum[15]_i_7\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_16\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(8),
-      I1 => diffN(10),
-      O => \deci_low.phase_sum[15]_i_7_n_0\
+      I1 => diffW(8),
+      I2 => diffE(8),
+      I3 => diffW(9),
+      I4 => diffE(9),
+      I5 => diffN(9),
+      O => \deci_low.phase_sum[15]_i_16_n_0\
     );
-\deci_low.phase_sum[15]_i_8\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_17\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(7),
-      I1 => diffN(9),
-      O => \deci_low.phase_sum[15]_i_8_n_0\
+      I1 => diffW(7),
+      I2 => diffE(7),
+      I3 => diffW(8),
+      I4 => diffE(8),
+      I5 => diffN(8),
+      O => \deci_low.phase_sum[15]_i_17_n_0\
     );
-\deci_low.phase_sum[15]_i_9\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[15]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"9"
+      INIT => X"E8"
     )
         port map (
-      I0 => diffN(6),
-      I1 => diffN(8),
+      I0 => diffE(14),
+      I1 => diffW(14),
+      I2 => diffN(14),
+      O => \deci_low.phase_sum[15]_i_2_n_0\
+    );
+\deci_low.phase_sum[15]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(13),
+      I1 => diffW(13),
+      I2 => diffN(13),
+      O => \deci_low.phase_sum[15]_i_3_n_0\
+    );
+\deci_low.phase_sum[15]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(12),
+      I1 => diffW(12),
+      I2 => diffN(12),
+      O => \deci_low.phase_sum[15]_i_4_n_0\
+    );
+\deci_low.phase_sum[15]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(11),
+      I1 => diffW(11),
+      I2 => diffN(11),
+      O => \deci_low.phase_sum[15]_i_5_n_0\
+    );
+\deci_low.phase_sum[15]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(10),
+      I1 => diffW(10),
+      I2 => diffN(10),
+      O => \deci_low.phase_sum[15]_i_6_n_0\
+    );
+\deci_low.phase_sum[15]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(9),
+      I1 => diffW(9),
+      I2 => diffN(9),
+      O => \deci_low.phase_sum[15]_i_7_n_0\
+    );
+\deci_low.phase_sum[15]_i_8\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(8),
+      I1 => diffW(8),
+      I2 => diffN(8),
+      O => \deci_low.phase_sum[15]_i_8_n_0\
+    );
+\deci_low.phase_sum[15]_i_9\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(7),
+      I1 => diffW(7),
+      I2 => diffN(7),
       O => \deci_low.phase_sum[15]_i_9_n_0\
     );
 \deci_low.phase_sum[21]_i_1\: unisim.vcomponents.LUT3
@@ -6171,119 +7204,278 @@ begin
       I2 => validN,
       O => \p_0_in__0\
     );
-\deci_low.phase_sum[21]_i_3\: unisim.vcomponents.LUT1
+\deci_low.phase_sum[21]_i_10\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => diffN(19),
-      O => \deci_low.phase_sum[21]_i_3_n_0\
-    );
-\deci_low.phase_sum[21]_i_4\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => diffN(18),
-      O => \deci_low.phase_sum[21]_i_4_n_0\
-    );
-\deci_low.phase_sum[21]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => diffN(17),
-      I1 => diffN(19),
-      O => \deci_low.phase_sum[21]_i_5_n_0\
-    );
-\deci_low.phase_sum[21]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(16),
-      I1 => diffN(18),
-      O => \deci_low.phase_sum[21]_i_6_n_0\
+      I1 => diffW(16),
+      I2 => diffE(16),
+      I3 => diffW(17),
+      I4 => diffE(17),
+      I5 => diffN(17),
+      O => \deci_low.phase_sum[21]_i_10_n_0\
     );
-\deci_low.phase_sum[21]_i_7\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[21]_i_11\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(15),
-      I1 => diffN(17),
-      O => \deci_low.phase_sum[21]_i_7_n_0\
+      I1 => diffW(15),
+      I2 => diffE(15),
+      I3 => diffW(16),
+      I4 => diffE(16),
+      I5 => diffN(16),
+      O => \deci_low.phase_sum[21]_i_11_n_0\
     );
-\deci_low.phase_sum[21]_i_8\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[21]_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"9"
+      INIT => X"E8"
     )
         port map (
-      I0 => diffN(14),
-      I1 => diffN(16),
+      I0 => diffE(18),
+      I1 => diffW(18),
+      I2 => diffN(18),
+      O => \deci_low.phase_sum[21]_i_3_n_0\
+    );
+\deci_low.phase_sum[21]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(17),
+      I1 => diffW(17),
+      I2 => diffN(17),
+      O => \deci_low.phase_sum[21]_i_4_n_0\
+    );
+\deci_low.phase_sum[21]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(16),
+      I1 => diffW(16),
+      I2 => diffN(16),
+      O => \deci_low.phase_sum[21]_i_5_n_0\
+    );
+\deci_low.phase_sum[21]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(15),
+      I1 => diffW(15),
+      I2 => diffN(15),
+      O => \deci_low.phase_sum[21]_i_6_n_0\
+    );
+\deci_low.phase_sum[21]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(19),
+      I1 => diffW(19),
+      I2 => diffN(19),
+      O => \deci_low.phase_sum[21]_i_7_n_0\
+    );
+\deci_low.phase_sum[21]_i_8\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"17E8E817E81717E8"
+    )
+        port map (
+      I0 => diffN(18),
+      I1 => diffW(18),
+      I2 => diffE(18),
+      I3 => diffW(19),
+      I4 => diffE(19),
+      I5 => diffN(19),
       O => \deci_low.phase_sum[21]_i_8_n_0\
     );
-\deci_low.phase_sum[7]_i_2\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[21]_i_9\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
+    )
+        port map (
+      I0 => diffN(17),
+      I1 => diffW(17),
+      I2 => diffE(17),
+      I3 => diffW(18),
+      I4 => diffE(18),
+      I5 => diffN(18),
+      O => \deci_low.phase_sum[21]_i_9_n_0\
+    );
+\deci_low.phase_sum[7]_i_10\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(5),
-      I1 => diffN(7),
-      O => \deci_low.phase_sum[7]_i_2_n_0\
+      I1 => diffW(5),
+      I2 => diffE(5),
+      I3 => diffW(6),
+      I4 => diffE(6),
+      I5 => diffN(6),
+      O => \deci_low.phase_sum[7]_i_10_n_0\
     );
-\deci_low.phase_sum[7]_i_3\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[7]_i_11\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(4),
-      I1 => diffN(6),
-      O => \deci_low.phase_sum[7]_i_3_n_0\
+      I1 => diffW(4),
+      I2 => diffE(4),
+      I3 => diffW(5),
+      I4 => diffE(5),
+      I5 => diffN(5),
+      O => \deci_low.phase_sum[7]_i_11_n_0\
     );
-\deci_low.phase_sum[7]_i_4\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[7]_i_12\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(3),
-      I1 => diffN(5),
-      O => \deci_low.phase_sum[7]_i_4_n_0\
+      I1 => diffW(3),
+      I2 => diffE(3),
+      I3 => diffW(4),
+      I4 => diffE(4),
+      I5 => diffN(4),
+      O => \deci_low.phase_sum[7]_i_12_n_0\
     );
-\deci_low.phase_sum[7]_i_5\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[7]_i_13\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(2),
-      I1 => diffN(4),
-      O => \deci_low.phase_sum[7]_i_5_n_0\
+      I1 => diffW(2),
+      I2 => diffE(2),
+      I3 => diffW(3),
+      I4 => diffE(3),
+      I5 => diffN(3),
+      O => \deci_low.phase_sum[7]_i_13_n_0\
     );
-\deci_low.phase_sum[7]_i_6\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[7]_i_14\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(1),
-      I1 => diffN(3),
-      O => \deci_low.phase_sum[7]_i_6_n_0\
+      I1 => diffW(1),
+      I2 => diffE(1),
+      I3 => diffW(2),
+      I4 => diffE(2),
+      I5 => diffN(2),
+      O => \deci_low.phase_sum[7]_i_14_n_0\
     );
-\deci_low.phase_sum[7]_i_7\: unisim.vcomponents.LUT2
+\deci_low.phase_sum[7]_i_15\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9"
+      INIT => X"17E8E817E81717E8"
     )
         port map (
       I0 => diffN(0),
-      I1 => diffN(2),
-      O => \deci_low.phase_sum[7]_i_7_n_0\
+      I1 => diffW(0),
+      I2 => diffE(0),
+      I3 => diffW(1),
+      I4 => diffE(1),
+      I5 => diffN(1),
+      O => \deci_low.phase_sum[7]_i_15_n_0\
     );
-\deci_low.phase_sum[7]_i_8\: unisim.vcomponents.LUT1
+\deci_low.phase_sum[7]_i_16\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"1"
+      INIT => X"96"
     )
         port map (
-      I0 => diffN(1),
+      I0 => diffN(0),
+      I1 => diffE(0),
+      I2 => diffW(0),
+      O => \deci_low.phase_sum[7]_i_16_n_0\
+    );
+\deci_low.phase_sum[7]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(6),
+      I1 => diffW(6),
+      I2 => diffN(6),
+      O => \deci_low.phase_sum[7]_i_2_n_0\
+    );
+\deci_low.phase_sum[7]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(5),
+      I1 => diffW(5),
+      I2 => diffN(5),
+      O => \deci_low.phase_sum[7]_i_3_n_0\
+    );
+\deci_low.phase_sum[7]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(4),
+      I1 => diffW(4),
+      I2 => diffN(4),
+      O => \deci_low.phase_sum[7]_i_4_n_0\
+    );
+\deci_low.phase_sum[7]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(3),
+      I1 => diffW(3),
+      I2 => diffN(3),
+      O => \deci_low.phase_sum[7]_i_5_n_0\
+    );
+\deci_low.phase_sum[7]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(2),
+      I1 => diffW(2),
+      I2 => diffN(2),
+      O => \deci_low.phase_sum[7]_i_6_n_0\
+    );
+\deci_low.phase_sum[7]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(1),
+      I1 => diffW(1),
+      I2 => diffN(1),
+      O => \deci_low.phase_sum[7]_i_7_n_0\
+    );
+\deci_low.phase_sum[7]_i_8\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E8"
+    )
+        port map (
+      I0 => diffE(0),
+      I1 => diffW(0),
+      I2 => diffN(0),
       O => \deci_low.phase_sum[7]_i_8_n_0\
+    );
+\deci_low.phase_sum[7]_i_9\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"17E8E817E81717E8"
+    )
+        port map (
+      I0 => diffN(6),
+      I1 => diffW(6),
+      I2 => diffE(6),
+      I3 => diffW(7),
+      I4 => diffE(7),
+      I5 => diffN(7),
+      O => \deci_low.phase_sum[7]_i_9_n_0\
     );
 \deci_low.phase_sum_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -6353,16 +7545,23 @@ begin
       CO(2) => \deci_low.phase_sum_reg[15]_i_1_n_5\,
       CO(1) => \deci_low.phase_sum_reg[15]_i_1_n_6\,
       CO(0) => \deci_low.phase_sum_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => diffN(13 downto 6),
+      DI(7) => \deci_low.phase_sum[15]_i_2_n_0\,
+      DI(6) => \deci_low.phase_sum[15]_i_3_n_0\,
+      DI(5) => \deci_low.phase_sum[15]_i_4_n_0\,
+      DI(4) => \deci_low.phase_sum[15]_i_5_n_0\,
+      DI(3) => \deci_low.phase_sum[15]_i_6_n_0\,
+      DI(2) => \deci_low.phase_sum[15]_i_7_n_0\,
+      DI(1) => \deci_low.phase_sum[15]_i_8_n_0\,
+      DI(0) => \deci_low.phase_sum[15]_i_9_n_0\,
       O(7 downto 0) => phase_sum0(15 downto 8),
-      S(7) => \deci_low.phase_sum[15]_i_2_n_0\,
-      S(6) => \deci_low.phase_sum[15]_i_3_n_0\,
-      S(5) => \deci_low.phase_sum[15]_i_4_n_0\,
-      S(4) => \deci_low.phase_sum[15]_i_5_n_0\,
-      S(3) => \deci_low.phase_sum[15]_i_6_n_0\,
-      S(2) => \deci_low.phase_sum[15]_i_7_n_0\,
-      S(1) => \deci_low.phase_sum[15]_i_8_n_0\,
-      S(0) => \deci_low.phase_sum[15]_i_9_n_0\
+      S(7) => \deci_low.phase_sum[15]_i_10_n_0\,
+      S(6) => \deci_low.phase_sum[15]_i_11_n_0\,
+      S(5) => \deci_low.phase_sum[15]_i_12_n_0\,
+      S(4) => \deci_low.phase_sum[15]_i_13_n_0\,
+      S(3) => \deci_low.phase_sum[15]_i_14_n_0\,
+      S(2) => \deci_low.phase_sum[15]_i_15_n_0\,
+      S(1) => \deci_low.phase_sum[15]_i_16_n_0\,
+      S(0) => \deci_low.phase_sum[15]_i_17_n_0\
     );
 \deci_low.phase_sum_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -6430,17 +7629,19 @@ begin
       CO(2) => \deci_low.phase_sum_reg[21]_i_2_n_5\,
       CO(1) => \deci_low.phase_sum_reg[21]_i_2_n_6\,
       CO(0) => \deci_low.phase_sum_reg[21]_i_2_n_7\,
-      DI(7 downto 5) => B"000",
-      DI(4 downto 0) => diffN(18 downto 14),
+      DI(7 downto 4) => B"0000",
+      DI(3) => \deci_low.phase_sum[21]_i_3_n_0\,
+      DI(2) => \deci_low.phase_sum[21]_i_4_n_0\,
+      DI(1) => \deci_low.phase_sum[21]_i_5_n_0\,
+      DI(0) => \deci_low.phase_sum[21]_i_6_n_0\,
       O(7 downto 6) => \NLW_deci_low.phase_sum_reg[21]_i_2_O_UNCONNECTED\(7 downto 6),
       O(5 downto 0) => phase_sum0(21 downto 16),
-      S(7 downto 6) => B"00",
-      S(5) => \deci_low.phase_sum[21]_i_3_n_0\,
-      S(4) => \deci_low.phase_sum[21]_i_4_n_0\,
-      S(3) => \deci_low.phase_sum[21]_i_5_n_0\,
-      S(2) => \deci_low.phase_sum[21]_i_6_n_0\,
-      S(1) => \deci_low.phase_sum[21]_i_7_n_0\,
-      S(0) => \deci_low.phase_sum[21]_i_8_n_0\
+      S(7 downto 5) => B"000",
+      S(4) => \deci_low.phase_sum[21]_i_7_n_0\,
+      S(3) => \deci_low.phase_sum[21]_i_8_n_0\,
+      S(2) => \deci_low.phase_sum[21]_i_9_n_0\,
+      S(1) => \deci_low.phase_sum[21]_i_10_n_0\,
+      S(0) => \deci_low.phase_sum[21]_i_11_n_0\
     );
 \deci_low.phase_sum_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -6502,17 +7703,23 @@ begin
       CO(2) => \deci_low.phase_sum_reg[7]_i_1_n_5\,
       CO(1) => \deci_low.phase_sum_reg[7]_i_1_n_6\,
       CO(0) => \deci_low.phase_sum_reg[7]_i_1_n_7\,
-      DI(7 downto 2) => diffN(5 downto 0),
-      DI(1 downto 0) => B"01",
+      DI(7) => \deci_low.phase_sum[7]_i_2_n_0\,
+      DI(6) => \deci_low.phase_sum[7]_i_3_n_0\,
+      DI(5) => \deci_low.phase_sum[7]_i_4_n_0\,
+      DI(4) => \deci_low.phase_sum[7]_i_5_n_0\,
+      DI(3) => \deci_low.phase_sum[7]_i_6_n_0\,
+      DI(2) => \deci_low.phase_sum[7]_i_7_n_0\,
+      DI(1) => \deci_low.phase_sum[7]_i_8_n_0\,
+      DI(0) => '0',
       O(7 downto 0) => phase_sum0(7 downto 0),
-      S(7) => \deci_low.phase_sum[7]_i_2_n_0\,
-      S(6) => \deci_low.phase_sum[7]_i_3_n_0\,
-      S(5) => \deci_low.phase_sum[7]_i_4_n_0\,
-      S(4) => \deci_low.phase_sum[7]_i_5_n_0\,
-      S(3) => \deci_low.phase_sum[7]_i_6_n_0\,
-      S(2) => \deci_low.phase_sum[7]_i_7_n_0\,
-      S(1) => \deci_low.phase_sum[7]_i_8_n_0\,
-      S(0) => diffN(0)
+      S(7) => \deci_low.phase_sum[7]_i_9_n_0\,
+      S(6) => \deci_low.phase_sum[7]_i_10_n_0\,
+      S(5) => \deci_low.phase_sum[7]_i_11_n_0\,
+      S(4) => \deci_low.phase_sum[7]_i_12_n_0\,
+      S(3) => \deci_low.phase_sum[7]_i_13_n_0\,
+      S(2) => \deci_low.phase_sum[7]_i_14_n_0\,
+      S(1) => \deci_low.phase_sum[7]_i_15_n_0\,
+      S(0) => \deci_low.phase_sum[7]_i_16_n_0\
     );
 \deci_low.phase_sum_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -6530,13 +7737,173 @@ begin
       Q => phase_sum(9),
       R => \p_0_in__0\
     );
-\deci_low.prevN[19]_i_1\: unisim.vcomponents.LUT1
+\deci_low.prevE[19]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => fifo_valid,
-      O => \deci_low.prevN[19]_i_1_n_0\
+      O => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(0),
+      Q => prevE(0),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(10),
+      Q => prevE(10),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(11),
+      Q => prevE(11),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(12),
+      Q => prevE(12),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(13),
+      Q => prevE(13),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(14),
+      Q => prevE(14),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(15),
+      Q => prevE(15),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(16),
+      Q => prevE(16),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(17),
+      Q => prevE(17),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(18),
+      Q => prevE(18),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(19),
+      Q => prevE(19),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(1),
+      Q => prevE(1),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(2),
+      Q => prevE(2),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(3),
+      Q => prevE(3),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(4),
+      Q => prevE(4),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(5),
+      Q => prevE(5),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(6),
+      Q => prevE(6),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(7),
+      Q => prevE(7),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(8),
+      Q => prevE(8),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevE_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_e\(9),
+      Q => prevE(9),
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -6544,7 +7911,7 @@ begin
       CE => '1',
       D => \^phase_n\(0),
       Q => prevN(0),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -6552,7 +7919,7 @@ begin
       CE => '1',
       D => \^phase_n\(10),
       Q => prevN(10),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -6560,7 +7927,7 @@ begin
       CE => '1',
       D => \^phase_n\(11),
       Q => prevN(11),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -6568,7 +7935,7 @@ begin
       CE => '1',
       D => \^phase_n\(12),
       Q => prevN(12),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -6576,7 +7943,7 @@ begin
       CE => '1',
       D => \^phase_n\(13),
       Q => prevN(13),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -6584,7 +7951,7 @@ begin
       CE => '1',
       D => \^phase_n\(14),
       Q => prevN(14),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -6592,7 +7959,7 @@ begin
       CE => '1',
       D => \^phase_n\(15),
       Q => prevN(15),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -6600,7 +7967,7 @@ begin
       CE => '1',
       D => \^phase_n\(16),
       Q => prevN(16),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -6608,7 +7975,7 @@ begin
       CE => '1',
       D => \^phase_n\(17),
       Q => prevN(17),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -6616,7 +7983,7 @@ begin
       CE => '1',
       D => \^phase_n\(18),
       Q => prevN(18),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -6624,7 +7991,7 @@ begin
       CE => '1',
       D => \^phase_n\(19),
       Q => prevN(19),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -6632,7 +7999,7 @@ begin
       CE => '1',
       D => \^phase_n\(1),
       Q => prevN(1),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -6640,7 +8007,7 @@ begin
       CE => '1',
       D => \^phase_n\(2),
       Q => prevN(2),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -6648,7 +8015,7 @@ begin
       CE => '1',
       D => \^phase_n\(3),
       Q => prevN(3),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -6656,7 +8023,7 @@ begin
       CE => '1',
       D => \^phase_n\(4),
       Q => prevN(4),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -6664,7 +8031,7 @@ begin
       CE => '1',
       D => \^phase_n\(5),
       Q => prevN(5),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -6672,7 +8039,7 @@ begin
       CE => '1',
       D => \^phase_n\(6),
       Q => prevN(6),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -6680,7 +8047,7 @@ begin
       CE => '1',
       D => \^phase_n\(7),
       Q => prevN(7),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -6688,7 +8055,7 @@ begin
       CE => '1',
       D => \^phase_n\(8),
       Q => prevN(8),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.prevN_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -6696,7 +8063,167 @@ begin
       CE => '1',
       D => \^phase_n\(9),
       Q => prevN(9),
-      R => \deci_low.prevN[19]_i_1_n_0\
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(0),
+      Q => prevW(0),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(10),
+      Q => prevW(10),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(11),
+      Q => prevW(11),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(12),
+      Q => prevW(12),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(13),
+      Q => prevW(13),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(14),
+      Q => prevW(14),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(15),
+      Q => prevW(15),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(16),
+      Q => prevW(16),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(17),
+      Q => prevW(17),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(18),
+      Q => prevW(18),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(19),
+      Q => prevW(19),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(1),
+      Q => prevW(1),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(2),
+      Q => prevW(2),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(3),
+      Q => prevW(3),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(4),
+      Q => prevW(4),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(5),
+      Q => prevW(5),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(6),
+      Q => prevW(6),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(7),
+      Q => prevW(7),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(8),
+      Q => prevW(8),
+      R => \deci_low.prevE[19]_i_1_n_0\
+    );
+\deci_low.prevW_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \^phase_w\(9),
+      Q => prevW(9),
+      R => \deci_low.prevE[19]_i_1_n_0\
     );
 \deci_low.valid_reg\: unisim.vcomponents.FDRE
      port map (
