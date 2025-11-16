@@ -94,11 +94,11 @@ architecture tb of tb_cordic_atan2_16 is
 
   -- Slave channel CARTESIAN inputs
   signal s_axis_cartesian_tvalid    : std_logic := '0';  -- TVALID for channel S_AXIS_CARTESIAN
-  signal s_axis_cartesian_tdata     : std_logic_vector(31 downto 0) := (others => 'X');  -- TDATA for channel S_AXIS_CARTESIAN
+  signal s_axis_cartesian_tdata     : std_logic_vector(47 downto 0) := (others => 'X');  -- TDATA for channel S_AXIS_CARTESIAN
 
   -- Slave channel PHASE inputs
   signal s_axis_phase_tvalid    : std_logic := '0';  -- TVALID for channel S_AXIS_PHASE
-  signal s_axis_phase_tdata     : std_logic_vector(15 downto 0) := (others => 'X');  -- TDATA for channel S_AXIS_PHASE
+  signal s_axis_phase_tdata     : std_logic_vector(23 downto 0) := (others => 'X');  -- TDATA for channel S_AXIS_PHASE
 
   -----------------------------------------------------------------------
   -- DUT output signals
@@ -106,7 +106,7 @@ architecture tb of tb_cordic_atan2_16 is
 
   -- Master channel DOUT outputs
   signal m_axis_dout_tvalid : std_logic := '0';  -- TVALID for channel M_AXIS_DOUT
-  signal m_axis_dout_tdata  : std_logic_vector(15 downto 0) := (others => '0');  -- TDATA for channel M_AXIS_DOUT
+  signal m_axis_dout_tdata  : std_logic_vector(23 downto 0) := (others => '0');  -- TDATA for channel M_AXIS_DOUT
 
   -----------------------------------------------------------------------
   -- Aliases for AXI channel TDATA fields
@@ -114,13 +114,13 @@ architecture tb of tb_cordic_atan2_16 is
   -- If using ModelSim or Questa, add "-voptargs=+acc=n" to the vsim command
   -- to prevent the simulator optimizing away these signals.
   -----------------------------------------------------------------------
-  signal s_axis_cartesian_tdata_real     : std_logic_vector(15 downto 0) := (others => '0');
-  signal s_axis_cartesian_tdata_imag     : std_logic_vector(15 downto 0) := (others => '0');
-  signal s_axis_phase_tdata_real         : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_cartesian_tdata_real     : std_logic_vector(23 downto 0) := (others => '0');
+  signal s_axis_cartesian_tdata_imag     : std_logic_vector(23 downto 0) := (others => '0');
+  signal s_axis_phase_tdata_real         : std_logic_vector(23 downto 0) := (others => '0');
 
-  signal m_axis_dout_tdata_real  : std_logic_vector(15 downto 0) := (others => '0');
-  signal m_axis_dout_tdata_imag  : std_logic_vector(15 downto 0) := (others => '0');
-  signal m_axis_dout_tdata_phase : std_logic_vector(15 downto 0) := (others => '0');
+  signal m_axis_dout_tdata_real  : std_logic_vector(21 downto 0) := (others => '0');
+  signal m_axis_dout_tdata_imag  : std_logic_vector(21 downto 0) := (others => '0');
+  signal m_axis_dout_tdata_phase : std_logic_vector(21 downto 0) := (others => '0');
   -----------------------------------------------------------------------
   -- Testbench signals
   -----------------------------------------------------------------------
@@ -135,10 +135,10 @@ architecture tb of tb_cordic_atan2_16 is
   -----------------------------------------------------------------------
 
   constant IP_CARTESIAN_DEPTH : integer := 30;
-  constant IP_CARTESIAN_WIDTH : integer := 16;
+  constant IP_CARTESIAN_WIDTH : integer := 24;
   constant IP_CARTESIAN_SHIFT : integer := 3;  -- bit shift for amplitude
   constant IP_PHASE_DEPTH : integer := 32;
-  constant IP_PHASE_WIDTH : integer := 16;
+  constant IP_PHASE_WIDTH : integer := 24;
   constant IP_PHASE_SHIFT : integer := 0;  -- no bit shift, max amplitude
   type T_IP_INT_ENTRY is record
     re : integer;
@@ -300,9 +300,9 @@ begin
       if cartesian_tvalid_nxt /= '1' then
         s_axis_cartesian_tdata <= (others => 'X');
       else
-        -- TDATA: Real and imaginary components are each 16 bits wide and byte-aligned at their LSBs
-        s_axis_cartesian_tdata(15 downto 0) <= IP_CARTESIAN_DATA(ip_cartesian_index).re;
-        s_axis_cartesian_tdata(31 downto 16) <= IP_CARTESIAN_DATA(ip_cartesian_index).im;
+        -- TDATA: Real and imaginary components are each 24 bits wide and byte-aligned at their LSBs
+        s_axis_cartesian_tdata(23 downto 0) <= IP_CARTESIAN_DATA(ip_cartesian_index).re;
+        s_axis_cartesian_tdata(47 downto 24) <= IP_CARTESIAN_DATA(ip_cartesian_index).im;
 
       end if;
 
@@ -311,8 +311,8 @@ begin
       if phase_tvalid_nxt /= '1' then
         s_axis_phase_tdata <= (others => 'X');
       else
-        -- TDATA: Real component is 16 bits wide and byte-aligned at its LSBs
-        s_axis_phase_tdata(15 downto 0) <= IP_PHASE_DATA(ip_phase_index).re;
+        -- TDATA: Real component is 24 bits wide and byte-aligned at its LSBs
+        s_axis_phase_tdata(23 downto 0) <= IP_PHASE_DATA(ip_phase_index).re;
       end if;
 
       -- Increment input data indices
@@ -367,10 +367,10 @@ begin
   -- Assign TDATA fields to aliases, for easy simulator waveform viewing
   -----------------------------------------------------------------------
 
-  s_axis_cartesian_tdata_real  <= s_axis_cartesian_tdata(15 downto 0);
-  s_axis_cartesian_tdata_imag  <= s_axis_cartesian_tdata(31 downto 16);
+  s_axis_cartesian_tdata_real  <= s_axis_cartesian_tdata(23 downto 0);
+  s_axis_cartesian_tdata_imag  <= s_axis_cartesian_tdata(47 downto 24);
 
-  m_axis_dout_tdata_phase      <= m_axis_dout_tdata(15 downto 0);
+  m_axis_dout_tdata_phase      <= m_axis_dout_tdata(21 downto 0);
 
 end tb;
 

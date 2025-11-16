@@ -23,35 +23,35 @@
 module morlet_to_phase_env(
     input wire clk,
     input wire active,
-    input wire [15:0] re,
-    input wire [15:0] im,
+    input wire [23:0] re,
+    input wire [23:0] im,
     output reg valid,
     output reg [15:0] env,
-    output reg [15:0] phase
+    output reg [19:0] phase
     );
     
   wire [31:0] re2;
   wire [31:0] im2;
   reg [31:0] p2;
   wire sqrt_valid;
-  wire [31:0] atan2_in;
+  wire [47:0] atan2_in;
   wire [15:0] lenv;
-  wire [15:0] lphase;
+  wire [23:0] lphase;
   
-  assign atan2_in[15:0] = re;
-  assign atan2_in[31:16] = im;
+  assign atan2_in[23:0] = re;
+  assign atan2_in[47:24] = im;
 
 mult_16_16 mult_re_i (
   .CLK(clk),  // input wire CLK
-  .A(re),      // input wire [15 : 0] A
-  .B(re),      // input wire [15 : 0] B
+  .A(re[23:8]),      // input wire [15 : 0] A
+  .B(re[23:8]),      // input wire [15 : 0] B
   .P(re2)      // output wire [31 : 0] P
 );
 
 mult_16_16 mult_im_i (
   .CLK(clk),  // input wire CLK
-  .A(im),      // input wire [15 : 0] A
-  .B(im),      // input wire [15 : 0] B
+  .A(im[23:8]),      // input wire [15 : 0] A
+  .B(im[23:8]),      // input wire [15 : 0] B
   .P(im2)      // output wire [31 : 0] P
 );
 
@@ -66,9 +66,9 @@ cordic_sqrt_16 sqrt_i (
 cordic_atan2_16 tan2_i (
   .aclk(clk),                                        // input wire aclk
   .s_axis_cartesian_tvalid(active),                  // input wire s_axis_cartesian_tvalid
-  .s_axis_cartesian_tdata(atan2_in),                 // input wire [31 : 0] s_axis_cartesian_tdata
+  .s_axis_cartesian_tdata(atan2_in),                 // input wire [47 : 0] s_axis_cartesian_tdata
   .m_axis_dout_tvalid(atan2_valid),                  // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(lphase)                         // output wire [15 : 0] m_axis_dout_tdata
+  .m_axis_dout_tdata(lphase)                         // output wire [23 : 0] m_axis_dout_tdata
 );
 
 generate
@@ -80,7 +80,7 @@ generate
 	  begin
   	    p2 <= re2 + im2;
 	    env <= lenv;
-	    phase <= lphase;
+	    phase <= lphase[19:0];
 	    valid <= sqrt_valid & atan2_valid;
 	  end
 	  else

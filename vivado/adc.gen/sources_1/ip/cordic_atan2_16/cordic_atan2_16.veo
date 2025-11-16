@@ -57,9 +57,9 @@
 cordic_atan2_16 your_instance_name (
   .aclk(aclk),                                        // input wire aclk
   .s_axis_cartesian_tvalid(s_axis_cartesian_tvalid),  // input wire s_axis_cartesian_tvalid
-  .s_axis_cartesian_tdata(s_axis_cartesian_tdata),    // input wire [31 : 0] s_axis_cartesian_tdata
+  .s_axis_cartesian_tdata(s_axis_cartesian_tdata),    // input wire [47 : 0] s_axis_cartesian_tdata
   .m_axis_dout_tvalid(m_axis_dout_tvalid),            // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(m_axis_dout_tdata)              // output wire [15 : 0] m_axis_dout_tdata
+  .m_axis_dout_tdata(m_axis_dout_tdata)              // output wire [23 : 0] m_axis_dout_tdata
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

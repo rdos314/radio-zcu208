@@ -25,20 +25,17 @@ module doa_low(
     input wire fifo_valid,
     input wire [69:0] fifo_data,
 
-    output wire valid_N,
-    output wire [15:0] env_N,
-    output wire [15:0] phase_N,
-    output reg [15:0] diff_N,
+    output reg valid,
+    output reg [31:0] freq,
+        
+    output reg [15:0] env_N,
+    output reg [19:0] phase_N,
 
-    output wire valid_E,
-    output wire [15:0] env_E,
-    output wire [15:0] phase_E,
-    output reg [15:0] diff_E,
+    output reg [15:0] env_E,
+    output reg [19:0] phase_E,
 
-    output wire valid_W,
-    output wire [15:0] env_W,
-    output wire [15:0] phase_W,
-    output reg [15:0] diff_W
+    output reg [15:0] env_W,
+    output reg [19:0] phase_W
     );
 
   reg [27:0] counter;
@@ -46,10 +43,28 @@ module doa_low(
   reg [15:0] E;
   reg [15:0] W;
   
-  reg [15:0] prevN;
-  reg [15:0] prevE;
-  reg [15:0] prevW;
-  
+  wire validN;
+  wire [15:0] envN;
+  wire [19:0] phaseN;
+  reg [19:0] prevN;
+  reg [19:0] diffN;
+
+  wire validE;
+  wire [15:0] envE;
+  wire [19:0] phaseE;
+  reg [19:0] prevE;
+  reg [19:0] diffE;
+
+  wire validW;
+  wire [15:0] envW;
+  wire [19:0] phaseW;
+  reg [19:0] prevW;
+  reg [19:0] diffW;
+
+  reg mul;
+  reg [21:0] phase_sum;  
+  wire [49:0] fp;
+    
   wire ready_re_N;
   wire valid_re_N;
   wire [39:0] fir_re_N;
@@ -137,56 +152,60 @@ fir_doa_low_im fir_doa_low_im_W_i (
 morlet_to_phase_env doa_N_i (
   .clk(clk),                               // input wire aclk
   .active(fifo_valid),
-  .re(fir_re_N[38:23]),
-  .im(fir_im_N[38:23]),
-  .valid(valid_N),
-  .env(env_N),
-  .phase(phase_N)
+  .re(fir_re_N[38:15]),
+  .im(fir_im_N[38:15]),
+  .valid(validN),
+  .env(envN),
+  .phase(phaseN)
   );
 
 morlet_to_phase_env doa_E_i (
   .clk(clk),                               // input wire aclk
   .active(fifo_valid),
-  .re(fir_re_E[38:23]),
-  .im(fir_im_E[38:23]),
-  .valid(valid_E),
-  .env(env_E),
-  .phase(phase_E)
+  .re(fir_re_E[38:15]),
+  .im(fir_im_E[38:15]),
+  .valid(validE),
+  .env(envE),
+  .phase(phaseE)
   );
 
 morlet_to_phase_env doa_W_i (
   .clk(clk),                               // input wire aclk
   .active(fifo_valid),
-  .re(fir_re_W[38:23]),
-  .im(fir_im_W[38:23]),
-  .valid(valid_W),
-  .env(env_W),
-  .phase(phase_W)
+  .re(fir_re_W[38:15]),
+  .im(fir_im_W[38:15]),
+  .valid(validW),
+  .env(envW),
+  .phase(phaseW)
   );
+
+mult_s500 doa_freq (
+  .CLK(clk),  // input wire CLK
+  .A(phase_sum),      // input wire [21 : 0] A
+  .P(fp)      // output wire [47 : 0] P
+);
       
 ila_0 ila_0_i (
 		.clk(clk),                  // input wire clk
-		.probe0(N[15:2]),           // input wire [13:0]  probe3
-		.probe1(fir_re_N[38:23]),   // input wire [15:0]  probe3
-		.probe2(fir_im_N[38:23]),   // input wire [15:0]  probe3
-		.probe3(env_N),             // input wire [15:0]  probe3
-		.probe4(phase_N),             // input wire [15:0]  probe3
-		.probe5(diff_N),             // input wire [15:0]  probe3
-		.probe6(E[15:2]),           // input wire [13:0]  probe3
-		.probe7(fir_re_E[38:23]),   // input wire [15:0]  probe3
-		.probe8(fir_im_E[38:23]),   // input wire [15:0]  probe3
-		.probe9(env_E),             // input wire [15:0]  probe3
-		.probe10(phase_E),             // input wire [15:0]  probe3
-		.probe11(diff_E),             // input wire [15:0]  probe3
+		.probe0(valid),             // input wire [0:0]  probe3
+		.probe1(freq),              // input wire [31:0]  probe3
+		.probe2(N[15:2]),           // input wire [13:0]  probe3
+		.probe3(fir_re_N[38:23]),   // input wire [15:0]  probe3
+		.probe4(fir_im_N[38:23]),   // input wire [15:0]  probe3
+		.probe5(env_N),             // input wire [15:0]  probe3
+		.probe6(phase_N),             // input wire [19:0]  probe3
+		.probe7(E[15:2]),           // input wire [13:0]  probe3
+		.probe8(fir_re_E[38:23]),   // input wire [15:0]  probe3
+		.probe9(fir_im_E[38:23]),   // input wire [15:0]  probe3
+		.probe10(env_E),             // input wire [15:0]  probe3
+		.probe11(phase_E),             // input wire [19:0]  probe3
 		.probe12(W[15:2]),           // input wire [13:0]  probe3
 		.probe13(fir_re_W[38:23]),   // input wire [15:0]  probe3
 		.probe14(fir_im_W[38:23]),   // input wire [15:0]  probe3
 		.probe15(env_W),             // input wire [15:0]  probe3
-		.probe16(phase_W),             // input wire [15:0]  probe3
-		.probe17(diff_W),             // input wire [15:0]  probe3
-		.probe18(fifo_valid)        // input wire [0:0]  probe3
+		.probe16(phase_W),             // input wire [19:0]  probe3
+		.probe17(fifo_valid)        // input wire [0:0]  probe3
 	);
-
 
 generate
   begin : deci_low
@@ -199,17 +218,17 @@ generate
 
          N[15:2] <= fifo_data[41:28];
          N[1:0] <= 0;
-         diff_N <= phase_N - prevN;
+         diffN <= phase_N - prevN;
          prevN <= phase_N;
 
          E[15:2] <= fifo_data[55:42];
          E[1:0] <= 0;
-         diff_E <= phase_E - prevE;
+         diffE <= phase_E - prevE;
          prevE <= phase_E;
          
          W[15:2] <= fifo_data[69:56];
          W[1:0] <= 0;
-         diff_W <= phase_W - prevW;
+         diffW <= phase_W - prevW;
          prevW <= phase_W;
       end
       else
@@ -220,6 +239,45 @@ generate
         prevW <= 0;
       end
     end
+
+    always @(posedge clk) 
+	begin
+	  if (validN & validE & validW)
+	  begin
+	    phase_sum <= diffN + diffN + diffN;
+	    mul <= 1;
+	  end
+	  else
+	  begin
+	    phase_sum <= 0;
+	    mul <= 0;
+	  end
+	end
+
+    always @(posedge clk) 
+	begin
+	  if (mul)
+	  begin
+	    freq[27:0] <= fp[47:20];
+	    freq[31:28] <= 0;
+
+	    env_N <= envN;
+	    phase_N <= phaseN;
+
+	    env_E <= envE;
+	    phase_E <= phaseE;
+	    
+	    env_W <= envW;
+	    phase_W <= phaseW;
+	    
+	    valid <= 1;
+	  end
+	  else
+	  begin
+	    freq <= 0;
+	    valid <= 0;
+	  end
+	end
 
   end
 
