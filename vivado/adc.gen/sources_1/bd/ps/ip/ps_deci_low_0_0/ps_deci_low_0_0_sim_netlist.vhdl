@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 14 23:26:01 2025
+-- Date        : Wed Nov 19 21:37:02 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -25,6 +25,13 @@ entity ps_deci_low_0_0_deci_low is
     ready_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
+    adc_active : in STD_LOGIC;
+    sim_active : in STD_LOGIC;
+    stop : out STD_LOGIC;
+    sim_clk : in STD_LOGIC;
+    sim_wr : in STD_LOGIC;
+    sim_channel : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     raw_clk : in STD_LOGIC;
     raw_ready : out STD_LOGIC;
     raw_data : out STD_LOGIC_VECTOR ( 195 downto 0 );
@@ -111,6 +118,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   end component ps_deci_low_0_0_fir_raw_deci_HD2;
+  signal \<const0>\ : STD_LOGIC;
   signal active : STD_LOGIC;
   signal active0 : STD_LOGIC;
   signal active_1 : STD_LOGIC;
@@ -358,6 +366,11 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
 begin
   doa_ready <= \^doa_ready\;
   raw_ready <= \^raw_ready\;
+  stop <= \<const0>\;
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
+    );
 \deci_low.active_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"8000"
@@ -5807,6 +5820,13 @@ entity ps_deci_low_0_0 is
     ready_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
+    adc_active : in STD_LOGIC;
+    sim_active : in STD_LOGIC;
+    stop : out STD_LOGIC;
+    sim_clk : in STD_LOGIC;
+    sim_wr : in STD_LOGIC;
+    sim_channel : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     raw_clk : in STD_LOGIC;
     raw_ready : out STD_LOGIC;
     raw_data : out STD_LOGIC_VECTOR ( 195 downto 0 );
@@ -5827,6 +5847,8 @@ entity ps_deci_low_0_0 is
 end ps_deci_low_0_0;
 
 architecture STRUCTURE of ps_deci_low_0_0 is
+  signal \<const0>\ : STD_LOGIC;
+  signal NLW_inst_stop_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -5842,9 +5864,18 @@ architecture STRUCTURE of ps_deci_low_0_0 is
   attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 resetn RST";
   attribute X_INTERFACE_MODE of resetn : signal is "slave";
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of sim_clk : signal is "xilinx.com:signal:clock:1.0 sim_clk CLK";
+  attribute X_INTERFACE_MODE of sim_clk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of sim_clk : signal is "XIL_INTERFACENAME sim_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
 begin
+  stop <= \<const0>\;
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
+    );
 inst: entity work.ps_deci_low_0_0_deci_low
      port map (
+      adc_active => '0',
       clk => clk,
       data_E(127 downto 0) => data_E(127 downto 0),
       data_N(127 downto 0) => data_N(127 downto 0),
@@ -5858,6 +5889,12 @@ inst: entity work.ps_deci_low_0_0_deci_low
       ready_E => ready_E,
       ready_N => ready_N,
       ready_W => ready_W,
-      resetn => resetn
+      resetn => resetn,
+      sim_active => '0',
+      sim_channel(1 downto 0) => B"00",
+      sim_clk => '0',
+      sim_data(31 downto 0) => B"00000000000000000000000000000000",
+      sim_wr => '0',
+      stop => NLW_inst_stop_UNCONNECTED
     );
 end STRUCTURE;

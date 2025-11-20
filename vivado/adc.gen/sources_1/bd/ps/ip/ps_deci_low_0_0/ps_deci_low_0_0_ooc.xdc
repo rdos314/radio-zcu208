@@ -58,4 +58,6 @@ create_clock -period 2 -name doa_clk [get_ports doa_clk]
 
 create_clock -period 2 -name raw_clk [get_ports raw_clk]
 
+create_clock -period 10 -name sim_clk [get_ports sim_clk]
+
 

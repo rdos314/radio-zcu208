@@ -64,6 +64,13 @@ module ps_deci_low_0_0 (
   ready_E,
   data_W,
   ready_W,
+  adc_active,
+  sim_active,
+  stop,
+  sim_clk,
+  sim_wr,
+  sim_channel,
+  sim_data,
   raw_clk,
   raw_ready,
   raw_data,
@@ -86,6 +93,16 @@ input wire [127 : 0] data_E;
 input wire ready_E;
 input wire [127 : 0] data_W;
 input wire ready_W;
+input wire adc_active;
+input wire sim_active;
+output wire stop;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+input wire sim_clk;
+input wire sim_wr;
+input wire [1 : 0] sim_channel;
+input wire [31 : 0] sim_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
@@ -108,6 +125,13 @@ output wire [69 : 0] doa_data;
     .ready_E(ready_E),
     .data_W(data_W),
     .ready_W(ready_W),
+    .adc_active(adc_active),
+    .sim_active(sim_active),
+    .stop(stop),
+    .sim_clk(sim_clk),
+    .sim_wr(sim_wr),
+    .sim_channel(sim_channel),
+    .sim_data(sim_data),
     .raw_clk(raw_clk),
     .raw_ready(raw_ready),
     .raw_data(raw_data),

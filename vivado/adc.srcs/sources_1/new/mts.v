@@ -23,10 +23,21 @@ module mts(
     input  wire pl_clk,
     input  wire	pl_sysref,
 	input  wire sys_reset,
+	
+	input wire axi_clk,
+	input wire axi_reset_in,
+	output reg axi_reset_out,
+	input wire axi_adc_active,
+	input wire axi_sim_active,
+	output reg axi_stop,
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
     output wire deci_clk,
-    output reg  deci_resetn,
+    output reg deci_resetn,
+	input wire deci_stop_low,
+	input wire deci_stop_high,
+	output reg deci_adc_active,
+	output reg deci_sim_active,
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	output wire comp0_clk,
@@ -46,17 +57,28 @@ module mts(
     
     output wire	user_sysref_adc
  ); 
+ 
+    reg adc_active;
+	reg sim_active;
+	reg axi_reset;
+	reg axi_stop_prev;
+	reg axi_stop_curr;
+	
+	reg	[3:0] deci_stop_count;		
+	reg deci_stop;
 
-	wire		pl_clk_buf;
-	wire 		rst_async = sys_reset | (~deci_locked);
-    wire        comp_locked;
-    wire        doa_locked;
+	wire pl_clk_buf;
+	wire rst_async = sys_reset | (~deci_locked);
+    wire comp_locked;
+    wire doa_locked;
 
 	(* ASYNC_REG="TRUE" *)  reg  sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
 
 	(* ASYNC_REG="TRUE" *)	reg  [3:0] deci_release_cnt;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_async;
+	(* ASYNC_REG="TRUE" *)	reg  axi_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  axi_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_1;
@@ -67,6 +89,14 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_2;
+
+	(* ASYNC_REG="TRUE" *)	reg  deci_adc_active_1;
+	(* ASYNC_REG="TRUE" *)	reg  deci_adc_active_2;
+	(* ASYNC_REG="TRUE" *)	reg  deci_sim_active_1;
+	(* ASYNC_REG="TRUE" *)	reg  deci_sim_active_2;
+
+	(* ASYNC_REG="TRUE" *)	reg  axi_stop_1;
+	(* ASYNC_REG="TRUE" *)	reg  axi_stop_2;
 
 	assign user_sysref_adc = sysref_sync[2];
 		    		
@@ -104,9 +134,23 @@ module mts(
 generate
   begin : mts
 
+	always @(posedge axi_clk) 
+	begin
+		axi_reset <= axi_reset_in;
+		adc_active <= axi_adc_active;
+		sim_active <= axi_sim_active;
+	end
+
+	always @(posedge axi_clk) 
+	begin
+		axi_reset_1 <= deci_reset_async;
+		axi_reset_2 <= axi_reset_1;
+		axi_reset_out <= axi_reset_2;
+	end
+
 	always @(posedge deci_clk or posedge rst_async) 
 	begin
-		if (rst_async) 
+		if (rst_async | axi_reset) 
 		begin
 			deci_release_cnt <= 0;
 			deci_reset_async <= 1;
@@ -133,6 +177,48 @@ generate
 		deci_reset_1 <= deci_reset_async;
 		deci_reset_2 <= deci_reset_1;
 		deci_resetn <= ~deci_reset_2;
+	end
+
+	always @(posedge deci_clk) 
+	begin
+		deci_adc_active_1 <= adc_active;
+		deci_adc_active_2 <= deci_adc_active_1;
+		deci_adc_active <= deci_adc_active_2;
+	end
+
+	always @(posedge deci_clk) 
+	begin
+		deci_sim_active_1 <= sim_active;
+		deci_sim_active_2 <= deci_sim_active_1;
+		deci_sim_active <= deci_sim_active_2;
+	end
+
+	always @(posedge deci_clk) 
+	begin
+		if (!deci_resetn | deci_stop_low | deci_stop_high)
+			deci_stop_count <= 0'b1111;
+		else
+		begin
+			if (deci_stop_count)
+				deci_stop_count <= deci_stop_count - 1;
+		end
+	end
+
+	always @(posedge deci_clk) 
+	begin
+		if (deci_stop_count)
+			deci_stop <= 1;
+		else
+			deci_stop <= 0;
+	end
+
+	always @(posedge axi_clk) 
+	begin
+		axi_stop_1 <= deci_stop;
+		axi_stop_2 <= axi_stop_1;
+		axi_stop_curr <= axi_stop_2;
+		axi_stop_prev <= axi_stop_curr;
+		axi_stop <= axi_stop_curr & ~axi_stop_prev;
 	end
 
 	always @(posedge doa0_clk) 

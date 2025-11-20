@@ -31,6 +31,15 @@ module deci_high(
     input wire	[127:0] data_W,
     input wire	ready_W,
 
+    input wire adc_active,	
+    input wire sim_active,	
+    output wire stop,
+	
+	input wire sim_clk,
+	input wire sim_wr,
+	input wire [1:0] sim_channel,
+	input wire [31:0] sim_data,
+
     input wire  raw_clk,
     output reg raw_ready,
     output reg	[363:0] raw_data,
@@ -39,6 +48,8 @@ module deci_high(
     output reg doa_ready,
     output reg [111:0] doa_data
     );
+
+  assign stop = 0;
 
   reg [27:0]  counter;
   reg active;

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 14 23:26:01 2025
+// Date        : Wed Nov 19 21:37:02 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -25,6 +25,13 @@ module ps_deci_low_0_0
     ready_E,
     data_W,
     ready_W,
+    adc_active,
+    sim_active,
+    stop,
+    sim_clk,
+    sim_wr,
+    sim_channel,
+    sim_data,
     raw_clk,
     raw_ready,
     raw_data,
@@ -39,6 +46,13 @@ module ps_deci_low_0_0
   input ready_E;
   input [127:0]data_W;
   input ready_W;
+  input adc_active;
+  input sim_active;
+  output stop;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input sim_clk;
+  input sim_wr;
+  input [1:0]sim_channel;
+  input [31:0]sim_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input raw_clk;
   output raw_ready;
   output [195:0]raw_data;
@@ -46,6 +60,7 @@ module ps_deci_low_0_0
   output doa_ready;
   output [69:0]doa_data;
 
+  wire \<const0> ;
   wire clk;
   wire [127:0]data_E;
   wire [127:0]data_N;
@@ -60,9 +75,14 @@ module ps_deci_low_0_0
   wire ready_N;
   wire ready_W;
   wire resetn;
+  wire NLW_inst_stop_UNCONNECTED;
 
+  assign stop = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
   ps_deci_low_0_0_deci_low inst
-       (.clk(clk),
+       (.adc_active(1'b0),
+        .clk(clk),
         .data_E(data_E),
         .data_N(data_N),
         .data_W(data_W),
@@ -75,7 +95,13 @@ module ps_deci_low_0_0
         .ready_E(ready_E),
         .ready_N(ready_N),
         .ready_W(ready_W),
-        .resetn(resetn));
+        .resetn(resetn),
+        .sim_active(1'b0),
+        .sim_channel({1'b0,1'b0}),
+        .sim_clk(1'b0),
+        .sim_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .sim_wr(1'b0),
+        .stop(NLW_inst_stop_UNCONNECTED));
 endmodule
 
 (* ORIG_REF_NAME = "deci_low" *) 
@@ -88,6 +114,13 @@ module ps_deci_low_0_0_deci_low
     ready_E,
     data_W,
     ready_W,
+    adc_active,
+    sim_active,
+    stop,
+    sim_clk,
+    sim_wr,
+    sim_channel,
+    sim_data,
     raw_clk,
     raw_ready,
     raw_data,
@@ -102,6 +135,13 @@ module ps_deci_low_0_0_deci_low
   input ready_E;
   input [127:0]data_W;
   input ready_W;
+  input adc_active;
+  input sim_active;
+  output stop;
+  input sim_clk;
+  input sim_wr;
+  input [1:0]sim_channel;
+  input [31:0]sim_data;
   input raw_clk;
   output raw_ready;
   output [195:0]raw_data;
@@ -109,6 +149,7 @@ module ps_deci_low_0_0_deci_low
   output doa_ready;
   output [69:0]doa_data;
 
+  wire \<const0> ;
   wire active;
   wire active0;
   (* async_reg = "true" *) wire active_1;
@@ -322,6 +363,9 @@ module ps_deci_low_0_0_deci_low
   wire NLW_fir_deci_W_i_s_axis_data_tready_UNCONNECTED;
   wire [127:0]NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED;
 
+  assign stop = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h8000)) 

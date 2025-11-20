@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Nov  1 18:40:26 2025
+-- Date        : Wed Nov 19 21:32:13 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/radio-zcu208-old/vivado/adc.gen/sources_1/bd/ps/ip/ps_util_ds_buf_0_1/ps_util_ds_buf_0_1_stub.vhdl
+--               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_util_ds_buf_0_1/ps_util_ds_buf_0_1_stub.vhdl
 -- Design      : ps_util_ds_buf_0_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xczu48dr-fsvg1517-2-e
