@@ -33,9 +33,10 @@ module deci_low(
 
     input wire adc_active,	
     input wire sim_active,
-    output wire stop,
+    output reg stop,
 
 	input wire sim_clk,
+	input wire sim_resetn,
 	input wire sim_wr,
 	input wire [1:0] sim_channel,
 	input wire [31:0] sim_data,
@@ -49,7 +50,10 @@ module deci_low(
     output reg [69:0] doa_data
     );
 	
-  assign stop = 0;
+  reg mux_active;
+  reg [127:0] mux_data_N;
+  reg [127:0] mux_data_E;
+  reg [127:0] mux_data_W;
 
   reg [27:0]  counter;
   reg active;
@@ -71,6 +75,20 @@ module deci_low(
   wire doa_fifo_empty;
   wire [69:0] doa_out_data;
   reg doa_out_active;
+
+  reg sim_wr_N;
+  reg sim_wr_E;
+  reg sim_wr_W;
+
+  reg sim_rd;
+  
+  wire [127:0] sim_out_N;
+  wire [127:0] sim_out_E;
+  wire [127:0] sim_out_W;
+  
+  wire sim_emtpy_N;
+  wire sim_emtpy_E;
+  wire sim_emtpy_W;
 
   (* ASYNC_REG="TRUE" *)	reg  active_1;
   (* ASYNC_REG="TRUE" *)	reg  active_2;
@@ -138,57 +156,57 @@ module deci_low(
   wire [13:0] drW3 = fir_raw_W[126:113];
 
 fir_raw_deci fir_deci_N_i (
-  .aresetn(resetn),              // input wire aresetn
-  .aclk(clk),                    // input wire aclk
-  .s_axis_data_tvalid(ready_N),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(data_N),    // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(valid_raw_N),  // output wire m_axis_data_tvalid
-  .m_axis_data_tdata(fir_raw_N)      // output wire [127 : 0] m_axis_data_tdata
+  .aresetn(resetn),                 // input wire aresetn
+  .aclk(clk),                       // input wire aclk
+  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(mux_N),        // input wire [127 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_raw_N), // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_raw_N)     // output wire [127 : 0] m_axis_data_tdata
 );
 
 fir_raw_deci fir_deci_E_i (
-  .aresetn(resetn),              // input wire aresetn
-  .aclk(clk),                    // input wire aclk
-  .s_axis_data_tvalid(ready_E),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(data_E),    // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(valid_raw_E),  // output wire m_axis_data_tvalid
-  .m_axis_data_tdata(fir_raw_E)      // output wire [127 : 0] m_axis_data_tdata
+  .aresetn(resetn),                 // input wire aresetn
+  .aclk(clk),                       // input wire aclk
+  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(mux_E),        // input wire [127 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_raw_E), // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_raw_E)     // output wire [127 : 0] m_axis_data_tdata
 );
 
 fir_raw_deci fir_deci_W_i (
-  .aresetn(resetn),              // input wire aresetn
-  .aclk(clk),                    // input wire aclk
-  .s_axis_data_tvalid(ready_W),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(data_W),    // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(valid_raw_W),  // output wire m_axis_data_tvalid
-  .m_axis_data_tdata(fir_raw_W)      // output wire [127 : 0] m_axis_data_tdata
+  .aresetn(resetn),                 // input wire aresetn
+  .aclk(clk),                       // input wire aclk
+  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(mux_W),        // input wire [127 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_raw_W), // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_raw_W)     // output wire [127 : 0] m_axis_data_tdata
 );
 
 fir_deci_low fir_N_i (
-  .aresetn(resetn),              // input wire aresetn
-  .aclk(clk),                    // input wire aclk
-  .s_axis_data_tvalid(ready_N),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(data_N),    // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(valid_N),  // output wire m_axis_data_tvalid
-  .m_axis_data_tdata(fir_N)      // output wire [31 : 0] m_axis_data_tdata
+  .aresetn(resetn),                 // input wire aresetn
+  .aclk(clk),                       // input wire aclk
+  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(mux_N),        // input wire [127 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_N),     // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_N)         // output wire [31 : 0] m_axis_data_tdata
 );
 
 fir_deci_low fir_E_i (
-  .aresetn(resetn),              // input wire aresetn
-  .aclk(clk),                    // input wire aclk
-  .s_axis_data_tvalid(ready_E),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(data_E),    // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(valid_E),  // output wire m_axis_data_tvalid
-  .m_axis_data_tdata(fir_E)      // output wire [31 : 0] m_axis_data_tdata
+  .aresetn(resetn),                 // input wire aresetn
+  .aclk(clk),                       // input wire aclk
+  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(mux_E),        // input wire [127 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_E),     // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_E)         // output wire [31 : 0] m_axis_data_tdata
 );
 
 fir_deci_low fir_W_i (
-  .aresetn(resetn),              // input wire aresetn
-  .aclk(clk),                    // input wire aclk
-  .s_axis_data_tvalid(ready_W),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(data_W),    // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(valid_W),  // output wire m_axis_data_tvalid
-  .m_axis_data_tdata(fir_W)      // output wire [31 : 0] m_axis_data_tdata
+  .aresetn(resetn),                 // input wire aresetn
+  .aclk(clk),                       // input wire aclk
+  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(mux_W),        // input wire [127 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(valid_W),     // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(fir_W)         // output wire [31 : 0] m_axis_data_tdata
 );
 
 fifo_raw_low fifo_raw_i (
@@ -213,8 +231,129 @@ fifo_doa_low fifo_doa_i (
   .empty(doa_fifo_empty)      // output wire empty
 );
 
+fifo_sim fifo_sim_N_i (
+  .rst(sim_resetn),         // input wire rst
+  .wr_clk(sim_clk),         // input wire wr_clk
+  .rd_clk(clk),             // input wire rd_clk
+  .din(sim_data),           // input wire [31 : 0] din
+  .wr_en(sim_wr_N),         // input wire wr_en
+  .rd_en(sim_rd),           // input wire rd_en
+  .dout(sim_out_N),         // output wire [127 : 0] dout
+  .empty(sim_empty_N)       // output wire empty
+);
+
+fifo_sim fifo_sim_E_i (
+  .rst(sim_resetn),         // input wire rst
+  .wr_clk(sim_clk),         // input wire wr_clk
+  .rd_clk(clk),             // input wire rd_clk
+  .din(sim_data),           // input wire [31 : 0] din
+  .wr_en(sim_wr_E),         // input wire wr_en
+  .rd_en(sim_rd),           // input wire rd_en
+  .dout(sim_out_E),         // output wire [127 : 0] dout
+  .empty(sim_empty_E)       // output wire empty
+);
+
+fifo_sim fifo_sim_W_i (
+  .rst(sim_resetn),         // input wire rst
+  .wr_clk(sim_clk),         // input wire wr_clk
+  .rd_clk(clk),             // input wire rd_clk
+  .din(sim_data),           // input wire [31 : 0] din
+  .wr_en(sim_wr_W),         // input wire wr_en
+  .rd_en(sim_rd),           // input wire rd_en
+  .dout(sim_out_W),         // output wire [127 : 0] dout
+  .empty(sim_empty_W)       // output wire empty
+);
+
 generate
   begin : deci_low
+
+	always @(posedge clk) 
+	begin
+	  if (sim_wr)
+	  begin
+		case (sim_channel)
+          2'b00 : 
+			begin
+			  sim_wr_N <= 1;
+			  sim_wr_E <= 0;
+			  sim_wr_W <= 0;
+			end
+
+          2'b01 : 
+		    begin
+			  sim_wr_N <= 0;
+			  sim_wr_E <= 1;
+			  sim_wr_W <= 0;
+		    end
+
+          2'b10 : 
+		    begin
+			  sim_wr_N <= 0;
+			  sim_wr_E <= 0;
+			  sim_wr_W <= 1;
+		    end
+
+          2'b11 : 
+		    begin
+			  sim_wr_N <= 0;
+			  sim_wr_E <= 0;
+			  sim_wr_W <= 0;
+		    end
+
+        endcase
+	  end
+	  else
+	  begin
+		sim_wr_N <= 0;
+		sim_wr_E <= 0;
+		sim_wr_W <= 0;
+	  end
+	end
+
+	always @(posedge clk) 
+	begin
+	  if (adc_active)
+	  begin
+		mux_active <= ready_N & ready_E & ready_W;
+		mux_N <= data_N;
+		mux_E <= data_E;
+		mux_W <= data_W;
+		stop <= 0;
+		sim_rd <= 0;
+	  end
+	  else
+	  begin
+		if (sim_active)
+		begin
+		  if (sim_empty_N | sim_empty_E | sim_empty_W)
+		  begin
+		    mux_active <= 0;
+  		    mux_N <= 0;
+			mux_E <= 0;
+			mux_W <= 0;
+		    stop <= 1;
+			sim_rd <= 0;
+		  end
+		  else
+		  begin
+			mux_active <= 1;
+			mux_N <= sim_out_N;
+			mux_E <= sim_out_E;
+			mux_W <= sim_out_W;
+			stop <= 0;
+			sim_rd <= 1;
+		end
+		else
+		begin
+		  mux_active <= 0;
+		  mux_N <= 0;
+		  mux_E <= 0;
+		  mux_W <= 0;
+		  stop <= 0;
+  		  sim_rd <= 0;
+		end
+	  end
+	end
 
 	always @(posedge clk) 
 	begin
