@@ -51,9 +51,9 @@ module deci_low(
     );
 	
   reg mux_active;
-  reg [127:0] mux_data_N;
-  reg [127:0] mux_data_E;
-  reg [127:0] mux_data_W;
+  reg [127:0] mux_N;
+  reg [127:0] mux_E;
+  reg [127:0] mux_W;
 
   reg [27:0]  counter;
   reg active;
@@ -267,7 +267,7 @@ fifo_sim fifo_sim_W_i (
 generate
   begin : deci_low
 
-	always @(posedge clk) 
+	always @(posedge sim_clk) 
 	begin
 	  if (sim_wr)
 	  begin
@@ -342,6 +342,7 @@ generate
 			mux_W <= sim_out_W;
 			stop <= 0;
 			sim_rd <= 1;
+		  end
 		end
 		else
 		begin

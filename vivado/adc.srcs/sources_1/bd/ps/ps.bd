@@ -2100,6 +2100,10 @@
             "type": "clk",
             "direction": "I",
             "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "sim_resetn",
+                "value_src": "constant"
+              },
               "FREQ_HZ": {
                 "value": "99999001",
                 "value_src": "user_prop"
@@ -2107,6 +2111,16 @@
               "CLK_DOMAIN": {
                 "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
                 "value_src": "default_prop"
+              }
+            }
+          },
+          "sim_resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
               }
             }
           },
@@ -2534,6 +2548,10 @@
             "type": "clk",
             "direction": "I",
             "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "resetn",
+                "value_src": "constant"
+              },
               "FREQ_HZ": {
                 "value": "99999001",
                 "value_src": "user_prop"
@@ -2544,9 +2562,15 @@
               }
             }
           },
-          "reset_in": {
+          "resetn": {
             "type": "rst",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
           },
           "reset_out": {
             "type": "rst",
@@ -2641,6 +2665,12 @@
           },
           "Memory_Type": {
             "value": "True_Dual_Port_RAM"
+          },
+          "Register_PortB_Output_of_Memory_Core": {
+            "value": "false"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "false"
           },
           "Use_Byte_Write_Enable": {
             "value": "true"
@@ -2795,8 +2825,8 @@
       "adc_control_0_sim_channel": {
         "ports": [
           "adc_control_0/sim_channel",
-          "deci_low/sim_channel",
-          "deci_high/sim_channel"
+          "deci_high/sim_channel",
+          "deci_low/sim_channel"
         ]
       },
       "adc_control_0_sim_data": {
@@ -2913,8 +2943,8 @@
       "mts_0_deci_adc_active": {
         "ports": [
           "mts_0/deci_adc_active",
-          "deci_low/adc_active",
-          "deci_high/adc_active"
+          "deci_high/adc_active",
+          "deci_low/adc_active"
         ]
       },
       "mts_0_deci_clk": {
@@ -2924,8 +2954,8 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "deci_low/clk",
-          "deci_high/clk"
+          "deci_high/clk",
+          "deci_low/clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -2935,22 +2965,22 @@
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
-          "deci_low/resetn",
-          "deci_high/resetn"
+          "deci_high/resetn",
+          "deci_low/resetn"
         ]
       },
       "mts_0_deci_sim_active": {
         "ports": [
           "mts_0/deci_sim_active",
-          "deci_low/sim_active",
-          "deci_high/sim_active"
+          "deci_high/sim_active",
+          "deci_low/sim_active"
         ]
       },
       "mts_0_doa0_clk": {
         "ports": [
           "mts_0/doa0_clk",
-          "deci_low/doa_clk",
-          "doa_low_0/clk"
+          "doa_low_0/clk",
+          "deci_low/doa_clk"
         ]
       },
       "mts_0_doa0_reset": {
@@ -3015,7 +3045,9 @@
           "r5_timer/s_axi_aresetn",
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
-          "axi_bram_ctrl_0/s_axi_aresetn"
+          "axi_bram_ctrl_0/s_axi_aresetn",
+          "deci_low/sim_resetn",
+          "adc_control_0/resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3112,12 +3144,12 @@
           "zynq_ultra_ps_e_0/maxihpm0_lpd_aclk",
           "clk104_mux/s_axi_aclk",
           "usp_rf_data_converter_0/s_axi_aclk",
-          "adc_control_0/clk",
           "deci_high/sim_clk",
-          "deci_low/sim_clk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "mts_0/axi_clk"
+          "mts_0/axi_clk",
+          "deci_low/sim_clk",
+          "adc_control_0/clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

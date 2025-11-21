@@ -405,6 +405,15 @@ axipmon_IS_TOP_LEVEL:STATIC=OFF
 axipmon_SOURCE_DIR:STATIC=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/axipmon/src
 
 //Value Computed by CMake
+bram_BINARY_DIR:STATIC=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/bram/src
+
+//Value Computed by CMake
+bram_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+bram_SOURCE_DIR:STATIC=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/bram/src
+
+//Value Computed by CMake
 bsp_BINARY_DIR:STATIC=C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp
 
 //Value Computed by CMake
@@ -825,7 +834,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=48
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=49
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -68,6 +68,7 @@ module ps_deci_low_0_0 (
   sim_active,
   stop,
   sim_clk,
+  sim_resetn,
   sim_wr,
   sim_channel,
   sim_data,
@@ -98,8 +99,12 @@ input wire sim_active;
 output wire stop;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, ASSOCIATED_RESET sim_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 input wire sim_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sim_resetn RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+input wire sim_resetn;
 input wire sim_wr;
 input wire [1 : 0] sim_channel;
 input wire [31 : 0] sim_data;
@@ -129,6 +134,7 @@ output wire [69 : 0] doa_data;
     .sim_active(sim_active),
     .stop(stop),
     .sim_clk(sim_clk),
+    .sim_resetn(sim_resetn),
     .sim_wr(sim_wr),
     .sim_channel(sim_channel),
     .sim_data(sim_data),

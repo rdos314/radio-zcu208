@@ -19,6 +19,7 @@ addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_b
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/ddrcpsu/src/libddrcpsu.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/csudma/src/libcsudma.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/clockps/src/libclockps.a
+addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/bram/src/libbram.a
 addlib C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/axipmon/src/libaxipmon.a
 save
 end

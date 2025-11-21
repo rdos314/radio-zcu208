@@ -12,6 +12,8 @@ C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xasudma.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xcsudma.h
@@ -132,6 +134,8 @@ C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xasudma.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xcsudma.h
@@ -252,6 +256,8 @@ C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xasudma.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xcsudma.h
@@ -372,6 +378,8 @@ C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xasudma.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xcsudma.h
@@ -492,6 +500,8 @@ C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xasudma.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xcsudma.h
@@ -612,6 +622,8 @@ C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xasudma.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/include/../include/xcsudma.h

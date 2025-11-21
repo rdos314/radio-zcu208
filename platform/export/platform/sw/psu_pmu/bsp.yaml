@@ -154,6 +154,10 @@ include_folder: include
 lib_folder: lib
 libsrc_folder: libsrc
 drv_info:
+  axi_bram_ctrl_0:
+    driver: bram
+    ip_name: axi_bram_ctrl
+    path: C:\Xilinx\2025.1\Vitis\data\embeddedsw\XilinxProcessorIPLib\drivers\bram_v4_12
   clk104_mux:
     driver: gpio
     ip_name: axi_gpio

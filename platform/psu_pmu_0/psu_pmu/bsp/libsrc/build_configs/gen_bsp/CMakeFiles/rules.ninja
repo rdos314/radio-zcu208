@@ -41,6 +41,25 @@ rule C_STATIC_LIBRARY_LINKER__axipmon_
 #############################################
 # Rule for compiling C files.
 
+rule C_COMPILER__bram_
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\Xilinx\2025.1\Vitis\gnu\microblaze\nt\bin\mb-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building C object $out
+
+
+#############################################
+# Rule for linking C static library.
+
+rule C_STATIC_LIBRARY_LINKER__bram_
+  command = cmd.exe /C "$PRE_LINK && C:\Xilinx\2025.1\tps\win64\cmake-3.24.2\bin\cmake.exe -E rm -f $TARGET_FILE && mb-ar qc $TARGET_FILE $LINK_FLAGS $in && C:\Xilinx\2025.1\Vitis\gnu\microblaze\nt\bin\mb-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking C static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling C files.
+
 rule C_COMPILER__clockps_
   depfile = $DEP_FILE
   deps = gcc

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Wed Nov 19 21:46:07 2025
+//Date        : Fri Nov 21 01:16:00 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -281,8 +281,8 @@ module ps
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .data_in(axi_bram_doutb),
         .data_out(adc_control_0_data_out),
-        .reset_in(1'b0),
         .reset_out(adc_control_0_reset_out),
+        .resetn(rst_ps8_0_99M_peripheral_aresetn),
         .sim_active(adc_control_0_sim_active),
         .sim_channel(adc_control_0_sim_channel),
         .sim_data(adc_control_0_sim_data),
@@ -554,6 +554,7 @@ module ps
         .sim_channel(adc_control_0_sim_channel),
         .sim_clk(zynq_ultra_ps_e_0_pl_clk0),
         .sim_data(adc_control_0_sim_data),
+        .sim_resetn(rst_ps8_0_99M_peripheral_aresetn),
         .sim_wr(adc_control_0_sim_low_wr),
         .stop(deci_low_stop));
   ps_doa_low_0_0 doa_low_0

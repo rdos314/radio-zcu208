@@ -6,6 +6,8 @@ C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/..
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xcommon_drv_config.h
@@ -106,6 +108,8 @@ C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/..
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xcommon_drv_config.h
@@ -206,6 +210,8 @@ C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/..
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xaxipmon.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xaxipmon_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbasic_types.h
+C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbram.h
+C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xbram_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xclockps.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xclockps_hw.h
 C:/radio-zcu208/platform/psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/include/../include/xcommon_drv_config.h

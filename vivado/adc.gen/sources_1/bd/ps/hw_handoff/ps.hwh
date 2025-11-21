@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov 19 21:46:10 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov 21 01:16:03 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -227,10 +227,14 @@
             <CONNECTION INSTANCE="axi_bram" PORT="dinb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
         <PORT DIR="O" NAME="reset_out" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="adc_control_0_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="axi_reset_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="rst_ps8_0_99M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="sim_active" SIGIS="undef" SIGNAME="adc_control_0_sim_active">
@@ -240,8 +244,8 @@
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="sim_channel" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_sim_channel">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_channel"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_channel"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_channel"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="sim_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_sim_data">
@@ -308,7 +312,7 @@
         <PARAMETER NAME="C_HAS_ENB" VALUE="0"/>
         <PARAMETER NAME="C_HAS_INJECTERR" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_A" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_B" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_B" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MUX_OUTPUT_REGS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MUX_OUTPUT_REGS_B" VALUE="0"/>
         <PARAMETER NAME="C_HAS_REGCEA" VALUE="0"/>
@@ -403,7 +407,7 @@
         <PARAMETER NAME="Register_PortA_Output_of_Memory_Core" VALUE="false"/>
         <PARAMETER NAME="Register_PortA_Output_of_Memory_Primitives" VALUE="true"/>
         <PARAMETER NAME="Register_PortB_Output_of_Memory_Core" VALUE="false"/>
-        <PARAMETER NAME="Register_PortB_Output_of_Memory_Primitives" VALUE="true"/>
+        <PARAMETER NAME="Register_PortB_Output_of_Memory_Primitives" VALUE="false"/>
         <PARAMETER NAME="Remaining_Memory_Locations" VALUE="0"/>
         <PARAMETER NAME="Reset_Memory_Latch_A" VALUE="false"/>
         <PARAMETER NAME="Reset_Memory_Latch_B" VALUE="false"/>
@@ -2844,6 +2848,11 @@
             <CONNECTION INSTANCE="adc_control_0" PORT="sim_data"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="sim_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="rst_ps8_0_99M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="sim_wr" SIGIS="undef" SIGNAME="adc_control_0_sim_low_wr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="adc_control_0" PORT="sim_low_wr"/>
@@ -3308,8 +3317,8 @@
         </PORT>
         <PORT DIR="O" NAME="deci_adc_active" SIGIS="undef" SIGNAME="mts_0_deci_adc_active">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="adc_active"/>
             <CONNECTION INSTANCE="deci_high" PORT="adc_active"/>
+            <CONNECTION INSTANCE="deci_low" PORT="adc_active"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="deci_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -3318,8 +3327,8 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aclk"/>
-            <CONNECTION INSTANCE="deci_low" PORT="clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
@@ -3328,14 +3337,14 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aresetn"/>
-            <CONNECTION INSTANCE="deci_low" PORT="resetn"/>
             <CONNECTION INSTANCE="deci_high" PORT="resetn"/>
+            <CONNECTION INSTANCE="deci_low" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_sim_active" SIGIS="undef" SIGNAME="mts_0_deci_sim_active">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_active"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_active"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_active"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="deci_stop_high" SIGIS="undef" SIGNAME="deci_high_stop">
@@ -3350,8 +3359,8 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa0_clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="doa_clk"/>
             <CONNECTION INSTANCE="doa_low_0" PORT="clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="doa_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="doa0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_reset">
@@ -4046,6 +4055,8 @@
             <CONNECTION INSTANCE="clk104_mux" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_resetn"/>
+            <CONNECTION INSTANCE="adc_control_0" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
@@ -8167,12 +8178,12 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="maxihpm0_lpd_aclk"/>
             <CONNECTION INSTANCE="clk104_mux" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_clk"/>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_bram" PORT="clkb"/>
             <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
+            <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">

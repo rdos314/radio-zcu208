@@ -21,7 +21,7 @@
 
 module adc_control(
     input wire clk,
-    input wire reset_in,
+    input wire resetn,
     output reg reset_out,
 	input wire stop_in,
 	
@@ -46,6 +46,7 @@ module adc_control(
    	reg sim_pend;   	
 	reg sim_done;
 	reg [10:0] sim_count;
+	reg [1:0] delay;
 		
    	wire [7:0] adc_cmd = data0[7:0];
    	wire [2:0] adc_chan = data0[10:8];
@@ -53,25 +54,26 @@ module adc_control(
 
 ila_4 ila_4_i (
 		.clk(clk),                  // input wire clk
-		.probe0(reset_in),          // input wire [0:0]  probe3
+		.probe0(resetn),            // input wire [0:0]  probe3
 		.probe1(stop_in),           // input wire [0:0]  probe3
 		.probe2(reset_out),         // input wire [0:0]  probe3
-		.probe3(data_in),           // input wire [31:0]  probe3
-		.probe4(address),           // input wire [10:0]  probe3
-		.probe5(wr_en),             // input wire [3:0]  probe3
-		.probe6(data_out),          // input wire [31:0]  probe3
-		.probe7(cdata),             // input wire [31:0]  probe3
-		.probe8(data0),             // input wire [31:0]  probe3
-		.probe9(sim_low_wr),        // input wire [0:0]  probe3
-		.probe10(sim_high_wr),      // input wire [0:0]  probe3
-		.probe11(sim_channel),      // input wire [1:0]  probe3
-		.probe12(sim_data),         // input wire [31:0]  probe3
-		.probe13(adc_active),       // input wire [0:0]  probe3
-		.probe14(sim_active),       // input wire [0:0]  probe3
-		.probe15(cmd_start),        // input wire [0:0]  probe3
-		.probe16(sim_pend),         // input wire [0:0]  probe3
-		.probe17(sim_done),         // input wire [0:0]  probe3
-		.probe18(sim_count)         // input wire [10:0]  probe3
+		.probe3(delay),             // input wire [1:0]  probe3
+		.probe4(data_in),           // input wire [31:0]  probe3
+		.probe5(address),           // input wire [10:0]  probe3
+		.probe6(wr_en),             // input wire [3:0]  probe3
+		.probe7(data_out),          // input wire [31:0]  probe3
+		.probe8(cdata),             // input wire [31:0]  probe3
+		.probe9(data0),             // input wire [31:0]  probe3
+		.probe10(sim_low_wr),       // input wire [0:0]  probe3
+		.probe11(sim_high_wr),      // input wire [0:0]  probe3
+		.probe12(sim_channel),      // input wire [1:0]  probe3
+		.probe13(sim_data),         // input wire [31:0]  probe3
+		.probe14(adc_active),       // input wire [0:0]  probe3
+		.probe15(sim_active),       // input wire [0:0]  probe3
+		.probe16(cmd_start),        // input wire [0:0]  probe3
+		.probe17(sim_pend),         // input wire [0:0]  probe3
+		.probe18(sim_done),         // input wire [0:0]  probe3
+		.probe19(sim_count)         // input wire [10:0]  probe3
 	);
 
 generate
@@ -85,7 +87,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (!reset_in && cdata)
+	  if (resetn && cdata)
 	  begin
 	    if (sim_pend || cmd_start)
 		  cmd_start <= 0;
@@ -142,7 +144,7 @@ generate
 	  end
 	  else
 	  begin
-	    if (reset_in | stop_in)
+	    if (!resetn | stop_in)
 		begin
 		  adc_active <= 0;
 		  sim_active <= 0;		
@@ -167,12 +169,15 @@ generate
 	    address <= 2;
 	  else
 	  begin
-	    if (reset_in | sim_done | reset_out)
+	    if (!resetn | sim_done | reset_out)
 		  address <= 1;
 		else
 		begin
   	      if (sim_pend)
-		    address <= address + 1;
+  	      begin
+  	        if (delay == 0)
+		      address <= address + 1;
+		  end
   		  else
 		    address <= 0;
 	    end
@@ -183,6 +188,7 @@ generate
 	begin
 	  if (cmd_start)	  
 	  begin
+	    delay <= 2'b11;
 		sim_done <= 0;
 	    sim_low_wr <= 0;
 	    sim_high_wr <= 0;
@@ -195,24 +201,40 @@ generate
 	    begin
 	      if (sim_count)
 		  begin
-		    sim_done <= 0;
-		    sim_count <= sim_count - 1;
-			sim_data <= data_in;
+		    if (delay)
+		    begin
+		      delay <= delay - 1;
+   	          sim_low_wr <= 0;
+	          sim_high_wr <= 0;
+	        end
+		    else
+		    begin
+  		      sim_done <= 0;
+		      sim_count <= sim_count - 1;
+			  sim_data <= data_in;
+  	          delay <= 2'b11;
 		  
-  	        if (adc_chan[2])
-	          sim_high_wr <= 1;
-  		    else
-		      sim_low_wr <= 1;
+  	          if (adc_chan[2])
+	            sim_high_wr <= 1;
+  		      else
+		        sim_low_wr <= 1;
+		    end
   		  end
 		  else
+		  begin
 		    sim_done <= 1;
+   	        sim_low_wr <= 0;
+	        sim_high_wr <= 0;
+  	        delay <= 2'b11;
+  	      end
  	    end
 	    else
 	    begin
+		  sim_done <= 0;
 		  sim_count <= 0;
 	      sim_low_wr <= 0;
 	      sim_high_wr <= 0;
-		  sim_done <= 0;
+	      delay <= 2'b11;
 		end
 	  end
 	end
@@ -226,15 +248,7 @@ generate
 	  end
 	  else
 	  begin
-   	    if (reset_in)
-	    begin
-	      data_out <= 1;
-		  if (data_out == 1)
-  		    wr_en <= 4'b0000;
-          else		  
-		    wr_en <= 4'b1111;
-		end
-	    else
+   	    if (resetn)
 	    begin
   	      if (sim_done | reset_out)
 	      begin
@@ -246,6 +260,14 @@ generate
 	      else
   		    wr_en <= 4'b0000;
         end
+        else
+	    begin
+	      data_out <= 1;
+		  if (data_out == 1)
+  		    wr_en <= 4'b0000;
+          else		  
+		    wr_en <= 4'b1111;
+		end
 	  end
     end
 	    

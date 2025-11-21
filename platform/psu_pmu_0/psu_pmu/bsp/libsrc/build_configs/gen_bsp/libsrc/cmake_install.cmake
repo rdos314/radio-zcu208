@@ -44,6 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/bram/src/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/radio-zcu208/platform/psu_pmu_0/psu_pmu/bsp/libsrc/build_configs/gen_bsp/libsrc/clockps/src/cmake_install.cmake")
 endif()
 

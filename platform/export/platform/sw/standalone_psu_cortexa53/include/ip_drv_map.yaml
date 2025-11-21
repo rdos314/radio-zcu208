@@ -1,3 +1,6 @@
+axi_bram_ctrl_0:
+- axi_bram_ctrl
+- bram
 clk104_mux:
 - axi_gpio
 - gpio
