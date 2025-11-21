@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 21 01:16:47 2025
+-- Date        : Fri Nov 21 23:06:15 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_adc_control_0_0/ps_adc_control_0_0_sim_netlist.vhdl
@@ -21,6 +21,8 @@ entity ps_adc_control_0_0_adc_control is
     resetn : in STD_LOGIC;
     reset_out : out STD_LOGIC;
     stop_in : in STD_LOGIC;
+    bram_adr_in : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    bram_adr_out : out STD_LOGIC_VECTOR ( 10 downto 0 );
     address : out STD_LOGIC_VECTOR ( 10 downto 0 );
     data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     wr_en : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -266,6 +268,7 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \^address\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute MARK_DEBUG of \^address\ : signal is std.standard.true;
   signal address1 : STD_LOGIC;
+  signal \^bram_adr_in\ : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal cdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of cdata : signal is std.standard.true;
   signal cmd_start : STD_LOGIC;
@@ -554,8 +557,10 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   attribute X_CORE_INFO : string;
   attribute X_CORE_INFO of ila_4_i : label is "ila,Vivado 2025.1";
 begin
+  \^bram_adr_in\(12 downto 2) <= bram_adr_in(12 downto 2);
   adc_active <= \^adc_active\;
   address(10 downto 0) <= \^address\(10 downto 0);
+  bram_adr_out(10 downto 0) <= \^bram_adr_in\(12 downto 2);
   data_out(31 downto 0) <= \^data_out\(31 downto 0);
   reset_out <= \^reset_out\;
   sim_active <= \^sim_active\;
@@ -4191,6 +4196,8 @@ entity ps_adc_control_0_0 is
     resetn : in STD_LOGIC;
     reset_out : out STD_LOGIC;
     stop_in : in STD_LOGIC;
+    bram_adr_in : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    bram_adr_out : out STD_LOGIC_VECTOR ( 10 downto 0 );
     address : out STD_LOGIC_VECTOR ( 10 downto 0 );
     data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     wr_en : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -4232,6 +4239,9 @@ inst: entity work.ps_adc_control_0_0_adc_control
      port map (
       adc_active => adc_active,
       address(10 downto 0) => address(10 downto 0),
+      bram_adr_in(12 downto 2) => bram_adr_in(12 downto 2),
+      bram_adr_in(1 downto 0) => B"00",
+      bram_adr_out(10 downto 0) => bram_adr_out(10 downto 0),
       clk => clk,
       data_in(31 downto 0) => data_in(31 downto 0),
       data_out(31 downto 0) => data_out(31 downto 0),

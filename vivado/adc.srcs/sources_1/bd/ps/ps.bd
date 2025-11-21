@@ -2579,6 +2579,16 @@
           "stop_in": {
             "direction": "I"
           },
+          "bram_adr_in": {
+            "direction": "I",
+            "left": "12",
+            "right": "0"
+          },
+          "bram_adr_out": {
+            "direction": "O",
+            "left": "10",
+            "right": "0"
+          },
           "address": {
             "direction": "O",
             "left": "10",
@@ -2666,6 +2676,9 @@
           "Memory_Type": {
             "value": "True_Dual_Port_RAM"
           },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
           "Register_PortB_Output_of_Memory_Core": {
             "value": "false"
           },
@@ -2673,6 +2686,9 @@
             "value": "false"
           },
           "Use_Byte_Write_Enable": {
+            "value": "true"
+          },
+          "Use_RSTA_Pin": {
             "value": "true"
           },
           "Write_Depth_A": {
@@ -2692,12 +2708,6 @@
         "interface_ports": [
           "adc1_clk",
           "usp_rf_data_converter_0/adc1_clk"
-        ]
-      },
-      "axi_bram_ctrl_0_BRAM_PORTA": {
-        "interface_ports": [
-          "axi_bram/BRAM_PORTA",
-          "axi_bram_ctrl_0/BRAM_PORTA"
         ]
       },
       "axi_gpio_0_GPIO": {
@@ -2804,6 +2814,12 @@
           "axi_bram/addrb"
         ]
       },
+      "adc_control_0_bram_adr_out": {
+        "ports": [
+          "adc_control_0/bram_adr_out",
+          "axi_bram/addra"
+        ]
+      },
       "adc_control_0_data_out": {
         "ports": [
           "adc_control_0/data_out",
@@ -2852,6 +2868,42 @@
         "ports": [
           "adc_control_0/wr_en",
           "axi_bram/web"
+        ]
+      },
+      "axi_bram_ctrl_0_bram_addr_a": {
+        "ports": [
+          "axi_bram_ctrl_0/bram_addr_a",
+          "adc_control_0/bram_adr_in"
+        ]
+      },
+      "axi_bram_ctrl_0_bram_clk_a": {
+        "ports": [
+          "axi_bram_ctrl_0/bram_clk_a",
+          "axi_bram/clka"
+        ]
+      },
+      "axi_bram_ctrl_0_bram_en_a": {
+        "ports": [
+          "axi_bram_ctrl_0/bram_en_a",
+          "axi_bram/ena"
+        ]
+      },
+      "axi_bram_ctrl_0_bram_we_a": {
+        "ports": [
+          "axi_bram_ctrl_0/bram_we_a",
+          "axi_bram/wea"
+        ]
+      },
+      "axi_bram_ctrl_0_bram_wrdata_a": {
+        "ports": [
+          "axi_bram_ctrl_0/bram_wrdata_a",
+          "axi_bram/dina"
+        ]
+      },
+      "axi_bram_douta": {
+        "ports": [
+          "axi_bram/douta",
+          "axi_bram_ctrl_0/bram_rddata_a"
         ]
       },
       "axi_bram_doutb": {
@@ -2917,8 +2969,8 @@
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
-          "comp_low_0/clk",
-          "deci_low/raw_clk"
+          "deci_low/raw_clk",
+          "comp_low_0/clk"
         ]
       },
       "mts_0_comp0_reset": {
@@ -2930,8 +2982,8 @@
       "mts_0_comp1_clk": {
         "ports": [
           "mts_0/comp1_clk",
-          "comp_high_0/clk",
-          "deci_high/raw_clk"
+          "deci_high/raw_clk",
+          "comp_high_0/clk"
         ]
       },
       "mts_0_comp1_reset": {

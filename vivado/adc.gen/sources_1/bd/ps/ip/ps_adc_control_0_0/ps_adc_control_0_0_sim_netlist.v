@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 21 01:16:47 2025
+// Date        : Fri Nov 21 23:06:15 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_adc_control_0_0/ps_adc_control_0_0_sim_netlist.v
@@ -21,6 +21,8 @@ module ps_adc_control_0_0
     resetn,
     reset_out,
     stop_in,
+    bram_adr_in,
+    bram_adr_out,
     address,
     data_in,
     wr_en,
@@ -35,6 +37,8 @@ module ps_adc_control_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_out RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_out, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output reset_out;
   input stop_in;
+  input [12:0]bram_adr_in;
+  output [10:0]bram_adr_out;
   output [10:0]address;
   input [31:0]data_in;
   output [3:0]wr_en;
@@ -48,6 +52,8 @@ module ps_adc_control_0_0
 
   wire adc_active;
   wire [10:0]address;
+  wire [12:0]bram_adr_in;
+  wire [10:0]bram_adr_out;
   wire clk;
   wire [31:0]data_in;
   wire [31:0]data_out;
@@ -64,6 +70,8 @@ module ps_adc_control_0_0
   ps_adc_control_0_0_adc_control inst
        (.adc_active(adc_active),
         .address(address),
+        .bram_adr_in({bram_adr_in[12:2],1'b0,1'b0}),
+        .bram_adr_out(bram_adr_out),
         .clk(clk),
         .data_in(data_in),
         .data_out(data_out),
@@ -84,6 +92,8 @@ module ps_adc_control_0_0_adc_control
     resetn,
     reset_out,
     stop_in,
+    bram_adr_in,
+    bram_adr_out,
     address,
     data_in,
     wr_en,
@@ -98,6 +108,8 @@ module ps_adc_control_0_0_adc_control
   input resetn;
   output reset_out;
   input stop_in;
+  input [12:0]bram_adr_in;
+  output [10:0]bram_adr_out;
   output [10:0]address;
   input [31:0]data_in;
   output [3:0]wr_en;
@@ -308,6 +320,7 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.wr_en[3]_i_9_n_0 ;
   (* MARK_DEBUG *) wire [10:0]address;
   wire address1;
+  wire [12:0]bram_adr_in;
   (* MARK_DEBUG *) wire [31:0]cdata;
   wire clk;
   (* MARK_DEBUG *) wire cmd_start;
@@ -340,6 +353,7 @@ module ps_adc_control_0_0_adc_control
   wire [7:2]\NLW_adc_control.sim_count_reg[10]_i_2_CO_UNCONNECTED ;
   wire [7:3]\NLW_adc_control.sim_count_reg[10]_i_2_O_UNCONNECTED ;
 
+  assign bram_adr_out[10:0] = bram_adr_in[12:2];
   LUT3 #(
     .INIT(8'h0D)) 
     \adc_control.adc_active_i_1 

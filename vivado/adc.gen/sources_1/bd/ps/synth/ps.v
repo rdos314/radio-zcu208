@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Nov 21 01:16:00 2025
+//Date        : Fri Nov 21 22:58:47 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -62,6 +62,7 @@ module ps
   wire adc1_clk_clk_p;
   wire adc_control_0_adc_active;
   wire [10:0]adc_control_0_address;
+  wire [10:0]adc_control_0_bram_adr_out;
   wire [31:0]adc_control_0_data_out;
   wire adc_control_0_reset_out;
   wire adc_control_0_sim_active;
@@ -70,12 +71,12 @@ module ps
   wire adc_control_0_sim_high_wr;
   wire adc_control_0_sim_low_wr;
   wire [3:0]adc_control_0_wr_en;
-  wire [12:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
-  wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
-  wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DIN;
-  wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DOUT;
-  wire axi_bram_ctrl_0_BRAM_PORTA_EN;
-  wire [3:0]axi_bram_ctrl_0_BRAM_PORTA_WE;
+  wire [12:0]axi_bram_ctrl_0_bram_addr_a;
+  wire axi_bram_ctrl_0_bram_clk_a;
+  wire axi_bram_ctrl_0_bram_en_a;
+  wire [3:0]axi_bram_ctrl_0_bram_we_a;
+  wire [31:0]axi_bram_ctrl_0_bram_wrdata_a;
+  wire [31:0]axi_bram_douta;
   wire [31:0]axi_bram_doutb;
   wire [8:0]axi_smc_M00_AXI_ARADDR;
   wire axi_smc_M00_AXI_ARREADY;
@@ -278,6 +279,8 @@ module ps
   ps_adc_control_0_0 adc_control_0
        (.adc_active(adc_control_0_adc_active),
         .address(adc_control_0_address),
+        .bram_adr_in(axi_bram_ctrl_0_bram_addr_a),
+        .bram_adr_out(adc_control_0_bram_adr_out),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .data_in(axi_bram_doutb),
         .data_out(adc_control_0_data_out),
@@ -291,24 +294,25 @@ module ps
         .stop_in(mts_0_axi_stop),
         .wr_en(adc_control_0_wr_en));
   ps_axi_bram_ctrl_0_bram_0 axi_bram
-       (.addra(axi_bram_ctrl_0_BRAM_PORTA_ADDR[10:0]),
+       (.addra(adc_control_0_bram_adr_out),
         .addrb(adc_control_0_address),
-        .clka(axi_bram_ctrl_0_BRAM_PORTA_CLK),
+        .clka(axi_bram_ctrl_0_bram_clk_a),
         .clkb(zynq_ultra_ps_e_0_pl_clk0),
-        .dina(axi_bram_ctrl_0_BRAM_PORTA_DIN),
+        .dina(axi_bram_ctrl_0_bram_wrdata_a),
         .dinb(adc_control_0_data_out),
-        .douta(axi_bram_ctrl_0_BRAM_PORTA_DOUT),
+        .douta(axi_bram_douta),
         .doutb(axi_bram_doutb),
-        .ena(axi_bram_ctrl_0_BRAM_PORTA_EN),
-        .wea(axi_bram_ctrl_0_BRAM_PORTA_WE),
+        .ena(axi_bram_ctrl_0_bram_en_a),
+        .rsta(1'b0),
+        .wea(axi_bram_ctrl_0_bram_we_a),
         .web(adc_control_0_wr_en));
   ps_axi_bram_ctrl_0_0 axi_bram_ctrl_0
-       (.bram_addr_a(axi_bram_ctrl_0_BRAM_PORTA_ADDR),
-        .bram_clk_a(axi_bram_ctrl_0_BRAM_PORTA_CLK),
-        .bram_en_a(axi_bram_ctrl_0_BRAM_PORTA_EN),
-        .bram_rddata_a(axi_bram_ctrl_0_BRAM_PORTA_DOUT),
-        .bram_we_a(axi_bram_ctrl_0_BRAM_PORTA_WE),
-        .bram_wrdata_a(axi_bram_ctrl_0_BRAM_PORTA_DIN),
+       (.bram_addr_a(axi_bram_ctrl_0_bram_addr_a),
+        .bram_clk_a(axi_bram_ctrl_0_bram_clk_a),
+        .bram_en_a(axi_bram_ctrl_0_bram_en_a),
+        .bram_rddata_a(axi_bram_douta),
+        .bram_we_a(axi_bram_ctrl_0_bram_we_a),
+        .bram_wrdata_a(axi_bram_ctrl_0_bram_wrdata_a),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .s_axi_araddr(axi_smc_M04_AXI_ARADDR),
         .s_axi_arburst(axi_smc_M04_AXI_ARBURST),

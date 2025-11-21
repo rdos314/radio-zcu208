@@ -59,6 +59,8 @@ module ps_adc_control_0_0 (
   resetn,
   reset_out,
   stop_in,
+  bram_adr_in,
+  bram_adr_out,
   address,
   data_in,
   wr_en,
@@ -84,6 +86,8 @@ input wire resetn;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_out, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire reset_out;
 input wire stop_in;
+input wire [12 : 0] bram_adr_in;
+output wire [10 : 0] bram_adr_out;
 output wire [10 : 0] address;
 input wire [31 : 0] data_in;
 output wire [3 : 0] wr_en;
@@ -100,6 +104,8 @@ output wire [31 : 0] sim_data;
     .resetn(resetn),
     .reset_out(reset_out),
     .stop_in(stop_in),
+    .bram_adr_in(bram_adr_in),
+    .bram_adr_out(bram_adr_out),
     .address(address),
     .data_in(data_in),
     .wr_en(wr_en),

@@ -15,7 +15,7 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="140"></NameColumnWidth>
-      <ValueColumnWidth column_width="96"></ValueColumnWidth>
+      <ValueColumnWidth column_width="92"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wvobject fp_name="ps_i/comp_low_0/inst/W0" type="array">

@@ -24,6 +24,9 @@ module adc_control(
     input wire resetn,
     output reg reset_out,
 	input wire stop_in,
+
+    input wire [12:0] bram_adr_in,
+    output wire [10:0] bram_adr_out,
 	
     output reg [10:0] address,
     input wire [31:0] data_in,
@@ -38,6 +41,8 @@ module adc_control(
 	output reg [1:0] sim_channel,
 	output reg [31:0] sim_data
     );
+    
+    assign bram_adr_out[10:0] = bram_adr_in[12:2];
     
    	reg	[31:0] data0;
    	reg [31:0] cdata;
@@ -59,7 +64,7 @@ ila_4 ila_4_i (
 		.probe2(reset_out),         // input wire [0:0]  probe3
 		.probe3(delay),             // input wire [1:0]  probe3
 		.probe4(data_in),           // input wire [31:0]  probe3
-		.probe5(address),           // input wire [10:0]  probe3
+		.probe5(address),           // input wire [31:0]  probe3
 		.probe6(wr_en),             // input wire [3:0]  probe3
 		.probe7(data_out),          // input wire [31:0]  probe3
 		.probe8(cdata),             // input wire [31:0]  probe3

@@ -40,6 +40,8 @@
         "resetn": [ { "direction": "in" } ],
         "reset_out": [ { "direction": "out" } ],
         "stop_in": [ { "direction": "in" } ],
+        "bram_adr_in": [ { "direction": "in", "size_left": "12", "size_right": "0" } ],
+        "bram_adr_out": [ { "direction": "out", "size_left": "10", "size_right": "0" } ],
         "address": [ { "direction": "out", "size_left": "10", "size_right": "0" } ],
         "data_in": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "wr_en": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],
