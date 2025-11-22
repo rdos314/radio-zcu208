@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.834314",
-   "Default View_TopLeft":"1022,1710",
+   "Default View_TopLeft":"1022,424",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
@@ -42,6 +42,7 @@ preplace inst axi_bram_ctrl_0 -pg 1 -lvl 3 -x 1650 -y 1980 -defaultsOSRD
 preplace inst axi_bram -pg 1 -lvl 4 -x 2160 -y 1950 -defaultsOSRD
 preplace netloc adc_control_0_adc_active 1 1 3 950 620 NJ 620 1890
 preplace netloc adc_control_0_address 1 3 1 2000 760n
+preplace netloc adc_control_0_bram_adr_out 1 3 1 2010 740n
 preplace netloc adc_control_0_data_out 1 3 1 1960 800n
 preplace netloc adc_control_0_reset_out 1 1 3 960 650 NJ 650 1830
 preplace netloc adc_control_0_sim_active 1 1 3 960 1050 1280J 1030 1890
@@ -50,7 +51,13 @@ preplace netloc adc_control_0_sim_data 1 0 4 190 1060 NJ 1060 1310J 1040 1840
 preplace netloc adc_control_0_sim_high_wr 1 0 4 180 1070 NJ 1070 1290J 1020 1830
 preplace netloc adc_control_0_sim_low_wr 1 0 4 -10 180 NJ 180 NJ 180 1910
 preplace netloc adc_control_0_wr_en 1 3 1 1970 780n
-preplace netloc axi_bram_doutb 1 2 2 1480 2110 2030
+preplace netloc axi_bram_ctrl_0_bram_addr_a 1 2 2 1480 660 1920
+preplace netloc axi_bram_ctrl_0_bram_clk_a 1 3 1 1940 1870n
+preplace netloc axi_bram_ctrl_0_bram_en_a 1 3 1 1990 1930n
+preplace netloc axi_bram_ctrl_0_bram_we_a 1 3 1 2010 1950n
+preplace netloc axi_bram_ctrl_0_bram_wrdata_a 1 3 1 1950 1890n
+preplace netloc axi_bram_douta 1 3 1 1980 1910n
+preplace netloc axi_bram_doutb 1 2 2 1480 2100 2030
 preplace netloc deci_high_raw_data 1 1 2 820 1160 NJ
 preplace netloc deci_high_raw_ready 1 1 2 840 1140 NJ
 preplace netloc deci_high_stop 1 1 1 800 810n
@@ -93,15 +100,8 @@ preplace netloc usp_rf_data_converter_0_m30_axis_tdata 1 0 4 50 1840 NJ 1840 NJ 
 preplace netloc usp_rf_data_converter_0_m30_axis_tvalid 1 0 4 40 1850 NJ 1850 NJ 1850 1830
 preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 810 770n
 preplace netloc util_ds_buf_0_IBUF_OUT1 1 1 1 830 790n
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 20 1130 940 1150 1350 2140 2020 2140 2310
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 20 1130 940 1150 1350 2110 2020 2140 2310
 preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 200 2230 800
-preplace netloc adc_control_0_bram_adr_out 1 3 1 2010 740n
-preplace netloc axi_bram_ctrl_0_bram_clk_a 1 3 1 1940 1870n
-preplace netloc axi_bram_ctrl_0_bram_wrdata_a 1 3 1 1950 1890n
-preplace netloc axi_bram_douta 1 3 1 1980 1910n
-preplace netloc axi_bram_ctrl_0_bram_en_a 1 3 1 1990 1930n
-preplace netloc axi_bram_ctrl_0_bram_we_a 1 3 1 2010 1950n
-preplace netloc axi_bram_ctrl_0_bram_addr_a 1 2 2 1480 660 1920
 preplace netloc adc1_clk_1 1 0 3 NJ 1350 NJ 1350 NJ
 preplace netloc axi_gpio_0_GPIO 1 5 1 NJ 2170
 preplace netloc axi_smc_M00_AXI 1 2 3 1320 2150 NJ 2150 NJ
@@ -119,7 +119,7 @@ preplace netloc vin2_23_1 1 0 3 NJ 1450 NJ 1450 NJ
 preplace netloc vin3_01_1 1 0 3 -50J 1440 NJ 1440 1310J
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 1 1 960 1990n
 levelinfo -pg 1 -70 500 1110 1650 2160 2430 2560
-pagesize -pg 1 -db -bbox -sgen -200 0 2670 2480
+pagesize -pg 1 -db -bbox -sgen -200 0 2680 2480
 "
 }
 {

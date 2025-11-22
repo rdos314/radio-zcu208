@@ -2677,7 +2677,7 @@
             "value": "True_Dual_Port_RAM"
           },
           "Register_PortA_Output_of_Memory_Primitives": {
-            "value": "true"
+            "value": "false"
           },
           "Register_PortB_Output_of_Memory_Core": {
             "value": "false"

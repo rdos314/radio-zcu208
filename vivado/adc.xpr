@@ -66,13 +66,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="82"/>
-    <Option Name="WTModelSimExportSim" Val="82"/>
-    <Option Name="WTQuestaExportSim" Val="82"/>
+    <Option Name="WTXSimExportSim" Val="83"/>
+    <Option Name="WTModelSimExportSim" Val="83"/>
+    <Option Name="WTQuestaExportSim" Val="83"/>
     <Option Name="WTIesExportSim" Val="0"/>
     <Option Name="WTVcsExportSim" Val="0"/>
-    <Option Name="WTRivieraExportSim" Val="82"/>
-    <Option Name="WTActivehdlExportSim" Val="82"/>
+    <Option Name="WTRivieraExportSim" Val="83"/>
+    <Option Name="WTActivehdlExportSim" Val="83"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -180,9 +180,6 @@
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="ps.bd" FileRelPathName="ip/ps_axi_gpio_0_4/ps_axi_gpio_0_4.xci">
           <Proxy FileSetName="ps_axi_gpio_0_4"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ps.bd" FileRelPathName="ip/ps_axi_smc_0/ps_axi_smc_0.xci">
-          <Proxy FileSetName="ps_axi_smc_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="ps.bd" FileRelPathName="ip/ps_axi_timer_0_0/ps_axi_timer_0_0.xci">
           <Proxy FileSetName="ps_axi_timer_0_0"/>
@@ -656,21 +653,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="ps_adc_control_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ps_adc_control_0_0" RelGenDir="$PGENDIR/ps_adc_control_0_0">
-      <Config>
-        <Option Name="TopModule" Val="ps_adc_control_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="ps_comp_high_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ps_comp_high_0_0" RelGenDir="$PGENDIR/ps_comp_high_0_0">
       <Config>
         <Option Name="TopModule" Val="ps_comp_high_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="ps_axi_smc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ps_axi_smc_0" RelGenDir="$PGENDIR/ps_axi_smc_0">
+    <FileSet Name="ps_adc_control_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ps_adc_control_0_0" RelGenDir="$PGENDIR/ps_adc_control_0_0">
       <Config>
-        <Option Name="TopModule" Val="ps_axi_smc_0"/>
+        <Option Name="TopModule" Val="ps_adc_control_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -1043,9 +1034,7 @@
     </Run>
     <Run Id="ps_zynq_ultra_ps_e_0_0_synth_1" Type="Ft3:Synth" SrcSet="ps_zynq_ultra_ps_e_0_0" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_zynq_ultra_ps_e_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ps_zynq_ultra_ps_e_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_zynq_ultra_ps_e_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_zynq_ultra_ps_e_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1055,21 +1044,7 @@
     </Run>
     <Run Id="ps_comp_low_0_0_synth_1" Type="Ft3:Synth" SrcSet="ps_comp_low_0_0" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_comp_low_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ps_comp_low_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_comp_low_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_comp_low_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2025"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="ps_adc_control_0_0_synth_1" Type="Ft3:Synth" SrcSet="ps_adc_control_0_0" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_adc_control_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ps_adc_control_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_synth_1" ParallelReportGen="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1079,9 +1054,7 @@
     </Run>
     <Run Id="ps_comp_high_0_0_synth_1" Type="Ft3:Synth" SrcSet="ps_comp_high_0_0" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_comp_high_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ps_comp_high_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_comp_high_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_comp_high_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1089,7 +1062,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="ps_axi_smc_0_synth_1" Type="Ft3:Synth" SrcSet="ps_axi_smc_0" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_axi_smc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ps_axi_smc_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_axi_smc_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_axi_smc_0_synth_1" ParallelReportGen="true">
+    <Run Id="ps_adc_control_0_0_synth_1" Type="Ft3:Synth" SrcSet="ps_adc_control_0_0" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_adc_control_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ps_adc_control_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -1699,9 +1672,7 @@
     </Run>
     <Run Id="ps_zynq_ultra_ps_e_0_0_impl_1" Type="Ft2:EntireDesign" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_zynq_ultra_ps_e_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ps_zynq_ultra_ps_e_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_zynq_ultra_ps_e_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_zynq_ultra_ps_e_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1718,28 +1689,7 @@
     </Run>
     <Run Id="ps_comp_low_0_0_impl_1" Type="Ft2:EntireDesign" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_comp_low_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ps_comp_low_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_comp_low_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_comp_low_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2025"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="ps_adc_control_0_0_impl_1" Type="Ft2:EntireDesign" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_adc_control_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ps_adc_control_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_impl_1" ParallelReportGen="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1756,9 +1706,7 @@
     </Run>
     <Run Id="ps_comp_high_0_0_impl_1" Type="Ft2:EntireDesign" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_comp_high_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ps_comp_high_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_comp_high_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_comp_high_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1773,7 +1721,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="ps_axi_smc_0_impl_1" Type="Ft2:EntireDesign" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_axi_smc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ps_axi_smc_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_axi_smc_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_axi_smc_0_impl_1" ParallelReportGen="true">
+    <Run Id="ps_adc_control_0_0_impl_1" Type="Ft2:EntireDesign" Part="xczu48dr-fsvg1517-2-e" ConstrsSet="ps_adc_control_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ps_adc_control_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/ps_adc_control_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
           <Desc>Default settings for Implementation.</Desc>
