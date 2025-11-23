@@ -51,7 +51,7 @@ int main()
 	int i;
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
 	
-	for (i = 0;  i < 100; i++)
+	for (i = 0;  i < 256; i++)
 		sample_arr[i] = i + 1;
 
 	LoadSamples(control, 0, sample_arr, 100);

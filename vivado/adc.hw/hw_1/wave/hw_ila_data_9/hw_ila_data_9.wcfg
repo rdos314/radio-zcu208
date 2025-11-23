@@ -9,101 +9,90 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="15"></ZoomEndTime>
-      <Cursor1Time time="0"></Cursor1Time>
+      <ZoomStartTime time="546"></ZoomStartTime>
+      <ZoomEndTime time="571"></ZoomEndTime>
+      <Cursor1Time time="507"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="59"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="174"></NameColumnWidth>
+      <ValueColumnWidth column_width="165"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
-   <wvobject fp_name="ps_i/doa_low_0/inst/E" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/E[15:2]</obj_property>
-      <obj_property name="ObjectShortName">E[15:2]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/env_E" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/env_E[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_E[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/env_N" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/env_N[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_N[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/env_W" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/env_W[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_W[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fir_im_E" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fir_im_E[38:23]</obj_property>
-      <obj_property name="ObjectShortName">fir_im_E[38:23]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fir_im_N" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fir_im_N[38:23]</obj_property>
-      <obj_property name="ObjectShortName">fir_im_N[38:23]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fir_im_W" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fir_im_W[38:23]</obj_property>
-      <obj_property name="ObjectShortName">fir_im_W[38:23]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fir_re_E" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fir_re_E[38:23]</obj_property>
-      <obj_property name="ObjectShortName">fir_re_E[38:23]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fir_re_N" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fir_re_N[38:23]</obj_property>
-      <obj_property name="ObjectShortName">fir_re_N[38:23]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fir_re_W" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fir_re_W[38:23]</obj_property>
-      <obj_property name="ObjectShortName">fir_re_W[38:23]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/freq" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/freq[31:0]</obj_property>
-      <obj_property name="ObjectShortName">freq[31:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/N" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/N[15:2]</obj_property>
-      <obj_property name="ObjectShortName">N[15:2]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/W" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/W[15:2]</obj_property>
-      <obj_property name="ObjectShortName">W[15:2]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/fifo_valid" type="logic">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/fifo_valid</obj_property>
-      <obj_property name="ObjectShortName">fifo_valid</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/phase_E" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/phase_E[19:0]</obj_property>
-      <obj_property name="ObjectShortName">phase_E[19:0]</obj_property>
+   <WVObjectSize size="10" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_channel" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_channel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_channel[1:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/phase_N" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/phase_N[19:0]</obj_property>
-      <obj_property name="ObjectShortName">phase_N[19:0]</obj_property>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_count" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_count[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_count[1:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/phase_W" type="array">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/phase_W[19:0]</obj_property>
-      <obj_property name="ObjectShortName">phase_W[19:0]</obj_property>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_curr_data" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_curr_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_curr_data[127:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/doa_low_0/inst/valid" type="logic">
-      <obj_property name="ElementShortName">ps_i/doa_low_0/inst/valid</obj_property>
-      <obj_property name="ObjectShortName">valid</obj_property>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_curr_wr" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_curr_wr</obj_property>
+      <obj_property name="ObjectShortName">sim_curr_wr</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_data" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_in_data" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_in_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_in_data[127:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_resetn" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_resetn</obj_property>
+      <obj_property name="ObjectShortName">sim_resetn</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_wr_E" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_wr_E</obj_property>
+      <obj_property name="ObjectShortName">sim_wr_E</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_wr_N" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_wr_N</obj_property>
+      <obj_property name="ObjectShortName">sim_wr_N</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/sim_wr_W" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/sim_wr_W</obj_property>
+      <obj_property name="ObjectShortName">sim_wr_W</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
 </wave_config>

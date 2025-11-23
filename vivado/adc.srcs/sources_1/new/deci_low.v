@@ -79,6 +79,10 @@ module deci_low(
   reg sim_wr_N;
   reg sim_wr_E;
   reg sim_wr_W;
+  reg [1:0] sim_count;
+  reg sim_curr_wr;
+  reg [127:0] sim_curr_data;
+  reg [127:0] sim_in_data;
 
   reg sim_rd;
   
@@ -182,6 +186,33 @@ module deci_low(
   wire [13:0] mux_W6 = mux_W[111:98];
   wire [13:0] mux_W7 = mux_W[127:114];
 
+  wire [13:0] sim_N0 = sim_out_N[15:2];
+  wire [13:0] sim_N1 = sim_out_N[31:18];
+  wire [13:0] sim_N2 = sim_out_N[47:34];
+  wire [13:0] sim_N3 = sim_out_N[63:50];
+  wire [13:0] sim_N4 = sim_out_N[79:66];
+  wire [13:0] sim_N5 = sim_out_N[95:82];
+  wire [13:0] sim_N6 = sim_out_N[111:98];
+  wire [13:0] sim_N7 = sim_out_N[127:114];
+
+  wire [13:0] sim_E0 = sim_out_E[15:2];
+  wire [13:0] sim_E1 = sim_out_E[31:18];
+  wire [13:0] sim_E2 = sim_out_E[47:34];
+  wire [13:0] sim_E3 = sim_out_E[63:50];
+  wire [13:0] sim_E4 = sim_out_E[79:66];
+  wire [13:0] sim_E5 = sim_out_E[95:82];
+  wire [13:0] sim_E6 = sim_out_E[111:98];
+  wire [13:0] sim_E7 = sim_out_E[127:114];
+
+  wire [13:0] sim_W0 = sim_out_W[15:2];
+  wire [13:0] sim_W1 = sim_out_W[31:18];
+  wire [13:0] sim_W2 = sim_out_W[47:34];
+  wire [13:0] sim_W3 = sim_out_W[63:50];
+  wire [13:0] sim_W4 = sim_out_W[79:66];
+  wire [13:0] sim_W5 = sim_out_W[95:82];
+  wire [13:0] sim_W6 = sim_out_W[111:98];
+  wire [13:0] sim_W7 = sim_out_W[127:114];
+
 fir_raw_deci fir_deci_N_i (
   .aresetn(resetn),                 // input wire aresetn
   .aclk(clk),                       // input wire aclk
@@ -259,10 +290,10 @@ fifo_doa_low fifo_doa_i (
 );
 
 fifo_sim fifo_sim_N_i (
-  .rst(sim_resetn),         // input wire rst
+  .rst(~sim_resetn),        // input wire rst
   .wr_clk(sim_clk),         // input wire wr_clk
   .rd_clk(clk),             // input wire rd_clk
-  .din(sim_data),           // input wire [31 : 0] din
+  .din(sim_in_data),        // input wire [127 : 0] din
   .wr_en(sim_wr_N),         // input wire wr_en
   .rd_en(sim_rd),           // input wire rd_en
   .dout(sim_out_N),         // output wire [127 : 0] dout
@@ -270,10 +301,10 @@ fifo_sim fifo_sim_N_i (
 );
 
 fifo_sim fifo_sim_E_i (
-  .rst(sim_resetn),         // input wire rst
+  .rst(~sim_resetn),        // input wire rst
   .wr_clk(sim_clk),         // input wire wr_clk
   .rd_clk(clk),             // input wire rd_clk
-  .din(sim_data),           // input wire [31 : 0] din
+  .din(sim_in_data),        // input wire [127 : 0] din
   .wr_en(sim_wr_E),         // input wire wr_en
   .rd_en(sim_rd),           // input wire rd_en
   .dout(sim_out_E),         // output wire [127 : 0] dout
@@ -281,14 +312,28 @@ fifo_sim fifo_sim_E_i (
 );
 
 fifo_sim fifo_sim_W_i (
-  .rst(sim_resetn),         // input wire rst
+  .rst(~sim_resetn),        // input wire rst
   .wr_clk(sim_clk),         // input wire wr_clk
   .rd_clk(clk),             // input wire rd_clk
-  .din(sim_data),           // input wire [31 : 0] din
+  .din(sim_in_data),        // input wire [127 : 0] din
   .wr_en(sim_wr_W),         // input wire wr_en
   .rd_en(sim_rd),           // input wire rd_en
   .dout(sim_out_W),         // output wire [127 : 0] dout
   .empty(sim_empty_W)       // output wire empty
+);
+
+ila_5 ila_5_i (
+		.clk(sim_clk),             // input wire clk
+		.probe0(sim_resetn),       // input wire [0:0]  probe3
+		.probe1(sim_data),         // input wire [31:0]  probe3
+		.probe2(sim_channel),      // input wire [1:0]  probe3
+		.probe3(sim_wr_N),         // input wire [0:0]  probe3
+		.probe4(sim_wr_E),         // input wire [0:0]  probe3
+		.probe5(sim_wr_W),         // input wire [0:0]  probe3
+		.probe6(sim_in_data),      // input wire [127:0]  probe3
+		.probe7(sim_count),        // input wire [1:0]  probe3
+		.probe8(sim_curr_wr),      // input wire [0:0]  probe3
+		.probe9(sim_curr_data)     // input wire [127:0]  probe3
 );
 
 ila_2 ila_2_i (
@@ -301,30 +346,30 @@ ila_2 ila_2_i (
 		.probe5(sim_rd),             // input wire [0:0]  probe3
 		.probe6(stop),               // input wire [0:0]  probe3
 		.probe7(mux_active),         // input wire [0:0]  probe3
-		.probe8(mux_N0),             // input wire [13:0]  probe3
-		.probe9(mux_N1),             // input wire [13:0]  probe3
-		.probe10(mux_N2),            // input wire [13:0]  probe3
-		.probe11(mux_N3),            // input wire [13:0]  probe3
-		.probe12(mux_N4),            // input wire [13:0]  probe3
-		.probe13(mux_N5),            // input wire [13:0]  probe3
-		.probe14(mux_N6),            // input wire [13:0]  probe3
-		.probe15(mux_N7),            // input wire [13:0]  probe3
-		.probe16(mux_E0),            // input wire [13:0]  probe3
-		.probe17(mux_E1),            // input wire [13:0]  probe3
-		.probe18(mux_E2),            // input wire [13:0]  probe3
-		.probe19(mux_E3),            // input wire [13:0]  probe3
-		.probe20(mux_E4),            // input wire [13:0]  probe3
-		.probe21(mux_E5),            // input wire [13:0]  probe3
-		.probe22(mux_E6),            // input wire [13:0]  probe3
-		.probe23(mux_E7),            // input wire [13:0]  probe3
-		.probe24(mux_W0),            // input wire [13:0]  probe3
-		.probe25(mux_W1),            // input wire [13:0]  probe3
-		.probe26(mux_W2),            // input wire [13:0]  probe3
-		.probe27(mux_W3),            // input wire [13:0]  probe3
-		.probe28(mux_W4),            // input wire [13:0]  probe3
-		.probe29(mux_W5),            // input wire [13:0]  probe3
-		.probe30(mux_W6),            // input wire [13:0]  probe3
-		.probe31(mux_W7)             // input wire [13:0]  probe3
+		.probe8(sim_N0),             // input wire [13:0]  probe3
+		.probe9(sim_N1),             // input wire [13:0]  probe3
+		.probe10(sim_N2),            // input wire [13:0]  probe3
+		.probe11(sim_N3),            // input wire [13:0]  probe3
+		.probe12(sim_N4),            // input wire [13:0]  probe3
+		.probe13(sim_N5),            // input wire [13:0]  probe3
+		.probe14(sim_N6),            // input wire [13:0]  probe3
+		.probe15(sim_N7),            // input wire [13:0]  probe3
+		.probe16(sim_E0),            // input wire [13:0]  probe3
+		.probe17(sim_E1),            // input wire [13:0]  probe3
+		.probe18(sim_E2),            // input wire [13:0]  probe3
+		.probe19(sim_E3),            // input wire [13:0]  probe3
+		.probe20(sim_E4),            // input wire [13:0]  probe3
+		.probe21(sim_E5),            // input wire [13:0]  probe3
+		.probe22(sim_E6),            // input wire [13:0]  probe3
+		.probe23(sim_E7),            // input wire [13:0]  probe3
+		.probe24(sim_W0),            // input wire [13:0]  probe3
+		.probe25(sim_W1),            // input wire [13:0]  probe3
+		.probe26(sim_W2),            // input wire [13:0]  probe3
+		.probe27(sim_W3),            // input wire [13:0]  probe3
+		.probe28(sim_W4),            // input wire [13:0]  probe3
+		.probe29(sim_W5),            // input wire [13:0]  probe3
+		.probe30(sim_W6),            // input wire [13:0]  probe3
+		.probe31(sim_W7)             // input wire [13:0]  probe3
 );
 
 generate
@@ -332,11 +377,56 @@ generate
 
 	always @(posedge sim_clk) 
 	begin
-	  if (sim_wr)
+	  if (sim_resetn)
+	  begin	    
+  	    if (sim_wr)
+	    begin
+	      sim_count <= sim_count + 1;
+	      if (sim_count == 3)
+	        sim_curr_wr <= 1;
+	      else
+	        sim_curr_wr <= 0;
+	        
+          case (sim_count)
+            0: sim_curr_data[31:0] <= sim_data;
+            1: sim_curr_data[63:32] <= sim_data;
+            2: sim_curr_data[95:64] <= sim_data;
+            3: sim_curr_data[127:96] <= sim_data;
+          endcase     
+        end
+        else
+        begin
+          if (sim_count)
+          begin
+		    sim_count <= 0;
+            sim_curr_wr <= 1;
+
+            case (sim_count)
+              1: sim_curr_data[127:32] <= 0;
+              2: sim_curr_data[127:64] <= 0;
+              3: sim_curr_data[127:96] <= 0;
+            endcase     
+          end
+          else
+            sim_curr_wr <= 0;
+        end
+	  end
+	  else
 	  begin
-		case (sim_channel)
+	    sim_count <= 0;
+	    sim_curr_wr <= 0;
+	  end
+	end
+
+	always @(posedge sim_clk) 
+	begin
+      if (sim_curr_wr)
+      begin
+        sim_in_data <= sim_curr_data;
+
+ 	    case (sim_channel)
           2'b00 : 
-			begin
+		    begin
 			  sim_wr_N <= 1;
 			  sim_wr_E <= 0;
 			  sim_wr_W <= 0;
@@ -364,14 +454,14 @@ generate
 		    end
 
         endcase
-	  end
-	  else
-	  begin
+      end
+      else
+      begin
 		sim_wr_N <= 0;
 		sim_wr_E <= 0;
 		sim_wr_W <= 0;
-	  end
-	end
+      end
+    end
 
 	always @(posedge clk) 
 	begin
@@ -528,3 +618,6 @@ generate
 endgenerate
     
 endmodule
+
+
+
