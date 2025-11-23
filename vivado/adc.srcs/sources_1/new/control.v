@@ -207,9 +207,21 @@ generate
 
 	always @(posedge clk) 
 	begin
+	  if (sim_start | sim_pend)
+	  begin
+	    if (sim_count)
+  		  sim_done <= 0;
+  		else
+  		  sim_done <= ~sim_done;
+      end
+      else
+  		sim_done <= 0;
+    end
+
+	always @(posedge clk) 
+	begin
 	  if (cmd_start)	  
 	  begin
-		sim_done <= 0;
 	    sim_low_wr <= 0;
 	    sim_high_wr <= 0;
 	    sim_count <= adc_count[11:1];
@@ -217,73 +229,59 @@ generate
       end
 	  else
 	  begin	  
-	    if (sim_start)
-		begin
-		  sim_done <= 0;
-	      sim_low_wr <= 0;
-	      sim_high_wr <= 0;
-		end
-		begin
-  	      if (sim_pend)
-	      begin
-	        if (sim_count)
+	    if (sim_start | sim_pend)
+	    begin
+	      if (sim_count)
+		  begin
+		    if (sim_pend)
 		    begin
-  		      sim_done <= 0;
-		      sim_count <= sim_count - 1;
+  		      sim_count <= sim_count - 1;
 			  sim_data <= data_in;
 		  
   	          if (adc_chan[2])
 	            sim_high_wr <= 1;
   		      else
 		        sim_low_wr <= 1;
-  		    end
+		    end
 		    else
 		    begin
-		      sim_done <= 1;
    	          sim_low_wr <= 0;
 	          sim_high_wr <= 0;
-			end
-  	      end
-  	      else
-	      begin
-		    sim_done <= 0;
-		    sim_count <= 0;
-	        sim_low_wr <= 0;
+	        end
+  		  end
+		  else
+		  begin
+   	        sim_low_wr <= 0;
 	        sim_high_wr <= 0;
 	      end
+  	    end
+  	    else
+	    begin
+		  sim_count <= 0;
+	      sim_low_wr <= 0;
+	      sim_high_wr <= 0;
 		end
 	  end
 	end
 
 	always @(posedge clk) 
 	begin
-	  if (stop_in)
+   	  if (resetn)
+	  begin
+  	    if (sim_done | reset_out)
+	    begin
+		  wr_en <= 4'b1111;
+		  data_out[7:0] <= data_out[7:0] + 1;
+		  data_out[8] <= adc_active;
+		  data_out[9] <= sim_active;
+  	    end
+	    else
+  		  wr_en <= 4'b0000;
+      end
+      else
 	  begin
 	    data_out <= 0;
-		wr_en <= 4'b0000;
-	  end
-	  else
-	  begin
-   	    if (resetn)
-	    begin
-  	      if (sim_done | reset_out)
-	      begin
-		    wr_en <= 4'b1111;
-		    data_out[7:0] <= data_out[7:0] + 1;
-		    data_out[8] <= adc_active;
-		    data_out[9] <= sim_active;
-  	      end
-	      else
-  		    wr_en <= 4'b0000;
-        end
-        else
-	    begin
-	      data_out <= 1;
-		  if (data_out == 1)
-  		    wr_en <= 4'b0000;
-          else		  
-		    wr_en <= 4'b1111;
-		end
+  		wr_en <= 4'b0000;
 	  end
     end
 	    

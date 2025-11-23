@@ -155,6 +155,33 @@ module deci_low(
   wire [13:0] drW2 = fir_raw_W[94:81];
   wire [13:0] drW3 = fir_raw_W[126:113];
 
+  wire [13:0] mux_N0 = mux_N[15:2];
+  wire [13:0] mux_N1 = mux_N[31:18];
+  wire [13:0] mux_N2 = mux_N[47:34];
+  wire [13:0] mux_N3 = mux_N[63:50];
+  wire [13:0] mux_N4 = mux_N[79:66];
+  wire [13:0] mux_N5 = mux_N[95:82];
+  wire [13:0] mux_N6 = mux_N[111:98];
+  wire [13:0] mux_N7 = mux_N[127:114];
+
+  wire [13:0] mux_E0 = mux_E[15:2];
+  wire [13:0] mux_E1 = mux_E[31:18];
+  wire [13:0] mux_E2 = mux_E[47:34];
+  wire [13:0] mux_E3 = mux_E[63:50];
+  wire [13:0] mux_E4 = mux_E[79:66];
+  wire [13:0] mux_E5 = mux_E[95:82];
+  wire [13:0] mux_E6 = mux_E[111:98];
+  wire [13:0] mux_E7 = mux_E[127:114];
+
+  wire [13:0] mux_W0 = mux_W[15:2];
+  wire [13:0] mux_W1 = mux_W[31:18];
+  wire [13:0] mux_W2 = mux_W[47:34];
+  wire [13:0] mux_W3 = mux_W[63:50];
+  wire [13:0] mux_W4 = mux_W[79:66];
+  wire [13:0] mux_W5 = mux_W[95:82];
+  wire [13:0] mux_W6 = mux_W[111:98];
+  wire [13:0] mux_W7 = mux_W[127:114];
+
 fir_raw_deci fir_deci_N_i (
   .aresetn(resetn),                 // input wire aresetn
   .aclk(clk),                       // input wire aclk
@@ -262,6 +289,42 @@ fifo_sim fifo_sim_W_i (
   .rd_en(sim_rd),           // input wire rd_en
   .dout(sim_out_W),         // output wire [127 : 0] dout
   .empty(sim_empty_W)       // output wire empty
+);
+
+ila_2 ila_2_i (
+		.clk(clk),                   // input wire clk
+		.probe0(adc_active),         // input wire [0:0]  probe3
+		.probe1(sim_active),         // input wire [0:0]  probe3
+		.probe2(sim_empty_N),        // input wire [0:0]  probe3
+		.probe3(sim_empty_E),        // input wire [0:0]  probe3
+		.probe4(sim_empty_W),        // input wire [0:0]  probe3
+		.probe5(sim_rd),             // input wire [0:0]  probe3
+		.probe6(stop),               // input wire [0:0]  probe3
+		.probe7(mux_active),         // input wire [0:0]  probe3
+		.probe8(mux_N0),             // input wire [13:0]  probe3
+		.probe9(mux_N1),             // input wire [13:0]  probe3
+		.probe10(mux_N2),            // input wire [13:0]  probe3
+		.probe11(mux_N3),            // input wire [13:0]  probe3
+		.probe12(mux_N4),            // input wire [13:0]  probe3
+		.probe13(mux_N5),            // input wire [13:0]  probe3
+		.probe14(mux_N6),            // input wire [13:0]  probe3
+		.probe15(mux_N7),            // input wire [13:0]  probe3
+		.probe16(mux_E0),            // input wire [13:0]  probe3
+		.probe17(mux_E1),            // input wire [13:0]  probe3
+		.probe18(mux_E2),            // input wire [13:0]  probe3
+		.probe19(mux_E3),            // input wire [13:0]  probe3
+		.probe20(mux_E4),            // input wire [13:0]  probe3
+		.probe21(mux_E5),            // input wire [13:0]  probe3
+		.probe22(mux_E6),            // input wire [13:0]  probe3
+		.probe23(mux_E7),            // input wire [13:0]  probe3
+		.probe24(mux_W0),            // input wire [13:0]  probe3
+		.probe25(mux_W1),            // input wire [13:0]  probe3
+		.probe26(mux_W2),            // input wire [13:0]  probe3
+		.probe27(mux_W3),            // input wire [13:0]  probe3
+		.probe28(mux_W4),            // input wire [13:0]  probe3
+		.probe29(mux_W5),            // input wire [13:0]  probe3
+		.probe30(mux_W6),            // input wire [13:0]  probe3
+		.probe31(mux_W7)             // input wire [13:0]  probe3
 );
 
 generate

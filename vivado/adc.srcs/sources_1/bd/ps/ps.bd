@@ -2969,8 +2969,8 @@
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
-          "deci_low/raw_clk",
-          "comp_low_0/clk"
+          "comp_low_0/clk",
+          "deci_low/raw_clk"
         ]
       },
       "mts_0_comp0_reset": {
@@ -3098,8 +3098,8 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "deci_low/sim_resetn",
-          "adc_control_0/resetn"
+          "adc_control_0/resetn",
+          "deci_low/sim_resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3200,8 +3200,8 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
           "mts_0/axi_clk",
-          "deci_low/sim_clk",
-          "adc_control_0/clk"
+          "adc_control_0/clk",
+          "deci_low/sim_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
