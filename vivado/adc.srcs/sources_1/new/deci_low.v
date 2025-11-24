@@ -31,8 +31,9 @@ module deci_low(
     input wire	[127:0] data_W,
     input wire	ready_W,
 
+    input wire sim_start,
     input wire adc_active,	
-    input wire sim_active,
+	output reg sim_active,
     output reg stop,
 
 	input wire sim_clk,
@@ -41,11 +42,11 @@ module deci_low(
 	input wire [1:0] sim_channel,
 	input wire [31:0] sim_data,
 
-    input wire  raw_clk,
+    input wire raw_clk,
     output reg raw_ready,
-    output reg	[195:0] raw_data,
+    output reg [195:0] raw_data,
 
-    input wire  doa_clk,
+    input wire doa_clk,
     output reg doa_ready,
     output reg [69:0] doa_data
     );
@@ -339,37 +340,38 @@ ila_5 ila_5_i (
 ila_2 ila_2_i (
 		.clk(clk),                   // input wire clk
 		.probe0(adc_active),         // input wire [0:0]  probe3
-		.probe1(sim_active),         // input wire [0:0]  probe3
-		.probe2(sim_empty_N),        // input wire [0:0]  probe3
-		.probe3(sim_empty_E),        // input wire [0:0]  probe3
-		.probe4(sim_empty_W),        // input wire [0:0]  probe3
-		.probe5(sim_rd),             // input wire [0:0]  probe3
-		.probe6(stop),               // input wire [0:0]  probe3
-		.probe7(mux_active),         // input wire [0:0]  probe3
-		.probe8(sim_N0),             // input wire [13:0]  probe3
-		.probe9(sim_N1),             // input wire [13:0]  probe3
-		.probe10(sim_N2),            // input wire [13:0]  probe3
-		.probe11(sim_N3),            // input wire [13:0]  probe3
-		.probe12(sim_N4),            // input wire [13:0]  probe3
-		.probe13(sim_N5),            // input wire [13:0]  probe3
-		.probe14(sim_N6),            // input wire [13:0]  probe3
-		.probe15(sim_N7),            // input wire [13:0]  probe3
-		.probe16(sim_E0),            // input wire [13:0]  probe3
-		.probe17(sim_E1),            // input wire [13:0]  probe3
-		.probe18(sim_E2),            // input wire [13:0]  probe3
-		.probe19(sim_E3),            // input wire [13:0]  probe3
-		.probe20(sim_E4),            // input wire [13:0]  probe3
-		.probe21(sim_E5),            // input wire [13:0]  probe3
-		.probe22(sim_E6),            // input wire [13:0]  probe3
-		.probe23(sim_E7),            // input wire [13:0]  probe3
-		.probe24(sim_W0),            // input wire [13:0]  probe3
-		.probe25(sim_W1),            // input wire [13:0]  probe3
-		.probe26(sim_W2),            // input wire [13:0]  probe3
-		.probe27(sim_W3),            // input wire [13:0]  probe3
-		.probe28(sim_W4),            // input wire [13:0]  probe3
-		.probe29(sim_W5),            // input wire [13:0]  probe3
-		.probe30(sim_W6),            // input wire [13:0]  probe3
-		.probe31(sim_W7)             // input wire [13:0]  probe3
+		.probe1(sim_start),          // input wire [0:0]  probe3
+		.probe2(sim_active),         // input wire [0:0]  probe3
+		.probe3(sim_empty_N),        // input wire [0:0]  probe3
+		.probe4(sim_empty_E),        // input wire [0:0]  probe3
+		.probe5(sim_empty_W),        // input wire [0:0]  probe3
+		.probe6(sim_rd),             // input wire [0:0]  probe3
+		.probe7(stop),               // input wire [0:0]  probe3
+		.probe8(mux_active),         // input wire [0:0]  probe3
+		.probe9(sim_N0),             // input wire [13:0]  probe3
+		.probe10(sim_N1),             // input wire [13:0]  probe3
+		.probe11(sim_N2),            // input wire [13:0]  probe3
+		.probe12(sim_N3),            // input wire [13:0]  probe3
+		.probe13(sim_N4),            // input wire [13:0]  probe3
+		.probe14(sim_N5),            // input wire [13:0]  probe3
+		.probe15(sim_N6),            // input wire [13:0]  probe3
+		.probe16(sim_N7),            // input wire [13:0]  probe3
+		.probe17(sim_E0),            // input wire [13:0]  probe3
+		.probe18(sim_E1),            // input wire [13:0]  probe3
+		.probe19(sim_E2),            // input wire [13:0]  probe3
+		.probe20(sim_E3),            // input wire [13:0]  probe3
+		.probe21(sim_E4),            // input wire [13:0]  probe3
+		.probe22(sim_E5),            // input wire [13:0]  probe3
+		.probe23(sim_E6),            // input wire [13:0]  probe3
+		.probe24(sim_E7),            // input wire [13:0]  probe3
+		.probe25(sim_W0),            // input wire [13:0]  probe3
+		.probe26(sim_W1),            // input wire [13:0]  probe3
+		.probe27(sim_W2),            // input wire [13:0]  probe3
+		.probe28(sim_W3),            // input wire [13:0]  probe3
+		.probe29(sim_W4),            // input wire [13:0]  probe3
+		.probe30(sim_W5),            // input wire [13:0]  probe3
+		.probe31(sim_W6),            // input wire [13:0]  probe3
+		.probe32(sim_W7)             // input wire [13:0]  probe3
 );
 
 generate

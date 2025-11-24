@@ -40,9 +40,11 @@ set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pin
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CE}]
 
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/D]
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.adc_active_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_adc_active_1_reg/D]
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.sim_active_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_sim_active_1_reg/D]
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_stop_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_stop_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.adc_axi_start_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_adc_start_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.adc_axi_stop_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_adc_stop_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.sim_axi_start_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_sim_start_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.adc_active_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_adc_active_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.sim_active_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_sim_active_1_reg/D]
 
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
