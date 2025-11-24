@@ -25,7 +25,6 @@ module mts(
 	input  wire sys_reset,
 	
 	input wire axi_clk,
-	input wire axi_reset_in,
 	output reg axi_reset_out,
 	input wire axi_adc_start,
 	input wire axi_sim_start,
@@ -64,8 +63,7 @@ module mts(
  
     reg adc_axi_start;
 	reg sim_axi_start;
-	reg adc_axi_stop:
-	reg axi_reset;
+	reg adc_axi_stop;
 	reg axi_stop_prev;
 	reg axi_stop_curr;
 
@@ -158,7 +156,7 @@ generate
 
 	always @(posedge deci_clk or posedge rst_async) 
 	begin
-		if (rst_async | axi_reset) 
+		if (rst_async) 
 		begin
 			deci_release_cnt <= 0;
 			deci_reset_async <= 1;
@@ -189,11 +187,6 @@ generate
 
 	always @(posedge axi_clk) 
 	begin
-		axi_reset <= axi_reset_in;
-	end
-
-	always @(posedge axi_clk) 
-	begin
 		axi_reset_1 <= deci_reset_async;
 		axi_reset_2 <= axi_reset_1;
 		axi_reset_out <= axi_reset_2;
@@ -213,24 +206,33 @@ generate
 	begin
 	  if (deci_resetn)
 	  begin
-	    if (deci_adc_start)
-		  sysref_active <= 1;		  
-		else
-		begin
-		  if (user_sysref_adc)
-		  begin
-		    deci_adc_counter <= 2'b11;
-			sysref_active <= 0;
-		  end
-		  else if (deci_adc_counter)
-		    deci_adc_counter <= deci_adc_counter - 1;
+        case (deci_adc_counter)
+          0 : if (deci_adc_start) deci_adc_counter <= 3;
+          1 : deci_adc_counter <= 0;
+          2 : deci_adc_counter <= 1;
+          3 : if (user_sysref_adc) deci_adc_counter <= 2;
+        endcase
+      end
+      else
+        deci_adc_counter <= 0;
+    end
+
+	always @(posedge deci_clk) 
+	begin
+	  if (deci_resetn)
+	  begin
+	    if (deci_adc_active)
+	      sysref_active <= 0;
+	    else
+	    begin
+	      if (deci_adc_counter == 2)
+		    sysref_active <= 0;		  
+		  else
+		    sysref_active <= 1;		  
 		end
 	  end
 	  else
-	  begin
-	    sysref_active <= 0;
-		deci_adc_counter <= 0;
-	  end
+	    sysref_active <= 1;
 	end
 
 	always @(posedge deci_clk) 

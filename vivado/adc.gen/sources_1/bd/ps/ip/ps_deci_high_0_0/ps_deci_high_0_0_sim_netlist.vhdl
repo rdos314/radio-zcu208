@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 21 23:04:27 2025
+-- Date        : Mon Nov 24 21:12:34 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_high_0_0/ps_deci_high_0_0_sim_netlist.vhdl
@@ -25,10 +25,12 @@ entity ps_deci_high_0_0_deci_high is
     ready_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
+    sim_start : in STD_LOGIC;
     adc_active : in STD_LOGIC;
-    sim_active : in STD_LOGIC;
+    sim_active : out STD_LOGIC;
     stop : out STD_LOGIC;
     sim_clk : in STD_LOGIC;
+    sim_resetn : in STD_LOGIC;
     sim_wr : in STD_LOGIC;
     sim_channel : in STD_LOGIC_VECTOR ( 1 downto 0 );
     sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -323,6 +325,7 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
 begin
   doa_ready <= \^doa_ready\;
   raw_ready <= \^raw_ready\;
+  sim_active <= \<const0>\;
   stop <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
@@ -9089,10 +9092,12 @@ entity ps_deci_high_0_0 is
     ready_E : in STD_LOGIC;
     data_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     ready_W : in STD_LOGIC;
+    sim_start : in STD_LOGIC;
     adc_active : in STD_LOGIC;
-    sim_active : in STD_LOGIC;
+    sim_active : out STD_LOGIC;
     stop : out STD_LOGIC;
     sim_clk : in STD_LOGIC;
+    sim_resetn : in STD_LOGIC;
     sim_wr : in STD_LOGIC;
     sim_channel : in STD_LOGIC_VECTOR ( 1 downto 0 );
     sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -9117,6 +9122,7 @@ end ps_deci_high_0_0;
 
 architecture STRUCTURE of ps_deci_high_0_0 is
   signal \<const0>\ : STD_LOGIC;
+  signal NLW_inst_sim_active_UNCONNECTED : STD_LOGIC;
   signal NLW_inst_stop_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
@@ -9135,8 +9141,12 @@ architecture STRUCTURE of ps_deci_high_0_0 is
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of sim_clk : signal is "xilinx.com:signal:clock:1.0 sim_clk CLK";
   attribute X_INTERFACE_MODE of sim_clk : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of sim_clk : signal is "XIL_INTERFACENAME sim_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of sim_clk : signal is "XIL_INTERFACENAME sim_clk, ASSOCIATED_RESET sim_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of sim_resetn : signal is "xilinx.com:signal:reset:1.0 sim_resetn RST";
+  attribute X_INTERFACE_MODE of sim_resetn : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of sim_resetn : signal is "XIL_INTERFACENAME sim_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
+  sim_active <= \<const0>\;
   stop <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
@@ -9159,10 +9169,12 @@ inst: entity work.ps_deci_high_0_0_deci_high
       ready_N => ready_N,
       ready_W => ready_W,
       resetn => resetn,
-      sim_active => '0',
+      sim_active => NLW_inst_sim_active_UNCONNECTED,
       sim_channel(1 downto 0) => B"00",
       sim_clk => '0',
       sim_data(31 downto 0) => B"00000000000000000000000000000000",
+      sim_resetn => '0',
+      sim_start => '0',
       sim_wr => '0',
       stop => NLW_inst_stop_UNCONNECTED
     );

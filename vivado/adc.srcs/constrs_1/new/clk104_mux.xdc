@@ -35,11 +35,11 @@ set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.doa1_reset_1_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_reset_1_reg/D]
 
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CE}]
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/D}]
+#set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CE}]
+#set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/D}]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CE}]
 
-set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/D]
+#set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.adc_axi_start_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_adc_start_1_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.adc_axi_stop_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_adc_stop_1_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.sim_axi_start_reg/C] -to [get_pins ps_i/mts_0/inst/mts.deci_sim_start_1_reg/D]

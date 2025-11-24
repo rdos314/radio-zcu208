@@ -37,6 +37,37 @@
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
+      <spirit:name>sim_resetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>sim_resetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.SIM_RESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.SIM_RESETN.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
       <spirit:name>clk</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
@@ -323,6 +354,10 @@
       </spirit:portMaps>
       <spirit:parameters>
         <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.SIM_CLK.ASSOCIATED_RESET">sim_resetn</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
           <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.SIM_CLK.FREQ_HZ">99999001</spirit:value>
           <spirit:vendorExtensions>
@@ -377,15 +412,6 @@
           </spirit:vendorExtensions>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>ASSOCIATED_RESET</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.SIM_CLK.ASSOCIATED_RESET"/>
-          <spirit:vendorExtensions>
-            <xilinx:parameterInfo>
-              <xilinx:parameterUsage>none</xilinx:parameterUsage>
-            </xilinx:parameterInfo>
-          </spirit:vendorExtensions>
-        </spirit:parameter>
-        <spirit:parameter>
           <spirit:name>INSERT_VIP</spirit:name>
           <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.SIM_CLK.INSERT_VIP">0</spirit:value>
           <spirit:vendorExtensions>
@@ -407,7 +433,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:eba7d18d</spirit:value>
+            <spirit:value>9:c503acd2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -419,7 +445,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dfbd8997</spirit:value>
+            <spirit:value>9:3e9b92b6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -430,7 +456,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dfbd8997</spirit:value>
+            <spirit:value>9:3e9b92b6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -444,11 +470,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 21 22:04:27 UTC 2025</spirit:value>
+            <spirit:value>Mon Nov 24 20:12:35 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dfbd8997</spirit:value>
+            <spirit:value>9:3e9b92b6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -462,11 +488,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Nov 19 20:30:31 UTC 2025</spirit:value>
+            <spirit:value>Mon Nov 24 20:11:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dfbd8997</spirit:value>
+            <spirit:value>9:3e9b92b6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -482,11 +508,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Nov 19 20:30:31 UTC 2025</spirit:value>
+            <spirit:value>Mon Nov 24 20:11:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:eba7d18d</spirit:value>
+            <spirit:value>9:c503acd2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -502,11 +528,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Nov 19 20:30:31 UTC 2025</spirit:value>
+            <spirit:value>Mon Nov 24 20:11:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dfbd8997</spirit:value>
+            <spirit:value>9:3e9b92b6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -629,6 +655,19 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>sim_start</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>adc_active</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
@@ -644,10 +683,10 @@
       <spirit:port>
         <spirit:name>sim_active</spirit:name>
         <spirit:wire>
-          <spirit:direction>in</spirit:direction>
+          <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
+              <spirit:typeName>reg</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -660,7 +699,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
+              <spirit:typeName>reg</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -669,6 +708,19 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>sim_clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sim_resetn</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -928,6 +980,7 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SIM_CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SIM_CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SIM_CLK.PHASE" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SIM_RESETN.POLARITY" xilinx:valuePermission="bd_and_user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

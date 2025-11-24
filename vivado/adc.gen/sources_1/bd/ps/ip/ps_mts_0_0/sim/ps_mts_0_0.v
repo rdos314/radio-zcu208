@@ -59,17 +59,21 @@ module ps_mts_0_0 (
   pl_sysref,
   sys_reset,
   axi_clk,
-  axi_reset_in,
   axi_reset_out,
+  axi_adc_start,
+  axi_sim_start,
+  axi_adc_stop,
   axi_adc_active,
   axi_sim_active,
-  axi_stop,
   deci_clk,
   deci_resetn,
+  user_sysref_adc,
   deci_stop_low,
   deci_stop_high,
   deci_adc_active,
-  deci_sim_active,
+  deci_sim_start,
+  deci_sim_active_low,
+  deci_sim_active_high,
   comp0_clk,
   comp0_reset,
   comp1_clk,
@@ -77,8 +81,7 @@ module ps_mts_0_0 (
   doa0_clk,
   doa0_reset,
   doa1_clk,
-  doa1_reset,
-  user_sysref_adc
+  doa1_reset
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *)
@@ -94,11 +97,12 @@ input wire sys_reset;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 input wire axi_clk;
-input wire axi_reset_in;
 output wire axi_reset_out;
-input wire axi_adc_active;
-input wire axi_sim_active;
-output wire axi_stop;
+input wire axi_adc_start;
+input wire axi_sim_start;
+input wire axi_adc_stop;
+output wire axi_adc_active;
+output wire axi_sim_active;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *)
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
@@ -107,10 +111,13 @@ output wire deci_clk;
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire deci_resetn;
+output wire user_sysref_adc;
 input wire deci_stop_low;
 input wire deci_stop_high;
 output wire deci_adc_active;
-output wire deci_sim_active;
+output wire deci_sim_start;
+input wire deci_sim_active_low;
+input wire deci_sim_active_high;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp0_clk CLK" *)
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_clk, ASSOCIATED_RESET comp0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
@@ -143,24 +150,27 @@ output wire doa1_clk;
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire doa1_reset;
-output wire user_sysref_adc;
 
   mts inst (
     .pl_clk(pl_clk),
     .pl_sysref(pl_sysref),
     .sys_reset(sys_reset),
     .axi_clk(axi_clk),
-    .axi_reset_in(axi_reset_in),
     .axi_reset_out(axi_reset_out),
+    .axi_adc_start(axi_adc_start),
+    .axi_sim_start(axi_sim_start),
+    .axi_adc_stop(axi_adc_stop),
     .axi_adc_active(axi_adc_active),
     .axi_sim_active(axi_sim_active),
-    .axi_stop(axi_stop),
     .deci_clk(deci_clk),
     .deci_resetn(deci_resetn),
+    .user_sysref_adc(user_sysref_adc),
     .deci_stop_low(deci_stop_low),
     .deci_stop_high(deci_stop_high),
     .deci_adc_active(deci_adc_active),
-    .deci_sim_active(deci_sim_active),
+    .deci_sim_start(deci_sim_start),
+    .deci_sim_active_low(deci_sim_active_low),
+    .deci_sim_active_high(deci_sim_active_high),
     .comp0_clk(comp0_clk),
     .comp0_reset(comp0_reset),
     .comp1_clk(comp1_clk),
@@ -168,7 +178,6 @@ output wire user_sysref_adc;
     .doa0_clk(doa0_clk),
     .doa0_reset(doa0_reset),
     .doa1_clk(doa1_clk),
-    .doa1_reset(doa1_reset),
-    .user_sysref_adc(user_sysref_adc)
+    .doa1_reset(doa1_reset)
   );
 endmodule

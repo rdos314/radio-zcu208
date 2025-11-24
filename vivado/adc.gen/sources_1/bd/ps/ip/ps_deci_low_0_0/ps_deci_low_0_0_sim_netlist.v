@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Nov 23 23:48:20 2025
+// Date        : Mon Nov 24 21:12:35 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -25,6 +25,7 @@ module ps_deci_low_0_0
     ready_E,
     data_W,
     ready_W,
+    sim_start,
     adc_active,
     sim_active,
     stop,
@@ -47,8 +48,9 @@ module ps_deci_low_0_0
   input ready_E;
   input [127:0]data_W;
   input ready_W;
+  input sim_start;
   input adc_active;
-  input sim_active;
+  output sim_active;
   output stop;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, ASSOCIATED_RESET sim_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input sim_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sim_resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input sim_resetn;
@@ -82,6 +84,7 @@ module ps_deci_low_0_0
   wire sim_clk;
   wire [31:0]sim_data;
   wire sim_resetn;
+  wire sim_start;
   wire sim_wr;
   wire stop;
 
@@ -106,6 +109,7 @@ module ps_deci_low_0_0
         .sim_clk(sim_clk),
         .sim_data(sim_data),
         .sim_resetn(sim_resetn),
+        .sim_start(sim_start),
         .sim_wr(sim_wr),
         .stop(stop));
 endmodule
@@ -120,6 +124,7 @@ module ps_deci_low_0_0_deci_low
     ready_E,
     data_W,
     ready_W,
+    sim_start,
     adc_active,
     sim_active,
     stop,
@@ -142,8 +147,9 @@ module ps_deci_low_0_0_deci_low
   input ready_E;
   input [127:0]data_W;
   input ready_W;
+  input sim_start;
   input adc_active;
-  input sim_active;
+  output sim_active;
   output stop;
   input sim_clk;
   input sim_resetn;
@@ -728,7 +734,7 @@ module ps_deci_low_0_0_deci_low
   wire [127:0]mux_N;
   wire [127:0]mux_W;
   (* MARK_DEBUG *) wire mux_active;
-  wire [127:0]p_0_in1_in__0;
+  wire [127:0]p_0_in1_in;
   wire raw_active;
   wire raw_clk;
   wire [195:0]raw_data;
@@ -782,6 +788,7 @@ module ps_deci_low_0_0_deci_low
   wire [113:0]sim_out_W;
   (* MARK_DEBUG *) wire sim_rd;
   (* MARK_DEBUG *) wire sim_resetn;
+  (* MARK_DEBUG *) wire sim_start;
   wire sim_wr;
   (* MARK_DEBUG *) wire sim_wr_E;
   (* MARK_DEBUG *) wire sim_wr_N;
@@ -10528,7 +10535,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[0]),
         .I3(sim_wr),
         .I4(sim_curr_data[0]),
-        .O(p_0_in1_in__0[0]));
+        .O(p_0_in1_in[0]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[100]_i_1 
@@ -10537,7 +10544,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[100]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[100]));
+        .O(p_0_in1_in[100]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[101]_i_1 
@@ -10546,7 +10553,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[101]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[101]));
+        .O(p_0_in1_in[101]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[102]_i_1 
@@ -10555,7 +10562,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[102]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[102]));
+        .O(p_0_in1_in[102]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[103]_i_1 
@@ -10564,7 +10571,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[103]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[103]));
+        .O(p_0_in1_in[103]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[104]_i_1 
@@ -10573,7 +10580,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[104]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[104]));
+        .O(p_0_in1_in[104]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[105]_i_1 
@@ -10582,7 +10589,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[105]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[105]));
+        .O(p_0_in1_in[105]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[106]_i_1 
@@ -10591,7 +10598,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[106]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[106]));
+        .O(p_0_in1_in[106]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[107]_i_1 
@@ -10600,7 +10607,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[107]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[107]));
+        .O(p_0_in1_in[107]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[108]_i_1 
@@ -10609,7 +10616,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[108]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[108]));
+        .O(p_0_in1_in[108]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[109]_i_1 
@@ -10618,7 +10625,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[109]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[109]));
+        .O(p_0_in1_in[109]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[10]_i_1 
@@ -10627,7 +10634,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[10]),
         .I3(sim_wr),
         .I4(sim_curr_data[10]),
-        .O(p_0_in1_in__0[10]));
+        .O(p_0_in1_in[10]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[110]_i_1 
@@ -10636,7 +10643,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[110]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[110]));
+        .O(p_0_in1_in[110]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[111]_i_1 
@@ -10645,7 +10652,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[111]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[111]));
+        .O(p_0_in1_in[111]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[112]_i_1 
@@ -10654,7 +10661,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[112]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[112]));
+        .O(p_0_in1_in[112]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[113]_i_1 
@@ -10663,7 +10670,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[113]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[113]));
+        .O(p_0_in1_in[113]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[114]_i_1 
@@ -10672,7 +10679,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[114]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[114]));
+        .O(p_0_in1_in[114]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[115]_i_1 
@@ -10681,7 +10688,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[115]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[115]));
+        .O(p_0_in1_in[115]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[116]_i_1 
@@ -10690,7 +10697,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[116]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[116]));
+        .O(p_0_in1_in[116]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[117]_i_1 
@@ -10699,7 +10706,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[117]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[117]));
+        .O(p_0_in1_in[117]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[118]_i_1 
@@ -10708,7 +10715,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[118]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[118]));
+        .O(p_0_in1_in[118]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[119]_i_1 
@@ -10717,7 +10724,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[119]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[119]));
+        .O(p_0_in1_in[119]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[11]_i_1 
@@ -10726,7 +10733,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[11]),
         .I3(sim_wr),
         .I4(sim_curr_data[11]),
-        .O(p_0_in1_in__0[11]));
+        .O(p_0_in1_in[11]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[120]_i_1 
@@ -10735,7 +10742,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[120]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[120]));
+        .O(p_0_in1_in[120]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[121]_i_1 
@@ -10744,7 +10751,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[121]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[121]));
+        .O(p_0_in1_in[121]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[122]_i_1 
@@ -10753,7 +10760,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[122]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[122]));
+        .O(p_0_in1_in[122]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[123]_i_1 
@@ -10762,7 +10769,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[123]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[123]));
+        .O(p_0_in1_in[123]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[124]_i_1 
@@ -10771,7 +10778,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[124]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[124]));
+        .O(p_0_in1_in[124]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[125]_i_1 
@@ -10780,7 +10787,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[125]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[125]));
+        .O(p_0_in1_in[125]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[126]_i_1 
@@ -10789,7 +10796,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[126]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[126]));
+        .O(p_0_in1_in[126]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[127]_i_1 
@@ -10798,7 +10805,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[127]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[127]));
+        .O(p_0_in1_in[127]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[12]_i_1 
@@ -10807,7 +10814,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[12]),
         .I3(sim_wr),
         .I4(sim_curr_data[12]),
-        .O(p_0_in1_in__0[12]));
+        .O(p_0_in1_in[12]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[13]_i_1 
@@ -10816,7 +10823,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[13]),
         .I3(sim_wr),
         .I4(sim_curr_data[13]),
-        .O(p_0_in1_in__0[13]));
+        .O(p_0_in1_in[13]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[14]_i_1 
@@ -10825,7 +10832,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[14]),
         .I3(sim_wr),
         .I4(sim_curr_data[14]),
-        .O(p_0_in1_in__0[14]));
+        .O(p_0_in1_in[14]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[15]_i_1 
@@ -10834,7 +10841,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[15]),
         .I3(sim_wr),
         .I4(sim_curr_data[15]),
-        .O(p_0_in1_in__0[15]));
+        .O(p_0_in1_in[15]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[16]_i_1 
@@ -10843,7 +10850,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[16]),
         .I3(sim_wr),
         .I4(sim_curr_data[16]),
-        .O(p_0_in1_in__0[16]));
+        .O(p_0_in1_in[16]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[17]_i_1 
@@ -10852,7 +10859,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[17]),
         .I3(sim_wr),
         .I4(sim_curr_data[17]),
-        .O(p_0_in1_in__0[17]));
+        .O(p_0_in1_in[17]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[18]_i_1 
@@ -10861,7 +10868,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[18]),
         .I3(sim_wr),
         .I4(sim_curr_data[18]),
-        .O(p_0_in1_in__0[18]));
+        .O(p_0_in1_in[18]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[19]_i_1 
@@ -10870,7 +10877,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[19]),
         .I3(sim_wr),
         .I4(sim_curr_data[19]),
-        .O(p_0_in1_in__0[19]));
+        .O(p_0_in1_in[19]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[1]_i_1 
@@ -10879,7 +10886,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[1]),
         .I3(sim_wr),
         .I4(sim_curr_data[1]),
-        .O(p_0_in1_in__0[1]));
+        .O(p_0_in1_in[1]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[20]_i_1 
@@ -10888,7 +10895,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[20]),
         .I3(sim_wr),
         .I4(sim_curr_data[20]),
-        .O(p_0_in1_in__0[20]));
+        .O(p_0_in1_in[20]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[21]_i_1 
@@ -10897,7 +10904,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[21]),
         .I3(sim_wr),
         .I4(sim_curr_data[21]),
-        .O(p_0_in1_in__0[21]));
+        .O(p_0_in1_in[21]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[22]_i_1 
@@ -10906,7 +10913,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[22]),
         .I3(sim_wr),
         .I4(sim_curr_data[22]),
-        .O(p_0_in1_in__0[22]));
+        .O(p_0_in1_in[22]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[23]_i_1 
@@ -10915,7 +10922,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[23]),
         .I3(sim_wr),
         .I4(sim_curr_data[23]),
-        .O(p_0_in1_in__0[23]));
+        .O(p_0_in1_in[23]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[24]_i_1 
@@ -10924,7 +10931,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[24]),
         .I3(sim_wr),
         .I4(sim_curr_data[24]),
-        .O(p_0_in1_in__0[24]));
+        .O(p_0_in1_in[24]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[25]_i_1 
@@ -10933,7 +10940,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[25]),
         .I3(sim_wr),
         .I4(sim_curr_data[25]),
-        .O(p_0_in1_in__0[25]));
+        .O(p_0_in1_in[25]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[26]_i_1 
@@ -10942,7 +10949,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[26]),
         .I3(sim_wr),
         .I4(sim_curr_data[26]),
-        .O(p_0_in1_in__0[26]));
+        .O(p_0_in1_in[26]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[27]_i_1 
@@ -10951,7 +10958,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[27]),
         .I3(sim_wr),
         .I4(sim_curr_data[27]),
-        .O(p_0_in1_in__0[27]));
+        .O(p_0_in1_in[27]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[28]_i_1 
@@ -10960,7 +10967,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[28]),
         .I3(sim_wr),
         .I4(sim_curr_data[28]),
-        .O(p_0_in1_in__0[28]));
+        .O(p_0_in1_in[28]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[29]_i_1 
@@ -10969,7 +10976,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[29]),
         .I3(sim_wr),
         .I4(sim_curr_data[29]),
-        .O(p_0_in1_in__0[29]));
+        .O(p_0_in1_in[29]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[2]_i_1 
@@ -10978,7 +10985,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[2]),
         .I3(sim_wr),
         .I4(sim_curr_data[2]),
-        .O(p_0_in1_in__0[2]));
+        .O(p_0_in1_in[2]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[30]_i_1 
@@ -10987,7 +10994,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[30]),
         .I3(sim_wr),
         .I4(sim_curr_data[30]),
-        .O(p_0_in1_in__0[30]));
+        .O(p_0_in1_in[30]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[31]_i_1 
@@ -10996,7 +11003,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[31]),
         .I3(sim_wr),
         .I4(sim_curr_data[31]),
-        .O(p_0_in1_in__0[31]));
+        .O(p_0_in1_in[31]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[32]_i_1 
@@ -11005,7 +11012,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[32]),
-        .O(p_0_in1_in__0[32]));
+        .O(p_0_in1_in[32]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[33]_i_1 
@@ -11014,7 +11021,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[33]),
-        .O(p_0_in1_in__0[33]));
+        .O(p_0_in1_in[33]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[34]_i_1 
@@ -11023,7 +11030,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[34]),
-        .O(p_0_in1_in__0[34]));
+        .O(p_0_in1_in[34]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[35]_i_1 
@@ -11032,7 +11039,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[35]),
-        .O(p_0_in1_in__0[35]));
+        .O(p_0_in1_in[35]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[36]_i_1 
@@ -11041,7 +11048,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[36]),
-        .O(p_0_in1_in__0[36]));
+        .O(p_0_in1_in[36]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[37]_i_1 
@@ -11050,7 +11057,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[37]),
-        .O(p_0_in1_in__0[37]));
+        .O(p_0_in1_in[37]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[38]_i_1 
@@ -11059,7 +11066,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[38]),
-        .O(p_0_in1_in__0[38]));
+        .O(p_0_in1_in[38]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[39]_i_1 
@@ -11068,7 +11075,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[39]),
-        .O(p_0_in1_in__0[39]));
+        .O(p_0_in1_in[39]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[3]_i_1 
@@ -11077,7 +11084,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[3]),
         .I3(sim_wr),
         .I4(sim_curr_data[3]),
-        .O(p_0_in1_in__0[3]));
+        .O(p_0_in1_in[3]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[40]_i_1 
@@ -11086,7 +11093,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[40]),
-        .O(p_0_in1_in__0[40]));
+        .O(p_0_in1_in[40]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[41]_i_1 
@@ -11095,7 +11102,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[41]),
-        .O(p_0_in1_in__0[41]));
+        .O(p_0_in1_in[41]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[42]_i_1 
@@ -11104,7 +11111,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[42]),
-        .O(p_0_in1_in__0[42]));
+        .O(p_0_in1_in[42]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[43]_i_1 
@@ -11113,7 +11120,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[43]),
-        .O(p_0_in1_in__0[43]));
+        .O(p_0_in1_in[43]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[44]_i_1 
@@ -11122,7 +11129,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[44]),
-        .O(p_0_in1_in__0[44]));
+        .O(p_0_in1_in[44]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[45]_i_1 
@@ -11131,7 +11138,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[45]),
-        .O(p_0_in1_in__0[45]));
+        .O(p_0_in1_in[45]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[46]_i_1 
@@ -11140,7 +11147,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[46]),
-        .O(p_0_in1_in__0[46]));
+        .O(p_0_in1_in[46]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[47]_i_1 
@@ -11149,7 +11156,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[47]),
-        .O(p_0_in1_in__0[47]));
+        .O(p_0_in1_in[47]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[48]_i_1 
@@ -11158,7 +11165,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[48]),
-        .O(p_0_in1_in__0[48]));
+        .O(p_0_in1_in[48]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[49]_i_1 
@@ -11167,7 +11174,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[49]),
-        .O(p_0_in1_in__0[49]));
+        .O(p_0_in1_in[49]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[4]_i_1 
@@ -11176,7 +11183,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[4]),
         .I3(sim_wr),
         .I4(sim_curr_data[4]),
-        .O(p_0_in1_in__0[4]));
+        .O(p_0_in1_in[4]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[50]_i_1 
@@ -11185,7 +11192,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[50]),
-        .O(p_0_in1_in__0[50]));
+        .O(p_0_in1_in[50]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[51]_i_1 
@@ -11194,7 +11201,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[51]),
-        .O(p_0_in1_in__0[51]));
+        .O(p_0_in1_in[51]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[52]_i_1 
@@ -11203,7 +11210,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[52]),
-        .O(p_0_in1_in__0[52]));
+        .O(p_0_in1_in[52]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[53]_i_1 
@@ -11212,7 +11219,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[53]),
-        .O(p_0_in1_in__0[53]));
+        .O(p_0_in1_in[53]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[54]_i_1 
@@ -11221,7 +11228,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[54]),
-        .O(p_0_in1_in__0[54]));
+        .O(p_0_in1_in[54]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[55]_i_1 
@@ -11230,7 +11237,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[55]),
-        .O(p_0_in1_in__0[55]));
+        .O(p_0_in1_in[55]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[56]_i_1 
@@ -11239,7 +11246,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[56]),
-        .O(p_0_in1_in__0[56]));
+        .O(p_0_in1_in[56]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[57]_i_1 
@@ -11248,7 +11255,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[57]),
-        .O(p_0_in1_in__0[57]));
+        .O(p_0_in1_in[57]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[58]_i_1 
@@ -11257,7 +11264,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[58]),
-        .O(p_0_in1_in__0[58]));
+        .O(p_0_in1_in[58]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[59]_i_1 
@@ -11266,7 +11273,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[59]),
-        .O(p_0_in1_in__0[59]));
+        .O(p_0_in1_in[59]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[5]_i_1 
@@ -11275,7 +11282,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[5]),
         .I3(sim_wr),
         .I4(sim_curr_data[5]),
-        .O(p_0_in1_in__0[5]));
+        .O(p_0_in1_in[5]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[60]_i_1 
@@ -11284,7 +11291,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[60]),
-        .O(p_0_in1_in__0[60]));
+        .O(p_0_in1_in[60]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[61]_i_1 
@@ -11293,7 +11300,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[61]),
-        .O(p_0_in1_in__0[61]));
+        .O(p_0_in1_in[61]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[62]_i_1 
@@ -11302,7 +11309,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[62]),
-        .O(p_0_in1_in__0[62]));
+        .O(p_0_in1_in[62]));
   LUT5 #(
     .INIT(32'hF8FF0800)) 
     \deci_low.sim_curr_data[63]_i_1 
@@ -11311,7 +11318,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_count[0]),
         .I4(sim_curr_data[63]),
-        .O(p_0_in1_in__0[63]));
+        .O(p_0_in1_in[63]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[64]_i_1 
@@ -11320,7 +11327,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[64]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[64]));
+        .O(p_0_in1_in[64]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[65]_i_1 
@@ -11329,7 +11336,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[65]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[65]));
+        .O(p_0_in1_in[65]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[66]_i_1 
@@ -11338,7 +11345,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[66]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[66]));
+        .O(p_0_in1_in[66]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[67]_i_1 
@@ -11347,7 +11354,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[67]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[67]));
+        .O(p_0_in1_in[67]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[68]_i_1 
@@ -11356,7 +11363,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[68]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[68]));
+        .O(p_0_in1_in[68]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[69]_i_1 
@@ -11365,7 +11372,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[69]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[69]));
+        .O(p_0_in1_in[69]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[6]_i_1 
@@ -11374,7 +11381,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[6]),
         .I3(sim_wr),
         .I4(sim_curr_data[6]),
-        .O(p_0_in1_in__0[6]));
+        .O(p_0_in1_in[6]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[70]_i_1 
@@ -11383,7 +11390,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[70]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[70]));
+        .O(p_0_in1_in[70]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[71]_i_1 
@@ -11392,7 +11399,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[71]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[71]));
+        .O(p_0_in1_in[71]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[72]_i_1 
@@ -11401,7 +11408,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[72]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[72]));
+        .O(p_0_in1_in[72]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[73]_i_1 
@@ -11410,7 +11417,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[73]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[73]));
+        .O(p_0_in1_in[73]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[74]_i_1 
@@ -11419,7 +11426,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[74]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[74]));
+        .O(p_0_in1_in[74]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[75]_i_1 
@@ -11428,7 +11435,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[75]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[75]));
+        .O(p_0_in1_in[75]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[76]_i_1 
@@ -11437,7 +11444,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[76]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[76]));
+        .O(p_0_in1_in[76]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[77]_i_1 
@@ -11446,7 +11453,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[77]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[77]));
+        .O(p_0_in1_in[77]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[78]_i_1 
@@ -11455,7 +11462,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[78]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[78]));
+        .O(p_0_in1_in[78]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[79]_i_1 
@@ -11464,7 +11471,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[79]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[79]));
+        .O(p_0_in1_in[79]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[7]_i_1 
@@ -11473,7 +11480,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[7]),
         .I3(sim_wr),
         .I4(sim_curr_data[7]),
-        .O(p_0_in1_in__0[7]));
+        .O(p_0_in1_in[7]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[80]_i_1 
@@ -11482,7 +11489,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[80]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[80]));
+        .O(p_0_in1_in[80]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[81]_i_1 
@@ -11491,7 +11498,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[81]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[81]));
+        .O(p_0_in1_in[81]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[82]_i_1 
@@ -11500,7 +11507,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[82]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[82]));
+        .O(p_0_in1_in[82]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[83]_i_1 
@@ -11509,7 +11516,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[83]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[83]));
+        .O(p_0_in1_in[83]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[84]_i_1 
@@ -11518,7 +11525,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[84]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[84]));
+        .O(p_0_in1_in[84]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[85]_i_1 
@@ -11527,7 +11534,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[85]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[85]));
+        .O(p_0_in1_in[85]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[86]_i_1 
@@ -11536,7 +11543,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[86]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[86]));
+        .O(p_0_in1_in[86]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[87]_i_1 
@@ -11545,7 +11552,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[87]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[87]));
+        .O(p_0_in1_in[87]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[88]_i_1 
@@ -11554,7 +11561,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[88]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[88]));
+        .O(p_0_in1_in[88]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[89]_i_1 
@@ -11563,7 +11570,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[89]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[89]));
+        .O(p_0_in1_in[89]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[8]_i_1 
@@ -11572,7 +11579,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[8]),
         .I3(sim_wr),
         .I4(sim_curr_data[8]),
-        .O(p_0_in1_in__0[8]));
+        .O(p_0_in1_in[8]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[90]_i_1 
@@ -11581,7 +11588,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[90]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[90]));
+        .O(p_0_in1_in[90]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[91]_i_1 
@@ -11590,7 +11597,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[91]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[91]));
+        .O(p_0_in1_in[91]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[92]_i_1 
@@ -11599,7 +11606,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[92]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[92]));
+        .O(p_0_in1_in[92]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[93]_i_1 
@@ -11608,7 +11615,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[93]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[93]));
+        .O(p_0_in1_in[93]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[94]_i_1 
@@ -11617,7 +11624,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[94]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[94]));
+        .O(p_0_in1_in[94]));
   LUT5 #(
     .INIT(32'hF808CF00)) 
     \deci_low.sim_curr_data[95]_i_1 
@@ -11626,7 +11633,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[0]),
         .I3(sim_curr_data[95]),
         .I4(sim_count[1]),
-        .O(p_0_in1_in__0[95]));
+        .O(p_0_in1_in[95]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[96]_i_1 
@@ -11635,7 +11642,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[96]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[96]));
+        .O(p_0_in1_in[96]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[97]_i_1 
@@ -11644,7 +11651,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[97]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[97]));
+        .O(p_0_in1_in[97]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[98]_i_1 
@@ -11653,7 +11660,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[98]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[98]));
+        .O(p_0_in1_in[98]));
   LUT5 #(
     .INIT(32'h8C80CF00)) 
     \deci_low.sim_curr_data[99]_i_1 
@@ -11662,7 +11669,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count[1]),
         .I3(sim_curr_data[99]),
         .I4(sim_count[0]),
-        .O(p_0_in1_in__0[99]));
+        .O(p_0_in1_in[99]));
   LUT5 #(
     .INIT(32'hFEFF1000)) 
     \deci_low.sim_curr_data[9]_i_1 
@@ -11671,13 +11678,13 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_data[9]),
         .I3(sim_wr),
         .I4(sim_curr_data[9]),
-        .O(p_0_in1_in__0[9]));
+        .O(p_0_in1_in[9]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \deci_low.sim_curr_data_reg[0] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[0]),
+        .D(p_0_in1_in[0]),
         .Q(sim_curr_data[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11685,7 +11692,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[100] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[100]),
+        .D(p_0_in1_in[100]),
         .Q(sim_curr_data[100]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11693,7 +11700,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[101] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[101]),
+        .D(p_0_in1_in[101]),
         .Q(sim_curr_data[101]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11701,7 +11708,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[102] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[102]),
+        .D(p_0_in1_in[102]),
         .Q(sim_curr_data[102]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11709,7 +11716,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[103] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[103]),
+        .D(p_0_in1_in[103]),
         .Q(sim_curr_data[103]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11717,7 +11724,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[104] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[104]),
+        .D(p_0_in1_in[104]),
         .Q(sim_curr_data[104]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11725,7 +11732,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[105] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[105]),
+        .D(p_0_in1_in[105]),
         .Q(sim_curr_data[105]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11733,7 +11740,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[106] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[106]),
+        .D(p_0_in1_in[106]),
         .Q(sim_curr_data[106]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11741,7 +11748,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[107] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[107]),
+        .D(p_0_in1_in[107]),
         .Q(sim_curr_data[107]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11749,7 +11756,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[108] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[108]),
+        .D(p_0_in1_in[108]),
         .Q(sim_curr_data[108]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11757,7 +11764,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[109] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[109]),
+        .D(p_0_in1_in[109]),
         .Q(sim_curr_data[109]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11765,7 +11772,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[10] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[10]),
+        .D(p_0_in1_in[10]),
         .Q(sim_curr_data[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11773,7 +11780,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[110] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[110]),
+        .D(p_0_in1_in[110]),
         .Q(sim_curr_data[110]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11781,7 +11788,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[111] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[111]),
+        .D(p_0_in1_in[111]),
         .Q(sim_curr_data[111]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11789,7 +11796,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[112] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[112]),
+        .D(p_0_in1_in[112]),
         .Q(sim_curr_data[112]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11797,7 +11804,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[113] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[113]),
+        .D(p_0_in1_in[113]),
         .Q(sim_curr_data[113]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11805,7 +11812,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[114] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[114]),
+        .D(p_0_in1_in[114]),
         .Q(sim_curr_data[114]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11813,7 +11820,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[115] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[115]),
+        .D(p_0_in1_in[115]),
         .Q(sim_curr_data[115]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11821,7 +11828,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[116] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[116]),
+        .D(p_0_in1_in[116]),
         .Q(sim_curr_data[116]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11829,7 +11836,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[117] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[117]),
+        .D(p_0_in1_in[117]),
         .Q(sim_curr_data[117]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11837,7 +11844,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[118] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[118]),
+        .D(p_0_in1_in[118]),
         .Q(sim_curr_data[118]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11845,7 +11852,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[119] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[119]),
+        .D(p_0_in1_in[119]),
         .Q(sim_curr_data[119]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11853,7 +11860,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[11] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[11]),
+        .D(p_0_in1_in[11]),
         .Q(sim_curr_data[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11861,7 +11868,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[120] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[120]),
+        .D(p_0_in1_in[120]),
         .Q(sim_curr_data[120]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11869,7 +11876,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[121] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[121]),
+        .D(p_0_in1_in[121]),
         .Q(sim_curr_data[121]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11877,7 +11884,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[122] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[122]),
+        .D(p_0_in1_in[122]),
         .Q(sim_curr_data[122]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11885,7 +11892,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[123] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[123]),
+        .D(p_0_in1_in[123]),
         .Q(sim_curr_data[123]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11893,7 +11900,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[124] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[124]),
+        .D(p_0_in1_in[124]),
         .Q(sim_curr_data[124]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11901,7 +11908,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[125] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[125]),
+        .D(p_0_in1_in[125]),
         .Q(sim_curr_data[125]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11909,7 +11916,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[126] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[126]),
+        .D(p_0_in1_in[126]),
         .Q(sim_curr_data[126]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11917,7 +11924,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[127] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[127]),
+        .D(p_0_in1_in[127]),
         .Q(sim_curr_data[127]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11925,7 +11932,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[12] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[12]),
+        .D(p_0_in1_in[12]),
         .Q(sim_curr_data[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11933,7 +11940,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[13] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[13]),
+        .D(p_0_in1_in[13]),
         .Q(sim_curr_data[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11941,7 +11948,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[14] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[14]),
+        .D(p_0_in1_in[14]),
         .Q(sim_curr_data[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11949,7 +11956,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[15] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[15]),
+        .D(p_0_in1_in[15]),
         .Q(sim_curr_data[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11957,7 +11964,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[16] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[16]),
+        .D(p_0_in1_in[16]),
         .Q(sim_curr_data[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11965,7 +11972,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[17] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[17]),
+        .D(p_0_in1_in[17]),
         .Q(sim_curr_data[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11973,7 +11980,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[18] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[18]),
+        .D(p_0_in1_in[18]),
         .Q(sim_curr_data[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11981,7 +11988,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[19] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[19]),
+        .D(p_0_in1_in[19]),
         .Q(sim_curr_data[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11989,7 +11996,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[1] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[1]),
+        .D(p_0_in1_in[1]),
         .Q(sim_curr_data[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -11997,7 +12004,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[20] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[20]),
+        .D(p_0_in1_in[20]),
         .Q(sim_curr_data[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12005,7 +12012,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[21] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[21]),
+        .D(p_0_in1_in[21]),
         .Q(sim_curr_data[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12013,7 +12020,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[22] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[22]),
+        .D(p_0_in1_in[22]),
         .Q(sim_curr_data[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12021,7 +12028,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[23] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[23]),
+        .D(p_0_in1_in[23]),
         .Q(sim_curr_data[23]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12029,7 +12036,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[24] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[24]),
+        .D(p_0_in1_in[24]),
         .Q(sim_curr_data[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12037,7 +12044,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[25] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[25]),
+        .D(p_0_in1_in[25]),
         .Q(sim_curr_data[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12045,7 +12052,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[26] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[26]),
+        .D(p_0_in1_in[26]),
         .Q(sim_curr_data[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12053,7 +12060,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[27] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[27]),
+        .D(p_0_in1_in[27]),
         .Q(sim_curr_data[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12061,7 +12068,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[28] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[28]),
+        .D(p_0_in1_in[28]),
         .Q(sim_curr_data[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12069,7 +12076,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[29] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[29]),
+        .D(p_0_in1_in[29]),
         .Q(sim_curr_data[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12077,7 +12084,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[2] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[2]),
+        .D(p_0_in1_in[2]),
         .Q(sim_curr_data[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12085,7 +12092,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[30] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[30]),
+        .D(p_0_in1_in[30]),
         .Q(sim_curr_data[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12093,7 +12100,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[31] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[31]),
+        .D(p_0_in1_in[31]),
         .Q(sim_curr_data[31]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12101,7 +12108,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[32] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[32]),
+        .D(p_0_in1_in[32]),
         .Q(sim_curr_data[32]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12109,7 +12116,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[33] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[33]),
+        .D(p_0_in1_in[33]),
         .Q(sim_curr_data[33]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12117,7 +12124,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[34] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[34]),
+        .D(p_0_in1_in[34]),
         .Q(sim_curr_data[34]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12125,7 +12132,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[35] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[35]),
+        .D(p_0_in1_in[35]),
         .Q(sim_curr_data[35]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12133,7 +12140,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[36] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[36]),
+        .D(p_0_in1_in[36]),
         .Q(sim_curr_data[36]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12141,7 +12148,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[37] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[37]),
+        .D(p_0_in1_in[37]),
         .Q(sim_curr_data[37]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12149,7 +12156,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[38] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[38]),
+        .D(p_0_in1_in[38]),
         .Q(sim_curr_data[38]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12157,7 +12164,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[39] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[39]),
+        .D(p_0_in1_in[39]),
         .Q(sim_curr_data[39]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12165,7 +12172,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[3] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[3]),
+        .D(p_0_in1_in[3]),
         .Q(sim_curr_data[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12173,7 +12180,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[40] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[40]),
+        .D(p_0_in1_in[40]),
         .Q(sim_curr_data[40]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12181,7 +12188,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[41] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[41]),
+        .D(p_0_in1_in[41]),
         .Q(sim_curr_data[41]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12189,7 +12196,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[42] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[42]),
+        .D(p_0_in1_in[42]),
         .Q(sim_curr_data[42]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12197,7 +12204,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[43] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[43]),
+        .D(p_0_in1_in[43]),
         .Q(sim_curr_data[43]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12205,7 +12212,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[44] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[44]),
+        .D(p_0_in1_in[44]),
         .Q(sim_curr_data[44]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12213,7 +12220,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[45] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[45]),
+        .D(p_0_in1_in[45]),
         .Q(sim_curr_data[45]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12221,7 +12228,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[46] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[46]),
+        .D(p_0_in1_in[46]),
         .Q(sim_curr_data[46]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12229,7 +12236,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[47] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[47]),
+        .D(p_0_in1_in[47]),
         .Q(sim_curr_data[47]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12237,7 +12244,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[48] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[48]),
+        .D(p_0_in1_in[48]),
         .Q(sim_curr_data[48]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12245,7 +12252,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[49] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[49]),
+        .D(p_0_in1_in[49]),
         .Q(sim_curr_data[49]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12253,7 +12260,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[4] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[4]),
+        .D(p_0_in1_in[4]),
         .Q(sim_curr_data[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12261,7 +12268,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[50] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[50]),
+        .D(p_0_in1_in[50]),
         .Q(sim_curr_data[50]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12269,7 +12276,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[51] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[51]),
+        .D(p_0_in1_in[51]),
         .Q(sim_curr_data[51]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12277,7 +12284,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[52] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[52]),
+        .D(p_0_in1_in[52]),
         .Q(sim_curr_data[52]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12285,7 +12292,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[53] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[53]),
+        .D(p_0_in1_in[53]),
         .Q(sim_curr_data[53]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12293,7 +12300,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[54] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[54]),
+        .D(p_0_in1_in[54]),
         .Q(sim_curr_data[54]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12301,7 +12308,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[55] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[55]),
+        .D(p_0_in1_in[55]),
         .Q(sim_curr_data[55]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12309,7 +12316,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[56] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[56]),
+        .D(p_0_in1_in[56]),
         .Q(sim_curr_data[56]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12317,7 +12324,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[57] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[57]),
+        .D(p_0_in1_in[57]),
         .Q(sim_curr_data[57]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12325,7 +12332,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[58] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[58]),
+        .D(p_0_in1_in[58]),
         .Q(sim_curr_data[58]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12333,7 +12340,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[59] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[59]),
+        .D(p_0_in1_in[59]),
         .Q(sim_curr_data[59]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12341,7 +12348,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[5] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[5]),
+        .D(p_0_in1_in[5]),
         .Q(sim_curr_data[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12349,7 +12356,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[60] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[60]),
+        .D(p_0_in1_in[60]),
         .Q(sim_curr_data[60]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12357,7 +12364,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[61] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[61]),
+        .D(p_0_in1_in[61]),
         .Q(sim_curr_data[61]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12365,7 +12372,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[62] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[62]),
+        .D(p_0_in1_in[62]),
         .Q(sim_curr_data[62]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12373,7 +12380,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[63] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[63]),
+        .D(p_0_in1_in[63]),
         .Q(sim_curr_data[63]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12381,7 +12388,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[64] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[64]),
+        .D(p_0_in1_in[64]),
         .Q(sim_curr_data[64]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12389,7 +12396,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[65] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[65]),
+        .D(p_0_in1_in[65]),
         .Q(sim_curr_data[65]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12397,7 +12404,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[66] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[66]),
+        .D(p_0_in1_in[66]),
         .Q(sim_curr_data[66]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12405,7 +12412,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[67] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[67]),
+        .D(p_0_in1_in[67]),
         .Q(sim_curr_data[67]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12413,7 +12420,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[68] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[68]),
+        .D(p_0_in1_in[68]),
         .Q(sim_curr_data[68]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12421,7 +12428,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[69] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[69]),
+        .D(p_0_in1_in[69]),
         .Q(sim_curr_data[69]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12429,7 +12436,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[6] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[6]),
+        .D(p_0_in1_in[6]),
         .Q(sim_curr_data[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12437,7 +12444,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[70] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[70]),
+        .D(p_0_in1_in[70]),
         .Q(sim_curr_data[70]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12445,7 +12452,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[71] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[71]),
+        .D(p_0_in1_in[71]),
         .Q(sim_curr_data[71]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12453,7 +12460,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[72] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[72]),
+        .D(p_0_in1_in[72]),
         .Q(sim_curr_data[72]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12461,7 +12468,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[73] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[73]),
+        .D(p_0_in1_in[73]),
         .Q(sim_curr_data[73]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12469,7 +12476,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[74] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[74]),
+        .D(p_0_in1_in[74]),
         .Q(sim_curr_data[74]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12477,7 +12484,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[75] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[75]),
+        .D(p_0_in1_in[75]),
         .Q(sim_curr_data[75]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12485,7 +12492,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[76] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[76]),
+        .D(p_0_in1_in[76]),
         .Q(sim_curr_data[76]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12493,7 +12500,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[77] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[77]),
+        .D(p_0_in1_in[77]),
         .Q(sim_curr_data[77]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12501,7 +12508,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[78] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[78]),
+        .D(p_0_in1_in[78]),
         .Q(sim_curr_data[78]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12509,7 +12516,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[79] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[79]),
+        .D(p_0_in1_in[79]),
         .Q(sim_curr_data[79]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12517,7 +12524,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[7] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[7]),
+        .D(p_0_in1_in[7]),
         .Q(sim_curr_data[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12525,7 +12532,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[80] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[80]),
+        .D(p_0_in1_in[80]),
         .Q(sim_curr_data[80]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12533,7 +12540,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[81] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[81]),
+        .D(p_0_in1_in[81]),
         .Q(sim_curr_data[81]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12541,7 +12548,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[82] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[82]),
+        .D(p_0_in1_in[82]),
         .Q(sim_curr_data[82]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12549,7 +12556,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[83] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[83]),
+        .D(p_0_in1_in[83]),
         .Q(sim_curr_data[83]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12557,7 +12564,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[84] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[84]),
+        .D(p_0_in1_in[84]),
         .Q(sim_curr_data[84]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12565,7 +12572,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[85] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[85]),
+        .D(p_0_in1_in[85]),
         .Q(sim_curr_data[85]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12573,7 +12580,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[86] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[86]),
+        .D(p_0_in1_in[86]),
         .Q(sim_curr_data[86]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12581,7 +12588,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[87] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[87]),
+        .D(p_0_in1_in[87]),
         .Q(sim_curr_data[87]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12589,7 +12596,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[88] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[88]),
+        .D(p_0_in1_in[88]),
         .Q(sim_curr_data[88]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12597,7 +12604,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[89] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[89]),
+        .D(p_0_in1_in[89]),
         .Q(sim_curr_data[89]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12605,7 +12612,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[8] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[8]),
+        .D(p_0_in1_in[8]),
         .Q(sim_curr_data[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12613,7 +12620,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[90] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[90]),
+        .D(p_0_in1_in[90]),
         .Q(sim_curr_data[90]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12621,7 +12628,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[91] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[91]),
+        .D(p_0_in1_in[91]),
         .Q(sim_curr_data[91]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12629,7 +12636,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[92] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[92]),
+        .D(p_0_in1_in[92]),
         .Q(sim_curr_data[92]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12637,7 +12644,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[93] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[93]),
+        .D(p_0_in1_in[93]),
         .Q(sim_curr_data[93]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12645,7 +12652,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[94] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[94]),
+        .D(p_0_in1_in[94]),
         .Q(sim_curr_data[94]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12653,7 +12660,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[95] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[95]),
+        .D(p_0_in1_in[95]),
         .Q(sim_curr_data[95]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12661,7 +12668,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[96] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[96]),
+        .D(p_0_in1_in[96]),
         .Q(sim_curr_data[96]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12669,7 +12676,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[97] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[97]),
+        .D(p_0_in1_in[97]),
         .Q(sim_curr_data[97]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12677,7 +12684,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[98] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[98]),
+        .D(p_0_in1_in[98]),
         .Q(sim_curr_data[98]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12685,7 +12692,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[99] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[99]),
+        .D(p_0_in1_in[99]),
         .Q(sim_curr_data[99]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -12693,7 +12700,7 @@ module ps_deci_low_0_0_deci_low
   FDRE \deci_low.sim_curr_data_reg[9] 
        (.C(sim_clk),
         .CE(sim_resetn),
-        .D(p_0_in1_in__0[9]),
+        .D(p_0_in1_in[9]),
         .Q(sim_curr_data[9]),
         .R(1'b0));
   LUT4 #(
@@ -13963,10 +13970,15 @@ module ps_deci_low_0_0_deci_low
     .INIT(2'h2)) 
     i_0
        (.I0(1'b0),
-        .O(active_1));
+        .O(sim_active));
   LUT1 #(
     .INIT(2'h2)) 
     i_1
+       (.I0(1'b0),
+        .O(active_1));
+  LUT1 #(
+    .INIT(2'h2)) 
+    i_2
        (.I0(1'b0),
         .O(active_2));
   (* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) 
@@ -13975,37 +13987,38 @@ module ps_deci_low_0_0_deci_low
   ps_deci_low_0_0_ila_2 ila_2_i
        (.clk(clk),
         .probe0(adc_active),
-        .probe1(sim_active),
-        .probe10(sim_N2),
-        .probe11(sim_N3),
-        .probe12(sim_N4),
-        .probe13(sim_N5),
-        .probe14(sim_N6),
-        .probe15(sim_N7),
-        .probe16(sim_E0),
-        .probe17(sim_E1),
-        .probe18(sim_E2),
-        .probe19(sim_E3),
-        .probe2(sim_empty_N),
-        .probe20(sim_E4),
-        .probe21(sim_E5),
-        .probe22(sim_E6),
-        .probe23(sim_E7),
-        .probe24(sim_W0),
-        .probe25(sim_W1),
-        .probe26(sim_W2),
-        .probe27(sim_W3),
-        .probe28(sim_W4),
-        .probe29(sim_W5),
-        .probe3(sim_empty_E),
-        .probe30(sim_W6),
-        .probe31(sim_W7),
-        .probe4(sim_empty_W),
-        .probe5(sim_rd),
-        .probe6(stop),
-        .probe7(mux_active),
-        .probe8(sim_N0),
-        .probe9(sim_N1));
+        .probe1(sim_start),
+        .probe10(sim_N1),
+        .probe11(sim_N2),
+        .probe12(sim_N3),
+        .probe13(sim_N4),
+        .probe14(sim_N5),
+        .probe15(sim_N6),
+        .probe16(sim_N7),
+        .probe17(sim_E0),
+        .probe18(sim_E1),
+        .probe19(sim_E2),
+        .probe2(sim_active),
+        .probe20(sim_E3),
+        .probe21(sim_E4),
+        .probe22(sim_E5),
+        .probe23(sim_E6),
+        .probe24(sim_E7),
+        .probe25(sim_W0),
+        .probe26(sim_W1),
+        .probe27(sim_W2),
+        .probe28(sim_W3),
+        .probe29(sim_W4),
+        .probe3(sim_empty_N),
+        .probe30(sim_W5),
+        .probe31(sim_W6),
+        .probe32(sim_W7),
+        .probe4(sim_empty_E),
+        .probe5(sim_empty_W),
+        .probe6(sim_rd),
+        .probe7(stop),
+        .probe8(mux_active),
+        .probe9(sim_N0));
   (* CHECK_LICENSE_TYPE = "ila_5,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
@@ -14270,7 +14283,8 @@ module ps_deci_low_0_0_ila_2
     probe28,
     probe29,
     probe30,
-    probe31);
+    probe31,
+    probe32);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -14280,7 +14294,7 @@ module ps_deci_low_0_0_ila_2
   input [0:0]probe5;
   input [0:0]probe6;
   input [0:0]probe7;
-  input [13:0]probe8;
+  input [0:0]probe8;
   input [13:0]probe9;
   input [13:0]probe10;
   input [13:0]probe11;
@@ -14304,6 +14318,7 @@ module ps_deci_low_0_0_ila_2
   input [13:0]probe29;
   input [13:0]probe30;
   input [13:0]probe31;
+  input [13:0]probe32;
 
 
 endmodule

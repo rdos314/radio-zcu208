@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sun Nov 23 23:47:33 2025
+//Date        : Mon Nov 24 23:43:21 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -61,15 +61,17 @@ module ps
   wire adc1_clk_clk_n;
   wire adc1_clk_clk_p;
   wire adc_control_0_adc_active;
+  wire adc_control_0_adc_start;
+  wire adc_control_0_adc_stop;
   wire [10:0]adc_control_0_address;
   wire [10:0]adc_control_0_bram_adr_out;
   wire [31:0]adc_control_0_data_out;
-  wire adc_control_0_reset_out;
   wire adc_control_0_sim_active;
   wire [1:0]adc_control_0_sim_channel;
   wire [31:0]adc_control_0_sim_data;
   wire adc_control_0_sim_high_wr;
   wire adc_control_0_sim_low_wr;
+  wire adc_control_0_sim_start;
   wire [3:0]adc_control_0_wr_en;
   wire [12:0]axi_bram_ctrl_0_bram_addr_a;
   wire axi_bram_ctrl_0_bram_clk_a;
@@ -184,9 +186,9 @@ module ps
   wire deci_low_doa_ready;
   wire [195:0]deci_low_raw_data;
   wire deci_low_raw_ready;
+  wire deci_low_sim_active;
   wire deci_low_stop;
   wire [7:0]led_8bits_tri_o;
-  wire mts_0_axi_stop;
   wire mts_0_comp0_clk;
   wire mts_0_comp0_reset;
   wire mts_0_comp1_clk;
@@ -195,6 +197,7 @@ module ps
   wire mts_0_deci_clk;
   wire mts_0_deci_resetn;
   wire mts_0_deci_sim_active;
+  wire mts_0_deci_sim_start;
   wire mts_0_doa0_clk;
   wire mts_0_doa0_reset;
   wire mts_0_doa1_clk;
@@ -278,20 +281,21 @@ module ps
 
   ps_adc_control_0_0 adc_control_0
        (.adc_active(adc_control_0_adc_active),
+        .adc_start(adc_control_0_adc_start),
+        .adc_stop(adc_control_0_adc_stop),
         .address(adc_control_0_address),
         .bram_adr_in(axi_bram_ctrl_0_bram_addr_a),
         .bram_adr_out(adc_control_0_bram_adr_out),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .data_in(axi_bram_doutb),
         .data_out(adc_control_0_data_out),
-        .reset_out(adc_control_0_reset_out),
         .resetn(rst_ps8_0_99M_peripheral_aresetn),
         .sim_active(adc_control_0_sim_active),
         .sim_channel(adc_control_0_sim_channel),
         .sim_data(adc_control_0_sim_data),
         .sim_high_wr(adc_control_0_sim_high_wr),
         .sim_low_wr(adc_control_0_sim_low_wr),
-        .stop_in(mts_0_axi_stop),
+        .sim_start(adc_control_0_sim_start),
         .wr_en(adc_control_0_wr_en));
   ps_axi_bram_ctrl_0_bram_0 axi_bram
        (.addra(adc_control_0_bram_adr_out),
@@ -536,6 +540,8 @@ module ps
         .sim_channel(adc_control_0_sim_channel),
         .sim_clk(zynq_ultra_ps_e_0_pl_clk0),
         .sim_data(adc_control_0_sim_data),
+        .sim_resetn(rst_ps8_0_99M_peripheral_aresetn),
+        .sim_start(mts_0_deci_sim_start),
         .sim_wr(adc_control_0_sim_high_wr),
         .stop(deci_high_stop));
   ps_deci_low_0_0 deci_low
@@ -554,11 +560,12 @@ module ps
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
         .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
         .resetn(mts_0_deci_resetn),
-        .sim_active(mts_0_deci_sim_active),
+        .sim_active(deci_low_sim_active),
         .sim_channel(adc_control_0_sim_channel),
         .sim_clk(zynq_ultra_ps_e_0_pl_clk0),
         .sim_data(adc_control_0_sim_data),
         .sim_resetn(rst_ps8_0_99M_peripheral_aresetn),
+        .sim_start(mts_0_deci_sim_start),
         .sim_wr(adc_control_0_sim_low_wr),
         .stop(deci_low_stop));
   ps_doa_low_0_0 doa_low_0
@@ -589,10 +596,11 @@ module ps
         .s_axi_wvalid(axi_smc_M00_AXI_WVALID));
   ps_mts_0_0 mts_0
        (.axi_adc_active(adc_control_0_adc_active),
+        .axi_adc_start(adc_control_0_adc_start),
+        .axi_adc_stop(adc_control_0_adc_stop),
         .axi_clk(zynq_ultra_ps_e_0_pl_clk0),
-        .axi_reset_in(adc_control_0_reset_out),
         .axi_sim_active(adc_control_0_sim_active),
-        .axi_stop(mts_0_axi_stop),
+        .axi_sim_start(adc_control_0_sim_start),
         .comp0_clk(mts_0_comp0_clk),
         .comp0_reset(mts_0_comp0_reset),
         .comp1_clk(mts_0_comp1_clk),
@@ -600,7 +608,9 @@ module ps
         .deci_adc_active(mts_0_deci_adc_active),
         .deci_clk(mts_0_deci_clk),
         .deci_resetn(mts_0_deci_resetn),
-        .deci_sim_active(mts_0_deci_sim_active),
+        .deci_sim_active_high(mts_0_deci_sim_active),
+        .deci_sim_active_low(deci_low_sim_active),
+        .deci_sim_start(mts_0_deci_sim_start),
         .deci_stop_high(deci_high_stop),
         .deci_stop_low(deci_low_stop),
         .doa0_clk(mts_0_doa0_clk),

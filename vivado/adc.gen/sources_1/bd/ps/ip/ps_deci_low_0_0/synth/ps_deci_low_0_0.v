@@ -64,6 +64,7 @@ module ps_deci_low_0_0 (
   ready_E,
   data_W,
   ready_W,
+  sim_start,
   adc_active,
   sim_active,
   stop,
@@ -94,8 +95,9 @@ input wire [127 : 0] data_E;
 input wire ready_E;
 input wire [127 : 0] data_W;
 input wire ready_W;
+input wire sim_start;
 input wire adc_active;
-input wire sim_active;
+output wire sim_active;
 output wire stop;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -130,6 +132,7 @@ output wire [69 : 0] doa_data;
     .ready_E(ready_E),
     .data_W(data_W),
     .ready_W(ready_W),
+    .sim_start(sim_start),
     .adc_active(adc_active),
     .sim_active(sim_active),
     .stop(stop),

@@ -22,8 +22,6 @@
 module adc_control(
     input wire clk,
     input wire resetn,
-    output reg reset_out,
-	input wire stop_in,
 
     input wire [12:0] bram_adr_in,
     output wire [10:0] bram_adr_out,
@@ -64,29 +62,27 @@ module adc_control(
 ila_4 ila_4_i (
 		.clk(clk),                  // input wire clk
 		.probe0(resetn),            // input wire [0:0]  probe3
-		.probe1(stop_in),           // input wire [0:0]  probe3
-		.probe2(reset_out),         // input wire [0:0]  probe3
-		.probe3(data_in),           // input wire [31:0]  probe3
-		.probe4(address),           // input wire [10:0]  probe3
-		.probe5(padr),              // input wire [10:0]  probe3
-		.probe6(wr_en),             // input wire [3:0]  probe3
-		.probe7(data_out),          // input wire [31:0]  probe3
-		.probe8(cdata),             // input wire [31:0]  probe3
-		.probe9(pdata),             // input wire [31:0]  probe3
-		.probe10(sim_low_wr),       // input wire [0:0]  probe3
-		.probe11(sim_high_wr),      // input wire [0:0]  probe3
-		.probe12(sim_channel),      // input wire [1:0]  probe3
-		.probe13(sim_data),         // input wire [31:0]  probe3
-		.probe14(adc_start),        // input wire [0:0]  probe3
-		.probe15(adc_stop),         // input wire [0:0]  probe3
-		.probe16(sim_start),        // input wire [0:0]  probe3
-		.probe17(adc_active),       // input wire [0:0]  probe3
-		.probe18(sim_active),       // input wire [0:0]  probe3
-		.probe19(sim_wr_start),     // input wire [0:0]  probe3
-		.probe20(cmd_start),        // input wire [0:0]  probe3
-		.probe21(sim_wr_pend),      // input wire [0:0]  probe3
-		.probe22(sim_wr_done),      // input wire [0:0]  probe3
-		.probe23(sim_wr_count)      // input wire [10:0]  probe3
+		.probe1(data_in),           // input wire [31:0]  probe3
+		.probe2(address),           // input wire [10:0]  probe3
+		.probe3(padr),              // input wire [10:0]  probe3
+		.probe4(wr_en),             // input wire [3:0]  probe3
+		.probe5(data_out),          // input wire [31:0]  probe3
+		.probe6(cdata),             // input wire [31:0]  probe3
+		.probe7(pdata),             // input wire [31:0]  probe3
+		.probe8(sim_low_wr),        // input wire [0:0]  probe3
+		.probe9(sim_high_wr),       // input wire [0:0]  probe3
+		.probe10(sim_channel),      // input wire [1:0]  probe3
+		.probe11(sim_data),         // input wire [31:0]  probe3
+		.probe12(adc_start),        // input wire [0:0]  probe3
+		.probe13(adc_stop),         // input wire [0:0]  probe3
+		.probe14(sim_start),        // input wire [0:0]  probe3
+		.probe15(adc_active),       // input wire [0:0]  probe3
+		.probe16(sim_active),       // input wire [0:0]  probe3
+		.probe17(sim_wr_start),     // input wire [0:0]  probe3
+		.probe18(cmd_start),        // input wire [0:0]  probe3
+		.probe19(sim_wr_pend),      // input wire [0:0]  probe3
+		.probe20(sim_wr_done),      // input wire [0:0]  probe3
+		.probe21(sim_wr_count)      // input wire [10:0]  probe3
 	);
 
 generate
@@ -144,11 +140,6 @@ generate
 		adc_start <= 0;
 		sim_start <= 0;
 		adc_stop <= 0;
-		
-		if (stop_in)
-  	      reset_out <= 1;
-		else
-  	      reset_out <= 0;		
 	  end
     end
 
@@ -158,7 +149,7 @@ generate
 	    address <= 2;
 	  else
 	  begin
-	    if (!resetn | sim_wr_done | reset_out)
+	    if (!resetn | sim_wr_done)
 		  address <= 1;
 		else
 		begin
@@ -172,7 +163,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (!resetn  | reset_out)
+	  if (!resetn)
 	    sim_wr_pend <= 0;
 	  else
 	  begin
@@ -249,7 +240,7 @@ generate
 	begin
    	  if (resetn)
 	  begin
-  	    if (sim_wr_done | reset_out)
+  	    if (sim_wr_done)
 	    begin
 		  wr_en <= 4'b1111;
 		  data_out[7:0] <= data_out[7:0] + 1;

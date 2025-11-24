@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 21 23:04:27 2025
+// Date        : Mon Nov 24 21:12:34 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_high_0_0/ps_deci_high_0_0_sim_netlist.v
@@ -25,10 +25,12 @@ module ps_deci_high_0_0
     ready_E,
     data_W,
     ready_W,
+    sim_start,
     adc_active,
     sim_active,
     stop,
     sim_clk,
+    sim_resetn,
     sim_wr,
     sim_channel,
     sim_data,
@@ -46,10 +48,12 @@ module ps_deci_high_0_0
   input ready_E;
   input [127:0]data_W;
   input ready_W;
+  input sim_start;
   input adc_active;
-  input sim_active;
+  output sim_active;
   output stop;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input sim_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, ASSOCIATED_RESET sim_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input sim_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sim_resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input sim_resetn;
   input sim_wr;
   input [1:0]sim_channel;
   input [31:0]sim_data;
@@ -75,8 +79,10 @@ module ps_deci_high_0_0
   wire ready_N;
   wire ready_W;
   wire resetn;
+  wire NLW_inst_sim_active_UNCONNECTED;
   wire NLW_inst_stop_UNCONNECTED;
 
+  assign sim_active = \<const0> ;
   assign stop = \<const0> ;
   GND GND
        (.G(\<const0> ));
@@ -96,10 +102,12 @@ module ps_deci_high_0_0
         .ready_N(ready_N),
         .ready_W(ready_W),
         .resetn(resetn),
-        .sim_active(1'b0),
+        .sim_active(NLW_inst_sim_active_UNCONNECTED),
         .sim_channel({1'b0,1'b0}),
         .sim_clk(1'b0),
         .sim_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .sim_resetn(1'b0),
+        .sim_start(1'b0),
         .sim_wr(1'b0),
         .stop(NLW_inst_stop_UNCONNECTED));
 endmodule
@@ -114,10 +122,12 @@ module ps_deci_high_0_0_deci_high
     ready_E,
     data_W,
     ready_W,
+    sim_start,
     adc_active,
     sim_active,
     stop,
     sim_clk,
+    sim_resetn,
     sim_wr,
     sim_channel,
     sim_data,
@@ -135,10 +145,12 @@ module ps_deci_high_0_0_deci_high
   input ready_E;
   input [127:0]data_W;
   input ready_W;
+  input sim_start;
   input adc_active;
-  input sim_active;
+  output sim_active;
   output stop;
   input sim_clk;
+  input sim_resetn;
   input sim_wr;
   input [1:0]sim_channel;
   input [31:0]sim_data;
@@ -351,6 +363,7 @@ module ps_deci_high_0_0_deci_high
   wire NLW_fir_W_i_s_axis_data_tready_UNCONNECTED;
   wire [63:0]NLW_fir_W_i_m_axis_data_tdata_UNCONNECTED;
 
+  assign sim_active = \<const0> ;
   assign stop = \<const0> ;
   GND GND
        (.G(\<const0> ));

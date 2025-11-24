@@ -57,14 +57,15 @@
 module ps_adc_control_0_0 (
   clk,
   resetn,
-  reset_out,
-  stop_in,
   bram_adr_in,
   bram_adr_out,
   address,
   data_in,
   wr_en,
   data_out,
+  adc_start,
+  adc_stop,
+  sim_start,
   adc_active,
   sim_active,
   sim_low_wr,
@@ -81,19 +82,17 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire resetn;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_out RST" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_out, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-output wire reset_out;
-input wire stop_in;
 input wire [12 : 0] bram_adr_in;
 output wire [10 : 0] bram_adr_out;
 output wire [10 : 0] address;
 input wire [31 : 0] data_in;
 output wire [3 : 0] wr_en;
 output wire [31 : 0] data_out;
-output wire adc_active;
-output wire sim_active;
+output wire adc_start;
+output wire adc_stop;
+output wire sim_start;
+input wire adc_active;
+input wire sim_active;
 output wire sim_low_wr;
 output wire sim_high_wr;
 output wire [1 : 0] sim_channel;
@@ -102,14 +101,15 @@ output wire [31 : 0] sim_data;
   adc_control inst (
     .clk(clk),
     .resetn(resetn),
-    .reset_out(reset_out),
-    .stop_in(stop_in),
     .bram_adr_in(bram_adr_in),
     .bram_adr_out(bram_adr_out),
     .address(address),
     .data_in(data_in),
     .wr_en(wr_en),
     .data_out(data_out),
+    .adc_start(adc_start),
+    .adc_stop(adc_stop),
+    .sim_start(sim_start),
     .adc_active(adc_active),
     .sim_active(sim_active),
     .sim_low_wr(sim_low_wr),

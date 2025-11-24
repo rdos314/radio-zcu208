@@ -1832,25 +1832,22 @@
               }
             }
           },
-          "axi_reset_in": {
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "default_prop"
-              }
-            }
-          },
           "axi_reset_out": {
             "direction": "O"
           },
-          "axi_adc_active": {
+          "axi_adc_start": {
             "direction": "I"
+          },
+          "axi_sim_start": {
+            "direction": "I"
+          },
+          "axi_adc_stop": {
+            "direction": "I"
+          },
+          "axi_adc_active": {
+            "direction": "O"
           },
           "axi_sim_active": {
-            "direction": "I"
-          },
-          "axi_stop": {
             "direction": "O"
           },
           "deci_clk": {
@@ -1885,6 +1882,9 @@
               }
             }
           },
+          "user_sysref_adc": {
+            "direction": "O"
+          },
           "deci_stop_low": {
             "direction": "I"
           },
@@ -1894,8 +1894,14 @@
           "deci_adc_active": {
             "direction": "O"
           },
-          "deci_sim_active": {
+          "deci_sim_start": {
             "direction": "O"
+          },
+          "deci_sim_active_low": {
+            "direction": "I"
+          },
+          "deci_sim_active_high": {
+            "direction": "I"
           },
           "comp0_clk": {
             "type": "clk",
@@ -2000,9 +2006,6 @@
           "doa1_reset": {
             "type": "rst",
             "direction": "O"
-          },
-          "user_sysref_adc": {
-            "direction": "O"
           }
         }
       },
@@ -2087,11 +2090,14 @@
           "ready_W": {
             "direction": "I"
           },
+          "sim_start": {
+            "direction": "I"
+          },
           "adc_active": {
             "direction": "I"
           },
           "sim_active": {
-            "direction": "I"
+            "direction": "O"
           },
           "stop": {
             "direction": "O"
@@ -2256,11 +2262,14 @@
           "ready_W": {
             "direction": "I"
           },
+          "sim_start": {
+            "direction": "I"
+          },
           "adc_active": {
             "direction": "I"
           },
           "sim_active": {
-            "direction": "I"
+            "direction": "O"
           },
           "stop": {
             "direction": "O"
@@ -2269,6 +2278,10 @@
             "type": "clk",
             "direction": "I",
             "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "sim_resetn",
+                "value_src": "constant"
+              },
               "FREQ_HZ": {
                 "value": "99999001",
                 "value_src": "user_prop"
@@ -2276,6 +2289,16 @@
               "CLK_DOMAIN": {
                 "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
                 "value_src": "default_prop"
+              }
+            }
+          },
+          "sim_resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
               }
             }
           },
@@ -2572,13 +2595,6 @@
               }
             }
           },
-          "reset_out": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "stop_in": {
-            "direction": "I"
-          },
           "bram_adr_in": {
             "direction": "I",
             "left": "12",
@@ -2609,11 +2625,20 @@
             "left": "31",
             "right": "0"
           },
-          "adc_active": {
+          "adc_start": {
             "direction": "O"
           },
-          "sim_active": {
+          "adc_stop": {
             "direction": "O"
+          },
+          "sim_start": {
+            "direction": "O"
+          },
+          "adc_active": {
+            "direction": "I"
+          },
+          "sim_active": {
+            "direction": "I"
           },
           "sim_low_wr": {
             "direction": "O"
@@ -2804,8 +2829,20 @@
     "nets": {
       "adc_control_0_adc_active": {
         "ports": [
-          "adc_control_0/adc_active",
-          "mts_0/axi_adc_active"
+          "mts_0/axi_adc_active",
+          "adc_control_0/adc_active"
+        ]
+      },
+      "adc_control_0_adc_start": {
+        "ports": [
+          "adc_control_0/adc_start",
+          "mts_0/axi_adc_start"
+        ]
+      },
+      "adc_control_0_adc_stop": {
+        "ports": [
+          "adc_control_0/adc_stop",
+          "mts_0/axi_adc_stop"
         ]
       },
       "adc_control_0_address": {
@@ -2826,30 +2863,24 @@
           "axi_bram/dinb"
         ]
       },
-      "adc_control_0_reset_out": {
-        "ports": [
-          "adc_control_0/reset_out",
-          "mts_0/axi_reset_in"
-        ]
-      },
       "adc_control_0_sim_active": {
         "ports": [
-          "adc_control_0/sim_active",
-          "mts_0/axi_sim_active"
+          "mts_0/axi_sim_active",
+          "adc_control_0/sim_active"
         ]
       },
       "adc_control_0_sim_channel": {
         "ports": [
           "adc_control_0/sim_channel",
-          "deci_high/sim_channel",
-          "deci_low/sim_channel"
+          "deci_low/sim_channel",
+          "deci_high/sim_channel"
         ]
       },
       "adc_control_0_sim_data": {
         "ports": [
           "adc_control_0/sim_data",
-          "deci_high/sim_data",
-          "deci_low/sim_data"
+          "deci_low/sim_data",
+          "deci_high/sim_data"
         ]
       },
       "adc_control_0_sim_high_wr": {
@@ -2862,6 +2893,12 @@
         "ports": [
           "adc_control_0/sim_low_wr",
           "deci_low/sim_wr"
+        ]
+      },
+      "adc_control_0_sim_start": {
+        "ports": [
+          "adc_control_0/sim_start",
+          "mts_0/axi_sim_start"
         ]
       },
       "adc_control_0_wr_en": {
@@ -2954,16 +2991,16 @@
           "comp_low_0/active"
         ]
       },
+      "deci_low_sim_active": {
+        "ports": [
+          "deci_low/sim_active",
+          "mts_0/deci_sim_active_low"
+        ]
+      },
       "deci_low_stop": {
         "ports": [
           "deci_low/stop",
           "mts_0/deci_stop_low"
-        ]
-      },
-      "mts_0_axi_stop": {
-        "ports": [
-          "mts_0/axi_stop",
-          "adc_control_0/stop_in"
         ]
       },
       "mts_0_comp0_clk": {
@@ -2982,8 +3019,8 @@
       "mts_0_comp1_clk": {
         "ports": [
           "mts_0/comp1_clk",
-          "deci_high/raw_clk",
-          "comp_high_0/clk"
+          "comp_high_0/clk",
+          "deci_high/raw_clk"
         ]
       },
       "mts_0_comp1_reset": {
@@ -2995,8 +3032,8 @@
       "mts_0_deci_adc_active": {
         "ports": [
           "mts_0/deci_adc_active",
-          "deci_high/adc_active",
-          "deci_low/adc_active"
+          "deci_low/adc_active",
+          "deci_high/adc_active"
         ]
       },
       "mts_0_deci_clk": {
@@ -3006,8 +3043,8 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "deci_high/clk",
-          "deci_low/clk"
+          "deci_low/clk",
+          "deci_high/clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -3017,15 +3054,21 @@
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
-          "deci_high/resetn",
-          "deci_low/resetn"
+          "deci_low/resetn",
+          "deci_high/resetn"
         ]
       },
       "mts_0_deci_sim_active": {
         "ports": [
-          "mts_0/deci_sim_active",
           "deci_high/sim_active",
-          "deci_low/sim_active"
+          "mts_0/deci_sim_active_high"
+        ]
+      },
+      "mts_0_deci_sim_start": {
+        "ports": [
+          "mts_0/deci_sim_start",
+          "deci_low/sim_start",
+          "deci_high/sim_start"
         ]
       },
       "mts_0_doa0_clk": {
@@ -3098,8 +3141,9 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "adc_control_0/resetn",
-          "deci_low/sim_resetn"
+          "deci_low/sim_resetn",
+          "deci_high/sim_resetn",
+          "adc_control_0/resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3196,12 +3240,12 @@
           "zynq_ultra_ps_e_0/maxihpm0_lpd_aclk",
           "clk104_mux/s_axi_aclk",
           "usp_rf_data_converter_0/s_axi_aclk",
-          "deci_high/sim_clk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "mts_0/axi_clk",
+          "deci_low/sim_clk",
+          "deci_high/sim_clk",
           "adc_control_0/clk",
-          "deci_low/sim_clk"
+          "mts_0/axi_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
