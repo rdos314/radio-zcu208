@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Mon Nov 24 23:43:21 2025
+//Date        : Tue Nov 25 20:18:58 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -181,13 +181,11 @@ module ps
   wire axi_smc_M04_AXI_WVALID;
   wire [363:0]deci_high_raw_data;
   wire deci_high_raw_ready;
-  wire deci_high_stop;
   wire [69:0]deci_low_doa_data;
   wire deci_low_doa_ready;
   wire [195:0]deci_low_raw_data;
   wire deci_low_raw_ready;
   wire deci_low_sim_active;
-  wire deci_low_stop;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
   wire mts_0_comp0_reset;
@@ -542,8 +540,7 @@ module ps
         .sim_data(adc_control_0_sim_data),
         .sim_resetn(rst_ps8_0_99M_peripheral_aresetn),
         .sim_start(mts_0_deci_sim_start),
-        .sim_wr(adc_control_0_sim_high_wr),
-        .stop(deci_high_stop));
+        .sim_wr(adc_control_0_sim_high_wr));
   ps_deci_low_0_0 deci_low
        (.adc_active(mts_0_deci_adc_active),
         .clk(mts_0_deci_clk),
@@ -566,8 +563,7 @@ module ps
         .sim_data(adc_control_0_sim_data),
         .sim_resetn(rst_ps8_0_99M_peripheral_aresetn),
         .sim_start(mts_0_deci_sim_start),
-        .sim_wr(adc_control_0_sim_low_wr),
-        .stop(deci_low_stop));
+        .sim_wr(adc_control_0_sim_low_wr));
   ps_doa_low_0_0 doa_low_0
        (.clk(mts_0_doa0_clk),
         .fifo_data(deci_low_doa_data),
@@ -611,8 +607,6 @@ module ps
         .deci_sim_active_high(mts_0_deci_sim_active),
         .deci_sim_active_low(deci_low_sim_active),
         .deci_sim_start(mts_0_deci_sim_start),
-        .deci_stop_high(deci_high_stop),
-        .deci_stop_low(deci_low_stop),
         .doa0_clk(mts_0_doa0_clk),
         .doa0_reset(mts_0_doa0_reset),
         .doa1_clk(mts_0_doa1_clk),

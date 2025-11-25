@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Nov 24 21:12:34 2025
+-- Date        : Tue Nov 25 18:55:30 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_high_0_0/ps_deci_high_0_0_sim_netlist.vhdl
@@ -28,7 +28,6 @@ entity ps_deci_high_0_0_deci_high is
     sim_start : in STD_LOGIC;
     adc_active : in STD_LOGIC;
     sim_active : out STD_LOGIC;
-    stop : out STD_LOGIC;
     sim_clk : in STD_LOGIC;
     sim_resetn : in STD_LOGIC;
     sim_wr : in STD_LOGIC;
@@ -326,7 +325,6 @@ begin
   doa_ready <= \^doa_ready\;
   raw_ready <= \^raw_ready\;
   sim_active <= \<const0>\;
-  stop <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -9095,7 +9093,6 @@ entity ps_deci_high_0_0 is
     sim_start : in STD_LOGIC;
     adc_active : in STD_LOGIC;
     sim_active : out STD_LOGIC;
-    stop : out STD_LOGIC;
     sim_clk : in STD_LOGIC;
     sim_resetn : in STD_LOGIC;
     sim_wr : in STD_LOGIC;
@@ -9123,7 +9120,6 @@ end ps_deci_high_0_0;
 architecture STRUCTURE of ps_deci_high_0_0 is
   signal \<const0>\ : STD_LOGIC;
   signal NLW_inst_sim_active_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_stop_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -9147,7 +9143,6 @@ architecture STRUCTURE of ps_deci_high_0_0 is
   attribute X_INTERFACE_PARAMETER of sim_resetn : signal is "XIL_INTERFACENAME sim_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
   sim_active <= \<const0>\;
-  stop <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -9175,7 +9170,6 @@ inst: entity work.ps_deci_high_0_0_deci_high
       sim_data(31 downto 0) => B"00000000000000000000000000000000",
       sim_resetn => '0',
       sim_start => '0',
-      sim_wr => '0',
-      stop => NLW_inst_stop_UNCONNECTED
+      sim_wr => '0'
     );
 end STRUCTURE;

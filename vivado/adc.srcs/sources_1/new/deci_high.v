@@ -34,7 +34,6 @@ module deci_high(
     input wire sim_start,
     input wire adc_active,	
 	output reg sim_active,
-    output reg stop,
 
 	input wire sim_clk,
 	input wire sim_resetn,

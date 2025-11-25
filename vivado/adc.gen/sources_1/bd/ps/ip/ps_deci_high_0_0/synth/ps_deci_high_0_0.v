@@ -67,7 +67,6 @@ module ps_deci_high_0_0 (
   sim_start,
   adc_active,
   sim_active,
-  stop,
   sim_clk,
   sim_resetn,
   sim_wr,
@@ -98,7 +97,6 @@ input wire ready_W;
 input wire sim_start;
 input wire adc_active;
 output wire sim_active;
-output wire stop;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sim_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sim_clk, ASSOCIATED_RESET sim_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -135,7 +133,6 @@ output wire [111 : 0] doa_data;
     .sim_start(sim_start),
     .adc_active(adc_active),
     .sim_active(sim_active),
-    .stop(stop),
     .sim_clk(sim_clk),
     .sim_resetn(sim_resetn),
     .sim_wr(sim_wr),

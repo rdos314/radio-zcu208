@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Nov 24 23:44:07 2025
+-- Date        : Tue Nov 25 18:55:30 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -30,8 +30,6 @@ entity ps_mts_0_0_mts is
     deci_clk : out STD_LOGIC;
     deci_resetn : out STD_LOGIC;
     user_sysref_adc : out STD_LOGIC;
-    deci_stop_low : in STD_LOGIC;
-    deci_stop_high : in STD_LOGIC;
     deci_adc_active : out STD_LOGIC;
     deci_sim_start : out STD_LOGIC;
     deci_sim_active_low : in STD_LOGIC;
@@ -87,9 +85,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_mts_0_0_ila_6;
   signal adc_active : STD_LOGIC;
@@ -130,12 +126,16 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of deci_adc_start_1 : signal is "true";
   signal deci_adc_start_2 : STD_LOGIC;
   attribute async_reg of deci_adc_start_2 : signal is "true";
+  signal deci_adc_start_curr : STD_LOGIC;
+  signal deci_adc_start_prev : STD_LOGIC;
   signal deci_adc_stop : STD_LOGIC;
   attribute MARK_DEBUG of deci_adc_stop : signal is std.standard.true;
   signal deci_adc_stop_1 : STD_LOGIC;
   attribute async_reg of deci_adc_stop_1 : signal is "true";
   signal deci_adc_stop_2 : STD_LOGIC;
   attribute async_reg of deci_adc_stop_2 : signal is "true";
+  signal deci_adc_stop_curr : STD_LOGIC;
+  signal deci_adc_stop_prev : STD_LOGIC;
   signal \^deci_clk\ : STD_LOGIC;
   signal deci_locked : STD_LOGIC;
   signal deci_release_cnt : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -147,7 +147,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of deci_reset_2 : signal is "true";
   signal deci_reset_async : STD_LOGIC;
   attribute async_reg of deci_reset_async : signal is "true";
-  signal deci_reset_async5_out : STD_LOGIC;
+  signal deci_reset_async6_out : STD_LOGIC;
   signal \^deci_resetn\ : STD_LOGIC;
   attribute MARK_DEBUG of deci_resetn : signal is std.standard.true;
   signal \^deci_sim_start\ : STD_LOGIC;
@@ -156,6 +156,8 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of deci_sim_start_1 : signal is "true";
   signal deci_sim_start_2 : STD_LOGIC;
   attribute async_reg of deci_sim_start_2 : signal is "true";
+  signal deci_sim_start_curr : STD_LOGIC;
+  signal deci_sim_start_prev : STD_LOGIC;
   signal \^doa0_clk\ : STD_LOGIC;
   signal doa0_reset_1 : STD_LOGIC;
   attribute async_reg of doa0_reset_1 : signal is "true";
@@ -169,9 +171,11 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal doa_locked : STD_LOGIC;
   signal \mts.comp0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.deci_adc_active_i_1_n_0\ : STD_LOGIC;
-  signal \mts.deci_adc_active_i_2_n_0\ : STD_LOGIC;
   signal \mts.deci_adc_counter[1]_i_1_n_0\ : STD_LOGIC;
+  signal \mts.deci_adc_start_reg0\ : STD_LOGIC;
+  signal \mts.deci_adc_stop_reg0\ : STD_LOGIC;
   signal \mts.deci_resetn_i_1_n_0\ : STD_LOGIC;
+  signal \mts.deci_sim_start_reg0\ : STD_LOGIC;
   signal \mts.doa0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.sim_active_reg0\ : STD_LOGIC;
   signal \mts.sysref_active_i_1_n_0\ : STD_LOGIC;
@@ -319,16 +323,14 @@ ila_i: component ps_mts_0_0_ila_6
       clk => \^deci_clk\,
       probe0(0) => \^deci_resetn\,
       probe1(0) => sysref_active,
-      probe10(0) => deci_sim_active_low,
-      probe11(0) => deci_sim_active_high,
       probe2(0) => \^user_sysref_adc\,
       probe3(0) => deci_adc_start,
       probe4(0) => deci_adc_stop,
       probe5(1 downto 0) => deci_adc_counter(1 downto 0),
       probe6(0) => \^deci_adc_active\,
-      probe7(0) => deci_stop_low,
-      probe8(0) => deci_stop_high,
-      probe9(0) => \^deci_sim_start\
+      probe7(0) => \^deci_sim_start\,
+      probe8(0) => deci_sim_active_low,
+      probe9(0) => deci_sim_active_high
     );
 \mts.adc_active_reg\: unisim.vcomponents.FDRE
      port map (
@@ -483,28 +485,17 @@ ila_i: component ps_mts_0_0_ila_6
       Q => comp1_reset,
       R => '0'
     );
-\mts.deci_adc_active_i_1\: unisim.vcomponents.LUT4
+\mts.deci_adc_active_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"AEAA"
+      INIT => X"44F40000"
     )
         port map (
-      I0 => \mts.deci_adc_active_i_2_n_0\,
-      I1 => deci_adc_counter(0),
-      I2 => deci_adc_counter(1),
-      I3 => \^deci_resetn\,
-      O => \mts.deci_adc_active_i_1_n_0\
-    );
-\mts.deci_adc_active_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00020000"
-    )
-        port map (
-      I0 => \^deci_adc_active\,
-      I1 => deci_stop_low,
-      I2 => deci_stop_high,
-      I3 => deci_adc_stop,
+      I0 => deci_adc_stop,
+      I1 => \^deci_adc_active\,
+      I2 => deci_adc_counter(0),
+      I3 => deci_adc_counter(1),
       I4 => \^deci_resetn\,
-      O => \mts.deci_adc_active_i_2_n_0\
+      O => \mts.deci_adc_active_i_1_n_0\
     );
 \mts.deci_adc_active_reg\: unisim.vcomponents.FDRE
      port map (
@@ -575,11 +566,36 @@ ila_i: component ps_mts_0_0_ila_6
       Q => deci_adc_start_2,
       R => '0'
     );
-\mts.deci_adc_start_reg\: unisim.vcomponents.FDRE
+\mts.deci_adc_start_curr_reg\: unisim.vcomponents.FDRE
      port map (
       C => \^deci_clk\,
       CE => '1',
       D => deci_adc_start_2,
+      Q => deci_adc_start_curr,
+      R => '0'
+    );
+\mts.deci_adc_start_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => deci_adc_start_curr,
+      I1 => deci_adc_start_prev,
+      O => \mts.deci_adc_start_reg0\
+    );
+\mts.deci_adc_start_prev_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^deci_clk\,
+      CE => '1',
+      D => deci_adc_start_curr,
+      Q => deci_adc_start_prev,
+      R => '0'
+    );
+\mts.deci_adc_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^deci_clk\,
+      CE => '1',
+      D => \mts.deci_adc_start_reg0\,
       Q => deci_adc_start,
       R => '0'
     );
@@ -599,11 +615,36 @@ ila_i: component ps_mts_0_0_ila_6
       Q => deci_adc_stop_2,
       R => '0'
     );
-\mts.deci_adc_stop_reg\: unisim.vcomponents.FDRE
+\mts.deci_adc_stop_curr_reg\: unisim.vcomponents.FDRE
      port map (
       C => \^deci_clk\,
       CE => '1',
       D => deci_adc_stop_2,
+      Q => deci_adc_stop_curr,
+      R => '0'
+    );
+\mts.deci_adc_stop_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => deci_adc_stop_curr,
+      I1 => deci_adc_stop_prev,
+      O => \mts.deci_adc_stop_reg0\
+    );
+\mts.deci_adc_stop_prev_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^deci_clk\,
+      CE => '1',
+      D => deci_adc_stop_curr,
+      Q => deci_adc_stop_prev,
+      R => '0'
+    );
+\mts.deci_adc_stop_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^deci_clk\,
+      CE => '1',
+      D => \mts.deci_adc_stop_reg0\,
       Q => deci_adc_stop,
       R => '0'
     );
@@ -718,13 +759,13 @@ ila_i: component ps_mts_0_0_ila_6
       I2 => deci_release_cnt(2),
       I3 => deci_release_cnt(0),
       I4 => deci_release_cnt(1),
-      O => deci_reset_async5_out
+      O => deci_reset_async6_out
     );
 \mts.deci_reset_async_reg\: unisim.vcomponents.FDPE
      port map (
       C => \^deci_clk\,
       CE => '1',
-      D => deci_reset_async5_out,
+      D => deci_reset_async6_out,
       PRE => rst_async,
       Q => deci_reset_async
     );
@@ -760,11 +801,36 @@ ila_i: component ps_mts_0_0_ila_6
       Q => deci_sim_start_2,
       R => '0'
     );
-\mts.deci_sim_start_reg\: unisim.vcomponents.FDRE
+\mts.deci_sim_start_curr_reg\: unisim.vcomponents.FDRE
      port map (
       C => \^deci_clk\,
       CE => '1',
       D => deci_sim_start_2,
+      Q => deci_sim_start_curr,
+      R => '0'
+    );
+\mts.deci_sim_start_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => deci_sim_start_curr,
+      I1 => deci_sim_start_prev,
+      O => \mts.deci_sim_start_reg0\
+    );
+\mts.deci_sim_start_prev_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^deci_clk\,
+      CE => '1',
+      D => deci_sim_start_curr,
+      Q => deci_sim_start_prev,
+      R => '0'
+    );
+\mts.deci_sim_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^deci_clk\,
+      CE => '1',
+      D => \mts.deci_sim_start_reg0\,
       Q => \^deci_sim_start\,
       R => '0'
     );
@@ -940,8 +1006,6 @@ entity ps_mts_0_0 is
     deci_clk : out STD_LOGIC;
     deci_resetn : out STD_LOGIC;
     user_sysref_adc : out STD_LOGIC;
-    deci_stop_low : in STD_LOGIC;
-    deci_stop_high : in STD_LOGIC;
     deci_adc_active : out STD_LOGIC;
     deci_sim_start : out STD_LOGIC;
     deci_sim_active_low : in STD_LOGIC;
@@ -1030,8 +1094,6 @@ inst: entity work.ps_mts_0_0_mts
       deci_sim_active_high => deci_sim_active_high,
       deci_sim_active_low => deci_sim_active_low,
       deci_sim_start => deci_sim_start,
-      deci_stop_high => deci_stop_high,
-      deci_stop_low => deci_stop_low,
       doa0_clk => doa0_clk,
       doa0_reset => doa0_reset,
       doa1_clk => doa1_clk,

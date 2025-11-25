@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Nov 24 21:12:35 2025
+-- Date        : Tue Nov 25 20:19:49 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -28,7 +28,6 @@ entity ps_deci_low_0_0_deci_low is
     sim_start : in STD_LOGIC;
     adc_active : in STD_LOGIC;
     sim_active : out STD_LOGIC;
-    stop : out STD_LOGIC;
     sim_clk : in STD_LOGIC;
     sim_resetn : in STD_LOGIC;
     sim_wr : in STD_LOGIC;
@@ -164,8 +163,8 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe11 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe13 : in STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -173,38 +172,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe15 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 13 downto 0 )
+    probe18 : in STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component ps_deci_low_0_0_ila_2;
-  component ps_deci_low_0_0_ila_5 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 127 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 127 downto 0 )
-  );
-  end component ps_deci_low_0_0_ila_5;
   signal active : STD_LOGIC;
   signal active0 : STD_LOGIC;
   signal active_1 : STD_LOGIC;
@@ -717,7 +687,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.mux_W[99]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_W[9]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_active_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.mux_active_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.raw_active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_active_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_1_n_0\ : STD_LOGIC;
@@ -745,16 +714,148 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.raw_delay_reg[8]_i_1_n_5\ : STD_LOGIC;
   signal \deci_low.raw_delay_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \deci_low.raw_delay_reg[8]_i_1_n_7\ : STD_LOGIC;
-  signal \deci_low.sim_count[0]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_active_1_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_active_2_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_count[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.sim_count[1]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data[127]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data[63]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data[95]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[0]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[100]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[101]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[102]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[103]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[104]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[105]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[106]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[107]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[108]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[109]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[10]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[110]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[111]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[112]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[113]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[114]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[115]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[116]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[117]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[118]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[119]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[11]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[120]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[121]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[122]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[123]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[124]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[125]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[126]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[127]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[12]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[13]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[14]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[15]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[16]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[17]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[18]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[19]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[1]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[20]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[21]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[22]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[23]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[24]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[25]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[26]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[27]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[28]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[29]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[2]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[30]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[31]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[32]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[33]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[34]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[35]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[36]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[37]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[38]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[39]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[3]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[40]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[41]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[42]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[43]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[44]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[45]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[46]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[47]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[48]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[49]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[4]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[50]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[51]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[52]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[53]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[54]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[55]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[56]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[57]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[58]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[59]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[5]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[60]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[61]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[62]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[63]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[64]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[65]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[66]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[67]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[68]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[69]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[6]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[70]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[71]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[72]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[73]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[74]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[75]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[76]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[77]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[78]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[79]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[7]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[80]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[81]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[82]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[83]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[84]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[85]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[86]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[87]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[88]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[89]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[8]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[90]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[91]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[92]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[93]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[94]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[95]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[96]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[97]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[98]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[99]\ : STD_LOGIC;
+  signal \deci_low.sim_curr_data_reg_n_0_[9]\ : STD_LOGIC;
   signal \deci_low.sim_curr_wr_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_curr_wr_reg_n_0\ : STD_LOGIC;
   signal \deci_low.sim_rd_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_wr_E_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_wr_E_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.sim_wr_N_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_wr_W_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.stop_i_1_n_0\ : STD_LOGIC;
   signal doa_active : STD_LOGIC;
   signal doa_active0 : STD_LOGIC;
   signal doa_fifo_empty : STD_LOGIC;
@@ -769,12 +870,28 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal fir_raw_N : STD_LOGIC_VECTOR ( 126 downto 17 );
   signal fir_raw_W : STD_LOGIC_VECTOR ( 126 downto 17 );
   signal mux_E : STD_LOGIC_VECTOR ( 127 downto 0 );
-  signal mux_N : STD_LOGIC_VECTOR ( 127 downto 0 );
+  signal mux_N : STD_LOGIC_VECTOR ( 113 downto 0 );
+  signal mux_N0 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of mux_N0 : signal is std.standard.true;
+  signal mux_N1 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N1 : signal is std.standard.true;
+  signal mux_N2 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N2 : signal is std.standard.true;
+  signal mux_N3 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N3 : signal is std.standard.true;
+  signal mux_N4 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N4 : signal is std.standard.true;
+  signal mux_N5 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N5 : signal is std.standard.true;
+  signal mux_N6 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N6 : signal is std.standard.true;
+  signal mux_N7 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  attribute MARK_DEBUG of mux_N7 : signal is std.standard.true;
   signal mux_W : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal mux_active : STD_LOGIC;
-  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of mux_active : signal is std.standard.true;
-  signal p_0_in1_in : STD_LOGIC_VECTOR ( 127 downto 0 );
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal raw_active : STD_LOGIC;
   signal raw_delay0 : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal raw_fifo_empty : STD_LOGIC;
@@ -782,62 +899,14 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal raw_in_data : STD_LOGIC_VECTOR ( 195 downto 0 );
   signal raw_out_data : STD_LOGIC_VECTOR ( 195 downto 0 );
   signal \^raw_ready\ : STD_LOGIC;
-  signal sim_E0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E0 : signal is std.standard.true;
-  signal sim_E1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E1 : signal is std.standard.true;
-  signal sim_E2 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E2 : signal is std.standard.true;
-  signal sim_E3 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E3 : signal is std.standard.true;
-  signal sim_E4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E4 : signal is std.standard.true;
-  signal sim_E5 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E5 : signal is std.standard.true;
-  signal sim_E6 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E6 : signal is std.standard.true;
-  signal sim_E7 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_E7 : signal is std.standard.true;
-  signal sim_N0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N0 : signal is std.standard.true;
-  signal sim_N1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N1 : signal is std.standard.true;
-  signal sim_N2 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N2 : signal is std.standard.true;
-  signal sim_N3 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N3 : signal is std.standard.true;
-  signal sim_N4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N4 : signal is std.standard.true;
-  signal sim_N5 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N5 : signal is std.standard.true;
-  signal sim_N6 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N6 : signal is std.standard.true;
-  signal sim_N7 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_N7 : signal is std.standard.true;
-  signal sim_W0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W0 : signal is std.standard.true;
-  signal sim_W1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W1 : signal is std.standard.true;
-  signal sim_W2 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W2 : signal is std.standard.true;
-  signal sim_W3 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W3 : signal is std.standard.true;
-  signal sim_W4 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W4 : signal is std.standard.true;
-  signal sim_W5 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W5 : signal is std.standard.true;
-  signal sim_W6 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W6 : signal is std.standard.true;
-  signal sim_W7 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute MARK_DEBUG of sim_W7 : signal is std.standard.true;
   signal \^sim_active\ : STD_LOGIC;
   attribute MARK_DEBUG of sim_active : signal is std.standard.true;
-  signal sim_count : STD_LOGIC_VECTOR ( 1 downto 0 );
-  attribute MARK_DEBUG of sim_count : signal is std.standard.true;
-  signal sim_curr_data : STD_LOGIC_VECTOR ( 127 downto 0 );
-  attribute MARK_DEBUG of sim_curr_data : signal is std.standard.true;
-  signal sim_curr_wr : STD_LOGIC;
-  attribute MARK_DEBUG of sim_curr_wr : signal is std.standard.true;
+  signal sim_active_1 : STD_LOGIC;
+  attribute MARK_DEBUG of sim_active_1 : signal is std.standard.true;
+  signal sim_active_2 : STD_LOGIC;
+  attribute MARK_DEBUG of sim_active_2 : signal is std.standard.true;
+  signal \sim_count__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal sim_curr_data : STD_LOGIC_VECTOR ( 127 downto 31 );
   signal sim_empty_E : STD_LOGIC;
   attribute MARK_DEBUG of sim_empty_E : signal is std.standard.true;
   signal sim_empty_N : STD_LOGIC;
@@ -845,19 +914,15 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal sim_empty_W : STD_LOGIC;
   attribute MARK_DEBUG of sim_empty_W : signal is std.standard.true;
   signal sim_in_data : STD_LOGIC_VECTOR ( 127 downto 0 );
-  attribute MARK_DEBUG of sim_in_data : signal is std.standard.true;
-  signal sim_out_E : STD_LOGIC_VECTOR ( 113 downto 0 );
-  signal sim_out_N : STD_LOGIC_VECTOR ( 113 downto 0 );
-  signal sim_out_W : STD_LOGIC_VECTOR ( 113 downto 0 );
+  signal sim_out_E : STD_LOGIC_VECTOR ( 127 downto 0 );
+  signal sim_out_N : STD_LOGIC_VECTOR ( 127 downto 0 );
+  signal sim_out_W : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal sim_rd : STD_LOGIC;
   attribute MARK_DEBUG of sim_rd : signal is std.standard.true;
   signal sim_wr_E : STD_LOGIC;
-  attribute MARK_DEBUG of sim_wr_E : signal is std.standard.true;
   signal sim_wr_N : STD_LOGIC;
-  attribute MARK_DEBUG of sim_wr_N : signal is std.standard.true;
   signal sim_wr_W : STD_LOGIC;
-  attribute MARK_DEBUG of sim_wr_W : signal is std.standard.true;
-  signal \^stop\ : STD_LOGIC;
+  signal stop : STD_LOGIC;
   attribute MARK_DEBUG of stop : signal is std.standard.true;
   signal valid_E : STD_LOGIC;
   signal valid_N : STD_LOGIC;
@@ -899,7 +964,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal NLW_fir_deci_W_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_deci_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \deci_low.active_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \deci_low.active_i_1\ : label is "soft_lutpair1";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \deci_low.counter_reg[0]_i_2\ : label is 16;
   attribute ADDER_THRESHOLD of \deci_low.counter_reg[16]_i_1\ : label is 16;
@@ -913,527 +978,18 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute KEEP of \deci_low.mux_active_reg\ : label is "yes";
   attribute ADDER_THRESHOLD of \deci_low.raw_delay_reg[11]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \deci_low.raw_delay_reg[8]_i_1\ : label is 35;
-  attribute KEEP of \deci_low.sim_count_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_count_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.sim_active_1_reg\ : label is "yes";
   attribute mark_debug_string : string;
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[100]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[100]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[101]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[101]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[102]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[102]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[103]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[103]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[104]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[104]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[105]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[105]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[106]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[106]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[107]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[107]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[108]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[108]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[109]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[109]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[110]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[110]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[111]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[111]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[112]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[112]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[113]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[113]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[114]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[114]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[115]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[115]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[116]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[116]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[117]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[117]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[118]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[118]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[119]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[119]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[11]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[120]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[120]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[121]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[121]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[122]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[122]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[123]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[123]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[124]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[124]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[125]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[125]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[126]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[126]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[127]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[127]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[12]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[13]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[14]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[15]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[16]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[17]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[18]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[19]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[20]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[21]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[22]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[23]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[24]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[25]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[26]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[27]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[28]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[29]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[30]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[31]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[32]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[33]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[34]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[35]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[36]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[37]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[38]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[39]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[40]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[41]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[42]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[43]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[44]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[45]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[46]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[47]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[48]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[49]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[50]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[51]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[52]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[53]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[54]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[55]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[56]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[57]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[58]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[59]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[60]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[61]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[62]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[63]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[64]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[64]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[65]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[65]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[66]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[66]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[67]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[67]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[68]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[68]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[69]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[69]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[70]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[70]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[71]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[71]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[72]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[72]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[73]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[73]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[74]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[74]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[75]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[75]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[76]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[76]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[77]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[77]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[78]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[78]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[79]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[79]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[80]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[80]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[81]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[81]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[82]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[82]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[83]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[83]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[84]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[84]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[85]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[85]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[86]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[86]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[87]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[87]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[88]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[88]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[89]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[89]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[8]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[90]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[90]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[91]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[91]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[92]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[92]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[93]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[93]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[94]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[94]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[95]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[95]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[96]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[96]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[97]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[97]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[98]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[98]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[99]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[99]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_data_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_curr_data_reg[9]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_curr_wr_reg\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[100]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[100]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[101]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[101]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[102]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[102]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[103]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[103]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[104]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[104]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[105]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[105]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[106]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[106]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[107]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[107]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[108]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[108]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[109]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[109]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[110]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[110]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[111]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[111]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[112]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[112]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[113]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[113]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[114]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[114]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[115]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[115]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[116]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[116]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[117]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[117]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[118]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[118]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[119]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[119]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[11]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[120]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[120]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[121]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[121]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[122]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[122]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[123]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[123]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[124]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[124]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[125]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[125]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[126]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[126]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[127]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[127]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[12]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[13]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[14]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[15]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[16]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[17]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[18]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[19]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[20]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[21]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[22]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[23]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[24]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[25]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[26]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[27]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[28]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[29]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[30]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[31]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[32]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[33]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[34]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[35]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[36]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[37]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[38]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[39]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[40]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[41]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[42]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[43]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[44]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[45]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[46]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[47]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[48]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[49]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[50]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[51]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[52]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[53]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[54]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[55]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[56]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[57]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[58]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[59]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[60]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[61]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[62]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[63]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[64]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[64]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[65]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[65]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[66]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[66]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[67]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[67]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[68]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[68]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[69]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[69]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[70]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[70]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[71]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[71]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[72]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[72]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[73]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[73]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[74]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[74]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[75]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[75]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[76]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[76]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[77]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[77]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[78]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[78]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[79]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[79]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[80]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[80]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[81]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[81]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[82]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[82]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[83]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[83]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[84]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[84]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[85]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[85]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[86]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[86]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[87]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[87]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[88]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[88]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[89]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[89]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[8]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[90]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[90]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[91]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[91]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[92]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[92]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[93]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[93]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[94]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[94]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[95]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[95]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[96]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[96]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[97]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[97]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[98]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[98]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[99]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[99]\ : label is "yes";
-  attribute KEEP of \deci_low.sim_in_data_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.sim_in_data_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.sim_active_1_reg\ : label is "yes";
+  attribute KEEP of \deci_low.sim_active_2_reg\ : label is "yes";
+  attribute KEEP of \deci_low.sim_active_reg\ : label is "yes";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_low.sim_curr_wr_i_1\ : label is "soft_lutpair0";
   attribute KEEP of \deci_low.sim_rd_reg\ : label is "yes";
-  attribute KEEP of \deci_low.sim_wr_E_reg\ : label is "yes";
-  attribute KEEP of \deci_low.sim_wr_N_reg\ : label is "yes";
-  attribute KEEP of \deci_low.sim_wr_W_reg\ : label is "yes";
-  attribute KEEP of \deci_low.stop_reg\ : label is "yes";
+  attribute mark_debug_string of \deci_low.sim_rd_reg\ : label is "yes";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair3";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_doa_i : label is "fifo_doa_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -1443,13 +999,14 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_raw_i : label is "yes";
   attribute x_core_info of fifo_raw_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
-  attribute SOFT_HLUTNM of fifo_raw_i_i_1 : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of fifo_raw_i_i_1 : label is "soft_lutpair1";
   attribute CHECK_LICENSE_TYPE of fifo_sim_E_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_E_i : label is "yes";
   attribute x_core_info of fifo_sim_E_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fifo_sim_N_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_N_i : label is "yes";
   attribute x_core_info of fifo_sim_N_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair0";
   attribute CHECK_LICENSE_TYPE of fifo_sim_W_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_W_i : label is "yes";
   attribute x_core_info of fifo_sim_W_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
@@ -1474,14 +1031,10 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute CHECK_LICENSE_TYPE of ila_2_i : label is "ila_2,ila,{}";
   attribute downgradeipidentifiedwarnings of ila_2_i : label is "yes";
   attribute x_core_info of ila_2_i : label is "ila,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_5_i : label is "ila_5,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_5_i : label is "yes";
-  attribute x_core_info of ila_5_i : label is "ila,Vivado 2025.1";
 begin
   doa_ready <= \^doa_ready\;
   raw_ready <= \^raw_ready\;
   sim_active <= \^sim_active\;
-  stop <= \^stop\;
 \deci_low.active_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"8000"
@@ -3328,1538 +2881,1538 @@ begin
     );
 \deci_low.mux_E[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(0),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(0),
+      I3 => adc_active,
       I4 => sim_out_E(0),
       O => \deci_low.mux_E[0]_i_1_n_0\
     );
 \deci_low.mux_E[100]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(100),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(100),
+      I3 => adc_active,
+      I4 => sim_out_E(100),
       O => \deci_low.mux_E[100]_i_1_n_0\
     );
 \deci_low.mux_E[101]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(101),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(101),
+      I3 => adc_active,
+      I4 => sim_out_E(101),
       O => \deci_low.mux_E[101]_i_1_n_0\
     );
 \deci_low.mux_E[102]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(102),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(102),
+      I3 => adc_active,
+      I4 => sim_out_E(102),
       O => \deci_low.mux_E[102]_i_1_n_0\
     );
 \deci_low.mux_E[103]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(103),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(103),
+      I3 => adc_active,
+      I4 => sim_out_E(103),
       O => \deci_low.mux_E[103]_i_1_n_0\
     );
 \deci_low.mux_E[104]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(104),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(104),
+      I3 => adc_active,
+      I4 => sim_out_E(104),
       O => \deci_low.mux_E[104]_i_1_n_0\
     );
 \deci_low.mux_E[105]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(105),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(105),
+      I3 => adc_active,
+      I4 => sim_out_E(105),
       O => \deci_low.mux_E[105]_i_1_n_0\
     );
 \deci_low.mux_E[106]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(106),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(106),
+      I3 => adc_active,
+      I4 => sim_out_E(106),
       O => \deci_low.mux_E[106]_i_1_n_0\
     );
 \deci_low.mux_E[107]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(107),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(107),
+      I3 => adc_active,
+      I4 => sim_out_E(107),
       O => \deci_low.mux_E[107]_i_1_n_0\
     );
 \deci_low.mux_E[108]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(108),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(108),
+      I3 => adc_active,
+      I4 => sim_out_E(108),
       O => \deci_low.mux_E[108]_i_1_n_0\
     );
 \deci_low.mux_E[109]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(109),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(109),
+      I3 => adc_active,
+      I4 => sim_out_E(109),
       O => \deci_low.mux_E[109]_i_1_n_0\
     );
 \deci_low.mux_E[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(10),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(10),
+      I3 => adc_active,
+      I4 => sim_out_E(10),
       O => \deci_low.mux_E[10]_i_1_n_0\
     );
 \deci_low.mux_E[110]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(110),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(110),
+      I3 => adc_active,
+      I4 => sim_out_E(110),
       O => \deci_low.mux_E[110]_i_1_n_0\
     );
 \deci_low.mux_E[111]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(111),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(111),
+      I3 => adc_active,
+      I4 => sim_out_E(111),
       O => \deci_low.mux_E[111]_i_1_n_0\
     );
 \deci_low.mux_E[112]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(112),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(112),
+      I3 => adc_active,
       I4 => sim_out_E(112),
       O => \deci_low.mux_E[112]_i_1_n_0\
     );
 \deci_low.mux_E[113]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(113),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(113),
+      I3 => adc_active,
       I4 => sim_out_E(113),
       O => \deci_low.mux_E[113]_i_1_n_0\
     );
 \deci_low.mux_E[114]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(114),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(114),
+      I3 => adc_active,
+      I4 => sim_out_E(114),
       O => \deci_low.mux_E[114]_i_1_n_0\
     );
 \deci_low.mux_E[115]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(115),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(115),
+      I3 => adc_active,
+      I4 => sim_out_E(115),
       O => \deci_low.mux_E[115]_i_1_n_0\
     );
 \deci_low.mux_E[116]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(116),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(116),
+      I3 => adc_active,
+      I4 => sim_out_E(116),
       O => \deci_low.mux_E[116]_i_1_n_0\
     );
 \deci_low.mux_E[117]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(117),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(117),
+      I3 => adc_active,
+      I4 => sim_out_E(117),
       O => \deci_low.mux_E[117]_i_1_n_0\
     );
 \deci_low.mux_E[118]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(118),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(118),
+      I3 => adc_active,
+      I4 => sim_out_E(118),
       O => \deci_low.mux_E[118]_i_1_n_0\
     );
 \deci_low.mux_E[119]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(119),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(119),
+      I3 => adc_active,
+      I4 => sim_out_E(119),
       O => \deci_low.mux_E[119]_i_1_n_0\
     );
 \deci_low.mux_E[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(11),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(11),
+      I3 => adc_active,
+      I4 => sim_out_E(11),
       O => \deci_low.mux_E[11]_i_1_n_0\
     );
 \deci_low.mux_E[120]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(120),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(120),
+      I3 => adc_active,
+      I4 => sim_out_E(120),
       O => \deci_low.mux_E[120]_i_1_n_0\
     );
 \deci_low.mux_E[121]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(121),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(121),
+      I3 => adc_active,
+      I4 => sim_out_E(121),
       O => \deci_low.mux_E[121]_i_1_n_0\
     );
 \deci_low.mux_E[122]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(122),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(122),
+      I3 => adc_active,
+      I4 => sim_out_E(122),
       O => \deci_low.mux_E[122]_i_1_n_0\
     );
 \deci_low.mux_E[123]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(123),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(123),
+      I3 => adc_active,
+      I4 => sim_out_E(123),
       O => \deci_low.mux_E[123]_i_1_n_0\
     );
 \deci_low.mux_E[124]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(124),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(124),
+      I3 => adc_active,
+      I4 => sim_out_E(124),
       O => \deci_low.mux_E[124]_i_1_n_0\
     );
 \deci_low.mux_E[125]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(125),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(125),
+      I3 => adc_active,
+      I4 => sim_out_E(125),
       O => \deci_low.mux_E[125]_i_1_n_0\
     );
 \deci_low.mux_E[126]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(126),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(126),
+      I3 => adc_active,
+      I4 => sim_out_E(126),
       O => \deci_low.mux_E[126]_i_1_n_0\
     );
 \deci_low.mux_E[127]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(127),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E7(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(127),
+      I3 => adc_active,
+      I4 => sim_out_E(127),
       O => \deci_low.mux_E[127]_i_1_n_0\
     );
 \deci_low.mux_E[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(12),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(12),
+      I3 => adc_active,
+      I4 => sim_out_E(12),
       O => \deci_low.mux_E[12]_i_1_n_0\
     );
 \deci_low.mux_E[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(13),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(13),
+      I3 => adc_active,
+      I4 => sim_out_E(13),
       O => \deci_low.mux_E[13]_i_1_n_0\
     );
 \deci_low.mux_E[14]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(14),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(14),
+      I3 => adc_active,
+      I4 => sim_out_E(14),
       O => \deci_low.mux_E[14]_i_1_n_0\
     );
 \deci_low.mux_E[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(15),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(15),
+      I3 => adc_active,
+      I4 => sim_out_E(15),
       O => \deci_low.mux_E[15]_i_1_n_0\
     );
 \deci_low.mux_E[16]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(16),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(16),
+      I3 => adc_active,
       I4 => sim_out_E(16),
       O => \deci_low.mux_E[16]_i_1_n_0\
     );
 \deci_low.mux_E[17]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(17),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(17),
+      I3 => adc_active,
       I4 => sim_out_E(17),
       O => \deci_low.mux_E[17]_i_1_n_0\
     );
 \deci_low.mux_E[18]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(18),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(18),
+      I3 => adc_active,
+      I4 => sim_out_E(18),
       O => \deci_low.mux_E[18]_i_1_n_0\
     );
 \deci_low.mux_E[19]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(19),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(19),
+      I3 => adc_active,
+      I4 => sim_out_E(19),
       O => \deci_low.mux_E[19]_i_1_n_0\
     );
 \deci_low.mux_E[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(1),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(1),
+      I3 => adc_active,
       I4 => sim_out_E(1),
       O => \deci_low.mux_E[1]_i_1_n_0\
     );
 \deci_low.mux_E[20]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(20),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(20),
+      I3 => adc_active,
+      I4 => sim_out_E(20),
       O => \deci_low.mux_E[20]_i_1_n_0\
     );
 \deci_low.mux_E[21]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(21),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(21),
+      I3 => adc_active,
+      I4 => sim_out_E(21),
       O => \deci_low.mux_E[21]_i_1_n_0\
     );
 \deci_low.mux_E[22]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(22),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(22),
+      I3 => adc_active,
+      I4 => sim_out_E(22),
       O => \deci_low.mux_E[22]_i_1_n_0\
     );
 \deci_low.mux_E[23]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(23),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(23),
+      I3 => adc_active,
+      I4 => sim_out_E(23),
       O => \deci_low.mux_E[23]_i_1_n_0\
     );
 \deci_low.mux_E[24]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(24),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(24),
+      I3 => adc_active,
+      I4 => sim_out_E(24),
       O => \deci_low.mux_E[24]_i_1_n_0\
     );
 \deci_low.mux_E[25]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(25),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(25),
+      I3 => adc_active,
+      I4 => sim_out_E(25),
       O => \deci_low.mux_E[25]_i_1_n_0\
     );
 \deci_low.mux_E[26]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(26),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(26),
+      I3 => adc_active,
+      I4 => sim_out_E(26),
       O => \deci_low.mux_E[26]_i_1_n_0\
     );
 \deci_low.mux_E[27]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(27),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(27),
+      I3 => adc_active,
+      I4 => sim_out_E(27),
       O => \deci_low.mux_E[27]_i_1_n_0\
     );
 \deci_low.mux_E[28]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(28),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(28),
+      I3 => adc_active,
+      I4 => sim_out_E(28),
       O => \deci_low.mux_E[28]_i_1_n_0\
     );
 \deci_low.mux_E[29]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(29),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(29),
+      I3 => adc_active,
+      I4 => sim_out_E(29),
       O => \deci_low.mux_E[29]_i_1_n_0\
     );
 \deci_low.mux_E[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(2),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(2),
+      I3 => adc_active,
+      I4 => sim_out_E(2),
       O => \deci_low.mux_E[2]_i_1_n_0\
     );
 \deci_low.mux_E[30]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(30),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(30),
+      I3 => adc_active,
+      I4 => sim_out_E(30),
       O => \deci_low.mux_E[30]_i_1_n_0\
     );
 \deci_low.mux_E[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(31),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E1(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(31),
+      I3 => adc_active,
+      I4 => sim_out_E(31),
       O => \deci_low.mux_E[31]_i_1_n_0\
     );
 \deci_low.mux_E[32]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(32),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(32),
+      I3 => adc_active,
       I4 => sim_out_E(32),
       O => \deci_low.mux_E[32]_i_1_n_0\
     );
 \deci_low.mux_E[33]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(33),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(33),
+      I3 => adc_active,
       I4 => sim_out_E(33),
       O => \deci_low.mux_E[33]_i_1_n_0\
     );
 \deci_low.mux_E[34]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(34),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(34),
+      I3 => adc_active,
+      I4 => sim_out_E(34),
       O => \deci_low.mux_E[34]_i_1_n_0\
     );
 \deci_low.mux_E[35]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(35),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(35),
+      I3 => adc_active,
+      I4 => sim_out_E(35),
       O => \deci_low.mux_E[35]_i_1_n_0\
     );
 \deci_low.mux_E[36]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(36),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(36),
+      I3 => adc_active,
+      I4 => sim_out_E(36),
       O => \deci_low.mux_E[36]_i_1_n_0\
     );
 \deci_low.mux_E[37]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(37),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(37),
+      I3 => adc_active,
+      I4 => sim_out_E(37),
       O => \deci_low.mux_E[37]_i_1_n_0\
     );
 \deci_low.mux_E[38]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(38),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(38),
+      I3 => adc_active,
+      I4 => sim_out_E(38),
       O => \deci_low.mux_E[38]_i_1_n_0\
     );
 \deci_low.mux_E[39]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(39),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(39),
+      I3 => adc_active,
+      I4 => sim_out_E(39),
       O => \deci_low.mux_E[39]_i_1_n_0\
     );
 \deci_low.mux_E[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(3),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(3),
+      I3 => adc_active,
+      I4 => sim_out_E(3),
       O => \deci_low.mux_E[3]_i_1_n_0\
     );
 \deci_low.mux_E[40]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(40),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(40),
+      I3 => adc_active,
+      I4 => sim_out_E(40),
       O => \deci_low.mux_E[40]_i_1_n_0\
     );
 \deci_low.mux_E[41]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(41),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(41),
+      I3 => adc_active,
+      I4 => sim_out_E(41),
       O => \deci_low.mux_E[41]_i_1_n_0\
     );
 \deci_low.mux_E[42]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(42),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(42),
+      I3 => adc_active,
+      I4 => sim_out_E(42),
       O => \deci_low.mux_E[42]_i_1_n_0\
     );
 \deci_low.mux_E[43]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(43),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(43),
+      I3 => adc_active,
+      I4 => sim_out_E(43),
       O => \deci_low.mux_E[43]_i_1_n_0\
     );
 \deci_low.mux_E[44]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(44),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(44),
+      I3 => adc_active,
+      I4 => sim_out_E(44),
       O => \deci_low.mux_E[44]_i_1_n_0\
     );
 \deci_low.mux_E[45]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(45),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(45),
+      I3 => adc_active,
+      I4 => sim_out_E(45),
       O => \deci_low.mux_E[45]_i_1_n_0\
     );
 \deci_low.mux_E[46]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(46),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(46),
+      I3 => adc_active,
+      I4 => sim_out_E(46),
       O => \deci_low.mux_E[46]_i_1_n_0\
     );
 \deci_low.mux_E[47]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(47),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E2(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(47),
+      I3 => adc_active,
+      I4 => sim_out_E(47),
       O => \deci_low.mux_E[47]_i_1_n_0\
     );
 \deci_low.mux_E[48]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(48),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(48),
+      I3 => adc_active,
       I4 => sim_out_E(48),
       O => \deci_low.mux_E[48]_i_1_n_0\
     );
 \deci_low.mux_E[49]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(49),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(49),
+      I3 => adc_active,
       I4 => sim_out_E(49),
       O => \deci_low.mux_E[49]_i_1_n_0\
     );
 \deci_low.mux_E[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(4),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(4),
+      I3 => adc_active,
+      I4 => sim_out_E(4),
       O => \deci_low.mux_E[4]_i_1_n_0\
     );
 \deci_low.mux_E[50]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(50),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(50),
+      I3 => adc_active,
+      I4 => sim_out_E(50),
       O => \deci_low.mux_E[50]_i_1_n_0\
     );
 \deci_low.mux_E[51]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(51),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(51),
+      I3 => adc_active,
+      I4 => sim_out_E(51),
       O => \deci_low.mux_E[51]_i_1_n_0\
     );
 \deci_low.mux_E[52]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(52),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(52),
+      I3 => adc_active,
+      I4 => sim_out_E(52),
       O => \deci_low.mux_E[52]_i_1_n_0\
     );
 \deci_low.mux_E[53]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(53),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(53),
+      I3 => adc_active,
+      I4 => sim_out_E(53),
       O => \deci_low.mux_E[53]_i_1_n_0\
     );
 \deci_low.mux_E[54]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(54),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(54),
+      I3 => adc_active,
+      I4 => sim_out_E(54),
       O => \deci_low.mux_E[54]_i_1_n_0\
     );
 \deci_low.mux_E[55]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(55),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(55),
+      I3 => adc_active,
+      I4 => sim_out_E(55),
       O => \deci_low.mux_E[55]_i_1_n_0\
     );
 \deci_low.mux_E[56]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(56),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(56),
+      I3 => adc_active,
+      I4 => sim_out_E(56),
       O => \deci_low.mux_E[56]_i_1_n_0\
     );
 \deci_low.mux_E[57]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(57),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(57),
+      I3 => adc_active,
+      I4 => sim_out_E(57),
       O => \deci_low.mux_E[57]_i_1_n_0\
     );
 \deci_low.mux_E[58]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(58),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(58),
+      I3 => adc_active,
+      I4 => sim_out_E(58),
       O => \deci_low.mux_E[58]_i_1_n_0\
     );
 \deci_low.mux_E[59]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(59),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(59),
+      I3 => adc_active,
+      I4 => sim_out_E(59),
       O => \deci_low.mux_E[59]_i_1_n_0\
     );
 \deci_low.mux_E[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(5),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(5),
+      I3 => adc_active,
+      I4 => sim_out_E(5),
       O => \deci_low.mux_E[5]_i_1_n_0\
     );
 \deci_low.mux_E[60]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(60),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(60),
+      I3 => adc_active,
+      I4 => sim_out_E(60),
       O => \deci_low.mux_E[60]_i_1_n_0\
     );
 \deci_low.mux_E[61]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(61),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(61),
+      I3 => adc_active,
+      I4 => sim_out_E(61),
       O => \deci_low.mux_E[61]_i_1_n_0\
     );
 \deci_low.mux_E[62]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(62),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(62),
+      I3 => adc_active,
+      I4 => sim_out_E(62),
       O => \deci_low.mux_E[62]_i_1_n_0\
     );
 \deci_low.mux_E[63]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(63),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E3(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(63),
+      I3 => adc_active,
+      I4 => sim_out_E(63),
       O => \deci_low.mux_E[63]_i_1_n_0\
     );
 \deci_low.mux_E[64]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(64),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(64),
+      I3 => adc_active,
       I4 => sim_out_E(64),
       O => \deci_low.mux_E[64]_i_1_n_0\
     );
 \deci_low.mux_E[65]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(65),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(65),
+      I3 => adc_active,
       I4 => sim_out_E(65),
       O => \deci_low.mux_E[65]_i_1_n_0\
     );
 \deci_low.mux_E[66]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(66),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(66),
+      I3 => adc_active,
+      I4 => sim_out_E(66),
       O => \deci_low.mux_E[66]_i_1_n_0\
     );
 \deci_low.mux_E[67]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(67),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(67),
+      I3 => adc_active,
+      I4 => sim_out_E(67),
       O => \deci_low.mux_E[67]_i_1_n_0\
     );
 \deci_low.mux_E[68]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(68),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(68),
+      I3 => adc_active,
+      I4 => sim_out_E(68),
       O => \deci_low.mux_E[68]_i_1_n_0\
     );
 \deci_low.mux_E[69]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(69),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(69),
+      I3 => adc_active,
+      I4 => sim_out_E(69),
       O => \deci_low.mux_E[69]_i_1_n_0\
     );
 \deci_low.mux_E[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(6),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(6),
+      I3 => adc_active,
+      I4 => sim_out_E(6),
       O => \deci_low.mux_E[6]_i_1_n_0\
     );
 \deci_low.mux_E[70]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(70),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(70),
+      I3 => adc_active,
+      I4 => sim_out_E(70),
       O => \deci_low.mux_E[70]_i_1_n_0\
     );
 \deci_low.mux_E[71]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(71),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(71),
+      I3 => adc_active,
+      I4 => sim_out_E(71),
       O => \deci_low.mux_E[71]_i_1_n_0\
     );
 \deci_low.mux_E[72]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(72),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(72),
+      I3 => adc_active,
+      I4 => sim_out_E(72),
       O => \deci_low.mux_E[72]_i_1_n_0\
     );
 \deci_low.mux_E[73]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(73),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(73),
+      I3 => adc_active,
+      I4 => sim_out_E(73),
       O => \deci_low.mux_E[73]_i_1_n_0\
     );
 \deci_low.mux_E[74]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(74),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(74),
+      I3 => adc_active,
+      I4 => sim_out_E(74),
       O => \deci_low.mux_E[74]_i_1_n_0\
     );
 \deci_low.mux_E[75]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(75),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(75),
+      I3 => adc_active,
+      I4 => sim_out_E(75),
       O => \deci_low.mux_E[75]_i_1_n_0\
     );
 \deci_low.mux_E[76]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(76),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(76),
+      I3 => adc_active,
+      I4 => sim_out_E(76),
       O => \deci_low.mux_E[76]_i_1_n_0\
     );
 \deci_low.mux_E[77]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(77),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(77),
+      I3 => adc_active,
+      I4 => sim_out_E(77),
       O => \deci_low.mux_E[77]_i_1_n_0\
     );
 \deci_low.mux_E[78]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(78),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(78),
+      I3 => adc_active,
+      I4 => sim_out_E(78),
       O => \deci_low.mux_E[78]_i_1_n_0\
     );
 \deci_low.mux_E[79]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(79),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E4(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(79),
+      I3 => adc_active,
+      I4 => sim_out_E(79),
       O => \deci_low.mux_E[79]_i_1_n_0\
     );
 \deci_low.mux_E[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(7),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(7),
+      I3 => adc_active,
+      I4 => sim_out_E(7),
       O => \deci_low.mux_E[7]_i_1_n_0\
     );
 \deci_low.mux_E[80]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(80),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(80),
+      I3 => adc_active,
       I4 => sim_out_E(80),
       O => \deci_low.mux_E[80]_i_1_n_0\
     );
 \deci_low.mux_E[81]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(81),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(81),
+      I3 => adc_active,
       I4 => sim_out_E(81),
       O => \deci_low.mux_E[81]_i_1_n_0\
     );
 \deci_low.mux_E[82]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(82),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(82),
+      I3 => adc_active,
+      I4 => sim_out_E(82),
       O => \deci_low.mux_E[82]_i_1_n_0\
     );
 \deci_low.mux_E[83]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(83),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(83),
+      I3 => adc_active,
+      I4 => sim_out_E(83),
       O => \deci_low.mux_E[83]_i_1_n_0\
     );
 \deci_low.mux_E[84]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(84),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(84),
+      I3 => adc_active,
+      I4 => sim_out_E(84),
       O => \deci_low.mux_E[84]_i_1_n_0\
     );
 \deci_low.mux_E[85]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(85),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(85),
+      I3 => adc_active,
+      I4 => sim_out_E(85),
       O => \deci_low.mux_E[85]_i_1_n_0\
     );
 \deci_low.mux_E[86]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(86),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(86),
+      I3 => adc_active,
+      I4 => sim_out_E(86),
       O => \deci_low.mux_E[86]_i_1_n_0\
     );
 \deci_low.mux_E[87]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(87),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(87),
+      I3 => adc_active,
+      I4 => sim_out_E(87),
       O => \deci_low.mux_E[87]_i_1_n_0\
     );
 \deci_low.mux_E[88]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(88),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(88),
+      I3 => adc_active,
+      I4 => sim_out_E(88),
       O => \deci_low.mux_E[88]_i_1_n_0\
     );
 \deci_low.mux_E[89]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(89),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(89),
+      I3 => adc_active,
+      I4 => sim_out_E(89),
       O => \deci_low.mux_E[89]_i_1_n_0\
     );
 \deci_low.mux_E[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(8),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(8),
+      I3 => adc_active,
+      I4 => sim_out_E(8),
       O => \deci_low.mux_E[8]_i_1_n_0\
     );
 \deci_low.mux_E[90]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(90),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(90),
+      I3 => adc_active,
+      I4 => sim_out_E(90),
       O => \deci_low.mux_E[90]_i_1_n_0\
     );
 \deci_low.mux_E[91]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(91),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(91),
+      I3 => adc_active,
+      I4 => sim_out_E(91),
       O => \deci_low.mux_E[91]_i_1_n_0\
     );
 \deci_low.mux_E[92]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(92),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(92),
+      I3 => adc_active,
+      I4 => sim_out_E(92),
       O => \deci_low.mux_E[92]_i_1_n_0\
     );
 \deci_low.mux_E[93]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(93),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(93),
+      I3 => adc_active,
+      I4 => sim_out_E(93),
       O => \deci_low.mux_E[93]_i_1_n_0\
     );
 \deci_low.mux_E[94]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(94),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(94),
+      I3 => adc_active,
+      I4 => sim_out_E(94),
       O => \deci_low.mux_E[94]_i_1_n_0\
     );
 \deci_low.mux_E[95]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(95),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E5(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(95),
+      I3 => adc_active,
+      I4 => sim_out_E(95),
       O => \deci_low.mux_E[95]_i_1_n_0\
     );
 \deci_low.mux_E[96]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(96),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(96),
+      I3 => adc_active,
       I4 => sim_out_E(96),
       O => \deci_low.mux_E[96]_i_1_n_0\
     );
 \deci_low.mux_E[97]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(97),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(97),
+      I3 => adc_active,
       I4 => sim_out_E(97),
       O => \deci_low.mux_E[97]_i_1_n_0\
     );
 \deci_low.mux_E[98]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(98),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(98),
+      I3 => adc_active,
+      I4 => sim_out_E(98),
       O => \deci_low.mux_E[98]_i_1_n_0\
     );
 \deci_low.mux_E[99]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(99),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E6(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(99),
+      I3 => adc_active,
+      I4 => sim_out_E(99),
       O => \deci_low.mux_E[99]_i_1_n_0\
     );
 \deci_low.mux_E[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_E(9),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_E0(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_E(9),
+      I3 => adc_active,
+      I4 => sim_out_E(9),
       O => \deci_low.mux_E[9]_i_1_n_0\
     );
 \deci_low.mux_E_reg[0]\: unisim.vcomponents.FDRE
@@ -5888,1538 +5441,1538 @@ begin
     );
 \deci_low.mux_N[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(0),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(0),
+      I3 => adc_active,
       I4 => sim_out_N(0),
       O => \deci_low.mux_N[0]_i_1_n_0\
     );
 \deci_low.mux_N[100]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(100),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(100),
+      I3 => adc_active,
+      I4 => sim_out_N(100),
       O => \deci_low.mux_N[100]_i_1_n_0\
     );
 \deci_low.mux_N[101]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(101),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(101),
+      I3 => adc_active,
+      I4 => sim_out_N(101),
       O => \deci_low.mux_N[101]_i_1_n_0\
     );
 \deci_low.mux_N[102]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(102),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(102),
+      I3 => adc_active,
+      I4 => sim_out_N(102),
       O => \deci_low.mux_N[102]_i_1_n_0\
     );
 \deci_low.mux_N[103]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(103),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(103),
+      I3 => adc_active,
+      I4 => sim_out_N(103),
       O => \deci_low.mux_N[103]_i_1_n_0\
     );
 \deci_low.mux_N[104]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(104),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(104),
+      I3 => adc_active,
+      I4 => sim_out_N(104),
       O => \deci_low.mux_N[104]_i_1_n_0\
     );
 \deci_low.mux_N[105]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(105),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(105),
+      I3 => adc_active,
+      I4 => sim_out_N(105),
       O => \deci_low.mux_N[105]_i_1_n_0\
     );
 \deci_low.mux_N[106]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(106),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(106),
+      I3 => adc_active,
+      I4 => sim_out_N(106),
       O => \deci_low.mux_N[106]_i_1_n_0\
     );
 \deci_low.mux_N[107]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(107),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(107),
+      I3 => adc_active,
+      I4 => sim_out_N(107),
       O => \deci_low.mux_N[107]_i_1_n_0\
     );
 \deci_low.mux_N[108]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(108),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(108),
+      I3 => adc_active,
+      I4 => sim_out_N(108),
       O => \deci_low.mux_N[108]_i_1_n_0\
     );
 \deci_low.mux_N[109]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(109),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(109),
+      I3 => adc_active,
+      I4 => sim_out_N(109),
       O => \deci_low.mux_N[109]_i_1_n_0\
     );
 \deci_low.mux_N[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(10),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(10),
+      I3 => adc_active,
+      I4 => sim_out_N(10),
       O => \deci_low.mux_N[10]_i_1_n_0\
     );
 \deci_low.mux_N[110]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(110),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(110),
+      I3 => adc_active,
+      I4 => sim_out_N(110),
       O => \deci_low.mux_N[110]_i_1_n_0\
     );
 \deci_low.mux_N[111]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(111),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(111),
+      I3 => adc_active,
+      I4 => sim_out_N(111),
       O => \deci_low.mux_N[111]_i_1_n_0\
     );
 \deci_low.mux_N[112]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(112),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(112),
+      I3 => adc_active,
       I4 => sim_out_N(112),
       O => \deci_low.mux_N[112]_i_1_n_0\
     );
 \deci_low.mux_N[113]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(113),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(113),
+      I3 => adc_active,
       I4 => sim_out_N(113),
       O => \deci_low.mux_N[113]_i_1_n_0\
     );
 \deci_low.mux_N[114]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(114),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(114),
+      I3 => adc_active,
+      I4 => sim_out_N(114),
       O => \deci_low.mux_N[114]_i_1_n_0\
     );
 \deci_low.mux_N[115]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(115),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(115),
+      I3 => adc_active,
+      I4 => sim_out_N(115),
       O => \deci_low.mux_N[115]_i_1_n_0\
     );
 \deci_low.mux_N[116]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(116),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(116),
+      I3 => adc_active,
+      I4 => sim_out_N(116),
       O => \deci_low.mux_N[116]_i_1_n_0\
     );
 \deci_low.mux_N[117]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(117),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(117),
+      I3 => adc_active,
+      I4 => sim_out_N(117),
       O => \deci_low.mux_N[117]_i_1_n_0\
     );
 \deci_low.mux_N[118]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(118),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(118),
+      I3 => adc_active,
+      I4 => sim_out_N(118),
       O => \deci_low.mux_N[118]_i_1_n_0\
     );
 \deci_low.mux_N[119]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(119),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(119),
+      I3 => adc_active,
+      I4 => sim_out_N(119),
       O => \deci_low.mux_N[119]_i_1_n_0\
     );
 \deci_low.mux_N[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(11),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(11),
+      I3 => adc_active,
+      I4 => sim_out_N(11),
       O => \deci_low.mux_N[11]_i_1_n_0\
     );
 \deci_low.mux_N[120]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(120),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(120),
+      I3 => adc_active,
+      I4 => sim_out_N(120),
       O => \deci_low.mux_N[120]_i_1_n_0\
     );
 \deci_low.mux_N[121]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(121),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(121),
+      I3 => adc_active,
+      I4 => sim_out_N(121),
       O => \deci_low.mux_N[121]_i_1_n_0\
     );
 \deci_low.mux_N[122]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(122),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(122),
+      I3 => adc_active,
+      I4 => sim_out_N(122),
       O => \deci_low.mux_N[122]_i_1_n_0\
     );
 \deci_low.mux_N[123]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(123),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(123),
+      I3 => adc_active,
+      I4 => sim_out_N(123),
       O => \deci_low.mux_N[123]_i_1_n_0\
     );
 \deci_low.mux_N[124]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(124),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(124),
+      I3 => adc_active,
+      I4 => sim_out_N(124),
       O => \deci_low.mux_N[124]_i_1_n_0\
     );
 \deci_low.mux_N[125]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(125),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(125),
+      I3 => adc_active,
+      I4 => sim_out_N(125),
       O => \deci_low.mux_N[125]_i_1_n_0\
     );
 \deci_low.mux_N[126]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(126),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(126),
+      I3 => adc_active,
+      I4 => sim_out_N(126),
       O => \deci_low.mux_N[126]_i_1_n_0\
     );
 \deci_low.mux_N[127]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(127),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N7(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(127),
+      I3 => adc_active,
+      I4 => sim_out_N(127),
       O => \deci_low.mux_N[127]_i_1_n_0\
     );
 \deci_low.mux_N[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(12),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(12),
+      I3 => adc_active,
+      I4 => sim_out_N(12),
       O => \deci_low.mux_N[12]_i_1_n_0\
     );
 \deci_low.mux_N[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(13),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(13),
+      I3 => adc_active,
+      I4 => sim_out_N(13),
       O => \deci_low.mux_N[13]_i_1_n_0\
     );
 \deci_low.mux_N[14]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(14),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(14),
+      I3 => adc_active,
+      I4 => sim_out_N(14),
       O => \deci_low.mux_N[14]_i_1_n_0\
     );
 \deci_low.mux_N[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(15),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(15),
+      I3 => adc_active,
+      I4 => sim_out_N(15),
       O => \deci_low.mux_N[15]_i_1_n_0\
     );
 \deci_low.mux_N[16]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(16),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(16),
+      I3 => adc_active,
       I4 => sim_out_N(16),
       O => \deci_low.mux_N[16]_i_1_n_0\
     );
 \deci_low.mux_N[17]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(17),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(17),
+      I3 => adc_active,
       I4 => sim_out_N(17),
       O => \deci_low.mux_N[17]_i_1_n_0\
     );
 \deci_low.mux_N[18]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(18),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(18),
+      I3 => adc_active,
+      I4 => sim_out_N(18),
       O => \deci_low.mux_N[18]_i_1_n_0\
     );
 \deci_low.mux_N[19]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(19),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(19),
+      I3 => adc_active,
+      I4 => sim_out_N(19),
       O => \deci_low.mux_N[19]_i_1_n_0\
     );
 \deci_low.mux_N[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(1),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(1),
+      I3 => adc_active,
       I4 => sim_out_N(1),
       O => \deci_low.mux_N[1]_i_1_n_0\
     );
 \deci_low.mux_N[20]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(20),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(20),
+      I3 => adc_active,
+      I4 => sim_out_N(20),
       O => \deci_low.mux_N[20]_i_1_n_0\
     );
 \deci_low.mux_N[21]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(21),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(21),
+      I3 => adc_active,
+      I4 => sim_out_N(21),
       O => \deci_low.mux_N[21]_i_1_n_0\
     );
 \deci_low.mux_N[22]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(22),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(22),
+      I3 => adc_active,
+      I4 => sim_out_N(22),
       O => \deci_low.mux_N[22]_i_1_n_0\
     );
 \deci_low.mux_N[23]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(23),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(23),
+      I3 => adc_active,
+      I4 => sim_out_N(23),
       O => \deci_low.mux_N[23]_i_1_n_0\
     );
 \deci_low.mux_N[24]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(24),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(24),
+      I3 => adc_active,
+      I4 => sim_out_N(24),
       O => \deci_low.mux_N[24]_i_1_n_0\
     );
 \deci_low.mux_N[25]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(25),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(25),
+      I3 => adc_active,
+      I4 => sim_out_N(25),
       O => \deci_low.mux_N[25]_i_1_n_0\
     );
 \deci_low.mux_N[26]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(26),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(26),
+      I3 => adc_active,
+      I4 => sim_out_N(26),
       O => \deci_low.mux_N[26]_i_1_n_0\
     );
 \deci_low.mux_N[27]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(27),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(27),
+      I3 => adc_active,
+      I4 => sim_out_N(27),
       O => \deci_low.mux_N[27]_i_1_n_0\
     );
 \deci_low.mux_N[28]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(28),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(28),
+      I3 => adc_active,
+      I4 => sim_out_N(28),
       O => \deci_low.mux_N[28]_i_1_n_0\
     );
 \deci_low.mux_N[29]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(29),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(29),
+      I3 => adc_active,
+      I4 => sim_out_N(29),
       O => \deci_low.mux_N[29]_i_1_n_0\
     );
 \deci_low.mux_N[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(2),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(2),
+      I3 => adc_active,
+      I4 => sim_out_N(2),
       O => \deci_low.mux_N[2]_i_1_n_0\
     );
 \deci_low.mux_N[30]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(30),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(30),
+      I3 => adc_active,
+      I4 => sim_out_N(30),
       O => \deci_low.mux_N[30]_i_1_n_0\
     );
 \deci_low.mux_N[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(31),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N1(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(31),
+      I3 => adc_active,
+      I4 => sim_out_N(31),
       O => \deci_low.mux_N[31]_i_1_n_0\
     );
 \deci_low.mux_N[32]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(32),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(32),
+      I3 => adc_active,
       I4 => sim_out_N(32),
       O => \deci_low.mux_N[32]_i_1_n_0\
     );
 \deci_low.mux_N[33]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(33),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(33),
+      I3 => adc_active,
       I4 => sim_out_N(33),
       O => \deci_low.mux_N[33]_i_1_n_0\
     );
 \deci_low.mux_N[34]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(34),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(34),
+      I3 => adc_active,
+      I4 => sim_out_N(34),
       O => \deci_low.mux_N[34]_i_1_n_0\
     );
 \deci_low.mux_N[35]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(35),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(35),
+      I3 => adc_active,
+      I4 => sim_out_N(35),
       O => \deci_low.mux_N[35]_i_1_n_0\
     );
 \deci_low.mux_N[36]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(36),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(36),
+      I3 => adc_active,
+      I4 => sim_out_N(36),
       O => \deci_low.mux_N[36]_i_1_n_0\
     );
 \deci_low.mux_N[37]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(37),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(37),
+      I3 => adc_active,
+      I4 => sim_out_N(37),
       O => \deci_low.mux_N[37]_i_1_n_0\
     );
 \deci_low.mux_N[38]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(38),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(38),
+      I3 => adc_active,
+      I4 => sim_out_N(38),
       O => \deci_low.mux_N[38]_i_1_n_0\
     );
 \deci_low.mux_N[39]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(39),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(39),
+      I3 => adc_active,
+      I4 => sim_out_N(39),
       O => \deci_low.mux_N[39]_i_1_n_0\
     );
 \deci_low.mux_N[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(3),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(3),
+      I3 => adc_active,
+      I4 => sim_out_N(3),
       O => \deci_low.mux_N[3]_i_1_n_0\
     );
 \deci_low.mux_N[40]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(40),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(40),
+      I3 => adc_active,
+      I4 => sim_out_N(40),
       O => \deci_low.mux_N[40]_i_1_n_0\
     );
 \deci_low.mux_N[41]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(41),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(41),
+      I3 => adc_active,
+      I4 => sim_out_N(41),
       O => \deci_low.mux_N[41]_i_1_n_0\
     );
 \deci_low.mux_N[42]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(42),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(42),
+      I3 => adc_active,
+      I4 => sim_out_N(42),
       O => \deci_low.mux_N[42]_i_1_n_0\
     );
 \deci_low.mux_N[43]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(43),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(43),
+      I3 => adc_active,
+      I4 => sim_out_N(43),
       O => \deci_low.mux_N[43]_i_1_n_0\
     );
 \deci_low.mux_N[44]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(44),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(44),
+      I3 => adc_active,
+      I4 => sim_out_N(44),
       O => \deci_low.mux_N[44]_i_1_n_0\
     );
 \deci_low.mux_N[45]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(45),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(45),
+      I3 => adc_active,
+      I4 => sim_out_N(45),
       O => \deci_low.mux_N[45]_i_1_n_0\
     );
 \deci_low.mux_N[46]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(46),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(46),
+      I3 => adc_active,
+      I4 => sim_out_N(46),
       O => \deci_low.mux_N[46]_i_1_n_0\
     );
 \deci_low.mux_N[47]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(47),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N2(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(47),
+      I3 => adc_active,
+      I4 => sim_out_N(47),
       O => \deci_low.mux_N[47]_i_1_n_0\
     );
 \deci_low.mux_N[48]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(48),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(48),
+      I3 => adc_active,
       I4 => sim_out_N(48),
       O => \deci_low.mux_N[48]_i_1_n_0\
     );
 \deci_low.mux_N[49]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(49),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(49),
+      I3 => adc_active,
       I4 => sim_out_N(49),
       O => \deci_low.mux_N[49]_i_1_n_0\
     );
 \deci_low.mux_N[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(4),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(4),
+      I3 => adc_active,
+      I4 => sim_out_N(4),
       O => \deci_low.mux_N[4]_i_1_n_0\
     );
 \deci_low.mux_N[50]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(50),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(50),
+      I3 => adc_active,
+      I4 => sim_out_N(50),
       O => \deci_low.mux_N[50]_i_1_n_0\
     );
 \deci_low.mux_N[51]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(51),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(51),
+      I3 => adc_active,
+      I4 => sim_out_N(51),
       O => \deci_low.mux_N[51]_i_1_n_0\
     );
 \deci_low.mux_N[52]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(52),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(52),
+      I3 => adc_active,
+      I4 => sim_out_N(52),
       O => \deci_low.mux_N[52]_i_1_n_0\
     );
 \deci_low.mux_N[53]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(53),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(53),
+      I3 => adc_active,
+      I4 => sim_out_N(53),
       O => \deci_low.mux_N[53]_i_1_n_0\
     );
 \deci_low.mux_N[54]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(54),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(54),
+      I3 => adc_active,
+      I4 => sim_out_N(54),
       O => \deci_low.mux_N[54]_i_1_n_0\
     );
 \deci_low.mux_N[55]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(55),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(55),
+      I3 => adc_active,
+      I4 => sim_out_N(55),
       O => \deci_low.mux_N[55]_i_1_n_0\
     );
 \deci_low.mux_N[56]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(56),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(56),
+      I3 => adc_active,
+      I4 => sim_out_N(56),
       O => \deci_low.mux_N[56]_i_1_n_0\
     );
 \deci_low.mux_N[57]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(57),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(57),
+      I3 => adc_active,
+      I4 => sim_out_N(57),
       O => \deci_low.mux_N[57]_i_1_n_0\
     );
 \deci_low.mux_N[58]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(58),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(58),
+      I3 => adc_active,
+      I4 => sim_out_N(58),
       O => \deci_low.mux_N[58]_i_1_n_0\
     );
 \deci_low.mux_N[59]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(59),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(59),
+      I3 => adc_active,
+      I4 => sim_out_N(59),
       O => \deci_low.mux_N[59]_i_1_n_0\
     );
 \deci_low.mux_N[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(5),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(5),
+      I3 => adc_active,
+      I4 => sim_out_N(5),
       O => \deci_low.mux_N[5]_i_1_n_0\
     );
 \deci_low.mux_N[60]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(60),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(60),
+      I3 => adc_active,
+      I4 => sim_out_N(60),
       O => \deci_low.mux_N[60]_i_1_n_0\
     );
 \deci_low.mux_N[61]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(61),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(61),
+      I3 => adc_active,
+      I4 => sim_out_N(61),
       O => \deci_low.mux_N[61]_i_1_n_0\
     );
 \deci_low.mux_N[62]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(62),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(62),
+      I3 => adc_active,
+      I4 => sim_out_N(62),
       O => \deci_low.mux_N[62]_i_1_n_0\
     );
 \deci_low.mux_N[63]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(63),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N3(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(63),
+      I3 => adc_active,
+      I4 => sim_out_N(63),
       O => \deci_low.mux_N[63]_i_1_n_0\
     );
 \deci_low.mux_N[64]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(64),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(64),
+      I3 => adc_active,
       I4 => sim_out_N(64),
       O => \deci_low.mux_N[64]_i_1_n_0\
     );
 \deci_low.mux_N[65]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(65),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(65),
+      I3 => adc_active,
       I4 => sim_out_N(65),
       O => \deci_low.mux_N[65]_i_1_n_0\
     );
 \deci_low.mux_N[66]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(66),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(66),
+      I3 => adc_active,
+      I4 => sim_out_N(66),
       O => \deci_low.mux_N[66]_i_1_n_0\
     );
 \deci_low.mux_N[67]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(67),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(67),
+      I3 => adc_active,
+      I4 => sim_out_N(67),
       O => \deci_low.mux_N[67]_i_1_n_0\
     );
 \deci_low.mux_N[68]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(68),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(68),
+      I3 => adc_active,
+      I4 => sim_out_N(68),
       O => \deci_low.mux_N[68]_i_1_n_0\
     );
 \deci_low.mux_N[69]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(69),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(69),
+      I3 => adc_active,
+      I4 => sim_out_N(69),
       O => \deci_low.mux_N[69]_i_1_n_0\
     );
 \deci_low.mux_N[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(6),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(6),
+      I3 => adc_active,
+      I4 => sim_out_N(6),
       O => \deci_low.mux_N[6]_i_1_n_0\
     );
 \deci_low.mux_N[70]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(70),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(70),
+      I3 => adc_active,
+      I4 => sim_out_N(70),
       O => \deci_low.mux_N[70]_i_1_n_0\
     );
 \deci_low.mux_N[71]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(71),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(71),
+      I3 => adc_active,
+      I4 => sim_out_N(71),
       O => \deci_low.mux_N[71]_i_1_n_0\
     );
 \deci_low.mux_N[72]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(72),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(72),
+      I3 => adc_active,
+      I4 => sim_out_N(72),
       O => \deci_low.mux_N[72]_i_1_n_0\
     );
 \deci_low.mux_N[73]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(73),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(73),
+      I3 => adc_active,
+      I4 => sim_out_N(73),
       O => \deci_low.mux_N[73]_i_1_n_0\
     );
 \deci_low.mux_N[74]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(74),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(74),
+      I3 => adc_active,
+      I4 => sim_out_N(74),
       O => \deci_low.mux_N[74]_i_1_n_0\
     );
 \deci_low.mux_N[75]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(75),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(75),
+      I3 => adc_active,
+      I4 => sim_out_N(75),
       O => \deci_low.mux_N[75]_i_1_n_0\
     );
 \deci_low.mux_N[76]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(76),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(76),
+      I3 => adc_active,
+      I4 => sim_out_N(76),
       O => \deci_low.mux_N[76]_i_1_n_0\
     );
 \deci_low.mux_N[77]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(77),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(77),
+      I3 => adc_active,
+      I4 => sim_out_N(77),
       O => \deci_low.mux_N[77]_i_1_n_0\
     );
 \deci_low.mux_N[78]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(78),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(78),
+      I3 => adc_active,
+      I4 => sim_out_N(78),
       O => \deci_low.mux_N[78]_i_1_n_0\
     );
 \deci_low.mux_N[79]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(79),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N4(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(79),
+      I3 => adc_active,
+      I4 => sim_out_N(79),
       O => \deci_low.mux_N[79]_i_1_n_0\
     );
 \deci_low.mux_N[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(7),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(7),
+      I3 => adc_active,
+      I4 => sim_out_N(7),
       O => \deci_low.mux_N[7]_i_1_n_0\
     );
 \deci_low.mux_N[80]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(80),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(80),
+      I3 => adc_active,
       I4 => sim_out_N(80),
       O => \deci_low.mux_N[80]_i_1_n_0\
     );
 \deci_low.mux_N[81]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(81),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(81),
+      I3 => adc_active,
       I4 => sim_out_N(81),
       O => \deci_low.mux_N[81]_i_1_n_0\
     );
 \deci_low.mux_N[82]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(82),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(82),
+      I3 => adc_active,
+      I4 => sim_out_N(82),
       O => \deci_low.mux_N[82]_i_1_n_0\
     );
 \deci_low.mux_N[83]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(83),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(83),
+      I3 => adc_active,
+      I4 => sim_out_N(83),
       O => \deci_low.mux_N[83]_i_1_n_0\
     );
 \deci_low.mux_N[84]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(84),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(84),
+      I3 => adc_active,
+      I4 => sim_out_N(84),
       O => \deci_low.mux_N[84]_i_1_n_0\
     );
 \deci_low.mux_N[85]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(85),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(85),
+      I3 => adc_active,
+      I4 => sim_out_N(85),
       O => \deci_low.mux_N[85]_i_1_n_0\
     );
 \deci_low.mux_N[86]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(86),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(86),
+      I3 => adc_active,
+      I4 => sim_out_N(86),
       O => \deci_low.mux_N[86]_i_1_n_0\
     );
 \deci_low.mux_N[87]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(87),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(87),
+      I3 => adc_active,
+      I4 => sim_out_N(87),
       O => \deci_low.mux_N[87]_i_1_n_0\
     );
 \deci_low.mux_N[88]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(88),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(88),
+      I3 => adc_active,
+      I4 => sim_out_N(88),
       O => \deci_low.mux_N[88]_i_1_n_0\
     );
 \deci_low.mux_N[89]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(89),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(89),
+      I3 => adc_active,
+      I4 => sim_out_N(89),
       O => \deci_low.mux_N[89]_i_1_n_0\
     );
 \deci_low.mux_N[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(8),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(8),
+      I3 => adc_active,
+      I4 => sim_out_N(8),
       O => \deci_low.mux_N[8]_i_1_n_0\
     );
 \deci_low.mux_N[90]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(90),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(90),
+      I3 => adc_active,
+      I4 => sim_out_N(90),
       O => \deci_low.mux_N[90]_i_1_n_0\
     );
 \deci_low.mux_N[91]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(91),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(91),
+      I3 => adc_active,
+      I4 => sim_out_N(91),
       O => \deci_low.mux_N[91]_i_1_n_0\
     );
 \deci_low.mux_N[92]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(92),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(92),
+      I3 => adc_active,
+      I4 => sim_out_N(92),
       O => \deci_low.mux_N[92]_i_1_n_0\
     );
 \deci_low.mux_N[93]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(93),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(93),
+      I3 => adc_active,
+      I4 => sim_out_N(93),
       O => \deci_low.mux_N[93]_i_1_n_0\
     );
 \deci_low.mux_N[94]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(94),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(94),
+      I3 => adc_active,
+      I4 => sim_out_N(94),
       O => \deci_low.mux_N[94]_i_1_n_0\
     );
 \deci_low.mux_N[95]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(95),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N5(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(95),
+      I3 => adc_active,
+      I4 => sim_out_N(95),
       O => \deci_low.mux_N[95]_i_1_n_0\
     );
 \deci_low.mux_N[96]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(96),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(96),
+      I3 => adc_active,
       I4 => sim_out_N(96),
       O => \deci_low.mux_N[96]_i_1_n_0\
     );
 \deci_low.mux_N[97]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(97),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(97),
+      I3 => adc_active,
       I4 => sim_out_N(97),
       O => \deci_low.mux_N[97]_i_1_n_0\
     );
 \deci_low.mux_N[98]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(98),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(98),
+      I3 => adc_active,
+      I4 => sim_out_N(98),
       O => \deci_low.mux_N[98]_i_1_n_0\
     );
 \deci_low.mux_N[99]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(99),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N6(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(99),
+      I3 => adc_active,
+      I4 => sim_out_N(99),
       O => \deci_low.mux_N[99]_i_1_n_0\
     );
 \deci_low.mux_N[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_N(9),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_N0(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_N(9),
+      I3 => adc_active,
+      I4 => sim_out_N(9),
       O => \deci_low.mux_N[9]_i_1_n_0\
     );
 \deci_low.mux_N_reg[0]\: unisim.vcomponents.FDRE
@@ -7435,7 +6988,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[100]_i_1_n_0\,
-      Q => mux_N(100),
+      Q => mux_N6(2),
       R => '0'
     );
 \deci_low.mux_N_reg[101]\: unisim.vcomponents.FDRE
@@ -7443,7 +6996,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[101]_i_1_n_0\,
-      Q => mux_N(101),
+      Q => mux_N6(3),
       R => '0'
     );
 \deci_low.mux_N_reg[102]\: unisim.vcomponents.FDRE
@@ -7451,7 +7004,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[102]_i_1_n_0\,
-      Q => mux_N(102),
+      Q => mux_N6(4),
       R => '0'
     );
 \deci_low.mux_N_reg[103]\: unisim.vcomponents.FDRE
@@ -7459,7 +7012,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[103]_i_1_n_0\,
-      Q => mux_N(103),
+      Q => mux_N6(5),
       R => '0'
     );
 \deci_low.mux_N_reg[104]\: unisim.vcomponents.FDRE
@@ -7467,7 +7020,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[104]_i_1_n_0\,
-      Q => mux_N(104),
+      Q => mux_N6(6),
       R => '0'
     );
 \deci_low.mux_N_reg[105]\: unisim.vcomponents.FDRE
@@ -7475,7 +7028,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[105]_i_1_n_0\,
-      Q => mux_N(105),
+      Q => mux_N6(7),
       R => '0'
     );
 \deci_low.mux_N_reg[106]\: unisim.vcomponents.FDRE
@@ -7483,7 +7036,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[106]_i_1_n_0\,
-      Q => mux_N(106),
+      Q => mux_N6(8),
       R => '0'
     );
 \deci_low.mux_N_reg[107]\: unisim.vcomponents.FDRE
@@ -7491,7 +7044,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[107]_i_1_n_0\,
-      Q => mux_N(107),
+      Q => mux_N6(9),
       R => '0'
     );
 \deci_low.mux_N_reg[108]\: unisim.vcomponents.FDRE
@@ -7499,7 +7052,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[108]_i_1_n_0\,
-      Q => mux_N(108),
+      Q => mux_N6(10),
       R => '0'
     );
 \deci_low.mux_N_reg[109]\: unisim.vcomponents.FDRE
@@ -7507,7 +7060,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[109]_i_1_n_0\,
-      Q => mux_N(109),
+      Q => mux_N6(11),
       R => '0'
     );
 \deci_low.mux_N_reg[10]\: unisim.vcomponents.FDRE
@@ -7515,7 +7068,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[10]_i_1_n_0\,
-      Q => mux_N(10),
+      Q => mux_N0(8),
       R => '0'
     );
 \deci_low.mux_N_reg[110]\: unisim.vcomponents.FDRE
@@ -7523,7 +7076,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[110]_i_1_n_0\,
-      Q => mux_N(110),
+      Q => mux_N6(12),
       R => '0'
     );
 \deci_low.mux_N_reg[111]\: unisim.vcomponents.FDRE
@@ -7531,7 +7084,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[111]_i_1_n_0\,
-      Q => mux_N(111),
+      Q => mux_N6(13),
       R => '0'
     );
 \deci_low.mux_N_reg[112]\: unisim.vcomponents.FDRE
@@ -7555,7 +7108,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[114]_i_1_n_0\,
-      Q => mux_N(114),
+      Q => mux_N7(0),
       R => '0'
     );
 \deci_low.mux_N_reg[115]\: unisim.vcomponents.FDRE
@@ -7563,7 +7116,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[115]_i_1_n_0\,
-      Q => mux_N(115),
+      Q => mux_N7(1),
       R => '0'
     );
 \deci_low.mux_N_reg[116]\: unisim.vcomponents.FDRE
@@ -7571,7 +7124,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[116]_i_1_n_0\,
-      Q => mux_N(116),
+      Q => mux_N7(2),
       R => '0'
     );
 \deci_low.mux_N_reg[117]\: unisim.vcomponents.FDRE
@@ -7579,7 +7132,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[117]_i_1_n_0\,
-      Q => mux_N(117),
+      Q => mux_N7(3),
       R => '0'
     );
 \deci_low.mux_N_reg[118]\: unisim.vcomponents.FDRE
@@ -7587,7 +7140,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[118]_i_1_n_0\,
-      Q => mux_N(118),
+      Q => mux_N7(4),
       R => '0'
     );
 \deci_low.mux_N_reg[119]\: unisim.vcomponents.FDRE
@@ -7595,7 +7148,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[119]_i_1_n_0\,
-      Q => mux_N(119),
+      Q => mux_N7(5),
       R => '0'
     );
 \deci_low.mux_N_reg[11]\: unisim.vcomponents.FDRE
@@ -7603,7 +7156,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[11]_i_1_n_0\,
-      Q => mux_N(11),
+      Q => mux_N0(9),
       R => '0'
     );
 \deci_low.mux_N_reg[120]\: unisim.vcomponents.FDRE
@@ -7611,7 +7164,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[120]_i_1_n_0\,
-      Q => mux_N(120),
+      Q => mux_N7(6),
       R => '0'
     );
 \deci_low.mux_N_reg[121]\: unisim.vcomponents.FDRE
@@ -7619,7 +7172,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[121]_i_1_n_0\,
-      Q => mux_N(121),
+      Q => mux_N7(7),
       R => '0'
     );
 \deci_low.mux_N_reg[122]\: unisim.vcomponents.FDRE
@@ -7627,7 +7180,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[122]_i_1_n_0\,
-      Q => mux_N(122),
+      Q => mux_N7(8),
       R => '0'
     );
 \deci_low.mux_N_reg[123]\: unisim.vcomponents.FDRE
@@ -7635,7 +7188,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[123]_i_1_n_0\,
-      Q => mux_N(123),
+      Q => mux_N7(9),
       R => '0'
     );
 \deci_low.mux_N_reg[124]\: unisim.vcomponents.FDRE
@@ -7643,7 +7196,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[124]_i_1_n_0\,
-      Q => mux_N(124),
+      Q => mux_N7(10),
       R => '0'
     );
 \deci_low.mux_N_reg[125]\: unisim.vcomponents.FDRE
@@ -7651,7 +7204,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[125]_i_1_n_0\,
-      Q => mux_N(125),
+      Q => mux_N7(11),
       R => '0'
     );
 \deci_low.mux_N_reg[126]\: unisim.vcomponents.FDRE
@@ -7659,7 +7212,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[126]_i_1_n_0\,
-      Q => mux_N(126),
+      Q => mux_N7(12),
       R => '0'
     );
 \deci_low.mux_N_reg[127]\: unisim.vcomponents.FDRE
@@ -7667,7 +7220,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[127]_i_1_n_0\,
-      Q => mux_N(127),
+      Q => mux_N7(13),
       R => '0'
     );
 \deci_low.mux_N_reg[12]\: unisim.vcomponents.FDRE
@@ -7675,7 +7228,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[12]_i_1_n_0\,
-      Q => mux_N(12),
+      Q => mux_N0(10),
       R => '0'
     );
 \deci_low.mux_N_reg[13]\: unisim.vcomponents.FDRE
@@ -7683,7 +7236,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[13]_i_1_n_0\,
-      Q => mux_N(13),
+      Q => mux_N0(11),
       R => '0'
     );
 \deci_low.mux_N_reg[14]\: unisim.vcomponents.FDRE
@@ -7691,7 +7244,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[14]_i_1_n_0\,
-      Q => mux_N(14),
+      Q => mux_N0(12),
       R => '0'
     );
 \deci_low.mux_N_reg[15]\: unisim.vcomponents.FDRE
@@ -7699,7 +7252,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[15]_i_1_n_0\,
-      Q => mux_N(15),
+      Q => mux_N0(13),
       R => '0'
     );
 \deci_low.mux_N_reg[16]\: unisim.vcomponents.FDRE
@@ -7723,7 +7276,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[18]_i_1_n_0\,
-      Q => mux_N(18),
+      Q => mux_N1(0),
       R => '0'
     );
 \deci_low.mux_N_reg[19]\: unisim.vcomponents.FDRE
@@ -7731,7 +7284,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[19]_i_1_n_0\,
-      Q => mux_N(19),
+      Q => mux_N1(1),
       R => '0'
     );
 \deci_low.mux_N_reg[1]\: unisim.vcomponents.FDRE
@@ -7747,7 +7300,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[20]_i_1_n_0\,
-      Q => mux_N(20),
+      Q => mux_N1(2),
       R => '0'
     );
 \deci_low.mux_N_reg[21]\: unisim.vcomponents.FDRE
@@ -7755,7 +7308,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[21]_i_1_n_0\,
-      Q => mux_N(21),
+      Q => mux_N1(3),
       R => '0'
     );
 \deci_low.mux_N_reg[22]\: unisim.vcomponents.FDRE
@@ -7763,7 +7316,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[22]_i_1_n_0\,
-      Q => mux_N(22),
+      Q => mux_N1(4),
       R => '0'
     );
 \deci_low.mux_N_reg[23]\: unisim.vcomponents.FDRE
@@ -7771,7 +7324,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[23]_i_1_n_0\,
-      Q => mux_N(23),
+      Q => mux_N1(5),
       R => '0'
     );
 \deci_low.mux_N_reg[24]\: unisim.vcomponents.FDRE
@@ -7779,7 +7332,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[24]_i_1_n_0\,
-      Q => mux_N(24),
+      Q => mux_N1(6),
       R => '0'
     );
 \deci_low.mux_N_reg[25]\: unisim.vcomponents.FDRE
@@ -7787,7 +7340,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[25]_i_1_n_0\,
-      Q => mux_N(25),
+      Q => mux_N1(7),
       R => '0'
     );
 \deci_low.mux_N_reg[26]\: unisim.vcomponents.FDRE
@@ -7795,7 +7348,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[26]_i_1_n_0\,
-      Q => mux_N(26),
+      Q => mux_N1(8),
       R => '0'
     );
 \deci_low.mux_N_reg[27]\: unisim.vcomponents.FDRE
@@ -7803,7 +7356,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[27]_i_1_n_0\,
-      Q => mux_N(27),
+      Q => mux_N1(9),
       R => '0'
     );
 \deci_low.mux_N_reg[28]\: unisim.vcomponents.FDRE
@@ -7811,7 +7364,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[28]_i_1_n_0\,
-      Q => mux_N(28),
+      Q => mux_N1(10),
       R => '0'
     );
 \deci_low.mux_N_reg[29]\: unisim.vcomponents.FDRE
@@ -7819,7 +7372,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[29]_i_1_n_0\,
-      Q => mux_N(29),
+      Q => mux_N1(11),
       R => '0'
     );
 \deci_low.mux_N_reg[2]\: unisim.vcomponents.FDRE
@@ -7827,7 +7380,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[2]_i_1_n_0\,
-      Q => mux_N(2),
+      Q => mux_N0(0),
       R => '0'
     );
 \deci_low.mux_N_reg[30]\: unisim.vcomponents.FDRE
@@ -7835,7 +7388,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[30]_i_1_n_0\,
-      Q => mux_N(30),
+      Q => mux_N1(12),
       R => '0'
     );
 \deci_low.mux_N_reg[31]\: unisim.vcomponents.FDRE
@@ -7843,7 +7396,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[31]_i_1_n_0\,
-      Q => mux_N(31),
+      Q => mux_N1(13),
       R => '0'
     );
 \deci_low.mux_N_reg[32]\: unisim.vcomponents.FDRE
@@ -7867,7 +7420,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[34]_i_1_n_0\,
-      Q => mux_N(34),
+      Q => mux_N2(0),
       R => '0'
     );
 \deci_low.mux_N_reg[35]\: unisim.vcomponents.FDRE
@@ -7875,7 +7428,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[35]_i_1_n_0\,
-      Q => mux_N(35),
+      Q => mux_N2(1),
       R => '0'
     );
 \deci_low.mux_N_reg[36]\: unisim.vcomponents.FDRE
@@ -7883,7 +7436,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[36]_i_1_n_0\,
-      Q => mux_N(36),
+      Q => mux_N2(2),
       R => '0'
     );
 \deci_low.mux_N_reg[37]\: unisim.vcomponents.FDRE
@@ -7891,7 +7444,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[37]_i_1_n_0\,
-      Q => mux_N(37),
+      Q => mux_N2(3),
       R => '0'
     );
 \deci_low.mux_N_reg[38]\: unisim.vcomponents.FDRE
@@ -7899,7 +7452,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[38]_i_1_n_0\,
-      Q => mux_N(38),
+      Q => mux_N2(4),
       R => '0'
     );
 \deci_low.mux_N_reg[39]\: unisim.vcomponents.FDRE
@@ -7907,7 +7460,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[39]_i_1_n_0\,
-      Q => mux_N(39),
+      Q => mux_N2(5),
       R => '0'
     );
 \deci_low.mux_N_reg[3]\: unisim.vcomponents.FDRE
@@ -7915,7 +7468,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[3]_i_1_n_0\,
-      Q => mux_N(3),
+      Q => mux_N0(1),
       R => '0'
     );
 \deci_low.mux_N_reg[40]\: unisim.vcomponents.FDRE
@@ -7923,7 +7476,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[40]_i_1_n_0\,
-      Q => mux_N(40),
+      Q => mux_N2(6),
       R => '0'
     );
 \deci_low.mux_N_reg[41]\: unisim.vcomponents.FDRE
@@ -7931,7 +7484,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[41]_i_1_n_0\,
-      Q => mux_N(41),
+      Q => mux_N2(7),
       R => '0'
     );
 \deci_low.mux_N_reg[42]\: unisim.vcomponents.FDRE
@@ -7939,7 +7492,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[42]_i_1_n_0\,
-      Q => mux_N(42),
+      Q => mux_N2(8),
       R => '0'
     );
 \deci_low.mux_N_reg[43]\: unisim.vcomponents.FDRE
@@ -7947,7 +7500,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[43]_i_1_n_0\,
-      Q => mux_N(43),
+      Q => mux_N2(9),
       R => '0'
     );
 \deci_low.mux_N_reg[44]\: unisim.vcomponents.FDRE
@@ -7955,7 +7508,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[44]_i_1_n_0\,
-      Q => mux_N(44),
+      Q => mux_N2(10),
       R => '0'
     );
 \deci_low.mux_N_reg[45]\: unisim.vcomponents.FDRE
@@ -7963,7 +7516,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[45]_i_1_n_0\,
-      Q => mux_N(45),
+      Q => mux_N2(11),
       R => '0'
     );
 \deci_low.mux_N_reg[46]\: unisim.vcomponents.FDRE
@@ -7971,7 +7524,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[46]_i_1_n_0\,
-      Q => mux_N(46),
+      Q => mux_N2(12),
       R => '0'
     );
 \deci_low.mux_N_reg[47]\: unisim.vcomponents.FDRE
@@ -7979,7 +7532,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[47]_i_1_n_0\,
-      Q => mux_N(47),
+      Q => mux_N2(13),
       R => '0'
     );
 \deci_low.mux_N_reg[48]\: unisim.vcomponents.FDRE
@@ -8003,7 +7556,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[4]_i_1_n_0\,
-      Q => mux_N(4),
+      Q => mux_N0(2),
       R => '0'
     );
 \deci_low.mux_N_reg[50]\: unisim.vcomponents.FDRE
@@ -8011,7 +7564,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[50]_i_1_n_0\,
-      Q => mux_N(50),
+      Q => mux_N3(0),
       R => '0'
     );
 \deci_low.mux_N_reg[51]\: unisim.vcomponents.FDRE
@@ -8019,7 +7572,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[51]_i_1_n_0\,
-      Q => mux_N(51),
+      Q => mux_N3(1),
       R => '0'
     );
 \deci_low.mux_N_reg[52]\: unisim.vcomponents.FDRE
@@ -8027,7 +7580,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[52]_i_1_n_0\,
-      Q => mux_N(52),
+      Q => mux_N3(2),
       R => '0'
     );
 \deci_low.mux_N_reg[53]\: unisim.vcomponents.FDRE
@@ -8035,7 +7588,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[53]_i_1_n_0\,
-      Q => mux_N(53),
+      Q => mux_N3(3),
       R => '0'
     );
 \deci_low.mux_N_reg[54]\: unisim.vcomponents.FDRE
@@ -8043,7 +7596,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[54]_i_1_n_0\,
-      Q => mux_N(54),
+      Q => mux_N3(4),
       R => '0'
     );
 \deci_low.mux_N_reg[55]\: unisim.vcomponents.FDRE
@@ -8051,7 +7604,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[55]_i_1_n_0\,
-      Q => mux_N(55),
+      Q => mux_N3(5),
       R => '0'
     );
 \deci_low.mux_N_reg[56]\: unisim.vcomponents.FDRE
@@ -8059,7 +7612,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[56]_i_1_n_0\,
-      Q => mux_N(56),
+      Q => mux_N3(6),
       R => '0'
     );
 \deci_low.mux_N_reg[57]\: unisim.vcomponents.FDRE
@@ -8067,7 +7620,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[57]_i_1_n_0\,
-      Q => mux_N(57),
+      Q => mux_N3(7),
       R => '0'
     );
 \deci_low.mux_N_reg[58]\: unisim.vcomponents.FDRE
@@ -8075,7 +7628,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[58]_i_1_n_0\,
-      Q => mux_N(58),
+      Q => mux_N3(8),
       R => '0'
     );
 \deci_low.mux_N_reg[59]\: unisim.vcomponents.FDRE
@@ -8083,7 +7636,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[59]_i_1_n_0\,
-      Q => mux_N(59),
+      Q => mux_N3(9),
       R => '0'
     );
 \deci_low.mux_N_reg[5]\: unisim.vcomponents.FDRE
@@ -8091,7 +7644,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[5]_i_1_n_0\,
-      Q => mux_N(5),
+      Q => mux_N0(3),
       R => '0'
     );
 \deci_low.mux_N_reg[60]\: unisim.vcomponents.FDRE
@@ -8099,7 +7652,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[60]_i_1_n_0\,
-      Q => mux_N(60),
+      Q => mux_N3(10),
       R => '0'
     );
 \deci_low.mux_N_reg[61]\: unisim.vcomponents.FDRE
@@ -8107,7 +7660,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[61]_i_1_n_0\,
-      Q => mux_N(61),
+      Q => mux_N3(11),
       R => '0'
     );
 \deci_low.mux_N_reg[62]\: unisim.vcomponents.FDRE
@@ -8115,7 +7668,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[62]_i_1_n_0\,
-      Q => mux_N(62),
+      Q => mux_N3(12),
       R => '0'
     );
 \deci_low.mux_N_reg[63]\: unisim.vcomponents.FDRE
@@ -8123,7 +7676,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[63]_i_1_n_0\,
-      Q => mux_N(63),
+      Q => mux_N3(13),
       R => '0'
     );
 \deci_low.mux_N_reg[64]\: unisim.vcomponents.FDRE
@@ -8147,7 +7700,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[66]_i_1_n_0\,
-      Q => mux_N(66),
+      Q => mux_N4(0),
       R => '0'
     );
 \deci_low.mux_N_reg[67]\: unisim.vcomponents.FDRE
@@ -8155,7 +7708,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[67]_i_1_n_0\,
-      Q => mux_N(67),
+      Q => mux_N4(1),
       R => '0'
     );
 \deci_low.mux_N_reg[68]\: unisim.vcomponents.FDRE
@@ -8163,7 +7716,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[68]_i_1_n_0\,
-      Q => mux_N(68),
+      Q => mux_N4(2),
       R => '0'
     );
 \deci_low.mux_N_reg[69]\: unisim.vcomponents.FDRE
@@ -8171,7 +7724,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[69]_i_1_n_0\,
-      Q => mux_N(69),
+      Q => mux_N4(3),
       R => '0'
     );
 \deci_low.mux_N_reg[6]\: unisim.vcomponents.FDRE
@@ -8179,7 +7732,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[6]_i_1_n_0\,
-      Q => mux_N(6),
+      Q => mux_N0(4),
       R => '0'
     );
 \deci_low.mux_N_reg[70]\: unisim.vcomponents.FDRE
@@ -8187,7 +7740,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[70]_i_1_n_0\,
-      Q => mux_N(70),
+      Q => mux_N4(4),
       R => '0'
     );
 \deci_low.mux_N_reg[71]\: unisim.vcomponents.FDRE
@@ -8195,7 +7748,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[71]_i_1_n_0\,
-      Q => mux_N(71),
+      Q => mux_N4(5),
       R => '0'
     );
 \deci_low.mux_N_reg[72]\: unisim.vcomponents.FDRE
@@ -8203,7 +7756,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[72]_i_1_n_0\,
-      Q => mux_N(72),
+      Q => mux_N4(6),
       R => '0'
     );
 \deci_low.mux_N_reg[73]\: unisim.vcomponents.FDRE
@@ -8211,7 +7764,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[73]_i_1_n_0\,
-      Q => mux_N(73),
+      Q => mux_N4(7),
       R => '0'
     );
 \deci_low.mux_N_reg[74]\: unisim.vcomponents.FDRE
@@ -8219,7 +7772,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[74]_i_1_n_0\,
-      Q => mux_N(74),
+      Q => mux_N4(8),
       R => '0'
     );
 \deci_low.mux_N_reg[75]\: unisim.vcomponents.FDRE
@@ -8227,7 +7780,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[75]_i_1_n_0\,
-      Q => mux_N(75),
+      Q => mux_N4(9),
       R => '0'
     );
 \deci_low.mux_N_reg[76]\: unisim.vcomponents.FDRE
@@ -8235,7 +7788,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[76]_i_1_n_0\,
-      Q => mux_N(76),
+      Q => mux_N4(10),
       R => '0'
     );
 \deci_low.mux_N_reg[77]\: unisim.vcomponents.FDRE
@@ -8243,7 +7796,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[77]_i_1_n_0\,
-      Q => mux_N(77),
+      Q => mux_N4(11),
       R => '0'
     );
 \deci_low.mux_N_reg[78]\: unisim.vcomponents.FDRE
@@ -8251,7 +7804,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[78]_i_1_n_0\,
-      Q => mux_N(78),
+      Q => mux_N4(12),
       R => '0'
     );
 \deci_low.mux_N_reg[79]\: unisim.vcomponents.FDRE
@@ -8259,7 +7812,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[79]_i_1_n_0\,
-      Q => mux_N(79),
+      Q => mux_N4(13),
       R => '0'
     );
 \deci_low.mux_N_reg[7]\: unisim.vcomponents.FDRE
@@ -8267,7 +7820,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[7]_i_1_n_0\,
-      Q => mux_N(7),
+      Q => mux_N0(5),
       R => '0'
     );
 \deci_low.mux_N_reg[80]\: unisim.vcomponents.FDRE
@@ -8291,7 +7844,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[82]_i_1_n_0\,
-      Q => mux_N(82),
+      Q => mux_N5(0),
       R => '0'
     );
 \deci_low.mux_N_reg[83]\: unisim.vcomponents.FDRE
@@ -8299,7 +7852,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[83]_i_1_n_0\,
-      Q => mux_N(83),
+      Q => mux_N5(1),
       R => '0'
     );
 \deci_low.mux_N_reg[84]\: unisim.vcomponents.FDRE
@@ -8307,7 +7860,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[84]_i_1_n_0\,
-      Q => mux_N(84),
+      Q => mux_N5(2),
       R => '0'
     );
 \deci_low.mux_N_reg[85]\: unisim.vcomponents.FDRE
@@ -8315,7 +7868,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[85]_i_1_n_0\,
-      Q => mux_N(85),
+      Q => mux_N5(3),
       R => '0'
     );
 \deci_low.mux_N_reg[86]\: unisim.vcomponents.FDRE
@@ -8323,7 +7876,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[86]_i_1_n_0\,
-      Q => mux_N(86),
+      Q => mux_N5(4),
       R => '0'
     );
 \deci_low.mux_N_reg[87]\: unisim.vcomponents.FDRE
@@ -8331,7 +7884,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[87]_i_1_n_0\,
-      Q => mux_N(87),
+      Q => mux_N5(5),
       R => '0'
     );
 \deci_low.mux_N_reg[88]\: unisim.vcomponents.FDRE
@@ -8339,7 +7892,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[88]_i_1_n_0\,
-      Q => mux_N(88),
+      Q => mux_N5(6),
       R => '0'
     );
 \deci_low.mux_N_reg[89]\: unisim.vcomponents.FDRE
@@ -8347,7 +7900,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[89]_i_1_n_0\,
-      Q => mux_N(89),
+      Q => mux_N5(7),
       R => '0'
     );
 \deci_low.mux_N_reg[8]\: unisim.vcomponents.FDRE
@@ -8355,7 +7908,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[8]_i_1_n_0\,
-      Q => mux_N(8),
+      Q => mux_N0(6),
       R => '0'
     );
 \deci_low.mux_N_reg[90]\: unisim.vcomponents.FDRE
@@ -8363,7 +7916,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[90]_i_1_n_0\,
-      Q => mux_N(90),
+      Q => mux_N5(8),
       R => '0'
     );
 \deci_low.mux_N_reg[91]\: unisim.vcomponents.FDRE
@@ -8371,7 +7924,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[91]_i_1_n_0\,
-      Q => mux_N(91),
+      Q => mux_N5(9),
       R => '0'
     );
 \deci_low.mux_N_reg[92]\: unisim.vcomponents.FDRE
@@ -8379,7 +7932,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[92]_i_1_n_0\,
-      Q => mux_N(92),
+      Q => mux_N5(10),
       R => '0'
     );
 \deci_low.mux_N_reg[93]\: unisim.vcomponents.FDRE
@@ -8387,7 +7940,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[93]_i_1_n_0\,
-      Q => mux_N(93),
+      Q => mux_N5(11),
       R => '0'
     );
 \deci_low.mux_N_reg[94]\: unisim.vcomponents.FDRE
@@ -8395,7 +7948,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[94]_i_1_n_0\,
-      Q => mux_N(94),
+      Q => mux_N5(12),
       R => '0'
     );
 \deci_low.mux_N_reg[95]\: unisim.vcomponents.FDRE
@@ -8403,7 +7956,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[95]_i_1_n_0\,
-      Q => mux_N(95),
+      Q => mux_N5(13),
       R => '0'
     );
 \deci_low.mux_N_reg[96]\: unisim.vcomponents.FDRE
@@ -8427,7 +7980,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[98]_i_1_n_0\,
-      Q => mux_N(98),
+      Q => mux_N6(0),
       R => '0'
     );
 \deci_low.mux_N_reg[99]\: unisim.vcomponents.FDRE
@@ -8435,7 +7988,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[99]_i_1_n_0\,
-      Q => mux_N(99),
+      Q => mux_N6(1),
       R => '0'
     );
 \deci_low.mux_N_reg[9]\: unisim.vcomponents.FDRE
@@ -8443,1543 +7996,1543 @@ begin
       C => clk,
       CE => '1',
       D => \deci_low.mux_N[9]_i_1_n_0\,
-      Q => mux_N(9),
+      Q => mux_N0(7),
       R => '0'
     );
 \deci_low.mux_W[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(0),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(0),
+      I3 => adc_active,
       I4 => sim_out_W(0),
       O => \deci_low.mux_W[0]_i_1_n_0\
     );
 \deci_low.mux_W[100]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(100),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(100),
+      I3 => adc_active,
+      I4 => sim_out_W(100),
       O => \deci_low.mux_W[100]_i_1_n_0\
     );
 \deci_low.mux_W[101]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(101),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(101),
+      I3 => adc_active,
+      I4 => sim_out_W(101),
       O => \deci_low.mux_W[101]_i_1_n_0\
     );
 \deci_low.mux_W[102]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(102),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(102),
+      I3 => adc_active,
+      I4 => sim_out_W(102),
       O => \deci_low.mux_W[102]_i_1_n_0\
     );
 \deci_low.mux_W[103]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(103),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(103),
+      I3 => adc_active,
+      I4 => sim_out_W(103),
       O => \deci_low.mux_W[103]_i_1_n_0\
     );
 \deci_low.mux_W[104]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(104),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(104),
+      I3 => adc_active,
+      I4 => sim_out_W(104),
       O => \deci_low.mux_W[104]_i_1_n_0\
     );
 \deci_low.mux_W[105]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(105),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(105),
+      I3 => adc_active,
+      I4 => sim_out_W(105),
       O => \deci_low.mux_W[105]_i_1_n_0\
     );
 \deci_low.mux_W[106]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(106),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(106),
+      I3 => adc_active,
+      I4 => sim_out_W(106),
       O => \deci_low.mux_W[106]_i_1_n_0\
     );
 \deci_low.mux_W[107]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(107),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(107),
+      I3 => adc_active,
+      I4 => sim_out_W(107),
       O => \deci_low.mux_W[107]_i_1_n_0\
     );
 \deci_low.mux_W[108]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(108),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(108),
+      I3 => adc_active,
+      I4 => sim_out_W(108),
       O => \deci_low.mux_W[108]_i_1_n_0\
     );
 \deci_low.mux_W[109]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(109),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(109),
+      I3 => adc_active,
+      I4 => sim_out_W(109),
       O => \deci_low.mux_W[109]_i_1_n_0\
     );
 \deci_low.mux_W[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(10),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(10),
+      I3 => adc_active,
+      I4 => sim_out_W(10),
       O => \deci_low.mux_W[10]_i_1_n_0\
     );
 \deci_low.mux_W[110]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(110),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(110),
+      I3 => adc_active,
+      I4 => sim_out_W(110),
       O => \deci_low.mux_W[110]_i_1_n_0\
     );
 \deci_low.mux_W[111]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(111),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(111),
+      I3 => adc_active,
+      I4 => sim_out_W(111),
       O => \deci_low.mux_W[111]_i_1_n_0\
     );
 \deci_low.mux_W[112]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(112),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(112),
+      I3 => adc_active,
       I4 => sim_out_W(112),
       O => \deci_low.mux_W[112]_i_1_n_0\
     );
 \deci_low.mux_W[113]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(113),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(113),
+      I3 => adc_active,
       I4 => sim_out_W(113),
       O => \deci_low.mux_W[113]_i_1_n_0\
     );
 \deci_low.mux_W[114]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(114),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(114),
+      I3 => adc_active,
+      I4 => sim_out_W(114),
       O => \deci_low.mux_W[114]_i_1_n_0\
     );
 \deci_low.mux_W[115]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(115),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(115),
+      I3 => adc_active,
+      I4 => sim_out_W(115),
       O => \deci_low.mux_W[115]_i_1_n_0\
     );
 \deci_low.mux_W[116]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(116),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(116),
+      I3 => adc_active,
+      I4 => sim_out_W(116),
       O => \deci_low.mux_W[116]_i_1_n_0\
     );
 \deci_low.mux_W[117]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(117),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(117),
+      I3 => adc_active,
+      I4 => sim_out_W(117),
       O => \deci_low.mux_W[117]_i_1_n_0\
     );
 \deci_low.mux_W[118]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(118),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(118),
+      I3 => adc_active,
+      I4 => sim_out_W(118),
       O => \deci_low.mux_W[118]_i_1_n_0\
     );
 \deci_low.mux_W[119]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(119),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(119),
+      I3 => adc_active,
+      I4 => sim_out_W(119),
       O => \deci_low.mux_W[119]_i_1_n_0\
     );
 \deci_low.mux_W[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(11),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(11),
+      I3 => adc_active,
+      I4 => sim_out_W(11),
       O => \deci_low.mux_W[11]_i_1_n_0\
     );
 \deci_low.mux_W[120]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(120),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(120),
+      I3 => adc_active,
+      I4 => sim_out_W(120),
       O => \deci_low.mux_W[120]_i_1_n_0\
     );
 \deci_low.mux_W[121]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(121),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(121),
+      I3 => adc_active,
+      I4 => sim_out_W(121),
       O => \deci_low.mux_W[121]_i_1_n_0\
     );
 \deci_low.mux_W[122]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(122),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(122),
+      I3 => adc_active,
+      I4 => sim_out_W(122),
       O => \deci_low.mux_W[122]_i_1_n_0\
     );
 \deci_low.mux_W[123]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(123),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(123),
+      I3 => adc_active,
+      I4 => sim_out_W(123),
       O => \deci_low.mux_W[123]_i_1_n_0\
     );
 \deci_low.mux_W[124]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(124),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(124),
+      I3 => adc_active,
+      I4 => sim_out_W(124),
       O => \deci_low.mux_W[124]_i_1_n_0\
     );
 \deci_low.mux_W[125]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(125),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(125),
+      I3 => adc_active,
+      I4 => sim_out_W(125),
       O => \deci_low.mux_W[125]_i_1_n_0\
     );
 \deci_low.mux_W[126]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(126),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(126),
+      I3 => adc_active,
+      I4 => sim_out_W(126),
       O => \deci_low.mux_W[126]_i_1_n_0\
     );
 \deci_low.mux_W[127]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(127),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W7(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(127),
+      I3 => adc_active,
+      I4 => sim_out_W(127),
       O => \deci_low.mux_W[127]_i_1_n_0\
     );
 \deci_low.mux_W[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(12),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(12),
+      I3 => adc_active,
+      I4 => sim_out_W(12),
       O => \deci_low.mux_W[12]_i_1_n_0\
     );
 \deci_low.mux_W[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(13),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(13),
+      I3 => adc_active,
+      I4 => sim_out_W(13),
       O => \deci_low.mux_W[13]_i_1_n_0\
     );
 \deci_low.mux_W[14]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(14),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(14),
+      I3 => adc_active,
+      I4 => sim_out_W(14),
       O => \deci_low.mux_W[14]_i_1_n_0\
     );
 \deci_low.mux_W[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(15),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(15),
+      I3 => adc_active,
+      I4 => sim_out_W(15),
       O => \deci_low.mux_W[15]_i_1_n_0\
     );
 \deci_low.mux_W[16]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(16),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(16),
+      I3 => adc_active,
       I4 => sim_out_W(16),
       O => \deci_low.mux_W[16]_i_1_n_0\
     );
 \deci_low.mux_W[17]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(17),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(17),
+      I3 => adc_active,
       I4 => sim_out_W(17),
       O => \deci_low.mux_W[17]_i_1_n_0\
     );
 \deci_low.mux_W[18]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(18),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(18),
+      I3 => adc_active,
+      I4 => sim_out_W(18),
       O => \deci_low.mux_W[18]_i_1_n_0\
     );
 \deci_low.mux_W[19]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(19),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(19),
+      I3 => adc_active,
+      I4 => sim_out_W(19),
       O => \deci_low.mux_W[19]_i_1_n_0\
     );
 \deci_low.mux_W[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(1),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(1),
+      I3 => adc_active,
       I4 => sim_out_W(1),
       O => \deci_low.mux_W[1]_i_1_n_0\
     );
 \deci_low.mux_W[20]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(20),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(20),
+      I3 => adc_active,
+      I4 => sim_out_W(20),
       O => \deci_low.mux_W[20]_i_1_n_0\
     );
 \deci_low.mux_W[21]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(21),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(21),
+      I3 => adc_active,
+      I4 => sim_out_W(21),
       O => \deci_low.mux_W[21]_i_1_n_0\
     );
 \deci_low.mux_W[22]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(22),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(22),
+      I3 => adc_active,
+      I4 => sim_out_W(22),
       O => \deci_low.mux_W[22]_i_1_n_0\
     );
 \deci_low.mux_W[23]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(23),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(23),
+      I3 => adc_active,
+      I4 => sim_out_W(23),
       O => \deci_low.mux_W[23]_i_1_n_0\
     );
 \deci_low.mux_W[24]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(24),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(24),
+      I3 => adc_active,
+      I4 => sim_out_W(24),
       O => \deci_low.mux_W[24]_i_1_n_0\
     );
 \deci_low.mux_W[25]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(25),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(25),
+      I3 => adc_active,
+      I4 => sim_out_W(25),
       O => \deci_low.mux_W[25]_i_1_n_0\
     );
 \deci_low.mux_W[26]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(26),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(26),
+      I3 => adc_active,
+      I4 => sim_out_W(26),
       O => \deci_low.mux_W[26]_i_1_n_0\
     );
 \deci_low.mux_W[27]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(27),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(27),
+      I3 => adc_active,
+      I4 => sim_out_W(27),
       O => \deci_low.mux_W[27]_i_1_n_0\
     );
 \deci_low.mux_W[28]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(28),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(28),
+      I3 => adc_active,
+      I4 => sim_out_W(28),
       O => \deci_low.mux_W[28]_i_1_n_0\
     );
 \deci_low.mux_W[29]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(29),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(29),
+      I3 => adc_active,
+      I4 => sim_out_W(29),
       O => \deci_low.mux_W[29]_i_1_n_0\
     );
 \deci_low.mux_W[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(2),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(2),
+      I3 => adc_active,
+      I4 => sim_out_W(2),
       O => \deci_low.mux_W[2]_i_1_n_0\
     );
 \deci_low.mux_W[30]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(30),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(30),
+      I3 => adc_active,
+      I4 => sim_out_W(30),
       O => \deci_low.mux_W[30]_i_1_n_0\
     );
 \deci_low.mux_W[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(31),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W1(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(31),
+      I3 => adc_active,
+      I4 => sim_out_W(31),
       O => \deci_low.mux_W[31]_i_1_n_0\
     );
 \deci_low.mux_W[32]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(32),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(32),
+      I3 => adc_active,
       I4 => sim_out_W(32),
       O => \deci_low.mux_W[32]_i_1_n_0\
     );
 \deci_low.mux_W[33]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(33),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(33),
+      I3 => adc_active,
       I4 => sim_out_W(33),
       O => \deci_low.mux_W[33]_i_1_n_0\
     );
 \deci_low.mux_W[34]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(34),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(34),
+      I3 => adc_active,
+      I4 => sim_out_W(34),
       O => \deci_low.mux_W[34]_i_1_n_0\
     );
 \deci_low.mux_W[35]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(35),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(35),
+      I3 => adc_active,
+      I4 => sim_out_W(35),
       O => \deci_low.mux_W[35]_i_1_n_0\
     );
 \deci_low.mux_W[36]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(36),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(36),
+      I3 => adc_active,
+      I4 => sim_out_W(36),
       O => \deci_low.mux_W[36]_i_1_n_0\
     );
 \deci_low.mux_W[37]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(37),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(37),
+      I3 => adc_active,
+      I4 => sim_out_W(37),
       O => \deci_low.mux_W[37]_i_1_n_0\
     );
 \deci_low.mux_W[38]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(38),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(38),
+      I3 => adc_active,
+      I4 => sim_out_W(38),
       O => \deci_low.mux_W[38]_i_1_n_0\
     );
 \deci_low.mux_W[39]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(39),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(39),
+      I3 => adc_active,
+      I4 => sim_out_W(39),
       O => \deci_low.mux_W[39]_i_1_n_0\
     );
 \deci_low.mux_W[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(3),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(3),
+      I3 => adc_active,
+      I4 => sim_out_W(3),
       O => \deci_low.mux_W[3]_i_1_n_0\
     );
 \deci_low.mux_W[40]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(40),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(40),
+      I3 => adc_active,
+      I4 => sim_out_W(40),
       O => \deci_low.mux_W[40]_i_1_n_0\
     );
 \deci_low.mux_W[41]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(41),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(41),
+      I3 => adc_active,
+      I4 => sim_out_W(41),
       O => \deci_low.mux_W[41]_i_1_n_0\
     );
 \deci_low.mux_W[42]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(42),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(42),
+      I3 => adc_active,
+      I4 => sim_out_W(42),
       O => \deci_low.mux_W[42]_i_1_n_0\
     );
 \deci_low.mux_W[43]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(43),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(43),
+      I3 => adc_active,
+      I4 => sim_out_W(43),
       O => \deci_low.mux_W[43]_i_1_n_0\
     );
 \deci_low.mux_W[44]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(44),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(44),
+      I3 => adc_active,
+      I4 => sim_out_W(44),
       O => \deci_low.mux_W[44]_i_1_n_0\
     );
 \deci_low.mux_W[45]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(45),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(45),
+      I3 => adc_active,
+      I4 => sim_out_W(45),
       O => \deci_low.mux_W[45]_i_1_n_0\
     );
 \deci_low.mux_W[46]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(46),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(46),
+      I3 => adc_active,
+      I4 => sim_out_W(46),
       O => \deci_low.mux_W[46]_i_1_n_0\
     );
 \deci_low.mux_W[47]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(47),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W2(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(47),
+      I3 => adc_active,
+      I4 => sim_out_W(47),
       O => \deci_low.mux_W[47]_i_1_n_0\
     );
 \deci_low.mux_W[48]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(48),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(48),
+      I3 => adc_active,
       I4 => sim_out_W(48),
       O => \deci_low.mux_W[48]_i_1_n_0\
     );
 \deci_low.mux_W[49]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(49),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(49),
+      I3 => adc_active,
       I4 => sim_out_W(49),
       O => \deci_low.mux_W[49]_i_1_n_0\
     );
 \deci_low.mux_W[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(4),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(4),
+      I3 => adc_active,
+      I4 => sim_out_W(4),
       O => \deci_low.mux_W[4]_i_1_n_0\
     );
 \deci_low.mux_W[50]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(50),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(50),
+      I3 => adc_active,
+      I4 => sim_out_W(50),
       O => \deci_low.mux_W[50]_i_1_n_0\
     );
 \deci_low.mux_W[51]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(51),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(51),
+      I3 => adc_active,
+      I4 => sim_out_W(51),
       O => \deci_low.mux_W[51]_i_1_n_0\
     );
 \deci_low.mux_W[52]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(52),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(52),
+      I3 => adc_active,
+      I4 => sim_out_W(52),
       O => \deci_low.mux_W[52]_i_1_n_0\
     );
 \deci_low.mux_W[53]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(53),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(53),
+      I3 => adc_active,
+      I4 => sim_out_W(53),
       O => \deci_low.mux_W[53]_i_1_n_0\
     );
 \deci_low.mux_W[54]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(54),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(54),
+      I3 => adc_active,
+      I4 => sim_out_W(54),
       O => \deci_low.mux_W[54]_i_1_n_0\
     );
 \deci_low.mux_W[55]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(55),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(55),
+      I3 => adc_active,
+      I4 => sim_out_W(55),
       O => \deci_low.mux_W[55]_i_1_n_0\
     );
 \deci_low.mux_W[56]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(56),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(56),
+      I3 => adc_active,
+      I4 => sim_out_W(56),
       O => \deci_low.mux_W[56]_i_1_n_0\
     );
 \deci_low.mux_W[57]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(57),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(57),
+      I3 => adc_active,
+      I4 => sim_out_W(57),
       O => \deci_low.mux_W[57]_i_1_n_0\
     );
 \deci_low.mux_W[58]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(58),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(58),
+      I3 => adc_active,
+      I4 => sim_out_W(58),
       O => \deci_low.mux_W[58]_i_1_n_0\
     );
 \deci_low.mux_W[59]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(59),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(59),
+      I3 => adc_active,
+      I4 => sim_out_W(59),
       O => \deci_low.mux_W[59]_i_1_n_0\
     );
 \deci_low.mux_W[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(5),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(5),
+      I3 => adc_active,
+      I4 => sim_out_W(5),
       O => \deci_low.mux_W[5]_i_1_n_0\
     );
 \deci_low.mux_W[60]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(60),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(60),
+      I3 => adc_active,
+      I4 => sim_out_W(60),
       O => \deci_low.mux_W[60]_i_1_n_0\
     );
 \deci_low.mux_W[61]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(61),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(61),
+      I3 => adc_active,
+      I4 => sim_out_W(61),
       O => \deci_low.mux_W[61]_i_1_n_0\
     );
 \deci_low.mux_W[62]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(62),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(62),
+      I3 => adc_active,
+      I4 => sim_out_W(62),
       O => \deci_low.mux_W[62]_i_1_n_0\
     );
 \deci_low.mux_W[63]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(63),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W3(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(63),
+      I3 => adc_active,
+      I4 => sim_out_W(63),
       O => \deci_low.mux_W[63]_i_1_n_0\
     );
 \deci_low.mux_W[64]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(64),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(64),
+      I3 => adc_active,
       I4 => sim_out_W(64),
       O => \deci_low.mux_W[64]_i_1_n_0\
     );
 \deci_low.mux_W[65]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(65),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(65),
+      I3 => adc_active,
       I4 => sim_out_W(65),
       O => \deci_low.mux_W[65]_i_1_n_0\
     );
 \deci_low.mux_W[66]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(66),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(66),
+      I3 => adc_active,
+      I4 => sim_out_W(66),
       O => \deci_low.mux_W[66]_i_1_n_0\
     );
 \deci_low.mux_W[67]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(67),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(67),
+      I3 => adc_active,
+      I4 => sim_out_W(67),
       O => \deci_low.mux_W[67]_i_1_n_0\
     );
 \deci_low.mux_W[68]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(68),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(68),
+      I3 => adc_active,
+      I4 => sim_out_W(68),
       O => \deci_low.mux_W[68]_i_1_n_0\
     );
 \deci_low.mux_W[69]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(69),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(69),
+      I3 => adc_active,
+      I4 => sim_out_W(69),
       O => \deci_low.mux_W[69]_i_1_n_0\
     );
 \deci_low.mux_W[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(6),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(6),
+      I3 => adc_active,
+      I4 => sim_out_W(6),
       O => \deci_low.mux_W[6]_i_1_n_0\
     );
 \deci_low.mux_W[70]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(70),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(70),
+      I3 => adc_active,
+      I4 => sim_out_W(70),
       O => \deci_low.mux_W[70]_i_1_n_0\
     );
 \deci_low.mux_W[71]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(71),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(71),
+      I3 => adc_active,
+      I4 => sim_out_W(71),
       O => \deci_low.mux_W[71]_i_1_n_0\
     );
 \deci_low.mux_W[72]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(72),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(72),
+      I3 => adc_active,
+      I4 => sim_out_W(72),
       O => \deci_low.mux_W[72]_i_1_n_0\
     );
 \deci_low.mux_W[73]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(73),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(73),
+      I3 => adc_active,
+      I4 => sim_out_W(73),
       O => \deci_low.mux_W[73]_i_1_n_0\
     );
 \deci_low.mux_W[74]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(74),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(74),
+      I3 => adc_active,
+      I4 => sim_out_W(74),
       O => \deci_low.mux_W[74]_i_1_n_0\
     );
 \deci_low.mux_W[75]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(75),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(75),
+      I3 => adc_active,
+      I4 => sim_out_W(75),
       O => \deci_low.mux_W[75]_i_1_n_0\
     );
 \deci_low.mux_W[76]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(76),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(76),
+      I3 => adc_active,
+      I4 => sim_out_W(76),
       O => \deci_low.mux_W[76]_i_1_n_0\
     );
 \deci_low.mux_W[77]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(77),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(77),
+      I3 => adc_active,
+      I4 => sim_out_W(77),
       O => \deci_low.mux_W[77]_i_1_n_0\
     );
 \deci_low.mux_W[78]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(78),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(78),
+      I3 => adc_active,
+      I4 => sim_out_W(78),
       O => \deci_low.mux_W[78]_i_1_n_0\
     );
 \deci_low.mux_W[79]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(79),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W4(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(79),
+      I3 => adc_active,
+      I4 => sim_out_W(79),
       O => \deci_low.mux_W[79]_i_1_n_0\
     );
 \deci_low.mux_W[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(7),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(7),
+      I3 => adc_active,
+      I4 => sim_out_W(7),
       O => \deci_low.mux_W[7]_i_1_n_0\
     );
 \deci_low.mux_W[80]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(80),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(80),
+      I3 => adc_active,
       I4 => sim_out_W(80),
       O => \deci_low.mux_W[80]_i_1_n_0\
     );
 \deci_low.mux_W[81]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(81),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(81),
+      I3 => adc_active,
       I4 => sim_out_W(81),
       O => \deci_low.mux_W[81]_i_1_n_0\
     );
 \deci_low.mux_W[82]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(82),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(82),
+      I3 => adc_active,
+      I4 => sim_out_W(82),
       O => \deci_low.mux_W[82]_i_1_n_0\
     );
 \deci_low.mux_W[83]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(83),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(83),
+      I3 => adc_active,
+      I4 => sim_out_W(83),
       O => \deci_low.mux_W[83]_i_1_n_0\
     );
 \deci_low.mux_W[84]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(84),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(2),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(84),
+      I3 => adc_active,
+      I4 => sim_out_W(84),
       O => \deci_low.mux_W[84]_i_1_n_0\
     );
 \deci_low.mux_W[85]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(85),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(3),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(85),
+      I3 => adc_active,
+      I4 => sim_out_W(85),
       O => \deci_low.mux_W[85]_i_1_n_0\
     );
 \deci_low.mux_W[86]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(86),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(4),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(86),
+      I3 => adc_active,
+      I4 => sim_out_W(86),
       O => \deci_low.mux_W[86]_i_1_n_0\
     );
 \deci_low.mux_W[87]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(87),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(5),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(87),
+      I3 => adc_active,
+      I4 => sim_out_W(87),
       O => \deci_low.mux_W[87]_i_1_n_0\
     );
 \deci_low.mux_W[88]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(88),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(88),
+      I3 => adc_active,
+      I4 => sim_out_W(88),
       O => \deci_low.mux_W[88]_i_1_n_0\
     );
 \deci_low.mux_W[89]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(89),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(89),
+      I3 => adc_active,
+      I4 => sim_out_W(89),
       O => \deci_low.mux_W[89]_i_1_n_0\
     );
 \deci_low.mux_W[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(8),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(6),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(8),
+      I3 => adc_active,
+      I4 => sim_out_W(8),
       O => \deci_low.mux_W[8]_i_1_n_0\
     );
 \deci_low.mux_W[90]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(90),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(8),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(90),
+      I3 => adc_active,
+      I4 => sim_out_W(90),
       O => \deci_low.mux_W[90]_i_1_n_0\
     );
 \deci_low.mux_W[91]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(91),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(9),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(91),
+      I3 => adc_active,
+      I4 => sim_out_W(91),
       O => \deci_low.mux_W[91]_i_1_n_0\
     );
 \deci_low.mux_W[92]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(92),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(10),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(92),
+      I3 => adc_active,
+      I4 => sim_out_W(92),
       O => \deci_low.mux_W[92]_i_1_n_0\
     );
 \deci_low.mux_W[93]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(93),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(11),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(93),
+      I3 => adc_active,
+      I4 => sim_out_W(93),
       O => \deci_low.mux_W[93]_i_1_n_0\
     );
 \deci_low.mux_W[94]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(94),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(12),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(94),
+      I3 => adc_active,
+      I4 => sim_out_W(94),
       O => \deci_low.mux_W[94]_i_1_n_0\
     );
 \deci_low.mux_W[95]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(95),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W5(13),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(95),
+      I3 => adc_active,
+      I4 => sim_out_W(95),
       O => \deci_low.mux_W[95]_i_1_n_0\
     );
 \deci_low.mux_W[96]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(96),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(96),
+      I3 => adc_active,
       I4 => sim_out_W(96),
       O => \deci_low.mux_W[96]_i_1_n_0\
     );
 \deci_low.mux_W[97]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(97),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(97),
+      I3 => adc_active,
       I4 => sim_out_W(97),
       O => \deci_low.mux_W[97]_i_1_n_0\
     );
 \deci_low.mux_W[98]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(98),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(0),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(98),
+      I3 => adc_active,
+      I4 => sim_out_W(98),
       O => \deci_low.mux_W[98]_i_1_n_0\
     );
 \deci_low.mux_W[99]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(99),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W6(1),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(99),
+      I3 => adc_active,
+      I4 => sim_out_W(99),
       O => \deci_low.mux_W[99]_i_1_n_0\
     );
 \deci_low.mux_W[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B88888"
+      INIT => X"F088F000"
     )
         port map (
-      I0 => data_W(9),
-      I1 => adc_active,
-      I2 => \^sim_active\,
-      I3 => \deci_low.mux_active_i_2_n_0\,
-      I4 => sim_W0(7),
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => data_W(9),
+      I3 => adc_active,
+      I4 => sim_out_W(9),
       O => \deci_low.mux_W[9]_i_1_n_0\
     );
 \deci_low.mux_W_reg[0]\: unisim.vcomponents.FDRE
@@ -11008,26 +10561,16 @@ begin
     );
 \deci_low.mux_active_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8000800080FF8000"
+      INIT => X"F000000088888888"
     )
         port map (
-      I0 => ready_N,
-      I1 => ready_E,
-      I2 => ready_W,
-      I3 => adc_active,
-      I4 => \^sim_active\,
-      I5 => \deci_low.mux_active_i_2_n_0\,
+      I0 => \^sim_active\,
+      I1 => sim_active_1,
+      I2 => ready_N,
+      I3 => ready_E,
+      I4 => ready_W,
+      I5 => adc_active,
       O => \deci_low.mux_active_i_1_n_0\
-    );
-\deci_low.mux_active_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => sim_empty_N,
-      I1 => sim_empty_E,
-      I2 => sim_empty_W,
-      O => \deci_low.mux_active_i_2_n_0\
     );
 \deci_low.mux_active_reg\: unisim.vcomponents.FDRE
      port map (
@@ -14485,2623 +14028,1211 @@ begin
       Q => \^raw_ready\,
       R => '0'
     );
-\deci_low.sim_count[0]_i_1\: unisim.vcomponents.LUT3
+\deci_low.sim_active_1_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"60"
+      INIT => X"80"
     )
         port map (
-      I0 => sim_count(0),
-      I1 => sim_wr,
-      I2 => sim_resetn,
-      O => \deci_low.sim_count[0]_i_1_n_0\
+      I0 => sim_active_1,
+      I1 => resetn,
+      I2 => sim_rd,
+      O => \deci_low.sim_active_1_i_1_n_0\
+    );
+\deci_low.sim_active_1_reg\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \deci_low.sim_active_1_i_1_n_0\,
+      Q => sim_active_1,
+      S => sim_start
+    );
+\deci_low.sim_active_2_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => sim_active_1,
+      O => \deci_low.sim_active_2_i_1_n_0\
+    );
+\deci_low.sim_active_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \deci_low.sim_active_2_i_1_n_0\,
+      Q => sim_active_2,
+      R => '0'
+    );
+\deci_low.sim_active_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => sim_active_2,
+      O => \deci_low.sim_active_i_1_n_0\
+    );
+\deci_low.sim_active_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \deci_low.sim_active_i_1_n_0\,
+      Q => \^sim_active\,
+      R => '0'
+    );
+\deci_low.sim_count[0]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \sim_count__0\(0),
+      O => \p_1_in__0\(0)
     );
 \deci_low.sim_count[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"5400"
+      INIT => X"54FF"
     )
         port map (
       I0 => sim_wr,
-      I1 => sim_count(1),
-      I2 => sim_count(0),
+      I1 => \sim_count__0\(0),
+      I2 => \sim_count__0\(1),
       I3 => sim_resetn,
       O => \deci_low.sim_count[1]_i_1_n_0\
     );
-\deci_low.sim_count[1]_i_2\: unisim.vcomponents.LUT4
+\deci_low.sim_count[1]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"6A00"
+      INIT => X"6"
     )
         port map (
-      I0 => sim_count(1),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_resetn,
-      O => \deci_low.sim_count[1]_i_2_n_0\
+      I0 => \sim_count__0\(0),
+      I1 => \sim_count__0\(1),
+      O => \p_1_in__0\(1)
     );
 \deci_low.sim_count_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => '1',
-      D => \deci_low.sim_count[0]_i_1_n_0\,
-      Q => sim_count(0),
+      CE => sim_wr,
+      D => \p_1_in__0\(0),
+      Q => \sim_count__0\(0),
       R => \deci_low.sim_count[1]_i_1_n_0\
     );
 \deci_low.sim_count_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => '1',
-      D => \deci_low.sim_count[1]_i_2_n_0\,
-      Q => sim_count(1),
+      CE => sim_wr,
+      D => \p_1_in__0\(1),
+      Q => \sim_count__0\(1),
       R => \deci_low.sim_count[1]_i_1_n_0\
     );
-\deci_low.sim_curr_data[0]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[127]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FEFF1000"
+      INIT => X"00E0"
     )
         port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(0),
+      I0 => \sim_count__0\(0),
+      I1 => \sim_count__0\(1),
+      I2 => sim_resetn,
       I3 => sim_wr,
-      I4 => sim_curr_data(0),
-      O => p_0_in1_in(0)
+      O => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
-\deci_low.sim_curr_data[100]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[127]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"8C80CF00"
+      INIT => X"80A8"
     )
         port map (
-      I0 => sim_data(4),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(100),
-      I4 => sim_count(0),
-      O => p_0_in1_in(100)
-    );
-\deci_low.sim_curr_data[101]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(5),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(101),
-      I4 => sim_count(0),
-      O => p_0_in1_in(101)
-    );
-\deci_low.sim_curr_data[102]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(6),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(102),
-      I4 => sim_count(0),
-      O => p_0_in1_in(102)
-    );
-\deci_low.sim_curr_data[103]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(7),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(103),
-      I4 => sim_count(0),
-      O => p_0_in1_in(103)
-    );
-\deci_low.sim_curr_data[104]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(8),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(104),
-      I4 => sim_count(0),
-      O => p_0_in1_in(104)
-    );
-\deci_low.sim_curr_data[105]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(9),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(105),
-      I4 => sim_count(0),
-      O => p_0_in1_in(105)
-    );
-\deci_low.sim_curr_data[106]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(10),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(106),
-      I4 => sim_count(0),
-      O => p_0_in1_in(106)
-    );
-\deci_low.sim_curr_data[107]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(11),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(107),
-      I4 => sim_count(0),
-      O => p_0_in1_in(107)
-    );
-\deci_low.sim_curr_data[108]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(12),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(108),
-      I4 => sim_count(0),
-      O => p_0_in1_in(108)
-    );
-\deci_low.sim_curr_data[109]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(13),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(109),
-      I4 => sim_count(0),
-      O => p_0_in1_in(109)
-    );
-\deci_low.sim_curr_data[10]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(10),
+      I0 => sim_resetn,
+      I1 => \sim_count__0\(1),
+      I2 => \sim_count__0\(0),
       I3 => sim_wr,
-      I4 => sim_curr_data(10),
-      O => p_0_in1_in(10)
+      O => sim_curr_data(127)
     );
-\deci_low.sim_curr_data[110]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[31]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"8C80CF00"
+      INIT => X"0008"
     )
         port map (
-      I0 => sim_data(14),
+      I0 => sim_resetn,
       I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(110),
-      I4 => sim_count(0),
-      O => p_0_in1_in(110)
+      I2 => \sim_count__0\(0),
+      I3 => \sim_count__0\(1),
+      O => sim_curr_data(31)
     );
-\deci_low.sim_curr_data[111]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[63]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"8C80CF00"
+      INIT => X"0020"
     )
         port map (
-      I0 => sim_data(15),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(111),
-      I4 => sim_count(0),
-      O => p_0_in1_in(111)
-    );
-\deci_low.sim_curr_data[112]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(16),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(112),
-      I4 => sim_count(0),
-      O => p_0_in1_in(112)
-    );
-\deci_low.sim_curr_data[113]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(17),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(113),
-      I4 => sim_count(0),
-      O => p_0_in1_in(113)
-    );
-\deci_low.sim_curr_data[114]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(18),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(114),
-      I4 => sim_count(0),
-      O => p_0_in1_in(114)
-    );
-\deci_low.sim_curr_data[115]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(19),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(115),
-      I4 => sim_count(0),
-      O => p_0_in1_in(115)
-    );
-\deci_low.sim_curr_data[116]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(20),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(116),
-      I4 => sim_count(0),
-      O => p_0_in1_in(116)
-    );
-\deci_low.sim_curr_data[117]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(21),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(117),
-      I4 => sim_count(0),
-      O => p_0_in1_in(117)
-    );
-\deci_low.sim_curr_data[118]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(22),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(118),
-      I4 => sim_count(0),
-      O => p_0_in1_in(118)
-    );
-\deci_low.sim_curr_data[119]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(23),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(119),
-      I4 => sim_count(0),
-      O => p_0_in1_in(119)
-    );
-\deci_low.sim_curr_data[11]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(11),
+      I0 => \sim_count__0\(0),
+      I1 => \sim_count__0\(1),
+      I2 => sim_resetn,
       I3 => sim_wr,
-      I4 => sim_curr_data(11),
-      O => p_0_in1_in(11)
+      O => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
-\deci_low.sim_curr_data[120]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[63]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"8C80CF00"
+      INIT => X"20"
     )
         port map (
-      I0 => sim_data(24),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(120),
-      I4 => sim_count(0),
-      O => p_0_in1_in(120)
+      I0 => sim_resetn,
+      I1 => \sim_count__0\(1),
+      I2 => \sim_count__0\(0),
+      O => sim_curr_data(63)
     );
-\deci_low.sim_curr_data[121]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[95]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"8C80CF00"
+      INIT => X"0060"
     )
         port map (
-      I0 => sim_data(25),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(121),
-      I4 => sim_count(0),
-      O => p_0_in1_in(121)
-    );
-\deci_low.sim_curr_data[122]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(26),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(122),
-      I4 => sim_count(0),
-      O => p_0_in1_in(122)
-    );
-\deci_low.sim_curr_data[123]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(27),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(123),
-      I4 => sim_count(0),
-      O => p_0_in1_in(123)
-    );
-\deci_low.sim_curr_data[124]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(28),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(124),
-      I4 => sim_count(0),
-      O => p_0_in1_in(124)
-    );
-\deci_low.sim_curr_data[125]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(29),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(125),
-      I4 => sim_count(0),
-      O => p_0_in1_in(125)
-    );
-\deci_low.sim_curr_data[126]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(30),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(126),
-      I4 => sim_count(0),
-      O => p_0_in1_in(126)
-    );
-\deci_low.sim_curr_data[127]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(31),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(127),
-      I4 => sim_count(0),
-      O => p_0_in1_in(127)
-    );
-\deci_low.sim_curr_data[12]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(12),
+      I0 => \sim_count__0\(1),
+      I1 => \sim_count__0\(0),
+      I2 => sim_resetn,
       I3 => sim_wr,
-      I4 => sim_curr_data(12),
-      O => p_0_in1_in(12)
+      O => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
-\deci_low.sim_curr_data[13]_i_1\: unisim.vcomponents.LUT5
+\deci_low.sim_curr_data[95]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FEFF1000"
+      INIT => X"2028"
     )
         port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(13),
+      I0 => sim_resetn,
+      I1 => \sim_count__0\(0),
+      I2 => \sim_count__0\(1),
       I3 => sim_wr,
-      I4 => sim_curr_data(13),
-      O => p_0_in1_in(13)
-    );
-\deci_low.sim_curr_data[14]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(14),
-      I3 => sim_wr,
-      I4 => sim_curr_data(14),
-      O => p_0_in1_in(14)
-    );
-\deci_low.sim_curr_data[15]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(15),
-      I3 => sim_wr,
-      I4 => sim_curr_data(15),
-      O => p_0_in1_in(15)
-    );
-\deci_low.sim_curr_data[16]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(16),
-      I3 => sim_wr,
-      I4 => sim_curr_data(16),
-      O => p_0_in1_in(16)
-    );
-\deci_low.sim_curr_data[17]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(17),
-      I3 => sim_wr,
-      I4 => sim_curr_data(17),
-      O => p_0_in1_in(17)
-    );
-\deci_low.sim_curr_data[18]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(18),
-      I3 => sim_wr,
-      I4 => sim_curr_data(18),
-      O => p_0_in1_in(18)
-    );
-\deci_low.sim_curr_data[19]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(19),
-      I3 => sim_wr,
-      I4 => sim_curr_data(19),
-      O => p_0_in1_in(19)
-    );
-\deci_low.sim_curr_data[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(1),
-      I3 => sim_wr,
-      I4 => sim_curr_data(1),
-      O => p_0_in1_in(1)
-    );
-\deci_low.sim_curr_data[20]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(20),
-      I3 => sim_wr,
-      I4 => sim_curr_data(20),
-      O => p_0_in1_in(20)
-    );
-\deci_low.sim_curr_data[21]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(21),
-      I3 => sim_wr,
-      I4 => sim_curr_data(21),
-      O => p_0_in1_in(21)
-    );
-\deci_low.sim_curr_data[22]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(22),
-      I3 => sim_wr,
-      I4 => sim_curr_data(22),
-      O => p_0_in1_in(22)
-    );
-\deci_low.sim_curr_data[23]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(23),
-      I3 => sim_wr,
-      I4 => sim_curr_data(23),
-      O => p_0_in1_in(23)
-    );
-\deci_low.sim_curr_data[24]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(24),
-      I3 => sim_wr,
-      I4 => sim_curr_data(24),
-      O => p_0_in1_in(24)
-    );
-\deci_low.sim_curr_data[25]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(25),
-      I3 => sim_wr,
-      I4 => sim_curr_data(25),
-      O => p_0_in1_in(25)
-    );
-\deci_low.sim_curr_data[26]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(26),
-      I3 => sim_wr,
-      I4 => sim_curr_data(26),
-      O => p_0_in1_in(26)
-    );
-\deci_low.sim_curr_data[27]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(27),
-      I3 => sim_wr,
-      I4 => sim_curr_data(27),
-      O => p_0_in1_in(27)
-    );
-\deci_low.sim_curr_data[28]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(28),
-      I3 => sim_wr,
-      I4 => sim_curr_data(28),
-      O => p_0_in1_in(28)
-    );
-\deci_low.sim_curr_data[29]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(29),
-      I3 => sim_wr,
-      I4 => sim_curr_data(29),
-      O => p_0_in1_in(29)
-    );
-\deci_low.sim_curr_data[2]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(2),
-      I3 => sim_wr,
-      I4 => sim_curr_data(2),
-      O => p_0_in1_in(2)
-    );
-\deci_low.sim_curr_data[30]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(30),
-      I3 => sim_wr,
-      I4 => sim_curr_data(30),
-      O => p_0_in1_in(30)
-    );
-\deci_low.sim_curr_data[31]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(31),
-      I3 => sim_wr,
-      I4 => sim_curr_data(31),
-      O => p_0_in1_in(31)
-    );
-\deci_low.sim_curr_data[32]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(0),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(32),
-      O => p_0_in1_in(32)
-    );
-\deci_low.sim_curr_data[33]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(1),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(33),
-      O => p_0_in1_in(33)
-    );
-\deci_low.sim_curr_data[34]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(2),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(34),
-      O => p_0_in1_in(34)
-    );
-\deci_low.sim_curr_data[35]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(3),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(35),
-      O => p_0_in1_in(35)
-    );
-\deci_low.sim_curr_data[36]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(4),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(36),
-      O => p_0_in1_in(36)
-    );
-\deci_low.sim_curr_data[37]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(5),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(37),
-      O => p_0_in1_in(37)
-    );
-\deci_low.sim_curr_data[38]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(6),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(38),
-      O => p_0_in1_in(38)
-    );
-\deci_low.sim_curr_data[39]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(7),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(39),
-      O => p_0_in1_in(39)
-    );
-\deci_low.sim_curr_data[3]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(3),
-      I3 => sim_wr,
-      I4 => sim_curr_data(3),
-      O => p_0_in1_in(3)
-    );
-\deci_low.sim_curr_data[40]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(8),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(40),
-      O => p_0_in1_in(40)
-    );
-\deci_low.sim_curr_data[41]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(9),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(41),
-      O => p_0_in1_in(41)
-    );
-\deci_low.sim_curr_data[42]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(10),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(42),
-      O => p_0_in1_in(42)
-    );
-\deci_low.sim_curr_data[43]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(11),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(43),
-      O => p_0_in1_in(43)
-    );
-\deci_low.sim_curr_data[44]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(12),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(44),
-      O => p_0_in1_in(44)
-    );
-\deci_low.sim_curr_data[45]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(13),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(45),
-      O => p_0_in1_in(45)
-    );
-\deci_low.sim_curr_data[46]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(14),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(46),
-      O => p_0_in1_in(46)
-    );
-\deci_low.sim_curr_data[47]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(15),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(47),
-      O => p_0_in1_in(47)
-    );
-\deci_low.sim_curr_data[48]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(16),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(48),
-      O => p_0_in1_in(48)
-    );
-\deci_low.sim_curr_data[49]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(17),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(49),
-      O => p_0_in1_in(49)
-    );
-\deci_low.sim_curr_data[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(4),
-      I3 => sim_wr,
-      I4 => sim_curr_data(4),
-      O => p_0_in1_in(4)
-    );
-\deci_low.sim_curr_data[50]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(18),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(50),
-      O => p_0_in1_in(50)
-    );
-\deci_low.sim_curr_data[51]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(19),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(51),
-      O => p_0_in1_in(51)
-    );
-\deci_low.sim_curr_data[52]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(20),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(52),
-      O => p_0_in1_in(52)
-    );
-\deci_low.sim_curr_data[53]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(21),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(53),
-      O => p_0_in1_in(53)
-    );
-\deci_low.sim_curr_data[54]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(22),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(54),
-      O => p_0_in1_in(54)
-    );
-\deci_low.sim_curr_data[55]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(23),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(55),
-      O => p_0_in1_in(55)
-    );
-\deci_low.sim_curr_data[56]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(24),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(56),
-      O => p_0_in1_in(56)
-    );
-\deci_low.sim_curr_data[57]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(25),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(57),
-      O => p_0_in1_in(57)
-    );
-\deci_low.sim_curr_data[58]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(26),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(58),
-      O => p_0_in1_in(58)
-    );
-\deci_low.sim_curr_data[59]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(27),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(59),
-      O => p_0_in1_in(59)
-    );
-\deci_low.sim_curr_data[5]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(5),
-      I3 => sim_wr,
-      I4 => sim_curr_data(5),
-      O => p_0_in1_in(5)
-    );
-\deci_low.sim_curr_data[60]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(28),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(60),
-      O => p_0_in1_in(60)
-    );
-\deci_low.sim_curr_data[61]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(29),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(61),
-      O => p_0_in1_in(61)
-    );
-\deci_low.sim_curr_data[62]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(30),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(62),
-      O => p_0_in1_in(62)
-    );
-\deci_low.sim_curr_data[63]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F8FF0800"
-    )
-        port map (
-      I0 => sim_data(31),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
-      I4 => sim_curr_data(63),
-      O => p_0_in1_in(63)
-    );
-\deci_low.sim_curr_data[64]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(0),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(64),
-      I4 => sim_count(1),
-      O => p_0_in1_in(64)
-    );
-\deci_low.sim_curr_data[65]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(1),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(65),
-      I4 => sim_count(1),
-      O => p_0_in1_in(65)
-    );
-\deci_low.sim_curr_data[66]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(2),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(66),
-      I4 => sim_count(1),
-      O => p_0_in1_in(66)
-    );
-\deci_low.sim_curr_data[67]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(3),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(67),
-      I4 => sim_count(1),
-      O => p_0_in1_in(67)
-    );
-\deci_low.sim_curr_data[68]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(4),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(68),
-      I4 => sim_count(1),
-      O => p_0_in1_in(68)
-    );
-\deci_low.sim_curr_data[69]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(5),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(69),
-      I4 => sim_count(1),
-      O => p_0_in1_in(69)
-    );
-\deci_low.sim_curr_data[6]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(6),
-      I3 => sim_wr,
-      I4 => sim_curr_data(6),
-      O => p_0_in1_in(6)
-    );
-\deci_low.sim_curr_data[70]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(6),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(70),
-      I4 => sim_count(1),
-      O => p_0_in1_in(70)
-    );
-\deci_low.sim_curr_data[71]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(7),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(71),
-      I4 => sim_count(1),
-      O => p_0_in1_in(71)
-    );
-\deci_low.sim_curr_data[72]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(8),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(72),
-      I4 => sim_count(1),
-      O => p_0_in1_in(72)
-    );
-\deci_low.sim_curr_data[73]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(9),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(73),
-      I4 => sim_count(1),
-      O => p_0_in1_in(73)
-    );
-\deci_low.sim_curr_data[74]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(10),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(74),
-      I4 => sim_count(1),
-      O => p_0_in1_in(74)
-    );
-\deci_low.sim_curr_data[75]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(11),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(75),
-      I4 => sim_count(1),
-      O => p_0_in1_in(75)
-    );
-\deci_low.sim_curr_data[76]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(12),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(76),
-      I4 => sim_count(1),
-      O => p_0_in1_in(76)
-    );
-\deci_low.sim_curr_data[77]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(13),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(77),
-      I4 => sim_count(1),
-      O => p_0_in1_in(77)
-    );
-\deci_low.sim_curr_data[78]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(14),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(78),
-      I4 => sim_count(1),
-      O => p_0_in1_in(78)
-    );
-\deci_low.sim_curr_data[79]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(15),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(79),
-      I4 => sim_count(1),
-      O => p_0_in1_in(79)
-    );
-\deci_low.sim_curr_data[7]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(7),
-      I3 => sim_wr,
-      I4 => sim_curr_data(7),
-      O => p_0_in1_in(7)
-    );
-\deci_low.sim_curr_data[80]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(16),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(80),
-      I4 => sim_count(1),
-      O => p_0_in1_in(80)
-    );
-\deci_low.sim_curr_data[81]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(17),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(81),
-      I4 => sim_count(1),
-      O => p_0_in1_in(81)
-    );
-\deci_low.sim_curr_data[82]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(18),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(82),
-      I4 => sim_count(1),
-      O => p_0_in1_in(82)
-    );
-\deci_low.sim_curr_data[83]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(19),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(83),
-      I4 => sim_count(1),
-      O => p_0_in1_in(83)
-    );
-\deci_low.sim_curr_data[84]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(20),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(84),
-      I4 => sim_count(1),
-      O => p_0_in1_in(84)
-    );
-\deci_low.sim_curr_data[85]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(21),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(85),
-      I4 => sim_count(1),
-      O => p_0_in1_in(85)
-    );
-\deci_low.sim_curr_data[86]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(22),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(86),
-      I4 => sim_count(1),
-      O => p_0_in1_in(86)
-    );
-\deci_low.sim_curr_data[87]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(23),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(87),
-      I4 => sim_count(1),
-      O => p_0_in1_in(87)
-    );
-\deci_low.sim_curr_data[88]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(24),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(88),
-      I4 => sim_count(1),
-      O => p_0_in1_in(88)
-    );
-\deci_low.sim_curr_data[89]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(25),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(89),
-      I4 => sim_count(1),
-      O => p_0_in1_in(89)
-    );
-\deci_low.sim_curr_data[8]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(8),
-      I3 => sim_wr,
-      I4 => sim_curr_data(8),
-      O => p_0_in1_in(8)
-    );
-\deci_low.sim_curr_data[90]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(26),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(90),
-      I4 => sim_count(1),
-      O => p_0_in1_in(90)
-    );
-\deci_low.sim_curr_data[91]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(27),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(91),
-      I4 => sim_count(1),
-      O => p_0_in1_in(91)
-    );
-\deci_low.sim_curr_data[92]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(28),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(92),
-      I4 => sim_count(1),
-      O => p_0_in1_in(92)
-    );
-\deci_low.sim_curr_data[93]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(29),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(93),
-      I4 => sim_count(1),
-      O => p_0_in1_in(93)
-    );
-\deci_low.sim_curr_data[94]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(30),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(94),
-      I4 => sim_count(1),
-      O => p_0_in1_in(94)
-    );
-\deci_low.sim_curr_data[95]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F808CF00"
-    )
-        port map (
-      I0 => sim_data(31),
-      I1 => sim_wr,
-      I2 => sim_count(0),
-      I3 => sim_curr_data(95),
-      I4 => sim_count(1),
-      O => p_0_in1_in(95)
-    );
-\deci_low.sim_curr_data[96]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(0),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(96),
-      I4 => sim_count(0),
-      O => p_0_in1_in(96)
-    );
-\deci_low.sim_curr_data[97]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(1),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(97),
-      I4 => sim_count(0),
-      O => p_0_in1_in(97)
-    );
-\deci_low.sim_curr_data[98]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(2),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(98),
-      I4 => sim_count(0),
-      O => p_0_in1_in(98)
-    );
-\deci_low.sim_curr_data[99]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8C80CF00"
-    )
-        port map (
-      I0 => sim_data(3),
-      I1 => sim_wr,
-      I2 => sim_count(1),
-      I3 => sim_curr_data(99),
-      I4 => sim_count(0),
-      O => p_0_in1_in(99)
-    );
-\deci_low.sim_curr_data[9]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEFF1000"
-    )
-        port map (
-      I0 => sim_count(0),
-      I1 => sim_count(1),
-      I2 => sim_data(9),
-      I3 => sim_wr,
-      I4 => sim_curr_data(9),
-      O => p_0_in1_in(9)
+      O => sim_curr_data(95)
     );
 \deci_low.sim_curr_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(0),
-      Q => sim_curr_data(0),
+      CE => sim_curr_data(31),
+      D => sim_data(0),
+      Q => \deci_low.sim_curr_data_reg_n_0_[0]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[100]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(100),
-      Q => sim_curr_data(100),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(4),
+      Q => \deci_low.sim_curr_data_reg_n_0_[100]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[101]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(101),
-      Q => sim_curr_data(101),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(5),
+      Q => \deci_low.sim_curr_data_reg_n_0_[101]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[102]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(102),
-      Q => sim_curr_data(102),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(6),
+      Q => \deci_low.sim_curr_data_reg_n_0_[102]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[103]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(103),
-      Q => sim_curr_data(103),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(7),
+      Q => \deci_low.sim_curr_data_reg_n_0_[103]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[104]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(104),
-      Q => sim_curr_data(104),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(8),
+      Q => \deci_low.sim_curr_data_reg_n_0_[104]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[105]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(105),
-      Q => sim_curr_data(105),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(9),
+      Q => \deci_low.sim_curr_data_reg_n_0_[105]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[106]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(106),
-      Q => sim_curr_data(106),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(10),
+      Q => \deci_low.sim_curr_data_reg_n_0_[106]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[107]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(107),
-      Q => sim_curr_data(107),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(11),
+      Q => \deci_low.sim_curr_data_reg_n_0_[107]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[108]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(108),
-      Q => sim_curr_data(108),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(12),
+      Q => \deci_low.sim_curr_data_reg_n_0_[108]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[109]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(109),
-      Q => sim_curr_data(109),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(13),
+      Q => \deci_low.sim_curr_data_reg_n_0_[109]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(10),
-      Q => sim_curr_data(10),
+      CE => sim_curr_data(31),
+      D => sim_data(10),
+      Q => \deci_low.sim_curr_data_reg_n_0_[10]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[110]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(110),
-      Q => sim_curr_data(110),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(14),
+      Q => \deci_low.sim_curr_data_reg_n_0_[110]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[111]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(111),
-      Q => sim_curr_data(111),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(15),
+      Q => \deci_low.sim_curr_data_reg_n_0_[111]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[112]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(112),
-      Q => sim_curr_data(112),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(16),
+      Q => \deci_low.sim_curr_data_reg_n_0_[112]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[113]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(113),
-      Q => sim_curr_data(113),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(17),
+      Q => \deci_low.sim_curr_data_reg_n_0_[113]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[114]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(114),
-      Q => sim_curr_data(114),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(18),
+      Q => \deci_low.sim_curr_data_reg_n_0_[114]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[115]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(115),
-      Q => sim_curr_data(115),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(19),
+      Q => \deci_low.sim_curr_data_reg_n_0_[115]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[116]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(116),
-      Q => sim_curr_data(116),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(20),
+      Q => \deci_low.sim_curr_data_reg_n_0_[116]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[117]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(117),
-      Q => sim_curr_data(117),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(21),
+      Q => \deci_low.sim_curr_data_reg_n_0_[117]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[118]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(118),
-      Q => sim_curr_data(118),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(22),
+      Q => \deci_low.sim_curr_data_reg_n_0_[118]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[119]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(119),
-      Q => sim_curr_data(119),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(23),
+      Q => \deci_low.sim_curr_data_reg_n_0_[119]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(11),
-      Q => sim_curr_data(11),
+      CE => sim_curr_data(31),
+      D => sim_data(11),
+      Q => \deci_low.sim_curr_data_reg_n_0_[11]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[120]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(120),
-      Q => sim_curr_data(120),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(24),
+      Q => \deci_low.sim_curr_data_reg_n_0_[120]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[121]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(121),
-      Q => sim_curr_data(121),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(25),
+      Q => \deci_low.sim_curr_data_reg_n_0_[121]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[122]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(122),
-      Q => sim_curr_data(122),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(26),
+      Q => \deci_low.sim_curr_data_reg_n_0_[122]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[123]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(123),
-      Q => sim_curr_data(123),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(27),
+      Q => \deci_low.sim_curr_data_reg_n_0_[123]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[124]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(124),
-      Q => sim_curr_data(124),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(28),
+      Q => \deci_low.sim_curr_data_reg_n_0_[124]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[125]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(125),
-      Q => sim_curr_data(125),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(29),
+      Q => \deci_low.sim_curr_data_reg_n_0_[125]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[126]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(126),
-      Q => sim_curr_data(126),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(30),
+      Q => \deci_low.sim_curr_data_reg_n_0_[126]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[127]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(127),
-      Q => sim_curr_data(127),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(31),
+      Q => \deci_low.sim_curr_data_reg_n_0_[127]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(12),
-      Q => sim_curr_data(12),
+      CE => sim_curr_data(31),
+      D => sim_data(12),
+      Q => \deci_low.sim_curr_data_reg_n_0_[12]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(13),
-      Q => sim_curr_data(13),
+      CE => sim_curr_data(31),
+      D => sim_data(13),
+      Q => \deci_low.sim_curr_data_reg_n_0_[13]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(14),
-      Q => sim_curr_data(14),
+      CE => sim_curr_data(31),
+      D => sim_data(14),
+      Q => \deci_low.sim_curr_data_reg_n_0_[14]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(15),
-      Q => sim_curr_data(15),
+      CE => sim_curr_data(31),
+      D => sim_data(15),
+      Q => \deci_low.sim_curr_data_reg_n_0_[15]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(16),
-      Q => sim_curr_data(16),
+      CE => sim_curr_data(31),
+      D => sim_data(16),
+      Q => \deci_low.sim_curr_data_reg_n_0_[16]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(17),
-      Q => sim_curr_data(17),
+      CE => sim_curr_data(31),
+      D => sim_data(17),
+      Q => \deci_low.sim_curr_data_reg_n_0_[17]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(18),
-      Q => sim_curr_data(18),
+      CE => sim_curr_data(31),
+      D => sim_data(18),
+      Q => \deci_low.sim_curr_data_reg_n_0_[18]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(19),
-      Q => sim_curr_data(19),
+      CE => sim_curr_data(31),
+      D => sim_data(19),
+      Q => \deci_low.sim_curr_data_reg_n_0_[19]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(1),
-      Q => sim_curr_data(1),
+      CE => sim_curr_data(31),
+      D => sim_data(1),
+      Q => \deci_low.sim_curr_data_reg_n_0_[1]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(20),
-      Q => sim_curr_data(20),
+      CE => sim_curr_data(31),
+      D => sim_data(20),
+      Q => \deci_low.sim_curr_data_reg_n_0_[20]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(21),
-      Q => sim_curr_data(21),
+      CE => sim_curr_data(31),
+      D => sim_data(21),
+      Q => \deci_low.sim_curr_data_reg_n_0_[21]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(22),
-      Q => sim_curr_data(22),
+      CE => sim_curr_data(31),
+      D => sim_data(22),
+      Q => \deci_low.sim_curr_data_reg_n_0_[22]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(23),
-      Q => sim_curr_data(23),
+      CE => sim_curr_data(31),
+      D => sim_data(23),
+      Q => \deci_low.sim_curr_data_reg_n_0_[23]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(24),
-      Q => sim_curr_data(24),
+      CE => sim_curr_data(31),
+      D => sim_data(24),
+      Q => \deci_low.sim_curr_data_reg_n_0_[24]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(25),
-      Q => sim_curr_data(25),
+      CE => sim_curr_data(31),
+      D => sim_data(25),
+      Q => \deci_low.sim_curr_data_reg_n_0_[25]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(26),
-      Q => sim_curr_data(26),
+      CE => sim_curr_data(31),
+      D => sim_data(26),
+      Q => \deci_low.sim_curr_data_reg_n_0_[26]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(27),
-      Q => sim_curr_data(27),
+      CE => sim_curr_data(31),
+      D => sim_data(27),
+      Q => \deci_low.sim_curr_data_reg_n_0_[27]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(28),
-      Q => sim_curr_data(28),
+      CE => sim_curr_data(31),
+      D => sim_data(28),
+      Q => \deci_low.sim_curr_data_reg_n_0_[28]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(29),
-      Q => sim_curr_data(29),
+      CE => sim_curr_data(31),
+      D => sim_data(29),
+      Q => \deci_low.sim_curr_data_reg_n_0_[29]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(2),
-      Q => sim_curr_data(2),
+      CE => sim_curr_data(31),
+      D => sim_data(2),
+      Q => \deci_low.sim_curr_data_reg_n_0_[2]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(30),
-      Q => sim_curr_data(30),
+      CE => sim_curr_data(31),
+      D => sim_data(30),
+      Q => \deci_low.sim_curr_data_reg_n_0_[30]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(31),
-      Q => sim_curr_data(31),
+      CE => sim_curr_data(31),
+      D => sim_data(31),
+      Q => \deci_low.sim_curr_data_reg_n_0_[31]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(32),
-      Q => sim_curr_data(32),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(0),
+      Q => \deci_low.sim_curr_data_reg_n_0_[32]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(33),
-      Q => sim_curr_data(33),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(1),
+      Q => \deci_low.sim_curr_data_reg_n_0_[33]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(34),
-      Q => sim_curr_data(34),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(2),
+      Q => \deci_low.sim_curr_data_reg_n_0_[34]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(35),
-      Q => sim_curr_data(35),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(3),
+      Q => \deci_low.sim_curr_data_reg_n_0_[35]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(36),
-      Q => sim_curr_data(36),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(4),
+      Q => \deci_low.sim_curr_data_reg_n_0_[36]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(37),
-      Q => sim_curr_data(37),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(5),
+      Q => \deci_low.sim_curr_data_reg_n_0_[37]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(38),
-      Q => sim_curr_data(38),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(6),
+      Q => \deci_low.sim_curr_data_reg_n_0_[38]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(39),
-      Q => sim_curr_data(39),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(7),
+      Q => \deci_low.sim_curr_data_reg_n_0_[39]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(3),
-      Q => sim_curr_data(3),
+      CE => sim_curr_data(31),
+      D => sim_data(3),
+      Q => \deci_low.sim_curr_data_reg_n_0_[3]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(40),
-      Q => sim_curr_data(40),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(8),
+      Q => \deci_low.sim_curr_data_reg_n_0_[40]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(41),
-      Q => sim_curr_data(41),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(9),
+      Q => \deci_low.sim_curr_data_reg_n_0_[41]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(42),
-      Q => sim_curr_data(42),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(10),
+      Q => \deci_low.sim_curr_data_reg_n_0_[42]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(43),
-      Q => sim_curr_data(43),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(11),
+      Q => \deci_low.sim_curr_data_reg_n_0_[43]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(44),
-      Q => sim_curr_data(44),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(12),
+      Q => \deci_low.sim_curr_data_reg_n_0_[44]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(45),
-      Q => sim_curr_data(45),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(13),
+      Q => \deci_low.sim_curr_data_reg_n_0_[45]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(46),
-      Q => sim_curr_data(46),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(14),
+      Q => \deci_low.sim_curr_data_reg_n_0_[46]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(47),
-      Q => sim_curr_data(47),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(15),
+      Q => \deci_low.sim_curr_data_reg_n_0_[47]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(48),
-      Q => sim_curr_data(48),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(16),
+      Q => \deci_low.sim_curr_data_reg_n_0_[48]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(49),
-      Q => sim_curr_data(49),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(17),
+      Q => \deci_low.sim_curr_data_reg_n_0_[49]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(4),
-      Q => sim_curr_data(4),
+      CE => sim_curr_data(31),
+      D => sim_data(4),
+      Q => \deci_low.sim_curr_data_reg_n_0_[4]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(50),
-      Q => sim_curr_data(50),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(18),
+      Q => \deci_low.sim_curr_data_reg_n_0_[50]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(51),
-      Q => sim_curr_data(51),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(19),
+      Q => \deci_low.sim_curr_data_reg_n_0_[51]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(52),
-      Q => sim_curr_data(52),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(20),
+      Q => \deci_low.sim_curr_data_reg_n_0_[52]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(53),
-      Q => sim_curr_data(53),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(21),
+      Q => \deci_low.sim_curr_data_reg_n_0_[53]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(54),
-      Q => sim_curr_data(54),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(22),
+      Q => \deci_low.sim_curr_data_reg_n_0_[54]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(55),
-      Q => sim_curr_data(55),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(23),
+      Q => \deci_low.sim_curr_data_reg_n_0_[55]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(56),
-      Q => sim_curr_data(56),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(24),
+      Q => \deci_low.sim_curr_data_reg_n_0_[56]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(57),
-      Q => sim_curr_data(57),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(25),
+      Q => \deci_low.sim_curr_data_reg_n_0_[57]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(58),
-      Q => sim_curr_data(58),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(26),
+      Q => \deci_low.sim_curr_data_reg_n_0_[58]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(59),
-      Q => sim_curr_data(59),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(27),
+      Q => \deci_low.sim_curr_data_reg_n_0_[59]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(5),
-      Q => sim_curr_data(5),
+      CE => sim_curr_data(31),
+      D => sim_data(5),
+      Q => \deci_low.sim_curr_data_reg_n_0_[5]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(60),
-      Q => sim_curr_data(60),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(28),
+      Q => \deci_low.sim_curr_data_reg_n_0_[60]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(61),
-      Q => sim_curr_data(61),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(29),
+      Q => \deci_low.sim_curr_data_reg_n_0_[61]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(62),
-      Q => sim_curr_data(62),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(30),
+      Q => \deci_low.sim_curr_data_reg_n_0_[62]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(63),
-      Q => sim_curr_data(63),
-      R => '0'
+      CE => sim_curr_data(63),
+      D => sim_data(31),
+      Q => \deci_low.sim_curr_data_reg_n_0_[63]\,
+      R => \deci_low.sim_curr_data[63]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(64),
-      Q => sim_curr_data(64),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(0),
+      Q => \deci_low.sim_curr_data_reg_n_0_[64]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(65),
-      Q => sim_curr_data(65),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(1),
+      Q => \deci_low.sim_curr_data_reg_n_0_[65]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(66),
-      Q => sim_curr_data(66),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(2),
+      Q => \deci_low.sim_curr_data_reg_n_0_[66]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(67),
-      Q => sim_curr_data(67),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(3),
+      Q => \deci_low.sim_curr_data_reg_n_0_[67]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(68),
-      Q => sim_curr_data(68),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(4),
+      Q => \deci_low.sim_curr_data_reg_n_0_[68]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(69),
-      Q => sim_curr_data(69),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(5),
+      Q => \deci_low.sim_curr_data_reg_n_0_[69]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(6),
-      Q => sim_curr_data(6),
+      CE => sim_curr_data(31),
+      D => sim_data(6),
+      Q => \deci_low.sim_curr_data_reg_n_0_[6]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(70),
-      Q => sim_curr_data(70),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(6),
+      Q => \deci_low.sim_curr_data_reg_n_0_[70]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(71),
-      Q => sim_curr_data(71),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(7),
+      Q => \deci_low.sim_curr_data_reg_n_0_[71]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(72),
-      Q => sim_curr_data(72),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(8),
+      Q => \deci_low.sim_curr_data_reg_n_0_[72]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(73),
-      Q => sim_curr_data(73),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(9),
+      Q => \deci_low.sim_curr_data_reg_n_0_[73]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(74),
-      Q => sim_curr_data(74),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(10),
+      Q => \deci_low.sim_curr_data_reg_n_0_[74]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(75),
-      Q => sim_curr_data(75),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(11),
+      Q => \deci_low.sim_curr_data_reg_n_0_[75]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(76),
-      Q => sim_curr_data(76),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(12),
+      Q => \deci_low.sim_curr_data_reg_n_0_[76]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(77),
-      Q => sim_curr_data(77),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(13),
+      Q => \deci_low.sim_curr_data_reg_n_0_[77]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(78),
-      Q => sim_curr_data(78),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(14),
+      Q => \deci_low.sim_curr_data_reg_n_0_[78]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(79),
-      Q => sim_curr_data(79),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(15),
+      Q => \deci_low.sim_curr_data_reg_n_0_[79]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(7),
-      Q => sim_curr_data(7),
+      CE => sim_curr_data(31),
+      D => sim_data(7),
+      Q => \deci_low.sim_curr_data_reg_n_0_[7]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(80),
-      Q => sim_curr_data(80),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(16),
+      Q => \deci_low.sim_curr_data_reg_n_0_[80]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(81),
-      Q => sim_curr_data(81),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(17),
+      Q => \deci_low.sim_curr_data_reg_n_0_[81]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(82),
-      Q => sim_curr_data(82),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(18),
+      Q => \deci_low.sim_curr_data_reg_n_0_[82]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(83),
-      Q => sim_curr_data(83),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(19),
+      Q => \deci_low.sim_curr_data_reg_n_0_[83]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(84),
-      Q => sim_curr_data(84),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(20),
+      Q => \deci_low.sim_curr_data_reg_n_0_[84]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(85),
-      Q => sim_curr_data(85),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(21),
+      Q => \deci_low.sim_curr_data_reg_n_0_[85]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(86),
-      Q => sim_curr_data(86),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(22),
+      Q => \deci_low.sim_curr_data_reg_n_0_[86]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(87),
-      Q => sim_curr_data(87),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(23),
+      Q => \deci_low.sim_curr_data_reg_n_0_[87]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(88),
-      Q => sim_curr_data(88),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(24),
+      Q => \deci_low.sim_curr_data_reg_n_0_[88]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(89),
-      Q => sim_curr_data(89),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(25),
+      Q => \deci_low.sim_curr_data_reg_n_0_[89]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(8),
-      Q => sim_curr_data(8),
+      CE => sim_curr_data(31),
+      D => sim_data(8),
+      Q => \deci_low.sim_curr_data_reg_n_0_[8]\,
       R => '0'
     );
 \deci_low.sim_curr_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(90),
-      Q => sim_curr_data(90),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(26),
+      Q => \deci_low.sim_curr_data_reg_n_0_[90]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(91),
-      Q => sim_curr_data(91),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(27),
+      Q => \deci_low.sim_curr_data_reg_n_0_[91]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(92),
-      Q => sim_curr_data(92),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(28),
+      Q => \deci_low.sim_curr_data_reg_n_0_[92]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(93),
-      Q => sim_curr_data(93),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(29),
+      Q => \deci_low.sim_curr_data_reg_n_0_[93]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(94),
-      Q => sim_curr_data(94),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(30),
+      Q => \deci_low.sim_curr_data_reg_n_0_[94]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(95),
-      Q => sim_curr_data(95),
-      R => '0'
+      CE => sim_curr_data(95),
+      D => sim_data(31),
+      Q => \deci_low.sim_curr_data_reg_n_0_[95]\,
+      R => \deci_low.sim_curr_data[95]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[96]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(96),
-      Q => sim_curr_data(96),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(0),
+      Q => \deci_low.sim_curr_data_reg_n_0_[96]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[97]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(97),
-      Q => sim_curr_data(97),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(1),
+      Q => \deci_low.sim_curr_data_reg_n_0_[97]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[98]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(98),
-      Q => sim_curr_data(98),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(2),
+      Q => \deci_low.sim_curr_data_reg_n_0_[98]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[99]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(99),
-      Q => sim_curr_data(99),
-      R => '0'
+      CE => sim_curr_data(127),
+      D => sim_data(3),
+      Q => \deci_low.sim_curr_data_reg_n_0_[99]\,
+      R => \deci_low.sim_curr_data[127]_i_1_n_0\
     );
 \deci_low.sim_curr_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_resetn,
-      D => p_0_in1_in(9),
-      Q => sim_curr_data(9),
+      CE => sim_curr_data(31),
+      D => sim_data(9),
+      Q => \deci_low.sim_curr_data_reg_n_0_[9]\,
       R => '0'
     );
 \deci_low.sim_curr_wr_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"C440"
+      INIT => X"D400"
     )
         port map (
       I0 => sim_wr,
-      I1 => sim_resetn,
-      I2 => sim_count(1),
-      I3 => sim_count(0),
+      I1 => \sim_count__0\(1),
+      I2 => \sim_count__0\(0),
+      I3 => sim_resetn,
       O => \deci_low.sim_curr_wr_i_1_n_0\
     );
 \deci_low.sim_curr_wr_reg\: unisim.vcomponents.FDRE
@@ -17109,1057 +15240,1058 @@ begin
       C => sim_clk,
       CE => '1',
       D => \deci_low.sim_curr_wr_i_1_n_0\,
-      Q => sim_curr_wr,
+      Q => \deci_low.sim_curr_wr_reg_n_0\,
       R => '0'
     );
 \deci_low.sim_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(0),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[0]\,
       Q => sim_in_data(0),
       R => '0'
     );
 \deci_low.sim_in_data_reg[100]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(100),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[100]\,
       Q => sim_in_data(100),
       R => '0'
     );
 \deci_low.sim_in_data_reg[101]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(101),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[101]\,
       Q => sim_in_data(101),
       R => '0'
     );
 \deci_low.sim_in_data_reg[102]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(102),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[102]\,
       Q => sim_in_data(102),
       R => '0'
     );
 \deci_low.sim_in_data_reg[103]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(103),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[103]\,
       Q => sim_in_data(103),
       R => '0'
     );
 \deci_low.sim_in_data_reg[104]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(104),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[104]\,
       Q => sim_in_data(104),
       R => '0'
     );
 \deci_low.sim_in_data_reg[105]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(105),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[105]\,
       Q => sim_in_data(105),
       R => '0'
     );
 \deci_low.sim_in_data_reg[106]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(106),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[106]\,
       Q => sim_in_data(106),
       R => '0'
     );
 \deci_low.sim_in_data_reg[107]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(107),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[107]\,
       Q => sim_in_data(107),
       R => '0'
     );
 \deci_low.sim_in_data_reg[108]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(108),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[108]\,
       Q => sim_in_data(108),
       R => '0'
     );
 \deci_low.sim_in_data_reg[109]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(109),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[109]\,
       Q => sim_in_data(109),
       R => '0'
     );
 \deci_low.sim_in_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(10),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[10]\,
       Q => sim_in_data(10),
       R => '0'
     );
 \deci_low.sim_in_data_reg[110]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(110),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[110]\,
       Q => sim_in_data(110),
       R => '0'
     );
 \deci_low.sim_in_data_reg[111]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(111),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[111]\,
       Q => sim_in_data(111),
       R => '0'
     );
 \deci_low.sim_in_data_reg[112]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(112),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[112]\,
       Q => sim_in_data(112),
       R => '0'
     );
 \deci_low.sim_in_data_reg[113]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(113),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[113]\,
       Q => sim_in_data(113),
       R => '0'
     );
 \deci_low.sim_in_data_reg[114]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(114),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[114]\,
       Q => sim_in_data(114),
       R => '0'
     );
 \deci_low.sim_in_data_reg[115]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(115),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[115]\,
       Q => sim_in_data(115),
       R => '0'
     );
 \deci_low.sim_in_data_reg[116]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(116),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[116]\,
       Q => sim_in_data(116),
       R => '0'
     );
 \deci_low.sim_in_data_reg[117]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(117),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[117]\,
       Q => sim_in_data(117),
       R => '0'
     );
 \deci_low.sim_in_data_reg[118]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(118),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[118]\,
       Q => sim_in_data(118),
       R => '0'
     );
 \deci_low.sim_in_data_reg[119]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(119),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[119]\,
       Q => sim_in_data(119),
       R => '0'
     );
 \deci_low.sim_in_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(11),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[11]\,
       Q => sim_in_data(11),
       R => '0'
     );
 \deci_low.sim_in_data_reg[120]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(120),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[120]\,
       Q => sim_in_data(120),
       R => '0'
     );
 \deci_low.sim_in_data_reg[121]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(121),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[121]\,
       Q => sim_in_data(121),
       R => '0'
     );
 \deci_low.sim_in_data_reg[122]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(122),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[122]\,
       Q => sim_in_data(122),
       R => '0'
     );
 \deci_low.sim_in_data_reg[123]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(123),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[123]\,
       Q => sim_in_data(123),
       R => '0'
     );
 \deci_low.sim_in_data_reg[124]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(124),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[124]\,
       Q => sim_in_data(124),
       R => '0'
     );
 \deci_low.sim_in_data_reg[125]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(125),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[125]\,
       Q => sim_in_data(125),
       R => '0'
     );
 \deci_low.sim_in_data_reg[126]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(126),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[126]\,
       Q => sim_in_data(126),
       R => '0'
     );
 \deci_low.sim_in_data_reg[127]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(127),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[127]\,
       Q => sim_in_data(127),
       R => '0'
     );
 \deci_low.sim_in_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(12),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[12]\,
       Q => sim_in_data(12),
       R => '0'
     );
 \deci_low.sim_in_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(13),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[13]\,
       Q => sim_in_data(13),
       R => '0'
     );
 \deci_low.sim_in_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(14),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[14]\,
       Q => sim_in_data(14),
       R => '0'
     );
 \deci_low.sim_in_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(15),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[15]\,
       Q => sim_in_data(15),
       R => '0'
     );
 \deci_low.sim_in_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(16),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[16]\,
       Q => sim_in_data(16),
       R => '0'
     );
 \deci_low.sim_in_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(17),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[17]\,
       Q => sim_in_data(17),
       R => '0'
     );
 \deci_low.sim_in_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(18),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[18]\,
       Q => sim_in_data(18),
       R => '0'
     );
 \deci_low.sim_in_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(19),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[19]\,
       Q => sim_in_data(19),
       R => '0'
     );
 \deci_low.sim_in_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(1),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[1]\,
       Q => sim_in_data(1),
       R => '0'
     );
 \deci_low.sim_in_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(20),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[20]\,
       Q => sim_in_data(20),
       R => '0'
     );
 \deci_low.sim_in_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(21),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[21]\,
       Q => sim_in_data(21),
       R => '0'
     );
 \deci_low.sim_in_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(22),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[22]\,
       Q => sim_in_data(22),
       R => '0'
     );
 \deci_low.sim_in_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(23),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[23]\,
       Q => sim_in_data(23),
       R => '0'
     );
 \deci_low.sim_in_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(24),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[24]\,
       Q => sim_in_data(24),
       R => '0'
     );
 \deci_low.sim_in_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(25),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[25]\,
       Q => sim_in_data(25),
       R => '0'
     );
 \deci_low.sim_in_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(26),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[26]\,
       Q => sim_in_data(26),
       R => '0'
     );
 \deci_low.sim_in_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(27),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[27]\,
       Q => sim_in_data(27),
       R => '0'
     );
 \deci_low.sim_in_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(28),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[28]\,
       Q => sim_in_data(28),
       R => '0'
     );
 \deci_low.sim_in_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(29),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[29]\,
       Q => sim_in_data(29),
       R => '0'
     );
 \deci_low.sim_in_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(2),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[2]\,
       Q => sim_in_data(2),
       R => '0'
     );
 \deci_low.sim_in_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(30),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[30]\,
       Q => sim_in_data(30),
       R => '0'
     );
 \deci_low.sim_in_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(31),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[31]\,
       Q => sim_in_data(31),
       R => '0'
     );
 \deci_low.sim_in_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(32),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[32]\,
       Q => sim_in_data(32),
       R => '0'
     );
 \deci_low.sim_in_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(33),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[33]\,
       Q => sim_in_data(33),
       R => '0'
     );
 \deci_low.sim_in_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(34),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[34]\,
       Q => sim_in_data(34),
       R => '0'
     );
 \deci_low.sim_in_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(35),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[35]\,
       Q => sim_in_data(35),
       R => '0'
     );
 \deci_low.sim_in_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(36),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[36]\,
       Q => sim_in_data(36),
       R => '0'
     );
 \deci_low.sim_in_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(37),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[37]\,
       Q => sim_in_data(37),
       R => '0'
     );
 \deci_low.sim_in_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(38),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[38]\,
       Q => sim_in_data(38),
       R => '0'
     );
 \deci_low.sim_in_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(39),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[39]\,
       Q => sim_in_data(39),
       R => '0'
     );
 \deci_low.sim_in_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(3),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[3]\,
       Q => sim_in_data(3),
       R => '0'
     );
 \deci_low.sim_in_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(40),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[40]\,
       Q => sim_in_data(40),
       R => '0'
     );
 \deci_low.sim_in_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(41),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[41]\,
       Q => sim_in_data(41),
       R => '0'
     );
 \deci_low.sim_in_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(42),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[42]\,
       Q => sim_in_data(42),
       R => '0'
     );
 \deci_low.sim_in_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(43),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[43]\,
       Q => sim_in_data(43),
       R => '0'
     );
 \deci_low.sim_in_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(44),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[44]\,
       Q => sim_in_data(44),
       R => '0'
     );
 \deci_low.sim_in_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(45),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[45]\,
       Q => sim_in_data(45),
       R => '0'
     );
 \deci_low.sim_in_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(46),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[46]\,
       Q => sim_in_data(46),
       R => '0'
     );
 \deci_low.sim_in_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(47),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[47]\,
       Q => sim_in_data(47),
       R => '0'
     );
 \deci_low.sim_in_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(48),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[48]\,
       Q => sim_in_data(48),
       R => '0'
     );
 \deci_low.sim_in_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(49),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[49]\,
       Q => sim_in_data(49),
       R => '0'
     );
 \deci_low.sim_in_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(4),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[4]\,
       Q => sim_in_data(4),
       R => '0'
     );
 \deci_low.sim_in_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(50),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[50]\,
       Q => sim_in_data(50),
       R => '0'
     );
 \deci_low.sim_in_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(51),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[51]\,
       Q => sim_in_data(51),
       R => '0'
     );
 \deci_low.sim_in_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(52),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[52]\,
       Q => sim_in_data(52),
       R => '0'
     );
 \deci_low.sim_in_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(53),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[53]\,
       Q => sim_in_data(53),
       R => '0'
     );
 \deci_low.sim_in_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(54),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[54]\,
       Q => sim_in_data(54),
       R => '0'
     );
 \deci_low.sim_in_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(55),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[55]\,
       Q => sim_in_data(55),
       R => '0'
     );
 \deci_low.sim_in_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(56),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[56]\,
       Q => sim_in_data(56),
       R => '0'
     );
 \deci_low.sim_in_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(57),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[57]\,
       Q => sim_in_data(57),
       R => '0'
     );
 \deci_low.sim_in_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(58),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[58]\,
       Q => sim_in_data(58),
       R => '0'
     );
 \deci_low.sim_in_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(59),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[59]\,
       Q => sim_in_data(59),
       R => '0'
     );
 \deci_low.sim_in_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(5),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[5]\,
       Q => sim_in_data(5),
       R => '0'
     );
 \deci_low.sim_in_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(60),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[60]\,
       Q => sim_in_data(60),
       R => '0'
     );
 \deci_low.sim_in_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(61),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[61]\,
       Q => sim_in_data(61),
       R => '0'
     );
 \deci_low.sim_in_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(62),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[62]\,
       Q => sim_in_data(62),
       R => '0'
     );
 \deci_low.sim_in_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(63),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[63]\,
       Q => sim_in_data(63),
       R => '0'
     );
 \deci_low.sim_in_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(64),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[64]\,
       Q => sim_in_data(64),
       R => '0'
     );
 \deci_low.sim_in_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(65),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[65]\,
       Q => sim_in_data(65),
       R => '0'
     );
 \deci_low.sim_in_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(66),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[66]\,
       Q => sim_in_data(66),
       R => '0'
     );
 \deci_low.sim_in_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(67),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[67]\,
       Q => sim_in_data(67),
       R => '0'
     );
 \deci_low.sim_in_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(68),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[68]\,
       Q => sim_in_data(68),
       R => '0'
     );
 \deci_low.sim_in_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(69),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[69]\,
       Q => sim_in_data(69),
       R => '0'
     );
 \deci_low.sim_in_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(6),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[6]\,
       Q => sim_in_data(6),
       R => '0'
     );
 \deci_low.sim_in_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(70),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[70]\,
       Q => sim_in_data(70),
       R => '0'
     );
 \deci_low.sim_in_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(71),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[71]\,
       Q => sim_in_data(71),
       R => '0'
     );
 \deci_low.sim_in_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(72),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[72]\,
       Q => sim_in_data(72),
       R => '0'
     );
 \deci_low.sim_in_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(73),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[73]\,
       Q => sim_in_data(73),
       R => '0'
     );
 \deci_low.sim_in_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(74),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[74]\,
       Q => sim_in_data(74),
       R => '0'
     );
 \deci_low.sim_in_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(75),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[75]\,
       Q => sim_in_data(75),
       R => '0'
     );
 \deci_low.sim_in_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(76),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[76]\,
       Q => sim_in_data(76),
       R => '0'
     );
 \deci_low.sim_in_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(77),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[77]\,
       Q => sim_in_data(77),
       R => '0'
     );
 \deci_low.sim_in_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(78),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[78]\,
       Q => sim_in_data(78),
       R => '0'
     );
 \deci_low.sim_in_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(79),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[79]\,
       Q => sim_in_data(79),
       R => '0'
     );
 \deci_low.sim_in_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(7),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[7]\,
       Q => sim_in_data(7),
       R => '0'
     );
 \deci_low.sim_in_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(80),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[80]\,
       Q => sim_in_data(80),
       R => '0'
     );
 \deci_low.sim_in_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(81),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[81]\,
       Q => sim_in_data(81),
       R => '0'
     );
 \deci_low.sim_in_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(82),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[82]\,
       Q => sim_in_data(82),
       R => '0'
     );
 \deci_low.sim_in_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(83),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[83]\,
       Q => sim_in_data(83),
       R => '0'
     );
 \deci_low.sim_in_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(84),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[84]\,
       Q => sim_in_data(84),
       R => '0'
     );
 \deci_low.sim_in_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(85),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[85]\,
       Q => sim_in_data(85),
       R => '0'
     );
 \deci_low.sim_in_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(86),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[86]\,
       Q => sim_in_data(86),
       R => '0'
     );
 \deci_low.sim_in_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(87),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[87]\,
       Q => sim_in_data(87),
       R => '0'
     );
 \deci_low.sim_in_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(88),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[88]\,
       Q => sim_in_data(88),
       R => '0'
     );
 \deci_low.sim_in_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(89),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[89]\,
       Q => sim_in_data(89),
       R => '0'
     );
 \deci_low.sim_in_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(8),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[8]\,
       Q => sim_in_data(8),
       R => '0'
     );
 \deci_low.sim_in_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(90),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[90]\,
       Q => sim_in_data(90),
       R => '0'
     );
 \deci_low.sim_in_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(91),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[91]\,
       Q => sim_in_data(91),
       R => '0'
     );
 \deci_low.sim_in_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(92),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[92]\,
       Q => sim_in_data(92),
       R => '0'
     );
 \deci_low.sim_in_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(93),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[93]\,
       Q => sim_in_data(93),
       R => '0'
     );
 \deci_low.sim_in_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(94),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[94]\,
       Q => sim_in_data(94),
       R => '0'
     );
 \deci_low.sim_in_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(95),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[95]\,
       Q => sim_in_data(95),
       R => '0'
     );
 \deci_low.sim_in_data_reg[96]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(96),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[96]\,
       Q => sim_in_data(96),
       R => '0'
     );
 \deci_low.sim_in_data_reg[97]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(97),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[97]\,
       Q => sim_in_data(97),
       R => '0'
     );
 \deci_low.sim_in_data_reg[98]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(98),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[98]\,
       Q => sim_in_data(98),
       R => '0'
     );
 \deci_low.sim_in_data_reg[99]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(99),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[99]\,
       Q => sim_in_data(99),
       R => '0'
     );
 \deci_low.sim_in_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
-      CE => sim_curr_wr,
-      D => sim_curr_data(9),
+      CE => \deci_low.sim_curr_wr_reg_n_0\,
+      D => \deci_low.sim_curr_data_reg_n_0_[9]\,
       Q => sim_in_data(9),
       R => '0'
     );
-\deci_low.sim_rd_i_1\: unisim.vcomponents.LUT3
+\deci_low.sim_rd_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"04"
+      INIT => X"0002"
     )
         port map (
-      I0 => \deci_low.mux_active_i_2_n_0\,
-      I1 => \^sim_active\,
-      I2 => adc_active,
+      I0 => sim_rd,
+      I1 => sim_empty_W,
+      I2 => sim_empty_E,
+      I3 => sim_empty_N,
       O => \deci_low.sim_rd_i_1_n_0\
     );
-\deci_low.sim_rd_reg\: unisim.vcomponents.FDRE
+\deci_low.sim_rd_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
       D => \deci_low.sim_rd_i_1_n_0\,
       Q => sim_rd,
-      R => '0'
+      S => sim_start
     );
 \deci_low.sim_wr_E_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => sim_curr_wr,
+      I0 => \deci_low.sim_curr_wr_reg_n_0\,
       O => \deci_low.sim_wr_E_i_1_n_0\
     );
 \deci_low.sim_wr_E_i_2\: unisim.vcomponents.LUT2
@@ -18213,24 +16345,6 @@ begin
       Q => sim_wr_W,
       R => \deci_low.sim_wr_E_i_1_n_0\
     );
-\deci_low.stop_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"08"
-    )
-        port map (
-      I0 => \deci_low.mux_active_i_2_n_0\,
-      I1 => \^sim_active\,
-      I2 => adc_active,
-      O => \deci_low.stop_i_1_n_0\
-    );
-\deci_low.stop_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \deci_low.stop_i_1_n_0\,
-      Q => \^stop\,
-      R => '0'
-    );
 fifo_doa_i: component ps_deci_low_0_0_fifo_doa_low
      port map (
       din(69 downto 0) => doa_in_data(69 downto 0),
@@ -18270,22 +16384,7 @@ fifo_raw_i_i_1: unisim.vcomponents.LUT1
 fifo_sim_E_i: component ps_deci_low_0_0_fifo_sim
      port map (
       din(127 downto 0) => sim_in_data(127 downto 0),
-      dout(127 downto 114) => sim_E7(13 downto 0),
-      dout(113 downto 112) => sim_out_E(113 downto 112),
-      dout(111 downto 98) => sim_E6(13 downto 0),
-      dout(97 downto 96) => sim_out_E(97 downto 96),
-      dout(95 downto 82) => sim_E5(13 downto 0),
-      dout(81 downto 80) => sim_out_E(81 downto 80),
-      dout(79 downto 66) => sim_E4(13 downto 0),
-      dout(65 downto 64) => sim_out_E(65 downto 64),
-      dout(63 downto 50) => sim_E3(13 downto 0),
-      dout(49 downto 48) => sim_out_E(49 downto 48),
-      dout(47 downto 34) => sim_E2(13 downto 0),
-      dout(33 downto 32) => sim_out_E(33 downto 32),
-      dout(31 downto 18) => sim_E1(13 downto 0),
-      dout(17 downto 16) => sim_out_E(17 downto 16),
-      dout(15 downto 2) => sim_E0(13 downto 0),
-      dout(1 downto 0) => sim_out_E(1 downto 0),
+      dout(127 downto 0) => sim_out_E(127 downto 0),
       empty => sim_empty_E,
       full => NLW_fifo_sim_E_i_full_UNCONNECTED,
       rd_clk => clk,
@@ -18299,22 +16398,7 @@ fifo_sim_E_i: component ps_deci_low_0_0_fifo_sim
 fifo_sim_N_i: component ps_deci_low_0_0_fifo_sim
      port map (
       din(127 downto 0) => sim_in_data(127 downto 0),
-      dout(127 downto 114) => sim_N7(13 downto 0),
-      dout(113 downto 112) => sim_out_N(113 downto 112),
-      dout(111 downto 98) => sim_N6(13 downto 0),
-      dout(97 downto 96) => sim_out_N(97 downto 96),
-      dout(95 downto 82) => sim_N5(13 downto 0),
-      dout(81 downto 80) => sim_out_N(81 downto 80),
-      dout(79 downto 66) => sim_N4(13 downto 0),
-      dout(65 downto 64) => sim_out_N(65 downto 64),
-      dout(63 downto 50) => sim_N3(13 downto 0),
-      dout(49 downto 48) => sim_out_N(49 downto 48),
-      dout(47 downto 34) => sim_N2(13 downto 0),
-      dout(33 downto 32) => sim_out_N(33 downto 32),
-      dout(31 downto 18) => sim_N1(13 downto 0),
-      dout(17 downto 16) => sim_out_N(17 downto 16),
-      dout(15 downto 2) => sim_N0(13 downto 0),
-      dout(1 downto 0) => sim_out_N(1 downto 0),
+      dout(127 downto 0) => sim_out_N(127 downto 0),
       empty => sim_empty_N,
       full => NLW_fifo_sim_N_i_full_UNCONNECTED,
       rd_clk => clk,
@@ -18336,22 +16420,7 @@ fifo_sim_N_i_i_1: unisim.vcomponents.LUT1
 fifo_sim_W_i: component ps_deci_low_0_0_fifo_sim_HD1
      port map (
       din(127 downto 0) => sim_in_data(127 downto 0),
-      dout(127 downto 114) => sim_W7(13 downto 0),
-      dout(113 downto 112) => sim_out_W(113 downto 112),
-      dout(111 downto 98) => sim_W6(13 downto 0),
-      dout(97 downto 96) => sim_out_W(97 downto 96),
-      dout(95 downto 82) => sim_W5(13 downto 0),
-      dout(81 downto 80) => sim_out_W(81 downto 80),
-      dout(79 downto 66) => sim_W4(13 downto 0),
-      dout(65 downto 64) => sim_out_W(65 downto 64),
-      dout(63 downto 50) => sim_W3(13 downto 0),
-      dout(49 downto 48) => sim_out_W(49 downto 48),
-      dout(47 downto 34) => sim_W2(13 downto 0),
-      dout(33 downto 32) => sim_out_W(33 downto 32),
-      dout(31 downto 18) => sim_W1(13 downto 0),
-      dout(17 downto 16) => sim_out_W(17 downto 16),
-      dout(15 downto 2) => sim_W0(13 downto 0),
-      dout(1 downto 0) => sim_out_W(1 downto 0),
+      dout(127 downto 0) => sim_out_W(127 downto 0),
       empty => sim_empty_W,
       full => NLW_fifo_sim_W_i_full_UNCONNECTED,
       rd_clk => clk,
@@ -18382,7 +16451,22 @@ fir_N_i: component ps_deci_low_0_0_fir_deci_low
       m_axis_data_tdata(30 downto 17) => dN(13 downto 0),
       m_axis_data_tdata(16 downto 0) => NLW_fir_N_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_N,
-      s_axis_data_tdata(127 downto 0) => mux_N(127 downto 0),
+      s_axis_data_tdata(127 downto 114) => mux_N7(13 downto 0),
+      s_axis_data_tdata(113 downto 112) => mux_N(113 downto 112),
+      s_axis_data_tdata(111 downto 98) => mux_N6(13 downto 0),
+      s_axis_data_tdata(97 downto 96) => mux_N(97 downto 96),
+      s_axis_data_tdata(95 downto 82) => mux_N5(13 downto 0),
+      s_axis_data_tdata(81 downto 80) => mux_N(81 downto 80),
+      s_axis_data_tdata(79 downto 66) => mux_N4(13 downto 0),
+      s_axis_data_tdata(65 downto 64) => mux_N(65 downto 64),
+      s_axis_data_tdata(63 downto 50) => mux_N3(13 downto 0),
+      s_axis_data_tdata(49 downto 48) => mux_N(49 downto 48),
+      s_axis_data_tdata(47 downto 34) => mux_N2(13 downto 0),
+      s_axis_data_tdata(33 downto 32) => mux_N(33 downto 32),
+      s_axis_data_tdata(31 downto 18) => mux_N1(13 downto 0),
+      s_axis_data_tdata(17 downto 16) => mux_N(17 downto 16),
+      s_axis_data_tdata(15 downto 2) => mux_N0(13 downto 0),
+      s_axis_data_tdata(1 downto 0) => mux_N(1 downto 0),
       s_axis_data_tready => NLW_fir_N_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => mux_active
     );
@@ -18430,7 +16514,22 @@ fir_deci_N_i: component ps_deci_low_0_0_fir_raw_deci
       m_axis_data_tdata(30 downto 17) => fir_raw_N(30 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_deci_N_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => valid_raw_N,
-      s_axis_data_tdata(127 downto 0) => mux_N(127 downto 0),
+      s_axis_data_tdata(127 downto 114) => mux_N7(13 downto 0),
+      s_axis_data_tdata(113 downto 112) => mux_N(113 downto 112),
+      s_axis_data_tdata(111 downto 98) => mux_N6(13 downto 0),
+      s_axis_data_tdata(97 downto 96) => mux_N(97 downto 96),
+      s_axis_data_tdata(95 downto 82) => mux_N5(13 downto 0),
+      s_axis_data_tdata(81 downto 80) => mux_N(81 downto 80),
+      s_axis_data_tdata(79 downto 66) => mux_N4(13 downto 0),
+      s_axis_data_tdata(65 downto 64) => mux_N(65 downto 64),
+      s_axis_data_tdata(63 downto 50) => mux_N3(13 downto 0),
+      s_axis_data_tdata(49 downto 48) => mux_N(49 downto 48),
+      s_axis_data_tdata(47 downto 34) => mux_N2(13 downto 0),
+      s_axis_data_tdata(33 downto 32) => mux_N(33 downto 32),
+      s_axis_data_tdata(31 downto 18) => mux_N1(13 downto 0),
+      s_axis_data_tdata(17 downto 16) => mux_N(17 downto 16),
+      s_axis_data_tdata(15 downto 2) => mux_N0(13 downto 0),
+      s_axis_data_tdata(1 downto 0) => mux_N(1 downto 0),
       s_axis_data_tready => NLW_fir_deci_N_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => mux_active
     );
@@ -18458,7 +16557,7 @@ i_0: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => \^sim_active\
+      O => stop
     );
 i_1: unisim.vcomponents.LUT1
     generic map(
@@ -18481,51 +16580,23 @@ ila_2_i: component ps_deci_low_0_0_ila_2
       clk => clk,
       probe0(0) => adc_active,
       probe1(0) => sim_start,
-      probe10(13 downto 0) => sim_N1(13 downto 0),
-      probe11(13 downto 0) => sim_N2(13 downto 0),
-      probe12(13 downto 0) => sim_N3(13 downto 0),
-      probe13(13 downto 0) => sim_N4(13 downto 0),
-      probe14(13 downto 0) => sim_N5(13 downto 0),
-      probe15(13 downto 0) => sim_N6(13 downto 0),
-      probe16(13 downto 0) => sim_N7(13 downto 0),
-      probe17(13 downto 0) => sim_E0(13 downto 0),
-      probe18(13 downto 0) => sim_E1(13 downto 0),
-      probe19(13 downto 0) => sim_E2(13 downto 0),
-      probe2(0) => \^sim_active\,
-      probe20(13 downto 0) => sim_E3(13 downto 0),
-      probe21(13 downto 0) => sim_E4(13 downto 0),
-      probe22(13 downto 0) => sim_E5(13 downto 0),
-      probe23(13 downto 0) => sim_E6(13 downto 0),
-      probe24(13 downto 0) => sim_E7(13 downto 0),
-      probe25(13 downto 0) => sim_W0(13 downto 0),
-      probe26(13 downto 0) => sim_W1(13 downto 0),
-      probe27(13 downto 0) => sim_W2(13 downto 0),
-      probe28(13 downto 0) => sim_W3(13 downto 0),
-      probe29(13 downto 0) => sim_W4(13 downto 0),
-      probe3(0) => sim_empty_N,
-      probe30(13 downto 0) => sim_W5(13 downto 0),
-      probe31(13 downto 0) => sim_W6(13 downto 0),
-      probe32(13 downto 0) => sim_W7(13 downto 0),
-      probe4(0) => sim_empty_E,
-      probe5(0) => sim_empty_W,
-      probe6(0) => sim_rd,
-      probe7(0) => \^stop\,
-      probe8(0) => mux_active,
-      probe9(13 downto 0) => sim_N0(13 downto 0)
-    );
-ila_5_i: component ps_deci_low_0_0_ila_5
-     port map (
-      clk => sim_clk,
-      probe0(0) => sim_resetn,
-      probe1(31 downto 0) => sim_data(31 downto 0),
-      probe2(1 downto 0) => sim_channel(1 downto 0),
-      probe3(0) => sim_wr_N,
-      probe4(0) => sim_wr_E,
-      probe5(0) => sim_wr_W,
-      probe6(127 downto 0) => sim_in_data(127 downto 0),
-      probe7(1 downto 0) => sim_count(1 downto 0),
-      probe8(0) => sim_curr_wr,
-      probe9(127 downto 0) => sim_curr_data(127 downto 0)
+      probe10(0) => mux_active,
+      probe11(13 downto 0) => mux_N0(13 downto 0),
+      probe12(13 downto 0) => mux_N1(13 downto 0),
+      probe13(13 downto 0) => mux_N2(13 downto 0),
+      probe14(13 downto 0) => mux_N3(13 downto 0),
+      probe15(13 downto 0) => mux_N4(13 downto 0),
+      probe16(13 downto 0) => mux_N5(13 downto 0),
+      probe17(13 downto 0) => mux_N6(13 downto 0),
+      probe18(13 downto 0) => mux_N7(13 downto 0),
+      probe2(0) => sim_active_1,
+      probe3(0) => sim_active_2,
+      probe4(0) => \^sim_active\,
+      probe5(0) => sim_empty_N,
+      probe6(0) => sim_empty_E,
+      probe7(0) => sim_empty_W,
+      probe8(0) => sim_rd,
+      probe9(0) => stop
     );
 end STRUCTURE;
 library IEEE;
@@ -18545,7 +16616,6 @@ entity ps_deci_low_0_0 is
     sim_start : in STD_LOGIC;
     adc_active : in STD_LOGIC;
     sim_active : out STD_LOGIC;
-    stop : out STD_LOGIC;
     sim_clk : in STD_LOGIC;
     sim_resetn : in STD_LOGIC;
     sim_wr : in STD_LOGIC;
@@ -18616,7 +16686,6 @@ inst: entity work.ps_deci_low_0_0_deci_low
       sim_data(31 downto 0) => sim_data(31 downto 0),
       sim_resetn => sim_resetn,
       sim_start => sim_start,
-      sim_wr => sim_wr,
-      stop => stop
+      sim_wr => sim_wr
     );
 end STRUCTURE;

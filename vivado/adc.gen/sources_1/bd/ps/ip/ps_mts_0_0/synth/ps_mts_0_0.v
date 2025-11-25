@@ -69,8 +69,6 @@ module ps_mts_0_0 (
   deci_clk,
   deci_resetn,
   user_sysref_adc,
-  deci_stop_low,
-  deci_stop_high,
   deci_adc_active,
   deci_sim_start,
   deci_sim_active_low,
@@ -113,8 +111,6 @@ output wire deci_clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire deci_resetn;
 output wire user_sysref_adc;
-input wire deci_stop_low;
-input wire deci_stop_high;
 output wire deci_adc_active;
 output wire deci_sim_start;
 input wire deci_sim_active_low;
@@ -166,8 +162,6 @@ output wire doa1_reset;
     .deci_clk(deci_clk),
     .deci_resetn(deci_resetn),
     .user_sysref_adc(user_sysref_adc),
-    .deci_stop_low(deci_stop_low),
-    .deci_stop_high(deci_stop_high),
     .deci_adc_active(deci_adc_active),
     .deci_sim_start(deci_sim_start),
     .deci_sim_active_low(deci_sim_active_low),

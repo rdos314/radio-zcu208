@@ -47,7 +47,6 @@
         "sim_start": [ { "direction": "in" } ],
         "adc_active": [ { "direction": "in" } ],
         "sim_active": [ { "direction": "out" } ],
-        "stop": [ { "direction": "out" } ],
         "sim_clk": [ { "direction": "in" } ],
         "sim_resetn": [ { "direction": "in" } ],
         "sim_wr": [ { "direction": "in" } ],

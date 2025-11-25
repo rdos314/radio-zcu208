@@ -49,8 +49,6 @@
         "deci_clk": [ { "direction": "out" } ],
         "deci_resetn": [ { "direction": "out" } ],
         "user_sysref_adc": [ { "direction": "out" } ],
-        "deci_stop_low": [ { "direction": "in" } ],
-        "deci_stop_high": [ { "direction": "in" } ],
         "deci_adc_active": [ { "direction": "out" } ],
         "deci_sim_start": [ { "direction": "out" } ],
         "deci_sim_active_low": [ { "direction": "in" } ],

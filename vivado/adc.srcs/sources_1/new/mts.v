@@ -37,8 +37,6 @@ module mts(
     output reg deci_resetn,
     output wire	user_sysref_adc,
 	
- 	input wire deci_stop_low,
-	input wire deci_stop_high,
 	output reg deci_adc_active,
 	output reg deci_sim_start,
 	input wire deci_sim_active_low,
@@ -72,6 +70,13 @@ module mts(
 
 	reg deci_adc_start;	
 	reg deci_adc_stop;
+	reg deci_adc_start_curr;
+	reg deci_adc_start_prev;
+	reg deci_adc_stop_curr;
+	reg deci_adc_stop_prev;
+	reg deci_sim_start_curr;
+	reg deci_sim_start_prev;
+	
 	reg [1:0] deci_adc_counter;
 	reg sysref_active;
 
@@ -144,11 +149,9 @@ module mts(
 		.probe4(deci_adc_stop),           // input wire [0:0]  probe2
 		.probe5(deci_adc_counter),        // input wire [1:0]  probe2
 		.probe6(deci_adc_active),         // input wire [0:0]  probe2
-		.probe7(deci_stop_low),           // input wire [0:0]  probe2
-		.probe8(deci_stop_high),          // input wire [0:0]  probe2
-		.probe9(deci_sim_start),          // input wire [0:0]  probe2
-		.probe10(deci_sim_active_low),    // input wire [0:0]  probe2
-		.probe11(deci_sim_active_high)    // input wire [0:0]  probe2
+		.probe7(deci_sim_start),          // input wire [0:0]  probe2
+		.probe8(deci_sim_active_low),    // input wire [0:0]  probe2
+		.probe9(deci_sim_active_high)    // input wire [0:0]  probe2
 	);
 	
 generate
@@ -241,7 +244,7 @@ generate
 	  begin
 	    if (deci_adc_counter == 2'b01)
 	      deci_adc_active <= 1;
-		else if (deci_stop_low | deci_stop_high | deci_adc_stop)
+		else if (deci_adc_stop)
 		  deci_adc_active <= 0;
 	  end
 	  else
@@ -259,21 +262,27 @@ generate
 	begin
 		deci_adc_start_1 <= adc_axi_start;
 		deci_adc_start_2 <= deci_adc_start_1;
-		deci_adc_start <= deci_adc_start_2;
+		deci_adc_start_curr <= deci_adc_start_2;
+		deci_adc_start_prev <= deci_adc_start_curr;
+		deci_adc_start <= deci_adc_start_curr & ~deci_adc_start_prev;
 	end
 
 	always @(posedge deci_clk) 
 	begin
 		deci_adc_stop_1 <= adc_axi_stop;
 		deci_adc_stop_2 <= deci_adc_stop_1;
-		deci_adc_stop <= deci_adc_stop_2;
+		deci_adc_stop_curr <= deci_adc_stop_2;
+		deci_adc_stop_prev <= deci_adc_stop_curr;
+		deci_adc_stop <= deci_adc_stop_curr & ~deci_adc_stop_prev;
 	end
 
 	always @(posedge deci_clk) 
 	begin
 		deci_sim_start_1 <= sim_axi_start;
 		deci_sim_start_2 <= deci_sim_start_1;
-		deci_sim_start <= deci_sim_start_2;
+		deci_sim_start_curr <= deci_sim_start_2;
+		deci_sim_start_prev <= deci_sim_start_curr;
+		deci_sim_start <= deci_sim_start_curr & ~deci_sim_start_prev;
 	end
 
 	always @(posedge deci_clk) 

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Nov 24 23:44:07 2025
+-- Date        : Tue Nov 25 18:55:30 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_stub.vhdl
@@ -28,8 +28,6 @@ entity ps_mts_0_0 is
     deci_clk : out STD_LOGIC;
     deci_resetn : out STD_LOGIC;
     user_sysref_adc : out STD_LOGIC;
-    deci_stop_low : in STD_LOGIC;
-    deci_stop_high : in STD_LOGIC;
     deci_adc_active : out STD_LOGIC;
     deci_sim_start : out STD_LOGIC;
     deci_sim_active_low : in STD_LOGIC;
@@ -58,7 +56,7 @@ architecture stub of ps_mts_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "pl_clk,pl_sysref,sys_reset,axi_clk,axi_reset_out,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_clk,deci_resetn,user_sysref_adc,deci_stop_low,deci_stop_high,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,comp0_clk,comp0_reset,comp1_clk,comp1_reset,doa0_clk,doa0_reset,doa1_clk,doa1_reset";
+  attribute black_box_pad_pin of stub : architecture is "pl_clk,pl_sysref,sys_reset,axi_clk,axi_reset_out,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_clk,deci_resetn,user_sysref_adc,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,comp0_clk,comp0_reset,comp1_clk,comp1_reset,doa0_clk,doa0_reset,doa1_clk,doa1_reset";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of pl_clk : signal is "xilinx.com:signal:clock:1.0 pl_clk CLK";
   attribute X_INTERFACE_MODE : string;

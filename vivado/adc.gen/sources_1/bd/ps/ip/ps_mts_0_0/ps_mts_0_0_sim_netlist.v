@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Nov 24 23:44:07 2025
+// Date        : Tue Nov 25 18:55:30 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -30,8 +30,6 @@ module ps_mts_0_0
     deci_clk,
     deci_resetn,
     user_sysref_adc,
-    deci_stop_low,
-    deci_stop_high,
     deci_adc_active,
     deci_sim_start,
     deci_sim_active_low,
@@ -57,8 +55,6 @@ module ps_mts_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) output deci_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 deci_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output deci_resetn;
   output user_sysref_adc;
-  input deci_stop_low;
-  input deci_stop_high;
   output deci_adc_active;
   output deci_sim_start;
   input deci_sim_active_low;
@@ -89,8 +85,6 @@ module ps_mts_0_0
   wire deci_sim_active_high;
   wire deci_sim_active_low;
   wire deci_sim_start;
-  wire deci_stop_high;
-  wire deci_stop_low;
   wire doa0_clk;
   wire doa0_reset;
   wire doa1_clk;
@@ -118,8 +112,6 @@ module ps_mts_0_0
         .deci_sim_active_high(deci_sim_active_high),
         .deci_sim_active_low(deci_sim_active_low),
         .deci_sim_start(deci_sim_start),
-        .deci_stop_high(deci_stop_high),
-        .deci_stop_low(deci_stop_low),
         .doa0_clk(doa0_clk),
         .doa0_reset(doa0_reset),
         .doa1_clk(doa1_clk),
@@ -183,9 +175,7 @@ module ps_mts_0_0_ila_6
     probe6,
     probe7,
     probe8,
-    probe9,
-    probe10,
-    probe11);
+    probe9);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -197,8 +187,6 @@ module ps_mts_0_0_ila_6
   input [0:0]probe7;
   input [0:0]probe8;
   input [0:0]probe9;
-  input [0:0]probe10;
-  input [0:0]probe11;
 
 
 endmodule
@@ -218,8 +206,6 @@ module ps_mts_0_0_mts
     deci_clk,
     deci_resetn,
     user_sysref_adc,
-    deci_stop_low,
-    deci_stop_high,
     deci_adc_active,
     deci_sim_start,
     deci_sim_active_low,
@@ -245,8 +231,6 @@ module ps_mts_0_0_mts
   (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *) output deci_clk;
   output deci_resetn;
   output user_sysref_adc;
-  input deci_stop_low;
-  input deci_stop_high;
   output deci_adc_active;
   output deci_sim_start;
   input deci_sim_active_low;
@@ -290,9 +274,13 @@ module ps_mts_0_0_mts
   (* MARK_DEBUG *) wire deci_adc_start;
   (* async_reg = "true" *) wire deci_adc_start_1;
   (* async_reg = "true" *) wire deci_adc_start_2;
+  wire deci_adc_start_curr;
+  wire deci_adc_start_prev;
   (* MARK_DEBUG *) wire deci_adc_stop;
   (* async_reg = "true" *) wire deci_adc_stop_1;
   (* async_reg = "true" *) wire deci_adc_stop_2;
+  wire deci_adc_stop_curr;
+  wire deci_adc_stop_prev;
   wire deci_clk;
   wire deci_locked;
   (* async_reg = "true" *) wire [3:0]deci_release_cnt;
@@ -300,15 +288,15 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire deci_reset_1;
   (* async_reg = "true" *) wire deci_reset_2;
   (* async_reg = "true" *) wire deci_reset_async;
-  wire deci_reset_async5_out;
+  wire deci_reset_async6_out;
   (* MARK_DEBUG *) wire deci_resetn;
   (* MARK_DEBUG *) wire deci_sim_active_high;
   (* MARK_DEBUG *) wire deci_sim_active_low;
   (* MARK_DEBUG *) wire deci_sim_start;
   (* async_reg = "true" *) wire deci_sim_start_1;
   (* async_reg = "true" *) wire deci_sim_start_2;
-  (* MARK_DEBUG *) wire deci_stop_high;
-  (* MARK_DEBUG *) wire deci_stop_low;
+  wire deci_sim_start_curr;
+  wire deci_sim_start_prev;
   wire doa0_clk;
   wire doa0_reset;
   (* async_reg = "true" *) wire doa0_reset_1;
@@ -320,9 +308,11 @@ module ps_mts_0_0_mts
   wire doa_locked;
   wire \mts.comp0_reset_1_reg0 ;
   wire \mts.deci_adc_active_i_1_n_0 ;
-  wire \mts.deci_adc_active_i_2_n_0 ;
   wire \mts.deci_adc_counter[1]_i_1_n_0 ;
+  wire \mts.deci_adc_start_reg0 ;
+  wire \mts.deci_adc_stop_reg0 ;
   wire \mts.deci_resetn_i_1_n_0 ;
+  wire \mts.deci_sim_start_reg0 ;
   wire \mts.doa0_reset_1_reg0 ;
   wire \mts.sim_active_reg0 ;
   wire \mts.sysref_active_i_1_n_0 ;
@@ -360,16 +350,14 @@ module ps_mts_0_0_mts
        (.clk(deci_clk),
         .probe0(deci_resetn),
         .probe1(sysref_active),
-        .probe10(deci_sim_active_low),
-        .probe11(deci_sim_active_high),
         .probe2(user_sysref_adc),
         .probe3(deci_adc_start),
         .probe4(deci_adc_stop),
         .probe5(deci_adc_counter),
         .probe6(deci_adc_active),
-        .probe7(deci_stop_low),
-        .probe8(deci_stop_high),
-        .probe9(deci_sim_start));
+        .probe7(deci_sim_start),
+        .probe8(deci_sim_active_low),
+        .probe9(deci_sim_active_high));
   FDRE \mts.adc_active_reg 
        (.C(deci_clk),
         .CE(1'b1),
@@ -504,23 +492,15 @@ module ps_mts_0_0_mts
         .D(comp1_reset_2),
         .Q(comp1_reset),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'hAEAA)) 
-    \mts.deci_adc_active_i_1 
-       (.I0(\mts.deci_adc_active_i_2_n_0 ),
-        .I1(deci_adc_counter[0]),
-        .I2(deci_adc_counter[1]),
-        .I3(deci_resetn),
-        .O(\mts.deci_adc_active_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h00020000)) 
-    \mts.deci_adc_active_i_2 
-       (.I0(deci_adc_active),
-        .I1(deci_stop_low),
-        .I2(deci_stop_high),
-        .I3(deci_adc_stop),
+    .INIT(32'h44F40000)) 
+    \mts.deci_adc_active_i_1 
+       (.I0(deci_adc_stop),
+        .I1(deci_adc_active),
+        .I2(deci_adc_counter[0]),
+        .I3(deci_adc_counter[1]),
         .I4(deci_resetn),
-        .O(\mts.deci_adc_active_i_2_n_0 ));
+        .O(\mts.deci_adc_active_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_active_reg 
        (.C(deci_clk),
@@ -582,11 +562,29 @@ module ps_mts_0_0_mts
         .D(deci_adc_start_1),
         .Q(deci_adc_start_2),
         .R(1'b0));
+  FDRE \mts.deci_adc_start_curr_reg 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(deci_adc_start_2),
+        .Q(deci_adc_start_curr),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \mts.deci_adc_start_i_1 
+       (.I0(deci_adc_start_curr),
+        .I1(deci_adc_start_prev),
+        .O(\mts.deci_adc_start_reg0 ));
+  FDRE \mts.deci_adc_start_prev_reg 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(deci_adc_start_curr),
+        .Q(deci_adc_start_prev),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_start_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_adc_start_2),
+        .D(\mts.deci_adc_start_reg0 ),
         .Q(deci_adc_start),
         .R(1'b0));
   (* ASYNC_REG *) 
@@ -605,11 +603,29 @@ module ps_mts_0_0_mts
         .D(deci_adc_stop_1),
         .Q(deci_adc_stop_2),
         .R(1'b0));
+  FDRE \mts.deci_adc_stop_curr_reg 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(deci_adc_stop_2),
+        .Q(deci_adc_stop_curr),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \mts.deci_adc_stop_i_1 
+       (.I0(deci_adc_stop_curr),
+        .I1(deci_adc_stop_prev),
+        .O(\mts.deci_adc_stop_reg0 ));
+  FDRE \mts.deci_adc_stop_prev_reg 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(deci_adc_stop_curr),
+        .Q(deci_adc_stop_prev),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_stop_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_adc_stop_2),
+        .D(\mts.deci_adc_stop_reg0 ),
         .Q(deci_adc_stop),
         .R(1'b0));
   LUT4 #(
@@ -706,13 +722,13 @@ module ps_mts_0_0_mts
         .I2(deci_release_cnt[2]),
         .I3(deci_release_cnt[0]),
         .I4(deci_release_cnt[1]),
-        .O(deci_reset_async5_out));
+        .O(deci_reset_async6_out));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDPE \mts.deci_reset_async_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_reset_async5_out),
+        .D(deci_reset_async6_out),
         .PRE(rst_async),
         .Q(deci_reset_async));
   LUT1 #(
@@ -743,11 +759,29 @@ module ps_mts_0_0_mts
         .D(deci_sim_start_1),
         .Q(deci_sim_start_2),
         .R(1'b0));
+  FDRE \mts.deci_sim_start_curr_reg 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(deci_sim_start_2),
+        .Q(deci_sim_start_curr),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \mts.deci_sim_start_i_1 
+       (.I0(deci_sim_start_curr),
+        .I1(deci_sim_start_prev),
+        .O(\mts.deci_sim_start_reg0 ));
+  FDRE \mts.deci_sim_start_prev_reg 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(deci_sim_start_curr),
+        .Q(deci_sim_start_prev),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \mts.deci_sim_start_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_sim_start_2),
+        .D(\mts.deci_sim_start_reg0 ),
         .Q(deci_sim_start),
         .R(1'b0));
   LUT2 #(

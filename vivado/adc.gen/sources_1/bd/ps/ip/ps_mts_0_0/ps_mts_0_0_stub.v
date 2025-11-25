@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Nov 24 23:44:07 2025
+// Date        : Tue Nov 25 18:55:30 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_stub.v
@@ -18,10 +18,10 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "mts,Vivado 2025.1" *) 
 module ps_mts_0_0(pl_clk, pl_sysref, sys_reset, axi_clk, 
   axi_reset_out, axi_adc_start, axi_sim_start, axi_adc_stop, axi_adc_active, axi_sim_active, 
-  deci_clk, deci_resetn, user_sysref_adc, deci_stop_low, deci_stop_high, deci_adc_active, 
-  deci_sim_start, deci_sim_active_low, deci_sim_active_high, comp0_clk, comp0_reset, 
-  comp1_clk, comp1_reset, doa0_clk, doa0_reset, doa1_clk, doa1_reset)
-/* synthesis syn_black_box black_box_pad_pin="pl_sysref,sys_reset,axi_reset_out,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_resetn,user_sysref_adc,deci_stop_low,deci_stop_high,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,comp0_reset,comp1_reset,doa0_reset,doa1_reset" */
+  deci_clk, deci_resetn, user_sysref_adc, deci_adc_active, deci_sim_start, 
+  deci_sim_active_low, deci_sim_active_high, comp0_clk, comp0_reset, comp1_clk, comp1_reset, 
+  doa0_clk, doa0_reset, doa1_clk, doa1_reset)
+/* synthesis syn_black_box black_box_pad_pin="pl_sysref,sys_reset,axi_reset_out,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_resetn,user_sysref_adc,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,comp0_reset,comp1_reset,doa0_reset,doa1_reset" */
 /* synthesis syn_force_seq_prim="pl_clk" */
 /* synthesis syn_force_seq_prim="axi_clk" */
 /* synthesis syn_force_seq_prim="deci_clk" */
@@ -42,8 +42,6 @@ module ps_mts_0_0(pl_clk, pl_sysref, sys_reset, axi_clk,
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) output deci_clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 deci_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output deci_resetn;
   output user_sysref_adc;
-  input deci_stop_low;
-  input deci_stop_high;
   output deci_adc_active;
   output deci_sim_start;
   input deci_sim_active_low;

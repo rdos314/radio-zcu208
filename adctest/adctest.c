@@ -36,13 +36,7 @@ void LoadSamples(volatile struct bram_control_t *control, char channel, uint16_t
 
 void StartSim(volatile struct bram_control_t *control)
 {
-	char counter = control->status & 0xFF;
-	
 	control->cmd = CMD_START_SIM;
-	
-	while ((control->status & 0xFF) == counter)
-		;
-	
 	control->cmd = 0;
 }
 
