@@ -59,7 +59,6 @@ module adc_control(
    	wire [2:0] adc_chan = cdata[10:8];
    	wire [11:0] adc_count = (cdata[27:16] + 1);
 
-/*
 ila_4 ila_4_i (
 		.clk(clk),                  // input wire clk
 		.probe0(resetn),            // input wire [0:0]  probe3
@@ -85,7 +84,6 @@ ila_4 ila_4_i (
 		.probe20(sim_wr_done),      // input wire [0:0]  probe3
 		.probe21(sim_wr_count)      // input wire [10:0]  probe3
 	);
-*/
 
 generate
   begin : adc_control

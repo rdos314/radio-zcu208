@@ -107,20 +107,20 @@ architecture tb of tb_fir_raw_deci is
   -----------------------------------------------------------------------
 
   -- Data slave channel alias signals
-  signal s_axis_data_tdata_vect0        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect1        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect2        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect3        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect4        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect5        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect6        : std_logic_vector(13 downto 0) := (others => '0');
-  signal s_axis_data_tdata_vect7        : std_logic_vector(13 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect0        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect1        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect2        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect3        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect4        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect5        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect6        : std_logic_vector(15 downto 0) := (others => '0');
+  signal s_axis_data_tdata_vect7        : std_logic_vector(15 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_vect0        : std_logic_vector(29 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect1        : std_logic_vector(29 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect2        : std_logic_vector(29 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect3        : std_logic_vector(29 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect0        : std_logic_vector(31 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect1        : std_logic_vector(31 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect2        : std_logic_vector(31 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect3        : std_logic_vector(31 downto 0) := (others => '0');
 
 
 begin
@@ -196,7 +196,7 @@ begin
       variable impulse : std_logic_vector(127 downto 0);
     begin
       impulse := (others => '0');  -- initialize unused bits to zero
-      impulse(13 downto 0) := "01000000000000";
+      impulse(15 downto 0) := "0100000000000000";
       drive_data(impulse);
       if samples > 1 then
         drive_zeros(samples-1);
@@ -268,19 +268,19 @@ begin
   -----------------------------------------------------------------------
 
   -- Data slave channel alias signals
-  s_axis_data_tdata_vect0        <= s_axis_data_tdata(13 downto 0);
-  s_axis_data_tdata_vect1        <= s_axis_data_tdata(29 downto 16);
-  s_axis_data_tdata_vect2        <= s_axis_data_tdata(45 downto 32);
-  s_axis_data_tdata_vect3        <= s_axis_data_tdata(61 downto 48);
-  s_axis_data_tdata_vect4        <= s_axis_data_tdata(77 downto 64);
-  s_axis_data_tdata_vect5        <= s_axis_data_tdata(93 downto 80);
-  s_axis_data_tdata_vect6        <= s_axis_data_tdata(109 downto 96);
-  s_axis_data_tdata_vect7        <= s_axis_data_tdata(125 downto 112);
+  s_axis_data_tdata_vect0        <= s_axis_data_tdata(15 downto 0);
+  s_axis_data_tdata_vect1        <= s_axis_data_tdata(31 downto 16);
+  s_axis_data_tdata_vect2        <= s_axis_data_tdata(47 downto 32);
+  s_axis_data_tdata_vect3        <= s_axis_data_tdata(63 downto 48);
+  s_axis_data_tdata_vect4        <= s_axis_data_tdata(79 downto 64);
+  s_axis_data_tdata_vect5        <= s_axis_data_tdata(95 downto 80);
+  s_axis_data_tdata_vect6        <= s_axis_data_tdata(111 downto 96);
+  s_axis_data_tdata_vect7        <= s_axis_data_tdata(127 downto 112);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_vect0        <= m_axis_data_tdata(29 downto 0) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect1        <= m_axis_data_tdata(61 downto 32) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect2        <= m_axis_data_tdata(93 downto 64) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect3        <= m_axis_data_tdata(125 downto 96) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect0        <= m_axis_data_tdata(31 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect1        <= m_axis_data_tdata(63 downto 32) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect2        <= m_axis_data_tdata(95 downto 64) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect3        <= m_axis_data_tdata(127 downto 96) when m_axis_data_tvalid = '1';
 
 end tb;

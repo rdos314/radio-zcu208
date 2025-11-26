@@ -1,8 +1,13 @@
 #include "xparameters.h"
 #include "xtmrctr.h"
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "math.h"
+#include "memory.h"
+
+#define PI              3.1415926535897932384626433832795028841971693993751
 
 #define CMD_LOAD		1
 #define CMD_START_ADC	2
@@ -13,10 +18,10 @@ struct bram_control_t
 {
 	uint32_t cmd;
 	uint32_t status;
-	uint16_t sample_arr[4092];
+	int16_t sample_arr[4092];
 };
 
-static uint16_t sample_arr[4092];
+static int16_t sample_arr[4092];
 
 void LoadSamples(volatile struct bram_control_t *control, char channel, uint16_t *arr, int size)
 {
@@ -24,7 +29,7 @@ void LoadSamples(volatile struct bram_control_t *control, char channel, uint16_t
 	char counter = control->status & 0xFF;
 	
 	for (i = 0;  i < size; i++)
-		control->sample_arr[i] = 4 * arr[i];
+		control->sample_arr[i] = arr[i];
 	
 	control->cmd = CMD_LOAD | (channel << 8) | (size << 16);
 	
@@ -40,17 +45,54 @@ void StartSim(volatile struct bram_control_t *control)
 	control->cmd = 0;
 }
 
+int GenerateMorlet(double fs, double f, int periods, int16_t amp)
+{
+    int p;
+    int size;
+    double dval;
+    double rho;
+    double mult;
+    double gaus;
+    double incr;
+    double i, r;
+
+    incr = 2.0 * PI * f / fs;
+
+    dval = (double)periods * fs / f;
+    size = (int)(dval + 0.5);
+    if ((size % 2) == 0)
+        size++;
+
+    size = size / 2;
+
+    rho = (double)periods / incr;
+    mult = -0.5 / rho / rho;
+
+    for (p = 0; p <= size; p++)
+    {
+        dval = (double)p;
+        gaus = exp(mult * dval * dval);
+        r = gaus * cos(dval * incr);
+        sample_arr[size+p] = (int16_t)(r * amp);
+        sample_arr[size-p] = (int16_t)(r * amp);
+    }
+	return 2 * size + 1;
+}
+
 int main()
 {
 	int i;
+	int size;
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
 	
 	for (i = 0;  i < 256; i++)
 		sample_arr[i] = i + 1;
 
-	LoadSamples(control, 0, sample_arr, 100);
-	LoadSamples(control, 1, sample_arr, 100);
-	LoadSamples(control, 2, sample_arr, 100);
+	size = GenerateMorlet(4000.0, 46.0, 3, 5000);
+
+	LoadSamples(control, 0, sample_arr, size);
+	LoadSamples(control, 1, sample_arr, size);
+	LoadSamples(control, 2, sample_arr, size);
 
 	StartSim(control);
 

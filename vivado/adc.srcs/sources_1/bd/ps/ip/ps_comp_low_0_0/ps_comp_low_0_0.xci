@@ -39,7 +39,7 @@
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
         "active": [ { "direction": "in" } ],
-        "fifo": [ { "direction": "in", "size_left": "195", "size_right": "0" } ]
+        "fifo": [ { "direction": "in", "size_left": "167", "size_right": "0" } ]
       },
       "interfaces": {
         "reset": {

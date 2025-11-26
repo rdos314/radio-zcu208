@@ -78,14 +78,14 @@ input wire wr_clk;
 input wire rd_clk;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *)
 (* X_INTERFACE_MODE = "slave" *)
-input wire [195 : 0] din;
+input wire [167 : 0] din;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *)
 input wire wr_en;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *)
 (* X_INTERFACE_MODE = "slave" *)
 input wire rd_en;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *)
-output wire [195 : 0] dout;
+output wire [167 : 0] dout;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *)
 output wire full;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *)
@@ -99,9 +99,9 @@ output wire rd_rst_busy;
     .C_COUNT_TYPE(0),
     .C_DATA_COUNT_WIDTH(10),
     .C_DEFAULT_VALUE("BlankString"),
-    .C_DIN_WIDTH(196),
+    .C_DIN_WIDTH(168),
     .C_DOUT_RST_VAL("0"),
-    .C_DOUT_WIDTH(196),
+    .C_DOUT_WIDTH(168),
     .C_ENABLE_RLOCS(0),
     .C_FAMILY("zynquplus"),
     .C_FULL_FLAGS_RST_VAL(1),

@@ -43,7 +43,7 @@ module deci_low(
 
     input wire raw_clk,
     output reg raw_ready,
-    output reg [195:0] raw_data,
+    output reg [167:0] raw_data,
 
     input wire doa_clk,
     output reg doa_ready,
@@ -55,15 +55,15 @@ module deci_low(
   reg [127:0] mux_E;
   reg [127:0] mux_W;
 
-  reg [27:0]  counter;
   reg active;
 
+  reg [4:0] raw_wr_delay;
   reg raw_fifo_wr;
-  reg  [195:0] raw_in_data;
+  reg  [167:0] raw_in_data;
 
   wire raw_fifo_empty;
   reg  [11:0] raw_delay;
-  wire [195:0] raw_out_data;
+  wire [167:0] raw_out_data;
   reg raw_active;
 
   reg [27:0] doa_counter;
@@ -146,20 +146,20 @@ module deci_low(
   wire	valid_raw_E;
   wire	valid_raw_W;
 
-  wire [13:0] drN0 = fir_raw_N[30:17];
-  wire [13:0] drN1 = fir_raw_N[62:49];
-  wire [13:0] drN2 = fir_raw_N[94:81];
-  wire [13:0] drN3 = fir_raw_N[126:113];
+  wire [13:0] drN0 = fir_raw_N[31:18];
+  wire [13:0] drN1 = fir_raw_N[63:50];
+  wire [13:0] drN2 = fir_raw_N[95:82];
+  wire [13:0] drN3 = fir_raw_N[127:114];
 
-  wire [13:0] drE0 = fir_raw_E[30:17];
-  wire [13:0] drE1 = fir_raw_E[62:49];
-  wire [13:0] drE2 = fir_raw_E[94:81];
-  wire [13:0] drE3 = fir_raw_E[126:113];
+  wire [13:0] drE0 = fir_raw_E[31:18];
+  wire [13:0] drE1 = fir_raw_E[63:50];
+  wire [13:0] drE2 = fir_raw_E[95:82];
+  wire [13:0] drE3 = fir_raw_E[127:114];
 
-  wire [13:0] drW0 = fir_raw_W[30:17];
-  wire [13:0] drW1 = fir_raw_W[62:49];
-  wire [13:0] drW2 = fir_raw_W[94:81];
-  wire [13:0] drW3 = fir_raw_W[126:113];
+  wire [13:0] drW0 = fir_raw_W[31:18];
+  wire [13:0] drW1 = fir_raw_W[63:50];
+  wire [13:0] drW2 = fir_raw_W[95:82];
+  wire [13:0] drW3 = fir_raw_W[127:114];
 
   wire [13:0] mux_N0 = mux_N[15:2];
   wire [13:0] mux_N1 = mux_N[31:18];
@@ -246,10 +246,10 @@ fifo_raw_low fifo_raw_i (
   .rst(~resetn),              // input wire rst
   .wr_clk(clk),               // input wire wr_clk
   .rd_clk(raw_clk),          // input wire rd_clk
-  .din(raw_in_data),        // input wire [195 : 0] din
+  .din(raw_in_data),        // input wire [167 : 0] din
   .wr_en(raw_fifo_wr),        // input wire wr_en
   .rd_en(raw_ready),          // input wire rd_en
-  .dout(raw_out_data),       // output wire [195 : 0] dout
+  .dout(raw_out_data),       // output wire [167 : 0] dout
   .empty(raw_fifo_empty)      // output wire empty
 );
 
@@ -316,24 +316,21 @@ ila_5 ila_5_i (
 ila_2 ila_2_i (
 		.clk(clk),                   // input wire clk
 		.probe0(adc_active),         // input wire [0:0]  probe3
-		.probe1(sim_start),          // input wire [0:0]  probe3
-		.probe2(sim_active_1),       // input wire [0:0]  probe3
-		.probe3(sim_active_2),       // input wire [0:0]  probe3
-		.probe4(sim_active),         // input wire [0:0]  probe3
-		.probe5(sim_empty_N),        // input wire [0:0]  probe3
-		.probe6(sim_empty_E),        // input wire [0:0]  probe3
-		.probe7(sim_empty_W),        // input wire [0:0]  probe3
-		.probe8(sim_rd),             // input wire [0:0]  probe3
-		.probe9(stop),               // input wire [0:0]  probe3
-		.probe10(mux_active),         // input wire [0:0]  probe3
-		.probe11(mux_N0),             // input wire [13:0]  probe3
-		.probe12(mux_N1),             // input wire [13:0]  probe3
-		.probe13(mux_N2),            // input wire [13:0]  probe3
-		.probe14(mux_N3),            // input wire [13:0]  probe3
-		.probe15(mux_N4),            // input wire [13:0]  probe3
-		.probe16(mux_N5),            // input wire [13:0]  probe3
-		.probe17(mux_N6),            // input wire [13:0]  probe3
-		.probe18(mux_N7)             // input wire [13:0]  probe3
+		.probe1(mux_active),         // input wire [0:0]  probe3
+		.probe2(raw_wr_delay),       // input wire [4:0]  probe3
+		.probe3(raw_fifo_wr),        // input wire [0:0]  probe3
+		.probe4(mux_N0),             // input wire [13:0]  probe3
+		.probe5(mux_N1),             // input wire [13:0]  probe3
+		.probe6(mux_N2),             // input wire [13:0]  probe3
+		.probe7(mux_N3),             // input wire [13:0]  probe3
+		.probe8(mux_N4),             // input wire [13:0]  probe3
+		.probe9(mux_N5),             // input wire [13:0]  probe3
+		.probe10(mux_N6),            // input wire [13:0]  probe3
+		.probe11(mux_N7),            // input wire [13:0]  probe3
+		.probe12(drN0),              // input wire [13:0]  probe3
+		.probe13(drN1),              // input wire [13:0]  probe3
+		.probe14(drN2),              // input wire [13:0]  probe3
+		.probe15(drN3)               // input wire [13:0]  probe3
 );
 
 generate
@@ -494,31 +491,36 @@ generate
 
     always @(posedge clk) 
 	begin
-	  if (active)
+	  if (mux_active)
 	  begin
-         raw_fifo_wr <= 1;
-         counter <= counter + 1;
-         raw_in_data[27:0] <= counter;
-         raw_in_data[41:28] <= drN0;
-         raw_in_data[55:42] <= drN1;
-         raw_in_data[69:56] <= drN2;
-         raw_in_data[83:70] <= drN3;
-         raw_in_data[97:84] <= drE0;
-         raw_in_data[111:98] <= drE1;
-         raw_in_data[125:112] <= drE2;
-         raw_in_data[139:126] <= drE3;
-         raw_in_data[153:140] <= drW0;
-         raw_in_data[167:154] <= drW1;
-         raw_in_data[181:168] <= drW2;
-         raw_in_data[195:182] <= drW3;
-	  end
-	  else
-	  begin
-	      raw_fifo_wr <= 0;
-	      counter <= 0;
-	  end
-	end
-
+	    if (raw_wr_delay == 14)
+	    begin
+          raw_fifo_wr <= 1;
+          raw_in_data[13:0] <= drN0;
+          raw_in_data[27:14] <= drN1;
+          raw_in_data[41:28] <= drN2;
+          raw_in_data[55:42] <= drN3;
+          raw_in_data[69:56] <= drE0;
+          raw_in_data[83:70] <= drE1;
+          raw_in_data[97:84] <= drE2;
+          raw_in_data[111:98] <= drE3;
+          raw_in_data[125:112] <= drW0;
+          raw_in_data[139:126] <= drW1;
+          raw_in_data[153:140] <= drW2;
+          raw_in_data[167:154] <= drW3;
+        end
+        else
+          raw_wr_delay <= raw_wr_delay + 1;
+      end
+      else
+      begin
+        if (raw_wr_delay)
+          raw_wr_delay <= raw_wr_delay - 1;
+        else
+          raw_fifo_wr <= 0;
+      end
+    end
+	      
 	always @(posedge clk) 
 	begin
 	  doa_active <= resetn & valid_N & valid_E & valid_W;

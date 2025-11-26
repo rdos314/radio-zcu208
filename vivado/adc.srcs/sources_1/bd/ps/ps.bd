@@ -2157,7 +2157,7 @@
           },
           "raw_data": {
             "direction": "O",
-            "left": "195",
+            "left": "167",
             "right": "0"
           },
           "doa_clk": {
@@ -2401,7 +2401,7 @@
           },
           "fifo": {
             "direction": "I",
-            "left": "195",
+            "left": "167",
             "right": "0"
           }
         }
