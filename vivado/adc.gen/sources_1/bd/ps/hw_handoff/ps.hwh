@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov 26 00:10:38 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov 26 23:32:39 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -2617,7 +2617,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="363" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
+        <PORT DIR="I" LEFT="383" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_high" PORT="raw_data"/>
           </CONNECTIONS>
@@ -2647,7 +2647,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="167" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
+        <PORT DIR="I" LEFT="191" NAME="fifo" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="raw_data"/>
           </CONNECTIONS>
@@ -2697,14 +2697,14 @@
             <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="111" NAME="doa_data" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="95" NAME="doa_data" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="doa_ready" SIGIS="undef"/>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="363" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
+        <PORT DIR="O" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_high_0" PORT="fifo"/>
           </CONNECTIONS>
@@ -2809,7 +2809,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="69" NAME="doa_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
+        <PORT DIR="O" LEFT="47" NAME="doa_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="doa_low_0" PORT="fifo_data"/>
           </CONNECTIONS>
@@ -2824,7 +2824,7 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="167" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
+        <PORT DIR="O" LEFT="191" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_low_0" PORT="fifo"/>
           </CONNECTIONS>
@@ -2907,7 +2907,7 @@
         <PORT DIR="O" LEFT="15" NAME="env_E" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="15" NAME="env_N" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="15" NAME="env_W" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="69" NAME="fifo_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
+        <PORT DIR="I" LEFT="47" NAME="fifo_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="doa_data"/>
           </CONNECTIONS>
@@ -4086,9 +4086,9 @@
             <CONNECTION INSTANCE="clk104_mux" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="adc_control_0" PORT="resetn"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_resetn"/>
             <CONNECTION INSTANCE="deci_low" PORT="sim_resetn"/>
-            <CONNECTION INSTANCE="adc_control_0" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
@@ -8213,9 +8213,9 @@
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_bram" PORT="clkb"/>
             <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_clk"/>
             <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
-            <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">

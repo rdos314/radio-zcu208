@@ -78,7 +78,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
 input wire fifo_valid;
-input wire [69 : 0] fifo_data;
+input wire [47 : 0] fifo_data;
 output wire valid;
 output wire [31 : 0] freq;
 output wire [15 : 0] env_N;

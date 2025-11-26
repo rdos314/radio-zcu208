@@ -23,7 +23,7 @@ module doa_low(
     input wire clk,
     input wire reset,
     input wire fifo_valid,
-    input wire [69:0] fifo_data,
+    input wire [47:0] fifo_data,
 
     output reg valid,
     output reg [31:0] freq,
@@ -38,7 +38,6 @@ module doa_low(
     output reg [19:0] phase_W
     );
 
-  reg [27:0] counter;
   reg [15:0] N;
   reg [15:0] E;
   reg [15:0] W;
@@ -189,17 +188,17 @@ ila_0 ila_0_i (
 		.clk(clk),                  // input wire clk
 		.probe0(valid),             // input wire [0:0]  probe3
 		.probe1(freq),              // input wire [31:0]  probe3
-		.probe2(N[15:2]),           // input wire [13:0]  probe3
+		.probe2(N),                 // input wire [15:0]  probe3
 		.probe3(fir_re_N[38:23]),   // input wire [15:0]  probe3
 		.probe4(fir_im_N[38:23]),   // input wire [15:0]  probe3
 		.probe5(env_N),             // input wire [15:0]  probe3
 		.probe6(phase_N),             // input wire [19:0]  probe3
-		.probe7(E[15:2]),           // input wire [13:0]  probe3
+		.probe7(E),                 // input wire [15:0]  probe3
 		.probe8(fir_re_E[38:23]),   // input wire [15:0]  probe3
 		.probe9(fir_im_E[38:23]),   // input wire [15:0]  probe3
 		.probe10(env_E),             // input wire [15:0]  probe3
 		.probe11(phase_E),             // input wire [19:0]  probe3
-		.probe12(W[15:2]),           // input wire [13:0]  probe3
+		.probe12(W),                 // input wire [15:0]  probe3
 		.probe13(fir_re_W[38:23]),   // input wire [15:0]  probe3
 		.probe14(fir_im_W[38:23]),   // input wire [15:0]  probe3
 		.probe15(env_W),             // input wire [15:0]  probe3
@@ -214,26 +213,20 @@ generate
 	begin
 	  if (fifo_valid)
 	  begin
-         counter <= fifo_data[27:0];
-
-         N[15:2] <= fifo_data[41:28];
-         N[1:0] <= 0;
+         N <= fifo_data[15:0];
          diffN <= phase_N - prevN;
          prevN <= phase_N;
 
-         E[15:2] <= fifo_data[55:42];
-         E[1:0] <= 0;
+         E <= fifo_data[31:16];
          diffE <= phase_E - prevE;
          prevE <= phase_E;
          
-         W[15:2] <= fifo_data[69:56];
-         W[1:0] <= 0;
+         W <= fifo_data[47:32];
          diffW <= phase_W - prevW;
          prevW <= phase_W;
       end
       else
       begin
-        counter <= 0;
         prevN <= 0;
         prevE <= 0;
         prevW <= 0;

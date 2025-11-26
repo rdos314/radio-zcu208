@@ -24,47 +24,47 @@ module comp_low(
     input wire	clk,
     input wire  reset,
     input wire active,
-    input wire	[167:0] fifo
+    input wire	[191:0] fifo
     );
     
-  reg [13:0] N0;
-  reg [13:0] N1;
-  reg [13:0] N2;
-  reg [13:0] N3;
-  reg [13:0] E0;
-  reg [13:0] E1;
-  reg [13:0] E2;
-  reg [13:0] E3;
-  reg [13:0] W0;
-  reg [13:0] W1;
-  reg [13:0] W2;
-  reg [13:0] W3;
+  reg [15:0] N0;
+  reg [15:0] N1;
+  reg [15:0] N2;
+  reg [15:0] N3;
+  reg [15:0] E0;
+  reg [15:0] E1;
+  reg [15:0] E2;
+  reg [15:0] E3;
+  reg [15:0] W0;
+  reg [15:0] W1;
+  reg [15:0] W2;
+  reg [15:0] W3;
 
 	ila_3 ila_N (
-		.clk(clk),                 // input wire clk
-		.probe0(N0),        // input wire [13:0]  probe3
-		.probe1(N1),       // input wire [13:0]  probe3
-		.probe2(N2),       // input wire [13:0]  probe3
-		.probe3(N3),       // input wire [13:0]  probe3
-		.probe4(active)             // input wire [0:0]  probe3
+		.clk(clk),          // input wire clk
+		.probe0(active),    // input wire [0:0]  probe3
+		.probe1(N0),        // input wire [15:0]  probe3
+		.probe2(N1),        // input wire [15:0]  probe3
+		.probe3(N2),        // input wire [15:0]  probe3
+		.probe4(N3)         // input wire [15:0]  probe3
 	);
 
 	ila_3 ila_E (
-		.clk(clk),                 // input wire clk
-		.probe0(E0),        // input wire [13:0]  probe3
-		.probe1(E1),       // input wire [13:0]  probe3
-		.probe2(E2),       // input wire [13:0]  probe3
-		.probe3(E3),       // input wire [13:0]  probe3
-		.probe4(active)             // input wire [0:0]  probe3
+		.clk(clk),          // input wire clk
+		.probe0(active),    // input wire [0:0]  probe3
+		.probe1(E0),        // input wire [15:0]  probe3
+		.probe2(E1),        // input wire [15:0]  probe3
+		.probe3(E2),        // input wire [15:0]  probe3
+		.probe4(E3)         // input wire [15:0]  probe3
 	);
 
 	ila_3 ila_W (
-		.clk(clk),                 // input wire clk
-		.probe0(W0),        // input wire [13:0]  probe3
-		.probe1(W1),       // input wire [13:0]  probe3
-		.probe2(W2),       // input wire [13:0]  probe3
-		.probe3(W3),       // input wire [13:0]  probe3
-		.probe4(active)             // input wire [11:0]  probe3
+		.clk(clk),          // input wire clk
+		.probe0(active),    // input wire [0:0]  probe3
+		.probe1(W0),        // input wire [15:0]  probe3
+		.probe2(W1),        // input wire [15:0]  probe3
+		.probe3(W2),        // input wire [15:0]  probe3
+		.probe4(W3)         // input wire [15:0]  probe3
 	);
 
 generate
@@ -74,18 +74,18 @@ generate
 	begin
 	   if (active)
 	   begin
-            N0 <= fifo[13:0];
-            N1 <= fifo[27:14];
-            N2 <= fifo[41:28];
-            N3 <= fifo[55:42];
-            E0 <= fifo[69:56];
-            E1 <= fifo[83:70];
-            E2 <= fifo[97:84];
-            E3 <= fifo[111:98];
-            W0 <= fifo[125:112];
-            W1 <= fifo[139:126];
-            W2 <= fifo[153:140];
-            W3 <= fifo[167:154];
+            N0 <= fifo[15:0];
+            N1 <= fifo[31:16];
+            N2 <= fifo[47:32];
+            N3 <= fifo[63:48];
+            E0 <= fifo[79:64];
+            E1 <= fifo[95:80];
+            E2 <= fifo[111:96];
+            E3 <= fifo[127:112];
+            W0 <= fifo[143:128];
+            W1 <= fifo[159:144];
+            W2 <= fifo[175:160];
+            W3 <= fifo[191:176];
         end
 	end
 

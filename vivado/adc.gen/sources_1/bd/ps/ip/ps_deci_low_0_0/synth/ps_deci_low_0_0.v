@@ -113,13 +113,13 @@ input wire [31 : 0] sim_data;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
 input wire raw_clk;
 output wire raw_ready;
-output wire [167 : 0] raw_data;
+output wire [191 : 0] raw_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *)
 input wire doa_clk;
 output wire doa_ready;
-output wire [69 : 0] doa_data;
+output wire [47 : 0] doa_data;
 
   deci_low inst (
     .clk(clk),

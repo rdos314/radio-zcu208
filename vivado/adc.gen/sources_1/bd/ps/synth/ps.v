@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Wed Nov 26 00:10:36 2025
+//Date        : Wed Nov 26 23:32:36 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -179,11 +179,11 @@ module ps
   wire axi_smc_M04_AXI_WREADY;
   wire [3:0]axi_smc_M04_AXI_WSTRB;
   wire axi_smc_M04_AXI_WVALID;
-  wire [363:0]deci_high_raw_data;
+  wire [383:0]deci_high_raw_data;
   wire deci_high_raw_ready;
-  wire [69:0]deci_low_doa_data;
+  wire [47:0]deci_low_doa_data;
   wire deci_low_doa_ready;
-  wire [167:0]deci_low_raw_data;
+  wire [191:0]deci_low_raw_data;
   wire deci_low_raw_ready;
   wire deci_low_sim_active;
   wire [7:0]led_8bits_tri_o;

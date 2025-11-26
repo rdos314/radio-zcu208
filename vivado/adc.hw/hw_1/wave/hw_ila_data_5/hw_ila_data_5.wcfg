@@ -9,45 +9,45 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="508"></ZoomStartTime>
-      <ZoomEndTime time="536"></ZoomEndTime>
-      <Cursor1Time time="533"></Cursor1Time>
+      <ZoomStartTime time="0"></ZoomStartTime>
+      <ZoomEndTime time="1,025"></ZoomEndTime>
+      <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="132"></NameColumnWidth>
-      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+      <NameColumnWidth column_width="120"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/comp_low_0/inst/E0" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E0[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E0[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E0[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_low_0/inst/E1" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E1[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E1[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E1[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_low_0/inst/E2" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E2[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E2[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E2[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_low_0/inst/E3" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E3[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E3[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/E3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E3[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>

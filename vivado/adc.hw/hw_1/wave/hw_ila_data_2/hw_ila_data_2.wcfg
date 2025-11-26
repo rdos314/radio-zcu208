@@ -15,56 +15,78 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="139"></NameColumnWidth>
-      <ValueColumnWidth column_width="112"></ValueColumnWidth>
+      <ValueColumnWidth column_width="96"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="9" />
    <wvobject fp_name="ps_i/comp_high_0/inst/E0" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E0[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E0[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E0[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E1" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E1[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E1[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E1[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E2" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E2[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E2[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E2[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E3" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E3[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E3[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E3[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E4" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E4[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E4[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E4[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E4[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E5" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E5[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E5[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E5[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E5[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E6" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E6[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E6[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E6[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E6[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/E7" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E7[13:0]</obj_property>
-      <obj_property name="ObjectShortName">E7[13:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/E7[15:0]</obj_property>
+      <obj_property name="ObjectShortName">E7[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_high_0/inst/active_1" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_high_0/inst/active_1</obj_property>
       <obj_property name="ObjectShortName">active_1</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/comp_high_0/inst/counter_1" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_high_0/inst/counter_1[27:0]</obj_property>
-      <obj_property name="ObjectShortName">counter_1[27:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
 </wave_config>

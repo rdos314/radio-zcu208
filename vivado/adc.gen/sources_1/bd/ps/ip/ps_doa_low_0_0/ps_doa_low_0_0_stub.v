@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 21 23:06:27 2025
+// Date        : Wed Nov 26 20:09:54 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_stub.v
@@ -18,12 +18,12 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "doa_low,Vivado 2025.1" *) 
 module ps_doa_low_0_0(clk, reset, fifo_valid, fifo_data, valid, freq, 
   env_N, phase_N, env_E, phase_E, env_W, phase_W)
-/* synthesis syn_black_box black_box_pad_pin="reset,fifo_valid,fifo_data[69:0],valid,freq[31:0],env_N[15:0],phase_N[19:0],env_E[15:0],phase_E[19:0],env_W[15:0],phase_W[19:0]" */
+/* synthesis syn_black_box black_box_pad_pin="reset,fifo_valid,fifo_data[47:0],valid,freq[31:0],env_N[15:0],phase_N[19:0],env_E[15:0],phase_E[19:0],env_W[15:0],phase_W[19:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   input fifo_valid;
-  input [69:0]fifo_data;
+  input [47:0]fifo_data;
   output valid;
   output [31:0]freq;
   output [15:0]env_N;

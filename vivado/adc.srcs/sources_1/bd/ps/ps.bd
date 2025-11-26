@@ -2157,7 +2157,7 @@
           },
           "raw_data": {
             "direction": "O",
-            "left": "167",
+            "left": "191",
             "right": "0"
           },
           "doa_clk": {
@@ -2183,7 +2183,7 @@
           },
           "doa_data": {
             "direction": "O",
-            "left": "69",
+            "left": "47",
             "right": "0"
           }
         }
@@ -2326,7 +2326,7 @@
           },
           "raw_data": {
             "direction": "O",
-            "left": "363",
+            "left": "383",
             "right": "0"
           },
           "doa_clk": {
@@ -2352,7 +2352,7 @@
           },
           "doa_data": {
             "direction": "O",
-            "left": "111",
+            "left": "95",
             "right": "0"
           }
         }
@@ -2401,7 +2401,7 @@
           },
           "fifo": {
             "direction": "I",
-            "left": "167",
+            "left": "191",
             "right": "0"
           }
         }
@@ -2450,7 +2450,7 @@
           },
           "fifo": {
             "direction": "I",
-            "left": "363",
+            "left": "383",
             "right": "0"
           }
         }
@@ -2499,7 +2499,7 @@
           },
           "fifo_data": {
             "direction": "I",
-            "left": "69",
+            "left": "47",
             "right": "0"
           },
           "valid": {
@@ -3117,9 +3117,9 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
+          "adc_control_0/resetn",
           "deci_high/sim_resetn",
-          "deci_low/sim_resetn",
-          "adc_control_0/resetn"
+          "deci_low/sim_resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3219,9 +3219,9 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
           "mts_0/axi_clk",
+          "adc_control_0/clk",
           "deci_high/sim_clk",
-          "deci_low/sim_clk",
-          "adc_control_0/clk"
+          "deci_low/sim_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

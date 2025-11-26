@@ -70,10 +70,10 @@
 // chan_seq: 0
 // num_channels: 1
 // num_paths: 1
-// data_width: 14
+// data_width: 16
 // data_fract_width: 0
 // output_rounding_mode: 0
-// output_width: 30
+// output_width: 32
 // output_fract_width: 0
 // config_method: 0
 
@@ -102,10 +102,10 @@ static xip_fir_v7_2_config gen_fir_deci_high_config() {
   config.num_channels        = 1;
   config.init_pattern        = fir_deci_high_chanpats[0];
   config.num_paths           = 1;
-  config.data_width          = 14;
+  config.data_width          = 16;
   config.data_fract_width    = 0;
   config.output_rounding_mode= XIP_FIR_FULL_PRECISION;
-  config.output_width        = 30;
+  config.output_width        = 32;
   config.output_fract_width  = 0,
   config.config_method       = XIP_FIR_CONFIG_SINGLE;
   return config;

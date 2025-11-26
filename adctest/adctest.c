@@ -88,7 +88,7 @@ int main()
 	for (i = 0;  i < 256; i++)
 		sample_arr[i] = i + 1;
 
-	size = GenerateMorlet(4000.0, 46.0, 3, 5000);
+	size = GenerateMorlet(4000.0, 46.0, 3, 25000);
 
 	LoadSamples(control, 0, sample_arr, size);
 	LoadSamples(control, 1, sample_arr, size);

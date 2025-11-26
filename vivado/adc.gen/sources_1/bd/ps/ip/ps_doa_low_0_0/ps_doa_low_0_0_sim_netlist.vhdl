@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 21 23:06:27 2025
+-- Date        : Wed Nov 26 20:09:54 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.vhdl
@@ -3553,7 +3553,7 @@ entity ps_doa_low_0_0_doa_low is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     fifo_valid : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 69 downto 0 );
+    fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     valid : out STD_LOGIC;
     freq : out STD_LOGIC_VECTOR ( 31 downto 0 );
     env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -4304,7 +4304,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => '0',
+      D => fifo_data(16),
       Q => E(0),
       R => '0'
     );
@@ -4312,7 +4312,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(50),
+      D => fifo_data(26),
       Q => E(10),
       R => '0'
     );
@@ -4320,7 +4320,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(51),
+      D => fifo_data(27),
       Q => E(11),
       R => '0'
     );
@@ -4328,7 +4328,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(52),
+      D => fifo_data(28),
       Q => E(12),
       R => '0'
     );
@@ -4336,7 +4336,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(53),
+      D => fifo_data(29),
       Q => E(13),
       R => '0'
     );
@@ -4344,7 +4344,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(54),
+      D => fifo_data(30),
       Q => E(14),
       R => '0'
     );
@@ -4352,7 +4352,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(55),
+      D => fifo_data(31),
       Q => E(15),
       R => '0'
     );
@@ -4360,7 +4360,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => '0',
+      D => fifo_data(17),
       Q => E(1),
       R => '0'
     );
@@ -4368,7 +4368,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(42),
+      D => fifo_data(18),
       Q => E(2),
       R => '0'
     );
@@ -4376,7 +4376,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(43),
+      D => fifo_data(19),
       Q => E(3),
       R => '0'
     );
@@ -4384,7 +4384,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(44),
+      D => fifo_data(20),
       Q => E(4),
       R => '0'
     );
@@ -4392,7 +4392,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(45),
+      D => fifo_data(21),
       Q => E(5),
       R => '0'
     );
@@ -4400,7 +4400,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(46),
+      D => fifo_data(22),
       Q => E(6),
       R => '0'
     );
@@ -4408,7 +4408,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(47),
+      D => fifo_data(23),
       Q => E(7),
       R => '0'
     );
@@ -4416,7 +4416,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(48),
+      D => fifo_data(24),
       Q => E(8),
       R => '0'
     );
@@ -4424,7 +4424,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(49),
+      D => fifo_data(25),
       Q => E(9),
       R => '0'
     );
@@ -4432,7 +4432,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => '0',
+      D => fifo_data(0),
       Q => N(0),
       R => '0'
     );
@@ -4440,7 +4440,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(36),
+      D => fifo_data(10),
       Q => N(10),
       R => '0'
     );
@@ -4448,7 +4448,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(37),
+      D => fifo_data(11),
       Q => N(11),
       R => '0'
     );
@@ -4456,7 +4456,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(38),
+      D => fifo_data(12),
       Q => N(12),
       R => '0'
     );
@@ -4464,7 +4464,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(39),
+      D => fifo_data(13),
       Q => N(13),
       R => '0'
     );
@@ -4472,7 +4472,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(40),
+      D => fifo_data(14),
       Q => N(14),
       R => '0'
     );
@@ -4480,7 +4480,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(41),
+      D => fifo_data(15),
       Q => N(15),
       R => '0'
     );
@@ -4488,7 +4488,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => '0',
+      D => fifo_data(1),
       Q => N(1),
       R => '0'
     );
@@ -4496,7 +4496,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(28),
+      D => fifo_data(2),
       Q => N(2),
       R => '0'
     );
@@ -4504,7 +4504,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(29),
+      D => fifo_data(3),
       Q => N(3),
       R => '0'
     );
@@ -4512,7 +4512,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(30),
+      D => fifo_data(4),
       Q => N(4),
       R => '0'
     );
@@ -4520,7 +4520,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(31),
+      D => fifo_data(5),
       Q => N(5),
       R => '0'
     );
@@ -4528,7 +4528,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(32),
+      D => fifo_data(6),
       Q => N(6),
       R => '0'
     );
@@ -4536,7 +4536,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(33),
+      D => fifo_data(7),
       Q => N(7),
       R => '0'
     );
@@ -4544,7 +4544,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(34),
+      D => fifo_data(8),
       Q => N(8),
       R => '0'
     );
@@ -4552,7 +4552,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(35),
+      D => fifo_data(9),
       Q => N(9),
       R => '0'
     );
@@ -4560,7 +4560,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => '0',
+      D => fifo_data(32),
       Q => W(0),
       R => '0'
     );
@@ -4568,7 +4568,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(64),
+      D => fifo_data(42),
       Q => W(10),
       R => '0'
     );
@@ -4576,7 +4576,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(65),
+      D => fifo_data(43),
       Q => W(11),
       R => '0'
     );
@@ -4584,7 +4584,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(66),
+      D => fifo_data(44),
       Q => W(12),
       R => '0'
     );
@@ -4592,7 +4592,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(67),
+      D => fifo_data(45),
       Q => W(13),
       R => '0'
     );
@@ -4600,7 +4600,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(68),
+      D => fifo_data(46),
       Q => W(14),
       R => '0'
     );
@@ -4608,7 +4608,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(69),
+      D => fifo_data(47),
       Q => W(15),
       R => '0'
     );
@@ -4616,7 +4616,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => '0',
+      D => fifo_data(33),
       Q => W(1),
       R => '0'
     );
@@ -4624,7 +4624,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(56),
+      D => fifo_data(34),
       Q => W(2),
       R => '0'
     );
@@ -4632,7 +4632,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(57),
+      D => fifo_data(35),
       Q => W(3),
       R => '0'
     );
@@ -4640,7 +4640,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(58),
+      D => fifo_data(36),
       Q => W(4),
       R => '0'
     );
@@ -4648,7 +4648,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(59),
+      D => fifo_data(37),
       Q => W(5),
       R => '0'
     );
@@ -4656,7 +4656,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(60),
+      D => fifo_data(38),
       Q => W(6),
       R => '0'
     );
@@ -4664,7 +4664,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(61),
+      D => fifo_data(39),
       Q => W(7),
       R => '0'
     );
@@ -4672,7 +4672,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(62),
+      D => fifo_data(40),
       Q => W(8),
       R => '0'
     );
@@ -4680,7 +4680,7 @@ begin
      port map (
       C => clk,
       CE => fifo_valid,
-      D => fifo_data(63),
+      D => fifo_data(41),
       Q => W(9),
       R => '0'
     );
@@ -8378,18 +8378,18 @@ ila_0_i: component ps_doa_low_0_0_ila_0
       probe1(31 downto 0) => \^freq\(31 downto 0),
       probe10(15 downto 0) => \^env_e\(15 downto 0),
       probe11(19 downto 0) => \^phase_e\(19 downto 0),
-      probe12(13 downto 0) => W(15 downto 2),
+      probe12(13 downto 0) => W(13 downto 0),
       probe13(15 downto 0) => fir_re_W(38 downto 23),
       probe14(15 downto 0) => fir_im_W(38 downto 23),
       probe15(15 downto 0) => \^env_w\(15 downto 0),
       probe16(19 downto 0) => \^phase_w\(19 downto 0),
       probe17(0) => fifo_valid,
-      probe2(13 downto 0) => N(15 downto 2),
+      probe2(13 downto 0) => N(13 downto 0),
       probe3(15 downto 0) => fir_re_N(38 downto 23),
       probe4(15 downto 0) => fir_im_N(38 downto 23),
       probe5(15 downto 0) => \^env_n\(15 downto 0),
       probe6(19 downto 0) => \^phase_n\(19 downto 0),
-      probe7(13 downto 0) => E(15 downto 2),
+      probe7(13 downto 0) => E(13 downto 0),
       probe8(15 downto 0) => fir_re_E(38 downto 23),
       probe9(15 downto 0) => fir_im_E(38 downto 23)
     );
@@ -8403,7 +8403,7 @@ entity ps_doa_low_0_0 is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     fifo_valid : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 69 downto 0 );
+    fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     valid : out STD_LOGIC;
     freq : out STD_LOGIC_VECTOR ( 31 downto 0 );
     env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -8442,8 +8442,7 @@ inst: entity work.ps_doa_low_0_0_doa_low
       env_E(15 downto 0) => env_E(15 downto 0),
       env_N(15 downto 0) => env_N(15 downto 0),
       env_W(15 downto 0) => env_W(15 downto 0),
-      fifo_data(69 downto 28) => fifo_data(69 downto 28),
-      fifo_data(27 downto 0) => B"0000000000000000000000000000",
+      fifo_data(47 downto 0) => fifo_data(47 downto 0),
       fifo_valid => fifo_valid,
       freq(31 downto 0) => freq(31 downto 0),
       phase_E(19 downto 0) => phase_E(19 downto 0),

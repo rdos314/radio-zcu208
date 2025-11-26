@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 21 23:06:27 2025
+-- Date        : Wed Nov 26 20:09:54 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_stub.vhdl
@@ -18,7 +18,7 @@ entity ps_doa_low_0_0 is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     fifo_valid : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 69 downto 0 );
+    fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     valid : out STD_LOGIC;
     freq : out STD_LOGIC_VECTOR ( 31 downto 0 );
     env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -43,7 +43,7 @@ architecture stub of ps_doa_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,reset,fifo_valid,fifo_data[69:0],valid,freq[31:0],env_N[15:0],phase_N[19:0],env_E[15:0],phase_E[19:0],env_W[15:0],phase_W[19:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,reset,fifo_valid,fifo_data[47:0],valid,freq[31:0],env_N[15:0],phase_N[19:0],env_E[15:0],phase_E[19:0],env_W[15:0],phase_W[19:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

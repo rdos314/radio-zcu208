@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 21 23:06:27 2025
+// Date        : Wed Nov 26 20:09:54 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.v
@@ -84,7 +84,7 @@ module ps_doa_low_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   input fifo_valid;
-  input [69:0]fifo_data;
+  input [47:0]fifo_data;
   output valid;
   output [31:0]freq;
   output [15:0]env_N;
@@ -98,7 +98,7 @@ module ps_doa_low_0_0
   wire [15:0]env_E;
   wire [15:0]env_N;
   wire [15:0]env_W;
-  wire [69:0]fifo_data;
+  wire [47:0]fifo_data;
   wire fifo_valid;
   wire [31:0]freq;
   wire [19:0]phase_E;
@@ -112,7 +112,7 @@ module ps_doa_low_0_0
         .env_E(env_E),
         .env_N(env_N),
         .env_W(env_W),
-        .fifo_data({fifo_data[69:28],1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .fifo_data(fifo_data),
         .fifo_valid(fifo_valid),
         .freq(freq),
         .phase_E(phase_E),
@@ -175,7 +175,7 @@ module ps_doa_low_0_0_doa_low
   input clk;
   input reset;
   input fifo_valid;
-  input [69:0]fifo_data;
+  input [47:0]fifo_data;
   output valid;
   output [31:0]freq;
   output [15:0]env_N;
@@ -382,7 +382,7 @@ module ps_doa_low_0_0_doa_low
   (* MARK_DEBUG *) wire [15:0]env_E;
   (* MARK_DEBUG *) wire [15:0]env_N;
   (* MARK_DEBUG *) wire [15:0]env_W;
-  wire [69:0]fifo_data;
+  wire [47:0]fifo_data;
   (* MARK_DEBUG *) wire fifo_valid;
   wire fir_doa_low_re_N_i_i_1_n_0;
   (* MARK_DEBUG *) wire [39:0]fir_im_E;
@@ -438,7 +438,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[0] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(1'b0),
+        .D(fifo_data[16]),
         .Q(E[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -446,7 +446,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[10] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[50]),
+        .D(fifo_data[26]),
         .Q(E[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -454,7 +454,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[11] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[51]),
+        .D(fifo_data[27]),
         .Q(E[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -462,7 +462,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[12] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[52]),
+        .D(fifo_data[28]),
         .Q(E[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -470,7 +470,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[13] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[53]),
+        .D(fifo_data[29]),
         .Q(E[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -478,7 +478,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[14] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[54]),
+        .D(fifo_data[30]),
         .Q(E[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -486,7 +486,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[15] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[55]),
+        .D(fifo_data[31]),
         .Q(E[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -494,7 +494,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[1] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(1'b0),
+        .D(fifo_data[17]),
         .Q(E[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -502,7 +502,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[2] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[42]),
+        .D(fifo_data[18]),
         .Q(E[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -510,7 +510,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[3] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[43]),
+        .D(fifo_data[19]),
         .Q(E[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -518,7 +518,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[4] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[44]),
+        .D(fifo_data[20]),
         .Q(E[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -526,7 +526,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[5] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[45]),
+        .D(fifo_data[21]),
         .Q(E[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -534,7 +534,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[6] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[46]),
+        .D(fifo_data[22]),
         .Q(E[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -542,7 +542,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[7] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[47]),
+        .D(fifo_data[23]),
         .Q(E[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -550,7 +550,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[8] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[48]),
+        .D(fifo_data[24]),
         .Q(E[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -558,7 +558,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.E_reg[9] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[49]),
+        .D(fifo_data[25]),
         .Q(E[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -566,7 +566,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[0] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(1'b0),
+        .D(fifo_data[0]),
         .Q(N[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -574,7 +574,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[10] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[36]),
+        .D(fifo_data[10]),
         .Q(N[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -582,7 +582,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[11] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[37]),
+        .D(fifo_data[11]),
         .Q(N[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -590,7 +590,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[12] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[38]),
+        .D(fifo_data[12]),
         .Q(N[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -598,7 +598,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[13] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[39]),
+        .D(fifo_data[13]),
         .Q(N[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -606,7 +606,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[14] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[40]),
+        .D(fifo_data[14]),
         .Q(N[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -614,7 +614,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[15] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[41]),
+        .D(fifo_data[15]),
         .Q(N[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -622,7 +622,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[1] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(1'b0),
+        .D(fifo_data[1]),
         .Q(N[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -630,7 +630,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[2] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[28]),
+        .D(fifo_data[2]),
         .Q(N[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -638,7 +638,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[3] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[29]),
+        .D(fifo_data[3]),
         .Q(N[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -646,7 +646,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[4] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[30]),
+        .D(fifo_data[4]),
         .Q(N[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -654,7 +654,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[5] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[31]),
+        .D(fifo_data[5]),
         .Q(N[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -662,7 +662,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[6] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[32]),
+        .D(fifo_data[6]),
         .Q(N[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -670,7 +670,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[7] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[33]),
+        .D(fifo_data[7]),
         .Q(N[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -678,7 +678,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[8] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[34]),
+        .D(fifo_data[8]),
         .Q(N[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -686,7 +686,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.N_reg[9] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[35]),
+        .D(fifo_data[9]),
         .Q(N[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -694,7 +694,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[0] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(1'b0),
+        .D(fifo_data[32]),
         .Q(W[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -702,7 +702,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[10] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[64]),
+        .D(fifo_data[42]),
         .Q(W[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -710,7 +710,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[11] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[65]),
+        .D(fifo_data[43]),
         .Q(W[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -718,7 +718,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[12] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[66]),
+        .D(fifo_data[44]),
         .Q(W[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -726,7 +726,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[13] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[67]),
+        .D(fifo_data[45]),
         .Q(W[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -734,7 +734,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[14] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[68]),
+        .D(fifo_data[46]),
         .Q(W[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -742,7 +742,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[15] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[69]),
+        .D(fifo_data[47]),
         .Q(W[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -750,7 +750,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[1] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(1'b0),
+        .D(fifo_data[33]),
         .Q(W[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -758,7 +758,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[2] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[56]),
+        .D(fifo_data[34]),
         .Q(W[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -766,7 +766,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[3] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[57]),
+        .D(fifo_data[35]),
         .Q(W[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -774,7 +774,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[4] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[58]),
+        .D(fifo_data[36]),
         .Q(W[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -782,7 +782,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[5] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[59]),
+        .D(fifo_data[37]),
         .Q(W[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -790,7 +790,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[6] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[60]),
+        .D(fifo_data[38]),
         .Q(W[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -798,7 +798,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[7] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[61]),
+        .D(fifo_data[39]),
         .Q(W[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -806,7 +806,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[8] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[62]),
+        .D(fifo_data[40]),
         .Q(W[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -814,7 +814,7 @@ module ps_doa_low_0_0_doa_low
   FDRE \deci_low.W_reg[9] 
        (.C(clk),
         .CE(fifo_valid),
-        .D(fifo_data[63]),
+        .D(fifo_data[41]),
         .Q(W[9]),
         .R(1'b0));
   LUT2 #(
@@ -3693,18 +3693,18 @@ module ps_doa_low_0_0_doa_low
         .probe1(freq),
         .probe10(env_E),
         .probe11(phase_E),
-        .probe12(W[15:2]),
+        .probe12(W[13:0]),
         .probe13(fir_re_W[38:23]),
         .probe14(fir_im_W[38:23]),
         .probe15(env_W),
         .probe16(phase_W),
         .probe17(fifo_valid),
-        .probe2(N[15:2]),
+        .probe2(N[13:0]),
         .probe3(fir_re_N[38:23]),
         .probe4(fir_im_N[38:23]),
         .probe5(env_N),
         .probe6(phase_N),
-        .probe7(E[15:2]),
+        .probe7(E[13:0]),
         .probe8(fir_re_E[38:23]),
         .probe9(fir_im_E[38:23]));
 endmodule

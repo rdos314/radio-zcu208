@@ -1390,7 +1390,7 @@
         <net name="ps_i/adc_control_0/inst/wr_en[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1425,6 +1425,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E0[15]"/>
+        <net name="ps_i/comp_high_0/inst/E0[14]"/>
+        <net name="ps_i/comp_high_0/inst/E0[13]"/>
+        <net name="ps_i/comp_high_0/inst/E0[12]"/>
+        <net name="ps_i/comp_high_0/inst/E0[11]"/>
+        <net name="ps_i/comp_high_0/inst/E0[10]"/>
+        <net name="ps_i/comp_high_0/inst/E0[9]"/>
+        <net name="ps_i/comp_high_0/inst/E0[8]"/>
+        <net name="ps_i/comp_high_0/inst/E0[7]"/>
+        <net name="ps_i/comp_high_0/inst/E0[6]"/>
+        <net name="ps_i/comp_high_0/inst/E0[5]"/>
+        <net name="ps_i/comp_high_0/inst/E0[4]"/>
+        <net name="ps_i/comp_high_0/inst/E0[3]"/>
+        <net name="ps_i/comp_high_0/inst/E0[2]"/>
+        <net name="ps_i/comp_high_0/inst/E0[1]"/>
+        <net name="ps_i/comp_high_0/inst/E0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_2"/>
@@ -1453,6 +1486,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E1[15]"/>
+        <net name="ps_i/comp_high_0/inst/E1[14]"/>
+        <net name="ps_i/comp_high_0/inst/E1[13]"/>
+        <net name="ps_i/comp_high_0/inst/E1[12]"/>
+        <net name="ps_i/comp_high_0/inst/E1[11]"/>
+        <net name="ps_i/comp_high_0/inst/E1[10]"/>
+        <net name="ps_i/comp_high_0/inst/E1[9]"/>
+        <net name="ps_i/comp_high_0/inst/E1[8]"/>
+        <net name="ps_i/comp_high_0/inst/E1[7]"/>
+        <net name="ps_i/comp_high_0/inst/E1[6]"/>
+        <net name="ps_i/comp_high_0/inst/E1[5]"/>
+        <net name="ps_i/comp_high_0/inst/E1[4]"/>
+        <net name="ps_i/comp_high_0/inst/E1[3]"/>
+        <net name="ps_i/comp_high_0/inst/E1[2]"/>
+        <net name="ps_i/comp_high_0/inst/E1[1]"/>
+        <net name="ps_i/comp_high_0/inst/E1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1487,6 +1553,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E2[15]"/>
+        <net name="ps_i/comp_high_0/inst/E2[14]"/>
+        <net name="ps_i/comp_high_0/inst/E2[13]"/>
+        <net name="ps_i/comp_high_0/inst/E2[12]"/>
+        <net name="ps_i/comp_high_0/inst/E2[11]"/>
+        <net name="ps_i/comp_high_0/inst/E2[10]"/>
+        <net name="ps_i/comp_high_0/inst/E2[9]"/>
+        <net name="ps_i/comp_high_0/inst/E2[8]"/>
+        <net name="ps_i/comp_high_0/inst/E2[7]"/>
+        <net name="ps_i/comp_high_0/inst/E2[6]"/>
+        <net name="ps_i/comp_high_0/inst/E2[5]"/>
+        <net name="ps_i/comp_high_0/inst/E2[4]"/>
+        <net name="ps_i/comp_high_0/inst/E2[3]"/>
+        <net name="ps_i/comp_high_0/inst/E2[2]"/>
+        <net name="ps_i/comp_high_0/inst/E2[1]"/>
+        <net name="ps_i/comp_high_0/inst/E2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_2"/>
@@ -1515,6 +1614,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E3[15]"/>
+        <net name="ps_i/comp_high_0/inst/E3[14]"/>
+        <net name="ps_i/comp_high_0/inst/E3[13]"/>
+        <net name="ps_i/comp_high_0/inst/E3[12]"/>
+        <net name="ps_i/comp_high_0/inst/E3[11]"/>
+        <net name="ps_i/comp_high_0/inst/E3[10]"/>
+        <net name="ps_i/comp_high_0/inst/E3[9]"/>
+        <net name="ps_i/comp_high_0/inst/E3[8]"/>
+        <net name="ps_i/comp_high_0/inst/E3[7]"/>
+        <net name="ps_i/comp_high_0/inst/E3[6]"/>
+        <net name="ps_i/comp_high_0/inst/E3[5]"/>
+        <net name="ps_i/comp_high_0/inst/E3[4]"/>
+        <net name="ps_i/comp_high_0/inst/E3[3]"/>
+        <net name="ps_i/comp_high_0/inst/E3[2]"/>
+        <net name="ps_i/comp_high_0/inst/E3[1]"/>
+        <net name="ps_i/comp_high_0/inst/E3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1549,6 +1681,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe5[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E4[15]"/>
+        <net name="ps_i/comp_high_0/inst/E4[14]"/>
+        <net name="ps_i/comp_high_0/inst/E4[13]"/>
+        <net name="ps_i/comp_high_0/inst/E4[12]"/>
+        <net name="ps_i/comp_high_0/inst/E4[11]"/>
+        <net name="ps_i/comp_high_0/inst/E4[10]"/>
+        <net name="ps_i/comp_high_0/inst/E4[9]"/>
+        <net name="ps_i/comp_high_0/inst/E4[8]"/>
+        <net name="ps_i/comp_high_0/inst/E4[7]"/>
+        <net name="ps_i/comp_high_0/inst/E4[6]"/>
+        <net name="ps_i/comp_high_0/inst/E4[5]"/>
+        <net name="ps_i/comp_high_0/inst/E4[4]"/>
+        <net name="ps_i/comp_high_0/inst/E4[3]"/>
+        <net name="ps_i/comp_high_0/inst/E4[2]"/>
+        <net name="ps_i/comp_high_0/inst/E4[1]"/>
+        <net name="ps_i/comp_high_0/inst/E4[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_2"/>
@@ -1577,6 +1742,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe6[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E5[15]"/>
+        <net name="ps_i/comp_high_0/inst/E5[14]"/>
+        <net name="ps_i/comp_high_0/inst/E5[13]"/>
+        <net name="ps_i/comp_high_0/inst/E5[12]"/>
+        <net name="ps_i/comp_high_0/inst/E5[11]"/>
+        <net name="ps_i/comp_high_0/inst/E5[10]"/>
+        <net name="ps_i/comp_high_0/inst/E5[9]"/>
+        <net name="ps_i/comp_high_0/inst/E5[8]"/>
+        <net name="ps_i/comp_high_0/inst/E5[7]"/>
+        <net name="ps_i/comp_high_0/inst/E5[6]"/>
+        <net name="ps_i/comp_high_0/inst/E5[5]"/>
+        <net name="ps_i/comp_high_0/inst/E5[4]"/>
+        <net name="ps_i/comp_high_0/inst/E5[3]"/>
+        <net name="ps_i/comp_high_0/inst/E5[2]"/>
+        <net name="ps_i/comp_high_0/inst/E5[1]"/>
+        <net name="ps_i/comp_high_0/inst/E5[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1611,6 +1809,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe7[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E6[15]"/>
+        <net name="ps_i/comp_high_0/inst/E6[14]"/>
+        <net name="ps_i/comp_high_0/inst/E6[13]"/>
+        <net name="ps_i/comp_high_0/inst/E6[12]"/>
+        <net name="ps_i/comp_high_0/inst/E6[11]"/>
+        <net name="ps_i/comp_high_0/inst/E6[10]"/>
+        <net name="ps_i/comp_high_0/inst/E6[9]"/>
+        <net name="ps_i/comp_high_0/inst/E6[8]"/>
+        <net name="ps_i/comp_high_0/inst/E6[7]"/>
+        <net name="ps_i/comp_high_0/inst/E6[6]"/>
+        <net name="ps_i/comp_high_0/inst/E6[5]"/>
+        <net name="ps_i/comp_high_0/inst/E6[4]"/>
+        <net name="ps_i/comp_high_0/inst/E6[3]"/>
+        <net name="ps_i/comp_high_0/inst/E6[2]"/>
+        <net name="ps_i/comp_high_0/inst/E6[1]"/>
+        <net name="ps_i/comp_high_0/inst/E6[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_2"/>
@@ -1622,6 +1853,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/comp_high_0/inst/E7[13]"/>
+        <net name="ps_i/comp_high_0/inst/E7[12]"/>
+        <net name="ps_i/comp_high_0/inst/E7[11]"/>
+        <net name="ps_i/comp_high_0/inst/E7[10]"/>
+        <net name="ps_i/comp_high_0/inst/E7[9]"/>
+        <net name="ps_i/comp_high_0/inst/E7[8]"/>
+        <net name="ps_i/comp_high_0/inst/E7[7]"/>
+        <net name="ps_i/comp_high_0/inst/E7[6]"/>
+        <net name="ps_i/comp_high_0/inst/E7[5]"/>
+        <net name="ps_i/comp_high_0/inst/E7[4]"/>
+        <net name="ps_i/comp_high_0/inst/E7[3]"/>
+        <net name="ps_i/comp_high_0/inst/E7[2]"/>
+        <net name="ps_i/comp_high_0/inst/E7[1]"/>
+        <net name="ps_i/comp_high_0/inst/E7[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe8[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/E7[15]"/>
+        <net name="ps_i/comp_high_0/inst/E7[14]"/>
         <net name="ps_i/comp_high_0/inst/E7[13]"/>
         <net name="ps_i/comp_high_0/inst/E7[12]"/>
         <net name="ps_i/comp_high_0/inst/E7[11]"/>
@@ -1700,7 +1964,7 @@
         <net name="ps_i/comp_high_0/inst/E9[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1735,6 +1999,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N0[15]"/>
+        <net name="ps_i/comp_high_0/inst/N0[14]"/>
+        <net name="ps_i/comp_high_0/inst/N0[13]"/>
+        <net name="ps_i/comp_high_0/inst/N0[12]"/>
+        <net name="ps_i/comp_high_0/inst/N0[11]"/>
+        <net name="ps_i/comp_high_0/inst/N0[10]"/>
+        <net name="ps_i/comp_high_0/inst/N0[9]"/>
+        <net name="ps_i/comp_high_0/inst/N0[8]"/>
+        <net name="ps_i/comp_high_0/inst/N0[7]"/>
+        <net name="ps_i/comp_high_0/inst/N0[6]"/>
+        <net name="ps_i/comp_high_0/inst/N0[5]"/>
+        <net name="ps_i/comp_high_0/inst/N0[4]"/>
+        <net name="ps_i/comp_high_0/inst/N0[3]"/>
+        <net name="ps_i/comp_high_0/inst/N0[2]"/>
+        <net name="ps_i/comp_high_0/inst/N0[1]"/>
+        <net name="ps_i/comp_high_0/inst/N0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_3"/>
@@ -1763,6 +2060,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N1[15]"/>
+        <net name="ps_i/comp_high_0/inst/N1[14]"/>
+        <net name="ps_i/comp_high_0/inst/N1[13]"/>
+        <net name="ps_i/comp_high_0/inst/N1[12]"/>
+        <net name="ps_i/comp_high_0/inst/N1[11]"/>
+        <net name="ps_i/comp_high_0/inst/N1[10]"/>
+        <net name="ps_i/comp_high_0/inst/N1[9]"/>
+        <net name="ps_i/comp_high_0/inst/N1[8]"/>
+        <net name="ps_i/comp_high_0/inst/N1[7]"/>
+        <net name="ps_i/comp_high_0/inst/N1[6]"/>
+        <net name="ps_i/comp_high_0/inst/N1[5]"/>
+        <net name="ps_i/comp_high_0/inst/N1[4]"/>
+        <net name="ps_i/comp_high_0/inst/N1[3]"/>
+        <net name="ps_i/comp_high_0/inst/N1[2]"/>
+        <net name="ps_i/comp_high_0/inst/N1[1]"/>
+        <net name="ps_i/comp_high_0/inst/N1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1797,6 +2127,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N2[15]"/>
+        <net name="ps_i/comp_high_0/inst/N2[14]"/>
+        <net name="ps_i/comp_high_0/inst/N2[13]"/>
+        <net name="ps_i/comp_high_0/inst/N2[12]"/>
+        <net name="ps_i/comp_high_0/inst/N2[11]"/>
+        <net name="ps_i/comp_high_0/inst/N2[10]"/>
+        <net name="ps_i/comp_high_0/inst/N2[9]"/>
+        <net name="ps_i/comp_high_0/inst/N2[8]"/>
+        <net name="ps_i/comp_high_0/inst/N2[7]"/>
+        <net name="ps_i/comp_high_0/inst/N2[6]"/>
+        <net name="ps_i/comp_high_0/inst/N2[5]"/>
+        <net name="ps_i/comp_high_0/inst/N2[4]"/>
+        <net name="ps_i/comp_high_0/inst/N2[3]"/>
+        <net name="ps_i/comp_high_0/inst/N2[2]"/>
+        <net name="ps_i/comp_high_0/inst/N2[1]"/>
+        <net name="ps_i/comp_high_0/inst/N2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_3"/>
@@ -1825,6 +2188,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N3[15]"/>
+        <net name="ps_i/comp_high_0/inst/N3[14]"/>
+        <net name="ps_i/comp_high_0/inst/N3[13]"/>
+        <net name="ps_i/comp_high_0/inst/N3[12]"/>
+        <net name="ps_i/comp_high_0/inst/N3[11]"/>
+        <net name="ps_i/comp_high_0/inst/N3[10]"/>
+        <net name="ps_i/comp_high_0/inst/N3[9]"/>
+        <net name="ps_i/comp_high_0/inst/N3[8]"/>
+        <net name="ps_i/comp_high_0/inst/N3[7]"/>
+        <net name="ps_i/comp_high_0/inst/N3[6]"/>
+        <net name="ps_i/comp_high_0/inst/N3[5]"/>
+        <net name="ps_i/comp_high_0/inst/N3[4]"/>
+        <net name="ps_i/comp_high_0/inst/N3[3]"/>
+        <net name="ps_i/comp_high_0/inst/N3[2]"/>
+        <net name="ps_i/comp_high_0/inst/N3[1]"/>
+        <net name="ps_i/comp_high_0/inst/N3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1859,6 +2255,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe5[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N4[15]"/>
+        <net name="ps_i/comp_high_0/inst/N4[14]"/>
+        <net name="ps_i/comp_high_0/inst/N4[13]"/>
+        <net name="ps_i/comp_high_0/inst/N4[12]"/>
+        <net name="ps_i/comp_high_0/inst/N4[11]"/>
+        <net name="ps_i/comp_high_0/inst/N4[10]"/>
+        <net name="ps_i/comp_high_0/inst/N4[9]"/>
+        <net name="ps_i/comp_high_0/inst/N4[8]"/>
+        <net name="ps_i/comp_high_0/inst/N4[7]"/>
+        <net name="ps_i/comp_high_0/inst/N4[6]"/>
+        <net name="ps_i/comp_high_0/inst/N4[5]"/>
+        <net name="ps_i/comp_high_0/inst/N4[4]"/>
+        <net name="ps_i/comp_high_0/inst/N4[3]"/>
+        <net name="ps_i/comp_high_0/inst/N4[2]"/>
+        <net name="ps_i/comp_high_0/inst/N4[1]"/>
+        <net name="ps_i/comp_high_0/inst/N4[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_3"/>
@@ -1887,6 +2316,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe6[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N5[15]"/>
+        <net name="ps_i/comp_high_0/inst/N5[14]"/>
+        <net name="ps_i/comp_high_0/inst/N5[13]"/>
+        <net name="ps_i/comp_high_0/inst/N5[12]"/>
+        <net name="ps_i/comp_high_0/inst/N5[11]"/>
+        <net name="ps_i/comp_high_0/inst/N5[10]"/>
+        <net name="ps_i/comp_high_0/inst/N5[9]"/>
+        <net name="ps_i/comp_high_0/inst/N5[8]"/>
+        <net name="ps_i/comp_high_0/inst/N5[7]"/>
+        <net name="ps_i/comp_high_0/inst/N5[6]"/>
+        <net name="ps_i/comp_high_0/inst/N5[5]"/>
+        <net name="ps_i/comp_high_0/inst/N5[4]"/>
+        <net name="ps_i/comp_high_0/inst/N5[3]"/>
+        <net name="ps_i/comp_high_0/inst/N5[2]"/>
+        <net name="ps_i/comp_high_0/inst/N5[1]"/>
+        <net name="ps_i/comp_high_0/inst/N5[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1921,6 +2383,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe7[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N6[15]"/>
+        <net name="ps_i/comp_high_0/inst/N6[14]"/>
+        <net name="ps_i/comp_high_0/inst/N6[13]"/>
+        <net name="ps_i/comp_high_0/inst/N6[12]"/>
+        <net name="ps_i/comp_high_0/inst/N6[11]"/>
+        <net name="ps_i/comp_high_0/inst/N6[10]"/>
+        <net name="ps_i/comp_high_0/inst/N6[9]"/>
+        <net name="ps_i/comp_high_0/inst/N6[8]"/>
+        <net name="ps_i/comp_high_0/inst/N6[7]"/>
+        <net name="ps_i/comp_high_0/inst/N6[6]"/>
+        <net name="ps_i/comp_high_0/inst/N6[5]"/>
+        <net name="ps_i/comp_high_0/inst/N6[4]"/>
+        <net name="ps_i/comp_high_0/inst/N6[3]"/>
+        <net name="ps_i/comp_high_0/inst/N6[2]"/>
+        <net name="ps_i/comp_high_0/inst/N6[1]"/>
+        <net name="ps_i/comp_high_0/inst/N6[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_3"/>
@@ -1932,6 +2427,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/comp_high_0/inst/N7[13]"/>
+        <net name="ps_i/comp_high_0/inst/N7[12]"/>
+        <net name="ps_i/comp_high_0/inst/N7[11]"/>
+        <net name="ps_i/comp_high_0/inst/N7[10]"/>
+        <net name="ps_i/comp_high_0/inst/N7[9]"/>
+        <net name="ps_i/comp_high_0/inst/N7[8]"/>
+        <net name="ps_i/comp_high_0/inst/N7[7]"/>
+        <net name="ps_i/comp_high_0/inst/N7[6]"/>
+        <net name="ps_i/comp_high_0/inst/N7[5]"/>
+        <net name="ps_i/comp_high_0/inst/N7[4]"/>
+        <net name="ps_i/comp_high_0/inst/N7[3]"/>
+        <net name="ps_i/comp_high_0/inst/N7[2]"/>
+        <net name="ps_i/comp_high_0/inst/N7[1]"/>
+        <net name="ps_i/comp_high_0/inst/N7[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe8[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/N7[15]"/>
+        <net name="ps_i/comp_high_0/inst/N7[14]"/>
         <net name="ps_i/comp_high_0/inst/N7[13]"/>
         <net name="ps_i/comp_high_0/inst/N7[12]"/>
         <net name="ps_i/comp_high_0/inst/N7[11]"/>
@@ -2010,7 +2538,7 @@
         <net name="ps_i/comp_high_0/inst/N9[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2045,6 +2573,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W0[15]"/>
+        <net name="ps_i/comp_high_0/inst/W0[14]"/>
+        <net name="ps_i/comp_high_0/inst/W0[13]"/>
+        <net name="ps_i/comp_high_0/inst/W0[12]"/>
+        <net name="ps_i/comp_high_0/inst/W0[11]"/>
+        <net name="ps_i/comp_high_0/inst/W0[10]"/>
+        <net name="ps_i/comp_high_0/inst/W0[9]"/>
+        <net name="ps_i/comp_high_0/inst/W0[8]"/>
+        <net name="ps_i/comp_high_0/inst/W0[7]"/>
+        <net name="ps_i/comp_high_0/inst/W0[6]"/>
+        <net name="ps_i/comp_high_0/inst/W0[5]"/>
+        <net name="ps_i/comp_high_0/inst/W0[4]"/>
+        <net name="ps_i/comp_high_0/inst/W0[3]"/>
+        <net name="ps_i/comp_high_0/inst/W0[2]"/>
+        <net name="ps_i/comp_high_0/inst/W0[1]"/>
+        <net name="ps_i/comp_high_0/inst/W0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_4"/>
@@ -2073,6 +2634,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W1[15]"/>
+        <net name="ps_i/comp_high_0/inst/W1[14]"/>
+        <net name="ps_i/comp_high_0/inst/W1[13]"/>
+        <net name="ps_i/comp_high_0/inst/W1[12]"/>
+        <net name="ps_i/comp_high_0/inst/W1[11]"/>
+        <net name="ps_i/comp_high_0/inst/W1[10]"/>
+        <net name="ps_i/comp_high_0/inst/W1[9]"/>
+        <net name="ps_i/comp_high_0/inst/W1[8]"/>
+        <net name="ps_i/comp_high_0/inst/W1[7]"/>
+        <net name="ps_i/comp_high_0/inst/W1[6]"/>
+        <net name="ps_i/comp_high_0/inst/W1[5]"/>
+        <net name="ps_i/comp_high_0/inst/W1[4]"/>
+        <net name="ps_i/comp_high_0/inst/W1[3]"/>
+        <net name="ps_i/comp_high_0/inst/W1[2]"/>
+        <net name="ps_i/comp_high_0/inst/W1[1]"/>
+        <net name="ps_i/comp_high_0/inst/W1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2107,6 +2701,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W2[15]"/>
+        <net name="ps_i/comp_high_0/inst/W2[14]"/>
+        <net name="ps_i/comp_high_0/inst/W2[13]"/>
+        <net name="ps_i/comp_high_0/inst/W2[12]"/>
+        <net name="ps_i/comp_high_0/inst/W2[11]"/>
+        <net name="ps_i/comp_high_0/inst/W2[10]"/>
+        <net name="ps_i/comp_high_0/inst/W2[9]"/>
+        <net name="ps_i/comp_high_0/inst/W2[8]"/>
+        <net name="ps_i/comp_high_0/inst/W2[7]"/>
+        <net name="ps_i/comp_high_0/inst/W2[6]"/>
+        <net name="ps_i/comp_high_0/inst/W2[5]"/>
+        <net name="ps_i/comp_high_0/inst/W2[4]"/>
+        <net name="ps_i/comp_high_0/inst/W2[3]"/>
+        <net name="ps_i/comp_high_0/inst/W2[2]"/>
+        <net name="ps_i/comp_high_0/inst/W2[1]"/>
+        <net name="ps_i/comp_high_0/inst/W2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_4"/>
@@ -2135,6 +2762,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W3[15]"/>
+        <net name="ps_i/comp_high_0/inst/W3[14]"/>
+        <net name="ps_i/comp_high_0/inst/W3[13]"/>
+        <net name="ps_i/comp_high_0/inst/W3[12]"/>
+        <net name="ps_i/comp_high_0/inst/W3[11]"/>
+        <net name="ps_i/comp_high_0/inst/W3[10]"/>
+        <net name="ps_i/comp_high_0/inst/W3[9]"/>
+        <net name="ps_i/comp_high_0/inst/W3[8]"/>
+        <net name="ps_i/comp_high_0/inst/W3[7]"/>
+        <net name="ps_i/comp_high_0/inst/W3[6]"/>
+        <net name="ps_i/comp_high_0/inst/W3[5]"/>
+        <net name="ps_i/comp_high_0/inst/W3[4]"/>
+        <net name="ps_i/comp_high_0/inst/W3[3]"/>
+        <net name="ps_i/comp_high_0/inst/W3[2]"/>
+        <net name="ps_i/comp_high_0/inst/W3[1]"/>
+        <net name="ps_i/comp_high_0/inst/W3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2169,6 +2829,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe5[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W4[15]"/>
+        <net name="ps_i/comp_high_0/inst/W4[14]"/>
+        <net name="ps_i/comp_high_0/inst/W4[13]"/>
+        <net name="ps_i/comp_high_0/inst/W4[12]"/>
+        <net name="ps_i/comp_high_0/inst/W4[11]"/>
+        <net name="ps_i/comp_high_0/inst/W4[10]"/>
+        <net name="ps_i/comp_high_0/inst/W4[9]"/>
+        <net name="ps_i/comp_high_0/inst/W4[8]"/>
+        <net name="ps_i/comp_high_0/inst/W4[7]"/>
+        <net name="ps_i/comp_high_0/inst/W4[6]"/>
+        <net name="ps_i/comp_high_0/inst/W4[5]"/>
+        <net name="ps_i/comp_high_0/inst/W4[4]"/>
+        <net name="ps_i/comp_high_0/inst/W4[3]"/>
+        <net name="ps_i/comp_high_0/inst/W4[2]"/>
+        <net name="ps_i/comp_high_0/inst/W4[1]"/>
+        <net name="ps_i/comp_high_0/inst/W4[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_4"/>
@@ -2197,6 +2890,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe6[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W5[15]"/>
+        <net name="ps_i/comp_high_0/inst/W5[14]"/>
+        <net name="ps_i/comp_high_0/inst/W5[13]"/>
+        <net name="ps_i/comp_high_0/inst/W5[12]"/>
+        <net name="ps_i/comp_high_0/inst/W5[11]"/>
+        <net name="ps_i/comp_high_0/inst/W5[10]"/>
+        <net name="ps_i/comp_high_0/inst/W5[9]"/>
+        <net name="ps_i/comp_high_0/inst/W5[8]"/>
+        <net name="ps_i/comp_high_0/inst/W5[7]"/>
+        <net name="ps_i/comp_high_0/inst/W5[6]"/>
+        <net name="ps_i/comp_high_0/inst/W5[5]"/>
+        <net name="ps_i/comp_high_0/inst/W5[4]"/>
+        <net name="ps_i/comp_high_0/inst/W5[3]"/>
+        <net name="ps_i/comp_high_0/inst/W5[2]"/>
+        <net name="ps_i/comp_high_0/inst/W5[1]"/>
+        <net name="ps_i/comp_high_0/inst/W5[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2231,6 +2957,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe7[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W6[15]"/>
+        <net name="ps_i/comp_high_0/inst/W6[14]"/>
+        <net name="ps_i/comp_high_0/inst/W6[13]"/>
+        <net name="ps_i/comp_high_0/inst/W6[12]"/>
+        <net name="ps_i/comp_high_0/inst/W6[11]"/>
+        <net name="ps_i/comp_high_0/inst/W6[10]"/>
+        <net name="ps_i/comp_high_0/inst/W6[9]"/>
+        <net name="ps_i/comp_high_0/inst/W6[8]"/>
+        <net name="ps_i/comp_high_0/inst/W6[7]"/>
+        <net name="ps_i/comp_high_0/inst/W6[6]"/>
+        <net name="ps_i/comp_high_0/inst/W6[5]"/>
+        <net name="ps_i/comp_high_0/inst/W6[4]"/>
+        <net name="ps_i/comp_high_0/inst/W6[3]"/>
+        <net name="ps_i/comp_high_0/inst/W6[2]"/>
+        <net name="ps_i/comp_high_0/inst/W6[1]"/>
+        <net name="ps_i/comp_high_0/inst/W6[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_4"/>
@@ -2242,6 +3001,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/comp_high_0/inst/W7[13]"/>
+        <net name="ps_i/comp_high_0/inst/W7[12]"/>
+        <net name="ps_i/comp_high_0/inst/W7[11]"/>
+        <net name="ps_i/comp_high_0/inst/W7[10]"/>
+        <net name="ps_i/comp_high_0/inst/W7[9]"/>
+        <net name="ps_i/comp_high_0/inst/W7[8]"/>
+        <net name="ps_i/comp_high_0/inst/W7[7]"/>
+        <net name="ps_i/comp_high_0/inst/W7[6]"/>
+        <net name="ps_i/comp_high_0/inst/W7[5]"/>
+        <net name="ps_i/comp_high_0/inst/W7[4]"/>
+        <net name="ps_i/comp_high_0/inst/W7[3]"/>
+        <net name="ps_i/comp_high_0/inst/W7[2]"/>
+        <net name="ps_i/comp_high_0/inst/W7[1]"/>
+        <net name="ps_i/comp_high_0/inst/W7[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe8[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_high_0/inst/W7[15]"/>
+        <net name="ps_i/comp_high_0/inst/W7[14]"/>
         <net name="ps_i/comp_high_0/inst/W7[13]"/>
         <net name="ps_i/comp_high_0/inst/W7[12]"/>
         <net name="ps_i/comp_high_0/inst/W7[11]"/>
@@ -2330,7 +3122,7 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_4"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
-        <Option Id="MAP" value="probe8[0]"/>
+        <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -2351,7 +3143,7 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_2"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
-        <Option Id="MAP" value="probe8[0]"/>
+        <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -2372,7 +3164,7 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
-        <Option Id="MAP" value="probe8[0]"/>
+        <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -2383,7 +3175,7 @@
         <net name="ps_i/comp_high_0/inst/active_2"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2428,7 +3220,7 @@
         <net name="ps_i/comp_high_0/inst/counter[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2473,7 +3265,7 @@
         <net name="ps_i/comp_high_0/inst/counter_1[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2518,7 +3310,7 @@
         <net name="ps_i/comp_high_0/inst/counter_2[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2557,6 +3349,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_5"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/E0[15]"/>
+        <net name="ps_i/comp_low_0/inst/E0[14]"/>
+        <net name="ps_i/comp_low_0/inst/E0[13]"/>
+        <net name="ps_i/comp_low_0/inst/E0[12]"/>
+        <net name="ps_i/comp_low_0/inst/E0[11]"/>
+        <net name="ps_i/comp_low_0/inst/E0[10]"/>
+        <net name="ps_i/comp_low_0/inst/E0[9]"/>
+        <net name="ps_i/comp_low_0/inst/E0[8]"/>
+        <net name="ps_i/comp_low_0/inst/E0[7]"/>
+        <net name="ps_i/comp_low_0/inst/E0[6]"/>
+        <net name="ps_i/comp_low_0/inst/E0[5]"/>
+        <net name="ps_i/comp_low_0/inst/E0[4]"/>
+        <net name="ps_i/comp_low_0/inst/E0[3]"/>
+        <net name="ps_i/comp_low_0/inst/E0[2]"/>
+        <net name="ps_i/comp_low_0/inst/E0[1]"/>
+        <net name="ps_i/comp_low_0/inst/E0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_5"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe1[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -2581,6 +3406,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_5"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/E1[15]"/>
+        <net name="ps_i/comp_low_0/inst/E1[14]"/>
+        <net name="ps_i/comp_low_0/inst/E1[13]"/>
+        <net name="ps_i/comp_low_0/inst/E1[12]"/>
+        <net name="ps_i/comp_low_0/inst/E1[11]"/>
+        <net name="ps_i/comp_low_0/inst/E1[10]"/>
+        <net name="ps_i/comp_low_0/inst/E1[9]"/>
+        <net name="ps_i/comp_low_0/inst/E1[8]"/>
+        <net name="ps_i/comp_low_0/inst/E1[7]"/>
+        <net name="ps_i/comp_low_0/inst/E1[6]"/>
+        <net name="ps_i/comp_low_0/inst/E1[5]"/>
+        <net name="ps_i/comp_low_0/inst/E1[4]"/>
+        <net name="ps_i/comp_low_0/inst/E1[3]"/>
+        <net name="ps_i/comp_low_0/inst/E1[2]"/>
+        <net name="ps_i/comp_low_0/inst/E1[1]"/>
+        <net name="ps_i/comp_low_0/inst/E1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2619,6 +3477,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_5"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/E2[15]"/>
+        <net name="ps_i/comp_low_0/inst/E2[14]"/>
+        <net name="ps_i/comp_low_0/inst/E2[13]"/>
+        <net name="ps_i/comp_low_0/inst/E2[12]"/>
+        <net name="ps_i/comp_low_0/inst/E2[11]"/>
+        <net name="ps_i/comp_low_0/inst/E2[10]"/>
+        <net name="ps_i/comp_low_0/inst/E2[9]"/>
+        <net name="ps_i/comp_low_0/inst/E2[8]"/>
+        <net name="ps_i/comp_low_0/inst/E2[7]"/>
+        <net name="ps_i/comp_low_0/inst/E2[6]"/>
+        <net name="ps_i/comp_low_0/inst/E2[5]"/>
+        <net name="ps_i/comp_low_0/inst/E2[4]"/>
+        <net name="ps_i/comp_low_0/inst/E2[3]"/>
+        <net name="ps_i/comp_low_0/inst/E2[2]"/>
+        <net name="ps_i/comp_low_0/inst/E2[1]"/>
+        <net name="ps_i/comp_low_0/inst/E2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_5"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe3[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -2626,6 +3517,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/comp_low_0/inst/E3[13]"/>
+        <net name="ps_i/comp_low_0/inst/E3[12]"/>
+        <net name="ps_i/comp_low_0/inst/E3[11]"/>
+        <net name="ps_i/comp_low_0/inst/E3[10]"/>
+        <net name="ps_i/comp_low_0/inst/E3[9]"/>
+        <net name="ps_i/comp_low_0/inst/E3[8]"/>
+        <net name="ps_i/comp_low_0/inst/E3[7]"/>
+        <net name="ps_i/comp_low_0/inst/E3[6]"/>
+        <net name="ps_i/comp_low_0/inst/E3[5]"/>
+        <net name="ps_i/comp_low_0/inst/E3[4]"/>
+        <net name="ps_i/comp_low_0/inst/E3[3]"/>
+        <net name="ps_i/comp_low_0/inst/E3[2]"/>
+        <net name="ps_i/comp_low_0/inst/E3[1]"/>
+        <net name="ps_i/comp_low_0/inst/E3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_5"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/E3[15]"/>
+        <net name="ps_i/comp_low_0/inst/E3[14]"/>
         <net name="ps_i/comp_low_0/inst/E3[13]"/>
         <net name="ps_i/comp_low_0/inst/E3[12]"/>
         <net name="ps_i/comp_low_0/inst/E3[11]"/>
@@ -2673,7 +3597,7 @@
         <net name="ps_i/comp_low_0/inst/E4[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2712,6 +3636,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_6"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/N0[15]"/>
+        <net name="ps_i/comp_low_0/inst/N0[14]"/>
+        <net name="ps_i/comp_low_0/inst/N0[13]"/>
+        <net name="ps_i/comp_low_0/inst/N0[12]"/>
+        <net name="ps_i/comp_low_0/inst/N0[11]"/>
+        <net name="ps_i/comp_low_0/inst/N0[10]"/>
+        <net name="ps_i/comp_low_0/inst/N0[9]"/>
+        <net name="ps_i/comp_low_0/inst/N0[8]"/>
+        <net name="ps_i/comp_low_0/inst/N0[7]"/>
+        <net name="ps_i/comp_low_0/inst/N0[6]"/>
+        <net name="ps_i/comp_low_0/inst/N0[5]"/>
+        <net name="ps_i/comp_low_0/inst/N0[4]"/>
+        <net name="ps_i/comp_low_0/inst/N0[3]"/>
+        <net name="ps_i/comp_low_0/inst/N0[2]"/>
+        <net name="ps_i/comp_low_0/inst/N0[1]"/>
+        <net name="ps_i/comp_low_0/inst/N0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_6"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe1[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -2736,6 +3693,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_6"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/N1[15]"/>
+        <net name="ps_i/comp_low_0/inst/N1[14]"/>
+        <net name="ps_i/comp_low_0/inst/N1[13]"/>
+        <net name="ps_i/comp_low_0/inst/N1[12]"/>
+        <net name="ps_i/comp_low_0/inst/N1[11]"/>
+        <net name="ps_i/comp_low_0/inst/N1[10]"/>
+        <net name="ps_i/comp_low_0/inst/N1[9]"/>
+        <net name="ps_i/comp_low_0/inst/N1[8]"/>
+        <net name="ps_i/comp_low_0/inst/N1[7]"/>
+        <net name="ps_i/comp_low_0/inst/N1[6]"/>
+        <net name="ps_i/comp_low_0/inst/N1[5]"/>
+        <net name="ps_i/comp_low_0/inst/N1[4]"/>
+        <net name="ps_i/comp_low_0/inst/N1[3]"/>
+        <net name="ps_i/comp_low_0/inst/N1[2]"/>
+        <net name="ps_i/comp_low_0/inst/N1[1]"/>
+        <net name="ps_i/comp_low_0/inst/N1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2774,6 +3764,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_6"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/N2[15]"/>
+        <net name="ps_i/comp_low_0/inst/N2[14]"/>
+        <net name="ps_i/comp_low_0/inst/N2[13]"/>
+        <net name="ps_i/comp_low_0/inst/N2[12]"/>
+        <net name="ps_i/comp_low_0/inst/N2[11]"/>
+        <net name="ps_i/comp_low_0/inst/N2[10]"/>
+        <net name="ps_i/comp_low_0/inst/N2[9]"/>
+        <net name="ps_i/comp_low_0/inst/N2[8]"/>
+        <net name="ps_i/comp_low_0/inst/N2[7]"/>
+        <net name="ps_i/comp_low_0/inst/N2[6]"/>
+        <net name="ps_i/comp_low_0/inst/N2[5]"/>
+        <net name="ps_i/comp_low_0/inst/N2[4]"/>
+        <net name="ps_i/comp_low_0/inst/N2[3]"/>
+        <net name="ps_i/comp_low_0/inst/N2[2]"/>
+        <net name="ps_i/comp_low_0/inst/N2[1]"/>
+        <net name="ps_i/comp_low_0/inst/N2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_6"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe3[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -2781,6 +3804,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/comp_low_0/inst/N3[13]"/>
+        <net name="ps_i/comp_low_0/inst/N3[12]"/>
+        <net name="ps_i/comp_low_0/inst/N3[11]"/>
+        <net name="ps_i/comp_low_0/inst/N3[10]"/>
+        <net name="ps_i/comp_low_0/inst/N3[9]"/>
+        <net name="ps_i/comp_low_0/inst/N3[8]"/>
+        <net name="ps_i/comp_low_0/inst/N3[7]"/>
+        <net name="ps_i/comp_low_0/inst/N3[6]"/>
+        <net name="ps_i/comp_low_0/inst/N3[5]"/>
+        <net name="ps_i/comp_low_0/inst/N3[4]"/>
+        <net name="ps_i/comp_low_0/inst/N3[3]"/>
+        <net name="ps_i/comp_low_0/inst/N3[2]"/>
+        <net name="ps_i/comp_low_0/inst/N3[1]"/>
+        <net name="ps_i/comp_low_0/inst/N3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_6"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/N3[15]"/>
+        <net name="ps_i/comp_low_0/inst/N3[14]"/>
         <net name="ps_i/comp_low_0/inst/N3[13]"/>
         <net name="ps_i/comp_low_0/inst/N3[12]"/>
         <net name="ps_i/comp_low_0/inst/N3[11]"/>
@@ -2828,7 +3884,7 @@
         <net name="ps_i/comp_low_0/inst/N4[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2863,6 +3919,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_7"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/W0[15]"/>
+        <net name="ps_i/comp_low_0/inst/W0[14]"/>
+        <net name="ps_i/comp_low_0/inst/W0[13]"/>
+        <net name="ps_i/comp_low_0/inst/W0[12]"/>
+        <net name="ps_i/comp_low_0/inst/W0[11]"/>
+        <net name="ps_i/comp_low_0/inst/W0[10]"/>
+        <net name="ps_i/comp_low_0/inst/W0[9]"/>
+        <net name="ps_i/comp_low_0/inst/W0[8]"/>
+        <net name="ps_i/comp_low_0/inst/W0[7]"/>
+        <net name="ps_i/comp_low_0/inst/W0[6]"/>
+        <net name="ps_i/comp_low_0/inst/W0[5]"/>
+        <net name="ps_i/comp_low_0/inst/W0[4]"/>
+        <net name="ps_i/comp_low_0/inst/W0[3]"/>
+        <net name="ps_i/comp_low_0/inst/W0[2]"/>
+        <net name="ps_i/comp_low_0/inst/W0[1]"/>
+        <net name="ps_i/comp_low_0/inst/W0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_7"/>
@@ -2891,6 +3980,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_7"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/W1[15]"/>
+        <net name="ps_i/comp_low_0/inst/W1[14]"/>
+        <net name="ps_i/comp_low_0/inst/W1[13]"/>
+        <net name="ps_i/comp_low_0/inst/W1[12]"/>
+        <net name="ps_i/comp_low_0/inst/W1[11]"/>
+        <net name="ps_i/comp_low_0/inst/W1[10]"/>
+        <net name="ps_i/comp_low_0/inst/W1[9]"/>
+        <net name="ps_i/comp_low_0/inst/W1[8]"/>
+        <net name="ps_i/comp_low_0/inst/W1[7]"/>
+        <net name="ps_i/comp_low_0/inst/W1[6]"/>
+        <net name="ps_i/comp_low_0/inst/W1[5]"/>
+        <net name="ps_i/comp_low_0/inst/W1[4]"/>
+        <net name="ps_i/comp_low_0/inst/W1[3]"/>
+        <net name="ps_i/comp_low_0/inst/W1[2]"/>
+        <net name="ps_i/comp_low_0/inst/W1[1]"/>
+        <net name="ps_i/comp_low_0/inst/W1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2925,6 +4047,39 @@
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_7"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/W2[15]"/>
+        <net name="ps_i/comp_low_0/inst/W2[14]"/>
+        <net name="ps_i/comp_low_0/inst/W2[13]"/>
+        <net name="ps_i/comp_low_0/inst/W2[12]"/>
+        <net name="ps_i/comp_low_0/inst/W2[11]"/>
+        <net name="ps_i/comp_low_0/inst/W2[10]"/>
+        <net name="ps_i/comp_low_0/inst/W2[9]"/>
+        <net name="ps_i/comp_low_0/inst/W2[8]"/>
+        <net name="ps_i/comp_low_0/inst/W2[7]"/>
+        <net name="ps_i/comp_low_0/inst/W2[6]"/>
+        <net name="ps_i/comp_low_0/inst/W2[5]"/>
+        <net name="ps_i/comp_low_0/inst/W2[4]"/>
+        <net name="ps_i/comp_low_0/inst/W2[3]"/>
+        <net name="ps_i/comp_low_0/inst/W2[2]"/>
+        <net name="ps_i/comp_low_0/inst/W2[1]"/>
+        <net name="ps_i/comp_low_0/inst/W2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_7"/>
@@ -2936,6 +4091,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/comp_low_0/inst/W3[13]"/>
+        <net name="ps_i/comp_low_0/inst/W3[12]"/>
+        <net name="ps_i/comp_low_0/inst/W3[11]"/>
+        <net name="ps_i/comp_low_0/inst/W3[10]"/>
+        <net name="ps_i/comp_low_0/inst/W3[9]"/>
+        <net name="ps_i/comp_low_0/inst/W3[8]"/>
+        <net name="ps_i/comp_low_0/inst/W3[7]"/>
+        <net name="ps_i/comp_low_0/inst/W3[6]"/>
+        <net name="ps_i/comp_low_0/inst/W3[5]"/>
+        <net name="ps_i/comp_low_0/inst/W3[4]"/>
+        <net name="ps_i/comp_low_0/inst/W3[3]"/>
+        <net name="ps_i/comp_low_0/inst/W3[2]"/>
+        <net name="ps_i/comp_low_0/inst/W3[1]"/>
+        <net name="ps_i/comp_low_0/inst/W3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_7"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/comp_low_0/inst/W3[15]"/>
+        <net name="ps_i/comp_low_0/inst/W3[14]"/>
         <net name="ps_i/comp_low_0/inst/W3[13]"/>
         <net name="ps_i/comp_low_0/inst/W3[12]"/>
         <net name="ps_i/comp_low_0/inst/W3[11]"/>
@@ -2993,7 +4181,7 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_7"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
-        <Option Id="MAP" value="probe4[0]"/>
+        <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -3014,7 +4202,7 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_5"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
-        <Option Id="MAP" value="probe4[0]"/>
+        <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -3035,7 +4223,7 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_6"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
-        <Option Id="MAP" value="probe4[0]"/>
+        <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -9770,6 +10958,39 @@
         <net name="ps_i/deci_low/inst/dE[0]"/>
       </nets>
     </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe19[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/dE[15]"/>
+        <net name="ps_i/deci_low/inst/dE[14]"/>
+        <net name="ps_i/deci_low/inst/dE[13]"/>
+        <net name="ps_i/deci_low/inst/dE[12]"/>
+        <net name="ps_i/deci_low/inst/dE[11]"/>
+        <net name="ps_i/deci_low/inst/dE[10]"/>
+        <net name="ps_i/deci_low/inst/dE[9]"/>
+        <net name="ps_i/deci_low/inst/dE[8]"/>
+        <net name="ps_i/deci_low/inst/dE[7]"/>
+        <net name="ps_i/deci_low/inst/dE[6]"/>
+        <net name="ps_i/deci_low/inst/dE[5]"/>
+        <net name="ps_i/deci_low/inst/dE[4]"/>
+        <net name="ps_i/deci_low/inst/dE[3]"/>
+        <net name="ps_i/deci_low/inst/dE[2]"/>
+        <net name="ps_i/deci_low/inst/dE[1]"/>
+        <net name="ps_i/deci_low/inst/dE[0]"/>
+      </nets>
+    </probe>
     <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
@@ -9785,6 +11006,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/deci_low/inst/dN[13]"/>
+        <net name="ps_i/deci_low/inst/dN[12]"/>
+        <net name="ps_i/deci_low/inst/dN[11]"/>
+        <net name="ps_i/deci_low/inst/dN[10]"/>
+        <net name="ps_i/deci_low/inst/dN[9]"/>
+        <net name="ps_i/deci_low/inst/dN[8]"/>
+        <net name="ps_i/deci_low/inst/dN[7]"/>
+        <net name="ps_i/deci_low/inst/dN[6]"/>
+        <net name="ps_i/deci_low/inst/dN[5]"/>
+        <net name="ps_i/deci_low/inst/dN[4]"/>
+        <net name="ps_i/deci_low/inst/dN[3]"/>
+        <net name="ps_i/deci_low/inst/dN[2]"/>
+        <net name="ps_i/deci_low/inst/dN[1]"/>
+        <net name="ps_i/deci_low/inst/dN[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe18[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/dN[15]"/>
+        <net name="ps_i/deci_low/inst/dN[14]"/>
         <net name="ps_i/deci_low/inst/dN[13]"/>
         <net name="ps_i/deci_low/inst/dN[12]"/>
         <net name="ps_i/deci_low/inst/dN[11]"/>
@@ -9832,6 +11086,81 @@
         <net name="ps_i/deci_low/inst/dW[0]"/>
       </nets>
     </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe20[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/dW[15]"/>
+        <net name="ps_i/deci_low/inst/dW[14]"/>
+        <net name="ps_i/deci_low/inst/dW[13]"/>
+        <net name="ps_i/deci_low/inst/dW[12]"/>
+        <net name="ps_i/deci_low/inst/dW[11]"/>
+        <net name="ps_i/deci_low/inst/dW[10]"/>
+        <net name="ps_i/deci_low/inst/dW[9]"/>
+        <net name="ps_i/deci_low/inst/dW[8]"/>
+        <net name="ps_i/deci_low/inst/dW[7]"/>
+        <net name="ps_i/deci_low/inst/dW[6]"/>
+        <net name="ps_i/deci_low/inst/dW[5]"/>
+        <net name="ps_i/deci_low/inst/dW[4]"/>
+        <net name="ps_i/deci_low/inst/dW[3]"/>
+        <net name="ps_i/deci_low/inst/dW[2]"/>
+        <net name="ps_i/deci_low/inst/dW[1]"/>
+        <net name="ps_i/deci_low/inst/dW[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe5[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/doa_fifo_wr"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[3:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/doa_wr_delay[3]"/>
+        <net name="ps_i/deci_low/inst/doa_wr_delay[2]"/>
+        <net name="ps_i/deci_low/inst/doa_wr_delay[1]"/>
+        <net name="ps_i/deci_low/inst/doa_wr_delay[0]"/>
+      </nets>
+    </probe>
     <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
@@ -9847,6 +11176,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/deci_low/inst/drN0[13]"/>
+        <net name="ps_i/deci_low/inst/drN0[12]"/>
+        <net name="ps_i/deci_low/inst/drN0[11]"/>
+        <net name="ps_i/deci_low/inst/drN0[10]"/>
+        <net name="ps_i/deci_low/inst/drN0[9]"/>
+        <net name="ps_i/deci_low/inst/drN0[8]"/>
+        <net name="ps_i/deci_low/inst/drN0[7]"/>
+        <net name="ps_i/deci_low/inst/drN0[6]"/>
+        <net name="ps_i/deci_low/inst/drN0[5]"/>
+        <net name="ps_i/deci_low/inst/drN0[4]"/>
+        <net name="ps_i/deci_low/inst/drN0[3]"/>
+        <net name="ps_i/deci_low/inst/drN0[2]"/>
+        <net name="ps_i/deci_low/inst/drN0[1]"/>
+        <net name="ps_i/deci_low/inst/drN0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe12[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/drN0[15]"/>
+        <net name="ps_i/deci_low/inst/drN0[14]"/>
         <net name="ps_i/deci_low/inst/drN0[13]"/>
         <net name="ps_i/deci_low/inst/drN0[12]"/>
         <net name="ps_i/deci_low/inst/drN0[11]"/>
@@ -9894,7 +11256,40 @@
         <net name="ps_i/deci_low/inst/drN1[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe13[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/drN1[15]"/>
+        <net name="ps_i/deci_low/inst/drN1[14]"/>
+        <net name="ps_i/deci_low/inst/drN1[13]"/>
+        <net name="ps_i/deci_low/inst/drN1[12]"/>
+        <net name="ps_i/deci_low/inst/drN1[11]"/>
+        <net name="ps_i/deci_low/inst/drN1[10]"/>
+        <net name="ps_i/deci_low/inst/drN1[9]"/>
+        <net name="ps_i/deci_low/inst/drN1[8]"/>
+        <net name="ps_i/deci_low/inst/drN1[7]"/>
+        <net name="ps_i/deci_low/inst/drN1[6]"/>
+        <net name="ps_i/deci_low/inst/drN1[5]"/>
+        <net name="ps_i/deci_low/inst/drN1[4]"/>
+        <net name="ps_i/deci_low/inst/drN1[3]"/>
+        <net name="ps_i/deci_low/inst/drN1[2]"/>
+        <net name="ps_i/deci_low/inst/drN1[1]"/>
+        <net name="ps_i/deci_low/inst/drN1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -9933,6 +11328,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_8"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe16[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/drN2[15]"/>
+        <net name="ps_i/deci_low/inst/drN2[14]"/>
+        <net name="ps_i/deci_low/inst/drN2[13]"/>
+        <net name="ps_i/deci_low/inst/drN2[12]"/>
+        <net name="ps_i/deci_low/inst/drN2[11]"/>
+        <net name="ps_i/deci_low/inst/drN2[10]"/>
+        <net name="ps_i/deci_low/inst/drN2[9]"/>
+        <net name="ps_i/deci_low/inst/drN2[8]"/>
+        <net name="ps_i/deci_low/inst/drN2[7]"/>
+        <net name="ps_i/deci_low/inst/drN2[6]"/>
+        <net name="ps_i/deci_low/inst/drN2[5]"/>
+        <net name="ps_i/deci_low/inst/drN2[4]"/>
+        <net name="ps_i/deci_low/inst/drN2[3]"/>
+        <net name="ps_i/deci_low/inst/drN2[2]"/>
+        <net name="ps_i/deci_low/inst/drN2[1]"/>
+        <net name="ps_i/deci_low/inst/drN2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe15[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -9940,6 +11368,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/deci_low/inst/drN3[13]"/>
+        <net name="ps_i/deci_low/inst/drN3[12]"/>
+        <net name="ps_i/deci_low/inst/drN3[11]"/>
+        <net name="ps_i/deci_low/inst/drN3[10]"/>
+        <net name="ps_i/deci_low/inst/drN3[9]"/>
+        <net name="ps_i/deci_low/inst/drN3[8]"/>
+        <net name="ps_i/deci_low/inst/drN3[7]"/>
+        <net name="ps_i/deci_low/inst/drN3[6]"/>
+        <net name="ps_i/deci_low/inst/drN3[5]"/>
+        <net name="ps_i/deci_low/inst/drN3[4]"/>
+        <net name="ps_i/deci_low/inst/drN3[3]"/>
+        <net name="ps_i/deci_low/inst/drN3[2]"/>
+        <net name="ps_i/deci_low/inst/drN3[1]"/>
+        <net name="ps_i/deci_low/inst/drN3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe15[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/drN3[15]"/>
+        <net name="ps_i/deci_low/inst/drN3[14]"/>
         <net name="ps_i/deci_low/inst/drN3[13]"/>
         <net name="ps_i/deci_low/inst/drN3[12]"/>
         <net name="ps_i/deci_low/inst/drN3[11]"/>
@@ -10204,7 +11665,7 @@
         <net name="ps_i/deci_low/inst/mux_E7[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -10243,6 +11704,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_8"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe6[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N0[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[14]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N0[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe5[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -10250,6 +11744,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/deci_low/inst/mux_N1[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe7[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N1[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N1[14]"/>
         <net name="ps_i/deci_low/inst/mux_N1[13]"/>
         <net name="ps_i/deci_low/inst/mux_N1[12]"/>
         <net name="ps_i/deci_low/inst/mux_N1[11]"/>
@@ -10305,6 +11832,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_8"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe8[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N2[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[14]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N2[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe7[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -10329,6 +11889,39 @@
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe9[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N3[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[14]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N3[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -10367,6 +11960,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_8"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe10[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N4[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[14]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N4[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe9[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -10390,7 +12016,40 @@
         <net name="ps_i/deci_low/inst/mux_N5[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe9[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N5[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[14]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N5[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -10429,6 +12088,39 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_8"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe12[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N6[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[14]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N6[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe11[13:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
@@ -10436,6 +12128,39 @@
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
+        <net name="ps_i/deci_low/inst/mux_N7[13]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[12]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[11]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[10]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[9]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[8]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[7]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[6]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[5]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[4]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[3]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[2]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[1]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe13[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/mux_N7[15]"/>
+        <net name="ps_i/deci_low/inst/mux_N7[14]"/>
         <net name="ps_i/deci_low/inst/mux_N7[13]"/>
         <net name="ps_i/deci_low/inst/mux_N7[12]"/>
         <net name="ps_i/deci_low/inst/mux_N7[11]"/>
@@ -10742,13 +12467,34 @@
         <net name="ps_i/deci_low/inst/raw_fifo_wr"/>
       </nets>
     </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[3:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/deci_low/inst/raw_wr_delay[3]"/>
+        <net name="ps_i/deci_low/inst/raw_wr_delay[2]"/>
+        <net name="ps_i/deci_low/inst/raw_wr_delay[1]"/>
+        <net name="ps_i/deci_low/inst/raw_wr_delay[0]"/>
+      </nets>
+    </probe>
     <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_7"/>
+        <Option Id="HW_ILA" value="hw_ila_8"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe2[4:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -23381,6 +25127,37 @@
         <net name="ps_i/doa_high_189_0/inst/valid_re_W"/>
       </nets>
     </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe7[13:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/doa_low_0/inst/E[13]"/>
+        <net name="ps_i/doa_low_0/inst/E[12]"/>
+        <net name="ps_i/doa_low_0/inst/E[11]"/>
+        <net name="ps_i/doa_low_0/inst/E[10]"/>
+        <net name="ps_i/doa_low_0/inst/E[9]"/>
+        <net name="ps_i/doa_low_0/inst/E[8]"/>
+        <net name="ps_i/doa_low_0/inst/E[7]"/>
+        <net name="ps_i/doa_low_0/inst/E[6]"/>
+        <net name="ps_i/doa_low_0/inst/E[5]"/>
+        <net name="ps_i/doa_low_0/inst/E[4]"/>
+        <net name="ps_i/doa_low_0/inst/E[3]"/>
+        <net name="ps_i/doa_low_0/inst/E[2]"/>
+        <net name="ps_i/doa_low_0/inst/E[1]"/>
+        <net name="ps_i/doa_low_0/inst/E[0]"/>
+      </nets>
+    </probe>
     <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
@@ -23412,7 +25189,38 @@
         <net name="ps_i/doa_low_0/inst/E[2]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[13:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/doa_low_0/inst/N[13]"/>
+        <net name="ps_i/doa_low_0/inst/N[12]"/>
+        <net name="ps_i/doa_low_0/inst/N[11]"/>
+        <net name="ps_i/doa_low_0/inst/N[10]"/>
+        <net name="ps_i/doa_low_0/inst/N[9]"/>
+        <net name="ps_i/doa_low_0/inst/N[8]"/>
+        <net name="ps_i/doa_low_0/inst/N[7]"/>
+        <net name="ps_i/doa_low_0/inst/N[6]"/>
+        <net name="ps_i/doa_low_0/inst/N[5]"/>
+        <net name="ps_i/doa_low_0/inst/N[4]"/>
+        <net name="ps_i/doa_low_0/inst/N[3]"/>
+        <net name="ps_i/doa_low_0/inst/N[2]"/>
+        <net name="ps_i/doa_low_0/inst/N[1]"/>
+        <net name="ps_i/doa_low_0/inst/N[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -23441,6 +25249,37 @@
         <net name="ps_i/doa_low_0/inst/N[4]"/>
         <net name="ps_i/doa_low_0/inst/N[3]"/>
         <net name="ps_i/doa_low_0/inst/N[2]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe12[13:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="ps_i/doa_low_0/inst/W[13]"/>
+        <net name="ps_i/doa_low_0/inst/W[12]"/>
+        <net name="ps_i/doa_low_0/inst/W[11]"/>
+        <net name="ps_i/doa_low_0/inst/W[10]"/>
+        <net name="ps_i/doa_low_0/inst/W[9]"/>
+        <net name="ps_i/doa_low_0/inst/W[8]"/>
+        <net name="ps_i/doa_low_0/inst/W[7]"/>
+        <net name="ps_i/doa_low_0/inst/W[6]"/>
+        <net name="ps_i/doa_low_0/inst/W[5]"/>
+        <net name="ps_i/doa_low_0/inst/W[4]"/>
+        <net name="ps_i/doa_low_0/inst/W[3]"/>
+        <net name="ps_i/doa_low_0/inst/W[2]"/>
+        <net name="ps_i/doa_low_0/inst/W[1]"/>
+        <net name="ps_i/doa_low_0/inst/W[0]"/>
       </nets>
     </probe>
     <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
@@ -23762,7 +25601,7 @@
         <net name="ps_i/doa_low_0/inst/env_N[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -23939,7 +25778,7 @@
         <net name="ps_i/doa_low_0/inst/fir_im_E[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -24068,7 +25907,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_10"/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe14[15:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -24185,13 +26024,13 @@
         <net name="ps_i/doa_low_0/inst/fir_im_W[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_10"/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe8[15:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -24308,13 +26147,13 @@
         <net name="ps_i/doa_low_0/inst/fir_re_E[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_10"/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe3[15:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -24431,13 +26270,13 @@
         <net name="ps_i/doa_low_0/inst/fir_re_N[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_10"/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe13[15:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -24554,13 +26393,13 @@
         <net name="ps_i/doa_low_0/inst/fir_re_W[0]"/>
       </nets>
     </probe>
-    <probe type="ila_data" busType="net" source="netlist" spec="ILA_DATA_V2_RT">
+    <probe type="ila_data" busType="bus" source="netlist" spec="ILA_DATA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_10"/>
+        <Option Id="HW_ILA" value="hw_ila_9"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe1[31:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -25524,7 +27363,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_11"/>
+        <Option Id="HW_ILA" value="hw_ila_10"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe1[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>

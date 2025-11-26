@@ -10,11 +10,11 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="1,024"></ZoomEndTime>
+      <ZoomEndTime time="1,025"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="95"></NameColumnWidth>
+      <NameColumnWidth column_width="79"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
@@ -22,32 +22,32 @@
    </wave_markers>
    <wvobject fp_name="ps_i/comp_low_0/inst/N0" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N0[13:0]</obj_property>
-      <obj_property name="ObjectShortName">N0[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">N0[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_low_0/inst/N1" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N1[13:0]</obj_property>
-      <obj_property name="ObjectShortName">N1[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">N1[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_low_0/inst/N2" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N2[13:0]</obj_property>
-      <obj_property name="ObjectShortName">N2[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">N2[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="ps_i/comp_low_0/inst/N3" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N3[13:0]</obj_property>
-      <obj_property name="ObjectShortName">N3[13:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low_0/inst/N3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">N3[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>

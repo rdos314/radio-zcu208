@@ -54,10 +54,10 @@
         "sim_data": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "raw_clk": [ { "direction": "in" } ],
         "raw_ready": [ { "direction": "out" } ],
-        "raw_data": [ { "direction": "out", "size_left": "363", "size_right": "0" } ],
+        "raw_data": [ { "direction": "out", "size_left": "383", "size_right": "0" } ],
         "doa_clk": [ { "direction": "in" } ],
         "doa_ready": [ { "direction": "out" } ],
-        "doa_data": [ { "direction": "out", "size_left": "111", "size_right": "0" } ]
+        "doa_data": [ { "direction": "out", "size_left": "95", "size_right": "0" } ]
       },
       "interfaces": {
         "resetn": {
