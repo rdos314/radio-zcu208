@@ -417,7 +417,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (mux_active)
+	  if (mux_active | doa_fifo_wr)
 	    reset_delay <= 3'b111;
 	  else
 	  begin

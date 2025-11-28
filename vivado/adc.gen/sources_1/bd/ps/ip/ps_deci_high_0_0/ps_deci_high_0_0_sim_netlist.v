@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Nov 27 21:53:52 2025
+// Date        : Thu Nov 27 23:52:00 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_high_0_0/ps_deci_high_0_0_sim_netlist.v
@@ -163,7 +163,6 @@ module ps_deci_high_0_0_deci_high
   wire [127:0]data_N;
   wire [127:0]data_W;
   wire \deci_high.doa_fifo_wr_i_1_n_0 ;
-  wire \deci_high.doa_fifo_wr_i_2_n_0 ;
   wire \deci_high.doa_in_data[95]_i_1_n_0 ;
   wire \deci_high.doa_in_data_reg_n_0_[0] ;
   wire \deci_high.doa_in_data_reg_n_0_[10] ;
@@ -681,20 +680,15 @@ module ps_deci_high_0_0_deci_high
   wire \deci_high.raw_delay_reg[8]_i_1_n_5 ;
   wire \deci_high.raw_delay_reg[8]_i_1_n_6 ;
   wire \deci_high.raw_delay_reg[8]_i_1_n_7 ;
-  wire \deci_high.raw_fifo_wr_i_1_n_0 ;
-  wire \deci_high.raw_wr_delay[0]_i_1_n_0 ;
-  wire \deci_high.raw_wr_delay[1]_i_1_n_0 ;
-  wire \deci_high.raw_wr_delay[2]_i_1_n_0 ;
-  wire \deci_high.raw_wr_delay[3]_i_1_n_0 ;
-  wire \deci_high.raw_wr_delay[3]_i_2_n_0 ;
   wire \deci_high.reset_active[0]_i_1_n_0 ;
   wire \deci_high.reset_active[1]_i_1_n_0 ;
   wire \deci_high.reset_active[2]_i_1_n_0 ;
   wire \deci_high.reset_active[2]_i_2_n_0 ;
   wire \deci_high.reset_delay[1]_i_1_n_0 ;
-  wire \deci_high.reset_delay[2]_i_1_n_0 ;
   wire \deci_high.reset_delay[2]_i_2_n_0 ;
-  wire [0:0]\deci_high.reset_delay_reg0 ;
+  wire \deci_high.reset_delay[2]_i_3_n_0 ;
+  wire \deci_high.reset_delay_reg0 ;
+  wire [0:0]\deci_high.reset_delay_reg01_in ;
   wire \deci_high.sim_active_1_i_1_n_0 ;
   wire \deci_high.sim_active_i_1_n_0 ;
   wire \deci_high.sim_active_reg_rep_n_0 ;
@@ -874,9 +868,9 @@ module ps_deci_high_0_0_deci_high
   wire [11:0]raw_delay0;
   wire raw_fifo_empty;
   (* MARK_DEBUG *) wire raw_fifo_wr;
+  wire [383:0]raw_in_data;
   wire [383:0]raw_out_data;
   wire raw_ready;
-  (* MARK_DEBUG *) wire [3:0]raw_wr_delay;
   wire ready_E;
   wire ready_N;
   wire ready_W;
@@ -913,7 +907,6 @@ module ps_deci_high_0_0_deci_high
   wire NLW_fifo_raw_i_full_UNCONNECTED;
   wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
-  wire [383:0]NLW_fifo_raw_i_din_UNCONNECTED;
   wire NLW_fifo_sim_E_i_full_UNCONNECTED;
   wire NLW_fifo_sim_E_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_sim_E_i_wr_rst_busy_UNCONNECTED;
@@ -1510,22 +1503,12 @@ module ps_deci_high_0_0_deci_high
         .Q(doa_data[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'h8F)) 
+    .INIT(8'hF8)) 
     \deci_high.doa_fifo_wr_i_1 
        (.I0(doa_fifo_wr),
         .I1(\deci_high.doa_wr_delay[4]_i_1_n_0 ),
-        .I2(\deci_high.doa_fifo_wr_i_2_n_0 ),
+        .I2(\deci_high.doa_in_data[95]_i_1_n_0 ),
         .O(\deci_high.doa_fifo_wr_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hEFFFFFFFFFFFFFFF)) 
-    \deci_high.doa_fifo_wr_i_2 
-       (.I0(doa_wr_delay[4]),
-        .I1(doa_wr_delay[2]),
-        .I2(doa_wr_delay[1]),
-        .I3(mux_active),
-        .I4(doa_wr_delay[3]),
-        .I5(doa_wr_delay[0]),
-        .O(\deci_high.doa_fifo_wr_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \deci_high.doa_fifo_wr_reg 
        (.C(clk),
@@ -1534,14 +1517,14 @@ module ps_deci_high_0_0_deci_high
         .Q(doa_fifo_wr),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000000008000)) 
+    .INIT(64'h0000000000000008)) 
     \deci_high.doa_in_data[95]_i_1 
-       (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[3]),
-        .I2(mux_active),
-        .I3(doa_wr_delay[1]),
-        .I4(doa_wr_delay[2]),
-        .I5(doa_wr_delay[4]),
+       (.I0(mux_active),
+        .I1(doa_wr_delay[4]),
+        .I2(doa_wr_delay[1]),
+        .I3(doa_wr_delay[2]),
+        .I4(doa_wr_delay[0]),
+        .I5(doa_wr_delay[3]),
         .O(\deci_high.doa_in_data[95]_i_1_n_0 ));
   FDRE \deci_high.doa_in_data_reg[0] 
        (.C(clk),
@@ -2137,63 +2120,58 @@ module ps_deci_high_0_0_deci_high
         .Q(doa_ready),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h555555555555D555)) 
+    .INIT(64'h0000FFFF0000EFFF)) 
     \deci_high.doa_wr_delay[0]_i_1 
-       (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[3]),
+       (.I0(doa_wr_delay[2]),
+        .I1(doa_wr_delay[1]),
         .I2(mux_active),
-        .I3(doa_wr_delay[1]),
-        .I4(doa_wr_delay[2]),
-        .I5(doa_wr_delay[4]),
+        .I3(doa_wr_delay[4]),
+        .I4(doa_wr_delay[0]),
+        .I5(doa_wr_delay[3]),
         .O(doa_wr_delay__0[0]));
-  LUT6 #(
-    .INIT(64'h5755AAAAAAAA5555)) 
+  LUT3 #(
+    .INIT(8'h69)) 
     \deci_high.doa_wr_delay[1]_i_1 
-       (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[4]),
-        .I2(doa_wr_delay[2]),
-        .I3(doa_wr_delay[3]),
-        .I4(mux_active),
-        .I5(doa_wr_delay[1]),
+       (.I0(mux_active),
+        .I1(doa_wr_delay[1]),
+        .I2(doa_wr_delay[0]),
         .O(doa_wr_delay__0[1]));
-  LUT6 #(
-    .INIT(64'h58F05AF0F0A5F0A5)) 
+  LUT4 #(
+    .INIT(16'h7E81)) 
     \deci_high.doa_wr_delay[2]_i_1 
        (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[4]),
-        .I2(doa_wr_delay[2]),
-        .I3(doa_wr_delay[1]),
-        .I4(doa_wr_delay[3]),
-        .I5(mux_active),
+        .I1(mux_active),
+        .I2(doa_wr_delay[1]),
+        .I3(doa_wr_delay[2]),
         .O(doa_wr_delay__0[2]));
   LUT5 #(
-    .INIT(32'h7F80FE01)) 
+    .INIT(32'h6CCCCCC9)) 
     \deci_high.doa_wr_delay[3]_i_1 
-       (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[2]),
-        .I2(doa_wr_delay[1]),
-        .I3(doa_wr_delay[3]),
-        .I4(mux_active),
+       (.I0(mux_active),
+        .I1(doa_wr_delay[3]),
+        .I2(doa_wr_delay[0]),
+        .I3(doa_wr_delay[2]),
+        .I4(doa_wr_delay[1]),
         .O(doa_wr_delay__0[3]));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
     \deci_high.doa_wr_delay[4]_i_1 
-       (.I0(doa_wr_delay[4]),
-        .I1(doa_wr_delay[2]),
-        .I2(doa_wr_delay[1]),
-        .I3(mux_active),
-        .I4(doa_wr_delay[3]),
-        .I5(doa_wr_delay[0]),
+       (.I0(mux_active),
+        .I1(doa_wr_delay[3]),
+        .I2(doa_wr_delay[0]),
+        .I3(doa_wr_delay[2]),
+        .I4(doa_wr_delay[1]),
+        .I5(doa_wr_delay[4]),
         .O(\deci_high.doa_wr_delay[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h6CCCCCCCCCCCCCC9)) 
     \deci_high.doa_wr_delay[4]_i_2 
-       (.I0(doa_wr_delay[0]),
+       (.I0(doa_wr_delay[3]),
         .I1(doa_wr_delay[4]),
-        .I2(doa_wr_delay[2]),
-        .I3(doa_wr_delay[1]),
-        .I4(doa_wr_delay[3]),
-        .I5(mux_active),
+        .I2(doa_wr_delay[0]),
+        .I3(doa_wr_delay[2]),
+        .I4(mux_active),
+        .I5(doa_wr_delay[1]),
         .O(doa_wr_delay__0[4]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -10599,98 +10577,2322 @@ module ps_deci_high_0_0_deci_high
         .D(raw_delay0[9]),
         .Q(\deci_high.raw_delay_reg [9]),
         .S(raw_fifo_empty));
-  LUT6 #(
-    .INIT(64'hFFFFFFFE00000000)) 
-    \deci_high.raw_fifo_wr_i_1 
-       (.I0(raw_wr_delay[0]),
-        .I1(mux_active),
-        .I2(raw_wr_delay[1]),
-        .I3(raw_wr_delay[2]),
-        .I4(raw_wr_delay[3]),
-        .I5(raw_fifo_wr),
-        .O(\deci_high.raw_fifo_wr_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \deci_high.raw_fifo_wr_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\deci_high.raw_fifo_wr_i_1_n_0 ),
+        .D(mux_active),
         .Q(raw_fifo_wr),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[0] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[0]),
+        .Q(raw_in_data[0]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[100] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[100]),
+        .Q(raw_in_data[100]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[101] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[101]),
+        .Q(raw_in_data[101]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[102] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[102]),
+        .Q(raw_in_data[102]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[103] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[103]),
+        .Q(raw_in_data[103]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[104] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[104]),
+        .Q(raw_in_data[104]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[105] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[105]),
+        .Q(raw_in_data[105]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[106] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[106]),
+        .Q(raw_in_data[106]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[107] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[107]),
+        .Q(raw_in_data[107]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[108] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[108]),
+        .Q(raw_in_data[108]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[109] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[109]),
+        .Q(raw_in_data[109]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[10] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[10]),
+        .Q(raw_in_data[10]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[110] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[110]),
+        .Q(raw_in_data[110]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[111] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[111]),
+        .Q(raw_in_data[111]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[112] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[112]),
+        .Q(raw_in_data[112]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[113] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[113]),
+        .Q(raw_in_data[113]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[114] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[114]),
+        .Q(raw_in_data[114]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[115] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[115]),
+        .Q(raw_in_data[115]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[116] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[116]),
+        .Q(raw_in_data[116]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[117] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[117]),
+        .Q(raw_in_data[117]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[118] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[118]),
+        .Q(raw_in_data[118]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[119] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[119]),
+        .Q(raw_in_data[119]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[11] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[11]),
+        .Q(raw_in_data[11]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[120] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[120]),
+        .Q(raw_in_data[120]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[121] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[121]),
+        .Q(raw_in_data[121]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[122] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[122]),
+        .Q(raw_in_data[122]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[123] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[123]),
+        .Q(raw_in_data[123]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[124] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[124]),
+        .Q(raw_in_data[124]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[125] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[125]),
+        .Q(raw_in_data[125]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[126] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[126]),
+        .Q(raw_in_data[126]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[127] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[127]),
+        .Q(raw_in_data[127]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[128] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[0]),
+        .Q(raw_in_data[128]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[129] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[1]),
+        .Q(raw_in_data[129]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[12] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[12]),
+        .Q(raw_in_data[12]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[130] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[2]),
+        .Q(raw_in_data[130]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[131] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[3]),
+        .Q(raw_in_data[131]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[132] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[4]),
+        .Q(raw_in_data[132]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[133] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[5]),
+        .Q(raw_in_data[133]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[134] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[6]),
+        .Q(raw_in_data[134]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[135] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[7]),
+        .Q(raw_in_data[135]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[136] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[8]),
+        .Q(raw_in_data[136]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[137] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[9]),
+        .Q(raw_in_data[137]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[138] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[10]),
+        .Q(raw_in_data[138]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[139] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[11]),
+        .Q(raw_in_data[139]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[13] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[13]),
+        .Q(raw_in_data[13]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[140] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[12]),
+        .Q(raw_in_data[140]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[141] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[13]),
+        .Q(raw_in_data[141]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[142] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[14]),
+        .Q(raw_in_data[142]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[143] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[15]),
+        .Q(raw_in_data[143]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[144] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[16]),
+        .Q(raw_in_data[144]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[145] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[17]),
+        .Q(raw_in_data[145]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[146] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[18]),
+        .Q(raw_in_data[146]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[147] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[19]),
+        .Q(raw_in_data[147]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[148] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[20]),
+        .Q(raw_in_data[148]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[149] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[21]),
+        .Q(raw_in_data[149]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[14] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[14]),
+        .Q(raw_in_data[14]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[150] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[22]),
+        .Q(raw_in_data[150]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[151] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[23]),
+        .Q(raw_in_data[151]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[152] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[24]),
+        .Q(raw_in_data[152]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[153] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[25]),
+        .Q(raw_in_data[153]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[154] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[26]),
+        .Q(raw_in_data[154]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[155] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[27]),
+        .Q(raw_in_data[155]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[156] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[28]),
+        .Q(raw_in_data[156]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[157] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[29]),
+        .Q(raw_in_data[157]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[158] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[30]),
+        .Q(raw_in_data[158]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[159] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[31]),
+        .Q(raw_in_data[159]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[15] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[15]),
+        .Q(raw_in_data[15]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[160] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[32]),
+        .Q(raw_in_data[160]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[161] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[33]),
+        .Q(raw_in_data[161]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[162] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[34]),
+        .Q(raw_in_data[162]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[163] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[35]),
+        .Q(raw_in_data[163]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[164] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[36]),
+        .Q(raw_in_data[164]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[165] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[37]),
+        .Q(raw_in_data[165]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[166] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[38]),
+        .Q(raw_in_data[166]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[167] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[39]),
+        .Q(raw_in_data[167]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[168] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[40]),
+        .Q(raw_in_data[168]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[169] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[41]),
+        .Q(raw_in_data[169]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[16] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[16]),
+        .Q(raw_in_data[16]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[170] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[42]),
+        .Q(raw_in_data[170]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[171] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[43]),
+        .Q(raw_in_data[171]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[172] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[44]),
+        .Q(raw_in_data[172]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[173] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[45]),
+        .Q(raw_in_data[173]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[174] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[46]),
+        .Q(raw_in_data[174]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[175] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[47]),
+        .Q(raw_in_data[175]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[176] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[48]),
+        .Q(raw_in_data[176]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[177] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[49]),
+        .Q(raw_in_data[177]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[178] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[50]),
+        .Q(raw_in_data[178]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[179] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[51]),
+        .Q(raw_in_data[179]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[17] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[17]),
+        .Q(raw_in_data[17]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[180] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[52]),
+        .Q(raw_in_data[180]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[181] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[53]),
+        .Q(raw_in_data[181]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[182] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[54]),
+        .Q(raw_in_data[182]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[183] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[55]),
+        .Q(raw_in_data[183]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[184] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[56]),
+        .Q(raw_in_data[184]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[185] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[57]),
+        .Q(raw_in_data[185]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[186] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[58]),
+        .Q(raw_in_data[186]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[187] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[59]),
+        .Q(raw_in_data[187]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[188] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[60]),
+        .Q(raw_in_data[188]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[189] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[61]),
+        .Q(raw_in_data[189]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[18] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[18]),
+        .Q(raw_in_data[18]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[190] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[62]),
+        .Q(raw_in_data[190]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[191] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[63]),
+        .Q(raw_in_data[191]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[192] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[64]),
+        .Q(raw_in_data[192]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[193] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[65]),
+        .Q(raw_in_data[193]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[194] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[66]),
+        .Q(raw_in_data[194]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[195] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[67]),
+        .Q(raw_in_data[195]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[196] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[68]),
+        .Q(raw_in_data[196]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[197] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[69]),
+        .Q(raw_in_data[197]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[198] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[70]),
+        .Q(raw_in_data[198]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[199] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[71]),
+        .Q(raw_in_data[199]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[19] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[19]),
+        .Q(raw_in_data[19]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[1] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[1]),
+        .Q(raw_in_data[1]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[200] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[72]),
+        .Q(raw_in_data[200]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[201] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[73]),
+        .Q(raw_in_data[201]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[202] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[74]),
+        .Q(raw_in_data[202]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[203] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[75]),
+        .Q(raw_in_data[203]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[204] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[76]),
+        .Q(raw_in_data[204]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[205] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[77]),
+        .Q(raw_in_data[205]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[206] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[78]),
+        .Q(raw_in_data[206]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[207] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[79]),
+        .Q(raw_in_data[207]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[208] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[80]),
+        .Q(raw_in_data[208]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[209] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[81]),
+        .Q(raw_in_data[209]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[20] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[20]),
+        .Q(raw_in_data[20]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[210] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[82]),
+        .Q(raw_in_data[210]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[211] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[83]),
+        .Q(raw_in_data[211]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[212] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[84]),
+        .Q(raw_in_data[212]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[213] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[85]),
+        .Q(raw_in_data[213]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[214] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[86]),
+        .Q(raw_in_data[214]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[215] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[87]),
+        .Q(raw_in_data[215]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[216] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[88]),
+        .Q(raw_in_data[216]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[217] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[89]),
+        .Q(raw_in_data[217]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[218] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[90]),
+        .Q(raw_in_data[218]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[219] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[91]),
+        .Q(raw_in_data[219]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[21] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[21]),
+        .Q(raw_in_data[21]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[220] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[92]),
+        .Q(raw_in_data[220]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[221] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[93]),
+        .Q(raw_in_data[221]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[222] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[94]),
+        .Q(raw_in_data[222]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[223] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[95]),
+        .Q(raw_in_data[223]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[224] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[96]),
+        .Q(raw_in_data[224]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[225] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[97]),
+        .Q(raw_in_data[225]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[226] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[98]),
+        .Q(raw_in_data[226]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[227] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[99]),
+        .Q(raw_in_data[227]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[228] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[100]),
+        .Q(raw_in_data[228]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[229] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[101]),
+        .Q(raw_in_data[229]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[22] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[22]),
+        .Q(raw_in_data[22]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[230] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[102]),
+        .Q(raw_in_data[230]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[231] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[103]),
+        .Q(raw_in_data[231]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[232] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[104]),
+        .Q(raw_in_data[232]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[233] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[105]),
+        .Q(raw_in_data[233]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[234] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[106]),
+        .Q(raw_in_data[234]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[235] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[107]),
+        .Q(raw_in_data[235]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[236] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[108]),
+        .Q(raw_in_data[236]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[237] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[109]),
+        .Q(raw_in_data[237]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[238] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[110]),
+        .Q(raw_in_data[238]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[239] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[111]),
+        .Q(raw_in_data[239]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[23] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[23]),
+        .Q(raw_in_data[23]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[240] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[112]),
+        .Q(raw_in_data[240]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[241] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[113]),
+        .Q(raw_in_data[241]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[242] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[114]),
+        .Q(raw_in_data[242]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[243] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[115]),
+        .Q(raw_in_data[243]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[244] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[116]),
+        .Q(raw_in_data[244]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[245] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[117]),
+        .Q(raw_in_data[245]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[246] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[118]),
+        .Q(raw_in_data[246]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[247] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[119]),
+        .Q(raw_in_data[247]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[248] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[120]),
+        .Q(raw_in_data[248]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[249] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[121]),
+        .Q(raw_in_data[249]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[24] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[24]),
+        .Q(raw_in_data[24]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[250] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[122]),
+        .Q(raw_in_data[250]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[251] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[123]),
+        .Q(raw_in_data[251]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[252] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[124]),
+        .Q(raw_in_data[252]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[253] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[125]),
+        .Q(raw_in_data[253]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[254] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[126]),
+        .Q(raw_in_data[254]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[255] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_E[127]),
+        .Q(raw_in_data[255]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[256] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[0]),
+        .Q(raw_in_data[256]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[257] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[1]),
+        .Q(raw_in_data[257]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[258] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[2]),
+        .Q(raw_in_data[258]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[259] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[3]),
+        .Q(raw_in_data[259]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[25] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[25]),
+        .Q(raw_in_data[25]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[260] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[4]),
+        .Q(raw_in_data[260]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[261] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[5]),
+        .Q(raw_in_data[261]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[262] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[6]),
+        .Q(raw_in_data[262]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[263] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[7]),
+        .Q(raw_in_data[263]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[264] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[8]),
+        .Q(raw_in_data[264]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[265] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[9]),
+        .Q(raw_in_data[265]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[266] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[10]),
+        .Q(raw_in_data[266]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[267] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[11]),
+        .Q(raw_in_data[267]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[268] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[12]),
+        .Q(raw_in_data[268]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[269] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[13]),
+        .Q(raw_in_data[269]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[26] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[26]),
+        .Q(raw_in_data[26]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[270] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[14]),
+        .Q(raw_in_data[270]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[271] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[15]),
+        .Q(raw_in_data[271]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[272] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[16]),
+        .Q(raw_in_data[272]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[273] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[17]),
+        .Q(raw_in_data[273]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[274] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[18]),
+        .Q(raw_in_data[274]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[275] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[19]),
+        .Q(raw_in_data[275]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[276] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[20]),
+        .Q(raw_in_data[276]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[277] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[21]),
+        .Q(raw_in_data[277]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[278] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[22]),
+        .Q(raw_in_data[278]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[279] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[23]),
+        .Q(raw_in_data[279]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[27] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[27]),
+        .Q(raw_in_data[27]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[280] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[24]),
+        .Q(raw_in_data[280]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[281] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[25]),
+        .Q(raw_in_data[281]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[282] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[26]),
+        .Q(raw_in_data[282]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[283] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[27]),
+        .Q(raw_in_data[283]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[284] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[28]),
+        .Q(raw_in_data[284]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[285] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[29]),
+        .Q(raw_in_data[285]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[286] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[30]),
+        .Q(raw_in_data[286]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[287] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[31]),
+        .Q(raw_in_data[287]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[288] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[32]),
+        .Q(raw_in_data[288]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[289] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[33]),
+        .Q(raw_in_data[289]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[28] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[28]),
+        .Q(raw_in_data[28]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[290] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[34]),
+        .Q(raw_in_data[290]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[291] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[35]),
+        .Q(raw_in_data[291]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[292] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[36]),
+        .Q(raw_in_data[292]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[293] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[37]),
+        .Q(raw_in_data[293]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[294] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[38]),
+        .Q(raw_in_data[294]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[295] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[39]),
+        .Q(raw_in_data[295]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[296] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[40]),
+        .Q(raw_in_data[296]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[297] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[41]),
+        .Q(raw_in_data[297]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[298] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[42]),
+        .Q(raw_in_data[298]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[299] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[43]),
+        .Q(raw_in_data[299]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[29] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[29]),
+        .Q(raw_in_data[29]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[2] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[2]),
+        .Q(raw_in_data[2]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[300] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[44]),
+        .Q(raw_in_data[300]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[301] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[45]),
+        .Q(raw_in_data[301]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[302] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[46]),
+        .Q(raw_in_data[302]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[303] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[47]),
+        .Q(raw_in_data[303]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[304] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[48]),
+        .Q(raw_in_data[304]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[305] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[49]),
+        .Q(raw_in_data[305]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[306] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[50]),
+        .Q(raw_in_data[306]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[307] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[51]),
+        .Q(raw_in_data[307]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[308] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[52]),
+        .Q(raw_in_data[308]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[309] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[53]),
+        .Q(raw_in_data[309]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[30] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[30]),
+        .Q(raw_in_data[30]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[310] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[54]),
+        .Q(raw_in_data[310]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[311] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[55]),
+        .Q(raw_in_data[311]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[312] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[56]),
+        .Q(raw_in_data[312]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[313] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[57]),
+        .Q(raw_in_data[313]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[314] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[58]),
+        .Q(raw_in_data[314]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[315] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[59]),
+        .Q(raw_in_data[315]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[316] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[60]),
+        .Q(raw_in_data[316]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[317] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[61]),
+        .Q(raw_in_data[317]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[318] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[62]),
+        .Q(raw_in_data[318]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[319] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[63]),
+        .Q(raw_in_data[319]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[31] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[31]),
+        .Q(raw_in_data[31]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[320] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[64]),
+        .Q(raw_in_data[320]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[321] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[65]),
+        .Q(raw_in_data[321]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[322] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[66]),
+        .Q(raw_in_data[322]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[323] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[67]),
+        .Q(raw_in_data[323]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[324] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[68]),
+        .Q(raw_in_data[324]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[325] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[69]),
+        .Q(raw_in_data[325]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[326] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[70]),
+        .Q(raw_in_data[326]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[327] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[71]),
+        .Q(raw_in_data[327]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[328] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[72]),
+        .Q(raw_in_data[328]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[329] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[73]),
+        .Q(raw_in_data[329]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[32] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[32]),
+        .Q(raw_in_data[32]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[330] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[74]),
+        .Q(raw_in_data[330]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[331] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[75]),
+        .Q(raw_in_data[331]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[332] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[76]),
+        .Q(raw_in_data[332]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[333] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[77]),
+        .Q(raw_in_data[333]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[334] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[78]),
+        .Q(raw_in_data[334]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[335] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[79]),
+        .Q(raw_in_data[335]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[336] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[80]),
+        .Q(raw_in_data[336]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[337] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[81]),
+        .Q(raw_in_data[337]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[338] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[82]),
+        .Q(raw_in_data[338]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[339] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[83]),
+        .Q(raw_in_data[339]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[33] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[33]),
+        .Q(raw_in_data[33]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[340] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[84]),
+        .Q(raw_in_data[340]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[341] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[85]),
+        .Q(raw_in_data[341]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[342] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[86]),
+        .Q(raw_in_data[342]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[343] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[87]),
+        .Q(raw_in_data[343]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[344] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[88]),
+        .Q(raw_in_data[344]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[345] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[89]),
+        .Q(raw_in_data[345]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[346] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[90]),
+        .Q(raw_in_data[346]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[347] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[91]),
+        .Q(raw_in_data[347]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[348] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[92]),
+        .Q(raw_in_data[348]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[349] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[93]),
+        .Q(raw_in_data[349]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[34] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[34]),
+        .Q(raw_in_data[34]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[350] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[94]),
+        .Q(raw_in_data[350]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[351] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[95]),
+        .Q(raw_in_data[351]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[352] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[96]),
+        .Q(raw_in_data[352]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[353] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[97]),
+        .Q(raw_in_data[353]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[354] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[98]),
+        .Q(raw_in_data[354]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[355] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[99]),
+        .Q(raw_in_data[355]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[356] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[100]),
+        .Q(raw_in_data[356]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[357] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[101]),
+        .Q(raw_in_data[357]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[358] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[102]),
+        .Q(raw_in_data[358]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[359] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[103]),
+        .Q(raw_in_data[359]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[35] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[35]),
+        .Q(raw_in_data[35]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[360] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[104]),
+        .Q(raw_in_data[360]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[361] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[105]),
+        .Q(raw_in_data[361]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[362] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[106]),
+        .Q(raw_in_data[362]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[363] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[107]),
+        .Q(raw_in_data[363]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[364] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[108]),
+        .Q(raw_in_data[364]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[365] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[109]),
+        .Q(raw_in_data[365]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[366] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[110]),
+        .Q(raw_in_data[366]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[367] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[111]),
+        .Q(raw_in_data[367]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[368] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[112]),
+        .Q(raw_in_data[368]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[369] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[113]),
+        .Q(raw_in_data[369]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[36] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[36]),
+        .Q(raw_in_data[36]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[370] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[114]),
+        .Q(raw_in_data[370]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[371] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[115]),
+        .Q(raw_in_data[371]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[372] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[116]),
+        .Q(raw_in_data[372]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[373] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[117]),
+        .Q(raw_in_data[373]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[374] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[118]),
+        .Q(raw_in_data[374]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[375] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[119]),
+        .Q(raw_in_data[375]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[376] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[120]),
+        .Q(raw_in_data[376]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[377] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[121]),
+        .Q(raw_in_data[377]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[378] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[122]),
+        .Q(raw_in_data[378]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[379] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[123]),
+        .Q(raw_in_data[379]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[37] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[37]),
+        .Q(raw_in_data[37]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[380] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[124]),
+        .Q(raw_in_data[380]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[381] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[125]),
+        .Q(raw_in_data[381]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[382] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[126]),
+        .Q(raw_in_data[382]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[383] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_W[127]),
+        .Q(raw_in_data[383]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[38] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[38]),
+        .Q(raw_in_data[38]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[39] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[39]),
+        .Q(raw_in_data[39]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[3] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[3]),
+        .Q(raw_in_data[3]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[40] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[40]),
+        .Q(raw_in_data[40]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[41] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[41]),
+        .Q(raw_in_data[41]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[42] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[42]),
+        .Q(raw_in_data[42]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[43] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[43]),
+        .Q(raw_in_data[43]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[44] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[44]),
+        .Q(raw_in_data[44]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[45] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[45]),
+        .Q(raw_in_data[45]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[46] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[46]),
+        .Q(raw_in_data[46]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[47] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[47]),
+        .Q(raw_in_data[47]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[48] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[48]),
+        .Q(raw_in_data[48]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[49] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[49]),
+        .Q(raw_in_data[49]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[4] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[4]),
+        .Q(raw_in_data[4]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[50] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[50]),
+        .Q(raw_in_data[50]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[51] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[51]),
+        .Q(raw_in_data[51]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[52] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[52]),
+        .Q(raw_in_data[52]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[53] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[53]),
+        .Q(raw_in_data[53]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[54] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[54]),
+        .Q(raw_in_data[54]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[55] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[55]),
+        .Q(raw_in_data[55]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[56] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[56]),
+        .Q(raw_in_data[56]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[57] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[57]),
+        .Q(raw_in_data[57]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[58] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[58]),
+        .Q(raw_in_data[58]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[59] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[59]),
+        .Q(raw_in_data[59]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[5] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[5]),
+        .Q(raw_in_data[5]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[60] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[60]),
+        .Q(raw_in_data[60]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[61] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[61]),
+        .Q(raw_in_data[61]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[62] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[62]),
+        .Q(raw_in_data[62]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[63] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[63]),
+        .Q(raw_in_data[63]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[64] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[64]),
+        .Q(raw_in_data[64]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[65] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[65]),
+        .Q(raw_in_data[65]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[66] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[66]),
+        .Q(raw_in_data[66]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[67] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[67]),
+        .Q(raw_in_data[67]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[68] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[68]),
+        .Q(raw_in_data[68]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[69] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[69]),
+        .Q(raw_in_data[69]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[6] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[6]),
+        .Q(raw_in_data[6]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[70] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[70]),
+        .Q(raw_in_data[70]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[71] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[71]),
+        .Q(raw_in_data[71]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[72] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[72]),
+        .Q(raw_in_data[72]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[73] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[73]),
+        .Q(raw_in_data[73]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[74] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[74]),
+        .Q(raw_in_data[74]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[75] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[75]),
+        .Q(raw_in_data[75]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[76] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[76]),
+        .Q(raw_in_data[76]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[77] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[77]),
+        .Q(raw_in_data[77]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[78] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[78]),
+        .Q(raw_in_data[78]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[79] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[79]),
+        .Q(raw_in_data[79]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[7] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[7]),
+        .Q(raw_in_data[7]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[80] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[80]),
+        .Q(raw_in_data[80]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[81] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[81]),
+        .Q(raw_in_data[81]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[82] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[82]),
+        .Q(raw_in_data[82]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[83] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[83]),
+        .Q(raw_in_data[83]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[84] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[84]),
+        .Q(raw_in_data[84]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[85] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[85]),
+        .Q(raw_in_data[85]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[86] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[86]),
+        .Q(raw_in_data[86]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[87] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[87]),
+        .Q(raw_in_data[87]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[88] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[88]),
+        .Q(raw_in_data[88]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[89] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[89]),
+        .Q(raw_in_data[89]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[8] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[8]),
+        .Q(raw_in_data[8]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[90] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[90]),
+        .Q(raw_in_data[90]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[91] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[91]),
+        .Q(raw_in_data[91]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[92] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[92]),
+        .Q(raw_in_data[92]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[93] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[93]),
+        .Q(raw_in_data[93]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[94] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[94]),
+        .Q(raw_in_data[94]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[95] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[95]),
+        .Q(raw_in_data[95]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[96] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[96]),
+        .Q(raw_in_data[96]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[97] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[97]),
+        .Q(raw_in_data[97]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[98] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[98]),
+        .Q(raw_in_data[98]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[99] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[99]),
+        .Q(raw_in_data[99]),
+        .R(1'b0));
+  FDRE \deci_high.raw_in_data_reg[9] 
+       (.C(clk),
+        .CE(mux_active),
+        .D(data_N[9]),
+        .Q(raw_in_data[9]),
         .R(1'b0));
   FDRE \deci_high.raw_ready_reg 
        (.C(raw_clk),
         .CE(1'b1),
         .D(raw_active),
         .Q(raw_ready),
-        .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \deci_high.raw_wr_delay[0]_i_1 
-       (.I0(raw_wr_delay[0]),
-        .O(\deci_high.raw_wr_delay[0]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h69)) 
-    \deci_high.raw_wr_delay[1]_i_1 
-       (.I0(raw_wr_delay[0]),
-        .I1(mux_active),
-        .I2(raw_wr_delay[1]),
-        .O(\deci_high.raw_wr_delay[1]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h6AA9)) 
-    \deci_high.raw_wr_delay[2]_i_1 
-       (.I0(raw_wr_delay[2]),
-        .I1(mux_active),
-        .I2(raw_wr_delay[0]),
-        .I3(raw_wr_delay[1]),
-        .O(\deci_high.raw_wr_delay[2]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \deci_high.raw_wr_delay[3]_i_1 
-       (.I0(raw_wr_delay[3]),
-        .I1(raw_wr_delay[2]),
-        .I2(raw_wr_delay[1]),
-        .I3(mux_active),
-        .I4(raw_wr_delay[0]),
-        .O(\deci_high.raw_wr_delay[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h6AAAAAA9)) 
-    \deci_high.raw_wr_delay[3]_i_2 
-       (.I0(raw_wr_delay[3]),
-        .I1(mux_active),
-        .I2(raw_wr_delay[0]),
-        .I3(raw_wr_delay[1]),
-        .I4(raw_wr_delay[2]),
-        .O(\deci_high.raw_wr_delay[3]_i_2_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_high.raw_wr_delay_reg[0] 
-       (.C(clk),
-        .CE(\deci_high.raw_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_high.raw_wr_delay[0]_i_1_n_0 ),
-        .Q(raw_wr_delay[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_high.raw_wr_delay_reg[1] 
-       (.C(clk),
-        .CE(\deci_high.raw_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_high.raw_wr_delay[1]_i_1_n_0 ),
-        .Q(raw_wr_delay[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_high.raw_wr_delay_reg[2] 
-       (.C(clk),
-        .CE(\deci_high.raw_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_high.raw_wr_delay[2]_i_1_n_0 ),
-        .Q(raw_wr_delay[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_high.raw_wr_delay_reg[3] 
-       (.C(clk),
-        .CE(\deci_high.raw_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_high.raw_wr_delay[3]_i_2_n_0 ),
-        .Q(raw_wr_delay[3]),
         .R(1'b0));
   LUT4 #(
     .INIT(16'h2220)) 
@@ -10749,51 +12951,57 @@ module ps_deci_high_0_0_deci_high
     .INIT(2'h1)) 
     \deci_high.reset_delay[0]_i_1 
        (.I0(reset_delay[0]),
-        .O(\deci_high.reset_delay_reg0 ));
+        .O(\deci_high.reset_delay_reg01_in ));
   LUT2 #(
     .INIT(4'h9)) 
     \deci_high.reset_delay[1]_i_1 
        (.I0(reset_delay[0]),
         .I1(reset_delay[1]),
         .O(\deci_high.reset_delay[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \deci_high.reset_delay[2]_i_1 
+       (.I0(mux_active),
+        .I1(doa_fifo_wr),
+        .O(\deci_high.reset_delay_reg0 ));
   LUT3 #(
     .INIT(8'hFE)) 
-    \deci_high.reset_delay[2]_i_1 
+    \deci_high.reset_delay[2]_i_2 
        (.I0(reset_delay[0]),
         .I1(reset_delay[2]),
         .I2(reset_delay[1]),
-        .O(\deci_high.reset_delay[2]_i_1_n_0 ));
+        .O(\deci_high.reset_delay[2]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'hE1)) 
-    \deci_high.reset_delay[2]_i_2 
+    \deci_high.reset_delay[2]_i_3 
        (.I0(reset_delay[1]),
         .I1(reset_delay[0]),
         .I2(reset_delay[2]),
-        .O(\deci_high.reset_delay[2]_i_2_n_0 ));
+        .O(\deci_high.reset_delay[2]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \deci_high.reset_delay_reg[0] 
        (.C(clk),
-        .CE(\deci_high.reset_delay[2]_i_1_n_0 ),
-        .D(\deci_high.reset_delay_reg0 ),
+        .CE(\deci_high.reset_delay[2]_i_2_n_0 ),
+        .D(\deci_high.reset_delay_reg01_in ),
         .Q(reset_delay[0]),
-        .S(mux_active));
+        .S(\deci_high.reset_delay_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \deci_high.reset_delay_reg[1] 
        (.C(clk),
-        .CE(\deci_high.reset_delay[2]_i_1_n_0 ),
+        .CE(\deci_high.reset_delay[2]_i_2_n_0 ),
         .D(\deci_high.reset_delay[1]_i_1_n_0 ),
         .Q(reset_delay[1]),
-        .S(mux_active));
+        .S(\deci_high.reset_delay_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \deci_high.reset_delay_reg[2] 
        (.C(clk),
-        .CE(\deci_high.reset_delay[2]_i_1_n_0 ),
-        .D(\deci_high.reset_delay[2]_i_2_n_0 ),
+        .CE(\deci_high.reset_delay[2]_i_2_n_0 ),
+        .D(\deci_high.reset_delay[2]_i_3_n_0 ),
         .Q(reset_delay[2]),
-        .S(mux_active));
+        .S(\deci_high.reset_delay_reg0 ));
   LUT3 #(
     .INIT(8'h80)) 
     \deci_high.sim_active_1_i_1 
@@ -12547,7 +14755,7 @@ module ps_deci_high_0_0_deci_high
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
   ps_deci_high_0_0_fifo_raw_high fifo_raw_i
-       (.din(NLW_fifo_raw_i_din_UNCONNECTED[383:0]),
+       (.din(raw_in_data),
         .dout(raw_out_data),
         .empty(raw_fifo_empty),
         .full(NLW_fifo_raw_i_full_UNCONNECTED),
@@ -12649,29 +14857,28 @@ module ps_deci_high_0_0_deci_high
        (.clk(clk),
         .probe0(reset_delay),
         .probe1(reset_active),
-        .probe10(doa_fifo_wr),
-        .probe11(mux_N0),
-        .probe12(mux_N1),
-        .probe13(mux_N2),
-        .probe14(mux_N3),
-        .probe15(mux_N4),
-        .probe16(mux_N5),
-        .probe17(mux_N6),
-        .probe18(mux_N7),
-        .probe19(doa_N0),
+        .probe10(mux_N0),
+        .probe11(mux_N1),
+        .probe12(mux_N2),
+        .probe13(mux_N3),
+        .probe14(mux_N4),
+        .probe15(mux_N5),
+        .probe16(mux_N6),
+        .probe17(mux_N7),
+        .probe18(doa_N0),
+        .probe19(doa_N1),
         .probe2(fifo_reset_cnt),
-        .probe20(doa_N1),
-        .probe21(doa_E0),
-        .probe22(doa_E1),
-        .probe23(doa_W0),
-        .probe24(doa_W1),
+        .probe20(doa_E0),
+        .probe21(doa_E1),
+        .probe22(doa_W0),
+        .probe23(doa_W1),
         .probe3(fir_resetn),
         .probe4(fifo_reset),
         .probe5(adc_active),
         .probe6(mux_active),
-        .probe7(raw_wr_delay),
-        .probe8(raw_fifo_wr),
-        .probe9(doa_wr_delay));
+        .probe7(raw_fifo_wr),
+        .probe8(doa_wr_delay),
+        .probe9(doa_fifo_wr));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_doa_high,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa_high" *) 
@@ -12869,8 +15076,7 @@ module ps_deci_high_0_0_ila_5
     probe20,
     probe21,
     probe22,
-    probe23,
-    probe24);
+    probe23);
   (* syn_isclock = "1" *) input clk;
   input [2:0]probe0;
   input [2:0]probe1;
@@ -12879,10 +15085,10 @@ module ps_deci_high_0_0_ila_5
   input [0:0]probe4;
   input [0:0]probe5;
   input [0:0]probe6;
-  input [3:0]probe7;
-  input [0:0]probe8;
-  input [4:0]probe9;
-  input [0:0]probe10;
+  input [0:0]probe7;
+  input [4:0]probe8;
+  input [0:0]probe9;
+  input [15:0]probe10;
   input [15:0]probe11;
   input [15:0]probe12;
   input [15:0]probe13;
@@ -12896,7 +15102,6 @@ module ps_deci_high_0_0_ila_5
   input [15:0]probe21;
   input [15:0]probe22;
   input [15:0]probe23;
-  input [15:0]probe24;
 
 
 endmodule

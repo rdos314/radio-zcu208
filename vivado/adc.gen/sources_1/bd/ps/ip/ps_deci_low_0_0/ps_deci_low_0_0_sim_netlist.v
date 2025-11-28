@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Nov 27 21:53:52 2025
+// Date        : Thu Nov 27 23:52:00 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -832,9 +832,10 @@ module ps_deci_low_0_0_deci_low
   wire \deci_low.reset_active[2]_i_1_n_0 ;
   wire \deci_low.reset_active[2]_i_2_n_0 ;
   wire \deci_low.reset_delay[1]_i_1_n_0 ;
-  wire \deci_low.reset_delay[2]_i_1_n_0 ;
   wire \deci_low.reset_delay[2]_i_2_n_0 ;
-  wire [0:0]\deci_low.reset_delay_reg0 ;
+  wire \deci_low.reset_delay[2]_i_3_n_0 ;
+  wire \deci_low.reset_delay_reg0 ;
+  wire [0:0]\deci_low.reset_delay_reg01_in ;
   wire \deci_low.sim_active_1_i_1_n_0 ;
   wire \deci_low.sim_active_i_1_n_0 ;
   wire \deci_low.sim_active_reg_rep_n_0 ;
@@ -10317,51 +10318,57 @@ module ps_deci_low_0_0_deci_low
     .INIT(2'h1)) 
     \deci_low.reset_delay[0]_i_1 
        (.I0(reset_delay[0]),
-        .O(\deci_low.reset_delay_reg0 ));
+        .O(\deci_low.reset_delay_reg01_in ));
   LUT2 #(
     .INIT(4'h9)) 
     \deci_low.reset_delay[1]_i_1 
        (.I0(reset_delay[0]),
         .I1(reset_delay[1]),
         .O(\deci_low.reset_delay[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \deci_low.reset_delay[2]_i_1 
+       (.I0(mux_active),
+        .I1(doa_fifo_wr),
+        .O(\deci_low.reset_delay_reg0 ));
   LUT3 #(
     .INIT(8'hFE)) 
-    \deci_low.reset_delay[2]_i_1 
+    \deci_low.reset_delay[2]_i_2 
        (.I0(reset_delay[0]),
         .I1(reset_delay[2]),
         .I2(reset_delay[1]),
-        .O(\deci_low.reset_delay[2]_i_1_n_0 ));
+        .O(\deci_low.reset_delay[2]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'hE1)) 
-    \deci_low.reset_delay[2]_i_2 
+    \deci_low.reset_delay[2]_i_3 
        (.I0(reset_delay[1]),
         .I1(reset_delay[0]),
         .I2(reset_delay[2]),
-        .O(\deci_low.reset_delay[2]_i_2_n_0 ));
+        .O(\deci_low.reset_delay[2]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \deci_low.reset_delay_reg[0] 
        (.C(clk),
-        .CE(\deci_low.reset_delay[2]_i_1_n_0 ),
-        .D(\deci_low.reset_delay_reg0 ),
+        .CE(\deci_low.reset_delay[2]_i_2_n_0 ),
+        .D(\deci_low.reset_delay_reg01_in ),
         .Q(reset_delay[0]),
-        .S(mux_active));
+        .S(\deci_low.reset_delay_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \deci_low.reset_delay_reg[1] 
        (.C(clk),
-        .CE(\deci_low.reset_delay[2]_i_1_n_0 ),
+        .CE(\deci_low.reset_delay[2]_i_2_n_0 ),
         .D(\deci_low.reset_delay[1]_i_1_n_0 ),
         .Q(reset_delay[1]),
-        .S(mux_active));
+        .S(\deci_low.reset_delay_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \deci_low.reset_delay_reg[2] 
        (.C(clk),
-        .CE(\deci_low.reset_delay[2]_i_1_n_0 ),
-        .D(\deci_low.reset_delay[2]_i_2_n_0 ),
+        .CE(\deci_low.reset_delay[2]_i_2_n_0 ),
+        .D(\deci_low.reset_delay[2]_i_3_n_0 ),
         .Q(reset_delay[2]),
-        .S(mux_active));
+        .S(\deci_low.reset_delay_reg0 ));
   LUT3 #(
     .INIT(8'h80)) 
     \deci_low.sim_active_1_i_1 

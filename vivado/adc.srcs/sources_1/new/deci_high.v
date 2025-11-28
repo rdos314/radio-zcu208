@@ -55,7 +55,6 @@ module deci_high(
   reg [127:0] mux_E;
   reg [127:0] mux_W;
 
-  reg [3:0] raw_wr_delay;
   reg raw_fifo_wr;
   reg  [383:0] raw_in_data;
 
@@ -257,24 +256,23 @@ ila_5 ila_5_i (
 		.probe4(fifo_reset),         // input wire [0:0]  probe3
 		.probe5(adc_active),         // input wire [0:0]  probe3
 		.probe6(mux_active),         // input wire [0:0]  probe3
-		.probe7(raw_wr_delay),       // input wire [3:0]  probe3
-		.probe8(raw_fifo_wr),        // input wire [0:0]  probe3
-		.probe9(doa_wr_delay),       // input wire [4:0]  probe3
-		.probe10(doa_fifo_wr),        // input wire [0:0]  probe3
-		.probe11(mux_N0),             // input wire [15:0]  probe3
-		.probe12(mux_N1),             // input wire [15:0]  probe3
-		.probe13(mux_N2),             // input wire [15:0]  probe3
-		.probe14(mux_N3),             // input wire [15:0]  probe3
-		.probe15(mux_N4),            // input wire [15:0]  probe3
-		.probe16(mux_N5),            // input wire [15:0]  probe3
-		.probe17(mux_N6),            // input wire [15:0]  probe3
-		.probe18(mux_N7),            // input wire [15:0]  probe3
-		.probe19(doa_N0),            // input wire [15:0]  probe3
-		.probe20(doa_N1),            // input wire [15:0]  probe3
-		.probe21(doa_E0),            // input wire [15:0]  probe3
-		.probe22(doa_E1),            // input wire [15:0]  probe3
-		.probe23(doa_W0),            // input wire [15:0]  probe3
-		.probe24(doa_W1)             // input wire [15:0]  probe3
+		.probe7(raw_fifo_wr),        // input wire [0:0]  probe3
+		.probe8(doa_wr_delay),       // input wire [4:0]  probe3
+		.probe9(doa_fifo_wr),        // input wire [0:0]  probe3
+		.probe10(mux_N0),             // input wire [15:0]  probe3
+		.probe11(mux_N1),             // input wire [15:0]  probe3
+		.probe12(mux_N2),             // input wire [15:0]  probe3
+		.probe13(mux_N3),             // input wire [15:0]  probe3
+		.probe14(mux_N4),            // input wire [15:0]  probe3
+		.probe15(mux_N5),            // input wire [15:0]  probe3
+		.probe16(mux_N6),            // input wire [15:0]  probe3
+		.probe17(mux_N7),            // input wire [15:0]  probe3
+		.probe18(doa_N0),            // input wire [15:0]  probe3
+		.probe19(doa_N1),            // input wire [15:0]  probe3
+		.probe20(doa_E0),            // input wire [15:0]  probe3
+		.probe21(doa_E1),            // input wire [15:0]  probe3
+		.probe22(doa_W0),            // input wire [15:0]  probe3
+		.probe23(doa_W1)             // input wire [15:0]  probe3
 );
 
 generate
@@ -370,7 +368,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (mux_active)
+	  if (mux_active | doa_fifo_wr)
 	    reset_delay <= 3'b111;
 	  else
 	  begin
@@ -498,51 +496,41 @@ generate
 	begin
 	  if (mux_active)
 	  begin
-	    if (raw_wr_delay == 16)
-	    begin
-          raw_fifo_wr <= 1;
-          raw_in_data[15:0] <= N0;
-          raw_in_data[31:16] <= N1;
-          raw_in_data[47:32] <= N2;
-          raw_in_data[63:48] <= N3;
-          raw_in_data[79:64] <= N4;
-          raw_in_data[95:80] <= N5;
-          raw_in_data[111:96] <= N6;
-          raw_in_data[127:112] <= N7;
-          raw_in_data[143:128] <= E0;
-          raw_in_data[159:144] <= E1;
-          raw_in_data[175:160] <= E2;
-          raw_in_data[191:176] <= E3;
-          raw_in_data[207:192] <= E4;
-          raw_in_data[223:208] <= E5;
-          raw_in_data[239:224] <= E6;
-          raw_in_data[255:240] <= E7;
-          raw_in_data[271:256] <= W0;
-          raw_in_data[287:272] <= W1;
-          raw_in_data[303:288] <= W2;
-          raw_in_data[319:304] <= W3;
-          raw_in_data[335:320] <= W4;
-          raw_in_data[351:336] <= W5;
-          raw_in_data[367:352] <= W6;
-          raw_in_data[383:368] <= W7;
-        end
-        else
-          raw_wr_delay <= raw_wr_delay + 1;
+        raw_fifo_wr <= 1;
+        raw_in_data[15:0] <= N0;
+        raw_in_data[31:16] <= N1;
+        raw_in_data[47:32] <= N2;
+        raw_in_data[63:48] <= N3;
+        raw_in_data[79:64] <= N4;
+        raw_in_data[95:80] <= N5;
+        raw_in_data[111:96] <= N6;
+        raw_in_data[127:112] <= N7;
+        raw_in_data[143:128] <= E0;
+        raw_in_data[159:144] <= E1;
+        raw_in_data[175:160] <= E2;
+        raw_in_data[191:176] <= E3;
+        raw_in_data[207:192] <= E4;
+        raw_in_data[223:208] <= E5;
+        raw_in_data[239:224] <= E6;
+        raw_in_data[255:240] <= E7;
+        raw_in_data[271:256] <= W0;
+        raw_in_data[287:272] <= W1;
+        raw_in_data[303:288] <= W2;
+        raw_in_data[319:304] <= W3;
+        raw_in_data[335:320] <= W4;
+        raw_in_data[351:336] <= W5;
+        raw_in_data[367:352] <= W6;
+        raw_in_data[383:368] <= W7;
       end
       else
-      begin
-        if (raw_wr_delay)
-          raw_wr_delay <= raw_wr_delay - 1;
-        else
-          raw_fifo_wr <= 0;
-      end
+        raw_fifo_wr <= 0;
     end
 
     always @(posedge clk) 
 	begin
 	  if (mux_active)
 	  begin
-	    if (doa_wr_delay == 11)
+	    if (doa_wr_delay == 16)
 	    begin
           doa_fifo_wr <= 1;
           doa_in_data[15:0] <= doa_N0;

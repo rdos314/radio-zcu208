@@ -9,15 +9,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="508"></ZoomStartTime>
-      <ZoomEndTime time="535"></ZoomEndTime>
+      <ZoomStartTime time="507"></ZoomStartTime>
+      <ZoomEndTime time="534"></ZoomEndTime>
       <Cursor1Time time="512"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="196"></NameColumnWidth>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="25" />
+   <WVObjectSize size="24" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/deci_high/inst/adc_active" type="logic">
@@ -84,8 +84,8 @@
    </wvobject>
    <wvobject fp_name="ps_i/deci_high/inst/doa_wr_delay" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/doa_wr_delay[3:0]</obj_property>
-      <obj_property name="ObjectShortName">doa_wr_delay[3:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/doa_wr_delay[4:0]</obj_property>
+      <obj_property name="ObjectShortName">doa_wr_delay[4:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -187,14 +187,6 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/deci_high/inst/raw_fifo_wr</obj_property>
       <obj_property name="ObjectShortName">raw_fifo_wr</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/raw_wr_delay" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/raw_wr_delay[3:0]</obj_property>
-      <obj_property name="ObjectShortName">raw_wr_delay[3:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Nov 27 21:53:52 2025
+-- Date        : Thu Nov 27 23:52:00 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -852,9 +852,10 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.reset_active[2]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.reset_active[2]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.reset_delay[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.reset_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.reset_delay[2]_i_2_n_0\ : STD_LOGIC;
-  signal \deci_low.reset_delay_reg0\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \deci_low.reset_delay[2]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.reset_delay_reg0\ : STD_LOGIC;
+  signal \deci_low.reset_delay_reg01_in\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \deci_low.sim_active_1_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_active_reg_rep_n_0\ : STD_LOGIC;
@@ -13519,7 +13520,7 @@ begin
     )
         port map (
       I0 => reset_delay(0),
-      O => \deci_low.reset_delay_reg0\(0)
+      O => \deci_low.reset_delay_reg01_in\(0)
     );
 \deci_low.reset_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -13530,7 +13531,16 @@ begin
       I1 => reset_delay(1),
       O => \deci_low.reset_delay[1]_i_1_n_0\
     );
-\deci_low.reset_delay[2]_i_1\: unisim.vcomponents.LUT3
+\deci_low.reset_delay[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => mux_active,
+      I1 => doa_fifo_wr,
+      O => \deci_low.reset_delay_reg0\
+    );
+\deci_low.reset_delay[2]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
@@ -13538,9 +13548,9 @@ begin
       I0 => reset_delay(0),
       I1 => reset_delay(2),
       I2 => reset_delay(1),
-      O => \deci_low.reset_delay[2]_i_1_n_0\
+      O => \deci_low.reset_delay[2]_i_2_n_0\
     );
-\deci_low.reset_delay[2]_i_2\: unisim.vcomponents.LUT3
+\deci_low.reset_delay[2]_i_3\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"E1"
     )
@@ -13548,31 +13558,31 @@ begin
       I0 => reset_delay(1),
       I1 => reset_delay(0),
       I2 => reset_delay(2),
-      O => \deci_low.reset_delay[2]_i_2_n_0\
+      O => \deci_low.reset_delay[2]_i_3_n_0\
     );
 \deci_low.reset_delay_reg[0]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.reset_delay[2]_i_1_n_0\,
-      D => \deci_low.reset_delay_reg0\(0),
+      CE => \deci_low.reset_delay[2]_i_2_n_0\,
+      D => \deci_low.reset_delay_reg01_in\(0),
       Q => reset_delay(0),
-      S => mux_active
+      S => \deci_low.reset_delay_reg0\
     );
 \deci_low.reset_delay_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.reset_delay[2]_i_1_n_0\,
+      CE => \deci_low.reset_delay[2]_i_2_n_0\,
       D => \deci_low.reset_delay[1]_i_1_n_0\,
       Q => reset_delay(1),
-      S => mux_active
+      S => \deci_low.reset_delay_reg0\
     );
 \deci_low.reset_delay_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.reset_delay[2]_i_1_n_0\,
-      D => \deci_low.reset_delay[2]_i_2_n_0\,
+      CE => \deci_low.reset_delay[2]_i_2_n_0\,
+      D => \deci_low.reset_delay[2]_i_3_n_0\,
       Q => reset_delay(2),
-      S => mux_active
+      S => \deci_low.reset_delay_reg0\
     );
 \deci_low.sim_active_1_i_1\: unisim.vcomponents.LUT3
     generic map(
