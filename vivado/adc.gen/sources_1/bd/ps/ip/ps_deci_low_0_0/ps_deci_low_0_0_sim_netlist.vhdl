@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Nov 27 23:52:00 2025
+-- Date        : Sat Nov 29 00:18:12 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -156,15 +156,15 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -177,11 +177,29 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_deci_low_0_0_ila_2;
+  component ps_deci_low_0_0_ila_7 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component ps_deci_low_0_0_ila_7;
+  component ps_deci_low_0_0_ila_8 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component ps_deci_low_0_0_ila_8;
+  signal \deci_low.doa_data[47]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.doa_fifo_wr_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.doa_in_data[47]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.doa_in_data_reg_n_0_[0]\ : STD_LOGIC;
@@ -232,13 +250,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.doa_in_data_reg_n_0_[7]\ : STD_LOGIC;
   signal \deci_low.doa_in_data_reg_n_0_[8]\ : STD_LOGIC;
   signal \deci_low.doa_in_data_reg_n_0_[9]\ : STD_LOGIC;
-  signal \deci_low.doa_out_active_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_out_rd_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_ready_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.doa_wr_delay[3]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.fifo_reset_cnt[0]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.fifo_reset_cnt[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.fifo_reset_cnt[2]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.fifo_reset_cnt[2]_i_2_n_0\ : STD_LOGIC;
-  signal \deci_low.fifo_reset_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.fir_resetn_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_E[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_E[100]_i_1_n_0\ : STD_LOGIC;
@@ -627,6 +641,38 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.mux_active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_active_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_counter[7]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_10\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_11\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_12\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_13\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_14\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_15\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_8\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[15]_i_2_n_9\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \deci_low.raw_counter_reg[7]_i_1_n_9\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_4_n_0\ : STD_LOGIC;
@@ -641,7 +687,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.raw_delay[8]_i_7_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[8]_i_8_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[8]_i_9_n_0\ : STD_LOGIC;
-  signal \deci_low.raw_delay_reg\ : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal \deci_low.raw_delay_reg0\ : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal \deci_low.raw_delay_reg[11]_i_2_n_6\ : STD_LOGIC;
   signal \deci_low.raw_delay_reg[11]_i_2_n_7\ : STD_LOGIC;
   signal \deci_low.raw_delay_reg[8]_i_1_n_0\ : STD_LOGIC;
@@ -858,8 +904,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.reset_delay_reg01_in\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \deci_low.sim_active_1_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_active_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.sim_active_reg_rep_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_count[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_count[1]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.sim_count[1]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.sim_curr_data[127]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_curr_data[63]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_curr_data[95]_i_1_n_0\ : STD_LOGIC;
@@ -1006,18 +1053,20 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal doa_W : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of doa_W : signal is std.standard.true;
   signal doa_fifo_empty : STD_LOGIC;
+  attribute MARK_DEBUG of doa_fifo_empty : signal is std.standard.true;
   signal doa_fifo_wr : STD_LOGIC;
   attribute MARK_DEBUG of doa_fifo_wr : signal is std.standard.true;
-  signal doa_out_active : STD_LOGIC;
   signal doa_out_data : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal doa_out_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute MARK_DEBUG of doa_out_delay : signal is std.standard.true;
+  signal \doa_out_delay__0\ : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal doa_out_rd : STD_LOGIC;
+  attribute MARK_DEBUG of doa_out_rd : signal is std.standard.true;
   signal \^doa_ready\ : STD_LOGIC;
+  attribute MARK_DEBUG of doa_ready : signal is std.standard.true;
   signal doa_wr_delay : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of doa_wr_delay : signal is std.standard.true;
   signal \doa_wr_delay__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal fifo_reset : STD_LOGIC;
-  attribute MARK_DEBUG of fifo_reset : signal is std.standard.true;
-  signal fifo_reset_cnt : STD_LOGIC_VECTOR ( 2 downto 0 );
-  attribute MARK_DEBUG of fifo_reset_cnt : signal is std.standard.true;
   signal fifo_sim_N_i_i_1_n_0 : STD_LOGIC;
   signal fir_raw_E : STD_LOGIC_VECTOR ( 126 downto 15 );
   signal fir_raw_W : STD_LOGIC_VECTOR ( 126 downto 15 );
@@ -1043,7 +1092,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal mux_W : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal mux_active : STD_LOGIC;
   attribute MARK_DEBUG of mux_active : signal is std.standard.true;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal raw_N0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of raw_N0 : signal is std.standard.true;
   signal raw_N1 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1053,13 +1101,19 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal raw_N3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of raw_N3 : signal is std.standard.true;
   signal raw_active : STD_LOGIC;
-  signal raw_delay0 : STD_LOGIC_VECTOR ( 11 downto 0 );
+  attribute MARK_DEBUG of raw_active : signal is std.standard.true;
+  signal raw_counter : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of raw_counter : signal is std.standard.true;
+  signal \raw_counter__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal raw_delay : STD_LOGIC_VECTOR ( 11 downto 0 );
+  attribute MARK_DEBUG of raw_delay : signal is std.standard.true;
   signal raw_fifo_empty : STD_LOGIC;
+  attribute MARK_DEBUG of raw_fifo_empty : signal is std.standard.true;
   signal raw_fifo_wr : STD_LOGIC;
   attribute MARK_DEBUG of raw_fifo_wr : signal is std.standard.true;
-  signal raw_fifo_wr1 : STD_LOGIC;
   signal raw_out_data : STD_LOGIC_VECTOR ( 191 downto 0 );
   signal \^raw_ready\ : STD_LOGIC;
+  attribute MARK_DEBUG of raw_ready : signal is std.standard.true;
   signal raw_wr_delay : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of raw_wr_delay : signal is std.standard.true;
   signal \raw_wr_delay__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1083,6 +1137,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal sim_wr_E : STD_LOGIC;
   signal sim_wr_N : STD_LOGIC;
   signal sim_wr_W : STD_LOGIC;
+  signal \NLW_deci_low.raw_counter_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_deci_low.raw_delay_reg[11]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_deci_low.raw_delay_reg[11]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal NLW_fifo_doa_i_full_UNCONNECTED : STD_LOGIC;
@@ -1120,8 +1175,14 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal NLW_fir_raw_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
   attribute KEEP : string;
   attribute KEEP of \deci_low.doa_fifo_wr_reg\ : label is "yes";
-  attribute KEEP of \deci_low.doa_wr_delay_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_out_delay_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_out_delay_reg[1]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_out_delay_reg[2]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_out_rd_reg\ : label is "yes";
+  attribute KEEP of \deci_low.doa_ready_reg\ : label is "yes";
   attribute mark_debug_string : string;
+  attribute mark_debug_string of \deci_low.doa_ready_reg\ : label is "yes";
+  attribute KEEP of \deci_low.doa_wr_delay_reg[0]\ : label is "yes";
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[0]\ : label is "yes";
   attribute KEEP of \deci_low.doa_wr_delay_reg[1]\ : label is "yes";
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[1]\ : label is "yes";
@@ -1129,19 +1190,56 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[2]\ : label is "yes";
   attribute KEEP of \deci_low.doa_wr_delay_reg[3]\ : label is "yes";
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_low.fifo_reset_cnt_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_low.fifo_reset_cnt_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_low.fifo_reset_cnt_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_low.fifo_reset_reg\ : label is "yes";
   attribute KEEP of \deci_low.fir_resetn_reg\ : label is "yes";
   attribute KEEP of \deci_low.mux_active_reg\ : label is "yes";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \deci_low.raw_active_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \deci_low.raw_delay[0]_i_1\ : label is "soft_lutpair0";
+  attribute KEEP of \deci_low.raw_active_reg\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[10]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[11]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[12]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[13]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[14]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \deci_low.raw_counter_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \deci_low.raw_counter_reg[1]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[2]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[3]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[4]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[5]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[6]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \deci_low.raw_counter_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \deci_low.raw_counter_reg[8]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_counter_reg[9]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[10]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[11]\ : label is "yes";
   attribute ADDER_THRESHOLD of \deci_low.raw_delay_reg[11]_i_2\ : label is 35;
+  attribute KEEP of \deci_low.raw_delay_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[1]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[2]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[3]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[4]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[5]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[6]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[7]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_delay_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[8]\ : label is "yes";
   attribute ADDER_THRESHOLD of \deci_low.raw_delay_reg[8]_i_1\ : label is 35;
+  attribute KEEP of \deci_low.raw_delay_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_delay_reg[9]\ : label is "yes";
   attribute KEEP of \deci_low.raw_fifo_wr_reg\ : label is "yes";
+  attribute KEEP of \deci_low.raw_ready_reg\ : label is "yes";
   attribute KEEP of \deci_low.raw_wr_delay_reg[0]\ : label is "yes";
   attribute mark_debug_string of \deci_low.raw_wr_delay_reg[0]\ : label is "yes";
   attribute KEEP of \deci_low.raw_wr_delay_reg[1]\ : label is "yes";
@@ -1159,14 +1257,12 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute mark_debug_string of \deci_low.reset_delay_reg[1]\ : label is "yes";
   attribute KEEP of \deci_low.reset_delay_reg[2]\ : label is "yes";
   attribute mark_debug_string of \deci_low.reset_delay_reg[2]\ : label is "yes";
-  attribute ORIG_CELL_NAME : string;
-  attribute ORIG_CELL_NAME of \deci_low.sim_active_reg\ : label is "deci_low.sim_active_reg";
-  attribute ORIG_CELL_NAME of \deci_low.sim_active_reg_rep\ : label is "deci_low.sim_active_reg";
-  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \deci_low.sim_curr_wr_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \deci_low.sim_curr_wr_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair2";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_doa_i : label is "fifo_doa_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -1182,7 +1278,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute CHECK_LICENSE_TYPE of fifo_sim_N_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_N_i : label is "yes";
   attribute x_core_info of fifo_sim_N_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
-  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair0";
   attribute CHECK_LICENSE_TYPE of fifo_sim_W_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_W_i : label is "yes";
   attribute x_core_info of fifo_sim_W_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
@@ -1207,14 +1303,31 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute CHECK_LICENSE_TYPE of ila_2_i : label is "ila_2,ila,{}";
   attribute downgradeipidentifiedwarnings of ila_2_i : label is "yes";
   attribute x_core_info of ila_2_i : label is "ila,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_7_i : label is "ila_7,ila,{}";
+  attribute downgradeipidentifiedwarnings of ila_7_i : label is "yes";
+  attribute x_core_info of ila_7_i : label is "ila,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_8_i : label is "ila_8,ila,{}";
+  attribute downgradeipidentifiedwarnings of ila_8_i : label is "yes";
+  attribute x_core_info of ila_8_i : label is "ila,Vivado 2025.1";
 begin
   doa_ready <= \^doa_ready\;
   raw_ready <= \^raw_ready\;
   sim_active <= \^sim_active\;
+\deci_low.doa_data[47]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"AAE8"
+    )
+        port map (
+      I0 => doa_fifo_empty,
+      I1 => doa_out_delay(2),
+      I2 => doa_out_delay(0),
+      I3 => doa_out_delay(1),
+      O => \deci_low.doa_data[47]_i_1_n_0\
+    );
 \deci_low.doa_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(0),
       Q => doa_data(0),
       R => '0'
@@ -1222,7 +1335,7 @@ begin
 \deci_low.doa_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(10),
       Q => doa_data(10),
       R => '0'
@@ -1230,7 +1343,7 @@ begin
 \deci_low.doa_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(11),
       Q => doa_data(11),
       R => '0'
@@ -1238,7 +1351,7 @@ begin
 \deci_low.doa_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(12),
       Q => doa_data(12),
       R => '0'
@@ -1246,7 +1359,7 @@ begin
 \deci_low.doa_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(13),
       Q => doa_data(13),
       R => '0'
@@ -1254,7 +1367,7 @@ begin
 \deci_low.doa_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(14),
       Q => doa_data(14),
       R => '0'
@@ -1262,7 +1375,7 @@ begin
 \deci_low.doa_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(15),
       Q => doa_data(15),
       R => '0'
@@ -1270,7 +1383,7 @@ begin
 \deci_low.doa_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(16),
       Q => doa_data(16),
       R => '0'
@@ -1278,7 +1391,7 @@ begin
 \deci_low.doa_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(17),
       Q => doa_data(17),
       R => '0'
@@ -1286,7 +1399,7 @@ begin
 \deci_low.doa_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(18),
       Q => doa_data(18),
       R => '0'
@@ -1294,7 +1407,7 @@ begin
 \deci_low.doa_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(19),
       Q => doa_data(19),
       R => '0'
@@ -1302,7 +1415,7 @@ begin
 \deci_low.doa_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(1),
       Q => doa_data(1),
       R => '0'
@@ -1310,7 +1423,7 @@ begin
 \deci_low.doa_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(20),
       Q => doa_data(20),
       R => '0'
@@ -1318,7 +1431,7 @@ begin
 \deci_low.doa_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(21),
       Q => doa_data(21),
       R => '0'
@@ -1326,7 +1439,7 @@ begin
 \deci_low.doa_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(22),
       Q => doa_data(22),
       R => '0'
@@ -1334,7 +1447,7 @@ begin
 \deci_low.doa_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(23),
       Q => doa_data(23),
       R => '0'
@@ -1342,7 +1455,7 @@ begin
 \deci_low.doa_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(24),
       Q => doa_data(24),
       R => '0'
@@ -1350,7 +1463,7 @@ begin
 \deci_low.doa_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(25),
       Q => doa_data(25),
       R => '0'
@@ -1358,7 +1471,7 @@ begin
 \deci_low.doa_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(26),
       Q => doa_data(26),
       R => '0'
@@ -1366,7 +1479,7 @@ begin
 \deci_low.doa_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(27),
       Q => doa_data(27),
       R => '0'
@@ -1374,7 +1487,7 @@ begin
 \deci_low.doa_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(28),
       Q => doa_data(28),
       R => '0'
@@ -1382,7 +1495,7 @@ begin
 \deci_low.doa_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(29),
       Q => doa_data(29),
       R => '0'
@@ -1390,7 +1503,7 @@ begin
 \deci_low.doa_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(2),
       Q => doa_data(2),
       R => '0'
@@ -1398,7 +1511,7 @@ begin
 \deci_low.doa_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(30),
       Q => doa_data(30),
       R => '0'
@@ -1406,7 +1519,7 @@ begin
 \deci_low.doa_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(31),
       Q => doa_data(31),
       R => '0'
@@ -1414,7 +1527,7 @@ begin
 \deci_low.doa_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(32),
       Q => doa_data(32),
       R => '0'
@@ -1422,7 +1535,7 @@ begin
 \deci_low.doa_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(33),
       Q => doa_data(33),
       R => '0'
@@ -1430,7 +1543,7 @@ begin
 \deci_low.doa_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(34),
       Q => doa_data(34),
       R => '0'
@@ -1438,7 +1551,7 @@ begin
 \deci_low.doa_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(35),
       Q => doa_data(35),
       R => '0'
@@ -1446,7 +1559,7 @@ begin
 \deci_low.doa_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(36),
       Q => doa_data(36),
       R => '0'
@@ -1454,7 +1567,7 @@ begin
 \deci_low.doa_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(37),
       Q => doa_data(37),
       R => '0'
@@ -1462,7 +1575,7 @@ begin
 \deci_low.doa_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(38),
       Q => doa_data(38),
       R => '0'
@@ -1470,7 +1583,7 @@ begin
 \deci_low.doa_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(39),
       Q => doa_data(39),
       R => '0'
@@ -1478,7 +1591,7 @@ begin
 \deci_low.doa_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(3),
       Q => doa_data(3),
       R => '0'
@@ -1486,7 +1599,7 @@ begin
 \deci_low.doa_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(40),
       Q => doa_data(40),
       R => '0'
@@ -1494,7 +1607,7 @@ begin
 \deci_low.doa_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(41),
       Q => doa_data(41),
       R => '0'
@@ -1502,7 +1615,7 @@ begin
 \deci_low.doa_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(42),
       Q => doa_data(42),
       R => '0'
@@ -1510,7 +1623,7 @@ begin
 \deci_low.doa_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(43),
       Q => doa_data(43),
       R => '0'
@@ -1518,7 +1631,7 @@ begin
 \deci_low.doa_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(44),
       Q => doa_data(44),
       R => '0'
@@ -1526,7 +1639,7 @@ begin
 \deci_low.doa_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(45),
       Q => doa_data(45),
       R => '0'
@@ -1534,7 +1647,7 @@ begin
 \deci_low.doa_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(46),
       Q => doa_data(46),
       R => '0'
@@ -1542,7 +1655,7 @@ begin
 \deci_low.doa_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(47),
       Q => doa_data(47),
       R => '0'
@@ -1550,7 +1663,7 @@ begin
 \deci_low.doa_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(4),
       Q => doa_data(4),
       R => '0'
@@ -1558,7 +1671,7 @@ begin
 \deci_low.doa_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(5),
       Q => doa_data(5),
       R => '0'
@@ -1566,7 +1679,7 @@ begin
 \deci_low.doa_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(6),
       Q => doa_data(6),
       R => '0'
@@ -1574,7 +1687,7 @@ begin
 \deci_low.doa_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(7),
       Q => doa_data(7),
       R => '0'
@@ -1582,7 +1695,7 @@ begin
 \deci_low.doa_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(8),
       Q => doa_data(8),
       R => '0'
@@ -1590,14 +1703,14 @@ begin
 \deci_low.doa_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => doa_out_active,
+      CE => \deci_low.doa_data[47]_i_1_n_0\,
       D => doa_out_data(9),
       Q => doa_data(9),
       R => '0'
     );
 \deci_low.doa_fifo_wr_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BAAAAAAAAAAAAAA8"
+      INIT => X"BAAAAAAAFFFFFFFC"
     )
         port map (
       I0 => doa_fifo_wr,
@@ -1618,12 +1731,12 @@ begin
     );
 \deci_low.doa_in_data[47]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00008000"
+      INIT => X"5555D554"
     )
         port map (
       I0 => mux_active,
-      I1 => doa_wr_delay(0),
-      I2 => doa_wr_delay(1),
+      I1 => doa_wr_delay(1),
+      I2 => doa_wr_delay(0),
       I3 => doa_wr_delay(3),
       I4 => doa_wr_delay(2),
       O => \deci_low.doa_in_data[47]_i_1_n_0\
@@ -2012,27 +2125,96 @@ begin
       Q => \deci_low.doa_in_data_reg_n_0_[9]\,
       R => '0'
     );
-\deci_low.doa_out_active_i_1\: unisim.vcomponents.LUT1
+\deci_low.doa_out_delay[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"323B"
+    )
+        port map (
+      I0 => doa_out_delay(2),
+      I1 => doa_out_delay(0),
+      I2 => doa_out_delay(1),
+      I3 => doa_fifo_empty,
+      O => \doa_out_delay__0\(0)
+    );
+\deci_low.doa_out_delay[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8962"
+    )
+        port map (
+      I0 => doa_out_delay(1),
+      I1 => doa_fifo_empty,
+      I2 => doa_out_delay(2),
+      I3 => doa_out_delay(0),
+      O => \doa_out_delay__0\(1)
+    );
+\deci_low.doa_out_delay[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9AA2"
+    )
+        port map (
+      I0 => doa_out_delay(2),
+      I1 => doa_fifo_empty,
+      I2 => doa_out_delay(1),
+      I3 => doa_out_delay(0),
+      O => \doa_out_delay__0\(2)
+    );
+\deci_low.doa_out_delay_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => doa_clk,
+      CE => '1',
+      D => \doa_out_delay__0\(0),
+      Q => doa_out_delay(0),
+      R => '0'
+    );
+\deci_low.doa_out_delay_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => doa_clk,
+      CE => '1',
+      D => \doa_out_delay__0\(1),
+      Q => doa_out_delay(1),
+      R => '0'
+    );
+\deci_low.doa_out_delay_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => doa_clk,
+      CE => '1',
+      D => \doa_out_delay__0\(2),
+      Q => doa_out_delay(2),
+      R => '0'
+    );
+\deci_low.doa_out_rd_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => doa_fifo_empty,
-      O => \deci_low.doa_out_active_i_1_n_0\
+      O => \deci_low.doa_out_rd_i_1_n_0\
     );
-\deci_low.doa_out_active_reg\: unisim.vcomponents.FDRE
+\deci_low.doa_out_rd_reg\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
       CE => '1',
-      D => \deci_low.doa_out_active_i_1_n_0\,
-      Q => doa_out_active,
+      D => \deci_low.doa_out_rd_i_1_n_0\,
+      Q => doa_out_rd,
       R => '0'
+    );
+\deci_low.doa_ready_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EEEEFEE2"
+    )
+        port map (
+      I0 => \^doa_ready\,
+      I1 => doa_fifo_empty,
+      I2 => doa_out_delay(2),
+      I3 => doa_out_delay(0),
+      I4 => doa_out_delay(1),
+      O => \deci_low.doa_ready_i_1_n_0\
     );
 \deci_low.doa_ready_reg\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
       CE => '1',
-      D => doa_out_active,
+      D => \deci_low.doa_ready_i_1_n_0\,
       Q => \^doa_ready\,
       R => '0'
     );
@@ -2127,96 +2309,6 @@ begin
       D => \doa_wr_delay__0\(3),
       Q => doa_wr_delay(3),
       R => '0'
-    );
-\deci_low.fifo_reset_cnt[0]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"000EFFFF"
-    )
-        port map (
-      I0 => fifo_reset_cnt(1),
-      I1 => fifo_reset_cnt(2),
-      I2 => fifo_reset_cnt(0),
-      I3 => \deci_low.sim_active_reg_rep_n_0\,
-      I4 => resetn,
-      O => \deci_low.fifo_reset_cnt[0]_i_1_n_0\
-    );
-\deci_low.fifo_reset_cnt[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00A4FFFF"
-    )
-        port map (
-      I0 => fifo_reset_cnt(0),
-      I1 => fifo_reset_cnt(2),
-      I2 => fifo_reset_cnt(1),
-      I3 => \deci_low.sim_active_reg_rep_n_0\,
-      I4 => resetn,
-      O => \deci_low.fifo_reset_cnt[1]_i_1_n_0\
-    );
-\deci_low.fifo_reset_cnt[2]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => resetn,
-      I1 => sim_start,
-      O => \deci_low.fifo_reset_cnt[2]_i_1_n_0\
-    );
-\deci_low.fifo_reset_cnt[2]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00E0FFFF"
-    )
-        port map (
-      I0 => fifo_reset_cnt(1),
-      I1 => fifo_reset_cnt(0),
-      I2 => fifo_reset_cnt(2),
-      I3 => \deci_low.sim_active_reg_rep_n_0\,
-      I4 => resetn,
-      O => \deci_low.fifo_reset_cnt[2]_i_2_n_0\
-    );
-\deci_low.fifo_reset_cnt_reg[0]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \deci_low.fifo_reset_cnt[0]_i_1_n_0\,
-      Q => fifo_reset_cnt(0),
-      S => \deci_low.fifo_reset_cnt[2]_i_1_n_0\
-    );
-\deci_low.fifo_reset_cnt_reg[1]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \deci_low.fifo_reset_cnt[1]_i_1_n_0\,
-      Q => fifo_reset_cnt(1),
-      S => \deci_low.fifo_reset_cnt[2]_i_1_n_0\
-    );
-\deci_low.fifo_reset_cnt_reg[2]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \deci_low.fifo_reset_cnt[2]_i_2_n_0\,
-      Q => fifo_reset_cnt(2),
-      S => \deci_low.fifo_reset_cnt[2]_i_1_n_0\
-    );
-\deci_low.fifo_reset_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000FE00FFFFFFFF"
-    )
-        port map (
-      I0 => fifo_reset_cnt(1),
-      I1 => fifo_reset_cnt(2),
-      I2 => fifo_reset_cnt(0),
-      I3 => fifo_reset,
-      I4 => \deci_low.sim_active_reg_rep_n_0\,
-      I5 => resetn,
-      O => \deci_low.fifo_reset_i_1_n_0\
-    );
-\deci_low.fifo_reset_reg\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \deci_low.fifo_reset_i_1_n_0\,
-      Q => fifo_reset,
-      S => \deci_low.fifo_reset_cnt[2]_i_1_n_0\
     );
 \deci_low.fir_resetn_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -9953,10 +10045,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(1),
-      I1 => \deci_low.raw_delay_reg\(0),
-      I2 => \deci_low.raw_delay_reg\(3),
-      I3 => \deci_low.raw_delay_reg\(2),
+      I0 => raw_delay(1),
+      I1 => raw_delay(0),
+      I2 => raw_delay(3),
+      I3 => raw_delay(2),
       O => \deci_low.raw_active_i_2_n_0\
     );
 \deci_low.raw_active_reg\: unisim.vcomponents.FDRE
@@ -9966,6 +10058,198 @@ begin
       D => \deci_low.raw_active_i_1_n_0\,
       Q => raw_active,
       R => '0'
+    );
+\deci_low.raw_counter[15]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => raw_active,
+      O => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter[7]_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => raw_counter(0),
+      O => \deci_low.raw_counter[7]_i_2_n_0\
+    );
+\deci_low.raw_counter_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_15\,
+      Q => raw_counter(0),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_13\,
+      Q => raw_counter(10),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_12\,
+      Q => raw_counter(11),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_11\,
+      Q => raw_counter(12),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_10\,
+      Q => raw_counter(13),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_9\,
+      Q => raw_counter(14),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_8\,
+      Q => raw_counter(15),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \deci_low.raw_counter_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_deci_low.raw_counter_reg[15]_i_2_CO_UNCONNECTED\(7),
+      CO(6) => \deci_low.raw_counter_reg[15]_i_2_n_1\,
+      CO(5) => \deci_low.raw_counter_reg[15]_i_2_n_2\,
+      CO(4) => \deci_low.raw_counter_reg[15]_i_2_n_3\,
+      CO(3) => \deci_low.raw_counter_reg[15]_i_2_n_4\,
+      CO(2) => \deci_low.raw_counter_reg[15]_i_2_n_5\,
+      CO(1) => \deci_low.raw_counter_reg[15]_i_2_n_6\,
+      CO(0) => \deci_low.raw_counter_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7) => \deci_low.raw_counter_reg[15]_i_2_n_8\,
+      O(6) => \deci_low.raw_counter_reg[15]_i_2_n_9\,
+      O(5) => \deci_low.raw_counter_reg[15]_i_2_n_10\,
+      O(4) => \deci_low.raw_counter_reg[15]_i_2_n_11\,
+      O(3) => \deci_low.raw_counter_reg[15]_i_2_n_12\,
+      O(2) => \deci_low.raw_counter_reg[15]_i_2_n_13\,
+      O(1) => \deci_low.raw_counter_reg[15]_i_2_n_14\,
+      O(0) => \deci_low.raw_counter_reg[15]_i_2_n_15\,
+      S(7 downto 0) => raw_counter(15 downto 8)
+    );
+\deci_low.raw_counter_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_14\,
+      Q => raw_counter(1),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_13\,
+      Q => raw_counter(2),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_12\,
+      Q => raw_counter(3),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_11\,
+      Q => raw_counter(4),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_10\,
+      Q => raw_counter(5),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_9\,
+      Q => raw_counter(6),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[7]_i_1_n_8\,
+      Q => raw_counter(7),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \deci_low.raw_counter_reg[7]_i_1_n_0\,
+      CO(6) => \deci_low.raw_counter_reg[7]_i_1_n_1\,
+      CO(5) => \deci_low.raw_counter_reg[7]_i_1_n_2\,
+      CO(4) => \deci_low.raw_counter_reg[7]_i_1_n_3\,
+      CO(3) => \deci_low.raw_counter_reg[7]_i_1_n_4\,
+      CO(2) => \deci_low.raw_counter_reg[7]_i_1_n_5\,
+      CO(1) => \deci_low.raw_counter_reg[7]_i_1_n_6\,
+      CO(0) => \deci_low.raw_counter_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => raw_counter(0),
+      O(7) => \deci_low.raw_counter_reg[7]_i_1_n_8\,
+      O(6) => \deci_low.raw_counter_reg[7]_i_1_n_9\,
+      O(5) => \deci_low.raw_counter_reg[7]_i_1_n_10\,
+      O(4) => \deci_low.raw_counter_reg[7]_i_1_n_11\,
+      O(3) => \deci_low.raw_counter_reg[7]_i_1_n_12\,
+      O(2) => \deci_low.raw_counter_reg[7]_i_1_n_13\,
+      O(1) => \deci_low.raw_counter_reg[7]_i_1_n_14\,
+      O(0) => \deci_low.raw_counter_reg[7]_i_1_n_15\,
+      S(7 downto 1) => raw_counter(7 downto 1),
+      S(0) => \deci_low.raw_counter[7]_i_2_n_0\
+    );
+\deci_low.raw_counter_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_15\,
+      Q => raw_counter(8),
+      R => \raw_counter__0\(0)
+    );
+\deci_low.raw_counter_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_counter_reg[15]_i_2_n_14\,
+      Q => raw_counter(9),
+      R => \raw_counter__0\(0)
     );
 \deci_low.raw_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -11508,18 +11792,18 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(0),
-      O => raw_delay0(0)
+      I0 => raw_delay(0),
+      O => \deci_low.raw_delay_reg0\(0)
     );
 \deci_low.raw_delay[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(2),
-      I1 => \deci_low.raw_delay_reg\(3),
-      I2 => \deci_low.raw_delay_reg\(0),
-      I3 => \deci_low.raw_delay_reg\(1),
+      I0 => raw_delay(2),
+      I1 => raw_delay(3),
+      I2 => raw_delay(0),
+      I3 => raw_delay(1),
       I4 => \deci_low.raw_delay[11]_i_3_n_0\,
       I5 => \deci_low.raw_delay[11]_i_4_n_0\,
       O => \deci_low.raw_delay[11]_i_1_n_0\
@@ -11529,10 +11813,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(9),
-      I1 => \deci_low.raw_delay_reg\(8),
-      I2 => \deci_low.raw_delay_reg\(11),
-      I3 => \deci_low.raw_delay_reg\(10),
+      I0 => raw_delay(9),
+      I1 => raw_delay(8),
+      I2 => raw_delay(11),
+      I3 => raw_delay(10),
       O => \deci_low.raw_delay[11]_i_3_n_0\
     );
 \deci_low.raw_delay[11]_i_4\: unisim.vcomponents.LUT4
@@ -11540,10 +11824,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(5),
-      I1 => \deci_low.raw_delay_reg\(4),
-      I2 => \deci_low.raw_delay_reg\(7),
-      I3 => \deci_low.raw_delay_reg\(6),
+      I0 => raw_delay(5),
+      I1 => raw_delay(4),
+      I2 => raw_delay(7),
+      I3 => raw_delay(6),
       O => \deci_low.raw_delay[11]_i_4_n_0\
     );
 \deci_low.raw_delay[11]_i_5\: unisim.vcomponents.LUT1
@@ -11551,7 +11835,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(11),
+      I0 => raw_delay(11),
       O => \deci_low.raw_delay[11]_i_5_n_0\
     );
 \deci_low.raw_delay[11]_i_6\: unisim.vcomponents.LUT1
@@ -11559,7 +11843,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(10),
+      I0 => raw_delay(10),
       O => \deci_low.raw_delay[11]_i_6_n_0\
     );
 \deci_low.raw_delay[11]_i_7\: unisim.vcomponents.LUT1
@@ -11567,7 +11851,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(9),
+      I0 => raw_delay(9),
       O => \deci_low.raw_delay[11]_i_7_n_0\
     );
 \deci_low.raw_delay[8]_i_2\: unisim.vcomponents.LUT1
@@ -11575,7 +11859,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(8),
+      I0 => raw_delay(8),
       O => \deci_low.raw_delay[8]_i_2_n_0\
     );
 \deci_low.raw_delay[8]_i_3\: unisim.vcomponents.LUT1
@@ -11583,7 +11867,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(7),
+      I0 => raw_delay(7),
       O => \deci_low.raw_delay[8]_i_3_n_0\
     );
 \deci_low.raw_delay[8]_i_4\: unisim.vcomponents.LUT1
@@ -11591,7 +11875,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(6),
+      I0 => raw_delay(6),
       O => \deci_low.raw_delay[8]_i_4_n_0\
     );
 \deci_low.raw_delay[8]_i_5\: unisim.vcomponents.LUT1
@@ -11599,7 +11883,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(5),
+      I0 => raw_delay(5),
       O => \deci_low.raw_delay[8]_i_5_n_0\
     );
 \deci_low.raw_delay[8]_i_6\: unisim.vcomponents.LUT1
@@ -11607,7 +11891,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(4),
+      I0 => raw_delay(4),
       O => \deci_low.raw_delay[8]_i_6_n_0\
     );
 \deci_low.raw_delay[8]_i_7\: unisim.vcomponents.LUT1
@@ -11615,7 +11899,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(3),
+      I0 => raw_delay(3),
       O => \deci_low.raw_delay[8]_i_7_n_0\
     );
 \deci_low.raw_delay[8]_i_8\: unisim.vcomponents.LUT1
@@ -11623,7 +11907,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(2),
+      I0 => raw_delay(2),
       O => \deci_low.raw_delay[8]_i_8_n_0\
     );
 \deci_low.raw_delay[8]_i_9\: unisim.vcomponents.LUT1
@@ -11631,31 +11915,31 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \deci_low.raw_delay_reg\(1),
+      I0 => raw_delay(1),
       O => \deci_low.raw_delay[8]_i_9_n_0\
     );
 \deci_low.raw_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(0),
-      Q => \deci_low.raw_delay_reg\(0),
+      D => \deci_low.raw_delay_reg0\(0),
+      Q => raw_delay(0),
       R => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(10),
-      Q => \deci_low.raw_delay_reg\(10),
+      D => \deci_low.raw_delay_reg0\(10),
+      Q => raw_delay(10),
       R => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(11),
-      Q => \deci_low.raw_delay_reg\(11),
+      D => \deci_low.raw_delay_reg0\(11),
+      Q => raw_delay(11),
       R => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[11]_i_2\: unisim.vcomponents.CARRY8
@@ -11666,9 +11950,9 @@ begin
       CO(1) => \deci_low.raw_delay_reg[11]_i_2_n_6\,
       CO(0) => \deci_low.raw_delay_reg[11]_i_2_n_7\,
       DI(7 downto 2) => B"000000",
-      DI(1 downto 0) => \deci_low.raw_delay_reg\(10 downto 9),
+      DI(1 downto 0) => raw_delay(10 downto 9),
       O(7 downto 3) => \NLW_deci_low.raw_delay_reg[11]_i_2_O_UNCONNECTED\(7 downto 3),
-      O(2 downto 0) => raw_delay0(11 downto 9),
+      O(2 downto 0) => \deci_low.raw_delay_reg0\(11 downto 9),
       S(7 downto 3) => B"00000",
       S(2) => \deci_low.raw_delay[11]_i_5_n_0\,
       S(1) => \deci_low.raw_delay[11]_i_6_n_0\,
@@ -11678,69 +11962,69 @@ begin
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(1),
-      Q => \deci_low.raw_delay_reg\(1),
+      D => \deci_low.raw_delay_reg0\(1),
+      Q => raw_delay(1),
       R => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(2),
-      Q => \deci_low.raw_delay_reg\(2),
+      D => \deci_low.raw_delay_reg0\(2),
+      Q => raw_delay(2),
       R => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(3),
-      Q => \deci_low.raw_delay_reg\(3),
+      D => \deci_low.raw_delay_reg0\(3),
+      Q => raw_delay(3),
       R => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(4),
-      Q => \deci_low.raw_delay_reg\(4),
+      D => \deci_low.raw_delay_reg0\(4),
+      Q => raw_delay(4),
       S => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[5]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(5),
-      Q => \deci_low.raw_delay_reg\(5),
+      D => \deci_low.raw_delay_reg0\(5),
+      Q => raw_delay(5),
       S => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[6]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(6),
-      Q => \deci_low.raw_delay_reg\(6),
+      D => \deci_low.raw_delay_reg0\(6),
+      Q => raw_delay(6),
       S => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[7]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(7),
-      Q => \deci_low.raw_delay_reg\(7),
+      D => \deci_low.raw_delay_reg0\(7),
+      Q => raw_delay(7),
       S => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[8]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(8),
-      Q => \deci_low.raw_delay_reg\(8),
+      D => \deci_low.raw_delay_reg0\(8),
+      Q => raw_delay(8),
       S => raw_fifo_empty
     );
 \deci_low.raw_delay_reg[8]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \deci_low.raw_delay_reg\(0),
+      CI => raw_delay(0),
       CI_TOP => '0',
       CO(7) => \deci_low.raw_delay_reg[8]_i_1_n_0\,
       CO(6) => \deci_low.raw_delay_reg[8]_i_1_n_1\,
@@ -11750,8 +12034,8 @@ begin
       CO(2) => \deci_low.raw_delay_reg[8]_i_1_n_5\,
       CO(1) => \deci_low.raw_delay_reg[8]_i_1_n_6\,
       CO(0) => \deci_low.raw_delay_reg[8]_i_1_n_7\,
-      DI(7 downto 0) => \deci_low.raw_delay_reg\(8 downto 1),
-      O(7 downto 0) => raw_delay0(8 downto 1),
+      DI(7 downto 0) => raw_delay(8 downto 1),
+      O(7 downto 0) => \deci_low.raw_delay_reg0\(8 downto 1),
       S(7) => \deci_low.raw_delay[8]_i_2_n_0\,
       S(6) => \deci_low.raw_delay[8]_i_3_n_0\,
       S(5) => \deci_low.raw_delay[8]_i_4_n_0\,
@@ -11765,31 +12049,22 @@ begin
      port map (
       C => raw_clk,
       CE => \deci_low.raw_delay[11]_i_1_n_0\,
-      D => raw_delay0(9),
-      Q => \deci_low.raw_delay_reg\(9),
+      D => \deci_low.raw_delay_reg0\(9),
+      Q => raw_delay(9),
       S => raw_fifo_empty
     );
-\deci_low.raw_fifo_wr_i_1\: unisim.vcomponents.LUT4
+\deci_low.raw_fifo_wr_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFA8"
+      INIT => X"BAAAAAAAFFFFFFFC"
     )
         port map (
       I0 => raw_fifo_wr,
-      I1 => raw_fifo_wr1,
-      I2 => mux_active,
-      I3 => \deci_low.raw_in_data[191]_i_1_n_0\,
+      I1 => raw_wr_delay(1),
+      I2 => raw_wr_delay(2),
+      I3 => raw_wr_delay(3),
+      I4 => raw_wr_delay(0),
+      I5 => mux_active,
       O => \deci_low.raw_fifo_wr_i_1_n_0\
-    );
-\deci_low.raw_fifo_wr_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => raw_wr_delay(1),
-      I1 => raw_wr_delay(0),
-      I2 => raw_wr_delay(3),
-      I3 => raw_wr_delay(2),
-      O => raw_fifo_wr1
     );
 \deci_low.raw_fifo_wr_reg\: unisim.vcomponents.FDRE
      port map (
@@ -11801,14 +12076,14 @@ begin
     );
 \deci_low.raw_in_data[191]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00008000"
+      INIT => X"75555554"
     )
         port map (
       I0 => mux_active,
-      I1 => raw_wr_delay(0),
-      I2 => raw_wr_delay(3),
-      I3 => raw_wr_delay(2),
-      I4 => raw_wr_delay(1),
+      I1 => raw_wr_delay(1),
+      I2 => raw_wr_delay(0),
+      I3 => raw_wr_delay(3),
+      I4 => raw_wr_delay(2),
       O => \deci_low.raw_in_data[191]_i_1_n_0\
     );
 \deci_low.raw_in_data_reg[0]\: unisim.vcomponents.FDRE
@@ -13626,21 +13901,13 @@ begin
       Q => \^sim_active\,
       R => \deci_low.sim_active_i_1_n_0\
     );
-\deci_low.sim_active_reg_rep\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => sim_active_2,
-      Q => \deci_low.sim_active_reg_rep_n_0\,
-      R => \deci_low.sim_active_i_1_n_0\
-    );
 \deci_low.sim_count[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \sim_count__0\(0),
-      O => \p_1_in__0\(0)
+      O => \deci_low.sim_count[0]_i_1_n_0\
     );
 \deci_low.sim_count[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -13660,13 +13927,13 @@ begin
         port map (
       I0 => \sim_count__0\(0),
       I1 => \sim_count__0\(1),
-      O => \p_1_in__0\(1)
+      O => \deci_low.sim_count[1]_i_2_n_0\
     );
 \deci_low.sim_count_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
       CE => sim_wr,
-      D => \p_1_in__0\(0),
+      D => \deci_low.sim_count[0]_i_1_n_0\,
       Q => \sim_count__0\(0),
       R => \deci_low.sim_count[1]_i_1_n_0\
     );
@@ -13674,7 +13941,7 @@ begin
      port map (
       C => sim_clk,
       CE => sim_wr,
-      D => \p_1_in__0\(1),
+      D => \deci_low.sim_count[1]_i_2_n_0\,
       Q => \sim_count__0\(1),
       R => \deci_low.sim_count[1]_i_1_n_0\
     );
@@ -15953,9 +16220,9 @@ fifo_doa_i: component ps_deci_low_0_0_fifo_doa_low
       empty => doa_fifo_empty,
       full => NLW_fifo_doa_i_full_UNCONNECTED,
       rd_clk => doa_clk,
-      rd_en => \^doa_ready\,
+      rd_en => doa_out_rd,
       rd_rst_busy => NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED,
-      rst => fifo_reset,
+      rst => \deci_low.sim_active_i_1_n_0\,
       wr_clk => clk,
       wr_en => doa_fifo_wr,
       wr_rst_busy => NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED
@@ -16160,7 +16427,7 @@ fifo_raw_i: component ps_deci_low_0_0_fifo_raw_low
       rd_clk => raw_clk,
       rd_en => \^raw_ready\,
       rd_rst_busy => NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED,
-      rst => fifo_reset,
+      rst => \deci_low.sim_active_i_1_n_0\,
       wr_clk => clk,
       wr_en => raw_fifo_wr,
       wr_rst_busy => NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED
@@ -16324,30 +16591,45 @@ ila_2_i: component ps_deci_low_0_0_ila_2
       clk => clk,
       probe0(2 downto 0) => reset_delay(2 downto 0),
       probe1(2 downto 0) => reset_active(2 downto 0),
-      probe10(0) => doa_fifo_wr,
-      probe11(15 downto 0) => mux_N0(15 downto 0),
-      probe12(15 downto 0) => mux_N1(15 downto 0),
-      probe13(15 downto 0) => mux_N2(15 downto 0),
-      probe14(15 downto 0) => mux_N3(15 downto 0),
-      probe15(15 downto 0) => mux_N4(15 downto 0),
-      probe16(15 downto 0) => mux_N5(15 downto 0),
-      probe17(15 downto 0) => mux_N6(15 downto 0),
-      probe18(15 downto 0) => mux_N7(15 downto 0),
-      probe19(15 downto 0) => raw_N0(15 downto 0),
-      probe2(2 downto 0) => fifo_reset_cnt(2 downto 0),
-      probe20(15 downto 0) => raw_N1(15 downto 0),
-      probe21(15 downto 0) => raw_N2(15 downto 0),
-      probe22(15 downto 0) => raw_N3(15 downto 0),
-      probe23(15 downto 0) => doa_N(15 downto 0),
-      probe24(15 downto 0) => doa_E(15 downto 0),
-      probe25(15 downto 0) => doa_W(15 downto 0),
-      probe3(0) => fir_resetn,
-      probe4(0) => fifo_reset,
-      probe5(0) => adc_active,
-      probe6(0) => mux_active,
-      probe7(3 downto 0) => raw_wr_delay(3 downto 0),
-      probe8(0) => raw_fifo_wr,
-      probe9(3 downto 0) => doa_wr_delay(3 downto 0)
+      probe10(15 downto 0) => mux_N1(15 downto 0),
+      probe11(15 downto 0) => mux_N2(15 downto 0),
+      probe12(15 downto 0) => mux_N3(15 downto 0),
+      probe13(15 downto 0) => mux_N4(15 downto 0),
+      probe14(15 downto 0) => mux_N5(15 downto 0),
+      probe15(15 downto 0) => mux_N6(15 downto 0),
+      probe16(15 downto 0) => mux_N7(15 downto 0),
+      probe17(15 downto 0) => raw_N0(15 downto 0),
+      probe18(15 downto 0) => raw_N1(15 downto 0),
+      probe19(15 downto 0) => raw_N2(15 downto 0),
+      probe2(0) => fir_resetn,
+      probe20(15 downto 0) => raw_N3(15 downto 0),
+      probe21(15 downto 0) => doa_N(15 downto 0),
+      probe22(15 downto 0) => doa_E(15 downto 0),
+      probe23(15 downto 0) => doa_W(15 downto 0),
+      probe3(0) => adc_active,
+      probe4(0) => mux_active,
+      probe5(3 downto 0) => raw_wr_delay(3 downto 0),
+      probe6(0) => raw_fifo_wr,
+      probe7(3 downto 0) => doa_wr_delay(3 downto 0),
+      probe8(0) => doa_fifo_wr,
+      probe9(15 downto 0) => mux_N0(15 downto 0)
+    );
+ila_7_i: component ps_deci_low_0_0_ila_7
+     port map (
+      clk => raw_clk,
+      probe0(0) => raw_fifo_empty,
+      probe1(11 downto 0) => raw_delay(11 downto 0),
+      probe2(0) => raw_active,
+      probe3(15 downto 0) => raw_counter(15 downto 0),
+      probe4(0) => \^raw_ready\
+    );
+ila_8_i: component ps_deci_low_0_0_ila_8
+     port map (
+      clk => doa_clk,
+      probe0(0) => doa_fifo_empty,
+      probe1(0) => doa_out_rd,
+      probe2(2 downto 0) => doa_out_delay(2 downto 0),
+      probe3(0) => \^doa_ready\
     );
 end STRUCTURE;
 library IEEE;

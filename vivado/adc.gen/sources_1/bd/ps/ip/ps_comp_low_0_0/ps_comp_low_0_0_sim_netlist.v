@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Nov 26 20:09:53 2025
+// Date        : Fri Nov 28 21:17:48 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -62,7 +62,27 @@ module ps_comp_low_0_0_comp_low
   (* MARK_DEBUG *) wire [15:0]W3;
   (* MARK_DEBUG *) wire active;
   wire clk;
+  wire \composite.counter[7]_i_2_n_0 ;
+  wire \composite.counter_reg[15]_i_2_n_1 ;
+  wire \composite.counter_reg[15]_i_2_n_2 ;
+  wire \composite.counter_reg[15]_i_2_n_3 ;
+  wire \composite.counter_reg[15]_i_2_n_4 ;
+  wire \composite.counter_reg[15]_i_2_n_5 ;
+  wire \composite.counter_reg[15]_i_2_n_6 ;
+  wire \composite.counter_reg[15]_i_2_n_7 ;
+  wire \composite.counter_reg[7]_i_1_n_0 ;
+  wire \composite.counter_reg[7]_i_1_n_1 ;
+  wire \composite.counter_reg[7]_i_1_n_2 ;
+  wire \composite.counter_reg[7]_i_1_n_3 ;
+  wire \composite.counter_reg[7]_i_1_n_4 ;
+  wire \composite.counter_reg[7]_i_1_n_5 ;
+  wire \composite.counter_reg[7]_i_1_n_6 ;
+  wire \composite.counter_reg[7]_i_1_n_7 ;
+  (* MARK_DEBUG *) wire [15:0]counter;
+  wire [0:0]counter__0;
   wire [191:0]fifo;
+  wire [15:0]p_1_in;
+  wire [7:7]\NLW_composite.counter_reg[15]_i_2_CO_UNCONNECTED ;
 
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -1600,36 +1620,177 @@ module ps_comp_low_0_0_comp_low
         .D(fifo[185]),
         .Q(W3[9]),
         .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \composite.counter[15]_i_1 
+       (.I0(active),
+        .O(counter__0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \composite.counter[7]_i_2 
+       (.I0(counter[0]),
+        .O(\composite.counter[7]_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[0]),
+        .Q(counter[0]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[10]),
+        .Q(counter[10]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[11]),
+        .Q(counter[11]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[12]),
+        .Q(counter[12]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[13]),
+        .Q(counter[13]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[14]),
+        .Q(counter[14]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[15]),
+        .Q(counter[15]),
+        .R(counter__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \composite.counter_reg[15]_i_2 
+       (.CI(\composite.counter_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_composite.counter_reg[15]_i_2_CO_UNCONNECTED [7],\composite.counter_reg[15]_i_2_n_1 ,\composite.counter_reg[15]_i_2_n_2 ,\composite.counter_reg[15]_i_2_n_3 ,\composite.counter_reg[15]_i_2_n_4 ,\composite.counter_reg[15]_i_2_n_5 ,\composite.counter_reg[15]_i_2_n_6 ,\composite.counter_reg[15]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(p_1_in[15:8]),
+        .S(counter[15:8]));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[1]),
+        .Q(counter[1]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[2]),
+        .Q(counter[2]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[3]),
+        .Q(counter[3]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[4]),
+        .Q(counter[4]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[5]),
+        .Q(counter[5]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[6]),
+        .Q(counter[6]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[7]),
+        .Q(counter[7]),
+        .R(counter__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \composite.counter_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\composite.counter_reg[7]_i_1_n_0 ,\composite.counter_reg[7]_i_1_n_1 ,\composite.counter_reg[7]_i_1_n_2 ,\composite.counter_reg[7]_i_1_n_3 ,\composite.counter_reg[7]_i_1_n_4 ,\composite.counter_reg[7]_i_1_n_5 ,\composite.counter_reg[7]_i_1_n_6 ,\composite.counter_reg[7]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,counter[0]}),
+        .O(p_1_in[7:0]),
+        .S({counter[7:1],\composite.counter[7]_i_2_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[8]),
+        .Q(counter[8]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \composite.counter_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[9]),
+        .Q(counter[9]),
+        .R(counter__0));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_comp_low_0_0_ila_3 ila_E
        (.clk(clk),
         .probe0(active),
-        .probe1(E0),
-        .probe2(E1),
-        .probe3(E2),
-        .probe4(E3));
+        .probe1(counter),
+        .probe2(E0),
+        .probe3(E1),
+        .probe4(E2),
+        .probe5(E3));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_comp_low_0_0_ila_3 ila_N
        (.clk(clk),
         .probe0(active),
-        .probe1(N0),
-        .probe2(N1),
-        .probe3(N2),
-        .probe4(N3));
+        .probe1(counter),
+        .probe2(N0),
+        .probe3(N1),
+        .probe4(N2),
+        .probe5(N3));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_comp_low_0_0_ila_3_HD1 ila_W
        (.clk(clk),
         .probe0(active),
-        .probe1(W0),
-        .probe2(W1),
-        .probe3(W2),
-        .probe4(W3));
+        .probe1(counter),
+        .probe2(W0),
+        .probe3(W1),
+        .probe4(W2),
+        .probe5(W3));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_3" *) 
@@ -1640,13 +1801,15 @@ module ps_comp_low_0_0_ila_3
     probe1,
     probe2,
     probe3,
-    probe4);
+    probe4,
+    probe5);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [15:0]probe1;
   input [15:0]probe2;
   input [15:0]probe3;
   input [15:0]probe4;
+  input [15:0]probe5;
 
 
 endmodule
@@ -1659,13 +1822,15 @@ module ps_comp_low_0_0_ila_3_HD1
     probe1,
     probe2,
     probe3,
-    probe4);
+    probe4,
+    probe5);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [15:0]probe1;
   input [15:0]probe2;
   input [15:0]probe3;
   input [15:0]probe4;
+  input [15:0]probe5;
 
 
 endmodule

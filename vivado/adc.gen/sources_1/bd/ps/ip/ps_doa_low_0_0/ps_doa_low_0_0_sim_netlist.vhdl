@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Nov 26 20:09:54 2025
+-- Date        : Fri Nov 28 21:17:50 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.vhdl
@@ -3625,23 +3625,24 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   end component ps_doa_low_0_0_ila_0;
   signal E : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -3651,6 +3652,25 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   attribute MARK_DEBUG of N : signal is std.standard.true;
   signal W : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of W : signal is std.standard.true;
+  signal counter : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of counter : signal is std.standard.true;
+  signal \counter__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \deci_low.counter[7]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.counter_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \deci_low.counter_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \deci_low.diffE[15]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.diffE[15]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.diffE[15]_i_4_n_0\ : STD_LOGIC;
@@ -3831,7 +3851,6 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   signal \deci_low.phase_sum_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \deci_low.phase_sum_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \deci_low.prevE[19]_i_1_n_0\ : STD_LOGIC;
   signal diffE : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal diffE02_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal diffN : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -3865,6 +3884,7 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   attribute MARK_DEBUG of \^freq\ : signal is std.standard.true;
   signal mul : STD_LOGIC;
   signal \p_0_in__0\ : STD_LOGIC;
+  signal p_1_in : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal phaseE : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phaseN : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phaseW : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -3884,6 +3904,7 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   signal validE : STD_LOGIC;
   signal validN : STD_LOGIC;
   signal validW : STD_LOGIC;
+  signal \NLW_deci_low.counter_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_deci_low.diffE_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_deci_low.diffE_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_deci_low.diffN_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
@@ -4003,7 +4024,25 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   attribute mark_debug_string of \deci_low.W_reg[8]\ : label is "yes";
   attribute KEEP of \deci_low.W_reg[9]\ : label is "yes";
   attribute mark_debug_string of \deci_low.W_reg[9]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[10]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[11]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[12]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[13]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[14]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \deci_low.counter_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \deci_low.counter_reg[1]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[2]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[3]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[4]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[5]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[6]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \deci_low.counter_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \deci_low.counter_reg[8]\ : label is "yes";
+  attribute KEEP of \deci_low.counter_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD of \deci_low.diffE_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \deci_low.diffE_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \deci_low.diffE_reg[7]_i_1\ : label is 35;
@@ -4683,6 +4722,176 @@ begin
       D => fifo_data(41),
       Q => W(9),
       R => '0'
+    );
+\deci_low.counter[7]_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => counter(0),
+      O => \deci_low.counter[7]_i_2_n_0\
+    );
+\deci_low.counter_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(0),
+      Q => counter(0),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(10),
+      Q => counter(10),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(11),
+      Q => counter(11),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(12),
+      Q => counter(12),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(13),
+      Q => counter(13),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(14),
+      Q => counter(14),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(15),
+      Q => counter(15),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \deci_low.counter_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_deci_low.counter_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \deci_low.counter_reg[15]_i_1_n_1\,
+      CO(5) => \deci_low.counter_reg[15]_i_1_n_2\,
+      CO(4) => \deci_low.counter_reg[15]_i_1_n_3\,
+      CO(3) => \deci_low.counter_reg[15]_i_1_n_4\,
+      CO(2) => \deci_low.counter_reg[15]_i_1_n_5\,
+      CO(1) => \deci_low.counter_reg[15]_i_1_n_6\,
+      CO(0) => \deci_low.counter_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 0) => p_1_in(15 downto 8),
+      S(7 downto 0) => counter(15 downto 8)
+    );
+\deci_low.counter_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(1),
+      Q => counter(1),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(2),
+      Q => counter(2),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(3),
+      Q => counter(3),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(4),
+      Q => counter(4),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(5),
+      Q => counter(5),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(6),
+      Q => counter(6),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(7),
+      Q => counter(7),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \deci_low.counter_reg[7]_i_1_n_0\,
+      CO(6) => \deci_low.counter_reg[7]_i_1_n_1\,
+      CO(5) => \deci_low.counter_reg[7]_i_1_n_2\,
+      CO(4) => \deci_low.counter_reg[7]_i_1_n_3\,
+      CO(3) => \deci_low.counter_reg[7]_i_1_n_4\,
+      CO(2) => \deci_low.counter_reg[7]_i_1_n_5\,
+      CO(1) => \deci_low.counter_reg[7]_i_1_n_6\,
+      CO(0) => \deci_low.counter_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => counter(0),
+      O(7 downto 0) => p_1_in(7 downto 0),
+      S(7 downto 1) => counter(7 downto 1),
+      S(0) => \deci_low.counter[7]_i_2_n_0\
+    );
+\deci_low.counter_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(8),
+      Q => counter(8),
+      R => \counter__0\(0)
+    );
+\deci_low.counter_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(9),
+      Q => counter(9),
+      R => \counter__0\(0)
     );
 \deci_low.diffE[15]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -7743,7 +7952,7 @@ begin
     )
         port map (
       I0 => fifo_valid,
-      O => \deci_low.prevE[19]_i_1_n_0\
+      O => \counter__0\(0)
     );
 \deci_low.prevE_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -7751,7 +7960,7 @@ begin
       CE => '1',
       D => \^phase_e\(0),
       Q => prevE(0),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -7759,7 +7968,7 @@ begin
       CE => '1',
       D => \^phase_e\(10),
       Q => prevE(10),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -7767,7 +7976,7 @@ begin
       CE => '1',
       D => \^phase_e\(11),
       Q => prevE(11),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -7775,7 +7984,7 @@ begin
       CE => '1',
       D => \^phase_e\(12),
       Q => prevE(12),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -7783,7 +7992,7 @@ begin
       CE => '1',
       D => \^phase_e\(13),
       Q => prevE(13),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -7791,7 +8000,7 @@ begin
       CE => '1',
       D => \^phase_e\(14),
       Q => prevE(14),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -7799,7 +8008,7 @@ begin
       CE => '1',
       D => \^phase_e\(15),
       Q => prevE(15),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -7807,7 +8016,7 @@ begin
       CE => '1',
       D => \^phase_e\(16),
       Q => prevE(16),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -7815,7 +8024,7 @@ begin
       CE => '1',
       D => \^phase_e\(17),
       Q => prevE(17),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -7823,7 +8032,7 @@ begin
       CE => '1',
       D => \^phase_e\(18),
       Q => prevE(18),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -7831,7 +8040,7 @@ begin
       CE => '1',
       D => \^phase_e\(19),
       Q => prevE(19),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -7839,7 +8048,7 @@ begin
       CE => '1',
       D => \^phase_e\(1),
       Q => prevE(1),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -7847,7 +8056,7 @@ begin
       CE => '1',
       D => \^phase_e\(2),
       Q => prevE(2),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -7855,7 +8064,7 @@ begin
       CE => '1',
       D => \^phase_e\(3),
       Q => prevE(3),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -7863,7 +8072,7 @@ begin
       CE => '1',
       D => \^phase_e\(4),
       Q => prevE(4),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -7871,7 +8080,7 @@ begin
       CE => '1',
       D => \^phase_e\(5),
       Q => prevE(5),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -7879,7 +8088,7 @@ begin
       CE => '1',
       D => \^phase_e\(6),
       Q => prevE(6),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -7887,7 +8096,7 @@ begin
       CE => '1',
       D => \^phase_e\(7),
       Q => prevE(7),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -7895,7 +8104,7 @@ begin
       CE => '1',
       D => \^phase_e\(8),
       Q => prevE(8),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevE_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -7903,7 +8112,7 @@ begin
       CE => '1',
       D => \^phase_e\(9),
       Q => prevE(9),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -7911,7 +8120,7 @@ begin
       CE => '1',
       D => \^phase_n\(0),
       Q => prevN(0),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -7919,7 +8128,7 @@ begin
       CE => '1',
       D => \^phase_n\(10),
       Q => prevN(10),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -7927,7 +8136,7 @@ begin
       CE => '1',
       D => \^phase_n\(11),
       Q => prevN(11),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -7935,7 +8144,7 @@ begin
       CE => '1',
       D => \^phase_n\(12),
       Q => prevN(12),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -7943,7 +8152,7 @@ begin
       CE => '1',
       D => \^phase_n\(13),
       Q => prevN(13),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -7951,7 +8160,7 @@ begin
       CE => '1',
       D => \^phase_n\(14),
       Q => prevN(14),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -7959,7 +8168,7 @@ begin
       CE => '1',
       D => \^phase_n\(15),
       Q => prevN(15),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -7967,7 +8176,7 @@ begin
       CE => '1',
       D => \^phase_n\(16),
       Q => prevN(16),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -7975,7 +8184,7 @@ begin
       CE => '1',
       D => \^phase_n\(17),
       Q => prevN(17),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -7983,7 +8192,7 @@ begin
       CE => '1',
       D => \^phase_n\(18),
       Q => prevN(18),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -7991,7 +8200,7 @@ begin
       CE => '1',
       D => \^phase_n\(19),
       Q => prevN(19),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -7999,7 +8208,7 @@ begin
       CE => '1',
       D => \^phase_n\(1),
       Q => prevN(1),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -8007,7 +8216,7 @@ begin
       CE => '1',
       D => \^phase_n\(2),
       Q => prevN(2),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -8015,7 +8224,7 @@ begin
       CE => '1',
       D => \^phase_n\(3),
       Q => prevN(3),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -8023,7 +8232,7 @@ begin
       CE => '1',
       D => \^phase_n\(4),
       Q => prevN(4),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -8031,7 +8240,7 @@ begin
       CE => '1',
       D => \^phase_n\(5),
       Q => prevN(5),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -8039,7 +8248,7 @@ begin
       CE => '1',
       D => \^phase_n\(6),
       Q => prevN(6),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -8047,7 +8256,7 @@ begin
       CE => '1',
       D => \^phase_n\(7),
       Q => prevN(7),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -8055,7 +8264,7 @@ begin
       CE => '1',
       D => \^phase_n\(8),
       Q => prevN(8),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevN_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -8063,7 +8272,7 @@ begin
       CE => '1',
       D => \^phase_n\(9),
       Q => prevN(9),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -8071,7 +8280,7 @@ begin
       CE => '1',
       D => \^phase_w\(0),
       Q => prevW(0),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -8079,7 +8288,7 @@ begin
       CE => '1',
       D => \^phase_w\(10),
       Q => prevW(10),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -8087,7 +8296,7 @@ begin
       CE => '1',
       D => \^phase_w\(11),
       Q => prevW(11),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -8095,7 +8304,7 @@ begin
       CE => '1',
       D => \^phase_w\(12),
       Q => prevW(12),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -8103,7 +8312,7 @@ begin
       CE => '1',
       D => \^phase_w\(13),
       Q => prevW(13),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -8111,7 +8320,7 @@ begin
       CE => '1',
       D => \^phase_w\(14),
       Q => prevW(14),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -8119,7 +8328,7 @@ begin
       CE => '1',
       D => \^phase_w\(15),
       Q => prevW(15),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -8127,7 +8336,7 @@ begin
       CE => '1',
       D => \^phase_w\(16),
       Q => prevW(16),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -8135,7 +8344,7 @@ begin
       CE => '1',
       D => \^phase_w\(17),
       Q => prevW(17),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -8143,7 +8352,7 @@ begin
       CE => '1',
       D => \^phase_w\(18),
       Q => prevW(18),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -8151,7 +8360,7 @@ begin
       CE => '1',
       D => \^phase_w\(19),
       Q => prevW(19),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -8159,7 +8368,7 @@ begin
       CE => '1',
       D => \^phase_w\(1),
       Q => prevW(1),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -8167,7 +8376,7 @@ begin
       CE => '1',
       D => \^phase_w\(2),
       Q => prevW(2),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -8175,7 +8384,7 @@ begin
       CE => '1',
       D => \^phase_w\(3),
       Q => prevW(3),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -8183,7 +8392,7 @@ begin
       CE => '1',
       D => \^phase_w\(4),
       Q => prevW(4),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -8191,7 +8400,7 @@ begin
       CE => '1',
       D => \^phase_w\(5),
       Q => prevW(5),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -8199,7 +8408,7 @@ begin
       CE => '1',
       D => \^phase_w\(6),
       Q => prevW(6),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -8207,7 +8416,7 @@ begin
       CE => '1',
       D => \^phase_w\(7),
       Q => prevW(7),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -8215,7 +8424,7 @@ begin
       CE => '1',
       D => \^phase_w\(8),
       Q => prevW(8),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.prevW_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -8223,7 +8432,7 @@ begin
       CE => '1',
       D => \^phase_w\(9),
       Q => prevW(9),
-      R => \deci_low.prevE[19]_i_1_n_0\
+      R => \counter__0\(0)
     );
 \deci_low.valid_reg\: unisim.vcomponents.FDRE
      port map (
@@ -8374,24 +8583,25 @@ i_3: unisim.vcomponents.LUT1
 ila_0_i: component ps_doa_low_0_0_ila_0
      port map (
       clk => clk,
-      probe0(0) => \^valid\,
-      probe1(31 downto 0) => \^freq\(31 downto 0),
-      probe10(15 downto 0) => \^env_e\(15 downto 0),
-      probe11(19 downto 0) => \^phase_e\(19 downto 0),
-      probe12(13 downto 0) => W(13 downto 0),
-      probe13(15 downto 0) => fir_re_W(38 downto 23),
-      probe14(15 downto 0) => fir_im_W(38 downto 23),
-      probe15(15 downto 0) => \^env_w\(15 downto 0),
-      probe16(19 downto 0) => \^phase_w\(19 downto 0),
-      probe17(0) => fifo_valid,
-      probe2(13 downto 0) => N(13 downto 0),
-      probe3(15 downto 0) => fir_re_N(38 downto 23),
-      probe4(15 downto 0) => fir_im_N(38 downto 23),
-      probe5(15 downto 0) => \^env_n\(15 downto 0),
-      probe6(19 downto 0) => \^phase_n\(19 downto 0),
-      probe7(13 downto 0) => E(13 downto 0),
-      probe8(15 downto 0) => fir_re_E(38 downto 23),
-      probe9(15 downto 0) => fir_im_E(38 downto 23)
+      probe0(0) => fifo_valid,
+      probe1(0) => \^valid\,
+      probe10(15 downto 0) => fir_re_E(38 downto 23),
+      probe11(15 downto 0) => fir_im_E(38 downto 23),
+      probe12(15 downto 0) => \^env_e\(15 downto 0),
+      probe13(19 downto 0) => \^phase_e\(19 downto 0),
+      probe14(15 downto 0) => W(15 downto 0),
+      probe15(15 downto 0) => fir_re_W(38 downto 23),
+      probe16(15 downto 0) => fir_im_W(38 downto 23),
+      probe17(15 downto 0) => \^env_w\(15 downto 0),
+      probe18(19 downto 0) => \^phase_w\(19 downto 0),
+      probe2(15 downto 0) => counter(15 downto 0),
+      probe3(31 downto 0) => \^freq\(31 downto 0),
+      probe4(15 downto 0) => N(15 downto 0),
+      probe5(15 downto 0) => fir_re_N(38 downto 23),
+      probe6(15 downto 0) => fir_im_N(38 downto 23),
+      probe7(15 downto 0) => \^env_n\(15 downto 0),
+      probe8(19 downto 0) => \^phase_n\(19 downto 0),
+      probe9(15 downto 0) => E(15 downto 0)
     );
 end STRUCTURE;
 library IEEE;

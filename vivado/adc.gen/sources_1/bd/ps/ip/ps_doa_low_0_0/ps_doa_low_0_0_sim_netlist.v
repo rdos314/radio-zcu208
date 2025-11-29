@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Nov 26 20:09:54 2025
+// Date        : Fri Nov 28 21:17:50 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.v
@@ -189,6 +189,24 @@ module ps_doa_low_0_0_doa_low
   (* MARK_DEBUG *) wire [15:0]N;
   (* MARK_DEBUG *) wire [15:0]W;
   wire clk;
+  (* MARK_DEBUG *) wire [15:0]counter;
+  wire [0:0]counter__0;
+  wire \deci_low.counter[7]_i_2_n_0 ;
+  wire \deci_low.counter_reg[15]_i_1_n_1 ;
+  wire \deci_low.counter_reg[15]_i_1_n_2 ;
+  wire \deci_low.counter_reg[15]_i_1_n_3 ;
+  wire \deci_low.counter_reg[15]_i_1_n_4 ;
+  wire \deci_low.counter_reg[15]_i_1_n_5 ;
+  wire \deci_low.counter_reg[15]_i_1_n_6 ;
+  wire \deci_low.counter_reg[15]_i_1_n_7 ;
+  wire \deci_low.counter_reg[7]_i_1_n_0 ;
+  wire \deci_low.counter_reg[7]_i_1_n_1 ;
+  wire \deci_low.counter_reg[7]_i_1_n_2 ;
+  wire \deci_low.counter_reg[7]_i_1_n_3 ;
+  wire \deci_low.counter_reg[7]_i_1_n_4 ;
+  wire \deci_low.counter_reg[7]_i_1_n_5 ;
+  wire \deci_low.counter_reg[7]_i_1_n_6 ;
+  wire \deci_low.counter_reg[7]_i_1_n_7 ;
   wire \deci_low.diffE[15]_i_2_n_0 ;
   wire \deci_low.diffE[15]_i_3_n_0 ;
   wire \deci_low.diffE[15]_i_4_n_0 ;
@@ -369,7 +387,6 @@ module ps_doa_low_0_0_doa_low
   wire \deci_low.phase_sum_reg[7]_i_1_n_5 ;
   wire \deci_low.phase_sum_reg[7]_i_1_n_6 ;
   wire \deci_low.phase_sum_reg[7]_i_1_n_7 ;
-  wire \deci_low.prevE[19]_i_1_n_0 ;
   wire [19:0]diffE;
   wire [19:0]diffE02_out;
   wire [19:0]diffN;
@@ -395,6 +412,7 @@ module ps_doa_low_0_0_doa_low
   (* MARK_DEBUG *) wire [31:0]freq;
   wire mul;
   wire p_0_in__0;
+  wire [15:0]p_1_in;
   wire [19:0]phaseE;
   wire [19:0]phaseN;
   wire [19:0]phaseW;
@@ -411,6 +429,7 @@ module ps_doa_low_0_0_doa_low
   wire validE;
   wire validN;
   wire validW;
+  wire [7:7]\NLW_deci_low.counter_reg[15]_i_1_CO_UNCONNECTED ;
   wire [7:3]\NLW_deci_low.diffE_reg[19]_i_1_CO_UNCONNECTED ;
   wire [7:4]\NLW_deci_low.diffE_reg[19]_i_1_O_UNCONNECTED ;
   wire [7:3]\NLW_deci_low.diffN_reg[19]_i_1_CO_UNCONNECTED ;
@@ -817,6 +836,139 @@ module ps_doa_low_0_0_doa_low
         .D(fifo_data[41]),
         .Q(W[9]),
         .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \deci_low.counter[7]_i_2 
+       (.I0(counter[0]),
+        .O(\deci_low.counter[7]_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[0]),
+        .Q(counter[0]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[10]),
+        .Q(counter[10]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[11]),
+        .Q(counter[11]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[12]),
+        .Q(counter[12]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[13]),
+        .Q(counter[13]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[14]),
+        .Q(counter[14]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[15]),
+        .Q(counter[15]),
+        .R(counter__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \deci_low.counter_reg[15]_i_1 
+       (.CI(\deci_low.counter_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_deci_low.counter_reg[15]_i_1_CO_UNCONNECTED [7],\deci_low.counter_reg[15]_i_1_n_1 ,\deci_low.counter_reg[15]_i_1_n_2 ,\deci_low.counter_reg[15]_i_1_n_3 ,\deci_low.counter_reg[15]_i_1_n_4 ,\deci_low.counter_reg[15]_i_1_n_5 ,\deci_low.counter_reg[15]_i_1_n_6 ,\deci_low.counter_reg[15]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(p_1_in[15:8]),
+        .S(counter[15:8]));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[1]),
+        .Q(counter[1]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[2]),
+        .Q(counter[2]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[3]),
+        .Q(counter[3]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[4]),
+        .Q(counter[4]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[5]),
+        .Q(counter[5]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[6]),
+        .Q(counter[6]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[7]),
+        .Q(counter[7]),
+        .R(counter__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \deci_low.counter_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\deci_low.counter_reg[7]_i_1_n_0 ,\deci_low.counter_reg[7]_i_1_n_1 ,\deci_low.counter_reg[7]_i_1_n_2 ,\deci_low.counter_reg[7]_i_1_n_3 ,\deci_low.counter_reg[7]_i_1_n_4 ,\deci_low.counter_reg[7]_i_1_n_5 ,\deci_low.counter_reg[7]_i_1_n_6 ,\deci_low.counter_reg[7]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,counter[0]}),
+        .O(p_1_in[7:0]),
+        .S({counter[7:1],\deci_low.counter[7]_i_2_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[8]),
+        .Q(counter[8]),
+        .R(counter__0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.counter_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in[9]),
+        .Q(counter[9]),
+        .R(counter__0));
   LUT2 #(
     .INIT(4'h9)) 
     \deci_low.diffE[15]_i_2 
@@ -3191,367 +3343,367 @@ module ps_doa_low_0_0_doa_low
     .INIT(2'h1)) 
     \deci_low.prevE[19]_i_1 
        (.I0(fifo_valid),
-        .O(\deci_low.prevE[19]_i_1_n_0 ));
+        .O(counter__0));
   FDRE \deci_low.prevE_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[0]),
         .Q(prevE[0]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[10]),
         .Q(prevE[10]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[11]),
         .Q(prevE[11]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[12]),
         .Q(prevE[12]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[13]),
         .Q(prevE[13]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[14]),
         .Q(prevE[14]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[15]),
         .Q(prevE[15]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[16] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[16]),
         .Q(prevE[16]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[17] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[17]),
         .Q(prevE[17]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[18] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[18]),
         .Q(prevE[18]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[19] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[19]),
         .Q(prevE[19]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[1]),
         .Q(prevE[1]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[2]),
         .Q(prevE[2]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[3]),
         .Q(prevE[3]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[4]),
         .Q(prevE[4]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[5]),
         .Q(prevE[5]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[6]),
         .Q(prevE[6]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[7]),
         .Q(prevE[7]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[8]),
         .Q(prevE[8]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevE_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_E[9]),
         .Q(prevE[9]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[0]),
         .Q(prevN[0]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[10]),
         .Q(prevN[10]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[11]),
         .Q(prevN[11]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[12]),
         .Q(prevN[12]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[13]),
         .Q(prevN[13]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[14]),
         .Q(prevN[14]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[15]),
         .Q(prevN[15]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[16] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[16]),
         .Q(prevN[16]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[17] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[17]),
         .Q(prevN[17]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[18] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[18]),
         .Q(prevN[18]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[19] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[19]),
         .Q(prevN[19]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[1]),
         .Q(prevN[1]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[2]),
         .Q(prevN[2]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[3]),
         .Q(prevN[3]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[4]),
         .Q(prevN[4]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[5]),
         .Q(prevN[5]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[6]),
         .Q(prevN[6]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[7]),
         .Q(prevN[7]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[8]),
         .Q(prevN[8]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevN_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_N[9]),
         .Q(prevN[9]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[0]),
         .Q(prevW[0]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[10]),
         .Q(prevW[10]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[11]),
         .Q(prevW[11]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[12]),
         .Q(prevW[12]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[13]),
         .Q(prevW[13]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[14]),
         .Q(prevW[14]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[15]),
         .Q(prevW[15]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[16] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[16]),
         .Q(prevW[16]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[17] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[17]),
         .Q(prevW[17]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[18] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[18]),
         .Q(prevW[18]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[19] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[19]),
         .Q(prevW[19]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[1]),
         .Q(prevW[1]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[2]),
         .Q(prevW[2]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[3]),
         .Q(prevW[3]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[4]),
         .Q(prevW[4]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[5]),
         .Q(prevW[5]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[6]),
         .Q(prevW[6]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[7]),
         .Q(prevW[7]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[8]),
         .Q(prevW[8]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   FDRE \deci_low.prevW_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(phase_W[9]),
         .Q(prevW[9]),
-        .R(\deci_low.prevE[19]_i_1_n_0 ));
+        .R(counter__0));
   (* KEEP = "yes" *) 
   FDRE \deci_low.valid_reg 
        (.C(clk),
@@ -3689,24 +3841,25 @@ module ps_doa_low_0_0_doa_low
   (* x_core_info = "ila,Vivado 2025.1" *) 
   ps_doa_low_0_0_ila_0 ila_0_i
        (.clk(clk),
-        .probe0(valid),
-        .probe1(freq),
-        .probe10(env_E),
-        .probe11(phase_E),
-        .probe12(W[13:0]),
-        .probe13(fir_re_W[38:23]),
-        .probe14(fir_im_W[38:23]),
-        .probe15(env_W),
-        .probe16(phase_W),
-        .probe17(fifo_valid),
-        .probe2(N[13:0]),
-        .probe3(fir_re_N[38:23]),
-        .probe4(fir_im_N[38:23]),
-        .probe5(env_N),
-        .probe6(phase_N),
-        .probe7(E[13:0]),
-        .probe8(fir_re_E[38:23]),
-        .probe9(fir_im_E[38:23]));
+        .probe0(fifo_valid),
+        .probe1(valid),
+        .probe10(fir_re_E[38:23]),
+        .probe11(fir_im_E[38:23]),
+        .probe12(env_E),
+        .probe13(phase_E),
+        .probe14(W),
+        .probe15(fir_re_W[38:23]),
+        .probe16(fir_im_W[38:23]),
+        .probe17(env_W),
+        .probe18(phase_W),
+        .probe2(counter),
+        .probe3(freq),
+        .probe4(N),
+        .probe5(fir_re_N[38:23]),
+        .probe6(fir_im_N[38:23]),
+        .probe7(env_N),
+        .probe8(phase_N),
+        .probe9(E));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fir_doa_low_im,fir_compiler_v7_2_24,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fir_doa_low_im" *) 
@@ -3818,26 +3971,28 @@ module ps_doa_low_0_0_ila_0
     probe14,
     probe15,
     probe16,
-    probe17);
+    probe17,
+    probe18);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [31:0]probe1;
-  input [13:0]probe2;
-  input [15:0]probe3;
+  input [0:0]probe1;
+  input [15:0]probe2;
+  input [31:0]probe3;
   input [15:0]probe4;
   input [15:0]probe5;
-  input [19:0]probe6;
-  input [13:0]probe7;
-  input [15:0]probe8;
+  input [15:0]probe6;
+  input [15:0]probe7;
+  input [19:0]probe8;
   input [15:0]probe9;
   input [15:0]probe10;
-  input [19:0]probe11;
-  input [13:0]probe12;
-  input [15:0]probe13;
+  input [15:0]probe11;
+  input [15:0]probe12;
+  input [19:0]probe13;
   input [15:0]probe14;
   input [15:0]probe15;
-  input [19:0]probe16;
-  input [0:0]probe17;
+  input [15:0]probe16;
+  input [15:0]probe17;
+  input [19:0]probe18;
 
 
 endmodule

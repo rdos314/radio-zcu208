@@ -62,6 +62,7 @@ module deci_high(
   reg  [11:0] raw_delay;
   wire [383:0] raw_out_data;
   reg raw_active;
+  reg [15:0] raw_counter;
 
   reg doa_fifo_wr;
   reg [4:0] doa_wr_delay;
@@ -69,7 +70,8 @@ module deci_high(
 
   wire doa_fifo_empty;
   wire [95:0] doa_out_data;
-  reg doa_out_active;
+  reg [2:0] doa_out_delay;
+  reg doa_out_rd;
 
   reg sim_wr_N;
   reg sim_wr_E;
@@ -89,9 +91,7 @@ module deci_high(
   
   reg [2:0] reset_delay;
   reg [2:0] reset_active;
-  reg [2:0] fifo_reset_cnt;
   reg fir_resetn;
-  reg fifo_reset;
 
   wire [63:0] fir_doa_N;
   wire [63:0] fir_doa_E;
@@ -110,7 +110,6 @@ module deci_high(
   wire [15:0] doa_E1 = fir_E1[30:15];
   wire [15:0] doa_W0 = fir_W0[30:15];
   wire [15:0] doa_W1 = fir_W1[30:15];
-
 
   wire [15:0] N0 = data_N[15:0];
   wire [15:0] N1 = data_N[31:16];
@@ -166,6 +165,32 @@ module deci_high(
   wire [15:0] mux_W6 = mux_W[111:96];
   wire [15:0] mux_W7 = mux_W[127:112];
 
+  reg [15:0] raw_N0;
+  reg [15:0] raw_N1;
+  reg [15:0] raw_N2;
+  reg [15:0] raw_N3;
+  reg [15:0] raw_N4;
+  reg [15:0] raw_N5;
+  reg [15:0] raw_N6;
+  reg [15:0] raw_N7;
+
+  reg [15:0] raw_E0;
+  reg [15:0] raw_E1;
+  reg [15:0] raw_E2;
+  reg [15:0] raw_E3;
+  reg [15:0] raw_E4;
+  reg [15:0] raw_E5;
+  reg [15:0] raw_E6;
+  reg [15:0] raw_E7;
+
+  reg [15:0] raw_W0;
+  reg [15:0] raw_W1;
+  reg [15:0] raw_W2;
+  reg [15:0] raw_W3;
+  reg [15:0] raw_W4;
+  reg [15:0] raw_W5;
+  reg [15:0] raw_W6;
+  reg [15:0] raw_W7;
 
 fir_deci_high fir_doa_N_i (
   .aresetn(fir_resetn),             // input wire aresetn
@@ -192,7 +217,7 @@ fir_deci_high fir_doa_W_i (
 );
 
 fifo_raw_high fifo_raw_i (
-  .rst(fifo_reset),              // input wire rst
+  .rst(~resetn),                 // input wire rst
   .wr_clk(clk),                  // input wire wr_clk
   .rd_clk(raw_clk),              // input wire rd_clk
   .din(raw_in_data),             // input wire [383 : 0] din
@@ -203,12 +228,12 @@ fifo_raw_high fifo_raw_i (
 );
 
 fifo_doa_high fifo_doa_i (
-  .rst(fifo_reset),           // input wire rst
+  .rst(~resetn),           // input wire rst
   .wr_clk(clk),               // input wire wr_clk
   .rd_clk(doa_clk),           // input wire rd_clk
   .din(doa_in_data),          // input wire [95 : 0] din
   .wr_en(doa_fifo_wr),        // input wire wr_en
-  .rd_en(doa_ready),          // input wire rd_en
+  .rd_en(doa_out_rd),         // input wire rd_en
   .dout(doa_out_data),        // output wire [95 : 0] dout
   .empty(doa_fifo_empty)      // output wire empty
 );
@@ -251,28 +276,43 @@ ila_5 ila_5_i (
 		.clk(clk),                   // input wire clk
 		.probe0(reset_delay),        // input wire [2:0]  probe3
 		.probe1(reset_active),       // input wire [2:0]  probe3
-		.probe2(fifo_reset_cnt),     // input wire [2:0]  probe3
-		.probe3(fir_resetn),         // input wire [0:0]  probe3
-		.probe4(fifo_reset),         // input wire [0:0]  probe3
-		.probe5(adc_active),         // input wire [0:0]  probe3
-		.probe6(mux_active),         // input wire [0:0]  probe3
-		.probe7(raw_fifo_wr),        // input wire [0:0]  probe3
-		.probe8(doa_wr_delay),       // input wire [4:0]  probe3
-		.probe9(doa_fifo_wr),        // input wire [0:0]  probe3
-		.probe10(mux_N0),             // input wire [15:0]  probe3
-		.probe11(mux_N1),             // input wire [15:0]  probe3
-		.probe12(mux_N2),             // input wire [15:0]  probe3
-		.probe13(mux_N3),             // input wire [15:0]  probe3
-		.probe14(mux_N4),            // input wire [15:0]  probe3
-		.probe15(mux_N5),            // input wire [15:0]  probe3
-		.probe16(mux_N6),            // input wire [15:0]  probe3
-		.probe17(mux_N7),            // input wire [15:0]  probe3
-		.probe18(doa_N0),            // input wire [15:0]  probe3
-		.probe19(doa_N1),            // input wire [15:0]  probe3
-		.probe20(doa_E0),            // input wire [15:0]  probe3
-		.probe21(doa_E1),            // input wire [15:0]  probe3
-		.probe22(doa_W0),            // input wire [15:0]  probe3
-		.probe23(doa_W1)             // input wire [15:0]  probe3
+		.probe2(fir_resetn),         // input wire [0:0]  probe3
+		.probe3(adc_active),         // input wire [0:0]  probe3
+		.probe4(mux_active),         // input wire [0:0]  probe3
+		.probe5(raw_fifo_wr),        // input wire [0:0]  probe3
+		.probe6(doa_wr_delay),       // input wire [4:0]  probe3
+		.probe7(doa_fifo_wr),        // input wire [0:0]  probe3
+		.probe8(mux_N0),             // input wire [15:0]  probe3
+		.probe9(mux_N1),             // input wire [15:0]  probe3
+		.probe10(mux_N2),            // input wire [15:0]  probe3
+		.probe11(mux_N3),            // input wire [15:0]  probe3
+		.probe12(mux_N4),            // input wire [15:0]  probe3
+		.probe13(mux_N5),            // input wire [15:0]  probe3
+		.probe14(mux_N6),            // input wire [15:0]  probe3
+		.probe15(mux_N7),            // input wire [15:0]  probe3
+		.probe16(doa_N0),            // input wire [15:0]  probe3
+		.probe17(doa_N1),            // input wire [15:0]  probe3
+		.probe18(doa_E0),            // input wire [15:0]  probe3
+		.probe19(doa_E1),            // input wire [15:0]  probe3
+		.probe20(doa_W0),            // input wire [15:0]  probe3
+		.probe21(doa_W1)             // input wire [15:0]  probe3
+);
+
+ila_7 ila_7_i (
+		.clk(raw_clk),               // input wire clk
+		.probe0(raw_fifo_empty),     // input wire [0:0]  probe3
+		.probe1(raw_delay),          // input wire [11:0]  probe3
+		.probe2(raw_active),         // input wire [0:0]  probe3
+		.probe3(raw_counter),        // input wire [15:0]  probe3
+		.probe4(raw_ready)           // input wire [0:0]  probe3
+);
+
+ila_8 ila_8_i (
+		.clk(doa_clk),               // input wire clk
+		.probe0(doa_fifo_empty),     // input wire [0:0]  probe3
+		.probe1(doa_out_rd),         // input wire [0:0]  probe3
+		.probe2(doa_out_delay),      // input wire [2:0]  probe3
+		.probe3(doa_ready)           // input wire [0:0]  probe3
 );
 
 generate
@@ -402,38 +442,6 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (resetn)
-	  begin
-	    if (sim_start)
-		begin
-		  fifo_reset <= 1;
-  		  fifo_reset_cnt <= 3'b111;
-		end
-		else
-		begin
-		  if (sim_active)
-		  begin
-		    fifo_reset <= 0;
-  		    fifo_reset_cnt <= 3'b000;
-	      end
-		  else
-		  begin
-		    if (fifo_reset_cnt)
-			  fifo_reset_cnt <= fifo_reset_cnt - 1;
-			else
- 	          fifo_reset <= 0;
-		  end
-	    end
-      end
-	  else
-	  begin
-	    fifo_reset <= 1;
-		fifo_reset_cnt <= 3'b111;
-	  end
-    end
-
-	always @(posedge clk) 
-	begin
 	  if (sim_start)
 	    sim_active_1 <= 1;
 	  else
@@ -494,33 +502,63 @@ generate
 
 	always @(posedge clk) 
 	begin
+	  raw_N0 <= N0;
+	  raw_N1 <= N1;
+	  raw_N2 <= N2;
+	  raw_N3 <= N3;
+	  raw_N4 <= N4;
+	  raw_N5 <= N5;
+	  raw_N6 <= N6;
+	  raw_N7 <= N7;
+
+	  raw_E0 <= E0;
+	  raw_E1 <= E1;
+	  raw_E2 <= E2;
+	  raw_E3 <= E3;
+	  raw_E4 <= E4;
+	  raw_E5 <= E5;
+	  raw_E6 <= E6;
+	  raw_E7 <= E7;
+
+	  raw_W0 <= W0;
+	  raw_W1 <= W1;
+	  raw_W2 <= W2;
+	  raw_W3 <= W3;
+	  raw_W4 <= W4;
+	  raw_W5 <= W5;
+	  raw_W6 <= W6;
+	  raw_W7 <= W7;
+	end
+
+	always @(posedge clk) 
+	begin
 	  if (mux_active)
 	  begin
         raw_fifo_wr <= 1;
-        raw_in_data[15:0] <= N0;
-        raw_in_data[31:16] <= N1;
-        raw_in_data[47:32] <= N2;
-        raw_in_data[63:48] <= N3;
-        raw_in_data[79:64] <= N4;
-        raw_in_data[95:80] <= N5;
-        raw_in_data[111:96] <= N6;
-        raw_in_data[127:112] <= N7;
-        raw_in_data[143:128] <= E0;
-        raw_in_data[159:144] <= E1;
-        raw_in_data[175:160] <= E2;
-        raw_in_data[191:176] <= E3;
-        raw_in_data[207:192] <= E4;
-        raw_in_data[223:208] <= E5;
-        raw_in_data[239:224] <= E6;
-        raw_in_data[255:240] <= E7;
-        raw_in_data[271:256] <= W0;
-        raw_in_data[287:272] <= W1;
-        raw_in_data[303:288] <= W2;
-        raw_in_data[319:304] <= W3;
-        raw_in_data[335:320] <= W4;
-        raw_in_data[351:336] <= W5;
-        raw_in_data[367:352] <= W6;
-        raw_in_data[383:368] <= W7;
+        raw_in_data[15:0] <= raw_N0;
+        raw_in_data[31:16] <= raw_N1;
+        raw_in_data[47:32] <= raw_N2;
+        raw_in_data[63:48] <= raw_N3;
+        raw_in_data[79:64] <= raw_N4;
+        raw_in_data[95:80] <= raw_N5;
+        raw_in_data[111:96] <= raw_N6;
+        raw_in_data[127:112] <= raw_N7;
+        raw_in_data[143:128] <= raw_E0;
+        raw_in_data[159:144] <= raw_E1;
+        raw_in_data[175:160] <= raw_E2;
+        raw_in_data[191:176] <= raw_E3;
+        raw_in_data[207:192] <= raw_E4;
+        raw_in_data[223:208] <= raw_E5;
+        raw_in_data[239:224] <= raw_E6;
+        raw_in_data[255:240] <= raw_E7;
+        raw_in_data[271:256] <= raw_W0;
+        raw_in_data[287:272] <= raw_W1;
+        raw_in_data[303:288] <= raw_W2;
+        raw_in_data[319:304] <= raw_W3;
+        raw_in_data[335:320] <= raw_W4;
+        raw_in_data[351:336] <= raw_W5;
+        raw_in_data[367:352] <= raw_W6;
+        raw_in_data[383:368] <= raw_W7;
       end
       else
         raw_fifo_wr <= 0;
@@ -546,7 +584,16 @@ generate
       else
       begin
         if (doa_wr_delay)
+		begin
+          doa_fifo_wr <= 1;
+          doa_in_data[15:0] <= doa_N0;
+          doa_in_data[31:16] <= doa_N1;
+          doa_in_data[47:32] <= doa_E0;
+          doa_in_data[63:48] <= doa_E1;
+          doa_in_data[79:64] <= doa_W0;
+          doa_in_data[95:80] <= doa_W1;
           doa_wr_delay <= doa_wr_delay - 1;
+		end
         else
           doa_fifo_wr <= 0;
       end
@@ -577,30 +624,47 @@ generate
 	   begin
          raw_data <= raw_out_data;
          raw_ready <= 1;
+		 raw_counter <= raw_counter + 1;
        end
        else
+	   begin
          raw_ready <= 0;
-    end
-
-    always @(posedge doa_clk) 
-     begin
-      if (doa_fifo_empty)
-	     doa_out_active <= 0;
-	  else
-	     doa_out_active <= 1;
+		 raw_counter <= 0;
+	   end
     end
 
     always @(posedge doa_clk) 
     begin
-	   if (doa_out_active)
-	   begin
-         doa_data <= doa_out_data;
-         doa_ready <= 1;
-       end
-       else
-         doa_ready <= 0;
-    end
+	   if (doa_fifo_empty)
+	     doa_out_rd <= 0;
+	   else
+	     doa_out_rd <= 1;
+	end
 
+    always @(posedge doa_clk) 
+    begin
+	   if (doa_fifo_empty)
+	   begin
+	     if (doa_out_delay)
+		 begin
+           doa_ready <= 1;
+           doa_data <= doa_out_data;
+           doa_out_delay <= doa_out_delay - 1;
+		 end
+		 else
+           doa_ready <= 0;
+	   end
+	   else
+	   begin
+	     if (doa_out_delay == 5)
+		 begin
+           doa_ready <= 1;
+           doa_data <= doa_out_data;
+		 end
+		 else
+		   doa_out_delay <= doa_out_delay + 1;
+       end
+    end
   end
      
 endgenerate

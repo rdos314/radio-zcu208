@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Nov 26 20:09:53 2025
+-- Date        : Fri Nov 28 21:17:48 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -36,7 +36,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_low_0_0_ila_3;
   component ps_comp_low_0_0_ila_3_HD1 is
@@ -46,7 +47,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_low_0_0_ila_3_HD1;
   signal E0 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -74,6 +76,27 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute MARK_DEBUG of W2 : signal is std.standard.true;
   signal W3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of W3 : signal is std.standard.true;
+  signal \composite.counter[7]_i_2_n_0\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \composite.counter_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \composite.counter_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal counter : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of counter : signal is std.standard.true;
+  signal \counter__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal p_1_in : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \NLW_composite.counter_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   attribute KEEP : string;
   attribute KEEP of \composite.E0_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -460,6 +483,25 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute mark_debug_string of \composite.W3_reg[8]\ : label is "yes";
   attribute KEEP of \composite.W3_reg[9]\ : label is "yes";
   attribute mark_debug_string of \composite.W3_reg[9]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[0]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[10]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[11]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[12]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[13]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[14]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \composite.counter_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \composite.counter_reg[1]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[2]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[3]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[4]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[5]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[6]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \composite.counter_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \composite.counter_reg[8]\ : label is "yes";
+  attribute KEEP of \composite.counter_reg[9]\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_E : label is "ila_3,ila,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
@@ -2009,32 +2051,213 @@ begin
       Q => W3(9),
       R => '0'
     );
+\composite.counter[15]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => active,
+      O => \counter__0\(0)
+    );
+\composite.counter[7]_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => counter(0),
+      O => \composite.counter[7]_i_2_n_0\
+    );
+\composite.counter_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(0),
+      Q => counter(0),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(10),
+      Q => counter(10),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(11),
+      Q => counter(11),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(12),
+      Q => counter(12),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(13),
+      Q => counter(13),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(14),
+      Q => counter(14),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(15),
+      Q => counter(15),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \composite.counter_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_composite.counter_reg[15]_i_2_CO_UNCONNECTED\(7),
+      CO(6) => \composite.counter_reg[15]_i_2_n_1\,
+      CO(5) => \composite.counter_reg[15]_i_2_n_2\,
+      CO(4) => \composite.counter_reg[15]_i_2_n_3\,
+      CO(3) => \composite.counter_reg[15]_i_2_n_4\,
+      CO(2) => \composite.counter_reg[15]_i_2_n_5\,
+      CO(1) => \composite.counter_reg[15]_i_2_n_6\,
+      CO(0) => \composite.counter_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 0) => p_1_in(15 downto 8),
+      S(7 downto 0) => counter(15 downto 8)
+    );
+\composite.counter_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(1),
+      Q => counter(1),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(2),
+      Q => counter(2),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(3),
+      Q => counter(3),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(4),
+      Q => counter(4),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(5),
+      Q => counter(5),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(6),
+      Q => counter(6),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(7),
+      Q => counter(7),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \composite.counter_reg[7]_i_1_n_0\,
+      CO(6) => \composite.counter_reg[7]_i_1_n_1\,
+      CO(5) => \composite.counter_reg[7]_i_1_n_2\,
+      CO(4) => \composite.counter_reg[7]_i_1_n_3\,
+      CO(3) => \composite.counter_reg[7]_i_1_n_4\,
+      CO(2) => \composite.counter_reg[7]_i_1_n_5\,
+      CO(1) => \composite.counter_reg[7]_i_1_n_6\,
+      CO(0) => \composite.counter_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => counter(0),
+      O(7 downto 0) => p_1_in(7 downto 0),
+      S(7 downto 1) => counter(7 downto 1),
+      S(0) => \composite.counter[7]_i_2_n_0\
+    );
+\composite.counter_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(8),
+      Q => counter(8),
+      R => \counter__0\(0)
+    );
+\composite.counter_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in(9),
+      Q => counter(9),
+      R => \counter__0\(0)
+    );
 ila_E: component ps_comp_low_0_0_ila_3
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(15 downto 0) => E0(15 downto 0),
-      probe2(15 downto 0) => E1(15 downto 0),
-      probe3(15 downto 0) => E2(15 downto 0),
-      probe4(15 downto 0) => E3(15 downto 0)
+      probe1(15 downto 0) => counter(15 downto 0),
+      probe2(15 downto 0) => E0(15 downto 0),
+      probe3(15 downto 0) => E1(15 downto 0),
+      probe4(15 downto 0) => E2(15 downto 0),
+      probe5(15 downto 0) => E3(15 downto 0)
     );
 ila_N: component ps_comp_low_0_0_ila_3
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(15 downto 0) => N0(15 downto 0),
-      probe2(15 downto 0) => N1(15 downto 0),
-      probe3(15 downto 0) => N2(15 downto 0),
-      probe4(15 downto 0) => N3(15 downto 0)
+      probe1(15 downto 0) => counter(15 downto 0),
+      probe2(15 downto 0) => N0(15 downto 0),
+      probe3(15 downto 0) => N1(15 downto 0),
+      probe4(15 downto 0) => N2(15 downto 0),
+      probe5(15 downto 0) => N3(15 downto 0)
     );
 ila_W: component ps_comp_low_0_0_ila_3_HD1
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(15 downto 0) => W0(15 downto 0),
-      probe2(15 downto 0) => W1(15 downto 0),
-      probe3(15 downto 0) => W2(15 downto 0),
-      probe4(15 downto 0) => W3(15 downto 0)
+      probe1(15 downto 0) => counter(15 downto 0),
+      probe2(15 downto 0) => W0(15 downto 0),
+      probe3(15 downto 0) => W1(15 downto 0),
+      probe4(15 downto 0) => W2(15 downto 0),
+      probe5(15 downto 0) => W3(15 downto 0)
     );
 end STRUCTURE;
 library IEEE;

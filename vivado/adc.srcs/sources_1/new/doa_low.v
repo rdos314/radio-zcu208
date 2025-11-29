@@ -38,6 +38,8 @@ module doa_low(
     output reg [19:0] phase_W
     );
 
+  reg [15:0] counter;
+  
   reg [15:0] N;
   reg [15:0] E;
   reg [15:0] W;
@@ -186,24 +188,25 @@ mult_s500 doa_freq (
       
 ila_0 ila_0_i (
 		.clk(clk),                  // input wire clk
-		.probe0(valid),             // input wire [0:0]  probe3
-		.probe1(freq),              // input wire [31:0]  probe3
-		.probe2(N),                 // input wire [15:0]  probe3
-		.probe3(fir_re_N[38:23]),   // input wire [15:0]  probe3
-		.probe4(fir_im_N[38:23]),   // input wire [15:0]  probe3
-		.probe5(env_N),             // input wire [15:0]  probe3
-		.probe6(phase_N),             // input wire [19:0]  probe3
-		.probe7(E),                 // input wire [15:0]  probe3
-		.probe8(fir_re_E[38:23]),   // input wire [15:0]  probe3
-		.probe9(fir_im_E[38:23]),   // input wire [15:0]  probe3
-		.probe10(env_E),             // input wire [15:0]  probe3
-		.probe11(phase_E),             // input wire [19:0]  probe3
-		.probe12(W),                 // input wire [15:0]  probe3
-		.probe13(fir_re_W[38:23]),   // input wire [15:0]  probe3
-		.probe14(fir_im_W[38:23]),   // input wire [15:0]  probe3
-		.probe15(env_W),             // input wire [15:0]  probe3
-		.probe16(phase_W),             // input wire [19:0]  probe3
-		.probe17(fifo_valid)        // input wire [0:0]  probe3
+		.probe0(fifo_valid),       // input wire [0:0]  probe3
+		.probe1(valid),             // input wire [0:0]  probe3
+		.probe2(counter),           // input wire [15:0]  probe3
+		.probe3(freq),              // input wire [31:0]  probe3
+		.probe4(N),                 // input wire [15:0]  probe3
+		.probe5(fir_re_N[38:23]),   // input wire [15:0]  probe3
+		.probe6(fir_im_N[38:23]),   // input wire [15:0]  probe3
+		.probe7(env_N),             // input wire [15:0]  probe3
+		.probe8(phase_N),           // input wire [19:0]  probe3
+		.probe9(E),                 // input wire [15:0]  probe3
+		.probe10(fir_re_E[38:23]),  // input wire [15:0]  probe3
+		.probe11(fir_im_E[38:23]),  // input wire [15:0]  probe3
+		.probe12(env_E),            // input wire [15:0]  probe3
+		.probe13(phase_E),          // input wire [19:0]  probe3
+		.probe14(W),                // input wire [15:0]  probe3
+		.probe15(fir_re_W[38:23]),  // input wire [15:0]  probe3
+		.probe16(fir_im_W[38:23]),  // input wire [15:0]  probe3
+		.probe17(env_W),            // input wire [15:0]  probe3
+		.probe18(phase_W)           // input wire [19:0]  probe3
 	);
 
 generate
@@ -213,6 +216,7 @@ generate
 	begin
 	  if (fifo_valid)
 	  begin
+	     counter <= counter + 1;
          N <= fifo_data[15:0];
          diffN <= phase_N - prevN;
          prevN <= phase_N;
@@ -227,6 +231,7 @@ generate
       end
       else
       begin
+	    counter <= 0;
         prevN <= 0;
         prevE <= 0;
         prevW <= 0;
