@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 28 21:17:48 2025
+-- Date        : Sun Nov 30 19:24:07 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.vhdl
@@ -41,7 +41,8 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
     probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_high_0_0_ila_1;
   component ps_comp_high_0_0_ila_1_HD1 is
@@ -49,6 +50,7 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -4185,43 +4187,46 @@ ila_E: component ps_comp_high_0_0_ila_1
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(15 downto 0) => counter(15 downto 0),
-      probe2(15 downto 0) => E0(15 downto 0),
-      probe3(15 downto 0) => E1(15 downto 0),
-      probe4(15 downto 0) => E2(15 downto 0),
-      probe5(15 downto 0) => E3(15 downto 0),
-      probe6(15 downto 0) => E4(15 downto 0),
-      probe7(15 downto 0) => E5(15 downto 0),
-      probe8(15 downto 0) => E6(15 downto 0),
-      probe9(15 downto 0) => E7(15 downto 0)
+      probe1(15 downto 0) => fifo(143 downto 128),
+      probe10(15 downto 0) => E7(15 downto 0),
+      probe2(15 downto 0) => counter(15 downto 0),
+      probe3(15 downto 0) => E0(15 downto 0),
+      probe4(15 downto 0) => E1(15 downto 0),
+      probe5(15 downto 0) => E2(15 downto 0),
+      probe6(15 downto 0) => E3(15 downto 0),
+      probe7(15 downto 0) => E4(15 downto 0),
+      probe8(15 downto 0) => E5(15 downto 0),
+      probe9(15 downto 0) => E6(15 downto 0)
     );
 ila_N: component ps_comp_high_0_0_ila_1
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(15 downto 0) => counter(15 downto 0),
-      probe2(15 downto 0) => N0(15 downto 0),
-      probe3(15 downto 0) => N1(15 downto 0),
-      probe4(15 downto 0) => N2(15 downto 0),
-      probe5(15 downto 0) => N3(15 downto 0),
-      probe6(15 downto 0) => N4(15 downto 0),
-      probe7(15 downto 0) => N5(15 downto 0),
-      probe8(15 downto 0) => N6(15 downto 0),
-      probe9(15 downto 0) => N7(15 downto 0)
+      probe1(15 downto 0) => fifo(15 downto 0),
+      probe10(15 downto 0) => N7(15 downto 0),
+      probe2(15 downto 0) => counter(15 downto 0),
+      probe3(15 downto 0) => N0(15 downto 0),
+      probe4(15 downto 0) => N1(15 downto 0),
+      probe5(15 downto 0) => N2(15 downto 0),
+      probe6(15 downto 0) => N3(15 downto 0),
+      probe7(15 downto 0) => N4(15 downto 0),
+      probe8(15 downto 0) => N5(15 downto 0),
+      probe9(15 downto 0) => N6(15 downto 0)
     );
 ila_W: component ps_comp_high_0_0_ila_1_HD1
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(15 downto 0) => counter(15 downto 0),
-      probe2(15 downto 0) => W0(15 downto 0),
-      probe3(15 downto 0) => W1(15 downto 0),
-      probe4(15 downto 0) => W2(15 downto 0),
-      probe5(15 downto 0) => W3(15 downto 0),
-      probe6(15 downto 0) => W4(15 downto 0),
-      probe7(15 downto 0) => W5(15 downto 0),
-      probe8(15 downto 0) => W6(15 downto 0),
-      probe9(15 downto 0) => W7(15 downto 0)
+      probe1(15 downto 0) => fifo(271 downto 256),
+      probe10(15 downto 0) => W7(15 downto 0),
+      probe2(15 downto 0) => counter(15 downto 0),
+      probe3(15 downto 0) => W0(15 downto 0),
+      probe4(15 downto 0) => W1(15 downto 0),
+      probe5(15 downto 0) => W2(15 downto 0),
+      probe6(15 downto 0) => W3(15 downto 0),
+      probe7(15 downto 0) => W4(15 downto 0),
+      probe8(15 downto 0) => W5(15 downto 0),
+      probe9(15 downto 0) => W6(15 downto 0)
     );
 end STRUCTURE;
 library IEEE;

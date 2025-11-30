@@ -55,45 +55,48 @@ module comp_high(
   reg [15:0] W7;
   
 	ila_1 ila_N (
-		.clk(clk),          // input wire clk
-		.probe0(active),    // input wire [0:0]  probe3
-		.probe1(counter),   // input wire [15:0]  probe3
-		.probe2(N0),        // input wire [15:0]  probe3
-		.probe3(N1),        // input wire [15:0]  probe3
-		.probe4(N2),        // input wire [15:0]  probe3
-		.probe5(N3),        // input wire [15:0]  probe3
-		.probe6(N4),        // input wire [15:0]  probe3
-		.probe7(N5),        // input wire [15:0]  probe3
-		.probe8(N6),        // input wire [15:0]  probe3
-		.probe9(N7)        // input wire [15:0]  probe3
+		.clk(clk),              // input wire clk
+		.probe0(active),        // input wire [0:0]  probe3
+		.probe1(fifo[15:0]),    // input wire [15:0]  probe3
+		.probe2(counter),       // input wire [15:0]  probe3
+		.probe3(N0),            // input wire [15:0]  probe3
+		.probe4(N1),            // input wire [15:0]  probe3
+		.probe5(N2),            // input wire [15:0]  probe3
+		.probe6(N3),            // input wire [15:0]  probe3
+		.probe7(N4),            // input wire [15:0]  probe3
+		.probe8(N5),            // input wire [15:0]  probe3
+		.probe9(N6),            // input wire [15:0]  probe3
+		.probe10(N7)            // input wire [15:0]  probe3
 	);
 
 	ila_1 ila_E (
-		.clk(clk),          // input wire clk
-		.probe0(active),    // input wire [0:0]  probe3
-		.probe1(counter),   // input wire [15:0]  probe3
-		.probe2(E0),        // input wire [15:0]  probe3
-		.probe3(E1),        // input wire [15:0]  probe3
-		.probe4(E2),        // input wire [15:0]  probe3
-		.probe5(E3),        // input wire [15:0]  probe3
-		.probe6(E4),        // input wire [15:0]  probe3
-		.probe7(E5),        // input wire [15:0]  probe3
-		.probe8(E6),        // input wire [15:0]  probe3
-		.probe9(E7)        // input wire [15:0]  probe3
+		.clk(clk),              // input wire clk
+		.probe0(active),        // input wire [0:0]  probe3
+		.probe1(fifo[143:128]), // input wire [15:0]  probe3
+		.probe2(counter),       // input wire [15:0]  probe3
+		.probe3(E0),            // input wire [15:0]  probe3
+		.probe4(E1),            // input wire [15:0]  probe3
+		.probe5(E2),            // input wire [15:0]  probe3
+		.probe6(E3),            // input wire [15:0]  probe3
+		.probe7(E4),            // input wire [15:0]  probe3
+		.probe8(E5),            // input wire [15:0]  probe3
+		.probe9(E6),            // input wire [15:0]  probe3
+		.probe10(E7)            // input wire [15:0]  probe3
 	);
 
 	ila_1 ila_W (
-		.clk(clk),          // input wire clk
-		.probe0(active),    // input wire [0:0]  probe3
-		.probe1(counter),   // input wire [15:0]  probe3
-		.probe2(W0),        // input wire [15:0]  probe3
-		.probe3(W1),        // input wire [15:0]  probe3
-		.probe4(W2),        // input wire [15:0]  probe3
-		.probe5(W3),        // input wire [15:0]  probe3
-		.probe6(W4),        // input wire [15:0]  probe3
-		.probe7(W5),        // input wire [15:0]  probe3
-		.probe8(W6),        // input wire [15:0]  probe3
-		.probe9(W7)        // input wire [15:0]  probe3
+		.clk(clk),              // input wire clk
+		.probe0(active),        // input wire [0:0]  probe3
+		.probe1(fifo[271:256]), // input wire [15:0]  probe3
+		.probe2(counter),       // input wire [15:0]  probe3
+		.probe3(W0),            // input wire [15:0]  probe3
+		.probe4(W1),            // input wire [15:0]  probe3
+		.probe5(W2),            // input wire [15:0]  probe3
+		.probe6(W3),            // input wire [15:0]  probe3
+		.probe7(W4),            // input wire [15:0]  probe3
+		.probe8(W5),            // input wire [15:0]  probe3
+		.probe9(W6),            // input wire [15:0]  probe3
+		.probe10(W7)            // input wire [15:0]  probe3
 	);
 
 generate

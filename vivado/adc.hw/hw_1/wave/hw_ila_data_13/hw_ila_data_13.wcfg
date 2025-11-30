@@ -9,15 +9,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="499"></ZoomStartTime>
-      <ZoomEndTime time="526"></ZoomEndTime>
-      <Cursor1Time time="511"></Cursor1Time>
+      <ZoomStartTime time="520"></ZoomStartTime>
+      <ZoomEndTime time="547"></ZoomEndTime>
+      <Cursor1Time time="503"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="215"></NameColumnWidth>
+      <NameColumnWidth column_width="187"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="4" />
+   <WVObjectSize size="5" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/deci_low/inst/doa_data" type="array">
@@ -40,6 +40,13 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/deci_low/inst/doa_fifo_empty</obj_property>
       <obj_property name="ObjectShortName">doa_fifo_empty</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_low/inst/doa_out_rd" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_low/inst/doa_out_rd</obj_property>
+      <obj_property name="ObjectShortName">doa_out_rd</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

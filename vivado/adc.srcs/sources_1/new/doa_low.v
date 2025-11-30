@@ -188,25 +188,26 @@ mult_s500 doa_freq (
       
 ila_0 ila_0_i (
 		.clk(clk),                  // input wire clk
-		.probe0(fifo_valid),       // input wire [0:0]  probe3
-		.probe1(valid),             // input wire [0:0]  probe3
-		.probe2(counter),           // input wire [15:0]  probe3
-		.probe3(freq),              // input wire [31:0]  probe3
-		.probe4(N),                 // input wire [15:0]  probe3
-		.probe5(fir_re_N[38:23]),   // input wire [15:0]  probe3
-		.probe6(fir_im_N[38:23]),   // input wire [15:0]  probe3
-		.probe7(env_N),             // input wire [15:0]  probe3
-		.probe8(phase_N),           // input wire [19:0]  probe3
-		.probe9(E),                 // input wire [15:0]  probe3
-		.probe10(fir_re_E[38:23]),  // input wire [15:0]  probe3
-		.probe11(fir_im_E[38:23]),  // input wire [15:0]  probe3
-		.probe12(env_E),            // input wire [15:0]  probe3
-		.probe13(phase_E),          // input wire [19:0]  probe3
-		.probe14(W),                // input wire [15:0]  probe3
-		.probe15(fir_re_W[38:23]),  // input wire [15:0]  probe3
-		.probe16(fir_im_W[38:23]),  // input wire [15:0]  probe3
-		.probe17(env_W),            // input wire [15:0]  probe3
-		.probe18(phase_W)           // input wire [19:0]  probe3
+		.probe0(fifo_valid),        // input wire [0:0]  probe3
+		.probe1(fifo_data[15:0]),   // input wire [15:0]  probe3
+		.probe2(valid),             // input wire [0:0]  probe3
+		.probe3(counter),           // input wire [15:0]  probe3
+		.probe4(freq),              // input wire [31:0]  probe3
+		.probe5(N),                 // input wire [15:0]  probe3
+		.probe6(fir_re_N[38:23]),   // input wire [15:0]  probe3
+		.probe7(fir_im_N[38:23]),   // input wire [15:0]  probe3
+		.probe8(env_N),             // input wire [15:0]  probe3
+		.probe9(phase_N),           // input wire [19:0]  probe3
+		.probe10(E),                 // input wire [15:0]  probe3
+		.probe11(fir_re_E[38:23]),  // input wire [15:0]  probe3
+		.probe12(fir_im_E[38:23]),  // input wire [15:0]  probe3
+		.probe13(env_E),            // input wire [15:0]  probe3
+		.probe14(phase_E),          // input wire [19:0]  probe3
+		.probe15(W),                // input wire [15:0]  probe3
+		.probe16(fir_re_W[38:23]),  // input wire [15:0]  probe3
+		.probe17(fir_im_W[38:23]),  // input wire [15:0]  probe3
+		.probe18(env_W),            // input wire [15:0]  probe3
+		.probe19(phase_W)           // input wire [19:0]  probe3
 	);
 
 generate

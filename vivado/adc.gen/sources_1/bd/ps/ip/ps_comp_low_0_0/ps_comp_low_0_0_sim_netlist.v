@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 28 21:17:48 2025
+// Date        : Sun Nov 30 19:24:07 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -80,7 +80,7 @@ module ps_comp_low_0_0_comp_low
   wire \composite.counter_reg[7]_i_1_n_7 ;
   (* MARK_DEBUG *) wire [15:0]counter;
   wire [0:0]counter__0;
-  wire [191:0]fifo;
+  (* MARK_DEBUG *) wire [191:0]fifo;
   wire [15:0]p_1_in;
   wire [7:7]\NLW_composite.counter_reg[15]_i_2_CO_UNCONNECTED ;
 
@@ -1764,33 +1764,36 @@ module ps_comp_low_0_0_comp_low
   ps_comp_low_0_0_ila_3 ila_E
        (.clk(clk),
         .probe0(active),
-        .probe1(counter),
-        .probe2(E0),
-        .probe3(E1),
-        .probe4(E2),
-        .probe5(E3));
+        .probe1(fifo[79:64]),
+        .probe2(counter),
+        .probe3(E0),
+        .probe4(E1),
+        .probe5(E2),
+        .probe6(E3));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_comp_low_0_0_ila_3 ila_N
        (.clk(clk),
         .probe0(active),
-        .probe1(counter),
-        .probe2(N0),
-        .probe3(N1),
-        .probe4(N2),
-        .probe5(N3));
+        .probe1(fifo[15:0]),
+        .probe2(counter),
+        .probe3(N0),
+        .probe4(N1),
+        .probe5(N2),
+        .probe6(N3));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_comp_low_0_0_ila_3_HD1 ila_W
        (.clk(clk),
         .probe0(active),
-        .probe1(counter),
-        .probe2(W0),
-        .probe3(W1),
-        .probe4(W2),
-        .probe5(W3));
+        .probe1(fifo[143:128]),
+        .probe2(counter),
+        .probe3(W0),
+        .probe4(W1),
+        .probe5(W2),
+        .probe6(W3));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_3" *) 
@@ -1802,7 +1805,8 @@ module ps_comp_low_0_0_ila_3
     probe2,
     probe3,
     probe4,
-    probe5);
+    probe5,
+    probe6);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [15:0]probe1;
@@ -1810,6 +1814,7 @@ module ps_comp_low_0_0_ila_3
   input [15:0]probe3;
   input [15:0]probe4;
   input [15:0]probe5;
+  input [15:0]probe6;
 
 
 endmodule
@@ -1823,7 +1828,8 @@ module ps_comp_low_0_0_ila_3_HD1
     probe2,
     probe3,
     probe4,
-    probe5);
+    probe5,
+    probe6);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [15:0]probe1;
@@ -1831,6 +1837,7 @@ module ps_comp_low_0_0_ila_3_HD1
   input [15:0]probe3;
   input [15:0]probe4;
   input [15:0]probe5;
+  input [15:0]probe6;
 
 
 endmodule

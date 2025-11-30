@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 28 21:17:50 2025
+// Date        : Sun Nov 30 15:00:41 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.v
@@ -399,7 +399,7 @@ module ps_doa_low_0_0_doa_low
   (* MARK_DEBUG *) wire [15:0]env_E;
   (* MARK_DEBUG *) wire [15:0]env_N;
   (* MARK_DEBUG *) wire [15:0]env_W;
-  wire [47:0]fifo_data;
+  (* MARK_DEBUG *) wire [47:0]fifo_data;
   (* MARK_DEBUG *) wire fifo_valid;
   wire fir_doa_low_re_N_i_i_1_n_0;
   (* MARK_DEBUG *) wire [39:0]fir_im_E;
@@ -3842,24 +3842,25 @@ module ps_doa_low_0_0_doa_low
   ps_doa_low_0_0_ila_0 ila_0_i
        (.clk(clk),
         .probe0(fifo_valid),
-        .probe1(valid),
-        .probe10(fir_re_E[38:23]),
-        .probe11(fir_im_E[38:23]),
-        .probe12(env_E),
-        .probe13(phase_E),
-        .probe14(W),
-        .probe15(fir_re_W[38:23]),
-        .probe16(fir_im_W[38:23]),
-        .probe17(env_W),
-        .probe18(phase_W),
-        .probe2(counter),
-        .probe3(freq),
-        .probe4(N),
-        .probe5(fir_re_N[38:23]),
-        .probe6(fir_im_N[38:23]),
-        .probe7(env_N),
-        .probe8(phase_N),
-        .probe9(E));
+        .probe1(fifo_data[15:0]),
+        .probe10(E),
+        .probe11(fir_re_E[38:23]),
+        .probe12(fir_im_E[38:23]),
+        .probe13(env_E),
+        .probe14(phase_E),
+        .probe15(W),
+        .probe16(fir_re_W[38:23]),
+        .probe17(fir_im_W[38:23]),
+        .probe18(env_W),
+        .probe19(phase_W),
+        .probe2(valid),
+        .probe3(counter),
+        .probe4(freq),
+        .probe5(N),
+        .probe6(fir_re_N[38:23]),
+        .probe7(fir_im_N[38:23]),
+        .probe8(env_N),
+        .probe9(phase_N));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fir_doa_low_im,fir_compiler_v7_2_24,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fir_doa_low_im" *) 
@@ -3972,27 +3973,29 @@ module ps_doa_low_0_0_ila_0
     probe15,
     probe16,
     probe17,
-    probe18);
+    probe18,
+    probe19);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [0:0]probe1;
-  input [15:0]probe2;
-  input [31:0]probe3;
-  input [15:0]probe4;
+  input [15:0]probe1;
+  input [0:0]probe2;
+  input [15:0]probe3;
+  input [31:0]probe4;
   input [15:0]probe5;
   input [15:0]probe6;
   input [15:0]probe7;
-  input [19:0]probe8;
-  input [15:0]probe9;
+  input [15:0]probe8;
+  input [19:0]probe9;
   input [15:0]probe10;
   input [15:0]probe11;
   input [15:0]probe12;
-  input [19:0]probe13;
-  input [15:0]probe14;
+  input [15:0]probe13;
+  input [19:0]probe14;
   input [15:0]probe15;
   input [15:0]probe16;
   input [15:0]probe17;
-  input [19:0]probe18;
+  input [15:0]probe18;
+  input [19:0]probe19;
 
 
 endmodule

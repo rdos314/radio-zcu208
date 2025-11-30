@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 28 21:17:50 2025
+-- Date        : Sun Nov 30 15:00:41 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_doa_low_0_0/ps_doa_low_0_0_sim_netlist.vhdl
@@ -3625,24 +3625,25 @@ architecture STRUCTURE of ps_doa_low_0_0_doa_low is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 19 downto 0 )
+    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   end component ps_doa_low_0_0_ila_0;
   signal E : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -8584,24 +8585,25 @@ ila_0_i: component ps_doa_low_0_0_ila_0
      port map (
       clk => clk,
       probe0(0) => fifo_valid,
-      probe1(0) => \^valid\,
-      probe10(15 downto 0) => fir_re_E(38 downto 23),
-      probe11(15 downto 0) => fir_im_E(38 downto 23),
-      probe12(15 downto 0) => \^env_e\(15 downto 0),
-      probe13(19 downto 0) => \^phase_e\(19 downto 0),
-      probe14(15 downto 0) => W(15 downto 0),
-      probe15(15 downto 0) => fir_re_W(38 downto 23),
-      probe16(15 downto 0) => fir_im_W(38 downto 23),
-      probe17(15 downto 0) => \^env_w\(15 downto 0),
-      probe18(19 downto 0) => \^phase_w\(19 downto 0),
-      probe2(15 downto 0) => counter(15 downto 0),
-      probe3(31 downto 0) => \^freq\(31 downto 0),
-      probe4(15 downto 0) => N(15 downto 0),
-      probe5(15 downto 0) => fir_re_N(38 downto 23),
-      probe6(15 downto 0) => fir_im_N(38 downto 23),
-      probe7(15 downto 0) => \^env_n\(15 downto 0),
-      probe8(19 downto 0) => \^phase_n\(19 downto 0),
-      probe9(15 downto 0) => E(15 downto 0)
+      probe1(15 downto 0) => fifo_data(15 downto 0),
+      probe10(15 downto 0) => E(15 downto 0),
+      probe11(15 downto 0) => fir_re_E(38 downto 23),
+      probe12(15 downto 0) => fir_im_E(38 downto 23),
+      probe13(15 downto 0) => \^env_e\(15 downto 0),
+      probe14(19 downto 0) => \^phase_e\(19 downto 0),
+      probe15(15 downto 0) => W(15 downto 0),
+      probe16(15 downto 0) => fir_re_W(38 downto 23),
+      probe17(15 downto 0) => fir_im_W(38 downto 23),
+      probe18(15 downto 0) => \^env_w\(15 downto 0),
+      probe19(19 downto 0) => \^phase_w\(19 downto 0),
+      probe2(0) => \^valid\,
+      probe3(15 downto 0) => counter(15 downto 0),
+      probe4(31 downto 0) => \^freq\(31 downto 0),
+      probe5(15 downto 0) => N(15 downto 0),
+      probe6(15 downto 0) => fir_re_N(38 downto 23),
+      probe7(15 downto 0) => fir_im_N(38 downto 23),
+      probe8(15 downto 0) => \^env_n\(15 downto 0),
+      probe9(19 downto 0) => \^phase_n\(19 downto 0)
     );
 end STRUCTURE;
 library IEEE;

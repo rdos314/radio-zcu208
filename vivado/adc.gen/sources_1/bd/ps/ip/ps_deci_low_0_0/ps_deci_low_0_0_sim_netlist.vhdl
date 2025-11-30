@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov 30 00:33:13 2025
+-- Date        : Sun Nov 30 20:42:34 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -161,9 +161,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe5 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -177,7 +177,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_deci_low_0_0_ila_2;
   component ps_deci_low_0_0_ila_7 is
@@ -186,8 +188,8 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 11 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_deci_low_0_0_ila_7;
@@ -197,59 +199,65 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_deci_low_0_0_ila_8;
   signal \deci_low.doa_fifo_wr_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[0]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[10]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[11]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[12]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[13]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[14]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[15]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[16]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[17]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[18]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[19]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[1]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[20]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[21]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[22]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[23]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[24]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[25]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[26]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[27]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[28]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[29]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[2]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[30]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[31]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[32]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[33]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[34]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[35]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[36]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[37]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[38]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[39]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[3]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[40]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[41]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[42]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[43]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[44]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[45]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[46]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.doa_in_data[47]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[0]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[10]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[11]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[12]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[13]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[14]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[15]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[16]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[17]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[18]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[19]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[1]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[20]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[21]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[22]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[23]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[24]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[25]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[26]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[27]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[28]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[29]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[2]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[30]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[31]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[32]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[33]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[34]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[35]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[36]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[37]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[38]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[39]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[3]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[40]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[41]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[42]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[43]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[44]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[45]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[46]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[47]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[4]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[5]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[6]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[7]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[8]\ : STD_LOGIC;
-  signal \deci_low.doa_in_data_reg_n_0_[9]\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[47]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[4]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[5]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[6]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[7]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[8]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_in_data[9]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_out_rd_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_rd_delay[1]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_rd_delay[1]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_rd_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.doa_ready_reg0\ : STD_LOGIC;
   signal \deci_low.doa_wr_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.fir_resetn_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_E[0]_i_1_n_0\ : STD_LOGIC;
@@ -637,8 +645,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.mux_W[99]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_W[9]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_active_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.raw_active_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.raw_active_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.raw_delay[11]_i_4_n_0\ : STD_LOGIC;
@@ -665,199 +671,202 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.raw_delay_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \deci_low.raw_delay_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal \deci_low.raw_fifo_wr_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[0]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[100]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[101]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[102]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[103]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[104]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[105]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[106]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[107]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[108]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[109]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[10]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[110]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[111]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[112]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[113]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[114]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[115]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[116]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[117]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[118]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[119]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[11]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[120]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[121]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[122]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[123]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[124]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[125]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[126]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[127]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[128]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[129]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[12]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[130]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[131]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[132]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[133]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[134]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[135]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[136]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[137]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[138]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[139]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[13]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[140]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[141]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[142]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[143]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[144]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[145]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[146]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[147]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[148]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[149]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[14]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[150]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[151]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[152]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[153]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[154]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[155]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[156]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[157]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[158]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[159]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[15]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[160]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[161]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[162]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[163]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[164]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[165]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[166]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[167]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[168]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[169]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[16]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[170]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[171]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[172]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[173]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[174]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[175]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[176]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[177]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[178]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[179]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[17]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[180]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[181]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[182]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[183]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[184]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[185]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[186]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[187]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[188]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[189]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[18]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[190]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_in_data[191]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[0]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[100]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[101]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[102]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[103]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[104]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[105]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[106]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[107]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[108]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[109]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[10]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[110]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[111]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[112]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[113]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[114]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[115]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[116]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[117]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[118]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[119]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[11]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[120]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[121]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[122]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[123]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[124]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[125]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[126]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[127]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[128]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[129]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[12]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[130]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[131]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[132]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[133]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[134]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[135]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[136]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[137]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[138]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[139]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[13]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[140]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[141]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[142]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[143]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[144]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[145]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[146]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[147]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[148]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[149]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[14]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[150]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[151]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[152]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[153]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[154]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[155]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[156]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[157]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[158]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[159]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[15]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[160]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[161]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[162]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[163]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[164]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[165]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[166]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[167]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[168]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[169]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[16]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[170]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[171]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[172]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[173]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[174]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[175]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[176]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[177]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[178]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[179]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[17]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[180]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[181]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[182]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[183]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[184]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[185]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[186]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[187]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[188]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[189]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[18]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[190]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[191]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[19]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[1]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[20]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[21]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[22]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[23]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[24]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[25]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[26]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[27]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[28]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[29]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[2]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[30]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[31]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[32]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[33]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[34]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[35]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[36]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[37]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[38]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[39]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[3]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[40]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[41]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[42]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[43]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[44]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[45]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[46]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[47]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[48]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[49]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[4]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[50]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[51]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[52]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[53]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[54]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[55]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[56]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[57]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[58]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[59]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[5]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[60]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[61]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[62]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[63]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[64]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[65]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[66]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[67]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[68]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[69]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[6]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[70]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[71]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[72]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[73]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[74]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[75]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[76]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[77]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[78]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[79]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[7]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[80]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[81]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[82]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[83]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[84]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[85]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[86]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[87]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[88]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[89]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[8]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[90]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[91]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[92]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[93]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[94]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[95]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[96]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[97]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[98]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[99]\ : STD_LOGIC;
-  signal \deci_low.raw_in_data_reg_n_0_[9]\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[191]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[19]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[1]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[20]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[21]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[22]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[23]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[24]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[25]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[26]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[27]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[28]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[29]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[2]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[30]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[31]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[32]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[33]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[34]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[35]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[36]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[37]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[38]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[39]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[3]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[40]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[41]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[42]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[43]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[44]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[45]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[46]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[47]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[48]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[49]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[4]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[50]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[51]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[52]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[53]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[54]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[55]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[56]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[57]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[58]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[59]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[5]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[60]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[61]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[62]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[63]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[64]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[65]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[66]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[67]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[68]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[69]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[6]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[70]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[71]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[72]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[73]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[74]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[75]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[76]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[77]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[78]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[79]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[7]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[80]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[81]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[82]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[83]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[84]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[85]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[86]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[87]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[88]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[89]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[8]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[90]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[91]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[92]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[93]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[94]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[95]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[96]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[97]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[98]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[99]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_in_data[9]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_out_rd_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_out_rd_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.raw_ready_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.raw_wr_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.reset_active[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.reset_active[1]_i_1_n_0\ : STD_LOGIC;
@@ -870,9 +879,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.reset_delay_reg01_in\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \deci_low.sim_active_1_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_active_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.sim_count[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_count[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.sim_count[1]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.sim_curr_data[127]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_curr_data[63]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_curr_data[95]_i_1_n_0\ : STD_LOGIC;
@@ -1024,14 +1031,19 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of doa_fifo_empty : signal is std.standard.true;
   signal doa_fifo_wr : STD_LOGIC;
   attribute MARK_DEBUG of doa_fifo_wr : signal is std.standard.true;
+  signal doa_in_data : STD_LOGIC_VECTOR ( 47 downto 0 );
+  attribute MARK_DEBUG of doa_in_data : signal is std.standard.true;
   signal doa_out_data : STD_LOGIC_VECTOR ( 47 downto 0 );
   attribute MARK_DEBUG of doa_out_data : signal is std.standard.true;
+  signal doa_out_rd : STD_LOGIC;
+  attribute MARK_DEBUG of doa_out_rd : signal is std.standard.true;
+  signal doa_rd_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal doa_rd_delay0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \^doa_ready\ : STD_LOGIC;
   attribute MARK_DEBUG of doa_ready : signal is std.standard.true;
   signal doa_wr_delay : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of doa_wr_delay : signal is std.standard.true;
-  signal \doa_wr_delay__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal fifo_doa_i_i_1_n_0 : STD_LOGIC;
+  signal doa_wr_delay0_in : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal fifo_sim_N_i_i_1_n_0 : STD_LOGIC;
   signal fir_raw_E : STD_LOGIC_VECTOR ( 126 downto 15 );
   signal fir_raw_W : STD_LOGIC_VECTOR ( 126 downto 15 );
@@ -1057,6 +1069,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal mux_W : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal mux_active : STD_LOGIC;
   attribute MARK_DEBUG of mux_active : signal is std.standard.true;
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal raw_N0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of raw_N0 : signal is std.standard.true;
   signal raw_N1 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1065,8 +1078,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of raw_N2 : signal is std.standard.true;
   signal raw_N3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of raw_N3 : signal is std.standard.true;
-  signal raw_active : STD_LOGIC;
-  attribute MARK_DEBUG of raw_active : signal is std.standard.true;
   signal \^raw_data\ : STD_LOGIC_VECTOR ( 191 downto 0 );
   attribute MARK_DEBUG of \^raw_data\ : signal is std.standard.true;
   signal raw_delay : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -1075,13 +1086,17 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute MARK_DEBUG of raw_fifo_empty : signal is std.standard.true;
   signal raw_fifo_wr : STD_LOGIC;
   attribute MARK_DEBUG of raw_fifo_wr : signal is std.standard.true;
+  signal raw_in_data : STD_LOGIC_VECTOR ( 191 downto 0 );
+  attribute MARK_DEBUG of raw_in_data : signal is std.standard.true;
   signal raw_out_data : STD_LOGIC_VECTOR ( 191 downto 0 );
   attribute MARK_DEBUG of raw_out_data : signal is std.standard.true;
+  signal raw_out_rd : STD_LOGIC;
+  attribute MARK_DEBUG of raw_out_rd : signal is std.standard.true;
   signal \^raw_ready\ : STD_LOGIC;
   attribute MARK_DEBUG of raw_ready : signal is std.standard.true;
   signal raw_wr_delay : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of raw_wr_delay : signal is std.standard.true;
-  signal \raw_wr_delay__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal raw_wr_delay0_in : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal reset_active : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute MARK_DEBUG of reset_active : signal is std.standard.true;
   signal reset_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -1187,9 +1202,109 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute KEEP of \deci_low.doa_data_reg[8]\ : label is "yes";
   attribute KEEP of \deci_low.doa_data_reg[9]\ : label is "yes";
   attribute KEEP of \deci_low.doa_fifo_wr_reg\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[0]\ : label is "yes";
+  attribute mark_debug_string : string;
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[10]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[11]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[12]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[13]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[14]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[15]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[16]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[17]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[18]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[19]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[1]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[20]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[21]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[22]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[23]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[24]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[25]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[26]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[27]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[28]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[29]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[2]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[30]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[31]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[32]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[32]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[33]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[33]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[34]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[34]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[35]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[35]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[36]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[36]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[37]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[37]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[38]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[38]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[39]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[39]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[3]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[40]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[40]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[41]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[41]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[42]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[42]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[43]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[43]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[44]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[44]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[45]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[45]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[46]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[46]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[47]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[47]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[4]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[5]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[6]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[7]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[8]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_in_data_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.doa_in_data_reg[9]\ : label is "yes";
+  attribute KEEP of \deci_low.doa_out_rd_reg\ : label is "yes";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \deci_low.doa_rd_delay[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \deci_low.doa_rd_delay[1]_i_2\ : label is "soft_lutpair1";
   attribute KEEP of \deci_low.doa_ready_reg\ : label is "yes";
   attribute KEEP of \deci_low.doa_wr_delay_reg[0]\ : label is "yes";
-  attribute mark_debug_string : string;
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[0]\ : label is "yes";
   attribute KEEP of \deci_low.doa_wr_delay_reg[1]\ : label is "yes";
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[1]\ : label is "yes";
@@ -1199,391 +1314,198 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute mark_debug_string of \deci_low.doa_wr_delay_reg[3]\ : label is "yes";
   attribute KEEP of \deci_low.fir_resetn_reg\ : label is "yes";
   attribute KEEP of \deci_low.mux_active_reg\ : label is "yes";
-  attribute KEEP of \deci_low.raw_active_reg\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[0]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[100]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[100]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[101]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[101]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[102]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[102]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[103]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[103]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[104]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[104]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[105]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[105]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[106]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[106]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[107]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[107]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[108]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[108]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[109]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[109]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[10]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[110]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[110]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[111]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[111]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[112]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[112]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[113]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[113]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[114]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[114]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[115]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[115]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[116]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[116]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[117]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[117]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[118]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[118]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[119]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[119]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[11]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[120]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[120]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[121]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[121]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[122]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[122]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[123]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[123]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[124]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[124]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[125]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[125]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[126]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[126]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[127]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[127]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[128]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[128]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[129]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[129]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[12]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[130]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[130]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[131]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[131]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[132]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[132]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[133]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[133]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[134]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[134]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[135]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[135]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[136]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[136]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[137]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[137]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[138]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[138]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[139]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[139]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[13]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[140]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[140]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[141]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[141]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[142]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[142]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[143]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[143]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[144]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[144]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[145]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[145]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[146]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[146]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[147]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[147]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[148]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[148]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[149]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[149]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[14]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[150]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[150]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[151]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[151]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[152]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[152]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[153]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[153]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[154]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[154]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[155]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[155]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[156]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[156]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[157]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[157]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[158]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[158]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[159]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[159]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[15]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[160]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[160]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[161]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[161]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[162]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[162]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[163]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[163]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[164]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[164]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[165]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[165]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[166]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[166]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[167]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[167]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[168]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[168]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[169]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[169]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[16]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[170]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[170]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[171]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[171]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[172]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[172]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[173]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[173]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[174]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[174]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[175]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[175]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[176]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[176]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[177]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[177]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[178]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[178]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[179]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[179]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[17]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[180]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[180]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[181]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[181]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[182]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[182]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[183]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[183]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[184]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[184]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[185]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[185]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[186]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[186]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[187]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[187]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[188]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[188]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[189]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[189]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[18]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[190]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[190]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[191]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[191]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[19]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[1]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[20]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[21]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[22]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[23]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[24]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[25]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[26]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[27]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[28]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[29]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[2]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[30]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[31]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[32]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[33]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[34]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[35]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[36]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[37]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[38]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[39]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[3]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[40]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[41]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[42]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[43]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[44]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[45]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[46]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[47]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[48]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[49]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[4]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[50]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[51]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[52]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[53]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[54]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[55]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[56]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[57]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[58]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[59]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[5]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[60]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[61]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[62]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[63]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[64]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[64]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[65]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[65]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[66]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[66]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[67]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[67]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[68]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[68]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[69]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[69]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[6]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[70]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[70]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[71]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[71]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[72]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[72]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[73]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[73]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[74]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[74]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[75]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[75]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[76]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[76]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[77]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[77]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[78]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[78]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[79]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[79]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[7]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[80]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[80]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[81]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[81]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[82]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[82]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[83]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[83]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[84]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[84]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[85]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[85]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[86]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[86]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[87]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[87]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[88]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[88]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[89]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[89]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[8]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[90]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[90]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[91]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[91]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[92]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[92]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[93]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[93]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[94]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[94]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[95]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[95]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[96]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[96]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[97]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[97]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[98]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[98]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[99]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[99]\ : label is "yes";
   attribute KEEP of \deci_low.raw_data_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \deci_low.raw_data_reg[9]\ : label is "yes";
   attribute KEEP of \deci_low.raw_delay_reg[0]\ : label is "yes";
   attribute mark_debug_string of \deci_low.raw_delay_reg[0]\ : label is "yes";
   attribute KEEP of \deci_low.raw_delay_reg[10]\ : label is "yes";
@@ -1612,6 +1534,391 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute KEEP of \deci_low.raw_delay_reg[9]\ : label is "yes";
   attribute mark_debug_string of \deci_low.raw_delay_reg[9]\ : label is "yes";
   attribute KEEP of \deci_low.raw_fifo_wr_reg\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[0]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[100]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[100]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[101]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[101]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[102]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[102]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[103]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[103]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[104]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[104]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[105]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[105]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[106]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[106]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[107]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[107]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[108]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[108]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[109]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[109]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[10]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[110]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[110]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[111]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[111]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[112]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[112]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[113]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[113]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[114]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[114]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[115]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[115]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[116]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[116]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[117]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[117]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[118]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[118]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[119]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[119]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[11]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[120]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[120]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[121]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[121]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[122]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[122]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[123]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[123]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[124]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[124]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[125]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[125]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[126]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[126]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[127]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[127]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[128]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[128]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[129]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[129]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[12]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[130]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[130]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[131]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[131]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[132]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[132]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[133]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[133]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[134]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[134]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[135]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[135]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[136]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[136]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[137]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[137]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[138]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[138]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[139]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[139]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[13]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[140]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[140]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[141]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[141]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[142]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[142]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[143]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[143]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[144]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[144]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[145]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[145]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[146]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[146]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[147]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[147]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[148]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[148]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[149]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[149]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[14]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[150]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[150]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[151]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[151]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[152]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[152]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[153]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[153]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[154]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[154]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[155]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[155]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[156]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[156]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[157]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[157]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[158]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[158]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[159]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[159]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[15]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[160]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[160]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[161]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[161]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[162]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[162]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[163]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[163]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[164]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[164]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[165]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[165]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[166]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[166]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[167]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[167]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[168]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[168]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[169]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[169]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[16]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[170]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[170]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[171]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[171]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[172]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[172]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[173]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[173]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[174]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[174]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[175]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[175]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[176]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[176]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[177]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[177]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[178]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[178]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[179]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[179]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[17]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[180]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[180]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[181]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[181]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[182]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[182]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[183]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[183]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[184]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[184]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[185]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[185]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[186]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[186]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[187]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[187]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[188]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[188]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[189]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[189]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[18]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[190]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[190]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[191]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[191]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[19]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[1]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[20]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[21]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[22]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[23]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[24]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[25]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[26]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[27]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[28]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[29]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[2]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[30]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[31]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[32]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[32]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[33]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[33]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[34]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[34]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[35]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[35]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[36]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[36]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[37]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[37]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[38]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[38]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[39]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[39]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[3]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[40]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[40]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[41]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[41]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[42]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[42]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[43]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[43]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[44]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[44]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[45]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[45]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[46]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[46]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[47]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[47]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[48]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[48]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[49]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[49]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[4]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[50]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[50]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[51]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[51]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[52]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[52]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[53]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[53]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[54]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[54]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[55]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[55]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[56]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[56]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[57]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[57]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[58]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[58]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[59]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[59]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[5]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[60]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[60]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[61]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[61]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[62]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[62]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[63]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[63]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[64]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[64]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[65]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[65]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[66]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[66]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[67]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[67]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[68]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[68]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[69]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[69]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[6]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[70]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[70]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[71]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[71]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[72]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[72]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[73]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[73]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[74]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[74]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[75]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[75]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[76]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[76]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[77]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[77]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[78]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[78]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[79]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[79]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[7]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[80]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[80]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[81]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[81]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[82]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[82]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[83]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[83]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[84]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[84]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[85]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[85]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[86]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[86]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[87]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[87]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[88]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[88]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[89]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[89]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[8]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[90]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[90]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[91]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[91]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[92]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[92]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[93]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[93]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[94]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[94]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[95]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[95]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[96]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[96]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[97]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[97]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[98]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[98]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[99]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[99]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_in_data_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \deci_low.raw_in_data_reg[9]\ : label is "yes";
+  attribute KEEP of \deci_low.raw_out_rd_reg\ : label is "yes";
   attribute KEEP of \deci_low.raw_ready_reg\ : label is "yes";
   attribute KEEP of \deci_low.raw_wr_delay_reg[0]\ : label is "yes";
   attribute mark_debug_string of \deci_low.raw_wr_delay_reg[0]\ : label is "yes";
@@ -1630,12 +1937,11 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute mark_debug_string of \deci_low.reset_delay_reg[1]\ : label is "yes";
   attribute KEEP of \deci_low.reset_delay_reg[2]\ : label is "yes";
   attribute mark_debug_string of \deci_low.reset_delay_reg[2]\ : label is "yes";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \deci_low.sim_curr_wr_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair3";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_doa_i : label is "fifo_doa_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -1691,7 +1997,7 @@ begin
 \deci_low.doa_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(0),
       Q => \^doa_data\(0),
       R => '0'
@@ -1699,7 +2005,7 @@ begin
 \deci_low.doa_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(10),
       Q => \^doa_data\(10),
       R => '0'
@@ -1707,7 +2013,7 @@ begin
 \deci_low.doa_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(11),
       Q => \^doa_data\(11),
       R => '0'
@@ -1715,7 +2021,7 @@ begin
 \deci_low.doa_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(12),
       Q => \^doa_data\(12),
       R => '0'
@@ -1723,7 +2029,7 @@ begin
 \deci_low.doa_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(13),
       Q => \^doa_data\(13),
       R => '0'
@@ -1731,7 +2037,7 @@ begin
 \deci_low.doa_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(14),
       Q => \^doa_data\(14),
       R => '0'
@@ -1739,7 +2045,7 @@ begin
 \deci_low.doa_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(15),
       Q => \^doa_data\(15),
       R => '0'
@@ -1747,7 +2053,7 @@ begin
 \deci_low.doa_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(16),
       Q => \^doa_data\(16),
       R => '0'
@@ -1755,7 +2061,7 @@ begin
 \deci_low.doa_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(17),
       Q => \^doa_data\(17),
       R => '0'
@@ -1763,7 +2069,7 @@ begin
 \deci_low.doa_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(18),
       Q => \^doa_data\(18),
       R => '0'
@@ -1771,7 +2077,7 @@ begin
 \deci_low.doa_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(19),
       Q => \^doa_data\(19),
       R => '0'
@@ -1779,7 +2085,7 @@ begin
 \deci_low.doa_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(1),
       Q => \^doa_data\(1),
       R => '0'
@@ -1787,7 +2093,7 @@ begin
 \deci_low.doa_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(20),
       Q => \^doa_data\(20),
       R => '0'
@@ -1795,7 +2101,7 @@ begin
 \deci_low.doa_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(21),
       Q => \^doa_data\(21),
       R => '0'
@@ -1803,7 +2109,7 @@ begin
 \deci_low.doa_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(22),
       Q => \^doa_data\(22),
       R => '0'
@@ -1811,7 +2117,7 @@ begin
 \deci_low.doa_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(23),
       Q => \^doa_data\(23),
       R => '0'
@@ -1819,7 +2125,7 @@ begin
 \deci_low.doa_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(24),
       Q => \^doa_data\(24),
       R => '0'
@@ -1827,7 +2133,7 @@ begin
 \deci_low.doa_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(25),
       Q => \^doa_data\(25),
       R => '0'
@@ -1835,7 +2141,7 @@ begin
 \deci_low.doa_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(26),
       Q => \^doa_data\(26),
       R => '0'
@@ -1843,7 +2149,7 @@ begin
 \deci_low.doa_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(27),
       Q => \^doa_data\(27),
       R => '0'
@@ -1851,7 +2157,7 @@ begin
 \deci_low.doa_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(28),
       Q => \^doa_data\(28),
       R => '0'
@@ -1859,7 +2165,7 @@ begin
 \deci_low.doa_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(29),
       Q => \^doa_data\(29),
       R => '0'
@@ -1867,7 +2173,7 @@ begin
 \deci_low.doa_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(2),
       Q => \^doa_data\(2),
       R => '0'
@@ -1875,7 +2181,7 @@ begin
 \deci_low.doa_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(30),
       Q => \^doa_data\(30),
       R => '0'
@@ -1883,7 +2189,7 @@ begin
 \deci_low.doa_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(31),
       Q => \^doa_data\(31),
       R => '0'
@@ -1891,7 +2197,7 @@ begin
 \deci_low.doa_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(32),
       Q => \^doa_data\(32),
       R => '0'
@@ -1899,7 +2205,7 @@ begin
 \deci_low.doa_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(33),
       Q => \^doa_data\(33),
       R => '0'
@@ -1907,7 +2213,7 @@ begin
 \deci_low.doa_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(34),
       Q => \^doa_data\(34),
       R => '0'
@@ -1915,7 +2221,7 @@ begin
 \deci_low.doa_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(35),
       Q => \^doa_data\(35),
       R => '0'
@@ -1923,7 +2229,7 @@ begin
 \deci_low.doa_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(36),
       Q => \^doa_data\(36),
       R => '0'
@@ -1931,7 +2237,7 @@ begin
 \deci_low.doa_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(37),
       Q => \^doa_data\(37),
       R => '0'
@@ -1939,7 +2245,7 @@ begin
 \deci_low.doa_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(38),
       Q => \^doa_data\(38),
       R => '0'
@@ -1947,7 +2253,7 @@ begin
 \deci_low.doa_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(39),
       Q => \^doa_data\(39),
       R => '0'
@@ -1955,7 +2261,7 @@ begin
 \deci_low.doa_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(3),
       Q => \^doa_data\(3),
       R => '0'
@@ -1963,7 +2269,7 @@ begin
 \deci_low.doa_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(40),
       Q => \^doa_data\(40),
       R => '0'
@@ -1971,7 +2277,7 @@ begin
 \deci_low.doa_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(41),
       Q => \^doa_data\(41),
       R => '0'
@@ -1979,7 +2285,7 @@ begin
 \deci_low.doa_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(42),
       Q => \^doa_data\(42),
       R => '0'
@@ -1987,7 +2293,7 @@ begin
 \deci_low.doa_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(43),
       Q => \^doa_data\(43),
       R => '0'
@@ -1995,7 +2301,7 @@ begin
 \deci_low.doa_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(44),
       Q => \^doa_data\(44),
       R => '0'
@@ -2003,7 +2309,7 @@ begin
 \deci_low.doa_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(45),
       Q => \^doa_data\(45),
       R => '0'
@@ -2011,7 +2317,7 @@ begin
 \deci_low.doa_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(46),
       Q => \^doa_data\(46),
       R => '0'
@@ -2019,7 +2325,7 @@ begin
 \deci_low.doa_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(47),
       Q => \^doa_data\(47),
       R => '0'
@@ -2027,7 +2333,7 @@ begin
 \deci_low.doa_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(4),
       Q => \^doa_data\(4),
       R => '0'
@@ -2035,7 +2341,7 @@ begin
 \deci_low.doa_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(5),
       Q => \^doa_data\(5),
       R => '0'
@@ -2043,7 +2349,7 @@ begin
 \deci_low.doa_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(6),
       Q => \^doa_data\(6),
       R => '0'
@@ -2051,7 +2357,7 @@ begin
 \deci_low.doa_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(7),
       Q => \^doa_data\(7),
       R => '0'
@@ -2059,7 +2365,7 @@ begin
 \deci_low.doa_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(8),
       Q => \^doa_data\(8),
       R => '0'
@@ -2067,7 +2373,7 @@ begin
 \deci_low.doa_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
-      CE => fifo_doa_i_i_1_n_0,
+      CE => '1',
       D => doa_out_data(9),
       Q => \^doa_data\(9),
       R => '0'
@@ -2093,407 +2399,1023 @@ begin
       Q => doa_fifo_wr,
       R => '0'
     );
-\deci_low.doa_in_data[47]_i_1\: unisim.vcomponents.LUT5
+\deci_low.doa_in_data[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"57555554"
+      INIT => X"EF40"
     )
         port map (
-      I0 => mux_active,
-      I1 => doa_wr_delay(1),
-      I2 => doa_wr_delay(0),
-      I3 => doa_wr_delay(3),
-      I4 => doa_wr_delay(2),
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(0),
+      I2 => mux_active,
+      I3 => doa_N(0),
+      O => \deci_low.doa_in_data[0]_i_1_n_0\
+    );
+\deci_low.doa_in_data[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(10),
+      I2 => mux_active,
+      I3 => doa_N(10),
+      O => \deci_low.doa_in_data[10]_i_1_n_0\
+    );
+\deci_low.doa_in_data[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(11),
+      I2 => mux_active,
+      I3 => doa_N(11),
+      O => \deci_low.doa_in_data[11]_i_1_n_0\
+    );
+\deci_low.doa_in_data[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(12),
+      I2 => mux_active,
+      I3 => doa_N(12),
+      O => \deci_low.doa_in_data[12]_i_1_n_0\
+    );
+\deci_low.doa_in_data[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(13),
+      I2 => mux_active,
+      I3 => doa_N(13),
+      O => \deci_low.doa_in_data[13]_i_1_n_0\
+    );
+\deci_low.doa_in_data[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(14),
+      I2 => mux_active,
+      I3 => doa_N(14),
+      O => \deci_low.doa_in_data[14]_i_1_n_0\
+    );
+\deci_low.doa_in_data[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(15),
+      I2 => mux_active,
+      I3 => doa_N(15),
+      O => \deci_low.doa_in_data[15]_i_1_n_0\
+    );
+\deci_low.doa_in_data[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(16),
+      I2 => mux_active,
+      I3 => doa_E(0),
+      O => \deci_low.doa_in_data[16]_i_1_n_0\
+    );
+\deci_low.doa_in_data[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(17),
+      I2 => mux_active,
+      I3 => doa_E(1),
+      O => \deci_low.doa_in_data[17]_i_1_n_0\
+    );
+\deci_low.doa_in_data[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(18),
+      I2 => mux_active,
+      I3 => doa_E(2),
+      O => \deci_low.doa_in_data[18]_i_1_n_0\
+    );
+\deci_low.doa_in_data[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(19),
+      I2 => mux_active,
+      I3 => doa_E(3),
+      O => \deci_low.doa_in_data[19]_i_1_n_0\
+    );
+\deci_low.doa_in_data[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(1),
+      I2 => mux_active,
+      I3 => doa_N(1),
+      O => \deci_low.doa_in_data[1]_i_1_n_0\
+    );
+\deci_low.doa_in_data[20]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(20),
+      I2 => mux_active,
+      I3 => doa_E(4),
+      O => \deci_low.doa_in_data[20]_i_1_n_0\
+    );
+\deci_low.doa_in_data[21]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(21),
+      I2 => mux_active,
+      I3 => doa_E(5),
+      O => \deci_low.doa_in_data[21]_i_1_n_0\
+    );
+\deci_low.doa_in_data[22]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(22),
+      I2 => mux_active,
+      I3 => doa_E(6),
+      O => \deci_low.doa_in_data[22]_i_1_n_0\
+    );
+\deci_low.doa_in_data[23]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(23),
+      I2 => mux_active,
+      I3 => doa_E(7),
+      O => \deci_low.doa_in_data[23]_i_1_n_0\
+    );
+\deci_low.doa_in_data[24]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(24),
+      I2 => mux_active,
+      I3 => doa_E(8),
+      O => \deci_low.doa_in_data[24]_i_1_n_0\
+    );
+\deci_low.doa_in_data[25]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(25),
+      I2 => mux_active,
+      I3 => doa_E(9),
+      O => \deci_low.doa_in_data[25]_i_1_n_0\
+    );
+\deci_low.doa_in_data[26]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(26),
+      I2 => mux_active,
+      I3 => doa_E(10),
+      O => \deci_low.doa_in_data[26]_i_1_n_0\
+    );
+\deci_low.doa_in_data[27]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(27),
+      I2 => mux_active,
+      I3 => doa_E(11),
+      O => \deci_low.doa_in_data[27]_i_1_n_0\
+    );
+\deci_low.doa_in_data[28]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(28),
+      I2 => mux_active,
+      I3 => doa_E(12),
+      O => \deci_low.doa_in_data[28]_i_1_n_0\
+    );
+\deci_low.doa_in_data[29]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(29),
+      I2 => mux_active,
+      I3 => doa_E(13),
+      O => \deci_low.doa_in_data[29]_i_1_n_0\
+    );
+\deci_low.doa_in_data[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(2),
+      I2 => mux_active,
+      I3 => doa_N(2),
+      O => \deci_low.doa_in_data[2]_i_1_n_0\
+    );
+\deci_low.doa_in_data[30]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(30),
+      I2 => mux_active,
+      I3 => doa_E(14),
+      O => \deci_low.doa_in_data[30]_i_1_n_0\
+    );
+\deci_low.doa_in_data[31]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(31),
+      I2 => mux_active,
+      I3 => doa_E(15),
+      O => \deci_low.doa_in_data[31]_i_1_n_0\
+    );
+\deci_low.doa_in_data[32]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(32),
+      I2 => mux_active,
+      I3 => doa_W(0),
+      O => \deci_low.doa_in_data[32]_i_1_n_0\
+    );
+\deci_low.doa_in_data[33]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(33),
+      I2 => mux_active,
+      I3 => doa_W(1),
+      O => \deci_low.doa_in_data[33]_i_1_n_0\
+    );
+\deci_low.doa_in_data[34]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(34),
+      I2 => mux_active,
+      I3 => doa_W(2),
+      O => \deci_low.doa_in_data[34]_i_1_n_0\
+    );
+\deci_low.doa_in_data[35]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(35),
+      I2 => mux_active,
+      I3 => doa_W(3),
+      O => \deci_low.doa_in_data[35]_i_1_n_0\
+    );
+\deci_low.doa_in_data[36]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(36),
+      I2 => mux_active,
+      I3 => doa_W(4),
+      O => \deci_low.doa_in_data[36]_i_1_n_0\
+    );
+\deci_low.doa_in_data[37]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(37),
+      I2 => mux_active,
+      I3 => doa_W(5),
+      O => \deci_low.doa_in_data[37]_i_1_n_0\
+    );
+\deci_low.doa_in_data[38]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(38),
+      I2 => mux_active,
+      I3 => doa_W(6),
+      O => \deci_low.doa_in_data[38]_i_1_n_0\
+    );
+\deci_low.doa_in_data[39]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(39),
+      I2 => mux_active,
+      I3 => doa_W(7),
+      O => \deci_low.doa_in_data[39]_i_1_n_0\
+    );
+\deci_low.doa_in_data[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(3),
+      I2 => mux_active,
+      I3 => doa_N(3),
+      O => \deci_low.doa_in_data[3]_i_1_n_0\
+    );
+\deci_low.doa_in_data[40]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(40),
+      I2 => mux_active,
+      I3 => doa_W(8),
+      O => \deci_low.doa_in_data[40]_i_1_n_0\
+    );
+\deci_low.doa_in_data[41]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(41),
+      I2 => mux_active,
+      I3 => doa_W(9),
+      O => \deci_low.doa_in_data[41]_i_1_n_0\
+    );
+\deci_low.doa_in_data[42]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(42),
+      I2 => mux_active,
+      I3 => doa_W(10),
+      O => \deci_low.doa_in_data[42]_i_1_n_0\
+    );
+\deci_low.doa_in_data[43]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(43),
+      I2 => mux_active,
+      I3 => doa_W(11),
+      O => \deci_low.doa_in_data[43]_i_1_n_0\
+    );
+\deci_low.doa_in_data[44]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(44),
+      I2 => mux_active,
+      I3 => doa_W(12),
+      O => \deci_low.doa_in_data[44]_i_1_n_0\
+    );
+\deci_low.doa_in_data[45]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(45),
+      I2 => mux_active,
+      I3 => doa_W(13),
+      O => \deci_low.doa_in_data[45]_i_1_n_0\
+    );
+\deci_low.doa_in_data[46]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(46),
+      I2 => mux_active,
+      I3 => doa_W(14),
+      O => \deci_low.doa_in_data[46]_i_1_n_0\
+    );
+\deci_low.doa_in_data[47]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(47),
+      I2 => mux_active,
+      I3 => doa_W(15),
       O => \deci_low.doa_in_data[47]_i_1_n_0\
+    );
+\deci_low.doa_in_data[47]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => doa_wr_delay(1),
+      I1 => doa_wr_delay(0),
+      I2 => doa_wr_delay(3),
+      I3 => doa_wr_delay(2),
+      O => \deci_low.doa_in_data[47]_i_2_n_0\
+    );
+\deci_low.doa_in_data[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(4),
+      I2 => mux_active,
+      I3 => doa_N(4),
+      O => \deci_low.doa_in_data[4]_i_1_n_0\
+    );
+\deci_low.doa_in_data[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(5),
+      I2 => mux_active,
+      I3 => doa_N(5),
+      O => \deci_low.doa_in_data[5]_i_1_n_0\
+    );
+\deci_low.doa_in_data[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(6),
+      I2 => mux_active,
+      I3 => doa_N(6),
+      O => \deci_low.doa_in_data[6]_i_1_n_0\
+    );
+\deci_low.doa_in_data[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(7),
+      I2 => mux_active,
+      I3 => doa_N(7),
+      O => \deci_low.doa_in_data[7]_i_1_n_0\
+    );
+\deci_low.doa_in_data[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(8),
+      I2 => mux_active,
+      I3 => doa_N(8),
+      O => \deci_low.doa_in_data[8]_i_1_n_0\
+    );
+\deci_low.doa_in_data[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.doa_in_data[47]_i_2_n_0\,
+      I1 => doa_in_data(9),
+      I2 => mux_active,
+      I3 => doa_N(9),
+      O => \deci_low.doa_in_data[9]_i_1_n_0\
     );
 \deci_low.doa_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(0),
-      Q => \deci_low.doa_in_data_reg_n_0_[0]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[0]_i_1_n_0\,
+      Q => doa_in_data(0),
       R => '0'
     );
 \deci_low.doa_in_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(10),
-      Q => \deci_low.doa_in_data_reg_n_0_[10]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[10]_i_1_n_0\,
+      Q => doa_in_data(10),
       R => '0'
     );
 \deci_low.doa_in_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(11),
-      Q => \deci_low.doa_in_data_reg_n_0_[11]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[11]_i_1_n_0\,
+      Q => doa_in_data(11),
       R => '0'
     );
 \deci_low.doa_in_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(12),
-      Q => \deci_low.doa_in_data_reg_n_0_[12]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[12]_i_1_n_0\,
+      Q => doa_in_data(12),
       R => '0'
     );
 \deci_low.doa_in_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(13),
-      Q => \deci_low.doa_in_data_reg_n_0_[13]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[13]_i_1_n_0\,
+      Q => doa_in_data(13),
       R => '0'
     );
 \deci_low.doa_in_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(14),
-      Q => \deci_low.doa_in_data_reg_n_0_[14]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[14]_i_1_n_0\,
+      Q => doa_in_data(14),
       R => '0'
     );
 \deci_low.doa_in_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(15),
-      Q => \deci_low.doa_in_data_reg_n_0_[15]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[15]_i_1_n_0\,
+      Q => doa_in_data(15),
       R => '0'
     );
 \deci_low.doa_in_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(0),
-      Q => \deci_low.doa_in_data_reg_n_0_[16]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[16]_i_1_n_0\,
+      Q => doa_in_data(16),
       R => '0'
     );
 \deci_low.doa_in_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(1),
-      Q => \deci_low.doa_in_data_reg_n_0_[17]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[17]_i_1_n_0\,
+      Q => doa_in_data(17),
       R => '0'
     );
 \deci_low.doa_in_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(2),
-      Q => \deci_low.doa_in_data_reg_n_0_[18]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[18]_i_1_n_0\,
+      Q => doa_in_data(18),
       R => '0'
     );
 \deci_low.doa_in_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(3),
-      Q => \deci_low.doa_in_data_reg_n_0_[19]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[19]_i_1_n_0\,
+      Q => doa_in_data(19),
       R => '0'
     );
 \deci_low.doa_in_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(1),
-      Q => \deci_low.doa_in_data_reg_n_0_[1]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[1]_i_1_n_0\,
+      Q => doa_in_data(1),
       R => '0'
     );
 \deci_low.doa_in_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(4),
-      Q => \deci_low.doa_in_data_reg_n_0_[20]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[20]_i_1_n_0\,
+      Q => doa_in_data(20),
       R => '0'
     );
 \deci_low.doa_in_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(5),
-      Q => \deci_low.doa_in_data_reg_n_0_[21]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[21]_i_1_n_0\,
+      Q => doa_in_data(21),
       R => '0'
     );
 \deci_low.doa_in_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(6),
-      Q => \deci_low.doa_in_data_reg_n_0_[22]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[22]_i_1_n_0\,
+      Q => doa_in_data(22),
       R => '0'
     );
 \deci_low.doa_in_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(7),
-      Q => \deci_low.doa_in_data_reg_n_0_[23]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[23]_i_1_n_0\,
+      Q => doa_in_data(23),
       R => '0'
     );
 \deci_low.doa_in_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(8),
-      Q => \deci_low.doa_in_data_reg_n_0_[24]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[24]_i_1_n_0\,
+      Q => doa_in_data(24),
       R => '0'
     );
 \deci_low.doa_in_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(9),
-      Q => \deci_low.doa_in_data_reg_n_0_[25]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[25]_i_1_n_0\,
+      Q => doa_in_data(25),
       R => '0'
     );
 \deci_low.doa_in_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(10),
-      Q => \deci_low.doa_in_data_reg_n_0_[26]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[26]_i_1_n_0\,
+      Q => doa_in_data(26),
       R => '0'
     );
 \deci_low.doa_in_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(11),
-      Q => \deci_low.doa_in_data_reg_n_0_[27]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[27]_i_1_n_0\,
+      Q => doa_in_data(27),
       R => '0'
     );
 \deci_low.doa_in_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(12),
-      Q => \deci_low.doa_in_data_reg_n_0_[28]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[28]_i_1_n_0\,
+      Q => doa_in_data(28),
       R => '0'
     );
 \deci_low.doa_in_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(13),
-      Q => \deci_low.doa_in_data_reg_n_0_[29]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[29]_i_1_n_0\,
+      Q => doa_in_data(29),
       R => '0'
     );
 \deci_low.doa_in_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(2),
-      Q => \deci_low.doa_in_data_reg_n_0_[2]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[2]_i_1_n_0\,
+      Q => doa_in_data(2),
       R => '0'
     );
 \deci_low.doa_in_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(14),
-      Q => \deci_low.doa_in_data_reg_n_0_[30]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[30]_i_1_n_0\,
+      Q => doa_in_data(30),
       R => '0'
     );
 \deci_low.doa_in_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_E(15),
-      Q => \deci_low.doa_in_data_reg_n_0_[31]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[31]_i_1_n_0\,
+      Q => doa_in_data(31),
       R => '0'
     );
 \deci_low.doa_in_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(0),
-      Q => \deci_low.doa_in_data_reg_n_0_[32]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[32]_i_1_n_0\,
+      Q => doa_in_data(32),
       R => '0'
     );
 \deci_low.doa_in_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(1),
-      Q => \deci_low.doa_in_data_reg_n_0_[33]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[33]_i_1_n_0\,
+      Q => doa_in_data(33),
       R => '0'
     );
 \deci_low.doa_in_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(2),
-      Q => \deci_low.doa_in_data_reg_n_0_[34]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[34]_i_1_n_0\,
+      Q => doa_in_data(34),
       R => '0'
     );
 \deci_low.doa_in_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(3),
-      Q => \deci_low.doa_in_data_reg_n_0_[35]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[35]_i_1_n_0\,
+      Q => doa_in_data(35),
       R => '0'
     );
 \deci_low.doa_in_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(4),
-      Q => \deci_low.doa_in_data_reg_n_0_[36]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[36]_i_1_n_0\,
+      Q => doa_in_data(36),
       R => '0'
     );
 \deci_low.doa_in_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(5),
-      Q => \deci_low.doa_in_data_reg_n_0_[37]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[37]_i_1_n_0\,
+      Q => doa_in_data(37),
       R => '0'
     );
 \deci_low.doa_in_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(6),
-      Q => \deci_low.doa_in_data_reg_n_0_[38]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[38]_i_1_n_0\,
+      Q => doa_in_data(38),
       R => '0'
     );
 \deci_low.doa_in_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(7),
-      Q => \deci_low.doa_in_data_reg_n_0_[39]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[39]_i_1_n_0\,
+      Q => doa_in_data(39),
       R => '0'
     );
 \deci_low.doa_in_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(3),
-      Q => \deci_low.doa_in_data_reg_n_0_[3]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[3]_i_1_n_0\,
+      Q => doa_in_data(3),
       R => '0'
     );
 \deci_low.doa_in_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(8),
-      Q => \deci_low.doa_in_data_reg_n_0_[40]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[40]_i_1_n_0\,
+      Q => doa_in_data(40),
       R => '0'
     );
 \deci_low.doa_in_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(9),
-      Q => \deci_low.doa_in_data_reg_n_0_[41]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[41]_i_1_n_0\,
+      Q => doa_in_data(41),
       R => '0'
     );
 \deci_low.doa_in_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(10),
-      Q => \deci_low.doa_in_data_reg_n_0_[42]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[42]_i_1_n_0\,
+      Q => doa_in_data(42),
       R => '0'
     );
 \deci_low.doa_in_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(11),
-      Q => \deci_low.doa_in_data_reg_n_0_[43]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[43]_i_1_n_0\,
+      Q => doa_in_data(43),
       R => '0'
     );
 \deci_low.doa_in_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(12),
-      Q => \deci_low.doa_in_data_reg_n_0_[44]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[44]_i_1_n_0\,
+      Q => doa_in_data(44),
       R => '0'
     );
 \deci_low.doa_in_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(13),
-      Q => \deci_low.doa_in_data_reg_n_0_[45]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[45]_i_1_n_0\,
+      Q => doa_in_data(45),
       R => '0'
     );
 \deci_low.doa_in_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(14),
-      Q => \deci_low.doa_in_data_reg_n_0_[46]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[46]_i_1_n_0\,
+      Q => doa_in_data(46),
       R => '0'
     );
 \deci_low.doa_in_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_W(15),
-      Q => \deci_low.doa_in_data_reg_n_0_[47]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[47]_i_1_n_0\,
+      Q => doa_in_data(47),
       R => '0'
     );
 \deci_low.doa_in_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(4),
-      Q => \deci_low.doa_in_data_reg_n_0_[4]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[4]_i_1_n_0\,
+      Q => doa_in_data(4),
       R => '0'
     );
 \deci_low.doa_in_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(5),
-      Q => \deci_low.doa_in_data_reg_n_0_[5]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[5]_i_1_n_0\,
+      Q => doa_in_data(5),
       R => '0'
     );
 \deci_low.doa_in_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(6),
-      Q => \deci_low.doa_in_data_reg_n_0_[6]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[6]_i_1_n_0\,
+      Q => doa_in_data(6),
       R => '0'
     );
 \deci_low.doa_in_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(7),
-      Q => \deci_low.doa_in_data_reg_n_0_[7]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[7]_i_1_n_0\,
+      Q => doa_in_data(7),
       R => '0'
     );
 \deci_low.doa_in_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(8),
-      Q => \deci_low.doa_in_data_reg_n_0_[8]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[8]_i_1_n_0\,
+      Q => doa_in_data(8),
       R => '0'
     );
 \deci_low.doa_in_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.doa_in_data[47]_i_1_n_0\,
-      D => doa_N(9),
-      Q => \deci_low.doa_in_data_reg_n_0_[9]\,
+      CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.doa_in_data[9]_i_1_n_0\,
+      Q => doa_in_data(9),
       R => '0'
+    );
+\deci_low.doa_out_rd_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => doa_fifo_empty,
+      I1 => doa_rd_delay(1),
+      I2 => doa_rd_delay(2),
+      I3 => doa_rd_delay(0),
+      O => \deci_low.doa_out_rd_i_1_n_0\
+    );
+\deci_low.doa_out_rd_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => doa_clk,
+      CE => '1',
+      D => \deci_low.doa_out_rd_i_1_n_0\,
+      Q => doa_out_rd,
+      R => '0'
+    );
+\deci_low.doa_rd_delay[0]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => doa_rd_delay(0),
+      O => doa_rd_delay0(0)
+    );
+\deci_low.doa_rd_delay[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => doa_rd_delay(0),
+      I1 => doa_rd_delay(2),
+      I2 => doa_rd_delay(1),
+      O => \deci_low.doa_rd_delay[1]_i_1_n_0\
+    );
+\deci_low.doa_rd_delay[1]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => doa_rd_delay(0),
+      I1 => doa_rd_delay(1),
+      O => \deci_low.doa_rd_delay[1]_i_2_n_0\
+    );
+\deci_low.doa_rd_delay[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C8"
+    )
+        port map (
+      I0 => doa_rd_delay(0),
+      I1 => doa_rd_delay(2),
+      I2 => doa_rd_delay(1),
+      O => \deci_low.doa_rd_delay[2]_i_1_n_0\
+    );
+\deci_low.doa_rd_delay_reg[0]\: unisim.vcomponents.FDSE
+     port map (
+      C => doa_clk,
+      CE => \deci_low.doa_rd_delay[1]_i_1_n_0\,
+      D => doa_rd_delay0(0),
+      Q => doa_rd_delay(0),
+      S => doa_fifo_empty
+    );
+\deci_low.doa_rd_delay_reg[1]\: unisim.vcomponents.FDSE
+     port map (
+      C => doa_clk,
+      CE => \deci_low.doa_rd_delay[1]_i_1_n_0\,
+      D => \deci_low.doa_rd_delay[1]_i_2_n_0\,
+      Q => doa_rd_delay(1),
+      S => doa_fifo_empty
+    );
+\deci_low.doa_rd_delay_reg[2]\: unisim.vcomponents.FDSE
+     port map (
+      C => doa_clk,
+      CE => '1',
+      D => \deci_low.doa_rd_delay[2]_i_1_n_0\,
+      Q => doa_rd_delay(2),
+      S => doa_fifo_empty
+    );
+\deci_low.doa_ready_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => doa_out_rd,
+      I1 => doa_fifo_empty,
+      O => \deci_low.doa_ready_reg0\
     );
 \deci_low.doa_ready_reg\: unisim.vcomponents.FDRE
      port map (
       C => doa_clk,
       CE => '1',
-      D => fifo_doa_i_i_1_n_0,
+      D => \deci_low.doa_ready_reg0\,
       Q => \^doa_ready\,
       R => '0'
     );
@@ -2507,7 +3429,7 @@ begin
       I2 => doa_wr_delay(1),
       I3 => doa_wr_delay(3),
       I4 => doa_wr_delay(2),
-      O => \doa_wr_delay__0\(0)
+      O => doa_wr_delay0_in(0)
     );
 \deci_low.doa_wr_delay[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -2517,7 +3439,7 @@ begin
       I0 => doa_wr_delay(0),
       I1 => doa_wr_delay(1),
       I2 => mux_active,
-      O => \doa_wr_delay__0\(1)
+      O => doa_wr_delay0_in(1)
     );
 \deci_low.doa_wr_delay[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -2528,7 +3450,7 @@ begin
       I1 => doa_wr_delay(1),
       I2 => doa_wr_delay(2),
       I3 => mux_active,
-      O => \doa_wr_delay__0\(2)
+      O => doa_wr_delay0_in(2)
     );
 \deci_low.doa_wr_delay[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -2552,13 +3474,13 @@ begin
       I2 => mux_active,
       I3 => doa_wr_delay(3),
       I4 => doa_wr_delay(2),
-      O => \doa_wr_delay__0\(3)
+      O => doa_wr_delay0_in(3)
     );
 \deci_low.doa_wr_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
-      D => \doa_wr_delay__0\(0),
+      D => doa_wr_delay0_in(0),
       Q => doa_wr_delay(0),
       R => '0'
     );
@@ -2566,7 +3488,7 @@ begin
      port map (
       C => clk,
       CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
-      D => \doa_wr_delay__0\(1),
+      D => doa_wr_delay0_in(1),
       Q => doa_wr_delay(1),
       R => '0'
     );
@@ -2574,7 +3496,7 @@ begin
      port map (
       C => clk,
       CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
-      D => \doa_wr_delay__0\(2),
+      D => doa_wr_delay0_in(2),
       Q => doa_wr_delay(2),
       R => '0'
     );
@@ -2582,7 +3504,7 @@ begin
      port map (
       C => clk,
       CE => \deci_low.doa_wr_delay[3]_i_1_n_0\,
-      D => \doa_wr_delay__0\(3),
+      D => doa_wr_delay0_in(3),
       Q => doa_wr_delay(3),
       R => '0'
     );
@@ -10305,40 +11227,10 @@ begin
       Q => mux_active,
       R => '0'
     );
-\deci_low.raw_active_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => raw_fifo_empty,
-      I1 => \deci_low.raw_delay[11]_i_4_n_0\,
-      I2 => \deci_low.raw_delay[11]_i_3_n_0\,
-      I3 => \deci_low.raw_active_i_2_n_0\,
-      O => \deci_low.raw_active_i_1_n_0\
-    );
-\deci_low.raw_active_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => raw_delay(1),
-      I1 => raw_delay(0),
-      I2 => raw_delay(3),
-      I3 => raw_delay(2),
-      O => \deci_low.raw_active_i_2_n_0\
-    );
-\deci_low.raw_active_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => raw_clk,
-      CE => '1',
-      D => \deci_low.raw_active_i_1_n_0\,
-      Q => raw_active,
-      R => '0'
-    );
 \deci_low.raw_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(0),
       Q => \^raw_data\(0),
       R => '0'
@@ -10346,7 +11238,7 @@ begin
 \deci_low.raw_data_reg[100]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(100),
       Q => \^raw_data\(100),
       R => '0'
@@ -10354,7 +11246,7 @@ begin
 \deci_low.raw_data_reg[101]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(101),
       Q => \^raw_data\(101),
       R => '0'
@@ -10362,7 +11254,7 @@ begin
 \deci_low.raw_data_reg[102]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(102),
       Q => \^raw_data\(102),
       R => '0'
@@ -10370,7 +11262,7 @@ begin
 \deci_low.raw_data_reg[103]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(103),
       Q => \^raw_data\(103),
       R => '0'
@@ -10378,7 +11270,7 @@ begin
 \deci_low.raw_data_reg[104]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(104),
       Q => \^raw_data\(104),
       R => '0'
@@ -10386,7 +11278,7 @@ begin
 \deci_low.raw_data_reg[105]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(105),
       Q => \^raw_data\(105),
       R => '0'
@@ -10394,7 +11286,7 @@ begin
 \deci_low.raw_data_reg[106]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(106),
       Q => \^raw_data\(106),
       R => '0'
@@ -10402,7 +11294,7 @@ begin
 \deci_low.raw_data_reg[107]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(107),
       Q => \^raw_data\(107),
       R => '0'
@@ -10410,7 +11302,7 @@ begin
 \deci_low.raw_data_reg[108]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(108),
       Q => \^raw_data\(108),
       R => '0'
@@ -10418,7 +11310,7 @@ begin
 \deci_low.raw_data_reg[109]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(109),
       Q => \^raw_data\(109),
       R => '0'
@@ -10426,7 +11318,7 @@ begin
 \deci_low.raw_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(10),
       Q => \^raw_data\(10),
       R => '0'
@@ -10434,7 +11326,7 @@ begin
 \deci_low.raw_data_reg[110]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(110),
       Q => \^raw_data\(110),
       R => '0'
@@ -10442,7 +11334,7 @@ begin
 \deci_low.raw_data_reg[111]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(111),
       Q => \^raw_data\(111),
       R => '0'
@@ -10450,7 +11342,7 @@ begin
 \deci_low.raw_data_reg[112]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(112),
       Q => \^raw_data\(112),
       R => '0'
@@ -10458,7 +11350,7 @@ begin
 \deci_low.raw_data_reg[113]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(113),
       Q => \^raw_data\(113),
       R => '0'
@@ -10466,7 +11358,7 @@ begin
 \deci_low.raw_data_reg[114]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(114),
       Q => \^raw_data\(114),
       R => '0'
@@ -10474,7 +11366,7 @@ begin
 \deci_low.raw_data_reg[115]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(115),
       Q => \^raw_data\(115),
       R => '0'
@@ -10482,7 +11374,7 @@ begin
 \deci_low.raw_data_reg[116]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(116),
       Q => \^raw_data\(116),
       R => '0'
@@ -10490,7 +11382,7 @@ begin
 \deci_low.raw_data_reg[117]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(117),
       Q => \^raw_data\(117),
       R => '0'
@@ -10498,7 +11390,7 @@ begin
 \deci_low.raw_data_reg[118]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(118),
       Q => \^raw_data\(118),
       R => '0'
@@ -10506,7 +11398,7 @@ begin
 \deci_low.raw_data_reg[119]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(119),
       Q => \^raw_data\(119),
       R => '0'
@@ -10514,7 +11406,7 @@ begin
 \deci_low.raw_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(11),
       Q => \^raw_data\(11),
       R => '0'
@@ -10522,7 +11414,7 @@ begin
 \deci_low.raw_data_reg[120]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(120),
       Q => \^raw_data\(120),
       R => '0'
@@ -10530,7 +11422,7 @@ begin
 \deci_low.raw_data_reg[121]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(121),
       Q => \^raw_data\(121),
       R => '0'
@@ -10538,7 +11430,7 @@ begin
 \deci_low.raw_data_reg[122]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(122),
       Q => \^raw_data\(122),
       R => '0'
@@ -10546,7 +11438,7 @@ begin
 \deci_low.raw_data_reg[123]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(123),
       Q => \^raw_data\(123),
       R => '0'
@@ -10554,7 +11446,7 @@ begin
 \deci_low.raw_data_reg[124]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(124),
       Q => \^raw_data\(124),
       R => '0'
@@ -10562,7 +11454,7 @@ begin
 \deci_low.raw_data_reg[125]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(125),
       Q => \^raw_data\(125),
       R => '0'
@@ -10570,7 +11462,7 @@ begin
 \deci_low.raw_data_reg[126]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(126),
       Q => \^raw_data\(126),
       R => '0'
@@ -10578,7 +11470,7 @@ begin
 \deci_low.raw_data_reg[127]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(127),
       Q => \^raw_data\(127),
       R => '0'
@@ -10586,7 +11478,7 @@ begin
 \deci_low.raw_data_reg[128]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(128),
       Q => \^raw_data\(128),
       R => '0'
@@ -10594,7 +11486,7 @@ begin
 \deci_low.raw_data_reg[129]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(129),
       Q => \^raw_data\(129),
       R => '0'
@@ -10602,7 +11494,7 @@ begin
 \deci_low.raw_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(12),
       Q => \^raw_data\(12),
       R => '0'
@@ -10610,7 +11502,7 @@ begin
 \deci_low.raw_data_reg[130]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(130),
       Q => \^raw_data\(130),
       R => '0'
@@ -10618,7 +11510,7 @@ begin
 \deci_low.raw_data_reg[131]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(131),
       Q => \^raw_data\(131),
       R => '0'
@@ -10626,7 +11518,7 @@ begin
 \deci_low.raw_data_reg[132]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(132),
       Q => \^raw_data\(132),
       R => '0'
@@ -10634,7 +11526,7 @@ begin
 \deci_low.raw_data_reg[133]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(133),
       Q => \^raw_data\(133),
       R => '0'
@@ -10642,7 +11534,7 @@ begin
 \deci_low.raw_data_reg[134]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(134),
       Q => \^raw_data\(134),
       R => '0'
@@ -10650,7 +11542,7 @@ begin
 \deci_low.raw_data_reg[135]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(135),
       Q => \^raw_data\(135),
       R => '0'
@@ -10658,7 +11550,7 @@ begin
 \deci_low.raw_data_reg[136]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(136),
       Q => \^raw_data\(136),
       R => '0'
@@ -10666,7 +11558,7 @@ begin
 \deci_low.raw_data_reg[137]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(137),
       Q => \^raw_data\(137),
       R => '0'
@@ -10674,7 +11566,7 @@ begin
 \deci_low.raw_data_reg[138]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(138),
       Q => \^raw_data\(138),
       R => '0'
@@ -10682,7 +11574,7 @@ begin
 \deci_low.raw_data_reg[139]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(139),
       Q => \^raw_data\(139),
       R => '0'
@@ -10690,7 +11582,7 @@ begin
 \deci_low.raw_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(13),
       Q => \^raw_data\(13),
       R => '0'
@@ -10698,7 +11590,7 @@ begin
 \deci_low.raw_data_reg[140]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(140),
       Q => \^raw_data\(140),
       R => '0'
@@ -10706,7 +11598,7 @@ begin
 \deci_low.raw_data_reg[141]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(141),
       Q => \^raw_data\(141),
       R => '0'
@@ -10714,7 +11606,7 @@ begin
 \deci_low.raw_data_reg[142]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(142),
       Q => \^raw_data\(142),
       R => '0'
@@ -10722,7 +11614,7 @@ begin
 \deci_low.raw_data_reg[143]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(143),
       Q => \^raw_data\(143),
       R => '0'
@@ -10730,7 +11622,7 @@ begin
 \deci_low.raw_data_reg[144]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(144),
       Q => \^raw_data\(144),
       R => '0'
@@ -10738,7 +11630,7 @@ begin
 \deci_low.raw_data_reg[145]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(145),
       Q => \^raw_data\(145),
       R => '0'
@@ -10746,7 +11638,7 @@ begin
 \deci_low.raw_data_reg[146]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(146),
       Q => \^raw_data\(146),
       R => '0'
@@ -10754,7 +11646,7 @@ begin
 \deci_low.raw_data_reg[147]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(147),
       Q => \^raw_data\(147),
       R => '0'
@@ -10762,7 +11654,7 @@ begin
 \deci_low.raw_data_reg[148]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(148),
       Q => \^raw_data\(148),
       R => '0'
@@ -10770,7 +11662,7 @@ begin
 \deci_low.raw_data_reg[149]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(149),
       Q => \^raw_data\(149),
       R => '0'
@@ -10778,7 +11670,7 @@ begin
 \deci_low.raw_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(14),
       Q => \^raw_data\(14),
       R => '0'
@@ -10786,7 +11678,7 @@ begin
 \deci_low.raw_data_reg[150]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(150),
       Q => \^raw_data\(150),
       R => '0'
@@ -10794,7 +11686,7 @@ begin
 \deci_low.raw_data_reg[151]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(151),
       Q => \^raw_data\(151),
       R => '0'
@@ -10802,7 +11694,7 @@ begin
 \deci_low.raw_data_reg[152]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(152),
       Q => \^raw_data\(152),
       R => '0'
@@ -10810,7 +11702,7 @@ begin
 \deci_low.raw_data_reg[153]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(153),
       Q => \^raw_data\(153),
       R => '0'
@@ -10818,7 +11710,7 @@ begin
 \deci_low.raw_data_reg[154]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(154),
       Q => \^raw_data\(154),
       R => '0'
@@ -10826,7 +11718,7 @@ begin
 \deci_low.raw_data_reg[155]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(155),
       Q => \^raw_data\(155),
       R => '0'
@@ -10834,7 +11726,7 @@ begin
 \deci_low.raw_data_reg[156]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(156),
       Q => \^raw_data\(156),
       R => '0'
@@ -10842,7 +11734,7 @@ begin
 \deci_low.raw_data_reg[157]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(157),
       Q => \^raw_data\(157),
       R => '0'
@@ -10850,7 +11742,7 @@ begin
 \deci_low.raw_data_reg[158]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(158),
       Q => \^raw_data\(158),
       R => '0'
@@ -10858,7 +11750,7 @@ begin
 \deci_low.raw_data_reg[159]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(159),
       Q => \^raw_data\(159),
       R => '0'
@@ -10866,7 +11758,7 @@ begin
 \deci_low.raw_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(15),
       Q => \^raw_data\(15),
       R => '0'
@@ -10874,7 +11766,7 @@ begin
 \deci_low.raw_data_reg[160]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(160),
       Q => \^raw_data\(160),
       R => '0'
@@ -10882,7 +11774,7 @@ begin
 \deci_low.raw_data_reg[161]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(161),
       Q => \^raw_data\(161),
       R => '0'
@@ -10890,7 +11782,7 @@ begin
 \deci_low.raw_data_reg[162]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(162),
       Q => \^raw_data\(162),
       R => '0'
@@ -10898,7 +11790,7 @@ begin
 \deci_low.raw_data_reg[163]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(163),
       Q => \^raw_data\(163),
       R => '0'
@@ -10906,7 +11798,7 @@ begin
 \deci_low.raw_data_reg[164]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(164),
       Q => \^raw_data\(164),
       R => '0'
@@ -10914,7 +11806,7 @@ begin
 \deci_low.raw_data_reg[165]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(165),
       Q => \^raw_data\(165),
       R => '0'
@@ -10922,7 +11814,7 @@ begin
 \deci_low.raw_data_reg[166]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(166),
       Q => \^raw_data\(166),
       R => '0'
@@ -10930,7 +11822,7 @@ begin
 \deci_low.raw_data_reg[167]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(167),
       Q => \^raw_data\(167),
       R => '0'
@@ -10938,7 +11830,7 @@ begin
 \deci_low.raw_data_reg[168]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(168),
       Q => \^raw_data\(168),
       R => '0'
@@ -10946,7 +11838,7 @@ begin
 \deci_low.raw_data_reg[169]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(169),
       Q => \^raw_data\(169),
       R => '0'
@@ -10954,7 +11846,7 @@ begin
 \deci_low.raw_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(16),
       Q => \^raw_data\(16),
       R => '0'
@@ -10962,7 +11854,7 @@ begin
 \deci_low.raw_data_reg[170]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(170),
       Q => \^raw_data\(170),
       R => '0'
@@ -10970,7 +11862,7 @@ begin
 \deci_low.raw_data_reg[171]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(171),
       Q => \^raw_data\(171),
       R => '0'
@@ -10978,7 +11870,7 @@ begin
 \deci_low.raw_data_reg[172]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(172),
       Q => \^raw_data\(172),
       R => '0'
@@ -10986,7 +11878,7 @@ begin
 \deci_low.raw_data_reg[173]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(173),
       Q => \^raw_data\(173),
       R => '0'
@@ -10994,7 +11886,7 @@ begin
 \deci_low.raw_data_reg[174]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(174),
       Q => \^raw_data\(174),
       R => '0'
@@ -11002,7 +11894,7 @@ begin
 \deci_low.raw_data_reg[175]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(175),
       Q => \^raw_data\(175),
       R => '0'
@@ -11010,7 +11902,7 @@ begin
 \deci_low.raw_data_reg[176]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(176),
       Q => \^raw_data\(176),
       R => '0'
@@ -11018,7 +11910,7 @@ begin
 \deci_low.raw_data_reg[177]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(177),
       Q => \^raw_data\(177),
       R => '0'
@@ -11026,7 +11918,7 @@ begin
 \deci_low.raw_data_reg[178]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(178),
       Q => \^raw_data\(178),
       R => '0'
@@ -11034,7 +11926,7 @@ begin
 \deci_low.raw_data_reg[179]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(179),
       Q => \^raw_data\(179),
       R => '0'
@@ -11042,7 +11934,7 @@ begin
 \deci_low.raw_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(17),
       Q => \^raw_data\(17),
       R => '0'
@@ -11050,7 +11942,7 @@ begin
 \deci_low.raw_data_reg[180]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(180),
       Q => \^raw_data\(180),
       R => '0'
@@ -11058,7 +11950,7 @@ begin
 \deci_low.raw_data_reg[181]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(181),
       Q => \^raw_data\(181),
       R => '0'
@@ -11066,7 +11958,7 @@ begin
 \deci_low.raw_data_reg[182]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(182),
       Q => \^raw_data\(182),
       R => '0'
@@ -11074,7 +11966,7 @@ begin
 \deci_low.raw_data_reg[183]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(183),
       Q => \^raw_data\(183),
       R => '0'
@@ -11082,7 +11974,7 @@ begin
 \deci_low.raw_data_reg[184]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(184),
       Q => \^raw_data\(184),
       R => '0'
@@ -11090,7 +11982,7 @@ begin
 \deci_low.raw_data_reg[185]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(185),
       Q => \^raw_data\(185),
       R => '0'
@@ -11098,7 +11990,7 @@ begin
 \deci_low.raw_data_reg[186]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(186),
       Q => \^raw_data\(186),
       R => '0'
@@ -11106,7 +11998,7 @@ begin
 \deci_low.raw_data_reg[187]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(187),
       Q => \^raw_data\(187),
       R => '0'
@@ -11114,7 +12006,7 @@ begin
 \deci_low.raw_data_reg[188]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(188),
       Q => \^raw_data\(188),
       R => '0'
@@ -11122,7 +12014,7 @@ begin
 \deci_low.raw_data_reg[189]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(189),
       Q => \^raw_data\(189),
       R => '0'
@@ -11130,7 +12022,7 @@ begin
 \deci_low.raw_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(18),
       Q => \^raw_data\(18),
       R => '0'
@@ -11138,7 +12030,7 @@ begin
 \deci_low.raw_data_reg[190]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(190),
       Q => \^raw_data\(190),
       R => '0'
@@ -11146,7 +12038,7 @@ begin
 \deci_low.raw_data_reg[191]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(191),
       Q => \^raw_data\(191),
       R => '0'
@@ -11154,7 +12046,7 @@ begin
 \deci_low.raw_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(19),
       Q => \^raw_data\(19),
       R => '0'
@@ -11162,7 +12054,7 @@ begin
 \deci_low.raw_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(1),
       Q => \^raw_data\(1),
       R => '0'
@@ -11170,7 +12062,7 @@ begin
 \deci_low.raw_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(20),
       Q => \^raw_data\(20),
       R => '0'
@@ -11178,7 +12070,7 @@ begin
 \deci_low.raw_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(21),
       Q => \^raw_data\(21),
       R => '0'
@@ -11186,7 +12078,7 @@ begin
 \deci_low.raw_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(22),
       Q => \^raw_data\(22),
       R => '0'
@@ -11194,7 +12086,7 @@ begin
 \deci_low.raw_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(23),
       Q => \^raw_data\(23),
       R => '0'
@@ -11202,7 +12094,7 @@ begin
 \deci_low.raw_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(24),
       Q => \^raw_data\(24),
       R => '0'
@@ -11210,7 +12102,7 @@ begin
 \deci_low.raw_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(25),
       Q => \^raw_data\(25),
       R => '0'
@@ -11218,7 +12110,7 @@ begin
 \deci_low.raw_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(26),
       Q => \^raw_data\(26),
       R => '0'
@@ -11226,7 +12118,7 @@ begin
 \deci_low.raw_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(27),
       Q => \^raw_data\(27),
       R => '0'
@@ -11234,7 +12126,7 @@ begin
 \deci_low.raw_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(28),
       Q => \^raw_data\(28),
       R => '0'
@@ -11242,7 +12134,7 @@ begin
 \deci_low.raw_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(29),
       Q => \^raw_data\(29),
       R => '0'
@@ -11250,7 +12142,7 @@ begin
 \deci_low.raw_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(2),
       Q => \^raw_data\(2),
       R => '0'
@@ -11258,7 +12150,7 @@ begin
 \deci_low.raw_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(30),
       Q => \^raw_data\(30),
       R => '0'
@@ -11266,7 +12158,7 @@ begin
 \deci_low.raw_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(31),
       Q => \^raw_data\(31),
       R => '0'
@@ -11274,7 +12166,7 @@ begin
 \deci_low.raw_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(32),
       Q => \^raw_data\(32),
       R => '0'
@@ -11282,7 +12174,7 @@ begin
 \deci_low.raw_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(33),
       Q => \^raw_data\(33),
       R => '0'
@@ -11290,7 +12182,7 @@ begin
 \deci_low.raw_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(34),
       Q => \^raw_data\(34),
       R => '0'
@@ -11298,7 +12190,7 @@ begin
 \deci_low.raw_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(35),
       Q => \^raw_data\(35),
       R => '0'
@@ -11306,7 +12198,7 @@ begin
 \deci_low.raw_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(36),
       Q => \^raw_data\(36),
       R => '0'
@@ -11314,7 +12206,7 @@ begin
 \deci_low.raw_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(37),
       Q => \^raw_data\(37),
       R => '0'
@@ -11322,7 +12214,7 @@ begin
 \deci_low.raw_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(38),
       Q => \^raw_data\(38),
       R => '0'
@@ -11330,7 +12222,7 @@ begin
 \deci_low.raw_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(39),
       Q => \^raw_data\(39),
       R => '0'
@@ -11338,7 +12230,7 @@ begin
 \deci_low.raw_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(3),
       Q => \^raw_data\(3),
       R => '0'
@@ -11346,7 +12238,7 @@ begin
 \deci_low.raw_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(40),
       Q => \^raw_data\(40),
       R => '0'
@@ -11354,7 +12246,7 @@ begin
 \deci_low.raw_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(41),
       Q => \^raw_data\(41),
       R => '0'
@@ -11362,7 +12254,7 @@ begin
 \deci_low.raw_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(42),
       Q => \^raw_data\(42),
       R => '0'
@@ -11370,7 +12262,7 @@ begin
 \deci_low.raw_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(43),
       Q => \^raw_data\(43),
       R => '0'
@@ -11378,7 +12270,7 @@ begin
 \deci_low.raw_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(44),
       Q => \^raw_data\(44),
       R => '0'
@@ -11386,7 +12278,7 @@ begin
 \deci_low.raw_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(45),
       Q => \^raw_data\(45),
       R => '0'
@@ -11394,7 +12286,7 @@ begin
 \deci_low.raw_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(46),
       Q => \^raw_data\(46),
       R => '0'
@@ -11402,7 +12294,7 @@ begin
 \deci_low.raw_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(47),
       Q => \^raw_data\(47),
       R => '0'
@@ -11410,7 +12302,7 @@ begin
 \deci_low.raw_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(48),
       Q => \^raw_data\(48),
       R => '0'
@@ -11418,7 +12310,7 @@ begin
 \deci_low.raw_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(49),
       Q => \^raw_data\(49),
       R => '0'
@@ -11426,7 +12318,7 @@ begin
 \deci_low.raw_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(4),
       Q => \^raw_data\(4),
       R => '0'
@@ -11434,7 +12326,7 @@ begin
 \deci_low.raw_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(50),
       Q => \^raw_data\(50),
       R => '0'
@@ -11442,7 +12334,7 @@ begin
 \deci_low.raw_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(51),
       Q => \^raw_data\(51),
       R => '0'
@@ -11450,7 +12342,7 @@ begin
 \deci_low.raw_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(52),
       Q => \^raw_data\(52),
       R => '0'
@@ -11458,7 +12350,7 @@ begin
 \deci_low.raw_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(53),
       Q => \^raw_data\(53),
       R => '0'
@@ -11466,7 +12358,7 @@ begin
 \deci_low.raw_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(54),
       Q => \^raw_data\(54),
       R => '0'
@@ -11474,7 +12366,7 @@ begin
 \deci_low.raw_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(55),
       Q => \^raw_data\(55),
       R => '0'
@@ -11482,7 +12374,7 @@ begin
 \deci_low.raw_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(56),
       Q => \^raw_data\(56),
       R => '0'
@@ -11490,7 +12382,7 @@ begin
 \deci_low.raw_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(57),
       Q => \^raw_data\(57),
       R => '0'
@@ -11498,7 +12390,7 @@ begin
 \deci_low.raw_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(58),
       Q => \^raw_data\(58),
       R => '0'
@@ -11506,7 +12398,7 @@ begin
 \deci_low.raw_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(59),
       Q => \^raw_data\(59),
       R => '0'
@@ -11514,7 +12406,7 @@ begin
 \deci_low.raw_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(5),
       Q => \^raw_data\(5),
       R => '0'
@@ -11522,7 +12414,7 @@ begin
 \deci_low.raw_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(60),
       Q => \^raw_data\(60),
       R => '0'
@@ -11530,7 +12422,7 @@ begin
 \deci_low.raw_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(61),
       Q => \^raw_data\(61),
       R => '0'
@@ -11538,7 +12430,7 @@ begin
 \deci_low.raw_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(62),
       Q => \^raw_data\(62),
       R => '0'
@@ -11546,7 +12438,7 @@ begin
 \deci_low.raw_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(63),
       Q => \^raw_data\(63),
       R => '0'
@@ -11554,7 +12446,7 @@ begin
 \deci_low.raw_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(64),
       Q => \^raw_data\(64),
       R => '0'
@@ -11562,7 +12454,7 @@ begin
 \deci_low.raw_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(65),
       Q => \^raw_data\(65),
       R => '0'
@@ -11570,7 +12462,7 @@ begin
 \deci_low.raw_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(66),
       Q => \^raw_data\(66),
       R => '0'
@@ -11578,7 +12470,7 @@ begin
 \deci_low.raw_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(67),
       Q => \^raw_data\(67),
       R => '0'
@@ -11586,7 +12478,7 @@ begin
 \deci_low.raw_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(68),
       Q => \^raw_data\(68),
       R => '0'
@@ -11594,7 +12486,7 @@ begin
 \deci_low.raw_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(69),
       Q => \^raw_data\(69),
       R => '0'
@@ -11602,7 +12494,7 @@ begin
 \deci_low.raw_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(6),
       Q => \^raw_data\(6),
       R => '0'
@@ -11610,7 +12502,7 @@ begin
 \deci_low.raw_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(70),
       Q => \^raw_data\(70),
       R => '0'
@@ -11618,7 +12510,7 @@ begin
 \deci_low.raw_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(71),
       Q => \^raw_data\(71),
       R => '0'
@@ -11626,7 +12518,7 @@ begin
 \deci_low.raw_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(72),
       Q => \^raw_data\(72),
       R => '0'
@@ -11634,7 +12526,7 @@ begin
 \deci_low.raw_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(73),
       Q => \^raw_data\(73),
       R => '0'
@@ -11642,7 +12534,7 @@ begin
 \deci_low.raw_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(74),
       Q => \^raw_data\(74),
       R => '0'
@@ -11650,7 +12542,7 @@ begin
 \deci_low.raw_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(75),
       Q => \^raw_data\(75),
       R => '0'
@@ -11658,7 +12550,7 @@ begin
 \deci_low.raw_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(76),
       Q => \^raw_data\(76),
       R => '0'
@@ -11666,7 +12558,7 @@ begin
 \deci_low.raw_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(77),
       Q => \^raw_data\(77),
       R => '0'
@@ -11674,7 +12566,7 @@ begin
 \deci_low.raw_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(78),
       Q => \^raw_data\(78),
       R => '0'
@@ -11682,7 +12574,7 @@ begin
 \deci_low.raw_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(79),
       Q => \^raw_data\(79),
       R => '0'
@@ -11690,7 +12582,7 @@ begin
 \deci_low.raw_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(7),
       Q => \^raw_data\(7),
       R => '0'
@@ -11698,7 +12590,7 @@ begin
 \deci_low.raw_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(80),
       Q => \^raw_data\(80),
       R => '0'
@@ -11706,7 +12598,7 @@ begin
 \deci_low.raw_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(81),
       Q => \^raw_data\(81),
       R => '0'
@@ -11714,7 +12606,7 @@ begin
 \deci_low.raw_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(82),
       Q => \^raw_data\(82),
       R => '0'
@@ -11722,7 +12614,7 @@ begin
 \deci_low.raw_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(83),
       Q => \^raw_data\(83),
       R => '0'
@@ -11730,7 +12622,7 @@ begin
 \deci_low.raw_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(84),
       Q => \^raw_data\(84),
       R => '0'
@@ -11738,7 +12630,7 @@ begin
 \deci_low.raw_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(85),
       Q => \^raw_data\(85),
       R => '0'
@@ -11746,7 +12638,7 @@ begin
 \deci_low.raw_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(86),
       Q => \^raw_data\(86),
       R => '0'
@@ -11754,7 +12646,7 @@ begin
 \deci_low.raw_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(87),
       Q => \^raw_data\(87),
       R => '0'
@@ -11762,7 +12654,7 @@ begin
 \deci_low.raw_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(88),
       Q => \^raw_data\(88),
       R => '0'
@@ -11770,7 +12662,7 @@ begin
 \deci_low.raw_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(89),
       Q => \^raw_data\(89),
       R => '0'
@@ -11778,7 +12670,7 @@ begin
 \deci_low.raw_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(8),
       Q => \^raw_data\(8),
       R => '0'
@@ -11786,7 +12678,7 @@ begin
 \deci_low.raw_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(90),
       Q => \^raw_data\(90),
       R => '0'
@@ -11794,7 +12686,7 @@ begin
 \deci_low.raw_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(91),
       Q => \^raw_data\(91),
       R => '0'
@@ -11802,7 +12694,7 @@ begin
 \deci_low.raw_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(92),
       Q => \^raw_data\(92),
       R => '0'
@@ -11810,7 +12702,7 @@ begin
 \deci_low.raw_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(93),
       Q => \^raw_data\(93),
       R => '0'
@@ -11818,7 +12710,7 @@ begin
 \deci_low.raw_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(94),
       Q => \^raw_data\(94),
       R => '0'
@@ -11826,7 +12718,7 @@ begin
 \deci_low.raw_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(95),
       Q => \^raw_data\(95),
       R => '0'
@@ -11834,7 +12726,7 @@ begin
 \deci_low.raw_data_reg[96]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(96),
       Q => \^raw_data\(96),
       R => '0'
@@ -11842,7 +12734,7 @@ begin
 \deci_low.raw_data_reg[97]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(97),
       Q => \^raw_data\(97),
       R => '0'
@@ -11850,7 +12742,7 @@ begin
 \deci_low.raw_data_reg[98]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(98),
       Q => \^raw_data\(98),
       R => '0'
@@ -11858,7 +12750,7 @@ begin
 \deci_low.raw_data_reg[99]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(99),
       Q => \^raw_data\(99),
       R => '0'
@@ -11866,7 +12758,7 @@ begin
 \deci_low.raw_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
-      CE => raw_active,
+      CE => '1',
       D => raw_out_data(9),
       Q => \^raw_data\(9),
       R => '0'
@@ -12143,10 +13035,10 @@ begin
     )
         port map (
       I0 => raw_fifo_wr,
-      I1 => raw_wr_delay(1),
+      I1 => raw_wr_delay(0),
       I2 => raw_wr_delay(2),
       I3 => raw_wr_delay(3),
-      I4 => raw_wr_delay(0),
+      I4 => raw_wr_delay(1),
       I5 => mux_active,
       O => \deci_low.raw_fifo_wr_i_1_n_0\
     );
@@ -12158,1585 +13050,3733 @@ begin
       Q => raw_fifo_wr,
       R => '0'
     );
-\deci_low.raw_in_data[191]_i_1\: unisim.vcomponents.LUT5
+\deci_low.raw_in_data[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"75555554"
+      INIT => X"EF40"
     )
         port map (
-      I0 => mux_active,
-      I1 => raw_wr_delay(1),
-      I2 => raw_wr_delay(0),
-      I3 => raw_wr_delay(3),
-      I4 => raw_wr_delay(2),
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(0),
+      I2 => mux_active,
+      I3 => raw_N0(0),
+      O => \deci_low.raw_in_data[0]_i_1_n_0\
+    );
+\deci_low.raw_in_data[100]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(100),
+      I2 => mux_active,
+      I3 => fir_raw_E(83),
+      O => \deci_low.raw_in_data[100]_i_1_n_0\
+    );
+\deci_low.raw_in_data[101]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(101),
+      I2 => mux_active,
+      I3 => fir_raw_E(84),
+      O => \deci_low.raw_in_data[101]_i_1_n_0\
+    );
+\deci_low.raw_in_data[102]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(102),
+      I2 => mux_active,
+      I3 => fir_raw_E(85),
+      O => \deci_low.raw_in_data[102]_i_1_n_0\
+    );
+\deci_low.raw_in_data[103]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(103),
+      I2 => mux_active,
+      I3 => fir_raw_E(86),
+      O => \deci_low.raw_in_data[103]_i_1_n_0\
+    );
+\deci_low.raw_in_data[104]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(104),
+      I2 => mux_active,
+      I3 => fir_raw_E(87),
+      O => \deci_low.raw_in_data[104]_i_1_n_0\
+    );
+\deci_low.raw_in_data[105]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(105),
+      I2 => mux_active,
+      I3 => fir_raw_E(88),
+      O => \deci_low.raw_in_data[105]_i_1_n_0\
+    );
+\deci_low.raw_in_data[106]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(106),
+      I2 => mux_active,
+      I3 => fir_raw_E(89),
+      O => \deci_low.raw_in_data[106]_i_1_n_0\
+    );
+\deci_low.raw_in_data[107]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(107),
+      I2 => mux_active,
+      I3 => fir_raw_E(90),
+      O => \deci_low.raw_in_data[107]_i_1_n_0\
+    );
+\deci_low.raw_in_data[108]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(108),
+      I2 => mux_active,
+      I3 => fir_raw_E(91),
+      O => \deci_low.raw_in_data[108]_i_1_n_0\
+    );
+\deci_low.raw_in_data[109]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(109),
+      I2 => mux_active,
+      I3 => fir_raw_E(92),
+      O => \deci_low.raw_in_data[109]_i_1_n_0\
+    );
+\deci_low.raw_in_data[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(10),
+      I2 => mux_active,
+      I3 => raw_N0(10),
+      O => \deci_low.raw_in_data[10]_i_1_n_0\
+    );
+\deci_low.raw_in_data[110]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(110),
+      I2 => mux_active,
+      I3 => fir_raw_E(93),
+      O => \deci_low.raw_in_data[110]_i_1_n_0\
+    );
+\deci_low.raw_in_data[111]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(111),
+      I2 => mux_active,
+      I3 => fir_raw_E(94),
+      O => \deci_low.raw_in_data[111]_i_1_n_0\
+    );
+\deci_low.raw_in_data[112]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(112),
+      I2 => mux_active,
+      I3 => fir_raw_E(111),
+      O => \deci_low.raw_in_data[112]_i_1_n_0\
+    );
+\deci_low.raw_in_data[113]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(113),
+      I2 => mux_active,
+      I3 => fir_raw_E(112),
+      O => \deci_low.raw_in_data[113]_i_1_n_0\
+    );
+\deci_low.raw_in_data[114]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(114),
+      I2 => mux_active,
+      I3 => fir_raw_E(113),
+      O => \deci_low.raw_in_data[114]_i_1_n_0\
+    );
+\deci_low.raw_in_data[115]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(115),
+      I2 => mux_active,
+      I3 => fir_raw_E(114),
+      O => \deci_low.raw_in_data[115]_i_1_n_0\
+    );
+\deci_low.raw_in_data[116]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(116),
+      I2 => mux_active,
+      I3 => fir_raw_E(115),
+      O => \deci_low.raw_in_data[116]_i_1_n_0\
+    );
+\deci_low.raw_in_data[117]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(117),
+      I2 => mux_active,
+      I3 => fir_raw_E(116),
+      O => \deci_low.raw_in_data[117]_i_1_n_0\
+    );
+\deci_low.raw_in_data[118]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(118),
+      I2 => mux_active,
+      I3 => fir_raw_E(117),
+      O => \deci_low.raw_in_data[118]_i_1_n_0\
+    );
+\deci_low.raw_in_data[119]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(119),
+      I2 => mux_active,
+      I3 => fir_raw_E(118),
+      O => \deci_low.raw_in_data[119]_i_1_n_0\
+    );
+\deci_low.raw_in_data[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(11),
+      I2 => mux_active,
+      I3 => raw_N0(11),
+      O => \deci_low.raw_in_data[11]_i_1_n_0\
+    );
+\deci_low.raw_in_data[120]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(120),
+      I2 => mux_active,
+      I3 => fir_raw_E(119),
+      O => \deci_low.raw_in_data[120]_i_1_n_0\
+    );
+\deci_low.raw_in_data[121]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(121),
+      I2 => mux_active,
+      I3 => fir_raw_E(120),
+      O => \deci_low.raw_in_data[121]_i_1_n_0\
+    );
+\deci_low.raw_in_data[122]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(122),
+      I2 => mux_active,
+      I3 => fir_raw_E(121),
+      O => \deci_low.raw_in_data[122]_i_1_n_0\
+    );
+\deci_low.raw_in_data[123]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(123),
+      I2 => mux_active,
+      I3 => fir_raw_E(122),
+      O => \deci_low.raw_in_data[123]_i_1_n_0\
+    );
+\deci_low.raw_in_data[124]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(124),
+      I2 => mux_active,
+      I3 => fir_raw_E(123),
+      O => \deci_low.raw_in_data[124]_i_1_n_0\
+    );
+\deci_low.raw_in_data[125]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(125),
+      I2 => mux_active,
+      I3 => fir_raw_E(124),
+      O => \deci_low.raw_in_data[125]_i_1_n_0\
+    );
+\deci_low.raw_in_data[126]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(126),
+      I2 => mux_active,
+      I3 => fir_raw_E(125),
+      O => \deci_low.raw_in_data[126]_i_1_n_0\
+    );
+\deci_low.raw_in_data[127]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(127),
+      I2 => mux_active,
+      I3 => fir_raw_E(126),
+      O => \deci_low.raw_in_data[127]_i_1_n_0\
+    );
+\deci_low.raw_in_data[128]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(128),
+      I2 => mux_active,
+      I3 => fir_raw_W(15),
+      O => \deci_low.raw_in_data[128]_i_1_n_0\
+    );
+\deci_low.raw_in_data[129]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(129),
+      I2 => mux_active,
+      I3 => fir_raw_W(16),
+      O => \deci_low.raw_in_data[129]_i_1_n_0\
+    );
+\deci_low.raw_in_data[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(12),
+      I2 => mux_active,
+      I3 => raw_N0(12),
+      O => \deci_low.raw_in_data[12]_i_1_n_0\
+    );
+\deci_low.raw_in_data[130]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(130),
+      I2 => mux_active,
+      I3 => fir_raw_W(17),
+      O => \deci_low.raw_in_data[130]_i_1_n_0\
+    );
+\deci_low.raw_in_data[131]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(131),
+      I2 => mux_active,
+      I3 => fir_raw_W(18),
+      O => \deci_low.raw_in_data[131]_i_1_n_0\
+    );
+\deci_low.raw_in_data[132]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(132),
+      I2 => mux_active,
+      I3 => fir_raw_W(19),
+      O => \deci_low.raw_in_data[132]_i_1_n_0\
+    );
+\deci_low.raw_in_data[133]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(133),
+      I2 => mux_active,
+      I3 => fir_raw_W(20),
+      O => \deci_low.raw_in_data[133]_i_1_n_0\
+    );
+\deci_low.raw_in_data[134]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(134),
+      I2 => mux_active,
+      I3 => fir_raw_W(21),
+      O => \deci_low.raw_in_data[134]_i_1_n_0\
+    );
+\deci_low.raw_in_data[135]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(135),
+      I2 => mux_active,
+      I3 => fir_raw_W(22),
+      O => \deci_low.raw_in_data[135]_i_1_n_0\
+    );
+\deci_low.raw_in_data[136]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(136),
+      I2 => mux_active,
+      I3 => fir_raw_W(23),
+      O => \deci_low.raw_in_data[136]_i_1_n_0\
+    );
+\deci_low.raw_in_data[137]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(137),
+      I2 => mux_active,
+      I3 => fir_raw_W(24),
+      O => \deci_low.raw_in_data[137]_i_1_n_0\
+    );
+\deci_low.raw_in_data[138]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(138),
+      I2 => mux_active,
+      I3 => fir_raw_W(25),
+      O => \deci_low.raw_in_data[138]_i_1_n_0\
+    );
+\deci_low.raw_in_data[139]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(139),
+      I2 => mux_active,
+      I3 => fir_raw_W(26),
+      O => \deci_low.raw_in_data[139]_i_1_n_0\
+    );
+\deci_low.raw_in_data[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(13),
+      I2 => mux_active,
+      I3 => raw_N0(13),
+      O => \deci_low.raw_in_data[13]_i_1_n_0\
+    );
+\deci_low.raw_in_data[140]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(140),
+      I2 => mux_active,
+      I3 => fir_raw_W(27),
+      O => \deci_low.raw_in_data[140]_i_1_n_0\
+    );
+\deci_low.raw_in_data[141]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(141),
+      I2 => mux_active,
+      I3 => fir_raw_W(28),
+      O => \deci_low.raw_in_data[141]_i_1_n_0\
+    );
+\deci_low.raw_in_data[142]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(142),
+      I2 => mux_active,
+      I3 => fir_raw_W(29),
+      O => \deci_low.raw_in_data[142]_i_1_n_0\
+    );
+\deci_low.raw_in_data[143]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(143),
+      I2 => mux_active,
+      I3 => fir_raw_W(30),
+      O => \deci_low.raw_in_data[143]_i_1_n_0\
+    );
+\deci_low.raw_in_data[144]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(144),
+      I2 => mux_active,
+      I3 => fir_raw_W(47),
+      O => \deci_low.raw_in_data[144]_i_1_n_0\
+    );
+\deci_low.raw_in_data[145]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(145),
+      I2 => mux_active,
+      I3 => fir_raw_W(48),
+      O => \deci_low.raw_in_data[145]_i_1_n_0\
+    );
+\deci_low.raw_in_data[146]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(146),
+      I2 => mux_active,
+      I3 => fir_raw_W(49),
+      O => \deci_low.raw_in_data[146]_i_1_n_0\
+    );
+\deci_low.raw_in_data[147]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(147),
+      I2 => mux_active,
+      I3 => fir_raw_W(50),
+      O => \deci_low.raw_in_data[147]_i_1_n_0\
+    );
+\deci_low.raw_in_data[148]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(148),
+      I2 => mux_active,
+      I3 => fir_raw_W(51),
+      O => \deci_low.raw_in_data[148]_i_1_n_0\
+    );
+\deci_low.raw_in_data[149]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(149),
+      I2 => mux_active,
+      I3 => fir_raw_W(52),
+      O => \deci_low.raw_in_data[149]_i_1_n_0\
+    );
+\deci_low.raw_in_data[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(14),
+      I2 => mux_active,
+      I3 => raw_N0(14),
+      O => \deci_low.raw_in_data[14]_i_1_n_0\
+    );
+\deci_low.raw_in_data[150]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(150),
+      I2 => mux_active,
+      I3 => fir_raw_W(53),
+      O => \deci_low.raw_in_data[150]_i_1_n_0\
+    );
+\deci_low.raw_in_data[151]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(151),
+      I2 => mux_active,
+      I3 => fir_raw_W(54),
+      O => \deci_low.raw_in_data[151]_i_1_n_0\
+    );
+\deci_low.raw_in_data[152]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(152),
+      I2 => mux_active,
+      I3 => fir_raw_W(55),
+      O => \deci_low.raw_in_data[152]_i_1_n_0\
+    );
+\deci_low.raw_in_data[153]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(153),
+      I2 => mux_active,
+      I3 => fir_raw_W(56),
+      O => \deci_low.raw_in_data[153]_i_1_n_0\
+    );
+\deci_low.raw_in_data[154]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(154),
+      I2 => mux_active,
+      I3 => fir_raw_W(57),
+      O => \deci_low.raw_in_data[154]_i_1_n_0\
+    );
+\deci_low.raw_in_data[155]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(155),
+      I2 => mux_active,
+      I3 => fir_raw_W(58),
+      O => \deci_low.raw_in_data[155]_i_1_n_0\
+    );
+\deci_low.raw_in_data[156]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(156),
+      I2 => mux_active,
+      I3 => fir_raw_W(59),
+      O => \deci_low.raw_in_data[156]_i_1_n_0\
+    );
+\deci_low.raw_in_data[157]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(157),
+      I2 => mux_active,
+      I3 => fir_raw_W(60),
+      O => \deci_low.raw_in_data[157]_i_1_n_0\
+    );
+\deci_low.raw_in_data[158]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(158),
+      I2 => mux_active,
+      I3 => fir_raw_W(61),
+      O => \deci_low.raw_in_data[158]_i_1_n_0\
+    );
+\deci_low.raw_in_data[159]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(159),
+      I2 => mux_active,
+      I3 => fir_raw_W(62),
+      O => \deci_low.raw_in_data[159]_i_1_n_0\
+    );
+\deci_low.raw_in_data[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(15),
+      I2 => mux_active,
+      I3 => raw_N0(15),
+      O => \deci_low.raw_in_data[15]_i_1_n_0\
+    );
+\deci_low.raw_in_data[160]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(160),
+      I2 => mux_active,
+      I3 => fir_raw_W(79),
+      O => \deci_low.raw_in_data[160]_i_1_n_0\
+    );
+\deci_low.raw_in_data[161]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(161),
+      I2 => mux_active,
+      I3 => fir_raw_W(80),
+      O => \deci_low.raw_in_data[161]_i_1_n_0\
+    );
+\deci_low.raw_in_data[162]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(162),
+      I2 => mux_active,
+      I3 => fir_raw_W(81),
+      O => \deci_low.raw_in_data[162]_i_1_n_0\
+    );
+\deci_low.raw_in_data[163]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(163),
+      I2 => mux_active,
+      I3 => fir_raw_W(82),
+      O => \deci_low.raw_in_data[163]_i_1_n_0\
+    );
+\deci_low.raw_in_data[164]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(164),
+      I2 => mux_active,
+      I3 => fir_raw_W(83),
+      O => \deci_low.raw_in_data[164]_i_1_n_0\
+    );
+\deci_low.raw_in_data[165]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(165),
+      I2 => mux_active,
+      I3 => fir_raw_W(84),
+      O => \deci_low.raw_in_data[165]_i_1_n_0\
+    );
+\deci_low.raw_in_data[166]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(166),
+      I2 => mux_active,
+      I3 => fir_raw_W(85),
+      O => \deci_low.raw_in_data[166]_i_1_n_0\
+    );
+\deci_low.raw_in_data[167]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(167),
+      I2 => mux_active,
+      I3 => fir_raw_W(86),
+      O => \deci_low.raw_in_data[167]_i_1_n_0\
+    );
+\deci_low.raw_in_data[168]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(168),
+      I2 => mux_active,
+      I3 => fir_raw_W(87),
+      O => \deci_low.raw_in_data[168]_i_1_n_0\
+    );
+\deci_low.raw_in_data[169]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(169),
+      I2 => mux_active,
+      I3 => fir_raw_W(88),
+      O => \deci_low.raw_in_data[169]_i_1_n_0\
+    );
+\deci_low.raw_in_data[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(16),
+      I2 => mux_active,
+      I3 => raw_N1(0),
+      O => \deci_low.raw_in_data[16]_i_1_n_0\
+    );
+\deci_low.raw_in_data[170]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(170),
+      I2 => mux_active,
+      I3 => fir_raw_W(89),
+      O => \deci_low.raw_in_data[170]_i_1_n_0\
+    );
+\deci_low.raw_in_data[171]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(171),
+      I2 => mux_active,
+      I3 => fir_raw_W(90),
+      O => \deci_low.raw_in_data[171]_i_1_n_0\
+    );
+\deci_low.raw_in_data[172]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(172),
+      I2 => mux_active,
+      I3 => fir_raw_W(91),
+      O => \deci_low.raw_in_data[172]_i_1_n_0\
+    );
+\deci_low.raw_in_data[173]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(173),
+      I2 => mux_active,
+      I3 => fir_raw_W(92),
+      O => \deci_low.raw_in_data[173]_i_1_n_0\
+    );
+\deci_low.raw_in_data[174]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(174),
+      I2 => mux_active,
+      I3 => fir_raw_W(93),
+      O => \deci_low.raw_in_data[174]_i_1_n_0\
+    );
+\deci_low.raw_in_data[175]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(175),
+      I2 => mux_active,
+      I3 => fir_raw_W(94),
+      O => \deci_low.raw_in_data[175]_i_1_n_0\
+    );
+\deci_low.raw_in_data[176]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(176),
+      I2 => mux_active,
+      I3 => fir_raw_W(111),
+      O => \deci_low.raw_in_data[176]_i_1_n_0\
+    );
+\deci_low.raw_in_data[177]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(177),
+      I2 => mux_active,
+      I3 => fir_raw_W(112),
+      O => \deci_low.raw_in_data[177]_i_1_n_0\
+    );
+\deci_low.raw_in_data[178]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(178),
+      I2 => mux_active,
+      I3 => fir_raw_W(113),
+      O => \deci_low.raw_in_data[178]_i_1_n_0\
+    );
+\deci_low.raw_in_data[179]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(179),
+      I2 => mux_active,
+      I3 => fir_raw_W(114),
+      O => \deci_low.raw_in_data[179]_i_1_n_0\
+    );
+\deci_low.raw_in_data[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(17),
+      I2 => mux_active,
+      I3 => raw_N1(1),
+      O => \deci_low.raw_in_data[17]_i_1_n_0\
+    );
+\deci_low.raw_in_data[180]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(180),
+      I2 => mux_active,
+      I3 => fir_raw_W(115),
+      O => \deci_low.raw_in_data[180]_i_1_n_0\
+    );
+\deci_low.raw_in_data[181]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(181),
+      I2 => mux_active,
+      I3 => fir_raw_W(116),
+      O => \deci_low.raw_in_data[181]_i_1_n_0\
+    );
+\deci_low.raw_in_data[182]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(182),
+      I2 => mux_active,
+      I3 => fir_raw_W(117),
+      O => \deci_low.raw_in_data[182]_i_1_n_0\
+    );
+\deci_low.raw_in_data[183]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(183),
+      I2 => mux_active,
+      I3 => fir_raw_W(118),
+      O => \deci_low.raw_in_data[183]_i_1_n_0\
+    );
+\deci_low.raw_in_data[184]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(184),
+      I2 => mux_active,
+      I3 => fir_raw_W(119),
+      O => \deci_low.raw_in_data[184]_i_1_n_0\
+    );
+\deci_low.raw_in_data[185]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(185),
+      I2 => mux_active,
+      I3 => fir_raw_W(120),
+      O => \deci_low.raw_in_data[185]_i_1_n_0\
+    );
+\deci_low.raw_in_data[186]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(186),
+      I2 => mux_active,
+      I3 => fir_raw_W(121),
+      O => \deci_low.raw_in_data[186]_i_1_n_0\
+    );
+\deci_low.raw_in_data[187]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(187),
+      I2 => mux_active,
+      I3 => fir_raw_W(122),
+      O => \deci_low.raw_in_data[187]_i_1_n_0\
+    );
+\deci_low.raw_in_data[188]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(188),
+      I2 => mux_active,
+      I3 => fir_raw_W(123),
+      O => \deci_low.raw_in_data[188]_i_1_n_0\
+    );
+\deci_low.raw_in_data[189]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(189),
+      I2 => mux_active,
+      I3 => fir_raw_W(124),
+      O => \deci_low.raw_in_data[189]_i_1_n_0\
+    );
+\deci_low.raw_in_data[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(18),
+      I2 => mux_active,
+      I3 => raw_N1(2),
+      O => \deci_low.raw_in_data[18]_i_1_n_0\
+    );
+\deci_low.raw_in_data[190]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(190),
+      I2 => mux_active,
+      I3 => fir_raw_W(125),
+      O => \deci_low.raw_in_data[190]_i_1_n_0\
+    );
+\deci_low.raw_in_data[191]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(191),
+      I2 => mux_active,
+      I3 => fir_raw_W(126),
       O => \deci_low.raw_in_data[191]_i_1_n_0\
+    );
+\deci_low.raw_in_data[191]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => raw_wr_delay(1),
+      I1 => raw_wr_delay(0),
+      I2 => raw_wr_delay(3),
+      I3 => raw_wr_delay(2),
+      O => \deci_low.raw_in_data[191]_i_2_n_0\
+    );
+\deci_low.raw_in_data[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(19),
+      I2 => mux_active,
+      I3 => raw_N1(3),
+      O => \deci_low.raw_in_data[19]_i_1_n_0\
+    );
+\deci_low.raw_in_data[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(1),
+      I2 => mux_active,
+      I3 => raw_N0(1),
+      O => \deci_low.raw_in_data[1]_i_1_n_0\
+    );
+\deci_low.raw_in_data[20]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(20),
+      I2 => mux_active,
+      I3 => raw_N1(4),
+      O => \deci_low.raw_in_data[20]_i_1_n_0\
+    );
+\deci_low.raw_in_data[21]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(21),
+      I2 => mux_active,
+      I3 => raw_N1(5),
+      O => \deci_low.raw_in_data[21]_i_1_n_0\
+    );
+\deci_low.raw_in_data[22]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(22),
+      I2 => mux_active,
+      I3 => raw_N1(6),
+      O => \deci_low.raw_in_data[22]_i_1_n_0\
+    );
+\deci_low.raw_in_data[23]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(23),
+      I2 => mux_active,
+      I3 => raw_N1(7),
+      O => \deci_low.raw_in_data[23]_i_1_n_0\
+    );
+\deci_low.raw_in_data[24]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(24),
+      I2 => mux_active,
+      I3 => raw_N1(8),
+      O => \deci_low.raw_in_data[24]_i_1_n_0\
+    );
+\deci_low.raw_in_data[25]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(25),
+      I2 => mux_active,
+      I3 => raw_N1(9),
+      O => \deci_low.raw_in_data[25]_i_1_n_0\
+    );
+\deci_low.raw_in_data[26]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(26),
+      I2 => mux_active,
+      I3 => raw_N1(10),
+      O => \deci_low.raw_in_data[26]_i_1_n_0\
+    );
+\deci_low.raw_in_data[27]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(27),
+      I2 => mux_active,
+      I3 => raw_N1(11),
+      O => \deci_low.raw_in_data[27]_i_1_n_0\
+    );
+\deci_low.raw_in_data[28]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(28),
+      I2 => mux_active,
+      I3 => raw_N1(12),
+      O => \deci_low.raw_in_data[28]_i_1_n_0\
+    );
+\deci_low.raw_in_data[29]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(29),
+      I2 => mux_active,
+      I3 => raw_N1(13),
+      O => \deci_low.raw_in_data[29]_i_1_n_0\
+    );
+\deci_low.raw_in_data[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(2),
+      I2 => mux_active,
+      I3 => raw_N0(2),
+      O => \deci_low.raw_in_data[2]_i_1_n_0\
+    );
+\deci_low.raw_in_data[30]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(30),
+      I2 => mux_active,
+      I3 => raw_N1(14),
+      O => \deci_low.raw_in_data[30]_i_1_n_0\
+    );
+\deci_low.raw_in_data[31]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(31),
+      I2 => mux_active,
+      I3 => raw_N1(15),
+      O => \deci_low.raw_in_data[31]_i_1_n_0\
+    );
+\deci_low.raw_in_data[32]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(32),
+      I2 => mux_active,
+      I3 => raw_N2(0),
+      O => \deci_low.raw_in_data[32]_i_1_n_0\
+    );
+\deci_low.raw_in_data[33]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(33),
+      I2 => mux_active,
+      I3 => raw_N2(1),
+      O => \deci_low.raw_in_data[33]_i_1_n_0\
+    );
+\deci_low.raw_in_data[34]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(34),
+      I2 => mux_active,
+      I3 => raw_N2(2),
+      O => \deci_low.raw_in_data[34]_i_1_n_0\
+    );
+\deci_low.raw_in_data[35]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(35),
+      I2 => mux_active,
+      I3 => raw_N2(3),
+      O => \deci_low.raw_in_data[35]_i_1_n_0\
+    );
+\deci_low.raw_in_data[36]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(36),
+      I2 => mux_active,
+      I3 => raw_N2(4),
+      O => \deci_low.raw_in_data[36]_i_1_n_0\
+    );
+\deci_low.raw_in_data[37]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(37),
+      I2 => mux_active,
+      I3 => raw_N2(5),
+      O => \deci_low.raw_in_data[37]_i_1_n_0\
+    );
+\deci_low.raw_in_data[38]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(38),
+      I2 => mux_active,
+      I3 => raw_N2(6),
+      O => \deci_low.raw_in_data[38]_i_1_n_0\
+    );
+\deci_low.raw_in_data[39]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(39),
+      I2 => mux_active,
+      I3 => raw_N2(7),
+      O => \deci_low.raw_in_data[39]_i_1_n_0\
+    );
+\deci_low.raw_in_data[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(3),
+      I2 => mux_active,
+      I3 => raw_N0(3),
+      O => \deci_low.raw_in_data[3]_i_1_n_0\
+    );
+\deci_low.raw_in_data[40]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(40),
+      I2 => mux_active,
+      I3 => raw_N2(8),
+      O => \deci_low.raw_in_data[40]_i_1_n_0\
+    );
+\deci_low.raw_in_data[41]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(41),
+      I2 => mux_active,
+      I3 => raw_N2(9),
+      O => \deci_low.raw_in_data[41]_i_1_n_0\
+    );
+\deci_low.raw_in_data[42]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(42),
+      I2 => mux_active,
+      I3 => raw_N2(10),
+      O => \deci_low.raw_in_data[42]_i_1_n_0\
+    );
+\deci_low.raw_in_data[43]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(43),
+      I2 => mux_active,
+      I3 => raw_N2(11),
+      O => \deci_low.raw_in_data[43]_i_1_n_0\
+    );
+\deci_low.raw_in_data[44]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(44),
+      I2 => mux_active,
+      I3 => raw_N2(12),
+      O => \deci_low.raw_in_data[44]_i_1_n_0\
+    );
+\deci_low.raw_in_data[45]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(45),
+      I2 => mux_active,
+      I3 => raw_N2(13),
+      O => \deci_low.raw_in_data[45]_i_1_n_0\
+    );
+\deci_low.raw_in_data[46]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(46),
+      I2 => mux_active,
+      I3 => raw_N2(14),
+      O => \deci_low.raw_in_data[46]_i_1_n_0\
+    );
+\deci_low.raw_in_data[47]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(47),
+      I2 => mux_active,
+      I3 => raw_N2(15),
+      O => \deci_low.raw_in_data[47]_i_1_n_0\
+    );
+\deci_low.raw_in_data[48]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(48),
+      I2 => mux_active,
+      I3 => raw_N3(0),
+      O => \deci_low.raw_in_data[48]_i_1_n_0\
+    );
+\deci_low.raw_in_data[49]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(49),
+      I2 => mux_active,
+      I3 => raw_N3(1),
+      O => \deci_low.raw_in_data[49]_i_1_n_0\
+    );
+\deci_low.raw_in_data[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(4),
+      I2 => mux_active,
+      I3 => raw_N0(4),
+      O => \deci_low.raw_in_data[4]_i_1_n_0\
+    );
+\deci_low.raw_in_data[50]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(50),
+      I2 => mux_active,
+      I3 => raw_N3(2),
+      O => \deci_low.raw_in_data[50]_i_1_n_0\
+    );
+\deci_low.raw_in_data[51]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(51),
+      I2 => mux_active,
+      I3 => raw_N3(3),
+      O => \deci_low.raw_in_data[51]_i_1_n_0\
+    );
+\deci_low.raw_in_data[52]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(52),
+      I2 => mux_active,
+      I3 => raw_N3(4),
+      O => \deci_low.raw_in_data[52]_i_1_n_0\
+    );
+\deci_low.raw_in_data[53]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(53),
+      I2 => mux_active,
+      I3 => raw_N3(5),
+      O => \deci_low.raw_in_data[53]_i_1_n_0\
+    );
+\deci_low.raw_in_data[54]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(54),
+      I2 => mux_active,
+      I3 => raw_N3(6),
+      O => \deci_low.raw_in_data[54]_i_1_n_0\
+    );
+\deci_low.raw_in_data[55]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(55),
+      I2 => mux_active,
+      I3 => raw_N3(7),
+      O => \deci_low.raw_in_data[55]_i_1_n_0\
+    );
+\deci_low.raw_in_data[56]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(56),
+      I2 => mux_active,
+      I3 => raw_N3(8),
+      O => \deci_low.raw_in_data[56]_i_1_n_0\
+    );
+\deci_low.raw_in_data[57]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(57),
+      I2 => mux_active,
+      I3 => raw_N3(9),
+      O => \deci_low.raw_in_data[57]_i_1_n_0\
+    );
+\deci_low.raw_in_data[58]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(58),
+      I2 => mux_active,
+      I3 => raw_N3(10),
+      O => \deci_low.raw_in_data[58]_i_1_n_0\
+    );
+\deci_low.raw_in_data[59]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(59),
+      I2 => mux_active,
+      I3 => raw_N3(11),
+      O => \deci_low.raw_in_data[59]_i_1_n_0\
+    );
+\deci_low.raw_in_data[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(5),
+      I2 => mux_active,
+      I3 => raw_N0(5),
+      O => \deci_low.raw_in_data[5]_i_1_n_0\
+    );
+\deci_low.raw_in_data[60]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(60),
+      I2 => mux_active,
+      I3 => raw_N3(12),
+      O => \deci_low.raw_in_data[60]_i_1_n_0\
+    );
+\deci_low.raw_in_data[61]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(61),
+      I2 => mux_active,
+      I3 => raw_N3(13),
+      O => \deci_low.raw_in_data[61]_i_1_n_0\
+    );
+\deci_low.raw_in_data[62]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(62),
+      I2 => mux_active,
+      I3 => raw_N3(14),
+      O => \deci_low.raw_in_data[62]_i_1_n_0\
+    );
+\deci_low.raw_in_data[63]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(63),
+      I2 => mux_active,
+      I3 => raw_N3(15),
+      O => \deci_low.raw_in_data[63]_i_1_n_0\
+    );
+\deci_low.raw_in_data[64]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(64),
+      I2 => mux_active,
+      I3 => fir_raw_E(15),
+      O => \deci_low.raw_in_data[64]_i_1_n_0\
+    );
+\deci_low.raw_in_data[65]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(65),
+      I2 => mux_active,
+      I3 => fir_raw_E(16),
+      O => \deci_low.raw_in_data[65]_i_1_n_0\
+    );
+\deci_low.raw_in_data[66]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(66),
+      I2 => mux_active,
+      I3 => fir_raw_E(17),
+      O => \deci_low.raw_in_data[66]_i_1_n_0\
+    );
+\deci_low.raw_in_data[67]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(67),
+      I2 => mux_active,
+      I3 => fir_raw_E(18),
+      O => \deci_low.raw_in_data[67]_i_1_n_0\
+    );
+\deci_low.raw_in_data[68]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(68),
+      I2 => mux_active,
+      I3 => fir_raw_E(19),
+      O => \deci_low.raw_in_data[68]_i_1_n_0\
+    );
+\deci_low.raw_in_data[69]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(69),
+      I2 => mux_active,
+      I3 => fir_raw_E(20),
+      O => \deci_low.raw_in_data[69]_i_1_n_0\
+    );
+\deci_low.raw_in_data[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(6),
+      I2 => mux_active,
+      I3 => raw_N0(6),
+      O => \deci_low.raw_in_data[6]_i_1_n_0\
+    );
+\deci_low.raw_in_data[70]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(70),
+      I2 => mux_active,
+      I3 => fir_raw_E(21),
+      O => \deci_low.raw_in_data[70]_i_1_n_0\
+    );
+\deci_low.raw_in_data[71]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(71),
+      I2 => mux_active,
+      I3 => fir_raw_E(22),
+      O => \deci_low.raw_in_data[71]_i_1_n_0\
+    );
+\deci_low.raw_in_data[72]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(72),
+      I2 => mux_active,
+      I3 => fir_raw_E(23),
+      O => \deci_low.raw_in_data[72]_i_1_n_0\
+    );
+\deci_low.raw_in_data[73]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(73),
+      I2 => mux_active,
+      I3 => fir_raw_E(24),
+      O => \deci_low.raw_in_data[73]_i_1_n_0\
+    );
+\deci_low.raw_in_data[74]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(74),
+      I2 => mux_active,
+      I3 => fir_raw_E(25),
+      O => \deci_low.raw_in_data[74]_i_1_n_0\
+    );
+\deci_low.raw_in_data[75]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(75),
+      I2 => mux_active,
+      I3 => fir_raw_E(26),
+      O => \deci_low.raw_in_data[75]_i_1_n_0\
+    );
+\deci_low.raw_in_data[76]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(76),
+      I2 => mux_active,
+      I3 => fir_raw_E(27),
+      O => \deci_low.raw_in_data[76]_i_1_n_0\
+    );
+\deci_low.raw_in_data[77]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(77),
+      I2 => mux_active,
+      I3 => fir_raw_E(28),
+      O => \deci_low.raw_in_data[77]_i_1_n_0\
+    );
+\deci_low.raw_in_data[78]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(78),
+      I2 => mux_active,
+      I3 => fir_raw_E(29),
+      O => \deci_low.raw_in_data[78]_i_1_n_0\
+    );
+\deci_low.raw_in_data[79]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(79),
+      I2 => mux_active,
+      I3 => fir_raw_E(30),
+      O => \deci_low.raw_in_data[79]_i_1_n_0\
+    );
+\deci_low.raw_in_data[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(7),
+      I2 => mux_active,
+      I3 => raw_N0(7),
+      O => \deci_low.raw_in_data[7]_i_1_n_0\
+    );
+\deci_low.raw_in_data[80]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(80),
+      I2 => mux_active,
+      I3 => fir_raw_E(47),
+      O => \deci_low.raw_in_data[80]_i_1_n_0\
+    );
+\deci_low.raw_in_data[81]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(81),
+      I2 => mux_active,
+      I3 => fir_raw_E(48),
+      O => \deci_low.raw_in_data[81]_i_1_n_0\
+    );
+\deci_low.raw_in_data[82]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(82),
+      I2 => mux_active,
+      I3 => fir_raw_E(49),
+      O => \deci_low.raw_in_data[82]_i_1_n_0\
+    );
+\deci_low.raw_in_data[83]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(83),
+      I2 => mux_active,
+      I3 => fir_raw_E(50),
+      O => \deci_low.raw_in_data[83]_i_1_n_0\
+    );
+\deci_low.raw_in_data[84]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(84),
+      I2 => mux_active,
+      I3 => fir_raw_E(51),
+      O => \deci_low.raw_in_data[84]_i_1_n_0\
+    );
+\deci_low.raw_in_data[85]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(85),
+      I2 => mux_active,
+      I3 => fir_raw_E(52),
+      O => \deci_low.raw_in_data[85]_i_1_n_0\
+    );
+\deci_low.raw_in_data[86]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(86),
+      I2 => mux_active,
+      I3 => fir_raw_E(53),
+      O => \deci_low.raw_in_data[86]_i_1_n_0\
+    );
+\deci_low.raw_in_data[87]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(87),
+      I2 => mux_active,
+      I3 => fir_raw_E(54),
+      O => \deci_low.raw_in_data[87]_i_1_n_0\
+    );
+\deci_low.raw_in_data[88]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(88),
+      I2 => mux_active,
+      I3 => fir_raw_E(55),
+      O => \deci_low.raw_in_data[88]_i_1_n_0\
+    );
+\deci_low.raw_in_data[89]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(89),
+      I2 => mux_active,
+      I3 => fir_raw_E(56),
+      O => \deci_low.raw_in_data[89]_i_1_n_0\
+    );
+\deci_low.raw_in_data[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(8),
+      I2 => mux_active,
+      I3 => raw_N0(8),
+      O => \deci_low.raw_in_data[8]_i_1_n_0\
+    );
+\deci_low.raw_in_data[90]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(90),
+      I2 => mux_active,
+      I3 => fir_raw_E(57),
+      O => \deci_low.raw_in_data[90]_i_1_n_0\
+    );
+\deci_low.raw_in_data[91]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(91),
+      I2 => mux_active,
+      I3 => fir_raw_E(58),
+      O => \deci_low.raw_in_data[91]_i_1_n_0\
+    );
+\deci_low.raw_in_data[92]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(92),
+      I2 => mux_active,
+      I3 => fir_raw_E(59),
+      O => \deci_low.raw_in_data[92]_i_1_n_0\
+    );
+\deci_low.raw_in_data[93]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(93),
+      I2 => mux_active,
+      I3 => fir_raw_E(60),
+      O => \deci_low.raw_in_data[93]_i_1_n_0\
+    );
+\deci_low.raw_in_data[94]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(94),
+      I2 => mux_active,
+      I3 => fir_raw_E(61),
+      O => \deci_low.raw_in_data[94]_i_1_n_0\
+    );
+\deci_low.raw_in_data[95]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(95),
+      I2 => mux_active,
+      I3 => fir_raw_E(62),
+      O => \deci_low.raw_in_data[95]_i_1_n_0\
+    );
+\deci_low.raw_in_data[96]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(96),
+      I2 => mux_active,
+      I3 => fir_raw_E(79),
+      O => \deci_low.raw_in_data[96]_i_1_n_0\
+    );
+\deci_low.raw_in_data[97]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(97),
+      I2 => mux_active,
+      I3 => fir_raw_E(80),
+      O => \deci_low.raw_in_data[97]_i_1_n_0\
+    );
+\deci_low.raw_in_data[98]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(98),
+      I2 => mux_active,
+      I3 => fir_raw_E(81),
+      O => \deci_low.raw_in_data[98]_i_1_n_0\
+    );
+\deci_low.raw_in_data[99]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(99),
+      I2 => mux_active,
+      I3 => fir_raw_E(82),
+      O => \deci_low.raw_in_data[99]_i_1_n_0\
+    );
+\deci_low.raw_in_data[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => \deci_low.raw_in_data[191]_i_2_n_0\,
+      I1 => raw_in_data(9),
+      I2 => mux_active,
+      I3 => raw_N0(9),
+      O => \deci_low.raw_in_data[9]_i_1_n_0\
     );
 \deci_low.raw_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(0),
-      Q => \deci_low.raw_in_data_reg_n_0_[0]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[0]_i_1_n_0\,
+      Q => raw_in_data(0),
       R => '0'
     );
 \deci_low.raw_in_data_reg[100]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(83),
-      Q => \deci_low.raw_in_data_reg_n_0_[100]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[100]_i_1_n_0\,
+      Q => raw_in_data(100),
       R => '0'
     );
 \deci_low.raw_in_data_reg[101]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(84),
-      Q => \deci_low.raw_in_data_reg_n_0_[101]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[101]_i_1_n_0\,
+      Q => raw_in_data(101),
       R => '0'
     );
 \deci_low.raw_in_data_reg[102]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(85),
-      Q => \deci_low.raw_in_data_reg_n_0_[102]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[102]_i_1_n_0\,
+      Q => raw_in_data(102),
       R => '0'
     );
 \deci_low.raw_in_data_reg[103]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(86),
-      Q => \deci_low.raw_in_data_reg_n_0_[103]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[103]_i_1_n_0\,
+      Q => raw_in_data(103),
       R => '0'
     );
 \deci_low.raw_in_data_reg[104]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(87),
-      Q => \deci_low.raw_in_data_reg_n_0_[104]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[104]_i_1_n_0\,
+      Q => raw_in_data(104),
       R => '0'
     );
 \deci_low.raw_in_data_reg[105]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(88),
-      Q => \deci_low.raw_in_data_reg_n_0_[105]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[105]_i_1_n_0\,
+      Q => raw_in_data(105),
       R => '0'
     );
 \deci_low.raw_in_data_reg[106]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(89),
-      Q => \deci_low.raw_in_data_reg_n_0_[106]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[106]_i_1_n_0\,
+      Q => raw_in_data(106),
       R => '0'
     );
 \deci_low.raw_in_data_reg[107]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(90),
-      Q => \deci_low.raw_in_data_reg_n_0_[107]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[107]_i_1_n_0\,
+      Q => raw_in_data(107),
       R => '0'
     );
 \deci_low.raw_in_data_reg[108]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(91),
-      Q => \deci_low.raw_in_data_reg_n_0_[108]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[108]_i_1_n_0\,
+      Q => raw_in_data(108),
       R => '0'
     );
 \deci_low.raw_in_data_reg[109]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(92),
-      Q => \deci_low.raw_in_data_reg_n_0_[109]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[109]_i_1_n_0\,
+      Q => raw_in_data(109),
       R => '0'
     );
 \deci_low.raw_in_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(10),
-      Q => \deci_low.raw_in_data_reg_n_0_[10]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[10]_i_1_n_0\,
+      Q => raw_in_data(10),
       R => '0'
     );
 \deci_low.raw_in_data_reg[110]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(93),
-      Q => \deci_low.raw_in_data_reg_n_0_[110]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[110]_i_1_n_0\,
+      Q => raw_in_data(110),
       R => '0'
     );
 \deci_low.raw_in_data_reg[111]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(94),
-      Q => \deci_low.raw_in_data_reg_n_0_[111]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[111]_i_1_n_0\,
+      Q => raw_in_data(111),
       R => '0'
     );
 \deci_low.raw_in_data_reg[112]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(111),
-      Q => \deci_low.raw_in_data_reg_n_0_[112]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[112]_i_1_n_0\,
+      Q => raw_in_data(112),
       R => '0'
     );
 \deci_low.raw_in_data_reg[113]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(112),
-      Q => \deci_low.raw_in_data_reg_n_0_[113]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[113]_i_1_n_0\,
+      Q => raw_in_data(113),
       R => '0'
     );
 \deci_low.raw_in_data_reg[114]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(113),
-      Q => \deci_low.raw_in_data_reg_n_0_[114]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[114]_i_1_n_0\,
+      Q => raw_in_data(114),
       R => '0'
     );
 \deci_low.raw_in_data_reg[115]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(114),
-      Q => \deci_low.raw_in_data_reg_n_0_[115]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[115]_i_1_n_0\,
+      Q => raw_in_data(115),
       R => '0'
     );
 \deci_low.raw_in_data_reg[116]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(115),
-      Q => \deci_low.raw_in_data_reg_n_0_[116]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[116]_i_1_n_0\,
+      Q => raw_in_data(116),
       R => '0'
     );
 \deci_low.raw_in_data_reg[117]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(116),
-      Q => \deci_low.raw_in_data_reg_n_0_[117]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[117]_i_1_n_0\,
+      Q => raw_in_data(117),
       R => '0'
     );
 \deci_low.raw_in_data_reg[118]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(117),
-      Q => \deci_low.raw_in_data_reg_n_0_[118]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[118]_i_1_n_0\,
+      Q => raw_in_data(118),
       R => '0'
     );
 \deci_low.raw_in_data_reg[119]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(118),
-      Q => \deci_low.raw_in_data_reg_n_0_[119]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[119]_i_1_n_0\,
+      Q => raw_in_data(119),
       R => '0'
     );
 \deci_low.raw_in_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(11),
-      Q => \deci_low.raw_in_data_reg_n_0_[11]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[11]_i_1_n_0\,
+      Q => raw_in_data(11),
       R => '0'
     );
 \deci_low.raw_in_data_reg[120]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(119),
-      Q => \deci_low.raw_in_data_reg_n_0_[120]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[120]_i_1_n_0\,
+      Q => raw_in_data(120),
       R => '0'
     );
 \deci_low.raw_in_data_reg[121]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(120),
-      Q => \deci_low.raw_in_data_reg_n_0_[121]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[121]_i_1_n_0\,
+      Q => raw_in_data(121),
       R => '0'
     );
 \deci_low.raw_in_data_reg[122]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(121),
-      Q => \deci_low.raw_in_data_reg_n_0_[122]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[122]_i_1_n_0\,
+      Q => raw_in_data(122),
       R => '0'
     );
 \deci_low.raw_in_data_reg[123]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(122),
-      Q => \deci_low.raw_in_data_reg_n_0_[123]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[123]_i_1_n_0\,
+      Q => raw_in_data(123),
       R => '0'
     );
 \deci_low.raw_in_data_reg[124]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(123),
-      Q => \deci_low.raw_in_data_reg_n_0_[124]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[124]_i_1_n_0\,
+      Q => raw_in_data(124),
       R => '0'
     );
 \deci_low.raw_in_data_reg[125]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(124),
-      Q => \deci_low.raw_in_data_reg_n_0_[125]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[125]_i_1_n_0\,
+      Q => raw_in_data(125),
       R => '0'
     );
 \deci_low.raw_in_data_reg[126]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(125),
-      Q => \deci_low.raw_in_data_reg_n_0_[126]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[126]_i_1_n_0\,
+      Q => raw_in_data(126),
       R => '0'
     );
 \deci_low.raw_in_data_reg[127]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(126),
-      Q => \deci_low.raw_in_data_reg_n_0_[127]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[127]_i_1_n_0\,
+      Q => raw_in_data(127),
       R => '0'
     );
 \deci_low.raw_in_data_reg[128]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(15),
-      Q => \deci_low.raw_in_data_reg_n_0_[128]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[128]_i_1_n_0\,
+      Q => raw_in_data(128),
       R => '0'
     );
 \deci_low.raw_in_data_reg[129]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(16),
-      Q => \deci_low.raw_in_data_reg_n_0_[129]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[129]_i_1_n_0\,
+      Q => raw_in_data(129),
       R => '0'
     );
 \deci_low.raw_in_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(12),
-      Q => \deci_low.raw_in_data_reg_n_0_[12]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[12]_i_1_n_0\,
+      Q => raw_in_data(12),
       R => '0'
     );
 \deci_low.raw_in_data_reg[130]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(17),
-      Q => \deci_low.raw_in_data_reg_n_0_[130]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[130]_i_1_n_0\,
+      Q => raw_in_data(130),
       R => '0'
     );
 \deci_low.raw_in_data_reg[131]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(18),
-      Q => \deci_low.raw_in_data_reg_n_0_[131]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[131]_i_1_n_0\,
+      Q => raw_in_data(131),
       R => '0'
     );
 \deci_low.raw_in_data_reg[132]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(19),
-      Q => \deci_low.raw_in_data_reg_n_0_[132]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[132]_i_1_n_0\,
+      Q => raw_in_data(132),
       R => '0'
     );
 \deci_low.raw_in_data_reg[133]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(20),
-      Q => \deci_low.raw_in_data_reg_n_0_[133]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[133]_i_1_n_0\,
+      Q => raw_in_data(133),
       R => '0'
     );
 \deci_low.raw_in_data_reg[134]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(21),
-      Q => \deci_low.raw_in_data_reg_n_0_[134]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[134]_i_1_n_0\,
+      Q => raw_in_data(134),
       R => '0'
     );
 \deci_low.raw_in_data_reg[135]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(22),
-      Q => \deci_low.raw_in_data_reg_n_0_[135]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[135]_i_1_n_0\,
+      Q => raw_in_data(135),
       R => '0'
     );
 \deci_low.raw_in_data_reg[136]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(23),
-      Q => \deci_low.raw_in_data_reg_n_0_[136]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[136]_i_1_n_0\,
+      Q => raw_in_data(136),
       R => '0'
     );
 \deci_low.raw_in_data_reg[137]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(24),
-      Q => \deci_low.raw_in_data_reg_n_0_[137]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[137]_i_1_n_0\,
+      Q => raw_in_data(137),
       R => '0'
     );
 \deci_low.raw_in_data_reg[138]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(25),
-      Q => \deci_low.raw_in_data_reg_n_0_[138]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[138]_i_1_n_0\,
+      Q => raw_in_data(138),
       R => '0'
     );
 \deci_low.raw_in_data_reg[139]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(26),
-      Q => \deci_low.raw_in_data_reg_n_0_[139]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[139]_i_1_n_0\,
+      Q => raw_in_data(139),
       R => '0'
     );
 \deci_low.raw_in_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(13),
-      Q => \deci_low.raw_in_data_reg_n_0_[13]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[13]_i_1_n_0\,
+      Q => raw_in_data(13),
       R => '0'
     );
 \deci_low.raw_in_data_reg[140]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(27),
-      Q => \deci_low.raw_in_data_reg_n_0_[140]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[140]_i_1_n_0\,
+      Q => raw_in_data(140),
       R => '0'
     );
 \deci_low.raw_in_data_reg[141]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(28),
-      Q => \deci_low.raw_in_data_reg_n_0_[141]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[141]_i_1_n_0\,
+      Q => raw_in_data(141),
       R => '0'
     );
 \deci_low.raw_in_data_reg[142]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(29),
-      Q => \deci_low.raw_in_data_reg_n_0_[142]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[142]_i_1_n_0\,
+      Q => raw_in_data(142),
       R => '0'
     );
 \deci_low.raw_in_data_reg[143]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(30),
-      Q => \deci_low.raw_in_data_reg_n_0_[143]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[143]_i_1_n_0\,
+      Q => raw_in_data(143),
       R => '0'
     );
 \deci_low.raw_in_data_reg[144]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(47),
-      Q => \deci_low.raw_in_data_reg_n_0_[144]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[144]_i_1_n_0\,
+      Q => raw_in_data(144),
       R => '0'
     );
 \deci_low.raw_in_data_reg[145]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(48),
-      Q => \deci_low.raw_in_data_reg_n_0_[145]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[145]_i_1_n_0\,
+      Q => raw_in_data(145),
       R => '0'
     );
 \deci_low.raw_in_data_reg[146]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(49),
-      Q => \deci_low.raw_in_data_reg_n_0_[146]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[146]_i_1_n_0\,
+      Q => raw_in_data(146),
       R => '0'
     );
 \deci_low.raw_in_data_reg[147]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(50),
-      Q => \deci_low.raw_in_data_reg_n_0_[147]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[147]_i_1_n_0\,
+      Q => raw_in_data(147),
       R => '0'
     );
 \deci_low.raw_in_data_reg[148]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(51),
-      Q => \deci_low.raw_in_data_reg_n_0_[148]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[148]_i_1_n_0\,
+      Q => raw_in_data(148),
       R => '0'
     );
 \deci_low.raw_in_data_reg[149]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(52),
-      Q => \deci_low.raw_in_data_reg_n_0_[149]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[149]_i_1_n_0\,
+      Q => raw_in_data(149),
       R => '0'
     );
 \deci_low.raw_in_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(14),
-      Q => \deci_low.raw_in_data_reg_n_0_[14]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[14]_i_1_n_0\,
+      Q => raw_in_data(14),
       R => '0'
     );
 \deci_low.raw_in_data_reg[150]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(53),
-      Q => \deci_low.raw_in_data_reg_n_0_[150]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[150]_i_1_n_0\,
+      Q => raw_in_data(150),
       R => '0'
     );
 \deci_low.raw_in_data_reg[151]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(54),
-      Q => \deci_low.raw_in_data_reg_n_0_[151]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[151]_i_1_n_0\,
+      Q => raw_in_data(151),
       R => '0'
     );
 \deci_low.raw_in_data_reg[152]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(55),
-      Q => \deci_low.raw_in_data_reg_n_0_[152]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[152]_i_1_n_0\,
+      Q => raw_in_data(152),
       R => '0'
     );
 \deci_low.raw_in_data_reg[153]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(56),
-      Q => \deci_low.raw_in_data_reg_n_0_[153]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[153]_i_1_n_0\,
+      Q => raw_in_data(153),
       R => '0'
     );
 \deci_low.raw_in_data_reg[154]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(57),
-      Q => \deci_low.raw_in_data_reg_n_0_[154]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[154]_i_1_n_0\,
+      Q => raw_in_data(154),
       R => '0'
     );
 \deci_low.raw_in_data_reg[155]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(58),
-      Q => \deci_low.raw_in_data_reg_n_0_[155]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[155]_i_1_n_0\,
+      Q => raw_in_data(155),
       R => '0'
     );
 \deci_low.raw_in_data_reg[156]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(59),
-      Q => \deci_low.raw_in_data_reg_n_0_[156]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[156]_i_1_n_0\,
+      Q => raw_in_data(156),
       R => '0'
     );
 \deci_low.raw_in_data_reg[157]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(60),
-      Q => \deci_low.raw_in_data_reg_n_0_[157]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[157]_i_1_n_0\,
+      Q => raw_in_data(157),
       R => '0'
     );
 \deci_low.raw_in_data_reg[158]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(61),
-      Q => \deci_low.raw_in_data_reg_n_0_[158]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[158]_i_1_n_0\,
+      Q => raw_in_data(158),
       R => '0'
     );
 \deci_low.raw_in_data_reg[159]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(62),
-      Q => \deci_low.raw_in_data_reg_n_0_[159]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[159]_i_1_n_0\,
+      Q => raw_in_data(159),
       R => '0'
     );
 \deci_low.raw_in_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(15),
-      Q => \deci_low.raw_in_data_reg_n_0_[15]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[15]_i_1_n_0\,
+      Q => raw_in_data(15),
       R => '0'
     );
 \deci_low.raw_in_data_reg[160]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(79),
-      Q => \deci_low.raw_in_data_reg_n_0_[160]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[160]_i_1_n_0\,
+      Q => raw_in_data(160),
       R => '0'
     );
 \deci_low.raw_in_data_reg[161]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(80),
-      Q => \deci_low.raw_in_data_reg_n_0_[161]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[161]_i_1_n_0\,
+      Q => raw_in_data(161),
       R => '0'
     );
 \deci_low.raw_in_data_reg[162]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(81),
-      Q => \deci_low.raw_in_data_reg_n_0_[162]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[162]_i_1_n_0\,
+      Q => raw_in_data(162),
       R => '0'
     );
 \deci_low.raw_in_data_reg[163]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(82),
-      Q => \deci_low.raw_in_data_reg_n_0_[163]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[163]_i_1_n_0\,
+      Q => raw_in_data(163),
       R => '0'
     );
 \deci_low.raw_in_data_reg[164]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(83),
-      Q => \deci_low.raw_in_data_reg_n_0_[164]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[164]_i_1_n_0\,
+      Q => raw_in_data(164),
       R => '0'
     );
 \deci_low.raw_in_data_reg[165]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(84),
-      Q => \deci_low.raw_in_data_reg_n_0_[165]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[165]_i_1_n_0\,
+      Q => raw_in_data(165),
       R => '0'
     );
 \deci_low.raw_in_data_reg[166]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(85),
-      Q => \deci_low.raw_in_data_reg_n_0_[166]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[166]_i_1_n_0\,
+      Q => raw_in_data(166),
       R => '0'
     );
 \deci_low.raw_in_data_reg[167]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(86),
-      Q => \deci_low.raw_in_data_reg_n_0_[167]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[167]_i_1_n_0\,
+      Q => raw_in_data(167),
       R => '0'
     );
 \deci_low.raw_in_data_reg[168]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(87),
-      Q => \deci_low.raw_in_data_reg_n_0_[168]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[168]_i_1_n_0\,
+      Q => raw_in_data(168),
       R => '0'
     );
 \deci_low.raw_in_data_reg[169]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(88),
-      Q => \deci_low.raw_in_data_reg_n_0_[169]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[169]_i_1_n_0\,
+      Q => raw_in_data(169),
       R => '0'
     );
 \deci_low.raw_in_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(0),
-      Q => \deci_low.raw_in_data_reg_n_0_[16]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[16]_i_1_n_0\,
+      Q => raw_in_data(16),
       R => '0'
     );
 \deci_low.raw_in_data_reg[170]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(89),
-      Q => \deci_low.raw_in_data_reg_n_0_[170]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[170]_i_1_n_0\,
+      Q => raw_in_data(170),
       R => '0'
     );
 \deci_low.raw_in_data_reg[171]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(90),
-      Q => \deci_low.raw_in_data_reg_n_0_[171]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[171]_i_1_n_0\,
+      Q => raw_in_data(171),
       R => '0'
     );
 \deci_low.raw_in_data_reg[172]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(91),
-      Q => \deci_low.raw_in_data_reg_n_0_[172]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[172]_i_1_n_0\,
+      Q => raw_in_data(172),
       R => '0'
     );
 \deci_low.raw_in_data_reg[173]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(92),
-      Q => \deci_low.raw_in_data_reg_n_0_[173]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[173]_i_1_n_0\,
+      Q => raw_in_data(173),
       R => '0'
     );
 \deci_low.raw_in_data_reg[174]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(93),
-      Q => \deci_low.raw_in_data_reg_n_0_[174]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[174]_i_1_n_0\,
+      Q => raw_in_data(174),
       R => '0'
     );
 \deci_low.raw_in_data_reg[175]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(94),
-      Q => \deci_low.raw_in_data_reg_n_0_[175]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[175]_i_1_n_0\,
+      Q => raw_in_data(175),
       R => '0'
     );
 \deci_low.raw_in_data_reg[176]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(111),
-      Q => \deci_low.raw_in_data_reg_n_0_[176]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[176]_i_1_n_0\,
+      Q => raw_in_data(176),
       R => '0'
     );
 \deci_low.raw_in_data_reg[177]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(112),
-      Q => \deci_low.raw_in_data_reg_n_0_[177]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[177]_i_1_n_0\,
+      Q => raw_in_data(177),
       R => '0'
     );
 \deci_low.raw_in_data_reg[178]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(113),
-      Q => \deci_low.raw_in_data_reg_n_0_[178]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[178]_i_1_n_0\,
+      Q => raw_in_data(178),
       R => '0'
     );
 \deci_low.raw_in_data_reg[179]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(114),
-      Q => \deci_low.raw_in_data_reg_n_0_[179]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[179]_i_1_n_0\,
+      Q => raw_in_data(179),
       R => '0'
     );
 \deci_low.raw_in_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(1),
-      Q => \deci_low.raw_in_data_reg_n_0_[17]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[17]_i_1_n_0\,
+      Q => raw_in_data(17),
       R => '0'
     );
 \deci_low.raw_in_data_reg[180]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(115),
-      Q => \deci_low.raw_in_data_reg_n_0_[180]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[180]_i_1_n_0\,
+      Q => raw_in_data(180),
       R => '0'
     );
 \deci_low.raw_in_data_reg[181]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(116),
-      Q => \deci_low.raw_in_data_reg_n_0_[181]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[181]_i_1_n_0\,
+      Q => raw_in_data(181),
       R => '0'
     );
 \deci_low.raw_in_data_reg[182]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(117),
-      Q => \deci_low.raw_in_data_reg_n_0_[182]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[182]_i_1_n_0\,
+      Q => raw_in_data(182),
       R => '0'
     );
 \deci_low.raw_in_data_reg[183]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(118),
-      Q => \deci_low.raw_in_data_reg_n_0_[183]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[183]_i_1_n_0\,
+      Q => raw_in_data(183),
       R => '0'
     );
 \deci_low.raw_in_data_reg[184]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(119),
-      Q => \deci_low.raw_in_data_reg_n_0_[184]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[184]_i_1_n_0\,
+      Q => raw_in_data(184),
       R => '0'
     );
 \deci_low.raw_in_data_reg[185]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(120),
-      Q => \deci_low.raw_in_data_reg_n_0_[185]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[185]_i_1_n_0\,
+      Q => raw_in_data(185),
       R => '0'
     );
 \deci_low.raw_in_data_reg[186]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(121),
-      Q => \deci_low.raw_in_data_reg_n_0_[186]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[186]_i_1_n_0\,
+      Q => raw_in_data(186),
       R => '0'
     );
 \deci_low.raw_in_data_reg[187]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(122),
-      Q => \deci_low.raw_in_data_reg_n_0_[187]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[187]_i_1_n_0\,
+      Q => raw_in_data(187),
       R => '0'
     );
 \deci_low.raw_in_data_reg[188]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(123),
-      Q => \deci_low.raw_in_data_reg_n_0_[188]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[188]_i_1_n_0\,
+      Q => raw_in_data(188),
       R => '0'
     );
 \deci_low.raw_in_data_reg[189]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(124),
-      Q => \deci_low.raw_in_data_reg_n_0_[189]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[189]_i_1_n_0\,
+      Q => raw_in_data(189),
       R => '0'
     );
 \deci_low.raw_in_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(2),
-      Q => \deci_low.raw_in_data_reg_n_0_[18]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[18]_i_1_n_0\,
+      Q => raw_in_data(18),
       R => '0'
     );
 \deci_low.raw_in_data_reg[190]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(125),
-      Q => \deci_low.raw_in_data_reg_n_0_[190]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[190]_i_1_n_0\,
+      Q => raw_in_data(190),
       R => '0'
     );
 \deci_low.raw_in_data_reg[191]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_W(126),
-      Q => \deci_low.raw_in_data_reg_n_0_[191]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[191]_i_1_n_0\,
+      Q => raw_in_data(191),
       R => '0'
     );
 \deci_low.raw_in_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(3),
-      Q => \deci_low.raw_in_data_reg_n_0_[19]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[19]_i_1_n_0\,
+      Q => raw_in_data(19),
       R => '0'
     );
 \deci_low.raw_in_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(1),
-      Q => \deci_low.raw_in_data_reg_n_0_[1]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[1]_i_1_n_0\,
+      Q => raw_in_data(1),
       R => '0'
     );
 \deci_low.raw_in_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(4),
-      Q => \deci_low.raw_in_data_reg_n_0_[20]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[20]_i_1_n_0\,
+      Q => raw_in_data(20),
       R => '0'
     );
 \deci_low.raw_in_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(5),
-      Q => \deci_low.raw_in_data_reg_n_0_[21]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[21]_i_1_n_0\,
+      Q => raw_in_data(21),
       R => '0'
     );
 \deci_low.raw_in_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(6),
-      Q => \deci_low.raw_in_data_reg_n_0_[22]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[22]_i_1_n_0\,
+      Q => raw_in_data(22),
       R => '0'
     );
 \deci_low.raw_in_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(7),
-      Q => \deci_low.raw_in_data_reg_n_0_[23]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[23]_i_1_n_0\,
+      Q => raw_in_data(23),
       R => '0'
     );
 \deci_low.raw_in_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(8),
-      Q => \deci_low.raw_in_data_reg_n_0_[24]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[24]_i_1_n_0\,
+      Q => raw_in_data(24),
       R => '0'
     );
 \deci_low.raw_in_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(9),
-      Q => \deci_low.raw_in_data_reg_n_0_[25]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[25]_i_1_n_0\,
+      Q => raw_in_data(25),
       R => '0'
     );
 \deci_low.raw_in_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(10),
-      Q => \deci_low.raw_in_data_reg_n_0_[26]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[26]_i_1_n_0\,
+      Q => raw_in_data(26),
       R => '0'
     );
 \deci_low.raw_in_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(11),
-      Q => \deci_low.raw_in_data_reg_n_0_[27]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[27]_i_1_n_0\,
+      Q => raw_in_data(27),
       R => '0'
     );
 \deci_low.raw_in_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(12),
-      Q => \deci_low.raw_in_data_reg_n_0_[28]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[28]_i_1_n_0\,
+      Q => raw_in_data(28),
       R => '0'
     );
 \deci_low.raw_in_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(13),
-      Q => \deci_low.raw_in_data_reg_n_0_[29]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[29]_i_1_n_0\,
+      Q => raw_in_data(29),
       R => '0'
     );
 \deci_low.raw_in_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(2),
-      Q => \deci_low.raw_in_data_reg_n_0_[2]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[2]_i_1_n_0\,
+      Q => raw_in_data(2),
       R => '0'
     );
 \deci_low.raw_in_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(14),
-      Q => \deci_low.raw_in_data_reg_n_0_[30]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[30]_i_1_n_0\,
+      Q => raw_in_data(30),
       R => '0'
     );
 \deci_low.raw_in_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N1(15),
-      Q => \deci_low.raw_in_data_reg_n_0_[31]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[31]_i_1_n_0\,
+      Q => raw_in_data(31),
       R => '0'
     );
 \deci_low.raw_in_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(0),
-      Q => \deci_low.raw_in_data_reg_n_0_[32]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[32]_i_1_n_0\,
+      Q => raw_in_data(32),
       R => '0'
     );
 \deci_low.raw_in_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(1),
-      Q => \deci_low.raw_in_data_reg_n_0_[33]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[33]_i_1_n_0\,
+      Q => raw_in_data(33),
       R => '0'
     );
 \deci_low.raw_in_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(2),
-      Q => \deci_low.raw_in_data_reg_n_0_[34]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[34]_i_1_n_0\,
+      Q => raw_in_data(34),
       R => '0'
     );
 \deci_low.raw_in_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(3),
-      Q => \deci_low.raw_in_data_reg_n_0_[35]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[35]_i_1_n_0\,
+      Q => raw_in_data(35),
       R => '0'
     );
 \deci_low.raw_in_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(4),
-      Q => \deci_low.raw_in_data_reg_n_0_[36]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[36]_i_1_n_0\,
+      Q => raw_in_data(36),
       R => '0'
     );
 \deci_low.raw_in_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(5),
-      Q => \deci_low.raw_in_data_reg_n_0_[37]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[37]_i_1_n_0\,
+      Q => raw_in_data(37),
       R => '0'
     );
 \deci_low.raw_in_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(6),
-      Q => \deci_low.raw_in_data_reg_n_0_[38]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[38]_i_1_n_0\,
+      Q => raw_in_data(38),
       R => '0'
     );
 \deci_low.raw_in_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(7),
-      Q => \deci_low.raw_in_data_reg_n_0_[39]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[39]_i_1_n_0\,
+      Q => raw_in_data(39),
       R => '0'
     );
 \deci_low.raw_in_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(3),
-      Q => \deci_low.raw_in_data_reg_n_0_[3]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[3]_i_1_n_0\,
+      Q => raw_in_data(3),
       R => '0'
     );
 \deci_low.raw_in_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(8),
-      Q => \deci_low.raw_in_data_reg_n_0_[40]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[40]_i_1_n_0\,
+      Q => raw_in_data(40),
       R => '0'
     );
 \deci_low.raw_in_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(9),
-      Q => \deci_low.raw_in_data_reg_n_0_[41]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[41]_i_1_n_0\,
+      Q => raw_in_data(41),
       R => '0'
     );
 \deci_low.raw_in_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(10),
-      Q => \deci_low.raw_in_data_reg_n_0_[42]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[42]_i_1_n_0\,
+      Q => raw_in_data(42),
       R => '0'
     );
 \deci_low.raw_in_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(11),
-      Q => \deci_low.raw_in_data_reg_n_0_[43]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[43]_i_1_n_0\,
+      Q => raw_in_data(43),
       R => '0'
     );
 \deci_low.raw_in_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(12),
-      Q => \deci_low.raw_in_data_reg_n_0_[44]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[44]_i_1_n_0\,
+      Q => raw_in_data(44),
       R => '0'
     );
 \deci_low.raw_in_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(13),
-      Q => \deci_low.raw_in_data_reg_n_0_[45]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[45]_i_1_n_0\,
+      Q => raw_in_data(45),
       R => '0'
     );
 \deci_low.raw_in_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(14),
-      Q => \deci_low.raw_in_data_reg_n_0_[46]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[46]_i_1_n_0\,
+      Q => raw_in_data(46),
       R => '0'
     );
 \deci_low.raw_in_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N2(15),
-      Q => \deci_low.raw_in_data_reg_n_0_[47]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[47]_i_1_n_0\,
+      Q => raw_in_data(47),
       R => '0'
     );
 \deci_low.raw_in_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(0),
-      Q => \deci_low.raw_in_data_reg_n_0_[48]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[48]_i_1_n_0\,
+      Q => raw_in_data(48),
       R => '0'
     );
 \deci_low.raw_in_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(1),
-      Q => \deci_low.raw_in_data_reg_n_0_[49]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[49]_i_1_n_0\,
+      Q => raw_in_data(49),
       R => '0'
     );
 \deci_low.raw_in_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(4),
-      Q => \deci_low.raw_in_data_reg_n_0_[4]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[4]_i_1_n_0\,
+      Q => raw_in_data(4),
       R => '0'
     );
 \deci_low.raw_in_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(2),
-      Q => \deci_low.raw_in_data_reg_n_0_[50]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[50]_i_1_n_0\,
+      Q => raw_in_data(50),
       R => '0'
     );
 \deci_low.raw_in_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(3),
-      Q => \deci_low.raw_in_data_reg_n_0_[51]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[51]_i_1_n_0\,
+      Q => raw_in_data(51),
       R => '0'
     );
 \deci_low.raw_in_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(4),
-      Q => \deci_low.raw_in_data_reg_n_0_[52]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[52]_i_1_n_0\,
+      Q => raw_in_data(52),
       R => '0'
     );
 \deci_low.raw_in_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(5),
-      Q => \deci_low.raw_in_data_reg_n_0_[53]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[53]_i_1_n_0\,
+      Q => raw_in_data(53),
       R => '0'
     );
 \deci_low.raw_in_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(6),
-      Q => \deci_low.raw_in_data_reg_n_0_[54]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[54]_i_1_n_0\,
+      Q => raw_in_data(54),
       R => '0'
     );
 \deci_low.raw_in_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(7),
-      Q => \deci_low.raw_in_data_reg_n_0_[55]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[55]_i_1_n_0\,
+      Q => raw_in_data(55),
       R => '0'
     );
 \deci_low.raw_in_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(8),
-      Q => \deci_low.raw_in_data_reg_n_0_[56]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[56]_i_1_n_0\,
+      Q => raw_in_data(56),
       R => '0'
     );
 \deci_low.raw_in_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(9),
-      Q => \deci_low.raw_in_data_reg_n_0_[57]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[57]_i_1_n_0\,
+      Q => raw_in_data(57),
       R => '0'
     );
 \deci_low.raw_in_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(10),
-      Q => \deci_low.raw_in_data_reg_n_0_[58]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[58]_i_1_n_0\,
+      Q => raw_in_data(58),
       R => '0'
     );
 \deci_low.raw_in_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(11),
-      Q => \deci_low.raw_in_data_reg_n_0_[59]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[59]_i_1_n_0\,
+      Q => raw_in_data(59),
       R => '0'
     );
 \deci_low.raw_in_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(5),
-      Q => \deci_low.raw_in_data_reg_n_0_[5]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[5]_i_1_n_0\,
+      Q => raw_in_data(5),
       R => '0'
     );
 \deci_low.raw_in_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(12),
-      Q => \deci_low.raw_in_data_reg_n_0_[60]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[60]_i_1_n_0\,
+      Q => raw_in_data(60),
       R => '0'
     );
 \deci_low.raw_in_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(13),
-      Q => \deci_low.raw_in_data_reg_n_0_[61]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[61]_i_1_n_0\,
+      Q => raw_in_data(61),
       R => '0'
     );
 \deci_low.raw_in_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(14),
-      Q => \deci_low.raw_in_data_reg_n_0_[62]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[62]_i_1_n_0\,
+      Q => raw_in_data(62),
       R => '0'
     );
 \deci_low.raw_in_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N3(15),
-      Q => \deci_low.raw_in_data_reg_n_0_[63]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[63]_i_1_n_0\,
+      Q => raw_in_data(63),
       R => '0'
     );
 \deci_low.raw_in_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(15),
-      Q => \deci_low.raw_in_data_reg_n_0_[64]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[64]_i_1_n_0\,
+      Q => raw_in_data(64),
       R => '0'
     );
 \deci_low.raw_in_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(16),
-      Q => \deci_low.raw_in_data_reg_n_0_[65]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[65]_i_1_n_0\,
+      Q => raw_in_data(65),
       R => '0'
     );
 \deci_low.raw_in_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(17),
-      Q => \deci_low.raw_in_data_reg_n_0_[66]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[66]_i_1_n_0\,
+      Q => raw_in_data(66),
       R => '0'
     );
 \deci_low.raw_in_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(18),
-      Q => \deci_low.raw_in_data_reg_n_0_[67]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[67]_i_1_n_0\,
+      Q => raw_in_data(67),
       R => '0'
     );
 \deci_low.raw_in_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(19),
-      Q => \deci_low.raw_in_data_reg_n_0_[68]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[68]_i_1_n_0\,
+      Q => raw_in_data(68),
       R => '0'
     );
 \deci_low.raw_in_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(20),
-      Q => \deci_low.raw_in_data_reg_n_0_[69]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[69]_i_1_n_0\,
+      Q => raw_in_data(69),
       R => '0'
     );
 \deci_low.raw_in_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(6),
-      Q => \deci_low.raw_in_data_reg_n_0_[6]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[6]_i_1_n_0\,
+      Q => raw_in_data(6),
       R => '0'
     );
 \deci_low.raw_in_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(21),
-      Q => \deci_low.raw_in_data_reg_n_0_[70]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[70]_i_1_n_0\,
+      Q => raw_in_data(70),
       R => '0'
     );
 \deci_low.raw_in_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(22),
-      Q => \deci_low.raw_in_data_reg_n_0_[71]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[71]_i_1_n_0\,
+      Q => raw_in_data(71),
       R => '0'
     );
 \deci_low.raw_in_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(23),
-      Q => \deci_low.raw_in_data_reg_n_0_[72]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[72]_i_1_n_0\,
+      Q => raw_in_data(72),
       R => '0'
     );
 \deci_low.raw_in_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(24),
-      Q => \deci_low.raw_in_data_reg_n_0_[73]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[73]_i_1_n_0\,
+      Q => raw_in_data(73),
       R => '0'
     );
 \deci_low.raw_in_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(25),
-      Q => \deci_low.raw_in_data_reg_n_0_[74]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[74]_i_1_n_0\,
+      Q => raw_in_data(74),
       R => '0'
     );
 \deci_low.raw_in_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(26),
-      Q => \deci_low.raw_in_data_reg_n_0_[75]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[75]_i_1_n_0\,
+      Q => raw_in_data(75),
       R => '0'
     );
 \deci_low.raw_in_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(27),
-      Q => \deci_low.raw_in_data_reg_n_0_[76]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[76]_i_1_n_0\,
+      Q => raw_in_data(76),
       R => '0'
     );
 \deci_low.raw_in_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(28),
-      Q => \deci_low.raw_in_data_reg_n_0_[77]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[77]_i_1_n_0\,
+      Q => raw_in_data(77),
       R => '0'
     );
 \deci_low.raw_in_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(29),
-      Q => \deci_low.raw_in_data_reg_n_0_[78]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[78]_i_1_n_0\,
+      Q => raw_in_data(78),
       R => '0'
     );
 \deci_low.raw_in_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(30),
-      Q => \deci_low.raw_in_data_reg_n_0_[79]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[79]_i_1_n_0\,
+      Q => raw_in_data(79),
       R => '0'
     );
 \deci_low.raw_in_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(7),
-      Q => \deci_low.raw_in_data_reg_n_0_[7]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[7]_i_1_n_0\,
+      Q => raw_in_data(7),
       R => '0'
     );
 \deci_low.raw_in_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(47),
-      Q => \deci_low.raw_in_data_reg_n_0_[80]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[80]_i_1_n_0\,
+      Q => raw_in_data(80),
       R => '0'
     );
 \deci_low.raw_in_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(48),
-      Q => \deci_low.raw_in_data_reg_n_0_[81]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[81]_i_1_n_0\,
+      Q => raw_in_data(81),
       R => '0'
     );
 \deci_low.raw_in_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(49),
-      Q => \deci_low.raw_in_data_reg_n_0_[82]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[82]_i_1_n_0\,
+      Q => raw_in_data(82),
       R => '0'
     );
 \deci_low.raw_in_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(50),
-      Q => \deci_low.raw_in_data_reg_n_0_[83]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[83]_i_1_n_0\,
+      Q => raw_in_data(83),
       R => '0'
     );
 \deci_low.raw_in_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(51),
-      Q => \deci_low.raw_in_data_reg_n_0_[84]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[84]_i_1_n_0\,
+      Q => raw_in_data(84),
       R => '0'
     );
 \deci_low.raw_in_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(52),
-      Q => \deci_low.raw_in_data_reg_n_0_[85]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[85]_i_1_n_0\,
+      Q => raw_in_data(85),
       R => '0'
     );
 \deci_low.raw_in_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(53),
-      Q => \deci_low.raw_in_data_reg_n_0_[86]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[86]_i_1_n_0\,
+      Q => raw_in_data(86),
       R => '0'
     );
 \deci_low.raw_in_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(54),
-      Q => \deci_low.raw_in_data_reg_n_0_[87]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[87]_i_1_n_0\,
+      Q => raw_in_data(87),
       R => '0'
     );
 \deci_low.raw_in_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(55),
-      Q => \deci_low.raw_in_data_reg_n_0_[88]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[88]_i_1_n_0\,
+      Q => raw_in_data(88),
       R => '0'
     );
 \deci_low.raw_in_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(56),
-      Q => \deci_low.raw_in_data_reg_n_0_[89]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[89]_i_1_n_0\,
+      Q => raw_in_data(89),
       R => '0'
     );
 \deci_low.raw_in_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(8),
-      Q => \deci_low.raw_in_data_reg_n_0_[8]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[8]_i_1_n_0\,
+      Q => raw_in_data(8),
       R => '0'
     );
 \deci_low.raw_in_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(57),
-      Q => \deci_low.raw_in_data_reg_n_0_[90]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[90]_i_1_n_0\,
+      Q => raw_in_data(90),
       R => '0'
     );
 \deci_low.raw_in_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(58),
-      Q => \deci_low.raw_in_data_reg_n_0_[91]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[91]_i_1_n_0\,
+      Q => raw_in_data(91),
       R => '0'
     );
 \deci_low.raw_in_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(59),
-      Q => \deci_low.raw_in_data_reg_n_0_[92]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[92]_i_1_n_0\,
+      Q => raw_in_data(92),
       R => '0'
     );
 \deci_low.raw_in_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(60),
-      Q => \deci_low.raw_in_data_reg_n_0_[93]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[93]_i_1_n_0\,
+      Q => raw_in_data(93),
       R => '0'
     );
 \deci_low.raw_in_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(61),
-      Q => \deci_low.raw_in_data_reg_n_0_[94]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[94]_i_1_n_0\,
+      Q => raw_in_data(94),
       R => '0'
     );
 \deci_low.raw_in_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(62),
-      Q => \deci_low.raw_in_data_reg_n_0_[95]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[95]_i_1_n_0\,
+      Q => raw_in_data(95),
       R => '0'
     );
 \deci_low.raw_in_data_reg[96]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(79),
-      Q => \deci_low.raw_in_data_reg_n_0_[96]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[96]_i_1_n_0\,
+      Q => raw_in_data(96),
       R => '0'
     );
 \deci_low.raw_in_data_reg[97]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(80),
-      Q => \deci_low.raw_in_data_reg_n_0_[97]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[97]_i_1_n_0\,
+      Q => raw_in_data(97),
       R => '0'
     );
 \deci_low.raw_in_data_reg[98]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(81),
-      Q => \deci_low.raw_in_data_reg_n_0_[98]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[98]_i_1_n_0\,
+      Q => raw_in_data(98),
       R => '0'
     );
 \deci_low.raw_in_data_reg[99]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => fir_raw_E(82),
-      Q => \deci_low.raw_in_data_reg_n_0_[99]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[99]_i_1_n_0\,
+      Q => raw_in_data(99),
       R => '0'
     );
 \deci_low.raw_in_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.raw_in_data[191]_i_1_n_0\,
-      D => raw_N0(9),
-      Q => \deci_low.raw_in_data_reg_n_0_[9]\,
+      CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
+      D => \deci_low.raw_in_data[9]_i_1_n_0\,
+      Q => raw_in_data(9),
       R => '0'
+    );
+\deci_low.raw_out_rd_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => raw_fifo_empty,
+      I1 => \deci_low.raw_delay[11]_i_4_n_0\,
+      I2 => \deci_low.raw_delay[11]_i_3_n_0\,
+      I3 => \deci_low.raw_out_rd_i_2_n_0\,
+      O => \deci_low.raw_out_rd_i_1_n_0\
+    );
+\deci_low.raw_out_rd_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => raw_delay(1),
+      I1 => raw_delay(0),
+      I2 => raw_delay(3),
+      I3 => raw_delay(2),
+      O => \deci_low.raw_out_rd_i_2_n_0\
+    );
+\deci_low.raw_out_rd_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => raw_clk,
+      CE => '1',
+      D => \deci_low.raw_out_rd_i_1_n_0\,
+      Q => raw_out_rd,
+      R => '0'
+    );
+\deci_low.raw_ready_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => raw_out_rd,
+      I1 => raw_fifo_empty,
+      O => \deci_low.raw_ready_i_1_n_0\
     );
 \deci_low.raw_ready_reg\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => '1',
-      D => raw_active,
+      D => \deci_low.raw_ready_i_1_n_0\,
       Q => \^raw_ready\,
       R => '0'
     );
 \deci_low.raw_wr_delay[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"3333B333"
+      INIT => X"00007FFF"
     )
         port map (
       I0 => mux_active,
-      I1 => raw_wr_delay(0),
+      I1 => raw_wr_delay(1),
       I2 => raw_wr_delay(3),
       I3 => raw_wr_delay(2),
-      I4 => raw_wr_delay(1),
-      O => \raw_wr_delay__0\(0)
+      I4 => raw_wr_delay(0),
+      O => raw_wr_delay0_in(0)
     );
-\deci_low.raw_wr_delay[1]_i_1\: unisim.vcomponents.LUT5
+\deci_low.raw_wr_delay[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"552AAA55"
+      INIT => X"69"
     )
         port map (
       I0 => raw_wr_delay(0),
-      I1 => raw_wr_delay(2),
-      I2 => raw_wr_delay(3),
-      I3 => raw_wr_delay(1),
-      I4 => mux_active,
-      O => \raw_wr_delay__0\(1)
+      I1 => raw_wr_delay(1),
+      I2 => mux_active,
+      O => raw_wr_delay0_in(1)
     );
 \deci_low.raw_wr_delay[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -13747,7 +16787,7 @@ begin
       I1 => raw_wr_delay(1),
       I2 => raw_wr_delay(2),
       I3 => mux_active,
-      O => \raw_wr_delay__0\(2)
+      O => raw_wr_delay0_in(2)
     );
 \deci_low.raw_wr_delay[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -13771,13 +16811,13 @@ begin
       I2 => mux_active,
       I3 => raw_wr_delay(3),
       I4 => raw_wr_delay(2),
-      O => \raw_wr_delay__0\(3)
+      O => raw_wr_delay0_in(3)
     );
 \deci_low.raw_wr_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
-      D => \raw_wr_delay__0\(0),
+      D => raw_wr_delay0_in(0),
       Q => raw_wr_delay(0),
       R => '0'
     );
@@ -13785,7 +16825,7 @@ begin
      port map (
       C => clk,
       CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
-      D => \raw_wr_delay__0\(1),
+      D => raw_wr_delay0_in(1),
       Q => raw_wr_delay(1),
       R => '0'
     );
@@ -13793,7 +16833,7 @@ begin
      port map (
       C => clk,
       CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
-      D => \raw_wr_delay__0\(2),
+      D => raw_wr_delay0_in(2),
       Q => raw_wr_delay(2),
       R => '0'
     );
@@ -13801,7 +16841,7 @@ begin
      port map (
       C => clk,
       CE => \deci_low.raw_wr_delay[3]_i_1_n_0\,
-      D => \raw_wr_delay__0\(3),
+      D => raw_wr_delay0_in(3),
       Q => raw_wr_delay(3),
       R => '0'
     );
@@ -13991,7 +17031,7 @@ begin
     )
         port map (
       I0 => \sim_count__0\(0),
-      O => \deci_low.sim_count[0]_i_1_n_0\
+      O => \p_1_in__0\(0)
     );
 \deci_low.sim_count[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -14011,13 +17051,13 @@ begin
         port map (
       I0 => \sim_count__0\(0),
       I1 => \sim_count__0\(1),
-      O => \deci_low.sim_count[1]_i_2_n_0\
+      O => \p_1_in__0\(1)
     );
 \deci_low.sim_count_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
       CE => sim_wr,
-      D => \deci_low.sim_count[0]_i_1_n_0\,
+      D => \p_1_in__0\(0),
       Q => \sim_count__0\(0),
       R => \deci_low.sim_count[1]_i_1_n_0\
     );
@@ -14025,7 +17065,7 @@ begin
      port map (
       C => sim_clk,
       CE => sim_wr,
-      D => \deci_low.sim_count[1]_i_2_n_0\,
+      D => \p_1_in__0\(1),
       Q => \sim_count__0\(1),
       R => \deci_low.sim_count[1]_i_1_n_0\
     );
@@ -16252,272 +19292,26 @@ begin
     );
 fifo_doa_i: component ps_deci_low_0_0_fifo_doa_low
      port map (
-      din(47) => \deci_low.doa_in_data_reg_n_0_[47]\,
-      din(46) => \deci_low.doa_in_data_reg_n_0_[46]\,
-      din(45) => \deci_low.doa_in_data_reg_n_0_[45]\,
-      din(44) => \deci_low.doa_in_data_reg_n_0_[44]\,
-      din(43) => \deci_low.doa_in_data_reg_n_0_[43]\,
-      din(42) => \deci_low.doa_in_data_reg_n_0_[42]\,
-      din(41) => \deci_low.doa_in_data_reg_n_0_[41]\,
-      din(40) => \deci_low.doa_in_data_reg_n_0_[40]\,
-      din(39) => \deci_low.doa_in_data_reg_n_0_[39]\,
-      din(38) => \deci_low.doa_in_data_reg_n_0_[38]\,
-      din(37) => \deci_low.doa_in_data_reg_n_0_[37]\,
-      din(36) => \deci_low.doa_in_data_reg_n_0_[36]\,
-      din(35) => \deci_low.doa_in_data_reg_n_0_[35]\,
-      din(34) => \deci_low.doa_in_data_reg_n_0_[34]\,
-      din(33) => \deci_low.doa_in_data_reg_n_0_[33]\,
-      din(32) => \deci_low.doa_in_data_reg_n_0_[32]\,
-      din(31) => \deci_low.doa_in_data_reg_n_0_[31]\,
-      din(30) => \deci_low.doa_in_data_reg_n_0_[30]\,
-      din(29) => \deci_low.doa_in_data_reg_n_0_[29]\,
-      din(28) => \deci_low.doa_in_data_reg_n_0_[28]\,
-      din(27) => \deci_low.doa_in_data_reg_n_0_[27]\,
-      din(26) => \deci_low.doa_in_data_reg_n_0_[26]\,
-      din(25) => \deci_low.doa_in_data_reg_n_0_[25]\,
-      din(24) => \deci_low.doa_in_data_reg_n_0_[24]\,
-      din(23) => \deci_low.doa_in_data_reg_n_0_[23]\,
-      din(22) => \deci_low.doa_in_data_reg_n_0_[22]\,
-      din(21) => \deci_low.doa_in_data_reg_n_0_[21]\,
-      din(20) => \deci_low.doa_in_data_reg_n_0_[20]\,
-      din(19) => \deci_low.doa_in_data_reg_n_0_[19]\,
-      din(18) => \deci_low.doa_in_data_reg_n_0_[18]\,
-      din(17) => \deci_low.doa_in_data_reg_n_0_[17]\,
-      din(16) => \deci_low.doa_in_data_reg_n_0_[16]\,
-      din(15) => \deci_low.doa_in_data_reg_n_0_[15]\,
-      din(14) => \deci_low.doa_in_data_reg_n_0_[14]\,
-      din(13) => \deci_low.doa_in_data_reg_n_0_[13]\,
-      din(12) => \deci_low.doa_in_data_reg_n_0_[12]\,
-      din(11) => \deci_low.doa_in_data_reg_n_0_[11]\,
-      din(10) => \deci_low.doa_in_data_reg_n_0_[10]\,
-      din(9) => \deci_low.doa_in_data_reg_n_0_[9]\,
-      din(8) => \deci_low.doa_in_data_reg_n_0_[8]\,
-      din(7) => \deci_low.doa_in_data_reg_n_0_[7]\,
-      din(6) => \deci_low.doa_in_data_reg_n_0_[6]\,
-      din(5) => \deci_low.doa_in_data_reg_n_0_[5]\,
-      din(4) => \deci_low.doa_in_data_reg_n_0_[4]\,
-      din(3) => \deci_low.doa_in_data_reg_n_0_[3]\,
-      din(2) => \deci_low.doa_in_data_reg_n_0_[2]\,
-      din(1) => \deci_low.doa_in_data_reg_n_0_[1]\,
-      din(0) => \deci_low.doa_in_data_reg_n_0_[0]\,
+      din(47 downto 0) => doa_in_data(47 downto 0),
       dout(47 downto 0) => doa_out_data(47 downto 0),
       empty => doa_fifo_empty,
       full => NLW_fifo_doa_i_full_UNCONNECTED,
       rd_clk => doa_clk,
-      rd_en => fifo_doa_i_i_1_n_0,
+      rd_en => doa_out_rd,
       rd_rst_busy => NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED,
       rst => \deci_low.sim_active_i_1_n_0\,
       wr_clk => clk,
       wr_en => doa_fifo_wr,
       wr_rst_busy => NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED
     );
-fifo_doa_i_i_1: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => doa_fifo_empty,
-      O => fifo_doa_i_i_1_n_0
-    );
 fifo_raw_i: component ps_deci_low_0_0_fifo_raw_low
      port map (
-      din(191) => \deci_low.raw_in_data_reg_n_0_[191]\,
-      din(190) => \deci_low.raw_in_data_reg_n_0_[190]\,
-      din(189) => \deci_low.raw_in_data_reg_n_0_[189]\,
-      din(188) => \deci_low.raw_in_data_reg_n_0_[188]\,
-      din(187) => \deci_low.raw_in_data_reg_n_0_[187]\,
-      din(186) => \deci_low.raw_in_data_reg_n_0_[186]\,
-      din(185) => \deci_low.raw_in_data_reg_n_0_[185]\,
-      din(184) => \deci_low.raw_in_data_reg_n_0_[184]\,
-      din(183) => \deci_low.raw_in_data_reg_n_0_[183]\,
-      din(182) => \deci_low.raw_in_data_reg_n_0_[182]\,
-      din(181) => \deci_low.raw_in_data_reg_n_0_[181]\,
-      din(180) => \deci_low.raw_in_data_reg_n_0_[180]\,
-      din(179) => \deci_low.raw_in_data_reg_n_0_[179]\,
-      din(178) => \deci_low.raw_in_data_reg_n_0_[178]\,
-      din(177) => \deci_low.raw_in_data_reg_n_0_[177]\,
-      din(176) => \deci_low.raw_in_data_reg_n_0_[176]\,
-      din(175) => \deci_low.raw_in_data_reg_n_0_[175]\,
-      din(174) => \deci_low.raw_in_data_reg_n_0_[174]\,
-      din(173) => \deci_low.raw_in_data_reg_n_0_[173]\,
-      din(172) => \deci_low.raw_in_data_reg_n_0_[172]\,
-      din(171) => \deci_low.raw_in_data_reg_n_0_[171]\,
-      din(170) => \deci_low.raw_in_data_reg_n_0_[170]\,
-      din(169) => \deci_low.raw_in_data_reg_n_0_[169]\,
-      din(168) => \deci_low.raw_in_data_reg_n_0_[168]\,
-      din(167) => \deci_low.raw_in_data_reg_n_0_[167]\,
-      din(166) => \deci_low.raw_in_data_reg_n_0_[166]\,
-      din(165) => \deci_low.raw_in_data_reg_n_0_[165]\,
-      din(164) => \deci_low.raw_in_data_reg_n_0_[164]\,
-      din(163) => \deci_low.raw_in_data_reg_n_0_[163]\,
-      din(162) => \deci_low.raw_in_data_reg_n_0_[162]\,
-      din(161) => \deci_low.raw_in_data_reg_n_0_[161]\,
-      din(160) => \deci_low.raw_in_data_reg_n_0_[160]\,
-      din(159) => \deci_low.raw_in_data_reg_n_0_[159]\,
-      din(158) => \deci_low.raw_in_data_reg_n_0_[158]\,
-      din(157) => \deci_low.raw_in_data_reg_n_0_[157]\,
-      din(156) => \deci_low.raw_in_data_reg_n_0_[156]\,
-      din(155) => \deci_low.raw_in_data_reg_n_0_[155]\,
-      din(154) => \deci_low.raw_in_data_reg_n_0_[154]\,
-      din(153) => \deci_low.raw_in_data_reg_n_0_[153]\,
-      din(152) => \deci_low.raw_in_data_reg_n_0_[152]\,
-      din(151) => \deci_low.raw_in_data_reg_n_0_[151]\,
-      din(150) => \deci_low.raw_in_data_reg_n_0_[150]\,
-      din(149) => \deci_low.raw_in_data_reg_n_0_[149]\,
-      din(148) => \deci_low.raw_in_data_reg_n_0_[148]\,
-      din(147) => \deci_low.raw_in_data_reg_n_0_[147]\,
-      din(146) => \deci_low.raw_in_data_reg_n_0_[146]\,
-      din(145) => \deci_low.raw_in_data_reg_n_0_[145]\,
-      din(144) => \deci_low.raw_in_data_reg_n_0_[144]\,
-      din(143) => \deci_low.raw_in_data_reg_n_0_[143]\,
-      din(142) => \deci_low.raw_in_data_reg_n_0_[142]\,
-      din(141) => \deci_low.raw_in_data_reg_n_0_[141]\,
-      din(140) => \deci_low.raw_in_data_reg_n_0_[140]\,
-      din(139) => \deci_low.raw_in_data_reg_n_0_[139]\,
-      din(138) => \deci_low.raw_in_data_reg_n_0_[138]\,
-      din(137) => \deci_low.raw_in_data_reg_n_0_[137]\,
-      din(136) => \deci_low.raw_in_data_reg_n_0_[136]\,
-      din(135) => \deci_low.raw_in_data_reg_n_0_[135]\,
-      din(134) => \deci_low.raw_in_data_reg_n_0_[134]\,
-      din(133) => \deci_low.raw_in_data_reg_n_0_[133]\,
-      din(132) => \deci_low.raw_in_data_reg_n_0_[132]\,
-      din(131) => \deci_low.raw_in_data_reg_n_0_[131]\,
-      din(130) => \deci_low.raw_in_data_reg_n_0_[130]\,
-      din(129) => \deci_low.raw_in_data_reg_n_0_[129]\,
-      din(128) => \deci_low.raw_in_data_reg_n_0_[128]\,
-      din(127) => \deci_low.raw_in_data_reg_n_0_[127]\,
-      din(126) => \deci_low.raw_in_data_reg_n_0_[126]\,
-      din(125) => \deci_low.raw_in_data_reg_n_0_[125]\,
-      din(124) => \deci_low.raw_in_data_reg_n_0_[124]\,
-      din(123) => \deci_low.raw_in_data_reg_n_0_[123]\,
-      din(122) => \deci_low.raw_in_data_reg_n_0_[122]\,
-      din(121) => \deci_low.raw_in_data_reg_n_0_[121]\,
-      din(120) => \deci_low.raw_in_data_reg_n_0_[120]\,
-      din(119) => \deci_low.raw_in_data_reg_n_0_[119]\,
-      din(118) => \deci_low.raw_in_data_reg_n_0_[118]\,
-      din(117) => \deci_low.raw_in_data_reg_n_0_[117]\,
-      din(116) => \deci_low.raw_in_data_reg_n_0_[116]\,
-      din(115) => \deci_low.raw_in_data_reg_n_0_[115]\,
-      din(114) => \deci_low.raw_in_data_reg_n_0_[114]\,
-      din(113) => \deci_low.raw_in_data_reg_n_0_[113]\,
-      din(112) => \deci_low.raw_in_data_reg_n_0_[112]\,
-      din(111) => \deci_low.raw_in_data_reg_n_0_[111]\,
-      din(110) => \deci_low.raw_in_data_reg_n_0_[110]\,
-      din(109) => \deci_low.raw_in_data_reg_n_0_[109]\,
-      din(108) => \deci_low.raw_in_data_reg_n_0_[108]\,
-      din(107) => \deci_low.raw_in_data_reg_n_0_[107]\,
-      din(106) => \deci_low.raw_in_data_reg_n_0_[106]\,
-      din(105) => \deci_low.raw_in_data_reg_n_0_[105]\,
-      din(104) => \deci_low.raw_in_data_reg_n_0_[104]\,
-      din(103) => \deci_low.raw_in_data_reg_n_0_[103]\,
-      din(102) => \deci_low.raw_in_data_reg_n_0_[102]\,
-      din(101) => \deci_low.raw_in_data_reg_n_0_[101]\,
-      din(100) => \deci_low.raw_in_data_reg_n_0_[100]\,
-      din(99) => \deci_low.raw_in_data_reg_n_0_[99]\,
-      din(98) => \deci_low.raw_in_data_reg_n_0_[98]\,
-      din(97) => \deci_low.raw_in_data_reg_n_0_[97]\,
-      din(96) => \deci_low.raw_in_data_reg_n_0_[96]\,
-      din(95) => \deci_low.raw_in_data_reg_n_0_[95]\,
-      din(94) => \deci_low.raw_in_data_reg_n_0_[94]\,
-      din(93) => \deci_low.raw_in_data_reg_n_0_[93]\,
-      din(92) => \deci_low.raw_in_data_reg_n_0_[92]\,
-      din(91) => \deci_low.raw_in_data_reg_n_0_[91]\,
-      din(90) => \deci_low.raw_in_data_reg_n_0_[90]\,
-      din(89) => \deci_low.raw_in_data_reg_n_0_[89]\,
-      din(88) => \deci_low.raw_in_data_reg_n_0_[88]\,
-      din(87) => \deci_low.raw_in_data_reg_n_0_[87]\,
-      din(86) => \deci_low.raw_in_data_reg_n_0_[86]\,
-      din(85) => \deci_low.raw_in_data_reg_n_0_[85]\,
-      din(84) => \deci_low.raw_in_data_reg_n_0_[84]\,
-      din(83) => \deci_low.raw_in_data_reg_n_0_[83]\,
-      din(82) => \deci_low.raw_in_data_reg_n_0_[82]\,
-      din(81) => \deci_low.raw_in_data_reg_n_0_[81]\,
-      din(80) => \deci_low.raw_in_data_reg_n_0_[80]\,
-      din(79) => \deci_low.raw_in_data_reg_n_0_[79]\,
-      din(78) => \deci_low.raw_in_data_reg_n_0_[78]\,
-      din(77) => \deci_low.raw_in_data_reg_n_0_[77]\,
-      din(76) => \deci_low.raw_in_data_reg_n_0_[76]\,
-      din(75) => \deci_low.raw_in_data_reg_n_0_[75]\,
-      din(74) => \deci_low.raw_in_data_reg_n_0_[74]\,
-      din(73) => \deci_low.raw_in_data_reg_n_0_[73]\,
-      din(72) => \deci_low.raw_in_data_reg_n_0_[72]\,
-      din(71) => \deci_low.raw_in_data_reg_n_0_[71]\,
-      din(70) => \deci_low.raw_in_data_reg_n_0_[70]\,
-      din(69) => \deci_low.raw_in_data_reg_n_0_[69]\,
-      din(68) => \deci_low.raw_in_data_reg_n_0_[68]\,
-      din(67) => \deci_low.raw_in_data_reg_n_0_[67]\,
-      din(66) => \deci_low.raw_in_data_reg_n_0_[66]\,
-      din(65) => \deci_low.raw_in_data_reg_n_0_[65]\,
-      din(64) => \deci_low.raw_in_data_reg_n_0_[64]\,
-      din(63) => \deci_low.raw_in_data_reg_n_0_[63]\,
-      din(62) => \deci_low.raw_in_data_reg_n_0_[62]\,
-      din(61) => \deci_low.raw_in_data_reg_n_0_[61]\,
-      din(60) => \deci_low.raw_in_data_reg_n_0_[60]\,
-      din(59) => \deci_low.raw_in_data_reg_n_0_[59]\,
-      din(58) => \deci_low.raw_in_data_reg_n_0_[58]\,
-      din(57) => \deci_low.raw_in_data_reg_n_0_[57]\,
-      din(56) => \deci_low.raw_in_data_reg_n_0_[56]\,
-      din(55) => \deci_low.raw_in_data_reg_n_0_[55]\,
-      din(54) => \deci_low.raw_in_data_reg_n_0_[54]\,
-      din(53) => \deci_low.raw_in_data_reg_n_0_[53]\,
-      din(52) => \deci_low.raw_in_data_reg_n_0_[52]\,
-      din(51) => \deci_low.raw_in_data_reg_n_0_[51]\,
-      din(50) => \deci_low.raw_in_data_reg_n_0_[50]\,
-      din(49) => \deci_low.raw_in_data_reg_n_0_[49]\,
-      din(48) => \deci_low.raw_in_data_reg_n_0_[48]\,
-      din(47) => \deci_low.raw_in_data_reg_n_0_[47]\,
-      din(46) => \deci_low.raw_in_data_reg_n_0_[46]\,
-      din(45) => \deci_low.raw_in_data_reg_n_0_[45]\,
-      din(44) => \deci_low.raw_in_data_reg_n_0_[44]\,
-      din(43) => \deci_low.raw_in_data_reg_n_0_[43]\,
-      din(42) => \deci_low.raw_in_data_reg_n_0_[42]\,
-      din(41) => \deci_low.raw_in_data_reg_n_0_[41]\,
-      din(40) => \deci_low.raw_in_data_reg_n_0_[40]\,
-      din(39) => \deci_low.raw_in_data_reg_n_0_[39]\,
-      din(38) => \deci_low.raw_in_data_reg_n_0_[38]\,
-      din(37) => \deci_low.raw_in_data_reg_n_0_[37]\,
-      din(36) => \deci_low.raw_in_data_reg_n_0_[36]\,
-      din(35) => \deci_low.raw_in_data_reg_n_0_[35]\,
-      din(34) => \deci_low.raw_in_data_reg_n_0_[34]\,
-      din(33) => \deci_low.raw_in_data_reg_n_0_[33]\,
-      din(32) => \deci_low.raw_in_data_reg_n_0_[32]\,
-      din(31) => \deci_low.raw_in_data_reg_n_0_[31]\,
-      din(30) => \deci_low.raw_in_data_reg_n_0_[30]\,
-      din(29) => \deci_low.raw_in_data_reg_n_0_[29]\,
-      din(28) => \deci_low.raw_in_data_reg_n_0_[28]\,
-      din(27) => \deci_low.raw_in_data_reg_n_0_[27]\,
-      din(26) => \deci_low.raw_in_data_reg_n_0_[26]\,
-      din(25) => \deci_low.raw_in_data_reg_n_0_[25]\,
-      din(24) => \deci_low.raw_in_data_reg_n_0_[24]\,
-      din(23) => \deci_low.raw_in_data_reg_n_0_[23]\,
-      din(22) => \deci_low.raw_in_data_reg_n_0_[22]\,
-      din(21) => \deci_low.raw_in_data_reg_n_0_[21]\,
-      din(20) => \deci_low.raw_in_data_reg_n_0_[20]\,
-      din(19) => \deci_low.raw_in_data_reg_n_0_[19]\,
-      din(18) => \deci_low.raw_in_data_reg_n_0_[18]\,
-      din(17) => \deci_low.raw_in_data_reg_n_0_[17]\,
-      din(16) => \deci_low.raw_in_data_reg_n_0_[16]\,
-      din(15) => \deci_low.raw_in_data_reg_n_0_[15]\,
-      din(14) => \deci_low.raw_in_data_reg_n_0_[14]\,
-      din(13) => \deci_low.raw_in_data_reg_n_0_[13]\,
-      din(12) => \deci_low.raw_in_data_reg_n_0_[12]\,
-      din(11) => \deci_low.raw_in_data_reg_n_0_[11]\,
-      din(10) => \deci_low.raw_in_data_reg_n_0_[10]\,
-      din(9) => \deci_low.raw_in_data_reg_n_0_[9]\,
-      din(8) => \deci_low.raw_in_data_reg_n_0_[8]\,
-      din(7) => \deci_low.raw_in_data_reg_n_0_[7]\,
-      din(6) => \deci_low.raw_in_data_reg_n_0_[6]\,
-      din(5) => \deci_low.raw_in_data_reg_n_0_[5]\,
-      din(4) => \deci_low.raw_in_data_reg_n_0_[4]\,
-      din(3) => \deci_low.raw_in_data_reg_n_0_[3]\,
-      din(2) => \deci_low.raw_in_data_reg_n_0_[2]\,
-      din(1) => \deci_low.raw_in_data_reg_n_0_[1]\,
-      din(0) => \deci_low.raw_in_data_reg_n_0_[0]\,
+      din(191 downto 0) => raw_in_data(191 downto 0),
       dout(191 downto 0) => raw_out_data(191 downto 0),
       empty => raw_fifo_empty,
       full => NLW_fifo_raw_i_full_UNCONNECTED,
       rd_clk => raw_clk,
-      rd_en => \^raw_ready\,
+      rd_en => raw_out_rd,
       rd_rst_busy => NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED,
       rst => \deci_low.sim_active_i_1_n_0\,
       wr_clk => clk,
@@ -16683,46 +19477,49 @@ ila_2_i: component ps_deci_low_0_0_ila_2
       clk => clk,
       probe0(2 downto 0) => reset_delay(2 downto 0),
       probe1(2 downto 0) => reset_active(2 downto 0),
-      probe10(15 downto 0) => mux_N1(15 downto 0),
-      probe11(15 downto 0) => mux_N2(15 downto 0),
-      probe12(15 downto 0) => mux_N3(15 downto 0),
-      probe13(15 downto 0) => mux_N4(15 downto 0),
-      probe14(15 downto 0) => mux_N5(15 downto 0),
-      probe15(15 downto 0) => mux_N6(15 downto 0),
-      probe16(15 downto 0) => mux_N7(15 downto 0),
-      probe17(15 downto 0) => raw_N0(15 downto 0),
-      probe18(15 downto 0) => raw_N1(15 downto 0),
-      probe19(15 downto 0) => raw_N2(15 downto 0),
+      probe10(15 downto 0) => doa_in_data(15 downto 0),
+      probe11(15 downto 0) => mux_N0(15 downto 0),
+      probe12(15 downto 0) => mux_N1(15 downto 0),
+      probe13(15 downto 0) => mux_N2(15 downto 0),
+      probe14(15 downto 0) => mux_N3(15 downto 0),
+      probe15(15 downto 0) => mux_N4(15 downto 0),
+      probe16(15 downto 0) => mux_N5(15 downto 0),
+      probe17(15 downto 0) => mux_N6(15 downto 0),
+      probe18(15 downto 0) => mux_N7(15 downto 0),
+      probe19(15 downto 0) => raw_N0(15 downto 0),
       probe2(0) => fir_resetn,
-      probe20(15 downto 0) => raw_N3(15 downto 0),
-      probe21(15 downto 0) => doa_N(15 downto 0),
-      probe22(15 downto 0) => doa_E(15 downto 0),
-      probe23(15 downto 0) => doa_W(15 downto 0),
+      probe20(15 downto 0) => raw_N1(15 downto 0),
+      probe21(15 downto 0) => raw_N2(15 downto 0),
+      probe22(15 downto 0) => raw_N3(15 downto 0),
+      probe23(15 downto 0) => doa_N(15 downto 0),
+      probe24(15 downto 0) => doa_E(15 downto 0),
+      probe25(15 downto 0) => doa_W(15 downto 0),
       probe3(0) => adc_active,
       probe4(0) => mux_active,
       probe5(3 downto 0) => raw_wr_delay(3 downto 0),
       probe6(0) => raw_fifo_wr,
-      probe7(3 downto 0) => doa_wr_delay(3 downto 0),
-      probe8(0) => doa_fifo_wr,
-      probe9(15 downto 0) => mux_N0(15 downto 0)
+      probe7(15 downto 0) => raw_in_data(15 downto 0),
+      probe8(3 downto 0) => doa_wr_delay(3 downto 0),
+      probe9(0) => doa_fifo_wr
     );
 ila_7_i: component ps_deci_low_0_0_ila_7
      port map (
       clk => raw_clk,
       probe0(0) => raw_fifo_empty,
       probe1(11 downto 0) => raw_delay(11 downto 0),
-      probe2(0) => raw_active,
-      probe3(0) => \^raw_ready\,
-      probe4(15 downto 0) => raw_out_data(15 downto 0),
+      probe2(0) => raw_out_rd,
+      probe3(15 downto 0) => raw_out_data(15 downto 0),
+      probe4(0) => \^raw_ready\,
       probe5(15 downto 0) => \^raw_data\(15 downto 0)
     );
 ila_8_i: component ps_deci_low_0_0_ila_8
      port map (
       clk => doa_clk,
       probe0(0) => doa_fifo_empty,
-      probe1(0) => \^doa_ready\,
+      probe1(0) => doa_out_rd,
       probe2(15 downto 0) => doa_out_data(15 downto 0),
-      probe3(15 downto 0) => \^doa_data\(15 downto 0)
+      probe3(0) => \^doa_ready\,
+      probe4(15 downto 0) => \^doa_data\(15 downto 0)
     );
 end STRUCTURE;
 library IEEE;
