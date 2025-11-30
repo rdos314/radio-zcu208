@@ -25,10 +25,10 @@
       "deci_high": "",
       "comp_low_0": "",
       "comp_high_0": "",
-      "doa_low_0": "",
       "adc_control_0": "",
       "axi_bram_ctrl_0": "",
-      "axi_bram": ""
+      "axi_bram": "",
+      "freq_low_46_0": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1949,12 +1949,12 @@
             "type": "rst",
             "direction": "O"
           },
-          "doa0_clk": {
+          "freq0_clk": {
             "type": "clk",
             "direction": "O",
             "parameters": {
               "ASSOCIATED_RESET": {
-                "value": "doa0_reset",
+                "value": "freq0_reset",
                 "value_src": "constant"
               },
               "FREQ_HZ": {
@@ -1971,16 +1971,16 @@
               }
             }
           },
-          "doa0_reset": {
+          "freq0_reset": {
             "type": "rst",
             "direction": "O"
           },
-          "doa1_clk": {
+          "freq1_clk": {
             "type": "clk",
             "direction": "O",
             "parameters": {
               "ASSOCIATED_RESET": {
-                "value": "doa1_reset",
+                "value": "freq1_reset",
                 "value_src": "constant"
               },
               "FREQ_HZ": {
@@ -1997,7 +1997,7 @@
               }
             }
           },
-          "doa1_reset": {
+          "freq1_reset": {
             "type": "rst",
             "direction": "O"
           }
@@ -2160,7 +2160,7 @@
             "left": "191",
             "right": "0"
           },
-          "doa_clk": {
+          "freq_clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
@@ -2173,15 +2173,15 @@
                 "value_src": "const_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_doa0_clk",
+                "value": "ps_mts_0_0_freq0_clk",
                 "value_src": "default_prop"
               }
             }
           },
-          "doa_ready": {
+          "freq_ready": {
             "direction": "O"
           },
-          "doa_data": {
+          "freq_data": {
             "direction": "O",
             "left": "47",
             "right": "0"
@@ -2329,7 +2329,7 @@
             "left": "383",
             "right": "0"
           },
-          "doa_clk": {
+          "freq_clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
@@ -2342,15 +2342,15 @@
                 "value_src": "const_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_doa1_clk",
+                "value": "ps_mts_0_0_freq1_clk",
                 "value_src": "default_prop"
               }
             }
           },
-          "doa_ready": {
+          "freq_ready": {
             "direction": "O"
           },
-          "doa_data": {
+          "freq_data": {
             "direction": "O",
             "left": "95",
             "right": "0"
@@ -2451,93 +2451,6 @@
           "fifo": {
             "direction": "I",
             "left": "383",
-            "right": "0"
-          }
-        }
-      },
-      "doa_low_0": {
-        "vlnv": "xilinx.com:module_ref:doa_low:1.0",
-        "ip_revision": "1",
-        "xci_name": "ps_doa_low_0_0",
-        "xci_path": "ip\\ps_doa_low_0_0\\ps_doa_low_0_0.xci",
-        "inst_hier_path": "doa_low_0",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "doa_low",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "const_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_doa0_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "reset": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "fifo_valid": {
-            "direction": "I"
-          },
-          "fifo_data": {
-            "direction": "I",
-            "left": "47",
-            "right": "0"
-          },
-          "valid": {
-            "direction": "O"
-          },
-          "freq": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "env_N": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "phase_N": {
-            "direction": "O",
-            "left": "19",
-            "right": "0"
-          },
-          "env_E": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "phase_E": {
-            "direction": "O",
-            "left": "19",
-            "right": "0"
-          },
-          "env_W": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "phase_W": {
-            "direction": "O",
-            "left": "19",
             "right": "0"
           }
         }
@@ -2714,6 +2627,103 @@
             "value": "Stand_Alone"
           }
         }
+      },
+      "freq_low_46_0": {
+        "vlnv": "xilinx.com:module_ref:freq_low_46:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_freq_low_46_0_0",
+        "xci_path": "ip\\ps_freq_low_46_0_0\\ps_freq_low_46_0_0.xci",
+        "inst_hier_path": "freq_low_46_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "freq_low_46",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_freq0_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "fifo_valid": {
+            "direction": "I"
+          },
+          "fifo_data": {
+            "direction": "I",
+            "left": "47",
+            "right": "0"
+          },
+          "valid": {
+            "direction": "O"
+          },
+          "env_N": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "diff_N": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "env_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "diff_E": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "env_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "diff_W": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -2860,15 +2870,15 @@
       "adc_control_0_sim_channel": {
         "ports": [
           "adc_control_0/sim_channel",
-          "deci_low/sim_channel",
-          "deci_high/sim_channel"
+          "deci_high/sim_channel",
+          "deci_low/sim_channel"
         ]
       },
       "adc_control_0_sim_data": {
         "ports": [
           "adc_control_0/sim_data",
-          "deci_low/sim_data",
-          "deci_high/sim_data"
+          "deci_high/sim_data",
+          "deci_low/sim_data"
         ]
       },
       "adc_control_0_sim_high_wr": {
@@ -2949,16 +2959,16 @@
           "comp_high_0/active"
         ]
       },
-      "deci_low_doa_data": {
+      "deci_low_freq_data": {
         "ports": [
-          "deci_low/doa_data",
-          "doa_low_0/fifo_data"
+          "deci_low/freq_data",
+          "freq_low_46_0/fifo_data"
         ]
       },
-      "deci_low_doa_ready": {
+      "deci_low_freq_ready": {
         "ports": [
-          "deci_low/doa_ready",
-          "doa_low_0/fifo_valid"
+          "deci_low/freq_ready",
+          "freq_low_46_0/fifo_valid"
         ]
       },
       "deci_low_raw_data": {
@@ -3008,8 +3018,8 @@
       "mts_0_deci_adc_active": {
         "ports": [
           "mts_0/deci_adc_active",
-          "deci_low/adc_active",
-          "deci_high/adc_active"
+          "deci_high/adc_active",
+          "deci_low/adc_active"
         ]
       },
       "mts_0_deci_clk": {
@@ -3019,8 +3029,8 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "deci_low/clk",
-          "deci_high/clk"
+          "deci_high/clk",
+          "deci_low/clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -3030,8 +3040,8 @@
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
-          "deci_low/resetn",
-          "deci_high/resetn"
+          "deci_high/resetn",
+          "deci_low/resetn"
         ]
       },
       "mts_0_deci_sim_active": {
@@ -3043,27 +3053,27 @@
       "mts_0_deci_sim_start": {
         "ports": [
           "mts_0/deci_sim_start",
-          "deci_low/sim_start",
-          "deci_high/sim_start"
+          "deci_high/sim_start",
+          "deci_low/sim_start"
         ]
       },
-      "mts_0_doa0_clk": {
+      "mts_0_freq0_clk": {
         "ports": [
-          "mts_0/doa0_clk",
-          "doa_low_0/clk",
-          "deci_low/doa_clk"
+          "mts_0/freq0_clk",
+          "deci_low/freq_clk",
+          "freq_low_46_0/clk"
         ]
       },
-      "mts_0_doa0_reset": {
+      "mts_0_freq0_reset": {
         "ports": [
-          "mts_0/doa0_reset",
-          "doa_low_0/reset"
+          "mts_0/freq0_reset",
+          "freq_low_46_0/reset"
         ]
       },
-      "mts_0_doa1_clk": {
+      "mts_0_freq1_clk": {
         "ports": [
-          "mts_0/doa1_clk",
-          "deci_high/doa_clk"
+          "mts_0/freq1_clk",
+          "deci_high/freq_clk"
         ]
       },
       "mts_0_user_sysref_adc": {
@@ -3117,9 +3127,9 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "adc_control_0/resetn",
+          "deci_high/sim_resetn",
           "deci_low/sim_resetn",
-          "deci_high/sim_resetn"
+          "adc_control_0/resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3218,10 +3228,10 @@
           "usp_rf_data_converter_0/s_axi_aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
+          "deci_high/sim_clk",
           "mts_0/axi_clk",
-          "adc_control_0/clk",
           "deci_low/sim_clk",
-          "deci_high/sim_clk"
+          "adc_control_0/clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

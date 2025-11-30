@@ -50,13 +50,13 @@ module mts(
 	output wire comp1_clk,
     output reg  comp1_reset,
 
-    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DOA0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
-	output wire doa0_clk,
-    output reg  doa0_reset,
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FREQ0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire freq0_clk,
+    output reg  freq0_reset,
 
-    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DOA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
-	output wire doa1_clk,
-    output reg  doa1_reset
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FREQ1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire freq1_clk,
+    output reg  freq1_reset
  ); 
  
     reg adc_axi_start;
@@ -83,7 +83,7 @@ module mts(
 	wire pl_clk_buf;
 	wire rst_async = sys_reset | (~deci_locked);
     wire comp_locked;
-    wire doa_locked;
+    wire freq_locked;
 
 	(* ASYNC_REG="TRUE" *)  reg  sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
@@ -98,10 +98,10 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_2;
-	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_1;
-	(* ASYNC_REG="TRUE" *)	reg  doa0_reset_2;
-	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_1;
-	(* ASYNC_REG="TRUE" *)	reg  doa1_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  freq0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  freq0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  freq1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  freq1_reset_2;
 
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_2;
@@ -133,11 +133,11 @@ module mts(
 		.locked		(comp_locked)
 		);
 
-	clk_wiz_adc clk_wiz_doa_i (
+	clk_wiz_adc clk_wiz_freq_i (
 		.clk_in1	(pl_clk_buf),
-		.clk_out1	(doa0_clk),
-		.clk_out2	(doa1_clk),
-		.locked		(doa_locked)
+		.clk_out1	(freq0_clk),
+		.clk_out2	(freq1_clk),
+		.locked		(freq_locked)
 		);
 
 	ila_6 ila_i (
@@ -305,18 +305,18 @@ generate
 		axi_sim_active <= axi_sim_active_2;
 	end
 
-	always @(posedge doa0_clk) 
+	always @(posedge freq0_clk) 
 	begin
-		doa0_reset_1 <= deci_reset_async | (~doa_locked);
-		doa0_reset_2 <= doa0_reset_1;
-		doa0_reset <= doa0_reset_2;
+		freq0_reset_1 <= deci_reset_async | (~freq_locked);
+		freq0_reset_2 <= freq0_reset_1;
+		freq0_reset <= freq0_reset_2;
 	end
 
-	always @(posedge doa1_clk) 
+	always @(posedge freq1_clk) 
 	begin
-		doa1_reset_1 <= deci_reset_async | (~doa_locked);
-		doa1_reset_2 <= doa1_reset_1;
-		doa1_reset <= doa1_reset_2;
+		freq1_reset_1 <= deci_reset_async | (~freq_locked);
+		freq1_reset_2 <= freq1_reset_1;
+		freq1_reset <= freq1_reset_2;
 	end
 
 	always @(posedge comp0_clk) 

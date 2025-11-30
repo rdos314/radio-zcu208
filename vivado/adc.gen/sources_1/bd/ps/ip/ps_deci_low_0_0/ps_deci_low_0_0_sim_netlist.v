@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Nov 30 20:42:34 2025
+// Date        : Sun Nov 30 22:16:32 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -36,9 +36,9 @@ module ps_deci_low_0_0
     raw_clk,
     raw_ready,
     raw_data,
-    doa_clk,
-    doa_ready,
-    doa_data);
+    freq_clk,
+    freq_ready,
+    freq_data);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   input [127:0]data_N;
@@ -58,18 +58,18 @@ module ps_deci_low_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input raw_clk;
   output raw_ready;
   output [191:0]raw_data;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa0_clk, INSERT_VIP 0" *) input doa_clk;
-  output doa_ready;
-  output [47:0]doa_data;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 freq_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME freq_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input freq_clk;
+  output freq_ready;
+  output [47:0]freq_data;
 
   wire adc_active;
   wire clk;
   wire [127:0]data_E;
   wire [127:0]data_N;
   wire [127:0]data_W;
-  wire doa_clk;
-  wire [47:0]doa_data;
-  wire doa_ready;
+  wire freq_clk;
+  wire [47:0]freq_data;
+  wire freq_ready;
   wire raw_clk;
   wire [191:0]raw_data;
   wire raw_ready;
@@ -91,9 +91,9 @@ module ps_deci_low_0_0
         .data_E(data_E),
         .data_N(data_N),
         .data_W(data_W),
-        .doa_clk(doa_clk),
-        .doa_data(doa_data),
-        .doa_ready(doa_ready),
+        .freq_clk(freq_clk),
+        .freq_data(freq_data),
+        .freq_ready(freq_ready),
         .raw_clk(raw_clk),
         .raw_data(raw_data),
         .raw_ready(raw_ready),
@@ -131,9 +131,9 @@ module ps_deci_low_0_0_deci_low
     raw_clk,
     raw_ready,
     raw_data,
-    doa_clk,
-    doa_ready,
-    doa_data);
+    freq_clk,
+    freq_ready,
+    freq_data);
   input clk;
   input resetn;
   input [127:0]data_N;
@@ -153,72 +153,72 @@ module ps_deci_low_0_0_deci_low
   input raw_clk;
   output raw_ready;
   output [191:0]raw_data;
-  input doa_clk;
-  output doa_ready;
-  output [47:0]doa_data;
+  input freq_clk;
+  output freq_ready;
+  output [47:0]freq_data;
 
   (* MARK_DEBUG *) wire adc_active;
   wire clk;
   wire [127:0]data_E;
   wire [127:0]data_N;
   wire [127:0]data_W;
-  wire \deci_low.doa_fifo_wr_i_1_n_0 ;
-  wire \deci_low.doa_in_data[0]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[10]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[11]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[12]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[13]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[14]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[15]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[16]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[17]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[18]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[19]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[1]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[20]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[21]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[22]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[23]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[24]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[25]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[26]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[27]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[28]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[29]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[2]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[30]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[31]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[32]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[33]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[34]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[35]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[36]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[37]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[38]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[39]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[3]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[40]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[41]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[42]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[43]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[44]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[45]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[46]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[47]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[47]_i_2_n_0 ;
-  wire \deci_low.doa_in_data[4]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[5]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[6]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[7]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[8]_i_1_n_0 ;
-  wire \deci_low.doa_in_data[9]_i_1_n_0 ;
-  wire \deci_low.doa_out_rd_i_1_n_0 ;
-  wire \deci_low.doa_rd_delay[1]_i_1_n_0 ;
-  wire \deci_low.doa_rd_delay[1]_i_2_n_0 ;
-  wire \deci_low.doa_rd_delay[2]_i_1_n_0 ;
-  wire \deci_low.doa_ready_reg0 ;
-  wire \deci_low.doa_wr_delay[3]_i_1_n_0 ;
   wire \deci_low.fir_resetn_i_1_n_0 ;
+  wire \deci_low.freq_fifo_wr_i_1_n_0 ;
+  wire \deci_low.freq_in_data[0]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[10]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[11]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[12]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[13]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[14]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[15]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[16]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[17]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[18]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[19]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[1]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[20]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[21]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[22]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[23]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[24]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[25]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[26]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[27]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[28]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[29]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[2]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[30]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[31]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[32]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[33]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[34]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[35]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[36]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[37]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[38]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[39]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[3]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[40]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[41]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[42]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[43]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[44]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[45]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[46]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[47]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[47]_i_2_n_0 ;
+  wire \deci_low.freq_in_data[4]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[5]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[6]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[7]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[8]_i_1_n_0 ;
+  wire \deci_low.freq_in_data[9]_i_1_n_0 ;
+  wire \deci_low.freq_out_rd_i_1_n_0 ;
+  wire \deci_low.freq_rd_delay[1]_i_1_n_0 ;
+  wire \deci_low.freq_rd_delay[1]_i_2_n_0 ;
+  wire \deci_low.freq_rd_delay[2]_i_1_n_0 ;
+  wire \deci_low.freq_ready_reg0 ;
+  wire \deci_low.freq_wr_delay[3]_i_1_n_0 ;
   wire \deci_low.mux_E[0]_i_1_n_0 ;
   wire \deci_low.mux_E[100]_i_1_n_0 ;
   wire \deci_low.mux_E[101]_i_1_n_0 ;
@@ -977,25 +977,25 @@ module ps_deci_low_0_0_deci_low
   wire \deci_low.sim_wr_E_i_2_n_0 ;
   wire \deci_low.sim_wr_N_i_1_n_0 ;
   wire \deci_low.sim_wr_W_i_1_n_0 ;
-  (* MARK_DEBUG *) wire [15:0]doa_E;
-  (* MARK_DEBUG *) wire [15:0]doa_N;
-  (* MARK_DEBUG *) wire [15:0]doa_W;
-  wire doa_clk;
-  (* MARK_DEBUG *) wire [47:0]doa_data;
-  (* MARK_DEBUG *) wire doa_fifo_empty;
-  (* MARK_DEBUG *) wire doa_fifo_wr;
-  (* MARK_DEBUG *) wire [47:0]doa_in_data;
-  (* MARK_DEBUG *) wire [47:0]doa_out_data;
-  (* MARK_DEBUG *) wire doa_out_rd;
-  wire [2:0]doa_rd_delay;
-  wire [0:0]doa_rd_delay0;
-  (* MARK_DEBUG *) wire doa_ready;
-  (* MARK_DEBUG *) wire [3:0]doa_wr_delay;
-  wire [3:0]doa_wr_delay0_in;
   wire fifo_sim_N_i_i_1_n_0;
   wire [126:15]fir_raw_E;
   wire [126:15]fir_raw_W;
   (* MARK_DEBUG *) wire fir_resetn;
+  (* MARK_DEBUG *) wire [15:0]freq_E;
+  (* MARK_DEBUG *) wire [15:0]freq_N;
+  (* MARK_DEBUG *) wire [15:0]freq_W;
+  wire freq_clk;
+  (* MARK_DEBUG *) wire [47:0]freq_data;
+  (* MARK_DEBUG *) wire freq_fifo_empty;
+  (* MARK_DEBUG *) wire freq_fifo_wr;
+  (* MARK_DEBUG *) wire [47:0]freq_in_data;
+  (* MARK_DEBUG *) wire [47:0]freq_out_data;
+  (* MARK_DEBUG *) wire freq_out_rd;
+  wire [2:0]freq_rd_delay;
+  wire [0:0]freq_rd_delay0;
+  (* MARK_DEBUG *) wire freq_ready;
+  (* MARK_DEBUG *) wire [3:0]freq_wr_delay;
+  wire [3:0]freq_wr_delay0_in;
   wire [127:0]mux_E;
   (* MARK_DEBUG *) wire [15:0]mux_N0;
   (* MARK_DEBUG *) wire [15:0]mux_N1;
@@ -1053,9 +1053,9 @@ module ps_deci_low_0_0_deci_low
   wire sim_wr_W;
   wire [7:2]\NLW_deci_low.raw_delay_reg[11]_i_2_CO_UNCONNECTED ;
   wire [7:3]\NLW_deci_low.raw_delay_reg[11]_i_2_O_UNCONNECTED ;
-  wire NLW_fifo_doa_i_full_UNCONNECTED;
-  wire NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED;
-  wire NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED;
+  wire NLW_fifo_freq_i_full_UNCONNECTED;
+  wire NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED;
+  wire NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_full_UNCONNECTED;
   wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
@@ -1068,15 +1068,15 @@ module ps_deci_low_0_0_deci_low
   wire NLW_fifo_sim_W_i_full_UNCONNECTED;
   wire NLW_fifo_sim_W_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_sim_W_i_wr_rst_busy_UNCONNECTED;
-  wire NLW_fir_doa_E_i_m_axis_data_tvalid_UNCONNECTED;
-  wire NLW_fir_doa_E_i_s_axis_data_tready_UNCONNECTED;
-  wire [31:0]NLW_fir_doa_E_i_m_axis_data_tdata_UNCONNECTED;
-  wire NLW_fir_doa_N_i_m_axis_data_tvalid_UNCONNECTED;
-  wire NLW_fir_doa_N_i_s_axis_data_tready_UNCONNECTED;
-  wire [31:0]NLW_fir_doa_N_i_m_axis_data_tdata_UNCONNECTED;
-  wire NLW_fir_doa_W_i_m_axis_data_tvalid_UNCONNECTED;
-  wire NLW_fir_doa_W_i_s_axis_data_tready_UNCONNECTED;
-  wire [31:0]NLW_fir_doa_W_i_m_axis_data_tdata_UNCONNECTED;
+  wire NLW_fir_freq_E_i_m_axis_data_tvalid_UNCONNECTED;
+  wire NLW_fir_freq_E_i_s_axis_data_tready_UNCONNECTED;
+  wire [31:0]NLW_fir_freq_E_i_m_axis_data_tdata_UNCONNECTED;
+  wire NLW_fir_freq_N_i_m_axis_data_tvalid_UNCONNECTED;
+  wire NLW_fir_freq_N_i_s_axis_data_tready_UNCONNECTED;
+  wire [31:0]NLW_fir_freq_N_i_m_axis_data_tdata_UNCONNECTED;
+  wire NLW_fir_freq_W_i_m_axis_data_tvalid_UNCONNECTED;
+  wire NLW_fir_freq_W_i_s_axis_data_tready_UNCONNECTED;
+  wire [31:0]NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED;
   wire NLW_fir_raw_E_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_raw_E_i_s_axis_data_tready_UNCONNECTED;
   wire [127:0]NLW_fir_raw_E_i_m_axis_data_tdata_UNCONNECTED;
@@ -1087,1282 +1087,6 @@ module ps_deci_low_0_0_deci_low
   wire NLW_fir_raw_W_i_s_axis_data_tready_UNCONNECTED;
   wire [127:0]NLW_fir_raw_W_i_m_axis_data_tdata_UNCONNECTED;
 
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[0] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[0]),
-        .Q(doa_data[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[10] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[10]),
-        .Q(doa_data[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[11] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[11]),
-        .Q(doa_data[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[12] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[12]),
-        .Q(doa_data[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[13] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[13]),
-        .Q(doa_data[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[14] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[14]),
-        .Q(doa_data[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[15] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[15]),
-        .Q(doa_data[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[16] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[16]),
-        .Q(doa_data[16]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[17] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[17]),
-        .Q(doa_data[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[18] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[18]),
-        .Q(doa_data[18]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[19] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[19]),
-        .Q(doa_data[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[1] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[1]),
-        .Q(doa_data[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[20] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[20]),
-        .Q(doa_data[20]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[21] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[21]),
-        .Q(doa_data[21]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[22] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[22]),
-        .Q(doa_data[22]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[23] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[23]),
-        .Q(doa_data[23]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[24] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[24]),
-        .Q(doa_data[24]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[25] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[25]),
-        .Q(doa_data[25]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[26] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[26]),
-        .Q(doa_data[26]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[27] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[27]),
-        .Q(doa_data[27]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[28] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[28]),
-        .Q(doa_data[28]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[29] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[29]),
-        .Q(doa_data[29]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[2] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[2]),
-        .Q(doa_data[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[30] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[30]),
-        .Q(doa_data[30]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[31] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[31]),
-        .Q(doa_data[31]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[32] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[32]),
-        .Q(doa_data[32]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[33] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[33]),
-        .Q(doa_data[33]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[34] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[34]),
-        .Q(doa_data[34]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[35] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[35]),
-        .Q(doa_data[35]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[36] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[36]),
-        .Q(doa_data[36]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[37] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[37]),
-        .Q(doa_data[37]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[38] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[38]),
-        .Q(doa_data[38]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[39] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[39]),
-        .Q(doa_data[39]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[3] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[3]),
-        .Q(doa_data[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[40] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[40]),
-        .Q(doa_data[40]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[41] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[41]),
-        .Q(doa_data[41]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[42] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[42]),
-        .Q(doa_data[42]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[43] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[43]),
-        .Q(doa_data[43]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[44] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[44]),
-        .Q(doa_data[44]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[45] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[45]),
-        .Q(doa_data[45]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[46] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[46]),
-        .Q(doa_data[46]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[47] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[47]),
-        .Q(doa_data[47]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[4] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[4]),
-        .Q(doa_data[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[5] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[5]),
-        .Q(doa_data[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[6] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[6]),
-        .Q(doa_data[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[7] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[7]),
-        .Q(doa_data[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[8] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[8]),
-        .Q(doa_data[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_data_reg[9] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_data[9]),
-        .Q(doa_data[9]),
-        .R(1'b0));
-  LUT6 #(
-    .INIT(64'hABAAAAAAFFFFFFFC)) 
-    \deci_low.doa_fifo_wr_i_1 
-       (.I0(doa_fifo_wr),
-        .I1(doa_wr_delay[1]),
-        .I2(doa_wr_delay[0]),
-        .I3(doa_wr_delay[2]),
-        .I4(doa_wr_delay[3]),
-        .I5(mux_active),
-        .O(\deci_low.doa_fifo_wr_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_fifo_wr_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\deci_low.doa_fifo_wr_i_1_n_0 ),
-        .Q(doa_fifo_wr),
-        .R(1'b0));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[0]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[0]),
-        .I2(mux_active),
-        .I3(doa_N[0]),
-        .O(\deci_low.doa_in_data[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[10]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[10]),
-        .I2(mux_active),
-        .I3(doa_N[10]),
-        .O(\deci_low.doa_in_data[10]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[11]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[11]),
-        .I2(mux_active),
-        .I3(doa_N[11]),
-        .O(\deci_low.doa_in_data[11]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[12]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[12]),
-        .I2(mux_active),
-        .I3(doa_N[12]),
-        .O(\deci_low.doa_in_data[12]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[13]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[13]),
-        .I2(mux_active),
-        .I3(doa_N[13]),
-        .O(\deci_low.doa_in_data[13]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[14]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[14]),
-        .I2(mux_active),
-        .I3(doa_N[14]),
-        .O(\deci_low.doa_in_data[14]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[15]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[15]),
-        .I2(mux_active),
-        .I3(doa_N[15]),
-        .O(\deci_low.doa_in_data[15]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[16]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[16]),
-        .I2(mux_active),
-        .I3(doa_E[0]),
-        .O(\deci_low.doa_in_data[16]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[17]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[17]),
-        .I2(mux_active),
-        .I3(doa_E[1]),
-        .O(\deci_low.doa_in_data[17]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[18]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[18]),
-        .I2(mux_active),
-        .I3(doa_E[2]),
-        .O(\deci_low.doa_in_data[18]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[19]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[19]),
-        .I2(mux_active),
-        .I3(doa_E[3]),
-        .O(\deci_low.doa_in_data[19]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[1]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[1]),
-        .I2(mux_active),
-        .I3(doa_N[1]),
-        .O(\deci_low.doa_in_data[1]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[20]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[20]),
-        .I2(mux_active),
-        .I3(doa_E[4]),
-        .O(\deci_low.doa_in_data[20]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[21]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[21]),
-        .I2(mux_active),
-        .I3(doa_E[5]),
-        .O(\deci_low.doa_in_data[21]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[22]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[22]),
-        .I2(mux_active),
-        .I3(doa_E[6]),
-        .O(\deci_low.doa_in_data[22]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[23]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[23]),
-        .I2(mux_active),
-        .I3(doa_E[7]),
-        .O(\deci_low.doa_in_data[23]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[24]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[24]),
-        .I2(mux_active),
-        .I3(doa_E[8]),
-        .O(\deci_low.doa_in_data[24]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[25]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[25]),
-        .I2(mux_active),
-        .I3(doa_E[9]),
-        .O(\deci_low.doa_in_data[25]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[26]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[26]),
-        .I2(mux_active),
-        .I3(doa_E[10]),
-        .O(\deci_low.doa_in_data[26]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[27]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[27]),
-        .I2(mux_active),
-        .I3(doa_E[11]),
-        .O(\deci_low.doa_in_data[27]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[28]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[28]),
-        .I2(mux_active),
-        .I3(doa_E[12]),
-        .O(\deci_low.doa_in_data[28]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[29]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[29]),
-        .I2(mux_active),
-        .I3(doa_E[13]),
-        .O(\deci_low.doa_in_data[29]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[2]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[2]),
-        .I2(mux_active),
-        .I3(doa_N[2]),
-        .O(\deci_low.doa_in_data[2]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[30]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[30]),
-        .I2(mux_active),
-        .I3(doa_E[14]),
-        .O(\deci_low.doa_in_data[30]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[31]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[31]),
-        .I2(mux_active),
-        .I3(doa_E[15]),
-        .O(\deci_low.doa_in_data[31]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[32]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[32]),
-        .I2(mux_active),
-        .I3(doa_W[0]),
-        .O(\deci_low.doa_in_data[32]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[33]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[33]),
-        .I2(mux_active),
-        .I3(doa_W[1]),
-        .O(\deci_low.doa_in_data[33]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[34]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[34]),
-        .I2(mux_active),
-        .I3(doa_W[2]),
-        .O(\deci_low.doa_in_data[34]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[35]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[35]),
-        .I2(mux_active),
-        .I3(doa_W[3]),
-        .O(\deci_low.doa_in_data[35]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[36]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[36]),
-        .I2(mux_active),
-        .I3(doa_W[4]),
-        .O(\deci_low.doa_in_data[36]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[37]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[37]),
-        .I2(mux_active),
-        .I3(doa_W[5]),
-        .O(\deci_low.doa_in_data[37]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[38]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[38]),
-        .I2(mux_active),
-        .I3(doa_W[6]),
-        .O(\deci_low.doa_in_data[38]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[39]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[39]),
-        .I2(mux_active),
-        .I3(doa_W[7]),
-        .O(\deci_low.doa_in_data[39]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[3]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[3]),
-        .I2(mux_active),
-        .I3(doa_N[3]),
-        .O(\deci_low.doa_in_data[3]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[40]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[40]),
-        .I2(mux_active),
-        .I3(doa_W[8]),
-        .O(\deci_low.doa_in_data[40]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[41]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[41]),
-        .I2(mux_active),
-        .I3(doa_W[9]),
-        .O(\deci_low.doa_in_data[41]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[42]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[42]),
-        .I2(mux_active),
-        .I3(doa_W[10]),
-        .O(\deci_low.doa_in_data[42]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[43]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[43]),
-        .I2(mux_active),
-        .I3(doa_W[11]),
-        .O(\deci_low.doa_in_data[43]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[44]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[44]),
-        .I2(mux_active),
-        .I3(doa_W[12]),
-        .O(\deci_low.doa_in_data[44]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[45]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[45]),
-        .I2(mux_active),
-        .I3(doa_W[13]),
-        .O(\deci_low.doa_in_data[45]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[46]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[46]),
-        .I2(mux_active),
-        .I3(doa_W[14]),
-        .O(\deci_low.doa_in_data[46]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[47]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[47]),
-        .I2(mux_active),
-        .I3(doa_W[15]),
-        .O(\deci_low.doa_in_data[47]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h1000)) 
-    \deci_low.doa_in_data[47]_i_2 
-       (.I0(doa_wr_delay[1]),
-        .I1(doa_wr_delay[0]),
-        .I2(doa_wr_delay[3]),
-        .I3(doa_wr_delay[2]),
-        .O(\deci_low.doa_in_data[47]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[4]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[4]),
-        .I2(mux_active),
-        .I3(doa_N[4]),
-        .O(\deci_low.doa_in_data[4]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[5]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[5]),
-        .I2(mux_active),
-        .I3(doa_N[5]),
-        .O(\deci_low.doa_in_data[5]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[6]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[6]),
-        .I2(mux_active),
-        .I3(doa_N[6]),
-        .O(\deci_low.doa_in_data[6]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[7]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[7]),
-        .I2(mux_active),
-        .I3(doa_N[7]),
-        .O(\deci_low.doa_in_data[7]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[8]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[8]),
-        .I2(mux_active),
-        .I3(doa_N[8]),
-        .O(\deci_low.doa_in_data[8]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \deci_low.doa_in_data[9]_i_1 
-       (.I0(\deci_low.doa_in_data[47]_i_2_n_0 ),
-        .I1(doa_in_data[9]),
-        .I2(mux_active),
-        .I3(doa_N[9]),
-        .O(\deci_low.doa_in_data[9]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[0] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[0]_i_1_n_0 ),
-        .Q(doa_in_data[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[10] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[10]_i_1_n_0 ),
-        .Q(doa_in_data[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[11] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[11]_i_1_n_0 ),
-        .Q(doa_in_data[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[12] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[12]_i_1_n_0 ),
-        .Q(doa_in_data[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[13] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[13]_i_1_n_0 ),
-        .Q(doa_in_data[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[14] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[14]_i_1_n_0 ),
-        .Q(doa_in_data[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[15] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[15]_i_1_n_0 ),
-        .Q(doa_in_data[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[16] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[16]_i_1_n_0 ),
-        .Q(doa_in_data[16]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[17] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[17]_i_1_n_0 ),
-        .Q(doa_in_data[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[18] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[18]_i_1_n_0 ),
-        .Q(doa_in_data[18]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[19] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[19]_i_1_n_0 ),
-        .Q(doa_in_data[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[1] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[1]_i_1_n_0 ),
-        .Q(doa_in_data[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[20] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[20]_i_1_n_0 ),
-        .Q(doa_in_data[20]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[21] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[21]_i_1_n_0 ),
-        .Q(doa_in_data[21]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[22] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[22]_i_1_n_0 ),
-        .Q(doa_in_data[22]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[23] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[23]_i_1_n_0 ),
-        .Q(doa_in_data[23]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[24] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[24]_i_1_n_0 ),
-        .Q(doa_in_data[24]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[25] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[25]_i_1_n_0 ),
-        .Q(doa_in_data[25]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[26] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[26]_i_1_n_0 ),
-        .Q(doa_in_data[26]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[27] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[27]_i_1_n_0 ),
-        .Q(doa_in_data[27]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[28] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[28]_i_1_n_0 ),
-        .Q(doa_in_data[28]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[29] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[29]_i_1_n_0 ),
-        .Q(doa_in_data[29]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[2] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[2]_i_1_n_0 ),
-        .Q(doa_in_data[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[30] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[30]_i_1_n_0 ),
-        .Q(doa_in_data[30]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[31] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[31]_i_1_n_0 ),
-        .Q(doa_in_data[31]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[32] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[32]_i_1_n_0 ),
-        .Q(doa_in_data[32]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[33] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[33]_i_1_n_0 ),
-        .Q(doa_in_data[33]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[34] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[34]_i_1_n_0 ),
-        .Q(doa_in_data[34]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[35] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[35]_i_1_n_0 ),
-        .Q(doa_in_data[35]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[36] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[36]_i_1_n_0 ),
-        .Q(doa_in_data[36]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[37] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[37]_i_1_n_0 ),
-        .Q(doa_in_data[37]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[38] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[38]_i_1_n_0 ),
-        .Q(doa_in_data[38]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[39] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[39]_i_1_n_0 ),
-        .Q(doa_in_data[39]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[3] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[3]_i_1_n_0 ),
-        .Q(doa_in_data[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[40] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[40]_i_1_n_0 ),
-        .Q(doa_in_data[40]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[41] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[41]_i_1_n_0 ),
-        .Q(doa_in_data[41]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[42] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[42]_i_1_n_0 ),
-        .Q(doa_in_data[42]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[43] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[43]_i_1_n_0 ),
-        .Q(doa_in_data[43]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[44] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[44]_i_1_n_0 ),
-        .Q(doa_in_data[44]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[45] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[45]_i_1_n_0 ),
-        .Q(doa_in_data[45]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[46] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[46]_i_1_n_0 ),
-        .Q(doa_in_data[46]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[47] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[47]_i_1_n_0 ),
-        .Q(doa_in_data[47]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[4] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[4]_i_1_n_0 ),
-        .Q(doa_in_data[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[5] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[5]_i_1_n_0 ),
-        .Q(doa_in_data[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[6] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[6]_i_1_n_0 ),
-        .Q(doa_in_data[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[7] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[7]_i_1_n_0 ),
-        .Q(doa_in_data[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[8] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[8]_i_1_n_0 ),
-        .Q(doa_in_data[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_in_data_reg[9] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(\deci_low.doa_in_data[9]_i_1_n_0 ),
-        .Q(doa_in_data[9]),
-        .R(1'b0));
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \deci_low.doa_out_rd_i_1 
-       (.I0(doa_fifo_empty),
-        .I1(doa_rd_delay[1]),
-        .I2(doa_rd_delay[2]),
-        .I3(doa_rd_delay[0]),
-        .O(\deci_low.doa_out_rd_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_out_rd_reg 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(\deci_low.doa_out_rd_i_1_n_0 ),
-        .Q(doa_out_rd),
-        .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT1 #(
-    .INIT(2'h1)) 
-    \deci_low.doa_rd_delay[0]_i_1 
-       (.I0(doa_rd_delay[0]),
-        .O(doa_rd_delay0));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \deci_low.doa_rd_delay[1]_i_1 
-       (.I0(doa_rd_delay[0]),
-        .I1(doa_rd_delay[2]),
-        .I2(doa_rd_delay[1]),
-        .O(\deci_low.doa_rd_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT2 #(
-    .INIT(4'h9)) 
-    \deci_low.doa_rd_delay[1]_i_2 
-       (.I0(doa_rd_delay[0]),
-        .I1(doa_rd_delay[1]),
-        .O(\deci_low.doa_rd_delay[1]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hC8)) 
-    \deci_low.doa_rd_delay[2]_i_1 
-       (.I0(doa_rd_delay[0]),
-        .I1(doa_rd_delay[2]),
-        .I2(doa_rd_delay[1]),
-        .O(\deci_low.doa_rd_delay[2]_i_1_n_0 ));
-  FDSE \deci_low.doa_rd_delay_reg[0] 
-       (.C(doa_clk),
-        .CE(\deci_low.doa_rd_delay[1]_i_1_n_0 ),
-        .D(doa_rd_delay0),
-        .Q(doa_rd_delay[0]),
-        .S(doa_fifo_empty));
-  FDSE \deci_low.doa_rd_delay_reg[1] 
-       (.C(doa_clk),
-        .CE(\deci_low.doa_rd_delay[1]_i_1_n_0 ),
-        .D(\deci_low.doa_rd_delay[1]_i_2_n_0 ),
-        .Q(doa_rd_delay[1]),
-        .S(doa_fifo_empty));
-  FDSE \deci_low.doa_rd_delay_reg[2] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(\deci_low.doa_rd_delay[2]_i_1_n_0 ),
-        .Q(doa_rd_delay[2]),
-        .S(doa_fifo_empty));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \deci_low.doa_ready_i_1 
-       (.I0(doa_out_rd),
-        .I1(doa_fifo_empty),
-        .O(\deci_low.doa_ready_reg0 ));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_ready_reg 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(\deci_low.doa_ready_reg0 ),
-        .Q(doa_ready),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'h31333333)) 
-    \deci_low.doa_wr_delay[0]_i_1 
-       (.I0(mux_active),
-        .I1(doa_wr_delay[0]),
-        .I2(doa_wr_delay[1]),
-        .I3(doa_wr_delay[3]),
-        .I4(doa_wr_delay[2]),
-        .O(doa_wr_delay0_in[0]));
-  LUT3 #(
-    .INIT(8'h69)) 
-    \deci_low.doa_wr_delay[1]_i_1 
-       (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[1]),
-        .I2(mux_active),
-        .O(doa_wr_delay0_in[1]));
-  LUT4 #(
-    .INIT(16'h78E1)) 
-    \deci_low.doa_wr_delay[2]_i_1 
-       (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[1]),
-        .I2(doa_wr_delay[2]),
-        .I3(mux_active),
-        .O(doa_wr_delay0_in[2]));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \deci_low.doa_wr_delay[3]_i_1 
-       (.I0(mux_active),
-        .I1(doa_wr_delay[2]),
-        .I2(doa_wr_delay[3]),
-        .I3(doa_wr_delay[0]),
-        .I4(doa_wr_delay[1]),
-        .O(\deci_low.doa_wr_delay[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7F80FE01)) 
-    \deci_low.doa_wr_delay[3]_i_2 
-       (.I0(doa_wr_delay[1]),
-        .I1(doa_wr_delay[0]),
-        .I2(mux_active),
-        .I3(doa_wr_delay[3]),
-        .I4(doa_wr_delay[2]),
-        .O(doa_wr_delay0_in[3]));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_wr_delay_reg[0] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(doa_wr_delay0_in[0]),
-        .Q(doa_wr_delay[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_wr_delay_reg[1] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(doa_wr_delay0_in[1]),
-        .Q(doa_wr_delay[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_wr_delay_reg[2] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(doa_wr_delay0_in[2]),
-        .Q(doa_wr_delay[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \deci_low.doa_wr_delay_reg[3] 
-       (.C(clk),
-        .CE(\deci_low.doa_wr_delay[3]_i_1_n_0 ),
-        .D(doa_wr_delay0_in[3]),
-        .Q(doa_wr_delay[3]),
-        .R(1'b0));
   LUT3 #(
     .INIT(8'h81)) 
     \deci_low.fir_resetn_i_1 
@@ -2376,6 +1100,1282 @@ module ps_deci_low_0_0_deci_low
         .CE(1'b1),
         .D(\deci_low.fir_resetn_i_1_n_0 ),
         .Q(fir_resetn),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[0] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[0]),
+        .Q(freq_data[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[10] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[10]),
+        .Q(freq_data[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[11] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[11]),
+        .Q(freq_data[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[12] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[12]),
+        .Q(freq_data[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[13] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[13]),
+        .Q(freq_data[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[14] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[14]),
+        .Q(freq_data[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[15] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[15]),
+        .Q(freq_data[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[16] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[16]),
+        .Q(freq_data[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[17] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[17]),
+        .Q(freq_data[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[18] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[18]),
+        .Q(freq_data[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[19] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[19]),
+        .Q(freq_data[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[1] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[1]),
+        .Q(freq_data[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[20] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[20]),
+        .Q(freq_data[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[21] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[21]),
+        .Q(freq_data[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[22] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[22]),
+        .Q(freq_data[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[23] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[23]),
+        .Q(freq_data[23]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[24] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[24]),
+        .Q(freq_data[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[25] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[25]),
+        .Q(freq_data[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[26] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[26]),
+        .Q(freq_data[26]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[27] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[27]),
+        .Q(freq_data[27]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[28] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[28]),
+        .Q(freq_data[28]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[29] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[29]),
+        .Q(freq_data[29]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[2] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[2]),
+        .Q(freq_data[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[30] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[30]),
+        .Q(freq_data[30]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[31] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[31]),
+        .Q(freq_data[31]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[32] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[32]),
+        .Q(freq_data[32]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[33] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[33]),
+        .Q(freq_data[33]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[34] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[34]),
+        .Q(freq_data[34]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[35] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[35]),
+        .Q(freq_data[35]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[36] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[36]),
+        .Q(freq_data[36]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[37] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[37]),
+        .Q(freq_data[37]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[38] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[38]),
+        .Q(freq_data[38]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[39] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[39]),
+        .Q(freq_data[39]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[3] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[3]),
+        .Q(freq_data[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[40] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[40]),
+        .Q(freq_data[40]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[41] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[41]),
+        .Q(freq_data[41]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[42] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[42]),
+        .Q(freq_data[42]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[43] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[43]),
+        .Q(freq_data[43]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[44] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[44]),
+        .Q(freq_data[44]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[45] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[45]),
+        .Q(freq_data[45]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[46] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[46]),
+        .Q(freq_data[46]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[47] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[47]),
+        .Q(freq_data[47]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[4] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[4]),
+        .Q(freq_data[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[5] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[5]),
+        .Q(freq_data[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[6] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[6]),
+        .Q(freq_data[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[7] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[7]),
+        .Q(freq_data[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[8] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[8]),
+        .Q(freq_data[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_data_reg[9] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(freq_out_data[9]),
+        .Q(freq_data[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'hABAAAAAAFFFFFFFC)) 
+    \deci_low.freq_fifo_wr_i_1 
+       (.I0(freq_fifo_wr),
+        .I1(freq_wr_delay[1]),
+        .I2(freq_wr_delay[0]),
+        .I3(freq_wr_delay[2]),
+        .I4(freq_wr_delay[3]),
+        .I5(mux_active),
+        .O(\deci_low.freq_fifo_wr_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_fifo_wr_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\deci_low.freq_fifo_wr_i_1_n_0 ),
+        .Q(freq_fifo_wr),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[0]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[0]),
+        .I2(mux_active),
+        .I3(freq_N[0]),
+        .O(\deci_low.freq_in_data[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[10]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[10]),
+        .I2(mux_active),
+        .I3(freq_N[10]),
+        .O(\deci_low.freq_in_data[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[11]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[11]),
+        .I2(mux_active),
+        .I3(freq_N[11]),
+        .O(\deci_low.freq_in_data[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[12]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[12]),
+        .I2(mux_active),
+        .I3(freq_N[12]),
+        .O(\deci_low.freq_in_data[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[13]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[13]),
+        .I2(mux_active),
+        .I3(freq_N[13]),
+        .O(\deci_low.freq_in_data[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[14]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[14]),
+        .I2(mux_active),
+        .I3(freq_N[14]),
+        .O(\deci_low.freq_in_data[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[15]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[15]),
+        .I2(mux_active),
+        .I3(freq_N[15]),
+        .O(\deci_low.freq_in_data[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[16]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[16]),
+        .I2(mux_active),
+        .I3(freq_E[0]),
+        .O(\deci_low.freq_in_data[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[17]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[17]),
+        .I2(mux_active),
+        .I3(freq_E[1]),
+        .O(\deci_low.freq_in_data[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[18]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[18]),
+        .I2(mux_active),
+        .I3(freq_E[2]),
+        .O(\deci_low.freq_in_data[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[19]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[19]),
+        .I2(mux_active),
+        .I3(freq_E[3]),
+        .O(\deci_low.freq_in_data[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[1]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[1]),
+        .I2(mux_active),
+        .I3(freq_N[1]),
+        .O(\deci_low.freq_in_data[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[20]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[20]),
+        .I2(mux_active),
+        .I3(freq_E[4]),
+        .O(\deci_low.freq_in_data[20]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[21]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[21]),
+        .I2(mux_active),
+        .I3(freq_E[5]),
+        .O(\deci_low.freq_in_data[21]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[22]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[22]),
+        .I2(mux_active),
+        .I3(freq_E[6]),
+        .O(\deci_low.freq_in_data[22]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[23]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[23]),
+        .I2(mux_active),
+        .I3(freq_E[7]),
+        .O(\deci_low.freq_in_data[23]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[24]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[24]),
+        .I2(mux_active),
+        .I3(freq_E[8]),
+        .O(\deci_low.freq_in_data[24]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[25]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[25]),
+        .I2(mux_active),
+        .I3(freq_E[9]),
+        .O(\deci_low.freq_in_data[25]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[26]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[26]),
+        .I2(mux_active),
+        .I3(freq_E[10]),
+        .O(\deci_low.freq_in_data[26]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[27]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[27]),
+        .I2(mux_active),
+        .I3(freq_E[11]),
+        .O(\deci_low.freq_in_data[27]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[28]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[28]),
+        .I2(mux_active),
+        .I3(freq_E[12]),
+        .O(\deci_low.freq_in_data[28]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[29]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[29]),
+        .I2(mux_active),
+        .I3(freq_E[13]),
+        .O(\deci_low.freq_in_data[29]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[2]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[2]),
+        .I2(mux_active),
+        .I3(freq_N[2]),
+        .O(\deci_low.freq_in_data[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[30]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[30]),
+        .I2(mux_active),
+        .I3(freq_E[14]),
+        .O(\deci_low.freq_in_data[30]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[31]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[31]),
+        .I2(mux_active),
+        .I3(freq_E[15]),
+        .O(\deci_low.freq_in_data[31]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[32]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[32]),
+        .I2(mux_active),
+        .I3(freq_W[0]),
+        .O(\deci_low.freq_in_data[32]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[33]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[33]),
+        .I2(mux_active),
+        .I3(freq_W[1]),
+        .O(\deci_low.freq_in_data[33]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[34]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[34]),
+        .I2(mux_active),
+        .I3(freq_W[2]),
+        .O(\deci_low.freq_in_data[34]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[35]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[35]),
+        .I2(mux_active),
+        .I3(freq_W[3]),
+        .O(\deci_low.freq_in_data[35]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[36]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[36]),
+        .I2(mux_active),
+        .I3(freq_W[4]),
+        .O(\deci_low.freq_in_data[36]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[37]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[37]),
+        .I2(mux_active),
+        .I3(freq_W[5]),
+        .O(\deci_low.freq_in_data[37]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[38]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[38]),
+        .I2(mux_active),
+        .I3(freq_W[6]),
+        .O(\deci_low.freq_in_data[38]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[39]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[39]),
+        .I2(mux_active),
+        .I3(freq_W[7]),
+        .O(\deci_low.freq_in_data[39]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[3]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[3]),
+        .I2(mux_active),
+        .I3(freq_N[3]),
+        .O(\deci_low.freq_in_data[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[40]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[40]),
+        .I2(mux_active),
+        .I3(freq_W[8]),
+        .O(\deci_low.freq_in_data[40]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[41]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[41]),
+        .I2(mux_active),
+        .I3(freq_W[9]),
+        .O(\deci_low.freq_in_data[41]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[42]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[42]),
+        .I2(mux_active),
+        .I3(freq_W[10]),
+        .O(\deci_low.freq_in_data[42]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[43]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[43]),
+        .I2(mux_active),
+        .I3(freq_W[11]),
+        .O(\deci_low.freq_in_data[43]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[44]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[44]),
+        .I2(mux_active),
+        .I3(freq_W[12]),
+        .O(\deci_low.freq_in_data[44]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[45]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[45]),
+        .I2(mux_active),
+        .I3(freq_W[13]),
+        .O(\deci_low.freq_in_data[45]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[46]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[46]),
+        .I2(mux_active),
+        .I3(freq_W[14]),
+        .O(\deci_low.freq_in_data[46]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[47]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[47]),
+        .I2(mux_active),
+        .I3(freq_W[15]),
+        .O(\deci_low.freq_in_data[47]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h1000)) 
+    \deci_low.freq_in_data[47]_i_2 
+       (.I0(freq_wr_delay[1]),
+        .I1(freq_wr_delay[0]),
+        .I2(freq_wr_delay[3]),
+        .I3(freq_wr_delay[2]),
+        .O(\deci_low.freq_in_data[47]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[4]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[4]),
+        .I2(mux_active),
+        .I3(freq_N[4]),
+        .O(\deci_low.freq_in_data[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[5]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[5]),
+        .I2(mux_active),
+        .I3(freq_N[5]),
+        .O(\deci_low.freq_in_data[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[6]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[6]),
+        .I2(mux_active),
+        .I3(freq_N[6]),
+        .O(\deci_low.freq_in_data[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[7]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[7]),
+        .I2(mux_active),
+        .I3(freq_N[7]),
+        .O(\deci_low.freq_in_data[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[8]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[8]),
+        .I2(mux_active),
+        .I3(freq_N[8]),
+        .O(\deci_low.freq_in_data[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \deci_low.freq_in_data[9]_i_1 
+       (.I0(\deci_low.freq_in_data[47]_i_2_n_0 ),
+        .I1(freq_in_data[9]),
+        .I2(mux_active),
+        .I3(freq_N[9]),
+        .O(\deci_low.freq_in_data[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[0] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[0]_i_1_n_0 ),
+        .Q(freq_in_data[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[10] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[10]_i_1_n_0 ),
+        .Q(freq_in_data[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[11] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[11]_i_1_n_0 ),
+        .Q(freq_in_data[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[12] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[12]_i_1_n_0 ),
+        .Q(freq_in_data[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[13] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[13]_i_1_n_0 ),
+        .Q(freq_in_data[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[14] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[14]_i_1_n_0 ),
+        .Q(freq_in_data[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[15] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[15]_i_1_n_0 ),
+        .Q(freq_in_data[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[16] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[16]_i_1_n_0 ),
+        .Q(freq_in_data[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[17] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[17]_i_1_n_0 ),
+        .Q(freq_in_data[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[18] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[18]_i_1_n_0 ),
+        .Q(freq_in_data[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[19] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[19]_i_1_n_0 ),
+        .Q(freq_in_data[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[1] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[1]_i_1_n_0 ),
+        .Q(freq_in_data[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[20] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[20]_i_1_n_0 ),
+        .Q(freq_in_data[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[21] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[21]_i_1_n_0 ),
+        .Q(freq_in_data[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[22] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[22]_i_1_n_0 ),
+        .Q(freq_in_data[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[23] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[23]_i_1_n_0 ),
+        .Q(freq_in_data[23]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[24] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[24]_i_1_n_0 ),
+        .Q(freq_in_data[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[25] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[25]_i_1_n_0 ),
+        .Q(freq_in_data[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[26] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[26]_i_1_n_0 ),
+        .Q(freq_in_data[26]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[27] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[27]_i_1_n_0 ),
+        .Q(freq_in_data[27]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[28] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[28]_i_1_n_0 ),
+        .Q(freq_in_data[28]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[29] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[29]_i_1_n_0 ),
+        .Q(freq_in_data[29]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[2] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[2]_i_1_n_0 ),
+        .Q(freq_in_data[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[30] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[30]_i_1_n_0 ),
+        .Q(freq_in_data[30]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[31] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[31]_i_1_n_0 ),
+        .Q(freq_in_data[31]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[32] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[32]_i_1_n_0 ),
+        .Q(freq_in_data[32]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[33] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[33]_i_1_n_0 ),
+        .Q(freq_in_data[33]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[34] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[34]_i_1_n_0 ),
+        .Q(freq_in_data[34]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[35] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[35]_i_1_n_0 ),
+        .Q(freq_in_data[35]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[36] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[36]_i_1_n_0 ),
+        .Q(freq_in_data[36]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[37] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[37]_i_1_n_0 ),
+        .Q(freq_in_data[37]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[38] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[38]_i_1_n_0 ),
+        .Q(freq_in_data[38]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[39] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[39]_i_1_n_0 ),
+        .Q(freq_in_data[39]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[3] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[3]_i_1_n_0 ),
+        .Q(freq_in_data[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[40] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[40]_i_1_n_0 ),
+        .Q(freq_in_data[40]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[41] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[41]_i_1_n_0 ),
+        .Q(freq_in_data[41]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[42] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[42]_i_1_n_0 ),
+        .Q(freq_in_data[42]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[43] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[43]_i_1_n_0 ),
+        .Q(freq_in_data[43]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[44] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[44]_i_1_n_0 ),
+        .Q(freq_in_data[44]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[45] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[45]_i_1_n_0 ),
+        .Q(freq_in_data[45]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[46] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[46]_i_1_n_0 ),
+        .Q(freq_in_data[46]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[47] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .Q(freq_in_data[47]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[4] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[4]_i_1_n_0 ),
+        .Q(freq_in_data[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[5] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[5]_i_1_n_0 ),
+        .Q(freq_in_data[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[6] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[6]_i_1_n_0 ),
+        .Q(freq_in_data[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[7] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[7]_i_1_n_0 ),
+        .Q(freq_in_data[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[8] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[8]_i_1_n_0 ),
+        .Q(freq_in_data[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_in_data_reg[9] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(\deci_low.freq_in_data[9]_i_1_n_0 ),
+        .Q(freq_in_data[9]),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \deci_low.freq_out_rd_i_1 
+       (.I0(freq_fifo_empty),
+        .I1(freq_rd_delay[1]),
+        .I2(freq_rd_delay[2]),
+        .I3(freq_rd_delay[0]),
+        .O(\deci_low.freq_out_rd_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_out_rd_reg 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(\deci_low.freq_out_rd_i_1_n_0 ),
+        .Q(freq_out_rd),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    \deci_low.freq_rd_delay[0]_i_1 
+       (.I0(freq_rd_delay[0]),
+        .O(freq_rd_delay0));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \deci_low.freq_rd_delay[1]_i_1 
+       (.I0(freq_rd_delay[0]),
+        .I1(freq_rd_delay[2]),
+        .I2(freq_rd_delay[1]),
+        .O(\deci_low.freq_rd_delay[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT2 #(
+    .INIT(4'h9)) 
+    \deci_low.freq_rd_delay[1]_i_2 
+       (.I0(freq_rd_delay[0]),
+        .I1(freq_rd_delay[1]),
+        .O(\deci_low.freq_rd_delay[1]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hC8)) 
+    \deci_low.freq_rd_delay[2]_i_1 
+       (.I0(freq_rd_delay[0]),
+        .I1(freq_rd_delay[2]),
+        .I2(freq_rd_delay[1]),
+        .O(\deci_low.freq_rd_delay[2]_i_1_n_0 ));
+  FDSE \deci_low.freq_rd_delay_reg[0] 
+       (.C(freq_clk),
+        .CE(\deci_low.freq_rd_delay[1]_i_1_n_0 ),
+        .D(freq_rd_delay0),
+        .Q(freq_rd_delay[0]),
+        .S(freq_fifo_empty));
+  FDSE \deci_low.freq_rd_delay_reg[1] 
+       (.C(freq_clk),
+        .CE(\deci_low.freq_rd_delay[1]_i_1_n_0 ),
+        .D(\deci_low.freq_rd_delay[1]_i_2_n_0 ),
+        .Q(freq_rd_delay[1]),
+        .S(freq_fifo_empty));
+  FDSE \deci_low.freq_rd_delay_reg[2] 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(\deci_low.freq_rd_delay[2]_i_1_n_0 ),
+        .Q(freq_rd_delay[2]),
+        .S(freq_fifo_empty));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \deci_low.freq_ready_i_1 
+       (.I0(freq_out_rd),
+        .I1(freq_fifo_empty),
+        .O(\deci_low.freq_ready_reg0 ));
+  (* KEEP = "yes" *) 
+  FDRE \deci_low.freq_ready_reg 
+       (.C(freq_clk),
+        .CE(1'b1),
+        .D(\deci_low.freq_ready_reg0 ),
+        .Q(freq_ready),
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'h31333333)) 
+    \deci_low.freq_wr_delay[0]_i_1 
+       (.I0(mux_active),
+        .I1(freq_wr_delay[0]),
+        .I2(freq_wr_delay[1]),
+        .I3(freq_wr_delay[3]),
+        .I4(freq_wr_delay[2]),
+        .O(freq_wr_delay0_in[0]));
+  LUT3 #(
+    .INIT(8'h69)) 
+    \deci_low.freq_wr_delay[1]_i_1 
+       (.I0(freq_wr_delay[0]),
+        .I1(freq_wr_delay[1]),
+        .I2(mux_active),
+        .O(freq_wr_delay0_in[1]));
+  LUT4 #(
+    .INIT(16'h78E1)) 
+    \deci_low.freq_wr_delay[2]_i_1 
+       (.I0(freq_wr_delay[0]),
+        .I1(freq_wr_delay[1]),
+        .I2(freq_wr_delay[2]),
+        .I3(mux_active),
+        .O(freq_wr_delay0_in[2]));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \deci_low.freq_wr_delay[3]_i_1 
+       (.I0(mux_active),
+        .I1(freq_wr_delay[2]),
+        .I2(freq_wr_delay[3]),
+        .I3(freq_wr_delay[0]),
+        .I4(freq_wr_delay[1]),
+        .O(\deci_low.freq_wr_delay[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h7F80FE01)) 
+    \deci_low.freq_wr_delay[3]_i_2 
+       (.I0(freq_wr_delay[1]),
+        .I1(freq_wr_delay[0]),
+        .I2(mux_active),
+        .I3(freq_wr_delay[3]),
+        .I4(freq_wr_delay[2]),
+        .O(freq_wr_delay0_in[3]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_wr_delay_reg[0] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(freq_wr_delay0_in[0]),
+        .Q(freq_wr_delay[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_wr_delay_reg[1] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(freq_wr_delay0_in[1]),
+        .Q(freq_wr_delay[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_wr_delay_reg[2] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(freq_wr_delay0_in[2]),
+        .Q(freq_wr_delay[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \deci_low.freq_wr_delay_reg[3] 
+       (.C(clk),
+        .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
+        .D(freq_wr_delay0_in[3]),
+        .Q(freq_wr_delay[3]),
         .R(1'b0));
   LUT5 #(
     .INIT(32'hF088F000)) 
@@ -12971,7 +12971,7 @@ module ps_deci_low_0_0_deci_low
     .INIT(4'hE)) 
     \deci_low.reset_delay[2]_i_1 
        (.I0(mux_active),
-        .I1(doa_fifo_wr),
+        .I1(freq_fifo_wr),
         .O(\deci_low.reset_delay_reg0 ));
   LUT3 #(
     .INIT(8'hFE)) 
@@ -14740,18 +14740,18 @@ module ps_deci_low_0_0_deci_low
   (* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-  ps_deci_low_0_0_fifo_doa_low fifo_doa_i
-       (.din(doa_in_data),
-        .dout(doa_out_data),
-        .empty(doa_fifo_empty),
-        .full(NLW_fifo_doa_i_full_UNCONNECTED),
-        .rd_clk(doa_clk),
-        .rd_en(doa_out_rd),
-        .rd_rst_busy(NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED),
+  ps_deci_low_0_0_fifo_doa_low fifo_freq_i
+       (.din(freq_in_data),
+        .dout(freq_out_data),
+        .empty(freq_fifo_empty),
+        .full(NLW_fifo_freq_i_full_UNCONNECTED),
+        .rd_clk(freq_clk),
+        .rd_en(freq_out_rd),
+        .rd_rst_busy(NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED),
         .rst(\deci_low.sim_active_i_1_n_0 ),
         .wr_clk(clk),
-        .wr_en(doa_fifo_wr),
-        .wr_rst_busy(NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED));
+        .wr_en(freq_fifo_wr),
+        .wr_rst_busy(NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED));
   (* CHECK_LICENSE_TYPE = "fifo_raw_low,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
@@ -14821,35 +14821,35 @@ module ps_deci_low_0_0_deci_low
   (* CHECK_LICENSE_TYPE = "fir_deci_low,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
-  ps_deci_low_0_0_fir_deci_low fir_doa_E_i
+  ps_deci_low_0_0_fir_deci_low fir_freq_E_i
        (.aclk(clk),
         .aresetn(fir_resetn),
-        .m_axis_data_tdata({NLW_fir_doa_E_i_m_axis_data_tdata_UNCONNECTED[31],doa_E,NLW_fir_doa_E_i_m_axis_data_tdata_UNCONNECTED[14:0]}),
-        .m_axis_data_tvalid(NLW_fir_doa_E_i_m_axis_data_tvalid_UNCONNECTED),
+        .m_axis_data_tdata({NLW_fir_freq_E_i_m_axis_data_tdata_UNCONNECTED[31],freq_E,NLW_fir_freq_E_i_m_axis_data_tdata_UNCONNECTED[14:0]}),
+        .m_axis_data_tvalid(NLW_fir_freq_E_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(mux_E),
-        .s_axis_data_tready(NLW_fir_doa_E_i_s_axis_data_tready_UNCONNECTED),
+        .s_axis_data_tready(NLW_fir_freq_E_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(mux_active));
   (* CHECK_LICENSE_TYPE = "fir_deci_low,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
-  ps_deci_low_0_0_fir_deci_low fir_doa_N_i
+  ps_deci_low_0_0_fir_deci_low fir_freq_N_i
        (.aclk(clk),
         .aresetn(fir_resetn),
-        .m_axis_data_tdata({NLW_fir_doa_N_i_m_axis_data_tdata_UNCONNECTED[31],doa_N,NLW_fir_doa_N_i_m_axis_data_tdata_UNCONNECTED[14:0]}),
-        .m_axis_data_tvalid(NLW_fir_doa_N_i_m_axis_data_tvalid_UNCONNECTED),
+        .m_axis_data_tdata({NLW_fir_freq_N_i_m_axis_data_tdata_UNCONNECTED[31],freq_N,NLW_fir_freq_N_i_m_axis_data_tdata_UNCONNECTED[14:0]}),
+        .m_axis_data_tvalid(NLW_fir_freq_N_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({mux_N7,mux_N6,mux_N5,mux_N4,mux_N3,mux_N2,mux_N1,mux_N0}),
-        .s_axis_data_tready(NLW_fir_doa_N_i_s_axis_data_tready_UNCONNECTED),
+        .s_axis_data_tready(NLW_fir_freq_N_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(mux_active));
   (* CHECK_LICENSE_TYPE = "fir_deci_low,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
-  ps_deci_low_0_0_fir_deci_low_HD2 fir_doa_W_i
+  ps_deci_low_0_0_fir_deci_low_HD2 fir_freq_W_i
        (.aclk(clk),
         .aresetn(fir_resetn),
-        .m_axis_data_tdata({NLW_fir_doa_W_i_m_axis_data_tdata_UNCONNECTED[31],doa_W,NLW_fir_doa_W_i_m_axis_data_tdata_UNCONNECTED[14:0]}),
-        .m_axis_data_tvalid(NLW_fir_doa_W_i_m_axis_data_tvalid_UNCONNECTED),
+        .m_axis_data_tdata({NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED[31],freq_W,NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED[14:0]}),
+        .m_axis_data_tvalid(NLW_fir_freq_W_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(mux_W),
-        .s_axis_data_tready(NLW_fir_doa_W_i_s_axis_data_tready_UNCONNECTED),
+        .s_axis_data_tready(NLW_fir_freq_W_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(mux_active));
   (* CHECK_LICENSE_TYPE = "fir_raw_deci,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -14891,7 +14891,7 @@ module ps_deci_low_0_0_deci_low
        (.clk(clk),
         .probe0(reset_delay),
         .probe1(reset_active),
-        .probe10(doa_in_data[15:0]),
+        .probe10(freq_in_data[15:0]),
         .probe11(mux_N0),
         .probe12(mux_N1),
         .probe13(mux_N2),
@@ -14905,16 +14905,16 @@ module ps_deci_low_0_0_deci_low
         .probe20(raw_N1),
         .probe21(raw_N2),
         .probe22(raw_N3),
-        .probe23(doa_N),
-        .probe24(doa_E),
-        .probe25(doa_W),
+        .probe23(freq_N),
+        .probe24(freq_E),
+        .probe25(freq_W),
         .probe3(adc_active),
         .probe4(mux_active),
         .probe5(raw_wr_delay),
         .probe6(raw_fifo_wr),
         .probe7(raw_in_data[15:0]),
-        .probe8(doa_wr_delay),
-        .probe9(doa_fifo_wr));
+        .probe8(freq_wr_delay),
+        .probe9(freq_fifo_wr));
   (* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
@@ -14930,12 +14930,12 @@ module ps_deci_low_0_0_deci_low
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
   ps_deci_low_0_0_ila_8 ila_8_i
-       (.clk(doa_clk),
-        .probe0(doa_fifo_empty),
-        .probe1(doa_out_rd),
-        .probe2(doa_out_data[15:0]),
-        .probe3(doa_ready),
-        .probe4(doa_data[15:0]));
+       (.clk(freq_clk),
+        .probe0(freq_fifo_empty),
+        .probe1(freq_out_rd),
+        .probe2(freq_out_data[15:0]),
+        .probe3(freq_ready),
+        .probe4(freq_data[15:0]));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa_low" *) 

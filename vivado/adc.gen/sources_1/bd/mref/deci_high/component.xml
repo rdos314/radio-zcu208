@@ -66,7 +66,7 @@
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>doa_clk</spirit:name>
+      <spirit:name>freq_clk</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -76,7 +76,7 @@
             <spirit:name>CLK</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>doa_clk</spirit:name>
+            <spirit:name>freq_clk</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
@@ -131,7 +131,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>982a8811</spirit:value>
+            <spirit:value>a13b60de</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -144,7 +144,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>982a8811</spirit:value>
+            <spirit:value>a13b60de</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -430,7 +430,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>doa_clk</spirit:name>
+        <spirit:name>freq_clk</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -443,7 +443,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>doa_ready</spirit:name>
+        <spirit:name>freq_ready</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -456,7 +456,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>doa_data</spirit:name>
+        <spirit:name>freq_data</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -515,7 +515,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-11-30T19:41:23Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2025-11-30T21:13:11Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.1</xilinx:xilinxVersion>

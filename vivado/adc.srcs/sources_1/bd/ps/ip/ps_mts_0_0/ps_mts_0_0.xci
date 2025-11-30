@@ -57,10 +57,10 @@
         "comp0_reset": [ { "direction": "out" } ],
         "comp1_clk": [ { "direction": "out" } ],
         "comp1_reset": [ { "direction": "out" } ],
-        "doa0_clk": [ { "direction": "out" } ],
-        "doa0_reset": [ { "direction": "out" } ],
-        "doa1_clk": [ { "direction": "out" } ],
-        "doa1_reset": [ { "direction": "out" } ]
+        "freq0_clk": [ { "direction": "out" } ],
+        "freq0_reset": [ { "direction": "out" } ],
+        "freq1_clk": [ { "direction": "out" } ],
+        "freq1_reset": [ { "direction": "out" } ]
       },
       "interfaces": {
         "comp0_reset": {
@@ -99,7 +99,7 @@
             "RST": [ { "physical_name": "deci_resetn" } ]
           }
         },
-        "doa0_reset": {
+        "freq0_reset": {
           "vlnv": "xilinx.com:signal:reset:1.0",
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "master",
@@ -108,10 +108,10 @@
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           },
           "port_maps": {
-            "RST": [ { "physical_name": "doa0_reset" } ]
+            "RST": [ { "physical_name": "freq0_reset" } ]
           }
         },
-        "doa1_reset": {
+        "freq1_reset": {
           "vlnv": "xilinx.com:signal:reset:1.0",
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "master",
@@ -120,7 +120,7 @@
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           },
           "port_maps": {
-            "RST": [ { "physical_name": "doa1_reset" } ]
+            "RST": [ { "physical_name": "freq1_reset" } ]
           }
         },
         "sys_reset": {
@@ -207,40 +207,40 @@
             "CLK": [ { "physical_name": "deci_clk" } ]
           }
         },
-        "doa0_clk": {
+        "freq0_clk": {
           "vlnv": "xilinx.com:signal:clock:1.0",
           "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "ASSOCIATED_RESET": [ { "value": "doa0_reset", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "ASSOCIATED_RESET": [ { "value": "freq0_reset", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "FREQ_HZ": [ { "value": "500000000", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
             "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
             "PHASE": [ { "value": "0.0", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
-            "CLK_DOMAIN": [ { "value": "ps_mts_0_0_doa0_clk", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "ps_mts_0_0_freq0_clk", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           },
           "port_maps": {
-            "CLK": [ { "physical_name": "doa0_clk" } ]
+            "CLK": [ { "physical_name": "freq0_clk" } ]
           }
         },
-        "doa1_clk": {
+        "freq1_clk": {
           "vlnv": "xilinx.com:signal:clock:1.0",
           "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "ASSOCIATED_RESET": [ { "value": "doa1_reset", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "ASSOCIATED_RESET": [ { "value": "freq1_reset", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "FREQ_HZ": [ { "value": "500000000", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
             "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
             "PHASE": [ { "value": "0.0", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
-            "CLK_DOMAIN": [ { "value": "ps_mts_0_0_doa1_clk", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "ps_mts_0_0_freq1_clk", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           },
           "port_maps": {
-            "CLK": [ { "physical_name": "doa1_clk" } ]
+            "CLK": [ { "physical_name": "freq1_clk" } ]
           }
         },
         "pl_clk": {

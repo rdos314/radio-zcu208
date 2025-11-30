@@ -74,9 +74,9 @@ module ps_deci_high_0_0 (
   raw_clk,
   raw_ready,
   raw_data,
-  doa_clk,
-  doa_ready,
-  doa_data
+  freq_clk,
+  freq_ready,
+  freq_data
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
@@ -113,12 +113,12 @@ input wire [31 : 0] sim_data;
 input wire raw_clk;
 output wire raw_ready;
 output wire [383 : 0] raw_data;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 doa_clk CLK" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 freq_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME doa_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_doa1_clk, INSERT_VIP 0" *)
-input wire doa_clk;
-output wire doa_ready;
-output wire [95 : 0] doa_data;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME freq_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq1_clk, INSERT_VIP 0" *)
+input wire freq_clk;
+output wire freq_ready;
+output wire [95 : 0] freq_data;
 
   deci_high inst (
     .clk(clk),
@@ -140,8 +140,8 @@ output wire [95 : 0] doa_data;
     .raw_clk(raw_clk),
     .raw_ready(raw_ready),
     .raw_data(raw_data),
-    .doa_clk(doa_clk),
-    .doa_ready(doa_ready),
-    .doa_data(doa_data)
+    .freq_clk(freq_clk),
+    .freq_ready(freq_ready),
+    .freq_data(freq_data)
   );
 endmodule

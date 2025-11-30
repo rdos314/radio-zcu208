@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sun Nov 30 20:41:41 2025
+//Date        : Sun Nov 30 22:15:30 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -181,8 +181,8 @@ module ps
   wire axi_smc_M04_AXI_WVALID;
   wire [383:0]deci_high_raw_data;
   wire deci_high_raw_ready;
-  wire [47:0]deci_low_doa_data;
-  wire deci_low_doa_ready;
+  wire [47:0]deci_low_freq_data;
+  wire deci_low_freq_ready;
   wire [191:0]deci_low_raw_data;
   wire deci_low_raw_ready;
   wire deci_low_sim_active;
@@ -196,9 +196,9 @@ module ps
   wire mts_0_deci_resetn;
   wire mts_0_deci_sim_active;
   wire mts_0_deci_sim_start;
-  wire mts_0_doa0_clk;
-  wire mts_0_doa0_reset;
-  wire mts_0_doa1_clk;
+  wire mts_0_freq0_clk;
+  wire mts_0_freq0_reset;
+  wire mts_0_freq1_clk;
   wire mts_0_user_sysref_adc;
   wire pl_clk_n;
   wire pl_clk_p;
@@ -526,7 +526,7 @@ module ps
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),
         .data_W(usp_rf_data_converter_0_m30_axis_tdata),
-        .doa_clk(mts_0_doa1_clk),
+        .freq_clk(mts_0_freq1_clk),
         .raw_clk(mts_0_comp1_clk),
         .raw_data(deci_high_raw_data),
         .raw_ready(deci_high_raw_ready),
@@ -547,9 +547,9 @@ module ps
         .data_E(usp_rf_data_converter_0_m02_axis_tdata),
         .data_N(usp_rf_data_converter_0_m00_axis_tdata),
         .data_W(usp_rf_data_converter_0_m10_axis_tdata),
-        .doa_clk(mts_0_doa0_clk),
-        .doa_data(deci_low_doa_data),
-        .doa_ready(deci_low_doa_ready),
+        .freq_clk(mts_0_freq0_clk),
+        .freq_data(deci_low_freq_data),
+        .freq_ready(deci_low_freq_ready),
         .raw_clk(mts_0_comp0_clk),
         .raw_data(deci_low_raw_data),
         .raw_ready(deci_low_raw_ready),
@@ -564,11 +564,11 @@ module ps
         .sim_resetn(rst_ps8_0_99M_peripheral_aresetn),
         .sim_start(mts_0_deci_sim_start),
         .sim_wr(adc_control_0_sim_low_wr));
-  ps_doa_low_0_0 doa_low_0
-       (.clk(mts_0_doa0_clk),
-        .fifo_data(deci_low_doa_data),
-        .fifo_valid(deci_low_doa_ready),
-        .reset(mts_0_doa0_reset));
+  ps_freq_low_46_0_0 freq_low_46_0
+       (.clk(mts_0_freq0_clk),
+        .fifo_data(deci_low_freq_data),
+        .fifo_valid(deci_low_freq_ready),
+        .reset(mts_0_freq0_reset));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -607,9 +607,9 @@ module ps
         .deci_sim_active_high(mts_0_deci_sim_active),
         .deci_sim_active_low(deci_low_sim_active),
         .deci_sim_start(mts_0_deci_sim_start),
-        .doa0_clk(mts_0_doa0_clk),
-        .doa0_reset(mts_0_doa0_reset),
-        .doa1_clk(mts_0_doa1_clk),
+        .freq0_clk(mts_0_freq0_clk),
+        .freq0_reset(mts_0_freq0_reset),
+        .freq1_clk(mts_0_freq1_clk),
         .pl_clk(util_ds_buf_0_IBUF_OUT),
         .pl_sysref(util_ds_buf_0_IBUF_OUT1),
         .sys_reset(rst_ps8_0_99M_mb_reset),

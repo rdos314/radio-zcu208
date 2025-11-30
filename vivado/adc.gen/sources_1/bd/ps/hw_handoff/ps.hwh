@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 30 20:41:44 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 30 22:15:33 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -259,14 +259,14 @@
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="sim_channel" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_sim_channel">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_channel"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_channel"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_channel"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="sim_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_sim_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_data"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_data"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="sim_high_wr" SIGIS="undef" SIGNAME="adc_control_0_sim_high_wr">
@@ -2692,13 +2692,13 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m30_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="doa_clk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="freq_clk" SIGIS="clk" SIGNAME="mts_0_freq1_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa1_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="freq1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="95" NAME="doa_data" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="doa_ready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="95" NAME="freq_data" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="freq_ready" SIGIS="undef"/>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
@@ -2804,19 +2804,19 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m10_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="doa_clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="freq_clk" SIGIS="clk" SIGNAME="mts_0_freq0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="freq0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="47" NAME="doa_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
+        <PORT DIR="O" LEFT="47" NAME="freq_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_freq_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_low_0" PORT="fifo_data"/>
+            <CONNECTION INSTANCE="freq_low_46_0" PORT="fifo_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="doa_ready" SIGIS="undef" SIGNAME="deci_low_doa_ready">
+        <PORT DIR="O" NAME="freq_ready" SIGIS="undef" SIGNAME="deci_low_freq_ready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_low_0" PORT="fifo_valid"/>
+            <CONNECTION INSTANCE="freq_low_46_0" PORT="fifo_valid"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
@@ -2892,38 +2892,40 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/doa_low_0" HWVERSION="1.0" INSTANCE="doa_low_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="doa_low" VLNV="xilinx.com:module_ref:doa_low:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/freq_low_46_0" HWVERSION="1.0" INSTANCE="freq_low_46_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="freq_low_46" VLNV="xilinx.com:module_ref:freq_low_46:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_doa_low_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="ps_freq_low_46_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_freq0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="freq0_clk"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="19" NAME="diff_E" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="19" NAME="diff_N" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="19" NAME="diff_W" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="15" NAME="env_E" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="15" NAME="env_N" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="15" NAME="env_W" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="47" NAME="fifo_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_doa_data">
+        <PORT DIR="I" LEFT="47" NAME="fifo_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_freq_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="doa_data"/>
+            <CONNECTION INSTANCE="deci_low" PORT="freq_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="fifo_valid" SIGIS="undef" SIGNAME="deci_low_doa_ready">
+        <PORT DIR="I" NAME="fifo_valid" SIGIS="undef" SIGNAME="deci_low_freq_ready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="doa_ready"/>
+            <CONNECTION INSTANCE="deci_low" PORT="freq_ready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="freq" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="19" NAME="phase_E" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="19" NAME="phase_N" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="19" NAME="phase_W" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_reset">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_freq0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="doa0_reset"/>
+            <CONNECTION INSTANCE="mts_0" PORT="freq0_reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef"/>
@@ -3348,8 +3350,8 @@
         </PORT>
         <PORT DIR="O" NAME="deci_adc_active" SIGIS="undef" SIGNAME="mts_0_deci_adc_active">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="adc_active"/>
             <CONNECTION INSTANCE="deci_high" PORT="adc_active"/>
+            <CONNECTION INSTANCE="deci_low" PORT="adc_active"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="deci_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
@@ -3358,8 +3360,8 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aclk"/>
-            <CONNECTION INSTANCE="deci_low" PORT="clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
@@ -3368,8 +3370,8 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m1_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aresetn"/>
-            <CONNECTION INSTANCE="deci_low" PORT="resetn"/>
             <CONNECTION INSTANCE="deci_high" PORT="resetn"/>
+            <CONNECTION INSTANCE="deci_low" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="deci_sim_active_high" SIGIS="undef" SIGNAME="deci_high_sim_active">
@@ -3384,27 +3386,27 @@
         </PORT>
         <PORT DIR="O" NAME="deci_sim_start" SIGIS="undef" SIGNAME="mts_0_deci_sim_start">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_start"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_start"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_start"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa0_clk" SIGIS="clk" SIGNAME="mts_0_doa0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="freq0_clk" SIGIS="clk" SIGNAME="mts_0_freq0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_low_0" PORT="clk"/>
-            <CONNECTION INSTANCE="deci_low" PORT="doa_clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="freq_clk"/>
+            <CONNECTION INSTANCE="freq_low_46_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="doa0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_doa0_reset">
+        <PORT DIR="O" NAME="freq0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_freq0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="doa_low_0" PORT="reset"/>
+            <CONNECTION INSTANCE="freq_low_46_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="doa1_clk" SIGIS="clk" SIGNAME="mts_0_doa1_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="freq1_clk" SIGIS="clk" SIGNAME="mts_0_freq1_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="doa_clk"/>
+            <CONNECTION INSTANCE="deci_high" PORT="freq_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="doa1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="O" NAME="freq1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
         <PORT CLKFREQUENCY="125000000" DIR="I" NAME="pl_clk" SIGIS="clk" SIGNAME="pl_clk_util_ds_buf_IBUF_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="pl_clk_util_ds_buf" PORT="IBUF_OUT"/>
@@ -4086,9 +4088,9 @@
             <CONNECTION INSTANCE="clk104_mux" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aresetn"/>
-            <CONNECTION INSTANCE="adc_control_0" PORT="resetn"/>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_resetn"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_resetn"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_resetn"/>
+            <CONNECTION INSTANCE="adc_control_0" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
@@ -8212,10 +8214,10 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_bram" PORT="clkb"/>
-            <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
-            <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
-            <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
+            <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">
