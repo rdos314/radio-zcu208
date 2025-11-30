@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Nov 29 00:18:12 2025
+// Date        : Sun Nov 30 00:33:13 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -162,7 +162,6 @@ module ps_deci_low_0_0_deci_low
   wire [127:0]data_E;
   wire [127:0]data_N;
   wire [127:0]data_W;
-  wire \deci_low.doa_data[47]_i_1_n_0 ;
   wire \deci_low.doa_fifo_wr_i_1_n_0 ;
   wire \deci_low.doa_in_data[47]_i_1_n_0 ;
   wire \deci_low.doa_in_data_reg_n_0_[0] ;
@@ -213,8 +212,6 @@ module ps_deci_low_0_0_deci_low
   wire \deci_low.doa_in_data_reg_n_0_[7] ;
   wire \deci_low.doa_in_data_reg_n_0_[8] ;
   wire \deci_low.doa_in_data_reg_n_0_[9] ;
-  wire \deci_low.doa_out_rd_i_1_n_0 ;
-  wire \deci_low.doa_ready_i_1_n_0 ;
   wire \deci_low.doa_wr_delay[3]_i_1_n_0 ;
   wire \deci_low.fir_resetn_i_1_n_0 ;
   wire \deci_low.mux_E[0]_i_1_n_0 ;
@@ -604,38 +601,6 @@ module ps_deci_low_0_0_deci_low
   wire \deci_low.mux_active_i_1_n_0 ;
   wire \deci_low.raw_active_i_1_n_0 ;
   wire \deci_low.raw_active_i_2_n_0 ;
-  wire \deci_low.raw_counter[7]_i_2_n_0 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_1 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_10 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_11 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_12 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_13 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_14 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_15 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_2 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_3 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_4 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_5 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_6 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_7 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_8 ;
-  wire \deci_low.raw_counter_reg[15]_i_2_n_9 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_0 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_1 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_10 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_11 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_12 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_13 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_14 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_15 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_2 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_3 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_4 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_5 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_6 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_7 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_8 ;
-  wire \deci_low.raw_counter_reg[7]_i_1_n_9 ;
   wire \deci_low.raw_delay[11]_i_1_n_0 ;
   wire \deci_low.raw_delay[11]_i_3_n_0 ;
   wire \deci_low.raw_delay[11]_i_4_n_0 ;
@@ -1012,16 +977,14 @@ module ps_deci_low_0_0_deci_low
   (* MARK_DEBUG *) wire [15:0]doa_N;
   (* MARK_DEBUG *) wire [15:0]doa_W;
   wire doa_clk;
-  wire [47:0]doa_data;
+  (* MARK_DEBUG *) wire [47:0]doa_data;
   (* MARK_DEBUG *) wire doa_fifo_empty;
   (* MARK_DEBUG *) wire doa_fifo_wr;
-  wire [47:0]doa_out_data;
-  (* MARK_DEBUG *) wire [2:0]doa_out_delay;
-  wire [2:0]doa_out_delay__0;
-  (* MARK_DEBUG *) wire doa_out_rd;
+  (* MARK_DEBUG *) wire [47:0]doa_out_data;
   (* MARK_DEBUG *) wire doa_ready;
   (* MARK_DEBUG *) wire [3:0]doa_wr_delay;
   wire [3:0]doa_wr_delay__0;
+  wire fifo_doa_i_i_1_n_0;
   wire fifo_sim_N_i_i_1_n_0;
   wire [126:15]fir_raw_E;
   wire [126:15]fir_raw_W;
@@ -1043,13 +1006,11 @@ module ps_deci_low_0_0_deci_low
   (* MARK_DEBUG *) wire [15:0]raw_N3;
   (* MARK_DEBUG *) wire raw_active;
   wire raw_clk;
-  (* MARK_DEBUG *) wire [15:0]raw_counter;
-  wire [0:0]raw_counter__0;
-  wire [191:0]raw_data;
+  (* MARK_DEBUG *) wire [191:0]raw_data;
   (* MARK_DEBUG *) wire [11:0]raw_delay;
   (* MARK_DEBUG *) wire raw_fifo_empty;
   (* MARK_DEBUG *) wire raw_fifo_wr;
-  wire [191:0]raw_out_data;
+  (* MARK_DEBUG *) wire [191:0]raw_out_data;
   (* MARK_DEBUG *) wire raw_ready;
   (* MARK_DEBUG *) wire [3:0]raw_wr_delay;
   wire [3:0]raw_wr_delay__0;
@@ -1081,7 +1042,6 @@ module ps_deci_low_0_0_deci_low
   wire sim_wr_E;
   wire sim_wr_N;
   wire sim_wr_W;
-  wire [7:7]\NLW_deci_low.raw_counter_reg[15]_i_2_CO_UNCONNECTED ;
   wire [7:2]\NLW_deci_low.raw_delay_reg[11]_i_2_CO_UNCONNECTED ;
   wire [7:3]\NLW_deci_low.raw_delay_reg[11]_i_2_O_UNCONNECTED ;
   wire NLW_fifo_doa_i_full_UNCONNECTED;
@@ -1118,310 +1078,350 @@ module ps_deci_low_0_0_deci_low
   wire NLW_fir_raw_W_i_s_axis_data_tready_UNCONNECTED;
   wire [127:0]NLW_fir_raw_W_i_m_axis_data_tdata_UNCONNECTED;
 
-  LUT4 #(
-    .INIT(16'hAAE8)) 
-    \deci_low.doa_data[47]_i_1 
-       (.I0(doa_fifo_empty),
-        .I1(doa_out_delay[2]),
-        .I2(doa_out_delay[0]),
-        .I3(doa_out_delay[1]),
-        .O(\deci_low.doa_data[47]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[0] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[0]),
         .Q(doa_data[0]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[10] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[10]),
         .Q(doa_data[10]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[11] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[11]),
         .Q(doa_data[11]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[12] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[12]),
         .Q(doa_data[12]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[13] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[13]),
         .Q(doa_data[13]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[14] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[14]),
         .Q(doa_data[14]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[15] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[15]),
         .Q(doa_data[15]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[16] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[16]),
         .Q(doa_data[16]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[17] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[17]),
         .Q(doa_data[17]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[18] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[18]),
         .Q(doa_data[18]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[19] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[19]),
         .Q(doa_data[19]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[1] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[1]),
         .Q(doa_data[1]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[20] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[20]),
         .Q(doa_data[20]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[21] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[21]),
         .Q(doa_data[21]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[22] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[22]),
         .Q(doa_data[22]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[23] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[23]),
         .Q(doa_data[23]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[24] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[24]),
         .Q(doa_data[24]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[25] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[25]),
         .Q(doa_data[25]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[26] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[26]),
         .Q(doa_data[26]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[27] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[27]),
         .Q(doa_data[27]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[28] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[28]),
         .Q(doa_data[28]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[29] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[29]),
         .Q(doa_data[29]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[2] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[2]),
         .Q(doa_data[2]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[30] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[30]),
         .Q(doa_data[30]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[31] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[31]),
         .Q(doa_data[31]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[32] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[32]),
         .Q(doa_data[32]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[33] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[33]),
         .Q(doa_data[33]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[34] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[34]),
         .Q(doa_data[34]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[35] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[35]),
         .Q(doa_data[35]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[36] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[36]),
         .Q(doa_data[36]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[37] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[37]),
         .Q(doa_data[37]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[38] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[38]),
         .Q(doa_data[38]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[39] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[39]),
         .Q(doa_data[39]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[3] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[3]),
         .Q(doa_data[3]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[40] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[40]),
         .Q(doa_data[40]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[41] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[41]),
         .Q(doa_data[41]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[42] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[42]),
         .Q(doa_data[42]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[43] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[43]),
         .Q(doa_data[43]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[44] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[44]),
         .Q(doa_data[44]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[45] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[45]),
         .Q(doa_data[45]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[46] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[46]),
         .Q(doa_data[46]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[47] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[47]),
         .Q(doa_data[47]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[4] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[4]),
         .Q(doa_data[4]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[5] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[5]),
         .Q(doa_data[5]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[6] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[6]),
         .Q(doa_data[6]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[7] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[7]),
         .Q(doa_data[7]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[8] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[8]),
         .Q(doa_data[8]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \deci_low.doa_data_reg[9] 
        (.C(doa_clk),
-        .CE(\deci_low.doa_data[47]_i_1_n_0 ),
+        .CE(fifo_doa_i_i_1_n_0),
         .D(doa_out_data[9]),
         .Q(doa_data[9]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hBAAAAAAAFFFFFFFC)) 
+    .INIT(64'hABAAAAAAFFFFFFFC)) 
     \deci_low.doa_fifo_wr_i_1 
        (.I0(doa_fifo_wr),
-        .I1(doa_wr_delay[2]),
-        .I2(doa_wr_delay[3]),
-        .I3(doa_wr_delay[1]),
-        .I4(doa_wr_delay[0]),
+        .I1(doa_wr_delay[1]),
+        .I2(doa_wr_delay[0]),
+        .I3(doa_wr_delay[2]),
+        .I4(doa_wr_delay[3]),
         .I5(mux_active),
         .O(\deci_low.doa_fifo_wr_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -1432,7 +1432,7 @@ module ps_deci_low_0_0_deci_low
         .Q(doa_fifo_wr),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'h5555D554)) 
+    .INIT(32'h57555554)) 
     \deci_low.doa_in_data[47]_i_1 
        (.I0(mux_active),
         .I1(doa_wr_delay[1]),
@@ -1728,106 +1728,36 @@ module ps_deci_low_0_0_deci_low
         .D(doa_N[9]),
         .Q(\deci_low.doa_in_data_reg_n_0_[9] ),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h323B)) 
-    \deci_low.doa_out_delay[0]_i_1 
-       (.I0(doa_out_delay[2]),
-        .I1(doa_out_delay[0]),
-        .I2(doa_out_delay[1]),
-        .I3(doa_fifo_empty),
-        .O(doa_out_delay__0[0]));
-  LUT4 #(
-    .INIT(16'h8962)) 
-    \deci_low.doa_out_delay[1]_i_1 
-       (.I0(doa_out_delay[1]),
-        .I1(doa_fifo_empty),
-        .I2(doa_out_delay[2]),
-        .I3(doa_out_delay[0]),
-        .O(doa_out_delay__0[1]));
-  LUT4 #(
-    .INIT(16'h9AA2)) 
-    \deci_low.doa_out_delay[2]_i_1 
-       (.I0(doa_out_delay[2]),
-        .I1(doa_fifo_empty),
-        .I2(doa_out_delay[1]),
-        .I3(doa_out_delay[0]),
-        .O(doa_out_delay__0[2]));
   (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_out_delay_reg[0] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_delay__0[0]),
-        .Q(doa_out_delay[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_out_delay_reg[1] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_delay__0[1]),
-        .Q(doa_out_delay[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_out_delay_reg[2] 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(doa_out_delay__0[2]),
-        .Q(doa_out_delay[2]),
-        .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \deci_low.doa_out_rd_i_1 
-       (.I0(doa_fifo_empty),
-        .O(\deci_low.doa_out_rd_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.doa_out_rd_reg 
-       (.C(doa_clk),
-        .CE(1'b1),
-        .D(\deci_low.doa_out_rd_i_1_n_0 ),
-        .Q(doa_out_rd),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'hEEEEFEE2)) 
-    \deci_low.doa_ready_i_1 
-       (.I0(doa_ready),
-        .I1(doa_fifo_empty),
-        .I2(doa_out_delay[2]),
-        .I3(doa_out_delay[0]),
-        .I4(doa_out_delay[1]),
-        .O(\deci_low.doa_ready_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \deci_low.doa_ready_reg 
        (.C(doa_clk),
         .CE(1'b1),
-        .D(\deci_low.doa_ready_i_1_n_0 ),
+        .D(fifo_doa_i_i_1_n_0),
         .Q(doa_ready),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'h3B333333)) 
+    .INIT(32'h31333333)) 
     \deci_low.doa_wr_delay[0]_i_1 
        (.I0(mux_active),
         .I1(doa_wr_delay[0]),
-        .I2(doa_wr_delay[2]),
+        .I2(doa_wr_delay[1]),
         .I3(doa_wr_delay[3]),
-        .I4(doa_wr_delay[1]),
+        .I4(doa_wr_delay[2]),
         .O(doa_wr_delay__0[0]));
-  LUT5 #(
-    .INIT(32'h5DAAAA55)) 
+  LUT3 #(
+    .INIT(8'h69)) 
     \deci_low.doa_wr_delay[1]_i_1 
        (.I0(doa_wr_delay[0]),
-        .I1(doa_wr_delay[3]),
-        .I2(doa_wr_delay[2]),
-        .I3(doa_wr_delay[1]),
-        .I4(mux_active),
+        .I1(doa_wr_delay[1]),
+        .I2(mux_active),
         .O(doa_wr_delay__0[1]));
-  LUT5 #(
-    .INIT(32'h3F40FC03)) 
+  LUT4 #(
+    .INIT(16'h78E1)) 
     \deci_low.doa_wr_delay[2]_i_1 
-       (.I0(doa_wr_delay[3]),
-        .I1(doa_wr_delay[0]),
-        .I2(doa_wr_delay[1]),
-        .I3(doa_wr_delay[2]),
-        .I4(mux_active),
+       (.I0(doa_wr_delay[0]),
+        .I1(doa_wr_delay[1]),
+        .I2(doa_wr_delay[2]),
+        .I3(mux_active),
         .O(doa_wr_delay__0[2]));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
@@ -7693,1290 +7623,1536 @@ module ps_deci_low_0_0_deci_low
         .D(\deci_low.raw_active_i_1_n_0 ),
         .Q(raw_active),
         .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \deci_low.raw_counter[15]_i_1 
-       (.I0(raw_active),
-        .O(raw_counter__0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \deci_low.raw_counter[7]_i_2 
-       (.I0(raw_counter[0]),
-        .O(\deci_low.raw_counter[7]_i_2_n_0 ));
   (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[0] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_15 ),
-        .Q(raw_counter[0]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[10] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_13 ),
-        .Q(raw_counter[10]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[11] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_12 ),
-        .Q(raw_counter[11]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[12] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_11 ),
-        .Q(raw_counter[12]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[13] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_10 ),
-        .Q(raw_counter[13]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[14] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_9 ),
-        .Q(raw_counter[14]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[15] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_8 ),
-        .Q(raw_counter[15]),
-        .R(raw_counter__0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \deci_low.raw_counter_reg[15]_i_2 
-       (.CI(\deci_low.raw_counter_reg[7]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_deci_low.raw_counter_reg[15]_i_2_CO_UNCONNECTED [7],\deci_low.raw_counter_reg[15]_i_2_n_1 ,\deci_low.raw_counter_reg[15]_i_2_n_2 ,\deci_low.raw_counter_reg[15]_i_2_n_3 ,\deci_low.raw_counter_reg[15]_i_2_n_4 ,\deci_low.raw_counter_reg[15]_i_2_n_5 ,\deci_low.raw_counter_reg[15]_i_2_n_6 ,\deci_low.raw_counter_reg[15]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\deci_low.raw_counter_reg[15]_i_2_n_8 ,\deci_low.raw_counter_reg[15]_i_2_n_9 ,\deci_low.raw_counter_reg[15]_i_2_n_10 ,\deci_low.raw_counter_reg[15]_i_2_n_11 ,\deci_low.raw_counter_reg[15]_i_2_n_12 ,\deci_low.raw_counter_reg[15]_i_2_n_13 ,\deci_low.raw_counter_reg[15]_i_2_n_14 ,\deci_low.raw_counter_reg[15]_i_2_n_15 }),
-        .S(raw_counter[15:8]));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[1] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_14 ),
-        .Q(raw_counter[1]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[2] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_13 ),
-        .Q(raw_counter[2]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[3] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_12 ),
-        .Q(raw_counter[3]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[4] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_11 ),
-        .Q(raw_counter[4]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[5] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_10 ),
-        .Q(raw_counter[5]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[6] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_9 ),
-        .Q(raw_counter[6]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[7] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[7]_i_1_n_8 ),
-        .Q(raw_counter[7]),
-        .R(raw_counter__0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \deci_low.raw_counter_reg[7]_i_1 
-       (.CI(1'b0),
-        .CI_TOP(1'b0),
-        .CO({\deci_low.raw_counter_reg[7]_i_1_n_0 ,\deci_low.raw_counter_reg[7]_i_1_n_1 ,\deci_low.raw_counter_reg[7]_i_1_n_2 ,\deci_low.raw_counter_reg[7]_i_1_n_3 ,\deci_low.raw_counter_reg[7]_i_1_n_4 ,\deci_low.raw_counter_reg[7]_i_1_n_5 ,\deci_low.raw_counter_reg[7]_i_1_n_6 ,\deci_low.raw_counter_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,raw_counter[0]}),
-        .O({\deci_low.raw_counter_reg[7]_i_1_n_8 ,\deci_low.raw_counter_reg[7]_i_1_n_9 ,\deci_low.raw_counter_reg[7]_i_1_n_10 ,\deci_low.raw_counter_reg[7]_i_1_n_11 ,\deci_low.raw_counter_reg[7]_i_1_n_12 ,\deci_low.raw_counter_reg[7]_i_1_n_13 ,\deci_low.raw_counter_reg[7]_i_1_n_14 ,\deci_low.raw_counter_reg[7]_i_1_n_15 }),
-        .S({raw_counter[7:1],\deci_low.raw_counter[7]_i_2_n_0 }));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[8] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_15 ),
-        .Q(raw_counter[8]),
-        .R(raw_counter__0));
-  (* KEEP = "yes" *) 
-  FDRE \deci_low.raw_counter_reg[9] 
-       (.C(raw_clk),
-        .CE(1'b1),
-        .D(\deci_low.raw_counter_reg[15]_i_2_n_14 ),
-        .Q(raw_counter[9]),
-        .R(raw_counter__0));
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[0] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[0]),
         .Q(raw_data[0]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[100] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[100]),
         .Q(raw_data[100]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[101] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[101]),
         .Q(raw_data[101]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[102] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[102]),
         .Q(raw_data[102]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[103] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[103]),
         .Q(raw_data[103]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[104] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[104]),
         .Q(raw_data[104]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[105] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[105]),
         .Q(raw_data[105]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[106] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[106]),
         .Q(raw_data[106]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[107] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[107]),
         .Q(raw_data[107]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[108] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[108]),
         .Q(raw_data[108]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[109] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[109]),
         .Q(raw_data[109]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[10] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[10]),
         .Q(raw_data[10]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[110] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[110]),
         .Q(raw_data[110]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[111] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[111]),
         .Q(raw_data[111]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[112] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[112]),
         .Q(raw_data[112]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[113] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[113]),
         .Q(raw_data[113]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[114] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[114]),
         .Q(raw_data[114]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[115] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[115]),
         .Q(raw_data[115]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[116] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[116]),
         .Q(raw_data[116]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[117] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[117]),
         .Q(raw_data[117]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[118] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[118]),
         .Q(raw_data[118]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[119] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[119]),
         .Q(raw_data[119]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[11] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[11]),
         .Q(raw_data[11]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[120] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[120]),
         .Q(raw_data[120]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[121] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[121]),
         .Q(raw_data[121]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[122] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[122]),
         .Q(raw_data[122]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[123] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[123]),
         .Q(raw_data[123]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[124] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[124]),
         .Q(raw_data[124]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[125] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[125]),
         .Q(raw_data[125]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[126] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[126]),
         .Q(raw_data[126]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[127] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[127]),
         .Q(raw_data[127]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[128] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[128]),
         .Q(raw_data[128]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[129] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[129]),
         .Q(raw_data[129]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[12] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[12]),
         .Q(raw_data[12]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[130] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[130]),
         .Q(raw_data[130]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[131] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[131]),
         .Q(raw_data[131]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[132] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[132]),
         .Q(raw_data[132]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[133] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[133]),
         .Q(raw_data[133]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[134] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[134]),
         .Q(raw_data[134]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[135] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[135]),
         .Q(raw_data[135]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[136] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[136]),
         .Q(raw_data[136]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[137] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[137]),
         .Q(raw_data[137]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[138] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[138]),
         .Q(raw_data[138]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[139] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[139]),
         .Q(raw_data[139]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[13] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[13]),
         .Q(raw_data[13]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[140] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[140]),
         .Q(raw_data[140]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[141] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[141]),
         .Q(raw_data[141]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[142] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[142]),
         .Q(raw_data[142]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[143] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[143]),
         .Q(raw_data[143]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[144] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[144]),
         .Q(raw_data[144]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[145] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[145]),
         .Q(raw_data[145]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[146] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[146]),
         .Q(raw_data[146]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[147] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[147]),
         .Q(raw_data[147]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[148] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[148]),
         .Q(raw_data[148]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[149] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[149]),
         .Q(raw_data[149]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[14] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[14]),
         .Q(raw_data[14]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[150] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[150]),
         .Q(raw_data[150]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[151] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[151]),
         .Q(raw_data[151]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[152] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[152]),
         .Q(raw_data[152]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[153] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[153]),
         .Q(raw_data[153]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[154] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[154]),
         .Q(raw_data[154]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[155] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[155]),
         .Q(raw_data[155]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[156] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[156]),
         .Q(raw_data[156]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[157] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[157]),
         .Q(raw_data[157]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[158] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[158]),
         .Q(raw_data[158]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[159] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[159]),
         .Q(raw_data[159]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[15] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[15]),
         .Q(raw_data[15]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[160] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[160]),
         .Q(raw_data[160]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[161] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[161]),
         .Q(raw_data[161]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[162] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[162]),
         .Q(raw_data[162]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[163] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[163]),
         .Q(raw_data[163]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[164] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[164]),
         .Q(raw_data[164]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[165] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[165]),
         .Q(raw_data[165]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[166] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[166]),
         .Q(raw_data[166]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[167] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[167]),
         .Q(raw_data[167]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[168] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[168]),
         .Q(raw_data[168]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[169] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[169]),
         .Q(raw_data[169]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[16] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[16]),
         .Q(raw_data[16]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[170] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[170]),
         .Q(raw_data[170]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[171] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[171]),
         .Q(raw_data[171]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[172] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[172]),
         .Q(raw_data[172]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[173] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[173]),
         .Q(raw_data[173]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[174] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[174]),
         .Q(raw_data[174]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[175] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[175]),
         .Q(raw_data[175]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[176] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[176]),
         .Q(raw_data[176]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[177] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[177]),
         .Q(raw_data[177]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[178] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[178]),
         .Q(raw_data[178]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[179] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[179]),
         .Q(raw_data[179]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[17] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[17]),
         .Q(raw_data[17]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[180] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[180]),
         .Q(raw_data[180]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[181] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[181]),
         .Q(raw_data[181]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[182] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[182]),
         .Q(raw_data[182]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[183] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[183]),
         .Q(raw_data[183]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[184] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[184]),
         .Q(raw_data[184]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[185] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[185]),
         .Q(raw_data[185]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[186] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[186]),
         .Q(raw_data[186]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[187] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[187]),
         .Q(raw_data[187]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[188] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[188]),
         .Q(raw_data[188]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[189] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[189]),
         .Q(raw_data[189]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[18] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[18]),
         .Q(raw_data[18]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[190] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[190]),
         .Q(raw_data[190]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[191] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[191]),
         .Q(raw_data[191]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[19] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[19]),
         .Q(raw_data[19]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[1] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[1]),
         .Q(raw_data[1]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[20] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[20]),
         .Q(raw_data[20]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[21] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[21]),
         .Q(raw_data[21]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[22] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[22]),
         .Q(raw_data[22]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[23] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[23]),
         .Q(raw_data[23]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[24] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[24]),
         .Q(raw_data[24]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[25] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[25]),
         .Q(raw_data[25]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[26] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[26]),
         .Q(raw_data[26]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[27] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[27]),
         .Q(raw_data[27]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[28] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[28]),
         .Q(raw_data[28]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[29] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[29]),
         .Q(raw_data[29]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[2] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[2]),
         .Q(raw_data[2]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[30] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[30]),
         .Q(raw_data[30]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[31] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[31]),
         .Q(raw_data[31]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[32] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[32]),
         .Q(raw_data[32]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[33] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[33]),
         .Q(raw_data[33]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[34] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[34]),
         .Q(raw_data[34]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[35] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[35]),
         .Q(raw_data[35]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[36] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[36]),
         .Q(raw_data[36]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[37] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[37]),
         .Q(raw_data[37]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[38] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[38]),
         .Q(raw_data[38]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[39] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[39]),
         .Q(raw_data[39]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[3] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[3]),
         .Q(raw_data[3]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[40] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[40]),
         .Q(raw_data[40]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[41] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[41]),
         .Q(raw_data[41]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[42] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[42]),
         .Q(raw_data[42]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[43] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[43]),
         .Q(raw_data[43]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[44] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[44]),
         .Q(raw_data[44]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[45] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[45]),
         .Q(raw_data[45]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[46] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[46]),
         .Q(raw_data[46]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[47] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[47]),
         .Q(raw_data[47]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[48] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[48]),
         .Q(raw_data[48]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[49] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[49]),
         .Q(raw_data[49]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[4] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[4]),
         .Q(raw_data[4]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[50] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[50]),
         .Q(raw_data[50]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[51] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[51]),
         .Q(raw_data[51]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[52] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[52]),
         .Q(raw_data[52]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[53] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[53]),
         .Q(raw_data[53]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[54] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[54]),
         .Q(raw_data[54]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[55] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[55]),
         .Q(raw_data[55]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[56] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[56]),
         .Q(raw_data[56]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[57] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[57]),
         .Q(raw_data[57]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[58] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[58]),
         .Q(raw_data[58]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[59] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[59]),
         .Q(raw_data[59]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[5] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[5]),
         .Q(raw_data[5]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[60] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[60]),
         .Q(raw_data[60]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[61] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[61]),
         .Q(raw_data[61]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[62] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[62]),
         .Q(raw_data[62]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[63] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[63]),
         .Q(raw_data[63]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[64] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[64]),
         .Q(raw_data[64]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[65] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[65]),
         .Q(raw_data[65]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[66] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[66]),
         .Q(raw_data[66]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[67] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[67]),
         .Q(raw_data[67]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[68] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[68]),
         .Q(raw_data[68]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[69] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[69]),
         .Q(raw_data[69]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[6] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[6]),
         .Q(raw_data[6]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[70] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[70]),
         .Q(raw_data[70]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[71] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[71]),
         .Q(raw_data[71]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[72] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[72]),
         .Q(raw_data[72]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[73] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[73]),
         .Q(raw_data[73]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[74] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[74]),
         .Q(raw_data[74]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[75] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[75]),
         .Q(raw_data[75]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[76] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[76]),
         .Q(raw_data[76]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[77] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[77]),
         .Q(raw_data[77]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[78] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[78]),
         .Q(raw_data[78]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[79] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[79]),
         .Q(raw_data[79]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[7] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[7]),
         .Q(raw_data[7]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[80] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[80]),
         .Q(raw_data[80]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[81] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[81]),
         .Q(raw_data[81]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[82] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[82]),
         .Q(raw_data[82]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[83] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[83]),
         .Q(raw_data[83]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[84] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[84]),
         .Q(raw_data[84]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[85] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[85]),
         .Q(raw_data[85]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[86] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[86]),
         .Q(raw_data[86]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[87] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[87]),
         .Q(raw_data[87]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[88] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[88]),
         .Q(raw_data[88]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[89] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[89]),
         .Q(raw_data[89]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[8] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[8]),
         .Q(raw_data[8]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[90] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[90]),
         .Q(raw_data[90]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[91] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[91]),
         .Q(raw_data[91]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[92] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[92]),
         .Q(raw_data[92]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[93] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[93]),
         .Q(raw_data[93]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[94] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[94]),
         .Q(raw_data[94]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[95] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[95]),
         .Q(raw_data[95]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[96] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[96]),
         .Q(raw_data[96]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[97] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[97]),
         .Q(raw_data[97]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[98] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[98]),
         .Q(raw_data[98]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[99] 
        (.C(raw_clk),
         .CE(raw_active),
         .D(raw_out_data[99]),
         .Q(raw_data[99]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \deci_low.raw_data_reg[9] 
        (.C(raw_clk),
         .CE(raw_active),
@@ -12285,12 +12461,17 @@ module ps_deci_low_0_0_deci_low
         .empty(doa_fifo_empty),
         .full(NLW_fifo_doa_i_full_UNCONNECTED),
         .rd_clk(doa_clk),
-        .rd_en(doa_out_rd),
+        .rd_en(fifo_doa_i_i_1_n_0),
         .rd_rst_busy(NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED),
         .rst(\deci_low.sim_active_i_1_n_0 ),
         .wr_clk(clk),
         .wr_en(doa_fifo_wr),
         .wr_rst_busy(NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED));
+  LUT1 #(
+    .INIT(2'h1)) 
+    fifo_doa_i_i_1
+       (.I0(doa_fifo_empty),
+        .O(fifo_doa_i_i_1_n_0));
   (* CHECK_LICENSE_TYPE = "fifo_raw_low,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
@@ -12460,17 +12641,18 @@ module ps_deci_low_0_0_deci_low
         .probe0(raw_fifo_empty),
         .probe1(raw_delay),
         .probe2(raw_active),
-        .probe3(raw_counter),
-        .probe4(raw_ready));
+        .probe3(raw_ready),
+        .probe4(raw_out_data[15:0]),
+        .probe5(raw_data[15:0]));
   (* CHECK_LICENSE_TYPE = "ila_8,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
   ps_deci_low_0_0_ila_8 ila_8_i
        (.clk(doa_clk),
         .probe0(doa_fifo_empty),
-        .probe1(doa_out_rd),
-        .probe2(doa_out_delay),
-        .probe3(doa_ready));
+        .probe1(doa_ready),
+        .probe2(doa_out_data[15:0]),
+        .probe3(doa_data[15:0]));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa_low" *) 
@@ -12750,13 +12932,15 @@ module ps_deci_low_0_0_ila_7
     probe1,
     probe2,
     probe3,
-    probe4);
+    probe4,
+    probe5);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [11:0]probe1;
   input [0:0]probe2;
-  input [15:0]probe3;
-  input [0:0]probe4;
+  input [0:0]probe3;
+  input [15:0]probe4;
+  input [15:0]probe5;
 
 
 endmodule
@@ -12772,8 +12956,8 @@ module ps_deci_low_0_0_ila_8
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
-  input [2:0]probe2;
-  input [0:0]probe3;
+  input [15:0]probe2;
+  input [15:0]probe3;
 
 
 endmodule

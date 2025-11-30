@@ -63,7 +63,6 @@ module deci_low(
   reg  [11:0] raw_delay;
   wire [191:0] raw_out_data;
   reg raw_active;
-  reg [15:0] raw_counter;
 
   reg doa_fifo_wr;
   reg [3:0] doa_wr_delay;
@@ -71,8 +70,6 @@ module deci_low(
 
   wire doa_fifo_empty;
   wire [47:0] doa_out_data;
-  reg [2:0] doa_out_delay;
-  reg doa_out_rd;
 
   reg sim_wr_N;
   reg sim_wr_E;
@@ -240,7 +237,7 @@ fifo_doa_low fifo_doa_i (
   .rd_clk(doa_clk),           // input wire rd_clk
   .din(doa_in_data),          // input wire [47 : 0] din
   .wr_en(doa_fifo_wr),        // input wire wr_en
-  .rd_en(doa_out_rd),         // input wire rd_en
+  .rd_en(~doa_fifo_empty),    // input wire rd_en
   .dout(doa_out_data),        // output wire [47 : 0] dout
   .empty(doa_fifo_empty)      // output wire empty
 );
@@ -327,16 +324,17 @@ ila_7 ila_7_i (
 		.probe0(raw_fifo_empty),     // input wire [0:0]  probe3
 		.probe1(raw_delay),          // input wire [11:0]  probe3
 		.probe2(raw_active),         // input wire [0:0]  probe3
-		.probe3(raw_counter),        // input wire [15:0]  probe3
-		.probe4(raw_ready)           // input wire [0:0]  probe3
+		.probe3(raw_ready),          // input wire [0:0]  probe3
+		.probe4(raw_out_data[15:0]), // input wire [15:0]  probe3
+		.probe5(raw_data[15:0])      // input wire [15:0]  probe3
 );
 
 ila_8 ila_8_i (
 		.clk(doa_clk),               // input wire clk
 		.probe0(doa_fifo_empty),     // input wire [0:0]  probe3
-		.probe1(doa_out_rd),         // input wire [0:0]  probe3
-		.probe2(doa_out_delay),      // input wire [2:0]  probe3
-		.probe3(doa_ready)           // input wire [0:0]  probe3
+		.probe1(doa_ready),          // input wire [0:0]  probe3
+		.probe2(doa_out_data[15:0]), // input wire [15:0]  probe3
+		.probe3(doa_data[15:0])      // input wire [15:0]  probe3
 );
 
 generate
@@ -575,7 +573,7 @@ generate
 	begin
 	  if (mux_active)
 	  begin
-	    if (doa_wr_delay == 11)
+	    if (doa_wr_delay == 12)
 	    begin
           doa_fifo_wr <= 1;
           doa_in_data[15:0] <= doa_N;
@@ -625,45 +623,19 @@ generate
 	   begin
          raw_data <= raw_out_data;
          raw_ready <= 1;
-		 raw_counter <= raw_counter + 1;
        end
        else
-	   begin
          raw_ready <= 0;
-		 raw_counter <= 0;
-	   end
     end
 
     always @(posedge doa_clk) 
     begin
 	   if (doa_fifo_empty)
-	     doa_out_rd <= 0;
-	   else
-	     doa_out_rd <= 1;
-	end
-
-    always @(posedge doa_clk) 
-    begin
-	   if (doa_fifo_empty)
-	   begin
-	     if (doa_out_delay)
-		 begin
-           doa_ready <= 1;
-           doa_data <= doa_out_data;
-           doa_out_delay <= doa_out_delay - 1;
-		 end
-		 else
            doa_ready <= 0;
-	   end
 	   else
 	   begin
-	     if (doa_out_delay == 5)
-		 begin
            doa_ready <= 1;
            doa_data <= doa_out_data;
-		 end
-		 else
-		   doa_out_delay <= doa_out_delay + 1;
        end
     end
   end
