@@ -140,6 +140,7 @@ module mts(
 		.locked		(freq_locked)
 		);
 
+/*
 	ila_6 ila_i (
 		.clk(deci_clk),  	              // input wire clk
 		.probe0(deci_resetn),             // input wire [0:0]  probe2
@@ -153,6 +154,7 @@ module mts(
 		.probe8(deci_sim_active_low),    // input wire [0:0]  probe2
 		.probe9(deci_sim_active_high)    // input wire [0:0]  probe2
 	);
+*/
 	
 generate
   begin : mts

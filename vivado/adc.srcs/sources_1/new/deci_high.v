@@ -243,7 +243,7 @@ fifo_sim fifo_sim_W_i (
   .empty(sim_empty_W)       // output wire empty
 );
 
-
+/*
 ila_5 ila_5_i (
 		.clk(clk),                   // input wire clk
 		.probe0(reset_delay),        // input wire [2:0]  probe3
@@ -290,6 +290,8 @@ ila_8 ila_8_i (
 		.probe3(freq_ready),          // input wire [0:0]  probe3
 		.probe4(freq_data[15:0])      // input wire [15:0]  probe3
 );
+
+*/
 
 generate
   begin : deci_high

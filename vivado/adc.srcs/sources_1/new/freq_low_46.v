@@ -150,9 +150,9 @@ fir_doa_low_im fir_freq_low_im_W_i (
 
 morlet_to_phase_env freq_N_i (
   .clk(clk),                               // input wire aclk
-  .active(fifo_valid),
-  .re(fir_re_N[38:15]),
-  .im(fir_im_N[38:15]),
+  .active(1),
+  .re(fir_re_N[36:13]),
+  .im(fir_im_N[36:13]),
   .valid(validN),
   .env(envN),
   .phase(phaseN)
@@ -160,9 +160,9 @@ morlet_to_phase_env freq_N_i (
 
 morlet_to_phase_env freq_E_i (
   .clk(clk),                               // input wire aclk
-  .active(fifo_valid),
-  .re(fir_re_E[38:15]),
-  .im(fir_im_E[38:15]),
+  .active(1),
+  .re(fir_re_E[36:13]),
+  .im(fir_im_E[36:13]),
   .valid(validE),
   .env(envE),
   .phase(phaseE)
@@ -170,9 +170,9 @@ morlet_to_phase_env freq_E_i (
 
 morlet_to_phase_env freq_W_i (
   .clk(clk),                               // input wire aclk
-  .active(fifo_valid),
-  .re(fir_re_W[38:15]),
-  .im(fir_im_W[38:15]),
+  .active(1),
+  .re(fir_re_W[36:13]),
+  .im(fir_im_W[36:13]),
   .valid(validW),
   .env(envW),
   .phase(phaseW)
@@ -185,23 +185,23 @@ ila_0 ila_0_i (
 		.probe2(valid),             // input wire [0:0]  probe3
 		.probe3(counter),           // input wire [15:0]  probe3
 		.probe4(N),                 // input wire [15:0]  probe3
-		.probe5(fir_re_N[38:23]),   // input wire [15:0]  probe3
-		.probe6(fir_im_N[38:23]),   // input wire [15:0]  probe3
-		.probe7(env_N),             // input wire [15:0]  probe3
-		.probe8(phase_N),           // input wire [19:0]  probe3
-		.probe9(diff_N),            // input wire [19:0]  probe3
+		.probe5(fir_re_N[36:13]),   // input wire [23:0]  probe3
+		.probe6(fir_im_N[36:13]),   // input wire [23:0]  probe3
+		.probe7(validN),             // input wire [0:0]  probe3
+		.probe8(envN),             // input wire [15:0]  probe3
+		.probe9(phaseN),           // input wire [19:0]  probe3
 		.probe10(E),                 // input wire [15:0]  probe3
-		.probe11(fir_re_E[38:23]),  // input wire [15:0]  probe3
-		.probe12(fir_im_E[38:23]),  // input wire [15:0]  probe3
-		.probe13(env_E),            // input wire [15:0]  probe3
-		.probe14(phase_E),          // input wire [19:0]  probe3
-		.probe15(diff_E),           // input wire [19:0]  probe3
+		.probe11(fir_re_E[36:13]),  // input wire [23:0]  probe3
+		.probe12(fir_im_E[36:13]),  // input wire [23:0]  probe3
+		.probe13(validE),             // input wire [0:0]  probe3
+		.probe14(envE),            // input wire [15:0]  probe3
+		.probe15(phaseE),          // input wire [19:0]  probe3
 		.probe16(W),                // input wire [15:0]  probe3
-		.probe17(fir_re_W[38:23]),  // input wire [15:0]  probe3
-		.probe18(fir_im_W[38:23]),  // input wire [15:0]  probe3
-		.probe19(env_W),            // input wire [15:0]  probe3
-		.probe20(phase_W),          // input wire [19:0]  probe3
-		.probe21(diff_W)            // input wire [19:0]  probe3
+		.probe17(fir_re_W[36:13]),  // input wire [23:0]  probe3
+		.probe18(fir_im_W[36:13]),  // input wire [23:0]  probe3
+		.probe19(validW),             // input wire [0:0]  probe3
+		.probe20(envW),            // input wire [15:0]  probe3
+		.probe21(phaseW)          // input wire [19:0]  probe3
 	);
 
 generate

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov 30 22:16:28 2025
+-- Date        : Sun Nov 30 23:19:51 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -45,8 +45,6 @@ entity ps_mts_0_0_mts is
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_mts_0_0_mts : entity is "mts";
-  attribute keep_hierarchy : string;
-  attribute keep_hierarchy of ps_mts_0_0_mts : entity is "soft";
 end ps_mts_0_0_mts;
 
 architecture STRUCTURE of ps_mts_0_0_mts is
@@ -73,21 +71,11 @@ architecture STRUCTURE of ps_mts_0_0_mts is
     locked : out STD_LOGIC
   );
   end component ps_mts_0_0_clk_wiz_adc_HD1;
-  component ps_mts_0_0_ila_6 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component ps_mts_0_0_ila_6;
+  signal \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_mts.deci_adc_counter_reg_n_0_[0]\ : STD_LOGIC;
+  signal \FSM_onehot_mts.deci_adc_counter_reg_n_0_[1]\ : STD_LOGIC;
+  signal \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\ : STD_LOGIC;
   signal adc_active : STD_LOGIC;
   signal adc_axi_start : STD_LOGIC;
   signal adc_axi_stop : STD_LOGIC;
@@ -116,12 +104,8 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of comp1_reset_2 : signal is "true";
   signal comp_locked : STD_LOGIC;
   signal \^deci_adc_active\ : STD_LOGIC;
-  attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of deci_adc_active : signal is std.standard.true;
-  signal deci_adc_counter : STD_LOGIC_VECTOR ( 1 downto 0 );
-  attribute MARK_DEBUG of deci_adc_counter : signal is std.standard.true;
   signal deci_adc_start : STD_LOGIC;
-  attribute MARK_DEBUG of deci_adc_start : signal is std.standard.true;
+  signal deci_adc_start0 : STD_LOGIC;
   signal deci_adc_start_1 : STD_LOGIC;
   attribute async_reg of deci_adc_start_1 : signal is "true";
   signal deci_adc_start_2 : STD_LOGIC;
@@ -129,7 +113,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal deci_adc_start_curr : STD_LOGIC;
   signal deci_adc_start_prev : STD_LOGIC;
   signal deci_adc_stop : STD_LOGIC;
-  attribute MARK_DEBUG of deci_adc_stop : signal is std.standard.true;
+  signal deci_adc_stop0 : STD_LOGIC;
   signal deci_adc_stop_1 : STD_LOGIC;
   attribute async_reg of deci_adc_stop_1 : signal is "true";
   signal deci_adc_stop_2 : STD_LOGIC;
@@ -147,11 +131,9 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of deci_reset_2 : signal is "true";
   signal deci_reset_async : STD_LOGIC;
   attribute async_reg of deci_reset_async : signal is "true";
-  signal deci_reset_async6_out : STD_LOGIC;
+  signal deci_reset_async2_out : STD_LOGIC;
   signal \^deci_resetn\ : STD_LOGIC;
-  attribute MARK_DEBUG of deci_resetn : signal is std.standard.true;
-  signal \^deci_sim_start\ : STD_LOGIC;
-  attribute MARK_DEBUG of deci_sim_start : signal is std.standard.true;
+  signal deci_sim_start0 : STD_LOGIC;
   signal deci_sim_start_1 : STD_LOGIC;
   attribute async_reg of deci_sim_start_1 : signal is "true";
   signal deci_sim_start_2 : STD_LOGIC;
@@ -171,33 +153,26 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal freq_locked : STD_LOGIC;
   signal \mts.comp0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.deci_adc_active_i_1_n_0\ : STD_LOGIC;
-  signal \mts.deci_adc_counter[1]_i_1_n_0\ : STD_LOGIC;
-  signal \mts.deci_adc_start_reg0\ : STD_LOGIC;
-  signal \mts.deci_adc_stop_reg0\ : STD_LOGIC;
   signal \mts.deci_resetn_i_1_n_0\ : STD_LOGIC;
-  signal \mts.deci_sim_start_reg0\ : STD_LOGIC;
   signal \mts.freq0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.sim_active_reg0\ : STD_LOGIC;
   signal \mts.sysref_active_i_1_n_0\ : STD_LOGIC;
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \mts.sysref_active_reg_n_0\ : STD_LOGIC;
   signal pl_clk_buf : STD_LOGIC;
   signal rst_async : STD_LOGIC;
   signal sim_active : STD_LOGIC;
   signal sim_axi_start : STD_LOGIC;
   signal sysref_active : STD_LOGIC;
-  attribute MARK_DEBUG of sysref_active : signal is std.standard.true;
   signal sysref_r : STD_LOGIC;
   attribute async_reg of sysref_r : signal is "true";
   signal sysref_sync : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute async_reg of sysref_sync : signal is "true";
   signal \^user_sysref_adc\ : STD_LOGIC;
-  attribute MARK_DEBUG of user_sysref_adc : signal is std.standard.true;
-  attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_6,ila,{}";
-  attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of ila_i : label is "yes";
-  attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of ila_i : label is "ila,Vivado 2025.1";
+  attribute FSM_ENCODED_STATES : string;
+  attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[0]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[1]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[2]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[3]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
   attribute ASYNC_REG_boolean : boolean;
   attribute ASYNC_REG_boolean of \mts.axi_adc_active_1_reg\ : label is std.standard.true;
   attribute KEEP : string;
@@ -220,25 +195,16 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute KEEP of \mts.comp1_reset_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.comp1_reset_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.comp1_reset_2_reg\ : label is "yes";
-  attribute KEEP of \mts.deci_adc_active_reg\ : label is "yes";
-  attribute FSM_ENCODED_STATES : string;
-  attribute FSM_ENCODED_STATES of \mts.deci_adc_counter_reg[0]\ : label is "iSTATE:00,iSTATE0:01,iSTATE1:10,iSTATE2:11";
-  attribute KEEP of \mts.deci_adc_counter_reg[0]\ : label is "yes";
-  attribute mark_debug_string : string;
-  attribute mark_debug_string of \mts.deci_adc_counter_reg[0]\ : label is "yes";
-  attribute FSM_ENCODED_STATES of \mts.deci_adc_counter_reg[1]\ : label is "iSTATE:00,iSTATE0:01,iSTATE1:10,iSTATE2:11";
-  attribute KEEP of \mts.deci_adc_counter_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \mts.deci_adc_counter_reg[1]\ : label is "yes";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \mts.deci_adc_active_i_1\ : label is "soft_lutpair0";
   attribute ASYNC_REG_boolean of \mts.deci_adc_start_1_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_adc_start_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_adc_start_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_adc_start_2_reg\ : label is "yes";
-  attribute KEEP of \mts.deci_adc_start_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_adc_stop_1_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_adc_stop_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_adc_stop_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_adc_stop_2_reg\ : label is "yes";
-  attribute KEEP of \mts.deci_adc_stop_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_release_cnt_reg[0]\ : label is std.standard.true;
   attribute KEEP of \mts.deci_release_cnt_reg[0]\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_release_cnt_reg[1]\ : label is std.standard.true;
@@ -253,12 +219,10 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute KEEP of \mts.deci_reset_2_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_reset_async_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_reset_async_reg\ : label is "yes";
-  attribute KEEP of \mts.deci_resetn_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_sim_start_1_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_sim_start_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.deci_sim_start_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.deci_sim_start_2_reg\ : label is "yes";
-  attribute KEEP of \mts.deci_sim_start_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.freq0_reset_1_reg\ : label is std.standard.true;
   attribute KEEP of \mts.freq0_reset_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.freq0_reset_2_reg\ : label is std.standard.true;
@@ -267,7 +231,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute KEEP of \mts.freq1_reset_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.freq1_reset_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.freq1_reset_2_reg\ : label is "yes";
-  attribute KEEP of \mts.sysref_active_reg\ : label is "yes";
+  attribute SOFT_HLUTNM of \mts.sysref_active_i_1\ : label is "soft_lutpair0";
   attribute ASYNC_REG_boolean of \mts.sysref_r_reg\ : label is std.standard.true;
   attribute KEEP of \mts.sysref_r_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.sysref_sync_reg[0]\ : label is std.standard.true;
@@ -294,10 +258,74 @@ begin
   deci_adc_active <= \^deci_adc_active\;
   deci_clk <= \^deci_clk\;
   deci_resetn <= \^deci_resetn\;
-  deci_sim_start <= \^deci_sim_start\;
   freq0_clk <= \^freq0_clk\;
   freq1_clk <= \^freq1_clk\;
   user_sysref_adc <= \^user_sysref_adc\;
+\FSM_onehot_mts.deci_adc_counter[3]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \^deci_resetn\,
+      O => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
+    );
+\FSM_onehot_mts.deci_adc_counter[3]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFEEEFEEEFEEE"
+    )
+        port map (
+      I0 => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\,
+      I1 => sysref_active,
+      I2 => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[0]\,
+      I3 => deci_adc_start,
+      I4 => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[1]\,
+      I5 => \^user_sysref_adc\,
+      O => \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\
+    );
+\FSM_onehot_mts.deci_adc_counter_reg[0]\: unisim.vcomponents.FDSE
+    generic map(
+      INIT => '1'
+    )
+        port map (
+      C => \^deci_clk\,
+      CE => \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\,
+      D => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\,
+      Q => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[0]\,
+      S => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
+    );
+\FSM_onehot_mts.deci_adc_counter_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \^deci_clk\,
+      CE => \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\,
+      D => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[0]\,
+      Q => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[1]\,
+      R => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
+    );
+\FSM_onehot_mts.deci_adc_counter_reg[2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \^deci_clk\,
+      CE => \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\,
+      D => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[1]\,
+      Q => sysref_active,
+      R => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
+    );
+\FSM_onehot_mts.deci_adc_counter_reg[3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \^deci_clk\,
+      CE => \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\,
+      D => sysref_active,
+      Q => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\,
+      R => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
+    );
 clk_wiz_comp_i: component ps_mts_0_0_clk_wiz_adc
      port map (
       clk_in1 => pl_clk_buf,
@@ -317,20 +345,6 @@ clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc_HD1
       clk_out1 => \^freq0_clk\,
       clk_out2 => \^freq1_clk\,
       locked => freq_locked
-    );
-ila_i: component ps_mts_0_0_ila_6
-     port map (
-      clk => \^deci_clk\,
-      probe0(0) => \^deci_resetn\,
-      probe1(0) => sysref_active,
-      probe2(0) => \^user_sysref_adc\,
-      probe3(0) => deci_adc_start,
-      probe4(0) => deci_adc_stop,
-      probe5(1 downto 0) => deci_adc_counter(1 downto 0),
-      probe6(0) => \^deci_adc_active\,
-      probe7(0) => \^deci_sim_start\,
-      probe8(0) => deci_sim_active_low,
-      probe9(0) => deci_sim_active_high
     );
 \mts.adc_active_reg\: unisim.vcomponents.FDRE
      port map (
@@ -485,16 +499,15 @@ ila_i: component ps_mts_0_0_ila_6
       Q => comp1_reset,
       R => '0'
     );
-\mts.deci_adc_active_i_1\: unisim.vcomponents.LUT5
+\mts.deci_adc_active_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"44F40000"
+      INIT => X"F400"
     )
         port map (
       I0 => deci_adc_stop,
       I1 => \^deci_adc_active\,
-      I2 => deci_adc_counter(0),
-      I3 => deci_adc_counter(1),
-      I4 => \^deci_resetn\,
+      I2 => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\,
+      I3 => \^deci_resetn\,
       O => \mts.deci_adc_active_i_1_n_0\
     );
 \mts.deci_adc_active_reg\: unisim.vcomponents.FDRE
@@ -504,51 +517,6 @@ ila_i: component ps_mts_0_0_ila_6
       D => \mts.deci_adc_active_i_1_n_0\,
       Q => \^deci_adc_active\,
       R => '0'
-    );
-\mts.deci_adc_counter[0]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"4F4C"
-    )
-        port map (
-      I0 => \^user_sysref_adc\,
-      I1 => deci_adc_counter(1),
-      I2 => deci_adc_counter(0),
-      I3 => deci_adc_start,
-      O => \p_0_in__0\(0)
-    );
-\mts.deci_adc_counter[1]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \^deci_resetn\,
-      O => \mts.deci_adc_counter[1]_i_1_n_0\
-    );
-\mts.deci_adc_counter[1]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"A4"
-    )
-        port map (
-      I0 => deci_adc_counter(0),
-      I1 => deci_adc_start,
-      I2 => deci_adc_counter(1),
-      O => \p_0_in__0\(1)
-    );
-\mts.deci_adc_counter_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => \^deci_clk\,
-      CE => '1',
-      D => \p_0_in__0\(0),
-      Q => deci_adc_counter(0),
-      R => \mts.deci_adc_counter[1]_i_1_n_0\
-    );
-\mts.deci_adc_counter_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => \^deci_clk\,
-      CE => '1',
-      D => \p_0_in__0\(1),
-      Q => deci_adc_counter(1),
-      R => \mts.deci_adc_counter[1]_i_1_n_0\
     );
 \mts.deci_adc_start_1_reg\: unisim.vcomponents.FDRE
      port map (
@@ -581,7 +549,7 @@ ila_i: component ps_mts_0_0_ila_6
         port map (
       I0 => deci_adc_start_curr,
       I1 => deci_adc_start_prev,
-      O => \mts.deci_adc_start_reg0\
+      O => deci_adc_start0
     );
 \mts.deci_adc_start_prev_reg\: unisim.vcomponents.FDRE
      port map (
@@ -595,7 +563,7 @@ ila_i: component ps_mts_0_0_ila_6
      port map (
       C => \^deci_clk\,
       CE => '1',
-      D => \mts.deci_adc_start_reg0\,
+      D => deci_adc_start0,
       Q => deci_adc_start,
       R => '0'
     );
@@ -630,7 +598,7 @@ ila_i: component ps_mts_0_0_ila_6
         port map (
       I0 => deci_adc_stop_curr,
       I1 => deci_adc_stop_prev,
-      O => \mts.deci_adc_stop_reg0\
+      O => deci_adc_stop0
     );
 \mts.deci_adc_stop_prev_reg\: unisim.vcomponents.FDRE
      port map (
@@ -644,7 +612,7 @@ ila_i: component ps_mts_0_0_ila_6
      port map (
       C => \^deci_clk\,
       CE => '1',
-      D => \mts.deci_adc_stop_reg0\,
+      D => deci_adc_stop0,
       Q => deci_adc_stop,
       R => '0'
     );
@@ -759,13 +727,13 @@ ila_i: component ps_mts_0_0_ila_6
       I2 => deci_release_cnt(2),
       I3 => deci_release_cnt(0),
       I4 => deci_release_cnt(1),
-      O => deci_reset_async6_out
+      O => deci_reset_async2_out
     );
 \mts.deci_reset_async_reg\: unisim.vcomponents.FDPE
      port map (
       C => \^deci_clk\,
       CE => '1',
-      D => deci_reset_async6_out,
+      D => deci_reset_async2_out,
       PRE => rst_async,
       Q => deci_reset_async
     );
@@ -816,7 +784,7 @@ ila_i: component ps_mts_0_0_ila_6
         port map (
       I0 => deci_sim_start_curr,
       I1 => deci_sim_start_prev,
-      O => \mts.deci_sim_start_reg0\
+      O => deci_sim_start0
     );
 \mts.deci_sim_start_prev_reg\: unisim.vcomponents.FDRE
      port map (
@@ -830,8 +798,8 @@ ila_i: component ps_mts_0_0_ila_6
      port map (
       C => \^deci_clk\,
       CE => '1',
-      D => \mts.deci_sim_start_reg0\,
-      Q => \^deci_sim_start\,
+      D => deci_sim_start0,
+      Q => deci_sim_start,
       R => '0'
     );
 \mts.freq0_reset_1_i_1\: unisim.vcomponents.LUT2
@@ -916,15 +884,14 @@ ila_i: component ps_mts_0_0_ila_6
       Q => sim_axi_start,
       R => '0'
     );
-\mts.sysref_active_i_1\: unisim.vcomponents.LUT4
+\mts.sysref_active_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"55F7"
+      INIT => X"57"
     )
         port map (
       I0 => \^deci_resetn\,
-      I1 => deci_adc_counter(1),
-      I2 => deci_adc_counter(0),
-      I3 => \^deci_adc_active\,
+      I1 => sysref_active,
+      I2 => \^deci_adc_active\,
       O => \mts.sysref_active_i_1_n_0\
     );
 \mts.sysref_active_reg\: unisim.vcomponents.FDRE
@@ -932,7 +899,7 @@ ila_i: component ps_mts_0_0_ila_6
       C => \^deci_clk\,
       CE => '1',
       D => \mts.sysref_active_i_1_n_0\,
-      Q => sysref_active,
+      Q => \mts.sysref_active_reg_n_0\,
       R => '0'
     );
 \mts.sysref_r_reg\: unisim.vcomponents.FDRE
@@ -977,12 +944,12 @@ p_clk_i: unisim.vcomponents.BUFGCE
       I => pl_clk,
       O => pl_clk_buf
     );
-user_sysref_adc_inferred_i_1: unisim.vcomponents.LUT2
+user_sysref_adc_INST_0: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
-      I0 => sysref_active,
+      I0 => \mts.sysref_active_reg_n_0\,
       I1 => sysref_sync(2),
       O => \^user_sysref_adc\
     );

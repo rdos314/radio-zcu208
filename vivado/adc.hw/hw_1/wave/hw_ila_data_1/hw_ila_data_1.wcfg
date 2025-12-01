@@ -10,7 +10,7 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="1,024"></ZoomEndTime>
+      <ZoomEndTime time="14"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
@@ -18,8 +18,6 @@
       <ValueColumnWidth column_width="62"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="22" />
-   <wave_markers>
-   </wave_markers>
    <wvobject fp_name="ps_i/adc_control_0/inst/adc_active" type="logic">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/adc_active</obj_property>

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Nov 30 22:16:31 2025
+-- Date        : Sun Nov 30 23:19:53 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_high_0_0/ps_deci_high_0_0_sim_netlist.vhdl
@@ -42,8 +42,6 @@ entity ps_deci_high_0_0_deci_high is
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_deci_high_0_0_deci_high : entity is "deci_high";
-  attribute keep_hierarchy : string;
-  attribute keep_hierarchy of ps_deci_high_0_0_deci_high : entity is "soft";
 end ps_deci_high_0_0_deci_high;
 
 architecture STRUCTURE of ps_deci_high_0_0_deci_high is
@@ -129,163 +127,118 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
     s_axis_data_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   end component ps_deci_high_0_0_fir_deci_high_HD2;
-  component ps_deci_high_0_0_ila_5 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component ps_deci_high_0_0_ila_5;
-  component ps_deci_high_0_0_ila_7 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component ps_deci_high_0_0_ila_7;
-  component ps_deci_high_0_0_ila_8 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component ps_deci_high_0_0_ila_8;
   signal \deci_high.fir_resetn_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.freq_fifo_wr_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.freq_fifo_wr_i_2_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[0]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[10]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[11]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[12]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[13]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[14]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[15]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[16]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[17]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[18]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[19]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[20]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[21]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[22]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[23]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[24]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[25]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[26]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[27]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[28]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[29]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[2]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[30]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[31]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[32]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[33]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[34]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[35]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[36]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[37]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[38]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[39]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[3]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[40]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[41]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[42]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[43]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[44]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[45]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[46]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[47]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[48]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[49]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[4]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[50]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[51]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[52]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[53]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[54]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[55]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[56]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[57]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[58]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[59]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[5]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[60]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[61]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[62]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[63]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[64]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[65]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[66]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[67]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[68]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[69]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[6]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[70]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[71]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[72]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[73]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[74]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[75]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[76]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[77]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[78]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[79]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[7]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[80]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[81]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[82]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[83]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[84]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[85]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[86]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[87]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[88]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[89]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[8]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[90]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[91]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[92]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[93]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[94]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_fifo_wr_reg_n_0\ : STD_LOGIC;
   signal \deci_high.freq_in_data[95]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[95]_i_2_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[95]_i_3_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_in_data[9]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[0]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[10]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[11]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[12]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[13]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[14]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[15]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[16]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[17]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[18]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[19]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[1]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[20]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[21]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[22]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[23]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[24]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[25]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[26]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[27]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[28]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[29]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[2]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[30]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[31]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[32]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[33]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[34]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[35]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[36]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[37]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[38]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[39]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[3]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[40]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[41]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[42]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[43]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[44]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[45]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[46]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[47]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[48]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[49]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[4]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[50]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[51]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[52]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[53]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[54]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[55]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[56]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[57]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[58]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[59]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[5]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[60]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[61]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[62]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[63]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[64]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[65]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[66]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[67]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[68]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[69]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[6]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[70]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[71]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[72]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[73]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[74]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[75]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[76]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[77]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[78]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[79]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[7]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[80]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[81]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[82]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[83]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[84]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[85]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[86]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[87]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[88]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[89]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[8]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[90]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[91]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[92]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[93]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[94]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[95]\ : STD_LOGIC;
+  signal \deci_high.freq_in_data_reg_n_0_[9]\ : STD_LOGIC;
   signal \deci_high.freq_out_rd_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.freq_rd_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.freq_rd_delay[1]_i_2_n_0\ : STD_LOGIC;
   signal \deci_high.freq_rd_delay[2]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_high.freq_ready_reg0\ : STD_LOGIC;
+  signal \deci_high.freq_wr_delay[0]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_wr_delay[1]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_wr_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_wr_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.freq_wr_delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_wr_delay[4]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_high.freq_wr_delay_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal \deci_high.mux_E[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.mux_E[100]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.mux_E[101]_i_1_n_0\ : STD_LOGIC;
@@ -558,6 +511,22 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal \deci_high.mux_N[98]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.mux_N[99]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.mux_N[9]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[0]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[10]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[11]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[12]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[13]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[14]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[15]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[1]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[2]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[3]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[4]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[5]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[6]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[7]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[8]\ : STD_LOGIC;
+  signal \deci_high.mux_N_reg_n_0_[9]\ : STD_LOGIC;
   signal \deci_high.mux_W[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.mux_W[100]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.mux_W[101]_i_1_n_0\ : STD_LOGIC;
@@ -717,7 +686,7 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal \deci_high.raw_delay[8]_i_7_n_0\ : STD_LOGIC;
   signal \deci_high.raw_delay[8]_i_8_n_0\ : STD_LOGIC;
   signal \deci_high.raw_delay[8]_i_9_n_0\ : STD_LOGIC;
-  signal \deci_high.raw_delay_reg0\ : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal \deci_high.raw_delay_reg\ : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal \deci_high.raw_delay_reg[11]_i_2_n_6\ : STD_LOGIC;
   signal \deci_high.raw_delay_reg[11]_i_2_n_7\ : STD_LOGIC;
   signal \deci_high.raw_delay_reg[8]_i_1_n_0\ : STD_LOGIC;
@@ -735,14 +704,15 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal \deci_high.reset_active[1]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.reset_active[2]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.reset_active[2]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_high.reset_active[2]_i_3_n_0\ : STD_LOGIC;
   signal \deci_high.reset_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.reset_delay[2]_i_2_n_0\ : STD_LOGIC;
   signal \deci_high.reset_delay[2]_i_3_n_0\ : STD_LOGIC;
-  signal \deci_high.reset_delay_reg0\ : STD_LOGIC;
-  signal \deci_high.reset_delay_reg01_in\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \deci_high.sim_active_1_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.sim_active_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.sim_count[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.sim_count[1]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_high.sim_count[1]_i_2_n_0\ : STD_LOGIC;
   signal \deci_high.sim_curr_data[127]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.sim_curr_data[63]_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.sim_curr_data[95]_i_1_n_0\ : STD_LOGIC;
@@ -882,40 +852,17 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal \deci_high.sim_wr_N_i_1_n_0\ : STD_LOGIC;
   signal \deci_high.sim_wr_W_i_1_n_0\ : STD_LOGIC;
   signal fifo_sim_N_i_i_1_n_0 : STD_LOGIC;
+  signal fir_freq_E : STD_LOGIC_VECTOR ( 62 downto 15 );
+  signal fir_freq_N : STD_LOGIC_VECTOR ( 62 downto 15 );
+  signal fir_freq_W : STD_LOGIC_VECTOR ( 62 downto 15 );
   signal fir_resetn : STD_LOGIC;
-  attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of fir_resetn : signal is std.standard.true;
-  signal freq_E0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of freq_E0 : signal is std.standard.true;
-  signal freq_E1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of freq_E1 : signal is std.standard.true;
-  signal freq_N0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of freq_N0 : signal is std.standard.true;
-  signal freq_N1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of freq_N1 : signal is std.standard.true;
-  signal freq_W0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of freq_W0 : signal is std.standard.true;
-  signal freq_W1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of freq_W1 : signal is std.standard.true;
-  signal \^freq_data\ : STD_LOGIC_VECTOR ( 95 downto 0 );
-  attribute MARK_DEBUG of \^freq_data\ : signal is std.standard.true;
   signal freq_fifo_empty : STD_LOGIC;
-  attribute MARK_DEBUG of freq_fifo_empty : signal is std.standard.true;
-  signal freq_fifo_wr : STD_LOGIC;
-  attribute MARK_DEBUG of freq_fifo_wr : signal is std.standard.true;
-  signal freq_in_data : STD_LOGIC_VECTOR ( 95 downto 0 );
-  attribute MARK_DEBUG of freq_in_data : signal is std.standard.true;
+  signal freq_in_data : STD_LOGIC;
   signal freq_out_data : STD_LOGIC_VECTOR ( 95 downto 0 );
-  attribute MARK_DEBUG of freq_out_data : signal is std.standard.true;
   signal freq_out_rd : STD_LOGIC;
-  attribute MARK_DEBUG of freq_out_rd : signal is std.standard.true;
   signal freq_rd_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal freq_rd_delay0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal \^freq_ready\ : STD_LOGIC;
-  attribute MARK_DEBUG of freq_ready : signal is std.standard.true;
-  signal freq_wr_delay : STD_LOGIC_VECTOR ( 4 downto 0 );
-  attribute MARK_DEBUG of freq_wr_delay : signal is std.standard.true;
-  signal freq_wr_delay0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal freq_ready0 : STD_LOGIC;
   signal mux_E1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_E2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_E3 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -923,22 +870,13 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal mux_E5 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_E6 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_E7 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal mux_N0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N0 : signal is std.standard.true;
   signal mux_N1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N1 : signal is std.standard.true;
   signal mux_N2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N2 : signal is std.standard.true;
   signal mux_N3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N3 : signal is std.standard.true;
   signal mux_N4 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N4 : signal is std.standard.true;
   signal mux_N5 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N5 : signal is std.standard.true;
   signal mux_N6 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N6 : signal is std.standard.true;
   signal mux_N7 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of mux_N7 : signal is std.standard.true;
   signal mux_W1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_W2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_W3 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -947,28 +885,16 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal mux_W6 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_W7 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mux_active : STD_LOGIC;
-  attribute MARK_DEBUG of mux_active : signal is std.standard.true;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal \^raw_data\ : STD_LOGIC_VECTOR ( 383 downto 0 );
-  attribute MARK_DEBUG of \^raw_data\ : signal is std.standard.true;
-  signal raw_delay : STD_LOGIC_VECTOR ( 11 downto 0 );
-  attribute MARK_DEBUG of raw_delay : signal is std.standard.true;
+  signal raw_delay0 : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal raw_fifo_empty : STD_LOGIC;
-  attribute MARK_DEBUG of raw_fifo_empty : signal is std.standard.true;
   signal raw_fifo_wr : STD_LOGIC;
-  attribute MARK_DEBUG of raw_fifo_wr : signal is std.standard.true;
   signal raw_in_data : STD_LOGIC_VECTOR ( 383 downto 0 );
-  attribute MARK_DEBUG of raw_in_data : signal is std.standard.true;
   signal raw_out_data : STD_LOGIC_VECTOR ( 383 downto 0 );
-  attribute MARK_DEBUG of raw_out_data : signal is std.standard.true;
   signal raw_out_rd : STD_LOGIC;
-  attribute MARK_DEBUG of raw_out_rd : signal is std.standard.true;
-  signal \^raw_ready\ : STD_LOGIC;
-  attribute MARK_DEBUG of raw_ready : signal is std.standard.true;
   signal reset_active : STD_LOGIC_VECTOR ( 2 downto 0 );
-  attribute MARK_DEBUG of reset_active : signal is std.standard.true;
   signal reset_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
-  attribute MARK_DEBUG of reset_delay : signal is std.standard.true;
+  signal reset_delay0 : STD_LOGIC;
+  signal reset_delay01_in : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \^sim_active\ : STD_LOGIC;
   signal sim_active_1 : STD_LOGIC;
   signal sim_active_2 : STD_LOGIC;
@@ -1011,1510 +937,33 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   signal NLW_fir_freq_W_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_freq_W_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute KEEP : string;
-  attribute KEEP of \deci_high.fir_resetn_reg\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[11]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[12]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[13]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[14]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[15]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[16]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[17]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[18]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[19]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[20]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[21]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[22]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[23]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[24]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[25]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[26]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[27]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[28]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[29]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[30]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[31]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[32]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[33]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[34]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[35]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[36]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[37]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[38]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[39]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[40]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[41]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[42]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[43]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[44]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[45]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[46]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[47]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[48]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[49]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[50]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[51]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[52]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[53]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[54]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[55]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[56]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[57]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[58]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[59]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[60]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[61]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[62]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[63]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[64]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[65]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[66]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[67]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[68]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[69]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[70]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[71]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[72]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[73]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[74]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[75]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[76]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[77]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[78]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[79]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[80]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[81]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[82]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[83]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[84]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[85]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[86]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[87]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[88]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[89]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[8]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[90]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[91]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[92]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[93]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[94]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[95]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_data_reg[9]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_fifo_wr_reg\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[0]\ : label is "yes";
-  attribute mark_debug_string : string;
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[11]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[12]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[13]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[14]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[15]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[16]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[17]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[18]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[19]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[20]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[21]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[22]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[23]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[24]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[25]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[26]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[27]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[28]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[29]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[30]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[31]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[32]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[33]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[34]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[35]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[36]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[37]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[38]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[39]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[40]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[41]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[42]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[43]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[44]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[45]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[46]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[47]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[48]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[49]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[50]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[51]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[52]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[53]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[54]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[55]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[56]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[57]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[58]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[59]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[60]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[61]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[62]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[63]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[64]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[64]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[65]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[65]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[66]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[66]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[67]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[67]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[68]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[68]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[69]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[69]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[70]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[70]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[71]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[71]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[72]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[72]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[73]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[73]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[74]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[74]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[75]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[75]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[76]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[76]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[77]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[77]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[78]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[78]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[79]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[79]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[80]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[80]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[81]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[81]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[82]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[82]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[83]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[83]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[84]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[84]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[85]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[85]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[86]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[86]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[87]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[87]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[88]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[88]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[89]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[89]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[8]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[90]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[90]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[91]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[91]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[92]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[92]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[93]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[93]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[94]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[94]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[95]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[95]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_in_data_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_in_data_reg[9]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_out_rd_reg\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \deci_high.freq_rd_delay[0]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \deci_high.freq_rd_delay[1]_i_2\ : label is "soft_lutpair1";
-  attribute KEEP of \deci_high.freq_ready_reg\ : label is "yes";
-  attribute KEEP of \deci_high.freq_wr_delay_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_wr_delay_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_wr_delay_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_wr_delay_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_wr_delay_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_wr_delay_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_wr_delay_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_wr_delay_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_high.freq_wr_delay_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.freq_wr_delay_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_high.mux_active_reg\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[100]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[101]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[102]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[103]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[104]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[105]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[106]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[107]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[108]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[109]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[110]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[111]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[112]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[113]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[114]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[115]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[116]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[117]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[118]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[119]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[11]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[120]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[121]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[122]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[123]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[124]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[125]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[126]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[127]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[128]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[129]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[12]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[130]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[131]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[132]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[133]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[134]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[135]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[136]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[137]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[138]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[139]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[13]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[140]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[141]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[142]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[143]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[144]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[145]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[146]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[147]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[148]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[149]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[14]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[150]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[151]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[152]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[153]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[154]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[155]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[156]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[157]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[158]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[159]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[15]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[160]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[161]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[162]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[163]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[164]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[165]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[166]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[167]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[168]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[169]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[16]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[170]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[171]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[172]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[173]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[174]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[175]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[176]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[177]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[178]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[179]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[17]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[180]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[181]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[182]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[183]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[184]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[185]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[186]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[187]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[188]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[189]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[18]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[190]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[191]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[192]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[193]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[194]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[195]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[196]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[197]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[198]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[199]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[19]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[200]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[201]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[202]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[203]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[204]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[205]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[206]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[207]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[208]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[209]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[20]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[210]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[211]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[212]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[213]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[214]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[215]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[216]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[217]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[218]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[219]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[21]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[220]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[221]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[222]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[223]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[224]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[225]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[226]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[227]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[228]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[229]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[22]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[230]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[231]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[232]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[233]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[234]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[235]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[236]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[237]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[238]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[239]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[23]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[240]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[241]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[242]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[243]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[244]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[245]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[246]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[247]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[248]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[249]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[24]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[250]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[251]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[252]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[253]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[254]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[255]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[256]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[257]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[258]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[259]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[25]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[260]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[261]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[262]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[263]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[264]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[265]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[266]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[267]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[268]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[269]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[26]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[270]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[271]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[272]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[273]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[274]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[275]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[276]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[277]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[278]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[279]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[27]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[280]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[281]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[282]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[283]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[284]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[285]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[286]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[287]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[288]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[289]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[28]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[290]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[291]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[292]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[293]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[294]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[295]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[296]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[297]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[298]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[299]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[29]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[300]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[301]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[302]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[303]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[304]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[305]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[306]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[307]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[308]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[309]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[30]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[310]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[311]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[312]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[313]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[314]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[315]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[316]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[317]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[318]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[319]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[31]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[320]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[321]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[322]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[323]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[324]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[325]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[326]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[327]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[328]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[329]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[32]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[330]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[331]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[332]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[333]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[334]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[335]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[336]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[337]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[338]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[339]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[33]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[340]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[341]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[342]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[343]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[344]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[345]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[346]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[347]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[348]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[349]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[34]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[350]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[351]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[352]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[353]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[354]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[355]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[356]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[357]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[358]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[359]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[35]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[360]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[361]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[362]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[363]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[364]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[365]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[366]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[367]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[368]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[369]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[36]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[370]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[371]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[372]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[373]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[374]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[375]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[376]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[377]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[378]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[379]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[37]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[380]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[381]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[382]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[383]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[38]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[39]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[40]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[41]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[42]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[43]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[44]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[45]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[46]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[47]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[48]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[49]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[50]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[51]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[52]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[53]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[54]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[55]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[56]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[57]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[58]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[59]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[60]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[61]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[62]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[63]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[64]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[65]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[66]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[67]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[68]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[69]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[70]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[71]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[72]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[73]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[74]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[75]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[76]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[77]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[78]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[79]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[80]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[81]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[82]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[83]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[84]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[85]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[86]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[87]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[88]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[89]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[8]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[90]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[91]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[92]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[93]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[94]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[95]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[96]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[97]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[98]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[99]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_data_reg[9]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[11]\ : label is "yes";
+  attribute SOFT_HLUTNM of \deci_high.fir_resetn_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \deci_high.freq_fifo_wr_i_2\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \deci_high.freq_fifo_wr_i_3\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \deci_high.freq_out_rd_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \deci_high.freq_rd_delay[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \deci_high.freq_rd_delay[1]_i_2\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \deci_high.freq_ready_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \deci_high.freq_wr_delay[0]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \deci_high.freq_wr_delay[1]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \deci_high.freq_wr_delay[2]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_high.freq_wr_delay[3]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \deci_high.raw_delay[0]_i_1\ : label is "soft_lutpair3";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \deci_high.raw_delay_reg[11]_i_2\ : label is 35;
-  attribute KEEP of \deci_high.raw_delay_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_delay_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[8]\ : label is "yes";
   attribute ADDER_THRESHOLD of \deci_high.raw_delay_reg[8]_i_1\ : label is 35;
-  attribute KEEP of \deci_high.raw_delay_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_delay_reg[9]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_fifo_wr_reg\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[100]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[100]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[101]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[101]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[102]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[102]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[103]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[103]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[104]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[104]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[105]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[105]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[106]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[106]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[107]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[107]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[108]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[108]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[109]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[109]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[10]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[110]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[110]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[111]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[111]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[112]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[112]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[113]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[113]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[114]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[114]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[115]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[115]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[116]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[116]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[117]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[117]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[118]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[118]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[119]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[119]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[11]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[120]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[120]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[121]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[121]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[122]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[122]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[123]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[123]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[124]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[124]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[125]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[125]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[126]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[126]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[127]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[127]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[128]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[128]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[129]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[129]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[12]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[130]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[130]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[131]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[131]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[132]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[132]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[133]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[133]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[134]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[134]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[135]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[135]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[136]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[136]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[137]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[137]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[138]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[138]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[139]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[139]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[13]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[140]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[140]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[141]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[141]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[142]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[142]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[143]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[143]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[144]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[144]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[145]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[145]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[146]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[146]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[147]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[147]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[148]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[148]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[149]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[149]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[14]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[150]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[150]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[151]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[151]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[152]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[152]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[153]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[153]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[154]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[154]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[155]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[155]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[156]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[156]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[157]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[157]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[158]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[158]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[159]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[159]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[15]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[160]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[160]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[161]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[161]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[162]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[162]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[163]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[163]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[164]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[164]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[165]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[165]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[166]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[166]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[167]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[167]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[168]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[168]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[169]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[169]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[16]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[170]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[170]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[171]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[171]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[172]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[172]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[173]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[173]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[174]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[174]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[175]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[175]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[176]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[176]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[177]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[177]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[178]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[178]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[179]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[179]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[17]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[180]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[180]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[181]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[181]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[182]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[182]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[183]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[183]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[184]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[184]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[185]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[185]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[186]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[186]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[187]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[187]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[188]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[188]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[189]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[189]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[18]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[190]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[190]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[191]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[191]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[192]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[192]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[193]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[193]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[194]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[194]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[195]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[195]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[196]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[196]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[197]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[197]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[198]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[198]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[199]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[199]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[19]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[200]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[200]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[201]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[201]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[202]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[202]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[203]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[203]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[204]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[204]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[205]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[205]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[206]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[206]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[207]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[207]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[208]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[208]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[209]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[209]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[20]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[210]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[210]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[211]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[211]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[212]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[212]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[213]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[213]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[214]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[214]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[215]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[215]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[216]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[216]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[217]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[217]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[218]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[218]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[219]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[219]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[21]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[220]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[220]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[221]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[221]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[222]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[222]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[223]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[223]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[224]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[224]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[225]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[225]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[226]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[226]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[227]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[227]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[228]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[228]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[229]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[229]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[22]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[230]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[230]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[231]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[231]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[232]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[232]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[233]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[233]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[234]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[234]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[235]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[235]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[236]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[236]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[237]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[237]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[238]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[238]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[239]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[239]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[23]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[240]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[240]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[241]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[241]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[242]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[242]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[243]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[243]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[244]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[244]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[245]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[245]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[246]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[246]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[247]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[247]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[248]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[248]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[249]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[249]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[24]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[250]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[250]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[251]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[251]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[252]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[252]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[253]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[253]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[254]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[254]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[255]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[255]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[256]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[256]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[257]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[257]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[258]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[258]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[259]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[259]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[25]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[260]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[260]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[261]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[261]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[262]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[262]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[263]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[263]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[264]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[264]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[265]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[265]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[266]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[266]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[267]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[267]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[268]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[268]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[269]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[269]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[26]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[270]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[270]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[271]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[271]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[272]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[272]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[273]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[273]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[274]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[274]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[275]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[275]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[276]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[276]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[277]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[277]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[278]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[278]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[279]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[279]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[27]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[280]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[280]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[281]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[281]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[282]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[282]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[283]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[283]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[284]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[284]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[285]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[285]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[286]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[286]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[287]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[287]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[288]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[288]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[289]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[289]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[28]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[290]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[290]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[291]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[291]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[292]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[292]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[293]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[293]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[294]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[294]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[295]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[295]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[296]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[296]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[297]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[297]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[298]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[298]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[299]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[299]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[29]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[300]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[300]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[301]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[301]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[302]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[302]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[303]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[303]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[304]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[304]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[305]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[305]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[306]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[306]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[307]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[307]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[308]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[308]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[309]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[309]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[30]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[310]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[310]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[311]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[311]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[312]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[312]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[313]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[313]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[314]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[314]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[315]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[315]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[316]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[316]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[317]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[317]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[318]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[318]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[319]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[319]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[31]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[320]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[320]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[321]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[321]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[322]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[322]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[323]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[323]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[324]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[324]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[325]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[325]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[326]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[326]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[327]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[327]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[328]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[328]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[329]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[329]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[32]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[330]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[330]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[331]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[331]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[332]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[332]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[333]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[333]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[334]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[334]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[335]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[335]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[336]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[336]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[337]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[337]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[338]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[338]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[339]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[339]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[33]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[340]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[340]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[341]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[341]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[342]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[342]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[343]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[343]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[344]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[344]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[345]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[345]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[346]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[346]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[347]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[347]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[348]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[348]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[349]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[349]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[34]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[350]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[350]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[351]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[351]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[352]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[352]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[353]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[353]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[354]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[354]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[355]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[355]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[356]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[356]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[357]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[357]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[358]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[358]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[359]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[359]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[35]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[360]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[360]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[361]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[361]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[362]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[362]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[363]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[363]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[364]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[364]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[365]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[365]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[366]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[366]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[367]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[367]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[368]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[368]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[369]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[369]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[36]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[370]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[370]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[371]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[371]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[372]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[372]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[373]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[373]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[374]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[374]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[375]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[375]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[376]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[376]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[377]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[377]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[378]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[378]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[379]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[379]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[37]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[380]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[380]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[381]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[381]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[382]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[382]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[383]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[383]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[38]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[39]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[3]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[40]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[41]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[42]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[43]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[44]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[45]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[46]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[47]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[48]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[49]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[4]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[50]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[51]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[52]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[53]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[54]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[55]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[56]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[57]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[58]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[59]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[5]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[60]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[61]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[62]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[63]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[64]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[64]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[65]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[65]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[66]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[66]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[67]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[67]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[68]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[68]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[69]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[69]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[6]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[70]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[70]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[71]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[71]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[72]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[72]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[73]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[73]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[74]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[74]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[75]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[75]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[76]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[76]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[77]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[77]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[78]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[78]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[79]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[79]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[7]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[80]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[80]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[81]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[81]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[82]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[82]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[83]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[83]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[84]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[84]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[85]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[85]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[86]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[86]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[87]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[87]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[88]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[88]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[89]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[89]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[8]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[90]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[90]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[91]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[91]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[92]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[92]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[93]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[93]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[94]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[94]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[95]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[95]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[96]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[96]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[97]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[97]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[98]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[98]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[99]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[99]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_in_data_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.raw_in_data_reg[9]\ : label is "yes";
-  attribute KEEP of \deci_high.raw_out_rd_reg\ : label is "yes";
-  attribute KEEP of \deci_high.raw_ready_reg\ : label is "yes";
-  attribute KEEP of \deci_high.reset_active_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.reset_active_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.reset_active_reg[2]\ : label is "yes";
-  attribute KEEP of \deci_high.reset_delay_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.reset_delay_reg[0]\ : label is "yes";
-  attribute KEEP of \deci_high.reset_delay_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.reset_delay_reg[1]\ : label is "yes";
-  attribute KEEP of \deci_high.reset_delay_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \deci_high.reset_delay_reg[2]\ : label is "yes";
-  attribute SOFT_HLUTNM of \deci_high.sim_count[0]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \deci_high.sim_count[1]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \deci_high.sim_curr_wr_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \deci_high.sim_wr_E_i_2\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \deci_high.sim_wr_N_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \deci_high.raw_out_rd_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \deci_high.reset_active[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \deci_high.reset_active[1]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \deci_high.reset_active[2]_i_3\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \deci_high.reset_delay[1]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \deci_high.reset_delay[2]_i_3\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \deci_high.sim_count[0]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \deci_high.sim_count[1]_i_2\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \deci_high.sim_curr_wr_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \deci_high.sim_wr_E_i_2\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \deci_high.sim_wr_N_i_1\ : label is "soft_lutpair11";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_freq_i : label is "fifo_doa_high,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -2530,7 +979,7 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   attribute CHECK_LICENSE_TYPE of fifo_sim_N_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_N_i : label is "yes";
   attribute x_core_info of fifo_sim_N_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
-  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair5";
   attribute CHECK_LICENSE_TYPE of fifo_sim_W_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_W_i : label is "yes";
   attribute x_core_info of fifo_sim_W_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
@@ -2543,20 +992,7 @@ architecture STRUCTURE of ps_deci_high_0_0_deci_high is
   attribute CHECK_LICENSE_TYPE of fir_freq_W_i : label is "fir_deci_high,fir_compiler_v7_2_24,{}";
   attribute downgradeipidentifiedwarnings of fir_freq_W_i : label is "yes";
   attribute x_core_info of fir_freq_W_i : label is "fir_compiler_v7_2_24,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_5_i : label is "ila_5,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_5_i : label is "yes";
-  attribute x_core_info of ila_5_i : label is "ila,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_7_i : label is "ila_7,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_7_i : label is "yes";
-  attribute x_core_info of ila_7_i : label is "ila,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of ila_8_i : label is "ila_8,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_8_i : label is "yes";
-  attribute x_core_info of ila_8_i : label is "ila,Vivado 2025.1";
 begin
-  freq_data(95 downto 0) <= \^freq_data\(95 downto 0);
-  freq_ready <= \^freq_ready\;
-  raw_data(383 downto 0) <= \^raw_data\(383 downto 0);
-  raw_ready <= \^raw_ready\;
   sim_active <= \^sim_active\;
 \deci_high.fir_resetn_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -2581,7 +1017,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(0),
-      Q => \^freq_data\(0),
+      Q => freq_data(0),
       R => '0'
     );
 \deci_high.freq_data_reg[10]\: unisim.vcomponents.FDRE
@@ -2589,7 +1025,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(10),
-      Q => \^freq_data\(10),
+      Q => freq_data(10),
       R => '0'
     );
 \deci_high.freq_data_reg[11]\: unisim.vcomponents.FDRE
@@ -2597,7 +1033,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(11),
-      Q => \^freq_data\(11),
+      Q => freq_data(11),
       R => '0'
     );
 \deci_high.freq_data_reg[12]\: unisim.vcomponents.FDRE
@@ -2605,7 +1041,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(12),
-      Q => \^freq_data\(12),
+      Q => freq_data(12),
       R => '0'
     );
 \deci_high.freq_data_reg[13]\: unisim.vcomponents.FDRE
@@ -2613,7 +1049,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(13),
-      Q => \^freq_data\(13),
+      Q => freq_data(13),
       R => '0'
     );
 \deci_high.freq_data_reg[14]\: unisim.vcomponents.FDRE
@@ -2621,7 +1057,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(14),
-      Q => \^freq_data\(14),
+      Q => freq_data(14),
       R => '0'
     );
 \deci_high.freq_data_reg[15]\: unisim.vcomponents.FDRE
@@ -2629,7 +1065,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(15),
-      Q => \^freq_data\(15),
+      Q => freq_data(15),
       R => '0'
     );
 \deci_high.freq_data_reg[16]\: unisim.vcomponents.FDRE
@@ -2637,7 +1073,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(16),
-      Q => \^freq_data\(16),
+      Q => freq_data(16),
       R => '0'
     );
 \deci_high.freq_data_reg[17]\: unisim.vcomponents.FDRE
@@ -2645,7 +1081,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(17),
-      Q => \^freq_data\(17),
+      Q => freq_data(17),
       R => '0'
     );
 \deci_high.freq_data_reg[18]\: unisim.vcomponents.FDRE
@@ -2653,7 +1089,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(18),
-      Q => \^freq_data\(18),
+      Q => freq_data(18),
       R => '0'
     );
 \deci_high.freq_data_reg[19]\: unisim.vcomponents.FDRE
@@ -2661,7 +1097,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(19),
-      Q => \^freq_data\(19),
+      Q => freq_data(19),
       R => '0'
     );
 \deci_high.freq_data_reg[1]\: unisim.vcomponents.FDRE
@@ -2669,7 +1105,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(1),
-      Q => \^freq_data\(1),
+      Q => freq_data(1),
       R => '0'
     );
 \deci_high.freq_data_reg[20]\: unisim.vcomponents.FDRE
@@ -2677,7 +1113,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(20),
-      Q => \^freq_data\(20),
+      Q => freq_data(20),
       R => '0'
     );
 \deci_high.freq_data_reg[21]\: unisim.vcomponents.FDRE
@@ -2685,7 +1121,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(21),
-      Q => \^freq_data\(21),
+      Q => freq_data(21),
       R => '0'
     );
 \deci_high.freq_data_reg[22]\: unisim.vcomponents.FDRE
@@ -2693,7 +1129,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(22),
-      Q => \^freq_data\(22),
+      Q => freq_data(22),
       R => '0'
     );
 \deci_high.freq_data_reg[23]\: unisim.vcomponents.FDRE
@@ -2701,7 +1137,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(23),
-      Q => \^freq_data\(23),
+      Q => freq_data(23),
       R => '0'
     );
 \deci_high.freq_data_reg[24]\: unisim.vcomponents.FDRE
@@ -2709,7 +1145,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(24),
-      Q => \^freq_data\(24),
+      Q => freq_data(24),
       R => '0'
     );
 \deci_high.freq_data_reg[25]\: unisim.vcomponents.FDRE
@@ -2717,7 +1153,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(25),
-      Q => \^freq_data\(25),
+      Q => freq_data(25),
       R => '0'
     );
 \deci_high.freq_data_reg[26]\: unisim.vcomponents.FDRE
@@ -2725,7 +1161,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(26),
-      Q => \^freq_data\(26),
+      Q => freq_data(26),
       R => '0'
     );
 \deci_high.freq_data_reg[27]\: unisim.vcomponents.FDRE
@@ -2733,7 +1169,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(27),
-      Q => \^freq_data\(27),
+      Q => freq_data(27),
       R => '0'
     );
 \deci_high.freq_data_reg[28]\: unisim.vcomponents.FDRE
@@ -2741,7 +1177,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(28),
-      Q => \^freq_data\(28),
+      Q => freq_data(28),
       R => '0'
     );
 \deci_high.freq_data_reg[29]\: unisim.vcomponents.FDRE
@@ -2749,7 +1185,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(29),
-      Q => \^freq_data\(29),
+      Q => freq_data(29),
       R => '0'
     );
 \deci_high.freq_data_reg[2]\: unisim.vcomponents.FDRE
@@ -2757,7 +1193,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(2),
-      Q => \^freq_data\(2),
+      Q => freq_data(2),
       R => '0'
     );
 \deci_high.freq_data_reg[30]\: unisim.vcomponents.FDRE
@@ -2765,7 +1201,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(30),
-      Q => \^freq_data\(30),
+      Q => freq_data(30),
       R => '0'
     );
 \deci_high.freq_data_reg[31]\: unisim.vcomponents.FDRE
@@ -2773,7 +1209,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(31),
-      Q => \^freq_data\(31),
+      Q => freq_data(31),
       R => '0'
     );
 \deci_high.freq_data_reg[32]\: unisim.vcomponents.FDRE
@@ -2781,7 +1217,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(32),
-      Q => \^freq_data\(32),
+      Q => freq_data(32),
       R => '0'
     );
 \deci_high.freq_data_reg[33]\: unisim.vcomponents.FDRE
@@ -2789,7 +1225,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(33),
-      Q => \^freq_data\(33),
+      Q => freq_data(33),
       R => '0'
     );
 \deci_high.freq_data_reg[34]\: unisim.vcomponents.FDRE
@@ -2797,7 +1233,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(34),
-      Q => \^freq_data\(34),
+      Q => freq_data(34),
       R => '0'
     );
 \deci_high.freq_data_reg[35]\: unisim.vcomponents.FDRE
@@ -2805,7 +1241,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(35),
-      Q => \^freq_data\(35),
+      Q => freq_data(35),
       R => '0'
     );
 \deci_high.freq_data_reg[36]\: unisim.vcomponents.FDRE
@@ -2813,7 +1249,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(36),
-      Q => \^freq_data\(36),
+      Q => freq_data(36),
       R => '0'
     );
 \deci_high.freq_data_reg[37]\: unisim.vcomponents.FDRE
@@ -2821,7 +1257,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(37),
-      Q => \^freq_data\(37),
+      Q => freq_data(37),
       R => '0'
     );
 \deci_high.freq_data_reg[38]\: unisim.vcomponents.FDRE
@@ -2829,7 +1265,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(38),
-      Q => \^freq_data\(38),
+      Q => freq_data(38),
       R => '0'
     );
 \deci_high.freq_data_reg[39]\: unisim.vcomponents.FDRE
@@ -2837,7 +1273,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(39),
-      Q => \^freq_data\(39),
+      Q => freq_data(39),
       R => '0'
     );
 \deci_high.freq_data_reg[3]\: unisim.vcomponents.FDRE
@@ -2845,7 +1281,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(3),
-      Q => \^freq_data\(3),
+      Q => freq_data(3),
       R => '0'
     );
 \deci_high.freq_data_reg[40]\: unisim.vcomponents.FDRE
@@ -2853,7 +1289,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(40),
-      Q => \^freq_data\(40),
+      Q => freq_data(40),
       R => '0'
     );
 \deci_high.freq_data_reg[41]\: unisim.vcomponents.FDRE
@@ -2861,7 +1297,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(41),
-      Q => \^freq_data\(41),
+      Q => freq_data(41),
       R => '0'
     );
 \deci_high.freq_data_reg[42]\: unisim.vcomponents.FDRE
@@ -2869,7 +1305,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(42),
-      Q => \^freq_data\(42),
+      Q => freq_data(42),
       R => '0'
     );
 \deci_high.freq_data_reg[43]\: unisim.vcomponents.FDRE
@@ -2877,7 +1313,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(43),
-      Q => \^freq_data\(43),
+      Q => freq_data(43),
       R => '0'
     );
 \deci_high.freq_data_reg[44]\: unisim.vcomponents.FDRE
@@ -2885,7 +1321,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(44),
-      Q => \^freq_data\(44),
+      Q => freq_data(44),
       R => '0'
     );
 \deci_high.freq_data_reg[45]\: unisim.vcomponents.FDRE
@@ -2893,7 +1329,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(45),
-      Q => \^freq_data\(45),
+      Q => freq_data(45),
       R => '0'
     );
 \deci_high.freq_data_reg[46]\: unisim.vcomponents.FDRE
@@ -2901,7 +1337,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(46),
-      Q => \^freq_data\(46),
+      Q => freq_data(46),
       R => '0'
     );
 \deci_high.freq_data_reg[47]\: unisim.vcomponents.FDRE
@@ -2909,7 +1345,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(47),
-      Q => \^freq_data\(47),
+      Q => freq_data(47),
       R => '0'
     );
 \deci_high.freq_data_reg[48]\: unisim.vcomponents.FDRE
@@ -2917,7 +1353,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(48),
-      Q => \^freq_data\(48),
+      Q => freq_data(48),
       R => '0'
     );
 \deci_high.freq_data_reg[49]\: unisim.vcomponents.FDRE
@@ -2925,7 +1361,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(49),
-      Q => \^freq_data\(49),
+      Q => freq_data(49),
       R => '0'
     );
 \deci_high.freq_data_reg[4]\: unisim.vcomponents.FDRE
@@ -2933,7 +1369,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(4),
-      Q => \^freq_data\(4),
+      Q => freq_data(4),
       R => '0'
     );
 \deci_high.freq_data_reg[50]\: unisim.vcomponents.FDRE
@@ -2941,7 +1377,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(50),
-      Q => \^freq_data\(50),
+      Q => freq_data(50),
       R => '0'
     );
 \deci_high.freq_data_reg[51]\: unisim.vcomponents.FDRE
@@ -2949,7 +1385,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(51),
-      Q => \^freq_data\(51),
+      Q => freq_data(51),
       R => '0'
     );
 \deci_high.freq_data_reg[52]\: unisim.vcomponents.FDRE
@@ -2957,7 +1393,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(52),
-      Q => \^freq_data\(52),
+      Q => freq_data(52),
       R => '0'
     );
 \deci_high.freq_data_reg[53]\: unisim.vcomponents.FDRE
@@ -2965,7 +1401,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(53),
-      Q => \^freq_data\(53),
+      Q => freq_data(53),
       R => '0'
     );
 \deci_high.freq_data_reg[54]\: unisim.vcomponents.FDRE
@@ -2973,7 +1409,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(54),
-      Q => \^freq_data\(54),
+      Q => freq_data(54),
       R => '0'
     );
 \deci_high.freq_data_reg[55]\: unisim.vcomponents.FDRE
@@ -2981,7 +1417,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(55),
-      Q => \^freq_data\(55),
+      Q => freq_data(55),
       R => '0'
     );
 \deci_high.freq_data_reg[56]\: unisim.vcomponents.FDRE
@@ -2989,7 +1425,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(56),
-      Q => \^freq_data\(56),
+      Q => freq_data(56),
       R => '0'
     );
 \deci_high.freq_data_reg[57]\: unisim.vcomponents.FDRE
@@ -2997,7 +1433,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(57),
-      Q => \^freq_data\(57),
+      Q => freq_data(57),
       R => '0'
     );
 \deci_high.freq_data_reg[58]\: unisim.vcomponents.FDRE
@@ -3005,7 +1441,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(58),
-      Q => \^freq_data\(58),
+      Q => freq_data(58),
       R => '0'
     );
 \deci_high.freq_data_reg[59]\: unisim.vcomponents.FDRE
@@ -3013,7 +1449,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(59),
-      Q => \^freq_data\(59),
+      Q => freq_data(59),
       R => '0'
     );
 \deci_high.freq_data_reg[5]\: unisim.vcomponents.FDRE
@@ -3021,7 +1457,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(5),
-      Q => \^freq_data\(5),
+      Q => freq_data(5),
       R => '0'
     );
 \deci_high.freq_data_reg[60]\: unisim.vcomponents.FDRE
@@ -3029,7 +1465,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(60),
-      Q => \^freq_data\(60),
+      Q => freq_data(60),
       R => '0'
     );
 \deci_high.freq_data_reg[61]\: unisim.vcomponents.FDRE
@@ -3037,7 +1473,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(61),
-      Q => \^freq_data\(61),
+      Q => freq_data(61),
       R => '0'
     );
 \deci_high.freq_data_reg[62]\: unisim.vcomponents.FDRE
@@ -3045,7 +1481,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(62),
-      Q => \^freq_data\(62),
+      Q => freq_data(62),
       R => '0'
     );
 \deci_high.freq_data_reg[63]\: unisim.vcomponents.FDRE
@@ -3053,7 +1489,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(63),
-      Q => \^freq_data\(63),
+      Q => freq_data(63),
       R => '0'
     );
 \deci_high.freq_data_reg[64]\: unisim.vcomponents.FDRE
@@ -3061,7 +1497,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(64),
-      Q => \^freq_data\(64),
+      Q => freq_data(64),
       R => '0'
     );
 \deci_high.freq_data_reg[65]\: unisim.vcomponents.FDRE
@@ -3069,7 +1505,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(65),
-      Q => \^freq_data\(65),
+      Q => freq_data(65),
       R => '0'
     );
 \deci_high.freq_data_reg[66]\: unisim.vcomponents.FDRE
@@ -3077,7 +1513,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(66),
-      Q => \^freq_data\(66),
+      Q => freq_data(66),
       R => '0'
     );
 \deci_high.freq_data_reg[67]\: unisim.vcomponents.FDRE
@@ -3085,7 +1521,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(67),
-      Q => \^freq_data\(67),
+      Q => freq_data(67),
       R => '0'
     );
 \deci_high.freq_data_reg[68]\: unisim.vcomponents.FDRE
@@ -3093,7 +1529,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(68),
-      Q => \^freq_data\(68),
+      Q => freq_data(68),
       R => '0'
     );
 \deci_high.freq_data_reg[69]\: unisim.vcomponents.FDRE
@@ -3101,7 +1537,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(69),
-      Q => \^freq_data\(69),
+      Q => freq_data(69),
       R => '0'
     );
 \deci_high.freq_data_reg[6]\: unisim.vcomponents.FDRE
@@ -3109,7 +1545,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(6),
-      Q => \^freq_data\(6),
+      Q => freq_data(6),
       R => '0'
     );
 \deci_high.freq_data_reg[70]\: unisim.vcomponents.FDRE
@@ -3117,7 +1553,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(70),
-      Q => \^freq_data\(70),
+      Q => freq_data(70),
       R => '0'
     );
 \deci_high.freq_data_reg[71]\: unisim.vcomponents.FDRE
@@ -3125,7 +1561,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(71),
-      Q => \^freq_data\(71),
+      Q => freq_data(71),
       R => '0'
     );
 \deci_high.freq_data_reg[72]\: unisim.vcomponents.FDRE
@@ -3133,7 +1569,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(72),
-      Q => \^freq_data\(72),
+      Q => freq_data(72),
       R => '0'
     );
 \deci_high.freq_data_reg[73]\: unisim.vcomponents.FDRE
@@ -3141,7 +1577,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(73),
-      Q => \^freq_data\(73),
+      Q => freq_data(73),
       R => '0'
     );
 \deci_high.freq_data_reg[74]\: unisim.vcomponents.FDRE
@@ -3149,7 +1585,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(74),
-      Q => \^freq_data\(74),
+      Q => freq_data(74),
       R => '0'
     );
 \deci_high.freq_data_reg[75]\: unisim.vcomponents.FDRE
@@ -3157,7 +1593,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(75),
-      Q => \^freq_data\(75),
+      Q => freq_data(75),
       R => '0'
     );
 \deci_high.freq_data_reg[76]\: unisim.vcomponents.FDRE
@@ -3165,7 +1601,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(76),
-      Q => \^freq_data\(76),
+      Q => freq_data(76),
       R => '0'
     );
 \deci_high.freq_data_reg[77]\: unisim.vcomponents.FDRE
@@ -3173,7 +1609,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(77),
-      Q => \^freq_data\(77),
+      Q => freq_data(77),
       R => '0'
     );
 \deci_high.freq_data_reg[78]\: unisim.vcomponents.FDRE
@@ -3181,7 +1617,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(78),
-      Q => \^freq_data\(78),
+      Q => freq_data(78),
       R => '0'
     );
 \deci_high.freq_data_reg[79]\: unisim.vcomponents.FDRE
@@ -3189,7 +1625,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(79),
-      Q => \^freq_data\(79),
+      Q => freq_data(79),
       R => '0'
     );
 \deci_high.freq_data_reg[7]\: unisim.vcomponents.FDRE
@@ -3197,7 +1633,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(7),
-      Q => \^freq_data\(7),
+      Q => freq_data(7),
       R => '0'
     );
 \deci_high.freq_data_reg[80]\: unisim.vcomponents.FDRE
@@ -3205,7 +1641,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(80),
-      Q => \^freq_data\(80),
+      Q => freq_data(80),
       R => '0'
     );
 \deci_high.freq_data_reg[81]\: unisim.vcomponents.FDRE
@@ -3213,7 +1649,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(81),
-      Q => \^freq_data\(81),
+      Q => freq_data(81),
       R => '0'
     );
 \deci_high.freq_data_reg[82]\: unisim.vcomponents.FDRE
@@ -3221,7 +1657,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(82),
-      Q => \^freq_data\(82),
+      Q => freq_data(82),
       R => '0'
     );
 \deci_high.freq_data_reg[83]\: unisim.vcomponents.FDRE
@@ -3229,7 +1665,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(83),
-      Q => \^freq_data\(83),
+      Q => freq_data(83),
       R => '0'
     );
 \deci_high.freq_data_reg[84]\: unisim.vcomponents.FDRE
@@ -3237,7 +1673,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(84),
-      Q => \^freq_data\(84),
+      Q => freq_data(84),
       R => '0'
     );
 \deci_high.freq_data_reg[85]\: unisim.vcomponents.FDRE
@@ -3245,7 +1681,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(85),
-      Q => \^freq_data\(85),
+      Q => freq_data(85),
       R => '0'
     );
 \deci_high.freq_data_reg[86]\: unisim.vcomponents.FDRE
@@ -3253,7 +1689,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(86),
-      Q => \^freq_data\(86),
+      Q => freq_data(86),
       R => '0'
     );
 \deci_high.freq_data_reg[87]\: unisim.vcomponents.FDRE
@@ -3261,7 +1697,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(87),
-      Q => \^freq_data\(87),
+      Q => freq_data(87),
       R => '0'
     );
 \deci_high.freq_data_reg[88]\: unisim.vcomponents.FDRE
@@ -3269,7 +1705,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(88),
-      Q => \^freq_data\(88),
+      Q => freq_data(88),
       R => '0'
     );
 \deci_high.freq_data_reg[89]\: unisim.vcomponents.FDRE
@@ -3277,7 +1713,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(89),
-      Q => \^freq_data\(89),
+      Q => freq_data(89),
       R => '0'
     );
 \deci_high.freq_data_reg[8]\: unisim.vcomponents.FDRE
@@ -3285,7 +1721,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(8),
-      Q => \^freq_data\(8),
+      Q => freq_data(8),
       R => '0'
     );
 \deci_high.freq_data_reg[90]\: unisim.vcomponents.FDRE
@@ -3293,7 +1729,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(90),
-      Q => \^freq_data\(90),
+      Q => freq_data(90),
       R => '0'
     );
 \deci_high.freq_data_reg[91]\: unisim.vcomponents.FDRE
@@ -3301,7 +1737,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(91),
-      Q => \^freq_data\(91),
+      Q => freq_data(91),
       R => '0'
     );
 \deci_high.freq_data_reg[92]\: unisim.vcomponents.FDRE
@@ -3309,7 +1745,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(92),
-      Q => \^freq_data\(92),
+      Q => freq_data(92),
       R => '0'
     );
 \deci_high.freq_data_reg[93]\: unisim.vcomponents.FDRE
@@ -3317,7 +1753,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(93),
-      Q => \^freq_data\(93),
+      Q => freq_data(93),
       R => '0'
     );
 \deci_high.freq_data_reg[94]\: unisim.vcomponents.FDRE
@@ -3325,7 +1761,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(94),
-      Q => \^freq_data\(94),
+      Q => freq_data(94),
       R => '0'
     );
 \deci_high.freq_data_reg[95]\: unisim.vcomponents.FDRE
@@ -3333,7 +1769,7 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(95),
-      Q => \^freq_data\(95),
+      Q => freq_data(95),
       R => '0'
     );
 \deci_high.freq_data_reg[9]\: unisim.vcomponents.FDRE
@@ -3341,1887 +1777,831 @@ begin
       C => freq_clk,
       CE => '1',
       D => freq_out_data(9),
-      Q => \^freq_data\(9),
+      Q => freq_data(9),
       R => '0'
     );
-\deci_high.freq_fifo_wr_i_1\: unisim.vcomponents.LUT5
+\deci_high.freq_fifo_wr_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AAEAFFFC"
+      INIT => X"FCAA"
     )
         port map (
-      I0 => freq_fifo_wr,
-      I1 => freq_wr_delay(4),
-      I2 => freq_wr_delay(0),
-      I3 => \deci_high.freq_fifo_wr_i_2_n_0\,
-      I4 => mux_active,
+      I0 => \deci_high.freq_fifo_wr_i_2_n_0\,
+      I1 => \deci_high.freq_fifo_wr_reg_n_0\,
+      I2 => freq_in_data,
+      I3 => mux_active,
       O => \deci_high.freq_fifo_wr_i_1_n_0\
     );
-\deci_high.freq_fifo_wr_i_2\: unisim.vcomponents.LUT3
+\deci_high.freq_fifo_wr_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FE"
+      INIT => X"FFFFFFFE"
     )
         port map (
-      I0 => freq_wr_delay(3),
-      I1 => freq_wr_delay(2),
-      I2 => freq_wr_delay(1),
+      I0 => \deci_high.freq_wr_delay_reg\(0),
+      I1 => \deci_high.freq_wr_delay_reg\(3),
+      I2 => \deci_high.freq_wr_delay_reg\(4),
+      I3 => \deci_high.freq_wr_delay_reg\(1),
+      I4 => \deci_high.freq_wr_delay_reg\(2),
       O => \deci_high.freq_fifo_wr_i_2_n_0\
+    );
+\deci_high.freq_fifo_wr_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000020"
+    )
+        port map (
+      I0 => \deci_high.freq_wr_delay_reg\(0),
+      I1 => \deci_high.freq_wr_delay_reg\(2),
+      I2 => \deci_high.freq_wr_delay_reg\(4),
+      I3 => \deci_high.freq_wr_delay_reg\(3),
+      I4 => \deci_high.freq_wr_delay_reg\(1),
+      O => freq_in_data
     );
 \deci_high.freq_fifo_wr_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \deci_high.freq_fifo_wr_i_1_n_0\,
-      Q => freq_fifo_wr,
+      Q => \deci_high.freq_fifo_wr_reg_n_0\,
       R => '0'
     );
-\deci_high.freq_in_data[0]_i_1\: unisim.vcomponents.LUT4
+\deci_high.freq_in_data[95]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F888"
+      INIT => X"5555555555555D54"
     )
         port map (
-      I0 => freq_in_data(0),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(0),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[0]_i_1_n_0\
-    );
-\deci_high.freq_in_data[10]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(10),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(10),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[10]_i_1_n_0\
-    );
-\deci_high.freq_in_data[11]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(11),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(11),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[11]_i_1_n_0\
-    );
-\deci_high.freq_in_data[12]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(12),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(12),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[12]_i_1_n_0\
-    );
-\deci_high.freq_in_data[13]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(13),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(13),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[13]_i_1_n_0\
-    );
-\deci_high.freq_in_data[14]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(14),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(14),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[14]_i_1_n_0\
-    );
-\deci_high.freq_in_data[15]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(15),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(15),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[15]_i_1_n_0\
-    );
-\deci_high.freq_in_data[16]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(16),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(0),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[16]_i_1_n_0\
-    );
-\deci_high.freq_in_data[17]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(17),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(1),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[17]_i_1_n_0\
-    );
-\deci_high.freq_in_data[18]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(18),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(2),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[18]_i_1_n_0\
-    );
-\deci_high.freq_in_data[19]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(19),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(3),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[19]_i_1_n_0\
-    );
-\deci_high.freq_in_data[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(1),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(1),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[1]_i_1_n_0\
-    );
-\deci_high.freq_in_data[20]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(20),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(4),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[20]_i_1_n_0\
-    );
-\deci_high.freq_in_data[21]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(21),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(5),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[21]_i_1_n_0\
-    );
-\deci_high.freq_in_data[22]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(22),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(6),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[22]_i_1_n_0\
-    );
-\deci_high.freq_in_data[23]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(23),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(7),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[23]_i_1_n_0\
-    );
-\deci_high.freq_in_data[24]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(24),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(8),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[24]_i_1_n_0\
-    );
-\deci_high.freq_in_data[25]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(25),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(9),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[25]_i_1_n_0\
-    );
-\deci_high.freq_in_data[26]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(26),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(10),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[26]_i_1_n_0\
-    );
-\deci_high.freq_in_data[27]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(27),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(11),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[27]_i_1_n_0\
-    );
-\deci_high.freq_in_data[28]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(28),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(12),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[28]_i_1_n_0\
-    );
-\deci_high.freq_in_data[29]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(29),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(13),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[29]_i_1_n_0\
-    );
-\deci_high.freq_in_data[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(2),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(2),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[2]_i_1_n_0\
-    );
-\deci_high.freq_in_data[30]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(30),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(14),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[30]_i_1_n_0\
-    );
-\deci_high.freq_in_data[31]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(31),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N1(15),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[31]_i_1_n_0\
-    );
-\deci_high.freq_in_data[32]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(32),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(0),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[32]_i_1_n_0\
-    );
-\deci_high.freq_in_data[33]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(33),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(1),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[33]_i_1_n_0\
-    );
-\deci_high.freq_in_data[34]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(34),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(2),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[34]_i_1_n_0\
-    );
-\deci_high.freq_in_data[35]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(35),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(3),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[35]_i_1_n_0\
-    );
-\deci_high.freq_in_data[36]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(36),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(4),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[36]_i_1_n_0\
-    );
-\deci_high.freq_in_data[37]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(37),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(5),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[37]_i_1_n_0\
-    );
-\deci_high.freq_in_data[38]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(38),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(6),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[38]_i_1_n_0\
-    );
-\deci_high.freq_in_data[39]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(39),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(7),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[39]_i_1_n_0\
-    );
-\deci_high.freq_in_data[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(3),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(3),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[3]_i_1_n_0\
-    );
-\deci_high.freq_in_data[40]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(40),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(8),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[40]_i_1_n_0\
-    );
-\deci_high.freq_in_data[41]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(41),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(9),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[41]_i_1_n_0\
-    );
-\deci_high.freq_in_data[42]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(42),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(10),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[42]_i_1_n_0\
-    );
-\deci_high.freq_in_data[43]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(43),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(11),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[43]_i_1_n_0\
-    );
-\deci_high.freq_in_data[44]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(44),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(12),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[44]_i_1_n_0\
-    );
-\deci_high.freq_in_data[45]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(45),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(13),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[45]_i_1_n_0\
-    );
-\deci_high.freq_in_data[46]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(46),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(14),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[46]_i_1_n_0\
-    );
-\deci_high.freq_in_data[47]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(47),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E0(15),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[47]_i_1_n_0\
-    );
-\deci_high.freq_in_data[48]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(48),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(0),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[48]_i_1_n_0\
-    );
-\deci_high.freq_in_data[49]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(49),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(1),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[49]_i_1_n_0\
-    );
-\deci_high.freq_in_data[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(4),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(4),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[4]_i_1_n_0\
-    );
-\deci_high.freq_in_data[50]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(50),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(2),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[50]_i_1_n_0\
-    );
-\deci_high.freq_in_data[51]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(51),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(3),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[51]_i_1_n_0\
-    );
-\deci_high.freq_in_data[52]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(52),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(4),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[52]_i_1_n_0\
-    );
-\deci_high.freq_in_data[53]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(53),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(5),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[53]_i_1_n_0\
-    );
-\deci_high.freq_in_data[54]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(54),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(6),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[54]_i_1_n_0\
-    );
-\deci_high.freq_in_data[55]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(55),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(7),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[55]_i_1_n_0\
-    );
-\deci_high.freq_in_data[56]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(56),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(8),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[56]_i_1_n_0\
-    );
-\deci_high.freq_in_data[57]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(57),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(9),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[57]_i_1_n_0\
-    );
-\deci_high.freq_in_data[58]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(58),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(10),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[58]_i_1_n_0\
-    );
-\deci_high.freq_in_data[59]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(59),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(11),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[59]_i_1_n_0\
-    );
-\deci_high.freq_in_data[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(5),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(5),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[5]_i_1_n_0\
-    );
-\deci_high.freq_in_data[60]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(60),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(12),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[60]_i_1_n_0\
-    );
-\deci_high.freq_in_data[61]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(61),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(13),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[61]_i_1_n_0\
-    );
-\deci_high.freq_in_data[62]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(62),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(14),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[62]_i_1_n_0\
-    );
-\deci_high.freq_in_data[63]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(63),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_E1(15),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[63]_i_1_n_0\
-    );
-\deci_high.freq_in_data[64]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(64),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(0),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[64]_i_1_n_0\
-    );
-\deci_high.freq_in_data[65]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(65),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(1),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[65]_i_1_n_0\
-    );
-\deci_high.freq_in_data[66]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(66),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(2),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[66]_i_1_n_0\
-    );
-\deci_high.freq_in_data[67]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(67),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(3),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[67]_i_1_n_0\
-    );
-\deci_high.freq_in_data[68]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(68),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(4),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[68]_i_1_n_0\
-    );
-\deci_high.freq_in_data[69]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(69),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(5),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[69]_i_1_n_0\
-    );
-\deci_high.freq_in_data[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(6),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(6),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[6]_i_1_n_0\
-    );
-\deci_high.freq_in_data[70]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(70),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(6),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[70]_i_1_n_0\
-    );
-\deci_high.freq_in_data[71]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(71),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(7),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[71]_i_1_n_0\
-    );
-\deci_high.freq_in_data[72]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(72),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(8),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[72]_i_1_n_0\
-    );
-\deci_high.freq_in_data[73]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(73),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(9),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[73]_i_1_n_0\
-    );
-\deci_high.freq_in_data[74]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(74),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(10),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[74]_i_1_n_0\
-    );
-\deci_high.freq_in_data[75]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(75),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(11),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[75]_i_1_n_0\
-    );
-\deci_high.freq_in_data[76]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(76),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(12),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[76]_i_1_n_0\
-    );
-\deci_high.freq_in_data[77]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(77),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(13),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[77]_i_1_n_0\
-    );
-\deci_high.freq_in_data[78]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(78),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(14),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[78]_i_1_n_0\
-    );
-\deci_high.freq_in_data[79]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(79),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W0(15),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[79]_i_1_n_0\
-    );
-\deci_high.freq_in_data[7]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(7),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(7),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[7]_i_1_n_0\
-    );
-\deci_high.freq_in_data[80]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(80),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(0),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[80]_i_1_n_0\
-    );
-\deci_high.freq_in_data[81]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(81),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(1),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[81]_i_1_n_0\
-    );
-\deci_high.freq_in_data[82]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(82),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(2),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[82]_i_1_n_0\
-    );
-\deci_high.freq_in_data[83]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(83),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(3),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[83]_i_1_n_0\
-    );
-\deci_high.freq_in_data[84]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(84),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(4),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[84]_i_1_n_0\
-    );
-\deci_high.freq_in_data[85]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(85),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(5),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[85]_i_1_n_0\
-    );
-\deci_high.freq_in_data[86]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(86),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(6),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[86]_i_1_n_0\
-    );
-\deci_high.freq_in_data[87]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(87),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(7),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[87]_i_1_n_0\
-    );
-\deci_high.freq_in_data[88]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(88),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(8),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[88]_i_1_n_0\
-    );
-\deci_high.freq_in_data[89]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(89),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(9),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[89]_i_1_n_0\
-    );
-\deci_high.freq_in_data[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(8),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(8),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[8]_i_1_n_0\
-    );
-\deci_high.freq_in_data[90]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(90),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(10),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[90]_i_1_n_0\
-    );
-\deci_high.freq_in_data[91]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(91),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(11),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[91]_i_1_n_0\
-    );
-\deci_high.freq_in_data[92]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(92),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(12),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[92]_i_1_n_0\
-    );
-\deci_high.freq_in_data[93]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(93),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(13),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[93]_i_1_n_0\
-    );
-\deci_high.freq_in_data[94]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(94),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(14),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[94]_i_1_n_0\
-    );
-\deci_high.freq_in_data[95]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(95),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_W1(15),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
+      I0 => mux_active,
+      I1 => \deci_high.freq_wr_delay_reg\(0),
+      I2 => \deci_high.freq_wr_delay_reg\(3),
+      I3 => \deci_high.freq_wr_delay_reg\(4),
+      I4 => \deci_high.freq_wr_delay_reg\(1),
+      I5 => \deci_high.freq_wr_delay_reg\(2),
       O => \deci_high.freq_in_data[95]_i_1_n_0\
-    );
-\deci_high.freq_in_data[95]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FEFFFFFF00000000"
-    )
-        port map (
-      I0 => freq_wr_delay(3),
-      I1 => freq_wr_delay(2),
-      I2 => freq_wr_delay(1),
-      I3 => freq_wr_delay(0),
-      I4 => freq_wr_delay(4),
-      I5 => mux_active,
-      O => \deci_high.freq_in_data[95]_i_2_n_0\
-    );
-\deci_high.freq_in_data[95]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"00020000FFFFFFFF"
-    )
-        port map (
-      I0 => freq_wr_delay(4),
-      I1 => freq_wr_delay(3),
-      I2 => freq_wr_delay(2),
-      I3 => freq_wr_delay(1),
-      I4 => freq_wr_delay(0),
-      I5 => mux_active,
-      O => \deci_high.freq_in_data[95]_i_3_n_0\
-    );
-\deci_high.freq_in_data[9]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => freq_in_data(9),
-      I1 => \deci_high.freq_in_data[95]_i_2_n_0\,
-      I2 => freq_N0(9),
-      I3 => \deci_high.freq_in_data[95]_i_3_n_0\,
-      O => \deci_high.freq_in_data[9]_i_1_n_0\
     );
 \deci_high.freq_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[0]_i_1_n_0\,
-      Q => freq_in_data(0),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(15),
+      Q => \deci_high.freq_in_data_reg_n_0_[0]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[10]_i_1_n_0\,
-      Q => freq_in_data(10),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(25),
+      Q => \deci_high.freq_in_data_reg_n_0_[10]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[11]_i_1_n_0\,
-      Q => freq_in_data(11),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(26),
+      Q => \deci_high.freq_in_data_reg_n_0_[11]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[12]_i_1_n_0\,
-      Q => freq_in_data(12),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(27),
+      Q => \deci_high.freq_in_data_reg_n_0_[12]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[13]_i_1_n_0\,
-      Q => freq_in_data(13),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(28),
+      Q => \deci_high.freq_in_data_reg_n_0_[13]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[14]_i_1_n_0\,
-      Q => freq_in_data(14),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(29),
+      Q => \deci_high.freq_in_data_reg_n_0_[14]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[15]_i_1_n_0\,
-      Q => freq_in_data(15),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(30),
+      Q => \deci_high.freq_in_data_reg_n_0_[15]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[16]_i_1_n_0\,
-      Q => freq_in_data(16),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(47),
+      Q => \deci_high.freq_in_data_reg_n_0_[16]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[17]_i_1_n_0\,
-      Q => freq_in_data(17),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(48),
+      Q => \deci_high.freq_in_data_reg_n_0_[17]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[18]_i_1_n_0\,
-      Q => freq_in_data(18),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(49),
+      Q => \deci_high.freq_in_data_reg_n_0_[18]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[19]_i_1_n_0\,
-      Q => freq_in_data(19),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(50),
+      Q => \deci_high.freq_in_data_reg_n_0_[19]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[1]_i_1_n_0\,
-      Q => freq_in_data(1),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(16),
+      Q => \deci_high.freq_in_data_reg_n_0_[1]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[20]_i_1_n_0\,
-      Q => freq_in_data(20),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(51),
+      Q => \deci_high.freq_in_data_reg_n_0_[20]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[21]_i_1_n_0\,
-      Q => freq_in_data(21),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(52),
+      Q => \deci_high.freq_in_data_reg_n_0_[21]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[22]_i_1_n_0\,
-      Q => freq_in_data(22),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(53),
+      Q => \deci_high.freq_in_data_reg_n_0_[22]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[23]_i_1_n_0\,
-      Q => freq_in_data(23),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(54),
+      Q => \deci_high.freq_in_data_reg_n_0_[23]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[24]_i_1_n_0\,
-      Q => freq_in_data(24),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(55),
+      Q => \deci_high.freq_in_data_reg_n_0_[24]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[25]_i_1_n_0\,
-      Q => freq_in_data(25),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(56),
+      Q => \deci_high.freq_in_data_reg_n_0_[25]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[26]_i_1_n_0\,
-      Q => freq_in_data(26),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(57),
+      Q => \deci_high.freq_in_data_reg_n_0_[26]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[27]_i_1_n_0\,
-      Q => freq_in_data(27),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(58),
+      Q => \deci_high.freq_in_data_reg_n_0_[27]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[28]_i_1_n_0\,
-      Q => freq_in_data(28),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(59),
+      Q => \deci_high.freq_in_data_reg_n_0_[28]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[29]_i_1_n_0\,
-      Q => freq_in_data(29),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(60),
+      Q => \deci_high.freq_in_data_reg_n_0_[29]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[2]_i_1_n_0\,
-      Q => freq_in_data(2),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(17),
+      Q => \deci_high.freq_in_data_reg_n_0_[2]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[30]_i_1_n_0\,
-      Q => freq_in_data(30),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(61),
+      Q => \deci_high.freq_in_data_reg_n_0_[30]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[31]_i_1_n_0\,
-      Q => freq_in_data(31),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(62),
+      Q => \deci_high.freq_in_data_reg_n_0_[31]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[32]_i_1_n_0\,
-      Q => freq_in_data(32),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(15),
+      Q => \deci_high.freq_in_data_reg_n_0_[32]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[33]_i_1_n_0\,
-      Q => freq_in_data(33),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(16),
+      Q => \deci_high.freq_in_data_reg_n_0_[33]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[34]_i_1_n_0\,
-      Q => freq_in_data(34),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(17),
+      Q => \deci_high.freq_in_data_reg_n_0_[34]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[35]_i_1_n_0\,
-      Q => freq_in_data(35),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(18),
+      Q => \deci_high.freq_in_data_reg_n_0_[35]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[36]_i_1_n_0\,
-      Q => freq_in_data(36),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(19),
+      Q => \deci_high.freq_in_data_reg_n_0_[36]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[37]_i_1_n_0\,
-      Q => freq_in_data(37),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(20),
+      Q => \deci_high.freq_in_data_reg_n_0_[37]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[38]_i_1_n_0\,
-      Q => freq_in_data(38),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(21),
+      Q => \deci_high.freq_in_data_reg_n_0_[38]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[39]_i_1_n_0\,
-      Q => freq_in_data(39),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(22),
+      Q => \deci_high.freq_in_data_reg_n_0_[39]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[3]_i_1_n_0\,
-      Q => freq_in_data(3),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(18),
+      Q => \deci_high.freq_in_data_reg_n_0_[3]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[40]_i_1_n_0\,
-      Q => freq_in_data(40),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(23),
+      Q => \deci_high.freq_in_data_reg_n_0_[40]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[41]_i_1_n_0\,
-      Q => freq_in_data(41),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(24),
+      Q => \deci_high.freq_in_data_reg_n_0_[41]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[42]_i_1_n_0\,
-      Q => freq_in_data(42),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(25),
+      Q => \deci_high.freq_in_data_reg_n_0_[42]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[43]_i_1_n_0\,
-      Q => freq_in_data(43),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(26),
+      Q => \deci_high.freq_in_data_reg_n_0_[43]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[44]_i_1_n_0\,
-      Q => freq_in_data(44),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(27),
+      Q => \deci_high.freq_in_data_reg_n_0_[44]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[45]_i_1_n_0\,
-      Q => freq_in_data(45),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(28),
+      Q => \deci_high.freq_in_data_reg_n_0_[45]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[46]_i_1_n_0\,
-      Q => freq_in_data(46),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(29),
+      Q => \deci_high.freq_in_data_reg_n_0_[46]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[47]_i_1_n_0\,
-      Q => freq_in_data(47),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(30),
+      Q => \deci_high.freq_in_data_reg_n_0_[47]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[48]_i_1_n_0\,
-      Q => freq_in_data(48),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(47),
+      Q => \deci_high.freq_in_data_reg_n_0_[48]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[49]_i_1_n_0\,
-      Q => freq_in_data(49),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(48),
+      Q => \deci_high.freq_in_data_reg_n_0_[49]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[4]_i_1_n_0\,
-      Q => freq_in_data(4),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(19),
+      Q => \deci_high.freq_in_data_reg_n_0_[4]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[50]_i_1_n_0\,
-      Q => freq_in_data(50),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(49),
+      Q => \deci_high.freq_in_data_reg_n_0_[50]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[51]_i_1_n_0\,
-      Q => freq_in_data(51),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(50),
+      Q => \deci_high.freq_in_data_reg_n_0_[51]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[52]_i_1_n_0\,
-      Q => freq_in_data(52),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(51),
+      Q => \deci_high.freq_in_data_reg_n_0_[52]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[53]_i_1_n_0\,
-      Q => freq_in_data(53),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(52),
+      Q => \deci_high.freq_in_data_reg_n_0_[53]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[54]_i_1_n_0\,
-      Q => freq_in_data(54),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(53),
+      Q => \deci_high.freq_in_data_reg_n_0_[54]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[55]_i_1_n_0\,
-      Q => freq_in_data(55),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(54),
+      Q => \deci_high.freq_in_data_reg_n_0_[55]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[56]_i_1_n_0\,
-      Q => freq_in_data(56),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(55),
+      Q => \deci_high.freq_in_data_reg_n_0_[56]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[57]_i_1_n_0\,
-      Q => freq_in_data(57),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(56),
+      Q => \deci_high.freq_in_data_reg_n_0_[57]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[58]_i_1_n_0\,
-      Q => freq_in_data(58),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(57),
+      Q => \deci_high.freq_in_data_reg_n_0_[58]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[59]_i_1_n_0\,
-      Q => freq_in_data(59),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(58),
+      Q => \deci_high.freq_in_data_reg_n_0_[59]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[5]_i_1_n_0\,
-      Q => freq_in_data(5),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(20),
+      Q => \deci_high.freq_in_data_reg_n_0_[5]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[60]_i_1_n_0\,
-      Q => freq_in_data(60),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(59),
+      Q => \deci_high.freq_in_data_reg_n_0_[60]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[61]_i_1_n_0\,
-      Q => freq_in_data(61),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(60),
+      Q => \deci_high.freq_in_data_reg_n_0_[61]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[62]_i_1_n_0\,
-      Q => freq_in_data(62),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(61),
+      Q => \deci_high.freq_in_data_reg_n_0_[62]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[63]_i_1_n_0\,
-      Q => freq_in_data(63),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_E(62),
+      Q => \deci_high.freq_in_data_reg_n_0_[63]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[64]_i_1_n_0\,
-      Q => freq_in_data(64),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(15),
+      Q => \deci_high.freq_in_data_reg_n_0_[64]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[65]_i_1_n_0\,
-      Q => freq_in_data(65),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(16),
+      Q => \deci_high.freq_in_data_reg_n_0_[65]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[66]_i_1_n_0\,
-      Q => freq_in_data(66),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(17),
+      Q => \deci_high.freq_in_data_reg_n_0_[66]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[67]_i_1_n_0\,
-      Q => freq_in_data(67),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(18),
+      Q => \deci_high.freq_in_data_reg_n_0_[67]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[68]_i_1_n_0\,
-      Q => freq_in_data(68),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(19),
+      Q => \deci_high.freq_in_data_reg_n_0_[68]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[69]_i_1_n_0\,
-      Q => freq_in_data(69),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(20),
+      Q => \deci_high.freq_in_data_reg_n_0_[69]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[6]_i_1_n_0\,
-      Q => freq_in_data(6),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(21),
+      Q => \deci_high.freq_in_data_reg_n_0_[6]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[70]_i_1_n_0\,
-      Q => freq_in_data(70),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(21),
+      Q => \deci_high.freq_in_data_reg_n_0_[70]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[71]_i_1_n_0\,
-      Q => freq_in_data(71),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(22),
+      Q => \deci_high.freq_in_data_reg_n_0_[71]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[72]_i_1_n_0\,
-      Q => freq_in_data(72),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(23),
+      Q => \deci_high.freq_in_data_reg_n_0_[72]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[73]_i_1_n_0\,
-      Q => freq_in_data(73),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(24),
+      Q => \deci_high.freq_in_data_reg_n_0_[73]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[74]_i_1_n_0\,
-      Q => freq_in_data(74),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(25),
+      Q => \deci_high.freq_in_data_reg_n_0_[74]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[75]_i_1_n_0\,
-      Q => freq_in_data(75),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(26),
+      Q => \deci_high.freq_in_data_reg_n_0_[75]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[76]_i_1_n_0\,
-      Q => freq_in_data(76),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(27),
+      Q => \deci_high.freq_in_data_reg_n_0_[76]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[77]_i_1_n_0\,
-      Q => freq_in_data(77),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(28),
+      Q => \deci_high.freq_in_data_reg_n_0_[77]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[78]_i_1_n_0\,
-      Q => freq_in_data(78),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(29),
+      Q => \deci_high.freq_in_data_reg_n_0_[78]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[79]_i_1_n_0\,
-      Q => freq_in_data(79),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(30),
+      Q => \deci_high.freq_in_data_reg_n_0_[79]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[7]_i_1_n_0\,
-      Q => freq_in_data(7),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(22),
+      Q => \deci_high.freq_in_data_reg_n_0_[7]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[80]_i_1_n_0\,
-      Q => freq_in_data(80),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(47),
+      Q => \deci_high.freq_in_data_reg_n_0_[80]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[81]_i_1_n_0\,
-      Q => freq_in_data(81),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(48),
+      Q => \deci_high.freq_in_data_reg_n_0_[81]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[82]_i_1_n_0\,
-      Q => freq_in_data(82),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(49),
+      Q => \deci_high.freq_in_data_reg_n_0_[82]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[83]_i_1_n_0\,
-      Q => freq_in_data(83),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(50),
+      Q => \deci_high.freq_in_data_reg_n_0_[83]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[84]_i_1_n_0\,
-      Q => freq_in_data(84),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(51),
+      Q => \deci_high.freq_in_data_reg_n_0_[84]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[85]_i_1_n_0\,
-      Q => freq_in_data(85),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(52),
+      Q => \deci_high.freq_in_data_reg_n_0_[85]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[86]_i_1_n_0\,
-      Q => freq_in_data(86),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(53),
+      Q => \deci_high.freq_in_data_reg_n_0_[86]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[87]_i_1_n_0\,
-      Q => freq_in_data(87),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(54),
+      Q => \deci_high.freq_in_data_reg_n_0_[87]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[88]_i_1_n_0\,
-      Q => freq_in_data(88),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(55),
+      Q => \deci_high.freq_in_data_reg_n_0_[88]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[89]_i_1_n_0\,
-      Q => freq_in_data(89),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(56),
+      Q => \deci_high.freq_in_data_reg_n_0_[89]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[8]_i_1_n_0\,
-      Q => freq_in_data(8),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(23),
+      Q => \deci_high.freq_in_data_reg_n_0_[8]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[90]_i_1_n_0\,
-      Q => freq_in_data(90),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(57),
+      Q => \deci_high.freq_in_data_reg_n_0_[90]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[91]_i_1_n_0\,
-      Q => freq_in_data(91),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(58),
+      Q => \deci_high.freq_in_data_reg_n_0_[91]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[92]_i_1_n_0\,
-      Q => freq_in_data(92),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(59),
+      Q => \deci_high.freq_in_data_reg_n_0_[92]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[93]_i_1_n_0\,
-      Q => freq_in_data(93),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(60),
+      Q => \deci_high.freq_in_data_reg_n_0_[93]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[94]_i_1_n_0\,
-      Q => freq_in_data(94),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(61),
+      Q => \deci_high.freq_in_data_reg_n_0_[94]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[95]_i_1_n_0\,
-      Q => freq_in_data(95),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_W(62),
+      Q => \deci_high.freq_in_data_reg_n_0_[95]\,
       R => '0'
     );
 \deci_high.freq_in_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => \deci_high.freq_in_data[9]_i_1_n_0\,
-      Q => freq_in_data(9),
+      CE => \deci_high.freq_in_data[95]_i_1_n_0\,
+      D => fir_freq_N(24),
+      Q => \deci_high.freq_in_data_reg_n_0_[9]\,
       R => '0'
     );
 \deci_high.freq_out_rd_i_1\: unisim.vcomponents.LUT4
@@ -5311,129 +2691,121 @@ begin
         port map (
       I0 => freq_out_rd,
       I1 => freq_fifo_empty,
-      O => \deci_high.freq_ready_reg0\
+      O => freq_ready0
     );
 \deci_high.freq_ready_reg\: unisim.vcomponents.FDRE
      port map (
       C => freq_clk,
       CE => '1',
-      D => \deci_high.freq_ready_reg0\,
-      Q => \^freq_ready\,
+      D => freq_ready0,
+      Q => freq_ready,
       R => '0'
     );
-\deci_high.freq_wr_delay[0]_i_1\: unisim.vcomponents.LUT6
+\deci_high.freq_wr_delay[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"01000000FFFFFFFF"
+      INIT => X"1"
     )
         port map (
-      I0 => freq_wr_delay(3),
-      I1 => freq_wr_delay(2),
-      I2 => freq_wr_delay(1),
-      I3 => freq_wr_delay(4),
-      I4 => mux_active,
-      I5 => freq_wr_delay(0),
-      O => freq_wr_delay0_in(0)
+      I0 => \deci_high.freq_wr_delay_reg\(0),
+      O => \deci_high.freq_wr_delay[0]_i_1_n_0\
     );
-\deci_high.freq_wr_delay[1]_i_1\: unisim.vcomponents.LUT6
+\deci_high.freq_wr_delay[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"00FFFD00FF0000FF"
+      INIT => X"69"
     )
         port map (
-      I0 => freq_wr_delay(4),
-      I1 => freq_wr_delay(2),
-      I2 => freq_wr_delay(3),
-      I3 => mux_active,
-      I4 => freq_wr_delay(1),
-      I5 => freq_wr_delay(0),
-      O => freq_wr_delay0_in(1)
+      I0 => \deci_high.freq_wr_delay_reg\(0),
+      I1 => mux_active,
+      I2 => \deci_high.freq_wr_delay_reg\(1),
+      O => \deci_high.freq_wr_delay[1]_i_1_n_0\
     );
 \deci_high.freq_wr_delay[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"7E81"
+      INIT => X"78E1"
     )
         port map (
-      I0 => mux_active,
-      I1 => freq_wr_delay(1),
-      I2 => freq_wr_delay(0),
-      I3 => freq_wr_delay(2),
-      O => freq_wr_delay0_in(2)
+      I0 => \deci_high.freq_wr_delay_reg\(0),
+      I1 => mux_active,
+      I2 => \deci_high.freq_wr_delay_reg\(2),
+      I3 => \deci_high.freq_wr_delay_reg\(1),
+      O => \deci_high.freq_wr_delay[2]_i_1_n_0\
     );
 \deci_high.freq_wr_delay[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"78F0F0E1"
+      INIT => X"7F80FE01"
     )
         port map (
-      I0 => freq_wr_delay(1),
-      I1 => mux_active,
-      I2 => freq_wr_delay(3),
-      I3 => freq_wr_delay(2),
-      I4 => freq_wr_delay(0),
-      O => freq_wr_delay0_in(3)
+      I0 => mux_active,
+      I1 => \deci_high.freq_wr_delay_reg\(0),
+      I2 => \deci_high.freq_wr_delay_reg\(1),
+      I3 => \deci_high.freq_wr_delay_reg\(3),
+      I4 => \deci_high.freq_wr_delay_reg\(2),
+      O => \deci_high.freq_wr_delay[3]_i_1_n_0\
     );
 \deci_high.freq_wr_delay[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"FFFFFFFFFFFFF7FE"
     )
         port map (
-      I0 => freq_wr_delay(4),
-      I1 => freq_wr_delay(0),
-      I2 => mux_active,
-      I3 => freq_wr_delay(3),
-      I4 => freq_wr_delay(2),
-      I5 => freq_wr_delay(1),
+      I0 => mux_active,
+      I1 => \deci_high.freq_wr_delay_reg\(0),
+      I2 => \deci_high.freq_wr_delay_reg\(3),
+      I3 => \deci_high.freq_wr_delay_reg\(4),
+      I4 => \deci_high.freq_wr_delay_reg\(1),
+      I5 => \deci_high.freq_wr_delay_reg\(2),
       O => \deci_high.freq_wr_delay[4]_i_1_n_0\
     );
 \deci_high.freq_wr_delay[4]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAAAAAAAAA9"
+      INIT => X"7FFF8000FFFE0001"
     )
         port map (
-      I0 => freq_wr_delay(4),
-      I1 => freq_wr_delay(0),
+      I0 => \deci_high.freq_wr_delay_reg\(1),
+      I1 => \deci_high.freq_wr_delay_reg\(0),
       I2 => mux_active,
-      I3 => freq_wr_delay(3),
-      I4 => freq_wr_delay(2),
-      I5 => freq_wr_delay(1),
-      O => freq_wr_delay0_in(4)
+      I3 => \deci_high.freq_wr_delay_reg\(2),
+      I4 => \deci_high.freq_wr_delay_reg\(4),
+      I5 => \deci_high.freq_wr_delay_reg\(3),
+      O => \deci_high.freq_wr_delay[4]_i_2_n_0\
     );
 \deci_high.freq_wr_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => freq_wr_delay0_in(0),
-      Q => freq_wr_delay(0),
+      D => \deci_high.freq_wr_delay[0]_i_1_n_0\,
+      Q => \deci_high.freq_wr_delay_reg\(0),
       R => '0'
     );
 \deci_high.freq_wr_delay_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => freq_wr_delay0_in(1),
-      Q => freq_wr_delay(1),
+      D => \deci_high.freq_wr_delay[1]_i_1_n_0\,
+      Q => \deci_high.freq_wr_delay_reg\(1),
       R => '0'
     );
 \deci_high.freq_wr_delay_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => freq_wr_delay0_in(2),
-      Q => freq_wr_delay(2),
+      D => \deci_high.freq_wr_delay[2]_i_1_n_0\,
+      Q => \deci_high.freq_wr_delay_reg\(2),
       R => '0'
     );
 \deci_high.freq_wr_delay_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => freq_wr_delay0_in(3),
-      Q => freq_wr_delay(3),
+      D => \deci_high.freq_wr_delay[3]_i_1_n_0\,
+      Q => \deci_high.freq_wr_delay_reg\(3),
       R => '0'
     );
 \deci_high.freq_wr_delay_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \deci_high.freq_wr_delay[4]_i_1_n_0\,
-      D => freq_wr_delay0_in(4),
-      Q => freq_wr_delay(4),
+      D => \deci_high.freq_wr_delay[4]_i_2_n_0\,
+      Q => \deci_high.freq_wr_delay_reg\(4),
       R => '0'
     );
 \deci_high.mux_E[0]_i_1\: unisim.vcomponents.LUT5
@@ -9537,7 +6909,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[0]_i_1_n_0\,
-      Q => mux_N0(0),
+      Q => \deci_high.mux_N_reg_n_0_[0]\,
       R => '0'
     );
 \deci_high.mux_N_reg[100]\: unisim.vcomponents.FDRE
@@ -9625,7 +6997,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[10]_i_1_n_0\,
-      Q => mux_N0(10),
+      Q => \deci_high.mux_N_reg_n_0_[10]\,
       R => '0'
     );
 \deci_high.mux_N_reg[110]\: unisim.vcomponents.FDRE
@@ -9713,7 +7085,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[11]_i_1_n_0\,
-      Q => mux_N0(11),
+      Q => \deci_high.mux_N_reg_n_0_[11]\,
       R => '0'
     );
 \deci_high.mux_N_reg[120]\: unisim.vcomponents.FDRE
@@ -9785,7 +7157,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[12]_i_1_n_0\,
-      Q => mux_N0(12),
+      Q => \deci_high.mux_N_reg_n_0_[12]\,
       R => '0'
     );
 \deci_high.mux_N_reg[13]\: unisim.vcomponents.FDRE
@@ -9793,7 +7165,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[13]_i_1_n_0\,
-      Q => mux_N0(13),
+      Q => \deci_high.mux_N_reg_n_0_[13]\,
       R => '0'
     );
 \deci_high.mux_N_reg[14]\: unisim.vcomponents.FDRE
@@ -9801,7 +7173,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[14]_i_1_n_0\,
-      Q => mux_N0(14),
+      Q => \deci_high.mux_N_reg_n_0_[14]\,
       R => '0'
     );
 \deci_high.mux_N_reg[15]\: unisim.vcomponents.FDRE
@@ -9809,7 +7181,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[15]_i_1_n_0\,
-      Q => mux_N0(15),
+      Q => \deci_high.mux_N_reg_n_0_[15]\,
       R => '0'
     );
 \deci_high.mux_N_reg[16]\: unisim.vcomponents.FDRE
@@ -9849,7 +7221,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[1]_i_1_n_0\,
-      Q => mux_N0(1),
+      Q => \deci_high.mux_N_reg_n_0_[1]\,
       R => '0'
     );
 \deci_high.mux_N_reg[20]\: unisim.vcomponents.FDRE
@@ -9937,7 +7309,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[2]_i_1_n_0\,
-      Q => mux_N0(2),
+      Q => \deci_high.mux_N_reg_n_0_[2]\,
       R => '0'
     );
 \deci_high.mux_N_reg[30]\: unisim.vcomponents.FDRE
@@ -10025,7 +7397,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[3]_i_1_n_0\,
-      Q => mux_N0(3),
+      Q => \deci_high.mux_N_reg_n_0_[3]\,
       R => '0'
     );
 \deci_high.mux_N_reg[40]\: unisim.vcomponents.FDRE
@@ -10113,7 +7485,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[4]_i_1_n_0\,
-      Q => mux_N0(4),
+      Q => \deci_high.mux_N_reg_n_0_[4]\,
       R => '0'
     );
 \deci_high.mux_N_reg[50]\: unisim.vcomponents.FDRE
@@ -10201,7 +7573,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[5]_i_1_n_0\,
-      Q => mux_N0(5),
+      Q => \deci_high.mux_N_reg_n_0_[5]\,
       R => '0'
     );
 \deci_high.mux_N_reg[60]\: unisim.vcomponents.FDRE
@@ -10289,7 +7661,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[6]_i_1_n_0\,
-      Q => mux_N0(6),
+      Q => \deci_high.mux_N_reg_n_0_[6]\,
       R => '0'
     );
 \deci_high.mux_N_reg[70]\: unisim.vcomponents.FDRE
@@ -10377,7 +7749,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[7]_i_1_n_0\,
-      Q => mux_N0(7),
+      Q => \deci_high.mux_N_reg_n_0_[7]\,
       R => '0'
     );
 \deci_high.mux_N_reg[80]\: unisim.vcomponents.FDRE
@@ -10465,7 +7837,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[8]_i_1_n_0\,
-      Q => mux_N0(8),
+      Q => \deci_high.mux_N_reg_n_0_[8]\,
       R => '0'
     );
 \deci_high.mux_N_reg[90]\: unisim.vcomponents.FDRE
@@ -10553,7 +7925,7 @@ begin
       C => clk,
       CE => '1',
       D => \deci_high.mux_N[9]_i_1_n_0\,
-      Q => mux_N0(9),
+      Q => \deci_high.mux_N_reg_n_0_[9]\,
       R => '0'
     );
 \deci_high.mux_W[0]_i_1\: unisim.vcomponents.LUT5
@@ -13142,7 +10514,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(0),
-      Q => \^raw_data\(0),
+      Q => raw_data(0),
       R => '0'
     );
 \deci_high.raw_data_reg[100]\: unisim.vcomponents.FDRE
@@ -13150,7 +10522,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(100),
-      Q => \^raw_data\(100),
+      Q => raw_data(100),
       R => '0'
     );
 \deci_high.raw_data_reg[101]\: unisim.vcomponents.FDRE
@@ -13158,7 +10530,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(101),
-      Q => \^raw_data\(101),
+      Q => raw_data(101),
       R => '0'
     );
 \deci_high.raw_data_reg[102]\: unisim.vcomponents.FDRE
@@ -13166,7 +10538,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(102),
-      Q => \^raw_data\(102),
+      Q => raw_data(102),
       R => '0'
     );
 \deci_high.raw_data_reg[103]\: unisim.vcomponents.FDRE
@@ -13174,7 +10546,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(103),
-      Q => \^raw_data\(103),
+      Q => raw_data(103),
       R => '0'
     );
 \deci_high.raw_data_reg[104]\: unisim.vcomponents.FDRE
@@ -13182,7 +10554,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(104),
-      Q => \^raw_data\(104),
+      Q => raw_data(104),
       R => '0'
     );
 \deci_high.raw_data_reg[105]\: unisim.vcomponents.FDRE
@@ -13190,7 +10562,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(105),
-      Q => \^raw_data\(105),
+      Q => raw_data(105),
       R => '0'
     );
 \deci_high.raw_data_reg[106]\: unisim.vcomponents.FDRE
@@ -13198,7 +10570,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(106),
-      Q => \^raw_data\(106),
+      Q => raw_data(106),
       R => '0'
     );
 \deci_high.raw_data_reg[107]\: unisim.vcomponents.FDRE
@@ -13206,7 +10578,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(107),
-      Q => \^raw_data\(107),
+      Q => raw_data(107),
       R => '0'
     );
 \deci_high.raw_data_reg[108]\: unisim.vcomponents.FDRE
@@ -13214,7 +10586,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(108),
-      Q => \^raw_data\(108),
+      Q => raw_data(108),
       R => '0'
     );
 \deci_high.raw_data_reg[109]\: unisim.vcomponents.FDRE
@@ -13222,7 +10594,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(109),
-      Q => \^raw_data\(109),
+      Q => raw_data(109),
       R => '0'
     );
 \deci_high.raw_data_reg[10]\: unisim.vcomponents.FDRE
@@ -13230,7 +10602,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(10),
-      Q => \^raw_data\(10),
+      Q => raw_data(10),
       R => '0'
     );
 \deci_high.raw_data_reg[110]\: unisim.vcomponents.FDRE
@@ -13238,7 +10610,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(110),
-      Q => \^raw_data\(110),
+      Q => raw_data(110),
       R => '0'
     );
 \deci_high.raw_data_reg[111]\: unisim.vcomponents.FDRE
@@ -13246,7 +10618,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(111),
-      Q => \^raw_data\(111),
+      Q => raw_data(111),
       R => '0'
     );
 \deci_high.raw_data_reg[112]\: unisim.vcomponents.FDRE
@@ -13254,7 +10626,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(112),
-      Q => \^raw_data\(112),
+      Q => raw_data(112),
       R => '0'
     );
 \deci_high.raw_data_reg[113]\: unisim.vcomponents.FDRE
@@ -13262,7 +10634,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(113),
-      Q => \^raw_data\(113),
+      Q => raw_data(113),
       R => '0'
     );
 \deci_high.raw_data_reg[114]\: unisim.vcomponents.FDRE
@@ -13270,7 +10642,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(114),
-      Q => \^raw_data\(114),
+      Q => raw_data(114),
       R => '0'
     );
 \deci_high.raw_data_reg[115]\: unisim.vcomponents.FDRE
@@ -13278,7 +10650,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(115),
-      Q => \^raw_data\(115),
+      Q => raw_data(115),
       R => '0'
     );
 \deci_high.raw_data_reg[116]\: unisim.vcomponents.FDRE
@@ -13286,7 +10658,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(116),
-      Q => \^raw_data\(116),
+      Q => raw_data(116),
       R => '0'
     );
 \deci_high.raw_data_reg[117]\: unisim.vcomponents.FDRE
@@ -13294,7 +10666,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(117),
-      Q => \^raw_data\(117),
+      Q => raw_data(117),
       R => '0'
     );
 \deci_high.raw_data_reg[118]\: unisim.vcomponents.FDRE
@@ -13302,7 +10674,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(118),
-      Q => \^raw_data\(118),
+      Q => raw_data(118),
       R => '0'
     );
 \deci_high.raw_data_reg[119]\: unisim.vcomponents.FDRE
@@ -13310,7 +10682,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(119),
-      Q => \^raw_data\(119),
+      Q => raw_data(119),
       R => '0'
     );
 \deci_high.raw_data_reg[11]\: unisim.vcomponents.FDRE
@@ -13318,7 +10690,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(11),
-      Q => \^raw_data\(11),
+      Q => raw_data(11),
       R => '0'
     );
 \deci_high.raw_data_reg[120]\: unisim.vcomponents.FDRE
@@ -13326,7 +10698,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(120),
-      Q => \^raw_data\(120),
+      Q => raw_data(120),
       R => '0'
     );
 \deci_high.raw_data_reg[121]\: unisim.vcomponents.FDRE
@@ -13334,7 +10706,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(121),
-      Q => \^raw_data\(121),
+      Q => raw_data(121),
       R => '0'
     );
 \deci_high.raw_data_reg[122]\: unisim.vcomponents.FDRE
@@ -13342,7 +10714,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(122),
-      Q => \^raw_data\(122),
+      Q => raw_data(122),
       R => '0'
     );
 \deci_high.raw_data_reg[123]\: unisim.vcomponents.FDRE
@@ -13350,7 +10722,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(123),
-      Q => \^raw_data\(123),
+      Q => raw_data(123),
       R => '0'
     );
 \deci_high.raw_data_reg[124]\: unisim.vcomponents.FDRE
@@ -13358,7 +10730,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(124),
-      Q => \^raw_data\(124),
+      Q => raw_data(124),
       R => '0'
     );
 \deci_high.raw_data_reg[125]\: unisim.vcomponents.FDRE
@@ -13366,7 +10738,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(125),
-      Q => \^raw_data\(125),
+      Q => raw_data(125),
       R => '0'
     );
 \deci_high.raw_data_reg[126]\: unisim.vcomponents.FDRE
@@ -13374,7 +10746,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(126),
-      Q => \^raw_data\(126),
+      Q => raw_data(126),
       R => '0'
     );
 \deci_high.raw_data_reg[127]\: unisim.vcomponents.FDRE
@@ -13382,7 +10754,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(127),
-      Q => \^raw_data\(127),
+      Q => raw_data(127),
       R => '0'
     );
 \deci_high.raw_data_reg[128]\: unisim.vcomponents.FDRE
@@ -13390,7 +10762,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(128),
-      Q => \^raw_data\(128),
+      Q => raw_data(128),
       R => '0'
     );
 \deci_high.raw_data_reg[129]\: unisim.vcomponents.FDRE
@@ -13398,7 +10770,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(129),
-      Q => \^raw_data\(129),
+      Q => raw_data(129),
       R => '0'
     );
 \deci_high.raw_data_reg[12]\: unisim.vcomponents.FDRE
@@ -13406,7 +10778,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(12),
-      Q => \^raw_data\(12),
+      Q => raw_data(12),
       R => '0'
     );
 \deci_high.raw_data_reg[130]\: unisim.vcomponents.FDRE
@@ -13414,7 +10786,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(130),
-      Q => \^raw_data\(130),
+      Q => raw_data(130),
       R => '0'
     );
 \deci_high.raw_data_reg[131]\: unisim.vcomponents.FDRE
@@ -13422,7 +10794,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(131),
-      Q => \^raw_data\(131),
+      Q => raw_data(131),
       R => '0'
     );
 \deci_high.raw_data_reg[132]\: unisim.vcomponents.FDRE
@@ -13430,7 +10802,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(132),
-      Q => \^raw_data\(132),
+      Q => raw_data(132),
       R => '0'
     );
 \deci_high.raw_data_reg[133]\: unisim.vcomponents.FDRE
@@ -13438,7 +10810,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(133),
-      Q => \^raw_data\(133),
+      Q => raw_data(133),
       R => '0'
     );
 \deci_high.raw_data_reg[134]\: unisim.vcomponents.FDRE
@@ -13446,7 +10818,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(134),
-      Q => \^raw_data\(134),
+      Q => raw_data(134),
       R => '0'
     );
 \deci_high.raw_data_reg[135]\: unisim.vcomponents.FDRE
@@ -13454,7 +10826,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(135),
-      Q => \^raw_data\(135),
+      Q => raw_data(135),
       R => '0'
     );
 \deci_high.raw_data_reg[136]\: unisim.vcomponents.FDRE
@@ -13462,7 +10834,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(136),
-      Q => \^raw_data\(136),
+      Q => raw_data(136),
       R => '0'
     );
 \deci_high.raw_data_reg[137]\: unisim.vcomponents.FDRE
@@ -13470,7 +10842,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(137),
-      Q => \^raw_data\(137),
+      Q => raw_data(137),
       R => '0'
     );
 \deci_high.raw_data_reg[138]\: unisim.vcomponents.FDRE
@@ -13478,7 +10850,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(138),
-      Q => \^raw_data\(138),
+      Q => raw_data(138),
       R => '0'
     );
 \deci_high.raw_data_reg[139]\: unisim.vcomponents.FDRE
@@ -13486,7 +10858,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(139),
-      Q => \^raw_data\(139),
+      Q => raw_data(139),
       R => '0'
     );
 \deci_high.raw_data_reg[13]\: unisim.vcomponents.FDRE
@@ -13494,7 +10866,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(13),
-      Q => \^raw_data\(13),
+      Q => raw_data(13),
       R => '0'
     );
 \deci_high.raw_data_reg[140]\: unisim.vcomponents.FDRE
@@ -13502,7 +10874,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(140),
-      Q => \^raw_data\(140),
+      Q => raw_data(140),
       R => '0'
     );
 \deci_high.raw_data_reg[141]\: unisim.vcomponents.FDRE
@@ -13510,7 +10882,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(141),
-      Q => \^raw_data\(141),
+      Q => raw_data(141),
       R => '0'
     );
 \deci_high.raw_data_reg[142]\: unisim.vcomponents.FDRE
@@ -13518,7 +10890,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(142),
-      Q => \^raw_data\(142),
+      Q => raw_data(142),
       R => '0'
     );
 \deci_high.raw_data_reg[143]\: unisim.vcomponents.FDRE
@@ -13526,7 +10898,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(143),
-      Q => \^raw_data\(143),
+      Q => raw_data(143),
       R => '0'
     );
 \deci_high.raw_data_reg[144]\: unisim.vcomponents.FDRE
@@ -13534,7 +10906,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(144),
-      Q => \^raw_data\(144),
+      Q => raw_data(144),
       R => '0'
     );
 \deci_high.raw_data_reg[145]\: unisim.vcomponents.FDRE
@@ -13542,7 +10914,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(145),
-      Q => \^raw_data\(145),
+      Q => raw_data(145),
       R => '0'
     );
 \deci_high.raw_data_reg[146]\: unisim.vcomponents.FDRE
@@ -13550,7 +10922,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(146),
-      Q => \^raw_data\(146),
+      Q => raw_data(146),
       R => '0'
     );
 \deci_high.raw_data_reg[147]\: unisim.vcomponents.FDRE
@@ -13558,7 +10930,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(147),
-      Q => \^raw_data\(147),
+      Q => raw_data(147),
       R => '0'
     );
 \deci_high.raw_data_reg[148]\: unisim.vcomponents.FDRE
@@ -13566,7 +10938,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(148),
-      Q => \^raw_data\(148),
+      Q => raw_data(148),
       R => '0'
     );
 \deci_high.raw_data_reg[149]\: unisim.vcomponents.FDRE
@@ -13574,7 +10946,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(149),
-      Q => \^raw_data\(149),
+      Q => raw_data(149),
       R => '0'
     );
 \deci_high.raw_data_reg[14]\: unisim.vcomponents.FDRE
@@ -13582,7 +10954,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(14),
-      Q => \^raw_data\(14),
+      Q => raw_data(14),
       R => '0'
     );
 \deci_high.raw_data_reg[150]\: unisim.vcomponents.FDRE
@@ -13590,7 +10962,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(150),
-      Q => \^raw_data\(150),
+      Q => raw_data(150),
       R => '0'
     );
 \deci_high.raw_data_reg[151]\: unisim.vcomponents.FDRE
@@ -13598,7 +10970,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(151),
-      Q => \^raw_data\(151),
+      Q => raw_data(151),
       R => '0'
     );
 \deci_high.raw_data_reg[152]\: unisim.vcomponents.FDRE
@@ -13606,7 +10978,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(152),
-      Q => \^raw_data\(152),
+      Q => raw_data(152),
       R => '0'
     );
 \deci_high.raw_data_reg[153]\: unisim.vcomponents.FDRE
@@ -13614,7 +10986,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(153),
-      Q => \^raw_data\(153),
+      Q => raw_data(153),
       R => '0'
     );
 \deci_high.raw_data_reg[154]\: unisim.vcomponents.FDRE
@@ -13622,7 +10994,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(154),
-      Q => \^raw_data\(154),
+      Q => raw_data(154),
       R => '0'
     );
 \deci_high.raw_data_reg[155]\: unisim.vcomponents.FDRE
@@ -13630,7 +11002,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(155),
-      Q => \^raw_data\(155),
+      Q => raw_data(155),
       R => '0'
     );
 \deci_high.raw_data_reg[156]\: unisim.vcomponents.FDRE
@@ -13638,7 +11010,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(156),
-      Q => \^raw_data\(156),
+      Q => raw_data(156),
       R => '0'
     );
 \deci_high.raw_data_reg[157]\: unisim.vcomponents.FDRE
@@ -13646,7 +11018,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(157),
-      Q => \^raw_data\(157),
+      Q => raw_data(157),
       R => '0'
     );
 \deci_high.raw_data_reg[158]\: unisim.vcomponents.FDRE
@@ -13654,7 +11026,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(158),
-      Q => \^raw_data\(158),
+      Q => raw_data(158),
       R => '0'
     );
 \deci_high.raw_data_reg[159]\: unisim.vcomponents.FDRE
@@ -13662,7 +11034,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(159),
-      Q => \^raw_data\(159),
+      Q => raw_data(159),
       R => '0'
     );
 \deci_high.raw_data_reg[15]\: unisim.vcomponents.FDRE
@@ -13670,7 +11042,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(15),
-      Q => \^raw_data\(15),
+      Q => raw_data(15),
       R => '0'
     );
 \deci_high.raw_data_reg[160]\: unisim.vcomponents.FDRE
@@ -13678,7 +11050,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(160),
-      Q => \^raw_data\(160),
+      Q => raw_data(160),
       R => '0'
     );
 \deci_high.raw_data_reg[161]\: unisim.vcomponents.FDRE
@@ -13686,7 +11058,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(161),
-      Q => \^raw_data\(161),
+      Q => raw_data(161),
       R => '0'
     );
 \deci_high.raw_data_reg[162]\: unisim.vcomponents.FDRE
@@ -13694,7 +11066,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(162),
-      Q => \^raw_data\(162),
+      Q => raw_data(162),
       R => '0'
     );
 \deci_high.raw_data_reg[163]\: unisim.vcomponents.FDRE
@@ -13702,7 +11074,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(163),
-      Q => \^raw_data\(163),
+      Q => raw_data(163),
       R => '0'
     );
 \deci_high.raw_data_reg[164]\: unisim.vcomponents.FDRE
@@ -13710,7 +11082,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(164),
-      Q => \^raw_data\(164),
+      Q => raw_data(164),
       R => '0'
     );
 \deci_high.raw_data_reg[165]\: unisim.vcomponents.FDRE
@@ -13718,7 +11090,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(165),
-      Q => \^raw_data\(165),
+      Q => raw_data(165),
       R => '0'
     );
 \deci_high.raw_data_reg[166]\: unisim.vcomponents.FDRE
@@ -13726,7 +11098,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(166),
-      Q => \^raw_data\(166),
+      Q => raw_data(166),
       R => '0'
     );
 \deci_high.raw_data_reg[167]\: unisim.vcomponents.FDRE
@@ -13734,7 +11106,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(167),
-      Q => \^raw_data\(167),
+      Q => raw_data(167),
       R => '0'
     );
 \deci_high.raw_data_reg[168]\: unisim.vcomponents.FDRE
@@ -13742,7 +11114,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(168),
-      Q => \^raw_data\(168),
+      Q => raw_data(168),
       R => '0'
     );
 \deci_high.raw_data_reg[169]\: unisim.vcomponents.FDRE
@@ -13750,7 +11122,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(169),
-      Q => \^raw_data\(169),
+      Q => raw_data(169),
       R => '0'
     );
 \deci_high.raw_data_reg[16]\: unisim.vcomponents.FDRE
@@ -13758,7 +11130,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(16),
-      Q => \^raw_data\(16),
+      Q => raw_data(16),
       R => '0'
     );
 \deci_high.raw_data_reg[170]\: unisim.vcomponents.FDRE
@@ -13766,7 +11138,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(170),
-      Q => \^raw_data\(170),
+      Q => raw_data(170),
       R => '0'
     );
 \deci_high.raw_data_reg[171]\: unisim.vcomponents.FDRE
@@ -13774,7 +11146,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(171),
-      Q => \^raw_data\(171),
+      Q => raw_data(171),
       R => '0'
     );
 \deci_high.raw_data_reg[172]\: unisim.vcomponents.FDRE
@@ -13782,7 +11154,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(172),
-      Q => \^raw_data\(172),
+      Q => raw_data(172),
       R => '0'
     );
 \deci_high.raw_data_reg[173]\: unisim.vcomponents.FDRE
@@ -13790,7 +11162,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(173),
-      Q => \^raw_data\(173),
+      Q => raw_data(173),
       R => '0'
     );
 \deci_high.raw_data_reg[174]\: unisim.vcomponents.FDRE
@@ -13798,7 +11170,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(174),
-      Q => \^raw_data\(174),
+      Q => raw_data(174),
       R => '0'
     );
 \deci_high.raw_data_reg[175]\: unisim.vcomponents.FDRE
@@ -13806,7 +11178,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(175),
-      Q => \^raw_data\(175),
+      Q => raw_data(175),
       R => '0'
     );
 \deci_high.raw_data_reg[176]\: unisim.vcomponents.FDRE
@@ -13814,7 +11186,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(176),
-      Q => \^raw_data\(176),
+      Q => raw_data(176),
       R => '0'
     );
 \deci_high.raw_data_reg[177]\: unisim.vcomponents.FDRE
@@ -13822,7 +11194,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(177),
-      Q => \^raw_data\(177),
+      Q => raw_data(177),
       R => '0'
     );
 \deci_high.raw_data_reg[178]\: unisim.vcomponents.FDRE
@@ -13830,7 +11202,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(178),
-      Q => \^raw_data\(178),
+      Q => raw_data(178),
       R => '0'
     );
 \deci_high.raw_data_reg[179]\: unisim.vcomponents.FDRE
@@ -13838,7 +11210,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(179),
-      Q => \^raw_data\(179),
+      Q => raw_data(179),
       R => '0'
     );
 \deci_high.raw_data_reg[17]\: unisim.vcomponents.FDRE
@@ -13846,7 +11218,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(17),
-      Q => \^raw_data\(17),
+      Q => raw_data(17),
       R => '0'
     );
 \deci_high.raw_data_reg[180]\: unisim.vcomponents.FDRE
@@ -13854,7 +11226,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(180),
-      Q => \^raw_data\(180),
+      Q => raw_data(180),
       R => '0'
     );
 \deci_high.raw_data_reg[181]\: unisim.vcomponents.FDRE
@@ -13862,7 +11234,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(181),
-      Q => \^raw_data\(181),
+      Q => raw_data(181),
       R => '0'
     );
 \deci_high.raw_data_reg[182]\: unisim.vcomponents.FDRE
@@ -13870,7 +11242,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(182),
-      Q => \^raw_data\(182),
+      Q => raw_data(182),
       R => '0'
     );
 \deci_high.raw_data_reg[183]\: unisim.vcomponents.FDRE
@@ -13878,7 +11250,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(183),
-      Q => \^raw_data\(183),
+      Q => raw_data(183),
       R => '0'
     );
 \deci_high.raw_data_reg[184]\: unisim.vcomponents.FDRE
@@ -13886,7 +11258,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(184),
-      Q => \^raw_data\(184),
+      Q => raw_data(184),
       R => '0'
     );
 \deci_high.raw_data_reg[185]\: unisim.vcomponents.FDRE
@@ -13894,7 +11266,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(185),
-      Q => \^raw_data\(185),
+      Q => raw_data(185),
       R => '0'
     );
 \deci_high.raw_data_reg[186]\: unisim.vcomponents.FDRE
@@ -13902,7 +11274,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(186),
-      Q => \^raw_data\(186),
+      Q => raw_data(186),
       R => '0'
     );
 \deci_high.raw_data_reg[187]\: unisim.vcomponents.FDRE
@@ -13910,7 +11282,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(187),
-      Q => \^raw_data\(187),
+      Q => raw_data(187),
       R => '0'
     );
 \deci_high.raw_data_reg[188]\: unisim.vcomponents.FDRE
@@ -13918,7 +11290,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(188),
-      Q => \^raw_data\(188),
+      Q => raw_data(188),
       R => '0'
     );
 \deci_high.raw_data_reg[189]\: unisim.vcomponents.FDRE
@@ -13926,7 +11298,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(189),
-      Q => \^raw_data\(189),
+      Q => raw_data(189),
       R => '0'
     );
 \deci_high.raw_data_reg[18]\: unisim.vcomponents.FDRE
@@ -13934,7 +11306,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(18),
-      Q => \^raw_data\(18),
+      Q => raw_data(18),
       R => '0'
     );
 \deci_high.raw_data_reg[190]\: unisim.vcomponents.FDRE
@@ -13942,7 +11314,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(190),
-      Q => \^raw_data\(190),
+      Q => raw_data(190),
       R => '0'
     );
 \deci_high.raw_data_reg[191]\: unisim.vcomponents.FDRE
@@ -13950,7 +11322,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(191),
-      Q => \^raw_data\(191),
+      Q => raw_data(191),
       R => '0'
     );
 \deci_high.raw_data_reg[192]\: unisim.vcomponents.FDRE
@@ -13958,7 +11330,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(192),
-      Q => \^raw_data\(192),
+      Q => raw_data(192),
       R => '0'
     );
 \deci_high.raw_data_reg[193]\: unisim.vcomponents.FDRE
@@ -13966,7 +11338,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(193),
-      Q => \^raw_data\(193),
+      Q => raw_data(193),
       R => '0'
     );
 \deci_high.raw_data_reg[194]\: unisim.vcomponents.FDRE
@@ -13974,7 +11346,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(194),
-      Q => \^raw_data\(194),
+      Q => raw_data(194),
       R => '0'
     );
 \deci_high.raw_data_reg[195]\: unisim.vcomponents.FDRE
@@ -13982,7 +11354,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(195),
-      Q => \^raw_data\(195),
+      Q => raw_data(195),
       R => '0'
     );
 \deci_high.raw_data_reg[196]\: unisim.vcomponents.FDRE
@@ -13990,7 +11362,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(196),
-      Q => \^raw_data\(196),
+      Q => raw_data(196),
       R => '0'
     );
 \deci_high.raw_data_reg[197]\: unisim.vcomponents.FDRE
@@ -13998,7 +11370,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(197),
-      Q => \^raw_data\(197),
+      Q => raw_data(197),
       R => '0'
     );
 \deci_high.raw_data_reg[198]\: unisim.vcomponents.FDRE
@@ -14006,7 +11378,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(198),
-      Q => \^raw_data\(198),
+      Q => raw_data(198),
       R => '0'
     );
 \deci_high.raw_data_reg[199]\: unisim.vcomponents.FDRE
@@ -14014,7 +11386,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(199),
-      Q => \^raw_data\(199),
+      Q => raw_data(199),
       R => '0'
     );
 \deci_high.raw_data_reg[19]\: unisim.vcomponents.FDRE
@@ -14022,7 +11394,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(19),
-      Q => \^raw_data\(19),
+      Q => raw_data(19),
       R => '0'
     );
 \deci_high.raw_data_reg[1]\: unisim.vcomponents.FDRE
@@ -14030,7 +11402,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(1),
-      Q => \^raw_data\(1),
+      Q => raw_data(1),
       R => '0'
     );
 \deci_high.raw_data_reg[200]\: unisim.vcomponents.FDRE
@@ -14038,7 +11410,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(200),
-      Q => \^raw_data\(200),
+      Q => raw_data(200),
       R => '0'
     );
 \deci_high.raw_data_reg[201]\: unisim.vcomponents.FDRE
@@ -14046,7 +11418,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(201),
-      Q => \^raw_data\(201),
+      Q => raw_data(201),
       R => '0'
     );
 \deci_high.raw_data_reg[202]\: unisim.vcomponents.FDRE
@@ -14054,7 +11426,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(202),
-      Q => \^raw_data\(202),
+      Q => raw_data(202),
       R => '0'
     );
 \deci_high.raw_data_reg[203]\: unisim.vcomponents.FDRE
@@ -14062,7 +11434,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(203),
-      Q => \^raw_data\(203),
+      Q => raw_data(203),
       R => '0'
     );
 \deci_high.raw_data_reg[204]\: unisim.vcomponents.FDRE
@@ -14070,7 +11442,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(204),
-      Q => \^raw_data\(204),
+      Q => raw_data(204),
       R => '0'
     );
 \deci_high.raw_data_reg[205]\: unisim.vcomponents.FDRE
@@ -14078,7 +11450,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(205),
-      Q => \^raw_data\(205),
+      Q => raw_data(205),
       R => '0'
     );
 \deci_high.raw_data_reg[206]\: unisim.vcomponents.FDRE
@@ -14086,7 +11458,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(206),
-      Q => \^raw_data\(206),
+      Q => raw_data(206),
       R => '0'
     );
 \deci_high.raw_data_reg[207]\: unisim.vcomponents.FDRE
@@ -14094,7 +11466,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(207),
-      Q => \^raw_data\(207),
+      Q => raw_data(207),
       R => '0'
     );
 \deci_high.raw_data_reg[208]\: unisim.vcomponents.FDRE
@@ -14102,7 +11474,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(208),
-      Q => \^raw_data\(208),
+      Q => raw_data(208),
       R => '0'
     );
 \deci_high.raw_data_reg[209]\: unisim.vcomponents.FDRE
@@ -14110,7 +11482,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(209),
-      Q => \^raw_data\(209),
+      Q => raw_data(209),
       R => '0'
     );
 \deci_high.raw_data_reg[20]\: unisim.vcomponents.FDRE
@@ -14118,7 +11490,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(20),
-      Q => \^raw_data\(20),
+      Q => raw_data(20),
       R => '0'
     );
 \deci_high.raw_data_reg[210]\: unisim.vcomponents.FDRE
@@ -14126,7 +11498,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(210),
-      Q => \^raw_data\(210),
+      Q => raw_data(210),
       R => '0'
     );
 \deci_high.raw_data_reg[211]\: unisim.vcomponents.FDRE
@@ -14134,7 +11506,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(211),
-      Q => \^raw_data\(211),
+      Q => raw_data(211),
       R => '0'
     );
 \deci_high.raw_data_reg[212]\: unisim.vcomponents.FDRE
@@ -14142,7 +11514,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(212),
-      Q => \^raw_data\(212),
+      Q => raw_data(212),
       R => '0'
     );
 \deci_high.raw_data_reg[213]\: unisim.vcomponents.FDRE
@@ -14150,7 +11522,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(213),
-      Q => \^raw_data\(213),
+      Q => raw_data(213),
       R => '0'
     );
 \deci_high.raw_data_reg[214]\: unisim.vcomponents.FDRE
@@ -14158,7 +11530,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(214),
-      Q => \^raw_data\(214),
+      Q => raw_data(214),
       R => '0'
     );
 \deci_high.raw_data_reg[215]\: unisim.vcomponents.FDRE
@@ -14166,7 +11538,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(215),
-      Q => \^raw_data\(215),
+      Q => raw_data(215),
       R => '0'
     );
 \deci_high.raw_data_reg[216]\: unisim.vcomponents.FDRE
@@ -14174,7 +11546,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(216),
-      Q => \^raw_data\(216),
+      Q => raw_data(216),
       R => '0'
     );
 \deci_high.raw_data_reg[217]\: unisim.vcomponents.FDRE
@@ -14182,7 +11554,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(217),
-      Q => \^raw_data\(217),
+      Q => raw_data(217),
       R => '0'
     );
 \deci_high.raw_data_reg[218]\: unisim.vcomponents.FDRE
@@ -14190,7 +11562,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(218),
-      Q => \^raw_data\(218),
+      Q => raw_data(218),
       R => '0'
     );
 \deci_high.raw_data_reg[219]\: unisim.vcomponents.FDRE
@@ -14198,7 +11570,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(219),
-      Q => \^raw_data\(219),
+      Q => raw_data(219),
       R => '0'
     );
 \deci_high.raw_data_reg[21]\: unisim.vcomponents.FDRE
@@ -14206,7 +11578,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(21),
-      Q => \^raw_data\(21),
+      Q => raw_data(21),
       R => '0'
     );
 \deci_high.raw_data_reg[220]\: unisim.vcomponents.FDRE
@@ -14214,7 +11586,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(220),
-      Q => \^raw_data\(220),
+      Q => raw_data(220),
       R => '0'
     );
 \deci_high.raw_data_reg[221]\: unisim.vcomponents.FDRE
@@ -14222,7 +11594,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(221),
-      Q => \^raw_data\(221),
+      Q => raw_data(221),
       R => '0'
     );
 \deci_high.raw_data_reg[222]\: unisim.vcomponents.FDRE
@@ -14230,7 +11602,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(222),
-      Q => \^raw_data\(222),
+      Q => raw_data(222),
       R => '0'
     );
 \deci_high.raw_data_reg[223]\: unisim.vcomponents.FDRE
@@ -14238,7 +11610,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(223),
-      Q => \^raw_data\(223),
+      Q => raw_data(223),
       R => '0'
     );
 \deci_high.raw_data_reg[224]\: unisim.vcomponents.FDRE
@@ -14246,7 +11618,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(224),
-      Q => \^raw_data\(224),
+      Q => raw_data(224),
       R => '0'
     );
 \deci_high.raw_data_reg[225]\: unisim.vcomponents.FDRE
@@ -14254,7 +11626,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(225),
-      Q => \^raw_data\(225),
+      Q => raw_data(225),
       R => '0'
     );
 \deci_high.raw_data_reg[226]\: unisim.vcomponents.FDRE
@@ -14262,7 +11634,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(226),
-      Q => \^raw_data\(226),
+      Q => raw_data(226),
       R => '0'
     );
 \deci_high.raw_data_reg[227]\: unisim.vcomponents.FDRE
@@ -14270,7 +11642,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(227),
-      Q => \^raw_data\(227),
+      Q => raw_data(227),
       R => '0'
     );
 \deci_high.raw_data_reg[228]\: unisim.vcomponents.FDRE
@@ -14278,7 +11650,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(228),
-      Q => \^raw_data\(228),
+      Q => raw_data(228),
       R => '0'
     );
 \deci_high.raw_data_reg[229]\: unisim.vcomponents.FDRE
@@ -14286,7 +11658,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(229),
-      Q => \^raw_data\(229),
+      Q => raw_data(229),
       R => '0'
     );
 \deci_high.raw_data_reg[22]\: unisim.vcomponents.FDRE
@@ -14294,7 +11666,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(22),
-      Q => \^raw_data\(22),
+      Q => raw_data(22),
       R => '0'
     );
 \deci_high.raw_data_reg[230]\: unisim.vcomponents.FDRE
@@ -14302,7 +11674,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(230),
-      Q => \^raw_data\(230),
+      Q => raw_data(230),
       R => '0'
     );
 \deci_high.raw_data_reg[231]\: unisim.vcomponents.FDRE
@@ -14310,7 +11682,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(231),
-      Q => \^raw_data\(231),
+      Q => raw_data(231),
       R => '0'
     );
 \deci_high.raw_data_reg[232]\: unisim.vcomponents.FDRE
@@ -14318,7 +11690,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(232),
-      Q => \^raw_data\(232),
+      Q => raw_data(232),
       R => '0'
     );
 \deci_high.raw_data_reg[233]\: unisim.vcomponents.FDRE
@@ -14326,7 +11698,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(233),
-      Q => \^raw_data\(233),
+      Q => raw_data(233),
       R => '0'
     );
 \deci_high.raw_data_reg[234]\: unisim.vcomponents.FDRE
@@ -14334,7 +11706,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(234),
-      Q => \^raw_data\(234),
+      Q => raw_data(234),
       R => '0'
     );
 \deci_high.raw_data_reg[235]\: unisim.vcomponents.FDRE
@@ -14342,7 +11714,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(235),
-      Q => \^raw_data\(235),
+      Q => raw_data(235),
       R => '0'
     );
 \deci_high.raw_data_reg[236]\: unisim.vcomponents.FDRE
@@ -14350,7 +11722,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(236),
-      Q => \^raw_data\(236),
+      Q => raw_data(236),
       R => '0'
     );
 \deci_high.raw_data_reg[237]\: unisim.vcomponents.FDRE
@@ -14358,7 +11730,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(237),
-      Q => \^raw_data\(237),
+      Q => raw_data(237),
       R => '0'
     );
 \deci_high.raw_data_reg[238]\: unisim.vcomponents.FDRE
@@ -14366,7 +11738,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(238),
-      Q => \^raw_data\(238),
+      Q => raw_data(238),
       R => '0'
     );
 \deci_high.raw_data_reg[239]\: unisim.vcomponents.FDRE
@@ -14374,7 +11746,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(239),
-      Q => \^raw_data\(239),
+      Q => raw_data(239),
       R => '0'
     );
 \deci_high.raw_data_reg[23]\: unisim.vcomponents.FDRE
@@ -14382,7 +11754,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(23),
-      Q => \^raw_data\(23),
+      Q => raw_data(23),
       R => '0'
     );
 \deci_high.raw_data_reg[240]\: unisim.vcomponents.FDRE
@@ -14390,7 +11762,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(240),
-      Q => \^raw_data\(240),
+      Q => raw_data(240),
       R => '0'
     );
 \deci_high.raw_data_reg[241]\: unisim.vcomponents.FDRE
@@ -14398,7 +11770,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(241),
-      Q => \^raw_data\(241),
+      Q => raw_data(241),
       R => '0'
     );
 \deci_high.raw_data_reg[242]\: unisim.vcomponents.FDRE
@@ -14406,7 +11778,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(242),
-      Q => \^raw_data\(242),
+      Q => raw_data(242),
       R => '0'
     );
 \deci_high.raw_data_reg[243]\: unisim.vcomponents.FDRE
@@ -14414,7 +11786,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(243),
-      Q => \^raw_data\(243),
+      Q => raw_data(243),
       R => '0'
     );
 \deci_high.raw_data_reg[244]\: unisim.vcomponents.FDRE
@@ -14422,7 +11794,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(244),
-      Q => \^raw_data\(244),
+      Q => raw_data(244),
       R => '0'
     );
 \deci_high.raw_data_reg[245]\: unisim.vcomponents.FDRE
@@ -14430,7 +11802,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(245),
-      Q => \^raw_data\(245),
+      Q => raw_data(245),
       R => '0'
     );
 \deci_high.raw_data_reg[246]\: unisim.vcomponents.FDRE
@@ -14438,7 +11810,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(246),
-      Q => \^raw_data\(246),
+      Q => raw_data(246),
       R => '0'
     );
 \deci_high.raw_data_reg[247]\: unisim.vcomponents.FDRE
@@ -14446,7 +11818,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(247),
-      Q => \^raw_data\(247),
+      Q => raw_data(247),
       R => '0'
     );
 \deci_high.raw_data_reg[248]\: unisim.vcomponents.FDRE
@@ -14454,7 +11826,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(248),
-      Q => \^raw_data\(248),
+      Q => raw_data(248),
       R => '0'
     );
 \deci_high.raw_data_reg[249]\: unisim.vcomponents.FDRE
@@ -14462,7 +11834,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(249),
-      Q => \^raw_data\(249),
+      Q => raw_data(249),
       R => '0'
     );
 \deci_high.raw_data_reg[24]\: unisim.vcomponents.FDRE
@@ -14470,7 +11842,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(24),
-      Q => \^raw_data\(24),
+      Q => raw_data(24),
       R => '0'
     );
 \deci_high.raw_data_reg[250]\: unisim.vcomponents.FDRE
@@ -14478,7 +11850,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(250),
-      Q => \^raw_data\(250),
+      Q => raw_data(250),
       R => '0'
     );
 \deci_high.raw_data_reg[251]\: unisim.vcomponents.FDRE
@@ -14486,7 +11858,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(251),
-      Q => \^raw_data\(251),
+      Q => raw_data(251),
       R => '0'
     );
 \deci_high.raw_data_reg[252]\: unisim.vcomponents.FDRE
@@ -14494,7 +11866,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(252),
-      Q => \^raw_data\(252),
+      Q => raw_data(252),
       R => '0'
     );
 \deci_high.raw_data_reg[253]\: unisim.vcomponents.FDRE
@@ -14502,7 +11874,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(253),
-      Q => \^raw_data\(253),
+      Q => raw_data(253),
       R => '0'
     );
 \deci_high.raw_data_reg[254]\: unisim.vcomponents.FDRE
@@ -14510,7 +11882,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(254),
-      Q => \^raw_data\(254),
+      Q => raw_data(254),
       R => '0'
     );
 \deci_high.raw_data_reg[255]\: unisim.vcomponents.FDRE
@@ -14518,7 +11890,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(255),
-      Q => \^raw_data\(255),
+      Q => raw_data(255),
       R => '0'
     );
 \deci_high.raw_data_reg[256]\: unisim.vcomponents.FDRE
@@ -14526,7 +11898,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(256),
-      Q => \^raw_data\(256),
+      Q => raw_data(256),
       R => '0'
     );
 \deci_high.raw_data_reg[257]\: unisim.vcomponents.FDRE
@@ -14534,7 +11906,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(257),
-      Q => \^raw_data\(257),
+      Q => raw_data(257),
       R => '0'
     );
 \deci_high.raw_data_reg[258]\: unisim.vcomponents.FDRE
@@ -14542,7 +11914,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(258),
-      Q => \^raw_data\(258),
+      Q => raw_data(258),
       R => '0'
     );
 \deci_high.raw_data_reg[259]\: unisim.vcomponents.FDRE
@@ -14550,7 +11922,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(259),
-      Q => \^raw_data\(259),
+      Q => raw_data(259),
       R => '0'
     );
 \deci_high.raw_data_reg[25]\: unisim.vcomponents.FDRE
@@ -14558,7 +11930,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(25),
-      Q => \^raw_data\(25),
+      Q => raw_data(25),
       R => '0'
     );
 \deci_high.raw_data_reg[260]\: unisim.vcomponents.FDRE
@@ -14566,7 +11938,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(260),
-      Q => \^raw_data\(260),
+      Q => raw_data(260),
       R => '0'
     );
 \deci_high.raw_data_reg[261]\: unisim.vcomponents.FDRE
@@ -14574,7 +11946,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(261),
-      Q => \^raw_data\(261),
+      Q => raw_data(261),
       R => '0'
     );
 \deci_high.raw_data_reg[262]\: unisim.vcomponents.FDRE
@@ -14582,7 +11954,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(262),
-      Q => \^raw_data\(262),
+      Q => raw_data(262),
       R => '0'
     );
 \deci_high.raw_data_reg[263]\: unisim.vcomponents.FDRE
@@ -14590,7 +11962,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(263),
-      Q => \^raw_data\(263),
+      Q => raw_data(263),
       R => '0'
     );
 \deci_high.raw_data_reg[264]\: unisim.vcomponents.FDRE
@@ -14598,7 +11970,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(264),
-      Q => \^raw_data\(264),
+      Q => raw_data(264),
       R => '0'
     );
 \deci_high.raw_data_reg[265]\: unisim.vcomponents.FDRE
@@ -14606,7 +11978,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(265),
-      Q => \^raw_data\(265),
+      Q => raw_data(265),
       R => '0'
     );
 \deci_high.raw_data_reg[266]\: unisim.vcomponents.FDRE
@@ -14614,7 +11986,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(266),
-      Q => \^raw_data\(266),
+      Q => raw_data(266),
       R => '0'
     );
 \deci_high.raw_data_reg[267]\: unisim.vcomponents.FDRE
@@ -14622,7 +11994,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(267),
-      Q => \^raw_data\(267),
+      Q => raw_data(267),
       R => '0'
     );
 \deci_high.raw_data_reg[268]\: unisim.vcomponents.FDRE
@@ -14630,7 +12002,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(268),
-      Q => \^raw_data\(268),
+      Q => raw_data(268),
       R => '0'
     );
 \deci_high.raw_data_reg[269]\: unisim.vcomponents.FDRE
@@ -14638,7 +12010,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(269),
-      Q => \^raw_data\(269),
+      Q => raw_data(269),
       R => '0'
     );
 \deci_high.raw_data_reg[26]\: unisim.vcomponents.FDRE
@@ -14646,7 +12018,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(26),
-      Q => \^raw_data\(26),
+      Q => raw_data(26),
       R => '0'
     );
 \deci_high.raw_data_reg[270]\: unisim.vcomponents.FDRE
@@ -14654,7 +12026,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(270),
-      Q => \^raw_data\(270),
+      Q => raw_data(270),
       R => '0'
     );
 \deci_high.raw_data_reg[271]\: unisim.vcomponents.FDRE
@@ -14662,7 +12034,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(271),
-      Q => \^raw_data\(271),
+      Q => raw_data(271),
       R => '0'
     );
 \deci_high.raw_data_reg[272]\: unisim.vcomponents.FDRE
@@ -14670,7 +12042,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(272),
-      Q => \^raw_data\(272),
+      Q => raw_data(272),
       R => '0'
     );
 \deci_high.raw_data_reg[273]\: unisim.vcomponents.FDRE
@@ -14678,7 +12050,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(273),
-      Q => \^raw_data\(273),
+      Q => raw_data(273),
       R => '0'
     );
 \deci_high.raw_data_reg[274]\: unisim.vcomponents.FDRE
@@ -14686,7 +12058,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(274),
-      Q => \^raw_data\(274),
+      Q => raw_data(274),
       R => '0'
     );
 \deci_high.raw_data_reg[275]\: unisim.vcomponents.FDRE
@@ -14694,7 +12066,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(275),
-      Q => \^raw_data\(275),
+      Q => raw_data(275),
       R => '0'
     );
 \deci_high.raw_data_reg[276]\: unisim.vcomponents.FDRE
@@ -14702,7 +12074,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(276),
-      Q => \^raw_data\(276),
+      Q => raw_data(276),
       R => '0'
     );
 \deci_high.raw_data_reg[277]\: unisim.vcomponents.FDRE
@@ -14710,7 +12082,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(277),
-      Q => \^raw_data\(277),
+      Q => raw_data(277),
       R => '0'
     );
 \deci_high.raw_data_reg[278]\: unisim.vcomponents.FDRE
@@ -14718,7 +12090,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(278),
-      Q => \^raw_data\(278),
+      Q => raw_data(278),
       R => '0'
     );
 \deci_high.raw_data_reg[279]\: unisim.vcomponents.FDRE
@@ -14726,7 +12098,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(279),
-      Q => \^raw_data\(279),
+      Q => raw_data(279),
       R => '0'
     );
 \deci_high.raw_data_reg[27]\: unisim.vcomponents.FDRE
@@ -14734,7 +12106,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(27),
-      Q => \^raw_data\(27),
+      Q => raw_data(27),
       R => '0'
     );
 \deci_high.raw_data_reg[280]\: unisim.vcomponents.FDRE
@@ -14742,7 +12114,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(280),
-      Q => \^raw_data\(280),
+      Q => raw_data(280),
       R => '0'
     );
 \deci_high.raw_data_reg[281]\: unisim.vcomponents.FDRE
@@ -14750,7 +12122,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(281),
-      Q => \^raw_data\(281),
+      Q => raw_data(281),
       R => '0'
     );
 \deci_high.raw_data_reg[282]\: unisim.vcomponents.FDRE
@@ -14758,7 +12130,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(282),
-      Q => \^raw_data\(282),
+      Q => raw_data(282),
       R => '0'
     );
 \deci_high.raw_data_reg[283]\: unisim.vcomponents.FDRE
@@ -14766,7 +12138,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(283),
-      Q => \^raw_data\(283),
+      Q => raw_data(283),
       R => '0'
     );
 \deci_high.raw_data_reg[284]\: unisim.vcomponents.FDRE
@@ -14774,7 +12146,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(284),
-      Q => \^raw_data\(284),
+      Q => raw_data(284),
       R => '0'
     );
 \deci_high.raw_data_reg[285]\: unisim.vcomponents.FDRE
@@ -14782,7 +12154,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(285),
-      Q => \^raw_data\(285),
+      Q => raw_data(285),
       R => '0'
     );
 \deci_high.raw_data_reg[286]\: unisim.vcomponents.FDRE
@@ -14790,7 +12162,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(286),
-      Q => \^raw_data\(286),
+      Q => raw_data(286),
       R => '0'
     );
 \deci_high.raw_data_reg[287]\: unisim.vcomponents.FDRE
@@ -14798,7 +12170,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(287),
-      Q => \^raw_data\(287),
+      Q => raw_data(287),
       R => '0'
     );
 \deci_high.raw_data_reg[288]\: unisim.vcomponents.FDRE
@@ -14806,7 +12178,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(288),
-      Q => \^raw_data\(288),
+      Q => raw_data(288),
       R => '0'
     );
 \deci_high.raw_data_reg[289]\: unisim.vcomponents.FDRE
@@ -14814,7 +12186,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(289),
-      Q => \^raw_data\(289),
+      Q => raw_data(289),
       R => '0'
     );
 \deci_high.raw_data_reg[28]\: unisim.vcomponents.FDRE
@@ -14822,7 +12194,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(28),
-      Q => \^raw_data\(28),
+      Q => raw_data(28),
       R => '0'
     );
 \deci_high.raw_data_reg[290]\: unisim.vcomponents.FDRE
@@ -14830,7 +12202,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(290),
-      Q => \^raw_data\(290),
+      Q => raw_data(290),
       R => '0'
     );
 \deci_high.raw_data_reg[291]\: unisim.vcomponents.FDRE
@@ -14838,7 +12210,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(291),
-      Q => \^raw_data\(291),
+      Q => raw_data(291),
       R => '0'
     );
 \deci_high.raw_data_reg[292]\: unisim.vcomponents.FDRE
@@ -14846,7 +12218,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(292),
-      Q => \^raw_data\(292),
+      Q => raw_data(292),
       R => '0'
     );
 \deci_high.raw_data_reg[293]\: unisim.vcomponents.FDRE
@@ -14854,7 +12226,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(293),
-      Q => \^raw_data\(293),
+      Q => raw_data(293),
       R => '0'
     );
 \deci_high.raw_data_reg[294]\: unisim.vcomponents.FDRE
@@ -14862,7 +12234,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(294),
-      Q => \^raw_data\(294),
+      Q => raw_data(294),
       R => '0'
     );
 \deci_high.raw_data_reg[295]\: unisim.vcomponents.FDRE
@@ -14870,7 +12242,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(295),
-      Q => \^raw_data\(295),
+      Q => raw_data(295),
       R => '0'
     );
 \deci_high.raw_data_reg[296]\: unisim.vcomponents.FDRE
@@ -14878,7 +12250,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(296),
-      Q => \^raw_data\(296),
+      Q => raw_data(296),
       R => '0'
     );
 \deci_high.raw_data_reg[297]\: unisim.vcomponents.FDRE
@@ -14886,7 +12258,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(297),
-      Q => \^raw_data\(297),
+      Q => raw_data(297),
       R => '0'
     );
 \deci_high.raw_data_reg[298]\: unisim.vcomponents.FDRE
@@ -14894,7 +12266,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(298),
-      Q => \^raw_data\(298),
+      Q => raw_data(298),
       R => '0'
     );
 \deci_high.raw_data_reg[299]\: unisim.vcomponents.FDRE
@@ -14902,7 +12274,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(299),
-      Q => \^raw_data\(299),
+      Q => raw_data(299),
       R => '0'
     );
 \deci_high.raw_data_reg[29]\: unisim.vcomponents.FDRE
@@ -14910,7 +12282,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(29),
-      Q => \^raw_data\(29),
+      Q => raw_data(29),
       R => '0'
     );
 \deci_high.raw_data_reg[2]\: unisim.vcomponents.FDRE
@@ -14918,7 +12290,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(2),
-      Q => \^raw_data\(2),
+      Q => raw_data(2),
       R => '0'
     );
 \deci_high.raw_data_reg[300]\: unisim.vcomponents.FDRE
@@ -14926,7 +12298,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(300),
-      Q => \^raw_data\(300),
+      Q => raw_data(300),
       R => '0'
     );
 \deci_high.raw_data_reg[301]\: unisim.vcomponents.FDRE
@@ -14934,7 +12306,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(301),
-      Q => \^raw_data\(301),
+      Q => raw_data(301),
       R => '0'
     );
 \deci_high.raw_data_reg[302]\: unisim.vcomponents.FDRE
@@ -14942,7 +12314,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(302),
-      Q => \^raw_data\(302),
+      Q => raw_data(302),
       R => '0'
     );
 \deci_high.raw_data_reg[303]\: unisim.vcomponents.FDRE
@@ -14950,7 +12322,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(303),
-      Q => \^raw_data\(303),
+      Q => raw_data(303),
       R => '0'
     );
 \deci_high.raw_data_reg[304]\: unisim.vcomponents.FDRE
@@ -14958,7 +12330,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(304),
-      Q => \^raw_data\(304),
+      Q => raw_data(304),
       R => '0'
     );
 \deci_high.raw_data_reg[305]\: unisim.vcomponents.FDRE
@@ -14966,7 +12338,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(305),
-      Q => \^raw_data\(305),
+      Q => raw_data(305),
       R => '0'
     );
 \deci_high.raw_data_reg[306]\: unisim.vcomponents.FDRE
@@ -14974,7 +12346,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(306),
-      Q => \^raw_data\(306),
+      Q => raw_data(306),
       R => '0'
     );
 \deci_high.raw_data_reg[307]\: unisim.vcomponents.FDRE
@@ -14982,7 +12354,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(307),
-      Q => \^raw_data\(307),
+      Q => raw_data(307),
       R => '0'
     );
 \deci_high.raw_data_reg[308]\: unisim.vcomponents.FDRE
@@ -14990,7 +12362,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(308),
-      Q => \^raw_data\(308),
+      Q => raw_data(308),
       R => '0'
     );
 \deci_high.raw_data_reg[309]\: unisim.vcomponents.FDRE
@@ -14998,7 +12370,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(309),
-      Q => \^raw_data\(309),
+      Q => raw_data(309),
       R => '0'
     );
 \deci_high.raw_data_reg[30]\: unisim.vcomponents.FDRE
@@ -15006,7 +12378,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(30),
-      Q => \^raw_data\(30),
+      Q => raw_data(30),
       R => '0'
     );
 \deci_high.raw_data_reg[310]\: unisim.vcomponents.FDRE
@@ -15014,7 +12386,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(310),
-      Q => \^raw_data\(310),
+      Q => raw_data(310),
       R => '0'
     );
 \deci_high.raw_data_reg[311]\: unisim.vcomponents.FDRE
@@ -15022,7 +12394,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(311),
-      Q => \^raw_data\(311),
+      Q => raw_data(311),
       R => '0'
     );
 \deci_high.raw_data_reg[312]\: unisim.vcomponents.FDRE
@@ -15030,7 +12402,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(312),
-      Q => \^raw_data\(312),
+      Q => raw_data(312),
       R => '0'
     );
 \deci_high.raw_data_reg[313]\: unisim.vcomponents.FDRE
@@ -15038,7 +12410,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(313),
-      Q => \^raw_data\(313),
+      Q => raw_data(313),
       R => '0'
     );
 \deci_high.raw_data_reg[314]\: unisim.vcomponents.FDRE
@@ -15046,7 +12418,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(314),
-      Q => \^raw_data\(314),
+      Q => raw_data(314),
       R => '0'
     );
 \deci_high.raw_data_reg[315]\: unisim.vcomponents.FDRE
@@ -15054,7 +12426,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(315),
-      Q => \^raw_data\(315),
+      Q => raw_data(315),
       R => '0'
     );
 \deci_high.raw_data_reg[316]\: unisim.vcomponents.FDRE
@@ -15062,7 +12434,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(316),
-      Q => \^raw_data\(316),
+      Q => raw_data(316),
       R => '0'
     );
 \deci_high.raw_data_reg[317]\: unisim.vcomponents.FDRE
@@ -15070,7 +12442,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(317),
-      Q => \^raw_data\(317),
+      Q => raw_data(317),
       R => '0'
     );
 \deci_high.raw_data_reg[318]\: unisim.vcomponents.FDRE
@@ -15078,7 +12450,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(318),
-      Q => \^raw_data\(318),
+      Q => raw_data(318),
       R => '0'
     );
 \deci_high.raw_data_reg[319]\: unisim.vcomponents.FDRE
@@ -15086,7 +12458,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(319),
-      Q => \^raw_data\(319),
+      Q => raw_data(319),
       R => '0'
     );
 \deci_high.raw_data_reg[31]\: unisim.vcomponents.FDRE
@@ -15094,7 +12466,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(31),
-      Q => \^raw_data\(31),
+      Q => raw_data(31),
       R => '0'
     );
 \deci_high.raw_data_reg[320]\: unisim.vcomponents.FDRE
@@ -15102,7 +12474,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(320),
-      Q => \^raw_data\(320),
+      Q => raw_data(320),
       R => '0'
     );
 \deci_high.raw_data_reg[321]\: unisim.vcomponents.FDRE
@@ -15110,7 +12482,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(321),
-      Q => \^raw_data\(321),
+      Q => raw_data(321),
       R => '0'
     );
 \deci_high.raw_data_reg[322]\: unisim.vcomponents.FDRE
@@ -15118,7 +12490,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(322),
-      Q => \^raw_data\(322),
+      Q => raw_data(322),
       R => '0'
     );
 \deci_high.raw_data_reg[323]\: unisim.vcomponents.FDRE
@@ -15126,7 +12498,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(323),
-      Q => \^raw_data\(323),
+      Q => raw_data(323),
       R => '0'
     );
 \deci_high.raw_data_reg[324]\: unisim.vcomponents.FDRE
@@ -15134,7 +12506,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(324),
-      Q => \^raw_data\(324),
+      Q => raw_data(324),
       R => '0'
     );
 \deci_high.raw_data_reg[325]\: unisim.vcomponents.FDRE
@@ -15142,7 +12514,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(325),
-      Q => \^raw_data\(325),
+      Q => raw_data(325),
       R => '0'
     );
 \deci_high.raw_data_reg[326]\: unisim.vcomponents.FDRE
@@ -15150,7 +12522,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(326),
-      Q => \^raw_data\(326),
+      Q => raw_data(326),
       R => '0'
     );
 \deci_high.raw_data_reg[327]\: unisim.vcomponents.FDRE
@@ -15158,7 +12530,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(327),
-      Q => \^raw_data\(327),
+      Q => raw_data(327),
       R => '0'
     );
 \deci_high.raw_data_reg[328]\: unisim.vcomponents.FDRE
@@ -15166,7 +12538,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(328),
-      Q => \^raw_data\(328),
+      Q => raw_data(328),
       R => '0'
     );
 \deci_high.raw_data_reg[329]\: unisim.vcomponents.FDRE
@@ -15174,7 +12546,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(329),
-      Q => \^raw_data\(329),
+      Q => raw_data(329),
       R => '0'
     );
 \deci_high.raw_data_reg[32]\: unisim.vcomponents.FDRE
@@ -15182,7 +12554,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(32),
-      Q => \^raw_data\(32),
+      Q => raw_data(32),
       R => '0'
     );
 \deci_high.raw_data_reg[330]\: unisim.vcomponents.FDRE
@@ -15190,7 +12562,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(330),
-      Q => \^raw_data\(330),
+      Q => raw_data(330),
       R => '0'
     );
 \deci_high.raw_data_reg[331]\: unisim.vcomponents.FDRE
@@ -15198,7 +12570,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(331),
-      Q => \^raw_data\(331),
+      Q => raw_data(331),
       R => '0'
     );
 \deci_high.raw_data_reg[332]\: unisim.vcomponents.FDRE
@@ -15206,7 +12578,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(332),
-      Q => \^raw_data\(332),
+      Q => raw_data(332),
       R => '0'
     );
 \deci_high.raw_data_reg[333]\: unisim.vcomponents.FDRE
@@ -15214,7 +12586,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(333),
-      Q => \^raw_data\(333),
+      Q => raw_data(333),
       R => '0'
     );
 \deci_high.raw_data_reg[334]\: unisim.vcomponents.FDRE
@@ -15222,7 +12594,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(334),
-      Q => \^raw_data\(334),
+      Q => raw_data(334),
       R => '0'
     );
 \deci_high.raw_data_reg[335]\: unisim.vcomponents.FDRE
@@ -15230,7 +12602,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(335),
-      Q => \^raw_data\(335),
+      Q => raw_data(335),
       R => '0'
     );
 \deci_high.raw_data_reg[336]\: unisim.vcomponents.FDRE
@@ -15238,7 +12610,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(336),
-      Q => \^raw_data\(336),
+      Q => raw_data(336),
       R => '0'
     );
 \deci_high.raw_data_reg[337]\: unisim.vcomponents.FDRE
@@ -15246,7 +12618,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(337),
-      Q => \^raw_data\(337),
+      Q => raw_data(337),
       R => '0'
     );
 \deci_high.raw_data_reg[338]\: unisim.vcomponents.FDRE
@@ -15254,7 +12626,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(338),
-      Q => \^raw_data\(338),
+      Q => raw_data(338),
       R => '0'
     );
 \deci_high.raw_data_reg[339]\: unisim.vcomponents.FDRE
@@ -15262,7 +12634,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(339),
-      Q => \^raw_data\(339),
+      Q => raw_data(339),
       R => '0'
     );
 \deci_high.raw_data_reg[33]\: unisim.vcomponents.FDRE
@@ -15270,7 +12642,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(33),
-      Q => \^raw_data\(33),
+      Q => raw_data(33),
       R => '0'
     );
 \deci_high.raw_data_reg[340]\: unisim.vcomponents.FDRE
@@ -15278,7 +12650,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(340),
-      Q => \^raw_data\(340),
+      Q => raw_data(340),
       R => '0'
     );
 \deci_high.raw_data_reg[341]\: unisim.vcomponents.FDRE
@@ -15286,7 +12658,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(341),
-      Q => \^raw_data\(341),
+      Q => raw_data(341),
       R => '0'
     );
 \deci_high.raw_data_reg[342]\: unisim.vcomponents.FDRE
@@ -15294,7 +12666,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(342),
-      Q => \^raw_data\(342),
+      Q => raw_data(342),
       R => '0'
     );
 \deci_high.raw_data_reg[343]\: unisim.vcomponents.FDRE
@@ -15302,7 +12674,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(343),
-      Q => \^raw_data\(343),
+      Q => raw_data(343),
       R => '0'
     );
 \deci_high.raw_data_reg[344]\: unisim.vcomponents.FDRE
@@ -15310,7 +12682,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(344),
-      Q => \^raw_data\(344),
+      Q => raw_data(344),
       R => '0'
     );
 \deci_high.raw_data_reg[345]\: unisim.vcomponents.FDRE
@@ -15318,7 +12690,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(345),
-      Q => \^raw_data\(345),
+      Q => raw_data(345),
       R => '0'
     );
 \deci_high.raw_data_reg[346]\: unisim.vcomponents.FDRE
@@ -15326,7 +12698,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(346),
-      Q => \^raw_data\(346),
+      Q => raw_data(346),
       R => '0'
     );
 \deci_high.raw_data_reg[347]\: unisim.vcomponents.FDRE
@@ -15334,7 +12706,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(347),
-      Q => \^raw_data\(347),
+      Q => raw_data(347),
       R => '0'
     );
 \deci_high.raw_data_reg[348]\: unisim.vcomponents.FDRE
@@ -15342,7 +12714,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(348),
-      Q => \^raw_data\(348),
+      Q => raw_data(348),
       R => '0'
     );
 \deci_high.raw_data_reg[349]\: unisim.vcomponents.FDRE
@@ -15350,7 +12722,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(349),
-      Q => \^raw_data\(349),
+      Q => raw_data(349),
       R => '0'
     );
 \deci_high.raw_data_reg[34]\: unisim.vcomponents.FDRE
@@ -15358,7 +12730,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(34),
-      Q => \^raw_data\(34),
+      Q => raw_data(34),
       R => '0'
     );
 \deci_high.raw_data_reg[350]\: unisim.vcomponents.FDRE
@@ -15366,7 +12738,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(350),
-      Q => \^raw_data\(350),
+      Q => raw_data(350),
       R => '0'
     );
 \deci_high.raw_data_reg[351]\: unisim.vcomponents.FDRE
@@ -15374,7 +12746,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(351),
-      Q => \^raw_data\(351),
+      Q => raw_data(351),
       R => '0'
     );
 \deci_high.raw_data_reg[352]\: unisim.vcomponents.FDRE
@@ -15382,7 +12754,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(352),
-      Q => \^raw_data\(352),
+      Q => raw_data(352),
       R => '0'
     );
 \deci_high.raw_data_reg[353]\: unisim.vcomponents.FDRE
@@ -15390,7 +12762,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(353),
-      Q => \^raw_data\(353),
+      Q => raw_data(353),
       R => '0'
     );
 \deci_high.raw_data_reg[354]\: unisim.vcomponents.FDRE
@@ -15398,7 +12770,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(354),
-      Q => \^raw_data\(354),
+      Q => raw_data(354),
       R => '0'
     );
 \deci_high.raw_data_reg[355]\: unisim.vcomponents.FDRE
@@ -15406,7 +12778,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(355),
-      Q => \^raw_data\(355),
+      Q => raw_data(355),
       R => '0'
     );
 \deci_high.raw_data_reg[356]\: unisim.vcomponents.FDRE
@@ -15414,7 +12786,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(356),
-      Q => \^raw_data\(356),
+      Q => raw_data(356),
       R => '0'
     );
 \deci_high.raw_data_reg[357]\: unisim.vcomponents.FDRE
@@ -15422,7 +12794,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(357),
-      Q => \^raw_data\(357),
+      Q => raw_data(357),
       R => '0'
     );
 \deci_high.raw_data_reg[358]\: unisim.vcomponents.FDRE
@@ -15430,7 +12802,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(358),
-      Q => \^raw_data\(358),
+      Q => raw_data(358),
       R => '0'
     );
 \deci_high.raw_data_reg[359]\: unisim.vcomponents.FDRE
@@ -15438,7 +12810,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(359),
-      Q => \^raw_data\(359),
+      Q => raw_data(359),
       R => '0'
     );
 \deci_high.raw_data_reg[35]\: unisim.vcomponents.FDRE
@@ -15446,7 +12818,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(35),
-      Q => \^raw_data\(35),
+      Q => raw_data(35),
       R => '0'
     );
 \deci_high.raw_data_reg[360]\: unisim.vcomponents.FDRE
@@ -15454,7 +12826,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(360),
-      Q => \^raw_data\(360),
+      Q => raw_data(360),
       R => '0'
     );
 \deci_high.raw_data_reg[361]\: unisim.vcomponents.FDRE
@@ -15462,7 +12834,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(361),
-      Q => \^raw_data\(361),
+      Q => raw_data(361),
       R => '0'
     );
 \deci_high.raw_data_reg[362]\: unisim.vcomponents.FDRE
@@ -15470,7 +12842,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(362),
-      Q => \^raw_data\(362),
+      Q => raw_data(362),
       R => '0'
     );
 \deci_high.raw_data_reg[363]\: unisim.vcomponents.FDRE
@@ -15478,7 +12850,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(363),
-      Q => \^raw_data\(363),
+      Q => raw_data(363),
       R => '0'
     );
 \deci_high.raw_data_reg[364]\: unisim.vcomponents.FDRE
@@ -15486,7 +12858,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(364),
-      Q => \^raw_data\(364),
+      Q => raw_data(364),
       R => '0'
     );
 \deci_high.raw_data_reg[365]\: unisim.vcomponents.FDRE
@@ -15494,7 +12866,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(365),
-      Q => \^raw_data\(365),
+      Q => raw_data(365),
       R => '0'
     );
 \deci_high.raw_data_reg[366]\: unisim.vcomponents.FDRE
@@ -15502,7 +12874,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(366),
-      Q => \^raw_data\(366),
+      Q => raw_data(366),
       R => '0'
     );
 \deci_high.raw_data_reg[367]\: unisim.vcomponents.FDRE
@@ -15510,7 +12882,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(367),
-      Q => \^raw_data\(367),
+      Q => raw_data(367),
       R => '0'
     );
 \deci_high.raw_data_reg[368]\: unisim.vcomponents.FDRE
@@ -15518,7 +12890,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(368),
-      Q => \^raw_data\(368),
+      Q => raw_data(368),
       R => '0'
     );
 \deci_high.raw_data_reg[369]\: unisim.vcomponents.FDRE
@@ -15526,7 +12898,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(369),
-      Q => \^raw_data\(369),
+      Q => raw_data(369),
       R => '0'
     );
 \deci_high.raw_data_reg[36]\: unisim.vcomponents.FDRE
@@ -15534,7 +12906,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(36),
-      Q => \^raw_data\(36),
+      Q => raw_data(36),
       R => '0'
     );
 \deci_high.raw_data_reg[370]\: unisim.vcomponents.FDRE
@@ -15542,7 +12914,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(370),
-      Q => \^raw_data\(370),
+      Q => raw_data(370),
       R => '0'
     );
 \deci_high.raw_data_reg[371]\: unisim.vcomponents.FDRE
@@ -15550,7 +12922,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(371),
-      Q => \^raw_data\(371),
+      Q => raw_data(371),
       R => '0'
     );
 \deci_high.raw_data_reg[372]\: unisim.vcomponents.FDRE
@@ -15558,7 +12930,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(372),
-      Q => \^raw_data\(372),
+      Q => raw_data(372),
       R => '0'
     );
 \deci_high.raw_data_reg[373]\: unisim.vcomponents.FDRE
@@ -15566,7 +12938,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(373),
-      Q => \^raw_data\(373),
+      Q => raw_data(373),
       R => '0'
     );
 \deci_high.raw_data_reg[374]\: unisim.vcomponents.FDRE
@@ -15574,7 +12946,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(374),
-      Q => \^raw_data\(374),
+      Q => raw_data(374),
       R => '0'
     );
 \deci_high.raw_data_reg[375]\: unisim.vcomponents.FDRE
@@ -15582,7 +12954,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(375),
-      Q => \^raw_data\(375),
+      Q => raw_data(375),
       R => '0'
     );
 \deci_high.raw_data_reg[376]\: unisim.vcomponents.FDRE
@@ -15590,7 +12962,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(376),
-      Q => \^raw_data\(376),
+      Q => raw_data(376),
       R => '0'
     );
 \deci_high.raw_data_reg[377]\: unisim.vcomponents.FDRE
@@ -15598,7 +12970,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(377),
-      Q => \^raw_data\(377),
+      Q => raw_data(377),
       R => '0'
     );
 \deci_high.raw_data_reg[378]\: unisim.vcomponents.FDRE
@@ -15606,7 +12978,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(378),
-      Q => \^raw_data\(378),
+      Q => raw_data(378),
       R => '0'
     );
 \deci_high.raw_data_reg[379]\: unisim.vcomponents.FDRE
@@ -15614,7 +12986,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(379),
-      Q => \^raw_data\(379),
+      Q => raw_data(379),
       R => '0'
     );
 \deci_high.raw_data_reg[37]\: unisim.vcomponents.FDRE
@@ -15622,7 +12994,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(37),
-      Q => \^raw_data\(37),
+      Q => raw_data(37),
       R => '0'
     );
 \deci_high.raw_data_reg[380]\: unisim.vcomponents.FDRE
@@ -15630,7 +13002,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(380),
-      Q => \^raw_data\(380),
+      Q => raw_data(380),
       R => '0'
     );
 \deci_high.raw_data_reg[381]\: unisim.vcomponents.FDRE
@@ -15638,7 +13010,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(381),
-      Q => \^raw_data\(381),
+      Q => raw_data(381),
       R => '0'
     );
 \deci_high.raw_data_reg[382]\: unisim.vcomponents.FDRE
@@ -15646,7 +13018,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(382),
-      Q => \^raw_data\(382),
+      Q => raw_data(382),
       R => '0'
     );
 \deci_high.raw_data_reg[383]\: unisim.vcomponents.FDRE
@@ -15654,7 +13026,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(383),
-      Q => \^raw_data\(383),
+      Q => raw_data(383),
       R => '0'
     );
 \deci_high.raw_data_reg[38]\: unisim.vcomponents.FDRE
@@ -15662,7 +13034,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(38),
-      Q => \^raw_data\(38),
+      Q => raw_data(38),
       R => '0'
     );
 \deci_high.raw_data_reg[39]\: unisim.vcomponents.FDRE
@@ -15670,7 +13042,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(39),
-      Q => \^raw_data\(39),
+      Q => raw_data(39),
       R => '0'
     );
 \deci_high.raw_data_reg[3]\: unisim.vcomponents.FDRE
@@ -15678,7 +13050,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(3),
-      Q => \^raw_data\(3),
+      Q => raw_data(3),
       R => '0'
     );
 \deci_high.raw_data_reg[40]\: unisim.vcomponents.FDRE
@@ -15686,7 +13058,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(40),
-      Q => \^raw_data\(40),
+      Q => raw_data(40),
       R => '0'
     );
 \deci_high.raw_data_reg[41]\: unisim.vcomponents.FDRE
@@ -15694,7 +13066,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(41),
-      Q => \^raw_data\(41),
+      Q => raw_data(41),
       R => '0'
     );
 \deci_high.raw_data_reg[42]\: unisim.vcomponents.FDRE
@@ -15702,7 +13074,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(42),
-      Q => \^raw_data\(42),
+      Q => raw_data(42),
       R => '0'
     );
 \deci_high.raw_data_reg[43]\: unisim.vcomponents.FDRE
@@ -15710,7 +13082,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(43),
-      Q => \^raw_data\(43),
+      Q => raw_data(43),
       R => '0'
     );
 \deci_high.raw_data_reg[44]\: unisim.vcomponents.FDRE
@@ -15718,7 +13090,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(44),
-      Q => \^raw_data\(44),
+      Q => raw_data(44),
       R => '0'
     );
 \deci_high.raw_data_reg[45]\: unisim.vcomponents.FDRE
@@ -15726,7 +13098,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(45),
-      Q => \^raw_data\(45),
+      Q => raw_data(45),
       R => '0'
     );
 \deci_high.raw_data_reg[46]\: unisim.vcomponents.FDRE
@@ -15734,7 +13106,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(46),
-      Q => \^raw_data\(46),
+      Q => raw_data(46),
       R => '0'
     );
 \deci_high.raw_data_reg[47]\: unisim.vcomponents.FDRE
@@ -15742,7 +13114,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(47),
-      Q => \^raw_data\(47),
+      Q => raw_data(47),
       R => '0'
     );
 \deci_high.raw_data_reg[48]\: unisim.vcomponents.FDRE
@@ -15750,7 +13122,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(48),
-      Q => \^raw_data\(48),
+      Q => raw_data(48),
       R => '0'
     );
 \deci_high.raw_data_reg[49]\: unisim.vcomponents.FDRE
@@ -15758,7 +13130,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(49),
-      Q => \^raw_data\(49),
+      Q => raw_data(49),
       R => '0'
     );
 \deci_high.raw_data_reg[4]\: unisim.vcomponents.FDRE
@@ -15766,7 +13138,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(4),
-      Q => \^raw_data\(4),
+      Q => raw_data(4),
       R => '0'
     );
 \deci_high.raw_data_reg[50]\: unisim.vcomponents.FDRE
@@ -15774,7 +13146,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(50),
-      Q => \^raw_data\(50),
+      Q => raw_data(50),
       R => '0'
     );
 \deci_high.raw_data_reg[51]\: unisim.vcomponents.FDRE
@@ -15782,7 +13154,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(51),
-      Q => \^raw_data\(51),
+      Q => raw_data(51),
       R => '0'
     );
 \deci_high.raw_data_reg[52]\: unisim.vcomponents.FDRE
@@ -15790,7 +13162,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(52),
-      Q => \^raw_data\(52),
+      Q => raw_data(52),
       R => '0'
     );
 \deci_high.raw_data_reg[53]\: unisim.vcomponents.FDRE
@@ -15798,7 +13170,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(53),
-      Q => \^raw_data\(53),
+      Q => raw_data(53),
       R => '0'
     );
 \deci_high.raw_data_reg[54]\: unisim.vcomponents.FDRE
@@ -15806,7 +13178,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(54),
-      Q => \^raw_data\(54),
+      Q => raw_data(54),
       R => '0'
     );
 \deci_high.raw_data_reg[55]\: unisim.vcomponents.FDRE
@@ -15814,7 +13186,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(55),
-      Q => \^raw_data\(55),
+      Q => raw_data(55),
       R => '0'
     );
 \deci_high.raw_data_reg[56]\: unisim.vcomponents.FDRE
@@ -15822,7 +13194,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(56),
-      Q => \^raw_data\(56),
+      Q => raw_data(56),
       R => '0'
     );
 \deci_high.raw_data_reg[57]\: unisim.vcomponents.FDRE
@@ -15830,7 +13202,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(57),
-      Q => \^raw_data\(57),
+      Q => raw_data(57),
       R => '0'
     );
 \deci_high.raw_data_reg[58]\: unisim.vcomponents.FDRE
@@ -15838,7 +13210,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(58),
-      Q => \^raw_data\(58),
+      Q => raw_data(58),
       R => '0'
     );
 \deci_high.raw_data_reg[59]\: unisim.vcomponents.FDRE
@@ -15846,7 +13218,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(59),
-      Q => \^raw_data\(59),
+      Q => raw_data(59),
       R => '0'
     );
 \deci_high.raw_data_reg[5]\: unisim.vcomponents.FDRE
@@ -15854,7 +13226,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(5),
-      Q => \^raw_data\(5),
+      Q => raw_data(5),
       R => '0'
     );
 \deci_high.raw_data_reg[60]\: unisim.vcomponents.FDRE
@@ -15862,7 +13234,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(60),
-      Q => \^raw_data\(60),
+      Q => raw_data(60),
       R => '0'
     );
 \deci_high.raw_data_reg[61]\: unisim.vcomponents.FDRE
@@ -15870,7 +13242,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(61),
-      Q => \^raw_data\(61),
+      Q => raw_data(61),
       R => '0'
     );
 \deci_high.raw_data_reg[62]\: unisim.vcomponents.FDRE
@@ -15878,7 +13250,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(62),
-      Q => \^raw_data\(62),
+      Q => raw_data(62),
       R => '0'
     );
 \deci_high.raw_data_reg[63]\: unisim.vcomponents.FDRE
@@ -15886,7 +13258,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(63),
-      Q => \^raw_data\(63),
+      Q => raw_data(63),
       R => '0'
     );
 \deci_high.raw_data_reg[64]\: unisim.vcomponents.FDRE
@@ -15894,7 +13266,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(64),
-      Q => \^raw_data\(64),
+      Q => raw_data(64),
       R => '0'
     );
 \deci_high.raw_data_reg[65]\: unisim.vcomponents.FDRE
@@ -15902,7 +13274,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(65),
-      Q => \^raw_data\(65),
+      Q => raw_data(65),
       R => '0'
     );
 \deci_high.raw_data_reg[66]\: unisim.vcomponents.FDRE
@@ -15910,7 +13282,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(66),
-      Q => \^raw_data\(66),
+      Q => raw_data(66),
       R => '0'
     );
 \deci_high.raw_data_reg[67]\: unisim.vcomponents.FDRE
@@ -15918,7 +13290,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(67),
-      Q => \^raw_data\(67),
+      Q => raw_data(67),
       R => '0'
     );
 \deci_high.raw_data_reg[68]\: unisim.vcomponents.FDRE
@@ -15926,7 +13298,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(68),
-      Q => \^raw_data\(68),
+      Q => raw_data(68),
       R => '0'
     );
 \deci_high.raw_data_reg[69]\: unisim.vcomponents.FDRE
@@ -15934,7 +13306,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(69),
-      Q => \^raw_data\(69),
+      Q => raw_data(69),
       R => '0'
     );
 \deci_high.raw_data_reg[6]\: unisim.vcomponents.FDRE
@@ -15942,7 +13314,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(6),
-      Q => \^raw_data\(6),
+      Q => raw_data(6),
       R => '0'
     );
 \deci_high.raw_data_reg[70]\: unisim.vcomponents.FDRE
@@ -15950,7 +13322,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(70),
-      Q => \^raw_data\(70),
+      Q => raw_data(70),
       R => '0'
     );
 \deci_high.raw_data_reg[71]\: unisim.vcomponents.FDRE
@@ -15958,7 +13330,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(71),
-      Q => \^raw_data\(71),
+      Q => raw_data(71),
       R => '0'
     );
 \deci_high.raw_data_reg[72]\: unisim.vcomponents.FDRE
@@ -15966,7 +13338,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(72),
-      Q => \^raw_data\(72),
+      Q => raw_data(72),
       R => '0'
     );
 \deci_high.raw_data_reg[73]\: unisim.vcomponents.FDRE
@@ -15974,7 +13346,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(73),
-      Q => \^raw_data\(73),
+      Q => raw_data(73),
       R => '0'
     );
 \deci_high.raw_data_reg[74]\: unisim.vcomponents.FDRE
@@ -15982,7 +13354,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(74),
-      Q => \^raw_data\(74),
+      Q => raw_data(74),
       R => '0'
     );
 \deci_high.raw_data_reg[75]\: unisim.vcomponents.FDRE
@@ -15990,7 +13362,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(75),
-      Q => \^raw_data\(75),
+      Q => raw_data(75),
       R => '0'
     );
 \deci_high.raw_data_reg[76]\: unisim.vcomponents.FDRE
@@ -15998,7 +13370,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(76),
-      Q => \^raw_data\(76),
+      Q => raw_data(76),
       R => '0'
     );
 \deci_high.raw_data_reg[77]\: unisim.vcomponents.FDRE
@@ -16006,7 +13378,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(77),
-      Q => \^raw_data\(77),
+      Q => raw_data(77),
       R => '0'
     );
 \deci_high.raw_data_reg[78]\: unisim.vcomponents.FDRE
@@ -16014,7 +13386,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(78),
-      Q => \^raw_data\(78),
+      Q => raw_data(78),
       R => '0'
     );
 \deci_high.raw_data_reg[79]\: unisim.vcomponents.FDRE
@@ -16022,7 +13394,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(79),
-      Q => \^raw_data\(79),
+      Q => raw_data(79),
       R => '0'
     );
 \deci_high.raw_data_reg[7]\: unisim.vcomponents.FDRE
@@ -16030,7 +13402,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(7),
-      Q => \^raw_data\(7),
+      Q => raw_data(7),
       R => '0'
     );
 \deci_high.raw_data_reg[80]\: unisim.vcomponents.FDRE
@@ -16038,7 +13410,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(80),
-      Q => \^raw_data\(80),
+      Q => raw_data(80),
       R => '0'
     );
 \deci_high.raw_data_reg[81]\: unisim.vcomponents.FDRE
@@ -16046,7 +13418,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(81),
-      Q => \^raw_data\(81),
+      Q => raw_data(81),
       R => '0'
     );
 \deci_high.raw_data_reg[82]\: unisim.vcomponents.FDRE
@@ -16054,7 +13426,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(82),
-      Q => \^raw_data\(82),
+      Q => raw_data(82),
       R => '0'
     );
 \deci_high.raw_data_reg[83]\: unisim.vcomponents.FDRE
@@ -16062,7 +13434,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(83),
-      Q => \^raw_data\(83),
+      Q => raw_data(83),
       R => '0'
     );
 \deci_high.raw_data_reg[84]\: unisim.vcomponents.FDRE
@@ -16070,7 +13442,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(84),
-      Q => \^raw_data\(84),
+      Q => raw_data(84),
       R => '0'
     );
 \deci_high.raw_data_reg[85]\: unisim.vcomponents.FDRE
@@ -16078,7 +13450,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(85),
-      Q => \^raw_data\(85),
+      Q => raw_data(85),
       R => '0'
     );
 \deci_high.raw_data_reg[86]\: unisim.vcomponents.FDRE
@@ -16086,7 +13458,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(86),
-      Q => \^raw_data\(86),
+      Q => raw_data(86),
       R => '0'
     );
 \deci_high.raw_data_reg[87]\: unisim.vcomponents.FDRE
@@ -16094,7 +13466,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(87),
-      Q => \^raw_data\(87),
+      Q => raw_data(87),
       R => '0'
     );
 \deci_high.raw_data_reg[88]\: unisim.vcomponents.FDRE
@@ -16102,7 +13474,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(88),
-      Q => \^raw_data\(88),
+      Q => raw_data(88),
       R => '0'
     );
 \deci_high.raw_data_reg[89]\: unisim.vcomponents.FDRE
@@ -16110,7 +13482,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(89),
-      Q => \^raw_data\(89),
+      Q => raw_data(89),
       R => '0'
     );
 \deci_high.raw_data_reg[8]\: unisim.vcomponents.FDRE
@@ -16118,7 +13490,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(8),
-      Q => \^raw_data\(8),
+      Q => raw_data(8),
       R => '0'
     );
 \deci_high.raw_data_reg[90]\: unisim.vcomponents.FDRE
@@ -16126,7 +13498,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(90),
-      Q => \^raw_data\(90),
+      Q => raw_data(90),
       R => '0'
     );
 \deci_high.raw_data_reg[91]\: unisim.vcomponents.FDRE
@@ -16134,7 +13506,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(91),
-      Q => \^raw_data\(91),
+      Q => raw_data(91),
       R => '0'
     );
 \deci_high.raw_data_reg[92]\: unisim.vcomponents.FDRE
@@ -16142,7 +13514,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(92),
-      Q => \^raw_data\(92),
+      Q => raw_data(92),
       R => '0'
     );
 \deci_high.raw_data_reg[93]\: unisim.vcomponents.FDRE
@@ -16150,7 +13522,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(93),
-      Q => \^raw_data\(93),
+      Q => raw_data(93),
       R => '0'
     );
 \deci_high.raw_data_reg[94]\: unisim.vcomponents.FDRE
@@ -16158,7 +13530,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(94),
-      Q => \^raw_data\(94),
+      Q => raw_data(94),
       R => '0'
     );
 \deci_high.raw_data_reg[95]\: unisim.vcomponents.FDRE
@@ -16166,7 +13538,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(95),
-      Q => \^raw_data\(95),
+      Q => raw_data(95),
       R => '0'
     );
 \deci_high.raw_data_reg[96]\: unisim.vcomponents.FDRE
@@ -16174,7 +13546,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(96),
-      Q => \^raw_data\(96),
+      Q => raw_data(96),
       R => '0'
     );
 \deci_high.raw_data_reg[97]\: unisim.vcomponents.FDRE
@@ -16182,7 +13554,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(97),
-      Q => \^raw_data\(97),
+      Q => raw_data(97),
       R => '0'
     );
 \deci_high.raw_data_reg[98]\: unisim.vcomponents.FDRE
@@ -16190,7 +13562,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(98),
-      Q => \^raw_data\(98),
+      Q => raw_data(98),
       R => '0'
     );
 \deci_high.raw_data_reg[99]\: unisim.vcomponents.FDRE
@@ -16198,7 +13570,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(99),
-      Q => \^raw_data\(99),
+      Q => raw_data(99),
       R => '0'
     );
 \deci_high.raw_data_reg[9]\: unisim.vcomponents.FDRE
@@ -16206,7 +13578,7 @@ begin
       C => raw_clk,
       CE => '1',
       D => raw_out_data(9),
-      Q => \^raw_data\(9),
+      Q => raw_data(9),
       R => '0'
     );
 \deci_high.raw_delay[0]_i_1\: unisim.vcomponents.LUT1
@@ -16214,18 +13586,18 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(0),
-      O => \deci_high.raw_delay_reg0\(0)
+      I0 => \deci_high.raw_delay_reg\(0),
+      O => raw_delay0(0)
     );
 \deci_high.raw_delay[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => raw_delay(2),
-      I1 => raw_delay(3),
-      I2 => raw_delay(0),
-      I3 => raw_delay(1),
+      I0 => \deci_high.raw_delay_reg\(2),
+      I1 => \deci_high.raw_delay_reg\(3),
+      I2 => \deci_high.raw_delay_reg\(0),
+      I3 => \deci_high.raw_delay_reg\(1),
       I4 => \deci_high.raw_delay[11]_i_3_n_0\,
       I5 => \deci_high.raw_delay[11]_i_4_n_0\,
       O => \deci_high.raw_delay[11]_i_1_n_0\
@@ -16235,10 +13607,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => raw_delay(9),
-      I1 => raw_delay(8),
-      I2 => raw_delay(11),
-      I3 => raw_delay(10),
+      I0 => \deci_high.raw_delay_reg\(9),
+      I1 => \deci_high.raw_delay_reg\(8),
+      I2 => \deci_high.raw_delay_reg\(11),
+      I3 => \deci_high.raw_delay_reg\(10),
       O => \deci_high.raw_delay[11]_i_3_n_0\
     );
 \deci_high.raw_delay[11]_i_4\: unisim.vcomponents.LUT4
@@ -16246,10 +13618,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => raw_delay(5),
-      I1 => raw_delay(4),
-      I2 => raw_delay(7),
-      I3 => raw_delay(6),
+      I0 => \deci_high.raw_delay_reg\(5),
+      I1 => \deci_high.raw_delay_reg\(4),
+      I2 => \deci_high.raw_delay_reg\(7),
+      I3 => \deci_high.raw_delay_reg\(6),
       O => \deci_high.raw_delay[11]_i_4_n_0\
     );
 \deci_high.raw_delay[11]_i_5\: unisim.vcomponents.LUT1
@@ -16257,7 +13629,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(11),
+      I0 => \deci_high.raw_delay_reg\(11),
       O => \deci_high.raw_delay[11]_i_5_n_0\
     );
 \deci_high.raw_delay[11]_i_6\: unisim.vcomponents.LUT1
@@ -16265,7 +13637,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(10),
+      I0 => \deci_high.raw_delay_reg\(10),
       O => \deci_high.raw_delay[11]_i_6_n_0\
     );
 \deci_high.raw_delay[11]_i_7\: unisim.vcomponents.LUT1
@@ -16273,7 +13645,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(9),
+      I0 => \deci_high.raw_delay_reg\(9),
       O => \deci_high.raw_delay[11]_i_7_n_0\
     );
 \deci_high.raw_delay[8]_i_2\: unisim.vcomponents.LUT1
@@ -16281,7 +13653,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(8),
+      I0 => \deci_high.raw_delay_reg\(8),
       O => \deci_high.raw_delay[8]_i_2_n_0\
     );
 \deci_high.raw_delay[8]_i_3\: unisim.vcomponents.LUT1
@@ -16289,7 +13661,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(7),
+      I0 => \deci_high.raw_delay_reg\(7),
       O => \deci_high.raw_delay[8]_i_3_n_0\
     );
 \deci_high.raw_delay[8]_i_4\: unisim.vcomponents.LUT1
@@ -16297,7 +13669,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(6),
+      I0 => \deci_high.raw_delay_reg\(6),
       O => \deci_high.raw_delay[8]_i_4_n_0\
     );
 \deci_high.raw_delay[8]_i_5\: unisim.vcomponents.LUT1
@@ -16305,7 +13677,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(5),
+      I0 => \deci_high.raw_delay_reg\(5),
       O => \deci_high.raw_delay[8]_i_5_n_0\
     );
 \deci_high.raw_delay[8]_i_6\: unisim.vcomponents.LUT1
@@ -16313,7 +13685,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(4),
+      I0 => \deci_high.raw_delay_reg\(4),
       O => \deci_high.raw_delay[8]_i_6_n_0\
     );
 \deci_high.raw_delay[8]_i_7\: unisim.vcomponents.LUT1
@@ -16321,7 +13693,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(3),
+      I0 => \deci_high.raw_delay_reg\(3),
       O => \deci_high.raw_delay[8]_i_7_n_0\
     );
 \deci_high.raw_delay[8]_i_8\: unisim.vcomponents.LUT1
@@ -16329,7 +13701,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(2),
+      I0 => \deci_high.raw_delay_reg\(2),
       O => \deci_high.raw_delay[8]_i_8_n_0\
     );
 \deci_high.raw_delay[8]_i_9\: unisim.vcomponents.LUT1
@@ -16337,31 +13709,31 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => raw_delay(1),
+      I0 => \deci_high.raw_delay_reg\(1),
       O => \deci_high.raw_delay[8]_i_9_n_0\
     );
 \deci_high.raw_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(0),
-      Q => raw_delay(0),
+      D => raw_delay0(0),
+      Q => \deci_high.raw_delay_reg\(0),
       R => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(10),
-      Q => raw_delay(10),
+      D => raw_delay0(10),
+      Q => \deci_high.raw_delay_reg\(10),
       R => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(11),
-      Q => raw_delay(11),
+      D => raw_delay0(11),
+      Q => \deci_high.raw_delay_reg\(11),
       R => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[11]_i_2\: unisim.vcomponents.CARRY8
@@ -16372,9 +13744,9 @@ begin
       CO(1) => \deci_high.raw_delay_reg[11]_i_2_n_6\,
       CO(0) => \deci_high.raw_delay_reg[11]_i_2_n_7\,
       DI(7 downto 2) => B"000000",
-      DI(1 downto 0) => raw_delay(10 downto 9),
+      DI(1 downto 0) => \deci_high.raw_delay_reg\(10 downto 9),
       O(7 downto 3) => \NLW_deci_high.raw_delay_reg[11]_i_2_O_UNCONNECTED\(7 downto 3),
-      O(2 downto 0) => \deci_high.raw_delay_reg0\(11 downto 9),
+      O(2 downto 0) => raw_delay0(11 downto 9),
       S(7 downto 3) => B"00000",
       S(2) => \deci_high.raw_delay[11]_i_5_n_0\,
       S(1) => \deci_high.raw_delay[11]_i_6_n_0\,
@@ -16384,69 +13756,69 @@ begin
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(1),
-      Q => raw_delay(1),
+      D => raw_delay0(1),
+      Q => \deci_high.raw_delay_reg\(1),
       R => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(2),
-      Q => raw_delay(2),
+      D => raw_delay0(2),
+      Q => \deci_high.raw_delay_reg\(2),
       R => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(3),
-      Q => raw_delay(3),
+      D => raw_delay0(3),
+      Q => \deci_high.raw_delay_reg\(3),
       R => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(4),
-      Q => raw_delay(4),
+      D => raw_delay0(4),
+      Q => \deci_high.raw_delay_reg\(4),
       S => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[5]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(5),
-      Q => raw_delay(5),
+      D => raw_delay0(5),
+      Q => \deci_high.raw_delay_reg\(5),
       S => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[6]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(6),
-      Q => raw_delay(6),
+      D => raw_delay0(6),
+      Q => \deci_high.raw_delay_reg\(6),
       S => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[7]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(7),
-      Q => raw_delay(7),
+      D => raw_delay0(7),
+      Q => \deci_high.raw_delay_reg\(7),
       S => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[8]\: unisim.vcomponents.FDSE
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(8),
-      Q => raw_delay(8),
+      D => raw_delay0(8),
+      Q => \deci_high.raw_delay_reg\(8),
       S => raw_fifo_empty
     );
 \deci_high.raw_delay_reg[8]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => raw_delay(0),
+      CI => \deci_high.raw_delay_reg\(0),
       CI_TOP => '0',
       CO(7) => \deci_high.raw_delay_reg[8]_i_1_n_0\,
       CO(6) => \deci_high.raw_delay_reg[8]_i_1_n_1\,
@@ -16456,8 +13828,8 @@ begin
       CO(2) => \deci_high.raw_delay_reg[8]_i_1_n_5\,
       CO(1) => \deci_high.raw_delay_reg[8]_i_1_n_6\,
       CO(0) => \deci_high.raw_delay_reg[8]_i_1_n_7\,
-      DI(7 downto 0) => raw_delay(8 downto 1),
-      O(7 downto 0) => \deci_high.raw_delay_reg0\(8 downto 1),
+      DI(7 downto 0) => \deci_high.raw_delay_reg\(8 downto 1),
+      O(7 downto 0) => raw_delay0(8 downto 1),
       S(7) => \deci_high.raw_delay[8]_i_2_n_0\,
       S(6) => \deci_high.raw_delay[8]_i_3_n_0\,
       S(5) => \deci_high.raw_delay[8]_i_4_n_0\,
@@ -16471,8 +13843,8 @@ begin
      port map (
       C => raw_clk,
       CE => \deci_high.raw_delay[11]_i_1_n_0\,
-      D => \deci_high.raw_delay_reg0\(9),
-      Q => raw_delay(9),
+      D => raw_delay0(9),
+      Q => \deci_high.raw_delay_reg\(9),
       S => raw_fifo_empty
     );
 \deci_high.raw_fifo_wr_reg\: unisim.vcomponents.FDRE
@@ -16487,7 +13859,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(0),
+      D => \deci_high.mux_N_reg_n_0_[0]\,
       Q => raw_in_data(0),
       R => '0'
     );
@@ -16575,7 +13947,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(10),
+      D => \deci_high.mux_N_reg_n_0_[10]\,
       Q => raw_in_data(10),
       R => '0'
     );
@@ -16663,7 +14035,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(11),
+      D => \deci_high.mux_N_reg_n_0_[11]\,
       Q => raw_in_data(11),
       R => '0'
     );
@@ -16751,7 +14123,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(12),
+      D => \deci_high.mux_N_reg_n_0_[12]\,
       Q => raw_in_data(12),
       R => '0'
     );
@@ -16839,7 +14211,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(13),
+      D => \deci_high.mux_N_reg_n_0_[13]\,
       Q => raw_in_data(13),
       R => '0'
     );
@@ -16927,7 +14299,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(14),
+      D => \deci_high.mux_N_reg_n_0_[14]\,
       Q => raw_in_data(14),
       R => '0'
     );
@@ -17015,7 +14387,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(15),
+      D => \deci_high.mux_N_reg_n_0_[15]\,
       Q => raw_in_data(15),
       R => '0'
     );
@@ -17375,7 +14747,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(1),
+      D => \deci_high.mux_N_reg_n_0_[1]\,
       Q => raw_in_data(1),
       R => '0'
     );
@@ -18263,7 +15635,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(2),
+      D => \deci_high.mux_N_reg_n_0_[2]\,
       Q => raw_in_data(2),
       R => '0'
     );
@@ -19023,7 +16395,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(3),
+      D => \deci_high.mux_N_reg_n_0_[3]\,
       Q => raw_in_data(3),
       R => '0'
     );
@@ -19111,7 +16483,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(4),
+      D => \deci_high.mux_N_reg_n_0_[4]\,
       Q => raw_in_data(4),
       R => '0'
     );
@@ -19199,7 +16571,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(5),
+      D => \deci_high.mux_N_reg_n_0_[5]\,
       Q => raw_in_data(5),
       R => '0'
     );
@@ -19287,7 +16659,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(6),
+      D => \deci_high.mux_N_reg_n_0_[6]\,
       Q => raw_in_data(6),
       R => '0'
     );
@@ -19375,7 +16747,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(7),
+      D => \deci_high.mux_N_reg_n_0_[7]\,
       Q => raw_in_data(7),
       R => '0'
     );
@@ -19463,7 +16835,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(8),
+      D => \deci_high.mux_N_reg_n_0_[8]\,
       Q => raw_in_data(8),
       R => '0'
     );
@@ -19551,7 +16923,7 @@ begin
      port map (
       C => clk,
       CE => mux_active,
-      D => mux_N0(9),
+      D => \deci_high.mux_N_reg_n_0_[9]\,
       Q => raw_in_data(9),
       R => '0'
     );
@@ -19571,10 +16943,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => raw_delay(1),
-      I1 => raw_delay(0),
-      I2 => raw_delay(3),
-      I3 => raw_delay(2),
+      I0 => \deci_high.raw_delay_reg\(1),
+      I1 => \deci_high.raw_delay_reg\(0),
+      I2 => \deci_high.raw_delay_reg\(3),
+      I3 => \deci_high.raw_delay_reg\(2),
       O => \deci_high.raw_out_rd_i_2_n_0\
     );
 \deci_high.raw_out_rd_reg\: unisim.vcomponents.FDRE
@@ -19599,65 +16971,73 @@ begin
       C => raw_clk,
       CE => '1',
       D => \deci_high.raw_ready_i_1_n_0\,
-      Q => \^raw_ready\,
+      Q => raw_ready,
       R => '0'
     );
-\deci_high.reset_active[0]_i_1\: unisim.vcomponents.LUT4
+\deci_high.reset_active[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"2220"
+      INIT => X"FF540000"
     )
         port map (
-      I0 => resetn,
-      I1 => reset_active(0),
-      I2 => reset_active(1),
-      I3 => reset_active(2),
-      O => \deci_high.reset_active[0]_i_1_n_0\
-    );
-\deci_high.reset_active[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"DD75"
-    )
-        port map (
-      I0 => resetn,
+      I0 => reset_active(0),
       I1 => reset_active(1),
       I2 => reset_active(2),
-      I3 => reset_active(0),
+      I3 => \deci_high.reset_delay[2]_i_2_n_0\,
+      I4 => resetn,
+      O => \deci_high.reset_active[0]_i_1_n_0\
+    );
+\deci_high.reset_active[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => reset_active(0),
+      I1 => reset_active(1),
       O => \deci_high.reset_active[1]_i_1_n_0\
     );
 \deci_high.reset_active[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AAA8"
+      INIT => X"FEFF"
     )
         port map (
-      I0 => resetn,
-      I1 => reset_delay(1),
-      I2 => reset_delay(2),
-      I3 => reset_delay(0),
+      I0 => reset_delay(1),
+      I1 => reset_delay(2),
+      I2 => reset_delay(0),
+      I3 => resetn,
       O => \deci_high.reset_active[2]_i_1_n_0\
     );
-\deci_high.reset_active[2]_i_2\: unisim.vcomponents.LUT4
+\deci_high.reset_active[2]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"DDD5"
+      INIT => X"FE"
     )
         port map (
-      I0 => resetn,
-      I1 => reset_active(2),
-      I2 => reset_active(0),
-      I3 => reset_active(1),
+      I0 => reset_active(0),
+      I1 => reset_active(1),
+      I2 => reset_active(2),
       O => \deci_high.reset_active[2]_i_2_n_0\
     );
-\deci_high.reset_active_reg[0]\: unisim.vcomponents.FDSE
+\deci_high.reset_active[2]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E1"
+    )
+        port map (
+      I0 => reset_active(1),
+      I1 => reset_active(0),
+      I2 => reset_active(2),
+      O => \deci_high.reset_active[2]_i_3_n_0\
+    );
+\deci_high.reset_active_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \deci_high.reset_active[0]_i_1_n_0\,
       Q => reset_active(0),
-      S => \deci_high.reset_active[2]_i_1_n_0\
+      R => '0'
     );
 \deci_high.reset_active_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => '1',
+      CE => \deci_high.reset_active[2]_i_2_n_0\,
       D => \deci_high.reset_active[1]_i_1_n_0\,
       Q => reset_active(1),
       S => \deci_high.reset_active[2]_i_1_n_0\
@@ -19665,8 +17045,8 @@ begin
 \deci_high.reset_active_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => '1',
-      D => \deci_high.reset_active[2]_i_2_n_0\,
+      CE => \deci_high.reset_active[2]_i_2_n_0\,
+      D => \deci_high.reset_active[2]_i_3_n_0\,
       Q => reset_active(2),
       S => \deci_high.reset_active[2]_i_1_n_0\
     );
@@ -19676,7 +17056,7 @@ begin
     )
         port map (
       I0 => reset_delay(0),
-      O => \deci_high.reset_delay_reg01_in\(0)
+      O => reset_delay01_in(0)
     );
 \deci_high.reset_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -19693,8 +17073,8 @@ begin
     )
         port map (
       I0 => mux_active,
-      I1 => freq_fifo_wr,
-      O => \deci_high.reset_delay_reg0\
+      I1 => \deci_high.freq_fifo_wr_reg_n_0\,
+      O => reset_delay0
     );
 \deci_high.reset_delay[2]_i_2\: unisim.vcomponents.LUT3
     generic map(
@@ -19720,9 +17100,9 @@ begin
      port map (
       C => clk,
       CE => \deci_high.reset_delay[2]_i_2_n_0\,
-      D => \deci_high.reset_delay_reg01_in\(0),
+      D => reset_delay01_in(0),
       Q => reset_delay(0),
-      S => \deci_high.reset_delay_reg0\
+      S => reset_delay0
     );
 \deci_high.reset_delay_reg[1]\: unisim.vcomponents.FDSE
      port map (
@@ -19730,7 +17110,7 @@ begin
       CE => \deci_high.reset_delay[2]_i_2_n_0\,
       D => \deci_high.reset_delay[1]_i_1_n_0\,
       Q => reset_delay(1),
-      S => \deci_high.reset_delay_reg0\
+      S => reset_delay0
     );
 \deci_high.reset_delay_reg[2]\: unisim.vcomponents.FDSE
      port map (
@@ -19738,7 +17118,7 @@ begin
       CE => \deci_high.reset_delay[2]_i_2_n_0\,
       D => \deci_high.reset_delay[2]_i_3_n_0\,
       Q => reset_delay(2),
-      S => \deci_high.reset_delay_reg0\
+      S => reset_delay0
     );
 \deci_high.sim_active_1_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -19788,7 +17168,7 @@ begin
     )
         port map (
       I0 => \sim_count__0\(0),
-      O => \p_1_in__0\(0)
+      O => \deci_high.sim_count[0]_i_1_n_0\
     );
 \deci_high.sim_count[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -19808,13 +17188,13 @@ begin
         port map (
       I0 => \sim_count__0\(0),
       I1 => \sim_count__0\(1),
-      O => \p_1_in__0\(1)
+      O => \deci_high.sim_count[1]_i_2_n_0\
     );
 \deci_high.sim_count_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => sim_clk,
       CE => sim_wr,
-      D => \p_1_in__0\(0),
+      D => \deci_high.sim_count[0]_i_1_n_0\,
       Q => \sim_count__0\(0),
       R => \deci_high.sim_count[1]_i_1_n_0\
     );
@@ -19822,7 +17202,7 @@ begin
      port map (
       C => sim_clk,
       CE => sim_wr,
-      D => \p_1_in__0\(1),
+      D => \deci_high.sim_count[1]_i_2_n_0\,
       Q => \sim_count__0\(1),
       R => \deci_high.sim_count[1]_i_1_n_0\
     );
@@ -22049,7 +19429,102 @@ begin
     );
 fifo_freq_i: component ps_deci_high_0_0_fifo_doa_high
      port map (
-      din(95 downto 0) => freq_in_data(95 downto 0),
+      din(95) => \deci_high.freq_in_data_reg_n_0_[95]\,
+      din(94) => \deci_high.freq_in_data_reg_n_0_[94]\,
+      din(93) => \deci_high.freq_in_data_reg_n_0_[93]\,
+      din(92) => \deci_high.freq_in_data_reg_n_0_[92]\,
+      din(91) => \deci_high.freq_in_data_reg_n_0_[91]\,
+      din(90) => \deci_high.freq_in_data_reg_n_0_[90]\,
+      din(89) => \deci_high.freq_in_data_reg_n_0_[89]\,
+      din(88) => \deci_high.freq_in_data_reg_n_0_[88]\,
+      din(87) => \deci_high.freq_in_data_reg_n_0_[87]\,
+      din(86) => \deci_high.freq_in_data_reg_n_0_[86]\,
+      din(85) => \deci_high.freq_in_data_reg_n_0_[85]\,
+      din(84) => \deci_high.freq_in_data_reg_n_0_[84]\,
+      din(83) => \deci_high.freq_in_data_reg_n_0_[83]\,
+      din(82) => \deci_high.freq_in_data_reg_n_0_[82]\,
+      din(81) => \deci_high.freq_in_data_reg_n_0_[81]\,
+      din(80) => \deci_high.freq_in_data_reg_n_0_[80]\,
+      din(79) => \deci_high.freq_in_data_reg_n_0_[79]\,
+      din(78) => \deci_high.freq_in_data_reg_n_0_[78]\,
+      din(77) => \deci_high.freq_in_data_reg_n_0_[77]\,
+      din(76) => \deci_high.freq_in_data_reg_n_0_[76]\,
+      din(75) => \deci_high.freq_in_data_reg_n_0_[75]\,
+      din(74) => \deci_high.freq_in_data_reg_n_0_[74]\,
+      din(73) => \deci_high.freq_in_data_reg_n_0_[73]\,
+      din(72) => \deci_high.freq_in_data_reg_n_0_[72]\,
+      din(71) => \deci_high.freq_in_data_reg_n_0_[71]\,
+      din(70) => \deci_high.freq_in_data_reg_n_0_[70]\,
+      din(69) => \deci_high.freq_in_data_reg_n_0_[69]\,
+      din(68) => \deci_high.freq_in_data_reg_n_0_[68]\,
+      din(67) => \deci_high.freq_in_data_reg_n_0_[67]\,
+      din(66) => \deci_high.freq_in_data_reg_n_0_[66]\,
+      din(65) => \deci_high.freq_in_data_reg_n_0_[65]\,
+      din(64) => \deci_high.freq_in_data_reg_n_0_[64]\,
+      din(63) => \deci_high.freq_in_data_reg_n_0_[63]\,
+      din(62) => \deci_high.freq_in_data_reg_n_0_[62]\,
+      din(61) => \deci_high.freq_in_data_reg_n_0_[61]\,
+      din(60) => \deci_high.freq_in_data_reg_n_0_[60]\,
+      din(59) => \deci_high.freq_in_data_reg_n_0_[59]\,
+      din(58) => \deci_high.freq_in_data_reg_n_0_[58]\,
+      din(57) => \deci_high.freq_in_data_reg_n_0_[57]\,
+      din(56) => \deci_high.freq_in_data_reg_n_0_[56]\,
+      din(55) => \deci_high.freq_in_data_reg_n_0_[55]\,
+      din(54) => \deci_high.freq_in_data_reg_n_0_[54]\,
+      din(53) => \deci_high.freq_in_data_reg_n_0_[53]\,
+      din(52) => \deci_high.freq_in_data_reg_n_0_[52]\,
+      din(51) => \deci_high.freq_in_data_reg_n_0_[51]\,
+      din(50) => \deci_high.freq_in_data_reg_n_0_[50]\,
+      din(49) => \deci_high.freq_in_data_reg_n_0_[49]\,
+      din(48) => \deci_high.freq_in_data_reg_n_0_[48]\,
+      din(47) => \deci_high.freq_in_data_reg_n_0_[47]\,
+      din(46) => \deci_high.freq_in_data_reg_n_0_[46]\,
+      din(45) => \deci_high.freq_in_data_reg_n_0_[45]\,
+      din(44) => \deci_high.freq_in_data_reg_n_0_[44]\,
+      din(43) => \deci_high.freq_in_data_reg_n_0_[43]\,
+      din(42) => \deci_high.freq_in_data_reg_n_0_[42]\,
+      din(41) => \deci_high.freq_in_data_reg_n_0_[41]\,
+      din(40) => \deci_high.freq_in_data_reg_n_0_[40]\,
+      din(39) => \deci_high.freq_in_data_reg_n_0_[39]\,
+      din(38) => \deci_high.freq_in_data_reg_n_0_[38]\,
+      din(37) => \deci_high.freq_in_data_reg_n_0_[37]\,
+      din(36) => \deci_high.freq_in_data_reg_n_0_[36]\,
+      din(35) => \deci_high.freq_in_data_reg_n_0_[35]\,
+      din(34) => \deci_high.freq_in_data_reg_n_0_[34]\,
+      din(33) => \deci_high.freq_in_data_reg_n_0_[33]\,
+      din(32) => \deci_high.freq_in_data_reg_n_0_[32]\,
+      din(31) => \deci_high.freq_in_data_reg_n_0_[31]\,
+      din(30) => \deci_high.freq_in_data_reg_n_0_[30]\,
+      din(29) => \deci_high.freq_in_data_reg_n_0_[29]\,
+      din(28) => \deci_high.freq_in_data_reg_n_0_[28]\,
+      din(27) => \deci_high.freq_in_data_reg_n_0_[27]\,
+      din(26) => \deci_high.freq_in_data_reg_n_0_[26]\,
+      din(25) => \deci_high.freq_in_data_reg_n_0_[25]\,
+      din(24) => \deci_high.freq_in_data_reg_n_0_[24]\,
+      din(23) => \deci_high.freq_in_data_reg_n_0_[23]\,
+      din(22) => \deci_high.freq_in_data_reg_n_0_[22]\,
+      din(21) => \deci_high.freq_in_data_reg_n_0_[21]\,
+      din(20) => \deci_high.freq_in_data_reg_n_0_[20]\,
+      din(19) => \deci_high.freq_in_data_reg_n_0_[19]\,
+      din(18) => \deci_high.freq_in_data_reg_n_0_[18]\,
+      din(17) => \deci_high.freq_in_data_reg_n_0_[17]\,
+      din(16) => \deci_high.freq_in_data_reg_n_0_[16]\,
+      din(15) => \deci_high.freq_in_data_reg_n_0_[15]\,
+      din(14) => \deci_high.freq_in_data_reg_n_0_[14]\,
+      din(13) => \deci_high.freq_in_data_reg_n_0_[13]\,
+      din(12) => \deci_high.freq_in_data_reg_n_0_[12]\,
+      din(11) => \deci_high.freq_in_data_reg_n_0_[11]\,
+      din(10) => \deci_high.freq_in_data_reg_n_0_[10]\,
+      din(9) => \deci_high.freq_in_data_reg_n_0_[9]\,
+      din(8) => \deci_high.freq_in_data_reg_n_0_[8]\,
+      din(7) => \deci_high.freq_in_data_reg_n_0_[7]\,
+      din(6) => \deci_high.freq_in_data_reg_n_0_[6]\,
+      din(5) => \deci_high.freq_in_data_reg_n_0_[5]\,
+      din(4) => \deci_high.freq_in_data_reg_n_0_[4]\,
+      din(3) => \deci_high.freq_in_data_reg_n_0_[3]\,
+      din(2) => \deci_high.freq_in_data_reg_n_0_[2]\,
+      din(1) => \deci_high.freq_in_data_reg_n_0_[1]\,
+      din(0) => \deci_high.freq_in_data_reg_n_0_[0]\,
       dout(95 downto 0) => freq_out_data(95 downto 0),
       empty => freq_fifo_empty,
       full => NLW_fifo_freq_i_full_UNCONNECTED,
@@ -22058,7 +19533,7 @@ fifo_freq_i: component ps_deci_high_0_0_fifo_doa_high
       rd_rst_busy => NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED,
       rst => \deci_high.sim_active_i_1_n_0\,
       wr_clk => clk,
-      wr_en => freq_fifo_wr,
+      wr_en => \deci_high.freq_fifo_wr_reg_n_0\,
       wr_rst_busy => NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED
     );
 fifo_raw_i: component ps_deci_high_0_0_fifo_raw_high
@@ -22130,9 +19605,9 @@ fir_freq_E_i: component ps_deci_high_0_0_fir_deci_high
       aclk => clk,
       aresetn => fir_resetn,
       m_axis_data_tdata(63) => NLW_fir_freq_E_i_m_axis_data_tdata_UNCONNECTED(63),
-      m_axis_data_tdata(62 downto 47) => freq_E1(15 downto 0),
+      m_axis_data_tdata(62 downto 47) => fir_freq_E(62 downto 47),
       m_axis_data_tdata(46 downto 31) => NLW_fir_freq_E_i_m_axis_data_tdata_UNCONNECTED(46 downto 31),
-      m_axis_data_tdata(30 downto 15) => freq_E0(15 downto 0),
+      m_axis_data_tdata(30 downto 15) => fir_freq_E(30 downto 15),
       m_axis_data_tdata(14 downto 0) => NLW_fir_freq_E_i_m_axis_data_tdata_UNCONNECTED(14 downto 0),
       m_axis_data_tvalid => NLW_fir_freq_E_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(127 downto 112) => mux_E7(15 downto 0),
@@ -22166,9 +19641,9 @@ fir_freq_N_i: component ps_deci_high_0_0_fir_deci_high
       aclk => clk,
       aresetn => fir_resetn,
       m_axis_data_tdata(63) => NLW_fir_freq_N_i_m_axis_data_tdata_UNCONNECTED(63),
-      m_axis_data_tdata(62 downto 47) => freq_N1(15 downto 0),
+      m_axis_data_tdata(62 downto 47) => fir_freq_N(62 downto 47),
       m_axis_data_tdata(46 downto 31) => NLW_fir_freq_N_i_m_axis_data_tdata_UNCONNECTED(46 downto 31),
-      m_axis_data_tdata(30 downto 15) => freq_N0(15 downto 0),
+      m_axis_data_tdata(30 downto 15) => fir_freq_N(30 downto 15),
       m_axis_data_tdata(14 downto 0) => NLW_fir_freq_N_i_m_axis_data_tdata_UNCONNECTED(14 downto 0),
       m_axis_data_tvalid => NLW_fir_freq_N_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(127 downto 112) => mux_N7(15 downto 0),
@@ -22178,7 +19653,22 @@ fir_freq_N_i: component ps_deci_high_0_0_fir_deci_high
       s_axis_data_tdata(63 downto 48) => mux_N3(15 downto 0),
       s_axis_data_tdata(47 downto 32) => mux_N2(15 downto 0),
       s_axis_data_tdata(31 downto 16) => mux_N1(15 downto 0),
-      s_axis_data_tdata(15 downto 0) => mux_N0(15 downto 0),
+      s_axis_data_tdata(15) => \deci_high.mux_N_reg_n_0_[15]\,
+      s_axis_data_tdata(14) => \deci_high.mux_N_reg_n_0_[14]\,
+      s_axis_data_tdata(13) => \deci_high.mux_N_reg_n_0_[13]\,
+      s_axis_data_tdata(12) => \deci_high.mux_N_reg_n_0_[12]\,
+      s_axis_data_tdata(11) => \deci_high.mux_N_reg_n_0_[11]\,
+      s_axis_data_tdata(10) => \deci_high.mux_N_reg_n_0_[10]\,
+      s_axis_data_tdata(9) => \deci_high.mux_N_reg_n_0_[9]\,
+      s_axis_data_tdata(8) => \deci_high.mux_N_reg_n_0_[8]\,
+      s_axis_data_tdata(7) => \deci_high.mux_N_reg_n_0_[7]\,
+      s_axis_data_tdata(6) => \deci_high.mux_N_reg_n_0_[6]\,
+      s_axis_data_tdata(5) => \deci_high.mux_N_reg_n_0_[5]\,
+      s_axis_data_tdata(4) => \deci_high.mux_N_reg_n_0_[4]\,
+      s_axis_data_tdata(3) => \deci_high.mux_N_reg_n_0_[3]\,
+      s_axis_data_tdata(2) => \deci_high.mux_N_reg_n_0_[2]\,
+      s_axis_data_tdata(1) => \deci_high.mux_N_reg_n_0_[1]\,
+      s_axis_data_tdata(0) => \deci_high.mux_N_reg_n_0_[0]\,
       s_axis_data_tready => NLW_fir_freq_N_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => mux_active
     );
@@ -22187,9 +19677,9 @@ fir_freq_W_i: component ps_deci_high_0_0_fir_deci_high_HD2
       aclk => clk,
       aresetn => fir_resetn,
       m_axis_data_tdata(63) => NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED(63),
-      m_axis_data_tdata(62 downto 47) => freq_W1(15 downto 0),
+      m_axis_data_tdata(62 downto 47) => fir_freq_W(62 downto 47),
       m_axis_data_tdata(46 downto 31) => NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED(46 downto 31),
-      m_axis_data_tdata(30 downto 15) => freq_W0(15 downto 0),
+      m_axis_data_tdata(30 downto 15) => fir_freq_W(30 downto 15),
       m_axis_data_tdata(14 downto 0) => NLW_fir_freq_W_i_m_axis_data_tdata_UNCONNECTED(14 downto 0),
       m_axis_data_tvalid => NLW_fir_freq_W_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(127 downto 112) => mux_W7(15 downto 0),
@@ -22217,53 +19707,6 @@ fir_freq_W_i: component ps_deci_high_0_0_fir_deci_high_HD2
       s_axis_data_tdata(0) => \deci_high.mux_W_reg_n_0_[0]\,
       s_axis_data_tready => NLW_fir_freq_W_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => mux_active
-    );
-ila_5_i: component ps_deci_high_0_0_ila_5
-     port map (
-      clk => clk,
-      probe0(2 downto 0) => reset_delay(2 downto 0),
-      probe1(2 downto 0) => reset_active(2 downto 0),
-      probe10(15 downto 0) => mux_N0(15 downto 0),
-      probe11(15 downto 0) => mux_N1(15 downto 0),
-      probe12(15 downto 0) => mux_N2(15 downto 0),
-      probe13(15 downto 0) => mux_N3(15 downto 0),
-      probe14(15 downto 0) => mux_N4(15 downto 0),
-      probe15(15 downto 0) => mux_N5(15 downto 0),
-      probe16(15 downto 0) => mux_N6(15 downto 0),
-      probe17(15 downto 0) => mux_N7(15 downto 0),
-      probe18(15 downto 0) => freq_N0(15 downto 0),
-      probe19(15 downto 0) => freq_N1(15 downto 0),
-      probe2(0) => fir_resetn,
-      probe20(15 downto 0) => freq_E0(15 downto 0),
-      probe21(15 downto 0) => freq_E1(15 downto 0),
-      probe22(0) => freq_W0(0),
-      probe23(0) => freq_W1(0),
-      probe3(0) => adc_active,
-      probe4(0) => mux_active,
-      probe5(0) => raw_fifo_wr,
-      probe6(15 downto 0) => raw_in_data(15 downto 0),
-      probe7(4 downto 0) => freq_wr_delay(4 downto 0),
-      probe8(0) => freq_fifo_wr,
-      probe9(15 downto 0) => freq_in_data(15 downto 0)
-    );
-ila_7_i: component ps_deci_high_0_0_ila_7
-     port map (
-      clk => raw_clk,
-      probe0(0) => raw_fifo_empty,
-      probe1(11 downto 0) => raw_delay(11 downto 0),
-      probe2(0) => raw_out_rd,
-      probe3(15 downto 0) => raw_out_data(15 downto 0),
-      probe4(0) => \^raw_ready\,
-      probe5(15 downto 0) => \^raw_data\(15 downto 0)
-    );
-ila_8_i: component ps_deci_high_0_0_ila_8
-     port map (
-      clk => freq_clk,
-      probe0(0) => freq_fifo_empty,
-      probe1(0) => freq_out_rd,
-      probe2(15 downto 0) => freq_out_data(15 downto 0),
-      probe3(0) => \^freq_ready\,
-      probe4(15 downto 0) => \^freq_data\(15 downto 0)
     );
 end STRUCTURE;
 library IEEE;

@@ -293,6 +293,7 @@ ila_5 ila_5_i (
 );
 */
 
+/*
 ila_2 ila_2_i (
 		.clk(clk),                   // input wire clk
 		.probe0(reset_delay),        // input wire [2:0]  probe3
@@ -322,7 +323,9 @@ ila_2 ila_2_i (
 		.probe24(freq_E),             // input wire [15:0]  probe3
 		.probe25(freq_W)              // input wire [15:0]  probe3
 );
+*/
 
+/*
 ila_7 ila_7_i (
 		.clk(raw_clk),               // input wire clk
 		.probe0(raw_fifo_empty),     // input wire [0:0]  probe3
@@ -332,7 +335,9 @@ ila_7 ila_7_i (
 		.probe4(raw_ready),          // input wire [0:0]  probe3
 		.probe5(raw_data[15:0])      // input wire [15:0]  probe3
 );
+*/
 
+/*
 ila_8 ila_8_i (
 		.clk(freq_clk),               // input wire clk
 		.probe0(freq_fifo_empty),     // input wire [0:0]  probe3
@@ -341,6 +346,7 @@ ila_8 ila_8_i (
 		.probe3(freq_ready),          // input wire [0:0]  probe3
 		.probe4(freq_data[15:0])      // input wire [15:0]  probe3
 );
+*/
 
 generate
   begin : deci_low

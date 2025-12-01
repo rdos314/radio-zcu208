@@ -53,7 +53,8 @@ module comp_high(
   reg [15:0] W5;
   reg [15:0] W6;
   reg [15:0] W7;
-  
+
+/*  
 	ila_1 ila_N (
 		.clk(clk),              // input wire clk
 		.probe0(active),        // input wire [0:0]  probe3
@@ -98,6 +99,8 @@ module comp_high(
 		.probe9(W6),            // input wire [15:0]  probe3
 		.probe10(W7)            // input wire [15:0]  probe3
 	);
+
+*/
 
 generate
   begin : composite
