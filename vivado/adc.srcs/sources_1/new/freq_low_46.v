@@ -40,11 +40,13 @@ module freq_low_46(
     output reg [19:0] diff_W
     );
 
-  reg [15:0] counter;
-  
   reg [15:0] N;
   reg [15:0] E;
   reg [15:0] W;
+
+  reg morlet_active;
+  reg [6:0] start_delay;
+  reg [6:0] curr_delay;
   
   wire validN;
   wire [15:0] envN;
@@ -150,7 +152,7 @@ fir_doa_low_im fir_freq_low_im_W_i (
 
 morlet_to_phase_env freq_N_i (
   .clk(clk),                               // input wire aclk
-  .active(1),
+  .active(morlet_active),
   .re(fir_re_N[36:13]),
   .im(fir_im_N[36:13]),
   .valid(validN),
@@ -160,7 +162,7 @@ morlet_to_phase_env freq_N_i (
 
 morlet_to_phase_env freq_E_i (
   .clk(clk),                               // input wire aclk
-  .active(1),
+  .active(morlet_active),
   .re(fir_re_E[36:13]),
   .im(fir_im_E[36:13]),
   .valid(validE),
@@ -170,38 +172,41 @@ morlet_to_phase_env freq_E_i (
 
 morlet_to_phase_env freq_W_i (
   .clk(clk),                               // input wire aclk
-  .active(1),
+  .active(morlet_active),
   .re(fir_re_W[36:13]),
   .im(fir_im_W[36:13]),
   .valid(validW),
   .env(envW),
   .phase(phaseW)
   );
+
       
 ila_0 ila_0_i (
 		.clk(clk),                  // input wire clk
 		.probe0(fifo_valid),        // input wire [0:0]  probe3
 		.probe1(fifo_data[15:0]),   // input wire [15:0]  probe3
-		.probe2(valid),             // input wire [0:0]  probe3
-		.probe3(counter),           // input wire [15:0]  probe3
-		.probe4(N),                 // input wire [15:0]  probe3
-		.probe5(fir_re_N[36:13]),   // input wire [23:0]  probe3
-		.probe6(fir_im_N[36:13]),   // input wire [23:0]  probe3
-		.probe7(validN),             // input wire [0:0]  probe3
-		.probe8(envN),             // input wire [15:0]  probe3
-		.probe9(phaseN),           // input wire [19:0]  probe3
-		.probe10(E),                 // input wire [15:0]  probe3
-		.probe11(fir_re_E[36:13]),  // input wire [23:0]  probe3
-		.probe12(fir_im_E[36:13]),  // input wire [23:0]  probe3
-		.probe13(validE),             // input wire [0:0]  probe3
-		.probe14(envE),            // input wire [15:0]  probe3
-		.probe15(phaseE),          // input wire [19:0]  probe3
-		.probe16(W),                // input wire [15:0]  probe3
-		.probe17(fir_re_W[36:13]),  // input wire [23:0]  probe3
-		.probe18(fir_im_W[36:13]),  // input wire [23:0]  probe3
-		.probe19(validW),             // input wire [0:0]  probe3
-		.probe20(envW),            // input wire [15:0]  probe3
-		.probe21(phaseW)          // input wire [19:0]  probe3
+		.probe2(start_delay),       // input wire [6:0]  probe3
+		.probe3(curr_delay),        // input wire [6:0]  probe3
+		.probe4(morlet_active),     // input wire [0:0]  probe3
+		.probe5(valid),             // input wire [0:0]  probe3
+		.probe6(N),                 // input wire [15:0]  probe3
+		.probe7(fir_re_N[36:13]),   // input wire [23:0]  probe3
+		.probe8(fir_im_N[36:13]),   // input wire [23:0]  probe3
+		.probe9(validN),             // input wire [0:0]  probe3
+		.probe10(envN),             // input wire [15:0]  probe3
+		.probe11(phaseN),           // input wire [19:0]  probe3
+		.probe12(E),                 // input wire [15:0]  probe3
+		.probe13(fir_re_E[36:13]),  // input wire [23:0]  probe3
+		.probe14(fir_im_E[36:13]),  // input wire [23:0]  probe3
+		.probe15(validE),             // input wire [0:0]  probe3
+		.probe16(envE),            // input wire [15:0]  probe3
+		.probe17(phaseE),          // input wire [19:0]  probe3
+		.probe18(W),                // input wire [15:0]  probe3
+		.probe19(fir_re_W[36:13]),  // input wire [23:0]  probe3
+		.probe20(fir_im_W[36:13]),  // input wire [23:0]  probe3
+		.probe21(validW),             // input wire [0:0]  probe3
+		.probe22(envW),            // input wire [15:0]  probe3
+		.probe23(phaseW)          // input wire [19:0]  probe3
 	);
 
 generate
@@ -211,25 +216,53 @@ generate
 	begin
 	  if (fifo_valid)
 	  begin
-	     counter <= counter + 1;
-         N <= fifo_data[15:0];
-         diffN <= phase_N - prevN;
-         prevN <= phase_N;
+	    if (start_delay == 122)
+	      morlet_active <= 1;
+	    else
+	    begin
+	      start_delay <= start_delay + 1;
+	      curr_delay <= curr_delay + 1;
+	      morlet_active <= 0;
+	    end
+	  end
+	  else
+	  begin
+	    if (start_delay)
+	    begin
+  	      if (start_delay == 122)
+	      begin
+  	        if (curr_delay)
+	        begin
+	          curr_delay <= curr_delay - 1;
+	          morlet_active <= 1;
+  	        end
+	        else
+	        begin
+    	      start_delay <= 0;
+              morlet_active <= 0;	    
+            end
+          end
+          else
+          begin
+  	        start_delay <= start_delay + 1;
+            morlet_active <= 0;	    
+          end          
+        end
+        else
+        begin
+          morlet_active <= 0;	    
+	      curr_delay <= 0;
+        end
+	  end
+	end
 
+    always @(posedge clk) 
+	begin
+	  if (fifo_valid)
+	  begin
+         N <= fifo_data[15:0];
          E <= fifo_data[31:16];
-         diffE <= phase_E - prevE;
-         prevE <= phase_E;
-         
          W <= fifo_data[47:32];
-         diffW <= phase_W - prevW;
-         prevW <= phase_W;
-      end
-      else
-      begin
-	    counter <= 0;
-        prevN <= 0;
-        prevE <= 0;
-        prevW <= 0;
       end
     end
 
@@ -237,19 +270,28 @@ generate
 	begin
 	  if (validN & validE & validW)
 	  begin
-	    env_N <= envN;
-	    phase_N <= phaseN;
-	    diff_N <= diffN;
+         diffN <= phase_N - prevN;
+         prevN <= phase_N;
 
-	    env_E <= envE;
-	    phase_E <= phaseE;
-	    diff_E <= diffE;
+         diffE <= phase_E - prevE;
+         prevE <= phase_E;
+         
+         diffW <= phase_W - prevW;
+         prevW <= phase_W;
+
+	     env_N <= envN;
+	     phase_N <= phaseN;
+	     diff_N <= diffN;
+
+ 	     env_E <= envE;
+	     phase_E <= phaseE;
+	     diff_E <= diffE;
 	    
-	    env_W <= envW;
-	    phase_W <= phaseW;
-	    diff_W <= diffW;
+	     env_W <= envW;
+	     phase_W <= phaseW;
+	     diff_W <= diffW;
 	    
-	    valid <= 1;
+	     valid <= 1;
 	  end
 	  else
 	    valid <= 0;
