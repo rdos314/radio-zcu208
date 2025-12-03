@@ -210,7 +210,7 @@ ila_0 ila_0_i (
 	);
 
 generate
-  begin : deci_low
+  begin : freq_low_46
 
     always @(posedge clk) 
 	begin
@@ -229,7 +229,7 @@ generate
 	  begin
 	    if (start_delay)
 	    begin
-  	      if (start_delay == 122)
+  	      if (start_delay == 123)
 	      begin
   	        if (curr_delay)
 	        begin

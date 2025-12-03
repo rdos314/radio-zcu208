@@ -101,6 +101,21 @@ int GenerateCos(double fs, double f, int periods, int16_t amp)
 	return size;
 }
 
+int GenerateZero(double fs, double f, int periods)
+{
+    int p;
+    int size;
+    double dval;
+
+    dval = (double)periods * fs / f;
+    size = (int)(dval + 0.5);
+
+    for (p = 0; p < size; p++)
+        sample_arr[p] = 0;
+
+	return size;
+}
+
 int main()
 {
 	int i;
@@ -110,15 +125,39 @@ int main()
 	for (i = 0;  i < 256; i++)
 		sample_arr[i] = i + 1;
 
-	size = GenerateMorlet(4000.0, 46.0, 15, 25000);
-//	size = GenerateCos(4000.0, 46.0, 30, 25000);
+	size = GenerateZero(4000.0, 46.0, 30);
 
 	LoadSamples(control, 0, sample_arr, size);
 	LoadSamples(control, 1, sample_arr, size);
 	LoadSamples(control, 2, sample_arr, size);
 
-	size = GenerateMorlet(4000.0, 190.0, 60, 25000);
-//	size = GenerateCos(4000.0, 190.0, 120, 25000);
+//	size = GenerateMorlet(4000.0, 46.0, 15, 25000);
+	size = GenerateCos(4000.0, 46.0, 30, 25000);
+
+	LoadSamples(control, 0, sample_arr, size);
+	LoadSamples(control, 1, sample_arr, size);
+	LoadSamples(control, 2, sample_arr, size);
+
+	size = GenerateZero(4000.0, 46.0, 30);
+
+	LoadSamples(control, 0, sample_arr, size);
+	LoadSamples(control, 1, sample_arr, size);
+	LoadSamples(control, 2, sample_arr, size);
+
+	size = GenerateZero(4000.0, 190.0, 120);
+
+	LoadSamples(control, 4, sample_arr, size);
+	LoadSamples(control, 5, sample_arr, size);
+	LoadSamples(control, 6, sample_arr, size);
+
+//	size = GenerateMorlet(4000.0, 190.0, 60, 25000);
+	size = GenerateCos(4000.0, 190.0, 120, 25000);
+
+	LoadSamples(control, 4, sample_arr, size);
+	LoadSamples(control, 5, sample_arr, size);
+	LoadSamples(control, 6, sample_arr, size);
+
+	size = GenerateZero(4000.0, 190.0, 120);
 
 	LoadSamples(control, 4, sample_arr, size);
 	LoadSamples(control, 5, sample_arr, size);
