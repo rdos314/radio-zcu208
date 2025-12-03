@@ -79,6 +79,28 @@ int GenerateMorlet(double fs, double f, int periods, int16_t amp)
 	return 2 * size + 1;
 }
 
+int GenerateCos(double fs, double f, int periods, int16_t amp)
+{
+    int p;
+    int size;
+    double dval;
+    double incr;
+    double r;
+
+    incr = 2.0 * PI * f / fs;
+
+    dval = (double)periods * fs / f;
+    size = (int)(dval + 0.5);
+
+    for (p = 0; p < size; p++)
+    {
+        dval = (double)p;
+        r = cos(dval * incr);
+        sample_arr[p] = (int16_t)(r * amp);
+    }
+	return size;
+}
+
 int main()
 {
 	int i;
@@ -88,13 +110,15 @@ int main()
 	for (i = 0;  i < 256; i++)
 		sample_arr[i] = i + 1;
 
-	size = GenerateMorlet(4000.0, 46.0, 3, 25000);
+	size = GenerateMorlet(4000.0, 46.0, 15, 25000);
+//	size = GenerateCos(4000.0, 46.0, 30, 25000);
 
 	LoadSamples(control, 0, sample_arr, size);
 	LoadSamples(control, 1, sample_arr, size);
 	LoadSamples(control, 2, sample_arr, size);
 
-	size = GenerateMorlet(4000.0, 190.0, 12, 25000);
+	size = GenerateMorlet(4000.0, 190.0, 60, 25000);
+//	size = GenerateCos(4000.0, 190.0, 120, 25000);
 
 	LoadSamples(control, 4, sample_arr, size);
 	LoadSamples(control, 5, sample_arr, size);

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Dec  1 23:26:52 2025
+// Date        : Tue Dec  2 23:26:37 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.v
@@ -57,7 +57,6 @@ module ila_1_HD5
     probe1,
     probe10,
     probe11,
-    probe12,
     probe2,
     probe3,
     probe4,
@@ -68,18 +67,17 @@ module ila_1_HD5
     probe9);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [23:0]probe1;
-  input [15:0]probe10;
-  input [19:0]probe11;
-  input [0:0]probe12;
+  input [4:0]probe1;
+  input [19:0]probe10;
+  input [0:0]probe11;
   input [23:0]probe2;
-  input [31:0]probe3;
+  input [23:0]probe3;
   input [31:0]probe4;
   input [31:0]probe5;
-  input [0:0]probe6;
+  input [31:0]probe6;
   input [15:0]probe7;
   input [23:0]probe8;
-  input [0:0]probe9;
+  input [15:0]probe9;
 
 
 endmodule
@@ -326,6 +324,7 @@ module ps_freq_low_46_0_0_freq_low_46
   wire clk;
   (* MARK_DEBUG *) wire [6:0]curr_delay;
   wire \deci_low.curr_delay[0]_i_1_n_0 ;
+  wire \deci_low.curr_delay[0]_i_2_n_0 ;
   wire \deci_low.curr_delay[1]_i_1_n_0 ;
   wire \deci_low.curr_delay[1]_i_2_n_0 ;
   wire \deci_low.curr_delay[1]_i_3_n_0 ;
@@ -340,14 +339,13 @@ module ps_freq_low_46_0_0_freq_low_46
   wire \deci_low.curr_delay[5]_i_2_n_0 ;
   wire \deci_low.curr_delay[5]_i_3_n_0 ;
   wire \deci_low.curr_delay[5]_i_4_n_0 ;
+  wire \deci_low.curr_delay[5]_i_5_n_0 ;
   wire \deci_low.curr_delay[6]_i_1_n_0 ;
   wire \deci_low.curr_delay[6]_i_2_n_0 ;
   wire \deci_low.curr_delay[6]_i_3_n_0 ;
   wire \deci_low.curr_delay[6]_i_4_n_0 ;
   wire \deci_low.curr_delay[6]_i_5_n_0 ;
   wire \deci_low.curr_delay[6]_i_6_n_0 ;
-  wire \deci_low.curr_delay[6]_i_7_n_0 ;
-  wire \deci_low.curr_delay[6]_i_8_n_0 ;
   wire \deci_low.diffE[15]_i_2_n_0 ;
   wire \deci_low.diffE[15]_i_3_n_0 ;
   wire \deci_low.diffE[15]_i_4_n_0 ;
@@ -466,19 +464,20 @@ module ps_freq_low_46_0_0_freq_low_46
   wire \deci_low.diffW_reg[7]_i_1_n_6 ;
   wire \deci_low.diffW_reg[7]_i_1_n_7 ;
   wire \deci_low.morlet_active_i_1_n_0 ;
+  wire \deci_low.morlet_active_reg0 ;
   wire \deci_low.start_delay[0]_i_1_n_0 ;
   wire \deci_low.start_delay[1]_i_1_n_0 ;
   wire \deci_low.start_delay[2]_i_1_n_0 ;
+  wire \deci_low.start_delay[2]_i_2_n_0 ;
+  wire \deci_low.start_delay[2]_i_3_n_0 ;
   wire \deci_low.start_delay[3]_i_1_n_0 ;
   wire \deci_low.start_delay[4]_i_1_n_0 ;
-  wire \deci_low.start_delay[4]_i_2_n_0 ;
   wire \deci_low.start_delay[5]_i_1_n_0 ;
-  wire \deci_low.start_delay[5]_i_2_n_0 ;
+  wire \deci_low.start_delay[5]_i_3_n_0 ;
   wire \deci_low.start_delay[6]_i_1_n_0 ;
   wire \deci_low.start_delay[6]_i_2_n_0 ;
   wire \deci_low.start_delay[6]_i_3_n_0 ;
   wire \deci_low.start_delay[6]_i_4_n_0 ;
-  wire \deci_low.start_delay[6]_i_5_n_0 ;
   wire [19:0]diffE;
   wire [19:0]diffE01_out;
   wire [19:0]diffN;
@@ -923,70 +922,78 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(fifo_data[41]),
         .Q(W[9]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h8822CBEE)) 
+  LUT6 #(
+    .INIT(64'h1FF21F1F12121212)) 
     \deci_low.curr_delay[0]_i_1 
-       (.I0(fifo_valid),
-        .I1(curr_delay[0]),
-        .I2(\deci_low.curr_delay[1]_i_3_n_0 ),
-        .I3(\deci_low.curr_delay[1]_i_2_n_0 ),
-        .I4(\deci_low.curr_delay[6]_i_4_n_0 ),
+       (.I0(\deci_low.curr_delay[1]_i_3_n_0 ),
+        .I1(\deci_low.curr_delay[6]_i_4_n_0 ),
+        .I2(curr_delay[0]),
+        .I3(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I4(start_delay[0]),
+        .I5(fifo_valid),
         .O(\deci_low.curr_delay[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA2A20808BFEFC838)) 
+    .INIT(64'hFFFF7FFFFFFFFFFF)) 
+    \deci_low.curr_delay[0]_i_2 
+       (.I0(start_delay[5]),
+        .I1(start_delay[4]),
+        .I2(start_delay[3]),
+        .I3(start_delay[6]),
+        .I4(start_delay[2]),
+        .I5(start_delay[1]),
+        .O(\deci_low.curr_delay[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h84C084C0F4CFF4F0)) 
     \deci_low.curr_delay[1]_i_1 
-       (.I0(fifo_valid),
-        .I1(curr_delay[0]),
-        .I2(\deci_low.curr_delay[1]_i_2_n_0 ),
-        .I3(\deci_low.curr_delay[1]_i_3_n_0 ),
-        .I4(curr_delay[1]),
+       (.I0(\deci_low.curr_delay[1]_i_2_n_0 ),
+        .I1(fifo_valid),
+        .I2(curr_delay[1]),
+        .I3(curr_delay[0]),
+        .I4(\deci_low.curr_delay[1]_i_3_n_0 ),
         .I5(\deci_low.curr_delay[6]_i_4_n_0 ),
         .O(\deci_low.curr_delay[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h01)) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \deci_low.curr_delay[1]_i_2 
        (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
+        .I1(\deci_low.curr_delay[0]_i_2_n_0 ),
         .O(\deci_low.curr_delay[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000000010)) 
+    .INIT(64'h1111111111111110)) 
     \deci_low.curr_delay[1]_i_3 
-       (.I0(curr_delay[6]),
-        .I1(curr_delay[5]),
-        .I2(\deci_low.curr_delay[6]_i_8_n_0 ),
-        .I3(curr_delay[1]),
+       (.I0(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I1(start_delay[0]),
+        .I2(\deci_low.curr_delay[4]_i_3_n_0 ),
+        .I3(curr_delay[2]),
         .I4(curr_delay[0]),
-        .I5(curr_delay[2]),
+        .I5(curr_delay[1]),
         .O(\deci_low.curr_delay[1]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h90909090FFFFFF90)) 
-    \deci_low.curr_delay[2]_i_1 
-       (.I0(curr_delay[2]),
-        .I1(\deci_low.curr_delay[2]_i_2_n_0 ),
-        .I2(fifo_valid),
-        .I3(\deci_low.curr_delay[4]_i_2_n_0 ),
-        .I4(\deci_low.curr_delay[2]_i_3_n_0 ),
-        .I5(\deci_low.curr_delay[6]_i_4_n_0 ),
-        .O(\deci_low.curr_delay[2]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h5557FFFF)) 
+    .INIT(32'hF11F1111)) 
+    \deci_low.curr_delay[2]_i_1 
+       (.I0(\deci_low.curr_delay[2]_i_2_n_0 ),
+        .I1(\deci_low.curr_delay[6]_i_4_n_0 ),
+        .I2(curr_delay[2]),
+        .I3(\deci_low.curr_delay[2]_i_3_n_0 ),
+        .I4(fifo_valid),
+        .O(\deci_low.curr_delay[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h333333333333333D)) 
     \deci_low.curr_delay[2]_i_2 
+       (.I0(\deci_low.curr_delay[4]_i_3_n_0 ),
+        .I1(curr_delay[2]),
+        .I2(curr_delay[1]),
+        .I3(curr_delay[0]),
+        .I4(start_delay[0]),
+        .I5(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .O(\deci_low.curr_delay[2]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h5DFF)) 
+    \deci_low.curr_delay[2]_i_3 
        (.I0(curr_delay[0]),
         .I1(start_delay[0]),
-        .I2(start_delay[2]),
-        .I3(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I4(curr_delay[1]),
-        .O(\deci_low.curr_delay[2]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAAAAAAAAAAAA8)) 
-    \deci_low.curr_delay[2]_i_3 
-       (.I0(curr_delay[2]),
-        .I1(curr_delay[1]),
-        .I2(curr_delay[0]),
-        .I3(start_delay[0]),
-        .I4(start_delay[2]),
-        .I5(\deci_low.start_delay[5]_i_2_n_0 ),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(curr_delay[1]),
         .O(\deci_low.curr_delay[2]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'h1FF21212)) 
@@ -1007,17 +1014,18 @@ module ps_freq_low_46_0_0_freq_low_46
         .I4(\deci_low.curr_delay[6]_i_2_n_0 ),
         .I5(fifo_valid),
         .O(\deci_low.curr_delay[4]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000001)) 
+  LUT6 #(
+    .INIT(64'h0000000100000000)) 
     \deci_low.curr_delay[4]_i_2 
-       (.I0(\deci_low.curr_delay[6]_i_7_n_0 ),
-        .I1(start_delay[0]),
-        .I2(start_delay[2]),
-        .I3(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I4(\deci_low.curr_delay[4]_i_3_n_0 ),
+       (.I0(curr_delay[2]),
+        .I1(curr_delay[0]),
+        .I2(curr_delay[1]),
+        .I3(start_delay[0]),
+        .I4(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I5(\deci_low.curr_delay[4]_i_3_n_0 ),
         .O(\deci_low.curr_delay[4]_i_2_n_0 ));
   LUT4 #(
-    .INIT(16'h0001)) 
+    .INIT(16'hFFFE)) 
     \deci_low.curr_delay[4]_i_3 
        (.I0(curr_delay[3]),
         .I1(curr_delay[4]),
@@ -1025,37 +1033,47 @@ module ps_freq_low_46_0_0_freq_low_46
         .I3(curr_delay[6]),
         .O(\deci_low.curr_delay[4]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hF11FF1F111111111)) 
+    .INIT(64'h09FFFF0609060906)) 
     \deci_low.curr_delay[5]_i_1 
-       (.I0(\deci_low.curr_delay[5]_i_2_n_0 ),
-        .I1(\deci_low.curr_delay[6]_i_4_n_0 ),
-        .I2(curr_delay[5]),
-        .I3(\deci_low.curr_delay[5]_i_3_n_0 ),
-        .I4(\deci_low.curr_delay[6]_i_2_n_0 ),
+       (.I0(curr_delay[4]),
+        .I1(\deci_low.curr_delay[5]_i_2_n_0 ),
+        .I2(\deci_low.curr_delay[6]_i_4_n_0 ),
+        .I3(curr_delay[5]),
+        .I4(\deci_low.curr_delay[5]_i_3_n_0 ),
         .I5(fifo_valid),
         .O(\deci_low.curr_delay[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h01FE01FF00FF00FF)) 
+    .INIT(64'hCCCCCCCCCCCCCCDC)) 
     \deci_low.curr_delay[5]_i_2 
-       (.I0(\deci_low.curr_delay[6]_i_7_n_0 ),
-        .I1(\deci_low.curr_delay[5]_i_4_n_0 ),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(curr_delay[5]),
-        .I4(curr_delay[6]),
-        .I5(\deci_low.curr_delay[6]_i_8_n_0 ),
+       (.I0(curr_delay[3]),
+        .I1(curr_delay[4]),
+        .I2(\deci_low.curr_delay[5]_i_4_n_0 ),
+        .I3(\deci_low.curr_delay[6]_i_6_n_0 ),
+        .I4(start_delay[0]),
+        .I5(\deci_low.curr_delay[0]_i_2_n_0 ),
         .O(\deci_low.curr_delay[5]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
+  LUT6 #(
+    .INIT(64'h00000000A2000000)) 
     \deci_low.curr_delay[5]_i_3 
-       (.I0(curr_delay[4]),
-        .I1(curr_delay[3]),
+       (.I0(curr_delay[0]),
+        .I1(start_delay[0]),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(curr_delay[1]),
+        .I4(curr_delay[2]),
+        .I5(\deci_low.curr_delay[5]_i_5_n_0 ),
         .O(\deci_low.curr_delay[5]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'hE)) 
     \deci_low.curr_delay[5]_i_4 
-       (.I0(start_delay[2]),
-        .I1(start_delay[0]),
+       (.I0(curr_delay[6]),
+        .I1(curr_delay[5]),
         .O(\deci_low.curr_delay[5]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \deci_low.curr_delay[5]_i_5 
+       (.I0(curr_delay[4]),
+        .I1(curr_delay[3]),
+        .O(\deci_low.curr_delay[5]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'hD0D0D0FF20202020)) 
     \deci_low.curr_delay[6]_i_1 
@@ -1066,15 +1084,14 @@ module ps_freq_low_46_0_0_freq_low_46
         .I4(\deci_low.curr_delay[6]_i_5_n_0 ),
         .I5(curr_delay[6]),
         .O(\deci_low.curr_delay[6]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h8888888000000000)) 
+  LUT5 #(
+    .INIT(32'h80880000)) 
     \deci_low.curr_delay[6]_i_2 
        (.I0(curr_delay[2]),
         .I1(curr_delay[1]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(start_delay[2]),
-        .I4(start_delay[0]),
-        .I5(curr_delay[0]),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(start_delay[0]),
+        .I4(curr_delay[0]),
         .O(\deci_low.curr_delay[6]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'h7F)) 
@@ -1087,42 +1104,28 @@ module ps_freq_low_46_0_0_freq_low_46
     .INIT(32'hAAAAAAAB)) 
     \deci_low.curr_delay[6]_i_4 
        (.I0(fifo_valid),
-        .I1(\deci_low.curr_delay[6]_i_6_n_0 ),
+        .I1(\deci_low.start_delay[2]_i_3_n_0 ),
         .I2(start_delay[3]),
-        .I3(start_delay[6]),
-        .I4(start_delay[1]),
+        .I3(start_delay[5]),
+        .I4(start_delay[4]),
         .O(\deci_low.curr_delay[6]_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000010000)) 
+    .INIT(64'h0000000000000001)) 
     \deci_low.curr_delay[6]_i_5 
-       (.I0(\deci_low.curr_delay[6]_i_7_n_0 ),
+       (.I0(\deci_low.curr_delay[6]_i_6_n_0 ),
         .I1(start_delay[0]),
-        .I2(start_delay[2]),
-        .I3(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I4(\deci_low.curr_delay[6]_i_8_n_0 ),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(curr_delay[4]),
+        .I4(curr_delay[3]),
         .I5(curr_delay[5]),
         .O(\deci_low.curr_delay[6]_i_5_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \deci_low.curr_delay[6]_i_6 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(start_delay[4]),
-        .I3(start_delay[5]),
-        .O(\deci_low.curr_delay[6]_i_6_n_0 ));
   LUT3 #(
     .INIT(8'hFE)) 
-    \deci_low.curr_delay[6]_i_7 
+    \deci_low.curr_delay[6]_i_6 
        (.I0(curr_delay[2]),
         .I1(curr_delay[0]),
         .I2(curr_delay[1]),
-        .O(\deci_low.curr_delay[6]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \deci_low.curr_delay[6]_i_8 
-       (.I0(curr_delay[4]),
-        .I1(curr_delay[3]),
-        .O(\deci_low.curr_delay[6]_i_8_n_0 ));
+        .O(\deci_low.curr_delay[6]_i_6_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \deci_low.curr_delay_reg[0] 
        (.C(clk),
@@ -2619,14 +2622,13 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(envW[9]),
         .Q(env_W[9]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h01010001)) 
+  LUT4 #(
+    .INIT(16'h0C01)) 
     \deci_low.morlet_active_i_1 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(\deci_low.curr_delay[1]_i_3_n_0 ),
-        .I4(fifo_valid),
+       (.I0(\deci_low.start_delay[6]_i_3_n_0 ),
+        .I1(start_delay[0]),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(fifo_valid),
         .O(\deci_low.morlet_active_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \deci_low.morlet_active_reg 
@@ -3355,175 +3357,182 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(phase_W[9]),
         .Q(prevW[9]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h0E)) 
-    \deci_low.start_delay[0]_i_1 
-       (.I0(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I1(start_delay[2]),
-        .I2(start_delay[0]),
-        .O(\deci_low.start_delay[0]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h5554ABAA)) 
-    \deci_low.start_delay[1]_i_1 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(\deci_low.start_delay[6]_i_4_n_0 ),
-        .I4(start_delay[1]),
-        .O(\deci_low.start_delay[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h6A)) 
-    \deci_low.start_delay[2]_i_1 
-       (.I0(start_delay[2]),
-        .I1(start_delay[1]),
-        .I2(start_delay[0]),
-        .O(\deci_low.start_delay[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h77768988FFFE0100)) 
-    \deci_low.start_delay[3]_i_1 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(\deci_low.start_delay[6]_i_4_n_0 ),
-        .I4(start_delay[3]),
-        .I5(start_delay[1]),
-        .O(\deci_low.start_delay[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0100FFFEFFFE0100)) 
-    \deci_low.start_delay[4]_i_1 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(\deci_low.start_delay[6]_i_4_n_0 ),
-        .I4(start_delay[4]),
-        .I5(\deci_low.start_delay[4]_i_2_n_0 ),
-        .O(\deci_low.start_delay[4]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h8000)) 
-    \deci_low.start_delay[4]_i_2 
-       (.I0(start_delay[3]),
-        .I1(start_delay[1]),
+    .INIT(16'h4A4E)) 
+    \deci_low.start_delay[0]_i_1 
+       (.I0(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I1(fifo_valid),
         .I2(start_delay[0]),
         .I3(start_delay[2]),
-        .O(\deci_low.start_delay[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0100FFFEFFFE0100)) 
-    \deci_low.start_delay[5]_i_1 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(\deci_low.start_delay[5]_i_2_n_0 ),
-        .I3(\deci_low.start_delay[6]_i_4_n_0 ),
-        .I4(start_delay[5]),
-        .I5(\deci_low.start_delay[6]_i_5_n_0 ),
-        .O(\deci_low.start_delay[5]_i_1_n_0 ));
+        .O(\deci_low.start_delay[0]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \deci_low.start_delay[5]_i_2 
-       (.I0(start_delay[3]),
-        .I1(start_delay[1]),
-        .I2(start_delay[6]),
-        .I3(start_delay[4]),
-        .I4(start_delay[5]),
-        .O(\deci_low.start_delay[5]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \deci_low.start_delay[6]_i_1 
+    .INIT(32'h3F31CCCD)) 
+    \deci_low.start_delay[1]_i_1 
+       (.I0(\deci_low.start_delay[6]_i_3_n_0 ),
+        .I1(start_delay[0]),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(fifo_valid),
+        .I4(start_delay[1]),
+        .O(\deci_low.start_delay[1]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \deci_low.start_delay[2]_i_1 
        (.I0(fifo_valid),
-        .I1(\deci_low.start_delay[6]_i_3_n_0 ),
-        .O(\deci_low.start_delay[6]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h8BB8B8B8)) 
-    \deci_low.start_delay[6]_i_2 
-       (.I0(\deci_low.start_delay[6]_i_4_n_0 ),
-        .I1(\deci_low.curr_delay[1]_i_2_n_0 ),
-        .I2(start_delay[6]),
-        .I3(\deci_low.start_delay[6]_i_5_n_0 ),
-        .I4(start_delay[5]),
-        .O(\deci_low.start_delay[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \deci_low.start_delay[6]_i_3 
-       (.I0(start_delay[1]),
-        .I1(start_delay[6]),
+        .I1(\deci_low.start_delay[2]_i_3_n_0 ),
         .I2(start_delay[3]),
         .I3(start_delay[5]),
         .I4(start_delay[4]),
-        .I5(\deci_low.curr_delay[5]_i_4_n_0 ),
-        .O(\deci_low.start_delay[6]_i_3_n_0 ));
+        .O(\deci_low.start_delay[2]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFEFFFF)) 
-    \deci_low.start_delay[6]_i_4 
+    .INIT(32'h6C0C6C6C)) 
+    \deci_low.start_delay[2]_i_2 
+       (.I0(start_delay[1]),
+        .I1(start_delay[2]),
+        .I2(start_delay[0]),
+        .I3(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I4(fifo_valid),
+        .O(\deci_low.start_delay[2]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \deci_low.start_delay[2]_i_3 
+       (.I0(start_delay[1]),
+        .I1(start_delay[0]),
+        .I2(start_delay[2]),
+        .I3(start_delay[6]),
+        .O(\deci_low.start_delay[2]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h0EFEFEFEF0000000)) 
+    \deci_low.start_delay[3]_i_1 
        (.I0(fifo_valid),
-        .I1(curr_delay[2]),
-        .I2(curr_delay[0]),
-        .I3(curr_delay[1]),
-        .I4(\deci_low.curr_delay[4]_i_3_n_0 ),
-        .O(\deci_low.start_delay[6]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'h80000000)) 
-    \deci_low.start_delay[6]_i_5 
-       (.I0(start_delay[4]),
+        .I1(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I2(start_delay[0]),
+        .I3(start_delay[1]),
+        .I4(start_delay[2]),
+        .I5(start_delay[3]),
+        .O(\deci_low.start_delay[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h2AAAAAAA80000000)) 
+    \deci_low.start_delay[4]_i_1 
+       (.I0(\deci_low.morlet_active_reg0 ),
         .I1(start_delay[2]),
         .I2(start_delay[0]),
         .I3(start_delay[1]),
         .I4(start_delay[3]),
-        .O(\deci_low.start_delay[6]_i_5_n_0 ));
+        .I5(start_delay[4]),
+        .O(\deci_low.start_delay[4]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAA2A0080)) 
+    \deci_low.start_delay[5]_i_1 
+       (.I0(\deci_low.morlet_active_reg0 ),
+        .I1(start_delay[4]),
+        .I2(start_delay[3]),
+        .I3(\deci_low.start_delay[5]_i_3_n_0 ),
+        .I4(start_delay[5]),
+        .O(\deci_low.start_delay[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \deci_low.start_delay[5]_i_2 
+       (.I0(fifo_valid),
+        .I1(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I2(start_delay[0]),
+        .O(\deci_low.morlet_active_reg0 ));
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \deci_low.start_delay[5]_i_3 
+       (.I0(start_delay[1]),
+        .I1(start_delay[0]),
+        .I2(start_delay[2]),
+        .O(\deci_low.start_delay[5]_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h0C010000)) 
+    \deci_low.start_delay[6]_i_1 
+       (.I0(\deci_low.start_delay[6]_i_3_n_0 ),
+        .I1(start_delay[0]),
+        .I2(\deci_low.curr_delay[0]_i_2_n_0 ),
+        .I3(fifo_valid),
+        .I4(\deci_low.start_delay[2]_i_1_n_0 ),
+        .O(\deci_low.start_delay[6]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hCFFEFFFF30000000)) 
+    \deci_low.start_delay[6]_i_2 
+       (.I0(fifo_valid),
+        .I1(\deci_low.start_delay[6]_i_4_n_0 ),
+        .I2(start_delay[2]),
+        .I3(start_delay[0]),
+        .I4(start_delay[1]),
+        .I5(start_delay[6]),
+        .O(\deci_low.start_delay[6]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \deci_low.start_delay[6]_i_3 
+       (.I0(curr_delay[1]),
+        .I1(curr_delay[0]),
+        .I2(curr_delay[2]),
+        .I3(\deci_low.curr_delay[4]_i_3_n_0 ),
+        .O(\deci_low.start_delay[6]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \deci_low.start_delay[6]_i_4 
+       (.I0(start_delay[3]),
+        .I1(start_delay[4]),
+        .I2(start_delay[5]),
+        .O(\deci_low.start_delay[6]_i_4_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \deci_low.start_delay_reg[0] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
         .D(\deci_low.start_delay[0]_i_1_n_0 ),
         .Q(start_delay[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \deci_low.start_delay_reg[1] 
+  FDSE \deci_low.start_delay_reg[1] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
         .D(\deci_low.start_delay[1]_i_1_n_0 ),
         .Q(start_delay[1]),
-        .R(1'b0));
+        .S(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \deci_low.start_delay_reg[2] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
-        .D(\deci_low.start_delay[2]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
+        .D(\deci_low.start_delay[2]_i_2_n_0 ),
         .Q(start_delay[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \deci_low.start_delay_reg[3] 
+  FDSE \deci_low.start_delay_reg[3] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
         .D(\deci_low.start_delay[3]_i_1_n_0 ),
         .Q(start_delay[3]),
-        .R(1'b0));
+        .S(\deci_low.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \deci_low.start_delay_reg[4] 
+  FDSE \deci_low.start_delay_reg[4] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
         .D(\deci_low.start_delay[4]_i_1_n_0 ),
         .Q(start_delay[4]),
-        .R(1'b0));
+        .S(\deci_low.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \deci_low.start_delay_reg[5] 
+  FDSE \deci_low.start_delay_reg[5] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
         .D(\deci_low.start_delay[5]_i_1_n_0 ),
         .Q(start_delay[5]),
-        .R(1'b0));
+        .S(\deci_low.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \deci_low.start_delay_reg[6] 
+  FDSE \deci_low.start_delay_reg[6] 
        (.C(clk),
-        .CE(\deci_low.start_delay[6]_i_1_n_0 ),
+        .CE(\deci_low.start_delay[2]_i_1_n_0 ),
         .D(\deci_low.start_delay[6]_i_2_n_0 ),
         .Q(start_delay[6]),
-        .R(1'b0));
+        .S(\deci_low.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \deci_low.valid_reg 
        (.C(clk),
@@ -3732,22 +3741,20 @@ module ps_freq_low_46_0_0_ila_1
     probe8,
     probe9,
     probe10,
-    probe11,
-    probe12);
+    probe11);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [23:0]probe1;
+  input [4:0]probe1;
   input [23:0]probe2;
-  input [31:0]probe3;
+  input [23:0]probe3;
   input [31:0]probe4;
   input [31:0]probe5;
-  input [0:0]probe6;
+  input [31:0]probe6;
   input [15:0]probe7;
   input [23:0]probe8;
-  input [0:0]probe9;
-  input [15:0]probe10;
-  input [19:0]probe11;
-  input [0:0]probe12;
+  input [15:0]probe9;
+  input [19:0]probe10;
+  input [0:0]probe11;
 
 
 endmodule
@@ -3770,13 +3777,50 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
   output [19:0]phase;
 
   (* MARK_DEBUG *) wire active;
-  (* MARK_DEBUG *) wire atan2_valid;
+  wire [15:0]amp_4;
   wire clk;
+  (* MARK_DEBUG *) wire [4:0]delay;
+  wire [4:0]delay0_in;
   (* MARK_DEBUG *) wire [15:0]env;
   (* MARK_DEBUG *) wire [23:0]im;
   (* MARK_DEBUG *) wire [31:0]im2;
   (* MARK_DEBUG *) wire [15:0]lenv;
   (* MARK_DEBUG *) wire [23:0]lphase;
+  wire \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[0]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[10]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[11]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[12]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[13]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[14]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_2_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_3_n_0 ;
+  wire \morlet_to_phase_env.env[1]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[2]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[3]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[5]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[6]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[7]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[8]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[9]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_2_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_3_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_4_n_0 ;
@@ -3811,44 +3855,97 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
   wire \morlet_to_phase_env.p2[7]_i_9_n_0 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_9 ;
+  wire \morlet_to_phase_env.phase[0]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[10]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[11]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[12]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[13]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[14]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[16]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[17]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[18]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[19]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[1]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[2]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[3]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[5]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[6]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[7]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[8]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[9]_i_1_n_0 ;
   wire \morlet_to_phase_env.valid_i_1_n_0 ;
+  wire \morlet_to_phase_env.valid_i_2_n_0 ;
   (* MARK_DEBUG *) wire [31:0]p2;
-  wire [31:0]p_0_in1_in;
   (* MARK_DEBUG *) wire [19:0]phase;
   (* MARK_DEBUG *) wire [23:0]re;
   (* MARK_DEBUG *) wire [31:0]re2;
-  (* MARK_DEBUG *) wire sqrt_valid;
   (* MARK_DEBUG *) wire valid;
   wire [7:7]\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED ;
+  wire NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED;
+  wire NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED;
 
   (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -3856,144 +3953,662 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
   ila_1_HD5 ila_1_i
        (.clk(clk),
         .probe0(active),
-        .probe1(re),
-        .probe10(env),
-        .probe11(phase),
-        .probe12(valid),
-        .probe2(im),
-        .probe3(re2),
-        .probe4(im2),
-        .probe5(p2),
-        .probe6(sqrt_valid),
+        .probe1(delay),
+        .probe10(phase),
+        .probe11(valid),
+        .probe2(re),
+        .probe3(im),
+        .probe4(re2),
+        .probe5(im2),
+        .probe6(p2),
         .probe7(lenv),
         .probe8(lphase),
-        .probe9(atan2_valid));
+        .probe9(env));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[0]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[0]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[0]),
+        .Q(\morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[10]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[10]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[10]),
+        .Q(\morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[11]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[11]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[11]),
+        .Q(\morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[12]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[12]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[12]),
+        .Q(\morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[13]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[13]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[13]),
+        .Q(\morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[14]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[14]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[14]),
+        .Q(\morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[15]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[15]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[15]),
+        .Q(\morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[1]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[1]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[1]),
+        .Q(\morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[2]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[2]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[2]),
+        .Q(\morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[3]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[3]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[3]),
+        .Q(\morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[4]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[4]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[4]),
+        .Q(\morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[5]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[5]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[5]),
+        .Q(\morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[6]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[6]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[6]),
+        .Q(\morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[7]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[7]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[7]),
+        .Q(\morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[8]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[8]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[8]),
+        .Q(\morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_3_reg[9]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[9]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[9]),
+        .Q(\morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ));
+  FDRE \morlet_to_phase_env.amp_4_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ),
+        .Q(amp_4[0]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ),
+        .Q(amp_4[10]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ),
+        .Q(amp_4[11]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ),
+        .Q(amp_4[12]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ),
+        .Q(amp_4[13]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ),
+        .Q(amp_4[14]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ),
+        .Q(amp_4[15]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ),
+        .Q(amp_4[1]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ),
+        .Q(amp_4[2]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ),
+        .Q(amp_4[3]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ),
+        .Q(amp_4[4]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ),
+        .Q(amp_4[5]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ),
+        .Q(amp_4[6]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ),
+        .Q(amp_4[7]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ),
+        .Q(amp_4[8]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ),
+        .Q(amp_4[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h2F0F0F0F0F0F0F0F)) 
+    \morlet_to_phase_env.delay[0]_i_1 
+       (.I0(delay[1]),
+        .I1(delay[2]),
+        .I2(delay[0]),
+        .I3(delay[4]),
+        .I4(delay[3]),
+        .I5(active),
+        .O(delay0_in[0]));
+  LUT6 #(
+    .INIT(64'h55D5AAAAAAAA5555)) 
+    \morlet_to_phase_env.delay[1]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[1]));
+  LUT6 #(
+    .INIT(64'h552AFF00FF00AA55)) 
+    \morlet_to_phase_env.delay[2]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[2]));
+  LUT5 #(
+    .INIT(32'h6CCCCCC9)) 
+    \morlet_to_phase_env.delay[3]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[2]),
+        .I3(delay[1]),
+        .I4(active),
+        .O(delay0_in[3]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \morlet_to_phase_env.delay[4]_i_1 
+       (.I0(delay[2]),
+        .I1(active),
+        .I2(delay[3]),
+        .I3(delay[4]),
+        .I4(delay[0]),
+        .I5(delay[1]),
+        .O(\morlet_to_phase_env.delay[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h78F0F0F0F0F0F0E1)) 
+    \morlet_to_phase_env.delay[4]_i_2 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[4]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[0] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[0]),
+        .Q(delay[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[1] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[1]),
+        .Q(delay[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[2] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[2]),
+        .Q(delay[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[3] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[3]),
+        .Q(delay[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[4] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[4]),
+        .Q(delay[4]),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[0]_i_1 
+       (.I0(env[0]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[0]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[10]_i_1 
+       (.I0(env[10]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[10]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[11]_i_1 
+       (.I0(env[11]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[11]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[12]_i_1 
+       (.I0(env[12]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[12]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[13]_i_1 
+       (.I0(env[13]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[13]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[14]_i_1 
+       (.I0(env[14]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[14]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[15]_i_1 
+       (.I0(env[15]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[15]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[15]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hF7FFFFFF00000000)) 
+    \morlet_to_phase_env.env[15]_i_2 
+       (.I0(delay[3]),
+        .I1(delay[4]),
+        .I2(delay[2]),
+        .I3(delay[0]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(\morlet_to_phase_env.env[15]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h40000000FFFFFFFF)) 
+    \morlet_to_phase_env.env[15]_i_3 
+       (.I0(delay[2]),
+        .I1(delay[1]),
+        .I2(delay[0]),
+        .I3(delay[4]),
+        .I4(delay[3]),
+        .I5(active),
+        .O(\morlet_to_phase_env.env[15]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[1]_i_1 
+       (.I0(env[1]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[1]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[2]_i_1 
+       (.I0(env[2]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[2]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[3]_i_1 
+       (.I0(env[3]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[3]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[4]_i_1 
+       (.I0(env[4]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[4]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[5]_i_1 
+       (.I0(env[5]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[5]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[6]_i_1 
+       (.I0(env[6]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[6]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[7]_i_1 
+       (.I0(env[7]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[7]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[8]_i_1 
+       (.I0(env[8]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[8]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[9]_i_1 
+       (.I0(env[9]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[9]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[0]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[0]_i_1_n_0 ),
         .Q(env[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[10]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[10]_i_1_n_0 ),
         .Q(env[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[11]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[11]_i_1_n_0 ),
         .Q(env[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[12]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[12]_i_1_n_0 ),
         .Q(env[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[13]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[13]_i_1_n_0 ),
         .Q(env[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[14]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[14]_i_1_n_0 ),
         .Q(env[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[15]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .Q(env[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[1]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[1]_i_1_n_0 ),
         .Q(env[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[2]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[2]_i_1_n_0 ),
         .Q(env[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[3]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[3]_i_1_n_0 ),
         .Q(env[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[4]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[4]_i_1_n_0 ),
         .Q(env[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[5]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[5]_i_1_n_0 ),
         .Q(env[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[6]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[6]_i_1_n_0 ),
         .Q(env[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[7]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[7]_i_1_n_0 ),
         .Q(env[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[8]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[8]_i_1_n_0 ),
         .Q(env[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[9]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[9]_i_1_n_0 ),
         .Q(env[9]),
         .R(1'b0));
   LUT2 #(
@@ -4189,59 +4804,52 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .I1(im2[0]),
         .O(\morlet_to_phase_env.p2[7]_i_9_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[0]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_15 ),
         .Q(p2[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[10]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_13 ),
         .Q(p2[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[11]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_12 ),
         .Q(p2[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[12]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_11 ),
         .Q(p2[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[13]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_10 ),
         .Q(p2[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[14]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_9 ),
         .Q(p2[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[15]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_8 ),
         .Q(p2[15]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -4250,78 +4858,69 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[15]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_7 }),
         .DI(re2[15:8]),
-        .O(p_0_in1_in[15:8]),
+        .O({\morlet_to_phase_env.p2_reg[15]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[15]_i_2_n_0 ,\morlet_to_phase_env.p2[15]_i_3_n_0 ,\morlet_to_phase_env.p2[15]_i_4_n_0 ,\morlet_to_phase_env.p2[15]_i_5_n_0 ,\morlet_to_phase_env.p2[15]_i_6_n_0 ,\morlet_to_phase_env.p2[15]_i_7_n_0 ,\morlet_to_phase_env.p2[15]_i_8_n_0 ,\morlet_to_phase_env.p2[15]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[16] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[16]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_15 ),
         .Q(p2[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[17] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[17]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_14 ),
         .Q(p2[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[18] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[18]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_13 ),
         .Q(p2[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[19] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[19]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_12 ),
         .Q(p2[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[1]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_14 ),
         .Q(p2[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[20] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[20]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_11 ),
         .Q(p2[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[21] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[21]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_10 ),
         .Q(p2[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[22] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[22]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_9 ),
         .Q(p2[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[23] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[23]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_8 ),
         .Q(p2[23]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -4330,78 +4929,69 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[23]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_7 }),
         .DI(re2[23:16]),
-        .O(p_0_in1_in[23:16]),
+        .O({\morlet_to_phase_env.p2_reg[23]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[23]_i_2_n_0 ,\morlet_to_phase_env.p2[23]_i_3_n_0 ,\morlet_to_phase_env.p2[23]_i_4_n_0 ,\morlet_to_phase_env.p2[23]_i_5_n_0 ,\morlet_to_phase_env.p2[23]_i_6_n_0 ,\morlet_to_phase_env.p2[23]_i_7_n_0 ,\morlet_to_phase_env.p2[23]_i_8_n_0 ,\morlet_to_phase_env.p2[23]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[24] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[24]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_15 ),
         .Q(p2[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[25] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[25]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_14 ),
         .Q(p2[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[26] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[26]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_13 ),
         .Q(p2[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[27] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[27]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_12 ),
         .Q(p2[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[28] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[28]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_11 ),
         .Q(p2[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[29] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[29]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_10 ),
         .Q(p2[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[2]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_13 ),
         .Q(p2[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[30] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[30]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_9 ),
         .Q(p2[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[31] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[31]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_8 ),
         .Q(p2[31]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -4410,46 +5000,41 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CI_TOP(1'b0),
         .CO({\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED [7],\morlet_to_phase_env.p2_reg[31]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_7 }),
         .DI({1'b0,re2[30:24]}),
-        .O(p_0_in1_in[31:24]),
+        .O({\morlet_to_phase_env.p2_reg[31]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[31]_i_2_n_0 ,\morlet_to_phase_env.p2[31]_i_3_n_0 ,\morlet_to_phase_env.p2[31]_i_4_n_0 ,\morlet_to_phase_env.p2[31]_i_5_n_0 ,\morlet_to_phase_env.p2[31]_i_6_n_0 ,\morlet_to_phase_env.p2[31]_i_7_n_0 ,\morlet_to_phase_env.p2[31]_i_8_n_0 ,\morlet_to_phase_env.p2[31]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[3]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_12 ),
         .Q(p2[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[4]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_11 ),
         .Q(p2[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[5]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_10 ),
         .Q(p2[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[6]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_9 ),
         .Q(p2[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[7]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_8 ),
         .Q(p2[7]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -4458,191 +5043,360 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[7]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_7 }),
         .DI(re2[7:0]),
-        .O(p_0_in1_in[7:0]),
+        .O({\morlet_to_phase_env.p2_reg[7]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[7]_i_2_n_0 ,\morlet_to_phase_env.p2[7]_i_3_n_0 ,\morlet_to_phase_env.p2[7]_i_4_n_0 ,\morlet_to_phase_env.p2[7]_i_5_n_0 ,\morlet_to_phase_env.p2[7]_i_6_n_0 ,\morlet_to_phase_env.p2[7]_i_7_n_0 ,\morlet_to_phase_env.p2[7]_i_8_n_0 ,\morlet_to_phase_env.p2[7]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[8]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_15 ),
         .Q(p2[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[9]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_14 ),
         .Q(p2[9]),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[0]_i_1 
+       (.I0(phase[0]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[0]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[10]_i_1 
+       (.I0(phase[10]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[10]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[11]_i_1 
+       (.I0(phase[11]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[11]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[12]_i_1 
+       (.I0(phase[12]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[12]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[13]_i_1 
+       (.I0(phase[13]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[13]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[14]_i_1 
+       (.I0(phase[14]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[14]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[15]_i_1 
+       (.I0(phase[15]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[15]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[16]_i_1 
+       (.I0(phase[16]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[16]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[17]_i_1 
+       (.I0(phase[17]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[17]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[18]_i_1 
+       (.I0(phase[18]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[18]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[19]_i_1 
+       (.I0(phase[19]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[19]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[1]_i_1 
+       (.I0(phase[1]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[1]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[2]_i_1 
+       (.I0(phase[2]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[2]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[3]_i_1 
+       (.I0(phase[3]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[3]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[4]_i_1 
+       (.I0(phase[4]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[4]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[5]_i_1 
+       (.I0(phase[5]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[5]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[6]_i_1 
+       (.I0(phase[6]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[6]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[7]_i_1 
+       (.I0(phase[7]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[7]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[8]_i_1 
+       (.I0(phase[8]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[8]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[9]_i_1 
+       (.I0(phase[9]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[9]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[0]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[0]_i_1_n_0 ),
         .Q(phase[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[10]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[10]_i_1_n_0 ),
         .Q(phase[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[11]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[11]_i_1_n_0 ),
         .Q(phase[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[12]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[12]_i_1_n_0 ),
         .Q(phase[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[13]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[13]_i_1_n_0 ),
         .Q(phase[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[14]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[14]_i_1_n_0 ),
         .Q(phase[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[15]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[15]_i_1_n_0 ),
         .Q(phase[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[16] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[16]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[16]_i_1_n_0 ),
         .Q(phase[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[17] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[17]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[17]_i_1_n_0 ),
         .Q(phase[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[18] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[18]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[18]_i_1_n_0 ),
         .Q(phase[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[19] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[19]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[19]_i_1_n_0 ),
         .Q(phase[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[1]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[1]_i_1_n_0 ),
         .Q(phase[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[2]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[2]_i_1_n_0 ),
         .Q(phase[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[3]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[3]_i_1_n_0 ),
         .Q(phase[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[4]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[4]_i_1_n_0 ),
         .Q(phase[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[5]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[5]_i_1_n_0 ),
         .Q(phase[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[6]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[6]_i_1_n_0 ),
         .Q(phase[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[7]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[7]_i_1_n_0 ),
         .Q(phase[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[8]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[8]_i_1_n_0 ),
         .Q(phase[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[9]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[9]_i_1_n_0 ),
         .Q(phase[9]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h80)) 
+  LUT4 #(
+    .INIT(16'hFEBA)) 
     \morlet_to_phase_env.valid_i_1 
-       (.I0(active),
-        .I1(atan2_valid),
-        .I2(sqrt_valid),
+       (.I0(\morlet_to_phase_env.valid_i_2_n_0 ),
+        .I1(active),
+        .I2(delay[2]),
+        .I3(valid),
         .O(\morlet_to_phase_env.valid_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7333333333333330)) 
+    \morlet_to_phase_env.valid_i_2 
+       (.I0(delay[2]),
+        .I1(active),
+        .I2(delay[1]),
+        .I3(delay[0]),
+        .I4(delay[4]),
+        .I5(delay[3]),
+        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \morlet_to_phase_env.valid_reg 
        (.C(clk),
@@ -4672,7 +5426,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
   cordic_sqrt_16_HD7 sqrt_i
        (.aclk(clk),
         .m_axis_dout_tdata(lenv),
-        .m_axis_dout_tvalid(sqrt_valid),
+        .m_axis_dout_tvalid(NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata(p2),
         .s_axis_cartesian_tvalid(active));
   (* CHECK_LICENSE_TYPE = "cordic_atan2_16,cordic_v6_0_24,{}" *) 
@@ -4681,7 +5435,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
   cordic_atan2_16_HD8 tan2_i
        (.aclk(clk),
         .m_axis_dout_tdata(lphase),
-        .m_axis_dout_tvalid(atan2_valid),
+        .m_axis_dout_tvalid(NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata({im,re}),
         .s_axis_cartesian_tvalid(active));
 endmodule
@@ -4704,13 +5458,50 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   output [19:0]phase;
 
   (* MARK_DEBUG *) wire active;
-  (* MARK_DEBUG *) wire atan2_valid;
+  wire [15:0]amp_4;
   wire clk;
+  (* MARK_DEBUG *) wire [4:0]delay;
+  wire [4:0]delay0_in;
   (* MARK_DEBUG *) wire [15:0]env;
   (* MARK_DEBUG *) wire [23:0]im;
   (* MARK_DEBUG *) wire [31:0]im2;
   (* MARK_DEBUG *) wire [15:0]lenv;
   (* MARK_DEBUG *) wire [23:0]lphase;
+  wire \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[0]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[10]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[11]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[12]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[13]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[14]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_2_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_3_n_0 ;
+  wire \morlet_to_phase_env.env[1]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[2]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[3]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[5]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[6]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[7]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[8]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[9]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_2_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_3_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_4_n_0 ;
@@ -4745,44 +5536,97 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   wire \morlet_to_phase_env.p2[7]_i_9_n_0 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_9 ;
+  wire \morlet_to_phase_env.phase[0]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[10]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[11]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[12]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[13]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[14]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[16]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[17]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[18]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[19]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[1]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[2]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[3]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[5]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[6]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[7]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[8]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[9]_i_1_n_0 ;
   wire \morlet_to_phase_env.valid_i_1_n_0 ;
+  wire \morlet_to_phase_env.valid_i_2_n_0 ;
   (* MARK_DEBUG *) wire [31:0]p2;
-  wire [31:0]p_0_in1_in;
   (* MARK_DEBUG *) wire [19:0]phase;
   (* MARK_DEBUG *) wire [23:0]re;
   (* MARK_DEBUG *) wire [31:0]re2;
-  (* MARK_DEBUG *) wire sqrt_valid;
   (* MARK_DEBUG *) wire valid;
   wire [7:7]\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED ;
+  wire NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED;
+  wire NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED;
 
   (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -4790,144 +5634,662 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   ps_freq_low_46_0_0_ila_1 ila_1_i
        (.clk(clk),
         .probe0(active),
-        .probe1(re),
-        .probe10(env),
-        .probe11(phase),
-        .probe12(valid),
-        .probe2(im),
-        .probe3(re2),
-        .probe4(im2),
-        .probe5(p2),
-        .probe6(sqrt_valid),
+        .probe1(delay),
+        .probe10(phase),
+        .probe11(valid),
+        .probe2(re),
+        .probe3(im),
+        .probe4(re2),
+        .probe5(im2),
+        .probe6(p2),
         .probe7(lenv),
         .probe8(lphase),
-        .probe9(atan2_valid));
+        .probe9(env));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[0]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[0]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[0]),
+        .Q(\morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[10]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[10]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[10]),
+        .Q(\morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[11]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[11]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[11]),
+        .Q(\morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[12]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[12]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[12]),
+        .Q(\morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[13]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[13]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[13]),
+        .Q(\morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[14]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[14]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[14]),
+        .Q(\morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[15]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[15]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[15]),
+        .Q(\morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[1]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[1]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[1]),
+        .Q(\morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[2]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[2]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[2]),
+        .Q(\morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[3]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[3]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[3]),
+        .Q(\morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[4]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[4]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[4]),
+        .Q(\morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[5]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[5]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[5]),
+        .Q(\morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[6]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[6]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[6]),
+        .Q(\morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[7]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[7]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[7]),
+        .Q(\morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[8]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[8]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[8]),
+        .Q(\morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_3_reg[9]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[9]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[9]),
+        .Q(\morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ));
+  FDRE \morlet_to_phase_env.amp_4_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ),
+        .Q(amp_4[0]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ),
+        .Q(amp_4[10]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ),
+        .Q(amp_4[11]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ),
+        .Q(amp_4[12]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ),
+        .Q(amp_4[13]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ),
+        .Q(amp_4[14]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ),
+        .Q(amp_4[15]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ),
+        .Q(amp_4[1]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ),
+        .Q(amp_4[2]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ),
+        .Q(amp_4[3]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ),
+        .Q(amp_4[4]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ),
+        .Q(amp_4[5]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ),
+        .Q(amp_4[6]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ),
+        .Q(amp_4[7]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ),
+        .Q(amp_4[8]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ),
+        .Q(amp_4[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h2F0F0F0F0F0F0F0F)) 
+    \morlet_to_phase_env.delay[0]_i_1 
+       (.I0(delay[1]),
+        .I1(delay[2]),
+        .I2(delay[0]),
+        .I3(delay[4]),
+        .I4(delay[3]),
+        .I5(active),
+        .O(delay0_in[0]));
+  LUT6 #(
+    .INIT(64'h55D5AAAAAAAA5555)) 
+    \morlet_to_phase_env.delay[1]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[1]));
+  LUT6 #(
+    .INIT(64'h552AFF00FF00AA55)) 
+    \morlet_to_phase_env.delay[2]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[2]));
+  LUT5 #(
+    .INIT(32'h6CCCCCC9)) 
+    \morlet_to_phase_env.delay[3]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[2]),
+        .I3(delay[1]),
+        .I4(active),
+        .O(delay0_in[3]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \morlet_to_phase_env.delay[4]_i_1 
+       (.I0(delay[2]),
+        .I1(active),
+        .I2(delay[3]),
+        .I3(delay[4]),
+        .I4(delay[0]),
+        .I5(delay[1]),
+        .O(\morlet_to_phase_env.delay[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h78F0F0F0F0F0F0E1)) 
+    \morlet_to_phase_env.delay[4]_i_2 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[4]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[0] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[0]),
+        .Q(delay[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[1] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[1]),
+        .Q(delay[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[2] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[2]),
+        .Q(delay[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[3] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[3]),
+        .Q(delay[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[4] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[4]),
+        .Q(delay[4]),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[0]_i_1 
+       (.I0(env[0]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[0]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[10]_i_1 
+       (.I0(env[10]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[10]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[11]_i_1 
+       (.I0(env[11]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[11]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[12]_i_1 
+       (.I0(env[12]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[12]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[13]_i_1 
+       (.I0(env[13]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[13]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[14]_i_1 
+       (.I0(env[14]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[14]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[15]_i_1 
+       (.I0(env[15]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[15]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[15]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hF7FFFFFF00000000)) 
+    \morlet_to_phase_env.env[15]_i_2 
+       (.I0(delay[3]),
+        .I1(delay[4]),
+        .I2(delay[2]),
+        .I3(delay[0]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(\morlet_to_phase_env.env[15]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h40000000FFFFFFFF)) 
+    \morlet_to_phase_env.env[15]_i_3 
+       (.I0(delay[2]),
+        .I1(delay[1]),
+        .I2(delay[0]),
+        .I3(delay[4]),
+        .I4(delay[3]),
+        .I5(active),
+        .O(\morlet_to_phase_env.env[15]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[1]_i_1 
+       (.I0(env[1]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[1]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[2]_i_1 
+       (.I0(env[2]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[2]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[3]_i_1 
+       (.I0(env[3]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[3]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[4]_i_1 
+       (.I0(env[4]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[4]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[5]_i_1 
+       (.I0(env[5]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[5]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[6]_i_1 
+       (.I0(env[6]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[6]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[7]_i_1 
+       (.I0(env[7]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[7]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[8]_i_1 
+       (.I0(env[8]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[8]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[9]_i_1 
+       (.I0(env[9]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[9]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[0]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[0]_i_1_n_0 ),
         .Q(env[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[10]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[10]_i_1_n_0 ),
         .Q(env[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[11]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[11]_i_1_n_0 ),
         .Q(env[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[12]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[12]_i_1_n_0 ),
         .Q(env[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[13]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[13]_i_1_n_0 ),
         .Q(env[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[14]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[14]_i_1_n_0 ),
         .Q(env[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[15]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .Q(env[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[1]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[1]_i_1_n_0 ),
         .Q(env[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[2]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[2]_i_1_n_0 ),
         .Q(env[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[3]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[3]_i_1_n_0 ),
         .Q(env[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[4]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[4]_i_1_n_0 ),
         .Q(env[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[5]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[5]_i_1_n_0 ),
         .Q(env[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[6]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[6]_i_1_n_0 ),
         .Q(env[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[7]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[7]_i_1_n_0 ),
         .Q(env[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[8]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[8]_i_1_n_0 ),
         .Q(env[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[9]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[9]_i_1_n_0 ),
         .Q(env[9]),
         .R(1'b0));
   LUT2 #(
@@ -5123,59 +6485,52 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .I1(im2[0]),
         .O(\morlet_to_phase_env.p2[7]_i_9_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[0]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_15 ),
         .Q(p2[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[10]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_13 ),
         .Q(p2[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[11]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_12 ),
         .Q(p2[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[12]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_11 ),
         .Q(p2[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[13]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_10 ),
         .Q(p2[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[14]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_9 ),
         .Q(p2[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[15]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_8 ),
         .Q(p2[15]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5184,78 +6539,69 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[15]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_7 }),
         .DI(re2[15:8]),
-        .O(p_0_in1_in[15:8]),
+        .O({\morlet_to_phase_env.p2_reg[15]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[15]_i_2_n_0 ,\morlet_to_phase_env.p2[15]_i_3_n_0 ,\morlet_to_phase_env.p2[15]_i_4_n_0 ,\morlet_to_phase_env.p2[15]_i_5_n_0 ,\morlet_to_phase_env.p2[15]_i_6_n_0 ,\morlet_to_phase_env.p2[15]_i_7_n_0 ,\morlet_to_phase_env.p2[15]_i_8_n_0 ,\morlet_to_phase_env.p2[15]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[16] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[16]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_15 ),
         .Q(p2[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[17] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[17]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_14 ),
         .Q(p2[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[18] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[18]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_13 ),
         .Q(p2[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[19] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[19]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_12 ),
         .Q(p2[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[1]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_14 ),
         .Q(p2[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[20] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[20]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_11 ),
         .Q(p2[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[21] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[21]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_10 ),
         .Q(p2[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[22] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[22]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_9 ),
         .Q(p2[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[23] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[23]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_8 ),
         .Q(p2[23]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5264,78 +6610,69 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[23]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_7 }),
         .DI(re2[23:16]),
-        .O(p_0_in1_in[23:16]),
+        .O({\morlet_to_phase_env.p2_reg[23]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[23]_i_2_n_0 ,\morlet_to_phase_env.p2[23]_i_3_n_0 ,\morlet_to_phase_env.p2[23]_i_4_n_0 ,\morlet_to_phase_env.p2[23]_i_5_n_0 ,\morlet_to_phase_env.p2[23]_i_6_n_0 ,\morlet_to_phase_env.p2[23]_i_7_n_0 ,\morlet_to_phase_env.p2[23]_i_8_n_0 ,\morlet_to_phase_env.p2[23]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[24] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[24]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_15 ),
         .Q(p2[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[25] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[25]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_14 ),
         .Q(p2[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[26] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[26]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_13 ),
         .Q(p2[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[27] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[27]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_12 ),
         .Q(p2[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[28] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[28]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_11 ),
         .Q(p2[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[29] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[29]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_10 ),
         .Q(p2[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[2]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_13 ),
         .Q(p2[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[30] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[30]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_9 ),
         .Q(p2[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[31] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[31]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_8 ),
         .Q(p2[31]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5344,46 +6681,41 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED [7],\morlet_to_phase_env.p2_reg[31]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_7 }),
         .DI({1'b0,re2[30:24]}),
-        .O(p_0_in1_in[31:24]),
+        .O({\morlet_to_phase_env.p2_reg[31]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[31]_i_2_n_0 ,\morlet_to_phase_env.p2[31]_i_3_n_0 ,\morlet_to_phase_env.p2[31]_i_4_n_0 ,\morlet_to_phase_env.p2[31]_i_5_n_0 ,\morlet_to_phase_env.p2[31]_i_6_n_0 ,\morlet_to_phase_env.p2[31]_i_7_n_0 ,\morlet_to_phase_env.p2[31]_i_8_n_0 ,\morlet_to_phase_env.p2[31]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[3]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_12 ),
         .Q(p2[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[4]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_11 ),
         .Q(p2[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[5]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_10 ),
         .Q(p2[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[6]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_9 ),
         .Q(p2[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[7]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_8 ),
         .Q(p2[7]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5392,191 +6724,360 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[7]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_7 }),
         .DI(re2[7:0]),
-        .O(p_0_in1_in[7:0]),
+        .O({\morlet_to_phase_env.p2_reg[7]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[7]_i_2_n_0 ,\morlet_to_phase_env.p2[7]_i_3_n_0 ,\morlet_to_phase_env.p2[7]_i_4_n_0 ,\morlet_to_phase_env.p2[7]_i_5_n_0 ,\morlet_to_phase_env.p2[7]_i_6_n_0 ,\morlet_to_phase_env.p2[7]_i_7_n_0 ,\morlet_to_phase_env.p2[7]_i_8_n_0 ,\morlet_to_phase_env.p2[7]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[8]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_15 ),
         .Q(p2[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[9]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_14 ),
         .Q(p2[9]),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[0]_i_1 
+       (.I0(phase[0]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[0]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[10]_i_1 
+       (.I0(phase[10]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[10]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[11]_i_1 
+       (.I0(phase[11]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[11]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[12]_i_1 
+       (.I0(phase[12]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[12]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[13]_i_1 
+       (.I0(phase[13]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[13]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[14]_i_1 
+       (.I0(phase[14]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[14]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[15]_i_1 
+       (.I0(phase[15]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[15]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[16]_i_1 
+       (.I0(phase[16]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[16]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[17]_i_1 
+       (.I0(phase[17]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[17]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[18]_i_1 
+       (.I0(phase[18]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[18]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[19]_i_1 
+       (.I0(phase[19]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[19]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[1]_i_1 
+       (.I0(phase[1]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[1]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[2]_i_1 
+       (.I0(phase[2]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[2]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[3]_i_1 
+       (.I0(phase[3]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[3]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[4]_i_1 
+       (.I0(phase[4]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[4]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[5]_i_1 
+       (.I0(phase[5]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[5]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[6]_i_1 
+       (.I0(phase[6]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[6]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[7]_i_1 
+       (.I0(phase[7]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[7]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[8]_i_1 
+       (.I0(phase[8]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[8]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[9]_i_1 
+       (.I0(phase[9]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[9]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[0]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[0]_i_1_n_0 ),
         .Q(phase[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[10]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[10]_i_1_n_0 ),
         .Q(phase[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[11]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[11]_i_1_n_0 ),
         .Q(phase[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[12]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[12]_i_1_n_0 ),
         .Q(phase[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[13]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[13]_i_1_n_0 ),
         .Q(phase[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[14]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[14]_i_1_n_0 ),
         .Q(phase[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[15]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[15]_i_1_n_0 ),
         .Q(phase[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[16] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[16]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[16]_i_1_n_0 ),
         .Q(phase[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[17] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[17]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[17]_i_1_n_0 ),
         .Q(phase[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[18] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[18]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[18]_i_1_n_0 ),
         .Q(phase[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[19] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[19]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[19]_i_1_n_0 ),
         .Q(phase[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[1]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[1]_i_1_n_0 ),
         .Q(phase[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[2]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[2]_i_1_n_0 ),
         .Q(phase[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[3]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[3]_i_1_n_0 ),
         .Q(phase[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[4]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[4]_i_1_n_0 ),
         .Q(phase[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[5]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[5]_i_1_n_0 ),
         .Q(phase[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[6]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[6]_i_1_n_0 ),
         .Q(phase[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[7]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[7]_i_1_n_0 ),
         .Q(phase[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[8]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[8]_i_1_n_0 ),
         .Q(phase[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[9]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[9]_i_1_n_0 ),
         .Q(phase[9]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h80)) 
+  LUT4 #(
+    .INIT(16'hFEBA)) 
     \morlet_to_phase_env.valid_i_1 
-       (.I0(active),
-        .I1(atan2_valid),
-        .I2(sqrt_valid),
+       (.I0(\morlet_to_phase_env.valid_i_2_n_0 ),
+        .I1(active),
+        .I2(delay[2]),
+        .I3(valid),
         .O(\morlet_to_phase_env.valid_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7333333333333330)) 
+    \morlet_to_phase_env.valid_i_2 
+       (.I0(delay[2]),
+        .I1(active),
+        .I2(delay[1]),
+        .I3(delay[0]),
+        .I4(delay[4]),
+        .I5(delay[3]),
+        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \morlet_to_phase_env.valid_reg 
        (.C(clk),
@@ -5606,7 +7107,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   ps_freq_low_46_0_0_cordic_sqrt_16 sqrt_i
        (.aclk(clk),
         .m_axis_dout_tdata(lenv),
-        .m_axis_dout_tvalid(sqrt_valid),
+        .m_axis_dout_tvalid(NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata(p2),
         .s_axis_cartesian_tvalid(active));
   (* CHECK_LICENSE_TYPE = "cordic_atan2_16,cordic_v6_0_24,{}" *) 
@@ -5615,7 +7116,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   ps_freq_low_46_0_0_cordic_atan2_16 tan2_i
        (.aclk(clk),
         .m_axis_dout_tdata(lphase),
-        .m_axis_dout_tvalid(atan2_valid),
+        .m_axis_dout_tvalid(NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata({im,re}),
         .s_axis_cartesian_tvalid(active));
 endmodule
@@ -5638,13 +7139,50 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
   output [19:0]phase;
 
   (* MARK_DEBUG *) wire active;
-  (* MARK_DEBUG *) wire atan2_valid;
+  wire [15:0]amp_4;
   wire clk;
+  (* MARK_DEBUG *) wire [4:0]delay;
+  wire [4:0]delay0_in;
   (* MARK_DEBUG *) wire [15:0]env;
   (* MARK_DEBUG *) wire [23:0]im;
   (* MARK_DEBUG *) wire [31:0]im2;
   (* MARK_DEBUG *) wire [15:0]lenv;
   (* MARK_DEBUG *) wire [23:0]lphase;
+  wire \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ;
+  wire \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[0]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[10]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[11]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[12]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[13]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[14]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_2_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_3_n_0 ;
+  wire \morlet_to_phase_env.env[1]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[2]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[3]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[5]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[6]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[7]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[8]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[9]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_2_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_3_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_4_n_0 ;
@@ -5679,44 +7217,97 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
   wire \morlet_to_phase_env.p2[7]_i_9_n_0 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[15]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[15]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[23]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[23]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[31]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[31]_i_1_n_9 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_0 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_1 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_10 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_11 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_12 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_13 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_14 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_15 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_2 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_3 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_4 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_5 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_6 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_7 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_8 ;
+  wire \morlet_to_phase_env.p2_reg[7]_i_1_n_9 ;
+  wire \morlet_to_phase_env.phase[0]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[10]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[11]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[12]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[13]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[14]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[16]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[17]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[18]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[19]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[1]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[2]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[3]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[5]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[6]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[7]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[8]_i_1_n_0 ;
+  wire \morlet_to_phase_env.phase[9]_i_1_n_0 ;
   wire \morlet_to_phase_env.valid_i_1_n_0 ;
+  wire \morlet_to_phase_env.valid_i_2_n_0 ;
   (* MARK_DEBUG *) wire [31:0]p2;
-  wire [31:0]p_0_in1_in;
   (* MARK_DEBUG *) wire [19:0]phase;
   (* MARK_DEBUG *) wire [23:0]re;
   (* MARK_DEBUG *) wire [31:0]re2;
-  (* MARK_DEBUG *) wire sqrt_valid;
   (* MARK_DEBUG *) wire valid;
   wire [7:7]\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED ;
+  wire NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED;
+  wire NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED;
 
   (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -5724,144 +7315,662 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
   ps_freq_low_46_0_0_ila_1 ila_1_i
        (.clk(clk),
         .probe0(active),
-        .probe1(re),
-        .probe10(env),
-        .probe11(phase),
-        .probe12(valid),
-        .probe2(im),
-        .probe3(re2),
-        .probe4(im2),
-        .probe5(p2),
-        .probe6(sqrt_valid),
+        .probe1(delay),
+        .probe10(phase),
+        .probe11(valid),
+        .probe2(re),
+        .probe3(im),
+        .probe4(re2),
+        .probe5(im2),
+        .probe6(p2),
         .probe7(lenv),
         .probe8(lphase),
-        .probe9(atan2_valid));
+        .probe9(env));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[0]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[0]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[0]),
+        .Q(\morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[10]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[10]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[10]),
+        .Q(\morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[11]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[11]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[11]),
+        .Q(\morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[12]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[12]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[12]),
+        .Q(\morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[13]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[13]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[13]),
+        .Q(\morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[14]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[14]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[14]),
+        .Q(\morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[15]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[15]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[15]),
+        .Q(\morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[1]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[1]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[1]),
+        .Q(\morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[2]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[2]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[2]),
+        .Q(\morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[3]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[3]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[3]),
+        .Q(\morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[4]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[4]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[4]),
+        .Q(\morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[5]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[5]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[5]),
+        .Q(\morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[6]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[6]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[6]),
+        .Q(\morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[7]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[7]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[7]),
+        .Q(\morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[8]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[8]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[8]),
+        .Q(\morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ));
+  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg " *) 
+  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_3_reg[9]_srl3 " *) 
+  SRL16E \morlet_to_phase_env.amp_3_reg[9]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(lenv[9]),
+        .Q(\morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ));
+  FDRE \morlet_to_phase_env.amp_4_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[0]_srl3_n_0 ),
+        .Q(amp_4[0]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[10]_srl3_n_0 ),
+        .Q(amp_4[10]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[11]_srl3_n_0 ),
+        .Q(amp_4[11]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[12]_srl3_n_0 ),
+        .Q(amp_4[12]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[13]_srl3_n_0 ),
+        .Q(amp_4[13]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[14]_srl3_n_0 ),
+        .Q(amp_4[14]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[15]_srl3_n_0 ),
+        .Q(amp_4[15]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[1]_srl3_n_0 ),
+        .Q(amp_4[1]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[2]_srl3_n_0 ),
+        .Q(amp_4[2]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[3]_srl3_n_0 ),
+        .Q(amp_4[3]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[4]_srl3_n_0 ),
+        .Q(amp_4[4]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[5]_srl3_n_0 ),
+        .Q(amp_4[5]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[6]_srl3_n_0 ),
+        .Q(amp_4[6]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[7]_srl3_n_0 ),
+        .Q(amp_4[7]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[8]_srl3_n_0 ),
+        .Q(amp_4[8]),
+        .R(1'b0));
+  FDRE \morlet_to_phase_env.amp_4_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.amp_3_reg[9]_srl3_n_0 ),
+        .Q(amp_4[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h2F0F0F0F0F0F0F0F)) 
+    \morlet_to_phase_env.delay[0]_i_1 
+       (.I0(delay[1]),
+        .I1(delay[2]),
+        .I2(delay[0]),
+        .I3(delay[4]),
+        .I4(delay[3]),
+        .I5(active),
+        .O(delay0_in[0]));
+  LUT6 #(
+    .INIT(64'h55D5AAAAAAAA5555)) 
+    \morlet_to_phase_env.delay[1]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[1]));
+  LUT6 #(
+    .INIT(64'h552AFF00FF00AA55)) 
+    \morlet_to_phase_env.delay[2]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[2]));
+  LUT5 #(
+    .INIT(32'h6CCCCCC9)) 
+    \morlet_to_phase_env.delay[3]_i_1 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[2]),
+        .I3(delay[1]),
+        .I4(active),
+        .O(delay0_in[3]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \morlet_to_phase_env.delay[4]_i_1 
+       (.I0(delay[2]),
+        .I1(active),
+        .I2(delay[3]),
+        .I3(delay[4]),
+        .I4(delay[0]),
+        .I5(delay[1]),
+        .O(\morlet_to_phase_env.delay[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h78F0F0F0F0F0F0E1)) 
+    \morlet_to_phase_env.delay[4]_i_2 
+       (.I0(delay[0]),
+        .I1(delay[3]),
+        .I2(delay[4]),
+        .I3(delay[2]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(delay0_in[4]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[0] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[0]),
+        .Q(delay[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[1] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[1]),
+        .Q(delay[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[2] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[2]),
+        .Q(delay[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[3] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[3]),
+        .Q(delay[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \morlet_to_phase_env.delay_reg[4] 
+       (.C(clk),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(delay0_in[4]),
+        .Q(delay[4]),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[0]_i_1 
+       (.I0(env[0]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[0]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[10]_i_1 
+       (.I0(env[10]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[10]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[11]_i_1 
+       (.I0(env[11]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[11]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[12]_i_1 
+       (.I0(env[12]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[12]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[13]_i_1 
+       (.I0(env[13]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[13]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[14]_i_1 
+       (.I0(env[14]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[14]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[15]_i_1 
+       (.I0(env[15]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[15]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[15]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hF7FFFFFF00000000)) 
+    \morlet_to_phase_env.env[15]_i_2 
+       (.I0(delay[3]),
+        .I1(delay[4]),
+        .I2(delay[2]),
+        .I3(delay[0]),
+        .I4(delay[1]),
+        .I5(active),
+        .O(\morlet_to_phase_env.env[15]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h40000000FFFFFFFF)) 
+    \morlet_to_phase_env.env[15]_i_3 
+       (.I0(delay[2]),
+        .I1(delay[1]),
+        .I2(delay[0]),
+        .I3(delay[4]),
+        .I4(delay[3]),
+        .I5(active),
+        .O(\morlet_to_phase_env.env[15]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[1]_i_1 
+       (.I0(env[1]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[1]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[2]_i_1 
+       (.I0(env[2]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[2]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[3]_i_1 
+       (.I0(env[3]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[3]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[4]_i_1 
+       (.I0(env[4]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[4]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[5]_i_1 
+       (.I0(env[5]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[5]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[6]_i_1 
+       (.I0(env[6]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[6]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[7]_i_1 
+       (.I0(env[7]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[7]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[8]_i_1 
+       (.I0(env[8]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[8]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.env[9]_i_1 
+       (.I0(env[9]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(amp_4[9]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.env[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[0]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[0]_i_1_n_0 ),
         .Q(env[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[10]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[10]_i_1_n_0 ),
         .Q(env[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[11]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[11]_i_1_n_0 ),
         .Q(env[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[12]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[12]_i_1_n_0 ),
         .Q(env[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[13]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[13]_i_1_n_0 ),
         .Q(env[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[14]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[14]_i_1_n_0 ),
         .Q(env[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[15]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .Q(env[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[1]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[1]_i_1_n_0 ),
         .Q(env[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[2]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[2]_i_1_n_0 ),
         .Q(env[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[3]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[3]_i_1_n_0 ),
         .Q(env[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[4]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[4]_i_1_n_0 ),
         .Q(env[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[5]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[5]_i_1_n_0 ),
         .Q(env[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[6]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[6]_i_1_n_0 ),
         .Q(env[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[7]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[7]_i_1_n_0 ),
         .Q(env[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[8]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[8]_i_1_n_0 ),
         .Q(env[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.env_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(lenv[9]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.env[9]_i_1_n_0 ),
         .Q(env[9]),
         .R(1'b0));
   LUT2 #(
@@ -6057,59 +8166,52 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .I1(im2[0]),
         .O(\morlet_to_phase_env.p2[7]_i_9_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[0]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_15 ),
         .Q(p2[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[10]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_13 ),
         .Q(p2[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[11]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_12 ),
         .Q(p2[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[12]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_11 ),
         .Q(p2[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[13]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_10 ),
         .Q(p2[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[14]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_9 ),
         .Q(p2[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[15]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_8 ),
         .Q(p2[15]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -6118,78 +8220,69 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[15]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_7 }),
         .DI(re2[15:8]),
-        .O(p_0_in1_in[15:8]),
+        .O({\morlet_to_phase_env.p2_reg[15]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[15]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[15]_i_2_n_0 ,\morlet_to_phase_env.p2[15]_i_3_n_0 ,\morlet_to_phase_env.p2[15]_i_4_n_0 ,\morlet_to_phase_env.p2[15]_i_5_n_0 ,\morlet_to_phase_env.p2[15]_i_6_n_0 ,\morlet_to_phase_env.p2[15]_i_7_n_0 ,\morlet_to_phase_env.p2[15]_i_8_n_0 ,\morlet_to_phase_env.p2[15]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[16] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[16]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_15 ),
         .Q(p2[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[17] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[17]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_14 ),
         .Q(p2[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[18] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[18]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_13 ),
         .Q(p2[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[19] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[19]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_12 ),
         .Q(p2[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[1]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_14 ),
         .Q(p2[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[20] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[20]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_11 ),
         .Q(p2[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[21] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[21]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_10 ),
         .Q(p2[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[22] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[22]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_9 ),
         .Q(p2[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[23] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[23]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[23]_i_1_n_8 ),
         .Q(p2[23]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -6198,78 +8291,69 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[23]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_7 }),
         .DI(re2[23:16]),
-        .O(p_0_in1_in[23:16]),
+        .O({\morlet_to_phase_env.p2_reg[23]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[23]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[23]_i_2_n_0 ,\morlet_to_phase_env.p2[23]_i_3_n_0 ,\morlet_to_phase_env.p2[23]_i_4_n_0 ,\morlet_to_phase_env.p2[23]_i_5_n_0 ,\morlet_to_phase_env.p2[23]_i_6_n_0 ,\morlet_to_phase_env.p2[23]_i_7_n_0 ,\morlet_to_phase_env.p2[23]_i_8_n_0 ,\morlet_to_phase_env.p2[23]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[24] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[24]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_15 ),
         .Q(p2[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[25] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[25]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_14 ),
         .Q(p2[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[26] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[26]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_13 ),
         .Q(p2[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[27] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[27]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_12 ),
         .Q(p2[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[28] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[28]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_11 ),
         .Q(p2[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[29] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[29]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_10 ),
         .Q(p2[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[2]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_13 ),
         .Q(p2[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[30] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[30]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_9 ),
         .Q(p2[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[31] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[31]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[31]_i_1_n_8 ),
         .Q(p2[31]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -6278,46 +8362,41 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CI_TOP(1'b0),
         .CO({\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED [7],\morlet_to_phase_env.p2_reg[31]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_7 }),
         .DI({1'b0,re2[30:24]}),
-        .O(p_0_in1_in[31:24]),
+        .O({\morlet_to_phase_env.p2_reg[31]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[31]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[31]_i_2_n_0 ,\morlet_to_phase_env.p2[31]_i_3_n_0 ,\morlet_to_phase_env.p2[31]_i_4_n_0 ,\morlet_to_phase_env.p2[31]_i_5_n_0 ,\morlet_to_phase_env.p2[31]_i_6_n_0 ,\morlet_to_phase_env.p2[31]_i_7_n_0 ,\morlet_to_phase_env.p2[31]_i_8_n_0 ,\morlet_to_phase_env.p2[31]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[3]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_12 ),
         .Q(p2[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[4]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_11 ),
         .Q(p2[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[5]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_10 ),
         .Q(p2[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[6]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_9 ),
         .Q(p2[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[7]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[7]_i_1_n_8 ),
         .Q(p2[7]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -6326,191 +8405,360 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CI_TOP(1'b0),
         .CO({\morlet_to_phase_env.p2_reg[7]_i_1_n_0 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_1 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_2 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_3 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_4 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_5 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_6 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_7 }),
         .DI(re2[7:0]),
-        .O(p_0_in1_in[7:0]),
+        .O({\morlet_to_phase_env.p2_reg[7]_i_1_n_8 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_9 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_10 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_11 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_12 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_13 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_14 ,\morlet_to_phase_env.p2_reg[7]_i_1_n_15 }),
         .S({\morlet_to_phase_env.p2[7]_i_2_n_0 ,\morlet_to_phase_env.p2[7]_i_3_n_0 ,\morlet_to_phase_env.p2[7]_i_4_n_0 ,\morlet_to_phase_env.p2[7]_i_5_n_0 ,\morlet_to_phase_env.p2[7]_i_6_n_0 ,\morlet_to_phase_env.p2[7]_i_7_n_0 ,\morlet_to_phase_env.p2[7]_i_8_n_0 ,\morlet_to_phase_env.p2[7]_i_9_n_0 }));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[8]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_15 ),
         .Q(p2[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.p2_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(p_0_in1_in[9]),
+        .CE(1'b1),
+        .D(\morlet_to_phase_env.p2_reg[15]_i_1_n_14 ),
         .Q(p2[9]),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[0]_i_1 
+       (.I0(phase[0]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[0]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[10]_i_1 
+       (.I0(phase[10]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[10]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[11]_i_1 
+       (.I0(phase[11]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[11]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[12]_i_1 
+       (.I0(phase[12]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[12]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[13]_i_1 
+       (.I0(phase[13]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[13]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[14]_i_1 
+       (.I0(phase[14]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[14]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[15]_i_1 
+       (.I0(phase[15]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[15]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[16]_i_1 
+       (.I0(phase[16]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[16]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[17]_i_1 
+       (.I0(phase[17]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[17]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[18]_i_1 
+       (.I0(phase[18]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[18]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[19]_i_1 
+       (.I0(phase[19]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[19]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[1]_i_1 
+       (.I0(phase[1]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[1]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[2]_i_1 
+       (.I0(phase[2]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[2]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[3]_i_1 
+       (.I0(phase[3]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[3]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[4]_i_1 
+       (.I0(phase[4]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[4]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[5]_i_1 
+       (.I0(phase[5]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[5]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[6]_i_1 
+       (.I0(phase[6]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[6]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[7]_i_1 
+       (.I0(phase[7]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[7]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[8]_i_1 
+       (.I0(phase[8]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[8]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \morlet_to_phase_env.phase[9]_i_1 
+       (.I0(phase[9]),
+        .I1(\morlet_to_phase_env.env[15]_i_2_n_0 ),
+        .I2(lphase[9]),
+        .I3(\morlet_to_phase_env.env[15]_i_3_n_0 ),
+        .O(\morlet_to_phase_env.phase[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[0] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[0]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[0]_i_1_n_0 ),
         .Q(phase[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[10] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[10]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[10]_i_1_n_0 ),
         .Q(phase[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[11] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[11]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[11]_i_1_n_0 ),
         .Q(phase[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[12] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[12]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[12]_i_1_n_0 ),
         .Q(phase[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[13] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[13]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[13]_i_1_n_0 ),
         .Q(phase[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[14] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[14]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[14]_i_1_n_0 ),
         .Q(phase[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[15] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[15]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[15]_i_1_n_0 ),
         .Q(phase[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[16] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[16]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[16]_i_1_n_0 ),
         .Q(phase[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[17] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[17]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[17]_i_1_n_0 ),
         .Q(phase[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[18] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[18]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[18]_i_1_n_0 ),
         .Q(phase[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[19] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[19]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[19]_i_1_n_0 ),
         .Q(phase[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[1] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[1]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[1]_i_1_n_0 ),
         .Q(phase[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[2] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[2]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[2]_i_1_n_0 ),
         .Q(phase[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[3] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[3]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[3]_i_1_n_0 ),
         .Q(phase[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[4] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[4]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[4]_i_1_n_0 ),
         .Q(phase[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[5] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[5]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[5]_i_1_n_0 ),
         .Q(phase[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[6] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[6]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[6]_i_1_n_0 ),
         .Q(phase[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[7] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[7]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[7]_i_1_n_0 ),
         .Q(phase[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[8] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[8]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[8]_i_1_n_0 ),
         .Q(phase[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \morlet_to_phase_env.phase_reg[9] 
        (.C(clk),
-        .CE(active),
-        .D(lphase[9]),
+        .CE(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .D(\morlet_to_phase_env.phase[9]_i_1_n_0 ),
         .Q(phase[9]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h80)) 
+  LUT4 #(
+    .INIT(16'hFEBA)) 
     \morlet_to_phase_env.valid_i_1 
-       (.I0(active),
-        .I1(atan2_valid),
-        .I2(sqrt_valid),
+       (.I0(\morlet_to_phase_env.valid_i_2_n_0 ),
+        .I1(active),
+        .I2(delay[2]),
+        .I3(valid),
         .O(\morlet_to_phase_env.valid_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7333333333333330)) 
+    \morlet_to_phase_env.valid_i_2 
+       (.I0(delay[2]),
+        .I1(active),
+        .I2(delay[1]),
+        .I3(delay[0]),
+        .I4(delay[4]),
+        .I5(delay[3]),
+        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \morlet_to_phase_env.valid_reg 
        (.C(clk),
@@ -6540,7 +8788,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
   ps_freq_low_46_0_0_cordic_sqrt_16 sqrt_i
        (.aclk(clk),
         .m_axis_dout_tdata(lenv),
-        .m_axis_dout_tvalid(sqrt_valid),
+        .m_axis_dout_tvalid(NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata(p2),
         .s_axis_cartesian_tvalid(active));
   (* CHECK_LICENSE_TYPE = "cordic_atan2_16,cordic_v6_0_24,{}" *) 
@@ -6549,7 +8797,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
   ps_freq_low_46_0_0_cordic_atan2_16 tan2_i
        (.aclk(clk),
         .m_axis_dout_tdata(lphase),
-        .m_axis_dout_tvalid(atan2_valid),
+        .m_axis_dout_tvalid(NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata({im,re}),
         .s_axis_cartesian_tvalid(active));
 endmodule

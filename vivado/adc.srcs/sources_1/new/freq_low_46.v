@@ -216,7 +216,7 @@ generate
 	begin
 	  if (fifo_valid)
 	  begin
-	    if (start_delay == 122)
+	    if (start_delay == 123)
 	      morlet_active <= 1;
 	    else
 	    begin

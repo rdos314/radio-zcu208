@@ -14,23 +14,16 @@
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="65"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="78"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
+   <WVObjectSize size="11" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/freq_low_46_0/inst/freq_N_i/active" type="logic">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/freq_N_i/active</obj_property>
       <obj_property name="ObjectShortName">active</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/freq_low_46_0/inst/freq_N_i/atan2_valid" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/freq_N_i/atan2_valid</obj_property>
-      <obj_property name="ObjectShortName">atan2_valid</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -103,13 +96,6 @@
       <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/freq_N_i/re[23:0]</obj_property>
       <obj_property name="ObjectShortName">re[23:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/freq_low_46_0/inst/freq_N_i/sqrt_valid" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/freq_N_i/sqrt_valid</obj_property>
-      <obj_property name="ObjectShortName">sqrt_valid</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

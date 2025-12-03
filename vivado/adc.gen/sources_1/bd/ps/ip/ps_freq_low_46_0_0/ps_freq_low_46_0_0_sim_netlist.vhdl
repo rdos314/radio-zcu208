@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Dec  1 23:26:52 2025
+-- Date        : Tue Dec  2 23:26:37 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.vhdl
@@ -36,18 +36,17 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 23 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ila_1_HD5;
   component mult_16_16_HD6 is
@@ -84,9 +83,11 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component cordic_atan2_16_HD8;
-  signal atan2_valid : STD_LOGIC;
+  signal amp_4 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal delay : STD_LOGIC_VECTOR ( 4 downto 0 );
   attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of atan2_valid : signal is std.standard.true;
+  attribute MARK_DEBUG of delay : signal is std.standard.true;
+  signal delay0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal \^env\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^env\ : signal is std.standard.true;
   signal im2 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -95,6 +96,41 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
   attribute MARK_DEBUG of lenv : signal is std.standard.true;
   signal lphase : STD_LOGIC_VECTOR ( 23 downto 0 );
   attribute MARK_DEBUG of lphase : signal is std.standard.true;
+  signal \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[0]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[10]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[11]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[12]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[13]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[14]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_2_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[1]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[2]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[3]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[5]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[6]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[7]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[8]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[9]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_2_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_3_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_4_n_0\ : STD_LOGIC;
@@ -129,57 +165,153 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
   signal \morlet_to_phase_env.p2[7]_i_9_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[0]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[10]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[11]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[12]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[13]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[14]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[15]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[16]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[17]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[18]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[19]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[1]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[2]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[3]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[5]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[6]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[7]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[8]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[9]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.valid_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.valid_i_2_n_0\ : STD_LOGIC;
   signal p2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of p2 : signal is std.standard.true;
-  signal p_0_in1_in : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^phase\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of \^phase\ : signal is std.standard.true;
   signal re2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of re2 : signal is std.standard.true;
-  signal sqrt_valid : STD_LOGIC;
-  attribute MARK_DEBUG of sqrt_valid : signal is std.standard.true;
   signal \^valid\ : STD_LOGIC;
   attribute MARK_DEBUG of valid : signal is std.standard.true;
   signal \NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
+  signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_1_i : label is "ila_1,ila,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of ila_1_i : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of ila_1_i : label is "ila,Vivado 2025.1";
+  attribute srl_bus_name : string;
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[0]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name : string;
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[0]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[0]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[10]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[10]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[10]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[11]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[11]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[11]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[12]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[12]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[12]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[13]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[13]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[13]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[14]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[14]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[14]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[15]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[15]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[15]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[1]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[1]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[1]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[2]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[2]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[2]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[3]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[3]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[3]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[4]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[4]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[4]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[5]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[5]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[5]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[6]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[6]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[6]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[7]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[7]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[7]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[8]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[8]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[8]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[9]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[9]_srl3\ : label is "inst/freq_W_i/\morlet_to_phase_env.amp_3_reg[9]_srl3 ";
   attribute KEEP : string;
-  attribute KEEP of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[0]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[1]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[2]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[3]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[4]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.env_reg[10]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[10]\ : label is "yes";
@@ -212,74 +344,42 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
   attribute KEEP of \morlet_to_phase_env.env_reg[9]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[9]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[10]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[11]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[12]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[13]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[14]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[15]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[16]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[17]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[18]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[19]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[1]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[20]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[21]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[22]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[23]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[24]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[25]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[26]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[27]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[28]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[29]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[2]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[30]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[31]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[3]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[4]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[5]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[6]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[7]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[8]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[9]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.phase_reg[0]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.phase_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.phase_reg[10]\ : label is "yes";
@@ -341,144 +441,766 @@ ila_1_i: component ila_1_HD5
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(23 downto 0) => re(23 downto 0),
-      probe10(15 downto 0) => \^env\(15 downto 0),
-      probe11(19 downto 0) => \^phase\(19 downto 0),
-      probe12(0) => \^valid\,
-      probe2(23 downto 0) => im(23 downto 0),
-      probe3(31 downto 0) => re2(31 downto 0),
-      probe4(31 downto 0) => im2(31 downto 0),
-      probe5(31 downto 0) => p2(31 downto 0),
-      probe6(0) => sqrt_valid,
+      probe1(4 downto 0) => delay(4 downto 0),
+      probe10(19 downto 0) => \^phase\(19 downto 0),
+      probe11(0) => \^valid\,
+      probe2(23 downto 0) => re(23 downto 0),
+      probe3(23 downto 0) => im(23 downto 0),
+      probe4(31 downto 0) => re2(31 downto 0),
+      probe5(31 downto 0) => im2(31 downto 0),
+      probe6(31 downto 0) => p2(31 downto 0),
       probe7(15 downto 0) => lenv(15 downto 0),
       probe8(23 downto 0) => lphase(23 downto 0),
-      probe9(0) => atan2_valid
+      probe9(15 downto 0) => \^env\(15 downto 0)
+    );
+\morlet_to_phase_env.amp_3_reg[0]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(0),
+      Q => \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[10]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(10),
+      Q => \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[11]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(11),
+      Q => \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[12]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(12),
+      Q => \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[13]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(13),
+      Q => \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[14]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(14),
+      Q => \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[15]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(15),
+      Q => \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[1]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(1),
+      Q => \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[2]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(2),
+      Q => \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[3]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(3),
+      Q => \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[4]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(4),
+      Q => \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[5]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(5),
+      Q => \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[6]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(6),
+      Q => \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[7]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(7),
+      Q => \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[8]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(8),
+      Q => \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[9]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(9),
+      Q => \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_4_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\,
+      Q => amp_4(0),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\,
+      Q => amp_4(10),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\,
+      Q => amp_4(11),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\,
+      Q => amp_4(12),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\,
+      Q => amp_4(13),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\,
+      Q => amp_4(14),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\,
+      Q => amp_4(15),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\,
+      Q => amp_4(1),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\,
+      Q => amp_4(2),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\,
+      Q => amp_4(3),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\,
+      Q => amp_4(4),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\,
+      Q => amp_4(5),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\,
+      Q => amp_4(6),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\,
+      Q => amp_4(7),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\,
+      Q => amp_4(8),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\,
+      Q => amp_4(9),
+      R => '0'
+    );
+\morlet_to_phase_env.delay[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"2F0F0F0F0F0F0F0F"
+    )
+        port map (
+      I0 => delay(1),
+      I1 => delay(2),
+      I2 => delay(0),
+      I3 => delay(4),
+      I4 => delay(3),
+      I5 => active,
+      O => delay0_in(0)
+    );
+\morlet_to_phase_env.delay[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"55D5AAAAAAAA5555"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(1)
+    );
+\morlet_to_phase_env.delay[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"552AFF00FF00AA55"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(2)
+    );
+\morlet_to_phase_env.delay[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6CCCCCC9"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(2),
+      I3 => delay(1),
+      I4 => active,
+      O => delay0_in(3)
+    );
+\morlet_to_phase_env.delay[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => active,
+      I2 => delay(3),
+      I3 => delay(4),
+      I4 => delay(0),
+      I5 => delay(1),
+      O => \morlet_to_phase_env.delay[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.delay[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"78F0F0F0F0F0F0E1"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(4)
+    );
+\morlet_to_phase_env.delay_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(0),
+      Q => delay(0),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(1),
+      Q => delay(1),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(2),
+      Q => delay(2),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(3),
+      Q => delay(3),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(4),
+      Q => delay(4),
+      R => '0'
+    );
+\morlet_to_phase_env.env[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(0),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(0),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[0]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(10),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(10),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[10]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(11),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(11),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[11]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(12),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(12),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[12]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(13),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(13),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[13]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(14),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(14),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[14]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(15),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(15),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[15]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFF00000000"
+    )
+        port map (
+      I0 => delay(3),
+      I1 => delay(4),
+      I2 => delay(2),
+      I3 => delay(0),
+      I4 => delay(1),
+      I5 => active,
+      O => \morlet_to_phase_env.env[15]_i_2_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"40000000FFFFFFFF"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => delay(1),
+      I2 => delay(0),
+      I3 => delay(4),
+      I4 => delay(3),
+      I5 => active,
+      O => \morlet_to_phase_env.env[15]_i_3_n_0\
+    );
+\morlet_to_phase_env.env[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(1),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(1),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[1]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(2),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(2),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[2]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(3),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(3),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[3]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(4),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(4),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(5),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(5),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[5]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(6),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(6),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[6]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(7),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(7),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[7]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(8),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(8),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[8]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(9),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(9),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[9]_i_1_n_0\
     );
 \morlet_to_phase_env.env_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(0),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[0]_i_1_n_0\,
       Q => \^env\(0),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(10),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[10]_i_1_n_0\,
       Q => \^env\(10),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(11),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[11]_i_1_n_0\,
       Q => \^env\(11),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(12),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[12]_i_1_n_0\,
       Q => \^env\(12),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(13),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[13]_i_1_n_0\,
       Q => \^env\(13),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(14),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[14]_i_1_n_0\,
       Q => \^env\(14),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(15),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[15]_i_1_n_0\,
       Q => \^env\(15),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(1),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[1]_i_1_n_0\,
       Q => \^env\(1),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(2),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[2]_i_1_n_0\,
       Q => \^env\(2),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(3),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[3]_i_1_n_0\,
       Q => \^env\(3),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(4),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[4]_i_1_n_0\,
       Q => \^env\(4),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(5),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[5]_i_1_n_0\,
       Q => \^env\(5),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(6),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[6]_i_1_n_0\,
       Q => \^env\(6),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(7),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[7]_i_1_n_0\,
       Q => \^env\(7),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(8),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[8]_i_1_n_0\,
       Q => \^env\(8),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(9),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[9]_i_1_n_0\,
       Q => \^env\(9),
       R => '0'
     );
@@ -773,56 +1495,56 @@ ila_1_i: component ila_1_HD5
 \morlet_to_phase_env.p2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(0),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_15\,
       Q => p2(0),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(10),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_13\,
       Q => p2(10),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(11),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_12\,
       Q => p2(11),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(12),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_11\,
       Q => p2(12),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(13),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_10\,
       Q => p2(13),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(14),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_9\,
       Q => p2(14),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(15),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_8\,
       Q => p2(15),
       R => '0'
     );
@@ -839,7 +1561,14 @@ ila_1_i: component ila_1_HD5
       CO(1) => \morlet_to_phase_env.p2_reg[15]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[15]_i_1_n_7\,
       DI(7 downto 0) => re2(15 downto 8),
-      O(7 downto 0) => p_0_in1_in(15 downto 8),
+      O(7) => \morlet_to_phase_env.p2_reg[15]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[15]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[15]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[15]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[15]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[15]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[15]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[15]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[15]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[15]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[15]_i_4_n_0\,
@@ -852,72 +1581,72 @@ ila_1_i: component ila_1_HD5
 \morlet_to_phase_env.p2_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(16),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_15\,
       Q => p2(16),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(17),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_14\,
       Q => p2(17),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(18),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_13\,
       Q => p2(18),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(19),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_12\,
       Q => p2(19),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(1),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_14\,
       Q => p2(1),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(20),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_11\,
       Q => p2(20),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(21),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_10\,
       Q => p2(21),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(22),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_9\,
       Q => p2(22),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(23),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_8\,
       Q => p2(23),
       R => '0'
     );
@@ -934,7 +1663,14 @@ ila_1_i: component ila_1_HD5
       CO(1) => \morlet_to_phase_env.p2_reg[23]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[23]_i_1_n_7\,
       DI(7 downto 0) => re2(23 downto 16),
-      O(7 downto 0) => p_0_in1_in(23 downto 16),
+      O(7) => \morlet_to_phase_env.p2_reg[23]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[23]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[23]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[23]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[23]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[23]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[23]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[23]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[23]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[23]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[23]_i_4_n_0\,
@@ -947,72 +1683,72 @@ ila_1_i: component ila_1_HD5
 \morlet_to_phase_env.p2_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(24),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_15\,
       Q => p2(24),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(25),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_14\,
       Q => p2(25),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(26),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_13\,
       Q => p2(26),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(27),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_12\,
       Q => p2(27),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(28),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_11\,
       Q => p2(28),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(29),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_10\,
       Q => p2(29),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(2),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_13\,
       Q => p2(2),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(30),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_9\,
       Q => p2(30),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(31),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_8\,
       Q => p2(31),
       R => '0'
     );
@@ -1030,7 +1766,14 @@ ila_1_i: component ila_1_HD5
       CO(0) => \morlet_to_phase_env.p2_reg[31]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => re2(30 downto 24),
-      O(7 downto 0) => p_0_in1_in(31 downto 24),
+      O(7) => \morlet_to_phase_env.p2_reg[31]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[31]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[31]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[31]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[31]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[31]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[31]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[31]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[31]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[31]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[31]_i_4_n_0\,
@@ -1043,40 +1786,40 @@ ila_1_i: component ila_1_HD5
 \morlet_to_phase_env.p2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(3),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_12\,
       Q => p2(3),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(4),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_11\,
       Q => p2(4),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(5),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_10\,
       Q => p2(5),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(6),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_9\,
       Q => p2(6),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(7),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_8\,
       Q => p2(7),
       R => '0'
     );
@@ -1093,7 +1836,14 @@ ila_1_i: component ila_1_HD5
       CO(1) => \morlet_to_phase_env.p2_reg[7]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[7]_i_1_n_7\,
       DI(7 downto 0) => re2(7 downto 0),
-      O(7 downto 0) => p_0_in1_in(7 downto 0),
+      O(7) => \morlet_to_phase_env.p2_reg[7]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[7]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[7]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[7]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[7]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[7]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[7]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[7]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[7]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[7]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[7]_i_4_n_0\,
@@ -1106,188 +1856,422 @@ ila_1_i: component ila_1_HD5
 \morlet_to_phase_env.p2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(8),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_15\,
       Q => p2(8),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(9),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_14\,
       Q => p2(9),
       R => '0'
+    );
+\morlet_to_phase_env.phase[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(0),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(0),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[0]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(10),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(10),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[10]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(11),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(11),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[11]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(12),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(12),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[12]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(13),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(13),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[13]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(14),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(14),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[14]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(15),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(15),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[15]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(16),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(16),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[16]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(17),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(17),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[17]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(18),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(18),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[18]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(19),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(19),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[19]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(1),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(1),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[1]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(2),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(2),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[2]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(3),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(3),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[3]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(4),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(4),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(5),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(5),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[5]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(6),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(6),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[6]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(7),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(7),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[7]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(8),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(8),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[8]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(9),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(9),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[9]_i_1_n_0\
     );
 \morlet_to_phase_env.phase_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(0),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[0]_i_1_n_0\,
       Q => \^phase\(0),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(10),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[10]_i_1_n_0\,
       Q => \^phase\(10),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(11),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[11]_i_1_n_0\,
       Q => \^phase\(11),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(12),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[12]_i_1_n_0\,
       Q => \^phase\(12),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(13),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[13]_i_1_n_0\,
       Q => \^phase\(13),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(14),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[14]_i_1_n_0\,
       Q => \^phase\(14),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(15),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[15]_i_1_n_0\,
       Q => \^phase\(15),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(16),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[16]_i_1_n_0\,
       Q => \^phase\(16),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(17),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[17]_i_1_n_0\,
       Q => \^phase\(17),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(18),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[18]_i_1_n_0\,
       Q => \^phase\(18),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(19),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[19]_i_1_n_0\,
       Q => \^phase\(19),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(1),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[1]_i_1_n_0\,
       Q => \^phase\(1),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(2),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[2]_i_1_n_0\,
       Q => \^phase\(2),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(3),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[3]_i_1_n_0\,
       Q => \^phase\(3),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(4),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[4]_i_1_n_0\,
       Q => \^phase\(4),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(5),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[5]_i_1_n_0\,
       Q => \^phase\(5),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(6),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[6]_i_1_n_0\,
       Q => \^phase\(6),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(7),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[7]_i_1_n_0\,
       Q => \^phase\(7),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(8),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[8]_i_1_n_0\,
       Q => \^phase\(8),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(9),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[9]_i_1_n_0\,
       Q => \^phase\(9),
       R => '0'
     );
-\morlet_to_phase_env.valid_i_1\: unisim.vcomponents.LUT3
+\morlet_to_phase_env.valid_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"80"
+      INIT => X"FEBA"
     )
         port map (
-      I0 => active,
-      I1 => atan2_valid,
-      I2 => sqrt_valid,
+      I0 => \morlet_to_phase_env.valid_i_2_n_0\,
+      I1 => active,
+      I2 => delay(2),
+      I3 => \^valid\,
       O => \morlet_to_phase_env.valid_i_1_n_0\
+    );
+\morlet_to_phase_env.valid_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7333333333333330"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => active,
+      I2 => delay(1),
+      I3 => delay(0),
+      I4 => delay(4),
+      I5 => delay(3),
+      O => \morlet_to_phase_env.valid_i_2_n_0\
     );
 \morlet_to_phase_env.valid_reg\: unisim.vcomponents.FDRE
      port map (
@@ -1315,7 +2299,7 @@ sqrt_i: component cordic_sqrt_16_HD7
      port map (
       aclk => clk,
       m_axis_dout_tdata(15 downto 0) => lenv(15 downto 0),
-      m_axis_dout_tvalid => sqrt_valid,
+      m_axis_dout_tvalid => NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(31 downto 0) => p2(31 downto 0),
       s_axis_cartesian_tvalid => active
     );
@@ -1323,7 +2307,7 @@ tan2_i: component cordic_atan2_16_HD8
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 0) => lphase(23 downto 0),
-      m_axis_dout_tvalid => atan2_valid,
+      m_axis_dout_tvalid => NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(47 downto 24) => im(23 downto 0),
       s_axis_cartesian_tdata(23 downto 0) => re(23 downto 0),
       s_axis_cartesian_tvalid => active
@@ -1354,18 +2338,17 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\ is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 23 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_freq_low_46_0_0_ila_1;
   component ps_freq_low_46_0_0_mult_16_16 is
@@ -1394,9 +2377,11 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\ is
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   end component ps_freq_low_46_0_0_cordic_atan2_16;
-  signal atan2_valid : STD_LOGIC;
+  signal amp_4 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal delay : STD_LOGIC_VECTOR ( 4 downto 0 );
   attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of atan2_valid : signal is std.standard.true;
+  attribute MARK_DEBUG of delay : signal is std.standard.true;
+  signal delay0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal \^env\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^env\ : signal is std.standard.true;
   signal im2 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1405,6 +2390,41 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\ is
   attribute MARK_DEBUG of lenv : signal is std.standard.true;
   signal lphase : STD_LOGIC_VECTOR ( 23 downto 0 );
   attribute MARK_DEBUG of lphase : signal is std.standard.true;
+  signal \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[0]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[10]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[11]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[12]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[13]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[14]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_2_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[1]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[2]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[3]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[5]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[6]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[7]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[8]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[9]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_2_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_3_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_4_n_0\ : STD_LOGIC;
@@ -1439,57 +2459,153 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\ is
   signal \morlet_to_phase_env.p2[7]_i_9_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[0]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[10]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[11]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[12]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[13]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[14]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[15]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[16]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[17]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[18]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[19]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[1]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[2]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[3]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[5]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[6]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[7]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[8]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[9]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.valid_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.valid_i_2_n_0\ : STD_LOGIC;
   signal p2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of p2 : signal is std.standard.true;
-  signal p_0_in1_in : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^phase\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of \^phase\ : signal is std.standard.true;
   signal re2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of re2 : signal is std.standard.true;
-  signal sqrt_valid : STD_LOGIC;
-  attribute MARK_DEBUG of sqrt_valid : signal is std.standard.true;
   signal \^valid\ : STD_LOGIC;
   attribute MARK_DEBUG of valid : signal is std.standard.true;
   signal \NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
+  signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_1_i : label is "ila_1,ila,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of ila_1_i : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of ila_1_i : label is "ila,Vivado 2025.1";
+  attribute srl_bus_name : string;
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[0]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name : string;
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[0]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[0]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[10]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[10]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[10]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[11]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[11]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[11]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[12]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[12]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[12]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[13]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[13]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[13]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[14]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[14]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[14]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[15]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[15]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[15]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[1]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[1]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[1]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[2]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[2]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[2]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[3]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[3]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[3]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[4]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[4]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[4]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[5]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[5]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[5]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[6]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[6]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[6]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[7]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[7]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[7]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[8]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[8]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[8]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[9]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[9]_srl3\ : label is "inst/freq_N_i/\morlet_to_phase_env.amp_3_reg[9]_srl3 ";
   attribute KEEP : string;
-  attribute KEEP of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[0]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[1]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[2]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[3]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[4]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.env_reg[10]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[10]\ : label is "yes";
@@ -1522,74 +2638,42 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\ is
   attribute KEEP of \morlet_to_phase_env.env_reg[9]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[9]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[10]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[11]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[12]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[13]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[14]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[15]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[16]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[17]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[18]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[19]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[1]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[20]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[21]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[22]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[23]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[24]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[25]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[26]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[27]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[28]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[29]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[2]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[30]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[31]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[3]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[4]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[5]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[6]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[7]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[8]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[9]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.phase_reg[0]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.phase_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.phase_reg[10]\ : label is "yes";
@@ -1651,144 +2735,766 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(23 downto 0) => re(23 downto 0),
-      probe10(15 downto 0) => \^env\(15 downto 0),
-      probe11(19 downto 0) => \^phase\(19 downto 0),
-      probe12(0) => \^valid\,
-      probe2(23 downto 0) => im(23 downto 0),
-      probe3(31 downto 0) => re2(31 downto 0),
-      probe4(31 downto 0) => im2(31 downto 0),
-      probe5(31 downto 0) => p2(31 downto 0),
-      probe6(0) => sqrt_valid,
+      probe1(4 downto 0) => delay(4 downto 0),
+      probe10(19 downto 0) => \^phase\(19 downto 0),
+      probe11(0) => \^valid\,
+      probe2(23 downto 0) => re(23 downto 0),
+      probe3(23 downto 0) => im(23 downto 0),
+      probe4(31 downto 0) => re2(31 downto 0),
+      probe5(31 downto 0) => im2(31 downto 0),
+      probe6(31 downto 0) => p2(31 downto 0),
       probe7(15 downto 0) => lenv(15 downto 0),
       probe8(23 downto 0) => lphase(23 downto 0),
-      probe9(0) => atan2_valid
+      probe9(15 downto 0) => \^env\(15 downto 0)
+    );
+\morlet_to_phase_env.amp_3_reg[0]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(0),
+      Q => \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[10]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(10),
+      Q => \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[11]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(11),
+      Q => \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[12]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(12),
+      Q => \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[13]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(13),
+      Q => \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[14]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(14),
+      Q => \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[15]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(15),
+      Q => \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[1]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(1),
+      Q => \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[2]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(2),
+      Q => \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[3]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(3),
+      Q => \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[4]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(4),
+      Q => \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[5]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(5),
+      Q => \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[6]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(6),
+      Q => \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[7]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(7),
+      Q => \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[8]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(8),
+      Q => \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[9]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(9),
+      Q => \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_4_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\,
+      Q => amp_4(0),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\,
+      Q => amp_4(10),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\,
+      Q => amp_4(11),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\,
+      Q => amp_4(12),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\,
+      Q => amp_4(13),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\,
+      Q => amp_4(14),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\,
+      Q => amp_4(15),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\,
+      Q => amp_4(1),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\,
+      Q => amp_4(2),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\,
+      Q => amp_4(3),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\,
+      Q => amp_4(4),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\,
+      Q => amp_4(5),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\,
+      Q => amp_4(6),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\,
+      Q => amp_4(7),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\,
+      Q => amp_4(8),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\,
+      Q => amp_4(9),
+      R => '0'
+    );
+\morlet_to_phase_env.delay[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"2F0F0F0F0F0F0F0F"
+    )
+        port map (
+      I0 => delay(1),
+      I1 => delay(2),
+      I2 => delay(0),
+      I3 => delay(4),
+      I4 => delay(3),
+      I5 => active,
+      O => delay0_in(0)
+    );
+\morlet_to_phase_env.delay[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"55D5AAAAAAAA5555"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(1)
+    );
+\morlet_to_phase_env.delay[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"552AFF00FF00AA55"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(2)
+    );
+\morlet_to_phase_env.delay[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6CCCCCC9"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(2),
+      I3 => delay(1),
+      I4 => active,
+      O => delay0_in(3)
+    );
+\morlet_to_phase_env.delay[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => active,
+      I2 => delay(3),
+      I3 => delay(4),
+      I4 => delay(0),
+      I5 => delay(1),
+      O => \morlet_to_phase_env.delay[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.delay[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"78F0F0F0F0F0F0E1"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(4)
+    );
+\morlet_to_phase_env.delay_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(0),
+      Q => delay(0),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(1),
+      Q => delay(1),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(2),
+      Q => delay(2),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(3),
+      Q => delay(3),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(4),
+      Q => delay(4),
+      R => '0'
+    );
+\morlet_to_phase_env.env[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(0),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(0),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[0]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(10),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(10),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[10]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(11),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(11),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[11]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(12),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(12),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[12]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(13),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(13),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[13]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(14),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(14),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[14]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(15),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(15),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[15]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFF00000000"
+    )
+        port map (
+      I0 => delay(3),
+      I1 => delay(4),
+      I2 => delay(2),
+      I3 => delay(0),
+      I4 => delay(1),
+      I5 => active,
+      O => \morlet_to_phase_env.env[15]_i_2_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"40000000FFFFFFFF"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => delay(1),
+      I2 => delay(0),
+      I3 => delay(4),
+      I4 => delay(3),
+      I5 => active,
+      O => \morlet_to_phase_env.env[15]_i_3_n_0\
+    );
+\morlet_to_phase_env.env[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(1),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(1),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[1]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(2),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(2),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[2]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(3),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(3),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[3]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(4),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(4),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(5),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(5),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[5]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(6),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(6),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[6]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(7),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(7),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[7]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(8),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(8),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[8]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(9),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(9),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[9]_i_1_n_0\
     );
 \morlet_to_phase_env.env_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(0),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[0]_i_1_n_0\,
       Q => \^env\(0),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(10),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[10]_i_1_n_0\,
       Q => \^env\(10),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(11),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[11]_i_1_n_0\,
       Q => \^env\(11),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(12),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[12]_i_1_n_0\,
       Q => \^env\(12),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(13),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[13]_i_1_n_0\,
       Q => \^env\(13),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(14),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[14]_i_1_n_0\,
       Q => \^env\(14),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(15),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[15]_i_1_n_0\,
       Q => \^env\(15),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(1),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[1]_i_1_n_0\,
       Q => \^env\(1),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(2),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[2]_i_1_n_0\,
       Q => \^env\(2),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(3),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[3]_i_1_n_0\,
       Q => \^env\(3),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(4),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[4]_i_1_n_0\,
       Q => \^env\(4),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(5),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[5]_i_1_n_0\,
       Q => \^env\(5),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(6),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[6]_i_1_n_0\,
       Q => \^env\(6),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(7),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[7]_i_1_n_0\,
       Q => \^env\(7),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(8),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[8]_i_1_n_0\,
       Q => \^env\(8),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(9),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[9]_i_1_n_0\,
       Q => \^env\(9),
       R => '0'
     );
@@ -2083,56 +3789,56 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(0),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_15\,
       Q => p2(0),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(10),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_13\,
       Q => p2(10),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(11),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_12\,
       Q => p2(11),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(12),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_11\,
       Q => p2(12),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(13),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_10\,
       Q => p2(13),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(14),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_9\,
       Q => p2(14),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(15),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_8\,
       Q => p2(15),
       R => '0'
     );
@@ -2149,7 +3855,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(1) => \morlet_to_phase_env.p2_reg[15]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[15]_i_1_n_7\,
       DI(7 downto 0) => re2(15 downto 8),
-      O(7 downto 0) => p_0_in1_in(15 downto 8),
+      O(7) => \morlet_to_phase_env.p2_reg[15]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[15]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[15]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[15]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[15]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[15]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[15]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[15]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[15]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[15]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[15]_i_4_n_0\,
@@ -2162,72 +3875,72 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(16),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_15\,
       Q => p2(16),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(17),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_14\,
       Q => p2(17),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(18),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_13\,
       Q => p2(18),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(19),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_12\,
       Q => p2(19),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(1),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_14\,
       Q => p2(1),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(20),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_11\,
       Q => p2(20),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(21),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_10\,
       Q => p2(21),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(22),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_9\,
       Q => p2(22),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(23),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_8\,
       Q => p2(23),
       R => '0'
     );
@@ -2244,7 +3957,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(1) => \morlet_to_phase_env.p2_reg[23]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[23]_i_1_n_7\,
       DI(7 downto 0) => re2(23 downto 16),
-      O(7 downto 0) => p_0_in1_in(23 downto 16),
+      O(7) => \morlet_to_phase_env.p2_reg[23]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[23]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[23]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[23]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[23]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[23]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[23]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[23]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[23]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[23]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[23]_i_4_n_0\,
@@ -2257,72 +3977,72 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(24),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_15\,
       Q => p2(24),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(25),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_14\,
       Q => p2(25),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(26),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_13\,
       Q => p2(26),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(27),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_12\,
       Q => p2(27),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(28),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_11\,
       Q => p2(28),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(29),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_10\,
       Q => p2(29),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(2),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_13\,
       Q => p2(2),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(30),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_9\,
       Q => p2(30),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(31),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_8\,
       Q => p2(31),
       R => '0'
     );
@@ -2340,7 +4060,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(0) => \morlet_to_phase_env.p2_reg[31]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => re2(30 downto 24),
-      O(7 downto 0) => p_0_in1_in(31 downto 24),
+      O(7) => \morlet_to_phase_env.p2_reg[31]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[31]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[31]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[31]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[31]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[31]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[31]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[31]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[31]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[31]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[31]_i_4_n_0\,
@@ -2353,40 +4080,40 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(3),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_12\,
       Q => p2(3),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(4),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_11\,
       Q => p2(4),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(5),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_10\,
       Q => p2(5),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(6),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_9\,
       Q => p2(6),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(7),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_8\,
       Q => p2(7),
       R => '0'
     );
@@ -2403,7 +4130,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(1) => \morlet_to_phase_env.p2_reg[7]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[7]_i_1_n_7\,
       DI(7 downto 0) => re2(7 downto 0),
-      O(7 downto 0) => p_0_in1_in(7 downto 0),
+      O(7) => \morlet_to_phase_env.p2_reg[7]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[7]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[7]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[7]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[7]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[7]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[7]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[7]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[7]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[7]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[7]_i_4_n_0\,
@@ -2416,188 +4150,422 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(8),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_15\,
       Q => p2(8),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(9),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_14\,
       Q => p2(9),
       R => '0'
+    );
+\morlet_to_phase_env.phase[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(0),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(0),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[0]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(10),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(10),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[10]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(11),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(11),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[11]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(12),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(12),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[12]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(13),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(13),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[13]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(14),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(14),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[14]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(15),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(15),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[15]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(16),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(16),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[16]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(17),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(17),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[17]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(18),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(18),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[18]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(19),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(19),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[19]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(1),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(1),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[1]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(2),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(2),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[2]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(3),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(3),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[3]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(4),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(4),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(5),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(5),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[5]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(6),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(6),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[6]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(7),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(7),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[7]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(8),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(8),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[8]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(9),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(9),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[9]_i_1_n_0\
     );
 \morlet_to_phase_env.phase_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(0),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[0]_i_1_n_0\,
       Q => \^phase\(0),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(10),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[10]_i_1_n_0\,
       Q => \^phase\(10),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(11),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[11]_i_1_n_0\,
       Q => \^phase\(11),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(12),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[12]_i_1_n_0\,
       Q => \^phase\(12),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(13),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[13]_i_1_n_0\,
       Q => \^phase\(13),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(14),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[14]_i_1_n_0\,
       Q => \^phase\(14),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(15),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[15]_i_1_n_0\,
       Q => \^phase\(15),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(16),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[16]_i_1_n_0\,
       Q => \^phase\(16),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(17),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[17]_i_1_n_0\,
       Q => \^phase\(17),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(18),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[18]_i_1_n_0\,
       Q => \^phase\(18),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(19),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[19]_i_1_n_0\,
       Q => \^phase\(19),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(1),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[1]_i_1_n_0\,
       Q => \^phase\(1),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(2),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[2]_i_1_n_0\,
       Q => \^phase\(2),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(3),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[3]_i_1_n_0\,
       Q => \^phase\(3),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(4),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[4]_i_1_n_0\,
       Q => \^phase\(4),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(5),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[5]_i_1_n_0\,
       Q => \^phase\(5),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(6),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[6]_i_1_n_0\,
       Q => \^phase\(6),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(7),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[7]_i_1_n_0\,
       Q => \^phase\(7),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(8),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[8]_i_1_n_0\,
       Q => \^phase\(8),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(9),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[9]_i_1_n_0\,
       Q => \^phase\(9),
       R => '0'
     );
-\morlet_to_phase_env.valid_i_1\: unisim.vcomponents.LUT3
+\morlet_to_phase_env.valid_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"80"
+      INIT => X"FEBA"
     )
         port map (
-      I0 => active,
-      I1 => atan2_valid,
-      I2 => sqrt_valid,
+      I0 => \morlet_to_phase_env.valid_i_2_n_0\,
+      I1 => active,
+      I2 => delay(2),
+      I3 => \^valid\,
       O => \morlet_to_phase_env.valid_i_1_n_0\
+    );
+\morlet_to_phase_env.valid_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7333333333333330"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => active,
+      I2 => delay(1),
+      I3 => delay(0),
+      I4 => delay(4),
+      I5 => delay(3),
+      O => \morlet_to_phase_env.valid_i_2_n_0\
     );
 \morlet_to_phase_env.valid_reg\: unisim.vcomponents.FDRE
      port map (
@@ -2625,7 +4593,7 @@ sqrt_i: component ps_freq_low_46_0_0_cordic_sqrt_16
      port map (
       aclk => clk,
       m_axis_dout_tdata(15 downto 0) => lenv(15 downto 0),
-      m_axis_dout_tvalid => sqrt_valid,
+      m_axis_dout_tvalid => NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(31 downto 0) => p2(31 downto 0),
       s_axis_cartesian_tvalid => active
     );
@@ -2633,7 +4601,7 @@ tan2_i: component ps_freq_low_46_0_0_cordic_atan2_16
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 0) => lphase(23 downto 0),
-      m_axis_dout_tvalid => atan2_valid,
+      m_axis_dout_tvalid => NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(47 downto 24) => im(23 downto 0),
       s_axis_cartesian_tdata(23 downto 0) => re(23 downto 0),
       s_axis_cartesian_tvalid => active
@@ -2664,18 +4632,17 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\ is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 23 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_freq_low_46_0_0_ila_1;
   component ps_freq_low_46_0_0_mult_16_16 is
@@ -2704,9 +4671,11 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\ is
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   end component ps_freq_low_46_0_0_cordic_atan2_16;
-  signal atan2_valid : STD_LOGIC;
+  signal amp_4 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal delay : STD_LOGIC_VECTOR ( 4 downto 0 );
   attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of atan2_valid : signal is std.standard.true;
+  attribute MARK_DEBUG of delay : signal is std.standard.true;
+  signal delay0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal \^env\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^env\ : signal is std.standard.true;
   signal im2 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2715,6 +4684,41 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\ is
   attribute MARK_DEBUG of lenv : signal is std.standard.true;
   signal lphase : STD_LOGIC_VECTOR ( 23 downto 0 );
   attribute MARK_DEBUG of lphase : signal is std.standard.true;
+  signal \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[0]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[10]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[11]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[12]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[13]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[14]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_2_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[15]_i_3_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[1]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[2]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[3]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[5]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[6]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[7]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[8]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.env[9]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_2_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_3_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2[15]_i_4_n_0\ : STD_LOGIC;
@@ -2749,57 +4753,153 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\ is
   signal \morlet_to_phase_env.p2[7]_i_9_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[15]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[23]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[23]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[31]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[31]_i_1_n_9\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_15\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_2\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_3\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_4\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \morlet_to_phase_env.p2_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \morlet_to_phase_env.p2_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[0]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[10]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[11]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[12]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[13]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[14]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[15]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[16]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[17]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[18]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[19]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[1]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[2]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[3]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[4]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[5]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[6]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[7]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[8]_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.phase[9]_i_1_n_0\ : STD_LOGIC;
   signal \morlet_to_phase_env.valid_i_1_n_0\ : STD_LOGIC;
+  signal \morlet_to_phase_env.valid_i_2_n_0\ : STD_LOGIC;
   signal p2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of p2 : signal is std.standard.true;
-  signal p_0_in1_in : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^phase\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of \^phase\ : signal is std.standard.true;
   signal re2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of re2 : signal is std.standard.true;
-  signal sqrt_valid : STD_LOGIC;
-  attribute MARK_DEBUG of sqrt_valid : signal is std.standard.true;
   signal \^valid\ : STD_LOGIC;
   attribute MARK_DEBUG of valid : signal is std.standard.true;
   signal \NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
+  signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_1_i : label is "ila_1,ila,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of ila_1_i : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of ila_1_i : label is "ila,Vivado 2025.1";
+  attribute srl_bus_name : string;
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[0]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name : string;
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[0]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[0]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[10]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[10]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[10]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[11]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[11]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[11]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[12]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[12]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[12]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[13]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[13]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[13]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[14]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[14]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[14]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[15]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[15]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[15]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[1]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[1]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[1]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[2]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[2]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[2]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[3]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[3]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[3]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[4]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[4]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[4]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[5]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[5]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[5]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[6]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[6]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[6]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[7]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[7]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[7]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[8]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[8]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[8]_srl3 ";
+  attribute srl_bus_name of \morlet_to_phase_env.amp_3_reg[9]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg ";
+  attribute srl_name of \morlet_to_phase_env.amp_3_reg[9]_srl3\ : label is "inst/freq_E_i/\morlet_to_phase_env.amp_3_reg[9]_srl3 ";
   attribute KEEP : string;
-  attribute KEEP of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[0]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[1]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[2]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[3]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.delay_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \morlet_to_phase_env.delay_reg[4]\ : label is "yes";
+  attribute KEEP of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.env_reg[10]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[10]\ : label is "yes";
@@ -2832,74 +4932,42 @@ architecture STRUCTURE of \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\ is
   attribute KEEP of \morlet_to_phase_env.env_reg[9]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.env_reg[9]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[10]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[11]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[12]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[13]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[14]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[15]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[16]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[17]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[18]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[19]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[1]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[20]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[21]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[22]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[23]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[24]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[25]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[26]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[27]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[28]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[29]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[2]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[30]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[31]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[3]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[4]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[5]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[6]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[7]_i_1\ : label is 35;
   attribute KEEP of \morlet_to_phase_env.p2_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[8]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.p2_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \morlet_to_phase_env.p2_reg[9]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.phase_reg[0]\ : label is "yes";
   attribute mark_debug_string of \morlet_to_phase_env.phase_reg[0]\ : label is "yes";
   attribute KEEP of \morlet_to_phase_env.phase_reg[10]\ : label is "yes";
@@ -2961,144 +5029,766 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
      port map (
       clk => clk,
       probe0(0) => active,
-      probe1(23 downto 0) => re(23 downto 0),
-      probe10(15 downto 0) => \^env\(15 downto 0),
-      probe11(19 downto 0) => \^phase\(19 downto 0),
-      probe12(0) => \^valid\,
-      probe2(23 downto 0) => im(23 downto 0),
-      probe3(31 downto 0) => re2(31 downto 0),
-      probe4(31 downto 0) => im2(31 downto 0),
-      probe5(31 downto 0) => p2(31 downto 0),
-      probe6(0) => sqrt_valid,
+      probe1(4 downto 0) => delay(4 downto 0),
+      probe10(19 downto 0) => \^phase\(19 downto 0),
+      probe11(0) => \^valid\,
+      probe2(23 downto 0) => re(23 downto 0),
+      probe3(23 downto 0) => im(23 downto 0),
+      probe4(31 downto 0) => re2(31 downto 0),
+      probe5(31 downto 0) => im2(31 downto 0),
+      probe6(31 downto 0) => p2(31 downto 0),
       probe7(15 downto 0) => lenv(15 downto 0),
       probe8(23 downto 0) => lphase(23 downto 0),
-      probe9(0) => atan2_valid
+      probe9(15 downto 0) => \^env\(15 downto 0)
+    );
+\morlet_to_phase_env.amp_3_reg[0]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(0),
+      Q => \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[10]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(10),
+      Q => \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[11]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(11),
+      Q => \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[12]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(12),
+      Q => \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[13]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(13),
+      Q => \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[14]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(14),
+      Q => \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[15]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(15),
+      Q => \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[1]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(1),
+      Q => \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[2]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(2),
+      Q => \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[3]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(3),
+      Q => \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[4]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(4),
+      Q => \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[5]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(5),
+      Q => \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[6]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(6),
+      Q => \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[7]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(7),
+      Q => \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[8]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(8),
+      Q => \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_3_reg[9]_srl3\: unisim.vcomponents.SRL16E
+     port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '0',
+      A3 => '0',
+      CE => '1',
+      CLK => clk,
+      D => lenv(9),
+      Q => \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\
+    );
+\morlet_to_phase_env.amp_4_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[0]_srl3_n_0\,
+      Q => amp_4(0),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[10]_srl3_n_0\,
+      Q => amp_4(10),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[11]_srl3_n_0\,
+      Q => amp_4(11),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[12]_srl3_n_0\,
+      Q => amp_4(12),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[13]_srl3_n_0\,
+      Q => amp_4(13),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[14]_srl3_n_0\,
+      Q => amp_4(14),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[15]_srl3_n_0\,
+      Q => amp_4(15),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[1]_srl3_n_0\,
+      Q => amp_4(1),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[2]_srl3_n_0\,
+      Q => amp_4(2),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[3]_srl3_n_0\,
+      Q => amp_4(3),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[4]_srl3_n_0\,
+      Q => amp_4(4),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[5]_srl3_n_0\,
+      Q => amp_4(5),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[6]_srl3_n_0\,
+      Q => amp_4(6),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[7]_srl3_n_0\,
+      Q => amp_4(7),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[8]_srl3_n_0\,
+      Q => amp_4(8),
+      R => '0'
+    );
+\morlet_to_phase_env.amp_4_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \morlet_to_phase_env.amp_3_reg[9]_srl3_n_0\,
+      Q => amp_4(9),
+      R => '0'
+    );
+\morlet_to_phase_env.delay[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"2F0F0F0F0F0F0F0F"
+    )
+        port map (
+      I0 => delay(1),
+      I1 => delay(2),
+      I2 => delay(0),
+      I3 => delay(4),
+      I4 => delay(3),
+      I5 => active,
+      O => delay0_in(0)
+    );
+\morlet_to_phase_env.delay[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"55D5AAAAAAAA5555"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(1)
+    );
+\morlet_to_phase_env.delay[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"552AFF00FF00AA55"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(2)
+    );
+\morlet_to_phase_env.delay[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6CCCCCC9"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(2),
+      I3 => delay(1),
+      I4 => active,
+      O => delay0_in(3)
+    );
+\morlet_to_phase_env.delay[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => active,
+      I2 => delay(3),
+      I3 => delay(4),
+      I4 => delay(0),
+      I5 => delay(1),
+      O => \morlet_to_phase_env.delay[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.delay[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"78F0F0F0F0F0F0E1"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(3),
+      I2 => delay(4),
+      I3 => delay(2),
+      I4 => delay(1),
+      I5 => active,
+      O => delay0_in(4)
+    );
+\morlet_to_phase_env.delay_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(0),
+      Q => delay(0),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(1),
+      Q => delay(1),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(2),
+      Q => delay(2),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(3),
+      Q => delay(3),
+      R => '0'
+    );
+\morlet_to_phase_env.delay_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => delay0_in(4),
+      Q => delay(4),
+      R => '0'
+    );
+\morlet_to_phase_env.env[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(0),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(0),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[0]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(10),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(10),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[10]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(11),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(11),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[11]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(12),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(12),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[12]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(13),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(13),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[13]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(14),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(14),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[14]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(15),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(15),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[15]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFF00000000"
+    )
+        port map (
+      I0 => delay(3),
+      I1 => delay(4),
+      I2 => delay(2),
+      I3 => delay(0),
+      I4 => delay(1),
+      I5 => active,
+      O => \morlet_to_phase_env.env[15]_i_2_n_0\
+    );
+\morlet_to_phase_env.env[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"40000000FFFFFFFF"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => delay(1),
+      I2 => delay(0),
+      I3 => delay(4),
+      I4 => delay(3),
+      I5 => active,
+      O => \morlet_to_phase_env.env[15]_i_3_n_0\
+    );
+\morlet_to_phase_env.env[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(1),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(1),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[1]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(2),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(2),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[2]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(3),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(3),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[3]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(4),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(4),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(5),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(5),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[5]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(6),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(6),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[6]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(7),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(7),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[7]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(8),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(8),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[8]_i_1_n_0\
+    );
+\morlet_to_phase_env.env[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^env\(9),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => amp_4(9),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.env[9]_i_1_n_0\
     );
 \morlet_to_phase_env.env_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(0),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[0]_i_1_n_0\,
       Q => \^env\(0),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(10),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[10]_i_1_n_0\,
       Q => \^env\(10),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(11),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[11]_i_1_n_0\,
       Q => \^env\(11),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(12),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[12]_i_1_n_0\,
       Q => \^env\(12),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(13),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[13]_i_1_n_0\,
       Q => \^env\(13),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(14),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[14]_i_1_n_0\,
       Q => \^env\(14),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(15),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[15]_i_1_n_0\,
       Q => \^env\(15),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(1),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[1]_i_1_n_0\,
       Q => \^env\(1),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(2),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[2]_i_1_n_0\,
       Q => \^env\(2),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(3),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[3]_i_1_n_0\,
       Q => \^env\(3),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(4),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[4]_i_1_n_0\,
       Q => \^env\(4),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(5),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[5]_i_1_n_0\,
       Q => \^env\(5),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(6),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[6]_i_1_n_0\,
       Q => \^env\(6),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(7),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[7]_i_1_n_0\,
       Q => \^env\(7),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(8),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[8]_i_1_n_0\,
       Q => \^env\(8),
       R => '0'
     );
 \morlet_to_phase_env.env_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lenv(9),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.env[9]_i_1_n_0\,
       Q => \^env\(9),
       R => '0'
     );
@@ -3393,56 +6083,56 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(0),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_15\,
       Q => p2(0),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(10),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_13\,
       Q => p2(10),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(11),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_12\,
       Q => p2(11),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(12),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_11\,
       Q => p2(12),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(13),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_10\,
       Q => p2(13),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(14),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_9\,
       Q => p2(14),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(15),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_8\,
       Q => p2(15),
       R => '0'
     );
@@ -3459,7 +6149,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(1) => \morlet_to_phase_env.p2_reg[15]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[15]_i_1_n_7\,
       DI(7 downto 0) => re2(15 downto 8),
-      O(7 downto 0) => p_0_in1_in(15 downto 8),
+      O(7) => \morlet_to_phase_env.p2_reg[15]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[15]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[15]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[15]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[15]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[15]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[15]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[15]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[15]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[15]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[15]_i_4_n_0\,
@@ -3472,72 +6169,72 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(16),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_15\,
       Q => p2(16),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(17),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_14\,
       Q => p2(17),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(18),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_13\,
       Q => p2(18),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(19),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_12\,
       Q => p2(19),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(1),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_14\,
       Q => p2(1),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(20),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_11\,
       Q => p2(20),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(21),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_10\,
       Q => p2(21),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(22),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_9\,
       Q => p2(22),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(23),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[23]_i_1_n_8\,
       Q => p2(23),
       R => '0'
     );
@@ -3554,7 +6251,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(1) => \morlet_to_phase_env.p2_reg[23]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[23]_i_1_n_7\,
       DI(7 downto 0) => re2(23 downto 16),
-      O(7 downto 0) => p_0_in1_in(23 downto 16),
+      O(7) => \morlet_to_phase_env.p2_reg[23]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[23]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[23]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[23]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[23]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[23]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[23]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[23]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[23]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[23]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[23]_i_4_n_0\,
@@ -3567,72 +6271,72 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(24),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_15\,
       Q => p2(24),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(25),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_14\,
       Q => p2(25),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(26),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_13\,
       Q => p2(26),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(27),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_12\,
       Q => p2(27),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(28),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_11\,
       Q => p2(28),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(29),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_10\,
       Q => p2(29),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(2),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_13\,
       Q => p2(2),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(30),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_9\,
       Q => p2(30),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(31),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[31]_i_1_n_8\,
       Q => p2(31),
       R => '0'
     );
@@ -3650,7 +6354,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(0) => \morlet_to_phase_env.p2_reg[31]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => re2(30 downto 24),
-      O(7 downto 0) => p_0_in1_in(31 downto 24),
+      O(7) => \morlet_to_phase_env.p2_reg[31]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[31]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[31]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[31]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[31]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[31]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[31]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[31]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[31]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[31]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[31]_i_4_n_0\,
@@ -3663,40 +6374,40 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(3),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_12\,
       Q => p2(3),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(4),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_11\,
       Q => p2(4),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(5),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_10\,
       Q => p2(5),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(6),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_9\,
       Q => p2(6),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(7),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[7]_i_1_n_8\,
       Q => p2(7),
       R => '0'
     );
@@ -3713,7 +6424,14 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
       CO(1) => \morlet_to_phase_env.p2_reg[7]_i_1_n_6\,
       CO(0) => \morlet_to_phase_env.p2_reg[7]_i_1_n_7\,
       DI(7 downto 0) => re2(7 downto 0),
-      O(7 downto 0) => p_0_in1_in(7 downto 0),
+      O(7) => \morlet_to_phase_env.p2_reg[7]_i_1_n_8\,
+      O(6) => \morlet_to_phase_env.p2_reg[7]_i_1_n_9\,
+      O(5) => \morlet_to_phase_env.p2_reg[7]_i_1_n_10\,
+      O(4) => \morlet_to_phase_env.p2_reg[7]_i_1_n_11\,
+      O(3) => \morlet_to_phase_env.p2_reg[7]_i_1_n_12\,
+      O(2) => \morlet_to_phase_env.p2_reg[7]_i_1_n_13\,
+      O(1) => \morlet_to_phase_env.p2_reg[7]_i_1_n_14\,
+      O(0) => \morlet_to_phase_env.p2_reg[7]_i_1_n_15\,
       S(7) => \morlet_to_phase_env.p2[7]_i_2_n_0\,
       S(6) => \morlet_to_phase_env.p2[7]_i_3_n_0\,
       S(5) => \morlet_to_phase_env.p2[7]_i_4_n_0\,
@@ -3726,188 +6444,422 @@ ila_1_i: component ps_freq_low_46_0_0_ila_1
 \morlet_to_phase_env.p2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(8),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_15\,
       Q => p2(8),
       R => '0'
     );
 \morlet_to_phase_env.p2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => p_0_in1_in(9),
+      CE => '1',
+      D => \morlet_to_phase_env.p2_reg[15]_i_1_n_14\,
       Q => p2(9),
       R => '0'
+    );
+\morlet_to_phase_env.phase[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(0),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(0),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[0]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(10),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(10),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[10]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(11),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(11),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[11]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(12),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(12),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[12]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(13),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(13),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[13]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(14),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(14),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[14]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(15),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(15),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[15]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(16),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(16),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[16]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(17),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(17),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[17]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(18),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(18),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[18]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(19),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(19),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[19]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(1),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(1),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[1]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(2),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(2),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[2]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(3),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(3),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[3]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(4),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(4),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[4]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(5),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(5),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[5]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(6),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(6),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[6]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(7),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(7),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[7]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(8),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(8),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[8]_i_1_n_0\
+    );
+\morlet_to_phase_env.phase[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \^phase\(9),
+      I1 => \morlet_to_phase_env.env[15]_i_2_n_0\,
+      I2 => lphase(9),
+      I3 => \morlet_to_phase_env.env[15]_i_3_n_0\,
+      O => \morlet_to_phase_env.phase[9]_i_1_n_0\
     );
 \morlet_to_phase_env.phase_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(0),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[0]_i_1_n_0\,
       Q => \^phase\(0),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(10),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[10]_i_1_n_0\,
       Q => \^phase\(10),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(11),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[11]_i_1_n_0\,
       Q => \^phase\(11),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(12),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[12]_i_1_n_0\,
       Q => \^phase\(12),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(13),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[13]_i_1_n_0\,
       Q => \^phase\(13),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(14),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[14]_i_1_n_0\,
       Q => \^phase\(14),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(15),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[15]_i_1_n_0\,
       Q => \^phase\(15),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(16),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[16]_i_1_n_0\,
       Q => \^phase\(16),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(17),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[17]_i_1_n_0\,
       Q => \^phase\(17),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(18),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[18]_i_1_n_0\,
       Q => \^phase\(18),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(19),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[19]_i_1_n_0\,
       Q => \^phase\(19),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(1),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[1]_i_1_n_0\,
       Q => \^phase\(1),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(2),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[2]_i_1_n_0\,
       Q => \^phase\(2),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(3),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[3]_i_1_n_0\,
       Q => \^phase\(3),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(4),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[4]_i_1_n_0\,
       Q => \^phase\(4),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(5),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[5]_i_1_n_0\,
       Q => \^phase\(5),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(6),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[6]_i_1_n_0\,
       Q => \^phase\(6),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(7),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[7]_i_1_n_0\,
       Q => \^phase\(7),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(8),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[8]_i_1_n_0\,
       Q => \^phase\(8),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => active,
-      D => lphase(9),
+      CE => \morlet_to_phase_env.delay[4]_i_1_n_0\,
+      D => \morlet_to_phase_env.phase[9]_i_1_n_0\,
       Q => \^phase\(9),
       R => '0'
     );
-\morlet_to_phase_env.valid_i_1\: unisim.vcomponents.LUT3
+\morlet_to_phase_env.valid_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"80"
+      INIT => X"FEBA"
     )
         port map (
-      I0 => active,
-      I1 => atan2_valid,
-      I2 => sqrt_valid,
+      I0 => \morlet_to_phase_env.valid_i_2_n_0\,
+      I1 => active,
+      I2 => delay(2),
+      I3 => \^valid\,
       O => \morlet_to_phase_env.valid_i_1_n_0\
+    );
+\morlet_to_phase_env.valid_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7333333333333330"
+    )
+        port map (
+      I0 => delay(2),
+      I1 => active,
+      I2 => delay(1),
+      I3 => delay(0),
+      I4 => delay(4),
+      I5 => delay(3),
+      O => \morlet_to_phase_env.valid_i_2_n_0\
     );
 \morlet_to_phase_env.valid_reg\: unisim.vcomponents.FDRE
      port map (
@@ -3935,7 +6887,7 @@ sqrt_i: component ps_freq_low_46_0_0_cordic_sqrt_16
      port map (
       aclk => clk,
       m_axis_dout_tdata(15 downto 0) => lenv(15 downto 0),
-      m_axis_dout_tvalid => sqrt_valid,
+      m_axis_dout_tvalid => NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(31 downto 0) => p2(31 downto 0),
       s_axis_cartesian_tvalid => active
     );
@@ -3943,7 +6895,7 @@ tan2_i: component ps_freq_low_46_0_0_cordic_atan2_16
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 0) => lphase(23 downto 0),
-      m_axis_dout_tvalid => atan2_valid,
+      m_axis_dout_tvalid => NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(47 downto 24) => im(23 downto 0),
       s_axis_cartesian_tdata(23 downto 0) => re(23 downto 0),
       s_axis_cartesian_tvalid => active
@@ -4060,6 +7012,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal curr_delay : STD_LOGIC_VECTOR ( 6 downto 0 );
   attribute MARK_DEBUG of curr_delay : signal is std.standard.true;
   signal \deci_low.curr_delay[0]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.curr_delay[0]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[1]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[1]_i_3_n_0\ : STD_LOGIC;
@@ -4074,14 +7027,13 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal \deci_low.curr_delay[5]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[5]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[5]_i_4_n_0\ : STD_LOGIC;
+  signal \deci_low.curr_delay[5]_i_5_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[6]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[6]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[6]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[6]_i_4_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[6]_i_5_n_0\ : STD_LOGIC;
   signal \deci_low.curr_delay[6]_i_6_n_0\ : STD_LOGIC;
-  signal \deci_low.curr_delay[6]_i_7_n_0\ : STD_LOGIC;
-  signal \deci_low.curr_delay[6]_i_8_n_0\ : STD_LOGIC;
   signal \deci_low.diffE[15]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.diffE[15]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.diffE[15]_i_4_n_0\ : STD_LOGIC;
@@ -4200,19 +7152,20 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal \deci_low.diffW_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \deci_low.diffW_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \deci_low.morlet_active_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.morlet_active_reg0\ : STD_LOGIC;
   signal \deci_low.start_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.start_delay[2]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.start_delay[2]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[4]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.start_delay[4]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[5]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.start_delay[5]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.start_delay[5]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[6]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[6]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[6]_i_3_n_0\ : STD_LOGIC;
   signal \deci_low.start_delay[6]_i_4_n_0\ : STD_LOGIC;
-  signal \deci_low.start_delay[6]_i_5_n_0\ : STD_LOGIC;
   signal diffE : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal diffE01_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal diffN : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -4828,90 +7781,101 @@ begin
       Q => W(9),
       R => '0'
     );
-\deci_low.curr_delay[0]_i_1\: unisim.vcomponents.LUT5
+\deci_low.curr_delay[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8822CBEE"
+      INIT => X"1FF21F1F12121212"
     )
         port map (
-      I0 => fifo_valid,
-      I1 => curr_delay(0),
-      I2 => \deci_low.curr_delay[1]_i_3_n_0\,
-      I3 => \deci_low.curr_delay[1]_i_2_n_0\,
-      I4 => \deci_low.curr_delay[6]_i_4_n_0\,
+      I0 => \deci_low.curr_delay[1]_i_3_n_0\,
+      I1 => \deci_low.curr_delay[6]_i_4_n_0\,
+      I2 => curr_delay(0),
+      I3 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I4 => start_delay(0),
+      I5 => fifo_valid,
       O => \deci_low.curr_delay[0]_i_1_n_0\
+    );
+\deci_low.curr_delay[0]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFF7FFFFFFFFFFF"
+    )
+        port map (
+      I0 => start_delay(5),
+      I1 => start_delay(4),
+      I2 => start_delay(3),
+      I3 => start_delay(6),
+      I4 => start_delay(2),
+      I5 => start_delay(1),
+      O => \deci_low.curr_delay[0]_i_2_n_0\
     );
 \deci_low.curr_delay[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"A2A20808BFEFC838"
+      INIT => X"84C084C0F4CFF4F0"
     )
         port map (
-      I0 => fifo_valid,
-      I1 => curr_delay(0),
-      I2 => \deci_low.curr_delay[1]_i_2_n_0\,
-      I3 => \deci_low.curr_delay[1]_i_3_n_0\,
-      I4 => curr_delay(1),
+      I0 => \deci_low.curr_delay[1]_i_2_n_0\,
+      I1 => fifo_valid,
+      I2 => curr_delay(1),
+      I3 => curr_delay(0),
+      I4 => \deci_low.curr_delay[1]_i_3_n_0\,
       I5 => \deci_low.curr_delay[6]_i_4_n_0\,
       O => \deci_low.curr_delay[1]_i_1_n_0\
     );
-\deci_low.curr_delay[1]_i_2\: unisim.vcomponents.LUT3
+\deci_low.curr_delay[1]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"01"
+      INIT => X"2"
     )
         port map (
       I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
+      I1 => \deci_low.curr_delay[0]_i_2_n_0\,
       O => \deci_low.curr_delay[1]_i_2_n_0\
     );
 \deci_low.curr_delay[1]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000010"
+      INIT => X"1111111111111110"
     )
         port map (
-      I0 => curr_delay(6),
-      I1 => curr_delay(5),
-      I2 => \deci_low.curr_delay[6]_i_8_n_0\,
-      I3 => curr_delay(1),
+      I0 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I1 => start_delay(0),
+      I2 => \deci_low.curr_delay[4]_i_3_n_0\,
+      I3 => curr_delay(2),
       I4 => curr_delay(0),
-      I5 => curr_delay(2),
+      I5 => curr_delay(1),
       O => \deci_low.curr_delay[1]_i_3_n_0\
     );
-\deci_low.curr_delay[2]_i_1\: unisim.vcomponents.LUT6
+\deci_low.curr_delay[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"90909090FFFFFF90"
+      INIT => X"F11F1111"
     )
         port map (
-      I0 => curr_delay(2),
-      I1 => \deci_low.curr_delay[2]_i_2_n_0\,
-      I2 => fifo_valid,
-      I3 => \deci_low.curr_delay[4]_i_2_n_0\,
-      I4 => \deci_low.curr_delay[2]_i_3_n_0\,
-      I5 => \deci_low.curr_delay[6]_i_4_n_0\,
+      I0 => \deci_low.curr_delay[2]_i_2_n_0\,
+      I1 => \deci_low.curr_delay[6]_i_4_n_0\,
+      I2 => curr_delay(2),
+      I3 => \deci_low.curr_delay[2]_i_3_n_0\,
+      I4 => fifo_valid,
       O => \deci_low.curr_delay[2]_i_1_n_0\
     );
-\deci_low.curr_delay[2]_i_2\: unisim.vcomponents.LUT5
+\deci_low.curr_delay[2]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"5557FFFF"
+      INIT => X"333333333333333D"
+    )
+        port map (
+      I0 => \deci_low.curr_delay[4]_i_3_n_0\,
+      I1 => curr_delay(2),
+      I2 => curr_delay(1),
+      I3 => curr_delay(0),
+      I4 => start_delay(0),
+      I5 => \deci_low.curr_delay[0]_i_2_n_0\,
+      O => \deci_low.curr_delay[2]_i_2_n_0\
+    );
+\deci_low.curr_delay[2]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"5DFF"
     )
         port map (
       I0 => curr_delay(0),
       I1 => start_delay(0),
-      I2 => start_delay(2),
-      I3 => \deci_low.start_delay[5]_i_2_n_0\,
-      I4 => curr_delay(1),
-      O => \deci_low.curr_delay[2]_i_2_n_0\
-    );
-\deci_low.curr_delay[2]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AAAAAAAAAAAAAAA8"
-    )
-        port map (
-      I0 => curr_delay(2),
-      I1 => curr_delay(1),
-      I2 => curr_delay(0),
-      I3 => start_delay(0),
-      I4 => start_delay(2),
-      I5 => \deci_low.start_delay[5]_i_2_n_0\,
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => curr_delay(1),
       O => \deci_low.curr_delay[2]_i_3_n_0\
     );
 \deci_low.curr_delay[3]_i_1\: unisim.vcomponents.LUT5
@@ -4939,21 +7903,22 @@ begin
       I5 => fifo_valid,
       O => \deci_low.curr_delay[4]_i_1_n_0\
     );
-\deci_low.curr_delay[4]_i_2\: unisim.vcomponents.LUT5
+\deci_low.curr_delay[4]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000001"
+      INIT => X"0000000100000000"
     )
         port map (
-      I0 => \deci_low.curr_delay[6]_i_7_n_0\,
-      I1 => start_delay(0),
-      I2 => start_delay(2),
-      I3 => \deci_low.start_delay[5]_i_2_n_0\,
-      I4 => \deci_low.curr_delay[4]_i_3_n_0\,
+      I0 => curr_delay(2),
+      I1 => curr_delay(0),
+      I2 => curr_delay(1),
+      I3 => start_delay(0),
+      I4 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I5 => \deci_low.curr_delay[4]_i_3_n_0\,
       O => \deci_low.curr_delay[4]_i_2_n_0\
     );
 \deci_low.curr_delay[4]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0001"
+      INIT => X"FFFE"
     )
         port map (
       I0 => curr_delay(3),
@@ -4964,37 +7929,41 @@ begin
     );
 \deci_low.curr_delay[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F11FF1F111111111"
+      INIT => X"09FFFF0609060906"
     )
         port map (
-      I0 => \deci_low.curr_delay[5]_i_2_n_0\,
-      I1 => \deci_low.curr_delay[6]_i_4_n_0\,
-      I2 => curr_delay(5),
-      I3 => \deci_low.curr_delay[5]_i_3_n_0\,
-      I4 => \deci_low.curr_delay[6]_i_2_n_0\,
+      I0 => curr_delay(4),
+      I1 => \deci_low.curr_delay[5]_i_2_n_0\,
+      I2 => \deci_low.curr_delay[6]_i_4_n_0\,
+      I3 => curr_delay(5),
+      I4 => \deci_low.curr_delay[5]_i_3_n_0\,
       I5 => fifo_valid,
       O => \deci_low.curr_delay[5]_i_1_n_0\
     );
 \deci_low.curr_delay[5]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"01FE01FF00FF00FF"
+      INIT => X"CCCCCCCCCCCCCCDC"
     )
         port map (
-      I0 => \deci_low.curr_delay[6]_i_7_n_0\,
-      I1 => \deci_low.curr_delay[5]_i_4_n_0\,
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => curr_delay(5),
-      I4 => curr_delay(6),
-      I5 => \deci_low.curr_delay[6]_i_8_n_0\,
+      I0 => curr_delay(3),
+      I1 => curr_delay(4),
+      I2 => \deci_low.curr_delay[5]_i_4_n_0\,
+      I3 => \deci_low.curr_delay[6]_i_6_n_0\,
+      I4 => start_delay(0),
+      I5 => \deci_low.curr_delay[0]_i_2_n_0\,
       O => \deci_low.curr_delay[5]_i_2_n_0\
     );
-\deci_low.curr_delay[5]_i_3\: unisim.vcomponents.LUT2
+\deci_low.curr_delay[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7"
+      INIT => X"00000000A2000000"
     )
         port map (
-      I0 => curr_delay(4),
-      I1 => curr_delay(3),
+      I0 => curr_delay(0),
+      I1 => start_delay(0),
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => curr_delay(1),
+      I4 => curr_delay(2),
+      I5 => \deci_low.curr_delay[5]_i_5_n_0\,
       O => \deci_low.curr_delay[5]_i_3_n_0\
     );
 \deci_low.curr_delay[5]_i_4\: unisim.vcomponents.LUT2
@@ -5002,9 +7971,18 @@ begin
       INIT => X"E"
     )
         port map (
-      I0 => start_delay(2),
-      I1 => start_delay(0),
+      I0 => curr_delay(6),
+      I1 => curr_delay(5),
       O => \deci_low.curr_delay[5]_i_4_n_0\
+    );
+\deci_low.curr_delay[5]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => curr_delay(4),
+      I1 => curr_delay(3),
+      O => \deci_low.curr_delay[5]_i_5_n_0\
     );
 \deci_low.curr_delay[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -5019,17 +7997,16 @@ begin
       I5 => curr_delay(6),
       O => \deci_low.curr_delay[6]_i_1_n_0\
     );
-\deci_low.curr_delay[6]_i_2\: unisim.vcomponents.LUT6
+\deci_low.curr_delay[6]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8888888000000000"
+      INIT => X"80880000"
     )
         port map (
       I0 => curr_delay(2),
       I1 => curr_delay(1),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => start_delay(2),
-      I4 => start_delay(0),
-      I5 => curr_delay(0),
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => start_delay(0),
+      I4 => curr_delay(0),
       O => \deci_low.curr_delay[6]_i_2_n_0\
     );
 \deci_low.curr_delay[6]_i_3\: unisim.vcomponents.LUT3
@@ -5048,37 +8025,26 @@ begin
     )
         port map (
       I0 => fifo_valid,
-      I1 => \deci_low.curr_delay[6]_i_6_n_0\,
+      I1 => \deci_low.start_delay[2]_i_3_n_0\,
       I2 => start_delay(3),
-      I3 => start_delay(6),
-      I4 => start_delay(1),
+      I3 => start_delay(5),
+      I4 => start_delay(4),
       O => \deci_low.curr_delay[6]_i_4_n_0\
     );
 \deci_low.curr_delay[6]_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000010000"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => \deci_low.curr_delay[6]_i_7_n_0\,
+      I0 => \deci_low.curr_delay[6]_i_6_n_0\,
       I1 => start_delay(0),
-      I2 => start_delay(2),
-      I3 => \deci_low.start_delay[5]_i_2_n_0\,
-      I4 => \deci_low.curr_delay[6]_i_8_n_0\,
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => curr_delay(4),
+      I4 => curr_delay(3),
       I5 => curr_delay(5),
       O => \deci_low.curr_delay[6]_i_5_n_0\
     );
-\deci_low.curr_delay[6]_i_6\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => start_delay(4),
-      I3 => start_delay(5),
-      O => \deci_low.curr_delay[6]_i_6_n_0\
-    );
-\deci_low.curr_delay[6]_i_7\: unisim.vcomponents.LUT3
+\deci_low.curr_delay[6]_i_6\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
@@ -5086,16 +8052,7 @@ begin
       I0 => curr_delay(2),
       I1 => curr_delay(0),
       I2 => curr_delay(1),
-      O => \deci_low.curr_delay[6]_i_7_n_0\
-    );
-\deci_low.curr_delay[6]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => curr_delay(4),
-      I1 => curr_delay(3),
-      O => \deci_low.curr_delay[6]_i_8_n_0\
+      O => \deci_low.curr_delay[6]_i_6_n_0\
     );
 \deci_low.curr_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -7239,16 +10196,15 @@ begin
       Q => env_W(9),
       R => '0'
     );
-\deci_low.morlet_active_i_1\: unisim.vcomponents.LUT5
+\deci_low.morlet_active_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"01010001"
+      INIT => X"0C01"
     )
         port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => \deci_low.curr_delay[1]_i_3_n_0\,
-      I4 => fifo_valid,
+      I0 => \deci_low.start_delay[6]_i_3_n_0\,
+      I1 => start_delay(0),
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => fifo_valid,
       O => \deci_low.morlet_active_i_1_n_0\
     );
 \deci_low.morlet_active_reg\: unisim.vcomponents.FDRE
@@ -8219,213 +11175,223 @@ begin
       Q => prevW(9),
       R => '0'
     );
-\deci_low.start_delay[0]_i_1\: unisim.vcomponents.LUT3
+\deci_low.start_delay[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0E"
+      INIT => X"4A4E"
     )
         port map (
-      I0 => \deci_low.start_delay[5]_i_2_n_0\,
-      I1 => start_delay(2),
+      I0 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I1 => fifo_valid,
       I2 => start_delay(0),
+      I3 => start_delay(2),
       O => \deci_low.start_delay[0]_i_1_n_0\
     );
 \deci_low.start_delay[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"5554ABAA"
+      INIT => X"3F31CCCD"
     )
         port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => \deci_low.start_delay[6]_i_4_n_0\,
+      I0 => \deci_low.start_delay[6]_i_3_n_0\,
+      I1 => start_delay(0),
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => fifo_valid,
       I4 => start_delay(1),
       O => \deci_low.start_delay[1]_i_1_n_0\
     );
-\deci_low.start_delay[2]_i_1\: unisim.vcomponents.LUT3
+\deci_low.start_delay[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6A"
+      INIT => X"FFFFFFFE"
     )
         port map (
-      I0 => start_delay(2),
-      I1 => start_delay(1),
-      I2 => start_delay(0),
+      I0 => fifo_valid,
+      I1 => \deci_low.start_delay[2]_i_3_n_0\,
+      I2 => start_delay(3),
+      I3 => start_delay(5),
+      I4 => start_delay(4),
       O => \deci_low.start_delay[2]_i_1_n_0\
+    );
+\deci_low.start_delay[2]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6C0C6C6C"
+    )
+        port map (
+      I0 => start_delay(1),
+      I1 => start_delay(2),
+      I2 => start_delay(0),
+      I3 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I4 => fifo_valid,
+      O => \deci_low.start_delay[2]_i_2_n_0\
+    );
+\deci_low.start_delay[2]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => start_delay(1),
+      I1 => start_delay(0),
+      I2 => start_delay(2),
+      I3 => start_delay(6),
+      O => \deci_low.start_delay[2]_i_3_n_0\
     );
 \deci_low.start_delay[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77768988FFFE0100"
+      INIT => X"0EFEFEFEF0000000"
     )
         port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => \deci_low.start_delay[6]_i_4_n_0\,
-      I4 => start_delay(3),
-      I5 => start_delay(1),
+      I0 => fifo_valid,
+      I1 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I2 => start_delay(0),
+      I3 => start_delay(1),
+      I4 => start_delay(2),
+      I5 => start_delay(3),
       O => \deci_low.start_delay[3]_i_1_n_0\
     );
 \deci_low.start_delay[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0100FFFEFFFE0100"
+      INIT => X"2AAAAAAA80000000"
     )
         port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => \deci_low.start_delay[6]_i_4_n_0\,
-      I4 => start_delay(4),
-      I5 => \deci_low.start_delay[4]_i_2_n_0\,
-      O => \deci_low.start_delay[4]_i_1_n_0\
-    );
-\deci_low.start_delay[4]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"8000"
-    )
-        port map (
-      I0 => start_delay(3),
-      I1 => start_delay(1),
-      I2 => start_delay(0),
-      I3 => start_delay(2),
-      O => \deci_low.start_delay[4]_i_2_n_0\
-    );
-\deci_low.start_delay[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0100FFFEFFFE0100"
-    )
-        port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => \deci_low.start_delay[5]_i_2_n_0\,
-      I3 => \deci_low.start_delay[6]_i_4_n_0\,
-      I4 => start_delay(5),
-      I5 => \deci_low.start_delay[6]_i_5_n_0\,
-      O => \deci_low.start_delay[5]_i_1_n_0\
-    );
-\deci_low.start_delay[5]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"7FFFFFFF"
-    )
-        port map (
-      I0 => start_delay(3),
-      I1 => start_delay(1),
-      I2 => start_delay(6),
-      I3 => start_delay(4),
-      I4 => start_delay(5),
-      O => \deci_low.start_delay[5]_i_2_n_0\
-    );
-\deci_low.start_delay[6]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => fifo_valid,
-      I1 => \deci_low.start_delay[6]_i_3_n_0\,
-      O => \deci_low.start_delay[6]_i_1_n_0\
-    );
-\deci_low.start_delay[6]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"8BB8B8B8"
-    )
-        port map (
-      I0 => \deci_low.start_delay[6]_i_4_n_0\,
-      I1 => \deci_low.curr_delay[1]_i_2_n_0\,
-      I2 => start_delay(6),
-      I3 => \deci_low.start_delay[6]_i_5_n_0\,
-      I4 => start_delay(5),
-      O => \deci_low.start_delay[6]_i_2_n_0\
-    );
-\deci_low.start_delay[6]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000001"
-    )
-        port map (
-      I0 => start_delay(1),
-      I1 => start_delay(6),
-      I2 => start_delay(3),
-      I3 => start_delay(5),
-      I4 => start_delay(4),
-      I5 => \deci_low.curr_delay[5]_i_4_n_0\,
-      O => \deci_low.start_delay[6]_i_3_n_0\
-    );
-\deci_low.start_delay[6]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFEFFFF"
-    )
-        port map (
-      I0 => fifo_valid,
-      I1 => curr_delay(2),
-      I2 => curr_delay(0),
-      I3 => curr_delay(1),
-      I4 => \deci_low.curr_delay[4]_i_3_n_0\,
-      O => \deci_low.start_delay[6]_i_4_n_0\
-    );
-\deci_low.start_delay[6]_i_5\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"80000000"
-    )
-        port map (
-      I0 => start_delay(4),
+      I0 => \deci_low.morlet_active_reg0\,
       I1 => start_delay(2),
       I2 => start_delay(0),
       I3 => start_delay(1),
       I4 => start_delay(3),
-      O => \deci_low.start_delay[6]_i_5_n_0\
+      I5 => start_delay(4),
+      O => \deci_low.start_delay[4]_i_1_n_0\
+    );
+\deci_low.start_delay[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AA2A0080"
+    )
+        port map (
+      I0 => \deci_low.morlet_active_reg0\,
+      I1 => start_delay(4),
+      I2 => start_delay(3),
+      I3 => \deci_low.start_delay[5]_i_3_n_0\,
+      I4 => start_delay(5),
+      O => \deci_low.start_delay[5]_i_1_n_0\
+    );
+\deci_low.start_delay[5]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => fifo_valid,
+      I1 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I2 => start_delay(0),
+      O => \deci_low.morlet_active_reg0\
+    );
+\deci_low.start_delay[5]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => start_delay(1),
+      I1 => start_delay(0),
+      I2 => start_delay(2),
+      O => \deci_low.start_delay[5]_i_3_n_0\
+    );
+\deci_low.start_delay[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0C010000"
+    )
+        port map (
+      I0 => \deci_low.start_delay[6]_i_3_n_0\,
+      I1 => start_delay(0),
+      I2 => \deci_low.curr_delay[0]_i_2_n_0\,
+      I3 => fifo_valid,
+      I4 => \deci_low.start_delay[2]_i_1_n_0\,
+      O => \deci_low.start_delay[6]_i_1_n_0\
+    );
+\deci_low.start_delay[6]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"CFFEFFFF30000000"
+    )
+        port map (
+      I0 => fifo_valid,
+      I1 => \deci_low.start_delay[6]_i_4_n_0\,
+      I2 => start_delay(2),
+      I3 => start_delay(0),
+      I4 => start_delay(1),
+      I5 => start_delay(6),
+      O => \deci_low.start_delay[6]_i_2_n_0\
+    );
+\deci_low.start_delay[6]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => curr_delay(1),
+      I1 => curr_delay(0),
+      I2 => curr_delay(2),
+      I3 => \deci_low.curr_delay[4]_i_3_n_0\,
+      O => \deci_low.start_delay[6]_i_3_n_0\
+    );
+\deci_low.start_delay[6]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => start_delay(3),
+      I1 => start_delay(4),
+      I2 => start_delay(5),
+      O => \deci_low.start_delay[6]_i_4_n_0\
     );
 \deci_low.start_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
       D => \deci_low.start_delay[0]_i_1_n_0\,
       Q => start_delay(0),
       R => '0'
     );
-\deci_low.start_delay_reg[1]\: unisim.vcomponents.FDRE
+\deci_low.start_delay_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
       D => \deci_low.start_delay[1]_i_1_n_0\,
       Q => start_delay(1),
-      R => '0'
+      S => '0'
     );
 \deci_low.start_delay_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
-      D => \deci_low.start_delay[2]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
+      D => \deci_low.start_delay[2]_i_2_n_0\,
       Q => start_delay(2),
       R => '0'
     );
-\deci_low.start_delay_reg[3]\: unisim.vcomponents.FDRE
+\deci_low.start_delay_reg[3]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
       D => \deci_low.start_delay[3]_i_1_n_0\,
       Q => start_delay(3),
-      R => '0'
+      S => \deci_low.start_delay[6]_i_1_n_0\
     );
-\deci_low.start_delay_reg[4]\: unisim.vcomponents.FDRE
+\deci_low.start_delay_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
       D => \deci_low.start_delay[4]_i_1_n_0\,
       Q => start_delay(4),
-      R => '0'
+      S => \deci_low.start_delay[6]_i_1_n_0\
     );
-\deci_low.start_delay_reg[5]\: unisim.vcomponents.FDRE
+\deci_low.start_delay_reg[5]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
       D => \deci_low.start_delay[5]_i_1_n_0\,
       Q => start_delay(5),
-      R => '0'
+      S => \deci_low.start_delay[6]_i_1_n_0\
     );
-\deci_low.start_delay_reg[6]\: unisim.vcomponents.FDRE
+\deci_low.start_delay_reg[6]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.start_delay[6]_i_1_n_0\,
+      CE => \deci_low.start_delay[2]_i_1_n_0\,
       D => \deci_low.start_delay[6]_i_2_n_0\,
       Q => start_delay(6),
-      R => '0'
+      S => \deci_low.start_delay[6]_i_1_n_0\
     );
 \deci_low.valid_reg\: unisim.vcomponents.FDRE
      port map (
