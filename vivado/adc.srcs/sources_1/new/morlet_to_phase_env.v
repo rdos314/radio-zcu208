@@ -75,6 +75,7 @@ cordic_atan2_16 tan2_i (
   .m_axis_dout_tdata(lphase)                         // output wire [23 : 0] m_axis_dout_tdata
 );
 
+/*
 ila_1 ila_1_i (
 		.clk(clk),              // input wire clk
 		.probe0(active),        // input wire [0:0]  probe3
@@ -90,6 +91,7 @@ ila_1 ila_1_i (
 		.probe10(phase),        // input wire [19:0]  probe3
 		.probe11(valid)         // input wire [0:0]  probe3
 );
+*/
 
 generate
   begin : morlet_to_phase_env
