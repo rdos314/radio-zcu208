@@ -2132,25 +2132,7 @@
             "left": "31",
             "right": "0"
           },
-          "raw_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "const_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_comp0_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "raw_ready": {
+          "raw_wr": {
             "direction": "O"
           },
           "raw_data": {
@@ -2541,14 +2523,34 @@
           "boundary_crc": "0x0"
         },
         "ports": {
+          "deci_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_deci_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "deci_fifo_wr": {
+            "direction": "I"
+          },
+          "deci_fifo_data": {
+            "direction": "I"
+          },
           "clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
-                "value_src": "constant"
-              },
               "FREQ_HZ": {
                 "value": "500000000",
                 "value_src": "const_prop"
@@ -2567,10 +2569,10 @@
             "type": "rst",
             "direction": "I"
           },
-          "fifo_valid": {
+          "freq_fifo_valid": {
             "direction": "I"
           },
-          "fifo_data": {
+          "freq_fifo_data": {
             "direction": "I",
             "left": "47",
             "right": "0"
@@ -2850,13 +2852,25 @@
       "deci_low_freq_data": {
         "ports": [
           "deci_low/freq_data",
-          "freq_low_46_0/fifo_data"
+          "freq_low_46_0/freq_fifo_data"
         ]
       },
       "deci_low_freq_ready": {
         "ports": [
           "deci_low/freq_ready",
-          "freq_low_46_0/fifo_valid"
+          "freq_low_46_0/freq_fifo_valid"
+        ]
+      },
+      "deci_low_raw_data": {
+        "ports": [
+          "deci_low/raw_data",
+          "freq_low_46_0/deci_fifo_data"
+        ]
+      },
+      "deci_low_raw_wr": {
+        "ports": [
+          "deci_low/raw_wr",
+          "freq_low_46_0/deci_fifo_wr"
         ]
       },
       "deci_low_sim_active": {
@@ -2867,8 +2881,7 @@
       },
       "mts_0_comp0_clk": {
         "ports": [
-          "mts_0/comp0_clk",
-          "deci_low/raw_clk"
+          "mts_0/comp0_clk"
         ]
       },
       "mts_0_comp1_clk": {
@@ -2892,7 +2905,8 @@
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
           "deci_high/clk",
-          "deci_low/clk"
+          "deci_low/clk",
+          "freq_low_46_0/deci_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -3092,8 +3106,8 @@
           "axi_bram/clkb",
           "adc_control_0/clk",
           "deci_high/sim_clk",
-          "deci_low/sim_clk",
-          "mts_0/axi_clk"
+          "mts_0/axi_clk",
+          "deci_low/sim_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

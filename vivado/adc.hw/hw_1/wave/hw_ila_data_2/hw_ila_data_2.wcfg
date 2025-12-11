@@ -9,15 +9,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2,736"></ZoomStartTime>
-      <ZoomEndTime time="2,763"></ZoomEndTime>
-      <Cursor1Time time="2,542"></Cursor1Time>
+      <ZoomStartTime time="2,407"></ZoomStartTime>
+      <ZoomEndTime time="2,421"></ZoomEndTime>
+      <Cursor1Time time="2,259"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="202"></NameColumnWidth>
+      <NameColumnWidth column_width="194"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="13" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/freq_low_46_0/inst/diff_E" type="array">
@@ -89,6 +89,28 @@
       <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/phase_W[19:0]</obj_property>
       <obj_property name="ObjectShortName">phase_W[19:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/freq_low_46_0/inst/raw_fifo_data" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/raw_fifo_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">raw_fifo_data[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/freq_low_46_0/inst/raw_fifo_empty" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/raw_fifo_empty</obj_property>
+      <obj_property name="ObjectShortName">raw_fifo_empty</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/freq_low_46_0/inst/raw_fifo_rd" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/freq_low_46_0/inst/raw_fifo_rd</obj_property>
+      <obj_property name="ObjectShortName">raw_fifo_rd</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

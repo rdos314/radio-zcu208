@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Tue Dec  9 23:32:22 2025
+// Date        : Wed Dec 10 23:28:42 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.v
@@ -69,10 +69,13 @@ endmodule
 (* X_CORE_INFO = "freq_low_46,Vivado 2025.1" *) 
 (* NotValidForBitStream *)
 module ps_freq_low_46_0_0
-   (clk,
+   (deci_clk,
+    deci_fifo_wr,
+    deci_fifo_data,
+    clk,
     reset,
-    fifo_valid,
-    fifo_data,
+    freq_fifo_valid,
+    freq_fifo_data,
     valid,
     env_N,
     phase_N,
@@ -83,10 +86,13 @@ module ps_freq_low_46_0_0
     env_W,
     phase_W,
     diff_W);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input deci_clk;
+  input deci_fifo_wr;
+  input deci_fifo_data;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
-  input fifo_valid;
-  input [47:0]fifo_data;
+  input freq_fifo_valid;
+  input [47:0]freq_fifo_data;
   output valid;
   output [15:0]env_N;
   output [19:0]phase_N;
@@ -99,14 +105,17 @@ module ps_freq_low_46_0_0
   output [19:0]diff_W;
 
   wire clk;
+  wire deci_clk;
+  wire deci_fifo_data;
+  wire deci_fifo_wr;
   wire [19:0]diff_E;
   wire [19:0]diff_N;
   wire [19:0]diff_W;
   wire [15:0]env_E;
   wire [15:0]env_N;
   wire [15:0]env_W;
-  wire [47:0]fifo_data;
-  wire fifo_valid;
+  wire [47:0]freq_fifo_data;
+  wire freq_fifo_valid;
   wire [19:0]phase_E;
   wire [19:0]phase_N;
   wire [19:0]phase_W;
@@ -115,14 +124,17 @@ module ps_freq_low_46_0_0
 
   ps_freq_low_46_0_0_freq_low_46 inst
        (.clk(clk),
+        .deci_clk(deci_clk),
+        .deci_fifo_data(deci_fifo_data),
+        .deci_fifo_wr(deci_fifo_wr),
         .diff_E(diff_E),
         .diff_N(diff_N),
         .diff_W(diff_W),
         .env_E(env_E),
         .env_N(env_N),
         .env_W(env_W),
-        .fifo_data(fifo_data),
-        .fifo_valid(fifo_valid),
+        .freq_fifo_data(freq_fifo_data),
+        .freq_fifo_valid(freq_fifo_valid),
         .phase_E(phase_E),
         .phase_N(phase_N),
         .phase_W(phase_W),
@@ -162,6 +174,37 @@ module ps_freq_low_46_0_0_cordic_sqrt_16
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) input [31:0]s_axis_cartesian_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TVALID" *) (* X_INTERFACE_MODE = "master M_AXIS_DOUT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS_DOUT, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0" *) output m_axis_dout_tvalid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TDATA" *) output [15:0]m_axis_dout_tdata;
+
+
+endmodule
+
+(* CHECK_LICENSE_TYPE = "fifo_raw_low,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_raw_low" *) 
+(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+module ps_freq_low_46_0_0_fifo_raw_low
+   (rst,
+    wr_clk,
+    rd_clk,
+    din,
+    wr_en,
+    rd_en,
+    dout,
+    full,
+    empty,
+    wr_rst_busy,
+    rd_rst_busy);
+  input rst;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input wr_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input rd_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [191:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [191:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
+  output wr_rst_busy;
+  output rd_rst_busy;
 
 
 endmodule
@@ -256,10 +299,13 @@ endmodule
 
 (* ORIG_REF_NAME = "freq_low_46" *) (* keep_hierarchy = "soft" *) 
 module ps_freq_low_46_0_0_freq_low_46
-   (clk,
+   (deci_clk,
+    deci_fifo_wr,
+    deci_fifo_data,
+    clk,
     reset,
-    fifo_valid,
-    fifo_data,
+    freq_fifo_valid,
+    freq_fifo_data,
     valid,
     env_N,
     phase_N,
@@ -270,10 +316,13 @@ module ps_freq_low_46_0_0_freq_low_46
     env_W,
     phase_W,
     diff_W);
+  input deci_clk;
+  input deci_fifo_wr;
+  input deci_fifo_data;
   input clk;
   input reset;
-  input fifo_valid;
-  input [47:0]fifo_data;
+  input freq_fifo_valid;
+  input [47:0]freq_fifo_data;
   output valid;
   output [15:0]env_N;
   output [19:0]phase_N;
@@ -289,6 +338,9 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [15:0]N;
   wire [15:0]W;
   wire clk;
+  wire deci_clk;
+  wire deci_fifo_data;
+  wire deci_fifo_wr;
   (* MARK_DEBUG *) wire [19:0]diff_E;
   (* MARK_DEBUG *) wire [19:0]diff_N;
   (* MARK_DEBUG *) wire [19:0]diff_W;
@@ -296,8 +348,6 @@ module ps_freq_low_46_0_0_freq_low_46
   (* MARK_DEBUG *) wire [15:0]env_E;
   (* MARK_DEBUG *) wire [15:0]env_N;
   (* MARK_DEBUG *) wire [15:0]env_W;
-  wire [47:0]fifo_data;
-  wire fifo_valid;
   wire fir_freq_low_re_N_i_i_1_n_0;
   wire [36:13]fir_im_E;
   wire [36:13]fir_im_N;
@@ -377,6 +427,8 @@ module ps_freq_low_46_0_0_freq_low_46
   wire freq_W_i_n_7;
   wire freq_W_i_n_8;
   wire freq_W_i_n_9;
+  wire [47:0]freq_fifo_data;
+  wire freq_fifo_valid;
   wire \freq_low_46.curr_delay[0]_i_1_n_0 ;
   wire \freq_low_46.curr_delay[7]_i_10_n_0 ;
   wire \freq_low_46.curr_delay[7]_i_11_n_0 ;
@@ -412,6 +464,7 @@ module ps_freq_low_46_0_0_freq_low_46
   wire \freq_low_46.env_N_reg0 ;
   wire \freq_low_46.morlet_active_i_1_n_0 ;
   wire \freq_low_46.morlet_active_reg_n_0 ;
+  wire \freq_low_46.raw_fifo_rd_i_1_n_0 ;
   wire \freq_low_46.start_delay[7]_i_1_n_0 ;
   wire \freq_low_46.start_delay[7]_i_3_n_0 ;
   wire [7:0]\freq_low_46.start_delay_reg ;
@@ -423,10 +476,16 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [19:0]prevE;
   wire [19:0]prevN;
   wire [19:0]prevW;
+  (* MARK_DEBUG *) wire [191:0]raw_fifo_data;
+  (* MARK_DEBUG *) wire raw_fifo_empty;
+  (* MARK_DEBUG *) wire raw_fifo_rd;
   wire reset;
   (* MARK_DEBUG *) wire valid;
   wire validE;
   wire validW;
+  wire NLW_fifo_raw_i_full_UNCONNECTED;
+  wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
+  wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
   wire NLW_fir_freq_low_im_E_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_freq_low_im_E_i_s_axis_data_tready_UNCONNECTED;
   wire [39:0]NLW_fir_freq_low_im_E_i_m_axis_data_tdata_UNCONNECTED;
@@ -448,6 +507,21 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [7:6]\NLW_freq_low_46.curr_delay_reg[7]_i_3_CO_UNCONNECTED ;
   wire [7:7]\NLW_freq_low_46.curr_delay_reg[7]_i_3_O_UNCONNECTED ;
 
+  (* CHECK_LICENSE_TYPE = "fifo_raw_low,fifo_generator_v13_2_13,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+  ps_freq_low_46_0_0_fifo_raw_low fifo_raw_i
+       (.din({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,deci_fifo_data}),
+        .dout(raw_fifo_data),
+        .empty(raw_fifo_empty),
+        .full(NLW_fifo_raw_i_full_UNCONNECTED),
+        .rd_clk(clk),
+        .rd_en(raw_fifo_rd),
+        .rd_rst_busy(NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED),
+        .rst(reset),
+        .wr_clk(deci_clk),
+        .wr_en(deci_fifo_wr),
+        .wr_rst_busy(NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED));
   (* CHECK_LICENSE_TYPE = "fir_doa_low_im,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
@@ -458,7 +532,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .m_axis_data_tvalid(NLW_fir_freq_low_im_E_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(E),
         .s_axis_data_tready(NLW_fir_freq_low_im_E_i_s_axis_data_tready_UNCONNECTED),
-        .s_axis_data_tvalid(fifo_valid));
+        .s_axis_data_tvalid(freq_fifo_valid));
   (* CHECK_LICENSE_TYPE = "fir_doa_low_im,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
@@ -469,7 +543,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .m_axis_data_tvalid(NLW_fir_freq_low_im_N_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(N),
         .s_axis_data_tready(NLW_fir_freq_low_im_N_i_s_axis_data_tready_UNCONNECTED),
-        .s_axis_data_tvalid(fifo_valid));
+        .s_axis_data_tvalid(freq_fifo_valid));
   (* CHECK_LICENSE_TYPE = "fir_doa_low_im,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
@@ -480,7 +554,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .m_axis_data_tvalid(NLW_fir_freq_low_im_W_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(W),
         .s_axis_data_tready(NLW_fir_freq_low_im_W_i_s_axis_data_tready_UNCONNECTED),
-        .s_axis_data_tvalid(fifo_valid));
+        .s_axis_data_tvalid(freq_fifo_valid));
   (* CHECK_LICENSE_TYPE = "fir_doa_low_re,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
@@ -491,7 +565,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .m_axis_data_tvalid(NLW_fir_freq_low_re_E_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(E),
         .s_axis_data_tready(NLW_fir_freq_low_re_E_i_s_axis_data_tready_UNCONNECTED),
-        .s_axis_data_tvalid(fifo_valid));
+        .s_axis_data_tvalid(freq_fifo_valid));
   (* CHECK_LICENSE_TYPE = "fir_doa_low_re,fir_compiler_v7_2_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
@@ -502,7 +576,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .m_axis_data_tvalid(NLW_fir_freq_low_re_N_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(N),
         .s_axis_data_tready(NLW_fir_freq_low_re_N_i_s_axis_data_tready_UNCONNECTED),
-        .s_axis_data_tvalid(fifo_valid));
+        .s_axis_data_tvalid(freq_fifo_valid));
   LUT1 #(
     .INIT(2'h1)) 
     fir_freq_low_re_N_i_i_1
@@ -518,7 +592,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .m_axis_data_tvalid(NLW_fir_freq_low_re_W_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(W),
         .s_axis_data_tready(NLW_fir_freq_low_re_W_i_s_axis_data_tready_UNCONNECTED),
-        .s_axis_data_tvalid(fifo_valid));
+        .s_axis_data_tvalid(freq_fifo_valid));
   ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2 freq_E_i
        (.D(\freq_low_46.diff_E_reg01_out ),
         .Q({freq_E_i_n_1,freq_E_i_n_2,freq_E_i_n_3,freq_E_i_n_4,freq_E_i_n_5,freq_E_i_n_6,freq_E_i_n_7,freq_E_i_n_8,freq_E_i_n_9,freq_E_i_n_10,freq_E_i_n_11,freq_E_i_n_12,freq_E_i_n_13,freq_E_i_n_14,freq_E_i_n_15,freq_E_i_n_16,freq_E_i_n_17,freq_E_i_n_18,freq_E_i_n_19,freq_E_i_n_20}),
@@ -550,290 +624,290 @@ module ps_freq_low_46_0_0_freq_low_46
         .validW(validW));
   FDRE \freq_low_46.E_reg[0] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[16]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[16]),
         .Q(E[0]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[10] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[26]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[26]),
         .Q(E[10]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[11] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[27]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[27]),
         .Q(E[11]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[12] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[28]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[28]),
         .Q(E[12]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[13] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[29]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[29]),
         .Q(E[13]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[14] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[30]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[30]),
         .Q(E[14]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[15] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[31]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[31]),
         .Q(E[15]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[1] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[17]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[17]),
         .Q(E[1]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[2] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[18]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[18]),
         .Q(E[2]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[3] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[19]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[19]),
         .Q(E[3]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[4] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[20]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[20]),
         .Q(E[4]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[5] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[21]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[21]),
         .Q(E[5]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[6] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[22]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[22]),
         .Q(E[6]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[7] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[23]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[23]),
         .Q(E[7]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[8] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[24]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[24]),
         .Q(E[8]),
         .R(1'b0));
   FDRE \freq_low_46.E_reg[9] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[25]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[25]),
         .Q(E[9]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[0] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[0]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[0]),
         .Q(N[0]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[10] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[10]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[10]),
         .Q(N[10]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[11] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[11]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[11]),
         .Q(N[11]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[12] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[12]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[12]),
         .Q(N[12]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[13] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[13]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[13]),
         .Q(N[13]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[14] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[14]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[14]),
         .Q(N[14]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[15] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[15]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[15]),
         .Q(N[15]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[1] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[1]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[1]),
         .Q(N[1]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[2] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[2]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[2]),
         .Q(N[2]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[3] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[3]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[3]),
         .Q(N[3]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[4] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[4]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[4]),
         .Q(N[4]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[5] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[5]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[5]),
         .Q(N[5]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[6] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[6]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[6]),
         .Q(N[6]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[7] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[7]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[7]),
         .Q(N[7]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[8] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[8]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[8]),
         .Q(N[8]),
         .R(1'b0));
   FDRE \freq_low_46.N_reg[9] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[9]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[9]),
         .Q(N[9]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[0] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[32]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[32]),
         .Q(W[0]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[10] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[42]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[42]),
         .Q(W[10]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[11] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[43]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[43]),
         .Q(W[11]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[12] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[44]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[44]),
         .Q(W[12]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[13] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[45]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[45]),
         .Q(W[13]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[14] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[46]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[46]),
         .Q(W[14]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[15] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[47]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[47]),
         .Q(W[15]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[1] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[33]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[33]),
         .Q(W[1]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[2] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[34]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[34]),
         .Q(W[2]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[3] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[35]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[35]),
         .Q(W[3]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[4] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[36]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[36]),
         .Q(W[4]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[5] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[37]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[37]),
         .Q(W[5]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[6] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[38]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[38]),
         .Q(W[6]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[7] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[39]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[39]),
         .Q(W[7]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[8] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[40]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[40]),
         .Q(W[8]),
         .R(1'b0));
   FDRE \freq_low_46.W_reg[9] 
        (.C(clk),
-        .CE(fifo_valid),
-        .D(fifo_data[41]),
+        .CE(freq_fifo_valid),
+        .D(freq_fifo_data[41]),
         .Q(W[9]),
         .R(1'b0));
   LUT1 #(
@@ -844,7 +918,7 @@ module ps_freq_low_46_0_0_freq_low_46
   LUT6 #(
     .INIT(64'h0000000000000001)) 
     \freq_low_46.curr_delay[7]_i_1 
-       (.I0(fifo_valid),
+       (.I0(freq_fifo_valid),
         .I1(\freq_low_46.curr_delay[7]_i_4_n_0 ),
         .I2(\freq_low_46.start_delay_reg [3]),
         .I3(\freq_low_46.start_delay_reg [2]),
@@ -873,7 +947,7 @@ module ps_freq_low_46_0_0_freq_low_46
     .INIT(4'h9)) 
     \freq_low_46.curr_delay[7]_i_13 
        (.I0(\freq_low_46.curr_delay_reg [1]),
-        .I1(fifo_valid),
+        .I1(freq_fifo_valid),
         .O(\freq_low_46.curr_delay[7]_i_13_n_0 ));
   LUT4 #(
     .INIT(16'hFFFD)) 
@@ -894,7 +968,7 @@ module ps_freq_low_46_0_0_freq_low_46
   LUT3 #(
     .INIT(8'h26)) 
     \freq_low_46.curr_delay[7]_i_2 
-       (.I0(fifo_valid),
+       (.I0(freq_fifo_valid),
         .I1(\freq_low_46.curr_delay[7]_i_5_n_0 ),
         .I2(\freq_low_46.curr_delay[7]_i_6_n_0 ),
         .O(\freq_low_46.curr_delay[7]_i_2_n_0 ));
@@ -996,7 +1070,7 @@ module ps_freq_low_46_0_0_freq_low_46
        (.CI(\freq_low_46.curr_delay_reg [0]),
         .CI_TOP(1'b0),
         .CO({\NLW_freq_low_46.curr_delay_reg[7]_i_3_CO_UNCONNECTED [7:6],\freq_low_46.curr_delay_reg[7]_i_3_n_2 ,\freq_low_46.curr_delay_reg[7]_i_3_n_3 ,\freq_low_46.curr_delay_reg[7]_i_3_n_4 ,\freq_low_46.curr_delay_reg[7]_i_3_n_5 ,\freq_low_46.curr_delay_reg[7]_i_3_n_6 ,\freq_low_46.curr_delay_reg[7]_i_3_n_7 }),
-        .DI({1'b0,1'b0,\freq_low_46.curr_delay_reg [5:1],fifo_valid}),
+        .DI({1'b0,1'b0,\freq_low_46.curr_delay_reg [5:1],freq_fifo_valid}),
         .O({\NLW_freq_low_46.curr_delay_reg[7]_i_3_O_UNCONNECTED [7],\freq_low_46.curr_delay_reg[7]_i_3_n_9 ,\freq_low_46.curr_delay_reg[7]_i_3_n_10 ,\freq_low_46.curr_delay_reg[7]_i_3_n_11 ,\freq_low_46.curr_delay_reg[7]_i_3_n_12 ,\freq_low_46.curr_delay_reg[7]_i_3_n_13 ,\freq_low_46.curr_delay_reg[7]_i_3_n_14 ,\freq_low_46.curr_delay_reg[7]_i_3_n_15 }),
         .S({1'b0,\freq_low_46.curr_delay[7]_i_7_n_0 ,\freq_low_46.curr_delay[7]_i_8_n_0 ,\freq_low_46.curr_delay[7]_i_9_n_0 ,\freq_low_46.curr_delay[7]_i_10_n_0 ,\freq_low_46.curr_delay[7]_i_11_n_0 ,\freq_low_46.curr_delay[7]_i_12_n_0 ,\freq_low_46.curr_delay[7]_i_13_n_0 }));
   (* KEEP = "yes" *) 
@@ -1867,7 +1941,7 @@ module ps_freq_low_46_0_0_freq_low_46
     .INIT(8'hD0)) 
     \freq_low_46.morlet_active_i_1 
        (.I0(\freq_low_46.curr_delay[7]_i_6_n_0 ),
-        .I1(fifo_valid),
+        .I1(freq_fifo_valid),
         .I2(\freq_low_46.curr_delay[7]_i_5_n_0 ),
         .O(\freq_low_46.morlet_active_i_1_n_0 ));
   FDRE \freq_low_46.morlet_active_reg 
@@ -2776,11 +2850,24 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(freq_W_i_n_11),
         .Q(prevW[9]),
         .R(1'b0));
+  LUT2 #(
+    .INIT(4'h4)) 
+    \freq_low_46.raw_fifo_rd_i_1 
+       (.I0(raw_fifo_empty),
+        .I1(valid),
+        .O(\freq_low_46.raw_fifo_rd_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \freq_low_46.raw_fifo_rd_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\freq_low_46.raw_fifo_rd_i_1_n_0 ),
+        .Q(raw_fifo_rd),
+        .R(1'b0));
   LUT3 #(
     .INIT(8'h45)) 
     \freq_low_46.start_delay[0]_i_1 
        (.I0(\freq_low_46.start_delay_reg [0]),
-        .I1(fifo_valid),
+        .I1(freq_fifo_valid),
         .I2(\freq_low_46.curr_delay[7]_i_5_n_0 ),
         .O(p_0_in[0]));
   LUT4 #(
@@ -2788,7 +2875,7 @@ module ps_freq_low_46_0_0_freq_low_46
     \freq_low_46.start_delay[1]_i_1 
        (.I0(\freq_low_46.start_delay_reg [1]),
         .I1(\freq_low_46.start_delay_reg [0]),
-        .I2(fifo_valid),
+        .I2(freq_fifo_valid),
         .I3(\freq_low_46.curr_delay[7]_i_5_n_0 ),
         .O(p_0_in[1]));
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
@@ -2802,7 +2889,7 @@ module ps_freq_low_46_0_0_freq_low_46
   LUT6 #(
     .INIT(64'h0BBBBBBBB0000000)) 
     \freq_low_46.start_delay[3]_i_1 
-       (.I0(fifo_valid),
+       (.I0(freq_fifo_valid),
         .I1(\freq_low_46.curr_delay[7]_i_5_n_0 ),
         .I2(\freq_low_46.start_delay_reg [1]),
         .I3(\freq_low_46.start_delay_reg [0]),
@@ -2825,13 +2912,13 @@ module ps_freq_low_46_0_0_freq_low_46
        (.I0(\freq_low_46.start_delay_reg [5]),
         .I1(\freq_low_46.start_delay[7]_i_3_n_0 ),
         .I2(\freq_low_46.curr_delay[7]_i_5_n_0 ),
-        .I3(fifo_valid),
+        .I3(freq_fifo_valid),
         .O(p_0_in[5]));
   LUT5 #(
     .INIT(32'h0DD0DD00)) 
     \freq_low_46.start_delay[6]_i_1 
        (.I0(\freq_low_46.curr_delay[7]_i_5_n_0 ),
-        .I1(fifo_valid),
+        .I1(freq_fifo_valid),
         .I2(\freq_low_46.start_delay[7]_i_3_n_0 ),
         .I3(\freq_low_46.start_delay_reg [6]),
         .I4(\freq_low_46.start_delay_reg [5]),
@@ -2839,7 +2926,7 @@ module ps_freq_low_46_0_0_freq_low_46
   LUT4 #(
     .INIT(16'h004F)) 
     \freq_low_46.start_delay[7]_i_1 
-       (.I0(fifo_valid),
+       (.I0(freq_fifo_valid),
         .I1(\freq_low_46.curr_delay[7]_i_6_n_0 ),
         .I2(\freq_low_46.curr_delay[7]_i_5_n_0 ),
         .I3(\freq_low_46.curr_delay[7]_i_1_n_0 ),
@@ -2852,7 +2939,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .I2(\freq_low_46.start_delay_reg [6]),
         .I3(\freq_low_46.start_delay[7]_i_3_n_0 ),
         .I4(\freq_low_46.curr_delay[7]_i_5_n_0 ),
-        .I5(fifo_valid),
+        .I5(freq_fifo_valid),
         .O(p_0_in[7]));
   LUT5 #(
     .INIT(32'h80000000)) 
@@ -2924,15 +3011,18 @@ module ps_freq_low_46_0_0_freq_low_46
   ps_freq_low_46_0_0_ila_0 ila_0_i
        (.clk(clk),
         .probe0(valid),
-        .probe1(env_N),
-        .probe2(phase_N),
-        .probe3(diff_N),
-        .probe4(env_E),
-        .probe5(phase_E),
-        .probe6(diff_E),
-        .probe7(env_W),
-        .probe8(phase_W),
-        .probe9(diff_W));
+        .probe1(raw_fifo_rd),
+        .probe10(env_W),
+        .probe11(phase_W),
+        .probe12(diff_W),
+        .probe2(raw_fifo_empty),
+        .probe3(raw_fifo_data[15:0]),
+        .probe4(env_N),
+        .probe5(phase_N),
+        .probe6(diff_N),
+        .probe7(env_E),
+        .probe8(phase_E),
+        .probe9(diff_E));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
@@ -2948,18 +3038,24 @@ module ps_freq_low_46_0_0_ila_0
     probe6,
     probe7,
     probe8,
-    probe9);
+    probe9,
+    probe10,
+    probe11,
+    probe12);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [15:0]probe1;
-  input [19:0]probe2;
-  input [19:0]probe3;
+  input [0:0]probe1;
+  input [0:0]probe2;
+  input [15:0]probe3;
   input [15:0]probe4;
   input [19:0]probe5;
   input [19:0]probe6;
   input [15:0]probe7;
   input [19:0]probe8;
   input [19:0]probe9;
+  input [15:0]probe10;
+  input [19:0]probe11;
+  input [19:0]probe12;
 
 
 endmodule

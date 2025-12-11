@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Dec  9 23:31:34 2025
+//Date        : Wed Dec 10 23:27:55 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -181,6 +181,8 @@ module ps
   wire axi_smc_M04_AXI_WVALID;
   wire [47:0]deci_low_freq_data;
   wire deci_low_freq_ready;
+  wire [191:0]deci_low_raw_data;
+  wire deci_low_raw_wr;
   wire deci_low_sim_active;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
@@ -532,7 +534,8 @@ module ps
         .freq_clk(mts_0_freq0_clk),
         .freq_data(deci_low_freq_data),
         .freq_ready(deci_low_freq_ready),
-        .raw_clk(mts_0_comp0_clk),
+        .raw_data(deci_low_raw_data),
+        .raw_wr(deci_low_raw_wr),
         .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
         .ready_W(usp_rf_data_converter_0_m10_axis_tvalid),
@@ -546,8 +549,11 @@ module ps
         .sim_wr(adc_control_0_sim_low_wr));
   ps_freq_low_46_0_0 freq_low_46_0
        (.clk(mts_0_freq0_clk),
-        .fifo_data(deci_low_freq_data),
-        .fifo_valid(deci_low_freq_ready),
+        .deci_clk(mts_0_deci_clk),
+        .deci_fifo_data(deci_low_raw_data[0]),
+        .deci_fifo_wr(deci_low_raw_wr),
+        .freq_fifo_data(deci_low_freq_data),
+        .freq_fifo_valid(deci_low_freq_ready),
         .reset(mts_0_freq0_reset));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),

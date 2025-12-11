@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Nov 30 23:19:53 2025
+// Date        : Wed Dec 10 22:16:12 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_stub.v
@@ -18,11 +18,10 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "deci_low,Vivado 2025.1" *) 
 module ps_deci_low_0_0(clk, resetn, data_N, ready_N, data_E, ready_E, 
   data_W, ready_W, sim_start, adc_active, sim_active, sim_clk, sim_resetn, sim_wr, sim_channel, 
-  sim_data, raw_clk, raw_ready, raw_data, freq_clk, freq_ready, freq_data)
-/* synthesis syn_black_box black_box_pad_pin="resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,sim_start,adc_active,sim_active,sim_resetn,sim_wr,sim_channel[1:0],sim_data[31:0],raw_ready,raw_data[191:0],freq_ready,freq_data[47:0]" */
+  sim_data, raw_wr, raw_data, freq_clk, freq_ready, freq_data)
+/* synthesis syn_black_box black_box_pad_pin="resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,sim_start,adc_active,sim_active,sim_resetn,sim_wr,sim_channel[1:0],sim_data[31:0],raw_wr,raw_data[191:0],freq_ready,freq_data[47:0]" */
 /* synthesis syn_force_seq_prim="clk" */
 /* synthesis syn_force_seq_prim="sim_clk" */
-/* synthesis syn_force_seq_prim="raw_clk" */
 /* synthesis syn_force_seq_prim="freq_clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
@@ -40,8 +39,7 @@ module ps_deci_low_0_0(clk, resetn, data_N, ready_N, data_E, ready_E,
   input sim_wr;
   input [1:0]sim_channel;
   input [31:0]sim_data;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input raw_clk /* synthesis syn_isclock = 1 */;
-  output raw_ready;
+  output raw_wr;
   output [191:0]raw_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 freq_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME freq_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input freq_clk /* synthesis syn_isclock = 1 */;
   output freq_ready;

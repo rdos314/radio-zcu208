@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Dec  9 23:32:22 2025
+-- Date        : Wed Dec 10 23:28:42 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.vhdl
@@ -5594,10 +5594,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ps_freq_low_46_0_0_freq_low_46 is
   port (
+    deci_clk : in STD_LOGIC;
+    deci_fifo_wr : in STD_LOGIC;
+    deci_fifo_data : in STD_LOGIC;
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    fifo_valid : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    freq_fifo_valid : in STD_LOGIC;
+    freq_fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     valid : out STD_LOGIC;
     env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
     phase_N : out STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -5616,6 +5619,21 @@ entity ps_freq_low_46_0_0_freq_low_46 is
 end ps_freq_low_46_0_0_freq_low_46;
 
 architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
+  component ps_freq_low_46_0_0_fifo_raw_low is
+  port (
+    rst : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 191 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 191 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC;
+    wr_rst_busy : out STD_LOGIC;
+    rd_rst_busy : out STD_LOGIC
+  );
+  end component ps_freq_low_46_0_0_fifo_raw_low;
   component ps_freq_low_46_0_0_fir_doa_low_im is
   port (
     aresetn : in STD_LOGIC;
@@ -5664,15 +5682,18 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 )
+    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   end component ps_freq_low_46_0_0_ila_0;
   signal E : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -5806,6 +5827,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal \freq_low_46.env_N_reg0\ : STD_LOGIC;
   signal \freq_low_46.morlet_active_i_1_n_0\ : STD_LOGIC;
   signal \freq_low_46.morlet_active_reg_n_0\ : STD_LOGIC;
+  signal \freq_low_46.raw_fifo_rd_i_1_n_0\ : STD_LOGIC;
   signal \freq_low_46.start_delay[7]_i_1_n_0\ : STD_LOGIC;
   signal \freq_low_46.start_delay[7]_i_3_n_0\ : STD_LOGIC;
   signal \freq_low_46.start_delay_reg\ : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -5820,10 +5842,19 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal prevE : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal prevN : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal prevW : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal raw_fifo_data : STD_LOGIC_VECTOR ( 191 downto 0 );
+  attribute MARK_DEBUG of raw_fifo_data : signal is std.standard.true;
+  signal raw_fifo_empty : STD_LOGIC;
+  attribute MARK_DEBUG of raw_fifo_empty : signal is std.standard.true;
+  signal raw_fifo_rd : STD_LOGIC;
+  attribute MARK_DEBUG of raw_fifo_rd : signal is std.standard.true;
   signal \^valid\ : STD_LOGIC;
   attribute MARK_DEBUG of valid : signal is std.standard.true;
   signal validE : STD_LOGIC;
   signal validW : STD_LOGIC;
+  signal NLW_fifo_raw_i_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_freq_low_im_E_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_freq_low_im_E_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_freq_low_im_E_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
@@ -5845,10 +5876,13 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal \NLW_freq_low_46.curr_delay_reg[7]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
   signal \NLW_freq_low_46.curr_delay_reg[7]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fir_freq_low_im_E_i : label is "fir_doa_low_im,fir_compiler_v7_2_24,{}";
+  attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of fir_freq_low_im_E_i : label is "yes";
+  attribute downgradeipidentifiedwarnings of fifo_raw_i : label is "yes";
   attribute x_core_info : string;
+  attribute x_core_info of fifo_raw_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of fir_freq_low_im_E_i : label is "fir_doa_low_im,fir_compiler_v7_2_24,{}";
+  attribute downgradeipidentifiedwarnings of fir_freq_low_im_E_i : label is "yes";
   attribute x_core_info of fir_freq_low_im_E_i : label is "fir_compiler_v7_2_24,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fir_freq_low_im_N_i : label is "fir_doa_low_im,fir_compiler_v7_2_24,{}";
   attribute downgradeipidentifiedwarnings of fir_freq_low_im_N_i : label is "yes";
@@ -6268,6 +6302,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   attribute equivalent_register_removal of \freq_low_46.prevW_reg[7]\ : label is "no";
   attribute equivalent_register_removal of \freq_low_46.prevW_reg[8]\ : label is "no";
   attribute equivalent_register_removal of \freq_low_46.prevW_reg[9]\ : label is "no";
+  attribute KEEP of \freq_low_46.raw_fifo_rd_reg\ : label is "yes";
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \freq_low_46.start_delay[2]_i_1\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \freq_low_46.start_delay[4]_i_1\ : label is "soft_lutpair6";
@@ -6286,6 +6321,21 @@ begin
   phase_N(19 downto 0) <= \^phase_n\(19 downto 0);
   phase_W(19 downto 0) <= \^phase_w\(19 downto 0);
   valid <= \^valid\;
+fifo_raw_i: component ps_freq_low_46_0_0_fifo_raw_low
+     port map (
+      din(191 downto 1) => B"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      din(0) => deci_fifo_data,
+      dout(191 downto 0) => raw_fifo_data(191 downto 0),
+      empty => raw_fifo_empty,
+      full => NLW_fifo_raw_i_full_UNCONNECTED,
+      rd_clk => clk,
+      rd_en => raw_fifo_rd,
+      rd_rst_busy => NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED,
+      rst => reset,
+      wr_clk => deci_clk,
+      wr_en => deci_fifo_wr,
+      wr_rst_busy => NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED
+    );
 fir_freq_low_im_E_i: component ps_freq_low_46_0_0_fir_doa_low_im
      port map (
       aclk => clk,
@@ -6296,7 +6346,7 @@ fir_freq_low_im_E_i: component ps_freq_low_46_0_0_fir_doa_low_im
       m_axis_data_tvalid => NLW_fir_freq_low_im_E_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(15 downto 0) => E(15 downto 0),
       s_axis_data_tready => NLW_fir_freq_low_im_E_i_s_axis_data_tready_UNCONNECTED,
-      s_axis_data_tvalid => fifo_valid
+      s_axis_data_tvalid => freq_fifo_valid
     );
 fir_freq_low_im_N_i: component ps_freq_low_46_0_0_fir_doa_low_im
      port map (
@@ -6308,7 +6358,7 @@ fir_freq_low_im_N_i: component ps_freq_low_46_0_0_fir_doa_low_im
       m_axis_data_tvalid => NLW_fir_freq_low_im_N_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(15 downto 0) => N(15 downto 0),
       s_axis_data_tready => NLW_fir_freq_low_im_N_i_s_axis_data_tready_UNCONNECTED,
-      s_axis_data_tvalid => fifo_valid
+      s_axis_data_tvalid => freq_fifo_valid
     );
 fir_freq_low_im_W_i: component ps_freq_low_46_0_0_fir_doa_low_im_HD3
      port map (
@@ -6320,7 +6370,7 @@ fir_freq_low_im_W_i: component ps_freq_low_46_0_0_fir_doa_low_im_HD3
       m_axis_data_tvalid => NLW_fir_freq_low_im_W_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(15 downto 0) => W(15 downto 0),
       s_axis_data_tready => NLW_fir_freq_low_im_W_i_s_axis_data_tready_UNCONNECTED,
-      s_axis_data_tvalid => fifo_valid
+      s_axis_data_tvalid => freq_fifo_valid
     );
 fir_freq_low_re_E_i: component ps_freq_low_46_0_0_fir_doa_low_re
      port map (
@@ -6332,7 +6382,7 @@ fir_freq_low_re_E_i: component ps_freq_low_46_0_0_fir_doa_low_re
       m_axis_data_tvalid => NLW_fir_freq_low_re_E_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(15 downto 0) => E(15 downto 0),
       s_axis_data_tready => NLW_fir_freq_low_re_E_i_s_axis_data_tready_UNCONNECTED,
-      s_axis_data_tvalid => fifo_valid
+      s_axis_data_tvalid => freq_fifo_valid
     );
 fir_freq_low_re_N_i: component ps_freq_low_46_0_0_fir_doa_low_re
      port map (
@@ -6344,7 +6394,7 @@ fir_freq_low_re_N_i: component ps_freq_low_46_0_0_fir_doa_low_re
       m_axis_data_tvalid => NLW_fir_freq_low_re_N_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(15 downto 0) => N(15 downto 0),
       s_axis_data_tready => NLW_fir_freq_low_re_N_i_s_axis_data_tready_UNCONNECTED,
-      s_axis_data_tvalid => fifo_valid
+      s_axis_data_tvalid => freq_fifo_valid
     );
 fir_freq_low_re_N_i_i_1: unisim.vcomponents.LUT1
     generic map(
@@ -6364,7 +6414,7 @@ fir_freq_low_re_W_i: component ps_freq_low_46_0_0_fir_doa_low_re_HD4
       m_axis_data_tvalid => NLW_fir_freq_low_re_W_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(15 downto 0) => W(15 downto 0),
       s_axis_data_tready => NLW_fir_freq_low_re_W_i_s_axis_data_tready_UNCONNECTED,
-      s_axis_data_tvalid => fifo_valid
+      s_axis_data_tvalid => freq_fifo_valid
     );
 freq_E_i: entity work.\ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\
      port map (
@@ -6475,384 +6525,384 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
 \freq_low_46.E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(16),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(16),
       Q => E(0),
       R => '0'
     );
 \freq_low_46.E_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(26),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(26),
       Q => E(10),
       R => '0'
     );
 \freq_low_46.E_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(27),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(27),
       Q => E(11),
       R => '0'
     );
 \freq_low_46.E_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(28),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(28),
       Q => E(12),
       R => '0'
     );
 \freq_low_46.E_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(29),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(29),
       Q => E(13),
       R => '0'
     );
 \freq_low_46.E_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(30),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(30),
       Q => E(14),
       R => '0'
     );
 \freq_low_46.E_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(31),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(31),
       Q => E(15),
       R => '0'
     );
 \freq_low_46.E_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(17),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(17),
       Q => E(1),
       R => '0'
     );
 \freq_low_46.E_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(18),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(18),
       Q => E(2),
       R => '0'
     );
 \freq_low_46.E_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(19),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(19),
       Q => E(3),
       R => '0'
     );
 \freq_low_46.E_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(20),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(20),
       Q => E(4),
       R => '0'
     );
 \freq_low_46.E_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(21),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(21),
       Q => E(5),
       R => '0'
     );
 \freq_low_46.E_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(22),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(22),
       Q => E(6),
       R => '0'
     );
 \freq_low_46.E_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(23),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(23),
       Q => E(7),
       R => '0'
     );
 \freq_low_46.E_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(24),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(24),
       Q => E(8),
       R => '0'
     );
 \freq_low_46.E_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(25),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(25),
       Q => E(9),
       R => '0'
     );
 \freq_low_46.N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(0),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(0),
       Q => N(0),
       R => '0'
     );
 \freq_low_46.N_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(10),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(10),
       Q => N(10),
       R => '0'
     );
 \freq_low_46.N_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(11),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(11),
       Q => N(11),
       R => '0'
     );
 \freq_low_46.N_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(12),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(12),
       Q => N(12),
       R => '0'
     );
 \freq_low_46.N_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(13),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(13),
       Q => N(13),
       R => '0'
     );
 \freq_low_46.N_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(14),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(14),
       Q => N(14),
       R => '0'
     );
 \freq_low_46.N_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(15),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(15),
       Q => N(15),
       R => '0'
     );
 \freq_low_46.N_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(1),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(1),
       Q => N(1),
       R => '0'
     );
 \freq_low_46.N_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(2),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(2),
       Q => N(2),
       R => '0'
     );
 \freq_low_46.N_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(3),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(3),
       Q => N(3),
       R => '0'
     );
 \freq_low_46.N_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(4),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(4),
       Q => N(4),
       R => '0'
     );
 \freq_low_46.N_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(5),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(5),
       Q => N(5),
       R => '0'
     );
 \freq_low_46.N_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(6),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(6),
       Q => N(6),
       R => '0'
     );
 \freq_low_46.N_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(7),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(7),
       Q => N(7),
       R => '0'
     );
 \freq_low_46.N_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(8),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(8),
       Q => N(8),
       R => '0'
     );
 \freq_low_46.N_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(9),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(9),
       Q => N(9),
       R => '0'
     );
 \freq_low_46.W_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(32),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(32),
       Q => W(0),
       R => '0'
     );
 \freq_low_46.W_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(42),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(42),
       Q => W(10),
       R => '0'
     );
 \freq_low_46.W_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(43),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(43),
       Q => W(11),
       R => '0'
     );
 \freq_low_46.W_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(44),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(44),
       Q => W(12),
       R => '0'
     );
 \freq_low_46.W_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(45),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(45),
       Q => W(13),
       R => '0'
     );
 \freq_low_46.W_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(46),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(46),
       Q => W(14),
       R => '0'
     );
 \freq_low_46.W_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(47),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(47),
       Q => W(15),
       R => '0'
     );
 \freq_low_46.W_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(33),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(33),
       Q => W(1),
       R => '0'
     );
 \freq_low_46.W_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(34),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(34),
       Q => W(2),
       R => '0'
     );
 \freq_low_46.W_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(35),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(35),
       Q => W(3),
       R => '0'
     );
 \freq_low_46.W_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(36),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(36),
       Q => W(4),
       R => '0'
     );
 \freq_low_46.W_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(37),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(37),
       Q => W(5),
       R => '0'
     );
 \freq_low_46.W_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(38),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(38),
       Q => W(6),
       R => '0'
     );
 \freq_low_46.W_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(39),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(39),
       Q => W(7),
       R => '0'
     );
 \freq_low_46.W_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(40),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(40),
       Q => W(8),
       R => '0'
     );
 \freq_low_46.W_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => fifo_valid,
-      D => fifo_data(41),
+      CE => freq_fifo_valid,
+      D => freq_fifo_data(41),
       Q => W(9),
       R => '0'
     );
@@ -6869,7 +6919,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       INIT => X"0000000000000001"
     )
         port map (
-      I0 => fifo_valid,
+      I0 => freq_fifo_valid,
       I1 => \freq_low_46.curr_delay[7]_i_4_n_0\,
       I2 => \freq_low_46.start_delay_reg\(3),
       I3 => \freq_low_46.start_delay_reg\(2),
@@ -6910,7 +6960,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
     )
         port map (
       I0 => \freq_low_46.curr_delay_reg\(1),
-      I1 => fifo_valid,
+      I1 => freq_fifo_valid,
       O => \freq_low_46.curr_delay[7]_i_13_n_0\
     );
 \freq_low_46.curr_delay[7]_i_14\: unisim.vcomponents.LUT4
@@ -6940,7 +6990,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       INIT => X"26"
     )
         port map (
-      I0 => fifo_valid,
+      I0 => freq_fifo_valid,
       I1 => \freq_low_46.curr_delay[7]_i_5_n_0\,
       I2 => \freq_low_46.curr_delay[7]_i_6_n_0\,
       O => \freq_low_46.curr_delay[7]_i_2_n_0\
@@ -7084,7 +7134,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       CO(0) => \freq_low_46.curr_delay_reg[7]_i_3_n_7\,
       DI(7 downto 6) => B"00",
       DI(5 downto 1) => \freq_low_46.curr_delay_reg\(5 downto 1),
-      DI(0) => fifo_valid,
+      DI(0) => freq_fifo_valid,
       O(7) => \NLW_freq_low_46.curr_delay_reg[7]_i_3_O_UNCONNECTED\(7),
       O(6) => \freq_low_46.curr_delay_reg[7]_i_3_n_9\,
       O(5) => \freq_low_46.curr_delay_reg[7]_i_3_n_10\,
@@ -7972,7 +8022,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
     )
         port map (
       I0 => \freq_low_46.curr_delay[7]_i_6_n_0\,
-      I1 => fifo_valid,
+      I1 => freq_fifo_valid,
       I2 => \freq_low_46.curr_delay[7]_i_5_n_0\,
       O => \freq_low_46.morlet_active_i_1_n_0\
     );
@@ -8944,13 +8994,30 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => prevW(9),
       R => '0'
     );
+\freq_low_46.raw_fifo_rd_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"4"
+    )
+        port map (
+      I0 => raw_fifo_empty,
+      I1 => \^valid\,
+      O => \freq_low_46.raw_fifo_rd_i_1_n_0\
+    );
+\freq_low_46.raw_fifo_rd_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \freq_low_46.raw_fifo_rd_i_1_n_0\,
+      Q => raw_fifo_rd,
+      R => '0'
+    );
 \freq_low_46.start_delay[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"45"
     )
         port map (
       I0 => \freq_low_46.start_delay_reg\(0),
-      I1 => fifo_valid,
+      I1 => freq_fifo_valid,
       I2 => \freq_low_46.curr_delay[7]_i_5_n_0\,
       O => p_0_in(0)
     );
@@ -8961,7 +9028,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
         port map (
       I0 => \freq_low_46.start_delay_reg\(1),
       I1 => \freq_low_46.start_delay_reg\(0),
-      I2 => fifo_valid,
+      I2 => freq_fifo_valid,
       I3 => \freq_low_46.curr_delay[7]_i_5_n_0\,
       O => p_0_in(1)
     );
@@ -8980,7 +9047,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       INIT => X"0BBBBBBBB0000000"
     )
         port map (
-      I0 => fifo_valid,
+      I0 => freq_fifo_valid,
       I1 => \freq_low_46.curr_delay[7]_i_5_n_0\,
       I2 => \freq_low_46.start_delay_reg\(1),
       I3 => \freq_low_46.start_delay_reg\(0),
@@ -9008,7 +9075,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       I0 => \freq_low_46.start_delay_reg\(5),
       I1 => \freq_low_46.start_delay[7]_i_3_n_0\,
       I2 => \freq_low_46.curr_delay[7]_i_5_n_0\,
-      I3 => fifo_valid,
+      I3 => freq_fifo_valid,
       O => p_0_in(5)
     );
 \freq_low_46.start_delay[6]_i_1\: unisim.vcomponents.LUT5
@@ -9017,7 +9084,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
     )
         port map (
       I0 => \freq_low_46.curr_delay[7]_i_5_n_0\,
-      I1 => fifo_valid,
+      I1 => freq_fifo_valid,
       I2 => \freq_low_46.start_delay[7]_i_3_n_0\,
       I3 => \freq_low_46.start_delay_reg\(6),
       I4 => \freq_low_46.start_delay_reg\(5),
@@ -9028,7 +9095,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       INIT => X"004F"
     )
         port map (
-      I0 => fifo_valid,
+      I0 => freq_fifo_valid,
       I1 => \freq_low_46.curr_delay[7]_i_6_n_0\,
       I2 => \freq_low_46.curr_delay[7]_i_5_n_0\,
       I3 => \freq_low_46.curr_delay[7]_i_1_n_0\,
@@ -9044,7 +9111,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       I2 => \freq_low_46.start_delay_reg\(6),
       I3 => \freq_low_46.start_delay[7]_i_3_n_0\,
       I4 => \freq_low_46.curr_delay[7]_i_5_n_0\,
-      I5 => fifo_valid,
+      I5 => freq_fifo_valid,
       O => p_0_in(7)
     );
 \freq_low_46.start_delay[7]_i_3\: unisim.vcomponents.LUT5
@@ -9135,15 +9202,18 @@ ila_0_i: component ps_freq_low_46_0_0_ila_0
      port map (
       clk => clk,
       probe0(0) => \^valid\,
-      probe1(15 downto 0) => \^env_n\(15 downto 0),
-      probe2(19 downto 0) => \^phase_n\(19 downto 0),
-      probe3(19 downto 0) => \^diff_n\(19 downto 0),
-      probe4(15 downto 0) => \^env_e\(15 downto 0),
-      probe5(19 downto 0) => \^phase_e\(19 downto 0),
-      probe6(19 downto 0) => \^diff_e\(19 downto 0),
-      probe7(15 downto 0) => \^env_w\(15 downto 0),
-      probe8(19 downto 0) => \^phase_w\(19 downto 0),
-      probe9(19 downto 0) => \^diff_w\(19 downto 0)
+      probe1(0) => raw_fifo_rd,
+      probe10(15 downto 0) => \^env_w\(15 downto 0),
+      probe11(19 downto 0) => \^phase_w\(19 downto 0),
+      probe12(19 downto 0) => \^diff_w\(19 downto 0),
+      probe2(0) => raw_fifo_empty,
+      probe3(15 downto 0) => raw_fifo_data(15 downto 0),
+      probe4(15 downto 0) => \^env_n\(15 downto 0),
+      probe5(19 downto 0) => \^phase_n\(19 downto 0),
+      probe6(19 downto 0) => \^diff_n\(19 downto 0),
+      probe7(15 downto 0) => \^env_e\(15 downto 0),
+      probe8(19 downto 0) => \^phase_e\(19 downto 0),
+      probe9(19 downto 0) => \^diff_e\(19 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -9152,10 +9222,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ps_freq_low_46_0_0 is
   port (
+    deci_clk : in STD_LOGIC;
+    deci_fifo_wr : in STD_LOGIC;
+    deci_fifo_data : in STD_LOGIC;
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    fifo_valid : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    freq_fifo_valid : in STD_LOGIC;
+    freq_fifo_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     valid : out STD_LOGIC;
     env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
     phase_N : out STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -9185,7 +9258,10 @@ architecture STRUCTURE of ps_freq_low_46_0_0 is
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of deci_clk : signal is "xilinx.com:signal:clock:1.0 deci_clk CLK";
+  attribute X_INTERFACE_MODE of deci_clk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of deci_clk : signal is "XIL_INTERFACENAME deci_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 reset RST";
   attribute X_INTERFACE_MODE of reset : signal is "slave";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -9193,14 +9269,17 @@ begin
 inst: entity work.ps_freq_low_46_0_0_freq_low_46
      port map (
       clk => clk,
+      deci_clk => deci_clk,
+      deci_fifo_data => deci_fifo_data,
+      deci_fifo_wr => deci_fifo_wr,
       diff_E(19 downto 0) => diff_E(19 downto 0),
       diff_N(19 downto 0) => diff_N(19 downto 0),
       diff_W(19 downto 0) => diff_W(19 downto 0),
       env_E(15 downto 0) => env_E(15 downto 0),
       env_N(15 downto 0) => env_N(15 downto 0),
       env_W(15 downto 0) => env_W(15 downto 0),
-      fifo_data(47 downto 0) => fifo_data(47 downto 0),
-      fifo_valid => fifo_valid,
+      freq_fifo_data(47 downto 0) => freq_fifo_data(47 downto 0),
+      freq_fifo_valid => freq_fifo_valid,
       phase_E(19 downto 0) => phase_E(19 downto 0),
       phase_N(19 downto 0) => phase_N(19 downto 0),
       phase_W(19 downto 0) => phase_W(19 downto 0),

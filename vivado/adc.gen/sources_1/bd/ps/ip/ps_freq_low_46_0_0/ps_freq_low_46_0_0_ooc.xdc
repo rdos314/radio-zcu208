@@ -54,4 +54,6 @@
 
 create_clock -period 2 -name clk [get_ports clk]
 
+create_clock -period 2 -name deci_clk [get_ports deci_clk]
+
 

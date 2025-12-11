@@ -56,10 +56,13 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_freq_low_46_0_0 (
+  deci_clk,
+  deci_fifo_wr,
+  deci_fifo_data,
   clk,
   reset,
-  fifo_valid,
-  fifo_data,
+  freq_fifo_valid,
+  freq_fifo_data,
   valid,
   env_N,
   phase_N,
@@ -72,16 +75,22 @@ module ps_freq_low_46_0_0 (
   diff_W
 );
 
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
+input wire deci_clk;
+input wire deci_fifo_wr;
+input wire deci_fifo_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
-input wire fifo_valid;
-input wire [47 : 0] fifo_data;
+input wire freq_fifo_valid;
+input wire [47 : 0] freq_fifo_data;
 output wire valid;
 output wire [15 : 0] env_N;
 output wire [19 : 0] phase_N;
@@ -94,10 +103,13 @@ output wire [19 : 0] phase_W;
 output wire [19 : 0] diff_W;
 
   freq_low_46 inst (
+    .deci_clk(deci_clk),
+    .deci_fifo_wr(deci_fifo_wr),
+    .deci_fifo_data(deci_fifo_data),
     .clk(clk),
     .reset(reset),
-    .fifo_valid(fifo_valid),
-    .fifo_data(fifo_data),
+    .freq_fifo_valid(freq_fifo_valid),
+    .freq_fifo_data(freq_fifo_data),
     .valid(valid),
     .env_N(env_N),
     .phase_N(phase_N),

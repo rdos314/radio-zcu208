@@ -20,10 +20,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module freq_low_46(
+    input wire deci_clk,
+    input wire deci_fifo_wr,
+    input wire deci_fifo_data,
+    
     input wire clk,
     input wire reset,
-    input wire fifo_valid,
-    input wire [47:0] fifo_data,
+    input wire freq_fifo_valid,
+    input wire [47:0] freq_fifo_data,
 
     output reg valid,
 
@@ -39,6 +43,10 @@ module freq_low_46(
     output reg [19:0] phase_W,
     output reg [19:0] diff_W
     );
+
+  reg raw_fifo_rd;
+  wire [191:0] raw_fifo_data;
+  wire raw_fifo_empty;
 
   reg [15:0] N;
   reg [15:0] E;
@@ -87,10 +95,21 @@ module freq_low_46(
   wire valid_im_W;
   wire [39:0] fir_im_W;
 
+fifo_raw_low fifo_raw_i (
+  .rst(reset),                   // input wire rst
+  .wr_clk(deci_clk),             // input wire wr_clk
+  .rd_clk(clk),                  // input wire rd_clk
+  .din(deci_fifo_data),          // input wire [191 : 0] din
+  .wr_en(deci_fifo_wr),          // input wire wr_en
+  .rd_en(raw_fifo_rd),           // input wire rd_en
+  .dout(raw_fifo_data),          // output wire [191 : 0] dout
+  .empty(raw_fifo_empty)         // output wire empty
+);
+
 fir_doa_low_re fir_freq_low_re_N_i (
   .aresetn(~reset),                        // input wire aresetn
   .aclk(clk),                              // input wire aclk
-  .s_axis_data_tvalid(fifo_valid),         // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(freq_fifo_valid),    // input wire s_axis_data_tvalid
   .s_axis_data_tready(ready_re_N),         // output wire s_axis_data_tready
   .s_axis_data_tdata(N),                   // input wire [15 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(valid_re_N),         // output wire m_axis_data_tvalid
@@ -100,7 +119,7 @@ fir_doa_low_re fir_freq_low_re_N_i (
 fir_doa_low_re fir_freq_low_re_E_i (
   .aresetn(~reset),                        // input wire aresetn
   .aclk(clk),                              // input wire aclk
-  .s_axis_data_tvalid(fifo_valid),         // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(freq_fifo_valid),    // input wire s_axis_data_tvalid
   .s_axis_data_tready(ready_re_E),         // output wire s_axis_data_tready
   .s_axis_data_tdata(E),                   // input wire [15 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(valid_re_E),         // output wire m_axis_data_tvalid
@@ -110,7 +129,7 @@ fir_doa_low_re fir_freq_low_re_E_i (
 fir_doa_low_re fir_freq_low_re_W_i (
   .aresetn(~reset),                        // input wire aresetn
   .aclk(clk),                              // input wire aclk
-  .s_axis_data_tvalid(fifo_valid),         // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(freq_fifo_valid),    // input wire s_axis_data_tvalid
   .s_axis_data_tready(ready_re_W),         // output wire s_axis_data_tready
   .s_axis_data_tdata(W),                   // input wire [15 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(valid_re_W),         // output wire m_axis_data_tvalid
@@ -120,7 +139,7 @@ fir_doa_low_re fir_freq_low_re_W_i (
 fir_doa_low_im fir_freq_low_im_N_i (
   .aresetn(~reset),                        // input wire aresetn
   .aclk(clk),                              // input wire aclk
-  .s_axis_data_tvalid(fifo_valid),         // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(freq_fifo_valid),    // input wire s_axis_data_tvalid
   .s_axis_data_tready(ready_im_N),         // output wire s_axis_data_tready
   .s_axis_data_tdata(N),                   // input wire [15 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(valid_im_N),         // output wire m_axis_data_tvalid
@@ -130,7 +149,7 @@ fir_doa_low_im fir_freq_low_im_N_i (
 fir_doa_low_im fir_freq_low_im_E_i (
   .aresetn(~reset),                        // input wire aresetn
   .aclk(clk),                              // input wire aclk
-  .s_axis_data_tvalid(fifo_valid),         // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(freq_fifo_valid),    // input wire s_axis_data_tvalid
   .s_axis_data_tready(ready_im_E),         // output wire s_axis_data_tready
   .s_axis_data_tdata(E),                   // input wire [15 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(valid_im_E),         // output wire m_axis_data_tvalid
@@ -140,7 +159,7 @@ fir_doa_low_im fir_freq_low_im_E_i (
 fir_doa_low_im fir_freq_low_im_W_i (
   .aresetn(~reset),                        // input wire aresetn
   .aclk(clk),                              // input wire aclk
-  .s_axis_data_tvalid(fifo_valid),         // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(freq_fifo_valid),    // input wire s_axis_data_tvalid
   .s_axis_data_tready(ready_im_W),         // output wire s_axis_data_tready
   .s_axis_data_tdata(W),                   // input wire [15 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(valid_im_W),         // output wire m_axis_data_tvalid
@@ -178,17 +197,20 @@ morlet_to_phase_env freq_W_i (
   );
       
 ila_0 ila_0_i (
-		.clk(clk),                  // input wire clk
-		.probe0(valid),             // input wire [0:0]  probe3
-		.probe1(env_N),             // input wire [15:0]  probe3
-		.probe2(phase_N),          // input wire [19:0]  probe3
-		.probe3(diff_N),           // input wire [19:0]  probe3
-		.probe4(env_E),            // input wire [15:0]  probe3
-		.probe5(phase_E),          // input wire [19:0]  probe3
-		.probe6(diff_E),           // input wire [19:0]  probe3
-		.probe7(env_W),            // input wire [15:0]  probe3
-		.probe8(phase_W),          // input wire [19:0]  probe3
-		.probe9(diff_W)            // input wire [19:0]  probe3
+		.clk(clk),                     // input wire clk
+		.probe0(valid),                // input wire [0:0]  probe3
+		.probe1(raw_fifo_rd),          // input wire [0:0]  probe3
+		.probe2(raw_fifo_empty),       // input wire [0:0]  probe3
+		.probe3(raw_fifo_data[15:0]),  // input wire [15:0]  probe3
+		.probe4(env_N),                // input wire [15:0]  probe3
+		.probe5(phase_N),              // input wire [19:0]  probe3
+		.probe6(diff_N),               // input wire [19:0]  probe3
+		.probe7(env_E),                // input wire [15:0]  probe3
+		.probe8(phase_E),              // input wire [19:0]  probe3
+		.probe9(diff_E),               // input wire [19:0]  probe3
+		.probe10(env_W),               // input wire [15:0]  probe3
+		.probe11(phase_W),             // input wire [19:0]  probe3
+		.probe12(diff_W)               // input wire [19:0]  probe3
 	);
 
 generate
@@ -196,7 +218,7 @@ generate
 
     always @(posedge clk) 
 	begin
-	  if (fifo_valid)
+	  if (freq_fifo_valid)
 	  begin
 	    if (start_delay == 234)
 	      morlet_active <= 1;
@@ -240,11 +262,11 @@ generate
 
     always @(posedge clk) 
 	begin
-	  if (fifo_valid)
+	  if (freq_fifo_valid)
 	  begin
-         N <= fifo_data[15:0];
-         E <= fifo_data[31:16];
-         W <= fifo_data[47:32];
+         N <= freq_fifo_data[15:0];
+         E <= freq_fifo_data[31:16];
+         W <= freq_fifo_data[47:32];
       end
     end
 
@@ -271,6 +293,19 @@ generate
 	  end
 	  else
 	    valid <= 0;
+	end
+
+    always @(posedge clk) 
+	begin
+	  if (valid)
+	  begin
+	    if (raw_fifo_empty)
+  	      raw_fifo_rd <= 0;
+  	    else
+	      raw_fifo_rd <= 1;
+	  end
+	  else
+	    raw_fifo_rd <= 0;
 	end
 	
   end
