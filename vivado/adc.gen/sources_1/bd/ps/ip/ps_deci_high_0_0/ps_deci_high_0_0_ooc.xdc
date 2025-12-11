@@ -54,10 +54,6 @@
 
 create_clock -period 2 -name clk [get_ports clk]
 
-create_clock -period 2 -name freq_clk [get_ports freq_clk]
-
-create_clock -period 2 -name raw_clk [get_ports raw_clk]
-
 create_clock -period 10 -name sim_clk [get_ports sim_clk]
 
 

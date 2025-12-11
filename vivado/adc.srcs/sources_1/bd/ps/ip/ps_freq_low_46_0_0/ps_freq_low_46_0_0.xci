@@ -36,23 +36,15 @@
     },
     "boundary": {
       "ports": {
-        "deci_clk": [ { "direction": "in" } ],
-        "deci_fifo_wr": [ { "direction": "in" } ],
-        "deci_fifo_data": [ { "direction": "in" } ],
+        "fifo_clk": [ { "direction": "in" } ],
+        "raw_wr": [ { "direction": "in" } ],
+        "raw_data": [ { "direction": "in", "size_left": "191", "size_right": "0" } ],
+        "freq_wr": [ { "direction": "in" } ],
+        "freq_data": [ { "direction": "in", "size_left": "47", "size_right": "0" } ],
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
-        "freq_fifo_valid": [ { "direction": "in" } ],
-        "freq_fifo_data": [ { "direction": "in", "size_left": "47", "size_right": "0" } ],
-        "valid": [ { "direction": "out" } ],
-        "env_N": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "phase_N": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
-        "diff_N": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
-        "env_E": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "phase_E": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
-        "diff_E": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
-        "env_W": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "phase_W": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
-        "diff_W": [ { "direction": "out", "size_left": "19", "size_right": "0" } ]
+        "doa_wr": [ { "direction": "out" } ],
+        "doa_data": [ { "direction": "out", "size_left": "299", "size_right": "0" } ]
       },
       "interfaces": {
         "reset": {
@@ -85,7 +77,7 @@
             "CLK": [ { "physical_name": "clk" } ]
           }
         },
-        "deci_clk": {
+        "fifo_clk": {
           "vlnv": "xilinx.com:signal:clock:1.0",
           "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
           "mode": "slave",
@@ -100,7 +92,7 @@
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           },
           "port_maps": {
-            "CLK": [ { "physical_name": "deci_clk" } ]
+            "CLK": [ { "physical_name": "fifo_clk" } ]
           }
         }
       }

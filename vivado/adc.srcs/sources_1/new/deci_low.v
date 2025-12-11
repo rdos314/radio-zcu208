@@ -43,9 +43,7 @@ module deci_low(
 
     output reg raw_wr,
     output reg [191:0] raw_data,
-
-    input wire freq_clk,
-    output reg freq_ready,
+    output reg freq_wr,
     output reg [47:0] freq_data
     );
 	
@@ -55,15 +53,7 @@ module deci_low(
   reg [127:0] mux_W;
 
   reg [3:0] raw_wr_delay;
-
-  reg freq_fifo_wr;
   reg [3:0] freq_wr_delay;
-  reg [47:0] freq_in_data;
-
-  wire freq_fifo_empty;
-  wire [47:0] freq_out_data;
-  reg [2:0] freq_rd_delay;
-  reg freq_out_rd;
 
   reg sim_wr_N;
   reg sim_wr_E;
@@ -212,17 +202,6 @@ fir_deci_low fir_freq_W_i (
   .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
   .s_axis_data_tdata(mux_W),        // input wire [127 : 0] s_axis_data_tdata
   .m_axis_data_tdata(fir_freq_W)     // output wire [31 : 0] m_axis_data_tdata
-);
-
-fifo_doa_low fifo_freq_i (
-  .rst(~resetn),              // input wire rst
-  .wr_clk(clk),               // input wire wr_clk
-  .rd_clk(freq_clk),           // input wire rd_clk
-  .din(freq_in_data),          // input wire [47 : 0] din
-  .wr_en(freq_fifo_wr),        // input wire wr_en
-  .rd_en(freq_out_rd),         // input wire rd_en
-  .dout(freq_out_data),        // output wire [47 : 0] dout
-  .empty(freq_fifo_empty)      // output wire empty
 );
 
 fifo_sim fifo_sim_N_i (
@@ -422,7 +401,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (mux_active | freq_fifo_wr)
+	  if (mux_active | freq_wr)
 	    reset_delay <= 3'b111;
 	  else
 	  begin
@@ -567,10 +546,10 @@ generate
 	  begin
 	    if (freq_wr_delay == 12)
 	    begin
-          freq_fifo_wr <= 1;
-          freq_in_data[15:0] <= freq_N;
-          freq_in_data[31:16] <= freq_E;
-          freq_in_data[47:32] <= freq_W;
+          freq_wr <= 1;
+          freq_data[15:0] <= freq_N;
+          freq_data[31:16] <= freq_E;
+          freq_data[47:32] <= freq_W;
 	    end
         else
           freq_wr_delay <= freq_wr_delay + 1;
@@ -579,41 +558,16 @@ generate
       begin
         if (freq_wr_delay)
 		begin
-          freq_fifo_wr <= 1;
-          freq_in_data[15:0] <= freq_N;
-          freq_in_data[31:16] <= freq_E;
-          freq_in_data[47:32] <= freq_W;
+          freq_wr <= 1;
+          freq_data[15:0] <= freq_N;
+          freq_data[31:16] <= freq_E;
+          freq_data[47:32] <= freq_W;
           freq_wr_delay <= freq_wr_delay - 1;
 	    end
         else
-          freq_fifo_wr <= 0;
+          freq_wr <= 0;
       end
  	end
-
-    always @(posedge freq_clk) 
-    begin
-	   if (freq_fifo_empty)
-	   begin
-	       freq_rd_delay <= 3'b111;
-           freq_out_rd <= 0;
-       end
-	   else
-	   begin
-	       if (freq_rd_delay)
-	       begin
-	           freq_out_rd <= 0;
-	           freq_rd_delay <= freq_rd_delay - 1;
-	       end
-	       else
-	           freq_out_rd <= 1;
-       end
-    end
-  
-    always @(posedge freq_clk) 
-    begin
-        freq_ready <= freq_out_rd & (!freq_fifo_empty);
-        freq_data <= freq_out_data;
-    end
 
   end
 

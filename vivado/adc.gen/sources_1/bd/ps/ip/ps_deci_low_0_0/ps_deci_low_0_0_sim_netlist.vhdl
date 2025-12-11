@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Dec 10 22:16:12 2025
+-- Date        : Thu Dec 11 21:55:15 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.vhdl
@@ -35,8 +35,7 @@ entity ps_deci_low_0_0_deci_low is
     sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     raw_wr : out STD_LOGIC;
     raw_data : out STD_LOGIC_VECTOR ( 191 downto 0 );
-    freq_clk : in STD_LOGIC;
-    freq_ready : out STD_LOGIC;
+    freq_wr : out STD_LOGIC;
     freq_data : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -44,21 +43,6 @@ entity ps_deci_low_0_0_deci_low is
 end ps_deci_low_0_0_deci_low;
 
 architecture STRUCTURE of ps_deci_low_0_0_deci_low is
-  component ps_deci_low_0_0_fifo_doa_low is
-  port (
-    rst : in STD_LOGIC;
-    wr_clk : in STD_LOGIC;
-    rd_clk : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    wr_en : in STD_LOGIC;
-    rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    full : out STD_LOGIC;
-    empty : out STD_LOGIC;
-    wr_rst_busy : out STD_LOGIC;
-    rd_rst_busy : out STD_LOGIC
-  );
-  end component ps_deci_low_0_0_fifo_doa_low;
   component ps_deci_low_0_0_fifo_sim is
   port (
     rst : in STD_LOGIC;
@@ -134,67 +118,14 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   );
   end component ps_deci_low_0_0_fir_raw_deci_HD3;
   signal \deci_low.fir_resetn_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_fifo_wr_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_fifo_wr_reg_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_in_data[47]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[0]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[10]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[11]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[12]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[13]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[14]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[15]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[16]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[17]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[18]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[19]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[1]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[20]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[21]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[22]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[23]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[24]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[25]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[26]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[27]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[28]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[29]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[2]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[30]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[31]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[32]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[33]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[34]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[35]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[36]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[37]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[38]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[39]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[3]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[40]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[41]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[42]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[43]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[44]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[45]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[46]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[47]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[4]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[5]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[6]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[7]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[8]\ : STD_LOGIC;
-  signal \deci_low.freq_in_data_reg_n_0_[9]\ : STD_LOGIC;
-  signal \deci_low.freq_out_rd_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_rd_delay[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_rd_delay[1]_i_2_n_0\ : STD_LOGIC;
-  signal \deci_low.freq_rd_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \deci_low.freq_data[47]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.freq_wr_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.freq_wr_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.freq_wr_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.freq_wr_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.freq_wr_delay[3]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.freq_wr_delay_reg\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \deci_low.freq_wr_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_E[0]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_E[100]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.mux_E[101]_i_1_n_0\ : STD_LOGIC;
@@ -593,9 +524,9 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal \deci_low.reset_active[2]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.reset_active[2]_i_2_n_0\ : STD_LOGIC;
   signal \deci_low.reset_active[2]_i_3_n_0\ : STD_LOGIC;
-  signal \deci_low.reset_delay[1]_i_1_n_0\ : STD_LOGIC;
-  signal \deci_low.reset_delay[2]_i_2_n_0\ : STD_LOGIC;
-  signal \deci_low.reset_delay[2]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.reset_delay[1]_i_2_n_0\ : STD_LOGIC;
+  signal \deci_low.reset_delay[1]_i_3_n_0\ : STD_LOGIC;
+  signal \deci_low.reset_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_active_1_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_active_i_1_n_0\ : STD_LOGIC;
   signal \deci_low.sim_count[0]_i_1_n_0\ : STD_LOGIC;
@@ -747,12 +678,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal freq_E : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal freq_N : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal freq_W : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal freq_fifo_empty : STD_LOGIC;
-  signal freq_out_data : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal freq_out_rd : STD_LOGIC;
-  signal freq_rd_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal freq_rd_delay0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal freq_ready0 : STD_LOGIC;
+  signal \^freq_wr\ : STD_LOGIC;
   signal mux_E : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal mux_N : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal mux_W : STD_LOGIC_VECTOR ( 127 downto 0 );
@@ -778,9 +704,6 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal sim_wr_E : STD_LOGIC;
   signal sim_wr_N : STD_LOGIC;
   signal sim_wr_W : STD_LOGIC;
-  signal NLW_fifo_freq_i_full_UNCONNECTED : STD_LOGIC;
-  signal NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
-  signal NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_sim_E_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_sim_E_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_sim_E_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
@@ -810,41 +733,34 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   signal NLW_fir_raw_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \deci_low.fir_resetn_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \deci_low.freq_out_rd_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \deci_low.freq_rd_delay[0]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \deci_low.freq_rd_delay[1]_i_2\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \deci_low.freq_ready_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \deci_low.freq_wr_delay[0]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \deci_low.freq_wr_delay[1]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \deci_low.freq_wr_delay[0]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \deci_low.freq_wr_delay[1]_i_1\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \deci_low.freq_wr_delay[2]_i_1\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \deci_low.freq_wr_delay[3]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \deci_low.raw_wr_delay[0]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \deci_low.raw_wr_delay[1]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \deci_low.raw_wr_delay[0]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \deci_low.raw_wr_delay[1]_i_1\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \deci_low.raw_wr_delay[2]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \deci_low.raw_wr_delay[3]_i_2\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \deci_low.reset_active[0]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \deci_low.reset_active[1]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \deci_low.reset_active[2]_i_3\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \deci_low.reset_delay[1]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \deci_low.reset_delay[2]_i_3\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \deci_low.sim_curr_wr_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \deci_low.reset_active[1]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \deci_low.reset_active[2]_i_3\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \deci_low.reset_delay[0]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \deci_low.reset_delay[1]_i_3\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[0]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \deci_low.sim_count[1]_i_2\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \deci_low.sim_curr_wr_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_E_i_2\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \deci_low.sim_wr_N_i_1\ : label is "soft_lutpair9";
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fifo_freq_i : label is "fifo_doa_low,fifo_generator_v13_2_13,{}";
-  attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of fifo_freq_i : label is "yes";
-  attribute x_core_info : string;
-  attribute x_core_info of fifo_freq_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fifo_sim_E_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
+  attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of fifo_sim_E_i : label is "yes";
+  attribute x_core_info : string;
   attribute x_core_info of fifo_sim_E_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fifo_sim_N_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_N_i : label is "yes";
   attribute x_core_info of fifo_sim_N_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
-  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of fifo_sim_N_i_i_1 : label is "soft_lutpair3";
   attribute CHECK_LICENSE_TYPE of fifo_sim_W_i : label is "fifo_sim,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_sim_W_i : label is "yes";
   attribute x_core_info of fifo_sim_W_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
@@ -867,6 +783,7 @@ architecture STRUCTURE of ps_deci_low_0_0_deci_low is
   attribute downgradeipidentifiedwarnings of fir_raw_W_i : label is "yes";
   attribute x_core_info of fir_raw_W_i : label is "fir_compiler_v7_2_24,Vivado 2025.1";
 begin
+  freq_wr <= \^freq_wr\;
   raw_wr <= \^raw_wr\;
   sim_active <= \^sim_active\;
 \deci_low.fir_resetn_i_1\: unisim.vcomponents.LUT3
@@ -887,412 +804,7 @@ begin
       Q => fir_resetn,
       R => '0'
     );
-\deci_low.freq_data_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(0),
-      Q => freq_data(0),
-      R => '0'
-    );
-\deci_low.freq_data_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(10),
-      Q => freq_data(10),
-      R => '0'
-    );
-\deci_low.freq_data_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(11),
-      Q => freq_data(11),
-      R => '0'
-    );
-\deci_low.freq_data_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(12),
-      Q => freq_data(12),
-      R => '0'
-    );
-\deci_low.freq_data_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(13),
-      Q => freq_data(13),
-      R => '0'
-    );
-\deci_low.freq_data_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(14),
-      Q => freq_data(14),
-      R => '0'
-    );
-\deci_low.freq_data_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(15),
-      Q => freq_data(15),
-      R => '0'
-    );
-\deci_low.freq_data_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(16),
-      Q => freq_data(16),
-      R => '0'
-    );
-\deci_low.freq_data_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(17),
-      Q => freq_data(17),
-      R => '0'
-    );
-\deci_low.freq_data_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(18),
-      Q => freq_data(18),
-      R => '0'
-    );
-\deci_low.freq_data_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(19),
-      Q => freq_data(19),
-      R => '0'
-    );
-\deci_low.freq_data_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(1),
-      Q => freq_data(1),
-      R => '0'
-    );
-\deci_low.freq_data_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(20),
-      Q => freq_data(20),
-      R => '0'
-    );
-\deci_low.freq_data_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(21),
-      Q => freq_data(21),
-      R => '0'
-    );
-\deci_low.freq_data_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(22),
-      Q => freq_data(22),
-      R => '0'
-    );
-\deci_low.freq_data_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(23),
-      Q => freq_data(23),
-      R => '0'
-    );
-\deci_low.freq_data_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(24),
-      Q => freq_data(24),
-      R => '0'
-    );
-\deci_low.freq_data_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(25),
-      Q => freq_data(25),
-      R => '0'
-    );
-\deci_low.freq_data_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(26),
-      Q => freq_data(26),
-      R => '0'
-    );
-\deci_low.freq_data_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(27),
-      Q => freq_data(27),
-      R => '0'
-    );
-\deci_low.freq_data_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(28),
-      Q => freq_data(28),
-      R => '0'
-    );
-\deci_low.freq_data_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(29),
-      Q => freq_data(29),
-      R => '0'
-    );
-\deci_low.freq_data_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(2),
-      Q => freq_data(2),
-      R => '0'
-    );
-\deci_low.freq_data_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(30),
-      Q => freq_data(30),
-      R => '0'
-    );
-\deci_low.freq_data_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(31),
-      Q => freq_data(31),
-      R => '0'
-    );
-\deci_low.freq_data_reg[32]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(32),
-      Q => freq_data(32),
-      R => '0'
-    );
-\deci_low.freq_data_reg[33]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(33),
-      Q => freq_data(33),
-      R => '0'
-    );
-\deci_low.freq_data_reg[34]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(34),
-      Q => freq_data(34),
-      R => '0'
-    );
-\deci_low.freq_data_reg[35]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(35),
-      Q => freq_data(35),
-      R => '0'
-    );
-\deci_low.freq_data_reg[36]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(36),
-      Q => freq_data(36),
-      R => '0'
-    );
-\deci_low.freq_data_reg[37]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(37),
-      Q => freq_data(37),
-      R => '0'
-    );
-\deci_low.freq_data_reg[38]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(38),
-      Q => freq_data(38),
-      R => '0'
-    );
-\deci_low.freq_data_reg[39]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(39),
-      Q => freq_data(39),
-      R => '0'
-    );
-\deci_low.freq_data_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(3),
-      Q => freq_data(3),
-      R => '0'
-    );
-\deci_low.freq_data_reg[40]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(40),
-      Q => freq_data(40),
-      R => '0'
-    );
-\deci_low.freq_data_reg[41]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(41),
-      Q => freq_data(41),
-      R => '0'
-    );
-\deci_low.freq_data_reg[42]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(42),
-      Q => freq_data(42),
-      R => '0'
-    );
-\deci_low.freq_data_reg[43]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(43),
-      Q => freq_data(43),
-      R => '0'
-    );
-\deci_low.freq_data_reg[44]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(44),
-      Q => freq_data(44),
-      R => '0'
-    );
-\deci_low.freq_data_reg[45]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(45),
-      Q => freq_data(45),
-      R => '0'
-    );
-\deci_low.freq_data_reg[46]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(46),
-      Q => freq_data(46),
-      R => '0'
-    );
-\deci_low.freq_data_reg[47]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(47),
-      Q => freq_data(47),
-      R => '0'
-    );
-\deci_low.freq_data_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(4),
-      Q => freq_data(4),
-      R => '0'
-    );
-\deci_low.freq_data_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(5),
-      Q => freq_data(5),
-      R => '0'
-    );
-\deci_low.freq_data_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(6),
-      Q => freq_data(6),
-      R => '0'
-    );
-\deci_low.freq_data_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(7),
-      Q => freq_data(7),
-      R => '0'
-    );
-\deci_low.freq_data_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(8),
-      Q => freq_data(8),
-      R => '0'
-    );
-\deci_low.freq_data_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_out_data(9),
-      Q => freq_data(9),
-      R => '0'
-    );
-\deci_low.freq_fifo_wr_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"ABAAAAAAFFFFFFFC"
-    )
-        port map (
-      I0 => \deci_low.freq_fifo_wr_reg_n_0\,
-      I1 => \deci_low.freq_wr_delay_reg\(0),
-      I2 => \deci_low.freq_wr_delay_reg\(1),
-      I3 => \deci_low.freq_wr_delay_reg\(3),
-      I4 => \deci_low.freq_wr_delay_reg\(2),
-      I5 => mux_active,
-      O => \deci_low.freq_fifo_wr_i_1_n_0\
-    );
-\deci_low.freq_fifo_wr_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \deci_low.freq_fifo_wr_i_1_n_0\,
-      Q => \deci_low.freq_fifo_wr_reg_n_0\,
-      R => '0'
-    );
-\deci_low.freq_in_data[47]_i_1\: unisim.vcomponents.LUT5
+\deci_low.freq_data[47]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"57555554"
     )
@@ -1302,487 +814,390 @@ begin
       I2 => \deci_low.freq_wr_delay_reg\(0),
       I3 => \deci_low.freq_wr_delay_reg\(3),
       I4 => \deci_low.freq_wr_delay_reg\(2),
-      O => \deci_low.freq_in_data[47]_i_1_n_0\
+      O => \deci_low.freq_data[47]_i_1_n_0\
     );
-\deci_low.freq_in_data_reg[0]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(0),
-      Q => \deci_low.freq_in_data_reg_n_0_[0]\,
+      Q => freq_data(0),
       R => '0'
     );
-\deci_low.freq_in_data_reg[10]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(10),
-      Q => \deci_low.freq_in_data_reg_n_0_[10]\,
+      Q => freq_data(10),
       R => '0'
     );
-\deci_low.freq_in_data_reg[11]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(11),
-      Q => \deci_low.freq_in_data_reg_n_0_[11]\,
+      Q => freq_data(11),
       R => '0'
     );
-\deci_low.freq_in_data_reg[12]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(12),
-      Q => \deci_low.freq_in_data_reg_n_0_[12]\,
+      Q => freq_data(12),
       R => '0'
     );
-\deci_low.freq_in_data_reg[13]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(13),
-      Q => \deci_low.freq_in_data_reg_n_0_[13]\,
+      Q => freq_data(13),
       R => '0'
     );
-\deci_low.freq_in_data_reg[14]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(14),
-      Q => \deci_low.freq_in_data_reg_n_0_[14]\,
+      Q => freq_data(14),
       R => '0'
     );
-\deci_low.freq_in_data_reg[15]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(15),
-      Q => \deci_low.freq_in_data_reg_n_0_[15]\,
+      Q => freq_data(15),
       R => '0'
     );
-\deci_low.freq_in_data_reg[16]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(0),
-      Q => \deci_low.freq_in_data_reg_n_0_[16]\,
+      Q => freq_data(16),
       R => '0'
     );
-\deci_low.freq_in_data_reg[17]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(1),
-      Q => \deci_low.freq_in_data_reg_n_0_[17]\,
+      Q => freq_data(17),
       R => '0'
     );
-\deci_low.freq_in_data_reg[18]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(2),
-      Q => \deci_low.freq_in_data_reg_n_0_[18]\,
+      Q => freq_data(18),
       R => '0'
     );
-\deci_low.freq_in_data_reg[19]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(3),
-      Q => \deci_low.freq_in_data_reg_n_0_[19]\,
+      Q => freq_data(19),
       R => '0'
     );
-\deci_low.freq_in_data_reg[1]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(1),
-      Q => \deci_low.freq_in_data_reg_n_0_[1]\,
+      Q => freq_data(1),
       R => '0'
     );
-\deci_low.freq_in_data_reg[20]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(4),
-      Q => \deci_low.freq_in_data_reg_n_0_[20]\,
+      Q => freq_data(20),
       R => '0'
     );
-\deci_low.freq_in_data_reg[21]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(5),
-      Q => \deci_low.freq_in_data_reg_n_0_[21]\,
+      Q => freq_data(21),
       R => '0'
     );
-\deci_low.freq_in_data_reg[22]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(6),
-      Q => \deci_low.freq_in_data_reg_n_0_[22]\,
+      Q => freq_data(22),
       R => '0'
     );
-\deci_low.freq_in_data_reg[23]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(7),
-      Q => \deci_low.freq_in_data_reg_n_0_[23]\,
+      Q => freq_data(23),
       R => '0'
     );
-\deci_low.freq_in_data_reg[24]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(8),
-      Q => \deci_low.freq_in_data_reg_n_0_[24]\,
+      Q => freq_data(24),
       R => '0'
     );
-\deci_low.freq_in_data_reg[25]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(9),
-      Q => \deci_low.freq_in_data_reg_n_0_[25]\,
+      Q => freq_data(25),
       R => '0'
     );
-\deci_low.freq_in_data_reg[26]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(10),
-      Q => \deci_low.freq_in_data_reg_n_0_[26]\,
+      Q => freq_data(26),
       R => '0'
     );
-\deci_low.freq_in_data_reg[27]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(11),
-      Q => \deci_low.freq_in_data_reg_n_0_[27]\,
+      Q => freq_data(27),
       R => '0'
     );
-\deci_low.freq_in_data_reg[28]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(12),
-      Q => \deci_low.freq_in_data_reg_n_0_[28]\,
+      Q => freq_data(28),
       R => '0'
     );
-\deci_low.freq_in_data_reg[29]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(13),
-      Q => \deci_low.freq_in_data_reg_n_0_[29]\,
+      Q => freq_data(29),
       R => '0'
     );
-\deci_low.freq_in_data_reg[2]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(2),
-      Q => \deci_low.freq_in_data_reg_n_0_[2]\,
+      Q => freq_data(2),
       R => '0'
     );
-\deci_low.freq_in_data_reg[30]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(14),
-      Q => \deci_low.freq_in_data_reg_n_0_[30]\,
+      Q => freq_data(30),
       R => '0'
     );
-\deci_low.freq_in_data_reg[31]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_E(15),
-      Q => \deci_low.freq_in_data_reg_n_0_[31]\,
+      Q => freq_data(31),
       R => '0'
     );
-\deci_low.freq_in_data_reg[32]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(0),
-      Q => \deci_low.freq_in_data_reg_n_0_[32]\,
+      Q => freq_data(32),
       R => '0'
     );
-\deci_low.freq_in_data_reg[33]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(1),
-      Q => \deci_low.freq_in_data_reg_n_0_[33]\,
+      Q => freq_data(33),
       R => '0'
     );
-\deci_low.freq_in_data_reg[34]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(2),
-      Q => \deci_low.freq_in_data_reg_n_0_[34]\,
+      Q => freq_data(34),
       R => '0'
     );
-\deci_low.freq_in_data_reg[35]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(3),
-      Q => \deci_low.freq_in_data_reg_n_0_[35]\,
+      Q => freq_data(35),
       R => '0'
     );
-\deci_low.freq_in_data_reg[36]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(4),
-      Q => \deci_low.freq_in_data_reg_n_0_[36]\,
+      Q => freq_data(36),
       R => '0'
     );
-\deci_low.freq_in_data_reg[37]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(5),
-      Q => \deci_low.freq_in_data_reg_n_0_[37]\,
+      Q => freq_data(37),
       R => '0'
     );
-\deci_low.freq_in_data_reg[38]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(6),
-      Q => \deci_low.freq_in_data_reg_n_0_[38]\,
+      Q => freq_data(38),
       R => '0'
     );
-\deci_low.freq_in_data_reg[39]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(7),
-      Q => \deci_low.freq_in_data_reg_n_0_[39]\,
+      Q => freq_data(39),
       R => '0'
     );
-\deci_low.freq_in_data_reg[3]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(3),
-      Q => \deci_low.freq_in_data_reg_n_0_[3]\,
+      Q => freq_data(3),
       R => '0'
     );
-\deci_low.freq_in_data_reg[40]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(8),
-      Q => \deci_low.freq_in_data_reg_n_0_[40]\,
+      Q => freq_data(40),
       R => '0'
     );
-\deci_low.freq_in_data_reg[41]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(9),
-      Q => \deci_low.freq_in_data_reg_n_0_[41]\,
+      Q => freq_data(41),
       R => '0'
     );
-\deci_low.freq_in_data_reg[42]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(10),
-      Q => \deci_low.freq_in_data_reg_n_0_[42]\,
+      Q => freq_data(42),
       R => '0'
     );
-\deci_low.freq_in_data_reg[43]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(11),
-      Q => \deci_low.freq_in_data_reg_n_0_[43]\,
+      Q => freq_data(43),
       R => '0'
     );
-\deci_low.freq_in_data_reg[44]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(12),
-      Q => \deci_low.freq_in_data_reg_n_0_[44]\,
+      Q => freq_data(44),
       R => '0'
     );
-\deci_low.freq_in_data_reg[45]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(13),
-      Q => \deci_low.freq_in_data_reg_n_0_[45]\,
+      Q => freq_data(45),
       R => '0'
     );
-\deci_low.freq_in_data_reg[46]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(14),
-      Q => \deci_low.freq_in_data_reg_n_0_[46]\,
+      Q => freq_data(46),
       R => '0'
     );
-\deci_low.freq_in_data_reg[47]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_W(15),
-      Q => \deci_low.freq_in_data_reg_n_0_[47]\,
+      Q => freq_data(47),
       R => '0'
     );
-\deci_low.freq_in_data_reg[4]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(4),
-      Q => \deci_low.freq_in_data_reg_n_0_[4]\,
+      Q => freq_data(4),
       R => '0'
     );
-\deci_low.freq_in_data_reg[5]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(5),
-      Q => \deci_low.freq_in_data_reg_n_0_[5]\,
+      Q => freq_data(5),
       R => '0'
     );
-\deci_low.freq_in_data_reg[6]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(6),
-      Q => \deci_low.freq_in_data_reg_n_0_[6]\,
+      Q => freq_data(6),
       R => '0'
     );
-\deci_low.freq_in_data_reg[7]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(7),
-      Q => \deci_low.freq_in_data_reg_n_0_[7]\,
+      Q => freq_data(7),
       R => '0'
     );
-\deci_low.freq_in_data_reg[8]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(8),
-      Q => \deci_low.freq_in_data_reg_n_0_[8]\,
+      Q => freq_data(8),
       R => '0'
     );
-\deci_low.freq_in_data_reg[9]\: unisim.vcomponents.FDRE
+\deci_low.freq_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \deci_low.freq_in_data[47]_i_1_n_0\,
+      CE => \deci_low.freq_data[47]_i_1_n_0\,
       D => freq_N(9),
-      Q => \deci_low.freq_in_data_reg_n_0_[9]\,
-      R => '0'
-    );
-\deci_low.freq_out_rd_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => freq_fifo_empty,
-      I1 => freq_rd_delay(1),
-      I2 => freq_rd_delay(2),
-      I3 => freq_rd_delay(0),
-      O => \deci_low.freq_out_rd_i_1_n_0\
-    );
-\deci_low.freq_out_rd_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => \deci_low.freq_out_rd_i_1_n_0\,
-      Q => freq_out_rd,
-      R => '0'
-    );
-\deci_low.freq_rd_delay[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => freq_rd_delay(0),
-      O => freq_rd_delay0(0)
-    );
-\deci_low.freq_rd_delay[1]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => freq_rd_delay(0),
-      I1 => freq_rd_delay(2),
-      I2 => freq_rd_delay(1),
-      O => \deci_low.freq_rd_delay[1]_i_1_n_0\
-    );
-\deci_low.freq_rd_delay[1]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => freq_rd_delay(0),
-      I1 => freq_rd_delay(1),
-      O => \deci_low.freq_rd_delay[1]_i_2_n_0\
-    );
-\deci_low.freq_rd_delay[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"C8"
-    )
-        port map (
-      I0 => freq_rd_delay(0),
-      I1 => freq_rd_delay(2),
-      I2 => freq_rd_delay(1),
-      O => \deci_low.freq_rd_delay[2]_i_1_n_0\
-    );
-\deci_low.freq_rd_delay_reg[0]\: unisim.vcomponents.FDSE
-     port map (
-      C => freq_clk,
-      CE => \deci_low.freq_rd_delay[1]_i_1_n_0\,
-      D => freq_rd_delay0(0),
-      Q => freq_rd_delay(0),
-      S => freq_fifo_empty
-    );
-\deci_low.freq_rd_delay_reg[1]\: unisim.vcomponents.FDSE
-     port map (
-      C => freq_clk,
-      CE => \deci_low.freq_rd_delay[1]_i_1_n_0\,
-      D => \deci_low.freq_rd_delay[1]_i_2_n_0\,
-      Q => freq_rd_delay(1),
-      S => freq_fifo_empty
-    );
-\deci_low.freq_rd_delay_reg[2]\: unisim.vcomponents.FDSE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => \deci_low.freq_rd_delay[2]_i_1_n_0\,
-      Q => freq_rd_delay(2),
-      S => freq_fifo_empty
-    );
-\deci_low.freq_ready_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => freq_out_rd,
-      I1 => freq_fifo_empty,
-      O => freq_ready0
-    );
-\deci_low.freq_ready_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => freq_clk,
-      CE => '1',
-      D => freq_ready0,
-      Q => freq_ready,
+      Q => freq_data(9),
       R => '0'
     );
 \deci_low.freq_wr_delay[0]_i_1\: unisim.vcomponents.LUT1
@@ -1868,6 +1283,27 @@ begin
       CE => \deci_low.freq_wr_delay[3]_i_1_n_0\,
       D => \deci_low.freq_wr_delay[3]_i_2_n_0\,
       Q => \deci_low.freq_wr_delay_reg\(3),
+      R => '0'
+    );
+\deci_low.freq_wr_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"ABAAAAAAFFFFFFFC"
+    )
+        port map (
+      I0 => \^freq_wr\,
+      I1 => \deci_low.freq_wr_delay_reg\(0),
+      I2 => \deci_low.freq_wr_delay_reg\(1),
+      I3 => \deci_low.freq_wr_delay_reg\(3),
+      I4 => \deci_low.freq_wr_delay_reg\(2),
+      I5 => mux_active,
+      O => \deci_low.freq_wr_i_1_n_0\
+    );
+\deci_low.freq_wr_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \deci_low.freq_wr_i_1_n_0\,
+      Q => \^freq_wr\,
       R => '0'
     );
 \deci_low.mux_E[0]_i_1\: unisim.vcomponents.LUT5
@@ -11233,7 +10669,7 @@ begin
       I0 => reset_active(0),
       I1 => reset_active(1),
       I2 => reset_active(2),
-      I3 => \deci_low.reset_delay[2]_i_2_n_0\,
+      I3 => \deci_low.reset_delay[1]_i_2_n_0\,
       I4 => resetn,
       O => \deci_low.reset_active[0]_i_1_n_0\
     );
@@ -11311,23 +10747,14 @@ begin
     );
 \deci_low.reset_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => reset_delay(0),
-      I1 => reset_delay(1),
-      O => \deci_low.reset_delay[1]_i_1_n_0\
-    );
-\deci_low.reset_delay[2]_i_1\: unisim.vcomponents.LUT2
-    generic map(
       INIT => X"E"
     )
         port map (
       I0 => mux_active,
-      I1 => \deci_low.freq_fifo_wr_reg_n_0\,
+      I1 => \^freq_wr\,
       O => reset_delay0
     );
-\deci_low.reset_delay[2]_i_2\: unisim.vcomponents.LUT3
+\deci_low.reset_delay[1]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
@@ -11335,22 +10762,31 @@ begin
       I0 => reset_delay(0),
       I1 => reset_delay(2),
       I2 => reset_delay(1),
-      O => \deci_low.reset_delay[2]_i_2_n_0\
+      O => \deci_low.reset_delay[1]_i_2_n_0\
     );
-\deci_low.reset_delay[2]_i_3\: unisim.vcomponents.LUT3
+\deci_low.reset_delay[1]_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"E1"
+      INIT => X"9"
     )
         port map (
-      I0 => reset_delay(1),
-      I1 => reset_delay(0),
-      I2 => reset_delay(2),
-      O => \deci_low.reset_delay[2]_i_3_n_0\
+      I0 => reset_delay(0),
+      I1 => reset_delay(1),
+      O => \deci_low.reset_delay[1]_i_3_n_0\
+    );
+\deci_low.reset_delay[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"C8"
+    )
+        port map (
+      I0 => reset_delay(0),
+      I1 => reset_delay(2),
+      I2 => reset_delay(1),
+      O => \deci_low.reset_delay[2]_i_1_n_0\
     );
 \deci_low.reset_delay_reg[0]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.reset_delay[2]_i_2_n_0\,
+      CE => \deci_low.reset_delay[1]_i_2_n_0\,
       D => reset_delay01_in(0),
       Q => reset_delay(0),
       S => reset_delay0
@@ -11358,16 +10794,16 @@ begin
 \deci_low.reset_delay_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.reset_delay[2]_i_2_n_0\,
-      D => \deci_low.reset_delay[1]_i_1_n_0\,
+      CE => \deci_low.reset_delay[1]_i_2_n_0\,
+      D => \deci_low.reset_delay[1]_i_3_n_0\,
       Q => reset_delay(1),
       S => reset_delay0
     );
 \deci_low.reset_delay_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \deci_low.reset_delay[2]_i_2_n_0\,
-      D => \deci_low.reset_delay[2]_i_3_n_0\,
+      CE => '1',
+      D => \deci_low.reset_delay[2]_i_1_n_0\,
       Q => reset_delay(2),
       S => reset_delay0
     );
@@ -13678,67 +13114,6 @@ begin
       Q => sim_wr_W,
       R => \deci_low.sim_wr_E_i_1_n_0\
     );
-fifo_freq_i: component ps_deci_low_0_0_fifo_doa_low
-     port map (
-      din(47) => \deci_low.freq_in_data_reg_n_0_[47]\,
-      din(46) => \deci_low.freq_in_data_reg_n_0_[46]\,
-      din(45) => \deci_low.freq_in_data_reg_n_0_[45]\,
-      din(44) => \deci_low.freq_in_data_reg_n_0_[44]\,
-      din(43) => \deci_low.freq_in_data_reg_n_0_[43]\,
-      din(42) => \deci_low.freq_in_data_reg_n_0_[42]\,
-      din(41) => \deci_low.freq_in_data_reg_n_0_[41]\,
-      din(40) => \deci_low.freq_in_data_reg_n_0_[40]\,
-      din(39) => \deci_low.freq_in_data_reg_n_0_[39]\,
-      din(38) => \deci_low.freq_in_data_reg_n_0_[38]\,
-      din(37) => \deci_low.freq_in_data_reg_n_0_[37]\,
-      din(36) => \deci_low.freq_in_data_reg_n_0_[36]\,
-      din(35) => \deci_low.freq_in_data_reg_n_0_[35]\,
-      din(34) => \deci_low.freq_in_data_reg_n_0_[34]\,
-      din(33) => \deci_low.freq_in_data_reg_n_0_[33]\,
-      din(32) => \deci_low.freq_in_data_reg_n_0_[32]\,
-      din(31) => \deci_low.freq_in_data_reg_n_0_[31]\,
-      din(30) => \deci_low.freq_in_data_reg_n_0_[30]\,
-      din(29) => \deci_low.freq_in_data_reg_n_0_[29]\,
-      din(28) => \deci_low.freq_in_data_reg_n_0_[28]\,
-      din(27) => \deci_low.freq_in_data_reg_n_0_[27]\,
-      din(26) => \deci_low.freq_in_data_reg_n_0_[26]\,
-      din(25) => \deci_low.freq_in_data_reg_n_0_[25]\,
-      din(24) => \deci_low.freq_in_data_reg_n_0_[24]\,
-      din(23) => \deci_low.freq_in_data_reg_n_0_[23]\,
-      din(22) => \deci_low.freq_in_data_reg_n_0_[22]\,
-      din(21) => \deci_low.freq_in_data_reg_n_0_[21]\,
-      din(20) => \deci_low.freq_in_data_reg_n_0_[20]\,
-      din(19) => \deci_low.freq_in_data_reg_n_0_[19]\,
-      din(18) => \deci_low.freq_in_data_reg_n_0_[18]\,
-      din(17) => \deci_low.freq_in_data_reg_n_0_[17]\,
-      din(16) => \deci_low.freq_in_data_reg_n_0_[16]\,
-      din(15) => \deci_low.freq_in_data_reg_n_0_[15]\,
-      din(14) => \deci_low.freq_in_data_reg_n_0_[14]\,
-      din(13) => \deci_low.freq_in_data_reg_n_0_[13]\,
-      din(12) => \deci_low.freq_in_data_reg_n_0_[12]\,
-      din(11) => \deci_low.freq_in_data_reg_n_0_[11]\,
-      din(10) => \deci_low.freq_in_data_reg_n_0_[10]\,
-      din(9) => \deci_low.freq_in_data_reg_n_0_[9]\,
-      din(8) => \deci_low.freq_in_data_reg_n_0_[8]\,
-      din(7) => \deci_low.freq_in_data_reg_n_0_[7]\,
-      din(6) => \deci_low.freq_in_data_reg_n_0_[6]\,
-      din(5) => \deci_low.freq_in_data_reg_n_0_[5]\,
-      din(4) => \deci_low.freq_in_data_reg_n_0_[4]\,
-      din(3) => \deci_low.freq_in_data_reg_n_0_[3]\,
-      din(2) => \deci_low.freq_in_data_reg_n_0_[2]\,
-      din(1) => \deci_low.freq_in_data_reg_n_0_[1]\,
-      din(0) => \deci_low.freq_in_data_reg_n_0_[0]\,
-      dout(47 downto 0) => freq_out_data(47 downto 0),
-      empty => freq_fifo_empty,
-      full => NLW_fifo_freq_i_full_UNCONNECTED,
-      rd_clk => freq_clk,
-      rd_en => freq_out_rd,
-      rd_rst_busy => NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED,
-      rst => \deci_low.sim_active_i_1_n_0\,
-      wr_clk => clk,
-      wr_en => \deci_low.freq_fifo_wr_reg_n_0\,
-      wr_rst_busy => NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED
-    );
 fifo_sim_E_i: component ps_deci_low_0_0_fifo_sim
      port map (
       din(127 downto 0) => sim_in_data(127 downto 0),
@@ -13904,8 +13279,7 @@ entity ps_deci_low_0_0 is
     sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     raw_wr : out STD_LOGIC;
     raw_data : out STD_LOGIC_VECTOR ( 191 downto 0 );
-    freq_clk : in STD_LOGIC;
-    freq_ready : out STD_LOGIC;
+    freq_wr : out STD_LOGIC;
     freq_data : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
@@ -13926,10 +13300,7 @@ architecture STRUCTURE of ps_deci_low_0_0 is
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of freq_clk : signal is "xilinx.com:signal:clock:1.0 freq_clk CLK";
-  attribute X_INTERFACE_MODE of freq_clk : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of freq_clk : signal is "XIL_INTERFACENAME freq_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 resetn RST";
   attribute X_INTERFACE_MODE of resetn : signal is "slave";
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -13947,9 +13318,8 @@ inst: entity work.ps_deci_low_0_0_deci_low
       data_E(127 downto 0) => data_E(127 downto 0),
       data_N(127 downto 0) => data_N(127 downto 0),
       data_W(127 downto 0) => data_W(127 downto 0),
-      freq_clk => freq_clk,
       freq_data(47 downto 0) => freq_data(47 downto 0),
-      freq_ready => freq_ready,
+      freq_wr => freq_wr,
       raw_data(191 downto 0) => raw_data(191 downto 0),
       raw_wr => raw_wr,
       ready_E => ready_E,

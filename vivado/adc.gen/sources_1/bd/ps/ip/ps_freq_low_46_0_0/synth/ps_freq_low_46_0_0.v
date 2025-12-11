@@ -56,31 +56,25 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_freq_low_46_0_0 (
-  deci_clk,
-  deci_fifo_wr,
-  deci_fifo_data,
+  fifo_clk,
+  raw_wr,
+  raw_data,
+  freq_wr,
+  freq_data,
   clk,
   reset,
-  freq_fifo_valid,
-  freq_fifo_data,
-  valid,
-  env_N,
-  phase_N,
-  diff_N,
-  env_E,
-  phase_E,
-  diff_E,
-  env_W,
-  phase_W,
-  diff_W
+  doa_wr,
+  doa_data
 );
 
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
-input wire deci_clk;
-input wire deci_fifo_wr;
-input wire deci_fifo_data;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
+input wire fifo_clk;
+input wire raw_wr;
+input wire [191 : 0] raw_data;
+input wire freq_wr;
+input wire [47 : 0] freq_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
@@ -89,36 +83,18 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
-input wire freq_fifo_valid;
-input wire [47 : 0] freq_fifo_data;
-output wire valid;
-output wire [15 : 0] env_N;
-output wire [19 : 0] phase_N;
-output wire [19 : 0] diff_N;
-output wire [15 : 0] env_E;
-output wire [19 : 0] phase_E;
-output wire [19 : 0] diff_E;
-output wire [15 : 0] env_W;
-output wire [19 : 0] phase_W;
-output wire [19 : 0] diff_W;
+output wire doa_wr;
+output wire [299 : 0] doa_data;
 
   freq_low_46 inst (
-    .deci_clk(deci_clk),
-    .deci_fifo_wr(deci_fifo_wr),
-    .deci_fifo_data(deci_fifo_data),
+    .fifo_clk(fifo_clk),
+    .raw_wr(raw_wr),
+    .raw_data(raw_data),
+    .freq_wr(freq_wr),
+    .freq_data(freq_data),
     .clk(clk),
     .reset(reset),
-    .freq_fifo_valid(freq_fifo_valid),
-    .freq_fifo_data(freq_fifo_data),
-    .valid(valid),
-    .env_N(env_N),
-    .phase_N(phase_N),
-    .diff_N(diff_N),
-    .env_E(env_E),
-    .phase_E(phase_E),
-    .diff_E(diff_E),
-    .env_W(env_W),
-    .phase_W(phase_W),
-    .diff_W(diff_W)
+    .doa_wr(doa_wr),
+    .doa_data(doa_data)
   );
 endmodule

@@ -41,12 +41,9 @@ module deci_high(
 	input wire [1:0] sim_channel,
 	input wire [31:0] sim_data,
 
-    input wire raw_clk,
-    output reg raw_ready,
+    output reg raw_wr,
     output reg [383:0] raw_data,
-
-    input wire freq_clk,
-    output reg freq_ready,
+    output reg freq_wr,
     output reg [95:0] freq_data
     );
 
@@ -55,22 +52,8 @@ module deci_high(
   reg [127:0] mux_E;
   reg [127:0] mux_W;
 
-  reg raw_fifo_wr;
-  reg  [383:0] raw_in_data;
-
-  wire raw_fifo_empty;
-  reg  [11:0] raw_delay;
-  wire [383:0] raw_out_data;
-  reg raw_out_rd;
-
-  reg freq_fifo_wr;
-  reg [4:0] freq_wr_delay;
-  reg [95:0] freq_in_data;
-
-  wire freq_fifo_empty;
-  wire [95:0] freq_out_data;
-  reg [2:0] freq_rd_delay;
-  reg freq_out_rd;
+  reg [3:0] raw_wr_delay;
+  reg [3:0] freq_wr_delay;
 
   reg sim_wr_N;
   reg sim_wr_E;
@@ -186,28 +169,6 @@ fir_deci_high fir_freq_W_i (
   .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
   .s_axis_data_tdata(mux_W),        // input wire [127 : 0] s_axis_data_tdata
   .m_axis_data_tdata(fir_freq_W)     // output wire [63 : 0] m_axis_data_tdata
-);
-
-fifo_raw_high fifo_raw_i (
-  .rst(~resetn),                 // input wire rst
-  .wr_clk(clk),                  // input wire wr_clk
-  .rd_clk(raw_clk),              // input wire rd_clk
-  .din(raw_in_data),             // input wire [383 : 0] din
-  .wr_en(raw_fifo_wr),           // input wire wr_en
-  .rd_en(raw_out_rd),            // input wire rd_en
-  .dout(raw_out_data),           // output wire [383 : 0] dout
-  .empty(raw_fifo_empty)         // output wire empty
-);
-
-fifo_doa_high fifo_freq_i (
-  .rst(~resetn),              // input wire rst
-  .wr_clk(clk),               // input wire wr_clk
-  .rd_clk(freq_clk),           // input wire rd_clk
-  .din(freq_in_data),          // input wire [95 : 0] din
-  .wr_en(freq_fifo_wr),        // input wire wr_en
-  .rd_en(freq_out_rd),         // input wire rd_en
-  .dout(freq_out_data),        // output wire [95 : 0] dout
-  .empty(freq_fifo_empty)      // output wire empty
 );
 
 fifo_sim fifo_sim_N_i (
@@ -386,7 +347,7 @@ generate
 
 	always @(posedge clk) 
 	begin
-	  if (mux_active | freq_fifo_wr)
+	  if (mux_active | freq_wr)
 	    reset_delay <= 3'b111;
 	  else
 	  begin
@@ -482,34 +443,34 @@ generate
 	begin
 	  if (mux_active)
 	  begin
-        raw_fifo_wr <= 1;
-        raw_in_data[15:0] <= mux_N0;
-        raw_in_data[31:16] <= mux_N1;
-        raw_in_data[47:32] <= mux_N2;
-        raw_in_data[63:48] <= mux_N3;
-        raw_in_data[79:64] <= mux_N4;
-        raw_in_data[95:80] <= mux_N5;
-        raw_in_data[111:96] <= mux_N6;
-        raw_in_data[127:112] <= mux_N7;
-        raw_in_data[143:128] <= mux_E0;
-        raw_in_data[159:144] <= mux_E1;
-        raw_in_data[175:160] <= mux_E2;
-        raw_in_data[191:176] <= mux_E3;
-        raw_in_data[207:192] <= mux_E4;
-        raw_in_data[223:208] <= mux_E5;
-        raw_in_data[239:224] <= mux_E6;
-        raw_in_data[255:240] <= mux_E7;
-        raw_in_data[271:256] <= mux_W0;
-        raw_in_data[287:272] <= mux_W1;
-        raw_in_data[303:288] <= mux_W2;
-        raw_in_data[319:304] <= mux_W3;
-        raw_in_data[335:320] <= mux_W4;
-        raw_in_data[351:336] <= mux_W5;
-        raw_in_data[367:352] <= mux_W6;
-        raw_in_data[383:368] <= mux_W7;
+        raw_wr <= 1;
+        raw_data[15:0] <= mux_N0;
+        raw_data[31:16] <= mux_N1;
+        raw_data[47:32] <= mux_N2;
+        raw_data[63:48] <= mux_N3;
+        raw_data[79:64] <= mux_N4;
+        raw_data[95:80] <= mux_N5;
+        raw_data[111:96] <= mux_N6;
+        raw_data[127:112] <= mux_N7;
+        raw_data[143:128] <= mux_E0;
+        raw_data[159:144] <= mux_E1;
+        raw_data[175:160] <= mux_E2;
+        raw_data[191:176] <= mux_E3;
+        raw_data[207:192] <= mux_E4;
+        raw_data[223:208] <= mux_E5;
+        raw_data[239:224] <= mux_E6;
+        raw_data[255:240] <= mux_E7;
+        raw_data[271:256] <= mux_W0;
+        raw_data[287:272] <= mux_W1;
+        raw_data[303:288] <= mux_W2;
+        raw_data[319:304] <= mux_W3;
+        raw_data[335:320] <= mux_W4;
+        raw_data[351:336] <= mux_W5;
+        raw_data[367:352] <= mux_W6;
+        raw_data[383:368] <= mux_W7;
       end
       else
-        raw_fifo_wr <= 0;
+        raw_wr <= 0;
     end
 
     always @(posedge clk) 
@@ -518,13 +479,13 @@ generate
 	  begin
 	    if (freq_wr_delay == 17)
 	    begin
-          freq_fifo_wr <= 1;
-          freq_in_data[15:0] <= freq_N0;
-          freq_in_data[31:16] <= freq_N1;
-          freq_in_data[47:32] <= freq_E0;
-          freq_in_data[63:48] <= freq_E1;
-          freq_in_data[79:64] <= freq_W0;
-          freq_in_data[95:80] <= freq_W1;
+          freq_wr <= 1;
+          freq_data[15:0] <= freq_N0;
+          freq_data[31:16] <= freq_N1;
+          freq_data[47:32] <= freq_E0;
+          freq_data[63:48] <= freq_E1;
+          freq_data[79:64] <= freq_W0;
+          freq_data[95:80] <= freq_W1;
 	    end
         else
           freq_wr_delay <= freq_wr_delay + 1;
@@ -533,69 +494,20 @@ generate
       begin
         if (freq_wr_delay)
 		begin
-          freq_fifo_wr <= 1;
-          freq_in_data[15:0] <= freq_N0;
-          freq_in_data[31:16] <= freq_N1;
-          freq_in_data[47:32] <= freq_E0;
-          freq_in_data[63:48] <= freq_E1;
-          freq_in_data[79:64] <= freq_W0;
-          freq_in_data[95:80] <= freq_W1;
+          freq_wr <= 1;
+          freq_data[15:0] <= freq_N0;
+          freq_data[31:16] <= freq_N1;
+          freq_data[47:32] <= freq_E0;
+          freq_data[63:48] <= freq_E1;
+          freq_data[79:64] <= freq_W0;
+          freq_data[95:80] <= freq_W1;
           freq_wr_delay <= freq_wr_delay - 1;
 		end
         else
-          freq_fifo_wr <= 0;
+          freq_wr <= 0;
       end
  	end
          
-    always @(posedge raw_clk) 
-     begin
-      if (raw_fifo_empty)
-  	  begin
-	     raw_delay <= 12'h3F0;
-	     raw_out_rd <= 0;
-      end
-	  else
-      begin
-	     if (raw_delay)
-	     begin
-	       raw_delay <= raw_delay - 1;
-	       raw_out_rd <= 0;
-	     end
-	     else
-	       raw_out_rd <= 1;
-  	  end
-    end
-
-    always @(posedge raw_clk) 
-    begin
-	   raw_ready <= raw_out_rd & (!raw_fifo_empty);
-       raw_data <= raw_out_data;
-    end
-
-    always @(posedge freq_clk) 
-    begin
-	   if (freq_fifo_empty)
-	   begin
-	       freq_rd_delay <= 3'b111;
-           freq_out_rd <= 0;
-       end
-	   else
-	   begin
-	       if (freq_rd_delay)
-	       begin
-	           freq_out_rd <= 0;
-	           freq_rd_delay <= freq_rd_delay - 1;
-	       end
-	       else
-               freq_out_rd <= 1;
-       end
-    end
-  
-    always @(posedge freq_clk) 
-    begin
-        freq_ready <= freq_out_rd & (!freq_fifo_empty);
-        freq_data <= freq_out_data;
-    end
   end
      
 endgenerate

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Dec 10 22:16:12 2025
+// Date        : Thu Dec 11 21:55:14 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_sim_netlist.v
@@ -35,10 +35,9 @@ module ps_deci_low_0_0
     sim_data,
     raw_wr,
     raw_data,
-    freq_clk,
-    freq_ready,
+    freq_wr,
     freq_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   input [127:0]data_N;
   input ready_N;
@@ -56,8 +55,7 @@ module ps_deci_low_0_0
   input [31:0]sim_data;
   output raw_wr;
   output [191:0]raw_data;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 freq_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME freq_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input freq_clk;
-  output freq_ready;
+  output freq_wr;
   output [47:0]freq_data;
 
   wire adc_active;
@@ -65,9 +63,8 @@ module ps_deci_low_0_0
   wire [127:0]data_E;
   wire [127:0]data_N;
   wire [127:0]data_W;
-  wire freq_clk;
   wire [47:0]freq_data;
-  wire freq_ready;
+  wire freq_wr;
   wire [191:0]raw_data;
   wire raw_wr;
   wire ready_E;
@@ -88,9 +85,8 @@ module ps_deci_low_0_0
         .data_E(data_E),
         .data_N(data_N),
         .data_W(data_W),
-        .freq_clk(freq_clk),
         .freq_data(freq_data),
-        .freq_ready(freq_ready),
+        .freq_wr(freq_wr),
         .raw_data(raw_data),
         .raw_wr(raw_wr),
         .ready_E(ready_E),
@@ -126,8 +122,7 @@ module ps_deci_low_0_0_deci_low
     sim_data,
     raw_wr,
     raw_data,
-    freq_clk,
-    freq_ready,
+    freq_wr,
     freq_data);
   input clk;
   input resetn;
@@ -147,8 +142,7 @@ module ps_deci_low_0_0_deci_low
   input [31:0]sim_data;
   output raw_wr;
   output [191:0]raw_data;
-  input freq_clk;
-  output freq_ready;
+  output freq_wr;
   output [47:0]freq_data;
 
   wire adc_active;
@@ -157,67 +151,14 @@ module ps_deci_low_0_0_deci_low
   wire [127:0]data_N;
   wire [127:0]data_W;
   wire \deci_low.fir_resetn_i_1_n_0 ;
-  wire \deci_low.freq_fifo_wr_i_1_n_0 ;
-  wire \deci_low.freq_fifo_wr_reg_n_0 ;
-  wire \deci_low.freq_in_data[47]_i_1_n_0 ;
-  wire \deci_low.freq_in_data_reg_n_0_[0] ;
-  wire \deci_low.freq_in_data_reg_n_0_[10] ;
-  wire \deci_low.freq_in_data_reg_n_0_[11] ;
-  wire \deci_low.freq_in_data_reg_n_0_[12] ;
-  wire \deci_low.freq_in_data_reg_n_0_[13] ;
-  wire \deci_low.freq_in_data_reg_n_0_[14] ;
-  wire \deci_low.freq_in_data_reg_n_0_[15] ;
-  wire \deci_low.freq_in_data_reg_n_0_[16] ;
-  wire \deci_low.freq_in_data_reg_n_0_[17] ;
-  wire \deci_low.freq_in_data_reg_n_0_[18] ;
-  wire \deci_low.freq_in_data_reg_n_0_[19] ;
-  wire \deci_low.freq_in_data_reg_n_0_[1] ;
-  wire \deci_low.freq_in_data_reg_n_0_[20] ;
-  wire \deci_low.freq_in_data_reg_n_0_[21] ;
-  wire \deci_low.freq_in_data_reg_n_0_[22] ;
-  wire \deci_low.freq_in_data_reg_n_0_[23] ;
-  wire \deci_low.freq_in_data_reg_n_0_[24] ;
-  wire \deci_low.freq_in_data_reg_n_0_[25] ;
-  wire \deci_low.freq_in_data_reg_n_0_[26] ;
-  wire \deci_low.freq_in_data_reg_n_0_[27] ;
-  wire \deci_low.freq_in_data_reg_n_0_[28] ;
-  wire \deci_low.freq_in_data_reg_n_0_[29] ;
-  wire \deci_low.freq_in_data_reg_n_0_[2] ;
-  wire \deci_low.freq_in_data_reg_n_0_[30] ;
-  wire \deci_low.freq_in_data_reg_n_0_[31] ;
-  wire \deci_low.freq_in_data_reg_n_0_[32] ;
-  wire \deci_low.freq_in_data_reg_n_0_[33] ;
-  wire \deci_low.freq_in_data_reg_n_0_[34] ;
-  wire \deci_low.freq_in_data_reg_n_0_[35] ;
-  wire \deci_low.freq_in_data_reg_n_0_[36] ;
-  wire \deci_low.freq_in_data_reg_n_0_[37] ;
-  wire \deci_low.freq_in_data_reg_n_0_[38] ;
-  wire \deci_low.freq_in_data_reg_n_0_[39] ;
-  wire \deci_low.freq_in_data_reg_n_0_[3] ;
-  wire \deci_low.freq_in_data_reg_n_0_[40] ;
-  wire \deci_low.freq_in_data_reg_n_0_[41] ;
-  wire \deci_low.freq_in_data_reg_n_0_[42] ;
-  wire \deci_low.freq_in_data_reg_n_0_[43] ;
-  wire \deci_low.freq_in_data_reg_n_0_[44] ;
-  wire \deci_low.freq_in_data_reg_n_0_[45] ;
-  wire \deci_low.freq_in_data_reg_n_0_[46] ;
-  wire \deci_low.freq_in_data_reg_n_0_[47] ;
-  wire \deci_low.freq_in_data_reg_n_0_[4] ;
-  wire \deci_low.freq_in_data_reg_n_0_[5] ;
-  wire \deci_low.freq_in_data_reg_n_0_[6] ;
-  wire \deci_low.freq_in_data_reg_n_0_[7] ;
-  wire \deci_low.freq_in_data_reg_n_0_[8] ;
-  wire \deci_low.freq_in_data_reg_n_0_[9] ;
-  wire \deci_low.freq_out_rd_i_1_n_0 ;
-  wire \deci_low.freq_rd_delay[1]_i_1_n_0 ;
-  wire \deci_low.freq_rd_delay[1]_i_2_n_0 ;
-  wire \deci_low.freq_rd_delay[2]_i_1_n_0 ;
+  wire \deci_low.freq_data[47]_i_1_n_0 ;
   wire \deci_low.freq_wr_delay[0]_i_1_n_0 ;
   wire \deci_low.freq_wr_delay[1]_i_1_n_0 ;
   wire \deci_low.freq_wr_delay[2]_i_1_n_0 ;
   wire \deci_low.freq_wr_delay[3]_i_1_n_0 ;
   wire \deci_low.freq_wr_delay[3]_i_2_n_0 ;
   wire [3:0]\deci_low.freq_wr_delay_reg ;
+  wire \deci_low.freq_wr_i_1_n_0 ;
   wire \deci_low.mux_E[0]_i_1_n_0 ;
   wire \deci_low.mux_E[100]_i_1_n_0 ;
   wire \deci_low.mux_E[101]_i_1_n_0 ;
@@ -616,9 +557,9 @@ module ps_deci_low_0_0_deci_low
   wire \deci_low.reset_active[2]_i_1_n_0 ;
   wire \deci_low.reset_active[2]_i_2_n_0 ;
   wire \deci_low.reset_active[2]_i_3_n_0 ;
-  wire \deci_low.reset_delay[1]_i_1_n_0 ;
-  wire \deci_low.reset_delay[2]_i_2_n_0 ;
-  wire \deci_low.reset_delay[2]_i_3_n_0 ;
+  wire \deci_low.reset_delay[1]_i_2_n_0 ;
+  wire \deci_low.reset_delay[1]_i_3_n_0 ;
+  wire \deci_low.reset_delay[2]_i_1_n_0 ;
   wire \deci_low.sim_active_1_i_1_n_0 ;
   wire \deci_low.sim_active_i_1_n_0 ;
   wire \deci_low.sim_count[0]_i_1_n_0 ;
@@ -770,15 +711,8 @@ module ps_deci_low_0_0_deci_low
   wire [15:0]freq_E;
   wire [15:0]freq_N;
   wire [15:0]freq_W;
-  wire freq_clk;
   wire [47:0]freq_data;
-  wire freq_fifo_empty;
-  wire [47:0]freq_out_data;
-  wire freq_out_rd;
-  wire [2:0]freq_rd_delay;
-  wire [0:0]freq_rd_delay0;
-  wire freq_ready;
-  wire freq_ready0;
+  wire freq_wr;
   wire [127:0]mux_E;
   wire [127:0]mux_N;
   wire [127:0]mux_W;
@@ -815,9 +749,6 @@ module ps_deci_low_0_0_deci_low
   wire sim_wr_E;
   wire sim_wr_N;
   wire sim_wr_W;
-  wire NLW_fifo_freq_i_full_UNCONNECTED;
-  wire NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED;
-  wire NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED;
   wire NLW_fifo_sim_E_i_full_UNCONNECTED;
   wire NLW_fifo_sim_E_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_sim_E_i_wr_rst_busy_UNCONNECTED;
@@ -860,687 +791,310 @@ module ps_deci_low_0_0_deci_low
         .D(\deci_low.fir_resetn_i_1_n_0 ),
         .Q(fir_resetn),
         .R(1'b0));
-  FDRE \deci_low.freq_data_reg[0] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[0]),
-        .Q(freq_data[0]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[10] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[10]),
-        .Q(freq_data[10]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[11] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[11]),
-        .Q(freq_data[11]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[12] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[12]),
-        .Q(freq_data[12]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[13] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[13]),
-        .Q(freq_data[13]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[14] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[14]),
-        .Q(freq_data[14]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[15] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[15]),
-        .Q(freq_data[15]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[16] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[16]),
-        .Q(freq_data[16]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[17] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[17]),
-        .Q(freq_data[17]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[18] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[18]),
-        .Q(freq_data[18]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[19] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[19]),
-        .Q(freq_data[19]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[1] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[1]),
-        .Q(freq_data[1]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[20] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[20]),
-        .Q(freq_data[20]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[21] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[21]),
-        .Q(freq_data[21]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[22] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[22]),
-        .Q(freq_data[22]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[23] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[23]),
-        .Q(freq_data[23]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[24] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[24]),
-        .Q(freq_data[24]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[25] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[25]),
-        .Q(freq_data[25]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[26] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[26]),
-        .Q(freq_data[26]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[27] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[27]),
-        .Q(freq_data[27]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[28] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[28]),
-        .Q(freq_data[28]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[29] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[29]),
-        .Q(freq_data[29]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[2] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[2]),
-        .Q(freq_data[2]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[30] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[30]),
-        .Q(freq_data[30]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[31] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[31]),
-        .Q(freq_data[31]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[32] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[32]),
-        .Q(freq_data[32]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[33] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[33]),
-        .Q(freq_data[33]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[34] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[34]),
-        .Q(freq_data[34]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[35] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[35]),
-        .Q(freq_data[35]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[36] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[36]),
-        .Q(freq_data[36]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[37] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[37]),
-        .Q(freq_data[37]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[38] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[38]),
-        .Q(freq_data[38]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[39] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[39]),
-        .Q(freq_data[39]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[3] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[3]),
-        .Q(freq_data[3]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[40] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[40]),
-        .Q(freq_data[40]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[41] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[41]),
-        .Q(freq_data[41]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[42] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[42]),
-        .Q(freq_data[42]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[43] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[43]),
-        .Q(freq_data[43]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[44] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[44]),
-        .Q(freq_data[44]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[45] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[45]),
-        .Q(freq_data[45]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[46] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[46]),
-        .Q(freq_data[46]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[47] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[47]),
-        .Q(freq_data[47]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[4] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[4]),
-        .Q(freq_data[4]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[5] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[5]),
-        .Q(freq_data[5]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[6] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[6]),
-        .Q(freq_data[6]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[7] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[7]),
-        .Q(freq_data[7]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[8] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[8]),
-        .Q(freq_data[8]),
-        .R(1'b0));
-  FDRE \deci_low.freq_data_reg[9] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_out_data[9]),
-        .Q(freq_data[9]),
-        .R(1'b0));
-  LUT6 #(
-    .INIT(64'hABAAAAAAFFFFFFFC)) 
-    \deci_low.freq_fifo_wr_i_1 
-       (.I0(\deci_low.freq_fifo_wr_reg_n_0 ),
-        .I1(\deci_low.freq_wr_delay_reg [0]),
-        .I2(\deci_low.freq_wr_delay_reg [1]),
-        .I3(\deci_low.freq_wr_delay_reg [3]),
-        .I4(\deci_low.freq_wr_delay_reg [2]),
-        .I5(mux_active),
-        .O(\deci_low.freq_fifo_wr_i_1_n_0 ));
-  FDRE \deci_low.freq_fifo_wr_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\deci_low.freq_fifo_wr_i_1_n_0 ),
-        .Q(\deci_low.freq_fifo_wr_reg_n_0 ),
-        .R(1'b0));
   LUT5 #(
     .INIT(32'h57555554)) 
-    \deci_low.freq_in_data[47]_i_1 
+    \deci_low.freq_data[47]_i_1 
        (.I0(mux_active),
         .I1(\deci_low.freq_wr_delay_reg [1]),
         .I2(\deci_low.freq_wr_delay_reg [0]),
         .I3(\deci_low.freq_wr_delay_reg [3]),
         .I4(\deci_low.freq_wr_delay_reg [2]),
-        .O(\deci_low.freq_in_data[47]_i_1_n_0 ));
-  FDRE \deci_low.freq_in_data_reg[0] 
+        .O(\deci_low.freq_data[47]_i_1_n_0 ));
+  FDRE \deci_low.freq_data_reg[0] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[0]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[0] ),
+        .Q(freq_data[0]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[10] 
+  FDRE \deci_low.freq_data_reg[10] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[10]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[10] ),
+        .Q(freq_data[10]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[11] 
+  FDRE \deci_low.freq_data_reg[11] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[11]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[11] ),
+        .Q(freq_data[11]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[12] 
+  FDRE \deci_low.freq_data_reg[12] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[12]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[12] ),
+        .Q(freq_data[12]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[13] 
+  FDRE \deci_low.freq_data_reg[13] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[13]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[13] ),
+        .Q(freq_data[13]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[14] 
+  FDRE \deci_low.freq_data_reg[14] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[14]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[14] ),
+        .Q(freq_data[14]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[15] 
+  FDRE \deci_low.freq_data_reg[15] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[15]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[15] ),
+        .Q(freq_data[15]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[16] 
+  FDRE \deci_low.freq_data_reg[16] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[0]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[16] ),
+        .Q(freq_data[16]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[17] 
+  FDRE \deci_low.freq_data_reg[17] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[1]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[17] ),
+        .Q(freq_data[17]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[18] 
+  FDRE \deci_low.freq_data_reg[18] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[2]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[18] ),
+        .Q(freq_data[18]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[19] 
+  FDRE \deci_low.freq_data_reg[19] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[3]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[19] ),
+        .Q(freq_data[19]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[1] 
+  FDRE \deci_low.freq_data_reg[1] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[1]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[1] ),
+        .Q(freq_data[1]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[20] 
+  FDRE \deci_low.freq_data_reg[20] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[4]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[20] ),
+        .Q(freq_data[20]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[21] 
+  FDRE \deci_low.freq_data_reg[21] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[5]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[21] ),
+        .Q(freq_data[21]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[22] 
+  FDRE \deci_low.freq_data_reg[22] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[6]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[22] ),
+        .Q(freq_data[22]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[23] 
+  FDRE \deci_low.freq_data_reg[23] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[7]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[23] ),
+        .Q(freq_data[23]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[24] 
+  FDRE \deci_low.freq_data_reg[24] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[8]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[24] ),
+        .Q(freq_data[24]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[25] 
+  FDRE \deci_low.freq_data_reg[25] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[9]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[25] ),
+        .Q(freq_data[25]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[26] 
+  FDRE \deci_low.freq_data_reg[26] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[10]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[26] ),
+        .Q(freq_data[26]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[27] 
+  FDRE \deci_low.freq_data_reg[27] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[11]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[27] ),
+        .Q(freq_data[27]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[28] 
+  FDRE \deci_low.freq_data_reg[28] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[12]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[28] ),
+        .Q(freq_data[28]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[29] 
+  FDRE \deci_low.freq_data_reg[29] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[13]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[29] ),
+        .Q(freq_data[29]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[2] 
+  FDRE \deci_low.freq_data_reg[2] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[2]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[2] ),
+        .Q(freq_data[2]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[30] 
+  FDRE \deci_low.freq_data_reg[30] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[14]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[30] ),
+        .Q(freq_data[30]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[31] 
+  FDRE \deci_low.freq_data_reg[31] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_E[15]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[31] ),
+        .Q(freq_data[31]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[32] 
+  FDRE \deci_low.freq_data_reg[32] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[0]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[32] ),
+        .Q(freq_data[32]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[33] 
+  FDRE \deci_low.freq_data_reg[33] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[1]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[33] ),
+        .Q(freq_data[33]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[34] 
+  FDRE \deci_low.freq_data_reg[34] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[2]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[34] ),
+        .Q(freq_data[34]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[35] 
+  FDRE \deci_low.freq_data_reg[35] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[3]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[35] ),
+        .Q(freq_data[35]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[36] 
+  FDRE \deci_low.freq_data_reg[36] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[4]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[36] ),
+        .Q(freq_data[36]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[37] 
+  FDRE \deci_low.freq_data_reg[37] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[5]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[37] ),
+        .Q(freq_data[37]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[38] 
+  FDRE \deci_low.freq_data_reg[38] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[6]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[38] ),
+        .Q(freq_data[38]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[39] 
+  FDRE \deci_low.freq_data_reg[39] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[7]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[39] ),
+        .Q(freq_data[39]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[3] 
+  FDRE \deci_low.freq_data_reg[3] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[3]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[3] ),
+        .Q(freq_data[3]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[40] 
+  FDRE \deci_low.freq_data_reg[40] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[8]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[40] ),
+        .Q(freq_data[40]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[41] 
+  FDRE \deci_low.freq_data_reg[41] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[9]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[41] ),
+        .Q(freq_data[41]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[42] 
+  FDRE \deci_low.freq_data_reg[42] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[10]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[42] ),
+        .Q(freq_data[42]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[43] 
+  FDRE \deci_low.freq_data_reg[43] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[11]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[43] ),
+        .Q(freq_data[43]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[44] 
+  FDRE \deci_low.freq_data_reg[44] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[12]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[44] ),
+        .Q(freq_data[44]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[45] 
+  FDRE \deci_low.freq_data_reg[45] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[13]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[45] ),
+        .Q(freq_data[45]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[46] 
+  FDRE \deci_low.freq_data_reg[46] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[14]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[46] ),
+        .Q(freq_data[46]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[47] 
+  FDRE \deci_low.freq_data_reg[47] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_W[15]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[47] ),
+        .Q(freq_data[47]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[4] 
+  FDRE \deci_low.freq_data_reg[4] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[4]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[4] ),
+        .Q(freq_data[4]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[5] 
+  FDRE \deci_low.freq_data_reg[5] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[5]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[5] ),
+        .Q(freq_data[5]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[6] 
+  FDRE \deci_low.freq_data_reg[6] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[6]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[6] ),
+        .Q(freq_data[6]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[7] 
+  FDRE \deci_low.freq_data_reg[7] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[7]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[7] ),
+        .Q(freq_data[7]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[8] 
+  FDRE \deci_low.freq_data_reg[8] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[8]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[8] ),
+        .Q(freq_data[8]),
         .R(1'b0));
-  FDRE \deci_low.freq_in_data_reg[9] 
+  FDRE \deci_low.freq_data_reg[9] 
        (.C(clk),
-        .CE(\deci_low.freq_in_data[47]_i_1_n_0 ),
+        .CE(\deci_low.freq_data[47]_i_1_n_0 ),
         .D(freq_N[9]),
-        .Q(\deci_low.freq_in_data_reg_n_0_[9] ),
+        .Q(freq_data[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \deci_low.freq_out_rd_i_1 
-       (.I0(freq_fifo_empty),
-        .I1(freq_rd_delay[1]),
-        .I2(freq_rd_delay[2]),
-        .I3(freq_rd_delay[0]),
-        .O(\deci_low.freq_out_rd_i_1_n_0 ));
-  FDRE \deci_low.freq_out_rd_reg 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(\deci_low.freq_out_rd_i_1_n_0 ),
-        .Q(freq_out_rd),
-        .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT1 #(
-    .INIT(2'h1)) 
-    \deci_low.freq_rd_delay[0]_i_1 
-       (.I0(freq_rd_delay[0]),
-        .O(freq_rd_delay0));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \deci_low.freq_rd_delay[1]_i_1 
-       (.I0(freq_rd_delay[0]),
-        .I1(freq_rd_delay[2]),
-        .I2(freq_rd_delay[1]),
-        .O(\deci_low.freq_rd_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT2 #(
-    .INIT(4'h9)) 
-    \deci_low.freq_rd_delay[1]_i_2 
-       (.I0(freq_rd_delay[0]),
-        .I1(freq_rd_delay[1]),
-        .O(\deci_low.freq_rd_delay[1]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hC8)) 
-    \deci_low.freq_rd_delay[2]_i_1 
-       (.I0(freq_rd_delay[0]),
-        .I1(freq_rd_delay[2]),
-        .I2(freq_rd_delay[1]),
-        .O(\deci_low.freq_rd_delay[2]_i_1_n_0 ));
-  FDSE \deci_low.freq_rd_delay_reg[0] 
-       (.C(freq_clk),
-        .CE(\deci_low.freq_rd_delay[1]_i_1_n_0 ),
-        .D(freq_rd_delay0),
-        .Q(freq_rd_delay[0]),
-        .S(freq_fifo_empty));
-  FDSE \deci_low.freq_rd_delay_reg[1] 
-       (.C(freq_clk),
-        .CE(\deci_low.freq_rd_delay[1]_i_1_n_0 ),
-        .D(\deci_low.freq_rd_delay[1]_i_2_n_0 ),
-        .Q(freq_rd_delay[1]),
-        .S(freq_fifo_empty));
-  FDSE \deci_low.freq_rd_delay_reg[2] 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(\deci_low.freq_rd_delay[2]_i_1_n_0 ),
-        .Q(freq_rd_delay[2]),
-        .S(freq_fifo_empty));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \deci_low.freq_ready_i_1 
-       (.I0(freq_out_rd),
-        .I1(freq_fifo_empty),
-        .O(freq_ready0));
-  FDRE \deci_low.freq_ready_reg 
-       (.C(freq_clk),
-        .CE(1'b1),
-        .D(freq_ready0),
-        .Q(freq_ready),
-        .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \deci_low.freq_wr_delay[0]_i_1 
        (.I0(\deci_low.freq_wr_delay_reg [0]),
         .O(\deci_low.freq_wr_delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \deci_low.freq_wr_delay[1]_i_1 
@@ -1599,6 +1153,22 @@ module ps_deci_low_0_0_deci_low
         .CE(\deci_low.freq_wr_delay[3]_i_1_n_0 ),
         .D(\deci_low.freq_wr_delay[3]_i_2_n_0 ),
         .Q(\deci_low.freq_wr_delay_reg [3]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'hABAAAAAAFFFFFFFC)) 
+    \deci_low.freq_wr_i_1 
+       (.I0(freq_wr),
+        .I1(\deci_low.freq_wr_delay_reg [0]),
+        .I2(\deci_low.freq_wr_delay_reg [1]),
+        .I3(\deci_low.freq_wr_delay_reg [3]),
+        .I4(\deci_low.freq_wr_delay_reg [2]),
+        .I5(mux_active),
+        .O(\deci_low.freq_wr_i_1_n_0 ));
+  FDRE \deci_low.freq_wr_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\deci_low.freq_wr_i_1_n_0 ),
+        .Q(freq_wr),
         .R(1'b0));
   LUT5 #(
     .INIT(32'hF088F000)) 
@@ -8537,13 +8107,13 @@ module ps_deci_low_0_0_deci_low
         .D(fir_raw_N[24]),
         .Q(raw_data[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \deci_low.raw_wr_delay[0]_i_1 
        (.I0(\deci_low.raw_wr_delay_reg [0]),
         .O(\deci_low.raw_wr_delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \deci_low.raw_wr_delay[1]_i_1 
@@ -8626,10 +8196,10 @@ module ps_deci_low_0_0_deci_low
        (.I0(reset_active[0]),
         .I1(reset_active[1]),
         .I2(reset_active[2]),
-        .I3(\deci_low.reset_delay[2]_i_2_n_0 ),
+        .I3(\deci_low.reset_delay[1]_i_2_n_0 ),
         .I4(resetn),
         .O(\deci_low.reset_active[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \deci_low.reset_active[1]_i_1 
@@ -8651,7 +8221,7 @@ module ps_deci_low_0_0_deci_low
         .I1(reset_active[1]),
         .I2(reset_active[2]),
         .O(\deci_low.reset_active[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hE1)) 
     \deci_low.reset_active[2]_i_3 
@@ -8677,55 +8247,55 @@ module ps_deci_low_0_0_deci_low
         .D(\deci_low.reset_active[2]_i_3_n_0 ),
         .Q(reset_active[2]),
         .S(\deci_low.reset_active[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \deci_low.reset_delay[0]_i_1 
        (.I0(reset_delay[0]),
         .O(reset_delay01_in));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
-  LUT2 #(
-    .INIT(4'h9)) 
-    \deci_low.reset_delay[1]_i_1 
-       (.I0(reset_delay[0]),
-        .I1(reset_delay[1]),
-        .O(\deci_low.reset_delay[1]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'hE)) 
-    \deci_low.reset_delay[2]_i_1 
+    \deci_low.reset_delay[1]_i_1 
        (.I0(mux_active),
-        .I1(\deci_low.freq_fifo_wr_reg_n_0 ),
+        .I1(freq_wr),
         .O(reset_delay0));
   LUT3 #(
     .INIT(8'hFE)) 
-    \deci_low.reset_delay[2]_i_2 
+    \deci_low.reset_delay[1]_i_2 
        (.I0(reset_delay[0]),
         .I1(reset_delay[2]),
         .I2(reset_delay[1]),
-        .O(\deci_low.reset_delay[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+        .O(\deci_low.reset_delay[1]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT2 #(
+    .INIT(4'h9)) 
+    \deci_low.reset_delay[1]_i_3 
+       (.I0(reset_delay[0]),
+        .I1(reset_delay[1]),
+        .O(\deci_low.reset_delay[1]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'hE1)) 
-    \deci_low.reset_delay[2]_i_3 
-       (.I0(reset_delay[1]),
-        .I1(reset_delay[0]),
-        .I2(reset_delay[2]),
-        .O(\deci_low.reset_delay[2]_i_3_n_0 ));
+    .INIT(8'hC8)) 
+    \deci_low.reset_delay[2]_i_1 
+       (.I0(reset_delay[0]),
+        .I1(reset_delay[2]),
+        .I2(reset_delay[1]),
+        .O(\deci_low.reset_delay[2]_i_1_n_0 ));
   FDSE \deci_low.reset_delay_reg[0] 
        (.C(clk),
-        .CE(\deci_low.reset_delay[2]_i_2_n_0 ),
+        .CE(\deci_low.reset_delay[1]_i_2_n_0 ),
         .D(reset_delay01_in),
         .Q(reset_delay[0]),
         .S(reset_delay0));
   FDSE \deci_low.reset_delay_reg[1] 
        (.C(clk),
-        .CE(\deci_low.reset_delay[2]_i_2_n_0 ),
-        .D(\deci_low.reset_delay[1]_i_1_n_0 ),
+        .CE(\deci_low.reset_delay[1]_i_2_n_0 ),
+        .D(\deci_low.reset_delay[1]_i_3_n_0 ),
         .Q(reset_delay[1]),
         .S(reset_delay0));
   FDSE \deci_low.reset_delay_reg[2] 
        (.C(clk),
-        .CE(\deci_low.reset_delay[2]_i_2_n_0 ),
-        .D(\deci_low.reset_delay[2]_i_3_n_0 ),
+        .CE(1'b1),
+        .D(\deci_low.reset_delay[2]_i_1_n_0 ),
         .Q(reset_delay[2]),
         .S(reset_delay0));
   LUT3 #(
@@ -8758,7 +8328,7 @@ module ps_deci_low_0_0_deci_low
         .D(sim_active_2),
         .Q(sim_active),
         .R(\deci_low.sim_active_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \deci_low.sim_count[0]_i_1 
@@ -8772,7 +8342,7 @@ module ps_deci_low_0_0_deci_low
         .I2(sim_count__0[1]),
         .I3(sim_resetn),
         .O(\deci_low.sim_count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \deci_low.sim_count[1]_i_2 
@@ -9614,7 +9184,7 @@ module ps_deci_low_0_0_deci_low
         .D(sim_data[9]),
         .Q(\deci_low.sim_curr_data_reg_n_0_[9] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
     .INIT(16'hD400)) 
     \deci_low.sim_curr_wr_i_1 
@@ -10416,7 +9986,7 @@ module ps_deci_low_0_0_deci_low
     \deci_low.sim_wr_E_i_1 
        (.I0(\deci_low.sim_curr_wr_reg_n_0 ),
         .O(\deci_low.sim_wr_E_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \deci_low.sim_wr_E_i_2 
@@ -10429,7 +9999,7 @@ module ps_deci_low_0_0_deci_low
         .D(\deci_low.sim_wr_E_i_2_n_0 ),
         .Q(sim_wr_E),
         .R(\deci_low.sim_wr_E_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \deci_low.sim_wr_N_i_1 
@@ -10454,21 +10024,6 @@ module ps_deci_low_0_0_deci_low
         .D(\deci_low.sim_wr_W_i_1_n_0 ),
         .Q(sim_wr_W),
         .R(\deci_low.sim_wr_E_i_1_n_0 ));
-  (* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-  ps_deci_low_0_0_fifo_doa_low fifo_freq_i
-       (.din({\deci_low.freq_in_data_reg_n_0_[47] ,\deci_low.freq_in_data_reg_n_0_[46] ,\deci_low.freq_in_data_reg_n_0_[45] ,\deci_low.freq_in_data_reg_n_0_[44] ,\deci_low.freq_in_data_reg_n_0_[43] ,\deci_low.freq_in_data_reg_n_0_[42] ,\deci_low.freq_in_data_reg_n_0_[41] ,\deci_low.freq_in_data_reg_n_0_[40] ,\deci_low.freq_in_data_reg_n_0_[39] ,\deci_low.freq_in_data_reg_n_0_[38] ,\deci_low.freq_in_data_reg_n_0_[37] ,\deci_low.freq_in_data_reg_n_0_[36] ,\deci_low.freq_in_data_reg_n_0_[35] ,\deci_low.freq_in_data_reg_n_0_[34] ,\deci_low.freq_in_data_reg_n_0_[33] ,\deci_low.freq_in_data_reg_n_0_[32] ,\deci_low.freq_in_data_reg_n_0_[31] ,\deci_low.freq_in_data_reg_n_0_[30] ,\deci_low.freq_in_data_reg_n_0_[29] ,\deci_low.freq_in_data_reg_n_0_[28] ,\deci_low.freq_in_data_reg_n_0_[27] ,\deci_low.freq_in_data_reg_n_0_[26] ,\deci_low.freq_in_data_reg_n_0_[25] ,\deci_low.freq_in_data_reg_n_0_[24] ,\deci_low.freq_in_data_reg_n_0_[23] ,\deci_low.freq_in_data_reg_n_0_[22] ,\deci_low.freq_in_data_reg_n_0_[21] ,\deci_low.freq_in_data_reg_n_0_[20] ,\deci_low.freq_in_data_reg_n_0_[19] ,\deci_low.freq_in_data_reg_n_0_[18] ,\deci_low.freq_in_data_reg_n_0_[17] ,\deci_low.freq_in_data_reg_n_0_[16] ,\deci_low.freq_in_data_reg_n_0_[15] ,\deci_low.freq_in_data_reg_n_0_[14] ,\deci_low.freq_in_data_reg_n_0_[13] ,\deci_low.freq_in_data_reg_n_0_[12] ,\deci_low.freq_in_data_reg_n_0_[11] ,\deci_low.freq_in_data_reg_n_0_[10] ,\deci_low.freq_in_data_reg_n_0_[9] ,\deci_low.freq_in_data_reg_n_0_[8] ,\deci_low.freq_in_data_reg_n_0_[7] ,\deci_low.freq_in_data_reg_n_0_[6] ,\deci_low.freq_in_data_reg_n_0_[5] ,\deci_low.freq_in_data_reg_n_0_[4] ,\deci_low.freq_in_data_reg_n_0_[3] ,\deci_low.freq_in_data_reg_n_0_[2] ,\deci_low.freq_in_data_reg_n_0_[1] ,\deci_low.freq_in_data_reg_n_0_[0] }),
-        .dout(freq_out_data),
-        .empty(freq_fifo_empty),
-        .full(NLW_fifo_freq_i_full_UNCONNECTED),
-        .rd_clk(freq_clk),
-        .rd_en(freq_out_rd),
-        .rd_rst_busy(NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED),
-        .rst(\deci_low.sim_active_i_1_n_0 ),
-        .wr_clk(clk),
-        .wr_en(\deci_low.freq_fifo_wr_reg_n_0 ),
-        .wr_rst_busy(NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED));
   (* CHECK_LICENSE_TYPE = "fifo_sim,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
@@ -10499,7 +10054,7 @@ module ps_deci_low_0_0_deci_low
         .wr_clk(sim_clk),
         .wr_en(sim_wr_N),
         .wr_rst_busy(NLW_fifo_sim_N_i_wr_rst_busy_UNCONNECTED));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT1 #(
     .INIT(2'h1)) 
     fifo_sim_N_i_i_1
@@ -10586,37 +10141,6 @@ module ps_deci_low_0_0_deci_low
         .s_axis_data_tdata(mux_W),
         .s_axis_data_tready(NLW_fir_raw_W_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(mux_active));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa_low" *) 
-(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-module ps_deci_low_0_0_fifo_doa_low
-   (rst,
-    wr_clk,
-    rd_clk,
-    din,
-    wr_en,
-    rd_en,
-    dout,
-    full,
-    empty,
-    wr_rst_busy,
-    rd_rst_busy);
-  input rst;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
-  (* syn_isclock = "1" *) input wr_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
-  (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [47:0]din;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [47:0]dout;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
-  output wr_rst_busy;
-  output rd_rst_busy;
-
-
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_sim,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_sim" *) 

@@ -144,20 +144,20 @@ int main()
 	LoadSamples(control, 1, sample_arr, size);
 	LoadSamples(control, 2, sample_arr, size);
 
-	size = GenerateZero(4000.0, 190.0, 120);
+	size = GenerateZero(4000.0, 189.0, 120);
 
 	LoadSamples(control, 4, sample_arr, size);
 	LoadSamples(control, 5, sample_arr, size);
 	LoadSamples(control, 6, sample_arr, size);
 
-	size = GenerateMorlet(4000.0, 190.0, 20, 25000);
-//	size = GenerateCos(4000.0, 190.0, 120, 25000);
+	size = GenerateMorlet(4000.0, 189.0, 20, 25000);
+//	size = GenerateCos(4000.0, 189.0, 120, 25000);
 
 	LoadSamples(control, 4, sample_arr, size);
 	LoadSamples(control, 5, sample_arr, size);
 	LoadSamples(control, 6, sample_arr, size);
 
-	size = GenerateZero(4000.0, 190.0, 120);
+	size = GenerateZero(4000.0, 189.0, 120);
 
 	LoadSamples(control, 4, sample_arr, size);
 	LoadSamples(control, 5, sample_arr, size);
