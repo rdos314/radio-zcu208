@@ -52,8 +52,7 @@ module deci_high(
   reg [127:0] mux_E;
   reg [127:0] mux_W;
 
-  reg [3:0] raw_wr_delay;
-  reg [3:0] freq_wr_delay;
+  reg [4:0] freq_wr_delay;
 
   reg sim_wr_N;
   reg sim_wr_E;
@@ -204,27 +203,26 @@ fifo_sim fifo_sim_W_i (
   .empty(sim_empty_W)       // output wire empty
 );
 
-/*
 ila_5 ila_5_i (
-		.clk(clk),                   // input wire clk
-		.probe0(reset_delay),        // input wire [2:0]  probe3
-		.probe1(reset_active),       // input wire [2:0]  probe3
-		.probe2(fir_resetn),         // input wire [0:0]  probe3
-		.probe3(adc_active),         // input wire [0:0]  probe3
-		.probe4(mux_active),         // input wire [0:0]  probe3
-		.probe5(raw_fifo_wr),        // input wire [0:0]  probe3
-		.probe6(raw_in_data[15:0]),  // input wire [15:0]  probe3
+		.clk(clk),                    // input wire clk
+		.probe0(reset_delay),         // input wire [2:0]  probe3
+		.probe1(reset_active),        // input wire [2:0]  probe3
+		.probe2(fir_resetn),          // input wire [0:0]  probe3
+		.probe3(adc_active),          // input wire [0:0]  probe3
+		.probe4(mux_active),          // input wire [0:0]  probe3
+		.probe5(raw_wr),              // input wire [0:0]  probe3
+		.probe6(raw_data[15:0]),      // input wire [15:0]  probe3
 		.probe7(freq_wr_delay),       // input wire [4:0]  probe3
-		.probe8(freq_fifo_wr),        // input wire [0:0]  probe3
-		.probe9(freq_in_data[15:0]),  // input wire [15:0]  probe3
-		.probe10(mux_N0),            // input wire [15:0]  probe3
-		.probe11(mux_N1),            // input wire [15:0]  probe3
-		.probe12(mux_N2),            // input wire [15:0]  probe3
-		.probe13(mux_N3),            // input wire [15:0]  probe3
-		.probe14(mux_N4),            // input wire [15:0]  probe3
-		.probe15(mux_N5),            // input wire [15:0]  probe3
-		.probe16(mux_N6),            // input wire [15:0]  probe3
-		.probe17(mux_N7),            // input wire [15:0]  probe3
+		.probe8(freq_wr),             // input wire [0:0]  probe3
+		.probe9(freq_data[15:0]),     // input wire [15:0]  probe3
+		.probe10(mux_N0),             // input wire [15:0]  probe3
+		.probe11(mux_N1),             // input wire [15:0]  probe3
+		.probe12(mux_N2),             // input wire [15:0]  probe3
+		.probe13(mux_N3),             // input wire [15:0]  probe3
+		.probe14(mux_N4),             // input wire [15:0]  probe3
+		.probe15(mux_N5),             // input wire [15:0]  probe3
+		.probe16(mux_N6),             // input wire [15:0]  probe3
+		.probe17(mux_N7),             // input wire [15:0]  probe3
 		.probe18(freq_N0),            // input wire [15:0]  probe3
 		.probe19(freq_N1),            // input wire [15:0]  probe3
 		.probe20(freq_E0),            // input wire [15:0]  probe3
@@ -232,6 +230,8 @@ ila_5 ila_5_i (
 		.probe22(freq_W0),            // input wire [15:0]  probe3
 		.probe23(freq_W1)             // input wire [15:0]  probe3
 );
+
+/*
 
 ila_7 ila_7_i (
 		.clk(raw_clk),               // input wire clk

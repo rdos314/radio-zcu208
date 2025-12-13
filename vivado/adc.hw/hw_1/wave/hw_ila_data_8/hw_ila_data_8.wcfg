@@ -9,17 +9,49 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="512"></ZoomStartTime>
-      <ZoomEndTime time="526"></ZoomEndTime>
-      <Cursor1Time time="512"></Cursor1Time>
+      <ZoomStartTime time="909"></ZoomStartTime>
+      <ZoomEndTime time="936"></ZoomEndTime>
+      <Cursor1Time time="830"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="166"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <ValueColumnWidth column_width="74"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="24" />
    <wave_markers>
    </wave_markers>
+   <wvobject fp_name="ps_i/deci_high/inst/freq_E0" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_E0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_E0[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_high/inst/freq_E1" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_E1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_E1[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_high/inst/freq_N0" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_N0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_N0[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/deci_high/inst/freq_N1" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_N1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_N1[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject fp_name="ps_i/deci_high/inst/mux_N0" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/deci_high/inst/mux_N0[15:0]</obj_property>
@@ -84,10 +116,10 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/raw_in_data" type="array">
+   <wvobject fp_name="ps_i/deci_high/inst/raw_data" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/raw_in_data[15:0]</obj_property>
-      <obj_property name="ObjectShortName">raw_in_data[15:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/raw_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">raw_data[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -106,50 +138,11 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/freq_E0" type="array">
+   <wvobject fp_name="ps_i/deci_high/inst/freq_data" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_E0[15:0]</obj_property>
-      <obj_property name="ObjectShortName">freq_E0[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/freq_E1" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_E1[15:0]</obj_property>
-      <obj_property name="ObjectShortName">freq_E1[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/freq_fifo_wr" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_fifo_wr</obj_property>
-      <obj_property name="ObjectShortName">freq_fifo_wr</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/freq_in_data" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_in_data[15:0]</obj_property>
-      <obj_property name="ObjectShortName">freq_in_data[15:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_data[15:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/freq_N0" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_N0[15:0]</obj_property>
-      <obj_property name="ObjectShortName">freq_N0[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/freq_N1" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_N1[15:0]</obj_property>
-      <obj_property name="ObjectShortName">freq_N1[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -169,6 +162,13 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
+   <wvobject fp_name="ps_i/deci_high/inst/freq_wr" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_wr</obj_property>
+      <obj_property name="ObjectShortName">freq_wr</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject fp_name="ps_i/deci_high/inst/freq_wr_delay" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/deci_high/inst/freq_wr_delay[4:0]</obj_property>
@@ -184,10 +184,10 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/deci_high/inst/raw_fifo_wr" type="logic">
+   <wvobject fp_name="ps_i/deci_high/inst/raw_wr" type="logic">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/deci_high/inst/raw_fifo_wr</obj_property>
-      <obj_property name="ObjectShortName">raw_fifo_wr</obj_property>
+      <obj_property name="ElementShortName">ps_i/deci_high/inst/raw_wr</obj_property>
+      <obj_property name="ObjectShortName">raw_wr</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

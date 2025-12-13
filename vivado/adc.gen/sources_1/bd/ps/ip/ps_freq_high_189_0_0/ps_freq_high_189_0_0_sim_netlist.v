@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Dec 11 23:49:54 2025
+// Date        : Sat Dec 13 00:58:47 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_high_189_0_0/ps_freq_high_189_0_0_sim_netlist.v
@@ -325,6 +325,8 @@ module ps_freq_high_189_0_0_freq_high_189
   (* MARK_DEBUG *) wire [15:0]W0;
   wire clk;
   (* MARK_DEBUG *) wire [7:0]curr_delay;
+  wire [5:4]curr_delay__0;
+  wire data0;
   wire [491:0]doa_data;
   wire doa_data0;
   (* MARK_DEBUG *) wire doa_wr;
@@ -333,12 +335,12 @@ module ps_freq_high_189_0_0_freq_high_189
   (* MARK_DEBUG *) wire [15:0]envW;
   wire fifo_clk;
   wire fir_doa_high_re_N_i_i_1_n_0;
-  wire [36:13]fir_im_E;
-  wire [36:13]fir_im_N;
-  wire [36:13]fir_im_W;
-  wire [36:13]fir_re_E;
-  wire [36:13]fir_re_N;
-  wire [36:13]fir_re_W;
+  (* MARK_DEBUG *) wire [39:0]fir_im_E;
+  (* MARK_DEBUG *) wire [39:0]fir_im_N;
+  (* MARK_DEBUG *) wire [39:0]fir_im_W;
+  (* MARK_DEBUG *) wire [39:0]fir_re_E;
+  (* MARK_DEBUG *) wire [39:0]fir_re_N;
+  (* MARK_DEBUG *) wire [39:0]fir_re_W;
   wire [95:0]freq_data;
   wire [95:0]freq_fifo_data;
   (* MARK_DEBUG *) wire freq_fifo_empty;
@@ -348,20 +350,15 @@ module ps_freq_high_189_0_0_freq_high_189
   wire \freq_high_189.curr_delay[0]_i_1_n_0 ;
   wire \freq_high_189.curr_delay[1]_i_1_n_0 ;
   wire \freq_high_189.curr_delay[2]_i_1_n_0 ;
-  wire \freq_high_189.curr_delay[2]_i_2_n_0 ;
   wire \freq_high_189.curr_delay[2]_i_3_n_0 ;
-  wire \freq_high_189.curr_delay[2]_i_4_n_0 ;
-  wire \freq_high_189.curr_delay[2]_i_5_n_0 ;
   wire \freq_high_189.curr_delay[3]_i_1_n_0 ;
   wire \freq_high_189.curr_delay[3]_i_2_n_0 ;
   wire \freq_high_189.curr_delay[3]_i_3_n_0 ;
+  wire \freq_high_189.curr_delay[3]_i_4_n_0 ;
+  wire \freq_high_189.curr_delay[3]_i_5_n_0 ;
   wire \freq_high_189.curr_delay[4]_i_1_n_0 ;
-  wire \freq_high_189.curr_delay[4]_i_2_n_0 ;
-  wire \freq_high_189.curr_delay[4]_i_3_n_0 ;
   wire \freq_high_189.curr_delay[5]_i_1_n_0 ;
-  wire \freq_high_189.curr_delay[5]_i_2_n_0 ;
   wire \freq_high_189.curr_delay[5]_i_3_n_0 ;
-  wire \freq_high_189.curr_delay[5]_i_4_n_0 ;
   wire \freq_high_189.curr_delay[6]_i_1_n_0 ;
   wire \freq_high_189.curr_delay[6]_i_2_n_0 ;
   wire \freq_high_189.curr_delay[6]_i_3_n_0 ;
@@ -371,24 +368,25 @@ module ps_freq_high_189_0_0_freq_high_189
   wire \freq_high_189.curr_delay[7]_i_3_n_0 ;
   wire \freq_high_189.curr_delay[7]_i_4_n_0 ;
   wire \freq_high_189.curr_delay[7]_i_5_n_0 ;
-  wire \freq_high_189.curr_delay[7]_i_6_n_0 ;
-  wire \freq_high_189.curr_delay[7]_i_7_n_0 ;
-  wire \freq_high_189.curr_delay[7]_i_8_n_0 ;
-  wire \freq_high_189.curr_delay[7]_i_9_n_0 ;
   wire \freq_high_189.freq_fifo_rd_i_1_n_0 ;
   wire \freq_high_189.freq_rd_delay[1]_i_1_n_0 ;
   wire \freq_high_189.freq_rd_delay[1]_i_2_n_0 ;
   wire \freq_high_189.freq_rd_delay[2]_i_1_n_0 ;
   wire \freq_high_189.morlet_active_i_1_n_0 ;
-  wire \freq_high_189.start_delay[1]_i_2_n_0 ;
+  wire \freq_high_189.start_delay[1]_i_1_n_0 ;
+  wire \freq_high_189.start_delay[2]_i_1_n_0 ;
+  wire \freq_high_189.start_delay[4]_i_1_n_0 ;
+  wire \freq_high_189.start_delay[5]_i_2_n_0 ;
+  wire \freq_high_189.start_delay[6]_i_1_n_0 ;
+  wire \freq_high_189.start_delay[6]_i_2_n_0 ;
   wire \freq_high_189.start_delay[7]_i_1_n_0 ;
   wire \freq_high_189.start_delay[7]_i_3_n_0 ;
   wire \freq_high_189.start_delay[7]_i_4_n_0 ;
-  wire \freq_high_189.start_delay[7]_i_5_n_0 ;
   wire [2:0]freq_rd_delay;
   wire [0:0]freq_rd_delay0;
   wire freq_wr;
   (* MARK_DEBUG *) wire morlet_active;
+  wire morlet_active__0;
   wire [7:0]p_1_in__0;
   (* MARK_DEBUG *) wire [19:0]phaseE;
   (* MARK_DEBUG *) wire [19:0]phaseN;
@@ -413,22 +411,16 @@ module ps_freq_high_189_0_0_freq_high_189
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
   wire NLW_fir_doa_high_im_E_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_doa_high_im_E_i_s_axis_data_tready_UNCONNECTED;
-  wire [39:0]NLW_fir_doa_high_im_E_i_m_axis_data_tdata_UNCONNECTED;
   wire NLW_fir_doa_high_im_N_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_doa_high_im_N_i_s_axis_data_tready_UNCONNECTED;
-  wire [39:0]NLW_fir_doa_high_im_N_i_m_axis_data_tdata_UNCONNECTED;
   wire NLW_fir_doa_high_im_W_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_doa_high_im_W_i_s_axis_data_tready_UNCONNECTED;
-  wire [39:0]NLW_fir_doa_high_im_W_i_m_axis_data_tdata_UNCONNECTED;
   wire NLW_fir_doa_high_re_E_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_doa_high_re_E_i_s_axis_data_tready_UNCONNECTED;
-  wire [39:0]NLW_fir_doa_high_re_E_i_m_axis_data_tdata_UNCONNECTED;
   wire NLW_fir_doa_high_re_N_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_doa_high_re_N_i_s_axis_data_tready_UNCONNECTED;
-  wire [39:0]NLW_fir_doa_high_re_N_i_m_axis_data_tdata_UNCONNECTED;
   wire NLW_fir_doa_high_re_W_i_m_axis_data_tvalid_UNCONNECTED;
   wire NLW_fir_doa_high_re_W_i_s_axis_data_tready_UNCONNECTED;
-  wire [39:0]NLW_fir_doa_high_re_W_i_m_axis_data_tdata_UNCONNECTED;
 
   (* CHECK_LICENSE_TYPE = "fifo_doa_high,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -466,7 +458,7 @@ module ps_freq_high_189_0_0_freq_high_189
   ps_freq_high_189_0_0_fir_doa_high_im_189 fir_doa_high_im_E_i
        (.aclk(clk),
         .aresetn(fir_doa_high_re_N_i_i_1_n_0),
-        .m_axis_data_tdata({NLW_fir_doa_high_im_E_i_m_axis_data_tdata_UNCONNECTED[39:37],fir_im_E,NLW_fir_doa_high_im_E_i_m_axis_data_tdata_UNCONNECTED[12:0]}),
+        .m_axis_data_tdata(fir_im_E),
         .m_axis_data_tvalid(NLW_fir_doa_high_im_E_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({E,E0}),
         .s_axis_data_tready(NLW_fir_doa_high_im_E_i_s_axis_data_tready_UNCONNECTED),
@@ -477,7 +469,7 @@ module ps_freq_high_189_0_0_freq_high_189
   ps_freq_high_189_0_0_fir_doa_high_im_189 fir_doa_high_im_N_i
        (.aclk(clk),
         .aresetn(fir_doa_high_re_N_i_i_1_n_0),
-        .m_axis_data_tdata({NLW_fir_doa_high_im_N_i_m_axis_data_tdata_UNCONNECTED[39:37],fir_im_N,NLW_fir_doa_high_im_N_i_m_axis_data_tdata_UNCONNECTED[12:0]}),
+        .m_axis_data_tdata(fir_im_N),
         .m_axis_data_tvalid(NLW_fir_doa_high_im_N_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({N,N0}),
         .s_axis_data_tready(NLW_fir_doa_high_im_N_i_s_axis_data_tready_UNCONNECTED),
@@ -488,7 +480,7 @@ module ps_freq_high_189_0_0_freq_high_189
   ps_freq_high_189_0_0_fir_doa_high_im_189_HD3 fir_doa_high_im_W_i
        (.aclk(clk),
         .aresetn(fir_doa_high_re_N_i_i_1_n_0),
-        .m_axis_data_tdata({NLW_fir_doa_high_im_W_i_m_axis_data_tdata_UNCONNECTED[39:37],fir_im_W,NLW_fir_doa_high_im_W_i_m_axis_data_tdata_UNCONNECTED[12:0]}),
+        .m_axis_data_tdata(fir_im_W),
         .m_axis_data_tvalid(NLW_fir_doa_high_im_W_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({W,W0}),
         .s_axis_data_tready(NLW_fir_doa_high_im_W_i_s_axis_data_tready_UNCONNECTED),
@@ -499,7 +491,7 @@ module ps_freq_high_189_0_0_freq_high_189
   ps_freq_high_189_0_0_fir_doa_high_re_189 fir_doa_high_re_E_i
        (.aclk(clk),
         .aresetn(fir_doa_high_re_N_i_i_1_n_0),
-        .m_axis_data_tdata({NLW_fir_doa_high_re_E_i_m_axis_data_tdata_UNCONNECTED[39:37],fir_re_E,NLW_fir_doa_high_re_E_i_m_axis_data_tdata_UNCONNECTED[12:0]}),
+        .m_axis_data_tdata(fir_re_E),
         .m_axis_data_tvalid(NLW_fir_doa_high_re_E_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({E,E0}),
         .s_axis_data_tready(NLW_fir_doa_high_re_E_i_s_axis_data_tready_UNCONNECTED),
@@ -510,7 +502,7 @@ module ps_freq_high_189_0_0_freq_high_189
   ps_freq_high_189_0_0_fir_doa_high_re_189 fir_doa_high_re_N_i
        (.aclk(clk),
         .aresetn(fir_doa_high_re_N_i_i_1_n_0),
-        .m_axis_data_tdata({NLW_fir_doa_high_re_N_i_m_axis_data_tdata_UNCONNECTED[39:37],fir_re_N,NLW_fir_doa_high_re_N_i_m_axis_data_tdata_UNCONNECTED[12:0]}),
+        .m_axis_data_tdata(fir_re_N),
         .m_axis_data_tvalid(NLW_fir_doa_high_re_N_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({N,N0}),
         .s_axis_data_tready(NLW_fir_doa_high_re_N_i_s_axis_data_tready_UNCONNECTED),
@@ -526,7 +518,7 @@ module ps_freq_high_189_0_0_freq_high_189
   ps_freq_high_189_0_0_fir_doa_high_re_189_HD4 fir_doa_high_re_W_i
        (.aclk(clk),
         .aresetn(fir_doa_high_re_N_i_i_1_n_0),
-        .m_axis_data_tdata({NLW_fir_doa_high_re_W_i_m_axis_data_tdata_UNCONNECTED[39:37],fir_re_W,NLW_fir_doa_high_re_W_i_m_axis_data_tdata_UNCONNECTED[12:0]}),
+        .m_axis_data_tdata(fir_re_W),
         .m_axis_data_tvalid(NLW_fir_doa_high_re_W_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata({W,W0}),
         .s_axis_data_tready(NLW_fir_doa_high_re_W_i_s_axis_data_tready_UNCONNECTED),
@@ -536,27 +528,27 @@ module ps_freq_high_189_0_0_freq_high_189
        (.active(morlet_active),
         .clk(clk),
         .env(envE),
-        .im(fir_im_E),
+        .im(fir_im_E[34:11]),
         .phase(phaseE),
-        .re(fir_re_E),
+        .re(fir_re_E[34:11]),
         .valid(validE));
   (* KEEP_HIERARCHY = "soft" *) 
   ps_freq_high_189_0_0_morlet_to_phase_env__xdcDup__1 freq_N_i
        (.active(morlet_active),
         .clk(clk),
         .env(envN),
-        .im(fir_im_N),
+        .im(fir_im_N[34:11]),
         .phase(phaseN),
-        .re(fir_re_N),
+        .re(fir_re_N[34:11]),
         .valid(validN));
   (* KEEP_HIERARCHY = "soft" *) 
   ps_freq_high_189_0_0_morlet_to_phase_env freq_W_i
        (.active(morlet_active),
         .clk(clk),
         .env(envW),
-        .im(fir_im_W),
+        .im(fir_im_W[34:11]),
         .phase(phaseW),
-        .re(fir_re_W),
+        .re(fir_re_W[34:11]),
         .valid(validW));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -1231,267 +1223,232 @@ module ps_freq_high_189_0_0_freq_high_189
         .Q(W[25]),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'h2288EECB)) 
+    .INIT(32'hEEBC2288)) 
     \freq_high_189.curr_delay[0]_i_1 
        (.I0(freq_fifo_valid),
         .I1(curr_delay[0]),
-        .I2(\freq_high_189.curr_delay[2]_i_2_n_0 ),
-        .I3(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I4(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+        .I2(data0),
+        .I3(morlet_active__0),
+        .I4(\freq_high_189.curr_delay[5]_i_3_n_0 ),
         .O(\freq_high_189.curr_delay[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h3FF2F0F130123021)) 
+    .INIT(64'hF8E3F8BC28A028A0)) 
     \freq_high_189.curr_delay[1]_i_1 
-       (.I0(\freq_high_189.curr_delay[2]_i_2_n_0 ),
-        .I1(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+       (.I0(freq_fifo_valid),
+        .I1(curr_delay[0]),
         .I2(curr_delay[1]),
-        .I3(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I4(curr_delay[0]),
-        .I5(freq_fifo_valid),
+        .I3(morlet_active__0),
+        .I4(data0),
+        .I5(\freq_high_189.curr_delay[5]_i_3_n_0 ),
         .O(\freq_high_189.curr_delay[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFF0000CC69)) 
-    \freq_high_189.curr_delay[2]_i_1 
-       (.I0(\freq_high_189.curr_delay[2]_i_2_n_0 ),
-        .I1(curr_delay[2]),
-        .I2(\freq_high_189.curr_delay[2]_i_3_n_0 ),
-        .I3(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I4(\freq_high_189.curr_delay[7]_i_2_n_0 ),
-        .I5(\freq_high_189.curr_delay[2]_i_5_n_0 ),
-        .O(\freq_high_189.curr_delay[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \freq_high_189.curr_delay[2]_i_2 
-       (.I0(\freq_high_189.curr_delay[7]_i_7_n_0 ),
-        .I1(curr_delay[7]),
-        .I2(curr_delay[6]),
-        .I3(curr_delay[1]),
-        .I4(curr_delay[0]),
-        .I5(curr_delay[2]),
-        .O(\freq_high_189.curr_delay[2]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \freq_high_189.curr_delay[2]_i_3 
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \freq_high_189.curr_delay[1]_i_2 
        (.I0(curr_delay[1]),
         .I1(curr_delay[0]),
-        .O(\freq_high_189.curr_delay[2]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \freq_high_189.curr_delay[2]_i_4 
-       (.I0(start_delay[4]),
-        .I1(start_delay[2]),
-        .I2(start_delay[0]),
-        .I3(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .O(\freq_high_189.curr_delay[2]_i_4_n_0 ));
+        .I2(curr_delay[2]),
+        .I3(\freq_high_189.curr_delay[3]_i_5_n_0 ),
+        .I4(curr_delay[7]),
+        .I5(curr_delay[6]),
+        .O(data0));
   LUT6 #(
-    .INIT(64'h02AAAAAAA8000000)) 
-    \freq_high_189.curr_delay[2]_i_5 
+    .INIT(64'hFFFFFFFF2AAA8000)) 
+    \freq_high_189.curr_delay[2]_i_1 
        (.I0(freq_fifo_valid),
-        .I1(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .I2(\freq_high_189.start_delay[1]_i_2_n_0 ),
+        .I1(curr_delay[1]),
+        .I2(morlet_active__0),
         .I3(curr_delay[0]),
-        .I4(curr_delay[1]),
-        .I5(curr_delay[2]),
-        .O(\freq_high_189.curr_delay[2]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'h0EFFFF010E010E01)) 
-    \freq_high_189.curr_delay[3]_i_1 
-       (.I0(\freq_high_189.curr_delay[3]_i_2_n_0 ),
-        .I1(\freq_high_189.curr_delay[3]_i_3_n_0 ),
-        .I2(\freq_high_189.curr_delay[7]_i_2_n_0 ),
-        .I3(curr_delay[3]),
-        .I4(\freq_high_189.curr_delay[4]_i_2_n_0 ),
-        .I5(freq_fifo_valid),
-        .O(\freq_high_189.curr_delay[3]_i_1_n_0 ));
+        .I4(curr_delay[2]),
+        .I5(\freq_high_189.curr_delay[2]_i_3_n_0 ),
+        .O(\freq_high_189.curr_delay[2]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
-    \freq_high_189.curr_delay[3]_i_2 
-       (.I0(\freq_high_189.start_delay[1]_i_2_n_0 ),
+    \freq_high_189.curr_delay[2]_i_2 
+       (.I0(\freq_high_189.start_delay[7]_i_4_n_0 ),
         .I1(start_delay[0]),
-        .I2(start_delay[2]),
-        .I3(start_delay[4]),
-        .I4(\freq_high_189.curr_delay[7]_i_8_n_0 ),
+        .I2(start_delay[7]),
+        .I3(start_delay[5]),
+        .I4(start_delay[3]),
+        .O(morlet_active__0));
+  LUT6 #(
+    .INIT(64'hA802A802A802A208)) 
+    \freq_high_189.curr_delay[2]_i_3 
+       (.I0(\freq_high_189.curr_delay[5]_i_3_n_0 ),
+        .I1(data0),
+        .I2(morlet_active__0),
+        .I3(curr_delay[2]),
+        .I4(curr_delay[1]),
+        .I5(curr_delay[0]),
+        .O(\freq_high_189.curr_delay[2]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h2FF8F28F22882288)) 
+    \freq_high_189.curr_delay[3]_i_1 
+       (.I0(freq_fifo_valid),
+        .I1(\freq_high_189.curr_delay[3]_i_2_n_0 ),
+        .I2(\freq_high_189.curr_delay[3]_i_3_n_0 ),
+        .I3(curr_delay[3]),
+        .I4(curr_delay[2]),
+        .I5(\freq_high_189.curr_delay[5]_i_3_n_0 ),
+        .O(\freq_high_189.curr_delay[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \freq_high_189.curr_delay[3]_i_2 
+       (.I0(curr_delay[1]),
+        .I1(morlet_active__0),
+        .I2(curr_delay[0]),
+        .I3(curr_delay[2]),
         .O(\freq_high_189.curr_delay[3]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000001)) 
+  LUT6 #(
+    .INIT(64'h00FF00FF00FF00AB)) 
     \freq_high_189.curr_delay[3]_i_3 
+       (.I0(morlet_active__0),
+        .I1(\freq_high_189.curr_delay[3]_i_4_n_0 ),
+        .I2(\freq_high_189.curr_delay[3]_i_5_n_0 ),
+        .I3(curr_delay[2]),
+        .I4(curr_delay[0]),
+        .I5(curr_delay[1]),
+        .O(\freq_high_189.curr_delay[3]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \freq_high_189.curr_delay[3]_i_4 
        (.I0(curr_delay[6]),
         .I1(curr_delay[7]),
-        .I2(curr_delay[4]),
-        .I3(curr_delay[3]),
-        .I4(curr_delay[5]),
-        .O(\freq_high_189.curr_delay[3]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h48C048C0F8CFF8F0)) 
-    \freq_high_189.curr_delay[4]_i_1 
-       (.I0(\freq_high_189.curr_delay[4]_i_2_n_0 ),
-        .I1(freq_fifo_valid),
-        .I2(curr_delay[4]),
-        .I3(curr_delay[3]),
-        .I4(\freq_high_189.curr_delay[4]_i_3_n_0 ),
-        .I5(\freq_high_189.curr_delay[7]_i_2_n_0 ),
-        .O(\freq_high_189.curr_delay[4]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h80808000)) 
-    \freq_high_189.curr_delay[4]_i_2 
-       (.I0(curr_delay[2]),
-        .I1(curr_delay[1]),
-        .I2(curr_delay[0]),
-        .I3(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I4(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .O(\freq_high_189.curr_delay[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \freq_high_189.curr_delay[4]_i_3 
-       (.I0(\freq_high_189.curr_delay[3]_i_3_n_0 ),
-        .I1(\freq_high_189.curr_delay[7]_i_8_n_0 ),
-        .I2(start_delay[4]),
-        .I3(start_delay[2]),
-        .I4(start_delay[0]),
-        .I5(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .O(\freq_high_189.curr_delay[4]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h1FF11111)) 
-    \freq_high_189.curr_delay[5]_i_1 
-       (.I0(\freq_high_189.curr_delay[5]_i_2_n_0 ),
-        .I1(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+        .O(\freq_high_189.curr_delay[3]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \freq_high_189.curr_delay[3]_i_5 
+       (.I0(curr_delay[4]),
+        .I1(curr_delay[3]),
         .I2(curr_delay[5]),
-        .I3(\freq_high_189.curr_delay[6]_i_3_n_0 ),
-        .I4(freq_fifo_valid),
+        .O(\freq_high_189.curr_delay[3]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hFF282828)) 
+    \freq_high_189.curr_delay[4]_i_1 
+       (.I0(freq_fifo_valid),
+        .I1(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+        .I2(curr_delay[4]),
+        .I3(curr_delay__0[4]),
+        .I4(\freq_high_189.curr_delay[5]_i_3_n_0 ),
+        .O(\freq_high_189.curr_delay[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFF0000AAAA5554)) 
+    \freq_high_189.curr_delay[4]_i_2 
+       (.I0(\freq_high_189.curr_delay[6]_i_3_n_0 ),
+        .I1(curr_delay[5]),
+        .I2(curr_delay[7]),
+        .I3(curr_delay[6]),
+        .I4(curr_delay[4]),
+        .I5(curr_delay[3]),
+        .O(curr_delay__0[4]));
+  LUT6 #(
+    .INIT(64'hFFFF2A802A802A80)) 
+    \freq_high_189.curr_delay[5]_i_1 
+       (.I0(freq_fifo_valid),
+        .I1(curr_delay[4]),
+        .I2(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+        .I3(curr_delay[5]),
+        .I4(curr_delay__0[5]),
+        .I5(\freq_high_189.curr_delay[5]_i_3_n_0 ),
         .O(\freq_high_189.curr_delay[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h00000003FFFFFFFD)) 
+    .INIT(64'hFFFF0000FFAA0054)) 
     \freq_high_189.curr_delay[5]_i_2 
-       (.I0(\freq_high_189.curr_delay[5]_i_3_n_0 ),
-        .I1(\freq_high_189.curr_delay[5]_i_4_n_0 ),
-        .I2(\freq_high_189.curr_delay[7]_i_8_n_0 ),
-        .I3(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .I4(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I5(curr_delay[5]),
-        .O(\freq_high_189.curr_delay[5]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \freq_high_189.curr_delay[5]_i_3 
-       (.I0(curr_delay[7]),
+       (.I0(curr_delay[3]),
         .I1(curr_delay[6]),
-        .O(\freq_high_189.curr_delay[5]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \freq_high_189.curr_delay[5]_i_4 
-       (.I0(curr_delay[4]),
-        .I1(curr_delay[3]),
-        .O(\freq_high_189.curr_delay[5]_i_4_n_0 ));
+        .I2(curr_delay[7]),
+        .I3(\freq_high_189.curr_delay[6]_i_3_n_0 ),
+        .I4(curr_delay[5]),
+        .I5(curr_delay[4]),
+        .O(curr_delay__0[5]));
   LUT6 #(
-    .INIT(64'h2FF1F1F121212121)) 
-    \freq_high_189.curr_delay[6]_i_1 
-       (.I0(\freq_high_189.curr_delay[6]_i_2_n_0 ),
-        .I1(\freq_high_189.curr_delay[7]_i_2_n_0 ),
-        .I2(curr_delay[6]),
-        .I3(curr_delay[5]),
-        .I4(\freq_high_189.curr_delay[6]_i_3_n_0 ),
+    .INIT(64'h00000000FFFFFFFE)) 
+    \freq_high_189.curr_delay[5]_i_3 
+       (.I0(\freq_high_189.start_delay[7]_i_3_n_0 ),
+        .I1(start_delay[2]),
+        .I2(start_delay[1]),
+        .I3(start_delay[6]),
+        .I4(start_delay[4]),
         .I5(freq_fifo_valid),
+        .O(\freq_high_189.curr_delay[5]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF2AAA8000)) 
+    \freq_high_189.curr_delay[6]_i_1 
+       (.I0(freq_fifo_valid),
+        .I1(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+        .I2(curr_delay[4]),
+        .I3(curr_delay[5]),
+        .I4(curr_delay[6]),
+        .I5(\freq_high_189.curr_delay[6]_i_2_n_0 ),
         .O(\freq_high_189.curr_delay[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFEFEFEFF)) 
+    .INIT(64'hA0A0A0A0A082A080)) 
     \freq_high_189.curr_delay[6]_i_2 
-       (.I0(\freq_high_189.curr_delay[7]_i_8_n_0 ),
-        .I1(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .I2(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I3(curr_delay[7]),
-        .I4(curr_delay[6]),
-        .I5(\freq_high_189.curr_delay[7]_i_7_n_0 ),
-        .O(\freq_high_189.curr_delay[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h00000000E0000000)) 
-    \freq_high_189.curr_delay[6]_i_3 
-       (.I0(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .I1(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I2(curr_delay[0]),
-        .I3(curr_delay[1]),
-        .I4(curr_delay[2]),
-        .I5(\freq_high_189.curr_delay[6]_i_4_n_0 ),
-        .O(\freq_high_189.curr_delay[6]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \freq_high_189.curr_delay[6]_i_4 
-       (.I0(curr_delay[4]),
-        .I1(curr_delay[3]),
-        .O(\freq_high_189.curr_delay[6]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hF04FF0F040404040)) 
-    \freq_high_189.curr_delay[7]_i_1 
-       (.I0(\freq_high_189.curr_delay[7]_i_2_n_0 ),
-        .I1(\freq_high_189.curr_delay[7]_i_3_n_0 ),
-        .I2(curr_delay[7]),
-        .I3(\freq_high_189.curr_delay[7]_i_4_n_0 ),
-        .I4(\freq_high_189.curr_delay[7]_i_5_n_0 ),
-        .I5(freq_fifo_valid),
-        .O(\freq_high_189.curr_delay[7]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAAAB)) 
-    \freq_high_189.curr_delay[7]_i_2 
-       (.I0(freq_fifo_valid),
-        .I1(\freq_high_189.curr_delay[7]_i_6_n_0 ),
-        .I2(start_delay[6]),
-        .I3(start_delay[7]),
-        .I4(start_delay[1]),
-        .O(\freq_high_189.curr_delay[7]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \freq_high_189.curr_delay[7]_i_3 
-       (.I0(\freq_high_189.curr_delay[7]_i_7_n_0 ),
-        .I1(curr_delay[6]),
-        .I2(\freq_high_189.curr_delay[7]_i_8_n_0 ),
-        .I3(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .I4(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .O(\freq_high_189.curr_delay[7]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'h7F)) 
-    \freq_high_189.curr_delay[7]_i_4 
-       (.I0(curr_delay[5]),
-        .I1(curr_delay[4]),
+       (.I0(\freq_high_189.curr_delay[5]_i_3_n_0 ),
+        .I1(curr_delay[5]),
         .I2(curr_delay[6]),
-        .O(\freq_high_189.curr_delay[7]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hE000000000000000)) 
-    \freq_high_189.curr_delay[7]_i_5 
-       (.I0(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .I1(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I2(curr_delay[0]),
-        .I3(curr_delay[1]),
-        .I4(curr_delay[2]),
-        .I5(curr_delay[3]),
-        .O(\freq_high_189.curr_delay[7]_i_5_n_0 ));
+        .I3(\freq_high_189.curr_delay[6]_i_3_n_0 ),
+        .I4(curr_delay[7]),
+        .I5(\freq_high_189.curr_delay[6]_i_4_n_0 ),
+        .O(\freq_high_189.curr_delay[6]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
-    \freq_high_189.curr_delay[7]_i_6 
-       (.I0(start_delay[4]),
-        .I1(start_delay[2]),
-        .I2(start_delay[0]),
-        .I3(start_delay[3]),
-        .I4(start_delay[5]),
-        .O(\freq_high_189.curr_delay[7]_i_6_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \freq_high_189.curr_delay[7]_i_7 
-       (.I0(curr_delay[5]),
-        .I1(curr_delay[3]),
-        .I2(curr_delay[4]),
-        .O(\freq_high_189.curr_delay[7]_i_7_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \freq_high_189.curr_delay[7]_i_8 
+    \freq_high_189.curr_delay[6]_i_3 
        (.I0(curr_delay[2]),
         .I1(curr_delay[0]),
         .I2(curr_delay[1]),
-        .O(\freq_high_189.curr_delay[7]_i_8_n_0 ));
+        .I3(\freq_high_189.start_delay[7]_i_3_n_0 ),
+        .I4(\freq_high_189.start_delay[7]_i_4_n_0 ),
+        .O(\freq_high_189.curr_delay[6]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \freq_high_189.curr_delay[6]_i_4 
+       (.I0(curr_delay[3]),
+        .I1(curr_delay[4]),
+        .O(\freq_high_189.curr_delay[6]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFF2A80)) 
+    \freq_high_189.curr_delay[7]_i_1 
+       (.I0(freq_fifo_valid),
+        .I1(\freq_high_189.curr_delay[7]_i_2_n_0 ),
+        .I2(\freq_high_189.curr_delay[7]_i_3_n_0 ),
+        .I3(curr_delay[7]),
+        .I4(\freq_high_189.curr_delay[7]_i_4_n_0 ),
+        .O(\freq_high_189.curr_delay[7]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    \freq_high_189.curr_delay[7]_i_2 
+       (.I0(curr_delay[2]),
+        .I1(curr_delay[0]),
+        .I2(morlet_active__0),
+        .I3(curr_delay[1]),
+        .I4(curr_delay[3]),
+        .O(\freq_high_189.curr_delay[7]_i_2_n_0 ));
   LUT3 #(
-    .INIT(8'hFE)) 
-    \freq_high_189.curr_delay[7]_i_9 
-       (.I0(start_delay[0]),
-        .I1(start_delay[2]),
-        .I2(start_delay[4]),
-        .O(\freq_high_189.curr_delay[7]_i_9_n_0 ));
+    .INIT(8'h80)) 
+    \freq_high_189.curr_delay[7]_i_3 
+       (.I0(curr_delay[6]),
+        .I1(curr_delay[5]),
+        .I2(curr_delay[4]),
+        .O(\freq_high_189.curr_delay[7]_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'hA0A0A080)) 
+    \freq_high_189.curr_delay[7]_i_4 
+       (.I0(\freq_high_189.curr_delay[5]_i_3_n_0 ),
+        .I1(curr_delay[6]),
+        .I2(curr_delay[7]),
+        .I3(\freq_high_189.curr_delay[7]_i_5_n_0 ),
+        .I4(morlet_active__0),
+        .O(\freq_high_189.curr_delay[7]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \freq_high_189.curr_delay[7]_i_5 
+       (.I0(curr_delay[5]),
+        .I1(curr_delay[3]),
+        .I2(curr_delay[4]),
+        .I3(curr_delay[2]),
+        .I4(curr_delay[0]),
+        .I5(curr_delay[1]),
+        .O(\freq_high_189.curr_delay[7]_i_5_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \freq_high_189.curr_delay_reg[0] 
        (.C(clk),
@@ -4586,15 +4543,12 @@ module ps_freq_high_189_0_0_freq_high_189
         .D(\freq_high_189.freq_rd_delay[2]_i_1_n_0 ),
         .Q(freq_rd_delay[2]),
         .S(freq_fifo_empty));
-  LUT6 #(
-    .INIT(64'h0001000100000001)) 
+  LUT3 #(
+    .INIT(8'h54)) 
     \freq_high_189.morlet_active_i_1 
-       (.I0(start_delay[4]),
-        .I1(start_delay[2]),
-        .I2(start_delay[0]),
-        .I3(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I4(\freq_high_189.curr_delay[2]_i_2_n_0 ),
-        .I5(freq_fifo_valid),
+       (.I0(morlet_active__0),
+        .I1(freq_fifo_valid),
+        .I2(data0),
         .O(\freq_high_189.morlet_active_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \freq_high_189.morlet_active_reg 
@@ -4603,120 +4557,122 @@ module ps_freq_high_189_0_0_freq_high_189
         .D(\freq_high_189.morlet_active_i_1_n_0 ),
         .Q(morlet_active),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h00FE)) 
+  LUT5 #(
+    .INIT(32'h00FF00FE)) 
     \freq_high_189.start_delay[0]_i_1 
-       (.I0(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I1(start_delay[4]),
-        .I2(start_delay[2]),
+       (.I0(start_delay[7]),
+        .I1(start_delay[5]),
+        .I2(start_delay[3]),
         .I3(start_delay[0]),
+        .I4(\freq_high_189.start_delay[7]_i_4_n_0 ),
         .O(p_1_in__0[0]));
   LUT6 #(
-    .INIT(64'h0F0FF0F10F0EF0F0)) 
+    .INIT(64'h33333332CCCCCCCC)) 
     \freq_high_189.start_delay[1]_i_1 
-       (.I0(start_delay[4]),
-        .I1(start_delay[2]),
-        .I2(start_delay[0]),
-        .I3(\freq_high_189.start_delay[1]_i_2_n_0 ),
-        .I4(start_delay[1]),
-        .I5(\freq_high_189.start_delay[7]_i_5_n_0 ),
-        .O(p_1_in__0[1]));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \freq_high_189.start_delay[1]_i_2 
-       (.I0(start_delay[5]),
-        .I1(start_delay[1]),
-        .I2(start_delay[3]),
-        .I3(start_delay[6]),
-        .I4(start_delay[7]),
-        .O(\freq_high_189.start_delay[1]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h6A)) 
-    \freq_high_189.start_delay[2]_i_1 
-       (.I0(start_delay[2]),
-        .I1(start_delay[1]),
-        .I2(start_delay[0]),
-        .O(p_1_in__0[2]));
-  LUT6 #(
-    .INIT(64'h6AAAFFFF6AAA0000)) 
-    \freq_high_189.start_delay[3]_i_1 
-       (.I0(start_delay[3]),
+       (.I0(\freq_high_189.start_delay[7]_i_4_n_0 ),
         .I1(start_delay[0]),
-        .I2(start_delay[1]),
-        .I3(start_delay[2]),
-        .I4(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I5(\freq_high_189.start_delay[7]_i_5_n_0 ),
-        .O(p_1_in__0[3]));
-  LUT5 #(
-    .INIT(32'h6AAAAAAA)) 
-    \freq_high_189.start_delay[4]_i_1 
-       (.I0(start_delay[4]),
-        .I1(start_delay[2]),
-        .I2(start_delay[1]),
-        .I3(start_delay[0]),
-        .I4(start_delay[3]),
-        .O(p_1_in__0[4]));
-  LUT4 #(
-    .INIT(16'h9F90)) 
-    \freq_high_189.start_delay[5]_i_1 
-       (.I0(start_delay[5]),
-        .I1(\freq_high_189.start_delay[7]_i_4_n_0 ),
-        .I2(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I3(\freq_high_189.start_delay[7]_i_5_n_0 ),
-        .O(p_1_in__0[5]));
-  LUT5 #(
-    .INIT(32'hA6FFA600)) 
-    \freq_high_189.start_delay[6]_i_1 
-       (.I0(start_delay[6]),
-        .I1(start_delay[5]),
-        .I2(\freq_high_189.start_delay[7]_i_4_n_0 ),
-        .I3(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I4(\freq_high_189.start_delay[7]_i_5_n_0 ),
-        .O(p_1_in__0[6]));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \freq_high_189.start_delay[7]_i_1 
-       (.I0(freq_fifo_valid),
-        .I1(\freq_high_189.start_delay[7]_i_3_n_0 ),
-        .O(\freq_high_189.start_delay[7]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h9AAAFFFF9AAA0000)) 
-    \freq_high_189.start_delay[7]_i_2 
-       (.I0(start_delay[7]),
-        .I1(\freq_high_189.start_delay[7]_i_4_n_0 ),
-        .I2(start_delay[5]),
-        .I3(start_delay[6]),
-        .I4(\freq_high_189.curr_delay[2]_i_4_n_0 ),
-        .I5(\freq_high_189.start_delay[7]_i_5_n_0 ),
-        .O(p_1_in__0[7]));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \freq_high_189.start_delay[7]_i_3 
-       (.I0(start_delay[1]),
-        .I1(start_delay[7]),
-        .I2(start_delay[6]),
+        .I2(start_delay[7]),
         .I3(start_delay[5]),
         .I4(start_delay[3]),
-        .I5(\freq_high_189.curr_delay[7]_i_9_n_0 ),
-        .O(\freq_high_189.start_delay[7]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \freq_high_189.start_delay[7]_i_4 
-       (.I0(start_delay[3]),
-        .I1(start_delay[0]),
-        .I2(start_delay[1]),
+        .I5(start_delay[1]),
+        .O(\freq_high_189.start_delay[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h54FEFE54FE54FE54)) 
+    \freq_high_189.start_delay[2]_i_1 
+       (.I0(morlet_active__0),
+        .I1(data0),
+        .I2(freq_fifo_valid),
         .I3(start_delay[2]),
-        .I4(start_delay[4]),
-        .O(\freq_high_189.start_delay[7]_i_4_n_0 ));
+        .I4(start_delay[0]),
+        .I5(start_delay[1]),
+        .O(\freq_high_189.start_delay[2]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFEFFFF)) 
-    \freq_high_189.start_delay[7]_i_5 
-       (.I0(freq_fifo_valid),
-        .I1(curr_delay[2]),
-        .I2(curr_delay[0]),
-        .I3(curr_delay[1]),
-        .I4(\freq_high_189.curr_delay[3]_i_3_n_0 ),
-        .O(\freq_high_189.start_delay[7]_i_5_n_0 ));
+    .INIT(32'h28888888)) 
+    \freq_high_189.start_delay[3]_i_1 
+       (.I0(morlet_active__0),
+        .I1(start_delay[3]),
+        .I2(start_delay[0]),
+        .I3(start_delay[2]),
+        .I4(start_delay[1]),
+        .O(p_1_in__0[3]));
+  LUT6 #(
+    .INIT(64'h2888888888888888)) 
+    \freq_high_189.start_delay[4]_i_1 
+       (.I0(morlet_active__0),
+        .I1(start_delay[4]),
+        .I2(start_delay[3]),
+        .I3(start_delay[0]),
+        .I4(start_delay[2]),
+        .I5(start_delay[1]),
+        .O(\freq_high_189.start_delay[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hAA6A)) 
+    \freq_high_189.start_delay[5]_i_1 
+       (.I0(start_delay[5]),
+        .I1(start_delay[3]),
+        .I2(start_delay[0]),
+        .I3(\freq_high_189.start_delay[5]_i_2_n_0 ),
+        .O(p_1_in__0[5]));
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \freq_high_189.start_delay[5]_i_2 
+       (.I0(start_delay[2]),
+        .I1(start_delay[1]),
+        .I2(start_delay[4]),
+        .O(\freq_high_189.start_delay[5]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h5400)) 
+    \freq_high_189.start_delay[6]_i_1 
+       (.I0(morlet_active__0),
+        .I1(data0),
+        .I2(freq_fifo_valid),
+        .I3(\freq_high_189.start_delay[7]_i_1_n_0 ),
+        .O(\freq_high_189.start_delay[6]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hCCCCCCCC3CCCCCC8)) 
+    \freq_high_189.start_delay[6]_i_2 
+       (.I0(start_delay[7]),
+        .I1(start_delay[6]),
+        .I2(start_delay[5]),
+        .I3(start_delay[0]),
+        .I4(start_delay[3]),
+        .I5(\freq_high_189.start_delay[5]_i_2_n_0 ),
+        .O(\freq_high_189.start_delay[6]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \freq_high_189.start_delay[7]_i_1 
+       (.I0(\freq_high_189.start_delay[7]_i_3_n_0 ),
+        .I1(start_delay[2]),
+        .I2(start_delay[1]),
+        .I3(start_delay[6]),
+        .I4(start_delay[4]),
+        .I5(freq_fifo_valid),
+        .O(\freq_high_189.start_delay[7]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAA6AAA)) 
+    \freq_high_189.start_delay[7]_i_2 
+       (.I0(start_delay[7]),
+        .I1(start_delay[5]),
+        .I2(start_delay[0]),
+        .I3(start_delay[3]),
+        .I4(\freq_high_189.start_delay[7]_i_4_n_0 ),
+        .O(p_1_in__0[7]));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \freq_high_189.start_delay[7]_i_3 
+       (.I0(start_delay[3]),
+        .I1(start_delay[5]),
+        .I2(start_delay[7]),
+        .I3(start_delay[0]),
+        .O(\freq_high_189.start_delay[7]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \freq_high_189.start_delay[7]_i_4 
+       (.I0(start_delay[4]),
+        .I1(start_delay[1]),
+        .I2(start_delay[2]),
+        .I3(start_delay[6]),
+        .O(\freq_high_189.start_delay[7]_i_4_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \freq_high_189.start_delay_reg[0] 
@@ -4727,20 +4683,20 @@ module ps_freq_high_189_0_0_freq_high_189
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \freq_high_189.start_delay_reg[1] 
+  FDSE \freq_high_189.start_delay_reg[1] 
        (.C(clk),
         .CE(\freq_high_189.start_delay[7]_i_1_n_0 ),
-        .D(p_1_in__0[1]),
+        .D(\freq_high_189.start_delay[1]_i_1_n_0 ),
         .Q(start_delay[1]),
-        .R(1'b0));
+        .S(\freq_high_189.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \freq_high_189.start_delay_reg[2] 
+  FDSE \freq_high_189.start_delay_reg[2] 
        (.C(clk),
         .CE(\freq_high_189.start_delay[7]_i_1_n_0 ),
-        .D(p_1_in__0[2]),
+        .D(\freq_high_189.start_delay[2]_i_1_n_0 ),
         .Q(start_delay[2]),
-        .R(1'b0));
+        .S(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \freq_high_189.start_delay_reg[3] 
@@ -4751,12 +4707,12 @@ module ps_freq_high_189_0_0_freq_high_189
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \freq_high_189.start_delay_reg[4] 
+  FDSE \freq_high_189.start_delay_reg[4] 
        (.C(clk),
         .CE(\freq_high_189.start_delay[7]_i_1_n_0 ),
-        .D(p_1_in__0[4]),
+        .D(\freq_high_189.start_delay[4]_i_1_n_0 ),
         .Q(start_delay[4]),
-        .R(1'b0));
+        .S(\freq_high_189.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \freq_high_189.start_delay_reg[5] 
@@ -4767,12 +4723,12 @@ module ps_freq_high_189_0_0_freq_high_189
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \freq_high_189.start_delay_reg[6] 
+  FDSE \freq_high_189.start_delay_reg[6] 
        (.C(clk),
         .CE(\freq_high_189.start_delay[7]_i_1_n_0 ),
-        .D(p_1_in__0[6]),
+        .D(\freq_high_189.start_delay[6]_i_2_n_0 ),
         .Q(start_delay[6]),
-        .R(1'b0));
+        .S(\freq_high_189.start_delay[6]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \freq_high_189.start_delay_reg[7] 
@@ -4788,23 +4744,29 @@ module ps_freq_high_189_0_0_freq_high_189
        (.clk(clk),
         .probe0(doa_wr),
         .probe1(raw_fifo_empty),
-        .probe10(raw_N0),
-        .probe11(E0),
-        .probe12(envE),
-        .probe13(phaseE),
-        .probe14(raw_E0),
-        .probe15(W0),
-        .probe16(envW),
-        .probe17(phaseW),
-        .probe18(raw_W0),
+        .probe10(envN),
+        .probe11(phaseN),
+        .probe12(raw_N0),
+        .probe13(E0),
+        .probe14(fir_re_E),
+        .probe15(fir_im_E),
+        .probe16(envE),
+        .probe17(phaseE),
+        .probe18(raw_E0),
+        .probe19(W0),
         .probe2(freq_fifo_empty),
+        .probe20(fir_re_W),
+        .probe21(fir_im_W),
+        .probe22({1'b0,1'b0,1'b0,1'b0,envW}),
+        .probe23(phaseW[15:0]),
+        .probe24(raw_W0),
         .probe3(freq_fifo_rd),
         .probe4(start_delay),
         .probe5(curr_delay),
         .probe6(morlet_active),
         .probe7(N0),
-        .probe8(envN),
-        .probe9(phaseN));
+        .probe8(fir_re_N),
+        .probe9(fir_im_N));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_1,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_1" *) 
@@ -4829,7 +4791,13 @@ module ps_freq_high_189_0_0_ila_1
     probe15,
     probe16,
     probe17,
-    probe18);
+    probe18,
+    probe19,
+    probe20,
+    probe21,
+    probe22,
+    probe23,
+    probe24);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -4839,17 +4807,23 @@ module ps_freq_high_189_0_0_ila_1
   input [7:0]probe5;
   input [0:0]probe6;
   input [15:0]probe7;
-  input [15:0]probe8;
-  input [19:0]probe9;
+  input [39:0]probe8;
+  input [39:0]probe9;
   input [15:0]probe10;
-  input [15:0]probe11;
+  input [19:0]probe11;
   input [15:0]probe12;
-  input [19:0]probe13;
-  input [15:0]probe14;
-  input [15:0]probe15;
+  input [15:0]probe13;
+  input [39:0]probe14;
+  input [39:0]probe15;
   input [15:0]probe16;
   input [19:0]probe17;
   input [15:0]probe18;
+  input [15:0]probe19;
+  input [39:0]probe20;
+  input [39:0]probe21;
+  input [19:0]probe22;
+  input [15:0]probe23;
+  input [15:0]probe24;
 
 
 endmodule

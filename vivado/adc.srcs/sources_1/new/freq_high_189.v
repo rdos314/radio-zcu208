@@ -218,8 +218,8 @@ fir_doa_high_im_189 fir_doa_high_im_W_i (
 morlet_to_phase_env freq_N_i (
   .clk(clk),                               // input wire aclk
   .active(morlet_active),
-  .re(fir_re_N[36:13]),
-  .im(fir_im_N[36:13]),
+  .re(fir_re_N[34:11]),
+  .im(fir_im_N[34:11]),
   .valid(validN),
   .env(envN),
   .phase(phaseN)
@@ -228,8 +228,8 @@ morlet_to_phase_env freq_N_i (
 morlet_to_phase_env freq_E_i (
   .clk(clk),                               // input wire aclk
   .active(morlet_active),
-  .re(fir_re_E[36:13]),
-  .im(fir_im_E[36:13]),
+  .re(fir_re_E[34:11]),
+  .im(fir_im_E[34:11]),
   .valid(validE),
   .env(envE),
   .phase(phaseE)
@@ -238,8 +238,8 @@ morlet_to_phase_env freq_E_i (
 morlet_to_phase_env freq_W_i (
   .clk(clk),                               // input wire aclk
   .active(morlet_active),
-  .re(fir_re_W[36:13]),
-  .im(fir_im_W[36:13]),
+  .re(fir_re_W[34:11]),
+  .im(fir_im_W[34:11]),
   .valid(validW),
   .env(envW),
   .phase(phaseW)
@@ -255,17 +255,23 @@ ila_1 ila_1_i (
 		.probe5(curr_delay),           // input wire [7:0]  probe3
 		.probe6(morlet_active),        // input wire [0:0]  probe3
 		.probe7(N0),                   // input wire [15:0]  probe3
-		.probe8(envN),                 // input wire [15:0]  probe3
-		.probe9(phaseN),               // input wire [19:0]  probe3
-		.probe10(raw_N0),              // input wire [15:0]  probe3
-		.probe11(E0),                  // input wire [15:0]  probe3
-		.probe12(envE),                // input wire [15:0]  probe3
-		.probe13(phaseE),              // input wire [19:0]  probe3
-		.probe14(raw_E0),              // input wire [15:0]  probe3
-		.probe15(W0),                  // input wire [15:0]  probe3
-		.probe16(envW),                // input wire [15:0]  probe3
-		.probe17(phaseW),              // input wire [19:0]  probe3
-		.probe18(raw_W0)               // input wire [15:0]  probe3
+		.probe8(fir_re_N),             // input wire [39:0]  probe3
+		.probe9(fir_im_N),             // input wire [39:0]  probe3
+		.probe10(envN),                // input wire [15:0]  probe3
+		.probe11(phaseN),              // input wire [19:0]  probe3
+		.probe12(raw_N0),              // input wire [15:0]  probe3
+		.probe13(E0),                  // input wire [15:0]  probe3
+		.probe14(fir_re_E),            // input wire [39:0]  probe3
+		.probe15(fir_im_E),            // input wire [39:0]  probe3
+		.probe16(envE),                // input wire [15:0]  probe3
+		.probe17(phaseE),              // input wire [19:0]  probe3
+		.probe18(raw_E0),              // input wire [15:0]  probe3
+		.probe19(W0),                  // input wire [15:0]  probe3
+		.probe20(fir_re_W),            // input wire [39:0]  probe3
+		.probe21(fir_im_W),            // input wire [39:0]  probe3
+		.probe22(envW),                // input wire [15:0]  probe3
+		.probe23(phaseW),              // input wire [19:0]  probe3
+		.probe24(raw_W0)               // input wire [15:0]  probe3
 	);
 
 generate
@@ -310,7 +316,7 @@ generate
 	begin
 	  if (freq_fifo_valid)
 	  begin
-	    if (start_delay == 234)
+	    if (start_delay == 86)
 	      morlet_active <= 1;
 	    else
 	    begin
@@ -323,7 +329,7 @@ generate
 	  begin
 	    if (start_delay)
 	    begin
-  	      if (start_delay == 234)
+  	      if (start_delay == 86)
 	      begin
   	        if (curr_delay)
 	        begin

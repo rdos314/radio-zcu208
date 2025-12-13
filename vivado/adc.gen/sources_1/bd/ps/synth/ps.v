@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Thu Dec 11 23:49:04 2025
+//Date        : Sat Dec 13 00:58:01 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=17,numReposBlks=17,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=19,numReposBlks=19,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=8,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -188,9 +188,15 @@ module ps
   wire [191:0]deci_low_raw_data;
   wire deci_low_raw_wr;
   wire deci_low_sim_active;
+  wire [491:0]freq_high_189_0_doa_data;
+  wire freq_high_189_0_doa_wr;
+  wire [299:0]freq_low_46_0_doa_data;
+  wire freq_low_46_0_doa_wr;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
+  wire mts_0_comp0_reset;
   wire mts_0_comp1_clk;
+  wire mts_0_comp1_reset;
   wire mts_0_deci_adc_active;
   wire mts_0_deci_clk;
   wire mts_0_deci_resetn;
@@ -511,6 +517,18 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
+  ps_comp_high_0_0 comp_high
+       (.clk(mts_0_comp1_clk),
+        .fifo_clk(mts_0_freq1_clk),
+        .fifo_data(freq_high_189_0_doa_data),
+        .fifo_wr(freq_high_189_0_doa_wr),
+        .reset(mts_0_comp1_reset));
+  ps_comp_low_0_0 comp_low
+       (.clk(mts_0_comp0_clk),
+        .fifo_clk(mts_0_freq0_clk),
+        .fifo_data(freq_low_46_0_doa_data),
+        .fifo_wr(freq_low_46_0_doa_wr),
+        .reset(mts_0_comp0_reset));
   ps_deci_high_0_0 deci_high
        (.adc_active(mts_0_deci_adc_active),
         .clk(mts_0_deci_clk),
@@ -555,6 +573,8 @@ module ps
         .sim_wr(adc_control_0_sim_low_wr));
   ps_freq_high_189_0_0 freq_high_189_0
        (.clk(mts_0_freq1_clk),
+        .doa_data(freq_high_189_0_doa_data),
+        .doa_wr(freq_high_189_0_doa_wr),
         .fifo_clk(mts_0_deci_clk),
         .freq_data(deci_high_freq_data),
         .freq_wr(deci_high_freq_wr),
@@ -563,6 +583,8 @@ module ps
         .reset(mts_0_freq1_reset));
   ps_freq_low_46_0_0 freq_low_46_0
        (.clk(mts_0_freq0_clk),
+        .doa_data(freq_low_46_0_doa_data),
+        .doa_wr(freq_low_46_0_doa_wr),
         .fifo_clk(mts_0_deci_clk),
         .freq_data(deci_low_freq_data),
         .freq_wr(deci_low_freq_wr),
@@ -598,7 +620,9 @@ module ps
         .axi_sim_active(adc_control_0_sim_active),
         .axi_sim_start(adc_control_0_sim_start),
         .comp0_clk(mts_0_comp0_clk),
+        .comp0_reset(mts_0_comp0_reset),
         .comp1_clk(mts_0_comp1_clk),
+        .comp1_reset(mts_0_comp1_reset),
         .deci_adc_active(mts_0_deci_adc_active),
         .deci_clk(mts_0_deci_clk),
         .deci_resetn(mts_0_deci_resetn),

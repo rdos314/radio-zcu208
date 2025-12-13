@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Dec 11 23:49:54 2025
+-- Date        : Sat Dec 13 00:58:47 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_high_189_0_0/ps_freq_high_189_0_0_sim_netlist.vhdl
@@ -4810,17 +4810,23 @@ architecture STRUCTURE of ps_freq_high_189_0_0_freq_high_189 is
     probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 39 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 39 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 39 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 39 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 39 downto 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 39 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_freq_high_189_0_0_ila_1;
   signal E : STD_LOGIC_VECTOR ( 31 downto 16 );
@@ -4835,6 +4841,8 @@ architecture STRUCTURE of ps_freq_high_189_0_0_freq_high_189 is
   attribute MARK_DEBUG of W0 : signal is std.standard.true;
   signal curr_delay : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of curr_delay : signal is std.standard.true;
+  signal \curr_delay__0\ : STD_LOGIC_VECTOR ( 5 downto 4 );
+  signal data0 : STD_LOGIC;
   signal doa_data0 : STD_LOGIC;
   signal \^doa_wr\ : STD_LOGIC;
   attribute MARK_DEBUG of doa_wr : signal is std.standard.true;
@@ -4845,12 +4853,18 @@ architecture STRUCTURE of ps_freq_high_189_0_0_freq_high_189 is
   signal envW : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of envW : signal is std.standard.true;
   signal fir_doa_high_re_N_i_i_1_n_0 : STD_LOGIC;
-  signal fir_im_E : STD_LOGIC_VECTOR ( 36 downto 13 );
-  signal fir_im_N : STD_LOGIC_VECTOR ( 36 downto 13 );
-  signal fir_im_W : STD_LOGIC_VECTOR ( 36 downto 13 );
-  signal fir_re_E : STD_LOGIC_VECTOR ( 36 downto 13 );
-  signal fir_re_N : STD_LOGIC_VECTOR ( 36 downto 13 );
-  signal fir_re_W : STD_LOGIC_VECTOR ( 36 downto 13 );
+  signal fir_im_E : STD_LOGIC_VECTOR ( 39 downto 0 );
+  attribute MARK_DEBUG of fir_im_E : signal is std.standard.true;
+  signal fir_im_N : STD_LOGIC_VECTOR ( 39 downto 0 );
+  attribute MARK_DEBUG of fir_im_N : signal is std.standard.true;
+  signal fir_im_W : STD_LOGIC_VECTOR ( 39 downto 0 );
+  attribute MARK_DEBUG of fir_im_W : signal is std.standard.true;
+  signal fir_re_E : STD_LOGIC_VECTOR ( 39 downto 0 );
+  attribute MARK_DEBUG of fir_re_E : signal is std.standard.true;
+  signal fir_re_N : STD_LOGIC_VECTOR ( 39 downto 0 );
+  attribute MARK_DEBUG of fir_re_N : signal is std.standard.true;
+  signal fir_re_W : STD_LOGIC_VECTOR ( 39 downto 0 );
+  attribute MARK_DEBUG of fir_re_W : signal is std.standard.true;
   signal freq_fifo_data : STD_LOGIC_VECTOR ( 95 downto 0 );
   signal freq_fifo_empty : STD_LOGIC;
   attribute MARK_DEBUG of freq_fifo_empty : signal is std.standard.true;
@@ -4861,20 +4875,15 @@ architecture STRUCTURE of ps_freq_high_189_0_0_freq_high_189 is
   signal \freq_high_189.curr_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[2]_i_1_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[2]_i_2_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[2]_i_3_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[2]_i_4_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[2]_i_5_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[3]_i_2_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[3]_i_3_n_0\ : STD_LOGIC;
+  signal \freq_high_189.curr_delay[3]_i_4_n_0\ : STD_LOGIC;
+  signal \freq_high_189.curr_delay[3]_i_5_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[4]_i_1_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[4]_i_2_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[4]_i_3_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[5]_i_1_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[5]_i_2_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[5]_i_3_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[5]_i_4_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[6]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[6]_i_2_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[6]_i_3_n_0\ : STD_LOGIC;
@@ -4884,24 +4893,25 @@ architecture STRUCTURE of ps_freq_high_189_0_0_freq_high_189 is
   signal \freq_high_189.curr_delay[7]_i_3_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[7]_i_4_n_0\ : STD_LOGIC;
   signal \freq_high_189.curr_delay[7]_i_5_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[7]_i_6_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[7]_i_7_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[7]_i_8_n_0\ : STD_LOGIC;
-  signal \freq_high_189.curr_delay[7]_i_9_n_0\ : STD_LOGIC;
   signal \freq_high_189.freq_fifo_rd_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.freq_rd_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.freq_rd_delay[1]_i_2_n_0\ : STD_LOGIC;
   signal \freq_high_189.freq_rd_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.morlet_active_i_1_n_0\ : STD_LOGIC;
-  signal \freq_high_189.start_delay[1]_i_2_n_0\ : STD_LOGIC;
+  signal \freq_high_189.start_delay[1]_i_1_n_0\ : STD_LOGIC;
+  signal \freq_high_189.start_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \freq_high_189.start_delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \freq_high_189.start_delay[5]_i_2_n_0\ : STD_LOGIC;
+  signal \freq_high_189.start_delay[6]_i_1_n_0\ : STD_LOGIC;
+  signal \freq_high_189.start_delay[6]_i_2_n_0\ : STD_LOGIC;
   signal \freq_high_189.start_delay[7]_i_1_n_0\ : STD_LOGIC;
   signal \freq_high_189.start_delay[7]_i_3_n_0\ : STD_LOGIC;
   signal \freq_high_189.start_delay[7]_i_4_n_0\ : STD_LOGIC;
-  signal \freq_high_189.start_delay[7]_i_5_n_0\ : STD_LOGIC;
   signal freq_rd_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal freq_rd_delay0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal morlet_active : STD_LOGIC;
   attribute MARK_DEBUG of morlet_active : signal is std.standard.true;
+  signal \morlet_active__0\ : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal phaseE : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of phaseE : signal is std.standard.true;
@@ -4931,22 +4941,16 @@ architecture STRUCTURE of ps_freq_high_189_0_0_freq_high_189 is
   signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_im_E_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_im_E_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_doa_high_im_E_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_fir_doa_high_im_N_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_im_N_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_doa_high_im_N_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_fir_doa_high_im_W_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_im_W_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_doa_high_im_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_fir_doa_high_re_E_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_re_E_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_doa_high_re_E_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_fir_doa_high_re_N_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_re_N_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_doa_high_re_N_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_fir_doa_high_re_W_i_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_fir_doa_high_re_W_i_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_fir_doa_high_re_W_i_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_freq_i : label is "fifo_doa_high,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -5147,9 +5151,7 @@ fir_doa_high_im_E_i: component ps_freq_high_189_0_0_fir_doa_high_im_189
      port map (
       aclk => clk,
       aresetn => fir_doa_high_re_N_i_i_1_n_0,
-      m_axis_data_tdata(39 downto 37) => NLW_fir_doa_high_im_E_i_m_axis_data_tdata_UNCONNECTED(39 downto 37),
-      m_axis_data_tdata(36 downto 13) => fir_im_E(36 downto 13),
-      m_axis_data_tdata(12 downto 0) => NLW_fir_doa_high_im_E_i_m_axis_data_tdata_UNCONNECTED(12 downto 0),
+      m_axis_data_tdata(39 downto 0) => fir_im_E(39 downto 0),
       m_axis_data_tvalid => NLW_fir_doa_high_im_E_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(31 downto 16) => E(31 downto 16),
       s_axis_data_tdata(15 downto 0) => E0(15 downto 0),
@@ -5160,9 +5162,7 @@ fir_doa_high_im_N_i: component ps_freq_high_189_0_0_fir_doa_high_im_189
      port map (
       aclk => clk,
       aresetn => fir_doa_high_re_N_i_i_1_n_0,
-      m_axis_data_tdata(39 downto 37) => NLW_fir_doa_high_im_N_i_m_axis_data_tdata_UNCONNECTED(39 downto 37),
-      m_axis_data_tdata(36 downto 13) => fir_im_N(36 downto 13),
-      m_axis_data_tdata(12 downto 0) => NLW_fir_doa_high_im_N_i_m_axis_data_tdata_UNCONNECTED(12 downto 0),
+      m_axis_data_tdata(39 downto 0) => fir_im_N(39 downto 0),
       m_axis_data_tvalid => NLW_fir_doa_high_im_N_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(31 downto 16) => N(31 downto 16),
       s_axis_data_tdata(15 downto 0) => N0(15 downto 0),
@@ -5173,9 +5173,7 @@ fir_doa_high_im_W_i: component ps_freq_high_189_0_0_fir_doa_high_im_189_HD3
      port map (
       aclk => clk,
       aresetn => fir_doa_high_re_N_i_i_1_n_0,
-      m_axis_data_tdata(39 downto 37) => NLW_fir_doa_high_im_W_i_m_axis_data_tdata_UNCONNECTED(39 downto 37),
-      m_axis_data_tdata(36 downto 13) => fir_im_W(36 downto 13),
-      m_axis_data_tdata(12 downto 0) => NLW_fir_doa_high_im_W_i_m_axis_data_tdata_UNCONNECTED(12 downto 0),
+      m_axis_data_tdata(39 downto 0) => fir_im_W(39 downto 0),
       m_axis_data_tvalid => NLW_fir_doa_high_im_W_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(31 downto 16) => W(31 downto 16),
       s_axis_data_tdata(15 downto 0) => W0(15 downto 0),
@@ -5186,9 +5184,7 @@ fir_doa_high_re_E_i: component ps_freq_high_189_0_0_fir_doa_high_re_189
      port map (
       aclk => clk,
       aresetn => fir_doa_high_re_N_i_i_1_n_0,
-      m_axis_data_tdata(39 downto 37) => NLW_fir_doa_high_re_E_i_m_axis_data_tdata_UNCONNECTED(39 downto 37),
-      m_axis_data_tdata(36 downto 13) => fir_re_E(36 downto 13),
-      m_axis_data_tdata(12 downto 0) => NLW_fir_doa_high_re_E_i_m_axis_data_tdata_UNCONNECTED(12 downto 0),
+      m_axis_data_tdata(39 downto 0) => fir_re_E(39 downto 0),
       m_axis_data_tvalid => NLW_fir_doa_high_re_E_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(31 downto 16) => E(31 downto 16),
       s_axis_data_tdata(15 downto 0) => E0(15 downto 0),
@@ -5199,9 +5195,7 @@ fir_doa_high_re_N_i: component ps_freq_high_189_0_0_fir_doa_high_re_189
      port map (
       aclk => clk,
       aresetn => fir_doa_high_re_N_i_i_1_n_0,
-      m_axis_data_tdata(39 downto 37) => NLW_fir_doa_high_re_N_i_m_axis_data_tdata_UNCONNECTED(39 downto 37),
-      m_axis_data_tdata(36 downto 13) => fir_re_N(36 downto 13),
-      m_axis_data_tdata(12 downto 0) => NLW_fir_doa_high_re_N_i_m_axis_data_tdata_UNCONNECTED(12 downto 0),
+      m_axis_data_tdata(39 downto 0) => fir_re_N(39 downto 0),
       m_axis_data_tvalid => NLW_fir_doa_high_re_N_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(31 downto 16) => N(31 downto 16),
       s_axis_data_tdata(15 downto 0) => N0(15 downto 0),
@@ -5220,9 +5214,7 @@ fir_doa_high_re_W_i: component ps_freq_high_189_0_0_fir_doa_high_re_189_HD4
      port map (
       aclk => clk,
       aresetn => fir_doa_high_re_N_i_i_1_n_0,
-      m_axis_data_tdata(39 downto 37) => NLW_fir_doa_high_re_W_i_m_axis_data_tdata_UNCONNECTED(39 downto 37),
-      m_axis_data_tdata(36 downto 13) => fir_re_W(36 downto 13),
-      m_axis_data_tdata(12 downto 0) => NLW_fir_doa_high_re_W_i_m_axis_data_tdata_UNCONNECTED(12 downto 0),
+      m_axis_data_tdata(39 downto 0) => fir_re_W(39 downto 0),
       m_axis_data_tvalid => NLW_fir_doa_high_re_W_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(31 downto 16) => W(31 downto 16),
       s_axis_data_tdata(15 downto 0) => W0(15 downto 0),
@@ -5234,9 +5226,9 @@ freq_E_i: entity work.\ps_freq_high_189_0_0_morlet_to_phase_env__xdcDup__2\
       active => morlet_active,
       clk => clk,
       env(15 downto 0) => envE(15 downto 0),
-      im(23 downto 0) => fir_im_E(36 downto 13),
+      im(23 downto 0) => fir_im_E(34 downto 11),
       phase(19 downto 0) => phaseE(19 downto 0),
-      re(23 downto 0) => fir_re_E(36 downto 13),
+      re(23 downto 0) => fir_re_E(34 downto 11),
       valid => validE
     );
 freq_N_i: entity work.\ps_freq_high_189_0_0_morlet_to_phase_env__xdcDup__1\
@@ -5244,9 +5236,9 @@ freq_N_i: entity work.\ps_freq_high_189_0_0_morlet_to_phase_env__xdcDup__1\
       active => morlet_active,
       clk => clk,
       env(15 downto 0) => envN(15 downto 0),
-      im(23 downto 0) => fir_im_N(36 downto 13),
+      im(23 downto 0) => fir_im_N(34 downto 11),
       phase(19 downto 0) => phaseN(19 downto 0),
-      re(23 downto 0) => fir_re_N(36 downto 13),
+      re(23 downto 0) => fir_re_N(34 downto 11),
       valid => validN
     );
 freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
@@ -5254,9 +5246,9 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
       active => morlet_active,
       clk => clk,
       env(15 downto 0) => envW(15 downto 0),
-      im(23 downto 0) => fir_im_W(36 downto 13),
+      im(23 downto 0) => fir_im_W(34 downto 11),
       phase(19 downto 0) => phaseW(19 downto 0),
-      re(23 downto 0) => fir_re_W(36 downto 13),
+      re(23 downto 0) => fir_re_W(34 downto 11),
       valid => validW
     );
 \freq_high_189.E0_reg[0]\: unisim.vcomponents.FDRE
@@ -6029,355 +6021,305 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
     );
 \freq_high_189.curr_delay[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"2288EECB"
+      INIT => X"EEBC2288"
     )
         port map (
       I0 => freq_fifo_valid,
       I1 => curr_delay(0),
-      I2 => \freq_high_189.curr_delay[2]_i_2_n_0\,
-      I3 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I4 => \freq_high_189.curr_delay[7]_i_2_n_0\,
+      I2 => data0,
+      I3 => \morlet_active__0\,
+      I4 => \freq_high_189.curr_delay[5]_i_3_n_0\,
       O => \freq_high_189.curr_delay[0]_i_1_n_0\
     );
 \freq_high_189.curr_delay[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FF2F0F130123021"
+      INIT => X"F8E3F8BC28A028A0"
     )
         port map (
-      I0 => \freq_high_189.curr_delay[2]_i_2_n_0\,
-      I1 => \freq_high_189.curr_delay[7]_i_2_n_0\,
+      I0 => freq_fifo_valid,
+      I1 => curr_delay(0),
       I2 => curr_delay(1),
-      I3 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I4 => curr_delay(0),
-      I5 => freq_fifo_valid,
+      I3 => \morlet_active__0\,
+      I4 => data0,
+      I5 => \freq_high_189.curr_delay[5]_i_3_n_0\,
       O => \freq_high_189.curr_delay[1]_i_1_n_0\
     );
-\freq_high_189.curr_delay[2]_i_1\: unisim.vcomponents.LUT6
+\freq_high_189.curr_delay[1]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFF0000CC69"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[2]_i_2_n_0\,
-      I1 => curr_delay(2),
-      I2 => \freq_high_189.curr_delay[2]_i_3_n_0\,
-      I3 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I4 => \freq_high_189.curr_delay[7]_i_2_n_0\,
-      I5 => \freq_high_189.curr_delay[2]_i_5_n_0\,
-      O => \freq_high_189.curr_delay[2]_i_1_n_0\
-    );
-\freq_high_189.curr_delay[2]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000001"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[7]_i_7_n_0\,
-      I1 => curr_delay(7),
-      I2 => curr_delay(6),
-      I3 => curr_delay(1),
-      I4 => curr_delay(0),
-      I5 => curr_delay(2),
-      O => \freq_high_189.curr_delay[2]_i_2_n_0\
-    );
-\freq_high_189.curr_delay[2]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
       I0 => curr_delay(1),
       I1 => curr_delay(0),
-      O => \freq_high_189.curr_delay[2]_i_3_n_0\
+      I2 => curr_delay(2),
+      I3 => \freq_high_189.curr_delay[3]_i_5_n_0\,
+      I4 => curr_delay(7),
+      I5 => curr_delay(6),
+      O => data0
     );
-\freq_high_189.curr_delay[2]_i_4\: unisim.vcomponents.LUT4
+\freq_high_189.curr_delay[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => start_delay(4),
-      I1 => start_delay(2),
-      I2 => start_delay(0),
-      I3 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      O => \freq_high_189.curr_delay[2]_i_4_n_0\
-    );
-\freq_high_189.curr_delay[2]_i_5\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"02AAAAAAA8000000"
+      INIT => X"FFFFFFFF2AAA8000"
     )
         port map (
       I0 => freq_fifo_valid,
-      I1 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      I2 => \freq_high_189.start_delay[1]_i_2_n_0\,
+      I1 => curr_delay(1),
+      I2 => \morlet_active__0\,
       I3 => curr_delay(0),
-      I4 => curr_delay(1),
-      I5 => curr_delay(2),
-      O => \freq_high_189.curr_delay[2]_i_5_n_0\
+      I4 => curr_delay(2),
+      I5 => \freq_high_189.curr_delay[2]_i_3_n_0\,
+      O => \freq_high_189.curr_delay[2]_i_1_n_0\
     );
-\freq_high_189.curr_delay[3]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0EFFFF010E010E01"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[3]_i_2_n_0\,
-      I1 => \freq_high_189.curr_delay[3]_i_3_n_0\,
-      I2 => \freq_high_189.curr_delay[7]_i_2_n_0\,
-      I3 => curr_delay(3),
-      I4 => \freq_high_189.curr_delay[4]_i_2_n_0\,
-      I5 => freq_fifo_valid,
-      O => \freq_high_189.curr_delay[3]_i_1_n_0\
-    );
-\freq_high_189.curr_delay[3]_i_2\: unisim.vcomponents.LUT5
+\freq_high_189.curr_delay[2]_i_2\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"FFFFFFFE"
     )
         port map (
-      I0 => \freq_high_189.start_delay[1]_i_2_n_0\,
+      I0 => \freq_high_189.start_delay[7]_i_4_n_0\,
       I1 => start_delay(0),
-      I2 => start_delay(2),
-      I3 => start_delay(4),
-      I4 => \freq_high_189.curr_delay[7]_i_8_n_0\,
+      I2 => start_delay(7),
+      I3 => start_delay(5),
+      I4 => start_delay(3),
+      O => \morlet_active__0\
+    );
+\freq_high_189.curr_delay[2]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A802A802A802A208"
+    )
+        port map (
+      I0 => \freq_high_189.curr_delay[5]_i_3_n_0\,
+      I1 => data0,
+      I2 => \morlet_active__0\,
+      I3 => curr_delay(2),
+      I4 => curr_delay(1),
+      I5 => curr_delay(0),
+      O => \freq_high_189.curr_delay[2]_i_3_n_0\
+    );
+\freq_high_189.curr_delay[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"2FF8F28F22882288"
+    )
+        port map (
+      I0 => freq_fifo_valid,
+      I1 => \freq_high_189.curr_delay[3]_i_2_n_0\,
+      I2 => \freq_high_189.curr_delay[3]_i_3_n_0\,
+      I3 => curr_delay(3),
+      I4 => curr_delay(2),
+      I5 => \freq_high_189.curr_delay[5]_i_3_n_0\,
+      O => \freq_high_189.curr_delay[3]_i_1_n_0\
+    );
+\freq_high_189.curr_delay[3]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => curr_delay(1),
+      I1 => \morlet_active__0\,
+      I2 => curr_delay(0),
+      I3 => curr_delay(2),
       O => \freq_high_189.curr_delay[3]_i_2_n_0\
     );
-\freq_high_189.curr_delay[3]_i_3\: unisim.vcomponents.LUT5
+\freq_high_189.curr_delay[3]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000001"
+      INIT => X"00FF00FF00FF00AB"
+    )
+        port map (
+      I0 => \morlet_active__0\,
+      I1 => \freq_high_189.curr_delay[3]_i_4_n_0\,
+      I2 => \freq_high_189.curr_delay[3]_i_5_n_0\,
+      I3 => curr_delay(2),
+      I4 => curr_delay(0),
+      I5 => curr_delay(1),
+      O => \freq_high_189.curr_delay[3]_i_3_n_0\
+    );
+\freq_high_189.curr_delay[3]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
     )
         port map (
       I0 => curr_delay(6),
       I1 => curr_delay(7),
-      I2 => curr_delay(4),
-      I3 => curr_delay(3),
-      I4 => curr_delay(5),
-      O => \freq_high_189.curr_delay[3]_i_3_n_0\
+      O => \freq_high_189.curr_delay[3]_i_4_n_0\
     );
-\freq_high_189.curr_delay[4]_i_1\: unisim.vcomponents.LUT6
+\freq_high_189.curr_delay[3]_i_5\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"48C048C0F8CFF8F0"
+      INIT => X"FE"
     )
         port map (
-      I0 => \freq_high_189.curr_delay[4]_i_2_n_0\,
-      I1 => freq_fifo_valid,
+      I0 => curr_delay(4),
+      I1 => curr_delay(3),
+      I2 => curr_delay(5),
+      O => \freq_high_189.curr_delay[3]_i_5_n_0\
+    );
+\freq_high_189.curr_delay[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FF282828"
+    )
+        port map (
+      I0 => freq_fifo_valid,
+      I1 => \freq_high_189.curr_delay[7]_i_2_n_0\,
       I2 => curr_delay(4),
-      I3 => curr_delay(3),
-      I4 => \freq_high_189.curr_delay[4]_i_3_n_0\,
-      I5 => \freq_high_189.curr_delay[7]_i_2_n_0\,
+      I3 => \curr_delay__0\(4),
+      I4 => \freq_high_189.curr_delay[5]_i_3_n_0\,
       O => \freq_high_189.curr_delay[4]_i_1_n_0\
     );
-\freq_high_189.curr_delay[4]_i_2\: unisim.vcomponents.LUT5
+\freq_high_189.curr_delay[4]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"80808000"
+      INIT => X"FFFF0000AAAA5554"
     )
         port map (
-      I0 => curr_delay(2),
-      I1 => curr_delay(1),
-      I2 => curr_delay(0),
-      I3 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I4 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      O => \freq_high_189.curr_delay[4]_i_2_n_0\
+      I0 => \freq_high_189.curr_delay[6]_i_3_n_0\,
+      I1 => curr_delay(5),
+      I2 => curr_delay(7),
+      I3 => curr_delay(6),
+      I4 => curr_delay(4),
+      I5 => curr_delay(3),
+      O => \curr_delay__0\(4)
     );
-\freq_high_189.curr_delay[4]_i_3\: unisim.vcomponents.LUT6
+\freq_high_189.curr_delay[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000001"
+      INIT => X"FFFF2A802A802A80"
     )
         port map (
-      I0 => \freq_high_189.curr_delay[3]_i_3_n_0\,
-      I1 => \freq_high_189.curr_delay[7]_i_8_n_0\,
-      I2 => start_delay(4),
-      I3 => start_delay(2),
-      I4 => start_delay(0),
-      I5 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      O => \freq_high_189.curr_delay[4]_i_3_n_0\
-    );
-\freq_high_189.curr_delay[5]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"1FF11111"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[5]_i_2_n_0\,
-      I1 => \freq_high_189.curr_delay[7]_i_2_n_0\,
-      I2 => curr_delay(5),
-      I3 => \freq_high_189.curr_delay[6]_i_3_n_0\,
-      I4 => freq_fifo_valid,
+      I0 => freq_fifo_valid,
+      I1 => curr_delay(4),
+      I2 => \freq_high_189.curr_delay[7]_i_2_n_0\,
+      I3 => curr_delay(5),
+      I4 => \curr_delay__0\(5),
+      I5 => \freq_high_189.curr_delay[5]_i_3_n_0\,
       O => \freq_high_189.curr_delay[5]_i_1_n_0\
     );
 \freq_high_189.curr_delay[5]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000003FFFFFFFD"
+      INIT => X"FFFF0000FFAA0054"
     )
         port map (
-      I0 => \freq_high_189.curr_delay[5]_i_3_n_0\,
-      I1 => \freq_high_189.curr_delay[5]_i_4_n_0\,
-      I2 => \freq_high_189.curr_delay[7]_i_8_n_0\,
-      I3 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      I4 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I5 => curr_delay(5),
-      O => \freq_high_189.curr_delay[5]_i_2_n_0\
-    );
-\freq_high_189.curr_delay[5]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => curr_delay(7),
+      I0 => curr_delay(3),
       I1 => curr_delay(6),
-      O => \freq_high_189.curr_delay[5]_i_3_n_0\
+      I2 => curr_delay(7),
+      I3 => \freq_high_189.curr_delay[6]_i_3_n_0\,
+      I4 => curr_delay(5),
+      I5 => curr_delay(4),
+      O => \curr_delay__0\(5)
     );
-\freq_high_189.curr_delay[5]_i_4\: unisim.vcomponents.LUT2
+\freq_high_189.curr_delay[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"E"
+      INIT => X"00000000FFFFFFFE"
     )
         port map (
-      I0 => curr_delay(4),
-      I1 => curr_delay(3),
-      O => \freq_high_189.curr_delay[5]_i_4_n_0\
+      I0 => \freq_high_189.start_delay[7]_i_3_n_0\,
+      I1 => start_delay(2),
+      I2 => start_delay(1),
+      I3 => start_delay(6),
+      I4 => start_delay(4),
+      I5 => freq_fifo_valid,
+      O => \freq_high_189.curr_delay[5]_i_3_n_0\
     );
 \freq_high_189.curr_delay[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2FF1F1F121212121"
+      INIT => X"FFFFFFFF2AAA8000"
     )
         port map (
-      I0 => \freq_high_189.curr_delay[6]_i_2_n_0\,
+      I0 => freq_fifo_valid,
       I1 => \freq_high_189.curr_delay[7]_i_2_n_0\,
-      I2 => curr_delay(6),
+      I2 => curr_delay(4),
       I3 => curr_delay(5),
-      I4 => \freq_high_189.curr_delay[6]_i_3_n_0\,
-      I5 => freq_fifo_valid,
+      I4 => curr_delay(6),
+      I5 => \freq_high_189.curr_delay[6]_i_2_n_0\,
       O => \freq_high_189.curr_delay[6]_i_1_n_0\
     );
 \freq_high_189.curr_delay[6]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFEFEFEFF"
+      INIT => X"A0A0A0A0A082A080"
     )
         port map (
-      I0 => \freq_high_189.curr_delay[7]_i_8_n_0\,
-      I1 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      I2 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I3 => curr_delay(7),
-      I4 => curr_delay(6),
-      I5 => \freq_high_189.curr_delay[7]_i_7_n_0\,
+      I0 => \freq_high_189.curr_delay[5]_i_3_n_0\,
+      I1 => curr_delay(5),
+      I2 => curr_delay(6),
+      I3 => \freq_high_189.curr_delay[6]_i_3_n_0\,
+      I4 => curr_delay(7),
+      I5 => \freq_high_189.curr_delay[6]_i_4_n_0\,
       O => \freq_high_189.curr_delay[6]_i_2_n_0\
     );
-\freq_high_189.curr_delay[6]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"00000000E0000000"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      I1 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I2 => curr_delay(0),
-      I3 => curr_delay(1),
-      I4 => curr_delay(2),
-      I5 => \freq_high_189.curr_delay[6]_i_4_n_0\,
-      O => \freq_high_189.curr_delay[6]_i_3_n_0\
-    );
-\freq_high_189.curr_delay[6]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"7"
-    )
-        port map (
-      I0 => curr_delay(4),
-      I1 => curr_delay(3),
-      O => \freq_high_189.curr_delay[6]_i_4_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"F04FF0F040404040"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[7]_i_2_n_0\,
-      I1 => \freq_high_189.curr_delay[7]_i_3_n_0\,
-      I2 => curr_delay(7),
-      I3 => \freq_high_189.curr_delay[7]_i_4_n_0\,
-      I4 => \freq_high_189.curr_delay[7]_i_5_n_0\,
-      I5 => freq_fifo_valid,
-      O => \freq_high_189.curr_delay[7]_i_1_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAAAAAB"
-    )
-        port map (
-      I0 => freq_fifo_valid,
-      I1 => \freq_high_189.curr_delay[7]_i_6_n_0\,
-      I2 => start_delay(6),
-      I3 => start_delay(7),
-      I4 => start_delay(1),
-      O => \freq_high_189.curr_delay[7]_i_2_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_3\: unisim.vcomponents.LUT5
+\freq_high_189.curr_delay[6]_i_3\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[7]_i_7_n_0\,
-      I1 => curr_delay(6),
-      I2 => \freq_high_189.curr_delay[7]_i_8_n_0\,
-      I3 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      I4 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      O => \freq_high_189.curr_delay[7]_i_3_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_4\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => curr_delay(5),
-      I1 => curr_delay(4),
-      I2 => curr_delay(6),
-      O => \freq_high_189.curr_delay[7]_i_4_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_5\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"E000000000000000"
-    )
-        port map (
-      I0 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      I1 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I2 => curr_delay(0),
-      I3 => curr_delay(1),
-      I4 => curr_delay(2),
-      I5 => curr_delay(3),
-      O => \freq_high_189.curr_delay[7]_i_5_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_6\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => start_delay(4),
-      I1 => start_delay(2),
-      I2 => start_delay(0),
-      I3 => start_delay(3),
-      I4 => start_delay(5),
-      O => \freq_high_189.curr_delay[7]_i_6_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_7\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => curr_delay(5),
-      I1 => curr_delay(3),
-      I2 => curr_delay(4),
-      O => \freq_high_189.curr_delay[7]_i_7_n_0\
-    );
-\freq_high_189.curr_delay[7]_i_8\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
     )
         port map (
       I0 => curr_delay(2),
       I1 => curr_delay(0),
       I2 => curr_delay(1),
-      O => \freq_high_189.curr_delay[7]_i_8_n_0\
+      I3 => \freq_high_189.start_delay[7]_i_3_n_0\,
+      I4 => \freq_high_189.start_delay[7]_i_4_n_0\,
+      O => \freq_high_189.curr_delay[6]_i_3_n_0\
     );
-\freq_high_189.curr_delay[7]_i_9\: unisim.vcomponents.LUT3
+\freq_high_189.curr_delay[6]_i_4\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FE"
+      INIT => X"E"
     )
         port map (
-      I0 => start_delay(0),
-      I1 => start_delay(2),
-      I2 => start_delay(4),
-      O => \freq_high_189.curr_delay[7]_i_9_n_0\
+      I0 => curr_delay(3),
+      I1 => curr_delay(4),
+      O => \freq_high_189.curr_delay[6]_i_4_n_0\
+    );
+\freq_high_189.curr_delay[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFF2A80"
+    )
+        port map (
+      I0 => freq_fifo_valid,
+      I1 => \freq_high_189.curr_delay[7]_i_2_n_0\,
+      I2 => \freq_high_189.curr_delay[7]_i_3_n_0\,
+      I3 => curr_delay(7),
+      I4 => \freq_high_189.curr_delay[7]_i_4_n_0\,
+      O => \freq_high_189.curr_delay[7]_i_1_n_0\
+    );
+\freq_high_189.curr_delay[7]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => curr_delay(2),
+      I1 => curr_delay(0),
+      I2 => \morlet_active__0\,
+      I3 => curr_delay(1),
+      I4 => curr_delay(3),
+      O => \freq_high_189.curr_delay[7]_i_2_n_0\
+    );
+\freq_high_189.curr_delay[7]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
+    )
+        port map (
+      I0 => curr_delay(6),
+      I1 => curr_delay(5),
+      I2 => curr_delay(4),
+      O => \freq_high_189.curr_delay[7]_i_3_n_0\
+    );
+\freq_high_189.curr_delay[7]_i_4\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"A0A0A080"
+    )
+        port map (
+      I0 => \freq_high_189.curr_delay[5]_i_3_n_0\,
+      I1 => curr_delay(6),
+      I2 => curr_delay(7),
+      I3 => \freq_high_189.curr_delay[7]_i_5_n_0\,
+      I4 => \morlet_active__0\,
+      O => \freq_high_189.curr_delay[7]_i_4_n_0\
+    );
+\freq_high_189.curr_delay[7]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => curr_delay(5),
+      I1 => curr_delay(3),
+      I2 => curr_delay(4),
+      I3 => curr_delay(2),
+      I4 => curr_delay(0),
+      I5 => curr_delay(1),
+      O => \freq_high_189.curr_delay[7]_i_5_n_0\
     );
 \freq_high_189.curr_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -10494,17 +10436,14 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
       Q => freq_rd_delay(2),
       S => freq_fifo_empty
     );
-\freq_high_189.morlet_active_i_1\: unisim.vcomponents.LUT6
+\freq_high_189.morlet_active_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"0001000100000001"
+      INIT => X"54"
     )
         port map (
-      I0 => start_delay(4),
-      I1 => start_delay(2),
-      I2 => start_delay(0),
-      I3 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I4 => \freq_high_189.curr_delay[2]_i_2_n_0\,
-      I5 => freq_fifo_valid,
+      I0 => \morlet_active__0\,
+      I1 => freq_fifo_valid,
+      I2 => data0,
       O => \freq_high_189.morlet_active_i_1_n_0\
     );
 \freq_high_189.morlet_active_reg\: unisim.vcomponents.FDRE
@@ -10515,158 +10454,160 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
       Q => morlet_active,
       R => '0'
     );
-\freq_high_189.start_delay[0]_i_1\: unisim.vcomponents.LUT4
+\freq_high_189.start_delay[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00FE"
+      INIT => X"00FF00FE"
     )
         port map (
-      I0 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I1 => start_delay(4),
-      I2 => start_delay(2),
+      I0 => start_delay(7),
+      I1 => start_delay(5),
+      I2 => start_delay(3),
       I3 => start_delay(0),
+      I4 => \freq_high_189.start_delay[7]_i_4_n_0\,
       O => \p_1_in__0\(0)
     );
 \freq_high_189.start_delay[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0F0FF0F10F0EF0F0"
+      INIT => X"33333332CCCCCCCC"
     )
         port map (
-      I0 => start_delay(4),
-      I1 => start_delay(2),
-      I2 => start_delay(0),
-      I3 => \freq_high_189.start_delay[1]_i_2_n_0\,
-      I4 => start_delay(1),
-      I5 => \freq_high_189.start_delay[7]_i_5_n_0\,
-      O => \p_1_in__0\(1)
+      I0 => \freq_high_189.start_delay[7]_i_4_n_0\,
+      I1 => start_delay(0),
+      I2 => start_delay(7),
+      I3 => start_delay(5),
+      I4 => start_delay(3),
+      I5 => start_delay(1),
+      O => \freq_high_189.start_delay[1]_i_1_n_0\
     );
-\freq_high_189.start_delay[1]_i_2\: unisim.vcomponents.LUT5
+\freq_high_189.start_delay[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFF"
+      INIT => X"54FEFE54FE54FE54"
+    )
+        port map (
+      I0 => \morlet_active__0\,
+      I1 => data0,
+      I2 => freq_fifo_valid,
+      I3 => start_delay(2),
+      I4 => start_delay(0),
+      I5 => start_delay(1),
+      O => \freq_high_189.start_delay[2]_i_1_n_0\
+    );
+\freq_high_189.start_delay[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"28888888"
+    )
+        port map (
+      I0 => \morlet_active__0\,
+      I1 => start_delay(3),
+      I2 => start_delay(0),
+      I3 => start_delay(2),
+      I4 => start_delay(1),
+      O => \p_1_in__0\(3)
+    );
+\freq_high_189.start_delay[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"2888888888888888"
+    )
+        port map (
+      I0 => \morlet_active__0\,
+      I1 => start_delay(4),
+      I2 => start_delay(3),
+      I3 => start_delay(0),
+      I4 => start_delay(2),
+      I5 => start_delay(1),
+      O => \freq_high_189.start_delay[4]_i_1_n_0\
+    );
+\freq_high_189.start_delay[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"AA6A"
     )
         port map (
       I0 => start_delay(5),
-      I1 => start_delay(1),
-      I2 => start_delay(3),
-      I3 => start_delay(6),
-      I4 => start_delay(7),
-      O => \freq_high_189.start_delay[1]_i_2_n_0\
+      I1 => start_delay(3),
+      I2 => start_delay(0),
+      I3 => \freq_high_189.start_delay[5]_i_2_n_0\,
+      O => \p_1_in__0\(5)
     );
-\freq_high_189.start_delay[2]_i_1\: unisim.vcomponents.LUT3
+\freq_high_189.start_delay[5]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6A"
+      INIT => X"7F"
     )
         port map (
       I0 => start_delay(2),
       I1 => start_delay(1),
-      I2 => start_delay(0),
-      O => \p_1_in__0\(2)
+      I2 => start_delay(4),
+      O => \freq_high_189.start_delay[5]_i_2_n_0\
     );
-\freq_high_189.start_delay[3]_i_1\: unisim.vcomponents.LUT6
+\freq_high_189.start_delay[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6AAAFFFF6AAA0000"
+      INIT => X"5400"
     )
         port map (
-      I0 => start_delay(3),
-      I1 => start_delay(0),
-      I2 => start_delay(1),
-      I3 => start_delay(2),
-      I4 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I5 => \freq_high_189.start_delay[7]_i_5_n_0\,
-      O => \p_1_in__0\(3)
+      I0 => \morlet_active__0\,
+      I1 => data0,
+      I2 => freq_fifo_valid,
+      I3 => \freq_high_189.start_delay[7]_i_1_n_0\,
+      O => \freq_high_189.start_delay[6]_i_1_n_0\
     );
-\freq_high_189.start_delay[4]_i_1\: unisim.vcomponents.LUT5
+\freq_high_189.start_delay[6]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAA"
-    )
-        port map (
-      I0 => start_delay(4),
-      I1 => start_delay(2),
-      I2 => start_delay(1),
-      I3 => start_delay(0),
-      I4 => start_delay(3),
-      O => \p_1_in__0\(4)
-    );
-\freq_high_189.start_delay[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9F90"
-    )
-        port map (
-      I0 => start_delay(5),
-      I1 => \freq_high_189.start_delay[7]_i_4_n_0\,
-      I2 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I3 => \freq_high_189.start_delay[7]_i_5_n_0\,
-      O => \p_1_in__0\(5)
-    );
-\freq_high_189.start_delay[6]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"A6FFA600"
-    )
-        port map (
-      I0 => start_delay(6),
-      I1 => start_delay(5),
-      I2 => \freq_high_189.start_delay[7]_i_4_n_0\,
-      I3 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I4 => \freq_high_189.start_delay[7]_i_5_n_0\,
-      O => \p_1_in__0\(6)
-    );
-\freq_high_189.start_delay[7]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => freq_fifo_valid,
-      I1 => \freq_high_189.start_delay[7]_i_3_n_0\,
-      O => \freq_high_189.start_delay[7]_i_1_n_0\
-    );
-\freq_high_189.start_delay[7]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9AAAFFFF9AAA0000"
+      INIT => X"CCCCCCCC3CCCCCC8"
     )
         port map (
       I0 => start_delay(7),
-      I1 => \freq_high_189.start_delay[7]_i_4_n_0\,
+      I1 => start_delay(6),
       I2 => start_delay(5),
-      I3 => start_delay(6),
-      I4 => \freq_high_189.curr_delay[2]_i_4_n_0\,
-      I5 => \freq_high_189.start_delay[7]_i_5_n_0\,
-      O => \p_1_in__0\(7)
+      I3 => start_delay(0),
+      I4 => start_delay(3),
+      I5 => \freq_high_189.start_delay[5]_i_2_n_0\,
+      O => \freq_high_189.start_delay[6]_i_2_n_0\
     );
-\freq_high_189.start_delay[7]_i_3\: unisim.vcomponents.LUT6
+\freq_high_189.start_delay[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000001"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => start_delay(1),
-      I1 => start_delay(7),
-      I2 => start_delay(6),
-      I3 => start_delay(5),
-      I4 => start_delay(3),
-      I5 => \freq_high_189.curr_delay[7]_i_9_n_0\,
-      O => \freq_high_189.start_delay[7]_i_3_n_0\
+      I0 => \freq_high_189.start_delay[7]_i_3_n_0\,
+      I1 => start_delay(2),
+      I2 => start_delay(1),
+      I3 => start_delay(6),
+      I4 => start_delay(4),
+      I5 => freq_fifo_valid,
+      O => \freq_high_189.start_delay[7]_i_1_n_0\
     );
-\freq_high_189.start_delay[7]_i_4\: unisim.vcomponents.LUT5
+\freq_high_189.start_delay[7]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFFFFFF"
+      INIT => X"AAAA6AAA"
+    )
+        port map (
+      I0 => start_delay(7),
+      I1 => start_delay(5),
+      I2 => start_delay(0),
+      I3 => start_delay(3),
+      I4 => \freq_high_189.start_delay[7]_i_4_n_0\,
+      O => \p_1_in__0\(7)
+    );
+\freq_high_189.start_delay[7]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
     )
         port map (
       I0 => start_delay(3),
-      I1 => start_delay(0),
-      I2 => start_delay(1),
-      I3 => start_delay(2),
-      I4 => start_delay(4),
-      O => \freq_high_189.start_delay[7]_i_4_n_0\
+      I1 => start_delay(5),
+      I2 => start_delay(7),
+      I3 => start_delay(0),
+      O => \freq_high_189.start_delay[7]_i_3_n_0\
     );
-\freq_high_189.start_delay[7]_i_5\: unisim.vcomponents.LUT5
+\freq_high_189.start_delay[7]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFEFFFF"
+      INIT => X"7FFF"
     )
         port map (
-      I0 => freq_fifo_valid,
-      I1 => curr_delay(2),
-      I2 => curr_delay(0),
-      I3 => curr_delay(1),
-      I4 => \freq_high_189.curr_delay[3]_i_3_n_0\,
-      O => \freq_high_189.start_delay[7]_i_5_n_0\
+      I0 => start_delay(4),
+      I1 => start_delay(1),
+      I2 => start_delay(2),
+      I3 => start_delay(6),
+      O => \freq_high_189.start_delay[7]_i_4_n_0\
     );
 \freq_high_189.start_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -10676,21 +10617,21 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
       Q => start_delay(0),
       R => '0'
     );
-\freq_high_189.start_delay_reg[1]\: unisim.vcomponents.FDRE
+\freq_high_189.start_delay_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => \freq_high_189.start_delay[7]_i_1_n_0\,
-      D => \p_1_in__0\(1),
+      D => \freq_high_189.start_delay[1]_i_1_n_0\,
       Q => start_delay(1),
-      R => '0'
+      S => \freq_high_189.start_delay[6]_i_1_n_0\
     );
-\freq_high_189.start_delay_reg[2]\: unisim.vcomponents.FDRE
+\freq_high_189.start_delay_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => \freq_high_189.start_delay[7]_i_1_n_0\,
-      D => \p_1_in__0\(2),
+      D => \freq_high_189.start_delay[2]_i_1_n_0\,
       Q => start_delay(2),
-      R => '0'
+      S => '0'
     );
 \freq_high_189.start_delay_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -10700,13 +10641,13 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
       Q => start_delay(3),
       R => '0'
     );
-\freq_high_189.start_delay_reg[4]\: unisim.vcomponents.FDRE
+\freq_high_189.start_delay_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => \freq_high_189.start_delay[7]_i_1_n_0\,
-      D => \p_1_in__0\(4),
+      D => \freq_high_189.start_delay[4]_i_1_n_0\,
       Q => start_delay(4),
-      R => '0'
+      S => \freq_high_189.start_delay[6]_i_1_n_0\
     );
 \freq_high_189.start_delay_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -10716,13 +10657,13 @@ freq_W_i: entity work.ps_freq_high_189_0_0_morlet_to_phase_env
       Q => start_delay(5),
       R => '0'
     );
-\freq_high_189.start_delay_reg[6]\: unisim.vcomponents.FDRE
+\freq_high_189.start_delay_reg[6]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => \freq_high_189.start_delay[7]_i_1_n_0\,
-      D => \p_1_in__0\(6),
+      D => \freq_high_189.start_delay[6]_i_2_n_0\,
       Q => start_delay(6),
-      R => '0'
+      S => \freq_high_189.start_delay[6]_i_1_n_0\
     );
 \freq_high_189.start_delay_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -10737,23 +10678,30 @@ ila_1_i: component ps_freq_high_189_0_0_ila_1
       clk => clk,
       probe0(0) => \^doa_wr\,
       probe1(0) => raw_fifo_empty,
-      probe10(15 downto 0) => raw_N0(15 downto 0),
-      probe11(15 downto 0) => E0(15 downto 0),
-      probe12(15 downto 0) => envE(15 downto 0),
-      probe13(19 downto 0) => phaseE(19 downto 0),
-      probe14(15 downto 0) => raw_E0(15 downto 0),
-      probe15(15 downto 0) => W0(15 downto 0),
-      probe16(15 downto 0) => envW(15 downto 0),
-      probe17(19 downto 0) => phaseW(19 downto 0),
-      probe18(15 downto 0) => raw_W0(15 downto 0),
+      probe10(15 downto 0) => envN(15 downto 0),
+      probe11(19 downto 0) => phaseN(19 downto 0),
+      probe12(15 downto 0) => raw_N0(15 downto 0),
+      probe13(15 downto 0) => E0(15 downto 0),
+      probe14(39 downto 0) => fir_re_E(39 downto 0),
+      probe15(39 downto 0) => fir_im_E(39 downto 0),
+      probe16(15 downto 0) => envE(15 downto 0),
+      probe17(19 downto 0) => phaseE(19 downto 0),
+      probe18(15 downto 0) => raw_E0(15 downto 0),
+      probe19(15 downto 0) => W0(15 downto 0),
       probe2(0) => freq_fifo_empty,
+      probe20(39 downto 0) => fir_re_W(39 downto 0),
+      probe21(39 downto 0) => fir_im_W(39 downto 0),
+      probe22(19 downto 16) => B"0000",
+      probe22(15 downto 0) => envW(15 downto 0),
+      probe23(15 downto 0) => phaseW(15 downto 0),
+      probe24(15 downto 0) => raw_W0(15 downto 0),
       probe3(0) => freq_fifo_rd,
       probe4(7 downto 0) => start_delay(7 downto 0),
       probe5(7 downto 0) => curr_delay(7 downto 0),
       probe6(0) => morlet_active,
       probe7(15 downto 0) => N0(15 downto 0),
-      probe8(15 downto 0) => envN(15 downto 0),
-      probe9(19 downto 0) => phaseN(19 downto 0)
+      probe8(39 downto 0) => fir_re_N(39 downto 0),
+      probe9(39 downto 0) => fir_im_N(39 downto 0)
     );
 end STRUCTURE;
 library IEEE;
