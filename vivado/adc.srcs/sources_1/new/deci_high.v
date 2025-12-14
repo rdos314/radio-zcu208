@@ -203,6 +203,7 @@ fifo_sim fifo_sim_W_i (
   .empty(sim_empty_W)       // output wire empty
 );
 
+/*
 ila_5 ila_5_i (
 		.clk(clk),                    // input wire clk
 		.probe0(reset_delay),         // input wire [2:0]  probe3
@@ -230,8 +231,6 @@ ila_5 ila_5_i (
 		.probe22(freq_W0),            // input wire [15:0]  probe3
 		.probe23(freq_W1)             // input wire [15:0]  probe3
 );
-
-/*
 
 ila_7 ila_7_i (
 		.clk(raw_clk),               // input wire clk

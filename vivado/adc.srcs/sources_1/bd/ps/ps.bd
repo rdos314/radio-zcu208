@@ -2896,15 +2896,15 @@
       "adc_control_0_sim_channel": {
         "ports": [
           "adc_control_0/sim_channel",
-          "deci_high/sim_channel",
-          "deci_low/sim_channel"
+          "deci_low/sim_channel",
+          "deci_high/sim_channel"
         ]
       },
       "adc_control_0_sim_data": {
         "ports": [
           "adc_control_0/sim_data",
-          "deci_high/sim_data",
-          "deci_low/sim_data"
+          "deci_low/sim_data",
+          "deci_high/sim_data"
         ]
       },
       "adc_control_0_sim_high_wr": {
@@ -3078,8 +3078,8 @@
       "mts_0_deci_adc_active": {
         "ports": [
           "mts_0/deci_adc_active",
-          "deci_high/adc_active",
-          "deci_low/adc_active"
+          "deci_low/adc_active",
+          "deci_high/adc_active"
         ]
       },
       "mts_0_deci_clk": {
@@ -3089,10 +3089,10 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "freq_low_46_0/fifo_clk",
-          "deci_high/clk",
           "deci_low/clk",
-          "freq_high_189_0/fifo_clk"
+          "deci_high/clk",
+          "freq_high_189_0/fifo_clk",
+          "freq_low_46_0/fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -3102,8 +3102,8 @@
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
-          "deci_high/resetn",
-          "deci_low/resetn"
+          "deci_low/resetn",
+          "deci_high/resetn"
         ]
       },
       "mts_0_deci_sim_active": {
@@ -3115,15 +3115,15 @@
       "mts_0_deci_sim_start": {
         "ports": [
           "mts_0/deci_sim_start",
-          "deci_high/sim_start",
-          "deci_low/sim_start"
+          "deci_low/sim_start",
+          "deci_high/sim_start"
         ]
       },
       "mts_0_freq0_clk": {
         "ports": [
           "mts_0/freq0_clk",
-          "freq_low_46_0/clk",
-          "comp_low/fifo_clk"
+          "comp_low/fifo_clk",
+          "freq_low_46_0/clk"
         ]
       },
       "mts_0_freq0_reset": {
@@ -3197,8 +3197,8 @@
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
           "adc_control_0/resetn",
-          "deci_high/sim_resetn",
-          "deci_low/sim_resetn"
+          "deci_low/sim_resetn",
+          "deci_high/sim_resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3299,8 +3299,8 @@
           "axi_bram/clkb",
           "adc_control_0/clk",
           "mts_0/axi_clk",
-          "deci_high/sim_clk",
-          "deci_low/sim_clk"
+          "deci_low/sim_clk",
+          "deci_high/sim_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

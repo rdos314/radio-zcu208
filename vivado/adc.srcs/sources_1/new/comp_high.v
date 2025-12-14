@@ -34,7 +34,7 @@ module comp_high(
   wire fifo_empty;
   reg [3:0] fifo_rd_delay;
   reg doa_valid;
-
+  
   reg [15:0] env_N;
   reg [19:0] phase_N;
   reg [15:0] raw_N0;
@@ -194,7 +194,6 @@ generate
         else
             doa_valid <= 0;
     end
-
 
   end
     

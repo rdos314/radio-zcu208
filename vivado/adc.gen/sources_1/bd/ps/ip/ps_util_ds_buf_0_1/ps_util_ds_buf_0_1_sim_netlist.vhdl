@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 21 23:00:35 2025
+-- Date        : Fri Nov 21 23:00:34 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_util_ds_buf_0_1/ps_util_ds_buf_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top ps_util_ds_buf_0_1 -prefix
+--               ps_util_ds_buf_0_1_ ps_util_ds_buf_0_1_sim_netlist.vhdl
 -- Design      : ps_util_ds_buf_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -169,8 +169,6 @@ entity ps_util_ds_buf_0_1_util_ds_buf is
   attribute C_SIM_DEVICE of ps_util_ds_buf_0_1_util_ds_buf : entity is "VERSAL_AI_CORE_ES1";
   attribute C_SIZE : integer;
   attribute C_SIZE of ps_util_ds_buf_0_1_util_ds_buf : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of ps_util_ds_buf_0_1_util_ds_buf : entity is "util_ds_buf";
 end ps_util_ds_buf_0_1_util_ds_buf;
 
 architecture STRUCTURE of ps_util_ds_buf_0_1_util_ds_buf is

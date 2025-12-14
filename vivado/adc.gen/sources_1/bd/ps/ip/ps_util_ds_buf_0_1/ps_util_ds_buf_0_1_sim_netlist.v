@@ -2,10 +2,10 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 21 23:00:35 2025
+// Date        : Fri Nov 21 23:00:34 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_util_ds_buf_0_1/ps_util_ds_buf_0_1_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top ps_util_ds_buf_0_1 -prefix
+//               ps_util_ds_buf_0_1_ ps_util_ds_buf_0_1_sim_netlist.v
 // Design      : ps_util_ds_buf_0_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -233,7 +233,7 @@ endmodule
 
 (* C_BUFGCE_DIV = "1" *) (* C_BUFG_GT_SYNC = "0" *) (* C_BUF_TYPE = "IBUFDS" *) 
 (* C_MODE = "PERFORMANCE" *) (* C_OBUFDS_GTE5_ADV = "2'b00" *) (* C_REFCLK_ICNTL_TX = "5'b00000" *) 
-(* C_SIM_DEVICE = "VERSAL_AI_CORE_ES1" *) (* C_SIZE = "1" *) (* ORIG_REF_NAME = "util_ds_buf" *) 
+(* C_SIM_DEVICE = "VERSAL_AI_CORE_ES1" *) (* C_SIZE = "1" *) 
 module ps_util_ds_buf_0_1_util_ds_buf
    (IBUF_DS_P,
     IBUF_DS_N,

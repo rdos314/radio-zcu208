@@ -97,17 +97,28 @@ module freq_high_189(
   reg [7:0] start_delay;
   reg [7:0] curr_delay;
 
-  wire validN;
+  wire valid_N;
+  wire [15:0] env_N;
+  wire [19:0] phase_N;
   wire [15:0] envN;
   wire [19:0] phaseN;
 
-  wire validE;
+  wire valid_E;
+  wire [15:0] env_E;
+  wire [19:0] phase_E;
   wire [15:0] envE;
   wire [19:0] phaseE;
 
-  wire validW;
+  wire valid_W;
+  wire [15:0] env_W;
+  wire [19:0] phase_W;
   wire [15:0] envW;
   wire [19:0] phaseW;
+
+  wire valid;
+  wire [11:0] errNE;
+  wire [11:0] errNW;
+  wire [11:0] errEW;
    
   wire ready_re_N;
   wire valid_re_N;
@@ -220,9 +231,9 @@ morlet_to_phase_env freq_N_i (
   .active(morlet_active),
   .re(fir_re_N[34:11]),
   .im(fir_im_N[34:11]),
-  .valid(validN),
-  .env(envN),
-  .phase(phaseN)
+  .valid(valid_N),
+  .env(env_N),
+  .phase(phase_N)
   );
 
 morlet_to_phase_env freq_E_i (
@@ -230,9 +241,9 @@ morlet_to_phase_env freq_E_i (
   .active(morlet_active),
   .re(fir_re_E[34:11]),
   .im(fir_im_E[34:11]),
-  .valid(validE),
-  .env(envE),
-  .phase(phaseE)
+  .valid(valid_E),
+  .env(env_E),
+  .phase(phase_E)
   );
 
 morlet_to_phase_env freq_W_i (
@@ -240,11 +251,33 @@ morlet_to_phase_env freq_W_i (
   .active(morlet_active),
   .re(fir_re_W[34:11]),
   .im(fir_im_W[34:11]),
-  .valid(validW),
-  .env(envW),
-  .phase(phaseW)
+  .valid(valid_W),
+  .env(env_W),
+  .phase(phase_W)
   );
 
+phase_err phase_err_i (
+  .clk(clk),                               // input wire aclk
+  .active(valid_N & valid_E & valid_W),
+  .env_in_N(env_N),
+  .phase_in_N(phase_N),
+  .env_in_E(env_E),
+  .phase_in_E(phase_E),
+  .env_in_W(env_W),
+  .phase_in_W(phase_W),
+  .valid(valid),
+  .env_out_N(envN),
+  .phase_out_N(phaseN),
+  .env_out_E(envE),
+  .phase_out_E(phaseE),
+  .env_out_W(envW),
+  .phase_out_W(phaseW),
+  .err_NE(errNE),
+  .err_NW(errNW),
+  .err_EW(errEW)
+  );
+
+/*
 ila_1 ila_1_i (
 		.clk(clk),                     // input wire clk
 		.probe0(doa_wr),               // input wire [0:0]  probe3
@@ -273,6 +306,7 @@ ila_1 ila_1_i (
 		.probe23(phaseW),              // input wire [19:0]  probe3
 		.probe24(raw_W0)               // input wire [15:0]  probe3
 	);
+*/
 
 generate
   begin : freq_high_189
@@ -358,7 +392,7 @@ generate
 
     always @(posedge clk) 
 	begin
-        if (validN & validE & validW)
+        if (valid_N & valid_E & valid_W)
         begin
             doa_data[15:0] <= envN;
             doa_data[35:16] <= phaseN;

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Dec 11 23:49:53 2025
+// Date        : Sun Dec 14 18:28:59 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.v
@@ -296,7 +296,7 @@ module ps_freq_low_46_0_0_fir_doa_low_re_HD4
 
 endmodule
 
-(* ORIG_REF_NAME = "freq_low_46" *) (* keep_hierarchy = "soft" *) 
+(* ORIG_REF_NAME = "freq_low_46" *) 
 module ps_freq_low_46_0_0_freq_low_46
    (fifo_clk,
     raw_wr,
@@ -320,14 +320,17 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [15:0]E;
   wire [15:0]N;
   wire [15:0]W;
+  wire active0;
   wire clk;
   wire data0;
   wire [299:0]doa_data;
-  wire doa_data0;
-  (* MARK_DEBUG *) wire doa_wr;
-  (* MARK_DEBUG *) wire [15:0]envE;
-  (* MARK_DEBUG *) wire [15:0]envN;
-  (* MARK_DEBUG *) wire [15:0]envW;
+  wire doa_wr;
+  wire [15:0]envE;
+  wire [15:0]envN;
+  wire [15:0]envW;
+  wire [15:0]env_E;
+  wire [15:0]env_N;
+  wire [15:0]env_W;
   wire fifo_clk;
   wire fir_freq_low_re_N_i_i_1_n_0;
   wire [36:13]fir_im_E;
@@ -388,24 +391,24 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [2:0]freq_rd_delay;
   wire [0:0]freq_rd_delay0;
   wire freq_wr;
-  (* MARK_DEBUG *) wire [19:0]phaseE;
-  (* MARK_DEBUG *) wire [19:0]phaseN;
-  (* MARK_DEBUG *) wire [19:0]phaseW;
-  (* MARK_DEBUG *) wire [15:0]raw_E0;
-  (* MARK_DEBUG *) wire [15:0]raw_N0;
-  (* MARK_DEBUG *) wire [15:0]raw_W0;
+  wire [19:0]phaseE;
+  wire [19:0]phaseN;
+  wire [19:0]phaseW;
+  wire [19:0]phase_E;
+  wire [19:0]phase_N;
+  wire [19:0]phase_W;
   wire [191:0]raw_data;
-  wire [191:16]raw_fifo_data;
-  (* MARK_DEBUG *) wire raw_fifo_empty;
+  wire [191:0]raw_fifo_data;
   wire raw_wr;
   wire reset;
   wire [7:1]start_delay0;
-  wire validE;
-  wire validN;
-  wire validW;
+  wire valid;
+  wire valid_E;
+  wire valid_W;
   wire NLW_fifo_freq_i_full_UNCONNECTED;
   wire NLW_fifo_freq_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED;
+  wire NLW_fifo_raw_i_empty_UNCONNECTED;
   wire NLW_fifo_raw_i_full_UNCONNECTED;
   wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
@@ -429,6 +432,9 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [39:0]NLW_fir_freq_low_re_W_i_m_axis_data_tdata_UNCONNECTED;
   wire [7:6]\NLW_freq_low_46.curr_delay_reg[7]_i_3_CO_UNCONNECTED ;
   wire [7:7]\NLW_freq_low_46.curr_delay_reg[7]_i_3_O_UNCONNECTED ;
+  wire [11:0]NLW_phase_err_i_err_EW_UNCONNECTED;
+  wire [11:0]NLW_phase_err_i_err_NE_UNCONNECTED;
+  wire [11:0]NLW_phase_err_i_err_NW_UNCONNECTED;
 
   (* CHECK_LICENSE_TYPE = "fifo_doa_low,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -450,8 +456,8 @@ module ps_freq_low_46_0_0_freq_low_46
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
   ps_freq_low_46_0_0_fifo_raw_low fifo_raw_i
        (.din(raw_data),
-        .dout({raw_fifo_data[191:144],raw_W0,raw_fifo_data[127:80],raw_E0,raw_fifo_data[63:16],raw_N0}),
-        .empty(raw_fifo_empty),
+        .dout(raw_fifo_data),
+        .empty(NLW_fifo_raw_i_empty_UNCONNECTED),
         .full(NLW_fifo_raw_i_full_UNCONNECTED),
         .rd_clk(clk),
         .rd_en(doa_wr),
@@ -531,33 +537,29 @@ module ps_freq_low_46_0_0_freq_low_46
         .s_axis_data_tdata(W),
         .s_axis_data_tready(NLW_fir_freq_low_re_W_i_s_axis_data_tready_UNCONNECTED),
         .s_axis_data_tvalid(freq_fifo_valid));
-  (* KEEP_HIERARCHY = "soft" *) 
   ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2 freq_E_i
-       (.active(\freq_low_46.morlet_active_reg_n_0 ),
+       (.Q(env_E),
         .clk(clk),
-        .env(envE),
-        .im(fir_im_E),
-        .phase(phaseE),
-        .re(fir_re_E),
-        .valid(validE));
-  (* KEEP_HIERARCHY = "soft" *) 
+        .\morlet_to_phase_env.phase_reg[19]_0 (phase_E),
+        .\morlet_to_phase_env.phase_reg[19]_1 (\freq_low_46.morlet_active_reg_n_0 ),
+        .s_axis_cartesian_tdata({fir_im_E,fir_re_E}),
+        .valid_E(valid_E));
   ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1 freq_N_i
-       (.active(\freq_low_46.morlet_active_reg_n_0 ),
+       (.Q(env_N),
+        .active(active0),
         .clk(clk),
-        .env(envN),
-        .im(fir_im_N),
-        .phase(phaseN),
-        .re(fir_re_N),
-        .valid(validN));
-  (* KEEP_HIERARCHY = "soft" *) 
+        .\morlet_to_phase_env.phase_reg[19]_0 (phase_N),
+        .\morlet_to_phase_env.phase_reg[19]_1 (\freq_low_46.morlet_active_reg_n_0 ),
+        .s_axis_cartesian_tdata({fir_im_N,fir_re_N}),
+        .valid_E(valid_E),
+        .valid_W(valid_W));
   ps_freq_low_46_0_0_morlet_to_phase_env freq_W_i
-       (.active(\freq_low_46.morlet_active_reg_n_0 ),
+       (.Q(env_W),
         .clk(clk),
-        .env(envW),
-        .im(fir_im_W),
-        .phase(phaseW),
-        .re(fir_re_W),
-        .valid(validW));
+        .\morlet_to_phase_env.phase_reg[19]_0 (phase_W),
+        .\morlet_to_phase_env.phase_reg[19]_1 (\freq_low_46.morlet_active_reg_n_0 ),
+        .s_axis_cartesian_tdata({fir_im_W,fir_re_W}),
+        .valid_W(valid_W));
   FDRE \freq_low_46.E_reg[0] 
        (.C(clk),
         .CE(freq_fifo_valid0),
@@ -1002,1818 +1004,1810 @@ module ps_freq_low_46_0_0_freq_low_46
         .DI({1'b0,1'b0,\freq_low_46.curr_delay_reg [5:1],freq_fifo_valid}),
         .O({\NLW_freq_low_46.curr_delay_reg[7]_i_3_O_UNCONNECTED [7],\freq_low_46.curr_delay_reg[7]_i_3_n_9 ,\freq_low_46.curr_delay_reg[7]_i_3_n_10 ,\freq_low_46.curr_delay_reg[7]_i_3_n_11 ,\freq_low_46.curr_delay_reg[7]_i_3_n_12 ,\freq_low_46.curr_delay_reg[7]_i_3_n_13 ,\freq_low_46.curr_delay_reg[7]_i_3_n_14 ,\freq_low_46.curr_delay_reg[7]_i_3_n_15 }),
         .S({1'b0,\freq_low_46.curr_delay[7]_i_7_n_0 ,\freq_low_46.curr_delay[7]_i_8_n_0 ,\freq_low_46.curr_delay[7]_i_9_n_0 ,\freq_low_46.curr_delay[7]_i_10_n_0 ,\freq_low_46.curr_delay[7]_i_11_n_0 ,\freq_low_46.curr_delay[7]_i_12_n_0 ,\freq_low_46.curr_delay[7]_i_13_n_0 }));
-  LUT3 #(
-    .INIT(8'h80)) 
-    \freq_low_46.doa_data[299]_i_1 
-       (.I0(validN),
-        .I1(validE),
-        .I2(validW),
-        .O(doa_data0));
   FDRE \freq_low_46.doa_data_reg[0] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[0]),
         .Q(doa_data[0]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[100] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[0]),
         .Q(doa_data[100]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[101] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[1]),
         .Q(doa_data[101]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[102] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[2]),
         .Q(doa_data[102]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[103] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[3]),
         .Q(doa_data[103]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[104] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[4]),
         .Q(doa_data[104]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[105] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[5]),
         .Q(doa_data[105]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[106] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[6]),
         .Q(doa_data[106]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[107] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[7]),
         .Q(doa_data[107]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[108] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[8]),
         .Q(doa_data[108]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[109] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[9]),
         .Q(doa_data[109]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[10] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[10]),
         .Q(doa_data[10]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[110] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[10]),
         .Q(doa_data[110]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[111] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[11]),
         .Q(doa_data[111]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[112] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[12]),
         .Q(doa_data[112]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[113] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[13]),
         .Q(doa_data[113]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[114] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[14]),
         .Q(doa_data[114]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[115] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envE[15]),
         .Q(doa_data[115]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[116] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[0]),
         .Q(doa_data[116]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[117] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[1]),
         .Q(doa_data[117]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[118] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[2]),
         .Q(doa_data[118]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[119] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[3]),
         .Q(doa_data[119]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[11] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[11]),
         .Q(doa_data[11]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[120] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[4]),
         .Q(doa_data[120]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[121] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[5]),
         .Q(doa_data[121]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[122] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[6]),
         .Q(doa_data[122]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[123] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[7]),
         .Q(doa_data[123]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[124] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[8]),
         .Q(doa_data[124]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[125] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[9]),
         .Q(doa_data[125]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[126] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[10]),
         .Q(doa_data[126]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[127] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[11]),
         .Q(doa_data[127]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[128] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[12]),
         .Q(doa_data[128]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[129] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[13]),
         .Q(doa_data[129]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[12] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[12]),
         .Q(doa_data[12]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[130] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[14]),
         .Q(doa_data[130]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[131] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[15]),
         .Q(doa_data[131]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[132] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[16]),
         .Q(doa_data[132]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[133] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[17]),
         .Q(doa_data[133]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[134] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[18]),
         .Q(doa_data[134]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[135] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseE[19]),
         .Q(doa_data[135]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[136] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[0]),
+        .CE(valid),
+        .D(raw_fifo_data[64]),
         .Q(doa_data[136]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[137] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[1]),
+        .CE(valid),
+        .D(raw_fifo_data[65]),
         .Q(doa_data[137]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[138] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[2]),
+        .CE(valid),
+        .D(raw_fifo_data[66]),
         .Q(doa_data[138]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[139] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[3]),
+        .CE(valid),
+        .D(raw_fifo_data[67]),
         .Q(doa_data[139]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[13] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[13]),
         .Q(doa_data[13]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[140] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[4]),
+        .CE(valid),
+        .D(raw_fifo_data[68]),
         .Q(doa_data[140]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[141] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[5]),
+        .CE(valid),
+        .D(raw_fifo_data[69]),
         .Q(doa_data[141]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[142] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[6]),
+        .CE(valid),
+        .D(raw_fifo_data[70]),
         .Q(doa_data[142]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[143] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[7]),
+        .CE(valid),
+        .D(raw_fifo_data[71]),
         .Q(doa_data[143]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[144] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[8]),
+        .CE(valid),
+        .D(raw_fifo_data[72]),
         .Q(doa_data[144]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[145] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[9]),
+        .CE(valid),
+        .D(raw_fifo_data[73]),
         .Q(doa_data[145]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[146] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[10]),
+        .CE(valid),
+        .D(raw_fifo_data[74]),
         .Q(doa_data[146]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[147] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[11]),
+        .CE(valid),
+        .D(raw_fifo_data[75]),
         .Q(doa_data[147]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[148] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[12]),
+        .CE(valid),
+        .D(raw_fifo_data[76]),
         .Q(doa_data[148]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[149] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[13]),
+        .CE(valid),
+        .D(raw_fifo_data[77]),
         .Q(doa_data[149]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[14] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[14]),
         .Q(doa_data[14]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[150] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[14]),
+        .CE(valid),
+        .D(raw_fifo_data[78]),
         .Q(doa_data[150]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[151] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_E0[15]),
+        .CE(valid),
+        .D(raw_fifo_data[79]),
         .Q(doa_data[151]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[152] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[80]),
         .Q(doa_data[152]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[153] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[81]),
         .Q(doa_data[153]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[154] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[82]),
         .Q(doa_data[154]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[155] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[83]),
         .Q(doa_data[155]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[156] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[84]),
         .Q(doa_data[156]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[157] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[85]),
         .Q(doa_data[157]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[158] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[86]),
         .Q(doa_data[158]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[159] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[87]),
         .Q(doa_data[159]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[15] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[15]),
         .Q(doa_data[15]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[160] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[88]),
         .Q(doa_data[160]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[161] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[89]),
         .Q(doa_data[161]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[162] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[90]),
         .Q(doa_data[162]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[163] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[91]),
         .Q(doa_data[163]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[164] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[92]),
         .Q(doa_data[164]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[165] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[93]),
         .Q(doa_data[165]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[166] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[94]),
         .Q(doa_data[166]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[167] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[95]),
         .Q(doa_data[167]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[168] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[96]),
         .Q(doa_data[168]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[169] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[97]),
         .Q(doa_data[169]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[16] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[0]),
         .Q(doa_data[16]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[170] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[98]),
         .Q(doa_data[170]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[171] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[99]),
         .Q(doa_data[171]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[172] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[100]),
         .Q(doa_data[172]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[173] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[101]),
         .Q(doa_data[173]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[174] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[102]),
         .Q(doa_data[174]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[175] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[103]),
         .Q(doa_data[175]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[176] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[104]),
         .Q(doa_data[176]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[177] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[105]),
         .Q(doa_data[177]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[178] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[106]),
         .Q(doa_data[178]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[179] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[107]),
         .Q(doa_data[179]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[17] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[1]),
         .Q(doa_data[17]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[180] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[108]),
         .Q(doa_data[180]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[181] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[109]),
         .Q(doa_data[181]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[182] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[110]),
         .Q(doa_data[182]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[183] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[111]),
         .Q(doa_data[183]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[184] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[112]),
         .Q(doa_data[184]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[185] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[113]),
         .Q(doa_data[185]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[186] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[114]),
         .Q(doa_data[186]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[187] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[115]),
         .Q(doa_data[187]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[188] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[116]),
         .Q(doa_data[188]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[189] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[117]),
         .Q(doa_data[189]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[18] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[2]),
         .Q(doa_data[18]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[190] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[118]),
         .Q(doa_data[190]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[191] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[119]),
         .Q(doa_data[191]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[192] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[120]),
         .Q(doa_data[192]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[193] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[121]),
         .Q(doa_data[193]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[194] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[122]),
         .Q(doa_data[194]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[195] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[123]),
         .Q(doa_data[195]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[196] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[124]),
         .Q(doa_data[196]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[197] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[125]),
         .Q(doa_data[197]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[198] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[126]),
         .Q(doa_data[198]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[199] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[127]),
         .Q(doa_data[199]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[19] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[3]),
         .Q(doa_data[19]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[1] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[1]),
         .Q(doa_data[1]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[200] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[0]),
         .Q(doa_data[200]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[201] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[1]),
         .Q(doa_data[201]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[202] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[2]),
         .Q(doa_data[202]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[203] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[3]),
         .Q(doa_data[203]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[204] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[4]),
         .Q(doa_data[204]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[205] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[5]),
         .Q(doa_data[205]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[206] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[6]),
         .Q(doa_data[206]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[207] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[7]),
         .Q(doa_data[207]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[208] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[8]),
         .Q(doa_data[208]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[209] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[9]),
         .Q(doa_data[209]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[20] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[4]),
         .Q(doa_data[20]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[210] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[10]),
         .Q(doa_data[210]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[211] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[11]),
         .Q(doa_data[211]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[212] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[12]),
         .Q(doa_data[212]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[213] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[13]),
         .Q(doa_data[213]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[214] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[14]),
         .Q(doa_data[214]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[215] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envW[15]),
         .Q(doa_data[215]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[216] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[0]),
         .Q(doa_data[216]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[217] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[1]),
         .Q(doa_data[217]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[218] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[2]),
         .Q(doa_data[218]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[219] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[3]),
         .Q(doa_data[219]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[21] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[5]),
         .Q(doa_data[21]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[220] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[4]),
         .Q(doa_data[220]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[221] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[5]),
         .Q(doa_data[221]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[222] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[6]),
         .Q(doa_data[222]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[223] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[7]),
         .Q(doa_data[223]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[224] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[8]),
         .Q(doa_data[224]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[225] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[9]),
         .Q(doa_data[225]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[226] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[10]),
         .Q(doa_data[226]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[227] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[11]),
         .Q(doa_data[227]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[228] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[12]),
         .Q(doa_data[228]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[229] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[13]),
         .Q(doa_data[229]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[22] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[6]),
         .Q(doa_data[22]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[230] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[14]),
         .Q(doa_data[230]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[231] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[15]),
         .Q(doa_data[231]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[232] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[16]),
         .Q(doa_data[232]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[233] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[17]),
         .Q(doa_data[233]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[234] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[18]),
         .Q(doa_data[234]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[235] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseW[19]),
         .Q(doa_data[235]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[236] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[0]),
+        .CE(valid),
+        .D(raw_fifo_data[128]),
         .Q(doa_data[236]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[237] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[1]),
+        .CE(valid),
+        .D(raw_fifo_data[129]),
         .Q(doa_data[237]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[238] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[2]),
+        .CE(valid),
+        .D(raw_fifo_data[130]),
         .Q(doa_data[238]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[239] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[3]),
+        .CE(valid),
+        .D(raw_fifo_data[131]),
         .Q(doa_data[239]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[23] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[7]),
         .Q(doa_data[23]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[240] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[4]),
+        .CE(valid),
+        .D(raw_fifo_data[132]),
         .Q(doa_data[240]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[241] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[5]),
+        .CE(valid),
+        .D(raw_fifo_data[133]),
         .Q(doa_data[241]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[242] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[6]),
+        .CE(valid),
+        .D(raw_fifo_data[134]),
         .Q(doa_data[242]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[243] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[7]),
+        .CE(valid),
+        .D(raw_fifo_data[135]),
         .Q(doa_data[243]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[244] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[8]),
+        .CE(valid),
+        .D(raw_fifo_data[136]),
         .Q(doa_data[244]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[245] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[9]),
+        .CE(valid),
+        .D(raw_fifo_data[137]),
         .Q(doa_data[245]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[246] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[10]),
+        .CE(valid),
+        .D(raw_fifo_data[138]),
         .Q(doa_data[246]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[247] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[11]),
+        .CE(valid),
+        .D(raw_fifo_data[139]),
         .Q(doa_data[247]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[248] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[12]),
+        .CE(valid),
+        .D(raw_fifo_data[140]),
         .Q(doa_data[248]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[249] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[13]),
+        .CE(valid),
+        .D(raw_fifo_data[141]),
         .Q(doa_data[249]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[24] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[8]),
         .Q(doa_data[24]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[250] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[14]),
+        .CE(valid),
+        .D(raw_fifo_data[142]),
         .Q(doa_data[250]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[251] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_W0[15]),
+        .CE(valid),
+        .D(raw_fifo_data[143]),
         .Q(doa_data[251]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[252] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[144]),
         .Q(doa_data[252]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[253] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[145]),
         .Q(doa_data[253]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[254] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[146]),
         .Q(doa_data[254]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[255] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[147]),
         .Q(doa_data[255]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[256] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[148]),
         .Q(doa_data[256]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[257] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[149]),
         .Q(doa_data[257]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[258] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[150]),
         .Q(doa_data[258]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[259] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[151]),
         .Q(doa_data[259]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[25] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[9]),
         .Q(doa_data[25]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[260] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[152]),
         .Q(doa_data[260]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[261] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[153]),
         .Q(doa_data[261]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[262] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[154]),
         .Q(doa_data[262]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[263] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[155]),
         .Q(doa_data[263]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[264] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[156]),
         .Q(doa_data[264]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[265] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[157]),
         .Q(doa_data[265]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[266] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[158]),
         .Q(doa_data[266]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[267] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[159]),
         .Q(doa_data[267]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[268] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[160]),
         .Q(doa_data[268]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[269] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[161]),
         .Q(doa_data[269]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[26] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[10]),
         .Q(doa_data[26]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[270] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[162]),
         .Q(doa_data[270]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[271] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[163]),
         .Q(doa_data[271]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[272] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[164]),
         .Q(doa_data[272]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[273] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[165]),
         .Q(doa_data[273]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[274] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[166]),
         .Q(doa_data[274]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[275] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[167]),
         .Q(doa_data[275]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[276] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[168]),
         .Q(doa_data[276]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[277] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[169]),
         .Q(doa_data[277]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[278] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[170]),
         .Q(doa_data[278]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[279] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[171]),
         .Q(doa_data[279]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[27] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[11]),
         .Q(doa_data[27]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[280] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[172]),
         .Q(doa_data[280]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[281] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[173]),
         .Q(doa_data[281]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[282] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[174]),
         .Q(doa_data[282]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[283] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[175]),
         .Q(doa_data[283]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[284] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[176]),
         .Q(doa_data[284]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[285] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[177]),
         .Q(doa_data[285]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[286] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[178]),
         .Q(doa_data[286]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[287] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[179]),
         .Q(doa_data[287]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[288] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[180]),
         .Q(doa_data[288]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[289] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[181]),
         .Q(doa_data[289]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[28] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[12]),
         .Q(doa_data[28]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[290] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[182]),
         .Q(doa_data[290]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[291] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[183]),
         .Q(doa_data[291]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[292] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[184]),
         .Q(doa_data[292]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[293] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[185]),
         .Q(doa_data[293]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[294] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[186]),
         .Q(doa_data[294]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[295] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[187]),
         .Q(doa_data[295]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[296] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[188]),
         .Q(doa_data[296]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[297] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[189]),
         .Q(doa_data[297]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[298] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[190]),
         .Q(doa_data[298]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[299] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[191]),
         .Q(doa_data[299]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[29] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[13]),
         .Q(doa_data[29]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[2] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[2]),
         .Q(doa_data[2]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[30] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[14]),
         .Q(doa_data[30]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[31] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[15]),
         .Q(doa_data[31]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[32] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[16]),
         .Q(doa_data[32]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[33] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[17]),
         .Q(doa_data[33]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[34] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[18]),
         .Q(doa_data[34]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[35] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(phaseN[19]),
         .Q(doa_data[35]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[36] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[0]),
+        .CE(valid),
+        .D(raw_fifo_data[0]),
         .Q(doa_data[36]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[37] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[1]),
+        .CE(valid),
+        .D(raw_fifo_data[1]),
         .Q(doa_data[37]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[38] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[2]),
+        .CE(valid),
+        .D(raw_fifo_data[2]),
         .Q(doa_data[38]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[39] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[3]),
+        .CE(valid),
+        .D(raw_fifo_data[3]),
         .Q(doa_data[39]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[3] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[3]),
         .Q(doa_data[3]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[40] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[4]),
+        .CE(valid),
+        .D(raw_fifo_data[4]),
         .Q(doa_data[40]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[41] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[5]),
+        .CE(valid),
+        .D(raw_fifo_data[5]),
         .Q(doa_data[41]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[42] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[6]),
+        .CE(valid),
+        .D(raw_fifo_data[6]),
         .Q(doa_data[42]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[43] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[7]),
+        .CE(valid),
+        .D(raw_fifo_data[7]),
         .Q(doa_data[43]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[44] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[8]),
+        .CE(valid),
+        .D(raw_fifo_data[8]),
         .Q(doa_data[44]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[45] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[9]),
+        .CE(valid),
+        .D(raw_fifo_data[9]),
         .Q(doa_data[45]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[46] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[10]),
+        .CE(valid),
+        .D(raw_fifo_data[10]),
         .Q(doa_data[46]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[47] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[11]),
+        .CE(valid),
+        .D(raw_fifo_data[11]),
         .Q(doa_data[47]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[48] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[12]),
+        .CE(valid),
+        .D(raw_fifo_data[12]),
         .Q(doa_data[48]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[49] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[13]),
+        .CE(valid),
+        .D(raw_fifo_data[13]),
         .Q(doa_data[49]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[4] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[4]),
         .Q(doa_data[4]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[50] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[14]),
+        .CE(valid),
+        .D(raw_fifo_data[14]),
         .Q(doa_data[50]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[51] 
        (.C(clk),
-        .CE(doa_data0),
-        .D(raw_N0[15]),
+        .CE(valid),
+        .D(raw_fifo_data[15]),
         .Q(doa_data[51]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[52] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[16]),
         .Q(doa_data[52]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[53] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[17]),
         .Q(doa_data[53]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[54] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[18]),
         .Q(doa_data[54]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[55] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[19]),
         .Q(doa_data[55]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[56] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[20]),
         .Q(doa_data[56]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[57] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[21]),
         .Q(doa_data[57]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[58] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[22]),
         .Q(doa_data[58]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[59] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[23]),
         .Q(doa_data[59]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[5] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[5]),
         .Q(doa_data[5]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[60] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[24]),
         .Q(doa_data[60]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[61] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[25]),
         .Q(doa_data[61]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[62] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[26]),
         .Q(doa_data[62]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[63] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[27]),
         .Q(doa_data[63]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[64] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[28]),
         .Q(doa_data[64]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[65] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[29]),
         .Q(doa_data[65]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[66] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[30]),
         .Q(doa_data[66]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[67] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[31]),
         .Q(doa_data[67]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[68] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[32]),
         .Q(doa_data[68]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[69] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[33]),
         .Q(doa_data[69]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[6] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[6]),
         .Q(doa_data[6]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[70] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[34]),
         .Q(doa_data[70]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[71] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[35]),
         .Q(doa_data[71]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[72] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[36]),
         .Q(doa_data[72]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[73] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[37]),
         .Q(doa_data[73]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[74] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[38]),
         .Q(doa_data[74]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[75] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[39]),
         .Q(doa_data[75]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[76] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[40]),
         .Q(doa_data[76]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[77] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[41]),
         .Q(doa_data[77]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[78] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[42]),
         .Q(doa_data[78]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[79] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[43]),
         .Q(doa_data[79]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[7] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[7]),
         .Q(doa_data[7]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[80] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[44]),
         .Q(doa_data[80]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[81] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[45]),
         .Q(doa_data[81]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[82] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[46]),
         .Q(doa_data[82]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[83] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[47]),
         .Q(doa_data[83]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[84] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[48]),
         .Q(doa_data[84]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[85] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[49]),
         .Q(doa_data[85]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[86] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[50]),
         .Q(doa_data[86]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[87] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[51]),
         .Q(doa_data[87]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[88] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[52]),
         .Q(doa_data[88]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[89] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[53]),
         .Q(doa_data[89]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[8] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[8]),
         .Q(doa_data[8]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[90] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[54]),
         .Q(doa_data[90]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[91] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[55]),
         .Q(doa_data[91]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[92] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[56]),
         .Q(doa_data[92]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[93] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[57]),
         .Q(doa_data[93]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[94] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[58]),
         .Q(doa_data[94]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[95] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[59]),
         .Q(doa_data[95]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[96] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[60]),
         .Q(doa_data[96]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[97] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[61]),
         .Q(doa_data[97]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[98] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[62]),
         .Q(doa_data[98]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[99] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(raw_fifo_data[63]),
         .Q(doa_data[99]),
         .R(1'b0));
   FDRE \freq_low_46.doa_data_reg[9] 
        (.C(clk),
-        .CE(doa_data0),
+        .CE(valid),
         .D(envN[9]),
         .Q(doa_data[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \freq_low_46.doa_wr_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(doa_data0),
+        .D(valid),
         .Q(doa_wr),
         .R(1'b0));
   LUT4 #(
@@ -2842,7 +2836,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(freq_fifo_valid0),
         .Q(freq_fifo_valid),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \freq_low_46.freq_rd_delay[0]_i_1 
@@ -2855,7 +2849,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .I1(freq_rd_delay[2]),
         .I2(freq_rd_delay[1]),
         .O(\freq_low_46.freq_rd_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \freq_low_46.freq_rd_delay[1]_i_2 
@@ -2910,14 +2904,14 @@ module ps_freq_low_46_0_0_freq_low_46
         .I4(\freq_low_46.curr_delay[7]_i_4_n_0 ),
         .I5(\freq_low_46.start_delay_reg [0]),
         .O(\freq_low_46.start_delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \freq_low_46.start_delay[1]_i_1 
        (.I0(\freq_low_46.start_delay_reg [0]),
         .I1(\freq_low_46.start_delay_reg [1]),
         .O(start_delay0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \freq_low_46.start_delay[2]_i_1 
@@ -2925,7 +2919,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .I1(\freq_low_46.start_delay_reg [0]),
         .I2(\freq_low_46.start_delay_reg [2]),
         .O(start_delay0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \freq_low_46.start_delay[3]_i_1 
@@ -2934,7 +2928,7 @@ module ps_freq_low_46_0_0_freq_low_46
         .I2(\freq_low_46.start_delay_reg [1]),
         .I3(\freq_low_46.start_delay_reg [3]),
         .O(start_delay0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \freq_low_46.start_delay[4]_i_1 
@@ -3089,27 +3083,31 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(start_delay0[7]),
         .Q(\freq_low_46.start_delay_reg [7]),
         .R(\freq_low_46.start_delay[7]_i_1_n_0 ));
-  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_freq_low_46_0_0_ila_0 ila_0_i
-       (.clk(clk),
-        .probe0(doa_wr),
-        .probe1(raw_fifo_empty),
-        .probe10(raw_W0),
-        .probe2(envN),
-        .probe3(phaseN),
-        .probe4(raw_N0),
-        .probe5(envE),
-        .probe6(phaseE),
-        .probe7(raw_E0),
-        .probe8(envW),
-        .probe9(phaseW));
+  (* KEEP_HIERARCHY = "soft" *) 
+  ps_freq_low_46_0_0_phase_err phase_err_i
+       (.active(active0),
+        .clk(clk),
+        .env_in_E(env_E),
+        .env_in_N(env_N),
+        .env_in_W(env_W),
+        .env_out_E(envE),
+        .env_out_N(envN),
+        .env_out_W(envW),
+        .err_EW(NLW_phase_err_i_err_EW_UNCONNECTED[11:0]),
+        .err_NE(NLW_phase_err_i_err_NE_UNCONNECTED[11:0]),
+        .err_NW(NLW_phase_err_i_err_NW_UNCONNECTED[11:0]),
+        .phase_in_E(phase_E),
+        .phase_in_N(phase_N),
+        .phase_in_W(phase_W),
+        .phase_out_E(phaseE),
+        .phase_out_N(phaseN),
+        .phase_out_W(phaseW),
+        .valid(valid));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
+(* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_7" *) 
 (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
-module ps_freq_low_46_0_0_ila_0
+module ps_freq_low_46_0_0_ila_7
    (clk,
     probe0,
     probe1,
@@ -3121,57 +3119,91 @@ module ps_freq_low_46_0_0_ila_0
     probe7,
     probe8,
     probe9,
-    probe10);
+    probe10,
+    probe11,
+    probe12,
+    probe13,
+    probe14,
+    probe15,
+    probe16,
+    probe17,
+    probe18,
+    probe19,
+    probe20,
+    probe21,
+    probe22);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
-  input [15:0]probe2;
+  input [19:0]probe2;
   input [19:0]probe3;
-  input [15:0]probe4;
-  input [15:0]probe5;
+  input [19:0]probe4;
+  input [19:0]probe5;
   input [19:0]probe6;
-  input [15:0]probe7;
-  input [15:0]probe8;
+  input [19:0]probe7;
+  input [19:0]probe8;
   input [19:0]probe9;
-  input [15:0]probe10;
+  input [19:0]probe10;
+  input [19:0]probe11;
+  input [19:0]probe12;
+  input [19:0]probe13;
+  input [18:0]probe14;
+  input [18:0]probe15;
+  input [18:0]probe16;
+  input [18:0]probe17;
+  input [18:0]probe18;
+  input [18:0]probe19;
+  input [19:0]probe20;
+  input [19:0]probe21;
+  input [19:0]probe22;
 
 
 endmodule
 
 (* ORIG_REF_NAME = "morlet_to_phase_env" *) 
 module ps_freq_low_46_0_0_morlet_to_phase_env
-   (clk,
-    active,
-    re,
-    im,
-    valid,
-    env,
-    phase);
+   (valid_W,
+    Q,
+    \morlet_to_phase_env.phase_reg[19]_0 ,
+    clk,
+    s_axis_cartesian_tdata,
+    \morlet_to_phase_env.phase_reg[19]_1 );
+  output valid_W;
+  output [15:0]Q;
+  output [19:0]\morlet_to_phase_env.phase_reg[19]_0 ;
   input clk;
-  input active;
-  input [23:0]re;
-  input [23:0]im;
-  output valid;
-  output [15:0]env;
-  output [19:0]phase;
+  input [47:0]s_axis_cartesian_tdata;
+  input \morlet_to_phase_env.phase_reg[19]_1 ;
 
-  wire active;
-  wire [15:0]amp_4;
+  wire [15:0]Q;
   wire clk;
-  wire delay0;
-  wire [15:0]env;
-  wire [23:0]im;
   wire [31:0]im2;
   wire [15:0]lenv;
   wire [19:0]lphase;
-  wire \morlet_to_phase_env.delay[0]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[1]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[2]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[3]_i_2_n_0 ;
-  wire \morlet_to_phase_env.delay[4]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[4]_i_2_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[0]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[10]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[11]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[12]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[13]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[14]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[15]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[1]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[2]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[3]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[4]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[5]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[6]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[7]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[8]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[9]_srl4_n_0 ;
+  wire \morlet_to_phase_env.delay[0]_i_1__1_n_0 ;
+  wire \morlet_to_phase_env.delay[1]_i_1__1_n_0 ;
+  wire \morlet_to_phase_env.delay[2]_i_1__1_n_0 ;
+  wire \morlet_to_phase_env.delay[3]_i_1__1_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_1__1_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_2__1_n_0 ;
   wire [4:0]\morlet_to_phase_env.delay_reg ;
-  wire \morlet_to_phase_env.env[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_1__1_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_2_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_3_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_4_n_0 ;
@@ -3267,21 +3299,22 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_7 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_8 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_9 ;
-  wire \morlet_to_phase_env.valid_i_1_n_0 ;
-  wire \morlet_to_phase_env.valid_i_2_n_0 ;
-  wire \morlet_to_phase_env.valid_i_3_n_0 ;
+  wire [19:0]\morlet_to_phase_env.phase_reg[19]_0 ;
+  wire \morlet_to_phase_env.phase_reg[19]_1 ;
+  wire \morlet_to_phase_env.valid_i_1__1_n_0 ;
+  wire \morlet_to_phase_env.valid_i_2__1_n_0 ;
+  wire \morlet_to_phase_env.valid_i_3__1_n_0 ;
   wire [31:0]p2;
-  wire [19:0]phase;
-  wire [23:0]re;
   wire [31:0]re2;
-  wire valid;
+  wire [47:0]s_axis_cartesian_tdata;
+  wire valid_W;
   wire [7:7]\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED ;
   wire NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED;
   wire NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED;
   wire [23:20]NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED;
 
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[0]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[0]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[0]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3290,9 +3323,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[0]),
-        .Q(amp_4[0]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[10]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[0]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[10]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[10]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3301,9 +3334,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[10]),
-        .Q(amp_4[10]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[11]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[10]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[11]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[11]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3312,9 +3345,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[11]),
-        .Q(amp_4[11]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[12]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[11]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[12]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[12]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3323,9 +3356,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[12]),
-        .Q(amp_4[12]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[13]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[12]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[13]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[13]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3334,9 +3367,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[13]),
-        .Q(amp_4[13]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[14]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[13]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[14]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[14]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3345,9 +3378,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[14]),
-        .Q(amp_4[14]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[15]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[14]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[15]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[15]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3356,9 +3389,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[15]),
-        .Q(amp_4[15]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[1]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[15]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[1]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[1]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3367,9 +3400,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[1]),
-        .Q(amp_4[1]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[2]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[1]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[2]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[2]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3378,9 +3411,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[2]),
-        .Q(amp_4[2]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[3]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[2]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[3]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[3]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3389,9 +3422,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[3]),
-        .Q(amp_4[3]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[4]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[3]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[4]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[4]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3400,9 +3433,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[4]),
-        .Q(amp_4[4]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[5]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[4]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[5]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[5]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3411,9 +3444,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[5]),
-        .Q(amp_4[5]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[6]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[5]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[6]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[6]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3422,9 +3455,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[6]),
-        .Q(amp_4[6]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[7]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[6]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[7]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[7]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3433,9 +3466,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[7]),
-        .Q(amp_4[7]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[8]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[7]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[8]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[8]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3444,9 +3477,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[8]),
-        .Q(amp_4[8]));
-  (* srl_bus_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_W_i/\\morlet_to_phase_env.amp_4_reg[9]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[8]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_W_i/morlet_to_phase_env.amp_4_reg[9]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[9]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -3455,202 +3488,195 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[9]),
-        .Q(amp_4[9]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[9]_srl4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT1 #(
     .INIT(2'h1)) 
-    \morlet_to_phase_env.delay[0]_i_1 
+    \morlet_to_phase_env.delay[0]_i_1__1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .O(\morlet_to_phase_env.delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+        .O(\morlet_to_phase_env.delay[0]_i_1__1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h69)) 
-    \morlet_to_phase_env.delay[1]_i_1 
+    \morlet_to_phase_env.delay[1]_i_1__1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(active),
+        .I1(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I2(\morlet_to_phase_env.delay_reg [1]),
-        .O(\morlet_to_phase_env.delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+        .O(\morlet_to_phase_env.delay[1]_i_1__1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
-    \morlet_to_phase_env.delay[2]_i_1 
+    \morlet_to_phase_env.delay[2]_i_1__1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(active),
+        .I1(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
-        .O(\morlet_to_phase_env.delay[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF7FFFFFFFFFFFFE)) 
-    \morlet_to_phase_env.delay[3]_i_1 
-       (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(\morlet_to_phase_env.delay_reg [3]),
-        .I2(\morlet_to_phase_env.delay_reg [1]),
-        .I3(\morlet_to_phase_env.delay_reg [2]),
-        .I4(\morlet_to_phase_env.delay_reg [4]),
-        .I5(active),
-        .O(delay0));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+        .O(\morlet_to_phase_env.delay[2]_i_1__1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
-    \morlet_to_phase_env.delay[3]_i_2 
-       (.I0(active),
-        .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(\morlet_to_phase_env.delay_reg [1]),
-        .I3(\morlet_to_phase_env.delay_reg [3]),
-        .I4(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.delay[3]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hCA)) 
-    \morlet_to_phase_env.delay[4]_i_1 
-       (.I0(\morlet_to_phase_env.delay_reg [4]),
-        .I1(\morlet_to_phase_env.delay[4]_i_2_n_0 ),
-        .I2(delay0),
-        .O(\morlet_to_phase_env.delay[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFF8000FFFE0001)) 
-    \morlet_to_phase_env.delay[4]_i_2 
+    \morlet_to_phase_env.delay[3]_i_1__1 
        (.I0(\morlet_to_phase_env.delay_reg [1]),
         .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(active),
-        .I3(\morlet_to_phase_env.delay_reg [2]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [3]),
+        .I4(\morlet_to_phase_env.delay_reg [2]),
+        .O(\morlet_to_phase_env.delay[3]_i_1__1_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFFFFFFFFFFFFFFE)) 
+    \morlet_to_phase_env.delay[4]_i_1__1 
+       (.I0(\morlet_to_phase_env.delay_reg [2]),
+        .I1(\morlet_to_phase_env.delay_reg [1]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [3]),
+        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I5(\morlet_to_phase_env.delay_reg [0]),
+        .O(\morlet_to_phase_env.delay[4]_i_1__1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFF8000FFFE0001)) 
+    \morlet_to_phase_env.delay[4]_i_2__1 
+       (.I0(\morlet_to_phase_env.delay_reg [2]),
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I3(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I4(\morlet_to_phase_env.delay_reg [4]),
         .I5(\morlet_to_phase_env.delay_reg [3]),
-        .O(\morlet_to_phase_env.delay[4]_i_2_n_0 ));
+        .O(\morlet_to_phase_env.delay[4]_i_2__1_n_0 ));
   FDRE \morlet_to_phase_env.delay_reg[0] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[0]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.delay[0]_i_1__1_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[1] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[1]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.delay[1]_i_1__1_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[2] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[2]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.delay[2]_i_1__1_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[3] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[3]_i_2_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.delay[3]_i_1__1_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[4] 
        (.C(clk),
-        .CE(1'b1),
-        .D(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.delay[4]_i_2__1_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [4]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h55555555D5555554)) 
-    \morlet_to_phase_env.env[15]_i_1 
-       (.I0(active),
-        .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(\morlet_to_phase_env.delay_reg [3]),
-        .I3(\morlet_to_phase_env.delay_reg [4]),
-        .I4(\morlet_to_phase_env.delay_reg [1]),
-        .I5(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.env[15]_i_1_n_0 ));
+    .INIT(64'h7555555555555554)) 
+    \morlet_to_phase_env.env[15]_i_1__1 
+       (.I0(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I1(\morlet_to_phase_env.delay_reg [2]),
+        .I2(\morlet_to_phase_env.delay_reg [0]),
+        .I3(\morlet_to_phase_env.delay_reg [1]),
+        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I5(\morlet_to_phase_env.delay_reg [3]),
+        .O(\morlet_to_phase_env.env[15]_i_1__1_n_0 ));
   FDRE \morlet_to_phase_env.env_reg[0] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[0]),
-        .Q(env[0]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[0]_srl4_n_0 ),
+        .Q(Q[0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[10] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[10]),
-        .Q(env[10]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[10]_srl4_n_0 ),
+        .Q(Q[10]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[11] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[11]),
-        .Q(env[11]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[11]_srl4_n_0 ),
+        .Q(Q[11]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[12] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[12]),
-        .Q(env[12]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[12]_srl4_n_0 ),
+        .Q(Q[12]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[13] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[13]),
-        .Q(env[13]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[13]_srl4_n_0 ),
+        .Q(Q[13]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[14] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[14]),
-        .Q(env[14]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[14]_srl4_n_0 ),
+        .Q(Q[14]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[15] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[15]),
-        .Q(env[15]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[15]_srl4_n_0 ),
+        .Q(Q[15]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[1] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[1]),
-        .Q(env[1]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[1]_srl4_n_0 ),
+        .Q(Q[1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[2] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[2]),
-        .Q(env[2]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[2]_srl4_n_0 ),
+        .Q(Q[2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[3] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[3]),
-        .Q(env[3]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[3]_srl4_n_0 ),
+        .Q(Q[3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[4] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[4]),
-        .Q(env[4]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[4]_srl4_n_0 ),
+        .Q(Q[4]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[5] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[5]),
-        .Q(env[5]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[5]_srl4_n_0 ),
+        .Q(Q[5]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[6] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[6]),
-        .Q(env[6]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[6]_srl4_n_0 ),
+        .Q(Q[6]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[7] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[7]),
-        .Q(env[7]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[7]_srl4_n_0 ),
+        .Q(Q[7]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[8] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[8]),
-        .Q(env[8]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[8]_srl4_n_0 ),
+        .Q(Q[8]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[9] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[9]),
-        .Q(env[9]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[9]_srl4_n_0 ),
+        .Q(Q[9]),
         .R(1'b0));
   LUT2 #(
     .INIT(4'h6)) 
@@ -4070,172 +4096,171 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[0] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[0]),
-        .Q(phase[0]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[10] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[10]),
-        .Q(phase[10]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [10]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[11] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[11]),
-        .Q(phase[11]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [11]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[12] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[12]),
-        .Q(phase[12]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [12]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[13] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[13]),
-        .Q(phase[13]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [13]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[14] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[14]),
-        .Q(phase[14]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [14]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[15] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[15]),
-        .Q(phase[15]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [15]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[16] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[16]),
-        .Q(phase[16]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [16]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[17] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[17]),
-        .Q(phase[17]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [17]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[18] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[18]),
-        .Q(phase[18]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [18]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[19] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[19]),
-        .Q(phase[19]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [19]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[1] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[1]),
-        .Q(phase[1]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[2] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[2]),
-        .Q(phase[2]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[3] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[3]),
-        .Q(phase[3]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[4] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[4]),
-        .Q(phase[4]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [4]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[5] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[5]),
-        .Q(phase[5]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [5]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[6] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[6]),
-        .Q(phase[6]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [6]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[7] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[7]),
-        .Q(phase[7]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [7]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[8] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[8]),
-        .Q(phase[8]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [8]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[9] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__1_n_0 ),
         .D(lphase[9]),
-        .Q(phase[9]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [9]),
         .R(1'b0));
+  LUT6 #(
+    .INIT(64'hFFFFFF040404FF04)) 
+    \morlet_to_phase_env.valid_i_1__1 
+       (.I0(\morlet_to_phase_env.valid_i_2__1_n_0 ),
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [2]),
+        .I3(\morlet_to_phase_env.valid_i_3__1_n_0 ),
+        .I4(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I5(valid_W),
+        .O(\morlet_to_phase_env.valid_i_1__1_n_0 ));
   LUT4 #(
-    .INIT(16'hFCAA)) 
-    \morlet_to_phase_env.valid_i_1 
-       (.I0(\morlet_to_phase_env.valid_i_2_n_0 ),
-        .I1(valid),
-        .I2(\morlet_to_phase_env.valid_i_3_n_0 ),
-        .I3(active),
-        .O(\morlet_to_phase_env.valid_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+    .INIT(16'h7FFF)) 
+    \morlet_to_phase_env.valid_i_2__1 
+       (.I0(\morlet_to_phase_env.delay_reg [4]),
+        .I1(\morlet_to_phase_env.delay_reg [3]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [1]),
+        .O(\morlet_to_phase_env.valid_i_2__1_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
-    \morlet_to_phase_env.valid_i_2 
-       (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(\morlet_to_phase_env.delay_reg [3]),
-        .I2(\morlet_to_phase_env.delay_reg [4]),
-        .I3(\morlet_to_phase_env.delay_reg [1]),
-        .I4(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT5 #(
-    .INIT(32'h40000000)) 
-    \morlet_to_phase_env.valid_i_3 
+    \morlet_to_phase_env.valid_i_3__1 
        (.I0(\morlet_to_phase_env.delay_reg [2]),
-        .I1(\morlet_to_phase_env.delay_reg [1]),
-        .I2(\morlet_to_phase_env.delay_reg [0]),
-        .I3(\morlet_to_phase_env.delay_reg [3]),
-        .I4(\morlet_to_phase_env.delay_reg [4]),
-        .O(\morlet_to_phase_env.valid_i_3_n_0 ));
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I3(\morlet_to_phase_env.delay_reg [4]),
+        .I4(\morlet_to_phase_env.delay_reg [3]),
+        .O(\morlet_to_phase_env.valid_i_3__1_n_0 ));
   FDRE \morlet_to_phase_env.valid_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\morlet_to_phase_env.valid_i_1_n_0 ),
-        .Q(valid),
+        .D(\morlet_to_phase_env.valid_i_1__1_n_0 ),
+        .Q(valid_W),
         .R(1'b0));
   (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   mult_16_16_HD5 mult_im_i
-       (.A(im[23:8]),
-        .B(im[23:8]),
+       (.A(s_axis_cartesian_tdata[47:32]),
+        .B(s_axis_cartesian_tdata[47:32]),
         .CLK(clk),
         .P(im2));
   (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_freq_low_46_0_0_mult_16_16 mult_re_i
-       (.A(re[23:8]),
-        .B(re[23:8]),
+       (.A(s_axis_cartesian_tdata[23:8]),
+        .B(s_axis_cartesian_tdata[23:8]),
         .CLK(clk),
         .P(re2));
   (* CHECK_LICENSE_TYPE = "cordic_sqrt_16,cordic_v6_0_24,{}" *) 
@@ -4246,7 +4271,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
         .m_axis_dout_tdata(lenv),
         .m_axis_dout_tvalid(NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata(p2),
-        .s_axis_cartesian_tvalid(active));
+        .s_axis_cartesian_tvalid(\morlet_to_phase_env.phase_reg[19]_1 ));
   (* CHECK_LICENSE_TYPE = "cordic_atan2_16,cordic_v6_0_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "cordic_v6_0_24,Vivado 2025.1" *) 
@@ -4254,41 +4279,41 @@ module ps_freq_low_46_0_0_morlet_to_phase_env
        (.aclk(clk),
         .m_axis_dout_tdata({NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED[23:20],lphase}),
         .m_axis_dout_tvalid(NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED),
-        .s_axis_cartesian_tdata({im,re}),
-        .s_axis_cartesian_tvalid(active));
+        .s_axis_cartesian_tdata(s_axis_cartesian_tdata),
+        .s_axis_cartesian_tvalid(\morlet_to_phase_env.phase_reg[19]_1 ));
 endmodule
 
 (* ORIG_REF_NAME = "morlet_to_phase_env" *) 
 module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
-   (clk,
-    active,
-    re,
-    im,
-    valid,
-    env,
-    phase);
+   (active,
+    Q,
+    \morlet_to_phase_env.phase_reg[19]_0 ,
+    clk,
+    s_axis_cartesian_tdata,
+    \morlet_to_phase_env.phase_reg[19]_1 ,
+    valid_E,
+    valid_W);
+  output active;
+  output [15:0]Q;
+  output [19:0]\morlet_to_phase_env.phase_reg[19]_0 ;
   input clk;
-  input active;
-  input [23:0]re;
-  input [23:0]im;
-  output valid;
-  output [15:0]env;
-  output [19:0]phase;
+  input [47:0]s_axis_cartesian_tdata;
+  input \morlet_to_phase_env.phase_reg[19]_1 ;
+  input valid_E;
+  input valid_W;
 
+  wire [15:0]Q;
   wire active;
   wire [15:0]amp_4;
   wire clk;
   wire delay0;
-  wire [15:0]env;
-  wire [23:0]im;
   wire [31:0]im2;
   wire [15:0]lenv;
   wire [19:0]lphase;
   wire \morlet_to_phase_env.delay[0]_i_1_n_0 ;
   wire \morlet_to_phase_env.delay[1]_i_1_n_0 ;
   wire \morlet_to_phase_env.delay[2]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[3]_i_2_n_0 ;
-  wire \morlet_to_phase_env.delay[4]_i_1_n_0 ;
+  wire \morlet_to_phase_env.delay[3]_i_1_n_0 ;
   wire \morlet_to_phase_env.delay[4]_i_2_n_0 ;
   wire [4:0]\morlet_to_phase_env.delay_reg ;
   wire \morlet_to_phase_env.env[15]_i_1_n_0 ;
@@ -4387,21 +4412,24 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_7 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_8 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_9 ;
+  wire [19:0]\morlet_to_phase_env.phase_reg[19]_0 ;
+  wire \morlet_to_phase_env.phase_reg[19]_1 ;
   wire \morlet_to_phase_env.valid_i_1_n_0 ;
   wire \morlet_to_phase_env.valid_i_2_n_0 ;
   wire \morlet_to_phase_env.valid_i_3_n_0 ;
   wire [31:0]p2;
-  wire [19:0]phase;
-  wire [23:0]re;
   wire [31:0]re2;
-  wire valid;
+  wire [47:0]s_axis_cartesian_tdata;
+  wire valid_E;
+  wire valid_N;
+  wire valid_W;
   wire [7:7]\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED ;
   wire NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED;
   wire NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED;
   wire [23:20]NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED;
 
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[0]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[0]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[0]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4411,8 +4439,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[0]),
         .Q(amp_4[0]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[10]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[10]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[10]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4422,8 +4450,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[10]),
         .Q(amp_4[10]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[11]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[11]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[11]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4433,8 +4461,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[11]),
         .Q(amp_4[11]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[12]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[12]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[12]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4444,8 +4472,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[12]),
         .Q(amp_4[12]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[13]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[13]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[13]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4455,8 +4483,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[13]),
         .Q(amp_4[13]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[14]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[14]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[14]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4466,8 +4494,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[14]),
         .Q(amp_4[14]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[15]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[15]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[15]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4477,8 +4505,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[15]),
         .Q(amp_4[15]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[1]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[1]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[1]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4488,8 +4516,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[1]),
         .Q(amp_4[1]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[2]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[2]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[2]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4499,8 +4527,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[2]),
         .Q(amp_4[2]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[3]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[3]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[3]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4510,8 +4538,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[3]),
         .Q(amp_4[3]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[4]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[4]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[4]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4521,8 +4549,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[4]),
         .Q(amp_4[4]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[5]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[5]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[5]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4532,8 +4560,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[5]),
         .Q(amp_4[5]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[6]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[6]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[6]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4543,8 +4571,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[6]),
         .Q(amp_4[6]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[7]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[7]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[7]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4554,8 +4582,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[7]),
         .Q(amp_4[7]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[8]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[8]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[8]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4565,8 +4593,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[8]),
         .Q(amp_4[8]));
-  (* srl_bus_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_N_i/\\morlet_to_phase_env.amp_4_reg[9]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_N_i/morlet_to_phase_env.amp_4_reg[9]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[9]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -4576,63 +4604,56 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .CLK(clk),
         .D(lenv[9]),
         .Q(amp_4[9]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \morlet_to_phase_env.delay[0]_i_1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
         .O(\morlet_to_phase_env.delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \morlet_to_phase_env.delay[1]_i_1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(active),
+        .I1(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I2(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \morlet_to_phase_env.delay[2]_i_1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(active),
+        .I1(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF7FFFFFFFFFFFFE)) 
-    \morlet_to_phase_env.delay[3]_i_1 
-       (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(\morlet_to_phase_env.delay_reg [3]),
-        .I2(\morlet_to_phase_env.delay_reg [1]),
-        .I3(\morlet_to_phase_env.delay_reg [2]),
-        .I4(\morlet_to_phase_env.delay_reg [4]),
-        .I5(active),
-        .O(delay0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
-    \morlet_to_phase_env.delay[3]_i_2 
-       (.I0(active),
+    \morlet_to_phase_env.delay[3]_i_1 
+       (.I0(\morlet_to_phase_env.delay_reg [1]),
         .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I3(\morlet_to_phase_env.delay_reg [3]),
         .I4(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.delay[3]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hCA)) 
+        .O(\morlet_to_phase_env.delay[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFFFFFFFFFFFFFFE)) 
     \morlet_to_phase_env.delay[4]_i_1 
-       (.I0(\morlet_to_phase_env.delay_reg [4]),
-        .I1(\morlet_to_phase_env.delay[4]_i_2_n_0 ),
-        .I2(delay0),
-        .O(\morlet_to_phase_env.delay[4]_i_1_n_0 ));
+       (.I0(\morlet_to_phase_env.delay_reg [2]),
+        .I1(\morlet_to_phase_env.delay_reg [1]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [3]),
+        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I5(\morlet_to_phase_env.delay_reg [0]),
+        .O(delay0));
   LUT6 #(
     .INIT(64'h7FFF8000FFFE0001)) 
     \morlet_to_phase_env.delay[4]_i_2 
-       (.I0(\morlet_to_phase_env.delay_reg [1]),
+       (.I0(\morlet_to_phase_env.delay_reg [2]),
         .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(active),
-        .I3(\morlet_to_phase_env.delay_reg [2]),
+        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I3(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I4(\morlet_to_phase_env.delay_reg [4]),
         .I5(\morlet_to_phase_env.delay_reg [3]),
         .O(\morlet_to_phase_env.delay[4]_i_2_n_0 ));
@@ -4657,120 +4678,120 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
   FDRE \morlet_to_phase_env.delay_reg[3] 
        (.C(clk),
         .CE(delay0),
-        .D(\morlet_to_phase_env.delay[3]_i_2_n_0 ),
+        .D(\morlet_to_phase_env.delay[3]_i_1_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[4] 
        (.C(clk),
-        .CE(1'b1),
-        .D(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .CE(delay0),
+        .D(\morlet_to_phase_env.delay[4]_i_2_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [4]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h55555555D5555554)) 
+    .INIT(64'h7555555555555554)) 
     \morlet_to_phase_env.env[15]_i_1 
-       (.I0(active),
-        .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(\morlet_to_phase_env.delay_reg [3]),
-        .I3(\morlet_to_phase_env.delay_reg [4]),
-        .I4(\morlet_to_phase_env.delay_reg [1]),
-        .I5(\morlet_to_phase_env.delay_reg [2]),
+       (.I0(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I1(\morlet_to_phase_env.delay_reg [2]),
+        .I2(\morlet_to_phase_env.delay_reg [0]),
+        .I3(\morlet_to_phase_env.delay_reg [1]),
+        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I5(\morlet_to_phase_env.delay_reg [3]),
         .O(\morlet_to_phase_env.env[15]_i_1_n_0 ));
   FDRE \morlet_to_phase_env.env_reg[0] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[0]),
-        .Q(env[0]),
+        .Q(Q[0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[10] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[10]),
-        .Q(env[10]),
+        .Q(Q[10]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[11] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[11]),
-        .Q(env[11]),
+        .Q(Q[11]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[12] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[12]),
-        .Q(env[12]),
+        .Q(Q[12]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[13] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[13]),
-        .Q(env[13]),
+        .Q(Q[13]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[14] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[14]),
-        .Q(env[14]),
+        .Q(Q[14]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[15] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[15]),
-        .Q(env[15]),
+        .Q(Q[15]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[1] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[1]),
-        .Q(env[1]),
+        .Q(Q[1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[2] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[2]),
-        .Q(env[2]),
+        .Q(Q[2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[3] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[3]),
-        .Q(env[3]),
+        .Q(Q[3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[4] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[4]),
-        .Q(env[4]),
+        .Q(Q[4]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[5] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[5]),
-        .Q(env[5]),
+        .Q(Q[5]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[6] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[6]),
-        .Q(env[6]),
+        .Q(Q[6]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[7] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[7]),
-        .Q(env[7]),
+        .Q(Q[7]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[8] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[8]),
-        .Q(env[8]),
+        .Q(Q[8]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[9] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(amp_4[9]),
-        .Q(env[9]),
+        .Q(Q[9]),
         .R(1'b0));
   LUT2 #(
     .INIT(4'h6)) 
@@ -5192,172 +5213,178 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[0]),
-        .Q(phase[0]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[10] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[10]),
-        .Q(phase[10]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [10]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[11] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[11]),
-        .Q(phase[11]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [11]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[12] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[12]),
-        .Q(phase[12]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [12]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[13] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[13]),
-        .Q(phase[13]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [13]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[14] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[14]),
-        .Q(phase[14]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [14]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[15] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[15]),
-        .Q(phase[15]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [15]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[16] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[16]),
-        .Q(phase[16]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [16]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[17] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[17]),
-        .Q(phase[17]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [17]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[18] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[18]),
-        .Q(phase[18]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [18]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[19] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[19]),
-        .Q(phase[19]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [19]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[1] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[1]),
-        .Q(phase[1]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[2] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[2]),
-        .Q(phase[2]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[3] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[3]),
-        .Q(phase[3]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[4] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[4]),
-        .Q(phase[4]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [4]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[5] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[5]),
-        .Q(phase[5]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [5]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[6] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[6]),
-        .Q(phase[6]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [6]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[7] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[7]),
-        .Q(phase[7]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [7]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[8] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[8]),
-        .Q(phase[8]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [8]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[9] 
        (.C(clk),
         .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
         .D(lphase[9]),
-        .Q(phase[9]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [9]),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'hFCAA)) 
+  LUT6 #(
+    .INIT(64'hFFFFFF040404FF04)) 
     \morlet_to_phase_env.valid_i_1 
        (.I0(\morlet_to_phase_env.valid_i_2_n_0 ),
-        .I1(valid),
-        .I2(\morlet_to_phase_env.valid_i_3_n_0 ),
-        .I3(active),
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [2]),
+        .I3(\morlet_to_phase_env.valid_i_3_n_0 ),
+        .I4(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I5(valid_N),
         .O(\morlet_to_phase_env.valid_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \morlet_to_phase_env.valid_i_2 
+       (.I0(\morlet_to_phase_env.delay_reg [4]),
+        .I1(\morlet_to_phase_env.delay_reg [3]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [1]),
+        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
-    \morlet_to_phase_env.valid_i_2 
-       (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(\morlet_to_phase_env.delay_reg [3]),
-        .I2(\morlet_to_phase_env.delay_reg [4]),
-        .I3(\morlet_to_phase_env.delay_reg [1]),
-        .I4(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h40000000)) 
     \morlet_to_phase_env.valid_i_3 
        (.I0(\morlet_to_phase_env.delay_reg [2]),
-        .I1(\morlet_to_phase_env.delay_reg [1]),
-        .I2(\morlet_to_phase_env.delay_reg [0]),
-        .I3(\morlet_to_phase_env.delay_reg [3]),
-        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I3(\morlet_to_phase_env.delay_reg [4]),
+        .I4(\morlet_to_phase_env.delay_reg [3]),
         .O(\morlet_to_phase_env.valid_i_3_n_0 ));
   FDRE \morlet_to_phase_env.valid_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\morlet_to_phase_env.valid_i_1_n_0 ),
-        .Q(valid),
+        .Q(valid_N),
         .R(1'b0));
   (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_freq_low_46_0_0_mult_16_16 mult_im_i
-       (.A(im[23:8]),
-        .B(im[23:8]),
+       (.A(s_axis_cartesian_tdata[47:32]),
+        .B(s_axis_cartesian_tdata[47:32]),
         .CLK(clk),
         .P(im2));
   (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_freq_low_46_0_0_mult_16_16 mult_re_i
-       (.A(re[23:8]),
-        .B(re[23:8]),
+       (.A(s_axis_cartesian_tdata[23:8]),
+        .B(s_axis_cartesian_tdata[23:8]),
         .CLK(clk),
         .P(re2));
+  LUT3 #(
+    .INIT(8'h80)) 
+    phase_err_i_i_1
+       (.I0(valid_N),
+        .I1(valid_E),
+        .I2(valid_W),
+        .O(active));
   (* CHECK_LICENSE_TYPE = "cordic_sqrt_16,cordic_v6_0_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "cordic_v6_0_24,Vivado 2025.1" *) 
@@ -5366,7 +5393,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
         .m_axis_dout_tdata(lenv),
         .m_axis_dout_tvalid(NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata(p2),
-        .s_axis_cartesian_tvalid(active));
+        .s_axis_cartesian_tvalid(\morlet_to_phase_env.phase_reg[19]_1 ));
   (* CHECK_LICENSE_TYPE = "cordic_atan2_16,cordic_v6_0_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "cordic_v6_0_24,Vivado 2025.1" *) 
@@ -5374,44 +5401,54 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1
        (.aclk(clk),
         .m_axis_dout_tdata({NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED[23:20],lphase}),
         .m_axis_dout_tvalid(NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED),
-        .s_axis_cartesian_tdata({im,re}),
-        .s_axis_cartesian_tvalid(active));
+        .s_axis_cartesian_tdata(s_axis_cartesian_tdata),
+        .s_axis_cartesian_tvalid(\morlet_to_phase_env.phase_reg[19]_1 ));
 endmodule
 
 (* ORIG_REF_NAME = "morlet_to_phase_env" *) 
 module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
-   (clk,
-    active,
-    re,
-    im,
-    valid,
-    env,
-    phase);
+   (valid_E,
+    Q,
+    \morlet_to_phase_env.phase_reg[19]_0 ,
+    clk,
+    s_axis_cartesian_tdata,
+    \morlet_to_phase_env.phase_reg[19]_1 );
+  output valid_E;
+  output [15:0]Q;
+  output [19:0]\morlet_to_phase_env.phase_reg[19]_0 ;
   input clk;
-  input active;
-  input [23:0]re;
-  input [23:0]im;
-  output valid;
-  output [15:0]env;
-  output [19:0]phase;
+  input [47:0]s_axis_cartesian_tdata;
+  input \morlet_to_phase_env.phase_reg[19]_1 ;
 
-  wire active;
-  wire [15:0]amp_4;
+  wire [15:0]Q;
   wire clk;
-  wire delay0;
-  wire [15:0]env;
-  wire [23:0]im;
   wire [31:0]im2;
   wire [15:0]lenv;
   wire [19:0]lphase;
-  wire \morlet_to_phase_env.delay[0]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[1]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[2]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[3]_i_2_n_0 ;
-  wire \morlet_to_phase_env.delay[4]_i_1_n_0 ;
-  wire \morlet_to_phase_env.delay[4]_i_2_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[0]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[10]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[11]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[12]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[13]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[14]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[15]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[1]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[2]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[3]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[4]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[5]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[6]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[7]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[8]_srl4_n_0 ;
+  wire \morlet_to_phase_env.amp_4_reg[9]_srl4_n_0 ;
+  wire \morlet_to_phase_env.delay[0]_i_1__0_n_0 ;
+  wire \morlet_to_phase_env.delay[1]_i_1__0_n_0 ;
+  wire \morlet_to_phase_env.delay[2]_i_1__0_n_0 ;
+  wire \morlet_to_phase_env.delay[3]_i_1__0_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_1__0_n_0 ;
+  wire \morlet_to_phase_env.delay[4]_i_2__0_n_0 ;
   wire [4:0]\morlet_to_phase_env.delay_reg ;
-  wire \morlet_to_phase_env.env[15]_i_1_n_0 ;
+  wire \morlet_to_phase_env.env[15]_i_1__0_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_2_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_3_n_0 ;
   wire \morlet_to_phase_env.p2[15]_i_4_n_0 ;
@@ -5507,21 +5544,22 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_7 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_8 ;
   wire \morlet_to_phase_env.p2_reg[7]_i_1_n_9 ;
-  wire \morlet_to_phase_env.valid_i_1_n_0 ;
-  wire \morlet_to_phase_env.valid_i_2_n_0 ;
-  wire \morlet_to_phase_env.valid_i_3_n_0 ;
+  wire [19:0]\morlet_to_phase_env.phase_reg[19]_0 ;
+  wire \morlet_to_phase_env.phase_reg[19]_1 ;
+  wire \morlet_to_phase_env.valid_i_1__0_n_0 ;
+  wire \morlet_to_phase_env.valid_i_2__0_n_0 ;
+  wire \morlet_to_phase_env.valid_i_3__0_n_0 ;
   wire [31:0]p2;
-  wire [19:0]phase;
-  wire [23:0]re;
   wire [31:0]re2;
-  wire valid;
+  wire [47:0]s_axis_cartesian_tdata;
+  wire valid_E;
   wire [7:7]\NLW_morlet_to_phase_env.p2_reg[31]_i_1_CO_UNCONNECTED ;
   wire NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED;
   wire NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED;
   wire [23:20]NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED;
 
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[0]_srl4 " *) 
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[0]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[0]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5530,9 +5568,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[0]),
-        .Q(amp_4[0]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[10]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[0]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[10]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[10]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5541,9 +5579,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[10]),
-        .Q(amp_4[10]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[11]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[10]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[11]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[11]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5552,9 +5590,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[11]),
-        .Q(amp_4[11]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[12]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[11]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[12]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[12]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5563,9 +5601,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[12]),
-        .Q(amp_4[12]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[13]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[12]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[13]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[13]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5574,9 +5612,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[13]),
-        .Q(amp_4[13]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[14]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[13]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[14]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[14]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5585,9 +5623,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[14]),
-        .Q(amp_4[14]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[15]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[14]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[15]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[15]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5596,9 +5634,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[15]),
-        .Q(amp_4[15]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[1]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[15]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[1]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[1]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5607,9 +5645,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[1]),
-        .Q(amp_4[1]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[2]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[1]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[2]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[2]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5618,9 +5656,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[2]),
-        .Q(amp_4[2]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[3]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[2]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[3]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[3]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5629,9 +5667,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[3]),
-        .Q(amp_4[3]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[4]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[3]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[4]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[4]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5640,9 +5678,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[4]),
-        .Q(amp_4[4]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[5]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[4]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[5]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[5]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5651,9 +5689,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[5]),
-        .Q(amp_4[5]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[6]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[5]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[6]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[6]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5662,9 +5700,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[6]),
-        .Q(amp_4[6]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[7]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[6]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[7]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[7]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5673,9 +5711,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[7]),
-        .Q(amp_4[7]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[8]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[7]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[8]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[8]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5684,9 +5722,9 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[8]),
-        .Q(amp_4[8]));
-  (* srl_bus_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg " *) 
-  (* srl_name = "inst/freq_E_i/\\morlet_to_phase_env.amp_4_reg[9]_srl4 " *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[8]_srl4_n_0 ));
+  (* srl_bus_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg " *) 
+  (* srl_name = "inst/\\freq_E_i/morlet_to_phase_env.amp_4_reg[9]_srl4 " *) 
   SRL16E \morlet_to_phase_env.amp_4_reg[9]_srl4 
        (.A0(1'b1),
         .A1(1'b1),
@@ -5695,202 +5733,195 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .CE(1'b1),
         .CLK(clk),
         .D(lenv[9]),
-        .Q(amp_4[9]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+        .Q(\morlet_to_phase_env.amp_4_reg[9]_srl4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT1 #(
     .INIT(2'h1)) 
-    \morlet_to_phase_env.delay[0]_i_1 
+    \morlet_to_phase_env.delay[0]_i_1__0 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .O(\morlet_to_phase_env.delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+        .O(\morlet_to_phase_env.delay[0]_i_1__0_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'h69)) 
-    \morlet_to_phase_env.delay[1]_i_1 
+    \morlet_to_phase_env.delay[1]_i_1__0 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(active),
+        .I1(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I2(\morlet_to_phase_env.delay_reg [1]),
-        .O(\morlet_to_phase_env.delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+        .O(\morlet_to_phase_env.delay[1]_i_1__0_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
-    \morlet_to_phase_env.delay[2]_i_1 
+    \morlet_to_phase_env.delay[2]_i_1__0 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(active),
+        .I1(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
-        .O(\morlet_to_phase_env.delay[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF7FFFFFFFFFFFFE)) 
-    \morlet_to_phase_env.delay[3]_i_1 
-       (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(\morlet_to_phase_env.delay_reg [3]),
-        .I2(\morlet_to_phase_env.delay_reg [1]),
-        .I3(\morlet_to_phase_env.delay_reg [2]),
-        .I4(\morlet_to_phase_env.delay_reg [4]),
-        .I5(active),
-        .O(delay0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+        .O(\morlet_to_phase_env.delay[2]_i_1__0_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
-    \morlet_to_phase_env.delay[3]_i_2 
-       (.I0(active),
-        .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(\morlet_to_phase_env.delay_reg [1]),
-        .I3(\morlet_to_phase_env.delay_reg [3]),
-        .I4(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.delay[3]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hCA)) 
-    \morlet_to_phase_env.delay[4]_i_1 
-       (.I0(\morlet_to_phase_env.delay_reg [4]),
-        .I1(\morlet_to_phase_env.delay[4]_i_2_n_0 ),
-        .I2(delay0),
-        .O(\morlet_to_phase_env.delay[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFF8000FFFE0001)) 
-    \morlet_to_phase_env.delay[4]_i_2 
+    \morlet_to_phase_env.delay[3]_i_1__0 
        (.I0(\morlet_to_phase_env.delay_reg [1]),
         .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(active),
-        .I3(\morlet_to_phase_env.delay_reg [2]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [3]),
+        .I4(\morlet_to_phase_env.delay_reg [2]),
+        .O(\morlet_to_phase_env.delay[3]_i_1__0_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFFFFFFFFFFFFFFE)) 
+    \morlet_to_phase_env.delay[4]_i_1__0 
+       (.I0(\morlet_to_phase_env.delay_reg [2]),
+        .I1(\morlet_to_phase_env.delay_reg [1]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [3]),
+        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I5(\morlet_to_phase_env.delay_reg [0]),
+        .O(\morlet_to_phase_env.delay[4]_i_1__0_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFF8000FFFE0001)) 
+    \morlet_to_phase_env.delay[4]_i_2__0 
+       (.I0(\morlet_to_phase_env.delay_reg [2]),
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I3(\morlet_to_phase_env.phase_reg[19]_1 ),
         .I4(\morlet_to_phase_env.delay_reg [4]),
         .I5(\morlet_to_phase_env.delay_reg [3]),
-        .O(\morlet_to_phase_env.delay[4]_i_2_n_0 ));
+        .O(\morlet_to_phase_env.delay[4]_i_2__0_n_0 ));
   FDRE \morlet_to_phase_env.delay_reg[0] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[0]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.delay[0]_i_1__0_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[1] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[1]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.delay[1]_i_1__0_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[2] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[2]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.delay[2]_i_1__0_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[3] 
        (.C(clk),
-        .CE(delay0),
-        .D(\morlet_to_phase_env.delay[3]_i_2_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.delay[3]_i_1__0_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.delay_reg[4] 
        (.C(clk),
-        .CE(1'b1),
-        .D(\morlet_to_phase_env.delay[4]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.delay[4]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.delay[4]_i_2__0_n_0 ),
         .Q(\morlet_to_phase_env.delay_reg [4]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h55555555D5555554)) 
-    \morlet_to_phase_env.env[15]_i_1 
-       (.I0(active),
-        .I1(\morlet_to_phase_env.delay_reg [0]),
-        .I2(\morlet_to_phase_env.delay_reg [3]),
-        .I3(\morlet_to_phase_env.delay_reg [4]),
-        .I4(\morlet_to_phase_env.delay_reg [1]),
-        .I5(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.env[15]_i_1_n_0 ));
+    .INIT(64'h7555555555555554)) 
+    \morlet_to_phase_env.env[15]_i_1__0 
+       (.I0(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I1(\morlet_to_phase_env.delay_reg [2]),
+        .I2(\morlet_to_phase_env.delay_reg [0]),
+        .I3(\morlet_to_phase_env.delay_reg [1]),
+        .I4(\morlet_to_phase_env.delay_reg [4]),
+        .I5(\morlet_to_phase_env.delay_reg [3]),
+        .O(\morlet_to_phase_env.env[15]_i_1__0_n_0 ));
   FDRE \morlet_to_phase_env.env_reg[0] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[0]),
-        .Q(env[0]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[0]_srl4_n_0 ),
+        .Q(Q[0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[10] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[10]),
-        .Q(env[10]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[10]_srl4_n_0 ),
+        .Q(Q[10]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[11] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[11]),
-        .Q(env[11]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[11]_srl4_n_0 ),
+        .Q(Q[11]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[12] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[12]),
-        .Q(env[12]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[12]_srl4_n_0 ),
+        .Q(Q[12]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[13] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[13]),
-        .Q(env[13]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[13]_srl4_n_0 ),
+        .Q(Q[13]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[14] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[14]),
-        .Q(env[14]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[14]_srl4_n_0 ),
+        .Q(Q[14]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[15] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[15]),
-        .Q(env[15]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[15]_srl4_n_0 ),
+        .Q(Q[15]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[1] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[1]),
-        .Q(env[1]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[1]_srl4_n_0 ),
+        .Q(Q[1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[2] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[2]),
-        .Q(env[2]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[2]_srl4_n_0 ),
+        .Q(Q[2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[3] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[3]),
-        .Q(env[3]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[3]_srl4_n_0 ),
+        .Q(Q[3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[4] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[4]),
-        .Q(env[4]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[4]_srl4_n_0 ),
+        .Q(Q[4]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[5] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[5]),
-        .Q(env[5]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[5]_srl4_n_0 ),
+        .Q(Q[5]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[6] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[6]),
-        .Q(env[6]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[6]_srl4_n_0 ),
+        .Q(Q[6]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[7] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[7]),
-        .Q(env[7]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[7]_srl4_n_0 ),
+        .Q(Q[7]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[8] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[8]),
-        .Q(env[8]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[8]_srl4_n_0 ),
+        .Q(Q[8]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.env_reg[9] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
-        .D(amp_4[9]),
-        .Q(env[9]),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
+        .D(\morlet_to_phase_env.amp_4_reg[9]_srl4_n_0 ),
+        .Q(Q[9]),
         .R(1'b0));
   LUT2 #(
     .INIT(4'h6)) 
@@ -6310,172 +6341,171 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[0] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[0]),
-        .Q(phase[0]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [0]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[10] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[10]),
-        .Q(phase[10]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [10]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[11] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[11]),
-        .Q(phase[11]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [11]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[12] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[12]),
-        .Q(phase[12]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [12]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[13] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[13]),
-        .Q(phase[13]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [13]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[14] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[14]),
-        .Q(phase[14]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [14]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[15] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[15]),
-        .Q(phase[15]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [15]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[16] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[16]),
-        .Q(phase[16]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [16]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[17] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[17]),
-        .Q(phase[17]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [17]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[18] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[18]),
-        .Q(phase[18]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [18]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[19] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[19]),
-        .Q(phase[19]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [19]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[1] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[1]),
-        .Q(phase[1]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [1]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[2] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[2]),
-        .Q(phase[2]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [2]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[3] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[3]),
-        .Q(phase[3]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [3]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[4] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[4]),
-        .Q(phase[4]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [4]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[5] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[5]),
-        .Q(phase[5]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [5]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[6] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[6]),
-        .Q(phase[6]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [6]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[7] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[7]),
-        .Q(phase[7]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [7]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[8] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[8]),
-        .Q(phase[8]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [8]),
         .R(1'b0));
   FDRE \morlet_to_phase_env.phase_reg[9] 
        (.C(clk),
-        .CE(\morlet_to_phase_env.env[15]_i_1_n_0 ),
+        .CE(\morlet_to_phase_env.env[15]_i_1__0_n_0 ),
         .D(lphase[9]),
-        .Q(phase[9]),
+        .Q(\morlet_to_phase_env.phase_reg[19]_0 [9]),
         .R(1'b0));
+  LUT6 #(
+    .INIT(64'hFFFFFF040404FF04)) 
+    \morlet_to_phase_env.valid_i_1__0 
+       (.I0(\morlet_to_phase_env.valid_i_2__0_n_0 ),
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [2]),
+        .I3(\morlet_to_phase_env.valid_i_3__0_n_0 ),
+        .I4(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I5(valid_E),
+        .O(\morlet_to_phase_env.valid_i_1__0_n_0 ));
   LUT4 #(
-    .INIT(16'hFCAA)) 
-    \morlet_to_phase_env.valid_i_1 
-       (.I0(\morlet_to_phase_env.valid_i_2_n_0 ),
-        .I1(valid),
-        .I2(\morlet_to_phase_env.valid_i_3_n_0 ),
-        .I3(active),
-        .O(\morlet_to_phase_env.valid_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+    .INIT(16'h7FFF)) 
+    \morlet_to_phase_env.valid_i_2__0 
+       (.I0(\morlet_to_phase_env.delay_reg [4]),
+        .I1(\morlet_to_phase_env.delay_reg [3]),
+        .I2(\morlet_to_phase_env.phase_reg[19]_1 ),
+        .I3(\morlet_to_phase_env.delay_reg [1]),
+        .O(\morlet_to_phase_env.valid_i_2__0_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
-    \morlet_to_phase_env.valid_i_2 
-       (.I0(\morlet_to_phase_env.delay_reg [0]),
-        .I1(\morlet_to_phase_env.delay_reg [3]),
-        .I2(\morlet_to_phase_env.delay_reg [4]),
-        .I3(\morlet_to_phase_env.delay_reg [1]),
-        .I4(\morlet_to_phase_env.delay_reg [2]),
-        .O(\morlet_to_phase_env.valid_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT5 #(
-    .INIT(32'h40000000)) 
-    \morlet_to_phase_env.valid_i_3 
+    \morlet_to_phase_env.valid_i_3__0 
        (.I0(\morlet_to_phase_env.delay_reg [2]),
-        .I1(\morlet_to_phase_env.delay_reg [1]),
-        .I2(\morlet_to_phase_env.delay_reg [0]),
-        .I3(\morlet_to_phase_env.delay_reg [3]),
-        .I4(\morlet_to_phase_env.delay_reg [4]),
-        .O(\morlet_to_phase_env.valid_i_3_n_0 ));
+        .I1(\morlet_to_phase_env.delay_reg [0]),
+        .I2(\morlet_to_phase_env.delay_reg [1]),
+        .I3(\morlet_to_phase_env.delay_reg [4]),
+        .I4(\morlet_to_phase_env.delay_reg [3]),
+        .O(\morlet_to_phase_env.valid_i_3__0_n_0 ));
   FDRE \morlet_to_phase_env.valid_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\morlet_to_phase_env.valid_i_1_n_0 ),
-        .Q(valid),
+        .D(\morlet_to_phase_env.valid_i_1__0_n_0 ),
+        .Q(valid_E),
         .R(1'b0));
   (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_freq_low_46_0_0_mult_16_16 mult_im_i
-       (.A(im[23:8]),
-        .B(im[23:8]),
+       (.A(s_axis_cartesian_tdata[47:32]),
+        .B(s_axis_cartesian_tdata[47:32]),
         .CLK(clk),
         .P(im2));
   (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_freq_low_46_0_0_mult_16_16 mult_re_i
-       (.A(re[23:8]),
-        .B(re[23:8]),
+       (.A(s_axis_cartesian_tdata[23:8]),
+        .B(s_axis_cartesian_tdata[23:8]),
         .CLK(clk),
         .P(re2));
   (* CHECK_LICENSE_TYPE = "cordic_sqrt_16,cordic_v6_0_24,{}" *) 
@@ -6486,7 +6516,7 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
         .m_axis_dout_tdata(lenv),
         .m_axis_dout_tvalid(NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED),
         .s_axis_cartesian_tdata(p2),
-        .s_axis_cartesian_tvalid(active));
+        .s_axis_cartesian_tvalid(\morlet_to_phase_env.phase_reg[19]_1 ));
   (* CHECK_LICENSE_TYPE = "cordic_atan2_16,cordic_v6_0_24,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "cordic_v6_0_24,Vivado 2025.1" *) 
@@ -6494,8 +6524,8 @@ module ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2
        (.aclk(clk),
         .m_axis_dout_tdata({NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED[23:20],lphase}),
         .m_axis_dout_tvalid(NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED),
-        .s_axis_cartesian_tdata({im,re}),
-        .s_axis_cartesian_tvalid(active));
+        .s_axis_cartesian_tdata(s_axis_cartesian_tdata),
+        .s_axis_cartesian_tvalid(\morlet_to_phase_env.phase_reg[19]_1 ));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "mult_16_16,mult_gen_v12_0_23,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "mult_16_16" *) 
@@ -6512,6 +6542,6155 @@ module ps_freq_low_46_0_0_mult_16_16
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 p_intf DATA" *) (* X_INTERFACE_MODE = "master p_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME p_intf, LAYERED_METADATA undef" *) output [31:0]P;
 
 
+endmodule
+
+(* ORIG_REF_NAME = "phase_err" *) (* keep_hierarchy = "soft" *) 
+module ps_freq_low_46_0_0_phase_err
+   (clk,
+    active,
+    env_in_N,
+    phase_in_N,
+    env_in_E,
+    phase_in_E,
+    env_in_W,
+    phase_in_W,
+    valid,
+    env_out_N,
+    phase_out_N,
+    env_out_E,
+    phase_out_E,
+    env_out_W,
+    phase_out_W,
+    err_NE,
+    err_NW,
+    err_EW);
+  input clk;
+  input active;
+  input [15:0]env_in_N;
+  input [19:0]phase_in_N;
+  input [15:0]env_in_E;
+  input [19:0]phase_in_E;
+  input [15:0]env_in_W;
+  input [19:0]phase_in_W;
+  output valid;
+  output [15:0]env_out_N;
+  output [19:0]phase_out_N;
+  output [15:0]env_out_E;
+  output [19:0]phase_out_E;
+  output [15:0]env_out_W;
+  output [19:0]phase_out_W;
+  output [11:0]err_NE;
+  output [11:0]err_NW;
+  output [11:0]err_EW;
+
+  (* MARK_DEBUG *) wire active;
+  wire clk;
+  (* MARK_DEBUG *) wire [18:0]diff_EW;
+  (* MARK_DEBUG *) wire [18:0]diff_NE;
+  (* MARK_DEBUG *) wire [18:0]diff_NW;
+  wire [15:0]env_in_E;
+  wire [15:0]env_in_N;
+  wire [15:0]env_in_W;
+  wire [15:0]env_out_E;
+  wire [15:0]env_out_N;
+  wire [15:0]env_out_W;
+  (* MARK_DEBUG *) wire [11:0]err_EW;
+  (* MARK_DEBUG *) wire [11:0]err_NE;
+  (* MARK_DEBUG *) wire [11:0]err_NW;
+  wire [18:0]p_0_in__0;
+  wire [19:0]phase_E_3;
+  wire [19:0]phase_N_3;
+  wire [19:0]phase_W_3;
+  wire \phase_err.diff_EW[0]_i_1_n_0 ;
+  wire \phase_err.diff_EW[10]_i_1_n_0 ;
+  wire \phase_err.diff_EW[11]_i_1_n_0 ;
+  wire \phase_err.diff_EW[12]_i_1_n_0 ;
+  wire \phase_err.diff_EW[13]_i_1_n_0 ;
+  wire \phase_err.diff_EW[14]_i_1_n_0 ;
+  wire \phase_err.diff_EW[15]_i_1_n_0 ;
+  wire \phase_err.diff_EW[16]_i_1_n_0 ;
+  wire \phase_err.diff_EW[17]_i_1_n_0 ;
+  wire \phase_err.diff_EW[18]_i_1_n_0 ;
+  wire \phase_err.diff_EW[1]_i_1_n_0 ;
+  wire \phase_err.diff_EW[2]_i_1_n_0 ;
+  wire \phase_err.diff_EW[3]_i_1_n_0 ;
+  wire \phase_err.diff_EW[4]_i_1_n_0 ;
+  wire \phase_err.diff_EW[5]_i_1_n_0 ;
+  wire \phase_err.diff_EW[6]_i_1_n_0 ;
+  wire \phase_err.diff_EW[7]_i_1_n_0 ;
+  wire \phase_err.diff_EW[8]_i_1_n_0 ;
+  wire \phase_err.diff_EW[9]_i_1_n_0 ;
+  wire \phase_err.diff_NW[0]_i_1_n_0 ;
+  wire \phase_err.diff_NW[10]_i_1_n_0 ;
+  wire \phase_err.diff_NW[11]_i_1_n_0 ;
+  wire \phase_err.diff_NW[12]_i_1_n_0 ;
+  wire \phase_err.diff_NW[13]_i_1_n_0 ;
+  wire \phase_err.diff_NW[14]_i_1_n_0 ;
+  wire \phase_err.diff_NW[15]_i_1_n_0 ;
+  wire \phase_err.diff_NW[16]_i_1_n_0 ;
+  wire \phase_err.diff_NW[17]_i_1_n_0 ;
+  wire \phase_err.diff_NW[18]_i_1_n_0 ;
+  wire \phase_err.diff_NW[1]_i_1_n_0 ;
+  wire \phase_err.diff_NW[2]_i_1_n_0 ;
+  wire \phase_err.diff_NW[3]_i_1_n_0 ;
+  wire \phase_err.diff_NW[4]_i_1_n_0 ;
+  wire \phase_err.diff_NW[5]_i_1_n_0 ;
+  wire \phase_err.diff_NW[6]_i_1_n_0 ;
+  wire \phase_err.diff_NW[7]_i_1_n_0 ;
+  wire \phase_err.diff_NW[8]_i_1_n_0 ;
+  wire \phase_err.diff_NW[9]_i_1_n_0 ;
+  wire \phase_err.env_E_3_reg[0]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[10]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[11]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[12]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[13]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[14]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[15]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[1]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[2]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[3]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[4]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[5]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[6]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[7]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[8]_srl3_n_0 ;
+  wire \phase_err.env_E_3_reg[9]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[0]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[10]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[11]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[12]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[13]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[14]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[15]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[1]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[2]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[3]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[4]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[5]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[6]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[7]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[8]_srl3_n_0 ;
+  wire \phase_err.env_N_3_reg[9]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[0]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[10]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[11]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[12]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[13]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[14]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[15]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[1]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[2]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[3]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[4]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[5]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[6]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[7]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[8]_srl3_n_0 ;
+  wire \phase_err.env_W_3_reg[9]_srl3_n_0 ;
+  wire \phase_err.err_EW[0]_i_1_n_0 ;
+  wire \phase_err.err_EW[10]_i_1_n_0 ;
+  wire \phase_err.err_EW[11]_i_1_n_0 ;
+  wire \phase_err.err_EW[11]_i_2_n_0 ;
+  wire \phase_err.err_EW[11]_i_3_n_0 ;
+  wire \phase_err.err_EW[1]_i_1_n_0 ;
+  wire \phase_err.err_EW[2]_i_1_n_0 ;
+  wire \phase_err.err_EW[3]_i_1_n_0 ;
+  wire \phase_err.err_EW[4]_i_1_n_0 ;
+  wire \phase_err.err_EW[5]_i_1_n_0 ;
+  wire \phase_err.err_EW[6]_i_1_n_0 ;
+  wire \phase_err.err_EW[7]_i_1_n_0 ;
+  wire \phase_err.err_EW[8]_i_1_n_0 ;
+  wire \phase_err.err_EW[9]_i_1_n_0 ;
+  wire \phase_err.err_NE[0]_i_1_n_0 ;
+  wire \phase_err.err_NE[10]_i_1_n_0 ;
+  wire \phase_err.err_NE[11]_i_1_n_0 ;
+  wire \phase_err.err_NE[11]_i_2_n_0 ;
+  wire \phase_err.err_NE[11]_i_3_n_0 ;
+  wire \phase_err.err_NE[1]_i_1_n_0 ;
+  wire \phase_err.err_NE[2]_i_1_n_0 ;
+  wire \phase_err.err_NE[3]_i_1_n_0 ;
+  wire \phase_err.err_NE[4]_i_1_n_0 ;
+  wire \phase_err.err_NE[5]_i_1_n_0 ;
+  wire \phase_err.err_NE[6]_i_1_n_0 ;
+  wire \phase_err.err_NE[7]_i_1_n_0 ;
+  wire \phase_err.err_NE[8]_i_1_n_0 ;
+  wire \phase_err.err_NE[9]_i_1_n_0 ;
+  wire \phase_err.err_NW[0]_i_1_n_0 ;
+  wire \phase_err.err_NW[10]_i_1_n_0 ;
+  wire \phase_err.err_NW[11]_i_1_n_0 ;
+  wire \phase_err.err_NW[11]_i_2_n_0 ;
+  wire \phase_err.err_NW[11]_i_3_n_0 ;
+  wire \phase_err.err_NW[1]_i_1_n_0 ;
+  wire \phase_err.err_NW[2]_i_1_n_0 ;
+  wire \phase_err.err_NW[3]_i_1_n_0 ;
+  wire \phase_err.err_NW[4]_i_1_n_0 ;
+  wire \phase_err.err_NW[5]_i_1_n_0 ;
+  wire \phase_err.err_NW[6]_i_1_n_0 ;
+  wire \phase_err.err_NW[7]_i_1_n_0 ;
+  wire \phase_err.err_NW[8]_i_1_n_0 ;
+  wire \phase_err.err_NW[9]_i_1_n_0 ;
+  wire \phase_err.phase_E_2_reg[0]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[10]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[11]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[12]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[13]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[14]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[15]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[16]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[17]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[18]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[19]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[1]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[2]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[3]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[4]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[5]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[6]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[7]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[8]_srl2_n_0 ;
+  wire \phase_err.phase_E_2_reg[9]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[0]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[10]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[11]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[12]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[13]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[14]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[15]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[16]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[17]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[18]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[19]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[1]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[2]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[3]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[4]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[5]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[6]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[7]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[8]_srl2_n_0 ;
+  wire \phase_err.phase_N_2_reg[9]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[0]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[10]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[11]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[12]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[13]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[14]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[15]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[16]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[17]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[18]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[19]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[1]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[2]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[3]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[4]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[5]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[6]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[7]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[8]_srl2_n_0 ;
+  wire \phase_err.phase_W_2_reg[9]_srl2_n_0 ;
+  wire \phase_err.prev_NE[18]_i_1_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_2_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_3_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_4_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_5_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_6_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_7_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_8_n_0 ;
+  wire \phase_err.raw_diff_EW[15]_i_9_n_0 ;
+  wire \phase_err.raw_diff_EW[19]_i_2_n_0 ;
+  wire \phase_err.raw_diff_EW[19]_i_3_n_0 ;
+  wire \phase_err.raw_diff_EW[19]_i_4_n_0 ;
+  wire \phase_err.raw_diff_EW[19]_i_5_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_2_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_3_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_4_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_5_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_6_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_7_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_8_n_0 ;
+  wire \phase_err.raw_diff_EW[7]_i_9_n_0 ;
+  wire [19:0]\phase_err.raw_diff_EW_reg00_out ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_0 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_1 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_2 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_3 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_4 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_5 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_6 ;
+  wire \phase_err.raw_diff_EW_reg[15]_i_1_n_7 ;
+  wire \phase_err.raw_diff_EW_reg[19]_i_1_n_5 ;
+  wire \phase_err.raw_diff_EW_reg[19]_i_1_n_6 ;
+  wire \phase_err.raw_diff_EW_reg[19]_i_1_n_7 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_0 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_1 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_2 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_3 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_4 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_5 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_6 ;
+  wire \phase_err.raw_diff_EW_reg[7]_i_1_n_7 ;
+  wire \phase_err.raw_diff_NE[15]_i_2_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_3_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_4_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_5_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_6_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_7_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_8_n_0 ;
+  wire \phase_err.raw_diff_NE[15]_i_9_n_0 ;
+  wire \phase_err.raw_diff_NE[19]_i_2_n_0 ;
+  wire \phase_err.raw_diff_NE[19]_i_3_n_0 ;
+  wire \phase_err.raw_diff_NE[19]_i_4_n_0 ;
+  wire \phase_err.raw_diff_NE[19]_i_5_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_2_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_3_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_4_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_5_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_6_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_7_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_8_n_0 ;
+  wire \phase_err.raw_diff_NE[7]_i_9_n_0 ;
+  wire [19:0]\phase_err.raw_diff_NE_reg02_out ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_0 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_1 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_2 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_3 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_4 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_5 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_6 ;
+  wire \phase_err.raw_diff_NE_reg[15]_i_1_n_7 ;
+  wire \phase_err.raw_diff_NE_reg[19]_i_1_n_5 ;
+  wire \phase_err.raw_diff_NE_reg[19]_i_1_n_6 ;
+  wire \phase_err.raw_diff_NE_reg[19]_i_1_n_7 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_0 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_1 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_2 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_3 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_4 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_5 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_6 ;
+  wire \phase_err.raw_diff_NE_reg[7]_i_1_n_7 ;
+  wire \phase_err.raw_diff_NW[15]_i_2_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_3_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_4_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_5_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_6_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_7_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_8_n_0 ;
+  wire \phase_err.raw_diff_NW[15]_i_9_n_0 ;
+  wire \phase_err.raw_diff_NW[19]_i_2_n_0 ;
+  wire \phase_err.raw_diff_NW[19]_i_3_n_0 ;
+  wire \phase_err.raw_diff_NW[19]_i_4_n_0 ;
+  wire \phase_err.raw_diff_NW[19]_i_5_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_2_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_3_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_4_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_5_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_6_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_7_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_8_n_0 ;
+  wire \phase_err.raw_diff_NW[7]_i_9_n_0 ;
+  wire [19:0]\phase_err.raw_diff_NW_reg0 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_0 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_1 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_2 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_3 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_4 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_5 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_6 ;
+  wire \phase_err.raw_diff_NW_reg[15]_i_1_n_7 ;
+  wire \phase_err.raw_diff_NW_reg[19]_i_1_n_5 ;
+  wire \phase_err.raw_diff_NW_reg[19]_i_1_n_6 ;
+  wire \phase_err.raw_diff_NW_reg[19]_i_1_n_7 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_0 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_1 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_2 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_3 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_4 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_5 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_6 ;
+  wire \phase_err.raw_diff_NW_reg[7]_i_1_n_7 ;
+  wire \phase_err.raw_err_EW[15]_i_2_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_3_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_4_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_5_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_6_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_7_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_8_n_0 ;
+  wire \phase_err.raw_err_EW[15]_i_9_n_0 ;
+  wire \phase_err.raw_err_EW[18]_i_2_n_0 ;
+  wire \phase_err.raw_err_EW[18]_i_3_n_0 ;
+  wire \phase_err.raw_err_EW[18]_i_4_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_2_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_3_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_4_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_5_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_6_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_7_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_8_n_0 ;
+  wire \phase_err.raw_err_EW[7]_i_9_n_0 ;
+  wire [18:0]\phase_err.raw_err_EW_reg00_out ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_0 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_1 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_2 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_3 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_4 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_5 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_6 ;
+  wire \phase_err.raw_err_EW_reg[15]_i_1_n_7 ;
+  wire \phase_err.raw_err_EW_reg[18]_i_1_n_6 ;
+  wire \phase_err.raw_err_EW_reg[18]_i_1_n_7 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_0 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_1 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_2 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_3 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_4 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_5 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_6 ;
+  wire \phase_err.raw_err_EW_reg[7]_i_1_n_7 ;
+  wire \phase_err.raw_err_NE[15]_i_2_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_3_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_4_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_5_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_6_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_7_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_8_n_0 ;
+  wire \phase_err.raw_err_NE[15]_i_9_n_0 ;
+  wire \phase_err.raw_err_NE[18]_i_2_n_0 ;
+  wire \phase_err.raw_err_NE[18]_i_3_n_0 ;
+  wire \phase_err.raw_err_NE[18]_i_4_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_2_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_3_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_4_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_5_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_6_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_7_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_8_n_0 ;
+  wire \phase_err.raw_err_NE[7]_i_9_n_0 ;
+  wire [18:0]\phase_err.raw_err_NE_reg04_out ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_0 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_1 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_2 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_3 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_4 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_5 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_6 ;
+  wire \phase_err.raw_err_NE_reg[15]_i_1_n_7 ;
+  wire \phase_err.raw_err_NE_reg[18]_i_1_n_6 ;
+  wire \phase_err.raw_err_NE_reg[18]_i_1_n_7 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_0 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_1 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_2 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_3 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_4 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_5 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_6 ;
+  wire \phase_err.raw_err_NE_reg[7]_i_1_n_7 ;
+  wire \phase_err.raw_err_NW[15]_i_2_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_3_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_4_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_5_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_6_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_7_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_8_n_0 ;
+  wire \phase_err.raw_err_NW[15]_i_9_n_0 ;
+  wire \phase_err.raw_err_NW[18]_i_2_n_0 ;
+  wire \phase_err.raw_err_NW[18]_i_3_n_0 ;
+  wire \phase_err.raw_err_NW[18]_i_4_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_2_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_3_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_4_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_5_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_6_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_7_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_8_n_0 ;
+  wire \phase_err.raw_err_NW[7]_i_9_n_0 ;
+  wire [18:0]\phase_err.raw_err_NW_reg02_out ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_0 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_1 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_2 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_3 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_4 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_5 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_6 ;
+  wire \phase_err.raw_err_NW_reg[15]_i_1_n_7 ;
+  wire \phase_err.raw_err_NW_reg[18]_i_1_n_6 ;
+  wire \phase_err.raw_err_NW_reg[18]_i_1_n_7 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_0 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_1 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_2 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_3 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_4 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_5 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_6 ;
+  wire \phase_err.raw_err_NW_reg[7]_i_1_n_7 ;
+  wire \phase_err.valid_2_reg_srl2_n_0 ;
+  (* MARK_DEBUG *) wire [19:0]phase_in_E;
+  (* MARK_DEBUG *) wire [19:0]phase_in_N;
+  (* MARK_DEBUG *) wire [19:0]phase_in_W;
+  (* MARK_DEBUG *) wire [19:0]phase_out_E;
+  (* MARK_DEBUG *) wire [19:0]phase_out_N;
+  (* MARK_DEBUG *) wire [19:0]phase_out_W;
+  (* MARK_DEBUG *) wire [18:0]prev_EW;
+  (* MARK_DEBUG *) wire [18:0]prev_NE;
+  (* MARK_DEBUG *) wire [18:0]prev_NW;
+  (* MARK_DEBUG *) wire [19:0]raw_diff_EW;
+  (* MARK_DEBUG *) wire [19:0]raw_diff_NE;
+  (* MARK_DEBUG *) wire [19:0]raw_diff_NW;
+  (* MARK_DEBUG *) wire [18:0]raw_err_EW;
+  (* MARK_DEBUG *) wire [18:0]raw_err_NE;
+  (* MARK_DEBUG *) wire [18:0]raw_err_NW;
+  (* MARK_DEBUG *) wire valid;
+  wire valid_3;
+  wire [7:3]\NLW_phase_err.raw_diff_EW_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [7:4]\NLW_phase_err.raw_diff_EW_reg[19]_i_1_O_UNCONNECTED ;
+  wire [7:3]\NLW_phase_err.raw_diff_NE_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [7:4]\NLW_phase_err.raw_diff_NE_reg[19]_i_1_O_UNCONNECTED ;
+  wire [7:3]\NLW_phase_err.raw_diff_NW_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [7:4]\NLW_phase_err.raw_diff_NW_reg[19]_i_1_O_UNCONNECTED ;
+  wire [7:2]\NLW_phase_err.raw_err_EW_reg[18]_i_1_CO_UNCONNECTED ;
+  wire [7:3]\NLW_phase_err.raw_err_EW_reg[18]_i_1_O_UNCONNECTED ;
+  wire [7:2]\NLW_phase_err.raw_err_NE_reg[18]_i_1_CO_UNCONNECTED ;
+  wire [7:3]\NLW_phase_err.raw_err_NE_reg[18]_i_1_O_UNCONNECTED ;
+  wire [7:2]\NLW_phase_err.raw_err_NW_reg[18]_i_1_CO_UNCONNECTED ;
+  wire [7:3]\NLW_phase_err.raw_err_NW_reg[18]_i_1_O_UNCONNECTED ;
+
+  (* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "ila,Vivado 2025.1" *) 
+  ps_freq_low_46_0_0_ila_7 ila_i
+       (.clk(clk),
+        .probe0(valid),
+        .probe1(active),
+        .probe10(raw_diff_EW),
+        .probe11({1'b0,prev_NE}),
+        .probe12({1'b0,prev_NW}),
+        .probe13({1'b0,prev_EW}),
+        .probe14(diff_NE),
+        .probe15(diff_NW),
+        .probe16(diff_EW),
+        .probe17(raw_err_NE),
+        .probe18(raw_err_NW),
+        .probe19(raw_err_EW),
+        .probe2(phase_in_N),
+        .probe20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,err_NE}),
+        .probe21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,err_NW}),
+        .probe22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,err_EW}),
+        .probe3(phase_in_E),
+        .probe4(phase_in_W),
+        .probe5(phase_out_N),
+        .probe6(phase_out_E),
+        .probe7(phase_out_W),
+        .probe8(raw_diff_NE),
+        .probe9(raw_diff_NW));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[0]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[0]),
+        .O(\phase_err.diff_EW[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[10]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[10]),
+        .O(\phase_err.diff_EW[10]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[11]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[11]),
+        .O(\phase_err.diff_EW[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[12]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[12]),
+        .O(\phase_err.diff_EW[12]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[13]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[13]),
+        .O(\phase_err.diff_EW[13]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[14]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[14]),
+        .O(\phase_err.diff_EW[14]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[15]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[15]),
+        .O(\phase_err.diff_EW[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[16]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[16]),
+        .O(\phase_err.diff_EW[16]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[17]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[17]),
+        .O(\phase_err.diff_EW[17]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[18]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[18]),
+        .O(\phase_err.diff_EW[18]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[1]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[1]),
+        .O(\phase_err.diff_EW[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[2]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[2]),
+        .O(\phase_err.diff_EW[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[3]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[3]),
+        .O(\phase_err.diff_EW[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[4]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[4]),
+        .O(\phase_err.diff_EW[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[5]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[5]),
+        .O(\phase_err.diff_EW[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[6]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[6]),
+        .O(\phase_err.diff_EW[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[7]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[7]),
+        .O(\phase_err.diff_EW[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[8]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[8]),
+        .O(\phase_err.diff_EW[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_EW[9]_i_1 
+       (.I0(raw_diff_EW[19]),
+        .I1(raw_diff_EW[9]),
+        .O(\phase_err.diff_EW[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[0]_i_1_n_0 ),
+        .Q(diff_EW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[10]_i_1_n_0 ),
+        .Q(diff_EW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[11]_i_1_n_0 ),
+        .Q(diff_EW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[12]_i_1_n_0 ),
+        .Q(diff_EW[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[13]_i_1_n_0 ),
+        .Q(diff_EW[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[14]_i_1_n_0 ),
+        .Q(diff_EW[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[15]_i_1_n_0 ),
+        .Q(diff_EW[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[16]_i_1_n_0 ),
+        .Q(diff_EW[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[17]_i_1_n_0 ),
+        .Q(diff_EW[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[18]_i_1_n_0 ),
+        .Q(diff_EW[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[1]_i_1_n_0 ),
+        .Q(diff_EW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[2]_i_1_n_0 ),
+        .Q(diff_EW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[3]_i_1_n_0 ),
+        .Q(diff_EW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[4]_i_1_n_0 ),
+        .Q(diff_EW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[5]_i_1_n_0 ),
+        .Q(diff_EW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[6]_i_1_n_0 ),
+        .Q(diff_EW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[7]_i_1_n_0 ),
+        .Q(diff_EW[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[8]_i_1_n_0 ),
+        .Q(diff_EW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_EW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_EW[9]_i_1_n_0 ),
+        .Q(diff_EW[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[0]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[0]),
+        .O(p_0_in__0[0]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[10]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[10]),
+        .O(p_0_in__0[10]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[11]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[11]),
+        .O(p_0_in__0[11]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[12]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[12]),
+        .O(p_0_in__0[12]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[13]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[13]),
+        .O(p_0_in__0[13]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[14]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[14]),
+        .O(p_0_in__0[14]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[15]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[15]),
+        .O(p_0_in__0[15]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[16]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[16]),
+        .O(p_0_in__0[16]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[17]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[17]),
+        .O(p_0_in__0[17]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[18]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[18]),
+        .O(p_0_in__0[18]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[1]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[1]),
+        .O(p_0_in__0[1]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[2]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[2]),
+        .O(p_0_in__0[2]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[3]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[3]),
+        .O(p_0_in__0[3]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[4]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[4]),
+        .O(p_0_in__0[4]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[5]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[5]),
+        .O(p_0_in__0[5]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[6]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[6]),
+        .O(p_0_in__0[6]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[7]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[7]),
+        .O(p_0_in__0[7]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[8]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[8]),
+        .O(p_0_in__0[8]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NE[9]_i_1 
+       (.I0(raw_diff_NE[19]),
+        .I1(raw_diff_NE[9]),
+        .O(p_0_in__0[9]));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[0]),
+        .Q(diff_NE[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[10]),
+        .Q(diff_NE[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[11]),
+        .Q(diff_NE[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[12]),
+        .Q(diff_NE[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[13]),
+        .Q(diff_NE[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[14]),
+        .Q(diff_NE[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[15]),
+        .Q(diff_NE[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[16]),
+        .Q(diff_NE[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[17]),
+        .Q(diff_NE[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[18]),
+        .Q(diff_NE[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[1]),
+        .Q(diff_NE[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[2]),
+        .Q(diff_NE[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[3]),
+        .Q(diff_NE[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[4]),
+        .Q(diff_NE[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[5]),
+        .Q(diff_NE[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[6]),
+        .Q(diff_NE[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[7]),
+        .Q(diff_NE[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[8]),
+        .Q(diff_NE[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NE_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_0_in__0[9]),
+        .Q(diff_NE[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[0]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[0]),
+        .O(\phase_err.diff_NW[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[10]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[10]),
+        .O(\phase_err.diff_NW[10]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[11]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[11]),
+        .O(\phase_err.diff_NW[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[12]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[12]),
+        .O(\phase_err.diff_NW[12]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[13]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[13]),
+        .O(\phase_err.diff_NW[13]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[14]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[14]),
+        .O(\phase_err.diff_NW[14]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[15]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[15]),
+        .O(\phase_err.diff_NW[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[16]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[16]),
+        .O(\phase_err.diff_NW[16]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[17]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[17]),
+        .O(\phase_err.diff_NW[17]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[18]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[18]),
+        .O(\phase_err.diff_NW[18]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[1]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[1]),
+        .O(\phase_err.diff_NW[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[2]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[2]),
+        .O(\phase_err.diff_NW[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[3]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[3]),
+        .O(\phase_err.diff_NW[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[4]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[4]),
+        .O(\phase_err.diff_NW[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[5]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[5]),
+        .O(\phase_err.diff_NW[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[6]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[6]),
+        .O(\phase_err.diff_NW[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[7]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[7]),
+        .O(\phase_err.diff_NW[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[8]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[8]),
+        .O(\phase_err.diff_NW[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.diff_NW[9]_i_1 
+       (.I0(raw_diff_NW[19]),
+        .I1(raw_diff_NW[9]),
+        .O(\phase_err.diff_NW[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[0]_i_1_n_0 ),
+        .Q(diff_NW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[10]_i_1_n_0 ),
+        .Q(diff_NW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[11]_i_1_n_0 ),
+        .Q(diff_NW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[12]_i_1_n_0 ),
+        .Q(diff_NW[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[13]_i_1_n_0 ),
+        .Q(diff_NW[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[14]_i_1_n_0 ),
+        .Q(diff_NW[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[15]_i_1_n_0 ),
+        .Q(diff_NW[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[16]_i_1_n_0 ),
+        .Q(diff_NW[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[17]_i_1_n_0 ),
+        .Q(diff_NW[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[18]_i_1_n_0 ),
+        .Q(diff_NW[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[1]_i_1_n_0 ),
+        .Q(diff_NW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[2]_i_1_n_0 ),
+        .Q(diff_NW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[3]_i_1_n_0 ),
+        .Q(diff_NW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[4]_i_1_n_0 ),
+        .Q(diff_NW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[5]_i_1_n_0 ),
+        .Q(diff_NW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[6]_i_1_n_0 ),
+        .Q(diff_NW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[7]_i_1_n_0 ),
+        .Q(diff_NW[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[8]_i_1_n_0 ),
+        .Q(diff_NW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.diff_NW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.diff_NW[9]_i_1_n_0 ),
+        .Q(diff_NW[9]),
+        .R(1'b0));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[0]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[0]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[0]),
+        .Q(\phase_err.env_E_3_reg[0]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[10]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[10]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[10]),
+        .Q(\phase_err.env_E_3_reg[10]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[11]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[11]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[11]),
+        .Q(\phase_err.env_E_3_reg[11]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[12]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[12]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[12]),
+        .Q(\phase_err.env_E_3_reg[12]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[13]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[13]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[13]),
+        .Q(\phase_err.env_E_3_reg[13]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[14]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[14]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[14]),
+        .Q(\phase_err.env_E_3_reg[14]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[15]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[15]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[15]),
+        .Q(\phase_err.env_E_3_reg[15]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[1]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[1]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[1]),
+        .Q(\phase_err.env_E_3_reg[1]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[2]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[2]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[2]),
+        .Q(\phase_err.env_E_3_reg[2]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[3]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[3]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[3]),
+        .Q(\phase_err.env_E_3_reg[3]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[4]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[4]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[4]),
+        .Q(\phase_err.env_E_3_reg[4]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[5]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[5]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[5]),
+        .Q(\phase_err.env_E_3_reg[5]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[6]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[6]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[6]),
+        .Q(\phase_err.env_E_3_reg[6]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[7]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[7]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[7]),
+        .Q(\phase_err.env_E_3_reg[7]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[8]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[8]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[8]),
+        .Q(\phase_err.env_E_3_reg[8]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_E_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_E_3_reg[9]_srl3 " *) 
+  SRL16E \phase_err.env_E_3_reg[9]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_E[9]),
+        .Q(\phase_err.env_E_3_reg[9]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[0]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[0]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[0]),
+        .Q(\phase_err.env_N_3_reg[0]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[10]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[10]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[10]),
+        .Q(\phase_err.env_N_3_reg[10]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[11]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[11]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[11]),
+        .Q(\phase_err.env_N_3_reg[11]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[12]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[12]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[12]),
+        .Q(\phase_err.env_N_3_reg[12]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[13]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[13]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[13]),
+        .Q(\phase_err.env_N_3_reg[13]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[14]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[14]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[14]),
+        .Q(\phase_err.env_N_3_reg[14]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[15]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[15]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[15]),
+        .Q(\phase_err.env_N_3_reg[15]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[1]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[1]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[1]),
+        .Q(\phase_err.env_N_3_reg[1]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[2]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[2]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[2]),
+        .Q(\phase_err.env_N_3_reg[2]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[3]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[3]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[3]),
+        .Q(\phase_err.env_N_3_reg[3]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[4]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[4]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[4]),
+        .Q(\phase_err.env_N_3_reg[4]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[5]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[5]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[5]),
+        .Q(\phase_err.env_N_3_reg[5]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[6]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[6]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[6]),
+        .Q(\phase_err.env_N_3_reg[6]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[7]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[7]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[7]),
+        .Q(\phase_err.env_N_3_reg[7]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[8]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[8]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[8]),
+        .Q(\phase_err.env_N_3_reg[8]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_N_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_N_3_reg[9]_srl3 " *) 
+  SRL16E \phase_err.env_N_3_reg[9]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_N[9]),
+        .Q(\phase_err.env_N_3_reg[9]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[0]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[0]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[0]),
+        .Q(\phase_err.env_W_3_reg[0]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[10]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[10]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[10]),
+        .Q(\phase_err.env_W_3_reg[10]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[11]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[11]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[11]),
+        .Q(\phase_err.env_W_3_reg[11]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[12]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[12]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[12]),
+        .Q(\phase_err.env_W_3_reg[12]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[13]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[13]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[13]),
+        .Q(\phase_err.env_W_3_reg[13]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[14]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[14]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[14]),
+        .Q(\phase_err.env_W_3_reg[14]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[15]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[15]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[15]),
+        .Q(\phase_err.env_W_3_reg[15]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[1]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[1]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[1]),
+        .Q(\phase_err.env_W_3_reg[1]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[2]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[2]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[2]),
+        .Q(\phase_err.env_W_3_reg[2]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[3]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[3]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[3]),
+        .Q(\phase_err.env_W_3_reg[3]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[4]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[4]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[4]),
+        .Q(\phase_err.env_W_3_reg[4]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[5]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[5]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[5]),
+        .Q(\phase_err.env_W_3_reg[5]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[6]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[6]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[6]),
+        .Q(\phase_err.env_W_3_reg[6]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[7]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[7]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[7]),
+        .Q(\phase_err.env_W_3_reg[7]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[8]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[8]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[8]),
+        .Q(\phase_err.env_W_3_reg[8]_srl3_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.env_W_3_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.env_W_3_reg[9]_srl3 " *) 
+  SRL16E \phase_err.env_W_3_reg[9]_srl3 
+       (.A0(1'b0),
+        .A1(1'b1),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(env_in_W[9]),
+        .Q(\phase_err.env_W_3_reg[9]_srl3_n_0 ));
+  FDRE \phase_err.env_out_E_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[0]_srl3_n_0 ),
+        .Q(env_out_E[0]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[10]_srl3_n_0 ),
+        .Q(env_out_E[10]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[11]_srl3_n_0 ),
+        .Q(env_out_E[11]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[12]_srl3_n_0 ),
+        .Q(env_out_E[12]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[13]_srl3_n_0 ),
+        .Q(env_out_E[13]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[14]_srl3_n_0 ),
+        .Q(env_out_E[14]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[15]_srl3_n_0 ),
+        .Q(env_out_E[15]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[1]_srl3_n_0 ),
+        .Q(env_out_E[1]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[2]_srl3_n_0 ),
+        .Q(env_out_E[2]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[3]_srl3_n_0 ),
+        .Q(env_out_E[3]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[4]_srl3_n_0 ),
+        .Q(env_out_E[4]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[5]_srl3_n_0 ),
+        .Q(env_out_E[5]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[6]_srl3_n_0 ),
+        .Q(env_out_E[6]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[7]_srl3_n_0 ),
+        .Q(env_out_E[7]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[8]_srl3_n_0 ),
+        .Q(env_out_E[8]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_E_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_E_3_reg[9]_srl3_n_0 ),
+        .Q(env_out_E[9]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[0]_srl3_n_0 ),
+        .Q(env_out_N[0]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[10]_srl3_n_0 ),
+        .Q(env_out_N[10]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[11]_srl3_n_0 ),
+        .Q(env_out_N[11]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[12]_srl3_n_0 ),
+        .Q(env_out_N[12]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[13]_srl3_n_0 ),
+        .Q(env_out_N[13]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[14]_srl3_n_0 ),
+        .Q(env_out_N[14]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[15]_srl3_n_0 ),
+        .Q(env_out_N[15]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[1]_srl3_n_0 ),
+        .Q(env_out_N[1]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[2]_srl3_n_0 ),
+        .Q(env_out_N[2]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[3]_srl3_n_0 ),
+        .Q(env_out_N[3]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[4]_srl3_n_0 ),
+        .Q(env_out_N[4]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[5]_srl3_n_0 ),
+        .Q(env_out_N[5]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[6]_srl3_n_0 ),
+        .Q(env_out_N[6]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[7]_srl3_n_0 ),
+        .Q(env_out_N[7]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[8]_srl3_n_0 ),
+        .Q(env_out_N[8]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_N_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_N_3_reg[9]_srl3_n_0 ),
+        .Q(env_out_N[9]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[0]_srl3_n_0 ),
+        .Q(env_out_W[0]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[10]_srl3_n_0 ),
+        .Q(env_out_W[10]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[11]_srl3_n_0 ),
+        .Q(env_out_W[11]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[12]_srl3_n_0 ),
+        .Q(env_out_W[12]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[13]_srl3_n_0 ),
+        .Q(env_out_W[13]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[14]_srl3_n_0 ),
+        .Q(env_out_W[14]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[15]_srl3_n_0 ),
+        .Q(env_out_W[15]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[1]_srl3_n_0 ),
+        .Q(env_out_W[1]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[2]_srl3_n_0 ),
+        .Q(env_out_W[2]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[3]_srl3_n_0 ),
+        .Q(env_out_W[3]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[4]_srl3_n_0 ),
+        .Q(env_out_W[4]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[5]_srl3_n_0 ),
+        .Q(env_out_W[5]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[6]_srl3_n_0 ),
+        .Q(env_out_W[6]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[7]_srl3_n_0 ),
+        .Q(env_out_W[7]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[8]_srl3_n_0 ),
+        .Q(env_out_W[8]),
+        .R(1'b0));
+  FDRE \phase_err.env_out_W_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.env_W_3_reg[9]_srl3_n_0 ),
+        .Q(env_out_W[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[0]_i_1 
+       (.I0(raw_err_EW[0]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[10]_i_1 
+       (.I0(raw_err_EW[10]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hBFFE)) 
+    \phase_err.err_EW[11]_i_1 
+       (.I0(\phase_err.err_EW[11]_i_3_n_0 ),
+        .I1(raw_err_EW[12]),
+        .I2(raw_err_EW[14]),
+        .I3(raw_err_EW[13]),
+        .O(\phase_err.err_EW[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[11]_i_2 
+       (.I0(raw_err_EW[11]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[11]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFFFFFE)) 
+    \phase_err.err_EW[11]_i_3 
+       (.I0(raw_err_EW[16]),
+        .I1(raw_err_EW[15]),
+        .I2(raw_err_EW[12]),
+        .I3(raw_err_EW[18]),
+        .I4(raw_err_EW[17]),
+        .O(\phase_err.err_EW[11]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[1]_i_1 
+       (.I0(raw_err_EW[1]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[2]_i_1 
+       (.I0(raw_err_EW[2]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[3]_i_1 
+       (.I0(raw_err_EW[3]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[4]_i_1 
+       (.I0(raw_err_EW[4]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[5]_i_1 
+       (.I0(raw_err_EW[5]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[6]_i_1 
+       (.I0(raw_err_EW[6]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[7]_i_1 
+       (.I0(raw_err_EW[7]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[8]_i_1 
+       (.I0(raw_err_EW[8]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_EW[9]_i_1 
+       (.I0(raw_err_EW[9]),
+        .I1(raw_err_EW[12]),
+        .O(\phase_err.err_EW[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[0]_i_1_n_0 ),
+        .Q(err_EW[0]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[10]_i_1_n_0 ),
+        .Q(err_EW[10]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[11]_i_2_n_0 ),
+        .Q(err_EW[11]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[1]_i_1_n_0 ),
+        .Q(err_EW[1]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[2]_i_1_n_0 ),
+        .Q(err_EW[2]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[3]_i_1_n_0 ),
+        .Q(err_EW[3]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[4]_i_1_n_0 ),
+        .Q(err_EW[4]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[5]_i_1_n_0 ),
+        .Q(err_EW[5]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[6]_i_1_n_0 ),
+        .Q(err_EW[6]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[7]_i_1_n_0 ),
+        .Q(err_EW[7]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[8]_i_1_n_0 ),
+        .Q(err_EW[8]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_EW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_EW[9]_i_1_n_0 ),
+        .Q(err_EW[9]),
+        .S(\phase_err.err_EW[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[0]_i_1 
+       (.I0(raw_err_NE[0]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[10]_i_1 
+       (.I0(raw_err_NE[10]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hBFFE)) 
+    \phase_err.err_NE[11]_i_1 
+       (.I0(\phase_err.err_NE[11]_i_3_n_0 ),
+        .I1(raw_err_NE[12]),
+        .I2(raw_err_NE[14]),
+        .I3(raw_err_NE[13]),
+        .O(\phase_err.err_NE[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[11]_i_2 
+       (.I0(raw_err_NE[11]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[11]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFFFFFE)) 
+    \phase_err.err_NE[11]_i_3 
+       (.I0(raw_err_NE[16]),
+        .I1(raw_err_NE[15]),
+        .I2(raw_err_NE[12]),
+        .I3(raw_err_NE[18]),
+        .I4(raw_err_NE[17]),
+        .O(\phase_err.err_NE[11]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[1]_i_1 
+       (.I0(raw_err_NE[1]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[2]_i_1 
+       (.I0(raw_err_NE[2]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[3]_i_1 
+       (.I0(raw_err_NE[3]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[4]_i_1 
+       (.I0(raw_err_NE[4]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[5]_i_1 
+       (.I0(raw_err_NE[5]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[6]_i_1 
+       (.I0(raw_err_NE[6]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[7]_i_1 
+       (.I0(raw_err_NE[7]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[8]_i_1 
+       (.I0(raw_err_NE[8]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NE[9]_i_1 
+       (.I0(raw_err_NE[9]),
+        .I1(raw_err_NE[12]),
+        .O(\phase_err.err_NE[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[0]_i_1_n_0 ),
+        .Q(err_NE[0]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[10]_i_1_n_0 ),
+        .Q(err_NE[10]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[11]_i_2_n_0 ),
+        .Q(err_NE[11]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[1]_i_1_n_0 ),
+        .Q(err_NE[1]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[2]_i_1_n_0 ),
+        .Q(err_NE[2]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[3]_i_1_n_0 ),
+        .Q(err_NE[3]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[4]_i_1_n_0 ),
+        .Q(err_NE[4]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[5]_i_1_n_0 ),
+        .Q(err_NE[5]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[6]_i_1_n_0 ),
+        .Q(err_NE[6]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[7]_i_1_n_0 ),
+        .Q(err_NE[7]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[8]_i_1_n_0 ),
+        .Q(err_NE[8]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NE_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NE[9]_i_1_n_0 ),
+        .Q(err_NE[9]),
+        .S(\phase_err.err_NE[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[0]_i_1 
+       (.I0(raw_err_NW[0]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[10]_i_1 
+       (.I0(raw_err_NW[10]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hBFFE)) 
+    \phase_err.err_NW[11]_i_1 
+       (.I0(\phase_err.err_NW[11]_i_3_n_0 ),
+        .I1(raw_err_NW[12]),
+        .I2(raw_err_NW[14]),
+        .I3(raw_err_NW[13]),
+        .O(\phase_err.err_NW[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[11]_i_2 
+       (.I0(raw_err_NW[11]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[11]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFFFFFE)) 
+    \phase_err.err_NW[11]_i_3 
+       (.I0(raw_err_NW[16]),
+        .I1(raw_err_NW[15]),
+        .I2(raw_err_NW[12]),
+        .I3(raw_err_NW[18]),
+        .I4(raw_err_NW[17]),
+        .O(\phase_err.err_NW[11]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[1]_i_1 
+       (.I0(raw_err_NW[1]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[2]_i_1 
+       (.I0(raw_err_NW[2]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[3]_i_1 
+       (.I0(raw_err_NW[3]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[4]_i_1 
+       (.I0(raw_err_NW[4]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[5]_i_1 
+       (.I0(raw_err_NW[5]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[6]_i_1 
+       (.I0(raw_err_NW[6]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[7]_i_1 
+       (.I0(raw_err_NW[7]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[8]_i_1 
+       (.I0(raw_err_NW[8]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \phase_err.err_NW[9]_i_1 
+       (.I0(raw_err_NW[9]),
+        .I1(raw_err_NW[12]),
+        .O(\phase_err.err_NW[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[0]_i_1_n_0 ),
+        .Q(err_NW[0]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[10]_i_1_n_0 ),
+        .Q(err_NW[10]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[11]_i_2_n_0 ),
+        .Q(err_NW[11]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[1]_i_1_n_0 ),
+        .Q(err_NW[1]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[2]_i_1_n_0 ),
+        .Q(err_NW[2]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[3]_i_1_n_0 ),
+        .Q(err_NW[3]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[4]_i_1_n_0 ),
+        .Q(err_NW[4]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[5]_i_1_n_0 ),
+        .Q(err_NW[5]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[6]_i_1_n_0 ),
+        .Q(err_NW[6]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[7]_i_1_n_0 ),
+        .Q(err_NW[7]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[8]_i_1_n_0 ),
+        .Q(err_NW[8]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \phase_err.err_NW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.err_NW[9]_i_1_n_0 ),
+        .Q(err_NW[9]),
+        .S(\phase_err.err_NW[11]_i_1_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[0]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[0]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[0]),
+        .Q(\phase_err.phase_E_2_reg[0]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[10]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[10]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[10]),
+        .Q(\phase_err.phase_E_2_reg[10]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[11]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[11]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[11]),
+        .Q(\phase_err.phase_E_2_reg[11]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[12]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[12]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[12]),
+        .Q(\phase_err.phase_E_2_reg[12]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[13]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[13]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[13]),
+        .Q(\phase_err.phase_E_2_reg[13]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[14]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[14]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[14]),
+        .Q(\phase_err.phase_E_2_reg[14]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[15]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[15]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[15]),
+        .Q(\phase_err.phase_E_2_reg[15]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[16]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[16]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[16]),
+        .Q(\phase_err.phase_E_2_reg[16]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[17]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[17]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[17]),
+        .Q(\phase_err.phase_E_2_reg[17]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[18]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[18]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[18]),
+        .Q(\phase_err.phase_E_2_reg[18]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[19]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[19]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[19]),
+        .Q(\phase_err.phase_E_2_reg[19]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[1]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[1]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[1]),
+        .Q(\phase_err.phase_E_2_reg[1]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[2]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[2]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[2]),
+        .Q(\phase_err.phase_E_2_reg[2]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[3]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[3]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[3]),
+        .Q(\phase_err.phase_E_2_reg[3]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[4]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[4]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[4]),
+        .Q(\phase_err.phase_E_2_reg[4]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[5]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[5]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[5]),
+        .Q(\phase_err.phase_E_2_reg[5]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[6]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[6]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[6]),
+        .Q(\phase_err.phase_E_2_reg[6]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[7]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[7]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[7]),
+        .Q(\phase_err.phase_E_2_reg[7]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[8]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[8]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[8]),
+        .Q(\phase_err.phase_E_2_reg[8]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_E_2_reg[9]_srl2 " *) 
+  SRL16E \phase_err.phase_E_2_reg[9]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_E[9]),
+        .Q(\phase_err.phase_E_2_reg[9]_srl2_n_0 ));
+  FDRE \phase_err.phase_E_3_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[0]_srl2_n_0 ),
+        .Q(phase_E_3[0]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[10]_srl2_n_0 ),
+        .Q(phase_E_3[10]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[11]_srl2_n_0 ),
+        .Q(phase_E_3[11]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[12]_srl2_n_0 ),
+        .Q(phase_E_3[12]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[13]_srl2_n_0 ),
+        .Q(phase_E_3[13]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[14]_srl2_n_0 ),
+        .Q(phase_E_3[14]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[15]_srl2_n_0 ),
+        .Q(phase_E_3[15]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[16]_srl2_n_0 ),
+        .Q(phase_E_3[16]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[17]_srl2_n_0 ),
+        .Q(phase_E_3[17]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[18]_srl2_n_0 ),
+        .Q(phase_E_3[18]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[19]_srl2_n_0 ),
+        .Q(phase_E_3[19]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[1]_srl2_n_0 ),
+        .Q(phase_E_3[1]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[2]_srl2_n_0 ),
+        .Q(phase_E_3[2]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[3]_srl2_n_0 ),
+        .Q(phase_E_3[3]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[4]_srl2_n_0 ),
+        .Q(phase_E_3[4]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[5]_srl2_n_0 ),
+        .Q(phase_E_3[5]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[6]_srl2_n_0 ),
+        .Q(phase_E_3[6]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[7]_srl2_n_0 ),
+        .Q(phase_E_3[7]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[8]_srl2_n_0 ),
+        .Q(phase_E_3[8]),
+        .R(1'b0));
+  FDRE \phase_err.phase_E_3_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_E_2_reg[9]_srl2_n_0 ),
+        .Q(phase_E_3[9]),
+        .R(1'b0));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[0]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[0]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[0]),
+        .Q(\phase_err.phase_N_2_reg[0]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[10]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[10]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[10]),
+        .Q(\phase_err.phase_N_2_reg[10]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[11]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[11]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[11]),
+        .Q(\phase_err.phase_N_2_reg[11]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[12]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[12]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[12]),
+        .Q(\phase_err.phase_N_2_reg[12]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[13]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[13]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[13]),
+        .Q(\phase_err.phase_N_2_reg[13]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[14]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[14]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[14]),
+        .Q(\phase_err.phase_N_2_reg[14]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[15]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[15]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[15]),
+        .Q(\phase_err.phase_N_2_reg[15]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[16]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[16]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[16]),
+        .Q(\phase_err.phase_N_2_reg[16]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[17]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[17]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[17]),
+        .Q(\phase_err.phase_N_2_reg[17]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[18]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[18]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[18]),
+        .Q(\phase_err.phase_N_2_reg[18]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[19]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[19]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[19]),
+        .Q(\phase_err.phase_N_2_reg[19]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[1]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[1]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[1]),
+        .Q(\phase_err.phase_N_2_reg[1]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[2]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[2]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[2]),
+        .Q(\phase_err.phase_N_2_reg[2]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[3]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[3]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[3]),
+        .Q(\phase_err.phase_N_2_reg[3]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[4]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[4]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[4]),
+        .Q(\phase_err.phase_N_2_reg[4]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[5]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[5]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[5]),
+        .Q(\phase_err.phase_N_2_reg[5]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[6]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[6]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[6]),
+        .Q(\phase_err.phase_N_2_reg[6]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[7]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[7]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[7]),
+        .Q(\phase_err.phase_N_2_reg[7]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[8]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[8]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[8]),
+        .Q(\phase_err.phase_N_2_reg[8]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_N_2_reg[9]_srl2 " *) 
+  SRL16E \phase_err.phase_N_2_reg[9]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_N[9]),
+        .Q(\phase_err.phase_N_2_reg[9]_srl2_n_0 ));
+  FDRE \phase_err.phase_N_3_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[0]_srl2_n_0 ),
+        .Q(phase_N_3[0]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[10]_srl2_n_0 ),
+        .Q(phase_N_3[10]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[11]_srl2_n_0 ),
+        .Q(phase_N_3[11]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[12]_srl2_n_0 ),
+        .Q(phase_N_3[12]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[13]_srl2_n_0 ),
+        .Q(phase_N_3[13]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[14]_srl2_n_0 ),
+        .Q(phase_N_3[14]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[15]_srl2_n_0 ),
+        .Q(phase_N_3[15]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[16]_srl2_n_0 ),
+        .Q(phase_N_3[16]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[17]_srl2_n_0 ),
+        .Q(phase_N_3[17]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[18]_srl2_n_0 ),
+        .Q(phase_N_3[18]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[19]_srl2_n_0 ),
+        .Q(phase_N_3[19]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[1]_srl2_n_0 ),
+        .Q(phase_N_3[1]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[2]_srl2_n_0 ),
+        .Q(phase_N_3[2]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[3]_srl2_n_0 ),
+        .Q(phase_N_3[3]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[4]_srl2_n_0 ),
+        .Q(phase_N_3[4]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[5]_srl2_n_0 ),
+        .Q(phase_N_3[5]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[6]_srl2_n_0 ),
+        .Q(phase_N_3[6]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[7]_srl2_n_0 ),
+        .Q(phase_N_3[7]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[8]_srl2_n_0 ),
+        .Q(phase_N_3[8]),
+        .R(1'b0));
+  FDRE \phase_err.phase_N_3_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_N_2_reg[9]_srl2_n_0 ),
+        .Q(phase_N_3[9]),
+        .R(1'b0));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[0]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[0]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[0]),
+        .Q(\phase_err.phase_W_2_reg[0]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[10]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[10]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[10]),
+        .Q(\phase_err.phase_W_2_reg[10]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[11]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[11]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[11]),
+        .Q(\phase_err.phase_W_2_reg[11]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[12]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[12]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[12]),
+        .Q(\phase_err.phase_W_2_reg[12]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[13]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[13]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[13]),
+        .Q(\phase_err.phase_W_2_reg[13]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[14]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[14]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[14]),
+        .Q(\phase_err.phase_W_2_reg[14]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[15]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[15]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[15]),
+        .Q(\phase_err.phase_W_2_reg[15]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[16]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[16]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[16]),
+        .Q(\phase_err.phase_W_2_reg[16]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[17]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[17]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[17]),
+        .Q(\phase_err.phase_W_2_reg[17]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[18]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[18]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[18]),
+        .Q(\phase_err.phase_W_2_reg[18]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[19]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[19]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[19]),
+        .Q(\phase_err.phase_W_2_reg[19]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[1]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[1]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[1]),
+        .Q(\phase_err.phase_W_2_reg[1]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[2]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[2]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[2]),
+        .Q(\phase_err.phase_W_2_reg[2]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[3]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[3]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[3]),
+        .Q(\phase_err.phase_W_2_reg[3]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[4]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[4]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[4]),
+        .Q(\phase_err.phase_W_2_reg[4]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[5]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[5]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[5]),
+        .Q(\phase_err.phase_W_2_reg[5]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[6]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[6]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[6]),
+        .Q(\phase_err.phase_W_2_reg[6]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[7]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[7]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[7]),
+        .Q(\phase_err.phase_W_2_reg[7]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[8]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[8]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[8]),
+        .Q(\phase_err.phase_W_2_reg[8]_srl2_n_0 ));
+  (* srl_bus_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg " *) 
+  (* srl_name = "inst/phase_err_i/\\phase_err.phase_W_2_reg[9]_srl2 " *) 
+  SRL16E \phase_err.phase_W_2_reg[9]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(phase_in_W[9]),
+        .Q(\phase_err.phase_W_2_reg[9]_srl2_n_0 ));
+  FDRE \phase_err.phase_W_3_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[0]_srl2_n_0 ),
+        .Q(phase_W_3[0]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[10]_srl2_n_0 ),
+        .Q(phase_W_3[10]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[11]_srl2_n_0 ),
+        .Q(phase_W_3[11]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[12]_srl2_n_0 ),
+        .Q(phase_W_3[12]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[13]_srl2_n_0 ),
+        .Q(phase_W_3[13]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[14]_srl2_n_0 ),
+        .Q(phase_W_3[14]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[15]_srl2_n_0 ),
+        .Q(phase_W_3[15]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[16]_srl2_n_0 ),
+        .Q(phase_W_3[16]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[17]_srl2_n_0 ),
+        .Q(phase_W_3[17]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[18]_srl2_n_0 ),
+        .Q(phase_W_3[18]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[19]_srl2_n_0 ),
+        .Q(phase_W_3[19]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[1]_srl2_n_0 ),
+        .Q(phase_W_3[1]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[2]_srl2_n_0 ),
+        .Q(phase_W_3[2]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[3]_srl2_n_0 ),
+        .Q(phase_W_3[3]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[4]_srl2_n_0 ),
+        .Q(phase_W_3[4]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[5]_srl2_n_0 ),
+        .Q(phase_W_3[5]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[6]_srl2_n_0 ),
+        .Q(phase_W_3[6]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[7]_srl2_n_0 ),
+        .Q(phase_W_3[7]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[8]_srl2_n_0 ),
+        .Q(phase_W_3[8]),
+        .R(1'b0));
+  FDRE \phase_err.phase_W_3_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.phase_W_2_reg[9]_srl2_n_0 ),
+        .Q(phase_W_3[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[0]),
+        .Q(phase_out_E[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[10]),
+        .Q(phase_out_E[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[11]),
+        .Q(phase_out_E[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[12]),
+        .Q(phase_out_E[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[13]),
+        .Q(phase_out_E[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[14]),
+        .Q(phase_out_E[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[15]),
+        .Q(phase_out_E[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[16]),
+        .Q(phase_out_E[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[17]),
+        .Q(phase_out_E[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[18]),
+        .Q(phase_out_E[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[19]),
+        .Q(phase_out_E[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[1]),
+        .Q(phase_out_E[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[2]),
+        .Q(phase_out_E[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[3]),
+        .Q(phase_out_E[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[4]),
+        .Q(phase_out_E[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[5]),
+        .Q(phase_out_E[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[6]),
+        .Q(phase_out_E[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[7]),
+        .Q(phase_out_E[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[8]),
+        .Q(phase_out_E[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_E_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_E_3[9]),
+        .Q(phase_out_E[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[0]),
+        .Q(phase_out_N[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[10]),
+        .Q(phase_out_N[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[11]),
+        .Q(phase_out_N[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[12]),
+        .Q(phase_out_N[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[13]),
+        .Q(phase_out_N[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[14]),
+        .Q(phase_out_N[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[15]),
+        .Q(phase_out_N[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[16]),
+        .Q(phase_out_N[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[17]),
+        .Q(phase_out_N[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[18]),
+        .Q(phase_out_N[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[19]),
+        .Q(phase_out_N[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[1]),
+        .Q(phase_out_N[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[2]),
+        .Q(phase_out_N[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[3]),
+        .Q(phase_out_N[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[4]),
+        .Q(phase_out_N[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[5]),
+        .Q(phase_out_N[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[6]),
+        .Q(phase_out_N[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[7]),
+        .Q(phase_out_N[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[8]),
+        .Q(phase_out_N[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_N_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_N_3[9]),
+        .Q(phase_out_N[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[0]),
+        .Q(phase_out_W[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[10]),
+        .Q(phase_out_W[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[11]),
+        .Q(phase_out_W[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[12]),
+        .Q(phase_out_W[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[13]),
+        .Q(phase_out_W[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[14]),
+        .Q(phase_out_W[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[15]),
+        .Q(phase_out_W[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[16]),
+        .Q(phase_out_W[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[17]),
+        .Q(phase_out_W[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[18]),
+        .Q(phase_out_W[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[19]),
+        .Q(phase_out_W[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[1]),
+        .Q(phase_out_W[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[2]),
+        .Q(phase_out_W[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[3]),
+        .Q(phase_out_W[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[4]),
+        .Q(phase_out_W[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[5]),
+        .Q(phase_out_W[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[6]),
+        .Q(phase_out_W[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[7]),
+        .Q(phase_out_W[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[8]),
+        .Q(phase_out_W[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.phase_out_W_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(phase_W_3[9]),
+        .Q(phase_out_W[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[0]),
+        .Q(prev_EW[0]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[10]),
+        .Q(prev_EW[10]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[11]),
+        .Q(prev_EW[11]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[12]),
+        .Q(prev_EW[12]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[13]),
+        .Q(prev_EW[13]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[14]),
+        .Q(prev_EW[14]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[15]),
+        .Q(prev_EW[15]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[16]),
+        .Q(prev_EW[16]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[17]),
+        .Q(prev_EW[17]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[18]),
+        .Q(prev_EW[18]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[1]),
+        .Q(prev_EW[1]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[2]),
+        .Q(prev_EW[2]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[3]),
+        .Q(prev_EW[3]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[4]),
+        .Q(prev_EW[4]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[5]),
+        .Q(prev_EW[5]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[6]),
+        .Q(prev_EW[6]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[7]),
+        .Q(prev_EW[7]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[8]),
+        .Q(prev_EW[8]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_EW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_EW[9]),
+        .Q(prev_EW[9]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \phase_err.prev_NE[18]_i_1 
+       (.I0(valid),
+        .O(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[0]),
+        .Q(prev_NE[0]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[10]),
+        .Q(prev_NE[10]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[11]),
+        .Q(prev_NE[11]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[12]),
+        .Q(prev_NE[12]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[13]),
+        .Q(prev_NE[13]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[14]),
+        .Q(prev_NE[14]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[15]),
+        .Q(prev_NE[15]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[16]),
+        .Q(prev_NE[16]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[17]),
+        .Q(prev_NE[17]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[18]),
+        .Q(prev_NE[18]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[1]),
+        .Q(prev_NE[1]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[2]),
+        .Q(prev_NE[2]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[3]),
+        .Q(prev_NE[3]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[4]),
+        .Q(prev_NE[4]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[5]),
+        .Q(prev_NE[5]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[6]),
+        .Q(prev_NE[6]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[7]),
+        .Q(prev_NE[7]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[8]),
+        .Q(prev_NE[8]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NE_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NE[9]),
+        .Q(prev_NE[9]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[0]),
+        .Q(prev_NW[0]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[10]),
+        .Q(prev_NW[10]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[11]),
+        .Q(prev_NW[11]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[12]),
+        .Q(prev_NW[12]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[13]),
+        .Q(prev_NW[13]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[14]),
+        .Q(prev_NW[14]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[15]),
+        .Q(prev_NW[15]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[16]),
+        .Q(prev_NW[16]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[17]),
+        .Q(prev_NW[17]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[18]),
+        .Q(prev_NW[18]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[1]),
+        .Q(prev_NW[1]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[2]),
+        .Q(prev_NW[2]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[3]),
+        .Q(prev_NW[3]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[4]),
+        .Q(prev_NW[4]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[5]),
+        .Q(prev_NW[5]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[6]),
+        .Q(prev_NW[6]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[7]),
+        .Q(prev_NW[7]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[8]),
+        .Q(prev_NW[8]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.prev_NW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_NW[9]),
+        .Q(prev_NW[9]),
+        .R(\phase_err.prev_NE[18]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_2 
+       (.I0(phase_in_E[15]),
+        .I1(phase_in_W[15]),
+        .O(\phase_err.raw_diff_EW[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_3 
+       (.I0(phase_in_E[14]),
+        .I1(phase_in_W[14]),
+        .O(\phase_err.raw_diff_EW[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_4 
+       (.I0(phase_in_E[13]),
+        .I1(phase_in_W[13]),
+        .O(\phase_err.raw_diff_EW[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_5 
+       (.I0(phase_in_E[12]),
+        .I1(phase_in_W[12]),
+        .O(\phase_err.raw_diff_EW[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_6 
+       (.I0(phase_in_E[11]),
+        .I1(phase_in_W[11]),
+        .O(\phase_err.raw_diff_EW[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_7 
+       (.I0(phase_in_E[10]),
+        .I1(phase_in_W[10]),
+        .O(\phase_err.raw_diff_EW[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_8 
+       (.I0(phase_in_E[9]),
+        .I1(phase_in_W[9]),
+        .O(\phase_err.raw_diff_EW[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[15]_i_9 
+       (.I0(phase_in_E[8]),
+        .I1(phase_in_W[8]),
+        .O(\phase_err.raw_diff_EW[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[19]_i_2 
+       (.I0(phase_in_E[19]),
+        .I1(phase_in_W[19]),
+        .O(\phase_err.raw_diff_EW[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[19]_i_3 
+       (.I0(phase_in_E[18]),
+        .I1(phase_in_W[18]),
+        .O(\phase_err.raw_diff_EW[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[19]_i_4 
+       (.I0(phase_in_E[17]),
+        .I1(phase_in_W[17]),
+        .O(\phase_err.raw_diff_EW[19]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[19]_i_5 
+       (.I0(phase_in_E[16]),
+        .I1(phase_in_W[16]),
+        .O(\phase_err.raw_diff_EW[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_2 
+       (.I0(phase_in_E[7]),
+        .I1(phase_in_W[7]),
+        .O(\phase_err.raw_diff_EW[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_3 
+       (.I0(phase_in_E[6]),
+        .I1(phase_in_W[6]),
+        .O(\phase_err.raw_diff_EW[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_4 
+       (.I0(phase_in_E[5]),
+        .I1(phase_in_W[5]),
+        .O(\phase_err.raw_diff_EW[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_5 
+       (.I0(phase_in_E[4]),
+        .I1(phase_in_W[4]),
+        .O(\phase_err.raw_diff_EW[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_6 
+       (.I0(phase_in_E[3]),
+        .I1(phase_in_W[3]),
+        .O(\phase_err.raw_diff_EW[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_7 
+       (.I0(phase_in_E[2]),
+        .I1(phase_in_W[2]),
+        .O(\phase_err.raw_diff_EW[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_8 
+       (.I0(phase_in_E[1]),
+        .I1(phase_in_W[1]),
+        .O(\phase_err.raw_diff_EW[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_EW[7]_i_9 
+       (.I0(phase_in_E[0]),
+        .I1(phase_in_W[0]),
+        .O(\phase_err.raw_diff_EW[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [0]),
+        .Q(raw_diff_EW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [10]),
+        .Q(raw_diff_EW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [11]),
+        .Q(raw_diff_EW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [12]),
+        .Q(raw_diff_EW[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [13]),
+        .Q(raw_diff_EW[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [14]),
+        .Q(raw_diff_EW[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [15]),
+        .Q(raw_diff_EW[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_EW_reg[15]_i_1 
+       (.CI(\phase_err.raw_diff_EW_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_diff_EW_reg[15]_i_1_n_0 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_1 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_2 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_3 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_4 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_5 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_6 ,\phase_err.raw_diff_EW_reg[15]_i_1_n_7 }),
+        .DI(phase_in_E[15:8]),
+        .O(\phase_err.raw_diff_EW_reg00_out [15:8]),
+        .S({\phase_err.raw_diff_EW[15]_i_2_n_0 ,\phase_err.raw_diff_EW[15]_i_3_n_0 ,\phase_err.raw_diff_EW[15]_i_4_n_0 ,\phase_err.raw_diff_EW[15]_i_5_n_0 ,\phase_err.raw_diff_EW[15]_i_6_n_0 ,\phase_err.raw_diff_EW[15]_i_7_n_0 ,\phase_err.raw_diff_EW[15]_i_8_n_0 ,\phase_err.raw_diff_EW[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [16]),
+        .Q(raw_diff_EW[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [17]),
+        .Q(raw_diff_EW[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [18]),
+        .Q(raw_diff_EW[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [19]),
+        .Q(raw_diff_EW[19]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_EW_reg[19]_i_1 
+       (.CI(\phase_err.raw_diff_EW_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_phase_err.raw_diff_EW_reg[19]_i_1_CO_UNCONNECTED [7:3],\phase_err.raw_diff_EW_reg[19]_i_1_n_5 ,\phase_err.raw_diff_EW_reg[19]_i_1_n_6 ,\phase_err.raw_diff_EW_reg[19]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_in_E[18:16]}),
+        .O({\NLW_phase_err.raw_diff_EW_reg[19]_i_1_O_UNCONNECTED [7:4],\phase_err.raw_diff_EW_reg00_out [19:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,\phase_err.raw_diff_EW[19]_i_2_n_0 ,\phase_err.raw_diff_EW[19]_i_3_n_0 ,\phase_err.raw_diff_EW[19]_i_4_n_0 ,\phase_err.raw_diff_EW[19]_i_5_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [1]),
+        .Q(raw_diff_EW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [2]),
+        .Q(raw_diff_EW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [3]),
+        .Q(raw_diff_EW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [4]),
+        .Q(raw_diff_EW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [5]),
+        .Q(raw_diff_EW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [6]),
+        .Q(raw_diff_EW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [7]),
+        .Q(raw_diff_EW[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_EW_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_diff_EW_reg[7]_i_1_n_0 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_1 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_2 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_3 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_4 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_5 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_6 ,\phase_err.raw_diff_EW_reg[7]_i_1_n_7 }),
+        .DI(phase_in_E[7:0]),
+        .O(\phase_err.raw_diff_EW_reg00_out [7:0]),
+        .S({\phase_err.raw_diff_EW[7]_i_2_n_0 ,\phase_err.raw_diff_EW[7]_i_3_n_0 ,\phase_err.raw_diff_EW[7]_i_4_n_0 ,\phase_err.raw_diff_EW[7]_i_5_n_0 ,\phase_err.raw_diff_EW[7]_i_6_n_0 ,\phase_err.raw_diff_EW[7]_i_7_n_0 ,\phase_err.raw_diff_EW[7]_i_8_n_0 ,\phase_err.raw_diff_EW[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [8]),
+        .Q(raw_diff_EW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_EW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_EW_reg00_out [9]),
+        .Q(raw_diff_EW[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_2 
+       (.I0(phase_in_N[15]),
+        .I1(phase_in_E[15]),
+        .O(\phase_err.raw_diff_NE[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_3 
+       (.I0(phase_in_N[14]),
+        .I1(phase_in_E[14]),
+        .O(\phase_err.raw_diff_NE[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_4 
+       (.I0(phase_in_N[13]),
+        .I1(phase_in_E[13]),
+        .O(\phase_err.raw_diff_NE[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_5 
+       (.I0(phase_in_N[12]),
+        .I1(phase_in_E[12]),
+        .O(\phase_err.raw_diff_NE[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_6 
+       (.I0(phase_in_N[11]),
+        .I1(phase_in_E[11]),
+        .O(\phase_err.raw_diff_NE[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_7 
+       (.I0(phase_in_N[10]),
+        .I1(phase_in_E[10]),
+        .O(\phase_err.raw_diff_NE[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_8 
+       (.I0(phase_in_N[9]),
+        .I1(phase_in_E[9]),
+        .O(\phase_err.raw_diff_NE[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[15]_i_9 
+       (.I0(phase_in_N[8]),
+        .I1(phase_in_E[8]),
+        .O(\phase_err.raw_diff_NE[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[19]_i_2 
+       (.I0(phase_in_N[19]),
+        .I1(phase_in_E[19]),
+        .O(\phase_err.raw_diff_NE[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[19]_i_3 
+       (.I0(phase_in_N[18]),
+        .I1(phase_in_E[18]),
+        .O(\phase_err.raw_diff_NE[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[19]_i_4 
+       (.I0(phase_in_N[17]),
+        .I1(phase_in_E[17]),
+        .O(\phase_err.raw_diff_NE[19]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[19]_i_5 
+       (.I0(phase_in_N[16]),
+        .I1(phase_in_E[16]),
+        .O(\phase_err.raw_diff_NE[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_2 
+       (.I0(phase_in_N[7]),
+        .I1(phase_in_E[7]),
+        .O(\phase_err.raw_diff_NE[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_3 
+       (.I0(phase_in_N[6]),
+        .I1(phase_in_E[6]),
+        .O(\phase_err.raw_diff_NE[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_4 
+       (.I0(phase_in_N[5]),
+        .I1(phase_in_E[5]),
+        .O(\phase_err.raw_diff_NE[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_5 
+       (.I0(phase_in_N[4]),
+        .I1(phase_in_E[4]),
+        .O(\phase_err.raw_diff_NE[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_6 
+       (.I0(phase_in_N[3]),
+        .I1(phase_in_E[3]),
+        .O(\phase_err.raw_diff_NE[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_7 
+       (.I0(phase_in_N[2]),
+        .I1(phase_in_E[2]),
+        .O(\phase_err.raw_diff_NE[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_8 
+       (.I0(phase_in_N[1]),
+        .I1(phase_in_E[1]),
+        .O(\phase_err.raw_diff_NE[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NE[7]_i_9 
+       (.I0(phase_in_N[0]),
+        .I1(phase_in_E[0]),
+        .O(\phase_err.raw_diff_NE[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [0]),
+        .Q(raw_diff_NE[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [10]),
+        .Q(raw_diff_NE[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [11]),
+        .Q(raw_diff_NE[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [12]),
+        .Q(raw_diff_NE[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [13]),
+        .Q(raw_diff_NE[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [14]),
+        .Q(raw_diff_NE[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [15]),
+        .Q(raw_diff_NE[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_NE_reg[15]_i_1 
+       (.CI(\phase_err.raw_diff_NE_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_diff_NE_reg[15]_i_1_n_0 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_1 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_2 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_3 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_4 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_5 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_6 ,\phase_err.raw_diff_NE_reg[15]_i_1_n_7 }),
+        .DI(phase_in_N[15:8]),
+        .O(\phase_err.raw_diff_NE_reg02_out [15:8]),
+        .S({\phase_err.raw_diff_NE[15]_i_2_n_0 ,\phase_err.raw_diff_NE[15]_i_3_n_0 ,\phase_err.raw_diff_NE[15]_i_4_n_0 ,\phase_err.raw_diff_NE[15]_i_5_n_0 ,\phase_err.raw_diff_NE[15]_i_6_n_0 ,\phase_err.raw_diff_NE[15]_i_7_n_0 ,\phase_err.raw_diff_NE[15]_i_8_n_0 ,\phase_err.raw_diff_NE[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [16]),
+        .Q(raw_diff_NE[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [17]),
+        .Q(raw_diff_NE[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [18]),
+        .Q(raw_diff_NE[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [19]),
+        .Q(raw_diff_NE[19]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_NE_reg[19]_i_1 
+       (.CI(\phase_err.raw_diff_NE_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_phase_err.raw_diff_NE_reg[19]_i_1_CO_UNCONNECTED [7:3],\phase_err.raw_diff_NE_reg[19]_i_1_n_5 ,\phase_err.raw_diff_NE_reg[19]_i_1_n_6 ,\phase_err.raw_diff_NE_reg[19]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_in_N[18:16]}),
+        .O({\NLW_phase_err.raw_diff_NE_reg[19]_i_1_O_UNCONNECTED [7:4],\phase_err.raw_diff_NE_reg02_out [19:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,\phase_err.raw_diff_NE[19]_i_2_n_0 ,\phase_err.raw_diff_NE[19]_i_3_n_0 ,\phase_err.raw_diff_NE[19]_i_4_n_0 ,\phase_err.raw_diff_NE[19]_i_5_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [1]),
+        .Q(raw_diff_NE[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [2]),
+        .Q(raw_diff_NE[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [3]),
+        .Q(raw_diff_NE[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [4]),
+        .Q(raw_diff_NE[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [5]),
+        .Q(raw_diff_NE[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [6]),
+        .Q(raw_diff_NE[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [7]),
+        .Q(raw_diff_NE[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_NE_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_diff_NE_reg[7]_i_1_n_0 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_1 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_2 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_3 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_4 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_5 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_6 ,\phase_err.raw_diff_NE_reg[7]_i_1_n_7 }),
+        .DI(phase_in_N[7:0]),
+        .O(\phase_err.raw_diff_NE_reg02_out [7:0]),
+        .S({\phase_err.raw_diff_NE[7]_i_2_n_0 ,\phase_err.raw_diff_NE[7]_i_3_n_0 ,\phase_err.raw_diff_NE[7]_i_4_n_0 ,\phase_err.raw_diff_NE[7]_i_5_n_0 ,\phase_err.raw_diff_NE[7]_i_6_n_0 ,\phase_err.raw_diff_NE[7]_i_7_n_0 ,\phase_err.raw_diff_NE[7]_i_8_n_0 ,\phase_err.raw_diff_NE[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [8]),
+        .Q(raw_diff_NE[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NE_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NE_reg02_out [9]),
+        .Q(raw_diff_NE[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_2 
+       (.I0(phase_in_N[15]),
+        .I1(phase_in_W[15]),
+        .O(\phase_err.raw_diff_NW[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_3 
+       (.I0(phase_in_N[14]),
+        .I1(phase_in_W[14]),
+        .O(\phase_err.raw_diff_NW[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_4 
+       (.I0(phase_in_N[13]),
+        .I1(phase_in_W[13]),
+        .O(\phase_err.raw_diff_NW[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_5 
+       (.I0(phase_in_N[12]),
+        .I1(phase_in_W[12]),
+        .O(\phase_err.raw_diff_NW[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_6 
+       (.I0(phase_in_N[11]),
+        .I1(phase_in_W[11]),
+        .O(\phase_err.raw_diff_NW[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_7 
+       (.I0(phase_in_N[10]),
+        .I1(phase_in_W[10]),
+        .O(\phase_err.raw_diff_NW[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_8 
+       (.I0(phase_in_N[9]),
+        .I1(phase_in_W[9]),
+        .O(\phase_err.raw_diff_NW[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[15]_i_9 
+       (.I0(phase_in_N[8]),
+        .I1(phase_in_W[8]),
+        .O(\phase_err.raw_diff_NW[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[19]_i_2 
+       (.I0(phase_in_N[19]),
+        .I1(phase_in_W[19]),
+        .O(\phase_err.raw_diff_NW[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[19]_i_3 
+       (.I0(phase_in_N[18]),
+        .I1(phase_in_W[18]),
+        .O(\phase_err.raw_diff_NW[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[19]_i_4 
+       (.I0(phase_in_N[17]),
+        .I1(phase_in_W[17]),
+        .O(\phase_err.raw_diff_NW[19]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[19]_i_5 
+       (.I0(phase_in_N[16]),
+        .I1(phase_in_W[16]),
+        .O(\phase_err.raw_diff_NW[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_2 
+       (.I0(phase_in_N[7]),
+        .I1(phase_in_W[7]),
+        .O(\phase_err.raw_diff_NW[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_3 
+       (.I0(phase_in_N[6]),
+        .I1(phase_in_W[6]),
+        .O(\phase_err.raw_diff_NW[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_4 
+       (.I0(phase_in_N[5]),
+        .I1(phase_in_W[5]),
+        .O(\phase_err.raw_diff_NW[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_5 
+       (.I0(phase_in_N[4]),
+        .I1(phase_in_W[4]),
+        .O(\phase_err.raw_diff_NW[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_6 
+       (.I0(phase_in_N[3]),
+        .I1(phase_in_W[3]),
+        .O(\phase_err.raw_diff_NW[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_7 
+       (.I0(phase_in_N[2]),
+        .I1(phase_in_W[2]),
+        .O(\phase_err.raw_diff_NW[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_8 
+       (.I0(phase_in_N[1]),
+        .I1(phase_in_W[1]),
+        .O(\phase_err.raw_diff_NW[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_diff_NW[7]_i_9 
+       (.I0(phase_in_N[0]),
+        .I1(phase_in_W[0]),
+        .O(\phase_err.raw_diff_NW[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [0]),
+        .Q(raw_diff_NW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [10]),
+        .Q(raw_diff_NW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [11]),
+        .Q(raw_diff_NW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [12]),
+        .Q(raw_diff_NW[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [13]),
+        .Q(raw_diff_NW[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [14]),
+        .Q(raw_diff_NW[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [15]),
+        .Q(raw_diff_NW[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_NW_reg[15]_i_1 
+       (.CI(\phase_err.raw_diff_NW_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_diff_NW_reg[15]_i_1_n_0 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_1 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_2 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_3 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_4 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_5 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_6 ,\phase_err.raw_diff_NW_reg[15]_i_1_n_7 }),
+        .DI(phase_in_N[15:8]),
+        .O(\phase_err.raw_diff_NW_reg0 [15:8]),
+        .S({\phase_err.raw_diff_NW[15]_i_2_n_0 ,\phase_err.raw_diff_NW[15]_i_3_n_0 ,\phase_err.raw_diff_NW[15]_i_4_n_0 ,\phase_err.raw_diff_NW[15]_i_5_n_0 ,\phase_err.raw_diff_NW[15]_i_6_n_0 ,\phase_err.raw_diff_NW[15]_i_7_n_0 ,\phase_err.raw_diff_NW[15]_i_8_n_0 ,\phase_err.raw_diff_NW[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [16]),
+        .Q(raw_diff_NW[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [17]),
+        .Q(raw_diff_NW[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [18]),
+        .Q(raw_diff_NW[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [19]),
+        .Q(raw_diff_NW[19]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_NW_reg[19]_i_1 
+       (.CI(\phase_err.raw_diff_NW_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_phase_err.raw_diff_NW_reg[19]_i_1_CO_UNCONNECTED [7:3],\phase_err.raw_diff_NW_reg[19]_i_1_n_5 ,\phase_err.raw_diff_NW_reg[19]_i_1_n_6 ,\phase_err.raw_diff_NW_reg[19]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_in_N[18:16]}),
+        .O({\NLW_phase_err.raw_diff_NW_reg[19]_i_1_O_UNCONNECTED [7:4],\phase_err.raw_diff_NW_reg0 [19:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,\phase_err.raw_diff_NW[19]_i_2_n_0 ,\phase_err.raw_diff_NW[19]_i_3_n_0 ,\phase_err.raw_diff_NW[19]_i_4_n_0 ,\phase_err.raw_diff_NW[19]_i_5_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [1]),
+        .Q(raw_diff_NW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [2]),
+        .Q(raw_diff_NW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [3]),
+        .Q(raw_diff_NW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [4]),
+        .Q(raw_diff_NW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [5]),
+        .Q(raw_diff_NW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [6]),
+        .Q(raw_diff_NW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [7]),
+        .Q(raw_diff_NW[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_diff_NW_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_diff_NW_reg[7]_i_1_n_0 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_1 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_2 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_3 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_4 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_5 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_6 ,\phase_err.raw_diff_NW_reg[7]_i_1_n_7 }),
+        .DI(phase_in_N[7:0]),
+        .O(\phase_err.raw_diff_NW_reg0 [7:0]),
+        .S({\phase_err.raw_diff_NW[7]_i_2_n_0 ,\phase_err.raw_diff_NW[7]_i_3_n_0 ,\phase_err.raw_diff_NW[7]_i_4_n_0 ,\phase_err.raw_diff_NW[7]_i_5_n_0 ,\phase_err.raw_diff_NW[7]_i_6_n_0 ,\phase_err.raw_diff_NW[7]_i_7_n_0 ,\phase_err.raw_diff_NW[7]_i_8_n_0 ,\phase_err.raw_diff_NW[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [8]),
+        .Q(raw_diff_NW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_diff_NW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_diff_NW_reg0 [9]),
+        .Q(raw_diff_NW[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_2 
+       (.I0(diff_EW[15]),
+        .I1(prev_EW[15]),
+        .O(\phase_err.raw_err_EW[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_3 
+       (.I0(diff_EW[14]),
+        .I1(prev_EW[14]),
+        .O(\phase_err.raw_err_EW[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_4 
+       (.I0(diff_EW[13]),
+        .I1(prev_EW[13]),
+        .O(\phase_err.raw_err_EW[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_5 
+       (.I0(diff_EW[12]),
+        .I1(prev_EW[12]),
+        .O(\phase_err.raw_err_EW[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_6 
+       (.I0(diff_EW[11]),
+        .I1(prev_EW[11]),
+        .O(\phase_err.raw_err_EW[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_7 
+       (.I0(diff_EW[10]),
+        .I1(prev_EW[10]),
+        .O(\phase_err.raw_err_EW[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_8 
+       (.I0(diff_EW[9]),
+        .I1(prev_EW[9]),
+        .O(\phase_err.raw_err_EW[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[15]_i_9 
+       (.I0(diff_EW[8]),
+        .I1(prev_EW[8]),
+        .O(\phase_err.raw_err_EW[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[18]_i_2 
+       (.I0(diff_EW[18]),
+        .I1(prev_EW[18]),
+        .O(\phase_err.raw_err_EW[18]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[18]_i_3 
+       (.I0(diff_EW[17]),
+        .I1(prev_EW[17]),
+        .O(\phase_err.raw_err_EW[18]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[18]_i_4 
+       (.I0(diff_EW[16]),
+        .I1(prev_EW[16]),
+        .O(\phase_err.raw_err_EW[18]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_2 
+       (.I0(diff_EW[7]),
+        .I1(prev_EW[7]),
+        .O(\phase_err.raw_err_EW[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_3 
+       (.I0(diff_EW[6]),
+        .I1(prev_EW[6]),
+        .O(\phase_err.raw_err_EW[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_4 
+       (.I0(diff_EW[5]),
+        .I1(prev_EW[5]),
+        .O(\phase_err.raw_err_EW[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_5 
+       (.I0(diff_EW[4]),
+        .I1(prev_EW[4]),
+        .O(\phase_err.raw_err_EW[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_6 
+       (.I0(diff_EW[3]),
+        .I1(prev_EW[3]),
+        .O(\phase_err.raw_err_EW[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_7 
+       (.I0(diff_EW[2]),
+        .I1(prev_EW[2]),
+        .O(\phase_err.raw_err_EW[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_8 
+       (.I0(diff_EW[1]),
+        .I1(prev_EW[1]),
+        .O(\phase_err.raw_err_EW[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_EW[7]_i_9 
+       (.I0(diff_EW[0]),
+        .I1(prev_EW[0]),
+        .O(\phase_err.raw_err_EW[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [0]),
+        .Q(raw_err_EW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [10]),
+        .Q(raw_err_EW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [11]),
+        .Q(raw_err_EW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [12]),
+        .Q(raw_err_EW[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [13]),
+        .Q(raw_err_EW[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [14]),
+        .Q(raw_err_EW[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [15]),
+        .Q(raw_err_EW[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_EW_reg[15]_i_1 
+       (.CI(\phase_err.raw_err_EW_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_err_EW_reg[15]_i_1_n_0 ,\phase_err.raw_err_EW_reg[15]_i_1_n_1 ,\phase_err.raw_err_EW_reg[15]_i_1_n_2 ,\phase_err.raw_err_EW_reg[15]_i_1_n_3 ,\phase_err.raw_err_EW_reg[15]_i_1_n_4 ,\phase_err.raw_err_EW_reg[15]_i_1_n_5 ,\phase_err.raw_err_EW_reg[15]_i_1_n_6 ,\phase_err.raw_err_EW_reg[15]_i_1_n_7 }),
+        .DI(diff_EW[15:8]),
+        .O(\phase_err.raw_err_EW_reg00_out [15:8]),
+        .S({\phase_err.raw_err_EW[15]_i_2_n_0 ,\phase_err.raw_err_EW[15]_i_3_n_0 ,\phase_err.raw_err_EW[15]_i_4_n_0 ,\phase_err.raw_err_EW[15]_i_5_n_0 ,\phase_err.raw_err_EW[15]_i_6_n_0 ,\phase_err.raw_err_EW[15]_i_7_n_0 ,\phase_err.raw_err_EW[15]_i_8_n_0 ,\phase_err.raw_err_EW[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [16]),
+        .Q(raw_err_EW[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [17]),
+        .Q(raw_err_EW[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [18]),
+        .Q(raw_err_EW[18]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_EW_reg[18]_i_1 
+       (.CI(\phase_err.raw_err_EW_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_phase_err.raw_err_EW_reg[18]_i_1_CO_UNCONNECTED [7:2],\phase_err.raw_err_EW_reg[18]_i_1_n_6 ,\phase_err.raw_err_EW_reg[18]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,diff_EW[17:16]}),
+        .O({\NLW_phase_err.raw_err_EW_reg[18]_i_1_O_UNCONNECTED [7:3],\phase_err.raw_err_EW_reg00_out [18:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\phase_err.raw_err_EW[18]_i_2_n_0 ,\phase_err.raw_err_EW[18]_i_3_n_0 ,\phase_err.raw_err_EW[18]_i_4_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [1]),
+        .Q(raw_err_EW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [2]),
+        .Q(raw_err_EW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [3]),
+        .Q(raw_err_EW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [4]),
+        .Q(raw_err_EW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [5]),
+        .Q(raw_err_EW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [6]),
+        .Q(raw_err_EW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [7]),
+        .Q(raw_err_EW[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_EW_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_err_EW_reg[7]_i_1_n_0 ,\phase_err.raw_err_EW_reg[7]_i_1_n_1 ,\phase_err.raw_err_EW_reg[7]_i_1_n_2 ,\phase_err.raw_err_EW_reg[7]_i_1_n_3 ,\phase_err.raw_err_EW_reg[7]_i_1_n_4 ,\phase_err.raw_err_EW_reg[7]_i_1_n_5 ,\phase_err.raw_err_EW_reg[7]_i_1_n_6 ,\phase_err.raw_err_EW_reg[7]_i_1_n_7 }),
+        .DI(diff_EW[7:0]),
+        .O(\phase_err.raw_err_EW_reg00_out [7:0]),
+        .S({\phase_err.raw_err_EW[7]_i_2_n_0 ,\phase_err.raw_err_EW[7]_i_3_n_0 ,\phase_err.raw_err_EW[7]_i_4_n_0 ,\phase_err.raw_err_EW[7]_i_5_n_0 ,\phase_err.raw_err_EW[7]_i_6_n_0 ,\phase_err.raw_err_EW[7]_i_7_n_0 ,\phase_err.raw_err_EW[7]_i_8_n_0 ,\phase_err.raw_err_EW[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [8]),
+        .Q(raw_err_EW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_EW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_EW_reg00_out [9]),
+        .Q(raw_err_EW[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_2 
+       (.I0(diff_NE[15]),
+        .I1(prev_NE[15]),
+        .O(\phase_err.raw_err_NE[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_3 
+       (.I0(diff_NE[14]),
+        .I1(prev_NE[14]),
+        .O(\phase_err.raw_err_NE[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_4 
+       (.I0(diff_NE[13]),
+        .I1(prev_NE[13]),
+        .O(\phase_err.raw_err_NE[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_5 
+       (.I0(diff_NE[12]),
+        .I1(prev_NE[12]),
+        .O(\phase_err.raw_err_NE[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_6 
+       (.I0(diff_NE[11]),
+        .I1(prev_NE[11]),
+        .O(\phase_err.raw_err_NE[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_7 
+       (.I0(diff_NE[10]),
+        .I1(prev_NE[10]),
+        .O(\phase_err.raw_err_NE[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_8 
+       (.I0(diff_NE[9]),
+        .I1(prev_NE[9]),
+        .O(\phase_err.raw_err_NE[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[15]_i_9 
+       (.I0(diff_NE[8]),
+        .I1(prev_NE[8]),
+        .O(\phase_err.raw_err_NE[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[18]_i_2 
+       (.I0(diff_NE[18]),
+        .I1(prev_NE[18]),
+        .O(\phase_err.raw_err_NE[18]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[18]_i_3 
+       (.I0(diff_NE[17]),
+        .I1(prev_NE[17]),
+        .O(\phase_err.raw_err_NE[18]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[18]_i_4 
+       (.I0(diff_NE[16]),
+        .I1(prev_NE[16]),
+        .O(\phase_err.raw_err_NE[18]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_2 
+       (.I0(diff_NE[7]),
+        .I1(prev_NE[7]),
+        .O(\phase_err.raw_err_NE[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_3 
+       (.I0(diff_NE[6]),
+        .I1(prev_NE[6]),
+        .O(\phase_err.raw_err_NE[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_4 
+       (.I0(diff_NE[5]),
+        .I1(prev_NE[5]),
+        .O(\phase_err.raw_err_NE[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_5 
+       (.I0(diff_NE[4]),
+        .I1(prev_NE[4]),
+        .O(\phase_err.raw_err_NE[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_6 
+       (.I0(diff_NE[3]),
+        .I1(prev_NE[3]),
+        .O(\phase_err.raw_err_NE[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_7 
+       (.I0(diff_NE[2]),
+        .I1(prev_NE[2]),
+        .O(\phase_err.raw_err_NE[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_8 
+       (.I0(diff_NE[1]),
+        .I1(prev_NE[1]),
+        .O(\phase_err.raw_err_NE[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NE[7]_i_9 
+       (.I0(diff_NE[0]),
+        .I1(prev_NE[0]),
+        .O(\phase_err.raw_err_NE[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [0]),
+        .Q(raw_err_NE[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [10]),
+        .Q(raw_err_NE[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [11]),
+        .Q(raw_err_NE[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [12]),
+        .Q(raw_err_NE[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [13]),
+        .Q(raw_err_NE[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [14]),
+        .Q(raw_err_NE[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [15]),
+        .Q(raw_err_NE[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_NE_reg[15]_i_1 
+       (.CI(\phase_err.raw_err_NE_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_err_NE_reg[15]_i_1_n_0 ,\phase_err.raw_err_NE_reg[15]_i_1_n_1 ,\phase_err.raw_err_NE_reg[15]_i_1_n_2 ,\phase_err.raw_err_NE_reg[15]_i_1_n_3 ,\phase_err.raw_err_NE_reg[15]_i_1_n_4 ,\phase_err.raw_err_NE_reg[15]_i_1_n_5 ,\phase_err.raw_err_NE_reg[15]_i_1_n_6 ,\phase_err.raw_err_NE_reg[15]_i_1_n_7 }),
+        .DI(diff_NE[15:8]),
+        .O(\phase_err.raw_err_NE_reg04_out [15:8]),
+        .S({\phase_err.raw_err_NE[15]_i_2_n_0 ,\phase_err.raw_err_NE[15]_i_3_n_0 ,\phase_err.raw_err_NE[15]_i_4_n_0 ,\phase_err.raw_err_NE[15]_i_5_n_0 ,\phase_err.raw_err_NE[15]_i_6_n_0 ,\phase_err.raw_err_NE[15]_i_7_n_0 ,\phase_err.raw_err_NE[15]_i_8_n_0 ,\phase_err.raw_err_NE[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [16]),
+        .Q(raw_err_NE[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [17]),
+        .Q(raw_err_NE[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [18]),
+        .Q(raw_err_NE[18]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_NE_reg[18]_i_1 
+       (.CI(\phase_err.raw_err_NE_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_phase_err.raw_err_NE_reg[18]_i_1_CO_UNCONNECTED [7:2],\phase_err.raw_err_NE_reg[18]_i_1_n_6 ,\phase_err.raw_err_NE_reg[18]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,diff_NE[17:16]}),
+        .O({\NLW_phase_err.raw_err_NE_reg[18]_i_1_O_UNCONNECTED [7:3],\phase_err.raw_err_NE_reg04_out [18:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\phase_err.raw_err_NE[18]_i_2_n_0 ,\phase_err.raw_err_NE[18]_i_3_n_0 ,\phase_err.raw_err_NE[18]_i_4_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [1]),
+        .Q(raw_err_NE[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [2]),
+        .Q(raw_err_NE[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [3]),
+        .Q(raw_err_NE[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [4]),
+        .Q(raw_err_NE[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [5]),
+        .Q(raw_err_NE[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [6]),
+        .Q(raw_err_NE[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [7]),
+        .Q(raw_err_NE[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_NE_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_err_NE_reg[7]_i_1_n_0 ,\phase_err.raw_err_NE_reg[7]_i_1_n_1 ,\phase_err.raw_err_NE_reg[7]_i_1_n_2 ,\phase_err.raw_err_NE_reg[7]_i_1_n_3 ,\phase_err.raw_err_NE_reg[7]_i_1_n_4 ,\phase_err.raw_err_NE_reg[7]_i_1_n_5 ,\phase_err.raw_err_NE_reg[7]_i_1_n_6 ,\phase_err.raw_err_NE_reg[7]_i_1_n_7 }),
+        .DI(diff_NE[7:0]),
+        .O(\phase_err.raw_err_NE_reg04_out [7:0]),
+        .S({\phase_err.raw_err_NE[7]_i_2_n_0 ,\phase_err.raw_err_NE[7]_i_3_n_0 ,\phase_err.raw_err_NE[7]_i_4_n_0 ,\phase_err.raw_err_NE[7]_i_5_n_0 ,\phase_err.raw_err_NE[7]_i_6_n_0 ,\phase_err.raw_err_NE[7]_i_7_n_0 ,\phase_err.raw_err_NE[7]_i_8_n_0 ,\phase_err.raw_err_NE[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [8]),
+        .Q(raw_err_NE[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NE_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NE_reg04_out [9]),
+        .Q(raw_err_NE[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_2 
+       (.I0(diff_NW[15]),
+        .I1(prev_NW[15]),
+        .O(\phase_err.raw_err_NW[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_3 
+       (.I0(diff_NW[14]),
+        .I1(prev_NW[14]),
+        .O(\phase_err.raw_err_NW[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_4 
+       (.I0(diff_NW[13]),
+        .I1(prev_NW[13]),
+        .O(\phase_err.raw_err_NW[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_5 
+       (.I0(diff_NW[12]),
+        .I1(prev_NW[12]),
+        .O(\phase_err.raw_err_NW[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_6 
+       (.I0(diff_NW[11]),
+        .I1(prev_NW[11]),
+        .O(\phase_err.raw_err_NW[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_7 
+       (.I0(diff_NW[10]),
+        .I1(prev_NW[10]),
+        .O(\phase_err.raw_err_NW[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_8 
+       (.I0(diff_NW[9]),
+        .I1(prev_NW[9]),
+        .O(\phase_err.raw_err_NW[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[15]_i_9 
+       (.I0(diff_NW[8]),
+        .I1(prev_NW[8]),
+        .O(\phase_err.raw_err_NW[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[18]_i_2 
+       (.I0(diff_NW[18]),
+        .I1(prev_NW[18]),
+        .O(\phase_err.raw_err_NW[18]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[18]_i_3 
+       (.I0(diff_NW[17]),
+        .I1(prev_NW[17]),
+        .O(\phase_err.raw_err_NW[18]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[18]_i_4 
+       (.I0(diff_NW[16]),
+        .I1(prev_NW[16]),
+        .O(\phase_err.raw_err_NW[18]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_2 
+       (.I0(diff_NW[7]),
+        .I1(prev_NW[7]),
+        .O(\phase_err.raw_err_NW[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_3 
+       (.I0(diff_NW[6]),
+        .I1(prev_NW[6]),
+        .O(\phase_err.raw_err_NW[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_4 
+       (.I0(diff_NW[5]),
+        .I1(prev_NW[5]),
+        .O(\phase_err.raw_err_NW[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_5 
+       (.I0(diff_NW[4]),
+        .I1(prev_NW[4]),
+        .O(\phase_err.raw_err_NW[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_6 
+       (.I0(diff_NW[3]),
+        .I1(prev_NW[3]),
+        .O(\phase_err.raw_err_NW[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_7 
+       (.I0(diff_NW[2]),
+        .I1(prev_NW[2]),
+        .O(\phase_err.raw_err_NW[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_8 
+       (.I0(diff_NW[1]),
+        .I1(prev_NW[1]),
+        .O(\phase_err.raw_err_NW[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \phase_err.raw_err_NW[7]_i_9 
+       (.I0(diff_NW[0]),
+        .I1(prev_NW[0]),
+        .O(\phase_err.raw_err_NW[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [0]),
+        .Q(raw_err_NW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [10]),
+        .Q(raw_err_NW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [11]),
+        .Q(raw_err_NW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [12]),
+        .Q(raw_err_NW[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [13]),
+        .Q(raw_err_NW[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [14]),
+        .Q(raw_err_NW[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [15]),
+        .Q(raw_err_NW[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_NW_reg[15]_i_1 
+       (.CI(\phase_err.raw_err_NW_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_err_NW_reg[15]_i_1_n_0 ,\phase_err.raw_err_NW_reg[15]_i_1_n_1 ,\phase_err.raw_err_NW_reg[15]_i_1_n_2 ,\phase_err.raw_err_NW_reg[15]_i_1_n_3 ,\phase_err.raw_err_NW_reg[15]_i_1_n_4 ,\phase_err.raw_err_NW_reg[15]_i_1_n_5 ,\phase_err.raw_err_NW_reg[15]_i_1_n_6 ,\phase_err.raw_err_NW_reg[15]_i_1_n_7 }),
+        .DI(diff_NW[15:8]),
+        .O(\phase_err.raw_err_NW_reg02_out [15:8]),
+        .S({\phase_err.raw_err_NW[15]_i_2_n_0 ,\phase_err.raw_err_NW[15]_i_3_n_0 ,\phase_err.raw_err_NW[15]_i_4_n_0 ,\phase_err.raw_err_NW[15]_i_5_n_0 ,\phase_err.raw_err_NW[15]_i_6_n_0 ,\phase_err.raw_err_NW[15]_i_7_n_0 ,\phase_err.raw_err_NW[15]_i_8_n_0 ,\phase_err.raw_err_NW[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [16]),
+        .Q(raw_err_NW[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [17]),
+        .Q(raw_err_NW[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [18]),
+        .Q(raw_err_NW[18]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_NW_reg[18]_i_1 
+       (.CI(\phase_err.raw_err_NW_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_phase_err.raw_err_NW_reg[18]_i_1_CO_UNCONNECTED [7:2],\phase_err.raw_err_NW_reg[18]_i_1_n_6 ,\phase_err.raw_err_NW_reg[18]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,diff_NW[17:16]}),
+        .O({\NLW_phase_err.raw_err_NW_reg[18]_i_1_O_UNCONNECTED [7:3],\phase_err.raw_err_NW_reg02_out [18:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\phase_err.raw_err_NW[18]_i_2_n_0 ,\phase_err.raw_err_NW[18]_i_3_n_0 ,\phase_err.raw_err_NW[18]_i_4_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [1]),
+        .Q(raw_err_NW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [2]),
+        .Q(raw_err_NW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [3]),
+        .Q(raw_err_NW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [4]),
+        .Q(raw_err_NW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [5]),
+        .Q(raw_err_NW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [6]),
+        .Q(raw_err_NW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [7]),
+        .Q(raw_err_NW[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \phase_err.raw_err_NW_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\phase_err.raw_err_NW_reg[7]_i_1_n_0 ,\phase_err.raw_err_NW_reg[7]_i_1_n_1 ,\phase_err.raw_err_NW_reg[7]_i_1_n_2 ,\phase_err.raw_err_NW_reg[7]_i_1_n_3 ,\phase_err.raw_err_NW_reg[7]_i_1_n_4 ,\phase_err.raw_err_NW_reg[7]_i_1_n_5 ,\phase_err.raw_err_NW_reg[7]_i_1_n_6 ,\phase_err.raw_err_NW_reg[7]_i_1_n_7 }),
+        .DI(diff_NW[7:0]),
+        .O(\phase_err.raw_err_NW_reg02_out [7:0]),
+        .S({\phase_err.raw_err_NW[7]_i_2_n_0 ,\phase_err.raw_err_NW[7]_i_3_n_0 ,\phase_err.raw_err_NW[7]_i_4_n_0 ,\phase_err.raw_err_NW[7]_i_5_n_0 ,\phase_err.raw_err_NW[7]_i_6_n_0 ,\phase_err.raw_err_NW[7]_i_7_n_0 ,\phase_err.raw_err_NW[7]_i_8_n_0 ,\phase_err.raw_err_NW[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [8]),
+        .Q(raw_err_NW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.raw_err_NW_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.raw_err_NW_reg02_out [9]),
+        .Q(raw_err_NW[9]),
+        .R(1'b0));
+  (* srl_name = "inst/phase_err_i/\\phase_err.valid_2_reg_srl2 " *) 
+  SRL16E \phase_err.valid_2_reg_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(clk),
+        .D(active),
+        .Q(\phase_err.valid_2_reg_srl2_n_0 ));
+  FDRE \phase_err.valid_3_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\phase_err.valid_2_reg_srl2_n_0 ),
+        .Q(valid_3),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \phase_err.valid_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(valid_3),
+        .Q(valid),
+        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL
