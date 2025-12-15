@@ -249,7 +249,7 @@ phase_err phase_err_i (
   .err_EW(errEW)
   );
      
-
+/*
 ila_0 ila_0_i (
 		.clk(clk),                     // input wire clk
 		.probe0(doa_wr),               // input wire [0:0]  probe3
@@ -262,6 +262,7 @@ ila_0 ila_0_i (
 		.probe7(envW),                 // input wire [15:0]  probe3
 		.probe8(raw_W0)               // input wire [15:0]  probe3
 	);
+*/
 
 generate
   begin : freq_low_46
