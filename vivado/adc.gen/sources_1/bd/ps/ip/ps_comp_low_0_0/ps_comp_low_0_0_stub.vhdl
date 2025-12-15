@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Dec 14 15:59:41 2025
+-- Date        : Mon Dec 15 22:26:06 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_stub.vhdl
@@ -17,7 +17,8 @@ entity ps_comp_low_0_0 is
   Port ( 
     fifo_clk : in STD_LOGIC;
     fifo_wr : in STD_LOGIC;
-    fifo_data : in STD_LOGIC_VECTOR ( 299 downto 0 );
+    fifo_sample_data : in STD_LOGIC_VECTOR ( 191 downto 0 );
+    fifo_doa_data : in STD_LOGIC_VECTOR ( 143 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC
   );
@@ -36,7 +37,7 @@ architecture stub of ps_comp_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "fifo_clk,fifo_wr,fifo_data[299:0],clk,reset";
+  attribute black_box_pad_pin of stub : architecture is "fifo_clk,fifo_wr,fifo_sample_data[191:0],fifo_doa_data[143:0],clk,reset";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

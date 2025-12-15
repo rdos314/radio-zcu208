@@ -64,6 +64,7 @@ module ps_freq_high_189_0_0 (
   clk,
   reset,
   doa_wr,
+  sample_data,
   doa_data
 );
 
@@ -84,7 +85,8 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
 output wire doa_wr;
-output wire [491 : 0] doa_data;
+output wire [383 : 0] sample_data;
+output wire [143 : 0] doa_data;
 
   freq_high_189 inst (
     .fifo_clk(fifo_clk),
@@ -95,6 +97,7 @@ output wire [491 : 0] doa_data;
     .clk(clk),
     .reset(reset),
     .doa_wr(doa_wr),
+    .sample_data(sample_data),
     .doa_data(doa_data)
   );
 endmodule

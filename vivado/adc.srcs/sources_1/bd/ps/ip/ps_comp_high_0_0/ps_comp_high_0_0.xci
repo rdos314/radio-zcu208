@@ -38,7 +38,8 @@
       "ports": {
         "fifo_clk": [ { "direction": "in" } ],
         "fifo_wr": [ { "direction": "in" } ],
-        "fifo_data": [ { "direction": "in", "size_left": "491", "size_right": "0" } ],
+        "fifo_sample_data": [ { "direction": "in", "size_left": "383", "size_right": "0" } ],
+        "fifo_doa_data": [ { "direction": "in", "size_left": "143", "size_right": "0" } ],
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ]
       },

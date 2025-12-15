@@ -23,20 +23,37 @@
 module comp_high(
     input wire	fifo_clk,
     input wire fifo_wr,
-    input wire	[491:0] fifo_data,
+    input wire [383:0] fifo_sample_data,
+    input wire [143:0] fifo_doa_data,
 
     input wire clk,
     input wire reset
     );
-	
+
+  reg sample_rd;
+  wire [383:0] sample_data;
+  wire fifo_sample_empty;
+  reg [8:0] fifo_sample_delay;
+
   reg doa_rd;
-  wire [491:0] doa_data;
-  wire fifo_empty;
-  reg [3:0] fifo_rd_delay;
+  wire [143:0] doa_data;
+  wire fifo_doa_empty;
+  reg [4:0] fifo_doa_delay;
   reg doa_valid;
-  
+
   reg [15:0] env_N;
   reg [19:0] phase_N;
+
+  reg [15:0] env_E;
+  reg [19:0] phase_E;
+
+  reg [15:0] env_W;
+  reg [19:0] phase_W;
+
+  reg [11:0] err_NE;
+  reg [11:0] err_NW;
+  reg [11:0] err_EW;
+
   reg [15:0] raw_N0;
   reg [15:0] raw_N1;
   reg [15:0] raw_N2;
@@ -46,8 +63,6 @@ module comp_high(
   reg [15:0] raw_N6;
   reg [15:0] raw_N7;
   
-  reg [15:0] env_E;
-  reg [19:0] phase_E;
   reg [15:0] raw_E0;
   reg [15:0] raw_E1;
   reg [15:0] raw_E2;
@@ -57,8 +72,6 @@ module comp_high(
   reg [15:0] raw_E6;  
   reg [15:0] raw_E7;  
   
-  reg [15:0] env_W;
-  reg [19:0] phase_W;
   reg [15:0] raw_W0;
   reg [15:0] raw_W1;
   reg [15:0] raw_W2;
@@ -68,66 +81,48 @@ module comp_high(
   reg [15:0] raw_W6;
   reg [15:0] raw_W7;
 
-fifo_comp_high fifo_comp_i (
+fifo_raw_high fifo_raw_i (
   .rst(reset),                   // input wire rst
   .wr_clk(fifo_clk),             // input wire wr_clk
   .rd_clk(clk),                  // input wire rd_clk
-  .din(fifo_data),               // input wire [491 : 0] din
+  .din(fifo_sample_data),        // input wire [191 : 0] din
   .wr_en(fifo_wr),               // input wire wr_en
-  .rd_en(doa_rd),                // input wire rd_en
-  .dout(doa_data),               // output wire [491 : 0] dout
-  .empty(fifo_empty)             // output wire empty
+  .rd_en(sample_rd),             // input wire rd_en
+  .dout(sample_data),            // output wire [191 : 0] dout
+  .empty(fifo_sample_empty)      // output wire empty
 );
 
-	ila_2 ila_N (
-		.clk(clk),              // input wire clk
-		.probe0(fifo_empty),     // input wire [0:0]  probe3
-		.probe1(doa_rd),         // input wire [0:0]  probe3
-		.probe2(fifo_rd_delay),  // input wire [3:0]  probe3
-		.probe3(env_N),          // input wire [15:0]  probe3
-		.probe4(phase_N),        // input wire [19:0]  probe3
-		.probe5(raw_N0),         // input wire [15:0]  probe3
-		.probe6(raw_N1),         // input wire [15:0]  probe3
-		.probe7(raw_N2),         // input wire [15:0]  probe3
-		.probe8(raw_N3),         // input wire [15:0]  probe3
-		.probe9(raw_N4),         // input wire [15:0]  probe3
-		.probe10(raw_N5),         // input wire [15:0]  probe3
-		.probe11(raw_N6),         // input wire [15:0]  probe3
-		.probe12(raw_N7)          // input wire [15:0]  probe3
-	);
+fifo_doa fifo_doa_i (
+  .rst(reset),                   // input wire rst
+  .wr_clk(fifo_clk),             // input wire wr_clk
+  .rd_clk(clk),                  // input wire rd_clk
+  .din(fifo_doa_data),           // input wire [143 : 0] din
+  .wr_en(fifo_wr),               // input wire wr_en
+  .rd_en(doa_rd),                // input wire rd_en
+  .dout(doa_data),               // output wire [143 : 0] dout
+  .empty(fifo_doa_empty)         // output wire empty
+);
 
-	ila_2 ila_E (
-		.clk(clk),              // input wire clk
-		.probe0(fifo_empty),     // input wire [0:0]  probe3
-		.probe1(doa_rd),         // input wire [0:0]  probe3
-		.probe2(fifo_rd_delay),  // input wire [3:0]  probe3
-		.probe3(env_E),          // input wire [15:0]  probe3
-		.probe4(phase_E),        // input wire [19:0]  probe3
-		.probe5(raw_E0),         // input wire [15:0]  probe3
-		.probe6(raw_E1),         // input wire [15:0]  probe3
-		.probe7(raw_E2),         // input wire [15:0]  probe3
-		.probe8(raw_E3),         // input wire [15:0]  probe3
-		.probe9(raw_E4),         // input wire [15:0]  probe3
-		.probe10(raw_E5),         // input wire [15:0]  probe3
-		.probe11(raw_E6),         // input wire [15:0]  probe3
-		.probe12(raw_E7)          // input wire [15:0]  probe3
-	);
-
-	ila_2 ila_W (
-		.clk(clk),              // input wire clk
-		.probe0(fifo_empty),     // input wire [0:0]  probe3
-		.probe1(doa_rd),         // input wire [0:0]  probe3
-		.probe2(fifo_rd_delay),  // input wire [3:0]  probe3
-		.probe3(env_W),          // input wire [15:0]  probe3
-		.probe4(phase_W),        // input wire [19:0]  probe3
-		.probe5(raw_W0),         // input wire [15:0]  probe3
-		.probe6(raw_W1),         // input wire [15:0]  probe3
-		.probe7(raw_W2),         // input wire [15:0]  probe3
-		.probe8(raw_W3),         // input wire [15:0]  probe3
-		.probe9(raw_W4),         // input wire [15:0]  probe3
-		.probe10(raw_W5),         // input wire [15:0]  probe3
-		.probe11(raw_W6),         // input wire [15:0]  probe3
-		.probe12(raw_W7)          // input wire [15:0]  probe3
+	ila_3 ila_i (
+		.clk(clk),               // input wire clk
+		.probe0(fifo_sample_empty), // input wire [0:0]  probe3
+		.probe1(fifo_doa_empty),    // input wire [0:0]  probe3
+		.probe2(sample_rd),         // input wire [0:0]  probe3
+		.probe3(doa_rd),            // input wire [0:0]  probe3
+		.probe4(fifo_doa_delay),     // input wire [4:0]  probe3
+		.probe5(fifo_sample_delay),  // input wire [8:0]  probe3
+		.probe6(env_N),             // input wire [15:0]  probe3
+		.probe7(phase_N),           // input wire [19:0]  probe3
+		.probe8(env_E),             // input wire [15:0]  probe3
+		.probe9(phase_E),           // input wire [19:0]  probe3
+		.probe10(env_W),             // input wire [15:0]  probe3
+		.probe11(phase_W),          // input wire [19:0]  probe3
+		.probe12(err_NE),           // input wire [11:0]  probe3
+		.probe13(err_NW),           // input wire [11:0]  probe3
+		.probe14(err_EW),           // input wire [11:0]  probe3
+		.probe15(raw_N0),           // input wire [15:0]  probe3
+		.probe16(raw_E0),           // input wire [15:0]  probe3
+		.probe17(raw_W0)            // input wire [15:0]  probe3
 	);
 
 generate
@@ -135,17 +130,36 @@ generate
 
     always @(posedge clk) 
     begin
-	   if (fifo_empty)
+	   if (fifo_sample_empty)
 	   begin
-	       fifo_rd_delay <= 3'b111;
+	       fifo_sample_delay <= 9'b000011111;
+           sample_rd <= 0;
+       end
+	   else
+	   begin
+	       if (fifo_doa_delay)
+	       begin
+	           sample_rd <= 0;
+	           fifo_sample_delay <= fifo_sample_delay - 1;
+	       end
+	       else
+	           sample_rd <= 1;
+       end
+    end
+
+    always @(posedge clk) 
+    begin
+	   if (fifo_doa_empty)
+	   begin
+	       fifo_doa_delay <= 5'b11111;
            doa_rd <= 0;
        end
 	   else
 	   begin
-	       if (fifo_rd_delay)
+	       if (fifo_doa_delay)
 	       begin
 	           doa_rd <= 0;
-	           fifo_rd_delay <= fifo_rd_delay - 1;
+	           fifo_doa_delay <= fifo_doa_delay - 1;
 	       end
 	       else
 	           doa_rd <= 1;
@@ -154,45 +168,57 @@ generate
 
     always @(posedge clk) 
 	begin
-        if (doa_rd & (!fifo_empty))
+        if (doa_rd & (!fifo_doa_empty))
         begin
             doa_valid <= 1;
 
             env_N <= doa_data[15:0];
             phase_N <= doa_data[35:16];
-            raw_N0 <= doa_data[51:36];
-            raw_N1 <= doa_data[67:52];
-            raw_N2 <= doa_data[83:68];
-            raw_N3 <= doa_data[99:84];
-            raw_N4 <= doa_data[115:100];
-            raw_N5 <= doa_data[131:116];
-            raw_N6 <= doa_data[147:132];
-            raw_N7 <= doa_data[163:148];
+            env_E <= doa_data[51:36];
+            phase_E <= doa_data[71:52];
+            env_W <= doa_data[87:72];
+            phase_W <= doa_data[107:88];
+            
+            err_NE <= doa_data[119:108];
+            err_NW <= doa_data[131:120];
+            err_EW <= doa_data[143:132];            
 
-            env_E <= doa_data[179:164];
-            phase_E <= doa_data[199:180];
-            raw_E0 <= doa_data[215:200];
-            raw_E1 <= doa_data[231:216];
-            raw_E2 <= doa_data[247:232];
-            raw_E3 <= doa_data[263:248];
-            raw_E4 <= doa_data[279:264];
-            raw_E5 <= doa_data[295:280];
-            raw_E6 <= doa_data[311:296];
-            raw_E7 <= doa_data[327:312];
-      
-            env_W <= doa_data[343:328];
-            phase_W <= doa_data[363:344];
-            raw_W0 <= doa_data[379:364];
-            raw_W1 <= doa_data[395:380];
-            raw_W2 <= doa_data[411:396];
-            raw_W3 <= doa_data[427:412];
-            raw_W4 <= doa_data[443:428];
-            raw_W5 <= doa_data[459:444];
-            raw_W6 <= doa_data[475:460];
-            raw_W7 <= doa_data[491:476];
         end
         else
             doa_valid <= 0;
+	end
+
+    always @(posedge clk) 
+	begin
+        if (sample_rd & (!fifo_sample_empty))
+        begin
+            raw_N0 <= sample_data[15:0];
+            raw_N1 <= sample_data[31:16];
+            raw_N2 <= sample_data[47:32];
+            raw_N3 <= sample_data[63:48];
+            raw_N4 <= sample_data[79:64];
+            raw_N5 <= sample_data[95:80];
+            raw_N6 <= sample_data[111:96];
+            raw_N7 <= sample_data[127:112];
+
+            raw_E0 <= sample_data[143:128];
+            raw_E1 <= sample_data[159:144];
+            raw_E2 <= sample_data[175:160];
+            raw_E3 <= sample_data[191:176];
+            raw_E4 <= sample_data[207:192];
+            raw_E5 <= sample_data[223:208];
+            raw_E6 <= sample_data[239:224];
+            raw_E7 <= sample_data[255:240];
+      
+            raw_W0 <= sample_data[271:256];
+            raw_W1 <= sample_data[287:272];
+            raw_W2 <= sample_data[303:288];
+            raw_W3 <= sample_data[319:304];
+            raw_W4 <= sample_data[335:320];
+            raw_W5 <= sample_data[351:336];
+            raw_W6 <= sample_data[367:352];
+            raw_W7 <= sample_data[383:368];
+        end
     end
 
   end

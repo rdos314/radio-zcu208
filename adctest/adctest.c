@@ -295,13 +295,13 @@ void StartSim()
 int main()
 {
 	LoadLowZero(4000.0, 46.0, 30);
-//	LoadLowMorlet(4000.0, 46.0, 5, 25000, 45.0);
-	LoadLowCos(4000.0, 46.0, 30, 25, 45.0);
+	LoadLowMorlet(4000.0, 46.0, 5, 25000, 45.0);
+//	LoadLowCos(4000.0, 46.0, 30, 25, 45.0);
 	LoadLowZero(4000.0, 46.0, 30);
 
 	LoadHighZero(4000.0, 189.0, 120);
-//	LoadHighMorlet(4000.0, 189.0, 20, 25000, 45.0);
-	LoadHighCos(4000.0, 189.0, 120, 25, 45.0);
+	LoadHighMorlet(4000.0, 189.0, 20, 25000, 45.0);
+//	LoadHighCos(4000.0, 189.0, 120, 25, 45.0);
 	LoadHighZero(4000.0, 189.0, 120);
 
 	StartSim();

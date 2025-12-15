@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Dec 14 15:59:41 2025
+// Date        : Mon Dec 15 22:26:07 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.v
@@ -19,25 +19,29 @@
 module ps_comp_high_0_0
    (fifo_clk,
     fifo_wr,
-    fifo_data,
+    fifo_sample_data,
+    fifo_doa_data,
     clk,
     reset);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq1_clk, INSERT_VIP 0" *) input fifo_clk;
   input fifo_wr;
-  input [491:0]fifo_data;
+  input [383:0]fifo_sample_data;
+  input [143:0]fifo_doa_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
 
   wire clk;
   wire fifo_clk;
-  wire [491:0]fifo_data;
+  wire [143:0]fifo_doa_data;
+  wire [383:0]fifo_sample_data;
   wire fifo_wr;
   wire reset;
 
   ps_comp_high_0_0_comp_high inst
        (.clk(clk),
         .fifo_clk(fifo_clk),
-        .fifo_data(fifo_data),
+        .fifo_doa_data(fifo_doa_data),
+        .fifo_sample_data(fifo_sample_data),
         .fifo_wr(fifo_wr),
         .reset(reset));
 endmodule
@@ -46,73 +50,80 @@ endmodule
 module ps_comp_high_0_0_comp_high
    (fifo_clk,
     fifo_wr,
-    fifo_data,
+    fifo_sample_data,
+    fifo_doa_data,
     clk,
     reset);
   input fifo_clk;
   input fifo_wr;
-  input [491:0]fifo_data;
+  input [383:0]fifo_sample_data;
+  input [143:0]fifo_doa_data;
   input clk;
   input reset;
 
   wire clk;
   wire \comp_high.doa_rd_i_1_n_0 ;
-  wire \comp_high.env_N[15]_i_1_n_0 ;
-  wire \comp_high.fifo_rd_delay[1]_i_1_n_0 ;
-  wire \comp_high.fifo_rd_delay[2]_i_1_n_0 ;
-  wire \comp_high.fifo_rd_delay[3]_i_1_n_0 ;
-  wire \comp_high.fifo_rd_delay[3]_i_2_n_0 ;
-  wire [0:0]\comp_high.fifo_rd_delay_reg0 ;
-  wire [491:0]doa_data;
+  wire \comp_high.env_N_reg0 ;
+  wire \comp_high.fifo_doa_delay[1]_i_1_n_0 ;
+  wire \comp_high.fifo_doa_delay[2]_i_1_n_0 ;
+  wire \comp_high.fifo_doa_delay[3]_i_1_n_0 ;
+  wire \comp_high.fifo_doa_delay[4]_i_1_n_0 ;
+  wire \comp_high.fifo_doa_delay[4]_i_2_n_0 ;
+  wire [0:0]\comp_high.fifo_doa_delay_reg0 ;
+  wire \comp_high.fifo_sample_delay[1]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[2]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[3]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[4]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[5]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[6]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[7]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[8]_i_1_n_0 ;
+  wire \comp_high.fifo_sample_delay[8]_i_2_n_0 ;
+  wire [0:0]\comp_high.fifo_sample_delay_reg0 ;
+  wire \comp_high.raw_N0_reg0 ;
+  wire \comp_high.sample_rd_i_1_n_0 ;
+  wire [143:0]doa_data;
   (* MARK_DEBUG *) wire doa_rd;
   (* MARK_DEBUG *) wire [15:0]env_E;
   (* MARK_DEBUG *) wire [15:0]env_N;
   (* MARK_DEBUG *) wire [15:0]env_W;
+  (* MARK_DEBUG *) wire [11:0]err_EW;
+  (* MARK_DEBUG *) wire [11:0]err_NE;
+  (* MARK_DEBUG *) wire [11:0]err_NW;
   wire fifo_clk;
-  wire [491:0]fifo_data;
-  (* MARK_DEBUG *) wire fifo_empty;
-  (* MARK_DEBUG *) wire [3:0]fifo_rd_delay;
+  wire [143:0]fifo_doa_data;
+  (* MARK_DEBUG *) wire [4:0]fifo_doa_delay;
+  (* MARK_DEBUG *) wire fifo_doa_empty;
+  wire [383:0]fifo_sample_data;
+  (* MARK_DEBUG *) wire [8:0]fifo_sample_delay;
+  (* MARK_DEBUG *) wire fifo_sample_empty;
   wire fifo_wr;
   (* MARK_DEBUG *) wire [19:0]phase_E;
   (* MARK_DEBUG *) wire [19:0]phase_N;
   (* MARK_DEBUG *) wire [19:0]phase_W;
   (* MARK_DEBUG *) wire [15:0]raw_E0;
-  (* MARK_DEBUG *) wire [15:0]raw_E1;
-  (* MARK_DEBUG *) wire [15:0]raw_E2;
-  (* MARK_DEBUG *) wire [15:0]raw_E3;
-  (* MARK_DEBUG *) wire [15:0]raw_E4;
-  (* MARK_DEBUG *) wire [15:0]raw_E5;
-  (* MARK_DEBUG *) wire [15:0]raw_E6;
-  (* MARK_DEBUG *) wire [15:0]raw_E7;
   (* MARK_DEBUG *) wire [15:0]raw_N0;
-  (* MARK_DEBUG *) wire [15:0]raw_N1;
-  (* MARK_DEBUG *) wire [15:0]raw_N2;
-  (* MARK_DEBUG *) wire [15:0]raw_N3;
-  (* MARK_DEBUG *) wire [15:0]raw_N4;
-  (* MARK_DEBUG *) wire [15:0]raw_N5;
-  (* MARK_DEBUG *) wire [15:0]raw_N6;
-  (* MARK_DEBUG *) wire [15:0]raw_N7;
   (* MARK_DEBUG *) wire [15:0]raw_W0;
-  (* MARK_DEBUG *) wire [15:0]raw_W1;
-  (* MARK_DEBUG *) wire [15:0]raw_W2;
-  (* MARK_DEBUG *) wire [15:0]raw_W3;
-  (* MARK_DEBUG *) wire [15:0]raw_W4;
-  (* MARK_DEBUG *) wire [15:0]raw_W5;
-  (* MARK_DEBUG *) wire [15:0]raw_W6;
-  (* MARK_DEBUG *) wire [15:0]raw_W7;
   wire reset;
-  wire NLW_fifo_comp_i_full_UNCONNECTED;
-  wire NLW_fifo_comp_i_rd_rst_busy_UNCONNECTED;
-  wire NLW_fifo_comp_i_wr_rst_busy_UNCONNECTED;
+  wire [271:0]sample_data;
+  (* MARK_DEBUG *) wire sample_rd;
+  wire NLW_fifo_doa_i_full_UNCONNECTED;
+  wire NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED;
+  wire NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED;
+  wire NLW_fifo_raw_i_full_UNCONNECTED;
+  wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
+  wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
+  wire [383:16]NLW_fifo_raw_i_dout_UNCONNECTED;
 
-  LUT5 #(
-    .INIT(32'h00000001)) 
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
     \comp_high.doa_rd_i_1 
-       (.I0(fifo_empty),
-        .I1(fifo_rd_delay[2]),
-        .I2(fifo_rd_delay[3]),
-        .I3(fifo_rd_delay[0]),
-        .I4(fifo_rd_delay[1]),
+       (.I0(fifo_doa_delay[0]),
+        .I1(fifo_doa_delay[3]),
+        .I2(fifo_doa_delay[4]),
+        .I3(fifo_doa_delay[1]),
+        .I4(fifo_doa_delay[2]),
+        .I5(fifo_doa_empty),
         .O(\comp_high.doa_rd_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_high.doa_rd_reg 
@@ -125,141 +136,141 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[164]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[36]),
         .Q(env_E[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[174]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[46]),
         .Q(env_E[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[175]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[47]),
         .Q(env_E[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[176]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[48]),
         .Q(env_E[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[177]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[49]),
         .Q(env_E[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[178]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[50]),
         .Q(env_E[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[179]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[51]),
         .Q(env_E[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[165]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[37]),
         .Q(env_E[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[166]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[38]),
         .Q(env_E[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[167]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[39]),
         .Q(env_E[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[168]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[40]),
         .Q(env_E[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[169]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[41]),
         .Q(env_E[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[170]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[42]),
         .Q(env_E[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[171]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[43]),
         .Q(env_E[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[172]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[44]),
         .Q(env_E[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_E_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[173]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[45]),
         .Q(env_E[9]),
         .R(1'b0));
   LUT2 #(
     .INIT(4'h2)) 
     \comp_high.env_N[15]_i_1 
        (.I0(doa_rd),
-        .I1(fifo_empty),
-        .O(\comp_high.env_N[15]_i_1_n_0 ));
+        .I1(fifo_doa_empty),
+        .O(\comp_high.env_N_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[0]),
         .Q(env_N[0]),
         .R(1'b0));
@@ -267,7 +278,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[10]),
         .Q(env_N[10]),
         .R(1'b0));
@@ -275,7 +286,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[11]),
         .Q(env_N[11]),
         .R(1'b0));
@@ -283,7 +294,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[12]),
         .Q(env_N[12]),
         .R(1'b0));
@@ -291,7 +302,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[13]),
         .Q(env_N[13]),
         .R(1'b0));
@@ -299,7 +310,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[14]),
         .Q(env_N[14]),
         .R(1'b0));
@@ -307,7 +318,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[15]),
         .Q(env_N[15]),
         .R(1'b0));
@@ -315,7 +326,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[1]),
         .Q(env_N[1]),
         .R(1'b0));
@@ -323,7 +334,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[2]),
         .Q(env_N[2]),
         .R(1'b0));
@@ -331,7 +342,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[3]),
         .Q(env_N[3]),
         .R(1'b0));
@@ -339,7 +350,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[4]),
         .Q(env_N[4]),
         .R(1'b0));
@@ -347,7 +358,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[5]),
         .Q(env_N[5]),
         .R(1'b0));
@@ -355,7 +366,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[6]),
         .Q(env_N[6]),
         .R(1'b0));
@@ -363,7 +374,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[7]),
         .Q(env_N[7]),
         .R(1'b0));
@@ -371,7 +382,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[8]),
         .Q(env_N[8]),
         .R(1'b0));
@@ -379,7 +390,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_N_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[9]),
         .Q(env_N[9]),
         .R(1'b0));
@@ -387,361 +398,815 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[328]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[72]),
         .Q(env_W[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[338]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[82]),
         .Q(env_W[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[339]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[83]),
         .Q(env_W[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[340]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[84]),
         .Q(env_W[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[341]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[85]),
         .Q(env_W[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[342]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[86]),
         .Q(env_W[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[343]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[87]),
         .Q(env_W[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[329]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[73]),
         .Q(env_W[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[330]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[74]),
         .Q(env_W[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[331]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[75]),
         .Q(env_W[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[332]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[76]),
         .Q(env_W[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[333]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[77]),
         .Q(env_W[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[334]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[78]),
         .Q(env_W[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[335]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[79]),
         .Q(env_W[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[336]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[80]),
         .Q(env_W[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.env_W_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[337]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[81]),
         .Q(env_W[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[132]),
+        .Q(err_EW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[142]),
+        .Q(err_EW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[143]),
+        .Q(err_EW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[133]),
+        .Q(err_EW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[134]),
+        .Q(err_EW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[135]),
+        .Q(err_EW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[136]),
+        .Q(err_EW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[137]),
+        .Q(err_EW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[138]),
+        .Q(err_EW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[139]),
+        .Q(err_EW[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[140]),
+        .Q(err_EW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_EW_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[141]),
+        .Q(err_EW[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[108]),
+        .Q(err_NE[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[118]),
+        .Q(err_NE[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[119]),
+        .Q(err_NE[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[109]),
+        .Q(err_NE[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[110]),
+        .Q(err_NE[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[111]),
+        .Q(err_NE[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[112]),
+        .Q(err_NE[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[113]),
+        .Q(err_NE[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[114]),
+        .Q(err_NE[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[115]),
+        .Q(err_NE[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[116]),
+        .Q(err_NE[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NE_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[117]),
+        .Q(err_NE[9]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[120]),
+        .Q(err_NW[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[130]),
+        .Q(err_NW[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[131]),
+        .Q(err_NW[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[121]),
+        .Q(err_NW[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[122]),
+        .Q(err_NW[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[123]),
+        .Q(err_NW[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[124]),
+        .Q(err_NW[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[125]),
+        .Q(err_NW[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[126]),
+        .Q(err_NW[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[127]),
+        .Q(err_NW[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[128]),
+        .Q(err_NW[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.err_NW_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[129]),
+        .Q(err_NW[9]),
         .R(1'b0));
   LUT1 #(
     .INIT(2'h1)) 
-    \comp_high.fifo_rd_delay[0]_i_1 
-       (.I0(fifo_rd_delay[0]),
-        .O(\comp_high.fifo_rd_delay_reg0 ));
+    \comp_high.fifo_doa_delay[0]_i_1 
+       (.I0(fifo_doa_delay[0]),
+        .O(\comp_high.fifo_doa_delay_reg0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \comp_high.fifo_rd_delay[1]_i_1 
-       (.I0(fifo_rd_delay[0]),
-        .I1(fifo_rd_delay[1]),
-        .O(\comp_high.fifo_rd_delay[1]_i_1_n_0 ));
+    \comp_high.fifo_doa_delay[1]_i_1 
+       (.I0(fifo_doa_delay[0]),
+        .I1(fifo_doa_delay[1]),
+        .O(\comp_high.fifo_doa_delay[1]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hE1)) 
-    \comp_high.fifo_rd_delay[2]_i_1 
-       (.I0(fifo_rd_delay[1]),
-        .I1(fifo_rd_delay[0]),
-        .I2(fifo_rd_delay[2]),
-        .O(\comp_high.fifo_rd_delay[2]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \comp_high.fifo_rd_delay[3]_i_1 
-       (.I0(fifo_rd_delay[1]),
-        .I1(fifo_rd_delay[0]),
-        .I2(fifo_rd_delay[3]),
-        .I3(fifo_rd_delay[2]),
-        .O(\comp_high.fifo_rd_delay[3]_i_1_n_0 ));
+    \comp_high.fifo_doa_delay[2]_i_1 
+       (.I0(fifo_doa_delay[1]),
+        .I1(fifo_doa_delay[0]),
+        .I2(fifo_doa_delay[2]),
+        .O(\comp_high.fifo_doa_delay[2]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hFE01)) 
-    \comp_high.fifo_rd_delay[3]_i_2 
-       (.I0(fifo_rd_delay[2]),
-        .I1(fifo_rd_delay[0]),
-        .I2(fifo_rd_delay[1]),
-        .I3(fifo_rd_delay[3]),
-        .O(\comp_high.fifo_rd_delay[3]_i_2_n_0 ));
+    \comp_high.fifo_doa_delay[3]_i_1 
+       (.I0(fifo_doa_delay[2]),
+        .I1(fifo_doa_delay[0]),
+        .I2(fifo_doa_delay[1]),
+        .I3(fifo_doa_delay[3]),
+        .O(\comp_high.fifo_doa_delay[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \comp_high.fifo_doa_delay[4]_i_1 
+       (.I0(fifo_doa_delay[0]),
+        .I1(fifo_doa_delay[3]),
+        .I2(fifo_doa_delay[4]),
+        .I3(fifo_doa_delay[1]),
+        .I4(fifo_doa_delay[2]),
+        .O(\comp_high.fifo_doa_delay[4]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFE0001)) 
+    \comp_high.fifo_doa_delay[4]_i_2 
+       (.I0(fifo_doa_delay[3]),
+        .I1(fifo_doa_delay[1]),
+        .I2(fifo_doa_delay[0]),
+        .I3(fifo_doa_delay[2]),
+        .I4(fifo_doa_delay[4]),
+        .O(\comp_high.fifo_doa_delay[4]_i_2_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \comp_high.fifo_rd_delay_reg[0] 
+  FDSE \comp_high.fifo_doa_delay_reg[0] 
        (.C(clk),
-        .CE(\comp_high.fifo_rd_delay[3]_i_1_n_0 ),
-        .D(\comp_high.fifo_rd_delay_reg0 ),
-        .Q(fifo_rd_delay[0]),
-        .S(fifo_empty));
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_doa_delay_reg0 ),
+        .Q(fifo_doa_delay[0]),
+        .S(fifo_doa_empty));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \comp_high.fifo_rd_delay_reg[1] 
+  FDSE \comp_high.fifo_doa_delay_reg[1] 
        (.C(clk),
-        .CE(\comp_high.fifo_rd_delay[3]_i_1_n_0 ),
-        .D(\comp_high.fifo_rd_delay[1]_i_1_n_0 ),
-        .Q(fifo_rd_delay[1]),
-        .S(fifo_empty));
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_doa_delay[1]_i_1_n_0 ),
+        .Q(fifo_doa_delay[1]),
+        .S(fifo_doa_empty));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \comp_high.fifo_rd_delay_reg[2] 
+  FDSE \comp_high.fifo_doa_delay_reg[2] 
        (.C(clk),
-        .CE(\comp_high.fifo_rd_delay[3]_i_1_n_0 ),
-        .D(\comp_high.fifo_rd_delay[2]_i_1_n_0 ),
-        .Q(fifo_rd_delay[2]),
-        .S(fifo_empty));
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_doa_delay[2]_i_1_n_0 ),
+        .Q(fifo_doa_delay[2]),
+        .S(fifo_doa_empty));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \comp_high.fifo_rd_delay_reg[3] 
+  FDSE \comp_high.fifo_doa_delay_reg[3] 
        (.C(clk),
-        .CE(\comp_high.fifo_rd_delay[3]_i_1_n_0 ),
-        .D(\comp_high.fifo_rd_delay[3]_i_2_n_0 ),
-        .Q(fifo_rd_delay[3]),
-        .R(fifo_empty));
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_doa_delay[3]_i_1_n_0 ),
+        .Q(fifo_doa_delay[3]),
+        .S(fifo_doa_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \comp_high.fifo_doa_delay_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_doa_delay[4]_i_2_n_0 ),
+        .Q(fifo_doa_delay[4]),
+        .S(fifo_doa_empty));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \comp_high.fifo_sample_delay[0]_i_1 
+       (.I0(fifo_sample_delay[0]),
+        .O(\comp_high.fifo_sample_delay_reg0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \comp_high.fifo_sample_delay[1]_i_1 
+       (.I0(fifo_sample_delay[0]),
+        .I1(fifo_sample_delay[1]),
+        .O(\comp_high.fifo_sample_delay[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hE1)) 
+    \comp_high.fifo_sample_delay[2]_i_1 
+       (.I0(fifo_sample_delay[1]),
+        .I1(fifo_sample_delay[0]),
+        .I2(fifo_sample_delay[2]),
+        .O(\comp_high.fifo_sample_delay[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE01)) 
+    \comp_high.fifo_sample_delay[3]_i_1 
+       (.I0(fifo_sample_delay[2]),
+        .I1(fifo_sample_delay[0]),
+        .I2(fifo_sample_delay[1]),
+        .I3(fifo_sample_delay[3]),
+        .O(\comp_high.fifo_sample_delay[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFE0001)) 
+    \comp_high.fifo_sample_delay[4]_i_1 
+       (.I0(fifo_sample_delay[3]),
+        .I1(fifo_sample_delay[1]),
+        .I2(fifo_sample_delay[0]),
+        .I3(fifo_sample_delay[2]),
+        .I4(fifo_sample_delay[4]),
+        .O(\comp_high.fifo_sample_delay[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFE00000001)) 
+    \comp_high.fifo_sample_delay[5]_i_1 
+       (.I0(fifo_sample_delay[4]),
+        .I1(fifo_sample_delay[2]),
+        .I2(fifo_sample_delay[0]),
+        .I3(fifo_sample_delay[1]),
+        .I4(fifo_sample_delay[3]),
+        .I5(fifo_sample_delay[5]),
+        .O(\comp_high.fifo_sample_delay[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \comp_high.fifo_sample_delay[6]_i_1 
+       (.I0(\comp_high.fifo_sample_delay[8]_i_2_n_0 ),
+        .I1(fifo_sample_delay[6]),
+        .O(\comp_high.fifo_sample_delay[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hE1)) 
+    \comp_high.fifo_sample_delay[7]_i_1 
+       (.I0(fifo_sample_delay[6]),
+        .I1(\comp_high.fifo_sample_delay[8]_i_2_n_0 ),
+        .I2(fifo_sample_delay[7]),
+        .O(\comp_high.fifo_sample_delay[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE01)) 
+    \comp_high.fifo_sample_delay[8]_i_1 
+       (.I0(fifo_sample_delay[7]),
+        .I1(\comp_high.fifo_sample_delay[8]_i_2_n_0 ),
+        .I2(fifo_sample_delay[6]),
+        .I3(fifo_sample_delay[8]),
+        .O(\comp_high.fifo_sample_delay[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \comp_high.fifo_sample_delay[8]_i_2 
+       (.I0(fifo_sample_delay[4]),
+        .I1(fifo_sample_delay[2]),
+        .I2(fifo_sample_delay[0]),
+        .I3(fifo_sample_delay[1]),
+        .I4(fifo_sample_delay[3]),
+        .I5(fifo_sample_delay[5]),
+        .O(\comp_high.fifo_sample_delay[8]_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \comp_high.fifo_sample_delay_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay_reg0 ),
+        .Q(fifo_sample_delay[0]),
+        .S(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \comp_high.fifo_sample_delay_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[1]_i_1_n_0 ),
+        .Q(fifo_sample_delay[1]),
+        .S(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \comp_high.fifo_sample_delay_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[2]_i_1_n_0 ),
+        .Q(fifo_sample_delay[2]),
+        .S(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \comp_high.fifo_sample_delay_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[3]_i_1_n_0 ),
+        .Q(fifo_sample_delay[3]),
+        .S(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \comp_high.fifo_sample_delay_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[4]_i_1_n_0 ),
+        .Q(fifo_sample_delay[4]),
+        .S(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.fifo_sample_delay_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[5]_i_1_n_0 ),
+        .Q(fifo_sample_delay[5]),
+        .R(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.fifo_sample_delay_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[6]_i_1_n_0 ),
+        .Q(fifo_sample_delay[6]),
+        .R(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.fifo_sample_delay_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[7]_i_1_n_0 ),
+        .Q(fifo_sample_delay[7]),
+        .R(fifo_sample_empty));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.fifo_sample_delay_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.fifo_doa_delay[4]_i_1_n_0 ),
+        .D(\comp_high.fifo_sample_delay[8]_i_1_n_0 ),
+        .Q(fifo_sample_delay[8]),
+        .R(fifo_sample_empty));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[180]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[52]),
         .Q(phase_E[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[190]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[62]),
         .Q(phase_E[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[191]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[63]),
         .Q(phase_E[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[192]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[64]),
         .Q(phase_E[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[193]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[65]),
         .Q(phase_E[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[194]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[66]),
         .Q(phase_E[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[195]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[67]),
         .Q(phase_E[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[16] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[196]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[68]),
         .Q(phase_E[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[17] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[197]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[69]),
         .Q(phase_E[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[18] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[198]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[70]),
         .Q(phase_E[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[19] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[199]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[71]),
         .Q(phase_E[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[181]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[53]),
         .Q(phase_E[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[182]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[54]),
         .Q(phase_E[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[183]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[55]),
         .Q(phase_E[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[184]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[56]),
         .Q(phase_E[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[185]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[57]),
         .Q(phase_E[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[186]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[58]),
         .Q(phase_E[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[187]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[59]),
         .Q(phase_E[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[188]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[60]),
         .Q(phase_E[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[189]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[61]),
         .Q(phase_E[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[16]),
         .Q(phase_N[0]),
         .R(1'b0));
@@ -749,7 +1214,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[26]),
         .Q(phase_N[10]),
         .R(1'b0));
@@ -757,7 +1222,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[27]),
         .Q(phase_N[11]),
         .R(1'b0));
@@ -765,7 +1230,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[28]),
         .Q(phase_N[12]),
         .R(1'b0));
@@ -773,7 +1238,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[29]),
         .Q(phase_N[13]),
         .R(1'b0));
@@ -781,7 +1246,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[30]),
         .Q(phase_N[14]),
         .R(1'b0));
@@ -789,7 +1254,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[31]),
         .Q(phase_N[15]),
         .R(1'b0));
@@ -797,7 +1262,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[16] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[32]),
         .Q(phase_N[16]),
         .R(1'b0));
@@ -805,7 +1270,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[17] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[33]),
         .Q(phase_N[17]),
         .R(1'b0));
@@ -813,7 +1278,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[18] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[34]),
         .Q(phase_N[18]),
         .R(1'b0));
@@ -821,7 +1286,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[19] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[35]),
         .Q(phase_N[19]),
         .R(1'b0));
@@ -829,7 +1294,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[17]),
         .Q(phase_N[1]),
         .R(1'b0));
@@ -837,7 +1302,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[18]),
         .Q(phase_N[2]),
         .R(1'b0));
@@ -845,7 +1310,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[19]),
         .Q(phase_N[3]),
         .R(1'b0));
@@ -853,7 +1318,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[20]),
         .Q(phase_N[4]),
         .R(1'b0));
@@ -861,7 +1326,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[21]),
         .Q(phase_N[5]),
         .R(1'b0));
@@ -869,7 +1334,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[22]),
         .Q(phase_N[6]),
         .R(1'b0));
@@ -877,7 +1342,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[23]),
         .Q(phase_N[7]),
         .R(1'b0));
@@ -885,7 +1350,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[24]),
         .Q(phase_N[8]),
         .R(1'b0));
@@ -893,7 +1358,7 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_N_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
+        .CE(\comp_high.env_N_reg0 ),
         .D(doa_data[25]),
         .Q(phase_N[9]),
         .R(1'b0));
@@ -901,3308 +1366,627 @@ module ps_comp_high_0_0_comp_high
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[344]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[88]),
         .Q(phase_W[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[354]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[98]),
         .Q(phase_W[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[355]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[99]),
         .Q(phase_W[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[356]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[100]),
         .Q(phase_W[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[357]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[101]),
         .Q(phase_W[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[358]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[102]),
         .Q(phase_W[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[359]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[103]),
         .Q(phase_W[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[16] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[360]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[104]),
         .Q(phase_W[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[17] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[361]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[105]),
         .Q(phase_W[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[18] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[362]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[106]),
         .Q(phase_W[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[19] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[363]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[107]),
         .Q(phase_W[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[345]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[89]),
         .Q(phase_W[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[346]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[90]),
         .Q(phase_W[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[347]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[91]),
         .Q(phase_W[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[348]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[92]),
         .Q(phase_W[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[349]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[93]),
         .Q(phase_W[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[350]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[94]),
         .Q(phase_W[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[351]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[95]),
         .Q(phase_W[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[352]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[96]),
         .Q(phase_W[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_W_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[353]),
+        .CE(\comp_high.env_N_reg0 ),
+        .D(doa_data[97]),
         .Q(phase_W[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[200]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[128]),
         .Q(raw_E0[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[210]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[138]),
         .Q(raw_E0[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[211]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[139]),
         .Q(raw_E0[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[212]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[140]),
         .Q(raw_E0[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[213]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[141]),
         .Q(raw_E0[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[214]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[142]),
         .Q(raw_E0[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[215]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[143]),
         .Q(raw_E0[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[201]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[129]),
         .Q(raw_E0[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[202]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[130]),
         .Q(raw_E0[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[203]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[131]),
         .Q(raw_E0[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[204]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[132]),
         .Q(raw_E0[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[205]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[133]),
         .Q(raw_E0[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[206]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[134]),
         .Q(raw_E0[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[207]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[135]),
         .Q(raw_E0[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[208]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[136]),
         .Q(raw_E0[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_E0_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[209]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[137]),
         .Q(raw_E0[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[216]),
-        .Q(raw_E1[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[226]),
-        .Q(raw_E1[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[227]),
-        .Q(raw_E1[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[228]),
-        .Q(raw_E1[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[229]),
-        .Q(raw_E1[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[230]),
-        .Q(raw_E1[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[231]),
-        .Q(raw_E1[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[217]),
-        .Q(raw_E1[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[218]),
-        .Q(raw_E1[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[219]),
-        .Q(raw_E1[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[220]),
-        .Q(raw_E1[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[221]),
-        .Q(raw_E1[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[222]),
-        .Q(raw_E1[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[223]),
-        .Q(raw_E1[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[224]),
-        .Q(raw_E1[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E1_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[225]),
-        .Q(raw_E1[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[232]),
-        .Q(raw_E2[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[242]),
-        .Q(raw_E2[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[243]),
-        .Q(raw_E2[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[244]),
-        .Q(raw_E2[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[245]),
-        .Q(raw_E2[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[246]),
-        .Q(raw_E2[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[247]),
-        .Q(raw_E2[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[233]),
-        .Q(raw_E2[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[234]),
-        .Q(raw_E2[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[235]),
-        .Q(raw_E2[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[236]),
-        .Q(raw_E2[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[237]),
-        .Q(raw_E2[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[238]),
-        .Q(raw_E2[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[239]),
-        .Q(raw_E2[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[240]),
-        .Q(raw_E2[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E2_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[241]),
-        .Q(raw_E2[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[248]),
-        .Q(raw_E3[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[258]),
-        .Q(raw_E3[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[259]),
-        .Q(raw_E3[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[260]),
-        .Q(raw_E3[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[261]),
-        .Q(raw_E3[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[262]),
-        .Q(raw_E3[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[263]),
-        .Q(raw_E3[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[249]),
-        .Q(raw_E3[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[250]),
-        .Q(raw_E3[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[251]),
-        .Q(raw_E3[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[252]),
-        .Q(raw_E3[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[253]),
-        .Q(raw_E3[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[254]),
-        .Q(raw_E3[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[255]),
-        .Q(raw_E3[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[256]),
-        .Q(raw_E3[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E3_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[257]),
-        .Q(raw_E3[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[264]),
-        .Q(raw_E4[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[274]),
-        .Q(raw_E4[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[275]),
-        .Q(raw_E4[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[276]),
-        .Q(raw_E4[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[277]),
-        .Q(raw_E4[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[278]),
-        .Q(raw_E4[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[279]),
-        .Q(raw_E4[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[265]),
-        .Q(raw_E4[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[266]),
-        .Q(raw_E4[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[267]),
-        .Q(raw_E4[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[268]),
-        .Q(raw_E4[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[269]),
-        .Q(raw_E4[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[270]),
-        .Q(raw_E4[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[271]),
-        .Q(raw_E4[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[272]),
-        .Q(raw_E4[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E4_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[273]),
-        .Q(raw_E4[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[280]),
-        .Q(raw_E5[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[290]),
-        .Q(raw_E5[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[291]),
-        .Q(raw_E5[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[292]),
-        .Q(raw_E5[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[293]),
-        .Q(raw_E5[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[294]),
-        .Q(raw_E5[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[295]),
-        .Q(raw_E5[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[281]),
-        .Q(raw_E5[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[282]),
-        .Q(raw_E5[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[283]),
-        .Q(raw_E5[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[284]),
-        .Q(raw_E5[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[285]),
-        .Q(raw_E5[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[286]),
-        .Q(raw_E5[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[287]),
-        .Q(raw_E5[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[288]),
-        .Q(raw_E5[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E5_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[289]),
-        .Q(raw_E5[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[296]),
-        .Q(raw_E6[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[306]),
-        .Q(raw_E6[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[307]),
-        .Q(raw_E6[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[308]),
-        .Q(raw_E6[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[309]),
-        .Q(raw_E6[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[310]),
-        .Q(raw_E6[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[311]),
-        .Q(raw_E6[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[297]),
-        .Q(raw_E6[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[298]),
-        .Q(raw_E6[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[299]),
-        .Q(raw_E6[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[300]),
-        .Q(raw_E6[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[301]),
-        .Q(raw_E6[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[302]),
-        .Q(raw_E6[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[303]),
-        .Q(raw_E6[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[304]),
-        .Q(raw_E6[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E6_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[305]),
-        .Q(raw_E6[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[312]),
-        .Q(raw_E7[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[322]),
-        .Q(raw_E7[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[323]),
-        .Q(raw_E7[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[324]),
-        .Q(raw_E7[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[325]),
-        .Q(raw_E7[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[326]),
-        .Q(raw_E7[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[327]),
-        .Q(raw_E7[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[313]),
-        .Q(raw_E7[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[314]),
-        .Q(raw_E7[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[315]),
-        .Q(raw_E7[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[316]),
-        .Q(raw_E7[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[317]),
-        .Q(raw_E7[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[318]),
-        .Q(raw_E7[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[319]),
-        .Q(raw_E7[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[320]),
-        .Q(raw_E7[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_E7_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[321]),
-        .Q(raw_E7[9]),
-        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \comp_high.raw_N0[15]_i_1 
+       (.I0(sample_rd),
+        .I1(fifo_sample_empty),
+        .O(\comp_high.raw_N0_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[36]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[0]),
         .Q(raw_N0[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[46]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[10]),
         .Q(raw_N0[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[47]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[11]),
         .Q(raw_N0[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[48]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[12]),
         .Q(raw_N0[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[49]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[13]),
         .Q(raw_N0[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[50]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[14]),
         .Q(raw_N0[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[51]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[15]),
         .Q(raw_N0[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[37]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[1]),
         .Q(raw_N0[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[38]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[2]),
         .Q(raw_N0[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[39]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[3]),
         .Q(raw_N0[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[40]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[4]),
         .Q(raw_N0[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[41]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[5]),
         .Q(raw_N0[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[42]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[6]),
         .Q(raw_N0[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[43]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[7]),
         .Q(raw_N0[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[44]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[8]),
         .Q(raw_N0[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_N0_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[45]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[9]),
         .Q(raw_N0[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[52]),
-        .Q(raw_N1[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[62]),
-        .Q(raw_N1[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[63]),
-        .Q(raw_N1[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[64]),
-        .Q(raw_N1[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[65]),
-        .Q(raw_N1[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[66]),
-        .Q(raw_N1[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[67]),
-        .Q(raw_N1[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[53]),
-        .Q(raw_N1[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[54]),
-        .Q(raw_N1[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[55]),
-        .Q(raw_N1[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[56]),
-        .Q(raw_N1[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[57]),
-        .Q(raw_N1[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[58]),
-        .Q(raw_N1[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[59]),
-        .Q(raw_N1[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[60]),
-        .Q(raw_N1[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N1_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[61]),
-        .Q(raw_N1[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[68]),
-        .Q(raw_N2[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[78]),
-        .Q(raw_N2[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[79]),
-        .Q(raw_N2[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[80]),
-        .Q(raw_N2[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[81]),
-        .Q(raw_N2[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[82]),
-        .Q(raw_N2[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[83]),
-        .Q(raw_N2[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[69]),
-        .Q(raw_N2[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[70]),
-        .Q(raw_N2[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[71]),
-        .Q(raw_N2[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[72]),
-        .Q(raw_N2[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[73]),
-        .Q(raw_N2[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[74]),
-        .Q(raw_N2[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[75]),
-        .Q(raw_N2[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[76]),
-        .Q(raw_N2[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N2_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[77]),
-        .Q(raw_N2[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[84]),
-        .Q(raw_N3[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[94]),
-        .Q(raw_N3[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[95]),
-        .Q(raw_N3[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[96]),
-        .Q(raw_N3[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[97]),
-        .Q(raw_N3[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[98]),
-        .Q(raw_N3[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[99]),
-        .Q(raw_N3[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[85]),
-        .Q(raw_N3[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[86]),
-        .Q(raw_N3[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[87]),
-        .Q(raw_N3[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[88]),
-        .Q(raw_N3[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[89]),
-        .Q(raw_N3[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[90]),
-        .Q(raw_N3[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[91]),
-        .Q(raw_N3[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[92]),
-        .Q(raw_N3[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N3_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[93]),
-        .Q(raw_N3[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[100]),
-        .Q(raw_N4[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[110]),
-        .Q(raw_N4[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[111]),
-        .Q(raw_N4[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[112]),
-        .Q(raw_N4[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[113]),
-        .Q(raw_N4[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[114]),
-        .Q(raw_N4[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[115]),
-        .Q(raw_N4[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[101]),
-        .Q(raw_N4[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[102]),
-        .Q(raw_N4[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[103]),
-        .Q(raw_N4[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[104]),
-        .Q(raw_N4[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[105]),
-        .Q(raw_N4[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[106]),
-        .Q(raw_N4[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[107]),
-        .Q(raw_N4[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[108]),
-        .Q(raw_N4[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N4_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[109]),
-        .Q(raw_N4[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[116]),
-        .Q(raw_N5[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[126]),
-        .Q(raw_N5[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[127]),
-        .Q(raw_N5[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[128]),
-        .Q(raw_N5[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[129]),
-        .Q(raw_N5[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[130]),
-        .Q(raw_N5[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[131]),
-        .Q(raw_N5[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[117]),
-        .Q(raw_N5[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[118]),
-        .Q(raw_N5[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[119]),
-        .Q(raw_N5[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[120]),
-        .Q(raw_N5[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[121]),
-        .Q(raw_N5[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[122]),
-        .Q(raw_N5[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[123]),
-        .Q(raw_N5[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[124]),
-        .Q(raw_N5[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N5_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[125]),
-        .Q(raw_N5[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[132]),
-        .Q(raw_N6[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[142]),
-        .Q(raw_N6[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[143]),
-        .Q(raw_N6[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[144]),
-        .Q(raw_N6[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[145]),
-        .Q(raw_N6[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[146]),
-        .Q(raw_N6[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[147]),
-        .Q(raw_N6[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[133]),
-        .Q(raw_N6[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[134]),
-        .Q(raw_N6[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[135]),
-        .Q(raw_N6[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[136]),
-        .Q(raw_N6[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[137]),
-        .Q(raw_N6[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[138]),
-        .Q(raw_N6[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[139]),
-        .Q(raw_N6[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[140]),
-        .Q(raw_N6[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N6_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[141]),
-        .Q(raw_N6[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[148]),
-        .Q(raw_N7[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[158]),
-        .Q(raw_N7[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[159]),
-        .Q(raw_N7[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[160]),
-        .Q(raw_N7[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[161]),
-        .Q(raw_N7[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[162]),
-        .Q(raw_N7[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[163]),
-        .Q(raw_N7[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[149]),
-        .Q(raw_N7[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[150]),
-        .Q(raw_N7[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[151]),
-        .Q(raw_N7[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[152]),
-        .Q(raw_N7[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[153]),
-        .Q(raw_N7[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[154]),
-        .Q(raw_N7[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[155]),
-        .Q(raw_N7[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[156]),
-        .Q(raw_N7[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_N7_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[157]),
-        .Q(raw_N7[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[0] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[364]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[256]),
         .Q(raw_W0[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[10] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[374]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[266]),
         .Q(raw_W0[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[11] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[375]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[267]),
         .Q(raw_W0[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[12] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[376]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[268]),
         .Q(raw_W0[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[13] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[377]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[269]),
         .Q(raw_W0[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[14] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[378]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[270]),
         .Q(raw_W0[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[15] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[379]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[271]),
         .Q(raw_W0[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[1] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[365]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[257]),
         .Q(raw_W0[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[2] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[366]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[258]),
         .Q(raw_W0[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[3] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[367]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[259]),
         .Q(raw_W0[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[4] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[368]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[260]),
         .Q(raw_W0[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[5] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[369]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[261]),
         .Q(raw_W0[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[6] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[370]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[262]),
         .Q(raw_W0[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[7] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[371]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[263]),
         .Q(raw_W0[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[8] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[372]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[264]),
         .Q(raw_W0[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.raw_W0_reg[9] 
        (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[373]),
+        .CE(\comp_high.raw_N0_reg0 ),
+        .D(sample_data[265]),
         .Q(raw_W0[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[380]),
-        .Q(raw_W1[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[390]),
-        .Q(raw_W1[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[391]),
-        .Q(raw_W1[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[392]),
-        .Q(raw_W1[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[393]),
-        .Q(raw_W1[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[394]),
-        .Q(raw_W1[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[395]),
-        .Q(raw_W1[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[381]),
-        .Q(raw_W1[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[382]),
-        .Q(raw_W1[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[383]),
-        .Q(raw_W1[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[384]),
-        .Q(raw_W1[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[385]),
-        .Q(raw_W1[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[386]),
-        .Q(raw_W1[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[387]),
-        .Q(raw_W1[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[388]),
-        .Q(raw_W1[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W1_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[389]),
-        .Q(raw_W1[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[396]),
-        .Q(raw_W2[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[406]),
-        .Q(raw_W2[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[407]),
-        .Q(raw_W2[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[408]),
-        .Q(raw_W2[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[409]),
-        .Q(raw_W2[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[410]),
-        .Q(raw_W2[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[411]),
-        .Q(raw_W2[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[397]),
-        .Q(raw_W2[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[398]),
-        .Q(raw_W2[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[399]),
-        .Q(raw_W2[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[400]),
-        .Q(raw_W2[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[401]),
-        .Q(raw_W2[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[402]),
-        .Q(raw_W2[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[403]),
-        .Q(raw_W2[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[404]),
-        .Q(raw_W2[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W2_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[405]),
-        .Q(raw_W2[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[412]),
-        .Q(raw_W3[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[422]),
-        .Q(raw_W3[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[423]),
-        .Q(raw_W3[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[424]),
-        .Q(raw_W3[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[425]),
-        .Q(raw_W3[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[426]),
-        .Q(raw_W3[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[427]),
-        .Q(raw_W3[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[413]),
-        .Q(raw_W3[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[414]),
-        .Q(raw_W3[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[415]),
-        .Q(raw_W3[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[416]),
-        .Q(raw_W3[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[417]),
-        .Q(raw_W3[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[418]),
-        .Q(raw_W3[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[419]),
-        .Q(raw_W3[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[420]),
-        .Q(raw_W3[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W3_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[421]),
-        .Q(raw_W3[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[428]),
-        .Q(raw_W4[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[438]),
-        .Q(raw_W4[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[439]),
-        .Q(raw_W4[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[440]),
-        .Q(raw_W4[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[441]),
-        .Q(raw_W4[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[442]),
-        .Q(raw_W4[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[443]),
-        .Q(raw_W4[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[429]),
-        .Q(raw_W4[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[430]),
-        .Q(raw_W4[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[431]),
-        .Q(raw_W4[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[432]),
-        .Q(raw_W4[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[433]),
-        .Q(raw_W4[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[434]),
-        .Q(raw_W4[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[435]),
-        .Q(raw_W4[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[436]),
-        .Q(raw_W4[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W4_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[437]),
-        .Q(raw_W4[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[444]),
-        .Q(raw_W5[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[454]),
-        .Q(raw_W5[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[455]),
-        .Q(raw_W5[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[456]),
-        .Q(raw_W5[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[457]),
-        .Q(raw_W5[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[458]),
-        .Q(raw_W5[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[459]),
-        .Q(raw_W5[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[445]),
-        .Q(raw_W5[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[446]),
-        .Q(raw_W5[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[447]),
-        .Q(raw_W5[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[448]),
-        .Q(raw_W5[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[449]),
-        .Q(raw_W5[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[450]),
-        .Q(raw_W5[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[451]),
-        .Q(raw_W5[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[452]),
-        .Q(raw_W5[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W5_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[453]),
-        .Q(raw_W5[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[460]),
-        .Q(raw_W6[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[470]),
-        .Q(raw_W6[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[471]),
-        .Q(raw_W6[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[472]),
-        .Q(raw_W6[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[473]),
-        .Q(raw_W6[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[474]),
-        .Q(raw_W6[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[475]),
-        .Q(raw_W6[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[461]),
-        .Q(raw_W6[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[462]),
-        .Q(raw_W6[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[463]),
-        .Q(raw_W6[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[464]),
-        .Q(raw_W6[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[465]),
-        .Q(raw_W6[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[466]),
-        .Q(raw_W6[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[467]),
-        .Q(raw_W6[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[468]),
-        .Q(raw_W6[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W6_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[469]),
-        .Q(raw_W6[9]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[0] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[476]),
-        .Q(raw_W7[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[10] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[486]),
-        .Q(raw_W7[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[11] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[487]),
-        .Q(raw_W7[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[12] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[488]),
-        .Q(raw_W7[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[13] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[489]),
-        .Q(raw_W7[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[14] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[490]),
-        .Q(raw_W7[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[15] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[491]),
-        .Q(raw_W7[15]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[1] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[477]),
-        .Q(raw_W7[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[2] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[478]),
-        .Q(raw_W7[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[3] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[479]),
-        .Q(raw_W7[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[4] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[480]),
-        .Q(raw_W7[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[5] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[481]),
-        .Q(raw_W7[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[6] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[482]),
-        .Q(raw_W7[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[7] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[483]),
-        .Q(raw_W7[7]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[8] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[484]),
-        .Q(raw_W7[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_high.raw_W7_reg[9] 
-       (.C(clk),
-        .CE(\comp_high.env_N[15]_i_1_n_0 ),
-        .D(doa_data[485]),
-        .Q(raw_W7[9]),
-        .R(1'b0));
-  (* CHECK_LICENSE_TYPE = "fifo_comp_high,fifo_generator_v13_2_13,{}" *) 
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
+    \comp_high.sample_rd_i_1 
+       (.I0(fifo_doa_delay[0]),
+        .I1(fifo_doa_delay[3]),
+        .I2(fifo_doa_delay[4]),
+        .I3(fifo_doa_delay[1]),
+        .I4(fifo_doa_delay[2]),
+        .I5(fifo_sample_empty),
+        .O(\comp_high.sample_rd_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_high.sample_rd_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_high.sample_rd_i_1_n_0 ),
+        .Q(sample_rd),
+        .R(1'b0));
+  (* CHECK_LICENSE_TYPE = "fifo_doa,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-  ps_comp_high_0_0_fifo_comp_high fifo_comp_i
-       (.din(fifo_data),
+  ps_comp_high_0_0_fifo_doa fifo_doa_i
+       (.din(fifo_doa_data),
         .dout(doa_data),
-        .empty(fifo_empty),
-        .full(NLW_fifo_comp_i_full_UNCONNECTED),
+        .empty(fifo_doa_empty),
+        .full(NLW_fifo_doa_i_full_UNCONNECTED),
         .rd_clk(clk),
         .rd_en(doa_rd),
-        .rd_rst_busy(NLW_fifo_comp_i_rd_rst_busy_UNCONNECTED),
+        .rd_rst_busy(NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED),
         .rst(reset),
         .wr_clk(fifo_clk),
         .wr_en(fifo_wr),
-        .wr_rst_busy(NLW_fifo_comp_i_wr_rst_busy_UNCONNECTED));
-  (* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) 
+        .wr_rst_busy(NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED));
+  (* CHECK_LICENSE_TYPE = "fifo_raw_high,fifo_generator_v13_2_13,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+  ps_comp_high_0_0_fifo_raw_high fifo_raw_i
+       (.din(fifo_sample_data),
+        .dout({NLW_fifo_raw_i_dout_UNCONNECTED[383:272],sample_data}),
+        .empty(fifo_sample_empty),
+        .full(NLW_fifo_raw_i_full_UNCONNECTED),
+        .rd_clk(clk),
+        .rd_en(sample_rd),
+        .rd_rst_busy(NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED),
+        .rst(reset),
+        .wr_clk(fifo_clk),
+        .wr_en(fifo_wr),
+        .wr_rst_busy(NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED));
+  (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_comp_high_0_0_ila_2 ila_E
+  ps_comp_high_0_0_ila_3 ila_i
        (.clk(clk),
-        .probe0(fifo_empty),
-        .probe1(doa_rd),
-        .probe10(raw_E5),
-        .probe11(raw_E6),
-        .probe12(raw_E7),
-        .probe2(fifo_rd_delay),
-        .probe3(env_E),
-        .probe4(phase_E),
-        .probe5(raw_E0),
-        .probe6(raw_E1),
-        .probe7(raw_E2),
-        .probe8(raw_E3),
-        .probe9(raw_E4));
-  (* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_comp_high_0_0_ila_2 ila_N
-       (.clk(clk),
-        .probe0(fifo_empty),
-        .probe1(doa_rd),
-        .probe10(raw_N5),
-        .probe11(raw_N6),
-        .probe12(raw_N7),
-        .probe2(fifo_rd_delay),
-        .probe3(env_N),
-        .probe4(phase_N),
-        .probe5(raw_N0),
-        .probe6(raw_N1),
-        .probe7(raw_N2),
-        .probe8(raw_N3),
-        .probe9(raw_N4));
-  (* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
-  ps_comp_high_0_0_ila_2_HD1 ila_W
-       (.clk(clk),
-        .probe0(fifo_empty),
-        .probe1(doa_rd),
-        .probe10(raw_W5),
-        .probe11(raw_W6),
-        .probe12(raw_W7),
-        .probe2(fifo_rd_delay),
-        .probe3(env_W),
-        .probe4(phase_W),
-        .probe5(raw_W0),
-        .probe6(raw_W1),
-        .probe7(raw_W2),
-        .probe8(raw_W3),
-        .probe9(raw_W4));
+        .probe0(fifo_sample_empty),
+        .probe1(fifo_doa_empty),
+        .probe10(env_W),
+        .probe11(phase_W),
+        .probe12(err_NE),
+        .probe13(err_NW),
+        .probe14(err_EW),
+        .probe15(raw_N0),
+        .probe16(raw_E0),
+        .probe17(raw_W0),
+        .probe2(sample_rd),
+        .probe3(doa_rd),
+        .probe4(fifo_doa_delay),
+        .probe5(fifo_sample_delay),
+        .probe6(env_N),
+        .probe7(phase_N),
+        .probe8(env_E),
+        .probe9(phase_E));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "fifo_comp_high,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_comp_high" *) 
+(* CHECK_LICENSE_TYPE = "fifo_doa,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa" *) 
 (* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-module ps_comp_high_0_0_fifo_comp_high
+module ps_comp_high_0_0_fifo_doa
    (rst,
     wr_clk,
     rd_clk,
@@ -4219,10 +2003,10 @@ module ps_comp_high_0_0_fifo_comp_high
   (* syn_isclock = "1" *) input wr_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
   (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [491:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [143:0]din;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [491:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [143:0]dout;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
   output wr_rst_busy;
@@ -4231,9 +2015,40 @@ module ps_comp_high_0_0_fifo_comp_high
 
 endmodule
 
-(* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_2" *) 
+(* CHECK_LICENSE_TYPE = "fifo_raw_high,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_raw_high" *) 
+(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+module ps_comp_high_0_0_fifo_raw_high
+   (rst,
+    wr_clk,
+    rd_clk,
+    din,
+    wr_en,
+    rd_en,
+    dout,
+    full,
+    empty,
+    wr_rst_busy,
+    rd_rst_busy);
+  input rst;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input wr_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input rd_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [383:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [383:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
+  output wr_rst_busy;
+  output rd_rst_busy;
+
+
+endmodule
+
+(* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_3" *) 
 (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
-module ps_comp_high_0_0_ila_2
+module ps_comp_high_0_0_ila_3
    (clk,
     probe0,
     probe1,
@@ -4247,56 +2062,31 @@ module ps_comp_high_0_0_ila_2
     probe9,
     probe10,
     probe11,
-    probe12);
-  (* syn_isclock = "1" *) input clk;
-  input [0:0]probe0;
-  input [0:0]probe1;
-  input [3:0]probe2;
-  input [15:0]probe3;
-  input [19:0]probe4;
-  input [15:0]probe5;
-  input [15:0]probe6;
-  input [15:0]probe7;
-  input [15:0]probe8;
-  input [15:0]probe9;
-  input [15:0]probe10;
-  input [15:0]probe11;
-  input [15:0]probe12;
-
-
-endmodule
-
-(* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_2" *) 
-(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
-module ps_comp_high_0_0_ila_2_HD1
-   (clk,
-    probe0,
-    probe1,
-    probe10,
-    probe11,
     probe12,
-    probe2,
-    probe3,
-    probe4,
-    probe5,
-    probe6,
-    probe7,
-    probe8,
-    probe9);
+    probe13,
+    probe14,
+    probe15,
+    probe16,
+    probe17);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
-  input [15:0]probe10;
-  input [15:0]probe11;
-  input [15:0]probe12;
-  input [3:0]probe2;
-  input [15:0]probe3;
-  input [19:0]probe4;
-  input [15:0]probe5;
+  input [0:0]probe2;
+  input [0:0]probe3;
+  input [4:0]probe4;
+  input [8:0]probe5;
   input [15:0]probe6;
-  input [15:0]probe7;
+  input [19:0]probe7;
   input [15:0]probe8;
-  input [15:0]probe9;
+  input [19:0]probe9;
+  input [15:0]probe10;
+  input [19:0]probe11;
+  input [11:0]probe12;
+  input [11:0]probe13;
+  input [11:0]probe14;
+  input [15:0]probe15;
+  input [15:0]probe16;
+  input [15:0]probe17;
 
 
 endmodule

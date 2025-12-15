@@ -81,7 +81,8 @@ module phase_err(
     reg [18:0] raw_err_NE;
     reg [18:0] raw_err_NW;
     reg [18:0] raw_err_EW;
-    
+
+/*    
 ila_7 ila_i (
 		.clk(clk),                     // input wire clk
 		.probe0(valid),                // input wire [0:0]  probe3
@@ -108,6 +109,7 @@ ila_7 ila_i (
 		.probe21(err_NW),              // input wire [11:0]  probe3
 		.probe22(err_EW)               // input wire [11:0]  probe3
     );
+*/
     
 generate
   begin : phase_err
@@ -167,18 +169,7 @@ generate
 
     always @(posedge clk) 
     begin
-        valid_3 <= valid_2;
-        env_N_3 <= env_N_2;
-        env_E_3 <= env_E_2;
-        env_W_3 <= env_W_2;
-        phase_N_3 <= phase_N_2;
-        phase_E_3 <= phase_E_2;
-        phase_W_3 <= phase_W_2;
-    end
-
-    always @(posedge clk) 
-    begin
-        if (valid)
+        if (valid_2)
         begin
             prev_NE <= diff_NE;
             prev_NW <= diff_NW;
@@ -190,6 +181,17 @@ generate
             prev_NW <= 0;
             prev_EW <= 0;
         end
+    end
+
+    always @(posedge clk) 
+    begin
+        valid_3 <= valid_2;
+        env_N_3 <= env_N_2;
+        env_E_3 <= env_E_2;
+        env_W_3 <= env_W_2;
+        phase_N_3 <= phase_N_2;
+        phase_E_3 <= phase_E_2;
+        phase_W_3 <= phase_W_2;
     end
 
     always @(posedge clk) 

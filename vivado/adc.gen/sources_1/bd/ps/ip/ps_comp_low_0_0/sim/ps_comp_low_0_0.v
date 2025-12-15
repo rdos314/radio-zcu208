@@ -57,7 +57,8 @@
 module ps_comp_low_0_0 (
   fifo_clk,
   fifo_wr,
-  fifo_data,
+  fifo_sample_data,
+  fifo_doa_data,
   clk,
   reset
 );
@@ -67,7 +68,8 @@ module ps_comp_low_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
 input wire fifo_wr;
-input wire [299 : 0] fifo_data;
+input wire [191 : 0] fifo_sample_data;
+input wire [143 : 0] fifo_doa_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
@@ -80,7 +82,8 @@ input wire reset;
   comp_low inst (
     .fifo_clk(fifo_clk),
     .fifo_wr(fifo_wr),
-    .fifo_data(fifo_data),
+    .fifo_sample_data(fifo_sample_data),
+    .fifo_doa_data(fifo_doa_data),
     .clk(clk),
     .reset(reset)
   );

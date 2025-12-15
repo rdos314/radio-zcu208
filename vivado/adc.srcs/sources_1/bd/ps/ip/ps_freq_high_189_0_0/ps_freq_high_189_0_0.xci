@@ -44,7 +44,8 @@
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
         "doa_wr": [ { "direction": "out" } ],
-        "doa_data": [ { "direction": "out", "size_left": "491", "size_right": "0" } ]
+        "sample_data": [ { "direction": "out", "size_left": "383", "size_right": "0" } ],
+        "doa_data": [ { "direction": "out", "size_left": "143", "size_right": "0" } ]
       },
       "interfaces": {
         "reset": {

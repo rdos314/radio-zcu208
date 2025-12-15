@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Dec 14 18:28:59 2025
+-- Date        : Mon Dec 15 22:26:09 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_high_189_0_0/ps_freq_high_189_0_0_stub.vhdl
@@ -23,7 +23,8 @@ entity ps_freq_high_189_0_0 is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     doa_wr : out STD_LOGIC;
-    doa_data : out STD_LOGIC_VECTOR ( 491 downto 0 )
+    sample_data : out STD_LOGIC_VECTOR ( 383 downto 0 );
+    doa_data : out STD_LOGIC_VECTOR ( 143 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -40,7 +41,7 @@ architecture stub of ps_freq_high_189_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "fifo_clk,raw_wr,raw_data[383:0],freq_wr,freq_data[95:0],clk,reset,doa_wr,doa_data[491:0]";
+  attribute black_box_pad_pin of stub : architecture is "fifo_clk,raw_wr,raw_data[383:0],freq_wr,freq_data[95:0],clk,reset,doa_wr,sample_data[383:0],doa_data[143:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

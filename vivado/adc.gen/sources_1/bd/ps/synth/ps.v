@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sun Dec 14 18:28:10 2025
+//Date        : Mon Dec 15 22:25:09 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -188,10 +188,12 @@ module ps
   wire [191:0]deci_low_raw_data;
   wire deci_low_raw_wr;
   wire deci_low_sim_active;
-  wire [491:0]freq_high_189_0_doa_data;
+  wire [143:0]freq_high_189_0_doa_data;
   wire freq_high_189_0_doa_wr;
-  wire [299:0]freq_low_46_0_doa_data;
+  wire [383:0]freq_high_189_0_sample_data;
+  wire [143:0]freq_low_46_0_doa_data;
   wire freq_low_46_0_doa_wr;
+  wire [191:0]freq_low_46_0_sample_data;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
   wire mts_0_comp0_reset;
@@ -520,13 +522,15 @@ module ps
   ps_comp_high_0_0 comp_high
        (.clk(mts_0_comp1_clk),
         .fifo_clk(mts_0_freq1_clk),
-        .fifo_data(freq_high_189_0_doa_data),
+        .fifo_doa_data(freq_high_189_0_doa_data),
+        .fifo_sample_data(freq_high_189_0_sample_data),
         .fifo_wr(freq_high_189_0_doa_wr),
         .reset(mts_0_comp1_reset));
   ps_comp_low_0_0 comp_low
        (.clk(mts_0_comp0_clk),
         .fifo_clk(mts_0_freq0_clk),
-        .fifo_data(freq_low_46_0_doa_data),
+        .fifo_doa_data(freq_low_46_0_doa_data),
+        .fifo_sample_data(freq_low_46_0_sample_data),
         .fifo_wr(freq_low_46_0_doa_wr),
         .reset(mts_0_comp0_reset));
   ps_deci_high_0_0 deci_high
@@ -580,7 +584,8 @@ module ps
         .freq_wr(deci_high_freq_wr),
         .raw_data(deci_high_raw_data),
         .raw_wr(deci_high_raw_wr),
-        .reset(mts_0_freq1_reset));
+        .reset(mts_0_freq1_reset),
+        .sample_data(freq_high_189_0_sample_data));
   ps_freq_low_46_0_0 freq_low_46_0
        (.clk(mts_0_freq0_clk),
         .doa_data(freq_low_46_0_doa_data),
@@ -590,7 +595,8 @@ module ps
         .freq_wr(deci_low_freq_wr),
         .raw_data(deci_low_raw_data),
         .raw_wr(deci_low_raw_wr),
-        .reset(mts_0_freq0_reset));
+        .reset(mts_0_freq0_reset),
+        .sample_data(freq_low_46_0_sample_data));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
