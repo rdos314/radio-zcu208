@@ -59,6 +59,10 @@ module ps_comp_high_0_0 (
   fifo_wr,
   fifo_sample_data,
   fifo_doa_data,
+  config_clk,
+  config_wr,
+  config_adr,
+  config_data,
   clk,
   reset
 );
@@ -70,6 +74,13 @@ input wire fifo_clk;
 input wire fifo_wr;
 input wire [383 : 0] fifo_sample_data;
 input wire [143 : 0] fifo_doa_data;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+input wire config_clk;
+input wire config_wr;
+input wire [7 : 0] config_adr;
+input wire [31 : 0] config_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *)
@@ -84,6 +95,10 @@ input wire reset;
     .fifo_wr(fifo_wr),
     .fifo_sample_data(fifo_sample_data),
     .fifo_doa_data(fifo_doa_data),
+    .config_clk(config_clk),
+    .config_wr(config_wr),
+    .config_adr(config_adr),
+    .config_data(config_data),
     .clk(clk),
     .reset(reset)
   );

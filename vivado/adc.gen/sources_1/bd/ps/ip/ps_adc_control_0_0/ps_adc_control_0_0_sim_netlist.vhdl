@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Dec 14 15:59:05 2025
+-- Date        : Wed Dec 17 22:42:29 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_adc_control_0_0/ps_adc_control_0_0_sim_netlist.vhdl
@@ -30,6 +30,10 @@ entity ps_adc_control_0_0_adc_control is
     sim_start : out STD_LOGIC;
     adc_active : in STD_LOGIC;
     sim_active : in STD_LOGIC;
+    config_low_wr : out STD_LOGIC;
+    config_high_wr : out STD_LOGIC;
+    config_adr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    config_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
     sim_low_wr : out STD_LOGIC;
     sim_high_wr : out STD_LOGIC;
     sim_channel : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -55,29 +59,39 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
     probe7 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe17 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe18 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 10 downto 0 )
+    probe21 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe26 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe27 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe28 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe29 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe30 : in STD_LOGIC_VECTOR ( 10 downto 0 )
   );
   end component ps_adc_control_0_0_ila_4;
   signal \adc_control.adc_start_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.adc_stop_i_1_n_0\ : STD_LOGIC;
-  signal \adc_control.adc_stop_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.address[0]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.address[10]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.address[10]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.address[10]_i_3_n_0\ : STD_LOGIC;
   signal \adc_control.address[1]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.address[1]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.address[1]_i_3_n_0\ : STD_LOGIC;
+  signal \adc_control.address[1]_i_4_n_0\ : STD_LOGIC;
   signal \adc_control.address[2]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.address[3]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.address[4]_i_1_n_0\ : STD_LOGIC;
@@ -90,7 +104,7 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \adc_control.cdata[31]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.cdata[31]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_10_n_0\ : STD_LOGIC;
-  signal \adc_control.cmd_start_i_12_n_0\ : STD_LOGIC;
+  signal \adc_control.cmd_start_i_11_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_13_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_14_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_15_n_0\ : STD_LOGIC;
@@ -102,6 +116,7 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \adc_control.cmd_start_i_20_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_21_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_22_n_0\ : STD_LOGIC;
+  signal \adc_control.cmd_start_i_23_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_3_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_4_n_0\ : STD_LOGIC;
@@ -109,22 +124,88 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \adc_control.cmd_start_i_7_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_8_n_0\ : STD_LOGIC;
   signal \adc_control.cmd_start_i_9_n_0\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_0\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_1\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_2\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_3\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_4\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_5\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_6\ : STD_LOGIC;
-  signal \adc_control.cmd_start_reg_i_11_n_7\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_0\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_1\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_2\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_3\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_4\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_5\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_6\ : STD_LOGIC;
+  signal \adc_control.cmd_start_reg_i_12_n_7\ : STD_LOGIC;
   signal \adc_control.cmd_start_reg_i_5_n_5\ : STD_LOGIC;
   signal \adc_control.cmd_start_reg_i_5_n_6\ : STD_LOGIC;
   signal \adc_control.cmd_start_reg_i_5_n_7\ : STD_LOGIC;
+  signal \adc_control.config_adr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[7]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_adr[7]_i_3_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[0]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[10]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[11]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[12]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[13]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[14]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[15]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[16]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[17]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[18]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[19]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[1]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[20]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[21]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[22]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[23]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[24]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[25]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[26]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[27]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[28]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[29]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[2]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[30]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[31]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[31]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[3]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[4]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[5]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[6]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[7]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[8]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_data[9]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_high_wr_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[0]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[0]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[0]_i_3_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[1]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[2]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[2]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[3]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[3]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[4]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[5]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[6]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[6]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[7]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[7]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[7]_i_3_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_count[7]_i_4_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_done_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_done_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_pend_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.config_wr_start_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[0]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[1]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[2]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[3]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.data_out[3]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[4]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.data_out[4]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[5]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[5]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.data_out[6]_i_1_n_0\ : STD_LOGIC;
@@ -203,19 +284,27 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \adc_control.sim_low_wr_i_3_n_0\ : STD_LOGIC;
   signal \adc_control.sim_low_wr_i_4_n_0\ : STD_LOGIC;
   signal \adc_control.sim_start_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[0]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[10]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[10]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[10]_i_4_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[10]_i_5_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[10]_i_6_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[10]_i_7_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[1]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[2]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[2]_i_2_n_0\ : STD_LOGIC;
-  signal \adc_control.sim_wr_count[3]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[3]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[4]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[4]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[5]_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[6]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[6]_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_10_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_11_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_12_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_13_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[7]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_3_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_4_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_5_n_0\ : STD_LOGIC;
@@ -223,7 +312,9 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \adc_control.sim_wr_count[7]_i_7_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_8_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[7]_i_9_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[8]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count[8]_i_2_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_count[9]_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_count_reg[10]_i_3_n_6\ : STD_LOGIC;
   signal \adc_control.sim_wr_count_reg[10]_i_3_n_7\ : STD_LOGIC;
   signal \adc_control.sim_wr_count_reg[7]_i_2_n_0\ : STD_LOGIC;
@@ -237,8 +328,9 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   signal \adc_control.sim_wr_done_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_pend_i_1_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_pend_i_2_n_0\ : STD_LOGIC;
-  signal \adc_control.sim_wr_start_i_1_n_0\ : STD_LOGIC;
+  signal \adc_control.sim_wr_start_i_2_n_0\ : STD_LOGIC;
   signal \adc_control.sim_wr_start_i_3_n_0\ : STD_LOGIC;
+  signal \adc_control.wr_en_reg0\ : STD_LOGIC;
   signal \^adc_start\ : STD_LOGIC;
   attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of adc_start : signal is std.standard.true;
@@ -251,10 +343,28 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   attribute MARK_DEBUG of cdata : signal is std.standard.true;
   signal cmd_start : STD_LOGIC;
   attribute MARK_DEBUG of cmd_start : signal is std.standard.true;
+  signal \^config_adr\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute MARK_DEBUG of \^config_adr\ : signal is std.standard.true;
+  signal \^config_data\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute MARK_DEBUG of \^config_data\ : signal is std.standard.true;
+  signal \^config_high_wr\ : STD_LOGIC;
+  attribute MARK_DEBUG of config_high_wr : signal is std.standard.true;
+  signal \^config_low_wr\ : STD_LOGIC;
+  attribute MARK_DEBUG of config_low_wr : signal is std.standard.true;
+  signal config_low_wr7_out : STD_LOGIC;
+  signal config_start : STD_LOGIC;
+  attribute MARK_DEBUG of config_start : signal is std.standard.true;
+  signal config_wr_count : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute MARK_DEBUG of config_wr_count : signal is std.standard.true;
+  signal config_wr_done : STD_LOGIC;
+  attribute MARK_DEBUG of config_wr_done : signal is std.standard.true;
+  signal config_wr_pend : STD_LOGIC;
+  attribute MARK_DEBUG of config_wr_pend : signal is std.standard.true;
+  signal config_wr_start : STD_LOGIC;
+  attribute MARK_DEBUG of config_wr_start : signal is std.standard.true;
   signal \^data_out\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of \^data_out\ : signal is std.standard.true;
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 10 downto 0 );
-  signal p_1_in : STD_LOGIC;
+  signal \p_0_in__0\ : STD_LOGIC;
   signal padr : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute MARK_DEBUG of padr : signal is std.standard.true;
   signal pdata : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -267,7 +377,7 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   attribute MARK_DEBUG of sim_high_wr : signal is std.standard.true;
   signal \^sim_low_wr\ : STD_LOGIC;
   attribute MARK_DEBUG of sim_low_wr : signal is std.standard.true;
-  signal sim_low_wr3_out : STD_LOGIC;
+  signal sim_low_wr2_out : STD_LOGIC;
   signal \^sim_start\ : STD_LOGIC;
   attribute MARK_DEBUG of sim_start : signal is std.standard.true;
   signal sim_wr_count : STD_LOGIC_VECTOR ( 10 downto 0 );
@@ -281,7 +391,7 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   attribute MARK_DEBUG of sim_wr_start : signal is std.standard.true;
   signal \^wr_en\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of \^wr_en\ : signal is std.standard.true;
-  signal \NLW_adc_control.cmd_start_reg_i_11_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_adc_control.cmd_start_reg_i_12_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_adc_control.cmd_start_reg_i_5_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_adc_control.cmd_start_reg_i_5_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_adc_control.sim_wr_count_reg[10]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
@@ -366,6 +476,91 @@ architecture STRUCTURE of ps_adc_control_0_0_adc_control is
   attribute KEEP of \adc_control.cdata_reg[9]\ : label is "yes";
   attribute mark_debug_string of \adc_control.cdata_reg[9]\ : label is "yes";
   attribute KEEP of \adc_control.cmd_start_reg\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[0]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[1]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[2]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[3]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[4]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[5]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[6]\ : label is "yes";
+  attribute KEEP of \adc_control.config_adr_reg[7]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[0]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[10]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[11]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[12]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[13]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[14]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[15]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[16]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[17]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[18]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[19]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[1]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[20]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[21]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[22]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[23]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[24]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[25]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[26]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[27]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[28]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[29]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[2]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[30]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[31]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[3]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[4]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[5]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[6]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[7]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[8]\ : label is "yes";
+  attribute KEEP of \adc_control.config_data_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \adc_control.config_data_reg[9]\ : label is "yes";
+  attribute KEEP of \adc_control.config_high_wr_reg\ : label is "yes";
+  attribute KEEP of \adc_control.config_low_wr_reg\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[0]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[1]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[2]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[3]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[4]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[5]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[6]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_count_reg[7]\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_done_reg\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_pend_reg\ : label is "yes";
+  attribute KEEP of \adc_control.config_wr_start_reg\ : label is "yes";
   attribute KEEP of \adc_control.data_out_reg[0]\ : label is "yes";
   attribute KEEP of \adc_control.data_out_reg[10]\ : label is "yes";
   attribute KEEP of \adc_control.data_out_reg[11]\ : label is "yes";
@@ -545,6 +740,10 @@ begin
   adc_stop <= \^adc_stop\;
   address(10 downto 0) <= \^address\(10 downto 0);
   bram_adr_out(10 downto 0) <= \^bram_adr_in\(12 downto 2);
+  config_adr(7 downto 0) <= \^config_adr\(7 downto 0);
+  config_data(31 downto 0) <= \^config_data\(31 downto 0);
+  config_high_wr <= \^config_high_wr\;
+  config_low_wr <= \^config_low_wr\;
   data_out(31 downto 0) <= \^data_out\(31 downto 0);
   sim_channel(1 downto 0) <= \^sim_channel\(1 downto 0);
   sim_data(31 downto 0) <= \^sim_data\(31 downto 0);
@@ -552,15 +751,17 @@ begin
   sim_low_wr <= \^sim_low_wr\;
   sim_start <= \^sim_start\;
   wr_en(3 downto 0) <= \^wr_en\(3 downto 0);
-\adc_control.adc_start_i_1\: unisim.vcomponents.LUT4
+\adc_control.adc_start_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF08"
+      INIT => X"FFFFFFFF00000020"
     )
         port map (
       I0 => \adc_control.sim_wr_start_i_3_n_0\,
-      I1 => cdata(1),
-      I2 => cdata(0),
-      I3 => \^adc_start\,
+      I1 => cdata(3),
+      I2 => cdata(1),
+      I3 => cdata(0),
+      I4 => cdata(2),
+      I5 => \^adc_start\,
       O => \adc_control.adc_start_i_1_n_0\
     );
 \adc_control.adc_start_reg\: unisim.vcomponents.FDRE
@@ -569,31 +770,20 @@ begin
       CE => '1',
       D => \adc_control.adc_start_i_1_n_0\,
       Q => \^adc_start\,
-      R => \adc_control.sim_wr_start_i_1_n_0\
+      R => \p_0_in__0\
     );
-\adc_control.adc_stop_i_1\: unisim.vcomponents.LUT5
+\adc_control.adc_stop_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFF0020"
+      INIT => X"FFFFFFFF00000020"
     )
         port map (
-      I0 => \adc_control.adc_stop_i_2_n_0\,
-      I1 => cdata(1),
+      I0 => \adc_control.sim_wr_start_i_3_n_0\,
+      I1 => cdata(0),
       I2 => cdata(2),
-      I3 => cdata(0),
-      I4 => \^adc_stop\,
+      I3 => cdata(3),
+      I4 => cdata(1),
+      I5 => \^adc_stop\,
       O => \adc_control.adc_stop_i_1_n_0\
-    );
-\adc_control.adc_stop_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000001"
-    )
-        port map (
-      I0 => cdata(3),
-      I1 => cdata(4),
-      I2 => cdata(5),
-      I3 => cdata(7),
-      I4 => cdata(6),
-      O => \adc_control.adc_stop_i_2_n_0\
     );
 \adc_control.adc_stop_reg\: unisim.vcomponents.FDRE
      port map (
@@ -601,19 +791,19 @@ begin
       CE => '1',
       D => \adc_control.adc_stop_i_1_n_0\,
       Q => \^adc_stop\,
-      R => \adc_control.sim_wr_start_i_1_n_0\
+      R => \p_0_in__0\
     );
 \adc_control.address[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00FF005400FF00FF"
+      INIT => X"5500FFFF55005554"
     )
         port map (
       I0 => \^address\(0),
       I1 => sim_wr_start,
       I2 => sim_wr_pend,
-      I3 => cmd_start,
-      I4 => sim_wr_done,
-      I5 => resetn,
+      I3 => \adc_control.config_wr_count[7]_i_4_n_0\,
+      I4 => cmd_start,
+      I5 => \adc_control.address[1]_i_4_n_0\,
       O => \adc_control.address[0]_i_1_n_0\
     );
 \adc_control.address[10]_i_1\: unisim.vcomponents.LUT6
@@ -639,39 +829,59 @@ begin
       I2 => \adc_control.address[8]_i_2_n_0\,
       O => \adc_control.address[10]_i_2_n_0\
     );
-\adc_control.address[10]_i_3\: unisim.vcomponents.LUT5
+\adc_control.address[10]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00005400"
+      INIT => X"000000000F0F0F0E"
     )
         port map (
-      I0 => cmd_start,
-      I1 => sim_wr_pend,
-      I2 => sim_wr_start,
-      I3 => resetn,
-      I4 => sim_wr_done,
+      I0 => config_wr_start,
+      I1 => config_wr_pend,
+      I2 => cmd_start,
+      I3 => sim_wr_pend,
+      I4 => sim_wr_start,
+      I5 => \adc_control.address[1]_i_4_n_0\,
       O => \adc_control.address[10]_i_3_n_0\
     );
 \adc_control.address[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFF06060600"
+      INIT => X"FFFFFFFF00000770"
     )
         port map (
-      I0 => \^address\(0),
-      I1 => \^address\(1),
-      I2 => \adc_control.address[1]_i_2_n_0\,
-      I3 => sim_wr_start,
-      I4 => sim_wr_pend,
+      I0 => \adc_control.address[1]_i_2_n_0\,
+      I1 => \adc_control.address[1]_i_3_n_0\,
+      I2 => \^address\(1),
+      I3 => \^address\(0),
+      I4 => \adc_control.address[1]_i_4_n_0\,
       I5 => cmd_start,
       O => \adc_control.address[1]_i_1_n_0\
     );
 \adc_control.address[1]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"B"
+      INIT => X"1"
     )
         port map (
-      I0 => sim_wr_done,
-      I1 => resetn,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       O => \adc_control.address[1]_i_2_n_0\
+    );
+\adc_control.address[1]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => config_wr_pend,
+      I1 => config_wr_start,
+      O => \adc_control.address[1]_i_3_n_0\
+    );
+\adc_control.address[1]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FD"
+    )
+        port map (
+      I0 => resetn,
+      I1 => config_wr_done,
+      I2 => sim_wr_done,
+      O => \adc_control.address[1]_i_4_n_0\
     );
 \adc_control.address[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -1151,15 +1361,15 @@ begin
     );
 \adc_control.cmd_start_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000007F00"
+      INIT => X"00000000000000FE"
     )
         port map (
       I0 => \adc_control.cmd_start_i_2_n_0\,
       I1 => \adc_control.cmd_start_i_3_n_0\,
       I2 => \adc_control.cmd_start_i_4_n_0\,
-      I3 => resetn,
-      I4 => \adc_control.cmd_start_reg_i_5_n_5\,
-      I5 => \adc_control.cmd_start_i_6_n_0\,
+      I3 => \adc_control.cmd_start_reg_i_5_n_5\,
+      I4 => sim_wr_pend,
+      I5 => cmd_start,
       O => \adc_control.cmd_start_i_1_n_0\
     );
 \adc_control.cmd_start_i_10\: unisim.vcomponents.LUT4
@@ -1170,31 +1380,30 @@ begin
       I0 => cdata(31),
       I1 => cdata(30),
       I2 => cdata(29),
-      I3 => cdata(27),
+      I3 => cdata(28),
       O => \adc_control.cmd_start_i_10_n_0\
     );
-\adc_control.cmd_start_i_12\: unisim.vcomponents.LUT4
+\adc_control.cmd_start_i_11\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FF00FE00"
+    )
+        port map (
+      I0 => cdata(12),
+      I1 => cdata(24),
+      I2 => cdata(16),
+      I3 => resetn,
+      I4 => cdata(15),
+      O => \adc_control.cmd_start_i_11_n_0\
+    );
+\adc_control.cmd_start_i_13\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"9009"
     )
         port map (
       I0 => cdata(31),
       I1 => pdata(31),
-      I2 => cdata(30),
-      I3 => pdata(30),
-      O => \adc_control.cmd_start_i_12_n_0\
-    );
-\adc_control.cmd_start_i_13\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => cdata(27),
-      I1 => pdata(27),
-      I2 => cdata(28),
-      I3 => pdata(28),
-      I4 => cdata(29),
-      I5 => pdata(29),
+      I2 => pdata(30),
+      I3 => cdata(30),
       O => \adc_control.cmd_start_i_13_n_0\
     );
 \adc_control.cmd_start_i_14\: unisim.vcomponents.LUT6
@@ -1202,15 +1411,28 @@ begin
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cdata(25),
-      I1 => pdata(25),
-      I2 => cdata(24),
-      I3 => pdata(24),
-      I4 => cdata(26),
-      I5 => pdata(26),
+      I0 => cdata(28),
+      I1 => pdata(28),
+      I2 => pdata(27),
+      I3 => cdata(27),
+      I4 => pdata(29),
+      I5 => cdata(29),
       O => \adc_control.cmd_start_i_14_n_0\
     );
 \adc_control.cmd_start_i_15\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => cdata(25),
+      I1 => pdata(25),
+      I2 => pdata(24),
+      I3 => cdata(24),
+      I4 => pdata(26),
+      I5 => cdata(26),
+      O => \adc_control.cmd_start_i_15_n_0\
+    );
+\adc_control.cmd_start_i_16\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -1219,21 +1441,8 @@ begin
       I1 => cdata(21),
       I2 => pdata(22),
       I3 => cdata(22),
-      I4 => cdata(23),
-      I5 => pdata(23),
-      O => \adc_control.cmd_start_i_15_n_0\
-    );
-\adc_control.cmd_start_i_16\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => pdata(20),
-      I1 => cdata(20),
-      I2 => pdata(18),
-      I3 => cdata(18),
-      I4 => cdata(19),
-      I5 => pdata(19),
+      I4 => pdata(23),
+      I5 => cdata(23),
       O => \adc_control.cmd_start_i_16_n_0\
     );
 \adc_control.cmd_start_i_17\: unisim.vcomponents.LUT6
@@ -1241,12 +1450,12 @@ begin
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cdata(15),
-      I1 => pdata(15),
-      I2 => cdata(17),
-      I3 => pdata(17),
-      I4 => cdata(16),
-      I5 => pdata(16),
+      I0 => pdata(18),
+      I1 => cdata(18),
+      I2 => pdata(19),
+      I3 => cdata(19),
+      I4 => pdata(20),
+      I5 => cdata(20),
       O => \adc_control.cmd_start_i_17_n_0\
     );
 \adc_control.cmd_start_i_18\: unisim.vcomponents.LUT6
@@ -1254,12 +1463,12 @@ begin
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cdata(13),
-      I1 => pdata(13),
-      I2 => cdata(12),
-      I3 => pdata(12),
-      I4 => cdata(14),
-      I5 => pdata(14),
+      I0 => cdata(15),
+      I1 => pdata(15),
+      I2 => pdata(16),
+      I3 => cdata(16),
+      I4 => pdata(17),
+      I5 => cdata(17),
       O => \adc_control.cmd_start_i_18_n_0\
     );
 \adc_control.cmd_start_i_19\: unisim.vcomponents.LUT6
@@ -1267,24 +1476,25 @@ begin
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cdata(10),
-      I1 => pdata(10),
-      I2 => cdata(9),
-      I3 => pdata(9),
-      I4 => cdata(11),
-      I5 => pdata(11),
+      I0 => cdata(13),
+      I1 => pdata(13),
+      I2 => pdata(12),
+      I3 => cdata(12),
+      I4 => pdata(14),
+      I5 => cdata(14),
       O => \adc_control.cmd_start_i_19_n_0\
     );
-\adc_control.cmd_start_i_2\: unisim.vcomponents.LUT5
+\adc_control.cmd_start_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00010000"
+      INIT => X"FFFF0000FFFE0000"
     )
         port map (
-      I0 => cdata(20),
-      I1 => cdata(24),
-      I2 => cdata(25),
-      I3 => cdata(28),
-      I4 => \adc_control.cmd_start_i_7_n_0\,
+      I0 => cdata(0),
+      I1 => cdata(2),
+      I2 => cdata(17),
+      I3 => \adc_control.cmd_start_i_6_n_0\,
+      I4 => resetn,
+      I5 => cdata(14),
       O => \adc_control.cmd_start_i_2_n_0\
     );
 \adc_control.cmd_start_i_20\: unisim.vcomponents.LUT6
@@ -1292,12 +1502,12 @@ begin
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cdata(6),
-      I1 => pdata(6),
-      I2 => cdata(7),
-      I3 => pdata(7),
-      I4 => cdata(8),
-      I5 => pdata(8),
+      I0 => cdata(10),
+      I1 => pdata(10),
+      I2 => pdata(9),
+      I3 => cdata(9),
+      I4 => pdata(11),
+      I5 => cdata(11),
       O => \adc_control.cmd_start_i_20_n_0\
     );
 \adc_control.cmd_start_i_21\: unisim.vcomponents.LUT6
@@ -1305,15 +1515,28 @@ begin
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cdata(4),
-      I1 => pdata(4),
-      I2 => cdata(3),
-      I3 => pdata(3),
-      I4 => cdata(5),
-      I5 => pdata(5),
+      I0 => cdata(7),
+      I1 => pdata(7),
+      I2 => pdata(6),
+      I3 => cdata(6),
+      I4 => pdata(8),
+      I5 => cdata(8),
       O => \adc_control.cmd_start_i_21_n_0\
     );
 \adc_control.cmd_start_i_22\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => cdata(4),
+      I1 => pdata(4),
+      I2 => pdata(3),
+      I3 => cdata(3),
+      I4 => pdata(5),
+      I5 => cdata(5),
+      O => \adc_control.cmd_start_i_22_n_0\
+    );
+\adc_control.cmd_start_i_23\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -1322,32 +1545,34 @@ begin
       I1 => cdata(0),
       I2 => pdata(1),
       I3 => cdata(1),
-      I4 => cdata(2),
-      I5 => pdata(2),
-      O => \adc_control.cmd_start_i_22_n_0\
+      I4 => pdata(2),
+      I5 => cdata(2),
+      O => \adc_control.cmd_start_i_23_n_0\
     );
-\adc_control.cmd_start_i_3\: unisim.vcomponents.LUT5
+\adc_control.cmd_start_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00020000"
+      INIT => X"BFFFFFFFAAAAAAAA"
     )
         port map (
-      I0 => \adc_control.cmd_start_i_8_n_0\,
-      I1 => cdata(8),
-      I2 => cdata(1),
-      I3 => cdata(0),
-      I4 => \adc_control.sim_wr_start_i_3_n_0\,
+      I0 => \adc_control.cmd_start_i_7_n_0\,
+      I1 => \adc_control.cmd_start_i_8_n_0\,
+      I2 => \adc_control.sim_wr_start_i_3_n_0\,
+      I3 => \adc_control.cmd_start_i_9_n_0\,
+      I4 => \adc_control.cmd_start_i_10_n_0\,
+      I5 => resetn,
       O => \adc_control.cmd_start_i_3_n_0\
     );
-\adc_control.cmd_start_i_4\: unisim.vcomponents.LUT5
+\adc_control.cmd_start_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000008"
+      INIT => X"FFFFFFFFCCCCCCC8"
     )
         port map (
-      I0 => \adc_control.cmd_start_i_9_n_0\,
-      I1 => \adc_control.cmd_start_i_10_n_0\,
-      I2 => cdata(9),
-      I3 => cdata(12),
-      I4 => cdata(19),
+      I0 => cdata(20),
+      I1 => resetn,
+      I2 => cdata(22),
+      I3 => cdata(13),
+      I4 => cdata(27),
+      I5 => \adc_control.cmd_start_i_11_n_0\,
       O => \adc_control.cmd_start_i_4_n_0\
     );
 \adc_control.cmd_start_i_6\: unisim.vcomponents.LUT2
@@ -1355,19 +1580,18 @@ begin
       INIT => X"E"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => cmd_start,
+      I0 => cdata(1),
+      I1 => cdata(3),
       O => \adc_control.cmd_start_i_6_n_0\
     );
-\adc_control.cmd_start_i_7\: unisim.vcomponents.LUT4
+\adc_control.cmd_start_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"0001"
+      INIT => X"C8"
     )
         port map (
-      I0 => cdata(18),
-      I1 => cdata(17),
-      I2 => cdata(16),
-      I3 => cdata(15),
+      I0 => cdata(19),
+      I1 => resetn,
+      I2 => cdata(23),
       O => \adc_control.cmd_start_i_7_n_0\
     );
 \adc_control.cmd_start_i_8\: unisim.vcomponents.LUT4
@@ -1375,8 +1599,8 @@ begin
       INIT => X"0001"
     )
         port map (
-      I0 => cdata(14),
-      I1 => cdata(13),
+      I0 => cdata(9),
+      I1 => cdata(8),
       I2 => cdata(11),
       I3 => cdata(10),
       O => \adc_control.cmd_start_i_8_n_0\
@@ -1387,9 +1611,9 @@ begin
     )
         port map (
       I0 => cdata(26),
-      I1 => cdata(23),
-      I2 => cdata(22),
-      I3 => cdata(21),
+      I1 => cdata(25),
+      I2 => cdata(21),
+      I3 => cdata(18),
       O => \adc_control.cmd_start_i_9_n_0\
     );
 \adc_control.cmd_start_reg\: unisim.vcomponents.FDRE
@@ -1400,32 +1624,32 @@ begin
       Q => cmd_start,
       R => '0'
     );
-\adc_control.cmd_start_reg_i_11\: unisim.vcomponents.CARRY8
+\adc_control.cmd_start_reg_i_12\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \adc_control.cmd_start_reg_i_11_n_0\,
-      CO(6) => \adc_control.cmd_start_reg_i_11_n_1\,
-      CO(5) => \adc_control.cmd_start_reg_i_11_n_2\,
-      CO(4) => \adc_control.cmd_start_reg_i_11_n_3\,
-      CO(3) => \adc_control.cmd_start_reg_i_11_n_4\,
-      CO(2) => \adc_control.cmd_start_reg_i_11_n_5\,
-      CO(1) => \adc_control.cmd_start_reg_i_11_n_6\,
-      CO(0) => \adc_control.cmd_start_reg_i_11_n_7\,
+      CO(7) => \adc_control.cmd_start_reg_i_12_n_0\,
+      CO(6) => \adc_control.cmd_start_reg_i_12_n_1\,
+      CO(5) => \adc_control.cmd_start_reg_i_12_n_2\,
+      CO(4) => \adc_control.cmd_start_reg_i_12_n_3\,
+      CO(3) => \adc_control.cmd_start_reg_i_12_n_4\,
+      CO(2) => \adc_control.cmd_start_reg_i_12_n_5\,
+      CO(1) => \adc_control.cmd_start_reg_i_12_n_6\,
+      CO(0) => \adc_control.cmd_start_reg_i_12_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => \NLW_adc_control.cmd_start_reg_i_11_O_UNCONNECTED\(7 downto 0),
-      S(7) => \adc_control.cmd_start_i_15_n_0\,
-      S(6) => \adc_control.cmd_start_i_16_n_0\,
-      S(5) => \adc_control.cmd_start_i_17_n_0\,
-      S(4) => \adc_control.cmd_start_i_18_n_0\,
-      S(3) => \adc_control.cmd_start_i_19_n_0\,
-      S(2) => \adc_control.cmd_start_i_20_n_0\,
-      S(1) => \adc_control.cmd_start_i_21_n_0\,
-      S(0) => \adc_control.cmd_start_i_22_n_0\
+      O(7 downto 0) => \NLW_adc_control.cmd_start_reg_i_12_O_UNCONNECTED\(7 downto 0),
+      S(7) => \adc_control.cmd_start_i_16_n_0\,
+      S(6) => \adc_control.cmd_start_i_17_n_0\,
+      S(5) => \adc_control.cmd_start_i_18_n_0\,
+      S(4) => \adc_control.cmd_start_i_19_n_0\,
+      S(3) => \adc_control.cmd_start_i_20_n_0\,
+      S(2) => \adc_control.cmd_start_i_21_n_0\,
+      S(1) => \adc_control.cmd_start_i_22_n_0\,
+      S(0) => \adc_control.cmd_start_i_23_n_0\
     );
 \adc_control.cmd_start_reg_i_5\: unisim.vcomponents.CARRY8
      port map (
-      CI => \adc_control.cmd_start_reg_i_11_n_0\,
+      CI => \adc_control.cmd_start_reg_i_12_n_0\,
       CI_TOP => '0',
       CO(7 downto 3) => \NLW_adc_control.cmd_start_reg_i_5_CO_UNCONNECTED\(7 downto 3),
       CO(2) => \adc_control.cmd_start_reg_i_5_n_5\,
@@ -1434,148 +1658,1321 @@ begin
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => \NLW_adc_control.cmd_start_reg_i_5_O_UNCONNECTED\(7 downto 0),
       S(7 downto 3) => B"00000",
-      S(2) => \adc_control.cmd_start_i_12_n_0\,
-      S(1) => \adc_control.cmd_start_i_13_n_0\,
-      S(0) => \adc_control.cmd_start_i_14_n_0\
+      S(2) => \adc_control.cmd_start_i_13_n_0\,
+      S(1) => \adc_control.cmd_start_i_14_n_0\,
+      S(0) => \adc_control.cmd_start_i_15_n_0\
     );
-\adc_control.data_out[0]_i_1\: unisim.vcomponents.LUT3
+\adc_control.config_adr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"48"
+      INIT => X"1"
+    )
+        port map (
+      I0 => \^config_adr\(0),
+      O => \adc_control.config_adr[0]_i_1_n_0\
+    );
+\adc_control.config_adr[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \^config_adr\(0),
+      I1 => \^config_adr\(1),
+      O => \adc_control.config_adr[1]_i_1_n_0\
+    );
+\adc_control.config_adr[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => \^config_adr\(0),
+      I1 => \^config_adr\(1),
+      I2 => \^config_adr\(2),
+      O => \adc_control.config_adr[2]_i_1_n_0\
+    );
+\adc_control.config_adr[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => \^config_adr\(1),
+      I1 => \^config_adr\(0),
+      I2 => \^config_adr\(2),
+      I3 => \^config_adr\(3),
+      O => \adc_control.config_adr[3]_i_1_n_0\
+    );
+\adc_control.config_adr[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFF8000"
+    )
+        port map (
+      I0 => \^config_adr\(2),
+      I1 => \^config_adr\(0),
+      I2 => \^config_adr\(1),
+      I3 => \^config_adr\(3),
+      I4 => \^config_adr\(4),
+      O => \adc_control.config_adr[4]_i_1_n_0\
+    );
+\adc_control.config_adr[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
+    )
+        port map (
+      I0 => \^config_adr\(3),
+      I1 => \^config_adr\(1),
+      I2 => \^config_adr\(0),
+      I3 => \^config_adr\(2),
+      I4 => \^config_adr\(4),
+      I5 => \^config_adr\(5),
+      O => \adc_control.config_adr[5]_i_1_n_0\
+    );
+\adc_control.config_adr[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \adc_control.config_adr[7]_i_3_n_0\,
+      I1 => \^config_adr\(6),
+      O => \adc_control.config_adr[6]_i_1_n_0\
+    );
+\adc_control.config_adr[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      O => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr[7]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => \adc_control.config_adr[7]_i_3_n_0\,
+      I1 => \^config_adr\(6),
+      I2 => \^config_adr\(7),
+      O => \adc_control.config_adr[7]_i_2_n_0\
+    );
+\adc_control.config_adr[7]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \^config_adr\(5),
+      I1 => \^config_adr\(3),
+      I2 => \^config_adr\(1),
+      I3 => \^config_adr\(0),
+      I4 => \^config_adr\(2),
+      I5 => \^config_adr\(4),
+      O => \adc_control.config_adr[7]_i_3_n_0\
+    );
+\adc_control.config_adr_reg[0]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[0]_i_1_n_0\,
+      Q => \^config_adr\(0),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[1]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[1]_i_1_n_0\,
+      Q => \^config_adr\(1),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[2]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[2]_i_1_n_0\,
+      Q => \^config_adr\(2),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[3]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[3]_i_1_n_0\,
+      Q => \^config_adr\(3),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[4]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[4]_i_1_n_0\,
+      Q => \^config_adr\(4),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[5]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[5]_i_1_n_0\,
+      Q => \^config_adr\(5),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[6]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[6]_i_1_n_0\,
+      Q => \^config_adr\(6),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_adr_reg[7]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_adr[7]_i_2_n_0\,
+      Q => \^config_adr\(7),
+      S => \adc_control.config_adr[7]_i_1_n_0\
+    );
+\adc_control.config_data[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(0),
+      I3 => \^config_data\(0),
+      O => \adc_control.config_data[0]_i_1_n_0\
+    );
+\adc_control.config_data[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(10),
+      I3 => \^config_data\(10),
+      O => \adc_control.config_data[10]_i_1_n_0\
+    );
+\adc_control.config_data[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(11),
+      I3 => \^config_data\(11),
+      O => \adc_control.config_data[11]_i_1_n_0\
+    );
+\adc_control.config_data[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(12),
+      I3 => \^config_data\(12),
+      O => \adc_control.config_data[12]_i_1_n_0\
+    );
+\adc_control.config_data[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(13),
+      I3 => \^config_data\(13),
+      O => \adc_control.config_data[13]_i_1_n_0\
+    );
+\adc_control.config_data[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(14),
+      I3 => \^config_data\(14),
+      O => \adc_control.config_data[14]_i_1_n_0\
+    );
+\adc_control.config_data[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(15),
+      I3 => \^config_data\(15),
+      O => \adc_control.config_data[15]_i_1_n_0\
+    );
+\adc_control.config_data[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(16),
+      I3 => \^config_data\(16),
+      O => \adc_control.config_data[16]_i_1_n_0\
+    );
+\adc_control.config_data[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(17),
+      I3 => \^config_data\(17),
+      O => \adc_control.config_data[17]_i_1_n_0\
+    );
+\adc_control.config_data[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(18),
+      I3 => \^config_data\(18),
+      O => \adc_control.config_data[18]_i_1_n_0\
+    );
+\adc_control.config_data[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(19),
+      I3 => \^config_data\(19),
+      O => \adc_control.config_data[19]_i_1_n_0\
+    );
+\adc_control.config_data[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(1),
+      I3 => \^config_data\(1),
+      O => \adc_control.config_data[1]_i_1_n_0\
+    );
+\adc_control.config_data[20]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(20),
+      I3 => \^config_data\(20),
+      O => \adc_control.config_data[20]_i_1_n_0\
+    );
+\adc_control.config_data[21]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(21),
+      I3 => \^config_data\(21),
+      O => \adc_control.config_data[21]_i_1_n_0\
+    );
+\adc_control.config_data[22]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(22),
+      I3 => \^config_data\(22),
+      O => \adc_control.config_data[22]_i_1_n_0\
+    );
+\adc_control.config_data[23]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(23),
+      I3 => \^config_data\(23),
+      O => \adc_control.config_data[23]_i_1_n_0\
+    );
+\adc_control.config_data[24]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(24),
+      I3 => \^config_data\(24),
+      O => \adc_control.config_data[24]_i_1_n_0\
+    );
+\adc_control.config_data[25]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(25),
+      I3 => \^config_data\(25),
+      O => \adc_control.config_data[25]_i_1_n_0\
+    );
+\adc_control.config_data[26]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(26),
+      I3 => \^config_data\(26),
+      O => \adc_control.config_data[26]_i_1_n_0\
+    );
+\adc_control.config_data[27]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(27),
+      I3 => \^config_data\(27),
+      O => \adc_control.config_data[27]_i_1_n_0\
+    );
+\adc_control.config_data[28]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(28),
+      I3 => \^config_data\(28),
+      O => \adc_control.config_data[28]_i_1_n_0\
+    );
+\adc_control.config_data[29]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(29),
+      I3 => \^config_data\(29),
+      O => \adc_control.config_data[29]_i_1_n_0\
+    );
+\adc_control.config_data[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(2),
+      I3 => \^config_data\(2),
+      O => \adc_control.config_data[2]_i_1_n_0\
+    );
+\adc_control.config_data[30]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(30),
+      I3 => \^config_data\(30),
+      O => \adc_control.config_data[30]_i_1_n_0\
+    );
+\adc_control.config_data[31]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => cmd_start,
+      I1 => config_wr_start,
+      I2 => config_wr_pend,
+      O => \adc_control.config_data[31]_i_1_n_0\
+    );
+\adc_control.config_data[31]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(31),
+      I3 => \^config_data\(31),
+      O => \adc_control.config_data[31]_i_2_n_0\
+    );
+\adc_control.config_data[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(3),
+      I3 => \^config_data\(3),
+      O => \adc_control.config_data[3]_i_1_n_0\
+    );
+\adc_control.config_data[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(4),
+      I3 => \^config_data\(4),
+      O => \adc_control.config_data[4]_i_1_n_0\
+    );
+\adc_control.config_data[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(5),
+      I3 => \^config_data\(5),
+      O => \adc_control.config_data[5]_i_1_n_0\
+    );
+\adc_control.config_data[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(6),
+      I3 => \^config_data\(6),
+      O => \adc_control.config_data[6]_i_1_n_0\
+    );
+\adc_control.config_data[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(7),
+      I3 => \^config_data\(7),
+      O => \adc_control.config_data[7]_i_1_n_0\
+    );
+\adc_control.config_data[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(8),
+      I3 => \^config_data\(8),
+      O => \adc_control.config_data[8]_i_1_n_0\
+    );
+\adc_control.config_data[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE10"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => cmd_start,
+      I2 => data_in(9),
+      I3 => \^config_data\(9),
+      O => \adc_control.config_data[9]_i_1_n_0\
+    );
+\adc_control.config_data_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[0]_i_1_n_0\,
+      Q => \^config_data\(0),
+      R => '0'
+    );
+\adc_control.config_data_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[10]_i_1_n_0\,
+      Q => \^config_data\(10),
+      R => '0'
+    );
+\adc_control.config_data_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[11]_i_1_n_0\,
+      Q => \^config_data\(11),
+      R => '0'
+    );
+\adc_control.config_data_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[12]_i_1_n_0\,
+      Q => \^config_data\(12),
+      R => '0'
+    );
+\adc_control.config_data_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[13]_i_1_n_0\,
+      Q => \^config_data\(13),
+      R => '0'
+    );
+\adc_control.config_data_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[14]_i_1_n_0\,
+      Q => \^config_data\(14),
+      R => '0'
+    );
+\adc_control.config_data_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[15]_i_1_n_0\,
+      Q => \^config_data\(15),
+      R => '0'
+    );
+\adc_control.config_data_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[16]_i_1_n_0\,
+      Q => \^config_data\(16),
+      R => '0'
+    );
+\adc_control.config_data_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[17]_i_1_n_0\,
+      Q => \^config_data\(17),
+      R => '0'
+    );
+\adc_control.config_data_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[18]_i_1_n_0\,
+      Q => \^config_data\(18),
+      R => '0'
+    );
+\adc_control.config_data_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[19]_i_1_n_0\,
+      Q => \^config_data\(19),
+      R => '0'
+    );
+\adc_control.config_data_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[1]_i_1_n_0\,
+      Q => \^config_data\(1),
+      R => '0'
+    );
+\adc_control.config_data_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[20]_i_1_n_0\,
+      Q => \^config_data\(20),
+      R => '0'
+    );
+\adc_control.config_data_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[21]_i_1_n_0\,
+      Q => \^config_data\(21),
+      R => '0'
+    );
+\adc_control.config_data_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[22]_i_1_n_0\,
+      Q => \^config_data\(22),
+      R => '0'
+    );
+\adc_control.config_data_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[23]_i_1_n_0\,
+      Q => \^config_data\(23),
+      R => '0'
+    );
+\adc_control.config_data_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[24]_i_1_n_0\,
+      Q => \^config_data\(24),
+      R => '0'
+    );
+\adc_control.config_data_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[25]_i_1_n_0\,
+      Q => \^config_data\(25),
+      R => '0'
+    );
+\adc_control.config_data_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[26]_i_1_n_0\,
+      Q => \^config_data\(26),
+      R => '0'
+    );
+\adc_control.config_data_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[27]_i_1_n_0\,
+      Q => \^config_data\(27),
+      R => '0'
+    );
+\adc_control.config_data_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[28]_i_1_n_0\,
+      Q => \^config_data\(28),
+      R => '0'
+    );
+\adc_control.config_data_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[29]_i_1_n_0\,
+      Q => \^config_data\(29),
+      R => '0'
+    );
+\adc_control.config_data_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[2]_i_1_n_0\,
+      Q => \^config_data\(2),
+      R => '0'
+    );
+\adc_control.config_data_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[30]_i_1_n_0\,
+      Q => \^config_data\(30),
+      R => '0'
+    );
+\adc_control.config_data_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[31]_i_2_n_0\,
+      Q => \^config_data\(31),
+      R => '0'
+    );
+\adc_control.config_data_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[3]_i_1_n_0\,
+      Q => \^config_data\(3),
+      R => '0'
+    );
+\adc_control.config_data_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[4]_i_1_n_0\,
+      Q => \^config_data\(4),
+      R => '0'
+    );
+\adc_control.config_data_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[5]_i_1_n_0\,
+      Q => \^config_data\(5),
+      R => '0'
+    );
+\adc_control.config_data_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[6]_i_1_n_0\,
+      Q => \^config_data\(6),
+      R => '0'
+    );
+\adc_control.config_data_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[7]_i_1_n_0\,
+      Q => \^config_data\(7),
+      R => '0'
+    );
+\adc_control.config_data_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[8]_i_1_n_0\,
+      Q => \^config_data\(8),
+      R => '0'
+    );
+\adc_control.config_data_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \adc_control.config_data[31]_i_1_n_0\,
+      D => \adc_control.config_data[9]_i_1_n_0\,
+      Q => \^config_data\(9),
+      R => '0'
+    );
+\adc_control.config_high_wr_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"32"
+    )
+        port map (
+      I0 => \^config_high_wr\,
+      I1 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I2 => cdata(8),
+      O => \adc_control.config_high_wr_i_1_n_0\
+    );
+\adc_control.config_high_wr_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_high_wr_i_1_n_0\,
+      Q => \^config_high_wr\,
+      R => cmd_start
+    );
+\adc_control.config_low_wr_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"0B"
+    )
+        port map (
+      I0 => \^config_low_wr\,
+      I1 => cdata(8),
+      I2 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      O => config_low_wr7_out
+    );
+\adc_control.config_low_wr_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => config_low_wr7_out,
+      Q => \^config_low_wr\,
+      R => cmd_start
+    );
+\adc_control.config_wr_count[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"ACACACA0A3A3A3A0"
+    )
+        port map (
+      I0 => cdata(16),
+      I1 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I2 => cmd_start,
+      I3 => config_wr_pend,
+      I4 => config_wr_start,
+      I5 => config_wr_count(0),
+      O => \adc_control.config_wr_count[0]_i_1_n_0\
+    );
+\adc_control.config_wr_count[0]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0100FFFF"
+    )
+        port map (
+      I0 => config_wr_count(4),
+      I1 => config_wr_count(5),
+      I2 => config_wr_count(6),
+      I3 => \adc_control.config_wr_count[0]_i_3_n_0\,
+      I4 => config_wr_pend,
+      O => \adc_control.config_wr_count[0]_i_2_n_0\
+    );
+\adc_control.config_wr_count[0]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000001"
+    )
+        port map (
+      I0 => config_wr_count(0),
+      I1 => config_wr_count(1),
+      I2 => config_wr_count(2),
+      I3 => config_wr_count(7),
+      I4 => config_wr_count(3),
+      O => \adc_control.config_wr_count[0]_i_3_n_0\
+    );
+\adc_control.config_wr_count[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFA8540000A854"
+    )
+        port map (
+      I0 => config_wr_count(1),
+      I1 => config_wr_start,
+      I2 => config_wr_pend,
+      I3 => \adc_control.config_wr_count[2]_i_2_n_0\,
+      I4 => cmd_start,
+      I5 => cdata(17),
+      O => \adc_control.config_wr_count[1]_i_1_n_0\
+    );
+\adc_control.config_wr_count[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFF888288828882"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[7]_i_4_n_0\,
+      I1 => config_wr_count(2),
+      I2 => \adc_control.config_wr_count[2]_i_2_n_0\,
+      I3 => config_wr_count(1),
+      I4 => cmd_start,
+      I5 => cdata(18),
+      O => \adc_control.config_wr_count[2]_i_1_n_0\
+    );
+\adc_control.config_wr_count[2]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I1 => config_wr_count(0),
+      O => \adc_control.config_wr_count[2]_i_2_n_0\
+    );
+\adc_control.config_wr_count[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFE00E0000E00E"
+    )
+        port map (
+      I0 => config_wr_pend,
+      I1 => config_wr_start,
+      I2 => config_wr_count(3),
+      I3 => \adc_control.config_wr_count[3]_i_2_n_0\,
+      I4 => cmd_start,
+      I5 => cdata(19),
+      O => \adc_control.config_wr_count[3]_i_1_n_0\
+    );
+\adc_control.config_wr_count[3]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => config_wr_count(1),
+      I1 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I2 => config_wr_count(0),
+      I3 => config_wr_count(2),
+      O => \adc_control.config_wr_count[3]_i_2_n_0\
+    );
+\adc_control.config_wr_count[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAAAC3C3C300"
+    )
+        port map (
+      I0 => cdata(20),
+      I1 => \adc_control.config_wr_count[7]_i_2_n_0\,
+      I2 => config_wr_count(4),
+      I3 => config_wr_start,
+      I4 => config_wr_pend,
+      I5 => cmd_start,
+      O => \adc_control.config_wr_count[4]_i_1_n_0\
+    );
+\adc_control.config_wr_count[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFA082A082A082"
+    )
+        port map (
+      I0 => \adc_control.config_wr_count[7]_i_4_n_0\,
+      I1 => \adc_control.config_wr_count[7]_i_2_n_0\,
+      I2 => config_wr_count(5),
+      I3 => config_wr_count(4),
+      I4 => cmd_start,
+      I5 => cdata(21),
+      O => \adc_control.config_wr_count[5]_i_1_n_0\
+    );
+\adc_control.config_wr_count[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF88888888F8888"
+    )
+        port map (
+      I0 => cdata(22),
+      I1 => cmd_start,
+      I2 => \adc_control.config_wr_count[6]_i_2_n_0\,
+      I3 => \adc_control.config_wr_count[7]_i_2_n_0\,
+      I4 => \adc_control.config_wr_count[7]_i_4_n_0\,
+      I5 => config_wr_count(6),
+      O => \adc_control.config_wr_count[6]_i_1_n_0\
+    );
+\adc_control.config_wr_count[6]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => config_wr_count(5),
+      I1 => config_wr_count(4),
+      O => \adc_control.config_wr_count[6]_i_2_n_0\
+    );
+\adc_control.config_wr_count[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF8888888888888"
+    )
+        port map (
+      I0 => cmd_start,
+      I1 => cdata(23),
+      I2 => \adc_control.config_wr_count[7]_i_2_n_0\,
+      I3 => \adc_control.config_wr_count[7]_i_3_n_0\,
+      I4 => \adc_control.config_wr_count[7]_i_4_n_0\,
+      I5 => config_wr_count(7),
+      O => \adc_control.config_wr_count[7]_i_1_n_0\
+    );
+\adc_control.config_wr_count[7]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => config_wr_count(2),
+      I1 => config_wr_count(0),
+      I2 => \adc_control.config_wr_count[0]_i_2_n_0\,
+      I3 => config_wr_count(1),
+      I4 => config_wr_count(3),
+      O => \adc_control.config_wr_count[7]_i_2_n_0\
+    );
+\adc_control.config_wr_count[7]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => config_wr_count(4),
+      I1 => config_wr_count(5),
+      I2 => config_wr_count(6),
+      O => \adc_control.config_wr_count[7]_i_3_n_0\
+    );
+\adc_control.config_wr_count[7]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"0E"
+    )
+        port map (
+      I0 => config_wr_start,
+      I1 => config_wr_pend,
+      I2 => cmd_start,
+      O => \adc_control.config_wr_count[7]_i_4_n_0\
+    );
+\adc_control.config_wr_count_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[0]_i_1_n_0\,
+      Q => config_wr_count(0),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[1]_i_1_n_0\,
+      Q => config_wr_count(1),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[2]_i_1_n_0\,
+      Q => config_wr_count(2),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[3]_i_1_n_0\,
+      Q => config_wr_count(3),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[4]_i_1_n_0\,
+      Q => config_wr_count(4),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[5]_i_1_n_0\,
+      Q => config_wr_count(5),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[6]_i_1_n_0\,
+      Q => config_wr_count(6),
+      R => '0'
+    );
+\adc_control.config_wr_count_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_count[7]_i_1_n_0\,
+      Q => config_wr_count(7),
+      R => '0'
+    );
+\adc_control.config_wr_done_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000002020200"
+    )
+        port map (
+      I0 => \adc_control.config_wr_done_i_2_n_0\,
+      I1 => config_wr_done,
+      I2 => config_wr_count(7),
+      I3 => config_wr_start,
+      I4 => config_wr_pend,
+      I5 => \adc_control.config_wr_count[7]_i_3_n_0\,
+      O => \adc_control.config_wr_done_i_1_n_0\
+    );
+\adc_control.config_wr_done_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => config_wr_count(1),
+      I1 => config_wr_count(0),
+      I2 => config_wr_count(3),
+      I3 => config_wr_count(2),
+      O => \adc_control.config_wr_done_i_2_n_0\
+    );
+\adc_control.config_wr_done_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_done_i_1_n_0\,
+      Q => config_wr_done,
+      R => '0'
+    );
+\adc_control.config_wr_pend_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"F4"
+    )
+        port map (
+      I0 => config_wr_done,
+      I1 => config_wr_pend,
+      I2 => config_wr_start,
+      O => \adc_control.config_wr_pend_i_1_n_0\
+    );
+\adc_control.config_wr_pend_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_pend_i_1_n_0\,
+      Q => config_wr_pend,
+      R => \adc_control.sim_wr_pend_i_1_n_0\
+    );
+\adc_control.config_wr_start_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFF00000080"
+    )
+        port map (
+      I0 => \adc_control.sim_wr_start_i_3_n_0\,
+      I1 => cdata(2),
+      I2 => cdata(0),
+      I3 => cdata(3),
+      I4 => cdata(1),
+      I5 => config_wr_start,
+      O => \adc_control.config_wr_start_i_1_n_0\
+    );
+\adc_control.config_wr_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \adc_control.config_wr_start_i_1_n_0\,
+      Q => config_wr_start,
+      R => \p_0_in__0\
+    );
+\adc_control.data_out[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"4448"
     )
         port map (
       I0 => \^data_out\(0),
       I1 => resetn,
-      I2 => sim_wr_done,
+      I2 => config_wr_done,
+      I3 => sim_wr_done,
       O => \adc_control.data_out[0]_i_1_n_0\
     );
-\adc_control.data_out[1]_i_1\: unisim.vcomponents.LUT4
+\adc_control.data_out[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7800"
+      INIT => X"444C8880"
     )
         port map (
       I0 => \^data_out\(0),
-      I1 => sim_wr_done,
-      I2 => \^data_out\(1),
-      I3 => resetn,
+      I1 => resetn,
+      I2 => config_wr_done,
+      I3 => sim_wr_done,
+      I4 => \^data_out\(1),
       O => \adc_control.data_out[1]_i_1_n_0\
     );
-\adc_control.data_out[2]_i_1\: unisim.vcomponents.LUT5
+\adc_control.data_out[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7F008000"
+      INIT => X"707070F080808000"
     )
         port map (
-      I0 => \^data_out\(0),
-      I1 => sim_wr_done,
-      I2 => \^data_out\(1),
-      I3 => resetn,
-      I4 => \^data_out\(2),
+      I0 => \^data_out\(1),
+      I1 => \^data_out\(0),
+      I2 => resetn,
+      I3 => config_wr_done,
+      I4 => sim_wr_done,
+      I5 => \^data_out\(2),
       O => \adc_control.data_out[2]_i_1_n_0\
     );
-\adc_control.data_out[3]_i_1\: unisim.vcomponents.LUT6
+\adc_control.data_out[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"2888888888888888"
+      INIT => X"888C4440"
     )
         port map (
-      I0 => resetn,
-      I1 => \^data_out\(3),
-      I2 => \^data_out\(2),
-      I3 => \^data_out\(1),
-      I4 => sim_wr_done,
-      I5 => \^data_out\(0),
+      I0 => \adc_control.data_out[3]_i_2_n_0\,
+      I1 => resetn,
+      I2 => config_wr_done,
+      I3 => sim_wr_done,
+      I4 => \^data_out\(3),
       O => \adc_control.data_out[3]_i_1_n_0\
     );
-\adc_control.data_out[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F7000800"
-    )
-        port map (
-      I0 => \^data_out\(2),
-      I1 => \^data_out\(3),
-      I2 => \adc_control.data_out[5]_i_2_n_0\,
-      I3 => resetn,
-      I4 => \^data_out\(4),
-      O => \adc_control.data_out[4]_i_1_n_0\
-    );
-\adc_control.data_out[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8828888888888888"
-    )
-        port map (
-      I0 => resetn,
-      I1 => \^data_out\(5),
-      I2 => \^data_out\(4),
-      I3 => \adc_control.data_out[5]_i_2_n_0\,
-      I4 => \^data_out\(3),
-      I5 => \^data_out\(2),
-      O => \adc_control.data_out[5]_i_1_n_0\
-    );
-\adc_control.data_out[5]_i_2\: unisim.vcomponents.LUT3
+\adc_control.data_out[3]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"7F"
     )
         port map (
       I0 => \^data_out\(0),
-      I1 => sim_wr_done,
+      I1 => \^data_out\(1),
+      I2 => \^data_out\(2),
+      O => \adc_control.data_out[3]_i_2_n_0\
+    );
+\adc_control.data_out[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"888C4440"
+    )
+        port map (
+      I0 => \adc_control.data_out[4]_i_2_n_0\,
+      I1 => resetn,
+      I2 => config_wr_done,
+      I3 => sim_wr_done,
+      I4 => \^data_out\(4),
+      O => \adc_control.data_out[4]_i_1_n_0\
+    );
+\adc_control.data_out[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => \^data_out\(2),
+      I1 => \^data_out\(1),
+      I2 => \^data_out\(0),
+      I3 => \^data_out\(3),
+      O => \adc_control.data_out[4]_i_2_n_0\
+    );
+\adc_control.data_out[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"888C4440"
+    )
+        port map (
+      I0 => \adc_control.data_out[5]_i_2_n_0\,
+      I1 => resetn,
+      I2 => config_wr_done,
+      I3 => sim_wr_done,
+      I4 => \^data_out\(5),
+      O => \adc_control.data_out[5]_i_1_n_0\
+    );
+\adc_control.data_out[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFFFFFF"
+    )
+        port map (
+      I0 => \^data_out\(3),
+      I1 => \^data_out\(0),
       I2 => \^data_out\(1),
+      I3 => \^data_out\(2),
+      I4 => \^data_out\(4),
       O => \adc_control.data_out[5]_i_2_n_0\
     );
 \adc_control.data_out[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7000800"
+      INIT => X"AB005400"
     )
         port map (
-      I0 => \^data_out\(4),
-      I1 => \^data_out\(5),
-      I2 => \adc_control.data_out[7]_i_2_n_0\,
+      I0 => \adc_control.data_out[7]_i_2_n_0\,
+      I1 => sim_wr_done,
+      I2 => config_wr_done,
       I3 => resetn,
       I4 => \^data_out\(6),
       O => \adc_control.data_out[6]_i_1_n_0\
     );
 \adc_control.data_out[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BFFF000040000000"
+      INIT => X"C6C6C6CC00000000"
     )
         port map (
-      I0 => \adc_control.data_out[7]_i_2_n_0\,
-      I1 => \^data_out\(5),
-      I2 => \^data_out\(4),
-      I3 => \^data_out\(6),
-      I4 => resetn,
-      I5 => \^data_out\(7),
+      I0 => \^data_out\(6),
+      I1 => \^data_out\(7),
+      I2 => \adc_control.data_out[7]_i_2_n_0\,
+      I3 => sim_wr_done,
+      I4 => config_wr_done,
+      I5 => resetn,
       O => \adc_control.data_out[7]_i_1_n_0\
     );
-\adc_control.data_out[7]_i_2\: unisim.vcomponents.LUT5
+\adc_control.data_out[7]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFF"
+      INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => \^data_out\(2),
-      I1 => \^data_out\(3),
+      I0 => \^data_out\(4),
+      I1 => \^data_out\(2),
       I2 => \^data_out\(1),
-      I3 => sim_wr_done,
-      I4 => \^data_out\(0),
+      I3 => \^data_out\(0),
+      I4 => \^data_out\(3),
+      I5 => \^data_out\(5),
       O => \adc_control.data_out[7]_i_2_n_0\
     );
-\adc_control.data_out[8]_i_1\: unisim.vcomponents.LUT4
+\adc_control.data_out[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B080"
+      INIT => X"C0C0C0A0"
     )
         port map (
-      I0 => adc_active,
-      I1 => sim_wr_done,
+      I0 => \^data_out\(8),
+      I1 => adc_active,
       I2 => resetn,
-      I3 => \^data_out\(8),
+      I3 => config_wr_done,
+      I4 => sim_wr_done,
       O => \adc_control.data_out[8]_i_1_n_0\
     );
-\adc_control.data_out[9]_i_1\: unisim.vcomponents.LUT4
+\adc_control.data_out[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B080"
+      INIT => X"C0C0C0A0"
     )
         port map (
-      I0 => sim_active,
-      I1 => sim_wr_done,
+      I0 => \^data_out\(9),
+      I1 => sim_active,
       I2 => resetn,
-      I3 => \^data_out\(9),
+      I3 => config_wr_done,
+      I4 => sim_wr_done,
       O => \adc_control.data_out[9]_i_1_n_0\
     );
 \adc_control.data_out_reg[0]\: unisim.vcomponents.FDRE
@@ -2199,15 +3596,15 @@ begin
     );
 \adc_control.pdata[31]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7F007F007F000000"
+      INIT => X"FEFEFEFEFEFEFE00"
     )
         port map (
       I0 => \adc_control.cmd_start_i_2_n_0\,
       I1 => \adc_control.cmd_start_i_3_n_0\,
       I2 => \adc_control.cmd_start_i_4_n_0\,
-      I3 => resetn,
-      I4 => \adc_control.cmd_start_reg_i_5_n_5\,
-      I5 => \adc_control.cmd_start_i_6_n_0\,
+      I3 => \adc_control.cmd_start_reg_i_5_n_5\,
+      I4 => sim_wr_pend,
+      I5 => cmd_start,
       O => \adc_control.pdata[31]_i_2_n_0\
     );
 \adc_control.pdata[3]_i_1\: unisim.vcomponents.LUT4
@@ -3237,7 +4634,7 @@ begin
       I1 => sim_wr_pend,
       I2 => cdata(10),
       I3 => \^sim_low_wr\,
-      O => sim_low_wr3_out
+      O => sim_low_wr2_out
     );
 \adc_control.sim_low_wr_i_2\: unisim.vcomponents.LUT5
     generic map(
@@ -3277,19 +4674,21 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => sim_low_wr3_out,
+      D => sim_low_wr2_out,
       Q => \^sim_low_wr\,
       R => cmd_start
     );
-\adc_control.sim_start_i_1\: unisim.vcomponents.LUT4
+\adc_control.sim_start_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF80"
+      INIT => X"FFFFFFFF00000080"
     )
         port map (
       I0 => \adc_control.sim_wr_start_i_3_n_0\,
-      I1 => cdata(0),
-      I2 => cdata(1),
-      I3 => \^sim_start\,
+      I1 => cdata(1),
+      I2 => cdata(0),
+      I3 => cdata(3),
+      I4 => cdata(2),
+      I5 => \^sim_start\,
       O => \adc_control.sim_start_i_1_n_0\
     );
 \adc_control.sim_start_reg\: unisim.vcomponents.FDRE
@@ -3298,41 +4697,41 @@ begin
       CE => '1',
       D => \adc_control.sim_start_i_1_n_0\,
       Q => \^sim_start\,
-      R => \adc_control.sim_wr_start_i_1_n_0\
+      R => \p_0_in__0\
     );
 \adc_control.sim_wr_count[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00FFFF00E0E0E0E0"
+      INIT => X"00E0FFE0FFE000E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(0),
-      I3 => cdata(16),
+      I3 => cmd_start,
       I4 => cdata(17),
-      I5 => cmd_start,
-      O => \p_0_in__0\(0)
+      I5 => cdata(16),
+      O => \adc_control.sim_wr_count[0]_i_1_n_0\
     );
 \adc_control.sim_wr_count[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F8FF8F8888888888"
+      INIT => X"F8FF88888F888888"
     )
         port map (
       I0 => \adc_control.sim_wr_count[10]_i_2_n_0\,
       I1 => \sim_wr_count__0\(10),
       I2 => \adc_control.sim_wr_count[10]_i_4_n_0\,
       I3 => cdata(26),
-      I4 => cdata(27),
-      I5 => cmd_start,
-      O => \p_0_in__0\(10)
+      I4 => cmd_start,
+      I5 => cdata(27),
+      O => \adc_control.sim_wr_count[10]_i_1_n_0\
     );
 \adc_control.sim_wr_count[10]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"0E"
     )
         port map (
-      I0 => sim_wr_start,
-      I1 => sim_wr_pend,
+      I0 => sim_wr_pend,
+      I1 => sim_wr_start,
       I2 => cmd_start,
       O => \adc_control.sim_wr_count[10]_i_2_n_0\
     );
@@ -3377,29 +4776,29 @@ begin
     );
 \adc_control.sim_wr_count[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8FFFF88888888888"
+      INIT => X"FFFF6A006A006A00"
     )
         port map (
-      I0 => \adc_control.sim_wr_count[10]_i_2_n_0\,
-      I1 => \sim_wr_count__0\(1),
+      I0 => cdata(18),
+      I1 => cdata(17),
       I2 => cdata(16),
-      I3 => cdata(17),
-      I4 => cdata(18),
-      I5 => cmd_start,
-      O => \p_0_in__0\(1)
+      I3 => cmd_start,
+      I4 => \sim_wr_count__0\(1),
+      I5 => \adc_control.sim_wr_count[10]_i_2_n_0\,
+      O => \adc_control.sim_wr_count[1]_i_1_n_0\
     );
 \adc_control.sim_wr_count[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF0000FFE0E0E0E0"
+      INIT => X"FF00E0E000FFE0E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(2),
       I3 => \adc_control.sim_wr_count[2]_i_2_n_0\,
-      I4 => cdata(19),
-      I5 => cmd_start,
-      O => \p_0_in__0\(2)
+      I4 => cmd_start,
+      I5 => cdata(19),
+      O => \adc_control.sim_wr_count[2]_i_1_n_0\
     );
 \adc_control.sim_wr_count[2]_i_2\: unisim.vcomponents.LUT3
     generic map(
@@ -3413,18 +4812,31 @@ begin
     );
 \adc_control.sim_wr_count[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF0000FFE0E0E0E0"
+      INIT => X"FF00E0E000FFE0E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(3),
-      I3 => \adc_control.sim_wr_count[3]_i_2_n_0\,
-      I4 => cdata(20),
-      I5 => cmd_start,
-      O => \p_0_in__0\(3)
+      I3 => \adc_control.sim_wr_count[4]_i_2_n_0\,
+      I4 => cmd_start,
+      I5 => cdata(20),
+      O => \adc_control.sim_wr_count[3]_i_1_n_0\
     );
-\adc_control.sim_wr_count[3]_i_2\: unisim.vcomponents.LUT4
+\adc_control.sim_wr_count[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFA600A600A600"
+    )
+        port map (
+      I0 => cdata(21),
+      I1 => cdata(20),
+      I2 => \adc_control.sim_wr_count[4]_i_2_n_0\,
+      I3 => cmd_start,
+      I4 => \sim_wr_count__0\(4),
+      I5 => \adc_control.sim_wr_count[10]_i_2_n_0\,
+      O => \adc_control.sim_wr_count[4]_i_1_n_0\
+    );
+\adc_control.sim_wr_count[4]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"7FFF"
     )
@@ -3433,58 +4845,33 @@ begin
       I1 => cdata(16),
       I2 => cdata(17),
       I3 => cdata(19),
-      O => \adc_control.sim_wr_count[3]_i_2_n_0\
-    );
-\adc_control.sim_wr_count[4]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FF0000FFE0E0E0E0"
-    )
-        port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
-      I2 => \sim_wr_count__0\(4),
-      I3 => \adc_control.sim_wr_count[4]_i_2_n_0\,
-      I4 => cdata(21),
-      I5 => cmd_start,
-      O => \p_0_in__0\(4)
-    );
-\adc_control.sim_wr_count[4]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"7FFFFFFF"
-    )
-        port map (
-      I0 => cdata(19),
-      I1 => cdata(17),
-      I2 => cdata(16),
-      I3 => cdata(18),
-      I4 => cdata(20),
       O => \adc_control.sim_wr_count[4]_i_2_n_0\
     );
 \adc_control.sim_wr_count[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF0000FFE0E0E0E0"
+      INIT => X"FF00E0E000FFE0E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(5),
       I3 => \adc_control.sim_wr_count[6]_i_2_n_0\,
-      I4 => cdata(22),
-      I5 => cmd_start,
-      O => \p_0_in__0\(5)
+      I4 => cmd_start,
+      I5 => cdata(22),
+      O => \adc_control.sim_wr_count[5]_i_1_n_0\
     );
 \adc_control.sim_wr_count[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F8FF8F8888888888"
+      INIT => X"F8FF88888F888888"
     )
         port map (
       I0 => \adc_control.sim_wr_count[10]_i_2_n_0\,
       I1 => \sim_wr_count__0\(6),
       I2 => \adc_control.sim_wr_count[6]_i_2_n_0\,
       I3 => cdata(22),
-      I4 => cdata(23),
-      I5 => cmd_start,
-      O => \p_0_in__0\(6)
+      I4 => cmd_start,
+      I5 => cdata(23),
+      O => \adc_control.sim_wr_count[6]_i_1_n_0\
     );
 \adc_control.sim_wr_count[6]_i_2\: unisim.vcomponents.LUT6
     generic map(
@@ -3501,16 +4888,16 @@ begin
     );
 \adc_control.sim_wr_count[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF0000FFE0E0E0E0"
+      INIT => X"FF00E0E000FFE0E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(7),
       I3 => \adc_control.sim_wr_count[7]_i_3_n_0\,
-      I4 => cdata(24),
-      I5 => cmd_start,
-      O => \p_0_in__0\(7)
+      I4 => cmd_start,
+      I5 => cdata(24),
+      O => \adc_control.sim_wr_count[7]_i_1_n_0\
     );
 \adc_control.sim_wr_count[7]_i_10\: unisim.vcomponents.LUT2
     generic map(
@@ -3620,13 +5007,13 @@ begin
       INIT => X"00FFE0E0FF00E0E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(8),
       I3 => \adc_control.sim_wr_count[8]_i_2_n_0\,
       I4 => cmd_start,
       I5 => cdata(25),
-      O => \p_0_in__0\(8)
+      O => \adc_control.sim_wr_count[8]_i_1_n_0\
     );
 \adc_control.sim_wr_count[8]_i_2\: unisim.vcomponents.LUT4
     generic map(
@@ -3641,22 +5028,22 @@ begin
     );
 \adc_control.sim_wr_count[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF0000FFE0E0E0E0"
+      INIT => X"FF00E0E000FFE0E0"
     )
         port map (
-      I0 => sim_wr_pend,
-      I1 => sim_wr_start,
+      I0 => sim_wr_start,
+      I1 => sim_wr_pend,
       I2 => \sim_wr_count__0\(9),
       I3 => \adc_control.sim_wr_count[10]_i_4_n_0\,
-      I4 => cdata(26),
-      I5 => cmd_start,
-      O => \p_0_in__0\(9)
+      I4 => cmd_start,
+      I5 => cdata(26),
+      O => \adc_control.sim_wr_count[9]_i_1_n_0\
     );
 \adc_control.sim_wr_count_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(0),
+      D => \adc_control.sim_wr_count[0]_i_1_n_0\,
       Q => sim_wr_count(0),
       R => '0'
     );
@@ -3664,7 +5051,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(10),
+      D => \adc_control.sim_wr_count[10]_i_1_n_0\,
       Q => sim_wr_count(10),
       R => '0'
     );
@@ -3688,7 +5075,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(1),
+      D => \adc_control.sim_wr_count[1]_i_1_n_0\,
       Q => sim_wr_count(1),
       R => '0'
     );
@@ -3696,7 +5083,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(2),
+      D => \adc_control.sim_wr_count[2]_i_1_n_0\,
       Q => sim_wr_count(2),
       R => '0'
     );
@@ -3704,7 +5091,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(3),
+      D => \adc_control.sim_wr_count[3]_i_1_n_0\,
       Q => sim_wr_count(3),
       R => '0'
     );
@@ -3712,7 +5099,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(4),
+      D => \adc_control.sim_wr_count[4]_i_1_n_0\,
       Q => sim_wr_count(4),
       R => '0'
     );
@@ -3720,7 +5107,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(5),
+      D => \adc_control.sim_wr_count[5]_i_1_n_0\,
       Q => sim_wr_count(5),
       R => '0'
     );
@@ -3728,7 +5115,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(6),
+      D => \adc_control.sim_wr_count[6]_i_1_n_0\,
       Q => sim_wr_count(6),
       R => '0'
     );
@@ -3736,7 +5123,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(7),
+      D => \adc_control.sim_wr_count[7]_i_1_n_0\,
       Q => sim_wr_count(7),
       R => '0'
     );
@@ -3770,7 +5157,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(8),
+      D => \adc_control.sim_wr_count[8]_i_1_n_0\,
       Q => sim_wr_count(8),
       R => '0'
     );
@@ -3778,7 +5165,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(9),
+      D => \adc_control.sim_wr_count[9]_i_1_n_0\,
       Q => sim_wr_count(9),
       R => '0'
     );
@@ -3788,8 +5175,8 @@ begin
     )
         port map (
       I0 => sim_wr_done,
-      I1 => sim_wr_pend,
-      I2 => sim_wr_start,
+      I1 => sim_wr_start,
+      I2 => sim_wr_pend,
       I3 => \adc_control.sim_low_wr_i_2_n_0\,
       O => \adc_control.sim_wr_done_i_1_n_0\
     );
@@ -3833,45 +5220,54 @@ begin
     )
         port map (
       I0 => cmd_start,
-      O => \adc_control.sim_wr_start_i_1_n_0\
+      O => \p_0_in__0\
     );
-\adc_control.sim_wr_start_i_2\: unisim.vcomponents.LUT4
+\adc_control.sim_wr_start_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF08"
+      INIT => X"FFFFFFFF00000020"
     )
         port map (
       I0 => \adc_control.sim_wr_start_i_3_n_0\,
-      I1 => cdata(0),
-      I2 => cdata(1),
-      I3 => sim_wr_start,
-      O => p_1_in
+      I1 => cdata(2),
+      I2 => cdata(0),
+      I3 => cdata(3),
+      I4 => cdata(1),
+      I5 => sim_wr_start,
+      O => \adc_control.sim_wr_start_i_2_n_0\
     );
-\adc_control.sim_wr_start_i_3\: unisim.vcomponents.LUT6
+\adc_control.sim_wr_start_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000000001"
+      INIT => X"0001"
     )
         port map (
-      I0 => cdata(6),
-      I1 => cdata(7),
-      I2 => cdata(5),
-      I3 => cdata(4),
-      I4 => cdata(3),
-      I5 => cdata(2),
+      I0 => cdata(7),
+      I1 => cdata(6),
+      I2 => cdata(4),
+      I3 => cdata(5),
       O => \adc_control.sim_wr_start_i_3_n_0\
     );
 \adc_control.sim_wr_start_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => p_1_in,
+      D => \adc_control.sim_wr_start_i_2_n_0\,
       Q => sim_wr_start,
-      R => \adc_control.sim_wr_start_i_1_n_0\
+      R => \p_0_in__0\
+    );
+\adc_control.wr_en[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => config_wr_done,
+      I1 => sim_wr_done,
+      O => \adc_control.wr_en_reg0\
     );
 \adc_control.wr_en_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => sim_wr_done,
+      D => \adc_control.wr_en_reg0\,
       Q => \^wr_en\(0),
       R => \adc_control.sim_wr_pend_i_1_n_0\
     );
@@ -3879,7 +5275,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => sim_wr_done,
+      D => \adc_control.wr_en_reg0\,
       Q => \^wr_en\(1),
       R => \adc_control.sim_wr_pend_i_1_n_0\
     );
@@ -3887,7 +5283,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => sim_wr_done,
+      D => \adc_control.wr_en_reg0\,
       Q => \^wr_en\(2),
       R => \adc_control.sim_wr_pend_i_1_n_0\
     );
@@ -3895,35 +5291,52 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => sim_wr_done,
+      D => \adc_control.wr_en_reg0\,
       Q => \^wr_en\(3),
       R => \adc_control.sim_wr_pend_i_1_n_0\
+    );
+i_0: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => '0',
+      O => config_start
     );
 ila_4_i: component ps_adc_control_0_0_ila_4
      port map (
       clk => clk,
       probe0(0) => resetn,
       probe1(31 downto 0) => data_in(31 downto 0),
-      probe10(1 downto 0) => \^sim_channel\(1 downto 0),
-      probe11(31 downto 0) => \^sim_data\(31 downto 0),
-      probe12(0) => \^adc_start\,
-      probe13(0) => \^adc_stop\,
-      probe14(0) => \^sim_start\,
-      probe15(0) => adc_active,
-      probe16(0) => sim_active,
-      probe17(0) => sim_wr_start,
-      probe18(0) => cmd_start,
-      probe19(0) => sim_wr_pend,
+      probe10(7 downto 0) => \^config_adr\(7 downto 0),
+      probe11(31 downto 0) => \^config_data\(31 downto 0),
+      probe12(0) => \^sim_low_wr\,
+      probe13(0) => \^sim_high_wr\,
+      probe14(1 downto 0) => \^sim_channel\(1 downto 0),
+      probe15(31 downto 0) => \^sim_data\(31 downto 0),
+      probe16(0) => \^adc_start\,
+      probe17(0) => \^adc_stop\,
+      probe18(0) => config_start,
+      probe19(0) => \^sim_start\,
       probe2(10 downto 0) => \^address\(10 downto 0),
-      probe20(0) => sim_wr_done,
-      probe21(10 downto 0) => sim_wr_count(10 downto 0),
+      probe20(0) => adc_active,
+      probe21(0) => sim_active,
+      probe22(0) => cmd_start,
+      probe23(0) => config_wr_start,
+      probe24(0) => config_wr_pend,
+      probe25(0) => config_wr_done,
+      probe26(7 downto 0) => config_wr_count(7 downto 0),
+      probe27(0) => sim_wr_start,
+      probe28(0) => sim_wr_pend,
+      probe29(0) => sim_wr_done,
       probe3(10 downto 0) => padr(10 downto 0),
+      probe30(10 downto 0) => sim_wr_count(10 downto 0),
       probe4(3 downto 0) => \^wr_en\(3 downto 0),
       probe5(31 downto 0) => \^data_out\(31 downto 0),
       probe6(31 downto 0) => cdata(31 downto 0),
       probe7(31 downto 0) => pdata(31 downto 0),
-      probe8(0) => \^sim_low_wr\,
-      probe9(0) => \^sim_high_wr\
+      probe8(0) => \^config_low_wr\,
+      probe9(0) => \^config_high_wr\
     );
 end STRUCTURE;
 library IEEE;
@@ -3945,6 +5358,10 @@ entity ps_adc_control_0_0 is
     sim_start : out STD_LOGIC;
     adc_active : in STD_LOGIC;
     sim_active : in STD_LOGIC;
+    config_low_wr : out STD_LOGIC;
+    config_high_wr : out STD_LOGIC;
+    config_adr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    config_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
     sim_low_wr : out STD_LOGIC;
     sim_high_wr : out STD_LOGIC;
     sim_channel : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -3983,6 +5400,10 @@ inst: entity work.ps_adc_control_0_0_adc_control
       bram_adr_in(1 downto 0) => B"00",
       bram_adr_out(10 downto 0) => bram_adr_out(10 downto 0),
       clk => clk,
+      config_adr(7 downto 0) => config_adr(7 downto 0),
+      config_data(31 downto 0) => config_data(31 downto 0),
+      config_high_wr => config_high_wr,
+      config_low_wr => config_low_wr,
       data_in(31 downto 0) => data_in(31 downto 0),
       data_out(31 downto 0) => data_out(31 downto 0),
       resetn => resetn,

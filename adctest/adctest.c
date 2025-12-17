@@ -13,11 +13,19 @@
 #define SPEED_OF_LIGHT  299792458.0 // m/s
 #define LOW_DIST        2.0 // m
 #define HIGH_DIST       1.0 // m
+#define FS              4000.0
 
 #define CMD_LOAD		1
 #define CMD_START_ADC	2
 #define CMD_START_SIM	3
 #define CMD_STOP		4
+#define CMD_CONFIG		5
+
+#define CONFIG_MIN_ENV          0
+#define CONFIG_MIN_INCR         1
+#define CONFIG_MAX_INCR         2
+#define CONFIG_MAX_DOA_DIFF     3
+#define CONFIG_MIN_SAMPLES      4
 
 struct bram_control_t
 {
@@ -26,7 +34,53 @@ struct bram_control_t
 	int16_t sample_arr[4092];
 };
 
+struct bram_config_t
+{
+	uint32_t cmd;
+	uint32_t status;
+	int32_t config_arr[255];
+};
+
 static int16_t sample_arr[4092];
+static int16_t config_count = 1;
+static int32_t config_low_arr[255];
+static int32_t config_high_arr[255];
+
+void SetConfig(int index, int low_value, int high_value)
+{
+    if (index >= config_count)
+        config_count = index + 1;
+    
+    config_low_arr[index] = low_value;
+    config_high_arr[index] = high_value;
+}
+
+void LoadConfig()
+{
+	int i;
+	volatile struct bram_config_t *config = (volatile struct bram_config_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
+	char counter = config->status & 0xFF;
+	
+	for (i = 0;  i < config_count; i++)
+		config->config_arr[i] = config_low_arr[i];
+	
+	config->cmd = CMD_CONFIG | (0 << 8) | (config_count << 16);
+	
+	while ((config->status & 0xFF) == counter)
+		;
+	
+	config->cmd = 0;
+	
+	for (i = 0;  i < config_count; i++)
+		config->config_arr[i] = config_high_arr[i];
+	
+	config->cmd = CMD_CONFIG | (1 << 8) | (config_count << 16);
+	
+	while ((config->status & 0xFF) == counter)
+		;
+	
+	config->cmd = 0;
+}
 
 void LoadSamples(volatile struct bram_control_t *control, char channel, uint16_t *arr, int size)
 {
@@ -44,7 +98,7 @@ void LoadSamples(volatile struct bram_control_t *control, char channel, uint16_t
 	control->cmd = 0;
 }
 
-int GenerateMorlet(double fs, double f, int periods, int16_t amp, double mdiff)
+int GenerateMorlet(double f, double periods, int16_t amp, double mdiff)
 {
     int p;
     int size;
@@ -56,18 +110,18 @@ int GenerateMorlet(double fs, double f, int periods, int16_t amp, double mdiff)
     double i, r;
     double diff;
 
-    diff = 1000000.0 * fs / SPEED_OF_LIGHT * mdiff;
+    diff = 1000000.0 * FS / SPEED_OF_LIGHT * mdiff;
 
-    incr = 2.0 * PI * f / fs;
+    incr = 2.0 * PI * f / FS;
 
-    dval = (double)periods * fs / f;
+    dval = periods * FS / f;
     size = (int)(dval + 0.5);
     if ((size % 2) == 0)
         size++;
 
     size = size / 2;
 
-    rho = (double)periods / incr;
+    rho = periods / incr;
     mult = -0.5 / rho / rho;
 
     for (p = 0; p <= size; p++)
@@ -85,7 +139,7 @@ int GenerateMorlet(double fs, double f, int periods, int16_t amp, double mdiff)
 	return 2 * size + 1;
 }
 
-int GenerateCos(double fs, double f, int periods, int16_t amp, double mdiff)
+int GenerateCos(double f, double periods, int16_t amp, double mdiff)
 {
     int p;
     int size;
@@ -93,9 +147,9 @@ int GenerateCos(double fs, double f, int periods, int16_t amp, double mdiff)
     double incr;
     double r;
 
-    incr = 2.0 * PI * f / fs;
+    incr = 2.0 * PI * f / FS;
 
-    dval = (double)periods * fs / f;
+    dval = periods * FS / f;
     size = (int)(dval + 0.5);
 
     for (p = 0; p < size; p++)
@@ -107,13 +161,13 @@ int GenerateCos(double fs, double f, int periods, int16_t amp, double mdiff)
 	return size;
 }
 
-int GenerateZero(double fs, double f, int periods)
+int GenerateZero(double f, double periods)
 {
     int p;
     int size;
     double dval;
 
-    dval = (double)periods * fs / f;
+    dval = periods * FS / f;
     size = (int)(dval + 0.5);
 
     for (p = 0; p < size; p++)
@@ -190,29 +244,29 @@ void CalcHighDist(double compass_deg, double dist[3])
         dist[i] -= avg;    
 }
 
-void LoadLowZero(double fs, double f, int periods)
+void LoadLowZero(double f, double periods)
 {
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
     int size;
     
-	size = GenerateZero(fs, f, periods);
+	size = GenerateZero(f, periods);
 	LoadSamples(control, 0, sample_arr, size);
 	LoadSamples(control, 1, sample_arr, size);
 	LoadSamples(control, 2, sample_arr, size);
 }
 
-void LoadHighZero(double fs, double f, int periods)
+void LoadHighZero(double f, double periods)
 {
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
     int size;
     
-	size = GenerateZero(fs, f, periods);
+	size = GenerateZero(f, periods);
 	LoadSamples(control, 4, sample_arr, size);
 	LoadSamples(control, 5, sample_arr, size);
 	LoadSamples(control, 6, sample_arr, size);
 }
 
-void LoadLowMorlet(double fs, double f, int periods, int16_t amp, double angle)
+void LoadLowMorlet(double f, double periods, int16_t amp, double angle)
 {
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
 	int size;
@@ -220,17 +274,17 @@ void LoadLowMorlet(double fs, double f, int periods, int16_t amp, double angle)
     
     CalcLowDist(angle, dist);
 
-    size = GenerateMorlet(fs, f, periods, amp, dist[0]);
+    size = GenerateMorlet(f, periods, amp, dist[0]);
 	LoadSamples(control, 0, sample_arr, size);
 
-    size = GenerateMorlet(fs, f, periods, amp, dist[1]);
+    size = GenerateMorlet(f, periods, amp, dist[1]);
 	LoadSamples(control, 1, sample_arr, size);
 
-    size = GenerateMorlet(fs, f, periods, amp, dist[2]);
+    size = GenerateMorlet(f, periods, amp, dist[2]);
 	LoadSamples(control, 2, sample_arr, size);
 }
 
-void LoadHighMorlet(double fs, double f, int periods, int16_t amp, double angle)
+void LoadHighMorlet(double f, double periods, int16_t amp, double angle)
 {
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
 	int size;
@@ -238,17 +292,17 @@ void LoadHighMorlet(double fs, double f, int periods, int16_t amp, double angle)
     
     CalcHighDist(angle, dist);
 
-    size = GenerateMorlet(fs, f, periods, amp, dist[0]);
+    size = GenerateMorlet(f, periods, amp, dist[0]);
 	LoadSamples(control, 4, sample_arr, size);
 
-    size = GenerateMorlet(fs, f, periods, amp, dist[1]);
+    size = GenerateMorlet(f, periods, amp, dist[1]);
 	LoadSamples(control, 5, sample_arr, size);
 
-    size = GenerateMorlet(fs, f, periods, amp, dist[2]);
+    size = GenerateMorlet(f, periods, amp, dist[2]);
 	LoadSamples(control, 6, sample_arr, size);
 }
 
-void LoadLowCos(double fs, double f, int periods, int16_t amp, double angle)
+void LoadLowCos(double f, double periods, int16_t amp, double angle)
 {
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
 	int size;
@@ -256,17 +310,17 @@ void LoadLowCos(double fs, double f, int periods, int16_t amp, double angle)
     
     CalcLowDist(angle, dist);
 
-    size = GenerateCos(fs, f, periods, amp, dist[0]);
+    size = GenerateCos(f, periods, amp, dist[0]);
     LoadSamples(control, 0, sample_arr, size);
 
-    size = GenerateCos(fs, f, periods, amp, dist[1]);
+    size = GenerateCos(f, periods, amp, dist[1]);
 	LoadSamples(control, 1, sample_arr, size);
 
-    size = GenerateCos(fs, f, periods, amp, dist[2]);
+    size = GenerateCos(f, periods, amp, dist[2]);
 	LoadSamples(control, 2, sample_arr, size);
 }
 
-void LoadHighCos(double fs, double f, int periods, int16_t amp, double angle)
+void LoadHighCos(double f, double periods, int16_t amp, double angle)
 {
 	volatile struct bram_control_t *control = (volatile struct bram_control_t *)XPAR_AXI_BRAM_CTRL_0_BASEADDR;
 	int size;
@@ -274,13 +328,13 @@ void LoadHighCos(double fs, double f, int periods, int16_t amp, double angle)
     
     CalcHighDist(angle, dist);
 
-    size = GenerateCos(fs, f, periods, amp, dist[0]);
+    size = GenerateCos(f, periods, amp, dist[0]);
 	LoadSamples(control, 4, sample_arr, size);
 
-    size = GenerateCos(fs, f, periods, amp, dist[1]);
+    size = GenerateCos(f, periods, amp, dist[1]);
 	LoadSamples(control, 5, sample_arr, size);
     
-    size = GenerateCos(fs, f, periods, amp, dist[2]);
+    size = GenerateCos(f, periods, amp, dist[2]);
 	LoadSamples(control, 6, sample_arr, size);
 }
 
@@ -292,17 +346,36 @@ void StartSim()
 	control->cmd = 0;
 }
 
+int CalcIncr(double f)
+{
+    double incr = f / FS * (double)0x100000;
+    return (int)incr;
+}
+
+int CalcSamples(double f, double periods)
+{
+    double s = FS / f * periods;
+    return (int)s;
+}
+
 int main()
 {
-	LoadLowZero(4000.0, 46.0, 30);
-	LoadLowMorlet(4000.0, 46.0, 5, 25000, 45.0);
-//	LoadLowCos(4000.0, 46.0, 30, 25, 45.0);
-	LoadLowZero(4000.0, 46.0, 30);
+    SetConfig(CONFIG_MIN_ENV, 25, 25);
+    SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0), CalcIncr(185.0));
+    SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0), CalcIncr(195.0));
+    SetConfig(CONFIG_MAX_DOA_DIFF, 100, 100);
+    SetConfig(CONFIG_MIN_SAMPLES, CalcSamples(46.0, 1.5), CalcSamples(189.0, 1.5));
+    LoadConfig();
+    
+	LoadLowZero(46.0, 30.0);
+	LoadLowMorlet(46.0, 5.0, 25000, 45.0);
+//	LoadLowCos(46.0, 30.0, 25, 45.0);
+	LoadLowZero(46.0, 30.0);
 
-	LoadHighZero(4000.0, 189.0, 120);
-	LoadHighMorlet(4000.0, 189.0, 20, 25000, 45.0);
-//	LoadHighCos(4000.0, 189.0, 120, 25, 45.0);
-	LoadHighZero(4000.0, 189.0, 120);
+	LoadHighZero(189.0, 120.0);
+	LoadHighMorlet(189.0, 20.0, 25000, 45.0);
+//	LoadHighCos(189.0, 120.0, 25, 45.0);
+	LoadHighZero(189.0, 120.0);
 
 	StartSim();
 

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Dec 15 22:26:06 2025
+// Date        : Wed Dec 17 21:21:40 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -21,12 +21,20 @@ module ps_comp_low_0_0
     fifo_wr,
     fifo_sample_data,
     fifo_doa_data,
+    config_clk,
+    config_wr,
+    config_adr,
+    config_data,
     clk,
     reset);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input fifo_clk;
   input fifo_wr;
   input [191:0]fifo_sample_data;
   input [143:0]fifo_doa_data;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input config_clk;
+  input config_wr;
+  input [7:0]config_adr;
+  input [31:0]config_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
 
@@ -39,6 +47,10 @@ module ps_comp_low_0_0
 
   ps_comp_low_0_0_comp_low inst
        (.clk(clk),
+        .config_adr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .config_clk(1'b0),
+        .config_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .config_wr(1'b0),
         .fifo_clk(fifo_clk),
         .fifo_doa_data(fifo_doa_data),
         .fifo_sample_data(fifo_sample_data),
@@ -52,12 +64,20 @@ module ps_comp_low_0_0_comp_low
     fifo_wr,
     fifo_sample_data,
     fifo_doa_data,
+    config_clk,
+    config_wr,
+    config_adr,
+    config_data,
     clk,
     reset);
   input fifo_clk;
   input fifo_wr;
   input [191:0]fifo_sample_data;
   input [143:0]fifo_doa_data;
+  input config_clk;
+  input config_wr;
+  input [7:0]config_adr;
+  input [31:0]config_data;
   input clk;
   input reset;
 

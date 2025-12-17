@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Dec 14 15:59:05 2025
+// Date        : Wed Dec 17 22:42:29 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_adc_control_0_0/ps_adc_control_0_0_sim_netlist.v
@@ -30,6 +30,10 @@ module ps_adc_control_0_0
     sim_start,
     adc_active,
     sim_active,
+    config_low_wr,
+    config_high_wr,
+    config_adr,
+    config_data,
     sim_low_wr,
     sim_high_wr,
     sim_channel,
@@ -47,6 +51,10 @@ module ps_adc_control_0_0
   output sim_start;
   input adc_active;
   input sim_active;
+  output config_low_wr;
+  output config_high_wr;
+  output [7:0]config_adr;
+  output [31:0]config_data;
   output sim_low_wr;
   output sim_high_wr;
   output [1:0]sim_channel;
@@ -59,6 +67,10 @@ module ps_adc_control_0_0
   wire [12:0]bram_adr_in;
   wire [10:0]bram_adr_out;
   wire clk;
+  wire [7:0]config_adr;
+  wire [31:0]config_data;
+  wire config_high_wr;
+  wire config_low_wr;
   wire [31:0]data_in;
   wire [31:0]data_out;
   wire resetn;
@@ -78,6 +90,10 @@ module ps_adc_control_0_0
         .bram_adr_in({bram_adr_in[12:2],1'b0,1'b0}),
         .bram_adr_out(bram_adr_out),
         .clk(clk),
+        .config_adr(config_adr),
+        .config_data(config_data),
+        .config_high_wr(config_high_wr),
+        .config_low_wr(config_low_wr),
         .data_in(data_in),
         .data_out(data_out),
         .resetn(resetn),
@@ -105,6 +121,10 @@ module ps_adc_control_0_0_adc_control
     sim_start,
     adc_active,
     sim_active,
+    config_low_wr,
+    config_high_wr,
+    config_adr,
+    config_data,
     sim_low_wr,
     sim_high_wr,
     sim_channel,
@@ -122,6 +142,10 @@ module ps_adc_control_0_0_adc_control
   output sim_start;
   input adc_active;
   input sim_active;
+  output config_low_wr;
+  output config_high_wr;
+  output [7:0]config_adr;
+  output [31:0]config_data;
   output sim_low_wr;
   output sim_high_wr;
   output [1:0]sim_channel;
@@ -130,13 +154,14 @@ module ps_adc_control_0_0_adc_control
   (* MARK_DEBUG *) wire adc_active;
   wire \adc_control.adc_start_i_1_n_0 ;
   wire \adc_control.adc_stop_i_1_n_0 ;
-  wire \adc_control.adc_stop_i_2_n_0 ;
   wire \adc_control.address[0]_i_1_n_0 ;
   wire \adc_control.address[10]_i_1_n_0 ;
   wire \adc_control.address[10]_i_2_n_0 ;
   wire \adc_control.address[10]_i_3_n_0 ;
   wire \adc_control.address[1]_i_1_n_0 ;
   wire \adc_control.address[1]_i_2_n_0 ;
+  wire \adc_control.address[1]_i_3_n_0 ;
+  wire \adc_control.address[1]_i_4_n_0 ;
   wire \adc_control.address[2]_i_1_n_0 ;
   wire \adc_control.address[3]_i_1_n_0 ;
   wire \adc_control.address[4]_i_1_n_0 ;
@@ -149,7 +174,7 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.cdata[31]_i_1_n_0 ;
   wire \adc_control.cdata[31]_i_2_n_0 ;
   wire \adc_control.cmd_start_i_10_n_0 ;
-  wire \adc_control.cmd_start_i_12_n_0 ;
+  wire \adc_control.cmd_start_i_11_n_0 ;
   wire \adc_control.cmd_start_i_13_n_0 ;
   wire \adc_control.cmd_start_i_14_n_0 ;
   wire \adc_control.cmd_start_i_15_n_0 ;
@@ -161,6 +186,7 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.cmd_start_i_20_n_0 ;
   wire \adc_control.cmd_start_i_21_n_0 ;
   wire \adc_control.cmd_start_i_22_n_0 ;
+  wire \adc_control.cmd_start_i_23_n_0 ;
   wire \adc_control.cmd_start_i_2_n_0 ;
   wire \adc_control.cmd_start_i_3_n_0 ;
   wire \adc_control.cmd_start_i_4_n_0 ;
@@ -168,22 +194,88 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.cmd_start_i_7_n_0 ;
   wire \adc_control.cmd_start_i_8_n_0 ;
   wire \adc_control.cmd_start_i_9_n_0 ;
-  wire \adc_control.cmd_start_reg_i_11_n_0 ;
-  wire \adc_control.cmd_start_reg_i_11_n_1 ;
-  wire \adc_control.cmd_start_reg_i_11_n_2 ;
-  wire \adc_control.cmd_start_reg_i_11_n_3 ;
-  wire \adc_control.cmd_start_reg_i_11_n_4 ;
-  wire \adc_control.cmd_start_reg_i_11_n_5 ;
-  wire \adc_control.cmd_start_reg_i_11_n_6 ;
-  wire \adc_control.cmd_start_reg_i_11_n_7 ;
+  wire \adc_control.cmd_start_reg_i_12_n_0 ;
+  wire \adc_control.cmd_start_reg_i_12_n_1 ;
+  wire \adc_control.cmd_start_reg_i_12_n_2 ;
+  wire \adc_control.cmd_start_reg_i_12_n_3 ;
+  wire \adc_control.cmd_start_reg_i_12_n_4 ;
+  wire \adc_control.cmd_start_reg_i_12_n_5 ;
+  wire \adc_control.cmd_start_reg_i_12_n_6 ;
+  wire \adc_control.cmd_start_reg_i_12_n_7 ;
   wire \adc_control.cmd_start_reg_i_5_n_5 ;
   wire \adc_control.cmd_start_reg_i_5_n_6 ;
   wire \adc_control.cmd_start_reg_i_5_n_7 ;
+  wire \adc_control.config_adr[0]_i_1_n_0 ;
+  wire \adc_control.config_adr[1]_i_1_n_0 ;
+  wire \adc_control.config_adr[2]_i_1_n_0 ;
+  wire \adc_control.config_adr[3]_i_1_n_0 ;
+  wire \adc_control.config_adr[4]_i_1_n_0 ;
+  wire \adc_control.config_adr[5]_i_1_n_0 ;
+  wire \adc_control.config_adr[6]_i_1_n_0 ;
+  wire \adc_control.config_adr[7]_i_1_n_0 ;
+  wire \adc_control.config_adr[7]_i_2_n_0 ;
+  wire \adc_control.config_adr[7]_i_3_n_0 ;
+  wire \adc_control.config_data[0]_i_1_n_0 ;
+  wire \adc_control.config_data[10]_i_1_n_0 ;
+  wire \adc_control.config_data[11]_i_1_n_0 ;
+  wire \adc_control.config_data[12]_i_1_n_0 ;
+  wire \adc_control.config_data[13]_i_1_n_0 ;
+  wire \adc_control.config_data[14]_i_1_n_0 ;
+  wire \adc_control.config_data[15]_i_1_n_0 ;
+  wire \adc_control.config_data[16]_i_1_n_0 ;
+  wire \adc_control.config_data[17]_i_1_n_0 ;
+  wire \adc_control.config_data[18]_i_1_n_0 ;
+  wire \adc_control.config_data[19]_i_1_n_0 ;
+  wire \adc_control.config_data[1]_i_1_n_0 ;
+  wire \adc_control.config_data[20]_i_1_n_0 ;
+  wire \adc_control.config_data[21]_i_1_n_0 ;
+  wire \adc_control.config_data[22]_i_1_n_0 ;
+  wire \adc_control.config_data[23]_i_1_n_0 ;
+  wire \adc_control.config_data[24]_i_1_n_0 ;
+  wire \adc_control.config_data[25]_i_1_n_0 ;
+  wire \adc_control.config_data[26]_i_1_n_0 ;
+  wire \adc_control.config_data[27]_i_1_n_0 ;
+  wire \adc_control.config_data[28]_i_1_n_0 ;
+  wire \adc_control.config_data[29]_i_1_n_0 ;
+  wire \adc_control.config_data[2]_i_1_n_0 ;
+  wire \adc_control.config_data[30]_i_1_n_0 ;
+  wire \adc_control.config_data[31]_i_1_n_0 ;
+  wire \adc_control.config_data[31]_i_2_n_0 ;
+  wire \adc_control.config_data[3]_i_1_n_0 ;
+  wire \adc_control.config_data[4]_i_1_n_0 ;
+  wire \adc_control.config_data[5]_i_1_n_0 ;
+  wire \adc_control.config_data[6]_i_1_n_0 ;
+  wire \adc_control.config_data[7]_i_1_n_0 ;
+  wire \adc_control.config_data[8]_i_1_n_0 ;
+  wire \adc_control.config_data[9]_i_1_n_0 ;
+  wire \adc_control.config_high_wr_i_1_n_0 ;
+  wire \adc_control.config_wr_count[0]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[0]_i_2_n_0 ;
+  wire \adc_control.config_wr_count[0]_i_3_n_0 ;
+  wire \adc_control.config_wr_count[1]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[2]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[2]_i_2_n_0 ;
+  wire \adc_control.config_wr_count[3]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[3]_i_2_n_0 ;
+  wire \adc_control.config_wr_count[4]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[5]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[6]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[6]_i_2_n_0 ;
+  wire \adc_control.config_wr_count[7]_i_1_n_0 ;
+  wire \adc_control.config_wr_count[7]_i_2_n_0 ;
+  wire \adc_control.config_wr_count[7]_i_3_n_0 ;
+  wire \adc_control.config_wr_count[7]_i_4_n_0 ;
+  wire \adc_control.config_wr_done_i_1_n_0 ;
+  wire \adc_control.config_wr_done_i_2_n_0 ;
+  wire \adc_control.config_wr_pend_i_1_n_0 ;
+  wire \adc_control.config_wr_start_i_1_n_0 ;
   wire \adc_control.data_out[0]_i_1_n_0 ;
   wire \adc_control.data_out[1]_i_1_n_0 ;
   wire \adc_control.data_out[2]_i_1_n_0 ;
   wire \adc_control.data_out[3]_i_1_n_0 ;
+  wire \adc_control.data_out[3]_i_2_n_0 ;
   wire \adc_control.data_out[4]_i_1_n_0 ;
+  wire \adc_control.data_out[4]_i_2_n_0 ;
   wire \adc_control.data_out[5]_i_1_n_0 ;
   wire \adc_control.data_out[5]_i_2_n_0 ;
   wire \adc_control.data_out[6]_i_1_n_0 ;
@@ -262,19 +354,27 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.sim_low_wr_i_3_n_0 ;
   wire \adc_control.sim_low_wr_i_4_n_0 ;
   wire \adc_control.sim_start_i_1_n_0 ;
+  wire \adc_control.sim_wr_count[0]_i_1_n_0 ;
+  wire \adc_control.sim_wr_count[10]_i_1_n_0 ;
   wire \adc_control.sim_wr_count[10]_i_2_n_0 ;
   wire \adc_control.sim_wr_count[10]_i_4_n_0 ;
   wire \adc_control.sim_wr_count[10]_i_5_n_0 ;
   wire \adc_control.sim_wr_count[10]_i_6_n_0 ;
   wire \adc_control.sim_wr_count[10]_i_7_n_0 ;
+  wire \adc_control.sim_wr_count[1]_i_1_n_0 ;
+  wire \adc_control.sim_wr_count[2]_i_1_n_0 ;
   wire \adc_control.sim_wr_count[2]_i_2_n_0 ;
-  wire \adc_control.sim_wr_count[3]_i_2_n_0 ;
+  wire \adc_control.sim_wr_count[3]_i_1_n_0 ;
+  wire \adc_control.sim_wr_count[4]_i_1_n_0 ;
   wire \adc_control.sim_wr_count[4]_i_2_n_0 ;
+  wire \adc_control.sim_wr_count[5]_i_1_n_0 ;
+  wire \adc_control.sim_wr_count[6]_i_1_n_0 ;
   wire \adc_control.sim_wr_count[6]_i_2_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_10_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_11_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_12_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_13_n_0 ;
+  wire \adc_control.sim_wr_count[7]_i_1_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_3_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_4_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_5_n_0 ;
@@ -282,7 +382,9 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.sim_wr_count[7]_i_7_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_8_n_0 ;
   wire \adc_control.sim_wr_count[7]_i_9_n_0 ;
+  wire \adc_control.sim_wr_count[8]_i_1_n_0 ;
   wire \adc_control.sim_wr_count[8]_i_2_n_0 ;
+  wire \adc_control.sim_wr_count[9]_i_1_n_0 ;
   wire \adc_control.sim_wr_count_reg[10]_i_3_n_6 ;
   wire \adc_control.sim_wr_count_reg[10]_i_3_n_7 ;
   wire \adc_control.sim_wr_count_reg[7]_i_2_n_0 ;
@@ -296,8 +398,9 @@ module ps_adc_control_0_0_adc_control
   wire \adc_control.sim_wr_done_i_1_n_0 ;
   wire \adc_control.sim_wr_pend_i_1_n_0 ;
   wire \adc_control.sim_wr_pend_i_2_n_0 ;
-  wire \adc_control.sim_wr_start_i_1_n_0 ;
+  wire \adc_control.sim_wr_start_i_2_n_0 ;
   wire \adc_control.sim_wr_start_i_3_n_0 ;
+  wire \adc_control.wr_en_reg0 ;
   (* MARK_DEBUG *) wire adc_start;
   (* MARK_DEBUG *) wire adc_stop;
   (* MARK_DEBUG *) wire [10:0]address;
@@ -305,10 +408,19 @@ module ps_adc_control_0_0_adc_control
   (* MARK_DEBUG *) wire [31:0]cdata;
   wire clk;
   (* MARK_DEBUG *) wire cmd_start;
+  (* MARK_DEBUG *) wire [7:0]config_adr;
+  (* MARK_DEBUG *) wire [31:0]config_data;
+  (* MARK_DEBUG *) wire config_high_wr;
+  (* MARK_DEBUG *) wire config_low_wr;
+  wire config_low_wr7_out;
+  (* MARK_DEBUG *) wire config_start;
+  (* MARK_DEBUG *) wire [7:0]config_wr_count;
+  (* MARK_DEBUG *) wire config_wr_done;
+  (* MARK_DEBUG *) wire config_wr_pend;
+  (* MARK_DEBUG *) wire config_wr_start;
   (* MARK_DEBUG *) wire [31:0]data_in;
   (* MARK_DEBUG *) wire [31:0]data_out;
-  wire [10:0]p_0_in__0;
-  wire p_1_in;
+  wire p_0_in__0;
   (* MARK_DEBUG *) wire [10:0]padr;
   (* MARK_DEBUG *) wire [31:0]pdata;
   (* MARK_DEBUG *) wire resetn;
@@ -317,7 +429,7 @@ module ps_adc_control_0_0_adc_control
   (* MARK_DEBUG *) wire [31:0]sim_data;
   (* MARK_DEBUG *) wire sim_high_wr;
   (* MARK_DEBUG *) wire sim_low_wr;
-  wire sim_low_wr3_out;
+  wire sim_low_wr2_out;
   (* MARK_DEBUG *) wire sim_start;
   (* MARK_DEBUG *) wire [10:0]sim_wr_count;
   wire [10:0]sim_wr_count__0;
@@ -325,20 +437,22 @@ module ps_adc_control_0_0_adc_control
   (* MARK_DEBUG *) wire sim_wr_pend;
   (* MARK_DEBUG *) wire sim_wr_start;
   (* MARK_DEBUG *) wire [3:0]wr_en;
-  wire [7:0]\NLW_adc_control.cmd_start_reg_i_11_O_UNCONNECTED ;
+  wire [7:0]\NLW_adc_control.cmd_start_reg_i_12_O_UNCONNECTED ;
   wire [7:3]\NLW_adc_control.cmd_start_reg_i_5_CO_UNCONNECTED ;
   wire [7:0]\NLW_adc_control.cmd_start_reg_i_5_O_UNCONNECTED ;
   wire [7:2]\NLW_adc_control.sim_wr_count_reg[10]_i_3_CO_UNCONNECTED ;
   wire [7:3]\NLW_adc_control.sim_wr_count_reg[10]_i_3_O_UNCONNECTED ;
 
   assign bram_adr_out[10:0] = bram_adr_in[12:2];
-  LUT4 #(
-    .INIT(16'hFF08)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00000020)) 
     \adc_control.adc_start_i_1 
        (.I0(\adc_control.sim_wr_start_i_3_n_0 ),
-        .I1(cdata[1]),
-        .I2(cdata[0]),
-        .I3(adc_start),
+        .I1(cdata[3]),
+        .I2(cdata[1]),
+        .I3(cdata[0]),
+        .I4(cdata[2]),
+        .I5(adc_start),
         .O(\adc_control.adc_start_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.adc_start_reg 
@@ -346,41 +460,33 @@ module ps_adc_control_0_0_adc_control
         .CE(1'b1),
         .D(\adc_control.adc_start_i_1_n_0 ),
         .Q(adc_start),
-        .R(\adc_control.sim_wr_start_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFF0020)) 
+        .R(p_0_in__0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00000020)) 
     \adc_control.adc_stop_i_1 
-       (.I0(\adc_control.adc_stop_i_2_n_0 ),
-        .I1(cdata[1]),
+       (.I0(\adc_control.sim_wr_start_i_3_n_0 ),
+        .I1(cdata[0]),
         .I2(cdata[2]),
-        .I3(cdata[0]),
-        .I4(adc_stop),
+        .I3(cdata[3]),
+        .I4(cdata[1]),
+        .I5(adc_stop),
         .O(\adc_control.adc_stop_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000001)) 
-    \adc_control.adc_stop_i_2 
-       (.I0(cdata[3]),
-        .I1(cdata[4]),
-        .I2(cdata[5]),
-        .I3(cdata[7]),
-        .I4(cdata[6]),
-        .O(\adc_control.adc_stop_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.adc_stop_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\adc_control.adc_stop_i_1_n_0 ),
         .Q(adc_stop),
-        .R(\adc_control.sim_wr_start_i_1_n_0 ));
+        .R(p_0_in__0));
   LUT6 #(
-    .INIT(64'h00FF005400FF00FF)) 
+    .INIT(64'h5500FFFF55005554)) 
     \adc_control.address[0]_i_1 
        (.I0(address[0]),
         .I1(sim_wr_start),
         .I2(sim_wr_pend),
-        .I3(cmd_start),
-        .I4(sim_wr_done),
-        .I5(resetn),
+        .I3(\adc_control.config_wr_count[7]_i_4_n_0 ),
+        .I4(cmd_start),
+        .I5(\adc_control.address[1]_i_4_n_0 ),
         .O(\adc_control.address[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hDFFF000020000000)) 
@@ -399,31 +505,45 @@ module ps_adc_control_0_0_adc_control
         .I1(address[6]),
         .I2(\adc_control.address[8]_i_2_n_0 ),
         .O(\adc_control.address[10]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h00005400)) 
+  LUT6 #(
+    .INIT(64'h000000000F0F0F0E)) 
     \adc_control.address[10]_i_3 
-       (.I0(cmd_start),
-        .I1(sim_wr_pend),
-        .I2(sim_wr_start),
-        .I3(resetn),
-        .I4(sim_wr_done),
+       (.I0(config_wr_start),
+        .I1(config_wr_pend),
+        .I2(cmd_start),
+        .I3(sim_wr_pend),
+        .I4(sim_wr_start),
+        .I5(\adc_control.address[1]_i_4_n_0 ),
         .O(\adc_control.address[10]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFF06060600)) 
+    .INIT(64'hFFFFFFFF00000770)) 
     \adc_control.address[1]_i_1 
-       (.I0(address[0]),
-        .I1(address[1]),
-        .I2(\adc_control.address[1]_i_2_n_0 ),
-        .I3(sim_wr_start),
-        .I4(sim_wr_pend),
+       (.I0(\adc_control.address[1]_i_2_n_0 ),
+        .I1(\adc_control.address[1]_i_3_n_0 ),
+        .I2(address[1]),
+        .I3(address[0]),
+        .I4(\adc_control.address[1]_i_4_n_0 ),
         .I5(cmd_start),
         .O(\adc_control.address[1]_i_1_n_0 ));
   LUT2 #(
-    .INIT(4'hB)) 
+    .INIT(4'h1)) 
     \adc_control.address[1]_i_2 
-       (.I0(sim_wr_done),
-        .I1(resetn),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .O(\adc_control.address[1]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h1)) 
+    \adc_control.address[1]_i_3 
+       (.I0(config_wr_pend),
+        .I1(config_wr_start),
+        .O(\adc_control.address[1]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hFD)) 
+    \adc_control.address[1]_i_4 
+       (.I0(resetn),
+        .I1(config_wr_done),
+        .I2(sim_wr_done),
+        .O(\adc_control.address[1]_i_4_n_0 ));
   LUT4 #(
     .INIT(16'h2A80)) 
     \adc_control.address[2]_i_1 
@@ -857,14 +977,14 @@ module ps_adc_control_0_0_adc_control
         .Q(cdata[9]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000000007F00)) 
+    .INIT(64'h00000000000000FE)) 
     \adc_control.cmd_start_i_1 
        (.I0(\adc_control.cmd_start_i_2_n_0 ),
         .I1(\adc_control.cmd_start_i_3_n_0 ),
         .I2(\adc_control.cmd_start_i_4_n_0 ),
-        .I3(resetn),
-        .I4(\adc_control.cmd_start_reg_i_5_n_5 ),
-        .I5(\adc_control.cmd_start_i_6_n_0 ),
+        .I3(\adc_control.cmd_start_reg_i_5_n_5 ),
+        .I4(sim_wr_pend),
+        .I5(cmd_start),
         .O(\adc_control.cmd_start_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h0001)) 
@@ -872,162 +992,173 @@ module ps_adc_control_0_0_adc_control
        (.I0(cdata[31]),
         .I1(cdata[30]),
         .I2(cdata[29]),
-        .I3(cdata[27]),
+        .I3(cdata[28]),
         .O(\adc_control.cmd_start_i_10_n_0 ));
+  LUT5 #(
+    .INIT(32'hFF00FE00)) 
+    \adc_control.cmd_start_i_11 
+       (.I0(cdata[12]),
+        .I1(cdata[24]),
+        .I2(cdata[16]),
+        .I3(resetn),
+        .I4(cdata[15]),
+        .O(\adc_control.cmd_start_i_11_n_0 ));
   LUT4 #(
     .INIT(16'h9009)) 
-    \adc_control.cmd_start_i_12 
+    \adc_control.cmd_start_i_13 
        (.I0(cdata[31]),
         .I1(pdata[31]),
-        .I2(cdata[30]),
-        .I3(pdata[30]),
-        .O(\adc_control.cmd_start_i_12_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \adc_control.cmd_start_i_13 
-       (.I0(cdata[27]),
-        .I1(pdata[27]),
-        .I2(cdata[28]),
-        .I3(pdata[28]),
-        .I4(cdata[29]),
-        .I5(pdata[29]),
+        .I2(pdata[30]),
+        .I3(cdata[30]),
         .O(\adc_control.cmd_start_i_13_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_14 
-       (.I0(cdata[25]),
-        .I1(pdata[25]),
-        .I2(cdata[24]),
-        .I3(pdata[24]),
-        .I4(cdata[26]),
-        .I5(pdata[26]),
+       (.I0(cdata[28]),
+        .I1(pdata[28]),
+        .I2(pdata[27]),
+        .I3(cdata[27]),
+        .I4(pdata[29]),
+        .I5(cdata[29]),
         .O(\adc_control.cmd_start_i_14_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_15 
-       (.I0(pdata[21]),
-        .I1(cdata[21]),
-        .I2(pdata[22]),
-        .I3(cdata[22]),
-        .I4(cdata[23]),
-        .I5(pdata[23]),
+       (.I0(cdata[25]),
+        .I1(pdata[25]),
+        .I2(pdata[24]),
+        .I3(cdata[24]),
+        .I4(pdata[26]),
+        .I5(cdata[26]),
         .O(\adc_control.cmd_start_i_15_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_16 
-       (.I0(pdata[20]),
-        .I1(cdata[20]),
-        .I2(pdata[18]),
-        .I3(cdata[18]),
-        .I4(cdata[19]),
-        .I5(pdata[19]),
+       (.I0(pdata[21]),
+        .I1(cdata[21]),
+        .I2(pdata[22]),
+        .I3(cdata[22]),
+        .I4(pdata[23]),
+        .I5(cdata[23]),
         .O(\adc_control.cmd_start_i_16_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_17 
-       (.I0(cdata[15]),
-        .I1(pdata[15]),
-        .I2(cdata[17]),
-        .I3(pdata[17]),
-        .I4(cdata[16]),
-        .I5(pdata[16]),
+       (.I0(pdata[18]),
+        .I1(cdata[18]),
+        .I2(pdata[19]),
+        .I3(cdata[19]),
+        .I4(pdata[20]),
+        .I5(cdata[20]),
         .O(\adc_control.cmd_start_i_17_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_18 
-       (.I0(cdata[13]),
-        .I1(pdata[13]),
-        .I2(cdata[12]),
-        .I3(pdata[12]),
-        .I4(cdata[14]),
-        .I5(pdata[14]),
+       (.I0(cdata[15]),
+        .I1(pdata[15]),
+        .I2(pdata[16]),
+        .I3(cdata[16]),
+        .I4(pdata[17]),
+        .I5(cdata[17]),
         .O(\adc_control.cmd_start_i_18_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_19 
-       (.I0(cdata[10]),
-        .I1(pdata[10]),
-        .I2(cdata[9]),
-        .I3(pdata[9]),
-        .I4(cdata[11]),
-        .I5(pdata[11]),
+       (.I0(cdata[13]),
+        .I1(pdata[13]),
+        .I2(pdata[12]),
+        .I3(cdata[12]),
+        .I4(pdata[14]),
+        .I5(cdata[14]),
         .O(\adc_control.cmd_start_i_19_n_0 ));
-  LUT5 #(
-    .INIT(32'h00010000)) 
+  LUT6 #(
+    .INIT(64'hFFFF0000FFFE0000)) 
     \adc_control.cmd_start_i_2 
-       (.I0(cdata[20]),
-        .I1(cdata[24]),
-        .I2(cdata[25]),
-        .I3(cdata[28]),
-        .I4(\adc_control.cmd_start_i_7_n_0 ),
+       (.I0(cdata[0]),
+        .I1(cdata[2]),
+        .I2(cdata[17]),
+        .I3(\adc_control.cmd_start_i_6_n_0 ),
+        .I4(resetn),
+        .I5(cdata[14]),
         .O(\adc_control.cmd_start_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_20 
-       (.I0(cdata[6]),
-        .I1(pdata[6]),
-        .I2(cdata[7]),
-        .I3(pdata[7]),
-        .I4(cdata[8]),
-        .I5(pdata[8]),
+       (.I0(cdata[10]),
+        .I1(pdata[10]),
+        .I2(pdata[9]),
+        .I3(cdata[9]),
+        .I4(pdata[11]),
+        .I5(cdata[11]),
         .O(\adc_control.cmd_start_i_20_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_21 
-       (.I0(cdata[4]),
-        .I1(pdata[4]),
-        .I2(cdata[3]),
-        .I3(pdata[3]),
-        .I4(cdata[5]),
-        .I5(pdata[5]),
+       (.I0(cdata[7]),
+        .I1(pdata[7]),
+        .I2(pdata[6]),
+        .I3(cdata[6]),
+        .I4(pdata[8]),
+        .I5(cdata[8]),
         .O(\adc_control.cmd_start_i_21_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \adc_control.cmd_start_i_22 
+       (.I0(cdata[4]),
+        .I1(pdata[4]),
+        .I2(pdata[3]),
+        .I3(cdata[3]),
+        .I4(pdata[5]),
+        .I5(cdata[5]),
+        .O(\adc_control.cmd_start_i_22_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \adc_control.cmd_start_i_23 
        (.I0(pdata[0]),
         .I1(cdata[0]),
         .I2(pdata[1]),
         .I3(cdata[1]),
-        .I4(cdata[2]),
-        .I5(pdata[2]),
-        .O(\adc_control.cmd_start_i_22_n_0 ));
-  LUT5 #(
-    .INIT(32'h00020000)) 
+        .I4(pdata[2]),
+        .I5(cdata[2]),
+        .O(\adc_control.cmd_start_i_23_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFFFFFFFAAAAAAAA)) 
     \adc_control.cmd_start_i_3 
-       (.I0(\adc_control.cmd_start_i_8_n_0 ),
-        .I1(cdata[8]),
-        .I2(cdata[1]),
-        .I3(cdata[0]),
-        .I4(\adc_control.sim_wr_start_i_3_n_0 ),
+       (.I0(\adc_control.cmd_start_i_7_n_0 ),
+        .I1(\adc_control.cmd_start_i_8_n_0 ),
+        .I2(\adc_control.sim_wr_start_i_3_n_0 ),
+        .I3(\adc_control.cmd_start_i_9_n_0 ),
+        .I4(\adc_control.cmd_start_i_10_n_0 ),
+        .I5(resetn),
         .O(\adc_control.cmd_start_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000008)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFCCCCCCC8)) 
     \adc_control.cmd_start_i_4 
-       (.I0(\adc_control.cmd_start_i_9_n_0 ),
-        .I1(\adc_control.cmd_start_i_10_n_0 ),
-        .I2(cdata[9]),
-        .I3(cdata[12]),
-        .I4(cdata[19]),
+       (.I0(cdata[20]),
+        .I1(resetn),
+        .I2(cdata[22]),
+        .I3(cdata[13]),
+        .I4(cdata[27]),
+        .I5(\adc_control.cmd_start_i_11_n_0 ),
         .O(\adc_control.cmd_start_i_4_n_0 ));
   LUT2 #(
     .INIT(4'hE)) 
     \adc_control.cmd_start_i_6 
-       (.I0(sim_wr_pend),
-        .I1(cmd_start),
+       (.I0(cdata[1]),
+        .I1(cdata[3]),
         .O(\adc_control.cmd_start_i_6_n_0 ));
-  LUT4 #(
-    .INIT(16'h0001)) 
+  LUT3 #(
+    .INIT(8'hC8)) 
     \adc_control.cmd_start_i_7 
-       (.I0(cdata[18]),
-        .I1(cdata[17]),
-        .I2(cdata[16]),
-        .I3(cdata[15]),
+       (.I0(cdata[19]),
+        .I1(resetn),
+        .I2(cdata[23]),
         .O(\adc_control.cmd_start_i_7_n_0 ));
   LUT4 #(
     .INIT(16'h0001)) 
     \adc_control.cmd_start_i_8 
-       (.I0(cdata[14]),
-        .I1(cdata[13]),
+       (.I0(cdata[9]),
+        .I1(cdata[8]),
         .I2(cdata[11]),
         .I3(cdata[10]),
         .O(\adc_control.cmd_start_i_8_n_0 ));
@@ -1035,9 +1166,9 @@ module ps_adc_control_0_0_adc_control
     .INIT(16'h0001)) 
     \adc_control.cmd_start_i_9 
        (.I0(cdata[26]),
-        .I1(cdata[23]),
-        .I2(cdata[22]),
-        .I3(cdata[21]),
+        .I1(cdata[25]),
+        .I2(cdata[21]),
+        .I3(cdata[18]),
         .O(\adc_control.cmd_start_i_9_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.cmd_start_reg 
@@ -1046,123 +1177,1074 @@ module ps_adc_control_0_0_adc_control
         .D(\adc_control.cmd_start_i_1_n_0 ),
         .Q(cmd_start),
         .R(1'b0));
-  CARRY8 \adc_control.cmd_start_reg_i_11 
+  CARRY8 \adc_control.cmd_start_reg_i_12 
        (.CI(1'b1),
         .CI_TOP(1'b0),
-        .CO({\adc_control.cmd_start_reg_i_11_n_0 ,\adc_control.cmd_start_reg_i_11_n_1 ,\adc_control.cmd_start_reg_i_11_n_2 ,\adc_control.cmd_start_reg_i_11_n_3 ,\adc_control.cmd_start_reg_i_11_n_4 ,\adc_control.cmd_start_reg_i_11_n_5 ,\adc_control.cmd_start_reg_i_11_n_6 ,\adc_control.cmd_start_reg_i_11_n_7 }),
+        .CO({\adc_control.cmd_start_reg_i_12_n_0 ,\adc_control.cmd_start_reg_i_12_n_1 ,\adc_control.cmd_start_reg_i_12_n_2 ,\adc_control.cmd_start_reg_i_12_n_3 ,\adc_control.cmd_start_reg_i_12_n_4 ,\adc_control.cmd_start_reg_i_12_n_5 ,\adc_control.cmd_start_reg_i_12_n_6 ,\adc_control.cmd_start_reg_i_12_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(\NLW_adc_control.cmd_start_reg_i_11_O_UNCONNECTED [7:0]),
-        .S({\adc_control.cmd_start_i_15_n_0 ,\adc_control.cmd_start_i_16_n_0 ,\adc_control.cmd_start_i_17_n_0 ,\adc_control.cmd_start_i_18_n_0 ,\adc_control.cmd_start_i_19_n_0 ,\adc_control.cmd_start_i_20_n_0 ,\adc_control.cmd_start_i_21_n_0 ,\adc_control.cmd_start_i_22_n_0 }));
+        .O(\NLW_adc_control.cmd_start_reg_i_12_O_UNCONNECTED [7:0]),
+        .S({\adc_control.cmd_start_i_16_n_0 ,\adc_control.cmd_start_i_17_n_0 ,\adc_control.cmd_start_i_18_n_0 ,\adc_control.cmd_start_i_19_n_0 ,\adc_control.cmd_start_i_20_n_0 ,\adc_control.cmd_start_i_21_n_0 ,\adc_control.cmd_start_i_22_n_0 ,\adc_control.cmd_start_i_23_n_0 }));
   CARRY8 \adc_control.cmd_start_reg_i_5 
-       (.CI(\adc_control.cmd_start_reg_i_11_n_0 ),
+       (.CI(\adc_control.cmd_start_reg_i_12_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_adc_control.cmd_start_reg_i_5_CO_UNCONNECTED [7:3],\adc_control.cmd_start_reg_i_5_n_5 ,\adc_control.cmd_start_reg_i_5_n_6 ,\adc_control.cmd_start_reg_i_5_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(\NLW_adc_control.cmd_start_reg_i_5_O_UNCONNECTED [7:0]),
-        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\adc_control.cmd_start_i_12_n_0 ,\adc_control.cmd_start_i_13_n_0 ,\adc_control.cmd_start_i_14_n_0 }));
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\adc_control.cmd_start_i_13_n_0 ,\adc_control.cmd_start_i_14_n_0 ,\adc_control.cmd_start_i_15_n_0 }));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \adc_control.config_adr[0]_i_1 
+       (.I0(config_adr[0]),
+        .O(\adc_control.config_adr[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \adc_control.config_adr[1]_i_1 
+       (.I0(config_adr[0]),
+        .I1(config_adr[1]),
+        .O(\adc_control.config_adr[1]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'h48)) 
+    .INIT(8'h78)) 
+    \adc_control.config_adr[2]_i_1 
+       (.I0(config_adr[0]),
+        .I1(config_adr[1]),
+        .I2(config_adr[2]),
+        .O(\adc_control.config_adr[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h7F80)) 
+    \adc_control.config_adr[3]_i_1 
+       (.I0(config_adr[1]),
+        .I1(config_adr[0]),
+        .I2(config_adr[2]),
+        .I3(config_adr[3]),
+        .O(\adc_control.config_adr[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \adc_control.config_adr[4]_i_1 
+       (.I0(config_adr[2]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
+        .I3(config_adr[3]),
+        .I4(config_adr[4]),
+        .O(\adc_control.config_adr[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
+    \adc_control.config_adr[5]_i_1 
+       (.I0(config_adr[3]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(config_adr[2]),
+        .I4(config_adr[4]),
+        .I5(config_adr[5]),
+        .O(\adc_control.config_adr[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \adc_control.config_adr[6]_i_1 
+       (.I0(\adc_control.config_adr[7]_i_3_n_0 ),
+        .I1(config_adr[6]),
+        .O(\adc_control.config_adr[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \adc_control.config_adr[7]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .O(\adc_control.config_adr[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h78)) 
+    \adc_control.config_adr[7]_i_2 
+       (.I0(\adc_control.config_adr[7]_i_3_n_0 ),
+        .I1(config_adr[6]),
+        .I2(config_adr[7]),
+        .O(\adc_control.config_adr[7]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
+    \adc_control.config_adr[7]_i_3 
+       (.I0(config_adr[5]),
+        .I1(config_adr[3]),
+        .I2(config_adr[1]),
+        .I3(config_adr[0]),
+        .I4(config_adr[2]),
+        .I5(config_adr[4]),
+        .O(\adc_control.config_adr[7]_i_3_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[0]_i_1_n_0 ),
+        .Q(config_adr[0]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[1]_i_1_n_0 ),
+        .Q(config_adr[1]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[2]_i_1_n_0 ),
+        .Q(config_adr[2]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[3]_i_1_n_0 ),
+        .Q(config_adr[3]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[4]_i_1_n_0 ),
+        .Q(config_adr[4]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[5]_i_1_n_0 ),
+        .Q(config_adr[5]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[6]_i_1_n_0 ),
+        .Q(config_adr[6]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \adc_control.config_adr_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_adr[7]_i_2_n_0 ),
+        .Q(config_adr[7]),
+        .S(\adc_control.config_adr[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[0]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[0]),
+        .I3(config_data[0]),
+        .O(\adc_control.config_data[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[10]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[10]),
+        .I3(config_data[10]),
+        .O(\adc_control.config_data[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[11]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[11]),
+        .I3(config_data[11]),
+        .O(\adc_control.config_data[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[12]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[12]),
+        .I3(config_data[12]),
+        .O(\adc_control.config_data[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[13]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[13]),
+        .I3(config_data[13]),
+        .O(\adc_control.config_data[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[14]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[14]),
+        .I3(config_data[14]),
+        .O(\adc_control.config_data[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[15]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[15]),
+        .I3(config_data[15]),
+        .O(\adc_control.config_data[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[16]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[16]),
+        .I3(config_data[16]),
+        .O(\adc_control.config_data[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[17]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[17]),
+        .I3(config_data[17]),
+        .O(\adc_control.config_data[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[18]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[18]),
+        .I3(config_data[18]),
+        .O(\adc_control.config_data[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[19]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[19]),
+        .I3(config_data[19]),
+        .O(\adc_control.config_data[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[1]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[1]),
+        .I3(config_data[1]),
+        .O(\adc_control.config_data[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[20]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[20]),
+        .I3(config_data[20]),
+        .O(\adc_control.config_data[20]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[21]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[21]),
+        .I3(config_data[21]),
+        .O(\adc_control.config_data[21]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[22]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[22]),
+        .I3(config_data[22]),
+        .O(\adc_control.config_data[22]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[23]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[23]),
+        .I3(config_data[23]),
+        .O(\adc_control.config_data[23]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[24]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[24]),
+        .I3(config_data[24]),
+        .O(\adc_control.config_data[24]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[25]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[25]),
+        .I3(config_data[25]),
+        .O(\adc_control.config_data[25]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[26]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[26]),
+        .I3(config_data[26]),
+        .O(\adc_control.config_data[26]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[27]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[27]),
+        .I3(config_data[27]),
+        .O(\adc_control.config_data[27]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[28]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[28]),
+        .I3(config_data[28]),
+        .O(\adc_control.config_data[28]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[29]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[29]),
+        .I3(config_data[29]),
+        .O(\adc_control.config_data[29]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[2]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[2]),
+        .I3(config_data[2]),
+        .O(\adc_control.config_data[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[30]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[30]),
+        .I3(config_data[30]),
+        .O(\adc_control.config_data[30]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \adc_control.config_data[31]_i_1 
+       (.I0(cmd_start),
+        .I1(config_wr_start),
+        .I2(config_wr_pend),
+        .O(\adc_control.config_data[31]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[31]_i_2 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[31]),
+        .I3(config_data[31]),
+        .O(\adc_control.config_data[31]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[3]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[3]),
+        .I3(config_data[3]),
+        .O(\adc_control.config_data[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[4]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[4]),
+        .I3(config_data[4]),
+        .O(\adc_control.config_data[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[5]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[5]),
+        .I3(config_data[5]),
+        .O(\adc_control.config_data[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[6]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[6]),
+        .I3(config_data[6]),
+        .O(\adc_control.config_data[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[7]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[7]),
+        .I3(config_data[7]),
+        .O(\adc_control.config_data[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[8]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[8]),
+        .I3(config_data[8]),
+        .O(\adc_control.config_data[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFE10)) 
+    \adc_control.config_data[9]_i_1 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(cmd_start),
+        .I2(data_in[9]),
+        .I3(config_data[9]),
+        .O(\adc_control.config_data[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[0] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[0]_i_1_n_0 ),
+        .Q(config_data[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[10] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[10]_i_1_n_0 ),
+        .Q(config_data[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[11] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[11]_i_1_n_0 ),
+        .Q(config_data[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[12] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[12]_i_1_n_0 ),
+        .Q(config_data[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[13] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[13]_i_1_n_0 ),
+        .Q(config_data[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[14] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[14]_i_1_n_0 ),
+        .Q(config_data[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[15] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[15]_i_1_n_0 ),
+        .Q(config_data[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[16] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[16]_i_1_n_0 ),
+        .Q(config_data[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[17] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[17]_i_1_n_0 ),
+        .Q(config_data[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[18] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[18]_i_1_n_0 ),
+        .Q(config_data[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[19] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[19]_i_1_n_0 ),
+        .Q(config_data[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[1] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[1]_i_1_n_0 ),
+        .Q(config_data[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[20] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[20]_i_1_n_0 ),
+        .Q(config_data[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[21] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[21]_i_1_n_0 ),
+        .Q(config_data[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[22] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[22]_i_1_n_0 ),
+        .Q(config_data[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[23] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[23]_i_1_n_0 ),
+        .Q(config_data[23]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[24] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[24]_i_1_n_0 ),
+        .Q(config_data[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[25] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[25]_i_1_n_0 ),
+        .Q(config_data[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[26] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[26]_i_1_n_0 ),
+        .Q(config_data[26]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[27] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[27]_i_1_n_0 ),
+        .Q(config_data[27]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[28] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[28]_i_1_n_0 ),
+        .Q(config_data[28]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[29] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[29]_i_1_n_0 ),
+        .Q(config_data[29]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[2] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[2]_i_1_n_0 ),
+        .Q(config_data[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[30] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[30]_i_1_n_0 ),
+        .Q(config_data[30]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[31] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[31]_i_2_n_0 ),
+        .Q(config_data[31]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[3] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[3]_i_1_n_0 ),
+        .Q(config_data[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[4] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[4]_i_1_n_0 ),
+        .Q(config_data[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[5] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[5]_i_1_n_0 ),
+        .Q(config_data[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[6] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[6]_i_1_n_0 ),
+        .Q(config_data[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[7] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[7]_i_1_n_0 ),
+        .Q(config_data[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[8] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[8]_i_1_n_0 ),
+        .Q(config_data[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \adc_control.config_data_reg[9] 
+       (.C(clk),
+        .CE(\adc_control.config_data[31]_i_1_n_0 ),
+        .D(\adc_control.config_data[9]_i_1_n_0 ),
+        .Q(config_data[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'h32)) 
+    \adc_control.config_high_wr_i_1 
+       (.I0(config_high_wr),
+        .I1(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I2(cdata[8]),
+        .O(\adc_control.config_high_wr_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_high_wr_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_high_wr_i_1_n_0 ),
+        .Q(config_high_wr),
+        .R(cmd_start));
+  LUT3 #(
+    .INIT(8'h0B)) 
+    \adc_control.config_low_wr_i_1 
+       (.I0(config_low_wr),
+        .I1(cdata[8]),
+        .I2(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .O(config_low_wr7_out));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_low_wr_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(config_low_wr7_out),
+        .Q(config_low_wr),
+        .R(cmd_start));
+  LUT6 #(
+    .INIT(64'hACACACA0A3A3A3A0)) 
+    \adc_control.config_wr_count[0]_i_1 
+       (.I0(cdata[16]),
+        .I1(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I2(cmd_start),
+        .I3(config_wr_pend),
+        .I4(config_wr_start),
+        .I5(config_wr_count[0]),
+        .O(\adc_control.config_wr_count[0]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h0100FFFF)) 
+    \adc_control.config_wr_count[0]_i_2 
+       (.I0(config_wr_count[4]),
+        .I1(config_wr_count[5]),
+        .I2(config_wr_count[6]),
+        .I3(\adc_control.config_wr_count[0]_i_3_n_0 ),
+        .I4(config_wr_pend),
+        .O(\adc_control.config_wr_count[0]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000001)) 
+    \adc_control.config_wr_count[0]_i_3 
+       (.I0(config_wr_count[0]),
+        .I1(config_wr_count[1]),
+        .I2(config_wr_count[2]),
+        .I3(config_wr_count[7]),
+        .I4(config_wr_count[3]),
+        .O(\adc_control.config_wr_count[0]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFA8540000A854)) 
+    \adc_control.config_wr_count[1]_i_1 
+       (.I0(config_wr_count[1]),
+        .I1(config_wr_start),
+        .I2(config_wr_pend),
+        .I3(\adc_control.config_wr_count[2]_i_2_n_0 ),
+        .I4(cmd_start),
+        .I5(cdata[17]),
+        .O(\adc_control.config_wr_count[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFF888288828882)) 
+    \adc_control.config_wr_count[2]_i_1 
+       (.I0(\adc_control.config_wr_count[7]_i_4_n_0 ),
+        .I1(config_wr_count[2]),
+        .I2(\adc_control.config_wr_count[2]_i_2_n_0 ),
+        .I3(config_wr_count[1]),
+        .I4(cmd_start),
+        .I5(cdata[18]),
+        .O(\adc_control.config_wr_count[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \adc_control.config_wr_count[2]_i_2 
+       (.I0(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I1(config_wr_count[0]),
+        .O(\adc_control.config_wr_count[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFE00E0000E00E)) 
+    \adc_control.config_wr_count[3]_i_1 
+       (.I0(config_wr_pend),
+        .I1(config_wr_start),
+        .I2(config_wr_count[3]),
+        .I3(\adc_control.config_wr_count[3]_i_2_n_0 ),
+        .I4(cmd_start),
+        .I5(cdata[19]),
+        .O(\adc_control.config_wr_count[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \adc_control.config_wr_count[3]_i_2 
+       (.I0(config_wr_count[1]),
+        .I1(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I2(config_wr_count[0]),
+        .I3(config_wr_count[2]),
+        .O(\adc_control.config_wr_count[3]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAAAAAAC3C3C300)) 
+    \adc_control.config_wr_count[4]_i_1 
+       (.I0(cdata[20]),
+        .I1(\adc_control.config_wr_count[7]_i_2_n_0 ),
+        .I2(config_wr_count[4]),
+        .I3(config_wr_start),
+        .I4(config_wr_pend),
+        .I5(cmd_start),
+        .O(\adc_control.config_wr_count[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFA082A082A082)) 
+    \adc_control.config_wr_count[5]_i_1 
+       (.I0(\adc_control.config_wr_count[7]_i_4_n_0 ),
+        .I1(\adc_control.config_wr_count[7]_i_2_n_0 ),
+        .I2(config_wr_count[5]),
+        .I3(config_wr_count[4]),
+        .I4(cmd_start),
+        .I5(cdata[21]),
+        .O(\adc_control.config_wr_count[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFF88888888F8888)) 
+    \adc_control.config_wr_count[6]_i_1 
+       (.I0(cdata[22]),
+        .I1(cmd_start),
+        .I2(\adc_control.config_wr_count[6]_i_2_n_0 ),
+        .I3(\adc_control.config_wr_count[7]_i_2_n_0 ),
+        .I4(\adc_control.config_wr_count[7]_i_4_n_0 ),
+        .I5(config_wr_count[6]),
+        .O(\adc_control.config_wr_count[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \adc_control.config_wr_count[6]_i_2 
+       (.I0(config_wr_count[5]),
+        .I1(config_wr_count[4]),
+        .O(\adc_control.config_wr_count[6]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFF8888888888888)) 
+    \adc_control.config_wr_count[7]_i_1 
+       (.I0(cmd_start),
+        .I1(cdata[23]),
+        .I2(\adc_control.config_wr_count[7]_i_2_n_0 ),
+        .I3(\adc_control.config_wr_count[7]_i_3_n_0 ),
+        .I4(\adc_control.config_wr_count[7]_i_4_n_0 ),
+        .I5(config_wr_count[7]),
+        .O(\adc_control.config_wr_count[7]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \adc_control.config_wr_count[7]_i_2 
+       (.I0(config_wr_count[2]),
+        .I1(config_wr_count[0]),
+        .I2(\adc_control.config_wr_count[0]_i_2_n_0 ),
+        .I3(config_wr_count[1]),
+        .I4(config_wr_count[3]),
+        .O(\adc_control.config_wr_count[7]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \adc_control.config_wr_count[7]_i_3 
+       (.I0(config_wr_count[4]),
+        .I1(config_wr_count[5]),
+        .I2(config_wr_count[6]),
+        .O(\adc_control.config_wr_count[7]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'h0E)) 
+    \adc_control.config_wr_count[7]_i_4 
+       (.I0(config_wr_start),
+        .I1(config_wr_pend),
+        .I2(cmd_start),
+        .O(\adc_control.config_wr_count[7]_i_4_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[0]_i_1_n_0 ),
+        .Q(config_wr_count[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[1]_i_1_n_0 ),
+        .Q(config_wr_count[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[2]_i_1_n_0 ),
+        .Q(config_wr_count[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[3]_i_1_n_0 ),
+        .Q(config_wr_count[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[4]_i_1_n_0 ),
+        .Q(config_wr_count[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[5]_i_1_n_0 ),
+        .Q(config_wr_count[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[6]_i_1_n_0 ),
+        .Q(config_wr_count[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_count_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_count[7]_i_1_n_0 ),
+        .Q(config_wr_count[7]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h0000000002020200)) 
+    \adc_control.config_wr_done_i_1 
+       (.I0(\adc_control.config_wr_done_i_2_n_0 ),
+        .I1(config_wr_done),
+        .I2(config_wr_count[7]),
+        .I3(config_wr_start),
+        .I4(config_wr_pend),
+        .I5(\adc_control.config_wr_count[7]_i_3_n_0 ),
+        .O(\adc_control.config_wr_done_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \adc_control.config_wr_done_i_2 
+       (.I0(config_wr_count[1]),
+        .I1(config_wr_count[0]),
+        .I2(config_wr_count[3]),
+        .I3(config_wr_count[2]),
+        .O(\adc_control.config_wr_done_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_done_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_done_i_1_n_0 ),
+        .Q(config_wr_done),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hF4)) 
+    \adc_control.config_wr_pend_i_1 
+       (.I0(config_wr_done),
+        .I1(config_wr_pend),
+        .I2(config_wr_start),
+        .O(\adc_control.config_wr_pend_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_pend_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_pend_i_1_n_0 ),
+        .Q(config_wr_pend),
+        .R(\adc_control.sim_wr_pend_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00000080)) 
+    \adc_control.config_wr_start_i_1 
+       (.I0(\adc_control.sim_wr_start_i_3_n_0 ),
+        .I1(cdata[2]),
+        .I2(cdata[0]),
+        .I3(cdata[3]),
+        .I4(cdata[1]),
+        .I5(config_wr_start),
+        .O(\adc_control.config_wr_start_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \adc_control.config_wr_start_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\adc_control.config_wr_start_i_1_n_0 ),
+        .Q(config_wr_start),
+        .R(p_0_in__0));
+  LUT4 #(
+    .INIT(16'h4448)) 
     \adc_control.data_out[0]_i_1 
        (.I0(data_out[0]),
         .I1(resetn),
-        .I2(sim_wr_done),
+        .I2(config_wr_done),
+        .I3(sim_wr_done),
         .O(\adc_control.data_out[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h7800)) 
+  LUT5 #(
+    .INIT(32'h444C8880)) 
     \adc_control.data_out[1]_i_1 
        (.I0(data_out[0]),
-        .I1(sim_wr_done),
-        .I2(data_out[1]),
-        .I3(resetn),
+        .I1(resetn),
+        .I2(config_wr_done),
+        .I3(sim_wr_done),
+        .I4(data_out[1]),
         .O(\adc_control.data_out[1]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7F008000)) 
+  LUT6 #(
+    .INIT(64'h707070F080808000)) 
     \adc_control.data_out[2]_i_1 
-       (.I0(data_out[0]),
-        .I1(sim_wr_done),
-        .I2(data_out[1]),
-        .I3(resetn),
-        .I4(data_out[2]),
-        .O(\adc_control.data_out[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h2888888888888888)) 
-    \adc_control.data_out[3]_i_1 
-       (.I0(resetn),
-        .I1(data_out[3]),
-        .I2(data_out[2]),
-        .I3(data_out[1]),
+       (.I0(data_out[1]),
+        .I1(data_out[0]),
+        .I2(resetn),
+        .I3(config_wr_done),
         .I4(sim_wr_done),
-        .I5(data_out[0]),
-        .O(\adc_control.data_out[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hF7000800)) 
-    \adc_control.data_out[4]_i_1 
-       (.I0(data_out[2]),
-        .I1(data_out[3]),
-        .I2(\adc_control.data_out[5]_i_2_n_0 ),
-        .I3(resetn),
-        .I4(data_out[4]),
-        .O(\adc_control.data_out[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h8828888888888888)) 
-    \adc_control.data_out[5]_i_1 
-       (.I0(resetn),
-        .I1(data_out[5]),
-        .I2(data_out[4]),
-        .I3(\adc_control.data_out[5]_i_2_n_0 ),
-        .I4(data_out[3]),
         .I5(data_out[2]),
-        .O(\adc_control.data_out[5]_i_1_n_0 ));
+        .O(\adc_control.data_out[2]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h888C4440)) 
+    \adc_control.data_out[3]_i_1 
+       (.I0(\adc_control.data_out[3]_i_2_n_0 ),
+        .I1(resetn),
+        .I2(config_wr_done),
+        .I3(sim_wr_done),
+        .I4(data_out[3]),
+        .O(\adc_control.data_out[3]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h7F)) 
-    \adc_control.data_out[5]_i_2 
+    \adc_control.data_out[3]_i_2 
        (.I0(data_out[0]),
-        .I1(sim_wr_done),
+        .I1(data_out[1]),
+        .I2(data_out[2]),
+        .O(\adc_control.data_out[3]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h888C4440)) 
+    \adc_control.data_out[4]_i_1 
+       (.I0(\adc_control.data_out[4]_i_2_n_0 ),
+        .I1(resetn),
+        .I2(config_wr_done),
+        .I3(sim_wr_done),
+        .I4(data_out[4]),
+        .O(\adc_control.data_out[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \adc_control.data_out[4]_i_2 
+       (.I0(data_out[2]),
+        .I1(data_out[1]),
+        .I2(data_out[0]),
+        .I3(data_out[3]),
+        .O(\adc_control.data_out[4]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h888C4440)) 
+    \adc_control.data_out[5]_i_1 
+       (.I0(\adc_control.data_out[5]_i_2_n_0 ),
+        .I1(resetn),
+        .I2(config_wr_done),
+        .I3(sim_wr_done),
+        .I4(data_out[5]),
+        .O(\adc_control.data_out[5]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFFFFFF)) 
+    \adc_control.data_out[5]_i_2 
+       (.I0(data_out[3]),
+        .I1(data_out[0]),
         .I2(data_out[1]),
+        .I3(data_out[2]),
+        .I4(data_out[4]),
         .O(\adc_control.data_out[5]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hF7000800)) 
+    .INIT(32'hAB005400)) 
     \adc_control.data_out[6]_i_1 
-       (.I0(data_out[4]),
-        .I1(data_out[5]),
-        .I2(\adc_control.data_out[7]_i_2_n_0 ),
+       (.I0(\adc_control.data_out[7]_i_2_n_0 ),
+        .I1(sim_wr_done),
+        .I2(config_wr_done),
         .I3(resetn),
         .I4(data_out[6]),
         .O(\adc_control.data_out[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hBFFF000040000000)) 
+    .INIT(64'hC6C6C6CC00000000)) 
     \adc_control.data_out[7]_i_1 
-       (.I0(\adc_control.data_out[7]_i_2_n_0 ),
-        .I1(data_out[5]),
-        .I2(data_out[4]),
-        .I3(data_out[6]),
-        .I4(resetn),
-        .I5(data_out[7]),
-        .O(\adc_control.data_out[7]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \adc_control.data_out[7]_i_2 
-       (.I0(data_out[2]),
-        .I1(data_out[3]),
-        .I2(data_out[1]),
+       (.I0(data_out[6]),
+        .I1(data_out[7]),
+        .I2(\adc_control.data_out[7]_i_2_n_0 ),
         .I3(sim_wr_done),
-        .I4(data_out[0]),
+        .I4(config_wr_done),
+        .I5(resetn),
+        .O(\adc_control.data_out[7]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    \adc_control.data_out[7]_i_2 
+       (.I0(data_out[4]),
+        .I1(data_out[2]),
+        .I2(data_out[1]),
+        .I3(data_out[0]),
+        .I4(data_out[3]),
+        .I5(data_out[5]),
         .O(\adc_control.data_out[7]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'hB080)) 
+  LUT5 #(
+    .INIT(32'hC0C0C0A0)) 
     \adc_control.data_out[8]_i_1 
-       (.I0(adc_active),
-        .I1(sim_wr_done),
+       (.I0(data_out[8]),
+        .I1(adc_active),
         .I2(resetn),
-        .I3(data_out[8]),
+        .I3(config_wr_done),
+        .I4(sim_wr_done),
         .O(\adc_control.data_out[8]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hB080)) 
+  LUT5 #(
+    .INIT(32'hC0C0C0A0)) 
     \adc_control.data_out[9]_i_1 
-       (.I0(sim_active),
-        .I1(sim_wr_done),
+       (.I0(data_out[9]),
+        .I1(sim_active),
         .I2(resetn),
-        .I3(data_out[9]),
+        .I3(config_wr_done),
+        .I4(sim_wr_done),
         .O(\adc_control.data_out[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.data_out_reg[0] 
@@ -1666,14 +2748,14 @@ module ps_adc_control_0_0_adc_control
         .I3(\adc_control.cmd_start_i_1_n_0 ),
         .O(\adc_control.pdata[31]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7F007F007F000000)) 
+    .INIT(64'hFEFEFEFEFEFEFE00)) 
     \adc_control.pdata[31]_i_2 
        (.I0(\adc_control.cmd_start_i_2_n_0 ),
         .I1(\adc_control.cmd_start_i_3_n_0 ),
         .I2(\adc_control.cmd_start_i_4_n_0 ),
-        .I3(resetn),
-        .I4(\adc_control.cmd_start_reg_i_5_n_5 ),
-        .I5(\adc_control.cmd_start_i_6_n_0 ),
+        .I3(\adc_control.cmd_start_reg_i_5_n_5 ),
+        .I4(sim_wr_pend),
+        .I5(cmd_start),
         .O(\adc_control.pdata[31]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'hF888)) 
@@ -2544,7 +3626,7 @@ module ps_adc_control_0_0_adc_control
         .I1(sim_wr_pend),
         .I2(cdata[10]),
         .I3(sim_low_wr),
-        .O(sim_low_wr3_out));
+        .O(sim_low_wr2_out));
   LUT5 #(
     .INIT(32'h00000008)) 
     \adc_control.sim_low_wr_i_2 
@@ -2574,16 +3656,18 @@ module ps_adc_control_0_0_adc_control
   FDRE \adc_control.sim_low_wr_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(sim_low_wr3_out),
+        .D(sim_low_wr2_out),
         .Q(sim_low_wr),
         .R(cmd_start));
-  LUT4 #(
-    .INIT(16'hFF80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00000080)) 
     \adc_control.sim_start_i_1 
        (.I0(\adc_control.sim_wr_start_i_3_n_0 ),
-        .I1(cdata[0]),
-        .I2(cdata[1]),
-        .I3(sim_start),
+        .I1(cdata[1]),
+        .I2(cdata[0]),
+        .I3(cdata[3]),
+        .I4(cdata[2]),
+        .I5(sim_start),
         .O(\adc_control.sim_start_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_start_reg 
@@ -2591,32 +3675,32 @@ module ps_adc_control_0_0_adc_control
         .CE(1'b1),
         .D(\adc_control.sim_start_i_1_n_0 ),
         .Q(sim_start),
-        .R(\adc_control.sim_wr_start_i_1_n_0 ));
+        .R(p_0_in__0));
   LUT6 #(
-    .INIT(64'h00FFFF00E0E0E0E0)) 
+    .INIT(64'h00E0FFE0FFE000E0)) 
     \adc_control.sim_wr_count[0]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[0]),
-        .I3(cdata[16]),
+        .I3(cmd_start),
         .I4(cdata[17]),
-        .I5(cmd_start),
-        .O(p_0_in__0[0]));
+        .I5(cdata[16]),
+        .O(\adc_control.sim_wr_count[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hF8FF8F8888888888)) 
+    .INIT(64'hF8FF88888F888888)) 
     \adc_control.sim_wr_count[10]_i_1 
        (.I0(\adc_control.sim_wr_count[10]_i_2_n_0 ),
         .I1(sim_wr_count__0[10]),
         .I2(\adc_control.sim_wr_count[10]_i_4_n_0 ),
         .I3(cdata[26]),
-        .I4(cdata[27]),
-        .I5(cmd_start),
-        .O(p_0_in__0[10]));
+        .I4(cmd_start),
+        .I5(cdata[27]),
+        .O(\adc_control.sim_wr_count[10]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h0E)) 
     \adc_control.sim_wr_count[10]_i_2 
-       (.I0(sim_wr_start),
-        .I1(sim_wr_pend),
+       (.I0(sim_wr_pend),
+        .I1(sim_wr_start),
         .I2(cmd_start),
         .O(\adc_control.sim_wr_count[10]_i_2_n_0 ));
   LUT5 #(
@@ -2647,25 +3731,25 @@ module ps_adc_control_0_0_adc_control
         .I1(sim_wr_count[8]),
         .O(\adc_control.sim_wr_count[10]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h8FFFF88888888888)) 
+    .INIT(64'hFFFF6A006A006A00)) 
     \adc_control.sim_wr_count[1]_i_1 
-       (.I0(\adc_control.sim_wr_count[10]_i_2_n_0 ),
-        .I1(sim_wr_count__0[1]),
+       (.I0(cdata[18]),
+        .I1(cdata[17]),
         .I2(cdata[16]),
-        .I3(cdata[17]),
-        .I4(cdata[18]),
-        .I5(cmd_start),
-        .O(p_0_in__0[1]));
+        .I3(cmd_start),
+        .I4(sim_wr_count__0[1]),
+        .I5(\adc_control.sim_wr_count[10]_i_2_n_0 ),
+        .O(\adc_control.sim_wr_count[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFF0000FFE0E0E0E0)) 
+    .INIT(64'hFF00E0E000FFE0E0)) 
     \adc_control.sim_wr_count[2]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[2]),
         .I3(\adc_control.sim_wr_count[2]_i_2_n_0 ),
-        .I4(cdata[19]),
-        .I5(cmd_start),
-        .O(p_0_in__0[2]));
+        .I4(cmd_start),
+        .I5(cdata[19]),
+        .O(\adc_control.sim_wr_count[2]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h7F)) 
     \adc_control.sim_wr_count[2]_i_2 
@@ -2674,62 +3758,53 @@ module ps_adc_control_0_0_adc_control
         .I2(cdata[18]),
         .O(\adc_control.sim_wr_count[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFF0000FFE0E0E0E0)) 
+    .INIT(64'hFF00E0E000FFE0E0)) 
     \adc_control.sim_wr_count[3]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[3]),
-        .I3(\adc_control.sim_wr_count[3]_i_2_n_0 ),
-        .I4(cdata[20]),
-        .I5(cmd_start),
-        .O(p_0_in__0[3]));
+        .I3(\adc_control.sim_wr_count[4]_i_2_n_0 ),
+        .I4(cmd_start),
+        .I5(cdata[20]),
+        .O(\adc_control.sim_wr_count[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFA600A600A600)) 
+    \adc_control.sim_wr_count[4]_i_1 
+       (.I0(cdata[21]),
+        .I1(cdata[20]),
+        .I2(\adc_control.sim_wr_count[4]_i_2_n_0 ),
+        .I3(cmd_start),
+        .I4(sim_wr_count__0[4]),
+        .I5(\adc_control.sim_wr_count[10]_i_2_n_0 ),
+        .O(\adc_control.sim_wr_count[4]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h7FFF)) 
-    \adc_control.sim_wr_count[3]_i_2 
+    \adc_control.sim_wr_count[4]_i_2 
        (.I0(cdata[18]),
         .I1(cdata[16]),
         .I2(cdata[17]),
         .I3(cdata[19]),
-        .O(\adc_control.sim_wr_count[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF0000FFE0E0E0E0)) 
-    \adc_control.sim_wr_count[4]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
-        .I2(sim_wr_count__0[4]),
-        .I3(\adc_control.sim_wr_count[4]_i_2_n_0 ),
-        .I4(cdata[21]),
-        .I5(cmd_start),
-        .O(p_0_in__0[4]));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \adc_control.sim_wr_count[4]_i_2 
-       (.I0(cdata[19]),
-        .I1(cdata[17]),
-        .I2(cdata[16]),
-        .I3(cdata[18]),
-        .I4(cdata[20]),
         .O(\adc_control.sim_wr_count[4]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFF0000FFE0E0E0E0)) 
+    .INIT(64'hFF00E0E000FFE0E0)) 
     \adc_control.sim_wr_count[5]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[5]),
         .I3(\adc_control.sim_wr_count[6]_i_2_n_0 ),
-        .I4(cdata[22]),
-        .I5(cmd_start),
-        .O(p_0_in__0[5]));
+        .I4(cmd_start),
+        .I5(cdata[22]),
+        .O(\adc_control.sim_wr_count[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hF8FF8F8888888888)) 
+    .INIT(64'hF8FF88888F888888)) 
     \adc_control.sim_wr_count[6]_i_1 
        (.I0(\adc_control.sim_wr_count[10]_i_2_n_0 ),
         .I1(sim_wr_count__0[6]),
         .I2(\adc_control.sim_wr_count[6]_i_2_n_0 ),
         .I3(cdata[22]),
-        .I4(cdata[23]),
-        .I5(cmd_start),
-        .O(p_0_in__0[6]));
+        .I4(cmd_start),
+        .I5(cdata[23]),
+        .O(\adc_control.sim_wr_count[6]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFFFFFFFFFF)) 
     \adc_control.sim_wr_count[6]_i_2 
@@ -2741,15 +3816,15 @@ module ps_adc_control_0_0_adc_control
         .I5(cdata[21]),
         .O(\adc_control.sim_wr_count[6]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFF0000FFE0E0E0E0)) 
+    .INIT(64'hFF00E0E000FFE0E0)) 
     \adc_control.sim_wr_count[7]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[7]),
         .I3(\adc_control.sim_wr_count[7]_i_3_n_0 ),
-        .I4(cdata[24]),
-        .I5(cmd_start),
-        .O(p_0_in__0[7]));
+        .I4(cmd_start),
+        .I5(cdata[24]),
+        .O(\adc_control.sim_wr_count[7]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \adc_control.sim_wr_count[7]_i_10 
@@ -2823,13 +3898,13 @@ module ps_adc_control_0_0_adc_control
   LUT6 #(
     .INIT(64'h00FFE0E0FF00E0E0)) 
     \adc_control.sim_wr_count[8]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[8]),
         .I3(\adc_control.sim_wr_count[8]_i_2_n_0 ),
         .I4(cmd_start),
         .I5(cdata[25]),
-        .O(p_0_in__0[8]));
+        .O(\adc_control.sim_wr_count[8]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h0800)) 
     \adc_control.sim_wr_count[8]_i_2 
@@ -2839,27 +3914,27 @@ module ps_adc_control_0_0_adc_control
         .I3(cdata[22]),
         .O(\adc_control.sim_wr_count[8]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFF0000FFE0E0E0E0)) 
+    .INIT(64'hFF00E0E000FFE0E0)) 
     \adc_control.sim_wr_count[9]_i_1 
-       (.I0(sim_wr_pend),
-        .I1(sim_wr_start),
+       (.I0(sim_wr_start),
+        .I1(sim_wr_pend),
         .I2(sim_wr_count__0[9]),
         .I3(\adc_control.sim_wr_count[10]_i_4_n_0 ),
-        .I4(cdata[26]),
-        .I5(cmd_start),
-        .O(p_0_in__0[9]));
+        .I4(cmd_start),
+        .I5(cdata[26]),
+        .O(\adc_control.sim_wr_count[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[0]),
+        .D(\adc_control.sim_wr_count[0]_i_1_n_0 ),
         .Q(sim_wr_count[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[10]),
+        .D(\adc_control.sim_wr_count[10]_i_1_n_0 ),
         .Q(sim_wr_count[10]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -2874,49 +3949,49 @@ module ps_adc_control_0_0_adc_control
   FDRE \adc_control.sim_wr_count_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[1]),
+        .D(\adc_control.sim_wr_count[1]_i_1_n_0 ),
         .Q(sim_wr_count[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[2]),
+        .D(\adc_control.sim_wr_count[2]_i_1_n_0 ),
         .Q(sim_wr_count[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[3]),
+        .D(\adc_control.sim_wr_count[3]_i_1_n_0 ),
         .Q(sim_wr_count[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[4]),
+        .D(\adc_control.sim_wr_count[4]_i_1_n_0 ),
         .Q(sim_wr_count[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[5]),
+        .D(\adc_control.sim_wr_count[5]_i_1_n_0 ),
         .Q(sim_wr_count[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[6]),
+        .D(\adc_control.sim_wr_count[6]_i_1_n_0 ),
         .Q(sim_wr_count[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[7]),
+        .D(\adc_control.sim_wr_count[7]_i_1_n_0 ),
         .Q(sim_wr_count[7]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -2931,22 +4006,22 @@ module ps_adc_control_0_0_adc_control
   FDRE \adc_control.sim_wr_count_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[8]),
+        .D(\adc_control.sim_wr_count[8]_i_1_n_0 ),
         .Q(sim_wr_count[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_count_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__0[9]),
+        .D(\adc_control.sim_wr_count[9]_i_1_n_0 ),
         .Q(sim_wr_count[9]),
         .R(1'b0));
   LUT4 #(
     .INIT(16'h5400)) 
     \adc_control.sim_wr_done_i_1 
        (.I0(sim_wr_done),
-        .I1(sim_wr_pend),
-        .I2(sim_wr_start),
+        .I1(sim_wr_start),
+        .I2(sim_wr_pend),
         .I3(\adc_control.sim_low_wr_i_2_n_0 ),
         .O(\adc_control.sim_wr_done_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -2979,60 +4054,71 @@ module ps_adc_control_0_0_adc_control
     .INIT(2'h1)) 
     \adc_control.sim_wr_start_i_1 
        (.I0(cmd_start),
-        .O(\adc_control.sim_wr_start_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFF08)) 
+        .O(p_0_in__0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00000020)) 
     \adc_control.sim_wr_start_i_2 
        (.I0(\adc_control.sim_wr_start_i_3_n_0 ),
-        .I1(cdata[0]),
-        .I2(cdata[1]),
-        .I3(sim_wr_start),
-        .O(p_1_in));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
+        .I1(cdata[2]),
+        .I2(cdata[0]),
+        .I3(cdata[3]),
+        .I4(cdata[1]),
+        .I5(sim_wr_start),
+        .O(\adc_control.sim_wr_start_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h0001)) 
     \adc_control.sim_wr_start_i_3 
-       (.I0(cdata[6]),
-        .I1(cdata[7]),
-        .I2(cdata[5]),
-        .I3(cdata[4]),
-        .I4(cdata[3]),
-        .I5(cdata[2]),
+       (.I0(cdata[7]),
+        .I1(cdata[6]),
+        .I2(cdata[4]),
+        .I3(cdata[5]),
         .O(\adc_control.sim_wr_start_i_3_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.sim_wr_start_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(p_1_in),
+        .D(\adc_control.sim_wr_start_i_2_n_0 ),
         .Q(sim_wr_start),
-        .R(\adc_control.sim_wr_start_i_1_n_0 ));
+        .R(p_0_in__0));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \adc_control.wr_en[3]_i_1 
+       (.I0(config_wr_done),
+        .I1(sim_wr_done),
+        .O(\adc_control.wr_en_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.wr_en_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(sim_wr_done),
+        .D(\adc_control.wr_en_reg0 ),
         .Q(wr_en[0]),
         .R(\adc_control.sim_wr_pend_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.wr_en_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(sim_wr_done),
+        .D(\adc_control.wr_en_reg0 ),
         .Q(wr_en[1]),
         .R(\adc_control.sim_wr_pend_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.wr_en_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(sim_wr_done),
+        .D(\adc_control.wr_en_reg0 ),
         .Q(wr_en[2]),
         .R(\adc_control.sim_wr_pend_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \adc_control.wr_en_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(sim_wr_done),
+        .D(\adc_control.wr_en_reg0 ),
         .Q(wr_en[3]),
         .R(\adc_control.sim_wr_pend_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h2)) 
+    i_0
+       (.I0(1'b0),
+        .O(config_start));
   (* CHECK_LICENSE_TYPE = "ila_4,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
@@ -3040,26 +4126,35 @@ module ps_adc_control_0_0_adc_control
        (.clk(clk),
         .probe0(resetn),
         .probe1(data_in),
-        .probe10(sim_channel),
-        .probe11(sim_data),
-        .probe12(adc_start),
-        .probe13(adc_stop),
-        .probe14(sim_start),
-        .probe15(adc_active),
-        .probe16(sim_active),
-        .probe17(sim_wr_start),
-        .probe18(cmd_start),
-        .probe19(sim_wr_pend),
+        .probe10(config_adr),
+        .probe11(config_data),
+        .probe12(sim_low_wr),
+        .probe13(sim_high_wr),
+        .probe14(sim_channel),
+        .probe15(sim_data),
+        .probe16(adc_start),
+        .probe17(adc_stop),
+        .probe18(config_start),
+        .probe19(sim_start),
         .probe2(address),
-        .probe20(sim_wr_done),
-        .probe21(sim_wr_count),
+        .probe20(adc_active),
+        .probe21(sim_active),
+        .probe22(cmd_start),
+        .probe23(config_wr_start),
+        .probe24(config_wr_pend),
+        .probe25(config_wr_done),
+        .probe26(config_wr_count),
+        .probe27(sim_wr_start),
+        .probe28(sim_wr_pend),
+        .probe29(sim_wr_done),
         .probe3(padr),
+        .probe30(sim_wr_count),
         .probe4(wr_en),
         .probe5(data_out),
         .probe6(cdata),
         .probe7(pdata),
-        .probe8(sim_low_wr),
-        .probe9(sim_high_wr));
+        .probe8(config_low_wr),
+        .probe9(config_high_wr));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_4,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_4" *) 
@@ -3087,7 +4182,16 @@ module ps_adc_control_0_0_ila_4
     probe18,
     probe19,
     probe20,
-    probe21);
+    probe21,
+    probe22,
+    probe23,
+    probe24,
+    probe25,
+    probe26,
+    probe27,
+    probe28,
+    probe29,
+    probe30);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [31:0]probe1;
@@ -3099,18 +4203,27 @@ module ps_adc_control_0_0_ila_4
   input [31:0]probe7;
   input [0:0]probe8;
   input [0:0]probe9;
-  input [1:0]probe10;
+  input [7:0]probe10;
   input [31:0]probe11;
   input [0:0]probe12;
   input [0:0]probe13;
-  input [0:0]probe14;
-  input [0:0]probe15;
+  input [1:0]probe14;
+  input [31:0]probe15;
   input [0:0]probe16;
   input [0:0]probe17;
   input [0:0]probe18;
   input [0:0]probe19;
   input [0:0]probe20;
-  input [10:0]probe21;
+  input [0:0]probe21;
+  input [0:0]probe22;
+  input [0:0]probe23;
+  input [0:0]probe24;
+  input [0:0]probe25;
+  input [7:0]probe26;
+  input [0:0]probe27;
+  input [0:0]probe28;
+  input [0:0]probe29;
+  input [10:0]probe30;
 
 
 endmodule

@@ -36,6 +36,11 @@ module adc_control(
 	output reg sim_start,
 	input wire adc_active,
 	input wire sim_active,
+    
+    output reg config_low_wr,
+    output reg config_high_wr,
+    output reg [7:0] config_adr,
+    output reg [31:0] config_data,
 	
 	output reg sim_low_wr,
 	output reg sim_high_wr,
@@ -50,6 +55,12 @@ module adc_control(
    	reg [31:0] cdata;
    	
 	reg cmd_start;
+    
+    reg config_wr_start;
+    reg config_wr_pend;
+    reg config_wr_done;
+    reg [7:0] config_wr_count;
+    
 	reg sim_wr_start;
    	reg sim_wr_pend;   	
 	reg sim_wr_done;
@@ -58,6 +69,7 @@ module adc_control(
    	wire [7:0] adc_cmd = cdata[7:0];
    	wire [2:0] adc_chan = cdata[10:8];
    	wire [11:0] adc_count = (cdata[27:16] + 1);
+   	wire [7:0] config_count = cdata[23:16];
 
 ila_4 ila_4_i (
 		.clk(clk),                  // input wire clk
@@ -69,20 +81,29 @@ ila_4 ila_4_i (
 		.probe5(data_out),          // input wire [31:0]  probe3
 		.probe6(cdata),             // input wire [31:0]  probe3
 		.probe7(pdata),             // input wire [31:0]  probe3
-		.probe8(sim_low_wr),        // input wire [0:0]  probe3
-		.probe9(sim_high_wr),       // input wire [0:0]  probe3
-		.probe10(sim_channel),      // input wire [1:0]  probe3
-		.probe11(sim_data),         // input wire [31:0]  probe3
-		.probe12(adc_start),        // input wire [0:0]  probe3
-		.probe13(adc_stop),         // input wire [0:0]  probe3
-		.probe14(sim_start),        // input wire [0:0]  probe3
-		.probe15(adc_active),       // input wire [0:0]  probe3
-		.probe16(sim_active),       // input wire [0:0]  probe3
-		.probe17(sim_wr_start),     // input wire [0:0]  probe3
-		.probe18(cmd_start),        // input wire [0:0]  probe3
-		.probe19(sim_wr_pend),      // input wire [0:0]  probe3
-		.probe20(sim_wr_done),      // input wire [0:0]  probe3
-		.probe21(sim_wr_count)      // input wire [10:0]  probe3
+		.probe8(config_low_wr),     // input wire [0:0]  probe3
+		.probe9(config_high_wr),    // input wire [0:0]  probe3
+		.probe10(config_adr),       // input wire [7:0]  probe3
+		.probe11(config_data),      // input wire [31:0]  probe3
+		.probe12(sim_low_wr),       // input wire [0:0]  probe3
+		.probe13(sim_high_wr),      // input wire [0:0]  probe3
+		.probe14(sim_channel),      // input wire [1:0]  probe3
+		.probe15(sim_data),         // input wire [31:0]  probe3
+		.probe16(adc_start),        // input wire [0:0]  probe3
+		.probe17(adc_stop),         // input wire [0:0]  probe3
+		.probe18(config_start),     // input wire [0:0]  probe3
+		.probe19(sim_start),        // input wire [0:0]  probe3
+		.probe20(adc_active),       // input wire [0:0]  probe3
+		.probe21(sim_active),       // input wire [0:0]  probe3
+		.probe22(cmd_start),        // input wire [0:0]  probe3
+		.probe23(config_wr_start),  // input wire [0:0]  probe3
+		.probe24(config_wr_pend),   // input wire [0:0]  probe3
+		.probe25(config_wr_done),   // input wire [0:0]  probe3
+		.probe26(config_wr_count),  // input wire [7:0]  probe3
+		.probe27(sim_wr_start),     // input wire [0:0]  probe3
+		.probe28(sim_wr_pend),      // input wire [0:0]  probe3
+		.probe29(sim_wr_done),      // input wire [0:0]  probe3
+		.probe30(sim_wr_count)      // input wire [10:0]  probe3
 	);
 
 generate
@@ -132,10 +153,12 @@ generate
           8'h02 : adc_start <= 1;
           8'h03 : sim_start <= 1;
           8'h04 : adc_stop <= 1;
+          8'h05 : config_wr_start <= 1;
         endcase
 	  end
 	  else
 	  begin
+	    config_wr_start <= 0;
 	    sim_wr_start <= 0;
 		adc_start <= 0;
 		sim_start <= 0;
@@ -143,22 +166,102 @@ generate
 	  end
     end
 
+
 	always @(posedge clk) 
 	begin
 	  if (cmd_start)
 	    address <= 2;
 	  else
 	  begin
-	    if (!resetn | sim_wr_done)
+	    if (!resetn | config_wr_done | sim_wr_done)
 		  address <= 1;
 		else
 		begin
-  	      if (sim_wr_pend | sim_wr_start)
+  	      if (config_wr_pend | config_wr_start | sim_wr_pend | sim_wr_start)
 		    address <= address + 1;
 		  else
 		    address <= 0;
 	    end
       end
+	end
+
+	always @(posedge clk) 
+	begin
+	  if (!resetn)
+	    config_wr_pend <= 0;
+	  else
+	  begin
+  	    if (config_wr_start)
+	      config_wr_pend <= 1;
+	    else
+	    begin
+	      if (config_wr_done)
+	        config_wr_pend <= 0;
+	    end
+	  end
+	end
+
+	always @(posedge clk) 
+	begin
+	  if (config_wr_start | config_wr_pend)
+	  begin
+	    if (config_wr_count)
+  		  config_wr_done <= 0;
+  		else
+  		  config_wr_done <= ~config_wr_done;
+      end
+      else
+  		config_wr_done <= 0;
+    end
+
+	always @(posedge clk) 
+	begin
+	  if (cmd_start)	  
+	  begin
+	    config_low_wr <= 0;
+	    config_high_wr <= 0;
+        config_adr <= 8'hFF;
+	    config_wr_count <= config_count;
+      end
+	  else
+	  begin	  
+	    if (config_wr_start | config_wr_pend)
+	    begin
+	      if (config_wr_count)
+		  begin
+		    if (config_wr_pend)
+		    begin
+  		      config_wr_count <= config_wr_count - 1;
+			  config_data <= data_in;
+              config_adr <= config_adr + 1;
+		  
+  	          if (adc_chan[0])
+	            config_high_wr <= 1;
+  		      else
+		        config_low_wr <= 1;
+		    end
+		    else
+		    begin
+   	          config_low_wr <= 0;
+	          config_high_wr <= 0;
+              config_adr <= 8'hFF;
+	        end
+  		  end
+		  else
+		  begin
+   	        config_low_wr <= 0;
+	        config_high_wr <= 0;
+            config_adr <= 8'hFF;
+	      end
+  	    end
+  	    else
+	    begin
+		  config_wr_count <= 0;
+	      config_low_wr <= 0;
+	      config_high_wr <= 0;
+          config_adr <= 8'hFF;
+		end
+	  end
 	end
 
 	always @(posedge clk) 
@@ -240,7 +343,7 @@ generate
 	begin
    	  if (resetn)
 	  begin
-  	    if (sim_wr_done)
+  	    if (sim_wr_done | config_wr_done)
 	    begin
 		  wr_en <= 4'b1111;
 		  data_out[7:0] <= data_out[7:0] + 1;

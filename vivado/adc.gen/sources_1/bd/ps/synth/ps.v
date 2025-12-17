@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Mon Dec 15 23:18:00 2025
+//Date        : Wed Dec 17 22:41:40 2025
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -65,6 +65,10 @@ module ps
   wire adc_control_0_adc_stop;
   wire [10:0]adc_control_0_address;
   wire [10:0]adc_control_0_bram_adr_out;
+  wire [7:0]adc_control_0_config_adr;
+  wire [31:0]adc_control_0_config_data;
+  wire adc_control_0_config_high_wr;
+  wire adc_control_0_config_low_wr;
   wire [31:0]adc_control_0_data_out;
   wire adc_control_0_sim_active;
   wire [1:0]adc_control_0_sim_channel;
@@ -294,6 +298,10 @@ module ps
         .bram_adr_in(axi_bram_ctrl_0_bram_addr_a),
         .bram_adr_out(adc_control_0_bram_adr_out),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_adr(adc_control_0_config_adr),
+        .config_data(adc_control_0_config_data),
+        .config_high_wr(adc_control_0_config_high_wr),
+        .config_low_wr(adc_control_0_config_low_wr),
         .data_in(axi_bram_doutb),
         .data_out(adc_control_0_data_out),
         .resetn(rst_ps8_0_99M_peripheral_aresetn),
@@ -521,6 +529,10 @@ module ps
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
   ps_comp_high_0_0 comp_high
        (.clk(mts_0_comp1_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_high_wr),
         .fifo_clk(mts_0_freq1_clk),
         .fifo_doa_data(freq_high_189_0_doa_data),
         .fifo_sample_data(freq_high_189_0_sample_data),
@@ -528,6 +540,10 @@ module ps
         .reset(mts_0_comp1_reset));
   ps_comp_low_0_0 comp_low
        (.clk(mts_0_comp0_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_low_wr),
         .fifo_clk(mts_0_freq0_clk),
         .fifo_doa_data(freq_low_46_0_doa_data),
         .fifo_sample_data(freq_low_46_0_sample_data),

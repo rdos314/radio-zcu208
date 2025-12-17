@@ -26,6 +26,11 @@ module comp_low(
     input wire [191:0] fifo_sample_data,
     input wire [143:0] fifo_doa_data,
 
+    input wire config_clk,
+    input wire config_wr,
+    input wire [7:0] config_adr,
+    input wire [31:0] config_data,
+
     input wire clk,
     input wire reset
     );
