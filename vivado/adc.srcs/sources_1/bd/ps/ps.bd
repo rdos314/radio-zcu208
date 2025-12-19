@@ -3428,9 +3428,9 @@
           "mts_0/axi_clk",
           "deci_high/sim_clk",
           "deci_low/sim_clk",
+          "adc_control_0/clk",
           "comp_high/config_clk",
-          "comp_low/config_clk",
-          "adc_control_0/clk"
+          "comp_low/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

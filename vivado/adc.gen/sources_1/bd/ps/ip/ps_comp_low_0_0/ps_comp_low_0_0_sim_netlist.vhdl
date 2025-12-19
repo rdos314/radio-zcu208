@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Dec 17 21:21:40 2025
+-- Date        : Fri Dec 19 00:32:45 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -33,6 +33,21 @@ entity ps_comp_low_0_0_comp_low is
 end ps_comp_low_0_0_comp_low;
 
 architecture STRUCTURE of ps_comp_low_0_0_comp_low is
+  component ps_comp_low_0_0_fifo_config is
+  port (
+    rst : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 39 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 39 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC;
+    wr_rst_busy : out STD_LOGIC;
+    rd_rst_busy : out STD_LOGIC
+  );
+  end component ps_comp_low_0_0_fifo_config;
   component ps_comp_low_0_0_fifo_doa is
   port (
     rst : in STD_LOGIC;
@@ -72,20 +87,31 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe17 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_low_0_0_ila_3;
+  signal cfg_empty : STD_LOGIC;
+  signal cfg_rd : STD_LOGIC;
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of cfg_rd : signal is std.standard.true;
+  signal \comp_low.cfg_rd_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.doa_rd_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.env_N_reg0\ : STD_LOGIC;
   signal \comp_low.fifo_doa_delay[1]_i_1_n_0\ : STD_LOGIC;
@@ -104,11 +130,85 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.fifo_sample_delay[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.fifo_sample_delay[8]_i_2_n_0\ : STD_LOGIC;
   signal \comp_low.fifo_sample_delay_reg0\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \comp_low.max_doa_diff[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[11]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_doa_diff_reg0\ : STD_LOGIC;
+  signal \comp_low.max_incr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[16]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[17]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[18]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[19]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.max_incr_reg0\ : STD_LOGIC;
+  signal \comp_low.min_env[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.min_env_reg0\ : STD_LOGIC;
+  signal \comp_low.min_incr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[16]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[17]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[18]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[19]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_incr_reg0\ : STD_LOGIC;
+  signal \comp_low.min_samples[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.min_samples_reg0\ : STD_LOGIC;
   signal \comp_low.raw_N0_reg0\ : STD_LOGIC;
   signal \comp_low.sample_rd_i_1_n_0\ : STD_LOGIC;
+  signal config_data_adr_out : STD_LOGIC_VECTOR ( 27 downto 0 );
   signal doa_data : STD_LOGIC_VECTOR ( 143 downto 0 );
   signal doa_rd : STD_LOGIC;
-  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of doa_rd : signal is std.standard.true;
   signal env_E : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of env_E : signal is std.standard.true;
@@ -130,6 +230,17 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute MARK_DEBUG of fifo_sample_delay : signal is std.standard.true;
   signal fifo_sample_empty : STD_LOGIC;
   attribute MARK_DEBUG of fifo_sample_empty : signal is std.standard.true;
+  signal max_doa_diff : STD_LOGIC_VECTOR ( 11 downto 0 );
+  attribute MARK_DEBUG of max_doa_diff : signal is std.standard.true;
+  signal max_incr : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of max_incr : signal is std.standard.true;
+  signal min_env : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of min_env : signal is std.standard.true;
+  signal min_incr : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of min_incr : signal is std.standard.true;
+  signal min_samples : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of min_samples : signal is std.standard.true;
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal phase_E : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of phase_E : signal is std.standard.true;
   signal phase_N : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -145,6 +256,10 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal sample_data : STD_LOGIC_VECTOR ( 143 downto 0 );
   signal sample_rd : STD_LOGIC;
   attribute MARK_DEBUG of sample_rd : signal is std.standard.true;
+  signal NLW_fifo_config_i_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_config_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_config_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_config_i_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 28 );
   signal NLW_fifo_doa_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
@@ -153,6 +268,7 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 191 downto 16 );
   attribute KEEP : string;
+  attribute KEEP of \comp_low.cfg_rd_reg\ : label is "yes";
   attribute KEEP of \comp_low.doa_rd_reg\ : label is "yes";
   attribute KEEP of \comp_low.env_E_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -351,6 +467,174 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute mark_debug_string of \comp_low.fifo_sample_delay_reg[7]\ : label is "yes";
   attribute KEEP of \comp_low.fifo_sample_delay_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_low.fifo_sample_delay_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.max_doa_diff_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_doa_diff_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.max_incr_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.max_incr_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.min_env_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_env_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.min_incr_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_incr_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.min_samples_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_low.min_samples_reg[9]\ : label is "yes";
   attribute KEEP of \comp_low.phase_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_low.phase_E_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.phase_E_reg[10]\ : label is "yes";
@@ -569,10 +853,13 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute mark_debug_string of \comp_low.raw_W0_reg[9]\ : label is "yes";
   attribute KEEP of \comp_low.sample_rd_reg\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fifo_doa_i : label is "fifo_doa,fifo_generator_v13_2_13,{}";
+  attribute CHECK_LICENSE_TYPE of fifo_config_i : label is "fifo_config,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of fifo_doa_i : label is "yes";
+  attribute downgradeipidentifiedwarnings of fifo_config_i : label is "yes";
   attribute x_core_info : string;
+  attribute x_core_info of fifo_config_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of fifo_doa_i : label is "fifo_doa,fifo_generator_v13_2_13,{}";
+  attribute downgradeipidentifiedwarnings of fifo_doa_i : label is "yes";
   attribute x_core_info of fifo_doa_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw_low,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_raw_i : label is "yes";
@@ -581,6 +868,22 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
 begin
+\comp_low.cfg_rd_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => cfg_empty,
+      O => \comp_low.cfg_rd_i_1_n_0\
+    );
+\comp_low.cfg_rd_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.cfg_rd_i_1_n_0\,
+      Q => cfg_rd,
+      R => '0'
+    );
 \comp_low.doa_rd_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000000000001"
@@ -1563,6 +1866,1594 @@ begin
       Q => fifo_sample_delay(8),
       R => fifo_sample_empty
     );
+\comp_low.max_doa_diff[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(0),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(8),
+      O => \comp_low.max_doa_diff[0]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[10]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(10),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(18),
+      O => \comp_low.max_doa_diff[10]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[11]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"ABAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => cfg_empty,
+      I1 => config_data_adr_out(3),
+      I2 => config_data_adr_out(2),
+      I3 => config_data_adr_out(1),
+      I4 => config_data_adr_out(0),
+      I5 => \comp_low.min_env[15]_i_3_n_0\,
+      O => \comp_low.max_doa_diff_reg0\
+    );
+\comp_low.max_doa_diff[11]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(11),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(19),
+      O => \comp_low.max_doa_diff[11]_i_2_n_0\
+    );
+\comp_low.max_doa_diff[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(1),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(9),
+      O => \comp_low.max_doa_diff[1]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(2),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(10),
+      O => \comp_low.max_doa_diff[2]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(3),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(11),
+      O => \comp_low.max_doa_diff[3]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(4),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(12),
+      O => \comp_low.max_doa_diff[4]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(5),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(13),
+      O => \comp_low.max_doa_diff[5]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(6),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(14),
+      O => \comp_low.max_doa_diff[6]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(7),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(15),
+      O => \comp_low.max_doa_diff[7]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(8),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(16),
+      O => \comp_low.max_doa_diff[8]_i_1_n_0\
+    );
+\comp_low.max_doa_diff[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_doa_diff(9),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(17),
+      O => \comp_low.max_doa_diff[9]_i_1_n_0\
+    );
+\comp_low.max_doa_diff_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[0]_i_1_n_0\,
+      Q => max_doa_diff(0),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[10]_i_1_n_0\,
+      Q => max_doa_diff(10),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[11]_i_2_n_0\,
+      Q => max_doa_diff(11),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[1]_i_1_n_0\,
+      Q => max_doa_diff(1),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[2]_i_1_n_0\,
+      Q => max_doa_diff(2),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[3]_i_1_n_0\,
+      Q => max_doa_diff(3),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[4]_i_1_n_0\,
+      Q => max_doa_diff(4),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[5]_i_1_n_0\,
+      Q => max_doa_diff(5),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[6]_i_1_n_0\,
+      Q => max_doa_diff(6),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[7]_i_1_n_0\,
+      Q => max_doa_diff(7),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[8]_i_1_n_0\,
+      Q => max_doa_diff(8),
+      R => '0'
+    );
+\comp_low.max_doa_diff_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_doa_diff_reg0\,
+      D => \comp_low.max_doa_diff[9]_i_1_n_0\,
+      Q => max_doa_diff(9),
+      R => '0'
+    );
+\comp_low.max_incr[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(0),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(8),
+      O => \comp_low.max_incr[0]_i_1_n_0\
+    );
+\comp_low.max_incr[10]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(10),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(18),
+      O => \comp_low.max_incr[10]_i_1_n_0\
+    );
+\comp_low.max_incr[11]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(11),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(19),
+      O => \comp_low.max_incr[11]_i_1_n_0\
+    );
+\comp_low.max_incr[12]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(12),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(20),
+      O => \comp_low.max_incr[12]_i_1_n_0\
+    );
+\comp_low.max_incr[13]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(13),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(21),
+      O => \comp_low.max_incr[13]_i_1_n_0\
+    );
+\comp_low.max_incr[14]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(14),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(22),
+      O => \comp_low.max_incr[14]_i_1_n_0\
+    );
+\comp_low.max_incr[15]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(15),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(23),
+      O => \comp_low.max_incr[15]_i_1_n_0\
+    );
+\comp_low.max_incr[16]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(16),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(24),
+      O => \comp_low.max_incr[16]_i_1_n_0\
+    );
+\comp_low.max_incr[17]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(17),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(25),
+      O => \comp_low.max_incr[17]_i_1_n_0\
+    );
+\comp_low.max_incr[18]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(18),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(26),
+      O => \comp_low.max_incr[18]_i_1_n_0\
+    );
+\comp_low.max_incr[19]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAABAAAAAAAAAA"
+    )
+        port map (
+      I0 => cfg_empty,
+      I1 => config_data_adr_out(3),
+      I2 => config_data_adr_out(2),
+      I3 => config_data_adr_out(1),
+      I4 => config_data_adr_out(0),
+      I5 => \comp_low.min_env[15]_i_3_n_0\,
+      O => \comp_low.max_incr_reg0\
+    );
+\comp_low.max_incr[19]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(19),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(27),
+      O => \comp_low.max_incr[19]_i_2_n_0\
+    );
+\comp_low.max_incr[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(1),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(9),
+      O => \comp_low.max_incr[1]_i_1_n_0\
+    );
+\comp_low.max_incr[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(2),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(10),
+      O => \comp_low.max_incr[2]_i_1_n_0\
+    );
+\comp_low.max_incr[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(3),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(11),
+      O => \comp_low.max_incr[3]_i_1_n_0\
+    );
+\comp_low.max_incr[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(4),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(12),
+      O => \comp_low.max_incr[4]_i_1_n_0\
+    );
+\comp_low.max_incr[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(5),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(13),
+      O => \comp_low.max_incr[5]_i_1_n_0\
+    );
+\comp_low.max_incr[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(6),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(14),
+      O => \comp_low.max_incr[6]_i_1_n_0\
+    );
+\comp_low.max_incr[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(7),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(15),
+      O => \comp_low.max_incr[7]_i_1_n_0\
+    );
+\comp_low.max_incr[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(8),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(16),
+      O => \comp_low.max_incr[8]_i_1_n_0\
+    );
+\comp_low.max_incr[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => max_incr(9),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(17),
+      O => \comp_low.max_incr[9]_i_1_n_0\
+    );
+\comp_low.max_incr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[0]_i_1_n_0\,
+      Q => max_incr(0),
+      R => '0'
+    );
+\comp_low.max_incr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[10]_i_1_n_0\,
+      Q => max_incr(10),
+      R => '0'
+    );
+\comp_low.max_incr_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[11]_i_1_n_0\,
+      Q => max_incr(11),
+      R => '0'
+    );
+\comp_low.max_incr_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[12]_i_1_n_0\,
+      Q => max_incr(12),
+      R => '0'
+    );
+\comp_low.max_incr_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[13]_i_1_n_0\,
+      Q => max_incr(13),
+      R => '0'
+    );
+\comp_low.max_incr_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[14]_i_1_n_0\,
+      Q => max_incr(14),
+      R => '0'
+    );
+\comp_low.max_incr_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[15]_i_1_n_0\,
+      Q => max_incr(15),
+      R => '0'
+    );
+\comp_low.max_incr_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[16]_i_1_n_0\,
+      Q => max_incr(16),
+      R => '0'
+    );
+\comp_low.max_incr_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[17]_i_1_n_0\,
+      Q => max_incr(17),
+      R => '0'
+    );
+\comp_low.max_incr_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[18]_i_1_n_0\,
+      Q => max_incr(18),
+      R => '0'
+    );
+\comp_low.max_incr_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[19]_i_2_n_0\,
+      Q => max_incr(19),
+      R => '0'
+    );
+\comp_low.max_incr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[1]_i_1_n_0\,
+      Q => max_incr(1),
+      R => '0'
+    );
+\comp_low.max_incr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[2]_i_1_n_0\,
+      Q => max_incr(2),
+      R => '0'
+    );
+\comp_low.max_incr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[3]_i_1_n_0\,
+      Q => max_incr(3),
+      R => '0'
+    );
+\comp_low.max_incr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[4]_i_1_n_0\,
+      Q => max_incr(4),
+      R => '0'
+    );
+\comp_low.max_incr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[5]_i_1_n_0\,
+      Q => max_incr(5),
+      R => '0'
+    );
+\comp_low.max_incr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[6]_i_1_n_0\,
+      Q => max_incr(6),
+      R => '0'
+    );
+\comp_low.max_incr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[7]_i_1_n_0\,
+      Q => max_incr(7),
+      R => '0'
+    );
+\comp_low.max_incr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[8]_i_1_n_0\,
+      Q => max_incr(8),
+      R => '0'
+    );
+\comp_low.max_incr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.max_incr_reg0\,
+      D => \comp_low.max_incr[9]_i_1_n_0\,
+      Q => max_incr(9),
+      R => '0'
+    );
+\comp_low.min_env[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(0),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(8),
+      O => \p_1_in__0\(0)
+    );
+\comp_low.min_env[10]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(10),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(18),
+      O => \p_1_in__0\(10)
+    );
+\comp_low.min_env[11]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(11),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(19),
+      O => \p_1_in__0\(11)
+    );
+\comp_low.min_env[12]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(12),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(20),
+      O => \p_1_in__0\(12)
+    );
+\comp_low.min_env[13]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(13),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(21),
+      O => \p_1_in__0\(13)
+    );
+\comp_low.min_env[14]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(14),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(22),
+      O => \p_1_in__0\(14)
+    );
+\comp_low.min_env[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAABAAAAAAAA"
+    )
+        port map (
+      I0 => cfg_empty,
+      I1 => config_data_adr_out(1),
+      I2 => config_data_adr_out(0),
+      I3 => config_data_adr_out(3),
+      I4 => config_data_adr_out(2),
+      I5 => \comp_low.min_env[15]_i_3_n_0\,
+      O => \comp_low.min_env_reg0\
+    );
+\comp_low.min_env[15]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(15),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(23),
+      O => \p_1_in__0\(15)
+    );
+\comp_low.min_env[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => config_data_adr_out(6),
+      I1 => config_data_adr_out(4),
+      I2 => config_data_adr_out(7),
+      I3 => config_data_adr_out(5),
+      O => \comp_low.min_env[15]_i_3_n_0\
+    );
+\comp_low.min_env[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(1),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(9),
+      O => \p_1_in__0\(1)
+    );
+\comp_low.min_env[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(2),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(10),
+      O => \p_1_in__0\(2)
+    );
+\comp_low.min_env[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(3),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(11),
+      O => \p_1_in__0\(3)
+    );
+\comp_low.min_env[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(4),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(12),
+      O => \p_1_in__0\(4)
+    );
+\comp_low.min_env[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(5),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(13),
+      O => \p_1_in__0\(5)
+    );
+\comp_low.min_env[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(6),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(14),
+      O => \p_1_in__0\(6)
+    );
+\comp_low.min_env[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(7),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(15),
+      O => \p_1_in__0\(7)
+    );
+\comp_low.min_env[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(8),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(16),
+      O => \p_1_in__0\(8)
+    );
+\comp_low.min_env[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_env(9),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(17),
+      O => \p_1_in__0\(9)
+    );
+\comp_low.min_env_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(0),
+      Q => min_env(0),
+      R => '0'
+    );
+\comp_low.min_env_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(10),
+      Q => min_env(10),
+      R => '0'
+    );
+\comp_low.min_env_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(11),
+      Q => min_env(11),
+      R => '0'
+    );
+\comp_low.min_env_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(12),
+      Q => min_env(12),
+      R => '0'
+    );
+\comp_low.min_env_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(13),
+      Q => min_env(13),
+      R => '0'
+    );
+\comp_low.min_env_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(14),
+      Q => min_env(14),
+      R => '0'
+    );
+\comp_low.min_env_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(15),
+      Q => min_env(15),
+      R => '0'
+    );
+\comp_low.min_env_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(1),
+      Q => min_env(1),
+      R => '0'
+    );
+\comp_low.min_env_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(2),
+      Q => min_env(2),
+      R => '0'
+    );
+\comp_low.min_env_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(3),
+      Q => min_env(3),
+      R => '0'
+    );
+\comp_low.min_env_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(4),
+      Q => min_env(4),
+      R => '0'
+    );
+\comp_low.min_env_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(5),
+      Q => min_env(5),
+      R => '0'
+    );
+\comp_low.min_env_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(6),
+      Q => min_env(6),
+      R => '0'
+    );
+\comp_low.min_env_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(7),
+      Q => min_env(7),
+      R => '0'
+    );
+\comp_low.min_env_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(8),
+      Q => min_env(8),
+      R => '0'
+    );
+\comp_low.min_env_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_env_reg0\,
+      D => \p_1_in__0\(9),
+      Q => min_env(9),
+      R => '0'
+    );
+\comp_low.min_incr[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(0),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(8),
+      O => \comp_low.min_incr[0]_i_1_n_0\
+    );
+\comp_low.min_incr[10]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(10),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(18),
+      O => \comp_low.min_incr[10]_i_1_n_0\
+    );
+\comp_low.min_incr[11]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(11),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(19),
+      O => \comp_low.min_incr[11]_i_1_n_0\
+    );
+\comp_low.min_incr[12]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(12),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(20),
+      O => \comp_low.min_incr[12]_i_1_n_0\
+    );
+\comp_low.min_incr[13]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(13),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(21),
+      O => \comp_low.min_incr[13]_i_1_n_0\
+    );
+\comp_low.min_incr[14]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(14),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(22),
+      O => \comp_low.min_incr[14]_i_1_n_0\
+    );
+\comp_low.min_incr[15]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(15),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(23),
+      O => \comp_low.min_incr[15]_i_1_n_0\
+    );
+\comp_low.min_incr[16]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(16),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(24),
+      O => \comp_low.min_incr[16]_i_1_n_0\
+    );
+\comp_low.min_incr[17]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(17),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(25),
+      O => \comp_low.min_incr[17]_i_1_n_0\
+    );
+\comp_low.min_incr[18]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(18),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(26),
+      O => \comp_low.min_incr[18]_i_1_n_0\
+    );
+\comp_low.min_incr[19]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAABAAAAAAAAAA"
+    )
+        port map (
+      I0 => cfg_empty,
+      I1 => config_data_adr_out(3),
+      I2 => config_data_adr_out(2),
+      I3 => config_data_adr_out(0),
+      I4 => config_data_adr_out(1),
+      I5 => \comp_low.min_env[15]_i_3_n_0\,
+      O => \comp_low.min_incr_reg0\
+    );
+\comp_low.min_incr[19]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(19),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(27),
+      O => \comp_low.min_incr[19]_i_2_n_0\
+    );
+\comp_low.min_incr[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(1),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(9),
+      O => \comp_low.min_incr[1]_i_1_n_0\
+    );
+\comp_low.min_incr[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(2),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(10),
+      O => \comp_low.min_incr[2]_i_1_n_0\
+    );
+\comp_low.min_incr[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(3),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(11),
+      O => \comp_low.min_incr[3]_i_1_n_0\
+    );
+\comp_low.min_incr[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(4),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(12),
+      O => \comp_low.min_incr[4]_i_1_n_0\
+    );
+\comp_low.min_incr[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(5),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(13),
+      O => \comp_low.min_incr[5]_i_1_n_0\
+    );
+\comp_low.min_incr[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(6),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(14),
+      O => \comp_low.min_incr[6]_i_1_n_0\
+    );
+\comp_low.min_incr[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(7),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(15),
+      O => \comp_low.min_incr[7]_i_1_n_0\
+    );
+\comp_low.min_incr[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(8),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(16),
+      O => \comp_low.min_incr[8]_i_1_n_0\
+    );
+\comp_low.min_incr[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_incr(9),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(17),
+      O => \comp_low.min_incr[9]_i_1_n_0\
+    );
+\comp_low.min_incr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[0]_i_1_n_0\,
+      Q => min_incr(0),
+      R => '0'
+    );
+\comp_low.min_incr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[10]_i_1_n_0\,
+      Q => min_incr(10),
+      R => '0'
+    );
+\comp_low.min_incr_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[11]_i_1_n_0\,
+      Q => min_incr(11),
+      R => '0'
+    );
+\comp_low.min_incr_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[12]_i_1_n_0\,
+      Q => min_incr(12),
+      R => '0'
+    );
+\comp_low.min_incr_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[13]_i_1_n_0\,
+      Q => min_incr(13),
+      R => '0'
+    );
+\comp_low.min_incr_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[14]_i_1_n_0\,
+      Q => min_incr(14),
+      R => '0'
+    );
+\comp_low.min_incr_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[15]_i_1_n_0\,
+      Q => min_incr(15),
+      R => '0'
+    );
+\comp_low.min_incr_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[16]_i_1_n_0\,
+      Q => min_incr(16),
+      R => '0'
+    );
+\comp_low.min_incr_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[17]_i_1_n_0\,
+      Q => min_incr(17),
+      R => '0'
+    );
+\comp_low.min_incr_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[18]_i_1_n_0\,
+      Q => min_incr(18),
+      R => '0'
+    );
+\comp_low.min_incr_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[19]_i_2_n_0\,
+      Q => min_incr(19),
+      R => '0'
+    );
+\comp_low.min_incr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[1]_i_1_n_0\,
+      Q => min_incr(1),
+      R => '0'
+    );
+\comp_low.min_incr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[2]_i_1_n_0\,
+      Q => min_incr(2),
+      R => '0'
+    );
+\comp_low.min_incr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[3]_i_1_n_0\,
+      Q => min_incr(3),
+      R => '0'
+    );
+\comp_low.min_incr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[4]_i_1_n_0\,
+      Q => min_incr(4),
+      R => '0'
+    );
+\comp_low.min_incr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[5]_i_1_n_0\,
+      Q => min_incr(5),
+      R => '0'
+    );
+\comp_low.min_incr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[6]_i_1_n_0\,
+      Q => min_incr(6),
+      R => '0'
+    );
+\comp_low.min_incr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[7]_i_1_n_0\,
+      Q => min_incr(7),
+      R => '0'
+    );
+\comp_low.min_incr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[8]_i_1_n_0\,
+      Q => min_incr(8),
+      R => '0'
+    );
+\comp_low.min_incr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_incr_reg0\,
+      D => \comp_low.min_incr[9]_i_1_n_0\,
+      Q => min_incr(9),
+      R => '0'
+    );
+\comp_low.min_samples[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(0),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(8),
+      O => \comp_low.min_samples[0]_i_1_n_0\
+    );
+\comp_low.min_samples[10]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(10),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(18),
+      O => \comp_low.min_samples[10]_i_1_n_0\
+    );
+\comp_low.min_samples[11]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(11),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(19),
+      O => \comp_low.min_samples[11]_i_1_n_0\
+    );
+\comp_low.min_samples[12]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(12),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(20),
+      O => \comp_low.min_samples[12]_i_1_n_0\
+    );
+\comp_low.min_samples[13]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(13),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(21),
+      O => \comp_low.min_samples[13]_i_1_n_0\
+    );
+\comp_low.min_samples[14]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(14),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(22),
+      O => \comp_low.min_samples[14]_i_1_n_0\
+    );
+\comp_low.min_samples[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAABAAAAAAAAAA"
+    )
+        port map (
+      I0 => cfg_empty,
+      I1 => config_data_adr_out(1),
+      I2 => config_data_adr_out(0),
+      I3 => config_data_adr_out(2),
+      I4 => config_data_adr_out(3),
+      I5 => \comp_low.min_env[15]_i_3_n_0\,
+      O => \comp_low.min_samples_reg0\
+    );
+\comp_low.min_samples[15]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(15),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(23),
+      O => \comp_low.min_samples[15]_i_2_n_0\
+    );
+\comp_low.min_samples[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(1),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(9),
+      O => \comp_low.min_samples[1]_i_1_n_0\
+    );
+\comp_low.min_samples[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(2),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(10),
+      O => \comp_low.min_samples[2]_i_1_n_0\
+    );
+\comp_low.min_samples[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(3),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(11),
+      O => \comp_low.min_samples[3]_i_1_n_0\
+    );
+\comp_low.min_samples[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(4),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(12),
+      O => \comp_low.min_samples[4]_i_1_n_0\
+    );
+\comp_low.min_samples[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(5),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(13),
+      O => \comp_low.min_samples[5]_i_1_n_0\
+    );
+\comp_low.min_samples[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(6),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(14),
+      O => \comp_low.min_samples[6]_i_1_n_0\
+    );
+\comp_low.min_samples[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(7),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(15),
+      O => \comp_low.min_samples[7]_i_1_n_0\
+    );
+\comp_low.min_samples[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(8),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(16),
+      O => \comp_low.min_samples[8]_i_1_n_0\
+    );
+\comp_low.min_samples[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => min_samples(9),
+      I1 => cfg_empty,
+      I2 => config_data_adr_out(17),
+      O => \comp_low.min_samples[9]_i_1_n_0\
+    );
+\comp_low.min_samples_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[0]_i_1_n_0\,
+      Q => min_samples(0),
+      R => '0'
+    );
+\comp_low.min_samples_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[10]_i_1_n_0\,
+      Q => min_samples(10),
+      R => '0'
+    );
+\comp_low.min_samples_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[11]_i_1_n_0\,
+      Q => min_samples(11),
+      R => '0'
+    );
+\comp_low.min_samples_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[12]_i_1_n_0\,
+      Q => min_samples(12),
+      R => '0'
+    );
+\comp_low.min_samples_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[13]_i_1_n_0\,
+      Q => min_samples(13),
+      R => '0'
+    );
+\comp_low.min_samples_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[14]_i_1_n_0\,
+      Q => min_samples(14),
+      R => '0'
+    );
+\comp_low.min_samples_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[15]_i_2_n_0\,
+      Q => min_samples(15),
+      R => '0'
+    );
+\comp_low.min_samples_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[1]_i_1_n_0\,
+      Q => min_samples(1),
+      R => '0'
+    );
+\comp_low.min_samples_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[2]_i_1_n_0\,
+      Q => min_samples(2),
+      R => '0'
+    );
+\comp_low.min_samples_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[3]_i_1_n_0\,
+      Q => min_samples(3),
+      R => '0'
+    );
+\comp_low.min_samples_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[4]_i_1_n_0\,
+      Q => min_samples(4),
+      R => '0'
+    );
+\comp_low.min_samples_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[5]_i_1_n_0\,
+      Q => min_samples(5),
+      R => '0'
+    );
+\comp_low.min_samples_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[6]_i_1_n_0\,
+      Q => min_samples(6),
+      R => '0'
+    );
+\comp_low.min_samples_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[7]_i_1_n_0\,
+      Q => min_samples(7),
+      R => '0'
+    );
+\comp_low.min_samples_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[8]_i_1_n_0\,
+      Q => min_samples(8),
+      R => '0'
+    );
+\comp_low.min_samples_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.min_samples_reg0\,
+      D => \comp_low.min_samples[9]_i_1_n_0\,
+      Q => min_samples(9),
+      R => '0'
+    );
 \comp_low.phase_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -2457,6 +4348,22 @@ begin
       Q => sample_rd,
       R => '0'
     );
+fifo_config_i: component ps_comp_low_0_0_fifo_config
+     port map (
+      din(39 downto 8) => config_data(31 downto 0),
+      din(7 downto 0) => config_adr(7 downto 0),
+      dout(39 downto 28) => NLW_fifo_config_i_dout_UNCONNECTED(39 downto 28),
+      dout(27 downto 0) => config_data_adr_out(27 downto 0),
+      empty => cfg_empty,
+      full => NLW_fifo_config_i_full_UNCONNECTED,
+      rd_clk => clk,
+      rd_en => cfg_rd,
+      rd_rst_busy => NLW_fifo_config_i_rd_rst_busy_UNCONNECTED,
+      rst => reset,
+      wr_clk => config_clk,
+      wr_en => config_wr,
+      wr_rst_busy => NLW_fifo_config_i_wr_rst_busy_UNCONNECTED
+    );
 fifo_doa_i: component ps_comp_low_0_0_fifo_doa
      port map (
       din(143 downto 0) => fifo_doa_data(143 downto 0),
@@ -2495,22 +4402,28 @@ ila_i: component ps_comp_low_0_0_ila_3
       clk => clk,
       probe0(0) => fifo_sample_empty,
       probe1(0) => fifo_doa_empty,
-      probe10(15 downto 0) => env_W(15 downto 0),
-      probe11(19 downto 0) => phase_W(19 downto 0),
-      probe12(11 downto 0) => err_NE(11 downto 0),
-      probe13(11 downto 0) => err_NW(11 downto 0),
-      probe14(11 downto 0) => err_EW(11 downto 0),
-      probe15(15 downto 0) => raw_N0(15 downto 0),
-      probe16(15 downto 0) => raw_E0(15 downto 0),
-      probe17(15 downto 0) => raw_W0(15 downto 0),
+      probe10(11 downto 0) => max_doa_diff(11 downto 0),
+      probe11(15 downto 0) => min_samples(15 downto 0),
+      probe12(15 downto 0) => env_N(15 downto 0),
+      probe13(19 downto 0) => phase_N(19 downto 0),
+      probe14(15 downto 0) => env_E(15 downto 0),
+      probe15(19 downto 0) => phase_E(19 downto 0),
+      probe16(15 downto 0) => env_W(15 downto 0),
+      probe17(19 downto 0) => phase_W(19 downto 0),
+      probe18(11 downto 0) => err_NE(11 downto 0),
+      probe19(11 downto 0) => err_NW(11 downto 0),
       probe2(0) => sample_rd,
+      probe20(11 downto 0) => err_EW(11 downto 0),
+      probe21(15 downto 0) => raw_N0(15 downto 0),
+      probe22(15 downto 0) => raw_E0(15 downto 0),
+      probe23(15 downto 0) => raw_W0(15 downto 0),
       probe3(0) => doa_rd,
       probe4(4 downto 0) => fifo_doa_delay(4 downto 0),
       probe5(8 downto 0) => fifo_sample_delay(8 downto 0),
-      probe6(15 downto 0) => env_N(15 downto 0),
-      probe7(19 downto 0) => phase_N(19 downto 0),
-      probe8(15 downto 0) => env_E(15 downto 0),
-      probe9(19 downto 0) => phase_E(19 downto 0)
+      probe6(0) => cfg_rd,
+      probe7(15 downto 0) => min_env(15 downto 0),
+      probe8(19 downto 0) => min_incr(19 downto 0),
+      probe9(19 downto 0) => max_incr(19 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -2562,10 +4475,10 @@ begin
 inst: entity work.ps_comp_low_0_0_comp_low
      port map (
       clk => clk,
-      config_adr(7 downto 0) => B"00000000",
-      config_clk => '0',
-      config_data(31 downto 0) => B"00000000000000000000000000000000",
-      config_wr => '0',
+      config_adr(7 downto 0) => config_adr(7 downto 0),
+      config_clk => config_clk,
+      config_data(31 downto 0) => config_data(31 downto 0),
+      config_wr => config_wr,
       fifo_clk => fifo_clk,
       fifo_doa_data(143 downto 0) => fifo_doa_data(143 downto 0),
       fifo_sample_data(191 downto 0) => fifo_sample_data(191 downto 0),

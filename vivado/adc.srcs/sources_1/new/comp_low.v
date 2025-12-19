@@ -45,6 +45,22 @@ module comp_low(
   wire fifo_doa_empty;
   reg [4:0] fifo_doa_delay;
   reg doa_valid;
+  
+  wire [39:0] config_data_adr_in;
+  assign config_data_adr_in[7:0] = config_adr;
+  assign config_data_adr_in[39:8] = config_data;
+
+  wire [39:0] config_data_adr_out;
+  wire [7:0] cfg_adr = config_data_adr_out[7:0];
+  wire [31:0] cfg_data = config_data_adr_out[39:8];
+  reg cfg_rd;
+  wire cfg_empty;
+
+  reg [15:0] min_env;
+  reg [19:0] min_incr;
+  reg [19:0] max_incr;
+  reg [11:0] max_doa_diff;
+  reg [15:0] min_samples;
 
   reg [15:0] env_N;
   reg [19:0] phase_N;
@@ -97,6 +113,17 @@ fifo_doa fifo_doa_i (
   .empty(fifo_doa_empty)         // output wire empty
 );
 
+fifo_config fifo_config_i (
+  .rst(reset),                   // input wire rst
+  .wr_clk(config_clk),           // input wire wr_clk
+  .rd_clk(clk),                  // input wire rd_clk
+  .din(config_data_adr_in),      // input wire [39 : 0] din
+  .wr_en(config_wr),             // input wire wr_en
+  .rd_en(cfg_rd),                // input wire rd_en
+  .dout(config_data_adr_out),    // output wire [39 : 0] dout
+  .empty(cfg_empty)              // output wire empty
+);
+
 	ila_3 ila_i (
 		.clk(clk),               // input wire clk
 		.probe0(fifo_sample_empty), // input wire [0:0]  probe3
@@ -105,20 +132,25 @@ fifo_doa fifo_doa_i (
 		.probe3(doa_rd),            // input wire [0:0]  probe3
 		.probe4(fifo_doa_delay),     // input wire [4:0]  probe3
 		.probe5(fifo_sample_delay),  // input wire [8:0]  probe3
-		.probe6(env_N),             // input wire [15:0]  probe3
-		.probe7(phase_N),           // input wire [19:0]  probe3
-		.probe8(env_E),             // input wire [15:0]  probe3
-		.probe9(phase_E),           // input wire [19:0]  probe3
-		.probe10(env_W),             // input wire [15:0]  probe3
-		.probe11(phase_W),          // input wire [19:0]  probe3
-		.probe12(err_NE),           // input wire [11:0]  probe3
-		.probe13(err_NW),           // input wire [11:0]  probe3
-		.probe14(err_EW),           // input wire [11:0]  probe3
-		.probe15(raw_N0),           // input wire [15:0]  probe3
-		.probe16(raw_E0),           // input wire [15:0]  probe3
-		.probe17(raw_W0)            // input wire [15:0]  probe3
+		.probe6(cfg_rd),             // input wire [0:0]  probe3
+		.probe7(min_env),           // input wire [15:0]  probe3
+		.probe8(min_incr),          // input wire [19:0]  probe3
+		.probe9(max_incr),          // input wire [19:0]  probe3
+		.probe10(max_doa_diff),      // input wire [11:0]  probe3
+		.probe11(min_samples),       // input wire [15:0]  probe3
+		.probe12(env_N),             // input wire [15:0]  probe3
+		.probe13(phase_N),           // input wire [19:0]  probe3
+		.probe14(env_E),             // input wire [15:0]  probe3
+		.probe15(phase_E),           // input wire [19:0]  probe3
+		.probe16(env_W),             // input wire [15:0]  probe3
+		.probe17(phase_W),          // input wire [19:0]  probe3
+		.probe18(err_NE),           // input wire [11:0]  probe3
+		.probe19(err_NW),           // input wire [11:0]  probe3
+		.probe20(err_EW),           // input wire [11:0]  probe3
+		.probe21(raw_N0),           // input wire [15:0]  probe3
+		.probe22(raw_E0),           // input wire [15:0]  probe3
+		.probe23(raw_W0)            // input wire [15:0]  probe3
 	);
-
 
 generate
   begin : comp_low
@@ -203,6 +235,23 @@ generate
             raw_W3 <= sample_data[191:176];
         end
 	end
+
+    always @(posedge clk) 
+	begin
+        if (cfg_empty)
+            cfg_rd <= 0;
+        else
+        begin
+            cfg_rd <= 1;
+            case (cfg_adr)
+                0 : min_env <= cfg_data[15:0];
+                1 : min_incr <= cfg_data[19:0];
+                2 : max_incr <= cfg_data[19:0];
+                3 : max_doa_diff <= cfg_data[11:0];
+                4 : min_samples <= cfg_data[15:0];
+            endcase            
+        end
+    end
 
   end
     

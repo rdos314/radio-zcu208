@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Dec 17 21:21:39 2025
+// Date        : Fri Dec 19 00:32:45 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.v
@@ -39,6 +39,10 @@ module ps_comp_high_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
 
   wire clk;
+  wire [7:0]config_adr;
+  wire config_clk;
+  wire [31:0]config_data;
+  wire config_wr;
   wire fifo_clk;
   wire [143:0]fifo_doa_data;
   wire [383:0]fifo_sample_data;
@@ -47,10 +51,10 @@ module ps_comp_high_0_0
 
   ps_comp_high_0_0_comp_high inst
        (.clk(clk),
-        .config_adr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .config_clk(1'b0),
-        .config_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .config_wr(1'b0),
+        .config_adr(config_adr),
+        .config_clk(config_clk),
+        .config_data(config_data),
+        .config_wr(config_wr),
         .fifo_clk(fifo_clk),
         .fifo_doa_data(fifo_doa_data),
         .fifo_sample_data(fifo_sample_data),
@@ -81,7 +85,10 @@ module ps_comp_high_0_0_comp_high
   input clk;
   input reset;
 
+  wire cfg_empty;
+  (* MARK_DEBUG *) wire cfg_rd;
   wire clk;
+  wire \comp_high.cfg_rd_i_1_n_0 ;
   wire \comp_high.doa_rd_i_1_n_0 ;
   wire \comp_high.env_N_reg0 ;
   wire \comp_high.fifo_doa_delay[1]_i_1_n_0 ;
@@ -100,8 +107,87 @@ module ps_comp_high_0_0_comp_high
   wire \comp_high.fifo_sample_delay[8]_i_1_n_0 ;
   wire \comp_high.fifo_sample_delay[8]_i_2_n_0 ;
   wire [0:0]\comp_high.fifo_sample_delay_reg0 ;
+  wire \comp_high.max_doa_diff[0]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[10]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[11]_i_2_n_0 ;
+  wire \comp_high.max_doa_diff[1]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[2]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[3]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[4]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[5]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[6]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[7]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[8]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff[9]_i_1_n_0 ;
+  wire \comp_high.max_doa_diff_reg0 ;
+  wire \comp_high.max_incr[0]_i_1_n_0 ;
+  wire \comp_high.max_incr[10]_i_1_n_0 ;
+  wire \comp_high.max_incr[11]_i_1_n_0 ;
+  wire \comp_high.max_incr[12]_i_1_n_0 ;
+  wire \comp_high.max_incr[13]_i_1_n_0 ;
+  wire \comp_high.max_incr[14]_i_1_n_0 ;
+  wire \comp_high.max_incr[15]_i_1_n_0 ;
+  wire \comp_high.max_incr[16]_i_1_n_0 ;
+  wire \comp_high.max_incr[17]_i_1_n_0 ;
+  wire \comp_high.max_incr[18]_i_1_n_0 ;
+  wire \comp_high.max_incr[19]_i_2_n_0 ;
+  wire \comp_high.max_incr[1]_i_1_n_0 ;
+  wire \comp_high.max_incr[2]_i_1_n_0 ;
+  wire \comp_high.max_incr[3]_i_1_n_0 ;
+  wire \comp_high.max_incr[4]_i_1_n_0 ;
+  wire \comp_high.max_incr[5]_i_1_n_0 ;
+  wire \comp_high.max_incr[6]_i_1_n_0 ;
+  wire \comp_high.max_incr[7]_i_1_n_0 ;
+  wire \comp_high.max_incr[8]_i_1_n_0 ;
+  wire \comp_high.max_incr[9]_i_1_n_0 ;
+  wire \comp_high.max_incr_reg0 ;
+  wire \comp_high.min_env[15]_i_3_n_0 ;
+  wire \comp_high.min_env_reg0 ;
+  wire \comp_high.min_incr[0]_i_1_n_0 ;
+  wire \comp_high.min_incr[10]_i_1_n_0 ;
+  wire \comp_high.min_incr[11]_i_1_n_0 ;
+  wire \comp_high.min_incr[12]_i_1_n_0 ;
+  wire \comp_high.min_incr[13]_i_1_n_0 ;
+  wire \comp_high.min_incr[14]_i_1_n_0 ;
+  wire \comp_high.min_incr[15]_i_1_n_0 ;
+  wire \comp_high.min_incr[16]_i_1_n_0 ;
+  wire \comp_high.min_incr[17]_i_1_n_0 ;
+  wire \comp_high.min_incr[18]_i_1_n_0 ;
+  wire \comp_high.min_incr[19]_i_2_n_0 ;
+  wire \comp_high.min_incr[1]_i_1_n_0 ;
+  wire \comp_high.min_incr[2]_i_1_n_0 ;
+  wire \comp_high.min_incr[3]_i_1_n_0 ;
+  wire \comp_high.min_incr[4]_i_1_n_0 ;
+  wire \comp_high.min_incr[5]_i_1_n_0 ;
+  wire \comp_high.min_incr[6]_i_1_n_0 ;
+  wire \comp_high.min_incr[7]_i_1_n_0 ;
+  wire \comp_high.min_incr[8]_i_1_n_0 ;
+  wire \comp_high.min_incr[9]_i_1_n_0 ;
+  wire \comp_high.min_incr_reg0 ;
+  wire \comp_high.min_samples[0]_i_1_n_0 ;
+  wire \comp_high.min_samples[10]_i_1_n_0 ;
+  wire \comp_high.min_samples[11]_i_1_n_0 ;
+  wire \comp_high.min_samples[12]_i_1_n_0 ;
+  wire \comp_high.min_samples[13]_i_1_n_0 ;
+  wire \comp_high.min_samples[14]_i_1_n_0 ;
+  wire \comp_high.min_samples[15]_i_2_n_0 ;
+  wire \comp_high.min_samples[1]_i_1_n_0 ;
+  wire \comp_high.min_samples[2]_i_1_n_0 ;
+  wire \comp_high.min_samples[3]_i_1_n_0 ;
+  wire \comp_high.min_samples[4]_i_1_n_0 ;
+  wire \comp_high.min_samples[5]_i_1_n_0 ;
+  wire \comp_high.min_samples[6]_i_1_n_0 ;
+  wire \comp_high.min_samples[7]_i_1_n_0 ;
+  wire \comp_high.min_samples[8]_i_1_n_0 ;
+  wire \comp_high.min_samples[9]_i_1_n_0 ;
+  wire \comp_high.min_samples_reg0 ;
   wire \comp_high.raw_N0_reg0 ;
   wire \comp_high.sample_rd_i_1_n_0 ;
+  wire [7:0]config_adr;
+  wire config_clk;
+  wire [31:0]config_data;
+  wire [27:0]config_data_adr_out;
+  wire config_wr;
   wire [143:0]doa_data;
   (* MARK_DEBUG *) wire doa_rd;
   (* MARK_DEBUG *) wire [15:0]env_E;
@@ -118,6 +204,12 @@ module ps_comp_high_0_0_comp_high
   (* MARK_DEBUG *) wire [8:0]fifo_sample_delay;
   (* MARK_DEBUG *) wire fifo_sample_empty;
   wire fifo_wr;
+  (* MARK_DEBUG *) wire [11:0]max_doa_diff;
+  (* MARK_DEBUG *) wire [19:0]max_incr;
+  (* MARK_DEBUG *) wire [15:0]min_env;
+  (* MARK_DEBUG *) wire [19:0]min_incr;
+  (* MARK_DEBUG *) wire [15:0]min_samples;
+  wire [15:0]p_1_in__0;
   (* MARK_DEBUG *) wire [19:0]phase_E;
   (* MARK_DEBUG *) wire [19:0]phase_N;
   (* MARK_DEBUG *) wire [19:0]phase_W;
@@ -127,6 +219,10 @@ module ps_comp_high_0_0_comp_high
   wire reset;
   wire [271:0]sample_data;
   (* MARK_DEBUG *) wire sample_rd;
+  wire NLW_fifo_config_i_full_UNCONNECTED;
+  wire NLW_fifo_config_i_rd_rst_busy_UNCONNECTED;
+  wire NLW_fifo_config_i_wr_rst_busy_UNCONNECTED;
+  wire [39:28]NLW_fifo_config_i_dout_UNCONNECTED;
   wire NLW_fifo_doa_i_full_UNCONNECTED;
   wire NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED;
@@ -135,6 +231,18 @@ module ps_comp_high_0_0_comp_high
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
   wire [383:16]NLW_fifo_raw_i_dout_UNCONNECTED;
 
+  LUT1 #(
+    .INIT(2'h1)) 
+    \comp_high.cfg_rd_i_1 
+       (.I0(cfg_empty),
+        .O(\comp_high.cfg_rd_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_high.cfg_rd_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_high.cfg_rd_i_1_n_0 ),
+        .Q(cfg_rd),
+        .R(1'b0));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
     \comp_high.doa_rd_i_1 
@@ -1062,6 +1170,1324 @@ module ps_comp_high_0_0_comp_high
         .D(\comp_high.fifo_sample_delay[8]_i_1_n_0 ),
         .Q(fifo_sample_delay[8]),
         .R(fifo_sample_empty));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[0]_i_1 
+       (.I0(max_doa_diff[0]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[8]),
+        .O(\comp_high.max_doa_diff[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[10]_i_1 
+       (.I0(max_doa_diff[10]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[18]),
+        .O(\comp_high.max_doa_diff[10]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hABAAAAAAAAAAAAAA)) 
+    \comp_high.max_doa_diff[11]_i_1 
+       (.I0(cfg_empty),
+        .I1(config_data_adr_out[3]),
+        .I2(config_data_adr_out[2]),
+        .I3(config_data_adr_out[1]),
+        .I4(config_data_adr_out[0]),
+        .I5(\comp_high.min_env[15]_i_3_n_0 ),
+        .O(\comp_high.max_doa_diff_reg0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[11]_i_2 
+       (.I0(max_doa_diff[11]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[19]),
+        .O(\comp_high.max_doa_diff[11]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[1]_i_1 
+       (.I0(max_doa_diff[1]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[9]),
+        .O(\comp_high.max_doa_diff[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[2]_i_1 
+       (.I0(max_doa_diff[2]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[10]),
+        .O(\comp_high.max_doa_diff[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[3]_i_1 
+       (.I0(max_doa_diff[3]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[11]),
+        .O(\comp_high.max_doa_diff[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[4]_i_1 
+       (.I0(max_doa_diff[4]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[12]),
+        .O(\comp_high.max_doa_diff[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[5]_i_1 
+       (.I0(max_doa_diff[5]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[13]),
+        .O(\comp_high.max_doa_diff[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[6]_i_1 
+       (.I0(max_doa_diff[6]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[14]),
+        .O(\comp_high.max_doa_diff[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[7]_i_1 
+       (.I0(max_doa_diff[7]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[15]),
+        .O(\comp_high.max_doa_diff[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[8]_i_1 
+       (.I0(max_doa_diff[8]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[16]),
+        .O(\comp_high.max_doa_diff[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_doa_diff[9]_i_1 
+       (.I0(max_doa_diff[9]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[17]),
+        .O(\comp_high.max_doa_diff[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[0]_i_1_n_0 ),
+        .Q(max_doa_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[10]_i_1_n_0 ),
+        .Q(max_doa_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[11]_i_2_n_0 ),
+        .Q(max_doa_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[1]_i_1_n_0 ),
+        .Q(max_doa_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[2]_i_1_n_0 ),
+        .Q(max_doa_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[3]_i_1_n_0 ),
+        .Q(max_doa_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[4]_i_1_n_0 ),
+        .Q(max_doa_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[5]_i_1_n_0 ),
+        .Q(max_doa_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[6]_i_1_n_0 ),
+        .Q(max_doa_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[7]_i_1_n_0 ),
+        .Q(max_doa_diff[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[8]_i_1_n_0 ),
+        .Q(max_doa_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_doa_diff_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.max_doa_diff_reg0 ),
+        .D(\comp_high.max_doa_diff[9]_i_1_n_0 ),
+        .Q(max_doa_diff[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[0]_i_1 
+       (.I0(max_incr[0]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[8]),
+        .O(\comp_high.max_incr[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[10]_i_1 
+       (.I0(max_incr[10]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[18]),
+        .O(\comp_high.max_incr[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[11]_i_1 
+       (.I0(max_incr[11]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[19]),
+        .O(\comp_high.max_incr[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[12]_i_1 
+       (.I0(max_incr[12]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[20]),
+        .O(\comp_high.max_incr[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[13]_i_1 
+       (.I0(max_incr[13]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[21]),
+        .O(\comp_high.max_incr[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[14]_i_1 
+       (.I0(max_incr[14]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[22]),
+        .O(\comp_high.max_incr[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[15]_i_1 
+       (.I0(max_incr[15]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[23]),
+        .O(\comp_high.max_incr[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[16]_i_1 
+       (.I0(max_incr[16]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[24]),
+        .O(\comp_high.max_incr[16]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[17]_i_1 
+       (.I0(max_incr[17]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[25]),
+        .O(\comp_high.max_incr[17]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[18]_i_1 
+       (.I0(max_incr[18]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[26]),
+        .O(\comp_high.max_incr[18]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAAABAAAAAAAAAA)) 
+    \comp_high.max_incr[19]_i_1 
+       (.I0(cfg_empty),
+        .I1(config_data_adr_out[3]),
+        .I2(config_data_adr_out[2]),
+        .I3(config_data_adr_out[1]),
+        .I4(config_data_adr_out[0]),
+        .I5(\comp_high.min_env[15]_i_3_n_0 ),
+        .O(\comp_high.max_incr_reg0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[19]_i_2 
+       (.I0(max_incr[19]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[27]),
+        .O(\comp_high.max_incr[19]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[1]_i_1 
+       (.I0(max_incr[1]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[9]),
+        .O(\comp_high.max_incr[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[2]_i_1 
+       (.I0(max_incr[2]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[10]),
+        .O(\comp_high.max_incr[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[3]_i_1 
+       (.I0(max_incr[3]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[11]),
+        .O(\comp_high.max_incr[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[4]_i_1 
+       (.I0(max_incr[4]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[12]),
+        .O(\comp_high.max_incr[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[5]_i_1 
+       (.I0(max_incr[5]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[13]),
+        .O(\comp_high.max_incr[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[6]_i_1 
+       (.I0(max_incr[6]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[14]),
+        .O(\comp_high.max_incr[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[7]_i_1 
+       (.I0(max_incr[7]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[15]),
+        .O(\comp_high.max_incr[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[8]_i_1 
+       (.I0(max_incr[8]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[16]),
+        .O(\comp_high.max_incr[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.max_incr[9]_i_1 
+       (.I0(max_incr[9]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[17]),
+        .O(\comp_high.max_incr[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[0]_i_1_n_0 ),
+        .Q(max_incr[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[10]_i_1_n_0 ),
+        .Q(max_incr[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[11]_i_1_n_0 ),
+        .Q(max_incr[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[12] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[12]_i_1_n_0 ),
+        .Q(max_incr[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[13] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[13]_i_1_n_0 ),
+        .Q(max_incr[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[14] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[14]_i_1_n_0 ),
+        .Q(max_incr[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[15] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[15]_i_1_n_0 ),
+        .Q(max_incr[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[16] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[16]_i_1_n_0 ),
+        .Q(max_incr[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[17] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[17]_i_1_n_0 ),
+        .Q(max_incr[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[18] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[18]_i_1_n_0 ),
+        .Q(max_incr[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[19] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[19]_i_2_n_0 ),
+        .Q(max_incr[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[1]_i_1_n_0 ),
+        .Q(max_incr[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[2]_i_1_n_0 ),
+        .Q(max_incr[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[3]_i_1_n_0 ),
+        .Q(max_incr[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[4]_i_1_n_0 ),
+        .Q(max_incr[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[5]_i_1_n_0 ),
+        .Q(max_incr[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[6]_i_1_n_0 ),
+        .Q(max_incr[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[7]_i_1_n_0 ),
+        .Q(max_incr[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[8]_i_1_n_0 ),
+        .Q(max_incr[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.max_incr_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.max_incr_reg0 ),
+        .D(\comp_high.max_incr[9]_i_1_n_0 ),
+        .Q(max_incr[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[0]_i_1 
+       (.I0(min_env[0]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[8]),
+        .O(p_1_in__0[0]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[10]_i_1 
+       (.I0(min_env[10]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[18]),
+        .O(p_1_in__0[10]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[11]_i_1 
+       (.I0(min_env[11]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[19]),
+        .O(p_1_in__0[11]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[12]_i_1 
+       (.I0(min_env[12]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[20]),
+        .O(p_1_in__0[12]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[13]_i_1 
+       (.I0(min_env[13]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[21]),
+        .O(p_1_in__0[13]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[14]_i_1 
+       (.I0(min_env[14]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[22]),
+        .O(p_1_in__0[14]));
+  LUT6 #(
+    .INIT(64'hAAAAAAABAAAAAAAA)) 
+    \comp_high.min_env[15]_i_1 
+       (.I0(cfg_empty),
+        .I1(config_data_adr_out[1]),
+        .I2(config_data_adr_out[0]),
+        .I3(config_data_adr_out[3]),
+        .I4(config_data_adr_out[2]),
+        .I5(\comp_high.min_env[15]_i_3_n_0 ),
+        .O(\comp_high.min_env_reg0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[15]_i_2 
+       (.I0(min_env[15]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[23]),
+        .O(p_1_in__0[15]));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \comp_high.min_env[15]_i_3 
+       (.I0(config_data_adr_out[6]),
+        .I1(config_data_adr_out[4]),
+        .I2(config_data_adr_out[7]),
+        .I3(config_data_adr_out[5]),
+        .O(\comp_high.min_env[15]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[1]_i_1 
+       (.I0(min_env[1]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[9]),
+        .O(p_1_in__0[1]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[2]_i_1 
+       (.I0(min_env[2]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[10]),
+        .O(p_1_in__0[2]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[3]_i_1 
+       (.I0(min_env[3]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[11]),
+        .O(p_1_in__0[3]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[4]_i_1 
+       (.I0(min_env[4]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[12]),
+        .O(p_1_in__0[4]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[5]_i_1 
+       (.I0(min_env[5]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[13]),
+        .O(p_1_in__0[5]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[6]_i_1 
+       (.I0(min_env[6]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[14]),
+        .O(p_1_in__0[6]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[7]_i_1 
+       (.I0(min_env[7]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[15]),
+        .O(p_1_in__0[7]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[8]_i_1 
+       (.I0(min_env[8]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[16]),
+        .O(p_1_in__0[8]));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_env[9]_i_1 
+       (.I0(min_env[9]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[17]),
+        .O(p_1_in__0[9]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[0]),
+        .Q(min_env[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[10]),
+        .Q(min_env[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[11]),
+        .Q(min_env[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[12] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[12]),
+        .Q(min_env[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[13] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[13]),
+        .Q(min_env[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[14] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[14]),
+        .Q(min_env[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[15] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[15]),
+        .Q(min_env[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[1]),
+        .Q(min_env[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[2]),
+        .Q(min_env[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[3]),
+        .Q(min_env[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[4]),
+        .Q(min_env[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[5]),
+        .Q(min_env[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[6]),
+        .Q(min_env[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[7]),
+        .Q(min_env[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[8]),
+        .Q(min_env[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_env_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.min_env_reg0 ),
+        .D(p_1_in__0[9]),
+        .Q(min_env[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[0]_i_1 
+       (.I0(min_incr[0]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[8]),
+        .O(\comp_high.min_incr[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[10]_i_1 
+       (.I0(min_incr[10]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[18]),
+        .O(\comp_high.min_incr[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[11]_i_1 
+       (.I0(min_incr[11]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[19]),
+        .O(\comp_high.min_incr[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[12]_i_1 
+       (.I0(min_incr[12]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[20]),
+        .O(\comp_high.min_incr[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[13]_i_1 
+       (.I0(min_incr[13]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[21]),
+        .O(\comp_high.min_incr[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[14]_i_1 
+       (.I0(min_incr[14]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[22]),
+        .O(\comp_high.min_incr[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[15]_i_1 
+       (.I0(min_incr[15]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[23]),
+        .O(\comp_high.min_incr[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[16]_i_1 
+       (.I0(min_incr[16]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[24]),
+        .O(\comp_high.min_incr[16]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[17]_i_1 
+       (.I0(min_incr[17]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[25]),
+        .O(\comp_high.min_incr[17]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[18]_i_1 
+       (.I0(min_incr[18]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[26]),
+        .O(\comp_high.min_incr[18]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAAABAAAAAAAAAA)) 
+    \comp_high.min_incr[19]_i_1 
+       (.I0(cfg_empty),
+        .I1(config_data_adr_out[3]),
+        .I2(config_data_adr_out[2]),
+        .I3(config_data_adr_out[0]),
+        .I4(config_data_adr_out[1]),
+        .I5(\comp_high.min_env[15]_i_3_n_0 ),
+        .O(\comp_high.min_incr_reg0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[19]_i_2 
+       (.I0(min_incr[19]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[27]),
+        .O(\comp_high.min_incr[19]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[1]_i_1 
+       (.I0(min_incr[1]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[9]),
+        .O(\comp_high.min_incr[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[2]_i_1 
+       (.I0(min_incr[2]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[10]),
+        .O(\comp_high.min_incr[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[3]_i_1 
+       (.I0(min_incr[3]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[11]),
+        .O(\comp_high.min_incr[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[4]_i_1 
+       (.I0(min_incr[4]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[12]),
+        .O(\comp_high.min_incr[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[5]_i_1 
+       (.I0(min_incr[5]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[13]),
+        .O(\comp_high.min_incr[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[6]_i_1 
+       (.I0(min_incr[6]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[14]),
+        .O(\comp_high.min_incr[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[7]_i_1 
+       (.I0(min_incr[7]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[15]),
+        .O(\comp_high.min_incr[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[8]_i_1 
+       (.I0(min_incr[8]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[16]),
+        .O(\comp_high.min_incr[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_incr[9]_i_1 
+       (.I0(min_incr[9]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[17]),
+        .O(\comp_high.min_incr[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[0]_i_1_n_0 ),
+        .Q(min_incr[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[10]_i_1_n_0 ),
+        .Q(min_incr[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[11]_i_1_n_0 ),
+        .Q(min_incr[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[12] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[12]_i_1_n_0 ),
+        .Q(min_incr[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[13] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[13]_i_1_n_0 ),
+        .Q(min_incr[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[14] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[14]_i_1_n_0 ),
+        .Q(min_incr[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[15] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[15]_i_1_n_0 ),
+        .Q(min_incr[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[16] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[16]_i_1_n_0 ),
+        .Q(min_incr[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[17] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[17]_i_1_n_0 ),
+        .Q(min_incr[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[18] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[18]_i_1_n_0 ),
+        .Q(min_incr[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[19] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[19]_i_2_n_0 ),
+        .Q(min_incr[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[1]_i_1_n_0 ),
+        .Q(min_incr[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[2]_i_1_n_0 ),
+        .Q(min_incr[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[3]_i_1_n_0 ),
+        .Q(min_incr[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[4]_i_1_n_0 ),
+        .Q(min_incr[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[5]_i_1_n_0 ),
+        .Q(min_incr[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[6]_i_1_n_0 ),
+        .Q(min_incr[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[7]_i_1_n_0 ),
+        .Q(min_incr[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[8]_i_1_n_0 ),
+        .Q(min_incr[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_incr_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.min_incr_reg0 ),
+        .D(\comp_high.min_incr[9]_i_1_n_0 ),
+        .Q(min_incr[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[0]_i_1 
+       (.I0(min_samples[0]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[8]),
+        .O(\comp_high.min_samples[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[10]_i_1 
+       (.I0(min_samples[10]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[18]),
+        .O(\comp_high.min_samples[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[11]_i_1 
+       (.I0(min_samples[11]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[19]),
+        .O(\comp_high.min_samples[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[12]_i_1 
+       (.I0(min_samples[12]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[20]),
+        .O(\comp_high.min_samples[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[13]_i_1 
+       (.I0(min_samples[13]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[21]),
+        .O(\comp_high.min_samples[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[14]_i_1 
+       (.I0(min_samples[14]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[22]),
+        .O(\comp_high.min_samples[14]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAAABAAAAAAAAAA)) 
+    \comp_high.min_samples[15]_i_1 
+       (.I0(cfg_empty),
+        .I1(config_data_adr_out[1]),
+        .I2(config_data_adr_out[0]),
+        .I3(config_data_adr_out[2]),
+        .I4(config_data_adr_out[3]),
+        .I5(\comp_high.min_env[15]_i_3_n_0 ),
+        .O(\comp_high.min_samples_reg0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[15]_i_2 
+       (.I0(min_samples[15]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[23]),
+        .O(\comp_high.min_samples[15]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[1]_i_1 
+       (.I0(min_samples[1]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[9]),
+        .O(\comp_high.min_samples[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[2]_i_1 
+       (.I0(min_samples[2]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[10]),
+        .O(\comp_high.min_samples[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[3]_i_1 
+       (.I0(min_samples[3]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[11]),
+        .O(\comp_high.min_samples[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[4]_i_1 
+       (.I0(min_samples[4]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[12]),
+        .O(\comp_high.min_samples[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[5]_i_1 
+       (.I0(min_samples[5]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[13]),
+        .O(\comp_high.min_samples[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[6]_i_1 
+       (.I0(min_samples[6]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[14]),
+        .O(\comp_high.min_samples[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[7]_i_1 
+       (.I0(min_samples[7]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[15]),
+        .O(\comp_high.min_samples[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[8]_i_1 
+       (.I0(min_samples[8]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[16]),
+        .O(\comp_high.min_samples[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \comp_high.min_samples[9]_i_1 
+       (.I0(min_samples[9]),
+        .I1(cfg_empty),
+        .I2(config_data_adr_out[17]),
+        .O(\comp_high.min_samples[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[0]_i_1_n_0 ),
+        .Q(min_samples[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[10] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[10]_i_1_n_0 ),
+        .Q(min_samples[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[11] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[11]_i_1_n_0 ),
+        .Q(min_samples[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[12] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[12]_i_1_n_0 ),
+        .Q(min_samples[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[13] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[13]_i_1_n_0 ),
+        .Q(min_samples[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[14] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[14]_i_1_n_0 ),
+        .Q(min_samples[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[15] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[15]_i_2_n_0 ),
+        .Q(min_samples[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[1]_i_1_n_0 ),
+        .Q(min_samples[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[2]_i_1_n_0 ),
+        .Q(min_samples[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[3]_i_1_n_0 ),
+        .Q(min_samples[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[4]_i_1_n_0 ),
+        .Q(min_samples[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[5]_i_1_n_0 ),
+        .Q(min_samples[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[6]_i_1_n_0 ),
+        .Q(min_samples[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[7]_i_1_n_0 ),
+        .Q(min_samples[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[8]_i_1_n_0 ),
+        .Q(min_samples[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_high.min_samples_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.min_samples_reg0 ),
+        .D(\comp_high.min_samples[9]_i_1_n_0 ),
+        .Q(min_samples[9]),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_high.phase_E_reg[0] 
@@ -1949,6 +3375,21 @@ module ps_comp_high_0_0_comp_high
         .D(\comp_high.sample_rd_i_1_n_0 ),
         .Q(sample_rd),
         .R(1'b0));
+  (* CHECK_LICENSE_TYPE = "fifo_config,fifo_generator_v13_2_13,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+  ps_comp_high_0_0_fifo_config fifo_config_i
+       (.din({config_data,config_adr}),
+        .dout({NLW_fifo_config_i_dout_UNCONNECTED[39:28],config_data_adr_out}),
+        .empty(cfg_empty),
+        .full(NLW_fifo_config_i_full_UNCONNECTED),
+        .rd_clk(clk),
+        .rd_en(cfg_rd),
+        .rd_rst_busy(NLW_fifo_config_i_rd_rst_busy_UNCONNECTED),
+        .rst(reset),
+        .wr_clk(config_clk),
+        .wr_en(config_wr),
+        .wr_rst_busy(NLW_fifo_config_i_wr_rst_busy_UNCONNECTED));
   (* CHECK_LICENSE_TYPE = "fifo_doa,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
@@ -1986,22 +3427,59 @@ module ps_comp_high_0_0_comp_high
        (.clk(clk),
         .probe0(fifo_sample_empty),
         .probe1(fifo_doa_empty),
-        .probe10(env_W),
-        .probe11(phase_W),
-        .probe12(err_NE),
-        .probe13(err_NW),
-        .probe14(err_EW),
-        .probe15(raw_N0),
-        .probe16(raw_E0),
-        .probe17(raw_W0),
+        .probe10(max_doa_diff),
+        .probe11(min_samples),
+        .probe12(env_N),
+        .probe13(phase_N),
+        .probe14(env_E),
+        .probe15(phase_E),
+        .probe16(env_W),
+        .probe17(phase_W),
+        .probe18(err_NE),
+        .probe19(err_NW),
         .probe2(sample_rd),
+        .probe20(err_EW),
+        .probe21(raw_N0),
+        .probe22(raw_E0),
+        .probe23(raw_W0),
         .probe3(doa_rd),
         .probe4(fifo_doa_delay),
         .probe5(fifo_sample_delay),
-        .probe6(env_N),
-        .probe7(phase_N),
-        .probe8(env_E),
-        .probe9(phase_E));
+        .probe6(cfg_rd),
+        .probe7(min_env),
+        .probe8(min_incr),
+        .probe9(max_incr));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "fifo_config,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_config" *) 
+(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+module ps_comp_high_0_0_fifo_config
+   (rst,
+    wr_clk,
+    rd_clk,
+    din,
+    wr_en,
+    rd_en,
+    dout,
+    full,
+    empty,
+    wr_rst_busy,
+    rd_rst_busy);
+  input rst;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input wr_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input rd_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [39:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [39:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
+  output wr_rst_busy;
+  output rd_rst_busy;
+
+
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_doa,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_doa" *) 
@@ -2087,7 +3565,13 @@ module ps_comp_high_0_0_ila_3
     probe14,
     probe15,
     probe16,
-    probe17);
+    probe17,
+    probe18,
+    probe19,
+    probe20,
+    probe21,
+    probe22,
+    probe23);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -2095,18 +3579,24 @@ module ps_comp_high_0_0_ila_3
   input [0:0]probe3;
   input [4:0]probe4;
   input [8:0]probe5;
-  input [15:0]probe6;
-  input [19:0]probe7;
-  input [15:0]probe8;
+  input [0:0]probe6;
+  input [15:0]probe7;
+  input [19:0]probe8;
   input [19:0]probe9;
-  input [15:0]probe10;
-  input [19:0]probe11;
-  input [11:0]probe12;
-  input [11:0]probe13;
-  input [11:0]probe14;
-  input [15:0]probe15;
+  input [11:0]probe10;
+  input [15:0]probe11;
+  input [15:0]probe12;
+  input [19:0]probe13;
+  input [15:0]probe14;
+  input [19:0]probe15;
   input [15:0]probe16;
-  input [15:0]probe17;
+  input [19:0]probe17;
+  input [11:0]probe18;
+  input [11:0]probe19;
+  input [11:0]probe20;
+  input [15:0]probe21;
+  input [15:0]probe22;
+  input [15:0]probe23;
 
 
 endmodule

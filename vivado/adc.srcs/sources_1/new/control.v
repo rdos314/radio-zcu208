@@ -81,29 +81,20 @@ ila_4 ila_4_i (
 		.probe5(data_out),          // input wire [31:0]  probe3
 		.probe6(cdata),             // input wire [31:0]  probe3
 		.probe7(pdata),             // input wire [31:0]  probe3
-		.probe8(config_low_wr),     // input wire [0:0]  probe3
-		.probe9(config_high_wr),    // input wire [0:0]  probe3
-		.probe10(config_adr),       // input wire [7:0]  probe3
-		.probe11(config_data),      // input wire [31:0]  probe3
-		.probe12(sim_low_wr),       // input wire [0:0]  probe3
-		.probe13(sim_high_wr),      // input wire [0:0]  probe3
-		.probe14(sim_channel),      // input wire [1:0]  probe3
-		.probe15(sim_data),         // input wire [31:0]  probe3
-		.probe16(adc_start),        // input wire [0:0]  probe3
-		.probe17(adc_stop),         // input wire [0:0]  probe3
-		.probe18(config_start),     // input wire [0:0]  probe3
-		.probe19(sim_start),        // input wire [0:0]  probe3
-		.probe20(adc_active),       // input wire [0:0]  probe3
-		.probe21(sim_active),       // input wire [0:0]  probe3
-		.probe22(cmd_start),        // input wire [0:0]  probe3
-		.probe23(config_wr_start),  // input wire [0:0]  probe3
-		.probe24(config_wr_pend),   // input wire [0:0]  probe3
-		.probe25(config_wr_done),   // input wire [0:0]  probe3
-		.probe26(config_wr_count),  // input wire [7:0]  probe3
-		.probe27(sim_wr_start),     // input wire [0:0]  probe3
-		.probe28(sim_wr_pend),      // input wire [0:0]  probe3
-		.probe29(sim_wr_done),      // input wire [0:0]  probe3
-		.probe30(sim_wr_count)      // input wire [10:0]  probe3
+		.probe8(sim_low_wr),       // input wire [0:0]  probe3
+		.probe9(sim_high_wr),      // input wire [0:0]  probe3
+		.probe10(sim_channel),      // input wire [1:0]  probe3
+		.probe11(sim_data),         // input wire [31:0]  probe3
+		.probe12(adc_start),        // input wire [0:0]  probe3
+		.probe13(adc_stop),         // input wire [0:0]  probe3
+		.probe14(sim_start),        // input wire [0:0]  probe3
+		.probe15(adc_active),       // input wire [0:0]  probe3
+		.probe16(sim_active),       // input wire [0:0]  probe3
+		.probe17(cmd_start),        // input wire [0:0]  probe3
+		.probe18(sim_wr_start),     // input wire [0:0]  probe3
+		.probe19(sim_wr_pend),      // input wire [0:0]  probe3
+		.probe20(sim_wr_done),      // input wire [0:0]  probe3
+		.probe21(sim_wr_count)      // input wire [10:0]  probe3
 	);
 
 generate
