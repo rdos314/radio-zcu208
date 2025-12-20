@@ -57,30 +57,39 @@ module det_signal(
   reg [19:0] prev_phase_N;
   reg [16:0] diff_env_N;
   reg [19:0] diff_phase_N;
+  reg [20:0] dsp_phase_N;
+  wire [47:0] dsp_sum_N;
   reg [15:0] lo_env_sum_N;
   wire [16:0] env_sum_N = lo_env_sum_N + env_N;
   reg carry_env_sum_N;
   reg [15:0] hi_env_sum_N;
+  wire [31:0] curr_env_sum_N = {hi_env_sum_N, lo_env_sum_N};
 
   reg [16:0] env_E;
   reg [19:0] phase_E;
   reg [19:0] prev_phase_E;
   reg [16:0] diff_env_E;
   reg [19:0] diff_phase_E;
+  reg [20:0] dsp_phase_E;
+  wire [47:0] dsp_sum_E;
   reg [15:0] lo_env_sum_E;
   wire [16:0] env_sum_E = lo_env_sum_E + env_E;
   reg carry_env_sum_E;
   reg [15:0] hi_env_sum_E;
+  wire [31:0] curr_env_sum_E = {hi_env_sum_E, lo_env_sum_E};
 
   reg [16:0] env_W;
   reg [19:0] phase_W;
   reg [19:0] prev_phase_W;
   reg [16:0] diff_env_W;
   reg [19:0] diff_phase_W;
+  reg [20:0] dsp_phase_W;
+  wire [47:0] dsp_sum_W;
   reg [15:0] lo_env_sum_W;
   wire [16:0] env_sum_W = lo_env_sum_W + env_W;
   reg carry_env_sum_W;
   reg [15:0] hi_env_sum_W;
+  wire [31:0] curr_env_sum_W = {hi_env_sum_W, lo_env_sum_W};
 
   reg [12:0] err_NE;
   reg [12:0] diff_err_NE;
@@ -106,45 +115,64 @@ module det_signal(
   reg start_proc;
   reg proc_signal;
   reg proc_done;
+
+dsp_incr_env dsp_incr_env_N (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_N),     // input wire [20 : 0] A
+  .B(env_N),           // input wire [16 : 0] B
+  .P(dsp_sum_N),       // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
+
+dsp_incr_env dsp_incr_env_E (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_E),     // input wire [20 : 0] A
+  .B(env_E),           // input wire [16 : 0] B
+  .P(dsp_sum_E),       // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
+
+dsp_incr_env dsp_incr_env_W (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_W),     // input wire [20 : 0] A
+  .B(env_W),           // input wire [16 : 0] B
+  .P(dsp_sum_W),       // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
   
 	ila_3 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(config_wr),           // input wire [0:0]  probe3
-		.probe1(config_adr),          // input wire [7:0]  probe3
-		.probe2(config_data),         // input wire [31:0]  probe3
-		.probe3(active),              // input wire [0:0]  probe3
-		.probe4(sample_counter),      // input wire [31:0]  probe3
-		.probe5(env_N),               // input wire [16:0]  probe3
-		.probe6(phase_N),             // input wire [19:0]  probe3
-		.probe7(diff_env_N),          // input wire [16:0]  probe3
-		.probe8(diff_phase_N),        // input wire [19:0]  probe3
-		.probe9(env_E),              // input wire [16:0]  probe3
-		.probe10(phase_E),            // input wire [19:0]  probe3
-		.probe11(diff_env_E),         // input wire [16:0]  probe3
-		.probe12(diff_phase_E),       // input wire [19:0]  probe3
-		.probe13(env_W),              // input wire [16:0]  probe3
-		.probe14(phase_W),            // input wire [19:0]  probe3
-		.probe15(diff_env_W),         // input wire [16:0]  probe3
-		.probe16(diff_phase_W),       // input wire [19:0]  probe3
-		.probe17(err_NE),             // input wire [12:0]  probe3
-		.probe18(err_NW),             // input wire [12:0]  probe3
-		.probe19(err_EW),             // input wire [12:0]  probe3
-		.probe20(diff_err_NE),        // input wire [12:0]  probe3
-		.probe21(diff_err_NW),        // input wire [12:0]  probe3
-		.probe22(diff_err_EW),        // input wire [12:0]  probe3
-		.probe23(valid_env),          // input wire [0:0]  probe3
-		.probe24(valid_err),          // input wire [0:0]  probe3
-		.probe25(valid_count),        // input wire [0:0]  probe3
-		.probe26(err_ov),             // input wire [0:0]  probe3
-		.probe27(has_signal),         // input wire [0:0]  probe3
-		.probe28(curr_signal_sample), // input wire [31:0]  probe3
-		.probe29(curr_signal_counter),// input wire [9:0]  probe3
-		.probe30(err_count),          // input wire [1:0]  probe3
-		.probe31(acc_reset),          // input wire [0:0]  probe3
-		.probe32(start_proc),         // input wire [0:0]  probe3
-		.probe33(proc_signal),        // input wire [0:0]  probe3
-		.probe34(proc_done),          // input wire [0:0]  probe3
-		.probe35(signal_done)         // input wire [0:0]  probe3
+		.probe0(active),              // input wire [0:0]  probe3
+		.probe1(env_N),               // input wire [16:0]  probe3
+		.probe2(phase_N),             // input wire [19:0]  probe3
+		.probe3(diff_env_N),          // input wire [16:0]  probe3
+		.probe4(diff_phase_N),        // input wire [19:0]  probe3
+		.probe5(curr_env_sum_N),      // input wire [31:0]  probe3
+		.probe6(dsp_phase_N),         // input wire [20:0]  probe3
+		.probe7(dsp_sum_N),           // input wire [47:0]  probe3
+		.probe8(env_E),               // input wire [16:0]  probe3
+		.probe9(phase_E),             // input wire [19:0]  probe3
+		.probe10(diff_env_E),          // input wire [16:0]  probe3
+		.probe11(diff_phase_E),       // input wire [19:0]  probe3
+		.probe12(curr_env_sum_E),     // input wire [31:0]  probe3
+		.probe13(dsp_phase_E),        // input wire [20:0]  probe3
+		.probe14(dsp_sum_E),          // input wire [47:0]  probe3
+		.probe15(env_W),              // input wire [16:0]  probe3
+		.probe16(phase_W),            // input wire [19:0]  probe3
+		.probe17(diff_env_W),         // input wire [16:0]  probe3
+		.probe18(diff_phase_W),       // input wire [19:0]  probe3
+		.probe19(curr_env_sum_W),     // input wire [31:0]  probe3
+		.probe20(dsp_phase_W),        // input wire [20:0]  probe3
+		.probe21(dsp_sum_W),          // input wire [47:0]  probe3
+		.probe22(has_signal),         // input wire [0:0]  probe3
+		.probe23(curr_signal_sample), // input wire [31:0]  probe3
+		.probe24(curr_signal_counter),// input wire [9:0]  probe3
+		.probe25(err_count),          // input wire [1:0]  probe3
+		.probe26(acc_reset),          // input wire [0:0]  probe3
+		.probe27(start_proc),         // input wire [0:0]  probe3
+		.probe28(proc_signal),        // input wire [0:0]  probe3
+		.probe29(proc_done),          // input wire [0:0]  probe3
+		.probe30(signal_done)         // input wire [0:0]  probe3
 	);
 
 generate
@@ -285,6 +313,8 @@ generate
                         acc_reset <= 0;
                     end
                 end
+                else
+                    start_proc <= 0;
             end
         end
         else
@@ -346,6 +376,22 @@ generate
 
     always @(posedge clk) 
 	begin
+        if (has_signal)
+        begin
+            dsp_phase_N <= {1'b0, diff_phase_N};
+            dsp_phase_E <= {1'b0, diff_phase_E};
+            dsp_phase_W <= {1'b0, diff_phase_W};
+        end
+        else
+        begin
+            dsp_phase_N <= 0;
+            dsp_phase_E <= 0;
+            dsp_phase_W <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
         if (curr_signal_counter)
         begin
             hi_env_sum_N <= hi_env_sum_N + carry_env_sum_N;
@@ -371,7 +417,7 @@ generate
         end
         else
         begin
-            proc_done <= 1;
+            proc_done <= 0;
             signal_done <= 0;
         end
     end

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Dec 19 22:30:39 2025
+// Date        : Sat Dec 20 00:23:32 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.v
@@ -1273,7 +1273,7 @@ module ps_comp_high_0_0_comp_high
        (.active(doa_valid),
         .clk(clk),
         .config_adr(config_data_adr_out[7:0]),
-        .config_data(config_data_adr_out[39:8]),
+        .config_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,config_data_adr_out[23:8]}),
         .config_wr(det_sig_i_i_1_n_0),
         .data(doa_data),
         .reset(1'b0),
@@ -1357,14 +1357,119 @@ module ps_comp_high_0_0_det_signal
 
   (* MARK_DEBUG *) wire acc_reset;
   (* MARK_DEBUG *) wire active;
+  wire carry_env_sum_E;
+  wire carry_env_sum_N;
+  wire clear;
   wire clk;
-  (* MARK_DEBUG *) wire [7:0]config_adr;
-  (* MARK_DEBUG *) wire [31:0]config_data;
-  (* MARK_DEBUG *) wire config_wr;
+  wire [7:0]config_adr;
+  wire [31:0]config_data;
+  wire config_wr;
+  (* MARK_DEBUG *) wire [31:0]curr_env_sum_E;
+  (* MARK_DEBUG *) wire [31:0]curr_env_sum_N;
+  (* MARK_DEBUG *) wire [31:0]curr_env_sum_W;
   (* MARK_DEBUG *) wire [9:0]curr_signal_counter;
   (* MARK_DEBUG *) wire [31:0]curr_signal_sample;
   wire [143:0]data;
   wire \det_signal.acc_reset_i_1_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_10_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_11_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_12_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_13_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_14_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_15_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_16_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_17_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_18_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_19_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_4_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_5_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_6_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_7_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_8_n_0 ;
+  wire \det_signal.carry_env_sum_E_i_9_n_0 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_0 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_1 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_2 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_3 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_4 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_5 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_6 ;
+  wire \det_signal.carry_env_sum_E_reg_i_2_n_7 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_0 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_1 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_2 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_3 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_4 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_5 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_6 ;
+  wire \det_signal.carry_env_sum_E_reg_i_3_n_7 ;
+  wire \det_signal.carry_env_sum_N_i_10_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_11_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_12_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_13_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_14_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_15_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_16_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_17_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_18_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_19_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_1_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_20_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_5_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_6_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_7_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_8_n_0 ;
+  wire \det_signal.carry_env_sum_N_i_9_n_0 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_0 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_1 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_2 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_3 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_4 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_5 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_6 ;
+  wire \det_signal.carry_env_sum_N_reg_i_3_n_7 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_0 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_1 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_2 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_3 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_4 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_5 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_6 ;
+  wire \det_signal.carry_env_sum_N_reg_i_4_n_7 ;
+  wire \det_signal.carry_env_sum_W_i_10_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_11_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_12_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_13_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_14_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_15_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_16_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_17_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_18_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_19_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_4_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_5_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_6_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_7_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_8_n_0 ;
+  wire \det_signal.carry_env_sum_W_i_9_n_0 ;
+  wire \det_signal.carry_env_sum_W_reg_i_1_n_15 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_0 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_1 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_2 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_3 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_4 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_5 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_6 ;
+  wire \det_signal.carry_env_sum_W_reg_i_2_n_7 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_0 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_1 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_2 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_3 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_4 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_5 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_6 ;
+  wire \det_signal.carry_env_sum_W_reg_i_3_n_7 ;
+  wire \det_signal.carry_env_sum_W_reg_n_0 ;
   wire \det_signal.curr_signal_counter[9]_i_1_n_0 ;
   wire \det_signal.curr_signal_counter[9]_i_3_n_0 ;
   wire \det_signal.curr_signal_sample[0]_i_1_n_0 ;
@@ -1501,84 +1606,78 @@ module ps_comp_high_0_0_det_signal
   wire \det_signal.diff_env_W_reg[7]_i_1_n_5 ;
   wire \det_signal.diff_env_W_reg[7]_i_1_n_6 ;
   wire \det_signal.diff_env_W_reg[7]_i_1_n_7 ;
-  wire \det_signal.diff_err_EW[12]_i_2_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_10_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_11_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_12_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_13_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_14_n_0 ;
   wire \det_signal.diff_err_EW[12]_i_3_n_0 ;
   wire \det_signal.diff_err_EW[12]_i_4_n_0 ;
   wire \det_signal.diff_err_EW[12]_i_5_n_0 ;
   wire \det_signal.diff_err_EW[12]_i_6_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_2_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_3_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_4_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_5_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_6_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_7_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_8_n_0 ;
-  wire \det_signal.diff_err_EW[7]_i_9_n_0 ;
-  wire [12:0]\det_signal.diff_err_EW_reg00_out ;
+  wire \det_signal.diff_err_EW[12]_i_7_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_8_n_0 ;
+  wire \det_signal.diff_err_EW[12]_i_9_n_0 ;
   wire \det_signal.diff_err_EW_reg[12]_i_1_n_4 ;
   wire \det_signal.diff_err_EW_reg[12]_i_1_n_5 ;
   wire \det_signal.diff_err_EW_reg[12]_i_1_n_6 ;
   wire \det_signal.diff_err_EW_reg[12]_i_1_n_7 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_0 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_1 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_2 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_3 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_4 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_5 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_6 ;
-  wire \det_signal.diff_err_EW_reg[7]_i_1_n_7 ;
-  wire \det_signal.diff_err_NE[12]_i_2_n_0 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_0 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_1 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_2 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_3 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_4 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_5 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_6 ;
+  wire \det_signal.diff_err_EW_reg[12]_i_2_n_7 ;
+  wire \det_signal.diff_err_NE[12]_i_10_n_0 ;
+  wire \det_signal.diff_err_NE[12]_i_11_n_0 ;
+  wire \det_signal.diff_err_NE[12]_i_12_n_0 ;
+  wire \det_signal.diff_err_NE[12]_i_13_n_0 ;
+  wire \det_signal.diff_err_NE[12]_i_14_n_0 ;
   wire \det_signal.diff_err_NE[12]_i_3_n_0 ;
   wire \det_signal.diff_err_NE[12]_i_4_n_0 ;
   wire \det_signal.diff_err_NE[12]_i_5_n_0 ;
   wire \det_signal.diff_err_NE[12]_i_6_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_2_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_3_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_4_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_5_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_6_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_7_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_8_n_0 ;
-  wire \det_signal.diff_err_NE[7]_i_9_n_0 ;
-  wire [12:0]\det_signal.diff_err_NE_reg0 ;
+  wire \det_signal.diff_err_NE[12]_i_7_n_0 ;
+  wire \det_signal.diff_err_NE[12]_i_8_n_0 ;
+  wire \det_signal.diff_err_NE[12]_i_9_n_0 ;
   wire \det_signal.diff_err_NE_reg[12]_i_1_n_4 ;
   wire \det_signal.diff_err_NE_reg[12]_i_1_n_5 ;
   wire \det_signal.diff_err_NE_reg[12]_i_1_n_6 ;
   wire \det_signal.diff_err_NE_reg[12]_i_1_n_7 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_0 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_1 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_2 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_3 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_4 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_5 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_6 ;
-  wire \det_signal.diff_err_NE_reg[7]_i_1_n_7 ;
-  wire \det_signal.diff_err_NW[12]_i_2_n_0 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_0 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_1 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_2 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_3 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_4 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_5 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_6 ;
+  wire \det_signal.diff_err_NE_reg[12]_i_2_n_7 ;
+  wire \det_signal.diff_err_NW[12]_i_10_n_0 ;
+  wire \det_signal.diff_err_NW[12]_i_11_n_0 ;
+  wire \det_signal.diff_err_NW[12]_i_12_n_0 ;
+  wire \det_signal.diff_err_NW[12]_i_13_n_0 ;
+  wire \det_signal.diff_err_NW[12]_i_14_n_0 ;
   wire \det_signal.diff_err_NW[12]_i_3_n_0 ;
   wire \det_signal.diff_err_NW[12]_i_4_n_0 ;
   wire \det_signal.diff_err_NW[12]_i_5_n_0 ;
   wire \det_signal.diff_err_NW[12]_i_6_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_2_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_3_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_4_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_5_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_6_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_7_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_8_n_0 ;
-  wire \det_signal.diff_err_NW[7]_i_9_n_0 ;
-  wire [12:0]\det_signal.diff_err_NW_reg0 ;
+  wire \det_signal.diff_err_NW[12]_i_7_n_0 ;
+  wire \det_signal.diff_err_NW[12]_i_8_n_0 ;
+  wire \det_signal.diff_err_NW[12]_i_9_n_0 ;
   wire \det_signal.diff_err_NW_reg[12]_i_1_n_4 ;
   wire \det_signal.diff_err_NW_reg[12]_i_1_n_5 ;
   wire \det_signal.diff_err_NW_reg[12]_i_1_n_6 ;
   wire \det_signal.diff_err_NW_reg[12]_i_1_n_7 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_0 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_1 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_2 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_3 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_4 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_5 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_6 ;
-  wire \det_signal.diff_err_NW_reg[7]_i_1_n_7 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_0 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_1 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_2 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_3 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_4 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_5 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_6 ;
+  wire \det_signal.diff_err_NW_reg[12]_i_2_n_7 ;
   wire \det_signal.diff_phase_E[15]_i_11_n_0 ;
   wire \det_signal.diff_phase_E[15]_i_12_n_0 ;
   wire \det_signal.diff_phase_E[15]_i_13_n_0 ;
@@ -1878,6 +1977,242 @@ module ps_comp_high_0_0_det_signal
   wire \det_signal.err_count[1]_i_2_n_0 ;
   wire \det_signal.err_ov_i_1_n_0 ;
   wire \det_signal.err_ov_i_2_n_0 ;
+  wire \det_signal.err_ov_reg_n_0 ;
+  wire \det_signal.hi_env_sum_E[7]_i_2_n_0 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_1 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_2 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_3 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_4 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_5 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_6 ;
+  wire \det_signal.hi_env_sum_E_reg[15]_i_1_n_7 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_0 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_1 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_2 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_3 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_4 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_5 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_6 ;
+  wire \det_signal.hi_env_sum_E_reg[7]_i_1_n_7 ;
+  wire \det_signal.hi_env_sum_N[15]_i_3_n_0 ;
+  wire \det_signal.hi_env_sum_N[7]_i_2_n_0 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_1 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_2 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_3 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_4 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_5 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_6 ;
+  wire \det_signal.hi_env_sum_N_reg[15]_i_2_n_7 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_0 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_1 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_2 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_3 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_4 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_5 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_6 ;
+  wire \det_signal.hi_env_sum_N_reg[7]_i_1_n_7 ;
+  wire \det_signal.hi_env_sum_W[7]_i_2_n_0 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_1 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_2 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_3 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_4 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_5 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_6 ;
+  wire \det_signal.hi_env_sum_W_reg[15]_i_1_n_7 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_0 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_1 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_2 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_3 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_4 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_5 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_6 ;
+  wire \det_signal.hi_env_sum_W_reg[7]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_E[15]_i_10_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_11_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_12_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_13_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_14_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_15_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_16_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_2_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_3_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_4_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_5_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_6_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_7_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_8_n_0 ;
+  wire \det_signal.lo_env_sum_E[15]_i_9_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_10_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_11_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_12_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_13_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_14_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_15_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_16_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_17_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_2_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_3_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_4_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_5_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_6_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_7_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_8_n_0 ;
+  wire \det_signal.lo_env_sum_E[7]_i_9_n_0 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_1 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_10 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_11 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_12 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_13 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_14 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_15 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_2 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_3 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_4 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_5 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_6 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_8 ;
+  wire \det_signal.lo_env_sum_E_reg[15]_i_1_n_9 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_0 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_1 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_10 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_11 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_12 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_13 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_14 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_15 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_2 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_3 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_4 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_5 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_6 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_8 ;
+  wire \det_signal.lo_env_sum_E_reg[7]_i_1_n_9 ;
+  wire \det_signal.lo_env_sum_N[15]_i_10_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_11_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_12_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_13_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_14_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_15_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_16_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_2_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_3_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_4_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_5_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_6_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_7_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_8_n_0 ;
+  wire \det_signal.lo_env_sum_N[15]_i_9_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_10_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_11_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_12_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_13_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_14_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_15_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_16_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_17_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_2_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_3_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_4_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_5_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_6_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_7_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_8_n_0 ;
+  wire \det_signal.lo_env_sum_N[7]_i_9_n_0 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_1 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_10 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_11 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_12 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_13 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_14 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_15 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_2 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_3 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_4 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_5 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_6 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_8 ;
+  wire \det_signal.lo_env_sum_N_reg[15]_i_1_n_9 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_0 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_1 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_10 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_11 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_12 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_13 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_14 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_15 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_2 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_3 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_4 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_5 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_6 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_8 ;
+  wire \det_signal.lo_env_sum_N_reg[7]_i_1_n_9 ;
+  wire \det_signal.lo_env_sum_W[15]_i_10_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_11_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_12_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_13_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_14_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_15_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_16_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_2_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_3_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_4_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_5_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_6_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_7_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_8_n_0 ;
+  wire \det_signal.lo_env_sum_W[15]_i_9_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_10_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_11_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_12_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_13_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_14_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_15_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_16_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_17_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_2_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_3_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_4_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_5_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_6_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_7_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_8_n_0 ;
+  wire \det_signal.lo_env_sum_W[7]_i_9_n_0 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_1 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_10 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_11 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_12 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_13 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_14 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_15 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_2 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_3 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_4 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_5 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_6 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_8 ;
+  wire \det_signal.lo_env_sum_W_reg[15]_i_1_n_9 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_0 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_1 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_10 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_11 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_12 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_13 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_14 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_15 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_2 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_3 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_4 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_5 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_6 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_7 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_8 ;
+  wire \det_signal.lo_env_sum_W_reg[7]_i_1_n_9 ;
   wire \det_signal.max_doa_diff[11]_i_2_n_0 ;
   wire \det_signal.max_doa_diff_reg_n_0_[0] ;
   wire \det_signal.max_doa_diff_reg_n_0_[10] ;
@@ -1911,71 +2246,71 @@ module ps_comp_high_0_0_det_signal
   wire \det_signal.run_reg[0]__0 ;
   wire \det_signal.run_reg[1]__0 ;
   wire \det_signal.run_reg[2]__0 ;
-  wire \det_signal.sample_counter[31]_i_1_n_0 ;
-  wire \det_signal.sample_counter[7]_i_2_n_0 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_0 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_1 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_10 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_11 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_12 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_13 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_14 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_15 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_2 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_3 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_4 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_5 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_6 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_7 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_8 ;
-  wire \det_signal.sample_counter_reg[15]_i_1_n_9 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_0 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_1 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_10 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_11 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_12 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_13 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_14 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_15 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_2 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_3 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_4 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_5 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_6 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_7 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_8 ;
-  wire \det_signal.sample_counter_reg[23]_i_1_n_9 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_1 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_10 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_11 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_12 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_13 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_14 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_15 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_2 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_3 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_4 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_5 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_6 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_7 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_8 ;
-  wire \det_signal.sample_counter_reg[31]_i_2_n_9 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_0 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_1 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_10 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_11 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_12 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_13 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_14 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_15 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_2 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_3 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_4 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_5 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_6 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_7 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_8 ;
-  wire \det_signal.sample_counter_reg[7]_i_1_n_9 ;
+  wire \det_signal.sample_counter[0]_i_3_n_0 ;
+  wire [31:0]\det_signal.sample_counter_reg ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_0 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_1 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_10 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_11 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_12 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_13 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_14 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_15 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_2 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_3 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_4 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_5 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_6 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_7 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_8 ;
+  wire \det_signal.sample_counter_reg[0]_i_2_n_9 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_0 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_1 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_10 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_11 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_12 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_13 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_14 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_15 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_2 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_3 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_4 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_5 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_6 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_7 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_8 ;
+  wire \det_signal.sample_counter_reg[16]_i_1_n_9 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_1 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_10 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_11 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_12 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_13 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_14 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_15 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_2 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_3 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_4 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_5 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_6 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_7 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_8 ;
+  wire \det_signal.sample_counter_reg[24]_i_1_n_9 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_0 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_1 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_10 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_11 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_12 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_13 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_14 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_15 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_2 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_3 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_4 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_5 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_6 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_7 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_8 ;
+  wire \det_signal.sample_counter_reg[8]_i_1_n_9 ;
   wire \det_signal.signal_counter_reg_n_0_[0] ;
   wire \det_signal.signal_counter_reg_n_0_[1] ;
   wire \det_signal.signal_counter_reg_n_0_[2] ;
@@ -1989,31 +2324,44 @@ module ps_comp_high_0_0_det_signal
   wire \det_signal.start_proc_i_1_n_0 ;
   wire \det_signal.valid_count_i_1_n_0 ;
   wire \det_signal.valid_count_i_3_n_0 ;
-  wire \det_signal.valid_env_reg0 ;
-  wire \det_signal.valid_err_reg0 ;
+  wire \det_signal.valid_count_reg_n_0 ;
   (* MARK_DEBUG *) wire [16:0]diff_env_E;
   (* MARK_DEBUG *) wire [16:0]diff_env_N;
   (* MARK_DEBUG *) wire [16:0]diff_env_W;
-  (* MARK_DEBUG *) wire [12:0]diff_err_EW;
-  (* MARK_DEBUG *) wire [12:0]diff_err_NE;
-  (* MARK_DEBUG *) wire [12:0]diff_err_NW;
+  wire [12:12]diff_err_EW0;
+  wire [12:12]diff_err_NE0;
+  wire [12:12]diff_err_NW0;
   (* MARK_DEBUG *) wire [19:0]diff_phase_E;
   (* MARK_DEBUG *) wire [19:0]diff_phase_N;
   (* MARK_DEBUG *) wire [19:0]diff_phase_W;
+  (* MARK_DEBUG *) wire [20:0]dsp_phase_E;
+  (* MARK_DEBUG *) wire [20:0]dsp_phase_N;
+  (* MARK_DEBUG *) wire [20:0]dsp_phase_W;
+  (* MARK_DEBUG *) wire [47:0]dsp_sum_E;
+  (* MARK_DEBUG *) wire [47:0]dsp_sum_N;
+  (* MARK_DEBUG *) wire [47:0]dsp_sum_W;
   (* MARK_DEBUG *) wire [16:0]env_E;
   (* MARK_DEBUG *) wire [16:0]env_N;
   (* MARK_DEBUG *) wire [16:0]env_W;
-  (* MARK_DEBUG *) wire [12:0]err_EW;
-  (* MARK_DEBUG *) wire [12:0]err_NE;
-  (* MARK_DEBUG *) wire [12:0]err_NW;
+  wire [11:0]err_EW;
+  wire [11:0]err_NE;
+  wire [11:0]err_NW;
   (* MARK_DEBUG *) wire [1:0]err_count;
   wire err_count0;
-  (* MARK_DEBUG *) wire err_ov;
   (* MARK_DEBUG *) wire has_signal;
-  wire has_signal4_out;
+  wire has_signal0_out;
+  wire [15:0]hi_env_sum_E0;
+  wire [15:0]hi_env_sum_N0;
+  wire [15:0]hi_env_sum_W0;
+  wire [0:0]hi_env_sum_W__0;
   wire max_doa_diff;
   wire min_env;
+  wire p_0_in8_in;
+  wire [16:16]p_1_in1_out;
+  wire [16:16]p_1_in3_out;
+  wire p_1_in9_in;
   wire [9:0]p_1_in__0;
+  wire p_2_in;
   (* MARK_DEBUG *) wire [19:0]phase_E;
   (* MARK_DEBUG *) wire [19:0]phase_N;
   (* MARK_DEBUG *) wire [19:0]phase_W;
@@ -2022,13 +2370,25 @@ module ps_comp_high_0_0_det_signal
   wire [19:0]prev_phase_W;
   (* MARK_DEBUG *) wire proc_done;
   (* MARK_DEBUG *) wire proc_signal;
-  (* MARK_DEBUG *) wire [31:0]sample_counter;
   (* MARK_DEBUG *) wire signal_done;
   (* MARK_DEBUG *) wire start_proc;
-  (* MARK_DEBUG *) wire valid_count;
-  wire valid_count3_out;
-  (* MARK_DEBUG *) wire valid_env;
-  (* MARK_DEBUG *) wire valid_err;
+  wire valid_count6_out;
+  wire valid_env;
+  wire valid_env0;
+  wire valid_err;
+  wire valid_err0;
+  wire [7:0]\NLW_det_signal.carry_env_sum_E_reg_i_1_CO_UNCONNECTED ;
+  wire [7:1]\NLW_det_signal.carry_env_sum_E_reg_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_E_reg_i_2_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_E_reg_i_3_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_N_reg_i_2_CO_UNCONNECTED ;
+  wire [7:1]\NLW_det_signal.carry_env_sum_N_reg_i_2_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_N_reg_i_3_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_N_reg_i_4_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_W_reg_i_1_CO_UNCONNECTED ;
+  wire [7:1]\NLW_det_signal.carry_env_sum_W_reg_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_W_reg_i_2_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.carry_env_sum_W_reg_i_3_O_UNCONNECTED ;
   wire [7:0]\NLW_det_signal.diff_env_E_reg[16]_i_1_CO_UNCONNECTED ;
   wire [7:1]\NLW_det_signal.diff_env_E_reg[16]_i_1_O_UNCONNECTED ;
   wire [7:0]\NLW_det_signal.diff_env_N_reg[16]_i_1_CO_UNCONNECTED ;
@@ -2036,11 +2396,14 @@ module ps_comp_high_0_0_det_signal
   wire [7:0]\NLW_det_signal.diff_env_W_reg[16]_i_1_CO_UNCONNECTED ;
   wire [7:1]\NLW_det_signal.diff_env_W_reg[16]_i_1_O_UNCONNECTED ;
   wire [7:4]\NLW_det_signal.diff_err_EW_reg[12]_i_1_CO_UNCONNECTED ;
-  wire [7:5]\NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.diff_err_EW_reg[12]_i_2_O_UNCONNECTED ;
   wire [7:4]\NLW_det_signal.diff_err_NE_reg[12]_i_1_CO_UNCONNECTED ;
-  wire [7:5]\NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.diff_err_NE_reg[12]_i_2_O_UNCONNECTED ;
   wire [7:4]\NLW_det_signal.diff_err_NW_reg[12]_i_1_CO_UNCONNECTED ;
-  wire [7:5]\NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_det_signal.diff_err_NW_reg[12]_i_2_O_UNCONNECTED ;
   wire [7:3]\NLW_det_signal.diff_phase_E_reg[19]_i_1_CO_UNCONNECTED ;
   wire [7:4]\NLW_det_signal.diff_phase_E_reg[19]_i_1_O_UNCONNECTED ;
   wire [7:3]\NLW_det_signal.diff_phase_E_reg[19]_i_6_CO_UNCONNECTED ;
@@ -2053,18 +2416,31 @@ module ps_comp_high_0_0_det_signal
   wire [7:4]\NLW_det_signal.diff_phase_W_reg[19]_i_1_O_UNCONNECTED ;
   wire [7:3]\NLW_det_signal.diff_phase_W_reg[19]_i_6_CO_UNCONNECTED ;
   wire [7:4]\NLW_det_signal.diff_phase_W_reg[19]_i_6_O_UNCONNECTED ;
-  wire [7:7]\NLW_det_signal.sample_counter_reg[31]_i_2_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.hi_env_sum_E_reg[15]_i_1_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.hi_env_sum_N_reg[15]_i_2_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.hi_env_sum_W_reg[15]_i_1_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.lo_env_sum_E_reg[15]_i_1_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.lo_env_sum_N_reg[15]_i_1_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.lo_env_sum_W_reg[15]_i_1_CO_UNCONNECTED ;
+  wire [7:7]\NLW_det_signal.sample_counter_reg[24]_i_1_CO_UNCONNECTED ;
 
   LUT6 #(
     .INIT(64'h008AFFAA00000000)) 
     \det_signal.acc_reset_i_1 
        (.I0(acc_reset),
-        .I1(err_ov),
-        .I2(valid_count),
+        .I1(\det_signal.err_ov_reg_n_0 ),
+        .I2(\det_signal.valid_count_reg_n_0 ),
         .I3(err_count0),
         .I4(has_signal),
         .I5(\det_signal.run_reg[2]__0 ),
         .O(\det_signal.acc_reset_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h80)) 
+    \det_signal.acc_reset_i_2 
+       (.I0(valid_env),
+        .I1(valid_err),
+        .I2(\det_signal.valid_count_reg_n_0 ),
+        .O(err_count0));
   (* KEEP = "yes" *) 
   FDRE \det_signal.acc_reset_reg 
        (.C(clk),
@@ -2072,6 +2448,390 @@ module ps_comp_high_0_0_det_signal
         .D(\det_signal.acc_reset_i_1_n_0 ),
         .Q(acc_reset),
         .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_10 
+       (.I0(curr_env_sum_E[9]),
+        .I1(env_E[9]),
+        .O(\det_signal.carry_env_sum_E_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_11 
+       (.I0(curr_env_sum_E[8]),
+        .I1(env_E[8]),
+        .O(\det_signal.carry_env_sum_E_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_12 
+       (.I0(curr_env_sum_E[7]),
+        .I1(env_E[7]),
+        .O(\det_signal.carry_env_sum_E_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_13 
+       (.I0(curr_env_sum_E[6]),
+        .I1(env_E[6]),
+        .O(\det_signal.carry_env_sum_E_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_14 
+       (.I0(curr_env_sum_E[5]),
+        .I1(env_E[5]),
+        .O(\det_signal.carry_env_sum_E_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_15 
+       (.I0(curr_env_sum_E[4]),
+        .I1(env_E[4]),
+        .O(\det_signal.carry_env_sum_E_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_16 
+       (.I0(curr_env_sum_E[3]),
+        .I1(env_E[3]),
+        .O(\det_signal.carry_env_sum_E_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_17 
+       (.I0(curr_env_sum_E[2]),
+        .I1(env_E[2]),
+        .O(\det_signal.carry_env_sum_E_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_18 
+       (.I0(curr_env_sum_E[1]),
+        .I1(env_E[1]),
+        .O(\det_signal.carry_env_sum_E_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_19 
+       (.I0(curr_env_sum_E[0]),
+        .I1(env_E[0]),
+        .O(\det_signal.carry_env_sum_E_i_19_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_4 
+       (.I0(curr_env_sum_E[15]),
+        .I1(env_E[15]),
+        .O(\det_signal.carry_env_sum_E_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_5 
+       (.I0(curr_env_sum_E[14]),
+        .I1(env_E[14]),
+        .O(\det_signal.carry_env_sum_E_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_6 
+       (.I0(curr_env_sum_E[13]),
+        .I1(env_E[13]),
+        .O(\det_signal.carry_env_sum_E_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_7 
+       (.I0(curr_env_sum_E[12]),
+        .I1(env_E[12]),
+        .O(\det_signal.carry_env_sum_E_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_8 
+       (.I0(curr_env_sum_E[11]),
+        .I1(env_E[11]),
+        .O(\det_signal.carry_env_sum_E_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_E_i_9 
+       (.I0(curr_env_sum_E[10]),
+        .I1(env_E[10]),
+        .O(\det_signal.carry_env_sum_E_i_9_n_0 ));
+  FDRE \det_signal.carry_env_sum_E_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in1_out),
+        .Q(carry_env_sum_E),
+        .R(\det_signal.carry_env_sum_N_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_E_reg_i_1 
+       (.CI(\det_signal.carry_env_sum_E_reg_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO(\NLW_det_signal.carry_env_sum_E_reg_i_1_CO_UNCONNECTED [7:0]),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_det_signal.carry_env_sum_E_reg_i_1_O_UNCONNECTED [7:1],p_1_in1_out}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,env_E[16]}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_E_reg_i_2 
+       (.CI(\det_signal.carry_env_sum_E_reg_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.carry_env_sum_E_reg_i_2_n_0 ,\det_signal.carry_env_sum_E_reg_i_2_n_1 ,\det_signal.carry_env_sum_E_reg_i_2_n_2 ,\det_signal.carry_env_sum_E_reg_i_2_n_3 ,\det_signal.carry_env_sum_E_reg_i_2_n_4 ,\det_signal.carry_env_sum_E_reg_i_2_n_5 ,\det_signal.carry_env_sum_E_reg_i_2_n_6 ,\det_signal.carry_env_sum_E_reg_i_2_n_7 }),
+        .DI(curr_env_sum_E[15:8]),
+        .O(\NLW_det_signal.carry_env_sum_E_reg_i_2_O_UNCONNECTED [7:0]),
+        .S({\det_signal.carry_env_sum_E_i_4_n_0 ,\det_signal.carry_env_sum_E_i_5_n_0 ,\det_signal.carry_env_sum_E_i_6_n_0 ,\det_signal.carry_env_sum_E_i_7_n_0 ,\det_signal.carry_env_sum_E_i_8_n_0 ,\det_signal.carry_env_sum_E_i_9_n_0 ,\det_signal.carry_env_sum_E_i_10_n_0 ,\det_signal.carry_env_sum_E_i_11_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_E_reg_i_3 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.carry_env_sum_E_reg_i_3_n_0 ,\det_signal.carry_env_sum_E_reg_i_3_n_1 ,\det_signal.carry_env_sum_E_reg_i_3_n_2 ,\det_signal.carry_env_sum_E_reg_i_3_n_3 ,\det_signal.carry_env_sum_E_reg_i_3_n_4 ,\det_signal.carry_env_sum_E_reg_i_3_n_5 ,\det_signal.carry_env_sum_E_reg_i_3_n_6 ,\det_signal.carry_env_sum_E_reg_i_3_n_7 }),
+        .DI(curr_env_sum_E[7:0]),
+        .O(\NLW_det_signal.carry_env_sum_E_reg_i_3_O_UNCONNECTED [7:0]),
+        .S({\det_signal.carry_env_sum_E_i_12_n_0 ,\det_signal.carry_env_sum_E_i_13_n_0 ,\det_signal.carry_env_sum_E_i_14_n_0 ,\det_signal.carry_env_sum_E_i_15_n_0 ,\det_signal.carry_env_sum_E_i_16_n_0 ,\det_signal.carry_env_sum_E_i_17_n_0 ,\det_signal.carry_env_sum_E_i_18_n_0 ,\det_signal.carry_env_sum_E_i_19_n_0 }));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \det_signal.carry_env_sum_N_i_1 
+       (.I0(acc_reset),
+        .I1(has_signal),
+        .O(\det_signal.carry_env_sum_N_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_10 
+       (.I0(curr_env_sum_N[10]),
+        .I1(env_N[10]),
+        .O(\det_signal.carry_env_sum_N_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_11 
+       (.I0(curr_env_sum_N[9]),
+        .I1(env_N[9]),
+        .O(\det_signal.carry_env_sum_N_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_12 
+       (.I0(curr_env_sum_N[8]),
+        .I1(env_N[8]),
+        .O(\det_signal.carry_env_sum_N_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_13 
+       (.I0(curr_env_sum_N[7]),
+        .I1(env_N[7]),
+        .O(\det_signal.carry_env_sum_N_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_14 
+       (.I0(curr_env_sum_N[6]),
+        .I1(env_N[6]),
+        .O(\det_signal.carry_env_sum_N_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_15 
+       (.I0(curr_env_sum_N[5]),
+        .I1(env_N[5]),
+        .O(\det_signal.carry_env_sum_N_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_16 
+       (.I0(curr_env_sum_N[4]),
+        .I1(env_N[4]),
+        .O(\det_signal.carry_env_sum_N_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_17 
+       (.I0(curr_env_sum_N[3]),
+        .I1(env_N[3]),
+        .O(\det_signal.carry_env_sum_N_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_18 
+       (.I0(curr_env_sum_N[2]),
+        .I1(env_N[2]),
+        .O(\det_signal.carry_env_sum_N_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_19 
+       (.I0(curr_env_sum_N[1]),
+        .I1(env_N[1]),
+        .O(\det_signal.carry_env_sum_N_i_19_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_20 
+       (.I0(curr_env_sum_N[0]),
+        .I1(env_N[0]),
+        .O(\det_signal.carry_env_sum_N_i_20_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_5 
+       (.I0(curr_env_sum_N[15]),
+        .I1(env_N[15]),
+        .O(\det_signal.carry_env_sum_N_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_6 
+       (.I0(curr_env_sum_N[14]),
+        .I1(env_N[14]),
+        .O(\det_signal.carry_env_sum_N_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_7 
+       (.I0(curr_env_sum_N[13]),
+        .I1(env_N[13]),
+        .O(\det_signal.carry_env_sum_N_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_8 
+       (.I0(curr_env_sum_N[12]),
+        .I1(env_N[12]),
+        .O(\det_signal.carry_env_sum_N_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_N_i_9 
+       (.I0(curr_env_sum_N[11]),
+        .I1(env_N[11]),
+        .O(\det_signal.carry_env_sum_N_i_9_n_0 ));
+  FDRE \det_signal.carry_env_sum_N_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in3_out),
+        .Q(carry_env_sum_N),
+        .R(\det_signal.carry_env_sum_N_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_N_reg_i_2 
+       (.CI(\det_signal.carry_env_sum_N_reg_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO(\NLW_det_signal.carry_env_sum_N_reg_i_2_CO_UNCONNECTED [7:0]),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_det_signal.carry_env_sum_N_reg_i_2_O_UNCONNECTED [7:1],p_1_in3_out}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,env_N[16]}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_N_reg_i_3 
+       (.CI(\det_signal.carry_env_sum_N_reg_i_4_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.carry_env_sum_N_reg_i_3_n_0 ,\det_signal.carry_env_sum_N_reg_i_3_n_1 ,\det_signal.carry_env_sum_N_reg_i_3_n_2 ,\det_signal.carry_env_sum_N_reg_i_3_n_3 ,\det_signal.carry_env_sum_N_reg_i_3_n_4 ,\det_signal.carry_env_sum_N_reg_i_3_n_5 ,\det_signal.carry_env_sum_N_reg_i_3_n_6 ,\det_signal.carry_env_sum_N_reg_i_3_n_7 }),
+        .DI(curr_env_sum_N[15:8]),
+        .O(\NLW_det_signal.carry_env_sum_N_reg_i_3_O_UNCONNECTED [7:0]),
+        .S({\det_signal.carry_env_sum_N_i_5_n_0 ,\det_signal.carry_env_sum_N_i_6_n_0 ,\det_signal.carry_env_sum_N_i_7_n_0 ,\det_signal.carry_env_sum_N_i_8_n_0 ,\det_signal.carry_env_sum_N_i_9_n_0 ,\det_signal.carry_env_sum_N_i_10_n_0 ,\det_signal.carry_env_sum_N_i_11_n_0 ,\det_signal.carry_env_sum_N_i_12_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_N_reg_i_4 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.carry_env_sum_N_reg_i_4_n_0 ,\det_signal.carry_env_sum_N_reg_i_4_n_1 ,\det_signal.carry_env_sum_N_reg_i_4_n_2 ,\det_signal.carry_env_sum_N_reg_i_4_n_3 ,\det_signal.carry_env_sum_N_reg_i_4_n_4 ,\det_signal.carry_env_sum_N_reg_i_4_n_5 ,\det_signal.carry_env_sum_N_reg_i_4_n_6 ,\det_signal.carry_env_sum_N_reg_i_4_n_7 }),
+        .DI(curr_env_sum_N[7:0]),
+        .O(\NLW_det_signal.carry_env_sum_N_reg_i_4_O_UNCONNECTED [7:0]),
+        .S({\det_signal.carry_env_sum_N_i_13_n_0 ,\det_signal.carry_env_sum_N_i_14_n_0 ,\det_signal.carry_env_sum_N_i_15_n_0 ,\det_signal.carry_env_sum_N_i_16_n_0 ,\det_signal.carry_env_sum_N_i_17_n_0 ,\det_signal.carry_env_sum_N_i_18_n_0 ,\det_signal.carry_env_sum_N_i_19_n_0 ,\det_signal.carry_env_sum_N_i_20_n_0 }));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_10 
+       (.I0(curr_env_sum_W[9]),
+        .I1(env_W[9]),
+        .O(\det_signal.carry_env_sum_W_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_11 
+       (.I0(curr_env_sum_W[8]),
+        .I1(env_W[8]),
+        .O(\det_signal.carry_env_sum_W_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_12 
+       (.I0(curr_env_sum_W[7]),
+        .I1(env_W[7]),
+        .O(\det_signal.carry_env_sum_W_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_13 
+       (.I0(curr_env_sum_W[6]),
+        .I1(env_W[6]),
+        .O(\det_signal.carry_env_sum_W_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_14 
+       (.I0(curr_env_sum_W[5]),
+        .I1(env_W[5]),
+        .O(\det_signal.carry_env_sum_W_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_15 
+       (.I0(curr_env_sum_W[4]),
+        .I1(env_W[4]),
+        .O(\det_signal.carry_env_sum_W_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_16 
+       (.I0(curr_env_sum_W[3]),
+        .I1(env_W[3]),
+        .O(\det_signal.carry_env_sum_W_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_17 
+       (.I0(curr_env_sum_W[2]),
+        .I1(env_W[2]),
+        .O(\det_signal.carry_env_sum_W_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_18 
+       (.I0(curr_env_sum_W[1]),
+        .I1(env_W[1]),
+        .O(\det_signal.carry_env_sum_W_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_19 
+       (.I0(curr_env_sum_W[0]),
+        .I1(env_W[0]),
+        .O(\det_signal.carry_env_sum_W_i_19_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_4 
+       (.I0(curr_env_sum_W[15]),
+        .I1(env_W[15]),
+        .O(\det_signal.carry_env_sum_W_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_5 
+       (.I0(curr_env_sum_W[14]),
+        .I1(env_W[14]),
+        .O(\det_signal.carry_env_sum_W_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_6 
+       (.I0(curr_env_sum_W[13]),
+        .I1(env_W[13]),
+        .O(\det_signal.carry_env_sum_W_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_7 
+       (.I0(curr_env_sum_W[12]),
+        .I1(env_W[12]),
+        .O(\det_signal.carry_env_sum_W_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_8 
+       (.I0(curr_env_sum_W[11]),
+        .I1(env_W[11]),
+        .O(\det_signal.carry_env_sum_W_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.carry_env_sum_W_i_9 
+       (.I0(curr_env_sum_W[10]),
+        .I1(env_W[10]),
+        .O(\det_signal.carry_env_sum_W_i_9_n_0 ));
+  FDRE \det_signal.carry_env_sum_W_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\det_signal.carry_env_sum_W_reg_i_1_n_15 ),
+        .Q(\det_signal.carry_env_sum_W_reg_n_0 ),
+        .R(\det_signal.carry_env_sum_N_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_W_reg_i_1 
+       (.CI(\det_signal.carry_env_sum_W_reg_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO(\NLW_det_signal.carry_env_sum_W_reg_i_1_CO_UNCONNECTED [7:0]),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_det_signal.carry_env_sum_W_reg_i_1_O_UNCONNECTED [7:1],\det_signal.carry_env_sum_W_reg_i_1_n_15 }),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,env_W[16]}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_W_reg_i_2 
+       (.CI(\det_signal.carry_env_sum_W_reg_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.carry_env_sum_W_reg_i_2_n_0 ,\det_signal.carry_env_sum_W_reg_i_2_n_1 ,\det_signal.carry_env_sum_W_reg_i_2_n_2 ,\det_signal.carry_env_sum_W_reg_i_2_n_3 ,\det_signal.carry_env_sum_W_reg_i_2_n_4 ,\det_signal.carry_env_sum_W_reg_i_2_n_5 ,\det_signal.carry_env_sum_W_reg_i_2_n_6 ,\det_signal.carry_env_sum_W_reg_i_2_n_7 }),
+        .DI(curr_env_sum_W[15:8]),
+        .O(\NLW_det_signal.carry_env_sum_W_reg_i_2_O_UNCONNECTED [7:0]),
+        .S({\det_signal.carry_env_sum_W_i_4_n_0 ,\det_signal.carry_env_sum_W_i_5_n_0 ,\det_signal.carry_env_sum_W_i_6_n_0 ,\det_signal.carry_env_sum_W_i_7_n_0 ,\det_signal.carry_env_sum_W_i_8_n_0 ,\det_signal.carry_env_sum_W_i_9_n_0 ,\det_signal.carry_env_sum_W_i_10_n_0 ,\det_signal.carry_env_sum_W_i_11_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.carry_env_sum_W_reg_i_3 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.carry_env_sum_W_reg_i_3_n_0 ,\det_signal.carry_env_sum_W_reg_i_3_n_1 ,\det_signal.carry_env_sum_W_reg_i_3_n_2 ,\det_signal.carry_env_sum_W_reg_i_3_n_3 ,\det_signal.carry_env_sum_W_reg_i_3_n_4 ,\det_signal.carry_env_sum_W_reg_i_3_n_5 ,\det_signal.carry_env_sum_W_reg_i_3_n_6 ,\det_signal.carry_env_sum_W_reg_i_3_n_7 }),
+        .DI(curr_env_sum_W[7:0]),
+        .O(\NLW_det_signal.carry_env_sum_W_reg_i_3_O_UNCONNECTED [7:0]),
+        .S({\det_signal.carry_env_sum_W_i_12_n_0 ,\det_signal.carry_env_sum_W_i_13_n_0 ,\det_signal.carry_env_sum_W_i_14_n_0 ,\det_signal.carry_env_sum_W_i_15_n_0 ,\det_signal.carry_env_sum_W_i_16_n_0 ,\det_signal.carry_env_sum_W_i_17_n_0 ,\det_signal.carry_env_sum_W_i_18_n_0 ,\det_signal.carry_env_sum_W_i_19_n_0 }));
   LUT1 #(
     .INIT(2'h1)) 
     \det_signal.curr_signal_counter[0]_i_1 
@@ -2086,56 +2846,56 @@ module ps_comp_high_0_0_det_signal
   LUT3 #(
     .INIT(8'h78)) 
     \det_signal.curr_signal_counter[2]_i_1 
-       (.I0(curr_signal_counter[0]),
-        .I1(curr_signal_counter[1]),
+       (.I0(curr_signal_counter[1]),
+        .I1(curr_signal_counter[0]),
         .I2(curr_signal_counter[2]),
         .O(p_1_in__0[2]));
   LUT4 #(
     .INIT(16'h7F80)) 
     \det_signal.curr_signal_counter[3]_i_1 
-       (.I0(curr_signal_counter[1]),
+       (.I0(curr_signal_counter[2]),
         .I1(curr_signal_counter[0]),
-        .I2(curr_signal_counter[2]),
+        .I2(curr_signal_counter[1]),
         .I3(curr_signal_counter[3]),
         .O(p_1_in__0[3]));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \det_signal.curr_signal_counter[4]_i_1 
-       (.I0(curr_signal_counter[2]),
-        .I1(curr_signal_counter[0]),
-        .I2(curr_signal_counter[1]),
-        .I3(curr_signal_counter[3]),
-        .I4(curr_signal_counter[4]),
-        .O(p_1_in__0[4]));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \det_signal.curr_signal_counter[5]_i_1 
        (.I0(curr_signal_counter[3]),
         .I1(curr_signal_counter[1]),
         .I2(curr_signal_counter[0]),
         .I3(curr_signal_counter[2]),
         .I4(curr_signal_counter[4]),
+        .O(p_1_in__0[4]));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
+    \det_signal.curr_signal_counter[5]_i_1 
+       (.I0(curr_signal_counter[4]),
+        .I1(curr_signal_counter[2]),
+        .I2(curr_signal_counter[0]),
+        .I3(curr_signal_counter[1]),
+        .I4(curr_signal_counter[3]),
         .I5(curr_signal_counter[5]),
         .O(p_1_in__0[5]));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \det_signal.curr_signal_counter[6]_i_1 
        (.I0(\det_signal.curr_signal_counter[9]_i_3_n_0 ),
         .I1(curr_signal_counter[6]),
         .O(p_1_in__0[6]));
   LUT3 #(
-    .INIT(8'h78)) 
+    .INIT(8'hD2)) 
     \det_signal.curr_signal_counter[7]_i_1 
-       (.I0(\det_signal.curr_signal_counter[9]_i_3_n_0 ),
-        .I1(curr_signal_counter[6]),
-        .I2(curr_signal_counter[7]),
-        .O(p_1_in__0[7]));
-  LUT4 #(
-    .INIT(16'h7F80)) 
-    \det_signal.curr_signal_counter[8]_i_1 
        (.I0(curr_signal_counter[6]),
         .I1(\det_signal.curr_signal_counter[9]_i_3_n_0 ),
         .I2(curr_signal_counter[7]),
+        .O(p_1_in__0[7]));
+  LUT4 #(
+    .INIT(16'hDF20)) 
+    \det_signal.curr_signal_counter[8]_i_1 
+       (.I0(curr_signal_counter[7]),
+        .I1(\det_signal.curr_signal_counter[9]_i_3_n_0 ),
+        .I2(curr_signal_counter[6]),
         .I3(curr_signal_counter[8]),
         .O(p_1_in__0[8]));
   LUT1 #(
@@ -2144,23 +2904,23 @@ module ps_comp_high_0_0_det_signal
        (.I0(has_signal),
         .O(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h7FFF8000)) 
+    .INIT(32'hF7FF0800)) 
     \det_signal.curr_signal_counter[9]_i_2 
-       (.I0(curr_signal_counter[7]),
-        .I1(\det_signal.curr_signal_counter[9]_i_3_n_0 ),
-        .I2(curr_signal_counter[6]),
-        .I3(curr_signal_counter[8]),
+       (.I0(curr_signal_counter[8]),
+        .I1(curr_signal_counter[6]),
+        .I2(\det_signal.curr_signal_counter[9]_i_3_n_0 ),
+        .I3(curr_signal_counter[7]),
         .I4(curr_signal_counter[9]),
         .O(p_1_in__0[9]));
   LUT6 #(
-    .INIT(64'h8000000000000000)) 
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
     \det_signal.curr_signal_counter[9]_i_3 
-       (.I0(curr_signal_counter[5]),
-        .I1(curr_signal_counter[3]),
-        .I2(curr_signal_counter[1]),
-        .I3(curr_signal_counter[0]),
-        .I4(curr_signal_counter[2]),
-        .I5(curr_signal_counter[4]),
+       (.I0(curr_signal_counter[4]),
+        .I1(curr_signal_counter[2]),
+        .I2(curr_signal_counter[0]),
+        .I3(curr_signal_counter[1]),
+        .I4(curr_signal_counter[3]),
+        .I5(curr_signal_counter[5]),
         .O(\det_signal.curr_signal_counter[9]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \det_signal.curr_signal_counter_reg[0] 
@@ -2236,320 +2996,320 @@ module ps_comp_high_0_0_det_signal
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[0]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[0]),
+        .I1(\det_signal.sample_counter_reg [0]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[0]),
         .O(\det_signal.curr_signal_sample[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[10]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[10]),
+        .I1(\det_signal.sample_counter_reg [10]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[10]),
         .O(\det_signal.curr_signal_sample[10]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[11]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[11]),
+        .I1(\det_signal.sample_counter_reg [11]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[11]),
         .O(\det_signal.curr_signal_sample[11]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[12]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[12]),
+        .I1(\det_signal.sample_counter_reg [12]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[12]),
         .O(\det_signal.curr_signal_sample[12]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[13]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[13]),
+        .I1(\det_signal.sample_counter_reg [13]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[13]),
         .O(\det_signal.curr_signal_sample[13]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[14]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[14]),
+        .I1(\det_signal.sample_counter_reg [14]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[14]),
         .O(\det_signal.curr_signal_sample[14]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[15]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[15]),
+        .I1(\det_signal.sample_counter_reg [15]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[15]),
         .O(\det_signal.curr_signal_sample[15]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[16]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[16]),
+        .I1(\det_signal.sample_counter_reg [16]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[16]),
         .O(\det_signal.curr_signal_sample[16]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[17]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[17]),
+        .I1(\det_signal.sample_counter_reg [17]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[17]),
         .O(\det_signal.curr_signal_sample[17]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[18]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[18]),
+        .I1(\det_signal.sample_counter_reg [18]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[18]),
         .O(\det_signal.curr_signal_sample[18]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[19]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[19]),
+        .I1(\det_signal.sample_counter_reg [19]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[19]),
         .O(\det_signal.curr_signal_sample[19]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[1]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[1]),
+        .I1(\det_signal.sample_counter_reg [1]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[1]),
         .O(\det_signal.curr_signal_sample[1]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[20]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[20]),
+        .I1(\det_signal.sample_counter_reg [20]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[20]),
         .O(\det_signal.curr_signal_sample[20]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[21]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[21]),
+        .I1(\det_signal.sample_counter_reg [21]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[21]),
         .O(\det_signal.curr_signal_sample[21]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[22]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[22]),
+        .I1(\det_signal.sample_counter_reg [22]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[22]),
         .O(\det_signal.curr_signal_sample[22]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[23]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[23]),
+        .I1(\det_signal.sample_counter_reg [23]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[23]),
         .O(\det_signal.curr_signal_sample[23]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[24]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[24]),
+        .I1(\det_signal.sample_counter_reg [24]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[24]),
         .O(\det_signal.curr_signal_sample[24]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[25]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[25]),
+        .I1(\det_signal.sample_counter_reg [25]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[25]),
         .O(\det_signal.curr_signal_sample[25]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[26]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[26]),
+        .I1(\det_signal.sample_counter_reg [26]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[26]),
         .O(\det_signal.curr_signal_sample[26]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[27]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[27]),
+        .I1(\det_signal.sample_counter_reg [27]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[27]),
         .O(\det_signal.curr_signal_sample[27]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[28]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[28]),
+        .I1(\det_signal.sample_counter_reg [28]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[28]),
         .O(\det_signal.curr_signal_sample[28]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[29]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[29]),
+        .I1(\det_signal.sample_counter_reg [29]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[29]),
         .O(\det_signal.curr_signal_sample[29]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[2]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[2]),
+        .I1(\det_signal.sample_counter_reg [2]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[2]),
         .O(\det_signal.curr_signal_sample[2]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[30]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[30]),
+        .I1(\det_signal.sample_counter_reg [30]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[30]),
         .O(\det_signal.curr_signal_sample[30]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[31]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[31]),
+        .I1(\det_signal.sample_counter_reg [31]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[31]),
         .O(\det_signal.curr_signal_sample[31]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[3]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[3]),
+        .I1(\det_signal.sample_counter_reg [3]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[3]),
         .O(\det_signal.curr_signal_sample[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[4]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[4]),
+        .I1(\det_signal.sample_counter_reg [4]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[4]),
         .O(\det_signal.curr_signal_sample[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[5]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[5]),
+        .I1(\det_signal.sample_counter_reg [5]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[5]),
         .O(\det_signal.curr_signal_sample[5]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[6]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[6]),
+        .I1(\det_signal.sample_counter_reg [6]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[6]),
         .O(\det_signal.curr_signal_sample[6]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[7]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[7]),
+        .I1(\det_signal.sample_counter_reg [7]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[7]),
         .O(\det_signal.curr_signal_sample[7]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[8]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[8]),
+        .I1(\det_signal.sample_counter_reg [8]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[8]),
         .O(\det_signal.curr_signal_sample[8]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFF40000000)) 
     \det_signal.curr_signal_sample[9]_i_1 
        (.I0(has_signal),
-        .I1(sample_counter[9]),
+        .I1(\det_signal.sample_counter_reg [9]),
         .I2(valid_env),
         .I3(valid_err),
-        .I4(valid_count),
+        .I4(\det_signal.valid_count_reg_n_0 ),
         .I5(curr_signal_sample[9]),
         .O(\det_signal.curr_signal_sample[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -3591,11 +4351,36 @@ module ps_comp_high_0_0_det_signal
         .D(\det_signal.diff_env_W_reg0 [9]),
         .Q(diff_env_W[9]),
         .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \det_signal.diff_err_EW[12]_i_2 
-       (.I0(err_EW[12]),
-        .O(\det_signal.diff_err_EW[12]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_EW[12]_i_10 
+       (.I0(err_EW[4]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[4] ),
+        .O(\det_signal.diff_err_EW[12]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_EW[12]_i_11 
+       (.I0(err_EW[3]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[3] ),
+        .O(\det_signal.diff_err_EW[12]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_EW[12]_i_12 
+       (.I0(err_EW[2]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[2] ),
+        .O(\det_signal.diff_err_EW[12]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_EW[12]_i_13 
+       (.I0(err_EW[1]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[1] ),
+        .O(\det_signal.diff_err_EW[12]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_EW[12]_i_14 
+       (.I0(err_EW[0]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[0] ),
+        .O(\det_signal.diff_err_EW[12]_i_14_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.diff_err_EW[12]_i_3 
@@ -3622,177 +4407,74 @@ module ps_comp_high_0_0_det_signal
         .O(\det_signal.diff_err_EW[12]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_2 
+    \det_signal.diff_err_EW[12]_i_7 
        (.I0(err_EW[7]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[7] ),
-        .O(\det_signal.diff_err_EW[7]_i_2_n_0 ));
+        .O(\det_signal.diff_err_EW[12]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_3 
+    \det_signal.diff_err_EW[12]_i_8 
        (.I0(err_EW[6]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[6] ),
-        .O(\det_signal.diff_err_EW[7]_i_3_n_0 ));
+        .O(\det_signal.diff_err_EW[12]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_4 
+    \det_signal.diff_err_EW[12]_i_9 
        (.I0(err_EW[5]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[5] ),
-        .O(\det_signal.diff_err_EW[7]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_5 
-       (.I0(err_EW[4]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[4] ),
-        .O(\det_signal.diff_err_EW[7]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_6 
-       (.I0(err_EW[3]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[3] ),
-        .O(\det_signal.diff_err_EW[7]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_7 
-       (.I0(err_EW[2]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[2] ),
-        .O(\det_signal.diff_err_EW[7]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_8 
-       (.I0(err_EW[1]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[1] ),
-        .O(\det_signal.diff_err_EW[7]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_EW[7]_i_9 
-       (.I0(err_EW[0]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[0] ),
-        .O(\det_signal.diff_err_EW[7]_i_9_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[0] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [0]),
-        .Q(diff_err_EW[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[10] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [10]),
-        .Q(diff_err_EW[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[11] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [11]),
-        .Q(diff_err_EW[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .O(\det_signal.diff_err_EW[12]_i_9_n_0 ));
   FDRE \det_signal.diff_err_EW_reg[12] 
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [12]),
-        .Q(diff_err_EW[12]),
+        .D(diff_err_EW0),
+        .Q(p_2_in),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \det_signal.diff_err_EW_reg[12]_i_1 
-       (.CI(\det_signal.diff_err_EW_reg[7]_i_1_n_0 ),
+       (.CI(\det_signal.diff_err_EW_reg[12]_i_2_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_det_signal.diff_err_EW_reg[12]_i_1_CO_UNCONNECTED [7:4],\det_signal.diff_err_EW_reg[12]_i_1_n_4 ,\det_signal.diff_err_EW_reg[12]_i_1_n_5 ,\det_signal.diff_err_EW_reg[12]_i_1_n_6 ,\det_signal.diff_err_EW_reg[12]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,err_EW[11:8]}),
-        .O({\NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED [7:5],\det_signal.diff_err_EW_reg00_out [12:8]}),
-        .S({1'b0,1'b0,1'b0,\det_signal.diff_err_EW[12]_i_2_n_0 ,\det_signal.diff_err_EW[12]_i_3_n_0 ,\det_signal.diff_err_EW[12]_i_4_n_0 ,\det_signal.diff_err_EW[12]_i_5_n_0 ,\det_signal.diff_err_EW[12]_i_6_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[1] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [1]),
-        .Q(diff_err_EW[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[2] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [2]),
-        .Q(diff_err_EW[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[3] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [3]),
-        .Q(diff_err_EW[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[4] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [4]),
-        .Q(diff_err_EW[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[5] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [5]),
-        .Q(diff_err_EW[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[6] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [6]),
-        .Q(diff_err_EW[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[7] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [7]),
-        .Q(diff_err_EW[7]),
-        .R(1'b0));
+        .O({\NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED [7:5],diff_err_EW0,\NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED [3:0]}),
+        .S({1'b0,1'b0,1'b0,1'b1,\det_signal.diff_err_EW[12]_i_3_n_0 ,\det_signal.diff_err_EW[12]_i_4_n_0 ,\det_signal.diff_err_EW[12]_i_5_n_0 ,\det_signal.diff_err_EW[12]_i_6_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.diff_err_EW_reg[7]_i_1 
+  CARRY8 \det_signal.diff_err_EW_reg[12]_i_2 
        (.CI(1'b1),
         .CI_TOP(1'b0),
-        .CO({\det_signal.diff_err_EW_reg[7]_i_1_n_0 ,\det_signal.diff_err_EW_reg[7]_i_1_n_1 ,\det_signal.diff_err_EW_reg[7]_i_1_n_2 ,\det_signal.diff_err_EW_reg[7]_i_1_n_3 ,\det_signal.diff_err_EW_reg[7]_i_1_n_4 ,\det_signal.diff_err_EW_reg[7]_i_1_n_5 ,\det_signal.diff_err_EW_reg[7]_i_1_n_6 ,\det_signal.diff_err_EW_reg[7]_i_1_n_7 }),
+        .CO({\det_signal.diff_err_EW_reg[12]_i_2_n_0 ,\det_signal.diff_err_EW_reg[12]_i_2_n_1 ,\det_signal.diff_err_EW_reg[12]_i_2_n_2 ,\det_signal.diff_err_EW_reg[12]_i_2_n_3 ,\det_signal.diff_err_EW_reg[12]_i_2_n_4 ,\det_signal.diff_err_EW_reg[12]_i_2_n_5 ,\det_signal.diff_err_EW_reg[12]_i_2_n_6 ,\det_signal.diff_err_EW_reg[12]_i_2_n_7 }),
         .DI(err_EW[7:0]),
-        .O(\det_signal.diff_err_EW_reg00_out [7:0]),
-        .S({\det_signal.diff_err_EW[7]_i_2_n_0 ,\det_signal.diff_err_EW[7]_i_3_n_0 ,\det_signal.diff_err_EW[7]_i_4_n_0 ,\det_signal.diff_err_EW[7]_i_5_n_0 ,\det_signal.diff_err_EW[7]_i_6_n_0 ,\det_signal.diff_err_EW[7]_i_7_n_0 ,\det_signal.diff_err_EW[7]_i_8_n_0 ,\det_signal.diff_err_EW[7]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[8] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [8]),
-        .Q(diff_err_EW[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_EW_reg[9] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_EW_reg00_out [9]),
-        .Q(diff_err_EW[9]),
-        .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \det_signal.diff_err_NE[12]_i_2 
-       (.I0(err_NE[12]),
-        .O(\det_signal.diff_err_NE[12]_i_2_n_0 ));
+        .O(\NLW_det_signal.diff_err_EW_reg[12]_i_2_O_UNCONNECTED [7:0]),
+        .S({\det_signal.diff_err_EW[12]_i_7_n_0 ,\det_signal.diff_err_EW[12]_i_8_n_0 ,\det_signal.diff_err_EW[12]_i_9_n_0 ,\det_signal.diff_err_EW[12]_i_10_n_0 ,\det_signal.diff_err_EW[12]_i_11_n_0 ,\det_signal.diff_err_EW[12]_i_12_n_0 ,\det_signal.diff_err_EW[12]_i_13_n_0 ,\det_signal.diff_err_EW[12]_i_14_n_0 }));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NE[12]_i_10 
+       (.I0(err_NE[4]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[4] ),
+        .O(\det_signal.diff_err_NE[12]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NE[12]_i_11 
+       (.I0(err_NE[3]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[3] ),
+        .O(\det_signal.diff_err_NE[12]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NE[12]_i_12 
+       (.I0(err_NE[2]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[2] ),
+        .O(\det_signal.diff_err_NE[12]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NE[12]_i_13 
+       (.I0(err_NE[1]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[1] ),
+        .O(\det_signal.diff_err_NE[12]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NE[12]_i_14 
+       (.I0(err_NE[0]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[0] ),
+        .O(\det_signal.diff_err_NE[12]_i_14_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.diff_err_NE[12]_i_3 
@@ -3819,177 +4501,74 @@ module ps_comp_high_0_0_det_signal
         .O(\det_signal.diff_err_NE[12]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_2 
+    \det_signal.diff_err_NE[12]_i_7 
        (.I0(err_NE[7]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[7] ),
-        .O(\det_signal.diff_err_NE[7]_i_2_n_0 ));
+        .O(\det_signal.diff_err_NE[12]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_3 
+    \det_signal.diff_err_NE[12]_i_8 
        (.I0(err_NE[6]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[6] ),
-        .O(\det_signal.diff_err_NE[7]_i_3_n_0 ));
+        .O(\det_signal.diff_err_NE[12]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_4 
+    \det_signal.diff_err_NE[12]_i_9 
        (.I0(err_NE[5]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[5] ),
-        .O(\det_signal.diff_err_NE[7]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_5 
-       (.I0(err_NE[4]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[4] ),
-        .O(\det_signal.diff_err_NE[7]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_6 
-       (.I0(err_NE[3]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[3] ),
-        .O(\det_signal.diff_err_NE[7]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_7 
-       (.I0(err_NE[2]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[2] ),
-        .O(\det_signal.diff_err_NE[7]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_8 
-       (.I0(err_NE[1]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[1] ),
-        .O(\det_signal.diff_err_NE[7]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NE[7]_i_9 
-       (.I0(err_NE[0]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[0] ),
-        .O(\det_signal.diff_err_NE[7]_i_9_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[0] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [0]),
-        .Q(diff_err_NE[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[10] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [10]),
-        .Q(diff_err_NE[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[11] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [11]),
-        .Q(diff_err_NE[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .O(\det_signal.diff_err_NE[12]_i_9_n_0 ));
   FDRE \det_signal.diff_err_NE_reg[12] 
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [12]),
-        .Q(diff_err_NE[12]),
+        .D(diff_err_NE0),
+        .Q(p_1_in9_in),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \det_signal.diff_err_NE_reg[12]_i_1 
-       (.CI(\det_signal.diff_err_NE_reg[7]_i_1_n_0 ),
+       (.CI(\det_signal.diff_err_NE_reg[12]_i_2_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_det_signal.diff_err_NE_reg[12]_i_1_CO_UNCONNECTED [7:4],\det_signal.diff_err_NE_reg[12]_i_1_n_4 ,\det_signal.diff_err_NE_reg[12]_i_1_n_5 ,\det_signal.diff_err_NE_reg[12]_i_1_n_6 ,\det_signal.diff_err_NE_reg[12]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,err_NE[11:8]}),
-        .O({\NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED [7:5],\det_signal.diff_err_NE_reg0 [12:8]}),
-        .S({1'b0,1'b0,1'b0,\det_signal.diff_err_NE[12]_i_2_n_0 ,\det_signal.diff_err_NE[12]_i_3_n_0 ,\det_signal.diff_err_NE[12]_i_4_n_0 ,\det_signal.diff_err_NE[12]_i_5_n_0 ,\det_signal.diff_err_NE[12]_i_6_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[1] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [1]),
-        .Q(diff_err_NE[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[2] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [2]),
-        .Q(diff_err_NE[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[3] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [3]),
-        .Q(diff_err_NE[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[4] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [4]),
-        .Q(diff_err_NE[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[5] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [5]),
-        .Q(diff_err_NE[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[6] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [6]),
-        .Q(diff_err_NE[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[7] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [7]),
-        .Q(diff_err_NE[7]),
-        .R(1'b0));
+        .O({\NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED [7:5],diff_err_NE0,\NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED [3:0]}),
+        .S({1'b0,1'b0,1'b0,1'b1,\det_signal.diff_err_NE[12]_i_3_n_0 ,\det_signal.diff_err_NE[12]_i_4_n_0 ,\det_signal.diff_err_NE[12]_i_5_n_0 ,\det_signal.diff_err_NE[12]_i_6_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.diff_err_NE_reg[7]_i_1 
+  CARRY8 \det_signal.diff_err_NE_reg[12]_i_2 
        (.CI(1'b1),
         .CI_TOP(1'b0),
-        .CO({\det_signal.diff_err_NE_reg[7]_i_1_n_0 ,\det_signal.diff_err_NE_reg[7]_i_1_n_1 ,\det_signal.diff_err_NE_reg[7]_i_1_n_2 ,\det_signal.diff_err_NE_reg[7]_i_1_n_3 ,\det_signal.diff_err_NE_reg[7]_i_1_n_4 ,\det_signal.diff_err_NE_reg[7]_i_1_n_5 ,\det_signal.diff_err_NE_reg[7]_i_1_n_6 ,\det_signal.diff_err_NE_reg[7]_i_1_n_7 }),
+        .CO({\det_signal.diff_err_NE_reg[12]_i_2_n_0 ,\det_signal.diff_err_NE_reg[12]_i_2_n_1 ,\det_signal.diff_err_NE_reg[12]_i_2_n_2 ,\det_signal.diff_err_NE_reg[12]_i_2_n_3 ,\det_signal.diff_err_NE_reg[12]_i_2_n_4 ,\det_signal.diff_err_NE_reg[12]_i_2_n_5 ,\det_signal.diff_err_NE_reg[12]_i_2_n_6 ,\det_signal.diff_err_NE_reg[12]_i_2_n_7 }),
         .DI(err_NE[7:0]),
-        .O(\det_signal.diff_err_NE_reg0 [7:0]),
-        .S({\det_signal.diff_err_NE[7]_i_2_n_0 ,\det_signal.diff_err_NE[7]_i_3_n_0 ,\det_signal.diff_err_NE[7]_i_4_n_0 ,\det_signal.diff_err_NE[7]_i_5_n_0 ,\det_signal.diff_err_NE[7]_i_6_n_0 ,\det_signal.diff_err_NE[7]_i_7_n_0 ,\det_signal.diff_err_NE[7]_i_8_n_0 ,\det_signal.diff_err_NE[7]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[8] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [8]),
-        .Q(diff_err_NE[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NE_reg[9] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NE_reg0 [9]),
-        .Q(diff_err_NE[9]),
-        .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \det_signal.diff_err_NW[12]_i_2 
-       (.I0(err_NW[12]),
-        .O(\det_signal.diff_err_NW[12]_i_2_n_0 ));
+        .O(\NLW_det_signal.diff_err_NE_reg[12]_i_2_O_UNCONNECTED [7:0]),
+        .S({\det_signal.diff_err_NE[12]_i_7_n_0 ,\det_signal.diff_err_NE[12]_i_8_n_0 ,\det_signal.diff_err_NE[12]_i_9_n_0 ,\det_signal.diff_err_NE[12]_i_10_n_0 ,\det_signal.diff_err_NE[12]_i_11_n_0 ,\det_signal.diff_err_NE[12]_i_12_n_0 ,\det_signal.diff_err_NE[12]_i_13_n_0 ,\det_signal.diff_err_NE[12]_i_14_n_0 }));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NW[12]_i_10 
+       (.I0(err_NW[4]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[4] ),
+        .O(\det_signal.diff_err_NW[12]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NW[12]_i_11 
+       (.I0(err_NW[3]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[3] ),
+        .O(\det_signal.diff_err_NW[12]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NW[12]_i_12 
+       (.I0(err_NW[2]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[2] ),
+        .O(\det_signal.diff_err_NW[12]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NW[12]_i_13 
+       (.I0(err_NW[1]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[1] ),
+        .O(\det_signal.diff_err_NW[12]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \det_signal.diff_err_NW[12]_i_14 
+       (.I0(err_NW[0]),
+        .I1(\det_signal.max_doa_diff_reg_n_0_[0] ),
+        .O(\det_signal.diff_err_NW[12]_i_14_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.diff_err_NW[12]_i_3 
@@ -4016,172 +4595,44 @@ module ps_comp_high_0_0_det_signal
         .O(\det_signal.diff_err_NW[12]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_2 
+    \det_signal.diff_err_NW[12]_i_7 
        (.I0(err_NW[7]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[7] ),
-        .O(\det_signal.diff_err_NW[7]_i_2_n_0 ));
+        .O(\det_signal.diff_err_NW[12]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_3 
+    \det_signal.diff_err_NW[12]_i_8 
        (.I0(err_NW[6]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[6] ),
-        .O(\det_signal.diff_err_NW[7]_i_3_n_0 ));
+        .O(\det_signal.diff_err_NW[12]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_4 
+    \det_signal.diff_err_NW[12]_i_9 
        (.I0(err_NW[5]),
         .I1(\det_signal.max_doa_diff_reg_n_0_[5] ),
-        .O(\det_signal.diff_err_NW[7]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_5 
-       (.I0(err_NW[4]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[4] ),
-        .O(\det_signal.diff_err_NW[7]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_6 
-       (.I0(err_NW[3]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[3] ),
-        .O(\det_signal.diff_err_NW[7]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_7 
-       (.I0(err_NW[2]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[2] ),
-        .O(\det_signal.diff_err_NW[7]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_8 
-       (.I0(err_NW[1]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[1] ),
-        .O(\det_signal.diff_err_NW[7]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \det_signal.diff_err_NW[7]_i_9 
-       (.I0(err_NW[0]),
-        .I1(\det_signal.max_doa_diff_reg_n_0_[0] ),
-        .O(\det_signal.diff_err_NW[7]_i_9_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[0] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [0]),
-        .Q(diff_err_NW[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[10] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [10]),
-        .Q(diff_err_NW[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[11] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [11]),
-        .Q(diff_err_NW[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .O(\det_signal.diff_err_NW[12]_i_9_n_0 ));
   FDRE \det_signal.diff_err_NW_reg[12] 
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [12]),
-        .Q(diff_err_NW[12]),
+        .D(diff_err_NW0),
+        .Q(p_0_in8_in),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \det_signal.diff_err_NW_reg[12]_i_1 
-       (.CI(\det_signal.diff_err_NW_reg[7]_i_1_n_0 ),
+       (.CI(\det_signal.diff_err_NW_reg[12]_i_2_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_det_signal.diff_err_NW_reg[12]_i_1_CO_UNCONNECTED [7:4],\det_signal.diff_err_NW_reg[12]_i_1_n_4 ,\det_signal.diff_err_NW_reg[12]_i_1_n_5 ,\det_signal.diff_err_NW_reg[12]_i_1_n_6 ,\det_signal.diff_err_NW_reg[12]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,err_NW[11:8]}),
-        .O({\NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED [7:5],\det_signal.diff_err_NW_reg0 [12:8]}),
-        .S({1'b0,1'b0,1'b0,\det_signal.diff_err_NW[12]_i_2_n_0 ,\det_signal.diff_err_NW[12]_i_3_n_0 ,\det_signal.diff_err_NW[12]_i_4_n_0 ,\det_signal.diff_err_NW[12]_i_5_n_0 ,\det_signal.diff_err_NW[12]_i_6_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[1] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [1]),
-        .Q(diff_err_NW[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[2] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [2]),
-        .Q(diff_err_NW[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[3] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [3]),
-        .Q(diff_err_NW[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[4] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [4]),
-        .Q(diff_err_NW[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[5] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [5]),
-        .Q(diff_err_NW[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[6] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [6]),
-        .Q(diff_err_NW[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[7] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [7]),
-        .Q(diff_err_NW[7]),
-        .R(1'b0));
+        .O({\NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED [7:5],diff_err_NW0,\NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED [3:0]}),
+        .S({1'b0,1'b0,1'b0,1'b1,\det_signal.diff_err_NW[12]_i_3_n_0 ,\det_signal.diff_err_NW[12]_i_4_n_0 ,\det_signal.diff_err_NW[12]_i_5_n_0 ,\det_signal.diff_err_NW[12]_i_6_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.diff_err_NW_reg[7]_i_1 
+  CARRY8 \det_signal.diff_err_NW_reg[12]_i_2 
        (.CI(1'b1),
         .CI_TOP(1'b0),
-        .CO({\det_signal.diff_err_NW_reg[7]_i_1_n_0 ,\det_signal.diff_err_NW_reg[7]_i_1_n_1 ,\det_signal.diff_err_NW_reg[7]_i_1_n_2 ,\det_signal.diff_err_NW_reg[7]_i_1_n_3 ,\det_signal.diff_err_NW_reg[7]_i_1_n_4 ,\det_signal.diff_err_NW_reg[7]_i_1_n_5 ,\det_signal.diff_err_NW_reg[7]_i_1_n_6 ,\det_signal.diff_err_NW_reg[7]_i_1_n_7 }),
+        .CO({\det_signal.diff_err_NW_reg[12]_i_2_n_0 ,\det_signal.diff_err_NW_reg[12]_i_2_n_1 ,\det_signal.diff_err_NW_reg[12]_i_2_n_2 ,\det_signal.diff_err_NW_reg[12]_i_2_n_3 ,\det_signal.diff_err_NW_reg[12]_i_2_n_4 ,\det_signal.diff_err_NW_reg[12]_i_2_n_5 ,\det_signal.diff_err_NW_reg[12]_i_2_n_6 ,\det_signal.diff_err_NW_reg[12]_i_2_n_7 }),
         .DI(err_NW[7:0]),
-        .O(\det_signal.diff_err_NW_reg0 [7:0]),
-        .S({\det_signal.diff_err_NW[7]_i_2_n_0 ,\det_signal.diff_err_NW[7]_i_3_n_0 ,\det_signal.diff_err_NW[7]_i_4_n_0 ,\det_signal.diff_err_NW[7]_i_5_n_0 ,\det_signal.diff_err_NW[7]_i_6_n_0 ,\det_signal.diff_err_NW[7]_i_7_n_0 ,\det_signal.diff_err_NW[7]_i_8_n_0 ,\det_signal.diff_err_NW[7]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[8] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [8]),
-        .Q(diff_err_NW[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \det_signal.diff_err_NW_reg[9] 
-       (.C(clk),
-        .CE(\det_signal.run_reg[0]__0 ),
-        .D(\det_signal.diff_err_NW_reg0 [9]),
-        .Q(diff_err_NW[9]),
-        .R(1'b0));
+        .O(\NLW_det_signal.diff_err_NW_reg[12]_i_2_O_UNCONNECTED [7:0]),
+        .S({\det_signal.diff_err_NW[12]_i_7_n_0 ,\det_signal.diff_err_NW[12]_i_8_n_0 ,\det_signal.diff_err_NW[12]_i_9_n_0 ,\det_signal.diff_err_NW[12]_i_10_n_0 ,\det_signal.diff_err_NW[12]_i_11_n_0 ,\det_signal.diff_err_NW[12]_i_12_n_0 ,\det_signal.diff_err_NW[12]_i_13_n_0 ,\det_signal.diff_err_NW[12]_i_14_n_0 }));
   LUT1 #(
     .INIT(2'h1)) 
     \det_signal.diff_phase_E[15]_i_11 
@@ -5452,6 +5903,447 @@ module ps_comp_high_0_0_det_signal
         .Q(diff_phase_W[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[0]),
+        .Q(dsp_phase_E[0]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[10]),
+        .Q(dsp_phase_E[10]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[11]),
+        .Q(dsp_phase_E[11]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[12]),
+        .Q(dsp_phase_E[12]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[13]),
+        .Q(dsp_phase_E[13]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[14]),
+        .Q(dsp_phase_E[14]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[15]),
+        .Q(dsp_phase_E[15]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[16]),
+        .Q(dsp_phase_E[16]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[17]),
+        .Q(dsp_phase_E[17]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[18]),
+        .Q(dsp_phase_E[18]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[19]),
+        .Q(dsp_phase_E[19]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[1]),
+        .Q(dsp_phase_E[1]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[20] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(1'b0),
+        .Q(dsp_phase_E[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[2]),
+        .Q(dsp_phase_E[2]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[3]),
+        .Q(dsp_phase_E[3]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[4]),
+        .Q(dsp_phase_E[4]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[5]),
+        .Q(dsp_phase_E[5]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[6]),
+        .Q(dsp_phase_E[6]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[7]),
+        .Q(dsp_phase_E[7]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[8]),
+        .Q(dsp_phase_E[8]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_E_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_E[9]),
+        .Q(dsp_phase_E[9]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[0]),
+        .Q(dsp_phase_N[0]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[10]),
+        .Q(dsp_phase_N[10]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[11]),
+        .Q(dsp_phase_N[11]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[12]),
+        .Q(dsp_phase_N[12]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[13]),
+        .Q(dsp_phase_N[13]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[14]),
+        .Q(dsp_phase_N[14]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[15]),
+        .Q(dsp_phase_N[15]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[16]),
+        .Q(dsp_phase_N[16]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[17]),
+        .Q(dsp_phase_N[17]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[18]),
+        .Q(dsp_phase_N[18]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[19]),
+        .Q(dsp_phase_N[19]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[1]),
+        .Q(dsp_phase_N[1]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[20] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(1'b0),
+        .Q(dsp_phase_N[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[2]),
+        .Q(dsp_phase_N[2]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[3]),
+        .Q(dsp_phase_N[3]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[4]),
+        .Q(dsp_phase_N[4]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[5]),
+        .Q(dsp_phase_N[5]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[6]),
+        .Q(dsp_phase_N[6]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[7]),
+        .Q(dsp_phase_N[7]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[8]),
+        .Q(dsp_phase_N[8]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_N_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_N[9]),
+        .Q(dsp_phase_N[9]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[0]),
+        .Q(dsp_phase_W[0]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[10]),
+        .Q(dsp_phase_W[10]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[11]),
+        .Q(dsp_phase_W[11]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[12]),
+        .Q(dsp_phase_W[12]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[13]),
+        .Q(dsp_phase_W[13]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[14]),
+        .Q(dsp_phase_W[14]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[15]),
+        .Q(dsp_phase_W[15]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[16]),
+        .Q(dsp_phase_W[16]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[17]),
+        .Q(dsp_phase_W[17]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[18]),
+        .Q(dsp_phase_W[18]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[19]),
+        .Q(dsp_phase_W[19]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[1]),
+        .Q(dsp_phase_W[1]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[20] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(1'b0),
+        .Q(dsp_phase_W[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[2]),
+        .Q(dsp_phase_W[2]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[3]),
+        .Q(dsp_phase_W[3]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[4]),
+        .Q(dsp_phase_W[4]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[5]),
+        .Q(dsp_phase_W[5]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[6]),
+        .Q(dsp_phase_W[6]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[7]),
+        .Q(dsp_phase_W[7]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[8]),
+        .Q(dsp_phase_W[8]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \det_signal.dsp_phase_W_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(diff_phase_W[9]),
+        .Q(dsp_phase_W[9]),
+        .R(\det_signal.curr_signal_counter[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \det_signal.env_E_reg[0] 
        (.C(clk),
@@ -5835,288 +6727,216 @@ module ps_comp_high_0_0_det_signal
         .D(data[81]),
         .Q(env_W[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[0] 
        (.C(clk),
         .CE(active),
         .D(data[132]),
         .Q(err_EW[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[10] 
        (.C(clk),
         .CE(active),
         .D(data[142]),
         .Q(err_EW[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[11] 
        (.C(clk),
         .CE(active),
         .D(data[143]),
         .Q(err_EW[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[1] 
        (.C(clk),
         .CE(active),
         .D(data[133]),
         .Q(err_EW[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[2] 
        (.C(clk),
         .CE(active),
         .D(data[134]),
         .Q(err_EW[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[3] 
        (.C(clk),
         .CE(active),
         .D(data[135]),
         .Q(err_EW[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[4] 
        (.C(clk),
         .CE(active),
         .D(data[136]),
         .Q(err_EW[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[5] 
        (.C(clk),
         .CE(active),
         .D(data[137]),
         .Q(err_EW[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[6] 
        (.C(clk),
         .CE(active),
         .D(data[138]),
         .Q(err_EW[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[7] 
        (.C(clk),
         .CE(active),
         .D(data[139]),
         .Q(err_EW[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[8] 
        (.C(clk),
         .CE(active),
         .D(data[140]),
         .Q(err_EW[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_EW_reg[9] 
        (.C(clk),
         .CE(active),
         .D(data[141]),
         .Q(err_EW[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[0] 
        (.C(clk),
         .CE(active),
         .D(data[108]),
         .Q(err_NE[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[10] 
        (.C(clk),
         .CE(active),
         .D(data[118]),
         .Q(err_NE[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[11] 
        (.C(clk),
         .CE(active),
         .D(data[119]),
         .Q(err_NE[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[1] 
        (.C(clk),
         .CE(active),
         .D(data[109]),
         .Q(err_NE[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[2] 
        (.C(clk),
         .CE(active),
         .D(data[110]),
         .Q(err_NE[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[3] 
        (.C(clk),
         .CE(active),
         .D(data[111]),
         .Q(err_NE[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[4] 
        (.C(clk),
         .CE(active),
         .D(data[112]),
         .Q(err_NE[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[5] 
        (.C(clk),
         .CE(active),
         .D(data[113]),
         .Q(err_NE[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[6] 
        (.C(clk),
         .CE(active),
         .D(data[114]),
         .Q(err_NE[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[7] 
        (.C(clk),
         .CE(active),
         .D(data[115]),
         .Q(err_NE[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[8] 
        (.C(clk),
         .CE(active),
         .D(data[116]),
         .Q(err_NE[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NE_reg[9] 
        (.C(clk),
         .CE(active),
         .D(data[117]),
         .Q(err_NE[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[0] 
        (.C(clk),
         .CE(active),
         .D(data[120]),
         .Q(err_NW[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[10] 
        (.C(clk),
         .CE(active),
         .D(data[130]),
         .Q(err_NW[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[11] 
        (.C(clk),
         .CE(active),
         .D(data[131]),
         .Q(err_NW[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[1] 
        (.C(clk),
         .CE(active),
         .D(data[121]),
         .Q(err_NW[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[2] 
        (.C(clk),
         .CE(active),
         .D(data[122]),
         .Q(err_NW[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[3] 
        (.C(clk),
         .CE(active),
         .D(data[123]),
         .Q(err_NW[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[4] 
        (.C(clk),
         .CE(active),
         .D(data[124]),
         .Q(err_NW[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[5] 
        (.C(clk),
         .CE(active),
         .D(data[125]),
         .Q(err_NW[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[6] 
        (.C(clk),
         .CE(active),
         .D(data[126]),
         .Q(err_NW[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[7] 
        (.C(clk),
         .CE(active),
         .D(data[127]),
         .Q(err_NW[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[8] 
        (.C(clk),
         .CE(active),
         .D(data[128]),
         .Q(err_NW[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_NW_reg[9] 
        (.C(clk),
         .CE(active),
@@ -6128,15 +6948,15 @@ module ps_comp_high_0_0_det_signal
     \det_signal.err_count[0]_i_1 
        (.I0(\det_signal.run_reg[2]__0 ),
         .I1(has_signal),
-        .I2(valid_count),
-        .I3(err_ov),
+        .I2(\det_signal.valid_count_reg_n_0 ),
+        .I3(\det_signal.err_ov_reg_n_0 ),
         .I4(err_count[0]),
         .O(\det_signal.err_count[0]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h8000)) 
     \det_signal.err_count[1]_i_1 
        (.I0(\det_signal.run_reg[2]__0 ),
-        .I1(valid_count),
+        .I1(\det_signal.valid_count_reg_n_0 ),
         .I2(valid_err),
         .I3(valid_env),
         .O(\det_signal.err_count[1]_i_1_n_0 ));
@@ -6145,8 +6965,8 @@ module ps_comp_high_0_0_det_signal
     \det_signal.err_count[1]_i_2 
        (.I0(\det_signal.run_reg[2]__0 ),
         .I1(err_count[1]),
-        .I2(err_ov),
-        .I3(valid_count),
+        .I2(\det_signal.err_ov_reg_n_0 ),
+        .I3(\det_signal.valid_count_reg_n_0 ),
         .I4(has_signal),
         .I5(err_count[0]),
         .O(\det_signal.err_count[1]_i_2_n_0 ));
@@ -6167,7 +6987,7 @@ module ps_comp_high_0_0_det_signal
   LUT5 #(
     .INIT(32'hFCCCAAAA)) 
     \det_signal.err_ov_i_1 
-       (.I0(err_ov),
+       (.I0(\det_signal.err_ov_reg_n_0 ),
         .I1(\det_signal.err_ov_i_2_n_0 ),
         .I2(err_count[0]),
         .I3(err_count[1]),
@@ -6179,30 +6999,1337 @@ module ps_comp_high_0_0_det_signal
        (.I0(1'b1),
         .I1(\det_signal.run_reg[1]__0 ),
         .O(\det_signal.err_ov_i_2_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.err_ov_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\det_signal.err_ov_i_1_n_0 ),
-        .Q(err_ov),
+        .Q(\det_signal.err_ov_reg_n_0 ),
         .R(1'b0));
   LUT6 #(
     .INIT(64'hA0A0200020002000)) 
     \det_signal.has_signal_i_1 
        (.I0(\det_signal.run_reg[2]__0 ),
-        .I1(err_ov),
-        .I2(valid_count),
+        .I1(\det_signal.err_ov_reg_n_0 ),
+        .I2(\det_signal.valid_count_reg_n_0 ),
         .I3(has_signal),
         .I4(valid_env),
         .I5(valid_err),
-        .O(has_signal4_out));
+        .O(has_signal0_out));
   (* KEEP = "yes" *) 
   FDRE \det_signal.has_signal_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(has_signal4_out),
+        .D(has_signal0_out),
         .Q(has_signal),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.hi_env_sum_E[7]_i_2 
+       (.I0(curr_env_sum_E[16]),
+        .I1(carry_env_sum_E),
+        .O(\det_signal.hi_env_sum_E[7]_i_2_n_0 ));
+  FDRE \det_signal.hi_env_sum_E_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[0]),
+        .Q(curr_env_sum_E[16]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[10]),
+        .Q(curr_env_sum_E[26]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[11]),
+        .Q(curr_env_sum_E[27]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[12]),
+        .Q(curr_env_sum_E[28]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[13]),
+        .Q(curr_env_sum_E[29]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[14]),
+        .Q(curr_env_sum_E[30]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[15]),
+        .Q(curr_env_sum_E[31]),
+        .R(hi_env_sum_W__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.hi_env_sum_E_reg[15]_i_1 
+       (.CI(\det_signal.hi_env_sum_E_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.hi_env_sum_E_reg[15]_i_1_CO_UNCONNECTED [7],\det_signal.hi_env_sum_E_reg[15]_i_1_n_1 ,\det_signal.hi_env_sum_E_reg[15]_i_1_n_2 ,\det_signal.hi_env_sum_E_reg[15]_i_1_n_3 ,\det_signal.hi_env_sum_E_reg[15]_i_1_n_4 ,\det_signal.hi_env_sum_E_reg[15]_i_1_n_5 ,\det_signal.hi_env_sum_E_reg[15]_i_1_n_6 ,\det_signal.hi_env_sum_E_reg[15]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(hi_env_sum_E0[15:8]),
+        .S(curr_env_sum_E[31:24]));
+  FDRE \det_signal.hi_env_sum_E_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[1]),
+        .Q(curr_env_sum_E[17]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[2]),
+        .Q(curr_env_sum_E[18]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[3]),
+        .Q(curr_env_sum_E[19]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[4]),
+        .Q(curr_env_sum_E[20]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[5]),
+        .Q(curr_env_sum_E[21]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[6]),
+        .Q(curr_env_sum_E[22]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[7]),
+        .Q(curr_env_sum_E[23]),
+        .R(hi_env_sum_W__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.hi_env_sum_E_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.hi_env_sum_E_reg[7]_i_1_n_0 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_1 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_2 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_3 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_4 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_5 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_6 ,\det_signal.hi_env_sum_E_reg[7]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,curr_env_sum_E[16]}),
+        .O(hi_env_sum_E0[7:0]),
+        .S({curr_env_sum_E[23:17],\det_signal.hi_env_sum_E[7]_i_2_n_0 }));
+  FDRE \det_signal.hi_env_sum_E_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[8]),
+        .Q(curr_env_sum_E[24]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_E_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_E0[9]),
+        .Q(curr_env_sum_E[25]),
+        .R(hi_env_sum_W__0));
+  LUT5 #(
+    .INIT(32'h00010000)) 
+    \det_signal.hi_env_sum_N[15]_i_1 
+       (.I0(curr_signal_counter[2]),
+        .I1(curr_signal_counter[3]),
+        .I2(curr_signal_counter[0]),
+        .I3(curr_signal_counter[1]),
+        .I4(\det_signal.hi_env_sum_N[15]_i_3_n_0 ),
+        .O(hi_env_sum_W__0));
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
+    \det_signal.hi_env_sum_N[15]_i_3 
+       (.I0(curr_signal_counter[6]),
+        .I1(curr_signal_counter[7]),
+        .I2(curr_signal_counter[4]),
+        .I3(curr_signal_counter[5]),
+        .I4(curr_signal_counter[9]),
+        .I5(curr_signal_counter[8]),
+        .O(\det_signal.hi_env_sum_N[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.hi_env_sum_N[7]_i_2 
+       (.I0(curr_env_sum_N[16]),
+        .I1(carry_env_sum_N),
+        .O(\det_signal.hi_env_sum_N[7]_i_2_n_0 ));
+  FDRE \det_signal.hi_env_sum_N_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[0]),
+        .Q(curr_env_sum_N[16]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[10]),
+        .Q(curr_env_sum_N[26]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[11]),
+        .Q(curr_env_sum_N[27]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[12]),
+        .Q(curr_env_sum_N[28]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[13]),
+        .Q(curr_env_sum_N[29]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[14]),
+        .Q(curr_env_sum_N[30]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[15]),
+        .Q(curr_env_sum_N[31]),
+        .R(hi_env_sum_W__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.hi_env_sum_N_reg[15]_i_2 
+       (.CI(\det_signal.hi_env_sum_N_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.hi_env_sum_N_reg[15]_i_2_CO_UNCONNECTED [7],\det_signal.hi_env_sum_N_reg[15]_i_2_n_1 ,\det_signal.hi_env_sum_N_reg[15]_i_2_n_2 ,\det_signal.hi_env_sum_N_reg[15]_i_2_n_3 ,\det_signal.hi_env_sum_N_reg[15]_i_2_n_4 ,\det_signal.hi_env_sum_N_reg[15]_i_2_n_5 ,\det_signal.hi_env_sum_N_reg[15]_i_2_n_6 ,\det_signal.hi_env_sum_N_reg[15]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(hi_env_sum_N0[15:8]),
+        .S(curr_env_sum_N[31:24]));
+  FDRE \det_signal.hi_env_sum_N_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[1]),
+        .Q(curr_env_sum_N[17]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[2]),
+        .Q(curr_env_sum_N[18]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[3]),
+        .Q(curr_env_sum_N[19]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[4]),
+        .Q(curr_env_sum_N[20]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[5]),
+        .Q(curr_env_sum_N[21]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[6]),
+        .Q(curr_env_sum_N[22]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[7]),
+        .Q(curr_env_sum_N[23]),
+        .R(hi_env_sum_W__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.hi_env_sum_N_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.hi_env_sum_N_reg[7]_i_1_n_0 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_1 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_2 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_3 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_4 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_5 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_6 ,\det_signal.hi_env_sum_N_reg[7]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,curr_env_sum_N[16]}),
+        .O(hi_env_sum_N0[7:0]),
+        .S({curr_env_sum_N[23:17],\det_signal.hi_env_sum_N[7]_i_2_n_0 }));
+  FDRE \det_signal.hi_env_sum_N_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[8]),
+        .Q(curr_env_sum_N[24]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_N_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_N0[9]),
+        .Q(curr_env_sum_N[25]),
+        .R(hi_env_sum_W__0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \det_signal.hi_env_sum_W[7]_i_2 
+       (.I0(curr_env_sum_W[16]),
+        .I1(\det_signal.carry_env_sum_W_reg_n_0 ),
+        .O(\det_signal.hi_env_sum_W[7]_i_2_n_0 ));
+  FDRE \det_signal.hi_env_sum_W_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[0]),
+        .Q(curr_env_sum_W[16]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[10]),
+        .Q(curr_env_sum_W[26]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[11]),
+        .Q(curr_env_sum_W[27]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[12]),
+        .Q(curr_env_sum_W[28]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[13]),
+        .Q(curr_env_sum_W[29]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[14]),
+        .Q(curr_env_sum_W[30]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[15]),
+        .Q(curr_env_sum_W[31]),
+        .R(hi_env_sum_W__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.hi_env_sum_W_reg[15]_i_1 
+       (.CI(\det_signal.hi_env_sum_W_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.hi_env_sum_W_reg[15]_i_1_CO_UNCONNECTED [7],\det_signal.hi_env_sum_W_reg[15]_i_1_n_1 ,\det_signal.hi_env_sum_W_reg[15]_i_1_n_2 ,\det_signal.hi_env_sum_W_reg[15]_i_1_n_3 ,\det_signal.hi_env_sum_W_reg[15]_i_1_n_4 ,\det_signal.hi_env_sum_W_reg[15]_i_1_n_5 ,\det_signal.hi_env_sum_W_reg[15]_i_1_n_6 ,\det_signal.hi_env_sum_W_reg[15]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(hi_env_sum_W0[15:8]),
+        .S(curr_env_sum_W[31:24]));
+  FDRE \det_signal.hi_env_sum_W_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[1]),
+        .Q(curr_env_sum_W[17]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[2]),
+        .Q(curr_env_sum_W[18]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[3]),
+        .Q(curr_env_sum_W[19]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[4]),
+        .Q(curr_env_sum_W[20]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[5]),
+        .Q(curr_env_sum_W[21]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[6]),
+        .Q(curr_env_sum_W[22]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[7]),
+        .Q(curr_env_sum_W[23]),
+        .R(hi_env_sum_W__0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \det_signal.hi_env_sum_W_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.hi_env_sum_W_reg[7]_i_1_n_0 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_1 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_2 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_3 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_4 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_5 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_6 ,\det_signal.hi_env_sum_W_reg[7]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,curr_env_sum_W[16]}),
+        .O(hi_env_sum_W0[7:0]),
+        .S({curr_env_sum_W[23:17],\det_signal.hi_env_sum_W[7]_i_2_n_0 }));
+  FDRE \det_signal.hi_env_sum_W_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[8]),
+        .Q(curr_env_sum_W[24]),
+        .R(hi_env_sum_W__0));
+  FDRE \det_signal.hi_env_sum_W_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(hi_env_sum_W0[9]),
+        .Q(curr_env_sum_W[25]),
+        .R(hi_env_sum_W__0));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_10 
+       (.I0(curr_env_sum_E[14]),
+        .I1(acc_reset),
+        .I2(env_E[14]),
+        .O(\det_signal.lo_env_sum_E[15]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_11 
+       (.I0(curr_env_sum_E[13]),
+        .I1(acc_reset),
+        .I2(env_E[13]),
+        .O(\det_signal.lo_env_sum_E[15]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_12 
+       (.I0(curr_env_sum_E[12]),
+        .I1(acc_reset),
+        .I2(env_E[12]),
+        .O(\det_signal.lo_env_sum_E[15]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_13 
+       (.I0(curr_env_sum_E[11]),
+        .I1(acc_reset),
+        .I2(env_E[11]),
+        .O(\det_signal.lo_env_sum_E[15]_i_13_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_14 
+       (.I0(curr_env_sum_E[10]),
+        .I1(acc_reset),
+        .I2(env_E[10]),
+        .O(\det_signal.lo_env_sum_E[15]_i_14_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_15 
+       (.I0(curr_env_sum_E[9]),
+        .I1(acc_reset),
+        .I2(env_E[9]),
+        .O(\det_signal.lo_env_sum_E[15]_i_15_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_16 
+       (.I0(curr_env_sum_E[8]),
+        .I1(acc_reset),
+        .I2(env_E[8]),
+        .O(\det_signal.lo_env_sum_E[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_2 
+       (.I0(env_E[14]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_3 
+       (.I0(env_E[13]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_4 
+       (.I0(env_E[12]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_5 
+       (.I0(env_E[11]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_6 
+       (.I0(env_E[10]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_7 
+       (.I0(env_E[9]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[15]_i_8 
+       (.I0(env_E[8]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[15]_i_8_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[15]_i_9 
+       (.I0(curr_env_sum_E[15]),
+        .I1(acc_reset),
+        .I2(env_E[15]),
+        .O(\det_signal.lo_env_sum_E[15]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_10 
+       (.I0(curr_env_sum_E[7]),
+        .I1(acc_reset),
+        .I2(env_E[7]),
+        .O(\det_signal.lo_env_sum_E[7]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_11 
+       (.I0(curr_env_sum_E[6]),
+        .I1(acc_reset),
+        .I2(env_E[6]),
+        .O(\det_signal.lo_env_sum_E[7]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_12 
+       (.I0(curr_env_sum_E[5]),
+        .I1(acc_reset),
+        .I2(env_E[5]),
+        .O(\det_signal.lo_env_sum_E[7]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_13 
+       (.I0(curr_env_sum_E[4]),
+        .I1(acc_reset),
+        .I2(env_E[4]),
+        .O(\det_signal.lo_env_sum_E[7]_i_13_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_14 
+       (.I0(curr_env_sum_E[3]),
+        .I1(acc_reset),
+        .I2(env_E[3]),
+        .O(\det_signal.lo_env_sum_E[7]_i_14_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_15 
+       (.I0(curr_env_sum_E[2]),
+        .I1(acc_reset),
+        .I2(env_E[2]),
+        .O(\det_signal.lo_env_sum_E[7]_i_15_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_16 
+       (.I0(curr_env_sum_E[1]),
+        .I1(acc_reset),
+        .I2(env_E[1]),
+        .O(\det_signal.lo_env_sum_E[7]_i_16_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_E[7]_i_17 
+       (.I0(curr_env_sum_E[0]),
+        .I1(acc_reset),
+        .I2(env_E[0]),
+        .O(\det_signal.lo_env_sum_E[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_2 
+       (.I0(env_E[7]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_3 
+       (.I0(env_E[6]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_4 
+       (.I0(env_E[5]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_5 
+       (.I0(env_E[4]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_6 
+       (.I0(env_E[3]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_7 
+       (.I0(env_E[2]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_8 
+       (.I0(env_E[1]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_E[7]_i_9 
+       (.I0(env_E[0]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_E[7]_i_9_n_0 ));
+  FDRE \det_signal.lo_env_sum_E_reg[0] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_15 ),
+        .Q(curr_env_sum_E[0]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[10] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_13 ),
+        .Q(curr_env_sum_E[10]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[11] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_12 ),
+        .Q(curr_env_sum_E[11]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[12] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_11 ),
+        .Q(curr_env_sum_E[12]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[13] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_10 ),
+        .Q(curr_env_sum_E[13]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[14] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_9 ),
+        .Q(curr_env_sum_E[14]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[15] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_8 ),
+        .Q(curr_env_sum_E[15]),
+        .R(1'b0));
+  CARRY8 \det_signal.lo_env_sum_E_reg[15]_i_1 
+       (.CI(\det_signal.lo_env_sum_E_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.lo_env_sum_E_reg[15]_i_1_CO_UNCONNECTED [7],\det_signal.lo_env_sum_E_reg[15]_i_1_n_1 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_2 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_3 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_4 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_5 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_6 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_7 }),
+        .DI({1'b0,\det_signal.lo_env_sum_E[15]_i_2_n_0 ,\det_signal.lo_env_sum_E[15]_i_3_n_0 ,\det_signal.lo_env_sum_E[15]_i_4_n_0 ,\det_signal.lo_env_sum_E[15]_i_5_n_0 ,\det_signal.lo_env_sum_E[15]_i_6_n_0 ,\det_signal.lo_env_sum_E[15]_i_7_n_0 ,\det_signal.lo_env_sum_E[15]_i_8_n_0 }),
+        .O({\det_signal.lo_env_sum_E_reg[15]_i_1_n_8 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_9 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_10 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_11 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_12 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_13 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_14 ,\det_signal.lo_env_sum_E_reg[15]_i_1_n_15 }),
+        .S({\det_signal.lo_env_sum_E[15]_i_9_n_0 ,\det_signal.lo_env_sum_E[15]_i_10_n_0 ,\det_signal.lo_env_sum_E[15]_i_11_n_0 ,\det_signal.lo_env_sum_E[15]_i_12_n_0 ,\det_signal.lo_env_sum_E[15]_i_13_n_0 ,\det_signal.lo_env_sum_E[15]_i_14_n_0 ,\det_signal.lo_env_sum_E[15]_i_15_n_0 ,\det_signal.lo_env_sum_E[15]_i_16_n_0 }));
+  FDRE \det_signal.lo_env_sum_E_reg[1] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_14 ),
+        .Q(curr_env_sum_E[1]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[2] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_13 ),
+        .Q(curr_env_sum_E[2]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[3] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_12 ),
+        .Q(curr_env_sum_E[3]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[4] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_11 ),
+        .Q(curr_env_sum_E[4]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[5] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_10 ),
+        .Q(curr_env_sum_E[5]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[6] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_9 ),
+        .Q(curr_env_sum_E[6]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[7] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[7]_i_1_n_8 ),
+        .Q(curr_env_sum_E[7]),
+        .R(1'b0));
+  CARRY8 \det_signal.lo_env_sum_E_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.lo_env_sum_E_reg[7]_i_1_n_0 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_1 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_2 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_3 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_4 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_5 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_6 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_7 }),
+        .DI({\det_signal.lo_env_sum_E[7]_i_2_n_0 ,\det_signal.lo_env_sum_E[7]_i_3_n_0 ,\det_signal.lo_env_sum_E[7]_i_4_n_0 ,\det_signal.lo_env_sum_E[7]_i_5_n_0 ,\det_signal.lo_env_sum_E[7]_i_6_n_0 ,\det_signal.lo_env_sum_E[7]_i_7_n_0 ,\det_signal.lo_env_sum_E[7]_i_8_n_0 ,\det_signal.lo_env_sum_E[7]_i_9_n_0 }),
+        .O({\det_signal.lo_env_sum_E_reg[7]_i_1_n_8 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_9 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_10 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_11 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_12 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_13 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_14 ,\det_signal.lo_env_sum_E_reg[7]_i_1_n_15 }),
+        .S({\det_signal.lo_env_sum_E[7]_i_10_n_0 ,\det_signal.lo_env_sum_E[7]_i_11_n_0 ,\det_signal.lo_env_sum_E[7]_i_12_n_0 ,\det_signal.lo_env_sum_E[7]_i_13_n_0 ,\det_signal.lo_env_sum_E[7]_i_14_n_0 ,\det_signal.lo_env_sum_E[7]_i_15_n_0 ,\det_signal.lo_env_sum_E[7]_i_16_n_0 ,\det_signal.lo_env_sum_E[7]_i_17_n_0 }));
+  FDRE \det_signal.lo_env_sum_E_reg[8] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_15 ),
+        .Q(curr_env_sum_E[8]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_E_reg[9] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_E_reg[15]_i_1_n_14 ),
+        .Q(curr_env_sum_E[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_10 
+       (.I0(curr_env_sum_N[14]),
+        .I1(acc_reset),
+        .I2(env_N[14]),
+        .O(\det_signal.lo_env_sum_N[15]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_11 
+       (.I0(curr_env_sum_N[13]),
+        .I1(acc_reset),
+        .I2(env_N[13]),
+        .O(\det_signal.lo_env_sum_N[15]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_12 
+       (.I0(curr_env_sum_N[12]),
+        .I1(acc_reset),
+        .I2(env_N[12]),
+        .O(\det_signal.lo_env_sum_N[15]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_13 
+       (.I0(curr_env_sum_N[11]),
+        .I1(acc_reset),
+        .I2(env_N[11]),
+        .O(\det_signal.lo_env_sum_N[15]_i_13_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_14 
+       (.I0(curr_env_sum_N[10]),
+        .I1(acc_reset),
+        .I2(env_N[10]),
+        .O(\det_signal.lo_env_sum_N[15]_i_14_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_15 
+       (.I0(curr_env_sum_N[9]),
+        .I1(acc_reset),
+        .I2(env_N[9]),
+        .O(\det_signal.lo_env_sum_N[15]_i_15_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_16 
+       (.I0(curr_env_sum_N[8]),
+        .I1(acc_reset),
+        .I2(env_N[8]),
+        .O(\det_signal.lo_env_sum_N[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_2 
+       (.I0(env_N[14]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_3 
+       (.I0(env_N[13]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_4 
+       (.I0(env_N[12]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_5 
+       (.I0(env_N[11]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_6 
+       (.I0(env_N[10]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_7 
+       (.I0(env_N[9]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[15]_i_8 
+       (.I0(env_N[8]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[15]_i_8_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[15]_i_9 
+       (.I0(curr_env_sum_N[15]),
+        .I1(acc_reset),
+        .I2(env_N[15]),
+        .O(\det_signal.lo_env_sum_N[15]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_10 
+       (.I0(curr_env_sum_N[7]),
+        .I1(acc_reset),
+        .I2(env_N[7]),
+        .O(\det_signal.lo_env_sum_N[7]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_11 
+       (.I0(curr_env_sum_N[6]),
+        .I1(acc_reset),
+        .I2(env_N[6]),
+        .O(\det_signal.lo_env_sum_N[7]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_12 
+       (.I0(curr_env_sum_N[5]),
+        .I1(acc_reset),
+        .I2(env_N[5]),
+        .O(\det_signal.lo_env_sum_N[7]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_13 
+       (.I0(curr_env_sum_N[4]),
+        .I1(acc_reset),
+        .I2(env_N[4]),
+        .O(\det_signal.lo_env_sum_N[7]_i_13_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_14 
+       (.I0(curr_env_sum_N[3]),
+        .I1(acc_reset),
+        .I2(env_N[3]),
+        .O(\det_signal.lo_env_sum_N[7]_i_14_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_15 
+       (.I0(curr_env_sum_N[2]),
+        .I1(acc_reset),
+        .I2(env_N[2]),
+        .O(\det_signal.lo_env_sum_N[7]_i_15_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_16 
+       (.I0(curr_env_sum_N[1]),
+        .I1(acc_reset),
+        .I2(env_N[1]),
+        .O(\det_signal.lo_env_sum_N[7]_i_16_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_N[7]_i_17 
+       (.I0(curr_env_sum_N[0]),
+        .I1(acc_reset),
+        .I2(env_N[0]),
+        .O(\det_signal.lo_env_sum_N[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_2 
+       (.I0(env_N[7]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_3 
+       (.I0(env_N[6]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_4 
+       (.I0(env_N[5]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_5 
+       (.I0(env_N[4]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_6 
+       (.I0(env_N[3]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_7 
+       (.I0(env_N[2]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_8 
+       (.I0(env_N[1]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_N[7]_i_9 
+       (.I0(env_N[0]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_N[7]_i_9_n_0 ));
+  FDRE \det_signal.lo_env_sum_N_reg[0] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_15 ),
+        .Q(curr_env_sum_N[0]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[10] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_13 ),
+        .Q(curr_env_sum_N[10]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[11] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_12 ),
+        .Q(curr_env_sum_N[11]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[12] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_11 ),
+        .Q(curr_env_sum_N[12]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[13] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_10 ),
+        .Q(curr_env_sum_N[13]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[14] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_9 ),
+        .Q(curr_env_sum_N[14]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[15] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_8 ),
+        .Q(curr_env_sum_N[15]),
+        .R(1'b0));
+  CARRY8 \det_signal.lo_env_sum_N_reg[15]_i_1 
+       (.CI(\det_signal.lo_env_sum_N_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.lo_env_sum_N_reg[15]_i_1_CO_UNCONNECTED [7],\det_signal.lo_env_sum_N_reg[15]_i_1_n_1 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_2 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_3 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_4 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_5 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_6 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_7 }),
+        .DI({1'b0,\det_signal.lo_env_sum_N[15]_i_2_n_0 ,\det_signal.lo_env_sum_N[15]_i_3_n_0 ,\det_signal.lo_env_sum_N[15]_i_4_n_0 ,\det_signal.lo_env_sum_N[15]_i_5_n_0 ,\det_signal.lo_env_sum_N[15]_i_6_n_0 ,\det_signal.lo_env_sum_N[15]_i_7_n_0 ,\det_signal.lo_env_sum_N[15]_i_8_n_0 }),
+        .O({\det_signal.lo_env_sum_N_reg[15]_i_1_n_8 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_9 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_10 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_11 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_12 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_13 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_14 ,\det_signal.lo_env_sum_N_reg[15]_i_1_n_15 }),
+        .S({\det_signal.lo_env_sum_N[15]_i_9_n_0 ,\det_signal.lo_env_sum_N[15]_i_10_n_0 ,\det_signal.lo_env_sum_N[15]_i_11_n_0 ,\det_signal.lo_env_sum_N[15]_i_12_n_0 ,\det_signal.lo_env_sum_N[15]_i_13_n_0 ,\det_signal.lo_env_sum_N[15]_i_14_n_0 ,\det_signal.lo_env_sum_N[15]_i_15_n_0 ,\det_signal.lo_env_sum_N[15]_i_16_n_0 }));
+  FDRE \det_signal.lo_env_sum_N_reg[1] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_14 ),
+        .Q(curr_env_sum_N[1]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[2] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_13 ),
+        .Q(curr_env_sum_N[2]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[3] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_12 ),
+        .Q(curr_env_sum_N[3]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[4] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_11 ),
+        .Q(curr_env_sum_N[4]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[5] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_10 ),
+        .Q(curr_env_sum_N[5]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[6] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_9 ),
+        .Q(curr_env_sum_N[6]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[7] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[7]_i_1_n_8 ),
+        .Q(curr_env_sum_N[7]),
+        .R(1'b0));
+  CARRY8 \det_signal.lo_env_sum_N_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.lo_env_sum_N_reg[7]_i_1_n_0 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_1 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_2 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_3 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_4 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_5 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_6 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_7 }),
+        .DI({\det_signal.lo_env_sum_N[7]_i_2_n_0 ,\det_signal.lo_env_sum_N[7]_i_3_n_0 ,\det_signal.lo_env_sum_N[7]_i_4_n_0 ,\det_signal.lo_env_sum_N[7]_i_5_n_0 ,\det_signal.lo_env_sum_N[7]_i_6_n_0 ,\det_signal.lo_env_sum_N[7]_i_7_n_0 ,\det_signal.lo_env_sum_N[7]_i_8_n_0 ,\det_signal.lo_env_sum_N[7]_i_9_n_0 }),
+        .O({\det_signal.lo_env_sum_N_reg[7]_i_1_n_8 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_9 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_10 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_11 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_12 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_13 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_14 ,\det_signal.lo_env_sum_N_reg[7]_i_1_n_15 }),
+        .S({\det_signal.lo_env_sum_N[7]_i_10_n_0 ,\det_signal.lo_env_sum_N[7]_i_11_n_0 ,\det_signal.lo_env_sum_N[7]_i_12_n_0 ,\det_signal.lo_env_sum_N[7]_i_13_n_0 ,\det_signal.lo_env_sum_N[7]_i_14_n_0 ,\det_signal.lo_env_sum_N[7]_i_15_n_0 ,\det_signal.lo_env_sum_N[7]_i_16_n_0 ,\det_signal.lo_env_sum_N[7]_i_17_n_0 }));
+  FDRE \det_signal.lo_env_sum_N_reg[8] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_15 ),
+        .Q(curr_env_sum_N[8]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_N_reg[9] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_N_reg[15]_i_1_n_14 ),
+        .Q(curr_env_sum_N[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_10 
+       (.I0(curr_env_sum_W[14]),
+        .I1(acc_reset),
+        .I2(env_W[14]),
+        .O(\det_signal.lo_env_sum_W[15]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_11 
+       (.I0(curr_env_sum_W[13]),
+        .I1(acc_reset),
+        .I2(env_W[13]),
+        .O(\det_signal.lo_env_sum_W[15]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_12 
+       (.I0(curr_env_sum_W[12]),
+        .I1(acc_reset),
+        .I2(env_W[12]),
+        .O(\det_signal.lo_env_sum_W[15]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_13 
+       (.I0(curr_env_sum_W[11]),
+        .I1(acc_reset),
+        .I2(env_W[11]),
+        .O(\det_signal.lo_env_sum_W[15]_i_13_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_14 
+       (.I0(curr_env_sum_W[10]),
+        .I1(acc_reset),
+        .I2(env_W[10]),
+        .O(\det_signal.lo_env_sum_W[15]_i_14_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_15 
+       (.I0(curr_env_sum_W[9]),
+        .I1(acc_reset),
+        .I2(env_W[9]),
+        .O(\det_signal.lo_env_sum_W[15]_i_15_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_16 
+       (.I0(curr_env_sum_W[8]),
+        .I1(acc_reset),
+        .I2(env_W[8]),
+        .O(\det_signal.lo_env_sum_W[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_2 
+       (.I0(env_W[14]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_3 
+       (.I0(env_W[13]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_4 
+       (.I0(env_W[12]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_5 
+       (.I0(env_W[11]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_6 
+       (.I0(env_W[10]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_7 
+       (.I0(env_W[9]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[15]_i_8 
+       (.I0(env_W[8]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[15]_i_8_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[15]_i_9 
+       (.I0(curr_env_sum_W[15]),
+        .I1(acc_reset),
+        .I2(env_W[15]),
+        .O(\det_signal.lo_env_sum_W[15]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_10 
+       (.I0(curr_env_sum_W[7]),
+        .I1(acc_reset),
+        .I2(env_W[7]),
+        .O(\det_signal.lo_env_sum_W[7]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_11 
+       (.I0(curr_env_sum_W[6]),
+        .I1(acc_reset),
+        .I2(env_W[6]),
+        .O(\det_signal.lo_env_sum_W[7]_i_11_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_12 
+       (.I0(curr_env_sum_W[5]),
+        .I1(acc_reset),
+        .I2(env_W[5]),
+        .O(\det_signal.lo_env_sum_W[7]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_13 
+       (.I0(curr_env_sum_W[4]),
+        .I1(acc_reset),
+        .I2(env_W[4]),
+        .O(\det_signal.lo_env_sum_W[7]_i_13_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_14 
+       (.I0(curr_env_sum_W[3]),
+        .I1(acc_reset),
+        .I2(env_W[3]),
+        .O(\det_signal.lo_env_sum_W[7]_i_14_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_15 
+       (.I0(curr_env_sum_W[2]),
+        .I1(acc_reset),
+        .I2(env_W[2]),
+        .O(\det_signal.lo_env_sum_W[7]_i_15_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_16 
+       (.I0(curr_env_sum_W[1]),
+        .I1(acc_reset),
+        .I2(env_W[1]),
+        .O(\det_signal.lo_env_sum_W[7]_i_16_n_0 ));
+  LUT3 #(
+    .INIT(8'hD2)) 
+    \det_signal.lo_env_sum_W[7]_i_17 
+       (.I0(curr_env_sum_W[0]),
+        .I1(acc_reset),
+        .I2(env_W[0]),
+        .O(\det_signal.lo_env_sum_W[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_2 
+       (.I0(env_W[7]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_3 
+       (.I0(env_W[6]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_4 
+       (.I0(env_W[5]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_5 
+       (.I0(env_W[4]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_6 
+       (.I0(env_W[3]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_7 
+       (.I0(env_W[2]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_8 
+       (.I0(env_W[1]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \det_signal.lo_env_sum_W[7]_i_9 
+       (.I0(env_W[0]),
+        .I1(acc_reset),
+        .O(\det_signal.lo_env_sum_W[7]_i_9_n_0 ));
+  FDRE \det_signal.lo_env_sum_W_reg[0] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_15 ),
+        .Q(curr_env_sum_W[0]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[10] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_13 ),
+        .Q(curr_env_sum_W[10]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[11] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_12 ),
+        .Q(curr_env_sum_W[11]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[12] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_11 ),
+        .Q(curr_env_sum_W[12]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[13] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_10 ),
+        .Q(curr_env_sum_W[13]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[14] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_9 ),
+        .Q(curr_env_sum_W[14]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[15] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_8 ),
+        .Q(curr_env_sum_W[15]),
+        .R(1'b0));
+  CARRY8 \det_signal.lo_env_sum_W_reg[15]_i_1 
+       (.CI(\det_signal.lo_env_sum_W_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.lo_env_sum_W_reg[15]_i_1_CO_UNCONNECTED [7],\det_signal.lo_env_sum_W_reg[15]_i_1_n_1 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_2 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_3 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_4 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_5 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_6 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_7 }),
+        .DI({1'b0,\det_signal.lo_env_sum_W[15]_i_2_n_0 ,\det_signal.lo_env_sum_W[15]_i_3_n_0 ,\det_signal.lo_env_sum_W[15]_i_4_n_0 ,\det_signal.lo_env_sum_W[15]_i_5_n_0 ,\det_signal.lo_env_sum_W[15]_i_6_n_0 ,\det_signal.lo_env_sum_W[15]_i_7_n_0 ,\det_signal.lo_env_sum_W[15]_i_8_n_0 }),
+        .O({\det_signal.lo_env_sum_W_reg[15]_i_1_n_8 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_9 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_10 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_11 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_12 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_13 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_14 ,\det_signal.lo_env_sum_W_reg[15]_i_1_n_15 }),
+        .S({\det_signal.lo_env_sum_W[15]_i_9_n_0 ,\det_signal.lo_env_sum_W[15]_i_10_n_0 ,\det_signal.lo_env_sum_W[15]_i_11_n_0 ,\det_signal.lo_env_sum_W[15]_i_12_n_0 ,\det_signal.lo_env_sum_W[15]_i_13_n_0 ,\det_signal.lo_env_sum_W[15]_i_14_n_0 ,\det_signal.lo_env_sum_W[15]_i_15_n_0 ,\det_signal.lo_env_sum_W[15]_i_16_n_0 }));
+  FDRE \det_signal.lo_env_sum_W_reg[1] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_14 ),
+        .Q(curr_env_sum_W[1]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[2] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_13 ),
+        .Q(curr_env_sum_W[2]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[3] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_12 ),
+        .Q(curr_env_sum_W[3]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[4] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_11 ),
+        .Q(curr_env_sum_W[4]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[5] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_10 ),
+        .Q(curr_env_sum_W[5]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[6] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_9 ),
+        .Q(curr_env_sum_W[6]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[7] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[7]_i_1_n_8 ),
+        .Q(curr_env_sum_W[7]),
+        .R(1'b0));
+  CARRY8 \det_signal.lo_env_sum_W_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.lo_env_sum_W_reg[7]_i_1_n_0 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_1 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_2 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_3 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_4 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_5 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_6 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_7 }),
+        .DI({\det_signal.lo_env_sum_W[7]_i_2_n_0 ,\det_signal.lo_env_sum_W[7]_i_3_n_0 ,\det_signal.lo_env_sum_W[7]_i_4_n_0 ,\det_signal.lo_env_sum_W[7]_i_5_n_0 ,\det_signal.lo_env_sum_W[7]_i_6_n_0 ,\det_signal.lo_env_sum_W[7]_i_7_n_0 ,\det_signal.lo_env_sum_W[7]_i_8_n_0 ,\det_signal.lo_env_sum_W[7]_i_9_n_0 }),
+        .O({\det_signal.lo_env_sum_W_reg[7]_i_1_n_8 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_9 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_10 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_11 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_12 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_13 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_14 ,\det_signal.lo_env_sum_W_reg[7]_i_1_n_15 }),
+        .S({\det_signal.lo_env_sum_W[7]_i_10_n_0 ,\det_signal.lo_env_sum_W[7]_i_11_n_0 ,\det_signal.lo_env_sum_W[7]_i_12_n_0 ,\det_signal.lo_env_sum_W[7]_i_13_n_0 ,\det_signal.lo_env_sum_W[7]_i_14_n_0 ,\det_signal.lo_env_sum_W[7]_i_15_n_0 ,\det_signal.lo_env_sum_W[7]_i_16_n_0 ,\det_signal.lo_env_sum_W[7]_i_17_n_0 }));
+  FDRE \det_signal.lo_env_sum_W_reg[8] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_15 ),
+        .Q(curr_env_sum_W[8]),
+        .R(1'b0));
+  FDRE \det_signal.lo_env_sum_W_reg[9] 
+       (.C(clk),
+        .CE(has_signal),
+        .D(\det_signal.lo_env_sum_W_reg[15]_i_1_n_14 ),
+        .Q(curr_env_sum_W[9]),
         .R(1'b0));
   LUT5 #(
     .INIT(32'h02000000)) 
@@ -7243,7 +9370,7 @@ module ps_comp_high_0_0_det_signal
   FDRE \det_signal.proc_done_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(1'b1),
+        .D(proc_signal),
         .Q(proc_done),
         .R(1'b0));
   LUT3 #(
@@ -7281,270 +9408,238 @@ module ps_comp_high_0_0_det_signal
         .R(1'b0));
   LUT1 #(
     .INIT(2'h1)) 
-    \det_signal.sample_counter[31]_i_1 
+    \det_signal.sample_counter[0]_i_1 
        (.I0(\det_signal.run_reg[2]__0 ),
-        .O(\det_signal.sample_counter[31]_i_1_n_0 ));
+        .O(clear));
   LUT1 #(
     .INIT(2'h1)) 
-    \det_signal.sample_counter[7]_i_2 
-       (.I0(sample_counter[0]),
-        .O(\det_signal.sample_counter[7]_i_2_n_0 ));
-  (* KEEP = "yes" *) 
+    \det_signal.sample_counter[0]_i_3 
+       (.I0(\det_signal.sample_counter_reg [0]),
+        .O(\det_signal.sample_counter[0]_i_3_n_0 ));
   FDRE \det_signal.sample_counter_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_15 ),
-        .Q(sample_counter[0]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_15 ),
+        .Q(\det_signal.sample_counter_reg [0]),
+        .R(clear));
+  (* ADDER_THRESHOLD = "16" *) 
+  CARRY8 \det_signal.sample_counter_reg[0]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.sample_counter_reg[0]_i_2_n_0 ,\det_signal.sample_counter_reg[0]_i_2_n_1 ,\det_signal.sample_counter_reg[0]_i_2_n_2 ,\det_signal.sample_counter_reg[0]_i_2_n_3 ,\det_signal.sample_counter_reg[0]_i_2_n_4 ,\det_signal.sample_counter_reg[0]_i_2_n_5 ,\det_signal.sample_counter_reg[0]_i_2_n_6 ,\det_signal.sample_counter_reg[0]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1}),
+        .O({\det_signal.sample_counter_reg[0]_i_2_n_8 ,\det_signal.sample_counter_reg[0]_i_2_n_9 ,\det_signal.sample_counter_reg[0]_i_2_n_10 ,\det_signal.sample_counter_reg[0]_i_2_n_11 ,\det_signal.sample_counter_reg[0]_i_2_n_12 ,\det_signal.sample_counter_reg[0]_i_2_n_13 ,\det_signal.sample_counter_reg[0]_i_2_n_14 ,\det_signal.sample_counter_reg[0]_i_2_n_15 }),
+        .S({\det_signal.sample_counter_reg [7:1],\det_signal.sample_counter[0]_i_3_n_0 }));
   FDRE \det_signal.sample_counter_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_13 ),
-        .Q(sample_counter[10]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_13 ),
+        .Q(\det_signal.sample_counter_reg [10]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[11] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_12 ),
-        .Q(sample_counter[11]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_12 ),
+        .Q(\det_signal.sample_counter_reg [11]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[12] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_11 ),
-        .Q(sample_counter[12]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_11 ),
+        .Q(\det_signal.sample_counter_reg [12]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[13] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_10 ),
-        .Q(sample_counter[13]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_10 ),
+        .Q(\det_signal.sample_counter_reg [13]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[14] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_9 ),
-        .Q(sample_counter[14]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_9 ),
+        .Q(\det_signal.sample_counter_reg [14]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[15] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_8 ),
-        .Q(sample_counter[15]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.sample_counter_reg[15]_i_1 
-       (.CI(\det_signal.sample_counter_reg[7]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\det_signal.sample_counter_reg[15]_i_1_n_0 ,\det_signal.sample_counter_reg[15]_i_1_n_1 ,\det_signal.sample_counter_reg[15]_i_1_n_2 ,\det_signal.sample_counter_reg[15]_i_1_n_3 ,\det_signal.sample_counter_reg[15]_i_1_n_4 ,\det_signal.sample_counter_reg[15]_i_1_n_5 ,\det_signal.sample_counter_reg[15]_i_1_n_6 ,\det_signal.sample_counter_reg[15]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\det_signal.sample_counter_reg[15]_i_1_n_8 ,\det_signal.sample_counter_reg[15]_i_1_n_9 ,\det_signal.sample_counter_reg[15]_i_1_n_10 ,\det_signal.sample_counter_reg[15]_i_1_n_11 ,\det_signal.sample_counter_reg[15]_i_1_n_12 ,\det_signal.sample_counter_reg[15]_i_1_n_13 ,\det_signal.sample_counter_reg[15]_i_1_n_14 ,\det_signal.sample_counter_reg[15]_i_1_n_15 }),
-        .S(sample_counter[15:8]));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_8 ),
+        .Q(\det_signal.sample_counter_reg [15]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[16] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_15 ),
-        .Q(sample_counter[16]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_15 ),
+        .Q(\det_signal.sample_counter_reg [16]),
+        .R(clear));
+  (* ADDER_THRESHOLD = "16" *) 
+  CARRY8 \det_signal.sample_counter_reg[16]_i_1 
+       (.CI(\det_signal.sample_counter_reg[8]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.sample_counter_reg[16]_i_1_n_0 ,\det_signal.sample_counter_reg[16]_i_1_n_1 ,\det_signal.sample_counter_reg[16]_i_1_n_2 ,\det_signal.sample_counter_reg[16]_i_1_n_3 ,\det_signal.sample_counter_reg[16]_i_1_n_4 ,\det_signal.sample_counter_reg[16]_i_1_n_5 ,\det_signal.sample_counter_reg[16]_i_1_n_6 ,\det_signal.sample_counter_reg[16]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\det_signal.sample_counter_reg[16]_i_1_n_8 ,\det_signal.sample_counter_reg[16]_i_1_n_9 ,\det_signal.sample_counter_reg[16]_i_1_n_10 ,\det_signal.sample_counter_reg[16]_i_1_n_11 ,\det_signal.sample_counter_reg[16]_i_1_n_12 ,\det_signal.sample_counter_reg[16]_i_1_n_13 ,\det_signal.sample_counter_reg[16]_i_1_n_14 ,\det_signal.sample_counter_reg[16]_i_1_n_15 }),
+        .S(\det_signal.sample_counter_reg [23:16]));
   FDRE \det_signal.sample_counter_reg[17] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_14 ),
-        .Q(sample_counter[17]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_14 ),
+        .Q(\det_signal.sample_counter_reg [17]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[18] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_13 ),
-        .Q(sample_counter[18]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_13 ),
+        .Q(\det_signal.sample_counter_reg [18]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[19] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_12 ),
-        .Q(sample_counter[19]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_12 ),
+        .Q(\det_signal.sample_counter_reg [19]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_14 ),
-        .Q(sample_counter[1]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_14 ),
+        .Q(\det_signal.sample_counter_reg [1]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[20] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_11 ),
-        .Q(sample_counter[20]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_11 ),
+        .Q(\det_signal.sample_counter_reg [20]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[21] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_10 ),
-        .Q(sample_counter[21]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_10 ),
+        .Q(\det_signal.sample_counter_reg [21]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[22] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_9 ),
-        .Q(sample_counter[22]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_9 ),
+        .Q(\det_signal.sample_counter_reg [22]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[23] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[23]_i_1_n_8 ),
-        .Q(sample_counter[23]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.sample_counter_reg[23]_i_1 
-       (.CI(\det_signal.sample_counter_reg[15]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\det_signal.sample_counter_reg[23]_i_1_n_0 ,\det_signal.sample_counter_reg[23]_i_1_n_1 ,\det_signal.sample_counter_reg[23]_i_1_n_2 ,\det_signal.sample_counter_reg[23]_i_1_n_3 ,\det_signal.sample_counter_reg[23]_i_1_n_4 ,\det_signal.sample_counter_reg[23]_i_1_n_5 ,\det_signal.sample_counter_reg[23]_i_1_n_6 ,\det_signal.sample_counter_reg[23]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\det_signal.sample_counter_reg[23]_i_1_n_8 ,\det_signal.sample_counter_reg[23]_i_1_n_9 ,\det_signal.sample_counter_reg[23]_i_1_n_10 ,\det_signal.sample_counter_reg[23]_i_1_n_11 ,\det_signal.sample_counter_reg[23]_i_1_n_12 ,\det_signal.sample_counter_reg[23]_i_1_n_13 ,\det_signal.sample_counter_reg[23]_i_1_n_14 ,\det_signal.sample_counter_reg[23]_i_1_n_15 }),
-        .S(sample_counter[23:16]));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[16]_i_1_n_8 ),
+        .Q(\det_signal.sample_counter_reg [23]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[24] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_15 ),
-        .Q(sample_counter[24]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_15 ),
+        .Q(\det_signal.sample_counter_reg [24]),
+        .R(clear));
+  (* ADDER_THRESHOLD = "16" *) 
+  CARRY8 \det_signal.sample_counter_reg[24]_i_1 
+       (.CI(\det_signal.sample_counter_reg[16]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_det_signal.sample_counter_reg[24]_i_1_CO_UNCONNECTED [7],\det_signal.sample_counter_reg[24]_i_1_n_1 ,\det_signal.sample_counter_reg[24]_i_1_n_2 ,\det_signal.sample_counter_reg[24]_i_1_n_3 ,\det_signal.sample_counter_reg[24]_i_1_n_4 ,\det_signal.sample_counter_reg[24]_i_1_n_5 ,\det_signal.sample_counter_reg[24]_i_1_n_6 ,\det_signal.sample_counter_reg[24]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\det_signal.sample_counter_reg[24]_i_1_n_8 ,\det_signal.sample_counter_reg[24]_i_1_n_9 ,\det_signal.sample_counter_reg[24]_i_1_n_10 ,\det_signal.sample_counter_reg[24]_i_1_n_11 ,\det_signal.sample_counter_reg[24]_i_1_n_12 ,\det_signal.sample_counter_reg[24]_i_1_n_13 ,\det_signal.sample_counter_reg[24]_i_1_n_14 ,\det_signal.sample_counter_reg[24]_i_1_n_15 }),
+        .S(\det_signal.sample_counter_reg [31:24]));
   FDRE \det_signal.sample_counter_reg[25] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_14 ),
-        .Q(sample_counter[25]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_14 ),
+        .Q(\det_signal.sample_counter_reg [25]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[26] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_13 ),
-        .Q(sample_counter[26]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_13 ),
+        .Q(\det_signal.sample_counter_reg [26]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[27] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_12 ),
-        .Q(sample_counter[27]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_12 ),
+        .Q(\det_signal.sample_counter_reg [27]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[28] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_11 ),
-        .Q(sample_counter[28]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_11 ),
+        .Q(\det_signal.sample_counter_reg [28]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[29] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_10 ),
-        .Q(sample_counter[29]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_10 ),
+        .Q(\det_signal.sample_counter_reg [29]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_13 ),
-        .Q(sample_counter[2]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_13 ),
+        .Q(\det_signal.sample_counter_reg [2]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[30] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_9 ),
-        .Q(sample_counter[30]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_9 ),
+        .Q(\det_signal.sample_counter_reg [30]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[31] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[31]_i_2_n_8 ),
-        .Q(sample_counter[31]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.sample_counter_reg[31]_i_2 
-       (.CI(\det_signal.sample_counter_reg[23]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_det_signal.sample_counter_reg[31]_i_2_CO_UNCONNECTED [7],\det_signal.sample_counter_reg[31]_i_2_n_1 ,\det_signal.sample_counter_reg[31]_i_2_n_2 ,\det_signal.sample_counter_reg[31]_i_2_n_3 ,\det_signal.sample_counter_reg[31]_i_2_n_4 ,\det_signal.sample_counter_reg[31]_i_2_n_5 ,\det_signal.sample_counter_reg[31]_i_2_n_6 ,\det_signal.sample_counter_reg[31]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\det_signal.sample_counter_reg[31]_i_2_n_8 ,\det_signal.sample_counter_reg[31]_i_2_n_9 ,\det_signal.sample_counter_reg[31]_i_2_n_10 ,\det_signal.sample_counter_reg[31]_i_2_n_11 ,\det_signal.sample_counter_reg[31]_i_2_n_12 ,\det_signal.sample_counter_reg[31]_i_2_n_13 ,\det_signal.sample_counter_reg[31]_i_2_n_14 ,\det_signal.sample_counter_reg[31]_i_2_n_15 }),
-        .S(sample_counter[31:24]));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[24]_i_1_n_8 ),
+        .Q(\det_signal.sample_counter_reg [31]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_12 ),
-        .Q(sample_counter[3]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_12 ),
+        .Q(\det_signal.sample_counter_reg [3]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_11 ),
-        .Q(sample_counter[4]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_11 ),
+        .Q(\det_signal.sample_counter_reg [4]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_10 ),
-        .Q(sample_counter[5]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_10 ),
+        .Q(\det_signal.sample_counter_reg [5]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_9 ),
-        .Q(sample_counter[6]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_9 ),
+        .Q(\det_signal.sample_counter_reg [6]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[7]_i_1_n_8 ),
-        .Q(sample_counter[7]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \det_signal.sample_counter_reg[7]_i_1 
-       (.CI(1'b0),
-        .CI_TOP(1'b0),
-        .CO({\det_signal.sample_counter_reg[7]_i_1_n_0 ,\det_signal.sample_counter_reg[7]_i_1_n_1 ,\det_signal.sample_counter_reg[7]_i_1_n_2 ,\det_signal.sample_counter_reg[7]_i_1_n_3 ,\det_signal.sample_counter_reg[7]_i_1_n_4 ,\det_signal.sample_counter_reg[7]_i_1_n_5 ,\det_signal.sample_counter_reg[7]_i_1_n_6 ,\det_signal.sample_counter_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,sample_counter[0]}),
-        .O({\det_signal.sample_counter_reg[7]_i_1_n_8 ,\det_signal.sample_counter_reg[7]_i_1_n_9 ,\det_signal.sample_counter_reg[7]_i_1_n_10 ,\det_signal.sample_counter_reg[7]_i_1_n_11 ,\det_signal.sample_counter_reg[7]_i_1_n_12 ,\det_signal.sample_counter_reg[7]_i_1_n_13 ,\det_signal.sample_counter_reg[7]_i_1_n_14 ,\det_signal.sample_counter_reg[7]_i_1_n_15 }),
-        .S({sample_counter[7:1],\det_signal.sample_counter[7]_i_2_n_0 }));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[0]_i_2_n_8 ),
+        .Q(\det_signal.sample_counter_reg [7]),
+        .R(clear));
   FDRE \det_signal.sample_counter_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_15 ),
-        .Q(sample_counter[8]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_15 ),
+        .Q(\det_signal.sample_counter_reg [8]),
+        .R(clear));
+  (* ADDER_THRESHOLD = "16" *) 
+  CARRY8 \det_signal.sample_counter_reg[8]_i_1 
+       (.CI(\det_signal.sample_counter_reg[0]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\det_signal.sample_counter_reg[8]_i_1_n_0 ,\det_signal.sample_counter_reg[8]_i_1_n_1 ,\det_signal.sample_counter_reg[8]_i_1_n_2 ,\det_signal.sample_counter_reg[8]_i_1_n_3 ,\det_signal.sample_counter_reg[8]_i_1_n_4 ,\det_signal.sample_counter_reg[8]_i_1_n_5 ,\det_signal.sample_counter_reg[8]_i_1_n_6 ,\det_signal.sample_counter_reg[8]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\det_signal.sample_counter_reg[8]_i_1_n_8 ,\det_signal.sample_counter_reg[8]_i_1_n_9 ,\det_signal.sample_counter_reg[8]_i_1_n_10 ,\det_signal.sample_counter_reg[8]_i_1_n_11 ,\det_signal.sample_counter_reg[8]_i_1_n_12 ,\det_signal.sample_counter_reg[8]_i_1_n_13 ,\det_signal.sample_counter_reg[8]_i_1_n_14 ,\det_signal.sample_counter_reg[8]_i_1_n_15 }),
+        .S(\det_signal.sample_counter_reg [15:8]));
   FDRE \det_signal.sample_counter_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.sample_counter_reg[15]_i_1_n_14 ),
-        .Q(sample_counter[9]),
-        .R(\det_signal.sample_counter[31]_i_1_n_0 ));
+        .D(\det_signal.sample_counter_reg[8]_i_1_n_14 ),
+        .Q(\det_signal.sample_counter_reg [9]),
+        .R(clear));
   FDRE \det_signal.signal_counter_reg[0] 
        (.C(clk),
         .CE(proc_signal),
@@ -7613,22 +9708,15 @@ module ps_comp_high_0_0_det_signal
         .Q(signal_done),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000BFB000000000)) 
+    .INIT(64'h0C8C8C8C00000000)) 
     \det_signal.start_proc_i_1 
-       (.I0(err_ov),
-        .I1(valid_count),
-        .I2(has_signal),
-        .I3(start_proc),
-        .I4(err_count0),
-        .I5(\det_signal.run_reg[2]__0 ),
+       (.I0(\det_signal.err_ov_reg_n_0 ),
+        .I1(\det_signal.run_reg[2]__0 ),
+        .I2(\det_signal.valid_count_reg_n_0 ),
+        .I3(valid_err),
+        .I4(valid_env),
+        .I5(has_signal),
         .O(\det_signal.start_proc_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h80)) 
-    \det_signal.start_proc_i_2 
-       (.I0(valid_env),
-        .I1(valid_err),
-        .I2(valid_count),
-        .O(err_count0));
   (* KEEP = "yes" *) 
   FDRE \det_signal.start_proc_reg 
        (.C(clk),
@@ -7639,9 +9727,9 @@ module ps_comp_high_0_0_det_signal
   LUT3 #(
     .INIT(8'h0E)) 
     \det_signal.valid_count_i_1 
-       (.I0(valid_count),
+       (.I0(\det_signal.valid_count_reg_n_0 ),
         .I1(\det_signal.run_reg[1]__0 ),
-        .I2(valid_count3_out),
+        .I2(valid_count6_out),
         .O(\det_signal.valid_count_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
@@ -7652,7 +9740,7 @@ module ps_comp_high_0_0_det_signal
         .I3(\det_signal.signal_counter_reg_n_0_[8] ),
         .I4(\det_signal.signal_counter_reg_n_0_[7] ),
         .I5(\det_signal.signal_counter_reg_n_0_[9] ),
-        .O(valid_count3_out));
+        .O(valid_count6_out));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
     \det_signal.valid_count_i_3 
@@ -7663,13 +9751,11 @@ module ps_comp_high_0_0_det_signal
         .I4(\det_signal.signal_counter_reg_n_0_[5] ),
         .I5(\det_signal.signal_counter_reg_n_0_[4] ),
         .O(\det_signal.valid_count_i_3_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \det_signal.valid_count_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\det_signal.valid_count_i_1_n_0 ),
-        .Q(valid_count),
+        .Q(\det_signal.valid_count_reg_n_0 ),
         .R(1'b0));
   LUT3 #(
     .INIT(8'h80)) 
@@ -7677,58 +9763,66 @@ module ps_comp_high_0_0_det_signal
        (.I0(diff_env_N[16]),
         .I1(diff_env_E[16]),
         .I2(diff_env_W[16]),
-        .O(\det_signal.valid_env_reg0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .O(valid_env0));
   FDRE \det_signal.valid_env_reg 
        (.C(clk),
         .CE(\det_signal.run_reg[1]__0 ),
-        .D(\det_signal.valid_env_reg0 ),
+        .D(valid_env0),
         .Q(valid_env),
         .R(1'b0));
   LUT3 #(
     .INIT(8'h80)) 
     \det_signal.valid_err_i_1 
-       (.I0(diff_err_NE[12]),
-        .I1(diff_err_NW[12]),
-        .I2(diff_err_EW[12]),
-        .O(\det_signal.valid_err_reg0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+       (.I0(p_1_in9_in),
+        .I1(p_0_in8_in),
+        .I2(p_2_in),
+        .O(valid_err0));
   FDRE \det_signal.valid_err_reg 
        (.C(clk),
         .CE(\det_signal.run_reg[1]__0 ),
-        .D(\det_signal.valid_err_reg0 ),
+        .D(valid_err0),
         .Q(valid_err),
         .R(1'b0));
+  (* CHECK_LICENSE_TYPE = "dsp_incr_env,dsp_macro_v1_0_8,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "dsp_macro_v1_0_8,Vivado 2025.1" *) 
+  ps_comp_high_0_0_dsp_incr_env dsp_incr_env_E
+       (.A(dsp_phase_E),
+        .B(env_E),
+        .CLK(clk),
+        .P(dsp_sum_E),
+        .SCLRP(acc_reset));
+  (* CHECK_LICENSE_TYPE = "dsp_incr_env,dsp_macro_v1_0_8,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "dsp_macro_v1_0_8,Vivado 2025.1" *) 
+  ps_comp_high_0_0_dsp_incr_env dsp_incr_env_N
+       (.A(dsp_phase_N),
+        .B(env_N),
+        .CLK(clk),
+        .P(dsp_sum_N),
+        .SCLRP(acc_reset));
+  (* CHECK_LICENSE_TYPE = "dsp_incr_env,dsp_macro_v1_0_8,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "dsp_macro_v1_0_8,Vivado 2025.1" *) 
+  ps_comp_high_0_0_dsp_incr_env_HD1 dsp_incr_env_W
+       (.A(dsp_phase_W),
+        .B(env_W),
+        .CLK(clk),
+        .P(dsp_sum_W),
+        .SCLRP(acc_reset));
   LUT1 #(
     .INIT(2'h2)) 
     i_0
        (.I0(1'b0),
-        .O(err_NW[12]));
+        .O(env_E[16]));
   LUT1 #(
     .INIT(2'h2)) 
     i_1
        (.I0(1'b0),
-        .O(err_EW[12]));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i_2
-       (.I0(1'b0),
-        .O(err_NE[12]));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i_3
-       (.I0(1'b0),
-        .O(env_E[16]));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i_4
-       (.I0(1'b0),
         .O(env_W[16]));
   LUT1 #(
     .INIT(2'h2)) 
-    i_5
+    i_2
        (.I0(1'b0),
         .O(env_N[16]));
   (* CHECK_LICENSE_TYPE = "ila_3,ila,{}" *) 
@@ -7736,42 +9830,73 @@ module ps_comp_high_0_0_det_signal
   (* x_core_info = "ila,Vivado 2025.1" *) 
   ps_comp_high_0_0_ila_3 ila_i
        (.clk(clk),
-        .probe0(config_wr),
-        .probe1(config_adr),
-        .probe10(phase_E),
-        .probe11(diff_env_E),
-        .probe12(diff_phase_E),
-        .probe13(env_W),
-        .probe14(phase_W),
-        .probe15(diff_env_W),
-        .probe16(diff_phase_W),
-        .probe17(err_NE[11:0]),
-        .probe18(err_NW),
-        .probe19(err_EW),
-        .probe2(config_data),
-        .probe20(diff_err_NE),
-        .probe21(diff_err_NW),
-        .probe22(diff_err_EW),
-        .probe23(valid_env),
-        .probe24(valid_err),
-        .probe25(valid_count),
-        .probe26(err_ov),
-        .probe27(has_signal),
-        .probe28(curr_signal_sample),
-        .probe29(curr_signal_counter),
-        .probe3(active),
-        .probe30(err_count),
-        .probe31(acc_reset),
-        .probe32(start_proc),
-        .probe33(proc_signal),
-        .probe34(proc_done),
-        .probe35(signal_done),
-        .probe4(sample_counter),
-        .probe5(env_N),
-        .probe6(phase_N),
-        .probe7(diff_env_N),
-        .probe8(diff_phase_N),
-        .probe9(env_E));
+        .probe0(active),
+        .probe1(env_N),
+        .probe10(diff_env_E),
+        .probe11(diff_phase_E),
+        .probe12(curr_env_sum_E),
+        .probe13(dsp_phase_E),
+        .probe14(dsp_sum_E),
+        .probe15(env_W),
+        .probe16(phase_W),
+        .probe17(diff_env_W),
+        .probe18(diff_phase_W),
+        .probe19(curr_env_sum_W),
+        .probe2(phase_N),
+        .probe20(dsp_phase_W),
+        .probe21(dsp_sum_W),
+        .probe22(has_signal),
+        .probe23(curr_signal_sample),
+        .probe24(curr_signal_counter),
+        .probe25(err_count),
+        .probe26(acc_reset),
+        .probe27(start_proc),
+        .probe28(proc_signal),
+        .probe29(proc_done),
+        .probe3(diff_env_N),
+        .probe30(signal_done),
+        .probe4(diff_phase_N),
+        .probe5(curr_env_sum_N),
+        .probe6(dsp_phase_N),
+        .probe7(dsp_sum_N),
+        .probe8(env_E),
+        .probe9(phase_E));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "dsp_incr_env,dsp_macro_v1_0_8,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "dsp_incr_env" *) 
+(* X_CORE_INFO = "dsp_macro_v1_0_8,Vivado 2025.1" *) 
+module ps_comp_high_0_0_dsp_incr_env
+   (CLK,
+    A,
+    B,
+    P,
+    SCLRP);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk_intf CLK" *) (* X_INTERFACE_MODE = "slave clk_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF p_intf:pcout_intf:carrycascout_intf:carryout_intf:bcout_intf:acout_intf:concat_intf:d_intf:c_intf:b_intf:a_intf:bcin_intf:acin_intf:pcin_intf:carryin_intf:carrycascin_intf:sel_intf, ASSOCIATED_RESET SCLR:SCLRD:SCLRA:SCLRB:SCLRCONCAT:SCLRC:SCLRM:SCLRP:SCLRSEL, ASSOCIATED_CLKEN CE:CED:CED1:CED2:CED3:CEA:CEA1:CEA2:CEA3:CEA4:CEB:CEB1:CEB2:CEB3:CEB4:CECONCAT:CECONCAT3:CECONCAT4:CECONCAT5:CEC:CEC1:CEC2:CEC3:CEC4:CEC5:CEM:CEP:CESEL:CESEL1:CESEL2:CESEL3:CESEL4:CESEL5, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input CLK;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 a_intf DATA" *) (* X_INTERFACE_MODE = "slave a_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME a_intf, LAYERED_METADATA undef" *) input [20:0]A;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 b_intf DATA" *) (* X_INTERFACE_MODE = "slave b_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME b_intf, LAYERED_METADATA undef" *) input [16:0]B;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 p_intf DATA" *) (* X_INTERFACE_MODE = "master p_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME p_intf, LAYERED_METADATA undef" *) output [47:0]P;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sclrp_intf RST" *) (* X_INTERFACE_MODE = "slave sclrp_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sclrp_intf, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input SCLRP;
+
+
+endmodule
+
+(* CHECK_LICENSE_TYPE = "dsp_incr_env,dsp_macro_v1_0_8,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "dsp_incr_env" *) 
+(* X_CORE_INFO = "dsp_macro_v1_0_8,Vivado 2025.1" *) 
+module ps_comp_high_0_0_dsp_incr_env_HD1
+   (CLK,
+    SCLRP,
+    A,
+    B,
+    P);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk_intf CLK" *) (* X_INTERFACE_MODE = "slave clk_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF p_intf:pcout_intf:carrycascout_intf:carryout_intf:bcout_intf:acout_intf:concat_intf:d_intf:c_intf:b_intf:a_intf:bcin_intf:acin_intf:pcin_intf:carryin_intf:carrycascin_intf:sel_intf, ASSOCIATED_RESET SCLR:SCLRD:SCLRA:SCLRB:SCLRCONCAT:SCLRC:SCLRM:SCLRP:SCLRSEL, ASSOCIATED_CLKEN CE:CED:CED1:CED2:CED3:CEA:CEA1:CEA2:CEA3:CEA4:CEB:CEB1:CEB2:CEB3:CEB4:CECONCAT:CECONCAT3:CECONCAT4:CECONCAT5:CEC:CEC1:CEC2:CEC3:CEC4:CEC5:CEM:CEP:CESEL:CESEL1:CESEL2:CESEL3:CESEL4:CESEL5, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input CLK;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sclrp_intf RST" *) (* X_INTERFACE_MODE = "slave sclrp_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sclrp_intf, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input SCLRP;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 a_intf DATA" *) (* X_INTERFACE_MODE = "slave a_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME a_intf, LAYERED_METADATA undef" *) input [20:0]A;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 b_intf DATA" *) (* X_INTERFACE_MODE = "slave b_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME b_intf, LAYERED_METADATA undef" *) input [16:0]B;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 p_intf DATA" *) (* X_INTERFACE_MODE = "master p_intf" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME p_intf, LAYERED_METADATA undef" *) output [47:0]P;
+
+
 endmodule
 
 (* CHECK_LICENSE_TYPE = "fifo_config,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_config" *) 
@@ -7901,49 +10026,39 @@ module ps_comp_high_0_0_ila_3
     probe27,
     probe28,
     probe29,
-    probe30,
-    probe31,
-    probe32,
-    probe33,
-    probe34,
-    probe35);
+    probe30);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [7:0]probe1;
-  input [31:0]probe2;
-  input [0:0]probe3;
-  input [31:0]probe4;
-  input [16:0]probe5;
-  input [19:0]probe6;
-  input [16:0]probe7;
-  input [19:0]probe8;
-  input [16:0]probe9;
-  input [19:0]probe10;
-  input [16:0]probe11;
-  input [19:0]probe12;
-  input [16:0]probe13;
-  input [19:0]probe14;
+  input [16:0]probe1;
+  input [19:0]probe2;
+  input [16:0]probe3;
+  input [19:0]probe4;
+  input [31:0]probe5;
+  input [20:0]probe6;
+  input [47:0]probe7;
+  input [16:0]probe8;
+  input [19:0]probe9;
+  input [16:0]probe10;
+  input [19:0]probe11;
+  input [31:0]probe12;
+  input [20:0]probe13;
+  input [47:0]probe14;
   input [16:0]probe15;
   input [19:0]probe16;
-  input [11:0]probe17;
-  input [12:0]probe18;
-  input [12:0]probe19;
-  input [12:0]probe20;
-  input [12:0]probe21;
-  input [12:0]probe22;
-  input [0:0]probe23;
-  input [0:0]probe24;
-  input [0:0]probe25;
+  input [16:0]probe17;
+  input [19:0]probe18;
+  input [31:0]probe19;
+  input [20:0]probe20;
+  input [47:0]probe21;
+  input [0:0]probe22;
+  input [31:0]probe23;
+  input [9:0]probe24;
+  input [1:0]probe25;
   input [0:0]probe26;
   input [0:0]probe27;
-  input [31:0]probe28;
-  input [9:0]probe29;
-  input [1:0]probe30;
-  input [0:0]probe31;
-  input [0:0]probe32;
-  input [0:0]probe33;
-  input [0:0]probe34;
-  input [0:0]probe35;
+  input [0:0]probe28;
+  input [0:0]probe29;
+  input [0:0]probe30;
 
 
 endmodule

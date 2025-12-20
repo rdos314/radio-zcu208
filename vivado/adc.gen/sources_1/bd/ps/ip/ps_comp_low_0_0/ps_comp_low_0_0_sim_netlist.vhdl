@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Dec 19 22:30:39 2025
+-- Date        : Sat Dec 20 00:23:31 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -35,55 +35,176 @@ entity ps_comp_low_0_0_det_signal is
 end ps_comp_low_0_0_det_signal;
 
 architecture STRUCTURE of ps_comp_low_0_0_det_signal is
+  component ps_comp_low_0_0_dsp_incr_env is
+  port (
+    CLK : in STD_LOGIC;
+    A : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    P : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    SCLRP : in STD_LOGIC
+  );
+  end component ps_comp_low_0_0_dsp_incr_env;
+  component ps_comp_low_0_0_dsp_incr_env_HD1 is
+  port (
+    CLK : in STD_LOGIC;
+    SCLRP : in STD_LOGIC;
+    A : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    P : out STD_LOGIC_VECTOR ( 47 downto 0 )
+  );
+  end component ps_comp_low_0_0_dsp_incr_env_HD1;
   component ps_comp_low_0_0_ila_3 is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 47 downto 0 );
     probe15 : in STD_LOGIC_VECTOR ( 16 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe26 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe27 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe33 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe34 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe35 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe28 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe29 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe30 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_comp_low_0_0_ila_3;
   signal acc_reset : STD_LOGIC;
   attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of acc_reset : signal is std.standard.true;
+  signal carry_env_sum_E : STD_LOGIC;
+  signal carry_env_sum_N : STD_LOGIC;
+  signal clear : STD_LOGIC;
+  signal curr_env_sum_E : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute MARK_DEBUG of curr_env_sum_E : signal is std.standard.true;
+  signal curr_env_sum_N : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute MARK_DEBUG of curr_env_sum_N : signal is std.standard.true;
+  signal curr_env_sum_W : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute MARK_DEBUG of curr_env_sum_W : signal is std.standard.true;
   signal curr_signal_counter : STD_LOGIC_VECTOR ( 9 downto 0 );
   attribute MARK_DEBUG of curr_signal_counter : signal is std.standard.true;
   signal curr_signal_sample : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of curr_signal_sample : signal is std.standard.true;
   signal \det_signal.acc_reset_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_17_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_18_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_19_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_1\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_2\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_3\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_4\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_5\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_6\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_E_reg_i_3_n_7\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_17_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_18_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_19_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_20_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_1\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_2\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_3\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_4\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_5\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_6\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_3_n_7\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_1\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_2\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_3\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_4\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_5\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_6\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_N_reg_i_4_n_7\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_17_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_18_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_19_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_1\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_2\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_3\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_4\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_5\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_6\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_i_3_n_7\ : STD_LOGIC;
+  signal \det_signal.carry_env_sum_W_reg_n_0\ : STD_LOGIC;
   signal \det_signal.curr_signal_counter[9]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.curr_signal_counter[9]_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.curr_signal_sample[0]_i_1_n_0\ : STD_LOGIC;
@@ -220,84 +341,78 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.diff_env_W_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.diff_env_W_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.diff_env_W_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_14_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_EW[12]_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_EW[12]_i_4_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_EW[12]_i_5_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_EW[12]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW[7]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg00_out\ : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal \det_signal.diff_err_EW[12]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW[12]_i_9_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_EW_reg[12]_i_1_n_4\ : STD_LOGIC;
   signal \det_signal.diff_err_EW_reg[12]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.diff_err_EW_reg[12]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.diff_err_EW_reg[12]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.diff_err_EW_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.diff_err_EW_reg[12]_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_14_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NE[12]_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NE[12]_i_4_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NE[12]_i_5_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NE[12]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE[7]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg0\ : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal \det_signal.diff_err_NE[12]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE[12]_i_9_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NE_reg[12]_i_1_n_4\ : STD_LOGIC;
   signal \det_signal.diff_err_NE_reg[12]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.diff_err_NE_reg[12]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.diff_err_NE_reg[12]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.diff_err_NE_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.diff_err_NE_reg[12]_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_14_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NW[12]_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NW[12]_i_4_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NW[12]_i_5_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NW[12]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[7]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg0\ : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal \det_signal.diff_err_NW[12]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW[12]_i_9_n_0\ : STD_LOGIC;
   signal \det_signal.diff_err_NW_reg[12]_i_1_n_4\ : STD_LOGIC;
   signal \det_signal.diff_err_NW_reg[12]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.diff_err_NW_reg[12]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.diff_err_NW_reg[12]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.diff_err_NW_reg[12]_i_2_n_7\ : STD_LOGIC;
   signal \det_signal.diff_phase_E[15]_i_11_n_0\ : STD_LOGIC;
   signal \det_signal.diff_phase_E[15]_i_12_n_0\ : STD_LOGIC;
   signal \det_signal.diff_phase_E[15]_i_13_n_0\ : STD_LOGIC;
@@ -597,6 +712,242 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.err_count[1]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.err_ov_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.err_ov_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.err_ov_reg_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_E_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N[15]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_N_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.hi_env_sum_W_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[15]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_17_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E[7]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[15]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_E_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[15]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_17_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N[7]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[15]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_N_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[15]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_15_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_16_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_17_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W[7]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[15]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.lo_env_sum_W_reg[7]_i_1_n_9\ : STD_LOGIC;
   signal \det_signal.max_doa_diff[11]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.max_doa_diff_reg_n_0_[0]\ : STD_LOGIC;
   signal \det_signal.max_doa_diff_reg_n_0_[10]\ : STD_LOGIC;
@@ -630,71 +981,71 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.run_reg[0]__0\ : STD_LOGIC;
   signal \det_signal.run_reg[1]__0\ : STD_LOGIC;
   signal \det_signal.run_reg[2]__0\ : STD_LOGIC;
-  signal \det_signal.sample_counter[31]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter[7]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[15]_i_1_n_9\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[23]_i_1_n_9\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[31]_i_2_n_9\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.sample_counter[0]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \det_signal.sample_counter_reg[0]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_10\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_11\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_12\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_13\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_14\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_15\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_8\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[0]_i_2_n_9\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[16]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[24]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_10\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_11\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_12\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_13\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_14\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_15\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_8\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[8]_i_1_n_9\ : STD_LOGIC;
   signal \det_signal.signal_counter_reg_n_0_[0]\ : STD_LOGIC;
   signal \det_signal.signal_counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \det_signal.signal_counter_reg_n_0_[2]\ : STD_LOGIC;
@@ -708,49 +1059,61 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.start_proc_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.valid_count_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.valid_count_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.valid_env_reg0\ : STD_LOGIC;
-  signal \det_signal.valid_err_reg0\ : STD_LOGIC;
+  signal \det_signal.valid_count_reg_n_0\ : STD_LOGIC;
   signal diff_env_E : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute MARK_DEBUG of diff_env_E : signal is std.standard.true;
   signal diff_env_N : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute MARK_DEBUG of diff_env_N : signal is std.standard.true;
   signal diff_env_W : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute MARK_DEBUG of diff_env_W : signal is std.standard.true;
-  signal diff_err_EW : STD_LOGIC_VECTOR ( 12 downto 0 );
-  attribute MARK_DEBUG of diff_err_EW : signal is std.standard.true;
-  signal diff_err_NE : STD_LOGIC_VECTOR ( 12 downto 0 );
-  attribute MARK_DEBUG of diff_err_NE : signal is std.standard.true;
-  signal diff_err_NW : STD_LOGIC_VECTOR ( 12 downto 0 );
-  attribute MARK_DEBUG of diff_err_NW : signal is std.standard.true;
+  signal diff_err_EW0 : STD_LOGIC_VECTOR ( 12 to 12 );
+  signal diff_err_NE0 : STD_LOGIC_VECTOR ( 12 to 12 );
+  signal diff_err_NW0 : STD_LOGIC_VECTOR ( 12 to 12 );
   signal diff_phase_E : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of diff_phase_E : signal is std.standard.true;
   signal diff_phase_N : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of diff_phase_N : signal is std.standard.true;
   signal diff_phase_W : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of diff_phase_W : signal is std.standard.true;
+  signal dsp_phase_E : STD_LOGIC_VECTOR ( 20 downto 0 );
+  attribute MARK_DEBUG of dsp_phase_E : signal is std.standard.true;
+  signal dsp_phase_N : STD_LOGIC_VECTOR ( 20 downto 0 );
+  attribute MARK_DEBUG of dsp_phase_N : signal is std.standard.true;
+  signal dsp_phase_W : STD_LOGIC_VECTOR ( 20 downto 0 );
+  attribute MARK_DEBUG of dsp_phase_W : signal is std.standard.true;
+  signal dsp_sum_E : STD_LOGIC_VECTOR ( 47 downto 0 );
+  attribute MARK_DEBUG of dsp_sum_E : signal is std.standard.true;
+  signal dsp_sum_N : STD_LOGIC_VECTOR ( 47 downto 0 );
+  attribute MARK_DEBUG of dsp_sum_N : signal is std.standard.true;
+  signal dsp_sum_W : STD_LOGIC_VECTOR ( 47 downto 0 );
+  attribute MARK_DEBUG of dsp_sum_W : signal is std.standard.true;
   signal env_E : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute MARK_DEBUG of env_E : signal is std.standard.true;
   signal env_N : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute MARK_DEBUG of env_N : signal is std.standard.true;
   signal env_W : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute MARK_DEBUG of env_W : signal is std.standard.true;
-  signal err_EW : STD_LOGIC_VECTOR ( 12 downto 0 );
-  attribute MARK_DEBUG of err_EW : signal is std.standard.true;
-  signal err_NE : STD_LOGIC_VECTOR ( 12 downto 0 );
-  attribute MARK_DEBUG of err_NE : signal is std.standard.true;
-  signal err_NW : STD_LOGIC_VECTOR ( 12 downto 0 );
-  attribute MARK_DEBUG of err_NW : signal is std.standard.true;
+  signal err_EW : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal err_NE : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal err_NW : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal err_count : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute MARK_DEBUG of err_count : signal is std.standard.true;
   signal err_count0 : STD_LOGIC;
-  signal err_ov : STD_LOGIC;
-  attribute MARK_DEBUG of err_ov : signal is std.standard.true;
   signal has_signal : STD_LOGIC;
   attribute MARK_DEBUG of has_signal : signal is std.standard.true;
-  signal has_signal4_out : STD_LOGIC;
+  signal has_signal0_out : STD_LOGIC;
+  signal hi_env_sum_E0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal hi_env_sum_N0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal hi_env_sum_W0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \hi_env_sum_W__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal max_doa_diff : STD_LOGIC;
   signal min_env : STD_LOGIC;
+  signal p_0_in8_in : STD_LOGIC;
+  signal p_1_in1_out : STD_LOGIC_VECTOR ( 16 to 16 );
+  signal p_1_in3_out : STD_LOGIC_VECTOR ( 16 to 16 );
+  signal p_1_in9_in : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal p_2_in : STD_LOGIC;
   signal phase_E : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of phase_E : signal is std.standard.true;
   signal phase_N : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -764,19 +1127,27 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute MARK_DEBUG of proc_done : signal is std.standard.true;
   signal proc_signal : STD_LOGIC;
   attribute MARK_DEBUG of proc_signal : signal is std.standard.true;
-  signal sample_counter : STD_LOGIC_VECTOR ( 31 downto 0 );
-  attribute MARK_DEBUG of sample_counter : signal is std.standard.true;
   signal \^signal_done\ : STD_LOGIC;
   attribute MARK_DEBUG of signal_done : signal is std.standard.true;
   signal start_proc : STD_LOGIC;
   attribute MARK_DEBUG of start_proc : signal is std.standard.true;
-  signal valid_count : STD_LOGIC;
-  attribute MARK_DEBUG of valid_count : signal is std.standard.true;
-  signal valid_count3_out : STD_LOGIC;
+  signal valid_count6_out : STD_LOGIC;
   signal valid_env : STD_LOGIC;
-  attribute MARK_DEBUG of valid_env : signal is std.standard.true;
+  signal valid_env0 : STD_LOGIC;
   signal valid_err : STD_LOGIC;
-  attribute MARK_DEBUG of valid_err : signal is std.standard.true;
+  signal valid_err0 : STD_LOGIC;
+  signal \NLW_det_signal.carry_env_sum_E_reg_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_E_reg_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_det_signal.carry_env_sum_E_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_E_reg_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_N_reg_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_N_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_det_signal.carry_env_sum_N_reg_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_N_reg_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_W_reg_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_W_reg_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_det_signal.carry_env_sum_W_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.carry_env_sum_W_reg_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_env_E_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_env_E_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.diff_env_N_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -784,11 +1155,14 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \NLW_det_signal.diff_env_W_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_env_W_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.diff_err_EW_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
+  signal \NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.diff_err_EW_reg[12]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_err_NE_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
+  signal \NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.diff_err_NE_reg[12]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_err_NW_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
+  signal \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.diff_err_NW_reg[12]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_phase_E_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_det_signal.diff_phase_E_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_det_signal.diff_phase_E_reg[19]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
@@ -801,9 +1175,25 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \NLW_det_signal.diff_phase_W_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_det_signal.diff_phase_W_reg[19]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_det_signal.diff_phase_W_reg[19]_i_6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_det_signal.sample_counter_reg[31]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.hi_env_sum_E_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.hi_env_sum_N_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.hi_env_sum_W_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.lo_env_sum_E_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.lo_env_sum_N_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.lo_env_sum_W_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.sample_counter_reg[24]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   attribute KEEP : string;
   attribute KEEP of \det_signal.acc_reset_reg\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_E_reg_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_E_reg_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_E_reg_i_3\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_N_reg_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_N_reg_i_3\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_N_reg_i_4\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_W_reg_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_W_reg_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.carry_env_sum_W_reg_i_3\ : label is 35;
   attribute KEEP of \det_signal.curr_signal_counter_reg[0]\ : label is "yes";
   attribute KEEP of \det_signal.curr_signal_counter_reg[1]\ : label is "yes";
   attribute KEEP of \det_signal.curr_signal_counter_reg[2]\ : label is "yes";
@@ -893,7 +1283,6 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute mark_debug_string of \det_signal.diff_env_E_reg[14]\ : label is "yes";
   attribute KEEP of \det_signal.diff_env_E_reg[15]\ : label is "yes";
   attribute mark_debug_string of \det_signal.diff_env_E_reg[15]\ : label is "yes";
-  attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \det_signal.diff_env_E_reg[15]_i_1\ : label is 35;
   attribute KEEP of \det_signal.diff_env_E_reg[16]\ : label is "yes";
   attribute mark_debug_string of \det_signal.diff_env_E_reg[16]\ : label is "yes";
@@ -991,90 +1380,12 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute mark_debug_string of \det_signal.diff_env_W_reg[8]\ : label is "yes";
   attribute KEEP of \det_signal.diff_env_W_reg[9]\ : label is "yes";
   attribute mark_debug_string of \det_signal.diff_env_W_reg[9]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[12]\ : label is "yes";
   attribute ADDER_THRESHOLD of \det_signal.diff_err_EW_reg[12]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.diff_err_EW_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[7]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.diff_err_EW_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.diff_err_EW_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_EW_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_EW_reg[9]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[12]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \det_signal.diff_err_EW_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.diff_err_NE_reg[12]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.diff_err_NE_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[7]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.diff_err_NE_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.diff_err_NE_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NE_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NE_reg[9]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[12]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \det_signal.diff_err_NE_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.diff_err_NW_reg[12]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.diff_err_NW_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[7]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.diff_err_NW_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.diff_err_NW_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.diff_err_NW_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.diff_err_NW_reg[9]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \det_signal.diff_err_NW_reg[12]_i_2\ : label is 35;
   attribute KEEP of \det_signal.diff_phase_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \det_signal.diff_phase_E_reg[0]\ : label is "yes";
   attribute KEEP of \det_signal.diff_phase_E_reg[10]\ : label is "yes";
@@ -1213,6 +1524,69 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute mark_debug_string of \det_signal.diff_phase_W_reg[8]\ : label is "yes";
   attribute KEEP of \det_signal.diff_phase_W_reg[9]\ : label is "yes";
   attribute mark_debug_string of \det_signal.diff_phase_W_reg[9]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[0]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[10]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[11]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[12]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[13]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[14]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[15]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[16]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[17]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[18]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[19]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[1]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[20]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[2]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[3]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[4]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[5]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[6]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[7]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[8]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_E_reg[9]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[0]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[10]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[11]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[12]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[13]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[14]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[15]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[16]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[17]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[18]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[19]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[1]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[20]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[2]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[3]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[4]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[5]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[6]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[7]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[8]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_N_reg[9]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[0]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[10]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[11]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[12]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[13]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[14]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[15]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[16]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[17]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[18]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[19]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[1]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[20]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[2]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[3]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[4]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[5]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[6]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[7]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[8]\ : label is "yes";
+  attribute KEEP of \det_signal.dsp_phase_W_reg[9]\ : label is "yes";
   attribute KEEP of \det_signal.env_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \det_signal.env_E_reg[0]\ : label is "yes";
   attribute KEEP of \det_signal.env_E_reg[10]\ : label is "yes";
@@ -1309,83 +1683,15 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute mark_debug_string of \det_signal.env_W_reg[8]\ : label is "yes";
   attribute KEEP of \det_signal.env_W_reg[9]\ : label is "yes";
   attribute mark_debug_string of \det_signal.env_W_reg[9]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[7]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.err_EW_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_EW_reg[9]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[7]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NE_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NE_reg[9]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[7]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.err_NW_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_NW_reg[9]\ : label is "yes";
   attribute KEEP of \det_signal.err_count_reg[0]\ : label is "yes";
   attribute KEEP of \det_signal.err_count_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.err_ov_reg\ : label is "yes";
-  attribute mark_debug_string of \det_signal.err_ov_reg\ : label is "yes";
   attribute KEEP of \det_signal.has_signal_reg\ : label is "yes";
+  attribute ADDER_THRESHOLD of \det_signal.hi_env_sum_E_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.hi_env_sum_E_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.hi_env_sum_N_reg[15]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.hi_env_sum_N_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.hi_env_sum_W_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.hi_env_sum_W_reg[7]_i_1\ : label is 35;
   attribute KEEP of \det_signal.phase_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \det_signal.phase_E_reg[0]\ : label is "yes";
   attribute KEEP of \det_signal.phase_E_reg[10]\ : label is "yes";
@@ -1509,55 +1815,26 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute KEEP of \det_signal.proc_done_reg\ : label is "yes";
   attribute KEEP of \det_signal.proc_signal_reg\ : label is "yes";
   attribute mark_debug_string of \det_signal.proc_signal_reg\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[0]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[10]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[11]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[12]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[13]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[14]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[15]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[15]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.sample_counter_reg[16]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[17]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[18]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[19]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[1]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[20]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[21]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[22]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[23]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[23]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.sample_counter_reg[24]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[25]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[26]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[27]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[28]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[29]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[2]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[30]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[31]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[31]_i_2\ : label is 35;
-  attribute KEEP of \det_signal.sample_counter_reg[3]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[4]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[5]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[6]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[7]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \det_signal.sample_counter_reg[8]\ : label is "yes";
-  attribute KEEP of \det_signal.sample_counter_reg[9]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[0]_i_2\ : label is 16;
+  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[16]_i_1\ : label is 16;
+  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[24]_i_1\ : label is 16;
+  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[8]_i_1\ : label is 16;
   attribute KEEP of \det_signal.signal_done_reg\ : label is "yes";
   attribute KEEP of \det_signal.start_proc_reg\ : label is "yes";
-  attribute KEEP of \det_signal.valid_count_reg\ : label is "yes";
-  attribute mark_debug_string of \det_signal.valid_count_reg\ : label is "yes";
-  attribute KEEP of \det_signal.valid_env_reg\ : label is "yes";
-  attribute mark_debug_string of \det_signal.valid_env_reg\ : label is "yes";
-  attribute KEEP of \det_signal.valid_err_reg\ : label is "yes";
-  attribute mark_debug_string of \det_signal.valid_err_reg\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_3,ila,{}";
+  attribute CHECK_LICENSE_TYPE of dsp_incr_env_E : label is "dsp_incr_env,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
+  attribute downgradeipidentifiedwarnings of dsp_incr_env_E : label is "yes";
   attribute x_core_info : string;
+  attribute x_core_info of dsp_incr_env_E : label is "dsp_macro_v1_0_8,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of dsp_incr_env_N : label is "dsp_incr_env,dsp_macro_v1_0_8,{}";
+  attribute downgradeipidentifiedwarnings of dsp_incr_env_N : label is "yes";
+  attribute x_core_info of dsp_incr_env_N : label is "dsp_macro_v1_0_8,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of dsp_incr_env_W : label is "dsp_incr_env,dsp_macro_v1_0_8,{}";
+  attribute downgradeipidentifiedwarnings of dsp_incr_env_W : label is "yes";
+  attribute x_core_info of dsp_incr_env_W : label is "dsp_macro_v1_0_8,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_3,ila,{}";
+  attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
 begin
   signal_done <= \^signal_done\;
@@ -1567,12 +1844,22 @@ begin
     )
         port map (
       I0 => acc_reset,
-      I1 => err_ov,
-      I2 => valid_count,
+      I1 => \det_signal.err_ov_reg_n_0\,
+      I2 => \det_signal.valid_count_reg_n_0\,
       I3 => err_count0,
       I4 => has_signal,
       I5 => \det_signal.run_reg[2]__0\,
       O => \det_signal.acc_reset_i_1_n_0\
+    );
+\det_signal.acc_reset_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
+    )
+        port map (
+      I0 => valid_env,
+      I1 => valid_err,
+      I2 => \det_signal.valid_count_reg_n_0\,
+      O => err_count0
     );
 \det_signal.acc_reset_reg\: unisim.vcomponents.FDRE
      port map (
@@ -1581,6 +1868,642 @@ begin
       D => \det_signal.acc_reset_i_1_n_0\,
       Q => acc_reset,
       R => '0'
+    );
+\det_signal.carry_env_sum_E_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(9),
+      I1 => env_E(9),
+      O => \det_signal.carry_env_sum_E_i_10_n_0\
+    );
+\det_signal.carry_env_sum_E_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(8),
+      I1 => env_E(8),
+      O => \det_signal.carry_env_sum_E_i_11_n_0\
+    );
+\det_signal.carry_env_sum_E_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(7),
+      I1 => env_E(7),
+      O => \det_signal.carry_env_sum_E_i_12_n_0\
+    );
+\det_signal.carry_env_sum_E_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(6),
+      I1 => env_E(6),
+      O => \det_signal.carry_env_sum_E_i_13_n_0\
+    );
+\det_signal.carry_env_sum_E_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(5),
+      I1 => env_E(5),
+      O => \det_signal.carry_env_sum_E_i_14_n_0\
+    );
+\det_signal.carry_env_sum_E_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(4),
+      I1 => env_E(4),
+      O => \det_signal.carry_env_sum_E_i_15_n_0\
+    );
+\det_signal.carry_env_sum_E_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(3),
+      I1 => env_E(3),
+      O => \det_signal.carry_env_sum_E_i_16_n_0\
+    );
+\det_signal.carry_env_sum_E_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(2),
+      I1 => env_E(2),
+      O => \det_signal.carry_env_sum_E_i_17_n_0\
+    );
+\det_signal.carry_env_sum_E_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(1),
+      I1 => env_E(1),
+      O => \det_signal.carry_env_sum_E_i_18_n_0\
+    );
+\det_signal.carry_env_sum_E_i_19\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(0),
+      I1 => env_E(0),
+      O => \det_signal.carry_env_sum_E_i_19_n_0\
+    );
+\det_signal.carry_env_sum_E_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(15),
+      I1 => env_E(15),
+      O => \det_signal.carry_env_sum_E_i_4_n_0\
+    );
+\det_signal.carry_env_sum_E_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(14),
+      I1 => env_E(14),
+      O => \det_signal.carry_env_sum_E_i_5_n_0\
+    );
+\det_signal.carry_env_sum_E_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(13),
+      I1 => env_E(13),
+      O => \det_signal.carry_env_sum_E_i_6_n_0\
+    );
+\det_signal.carry_env_sum_E_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(12),
+      I1 => env_E(12),
+      O => \det_signal.carry_env_sum_E_i_7_n_0\
+    );
+\det_signal.carry_env_sum_E_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(11),
+      I1 => env_E(11),
+      O => \det_signal.carry_env_sum_E_i_8_n_0\
+    );
+\det_signal.carry_env_sum_E_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(10),
+      I1 => env_E(10),
+      O => \det_signal.carry_env_sum_E_i_9_n_0\
+    );
+\det_signal.carry_env_sum_E_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in1_out(16),
+      Q => carry_env_sum_E,
+      R => \det_signal.carry_env_sum_N_i_1_n_0\
+    );
+\det_signal.carry_env_sum_E_reg_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.carry_env_sum_E_reg_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 0) => \NLW_det_signal.carry_env_sum_E_reg_i_1_CO_UNCONNECTED\(7 downto 0),
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 1) => \NLW_det_signal.carry_env_sum_E_reg_i_1_O_UNCONNECTED\(7 downto 1),
+      O(0) => p_1_in1_out(16),
+      S(7 downto 1) => B"0000000",
+      S(0) => env_E(16)
+    );
+\det_signal.carry_env_sum_E_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.carry_env_sum_E_reg_i_3_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.carry_env_sum_E_reg_i_2_n_0\,
+      CO(6) => \det_signal.carry_env_sum_E_reg_i_2_n_1\,
+      CO(5) => \det_signal.carry_env_sum_E_reg_i_2_n_2\,
+      CO(4) => \det_signal.carry_env_sum_E_reg_i_2_n_3\,
+      CO(3) => \det_signal.carry_env_sum_E_reg_i_2_n_4\,
+      CO(2) => \det_signal.carry_env_sum_E_reg_i_2_n_5\,
+      CO(1) => \det_signal.carry_env_sum_E_reg_i_2_n_6\,
+      CO(0) => \det_signal.carry_env_sum_E_reg_i_2_n_7\,
+      DI(7 downto 0) => curr_env_sum_E(15 downto 8),
+      O(7 downto 0) => \NLW_det_signal.carry_env_sum_E_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.carry_env_sum_E_i_4_n_0\,
+      S(6) => \det_signal.carry_env_sum_E_i_5_n_0\,
+      S(5) => \det_signal.carry_env_sum_E_i_6_n_0\,
+      S(4) => \det_signal.carry_env_sum_E_i_7_n_0\,
+      S(3) => \det_signal.carry_env_sum_E_i_8_n_0\,
+      S(2) => \det_signal.carry_env_sum_E_i_9_n_0\,
+      S(1) => \det_signal.carry_env_sum_E_i_10_n_0\,
+      S(0) => \det_signal.carry_env_sum_E_i_11_n_0\
+    );
+\det_signal.carry_env_sum_E_reg_i_3\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.carry_env_sum_E_reg_i_3_n_0\,
+      CO(6) => \det_signal.carry_env_sum_E_reg_i_3_n_1\,
+      CO(5) => \det_signal.carry_env_sum_E_reg_i_3_n_2\,
+      CO(4) => \det_signal.carry_env_sum_E_reg_i_3_n_3\,
+      CO(3) => \det_signal.carry_env_sum_E_reg_i_3_n_4\,
+      CO(2) => \det_signal.carry_env_sum_E_reg_i_3_n_5\,
+      CO(1) => \det_signal.carry_env_sum_E_reg_i_3_n_6\,
+      CO(0) => \det_signal.carry_env_sum_E_reg_i_3_n_7\,
+      DI(7 downto 0) => curr_env_sum_E(7 downto 0),
+      O(7 downto 0) => \NLW_det_signal.carry_env_sum_E_reg_i_3_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.carry_env_sum_E_i_12_n_0\,
+      S(6) => \det_signal.carry_env_sum_E_i_13_n_0\,
+      S(5) => \det_signal.carry_env_sum_E_i_14_n_0\,
+      S(4) => \det_signal.carry_env_sum_E_i_15_n_0\,
+      S(3) => \det_signal.carry_env_sum_E_i_16_n_0\,
+      S(2) => \det_signal.carry_env_sum_E_i_17_n_0\,
+      S(1) => \det_signal.carry_env_sum_E_i_18_n_0\,
+      S(0) => \det_signal.carry_env_sum_E_i_19_n_0\
+    );
+\det_signal.carry_env_sum_N_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => acc_reset,
+      I1 => has_signal,
+      O => \det_signal.carry_env_sum_N_i_1_n_0\
+    );
+\det_signal.carry_env_sum_N_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(10),
+      I1 => env_N(10),
+      O => \det_signal.carry_env_sum_N_i_10_n_0\
+    );
+\det_signal.carry_env_sum_N_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(9),
+      I1 => env_N(9),
+      O => \det_signal.carry_env_sum_N_i_11_n_0\
+    );
+\det_signal.carry_env_sum_N_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(8),
+      I1 => env_N(8),
+      O => \det_signal.carry_env_sum_N_i_12_n_0\
+    );
+\det_signal.carry_env_sum_N_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(7),
+      I1 => env_N(7),
+      O => \det_signal.carry_env_sum_N_i_13_n_0\
+    );
+\det_signal.carry_env_sum_N_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(6),
+      I1 => env_N(6),
+      O => \det_signal.carry_env_sum_N_i_14_n_0\
+    );
+\det_signal.carry_env_sum_N_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(5),
+      I1 => env_N(5),
+      O => \det_signal.carry_env_sum_N_i_15_n_0\
+    );
+\det_signal.carry_env_sum_N_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(4),
+      I1 => env_N(4),
+      O => \det_signal.carry_env_sum_N_i_16_n_0\
+    );
+\det_signal.carry_env_sum_N_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(3),
+      I1 => env_N(3),
+      O => \det_signal.carry_env_sum_N_i_17_n_0\
+    );
+\det_signal.carry_env_sum_N_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(2),
+      I1 => env_N(2),
+      O => \det_signal.carry_env_sum_N_i_18_n_0\
+    );
+\det_signal.carry_env_sum_N_i_19\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(1),
+      I1 => env_N(1),
+      O => \det_signal.carry_env_sum_N_i_19_n_0\
+    );
+\det_signal.carry_env_sum_N_i_20\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(0),
+      I1 => env_N(0),
+      O => \det_signal.carry_env_sum_N_i_20_n_0\
+    );
+\det_signal.carry_env_sum_N_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(15),
+      I1 => env_N(15),
+      O => \det_signal.carry_env_sum_N_i_5_n_0\
+    );
+\det_signal.carry_env_sum_N_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(14),
+      I1 => env_N(14),
+      O => \det_signal.carry_env_sum_N_i_6_n_0\
+    );
+\det_signal.carry_env_sum_N_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(13),
+      I1 => env_N(13),
+      O => \det_signal.carry_env_sum_N_i_7_n_0\
+    );
+\det_signal.carry_env_sum_N_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(12),
+      I1 => env_N(12),
+      O => \det_signal.carry_env_sum_N_i_8_n_0\
+    );
+\det_signal.carry_env_sum_N_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(11),
+      I1 => env_N(11),
+      O => \det_signal.carry_env_sum_N_i_9_n_0\
+    );
+\det_signal.carry_env_sum_N_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => p_1_in3_out(16),
+      Q => carry_env_sum_N,
+      R => \det_signal.carry_env_sum_N_i_1_n_0\
+    );
+\det_signal.carry_env_sum_N_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.carry_env_sum_N_reg_i_3_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 0) => \NLW_det_signal.carry_env_sum_N_reg_i_2_CO_UNCONNECTED\(7 downto 0),
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 1) => \NLW_det_signal.carry_env_sum_N_reg_i_2_O_UNCONNECTED\(7 downto 1),
+      O(0) => p_1_in3_out(16),
+      S(7 downto 1) => B"0000000",
+      S(0) => env_N(16)
+    );
+\det_signal.carry_env_sum_N_reg_i_3\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.carry_env_sum_N_reg_i_4_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.carry_env_sum_N_reg_i_3_n_0\,
+      CO(6) => \det_signal.carry_env_sum_N_reg_i_3_n_1\,
+      CO(5) => \det_signal.carry_env_sum_N_reg_i_3_n_2\,
+      CO(4) => \det_signal.carry_env_sum_N_reg_i_3_n_3\,
+      CO(3) => \det_signal.carry_env_sum_N_reg_i_3_n_4\,
+      CO(2) => \det_signal.carry_env_sum_N_reg_i_3_n_5\,
+      CO(1) => \det_signal.carry_env_sum_N_reg_i_3_n_6\,
+      CO(0) => \det_signal.carry_env_sum_N_reg_i_3_n_7\,
+      DI(7 downto 0) => curr_env_sum_N(15 downto 8),
+      O(7 downto 0) => \NLW_det_signal.carry_env_sum_N_reg_i_3_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.carry_env_sum_N_i_5_n_0\,
+      S(6) => \det_signal.carry_env_sum_N_i_6_n_0\,
+      S(5) => \det_signal.carry_env_sum_N_i_7_n_0\,
+      S(4) => \det_signal.carry_env_sum_N_i_8_n_0\,
+      S(3) => \det_signal.carry_env_sum_N_i_9_n_0\,
+      S(2) => \det_signal.carry_env_sum_N_i_10_n_0\,
+      S(1) => \det_signal.carry_env_sum_N_i_11_n_0\,
+      S(0) => \det_signal.carry_env_sum_N_i_12_n_0\
+    );
+\det_signal.carry_env_sum_N_reg_i_4\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.carry_env_sum_N_reg_i_4_n_0\,
+      CO(6) => \det_signal.carry_env_sum_N_reg_i_4_n_1\,
+      CO(5) => \det_signal.carry_env_sum_N_reg_i_4_n_2\,
+      CO(4) => \det_signal.carry_env_sum_N_reg_i_4_n_3\,
+      CO(3) => \det_signal.carry_env_sum_N_reg_i_4_n_4\,
+      CO(2) => \det_signal.carry_env_sum_N_reg_i_4_n_5\,
+      CO(1) => \det_signal.carry_env_sum_N_reg_i_4_n_6\,
+      CO(0) => \det_signal.carry_env_sum_N_reg_i_4_n_7\,
+      DI(7 downto 0) => curr_env_sum_N(7 downto 0),
+      O(7 downto 0) => \NLW_det_signal.carry_env_sum_N_reg_i_4_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.carry_env_sum_N_i_13_n_0\,
+      S(6) => \det_signal.carry_env_sum_N_i_14_n_0\,
+      S(5) => \det_signal.carry_env_sum_N_i_15_n_0\,
+      S(4) => \det_signal.carry_env_sum_N_i_16_n_0\,
+      S(3) => \det_signal.carry_env_sum_N_i_17_n_0\,
+      S(2) => \det_signal.carry_env_sum_N_i_18_n_0\,
+      S(1) => \det_signal.carry_env_sum_N_i_19_n_0\,
+      S(0) => \det_signal.carry_env_sum_N_i_20_n_0\
+    );
+\det_signal.carry_env_sum_W_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(9),
+      I1 => env_W(9),
+      O => \det_signal.carry_env_sum_W_i_10_n_0\
+    );
+\det_signal.carry_env_sum_W_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(8),
+      I1 => env_W(8),
+      O => \det_signal.carry_env_sum_W_i_11_n_0\
+    );
+\det_signal.carry_env_sum_W_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(7),
+      I1 => env_W(7),
+      O => \det_signal.carry_env_sum_W_i_12_n_0\
+    );
+\det_signal.carry_env_sum_W_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(6),
+      I1 => env_W(6),
+      O => \det_signal.carry_env_sum_W_i_13_n_0\
+    );
+\det_signal.carry_env_sum_W_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(5),
+      I1 => env_W(5),
+      O => \det_signal.carry_env_sum_W_i_14_n_0\
+    );
+\det_signal.carry_env_sum_W_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(4),
+      I1 => env_W(4),
+      O => \det_signal.carry_env_sum_W_i_15_n_0\
+    );
+\det_signal.carry_env_sum_W_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(3),
+      I1 => env_W(3),
+      O => \det_signal.carry_env_sum_W_i_16_n_0\
+    );
+\det_signal.carry_env_sum_W_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(2),
+      I1 => env_W(2),
+      O => \det_signal.carry_env_sum_W_i_17_n_0\
+    );
+\det_signal.carry_env_sum_W_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(1),
+      I1 => env_W(1),
+      O => \det_signal.carry_env_sum_W_i_18_n_0\
+    );
+\det_signal.carry_env_sum_W_i_19\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(0),
+      I1 => env_W(0),
+      O => \det_signal.carry_env_sum_W_i_19_n_0\
+    );
+\det_signal.carry_env_sum_W_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(15),
+      I1 => env_W(15),
+      O => \det_signal.carry_env_sum_W_i_4_n_0\
+    );
+\det_signal.carry_env_sum_W_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(14),
+      I1 => env_W(14),
+      O => \det_signal.carry_env_sum_W_i_5_n_0\
+    );
+\det_signal.carry_env_sum_W_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(13),
+      I1 => env_W(13),
+      O => \det_signal.carry_env_sum_W_i_6_n_0\
+    );
+\det_signal.carry_env_sum_W_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(12),
+      I1 => env_W(12),
+      O => \det_signal.carry_env_sum_W_i_7_n_0\
+    );
+\det_signal.carry_env_sum_W_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(11),
+      I1 => env_W(11),
+      O => \det_signal.carry_env_sum_W_i_8_n_0\
+    );
+\det_signal.carry_env_sum_W_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(10),
+      I1 => env_W(10),
+      O => \det_signal.carry_env_sum_W_i_9_n_0\
+    );
+\det_signal.carry_env_sum_W_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \det_signal.carry_env_sum_W_reg_i_1_n_15\,
+      Q => \det_signal.carry_env_sum_W_reg_n_0\,
+      R => \det_signal.carry_env_sum_N_i_1_n_0\
+    );
+\det_signal.carry_env_sum_W_reg_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.carry_env_sum_W_reg_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 0) => \NLW_det_signal.carry_env_sum_W_reg_i_1_CO_UNCONNECTED\(7 downto 0),
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 1) => \NLW_det_signal.carry_env_sum_W_reg_i_1_O_UNCONNECTED\(7 downto 1),
+      O(0) => \det_signal.carry_env_sum_W_reg_i_1_n_15\,
+      S(7 downto 1) => B"0000000",
+      S(0) => env_W(16)
+    );
+\det_signal.carry_env_sum_W_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.carry_env_sum_W_reg_i_3_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.carry_env_sum_W_reg_i_2_n_0\,
+      CO(6) => \det_signal.carry_env_sum_W_reg_i_2_n_1\,
+      CO(5) => \det_signal.carry_env_sum_W_reg_i_2_n_2\,
+      CO(4) => \det_signal.carry_env_sum_W_reg_i_2_n_3\,
+      CO(3) => \det_signal.carry_env_sum_W_reg_i_2_n_4\,
+      CO(2) => \det_signal.carry_env_sum_W_reg_i_2_n_5\,
+      CO(1) => \det_signal.carry_env_sum_W_reg_i_2_n_6\,
+      CO(0) => \det_signal.carry_env_sum_W_reg_i_2_n_7\,
+      DI(7 downto 0) => curr_env_sum_W(15 downto 8),
+      O(7 downto 0) => \NLW_det_signal.carry_env_sum_W_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.carry_env_sum_W_i_4_n_0\,
+      S(6) => \det_signal.carry_env_sum_W_i_5_n_0\,
+      S(5) => \det_signal.carry_env_sum_W_i_6_n_0\,
+      S(4) => \det_signal.carry_env_sum_W_i_7_n_0\,
+      S(3) => \det_signal.carry_env_sum_W_i_8_n_0\,
+      S(2) => \det_signal.carry_env_sum_W_i_9_n_0\,
+      S(1) => \det_signal.carry_env_sum_W_i_10_n_0\,
+      S(0) => \det_signal.carry_env_sum_W_i_11_n_0\
+    );
+\det_signal.carry_env_sum_W_reg_i_3\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.carry_env_sum_W_reg_i_3_n_0\,
+      CO(6) => \det_signal.carry_env_sum_W_reg_i_3_n_1\,
+      CO(5) => \det_signal.carry_env_sum_W_reg_i_3_n_2\,
+      CO(4) => \det_signal.carry_env_sum_W_reg_i_3_n_3\,
+      CO(3) => \det_signal.carry_env_sum_W_reg_i_3_n_4\,
+      CO(2) => \det_signal.carry_env_sum_W_reg_i_3_n_5\,
+      CO(1) => \det_signal.carry_env_sum_W_reg_i_3_n_6\,
+      CO(0) => \det_signal.carry_env_sum_W_reg_i_3_n_7\,
+      DI(7 downto 0) => curr_env_sum_W(7 downto 0),
+      O(7 downto 0) => \NLW_det_signal.carry_env_sum_W_reg_i_3_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.carry_env_sum_W_i_12_n_0\,
+      S(6) => \det_signal.carry_env_sum_W_i_13_n_0\,
+      S(5) => \det_signal.carry_env_sum_W_i_14_n_0\,
+      S(4) => \det_signal.carry_env_sum_W_i_15_n_0\,
+      S(3) => \det_signal.carry_env_sum_W_i_16_n_0\,
+      S(2) => \det_signal.carry_env_sum_W_i_17_n_0\,
+      S(1) => \det_signal.carry_env_sum_W_i_18_n_0\,
+      S(0) => \det_signal.carry_env_sum_W_i_19_n_0\
     );
 \det_signal.curr_signal_counter[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -1604,8 +2527,8 @@ begin
       INIT => X"78"
     )
         port map (
-      I0 => curr_signal_counter(0),
-      I1 => curr_signal_counter(1),
+      I0 => curr_signal_counter(1),
+      I1 => curr_signal_counter(0),
       I2 => curr_signal_counter(2),
       O => \p_1_in__0\(2)
     );
@@ -1614,9 +2537,9 @@ begin
       INIT => X"7F80"
     )
         port map (
-      I0 => curr_signal_counter(1),
+      I0 => curr_signal_counter(2),
       I1 => curr_signal_counter(0),
-      I2 => curr_signal_counter(2),
+      I2 => curr_signal_counter(1),
       I3 => curr_signal_counter(3),
       O => \p_1_in__0\(3)
     );
@@ -1625,10 +2548,10 @@ begin
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => curr_signal_counter(2),
-      I1 => curr_signal_counter(0),
-      I2 => curr_signal_counter(1),
-      I3 => curr_signal_counter(3),
+      I0 => curr_signal_counter(3),
+      I1 => curr_signal_counter(1),
+      I2 => curr_signal_counter(0),
+      I3 => curr_signal_counter(2),
       I4 => curr_signal_counter(4),
       O => \p_1_in__0\(4)
     );
@@ -1637,17 +2560,17 @@ begin
       INIT => X"7FFFFFFF80000000"
     )
         port map (
-      I0 => curr_signal_counter(3),
-      I1 => curr_signal_counter(1),
+      I0 => curr_signal_counter(4),
+      I1 => curr_signal_counter(2),
       I2 => curr_signal_counter(0),
-      I3 => curr_signal_counter(2),
-      I4 => curr_signal_counter(4),
+      I3 => curr_signal_counter(1),
+      I4 => curr_signal_counter(3),
       I5 => curr_signal_counter(5),
       O => \p_1_in__0\(5)
     );
 \det_signal.curr_signal_counter[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"6"
+      INIT => X"9"
     )
         port map (
       I0 => \det_signal.curr_signal_counter[9]_i_3_n_0\,
@@ -1656,22 +2579,22 @@ begin
     );
 \det_signal.curr_signal_counter[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"78"
-    )
-        port map (
-      I0 => \det_signal.curr_signal_counter[9]_i_3_n_0\,
-      I1 => curr_signal_counter(6),
-      I2 => curr_signal_counter(7),
-      O => \p_1_in__0\(7)
-    );
-\det_signal.curr_signal_counter[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"7F80"
+      INIT => X"D2"
     )
         port map (
       I0 => curr_signal_counter(6),
       I1 => \det_signal.curr_signal_counter[9]_i_3_n_0\,
       I2 => curr_signal_counter(7),
+      O => \p_1_in__0\(7)
+    );
+\det_signal.curr_signal_counter[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"DF20"
+    )
+        port map (
+      I0 => curr_signal_counter(7),
+      I1 => \det_signal.curr_signal_counter[9]_i_3_n_0\,
+      I2 => curr_signal_counter(6),
       I3 => curr_signal_counter(8),
       O => \p_1_in__0\(8)
     );
@@ -1685,27 +2608,27 @@ begin
     );
 \det_signal.curr_signal_counter[9]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFF8000"
+      INIT => X"F7FF0800"
     )
         port map (
-      I0 => curr_signal_counter(7),
-      I1 => \det_signal.curr_signal_counter[9]_i_3_n_0\,
-      I2 => curr_signal_counter(6),
-      I3 => curr_signal_counter(8),
+      I0 => curr_signal_counter(8),
+      I1 => curr_signal_counter(6),
+      I2 => \det_signal.curr_signal_counter[9]_i_3_n_0\,
+      I3 => curr_signal_counter(7),
       I4 => curr_signal_counter(9),
       O => \p_1_in__0\(9)
     );
 \det_signal.curr_signal_counter[9]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8000000000000000"
+      INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => curr_signal_counter(5),
-      I1 => curr_signal_counter(3),
-      I2 => curr_signal_counter(1),
-      I3 => curr_signal_counter(0),
-      I4 => curr_signal_counter(2),
-      I5 => curr_signal_counter(4),
+      I0 => curr_signal_counter(4),
+      I1 => curr_signal_counter(2),
+      I2 => curr_signal_counter(0),
+      I3 => curr_signal_counter(1),
+      I4 => curr_signal_counter(3),
+      I5 => curr_signal_counter(5),
       O => \det_signal.curr_signal_counter[9]_i_3_n_0\
     );
 \det_signal.curr_signal_counter_reg[0]\: unisim.vcomponents.FDRE
@@ -1794,10 +2717,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(0),
+      I1 => \det_signal.sample_counter_reg\(0),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(0),
       O => \det_signal.curr_signal_sample[0]_i_1_n_0\
     );
@@ -1807,10 +2730,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(10),
+      I1 => \det_signal.sample_counter_reg\(10),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(10),
       O => \det_signal.curr_signal_sample[10]_i_1_n_0\
     );
@@ -1820,10 +2743,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(11),
+      I1 => \det_signal.sample_counter_reg\(11),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(11),
       O => \det_signal.curr_signal_sample[11]_i_1_n_0\
     );
@@ -1833,10 +2756,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(12),
+      I1 => \det_signal.sample_counter_reg\(12),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(12),
       O => \det_signal.curr_signal_sample[12]_i_1_n_0\
     );
@@ -1846,10 +2769,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(13),
+      I1 => \det_signal.sample_counter_reg\(13),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(13),
       O => \det_signal.curr_signal_sample[13]_i_1_n_0\
     );
@@ -1859,10 +2782,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(14),
+      I1 => \det_signal.sample_counter_reg\(14),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(14),
       O => \det_signal.curr_signal_sample[14]_i_1_n_0\
     );
@@ -1872,10 +2795,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(15),
+      I1 => \det_signal.sample_counter_reg\(15),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(15),
       O => \det_signal.curr_signal_sample[15]_i_1_n_0\
     );
@@ -1885,10 +2808,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(16),
+      I1 => \det_signal.sample_counter_reg\(16),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(16),
       O => \det_signal.curr_signal_sample[16]_i_1_n_0\
     );
@@ -1898,10 +2821,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(17),
+      I1 => \det_signal.sample_counter_reg\(17),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(17),
       O => \det_signal.curr_signal_sample[17]_i_1_n_0\
     );
@@ -1911,10 +2834,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(18),
+      I1 => \det_signal.sample_counter_reg\(18),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(18),
       O => \det_signal.curr_signal_sample[18]_i_1_n_0\
     );
@@ -1924,10 +2847,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(19),
+      I1 => \det_signal.sample_counter_reg\(19),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(19),
       O => \det_signal.curr_signal_sample[19]_i_1_n_0\
     );
@@ -1937,10 +2860,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(1),
+      I1 => \det_signal.sample_counter_reg\(1),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(1),
       O => \det_signal.curr_signal_sample[1]_i_1_n_0\
     );
@@ -1950,10 +2873,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(20),
+      I1 => \det_signal.sample_counter_reg\(20),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(20),
       O => \det_signal.curr_signal_sample[20]_i_1_n_0\
     );
@@ -1963,10 +2886,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(21),
+      I1 => \det_signal.sample_counter_reg\(21),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(21),
       O => \det_signal.curr_signal_sample[21]_i_1_n_0\
     );
@@ -1976,10 +2899,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(22),
+      I1 => \det_signal.sample_counter_reg\(22),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(22),
       O => \det_signal.curr_signal_sample[22]_i_1_n_0\
     );
@@ -1989,10 +2912,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(23),
+      I1 => \det_signal.sample_counter_reg\(23),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(23),
       O => \det_signal.curr_signal_sample[23]_i_1_n_0\
     );
@@ -2002,10 +2925,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(24),
+      I1 => \det_signal.sample_counter_reg\(24),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(24),
       O => \det_signal.curr_signal_sample[24]_i_1_n_0\
     );
@@ -2015,10 +2938,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(25),
+      I1 => \det_signal.sample_counter_reg\(25),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(25),
       O => \det_signal.curr_signal_sample[25]_i_1_n_0\
     );
@@ -2028,10 +2951,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(26),
+      I1 => \det_signal.sample_counter_reg\(26),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(26),
       O => \det_signal.curr_signal_sample[26]_i_1_n_0\
     );
@@ -2041,10 +2964,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(27),
+      I1 => \det_signal.sample_counter_reg\(27),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(27),
       O => \det_signal.curr_signal_sample[27]_i_1_n_0\
     );
@@ -2054,10 +2977,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(28),
+      I1 => \det_signal.sample_counter_reg\(28),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(28),
       O => \det_signal.curr_signal_sample[28]_i_1_n_0\
     );
@@ -2067,10 +2990,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(29),
+      I1 => \det_signal.sample_counter_reg\(29),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(29),
       O => \det_signal.curr_signal_sample[29]_i_1_n_0\
     );
@@ -2080,10 +3003,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(2),
+      I1 => \det_signal.sample_counter_reg\(2),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(2),
       O => \det_signal.curr_signal_sample[2]_i_1_n_0\
     );
@@ -2093,10 +3016,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(30),
+      I1 => \det_signal.sample_counter_reg\(30),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(30),
       O => \det_signal.curr_signal_sample[30]_i_1_n_0\
     );
@@ -2106,10 +3029,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(31),
+      I1 => \det_signal.sample_counter_reg\(31),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(31),
       O => \det_signal.curr_signal_sample[31]_i_1_n_0\
     );
@@ -2119,10 +3042,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(3),
+      I1 => \det_signal.sample_counter_reg\(3),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(3),
       O => \det_signal.curr_signal_sample[3]_i_1_n_0\
     );
@@ -2132,10 +3055,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(4),
+      I1 => \det_signal.sample_counter_reg\(4),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(4),
       O => \det_signal.curr_signal_sample[4]_i_1_n_0\
     );
@@ -2145,10 +3068,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(5),
+      I1 => \det_signal.sample_counter_reg\(5),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(5),
       O => \det_signal.curr_signal_sample[5]_i_1_n_0\
     );
@@ -2158,10 +3081,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(6),
+      I1 => \det_signal.sample_counter_reg\(6),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(6),
       O => \det_signal.curr_signal_sample[6]_i_1_n_0\
     );
@@ -2171,10 +3094,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(7),
+      I1 => \det_signal.sample_counter_reg\(7),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(7),
       O => \det_signal.curr_signal_sample[7]_i_1_n_0\
     );
@@ -2184,10 +3107,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(8),
+      I1 => \det_signal.sample_counter_reg\(8),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(8),
       O => \det_signal.curr_signal_sample[8]_i_1_n_0\
     );
@@ -2197,10 +3120,10 @@ begin
     )
         port map (
       I0 => has_signal,
-      I1 => sample_counter(9),
+      I1 => \det_signal.sample_counter_reg\(9),
       I2 => valid_env,
       I3 => valid_err,
-      I4 => valid_count,
+      I4 => \det_signal.valid_count_reg_n_0\,
       I5 => curr_signal_sample(9),
       O => \det_signal.curr_signal_sample[9]_i_1_n_0\
     );
@@ -3537,13 +4460,50 @@ begin
       Q => diff_env_W(9),
       R => '0'
     );
-\det_signal.diff_err_EW[12]_i_2\: unisim.vcomponents.LUT1
+\det_signal.diff_err_EW[12]_i_10\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"9"
     )
         port map (
-      I0 => err_EW(12),
-      O => \det_signal.diff_err_EW[12]_i_2_n_0\
+      I0 => err_EW(4),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[4]\,
+      O => \det_signal.diff_err_EW[12]_i_10_n_0\
+    );
+\det_signal.diff_err_EW[12]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_EW(3),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[3]\,
+      O => \det_signal.diff_err_EW[12]_i_11_n_0\
+    );
+\det_signal.diff_err_EW[12]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_EW(2),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[2]\,
+      O => \det_signal.diff_err_EW[12]_i_12_n_0\
+    );
+\det_signal.diff_err_EW[12]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_EW(1),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[1]\,
+      O => \det_signal.diff_err_EW[12]_i_13_n_0\
+    );
+\det_signal.diff_err_EW[12]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_EW(0),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[0]\,
+      O => \det_signal.diff_err_EW[12]_i_14_n_0\
     );
 \det_signal.diff_err_EW[12]_i_3\: unisim.vcomponents.LUT2
     generic map(
@@ -3581,113 +4541,44 @@ begin
       I1 => \det_signal.max_doa_diff_reg_n_0_[8]\,
       O => \det_signal.diff_err_EW[12]_i_6_n_0\
     );
-\det_signal.diff_err_EW[7]_i_2\: unisim.vcomponents.LUT2
+\det_signal.diff_err_EW[12]_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_EW(7),
       I1 => \det_signal.max_doa_diff_reg_n_0_[7]\,
-      O => \det_signal.diff_err_EW[7]_i_2_n_0\
+      O => \det_signal.diff_err_EW[12]_i_7_n_0\
     );
-\det_signal.diff_err_EW[7]_i_3\: unisim.vcomponents.LUT2
+\det_signal.diff_err_EW[12]_i_8\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_EW(6),
       I1 => \det_signal.max_doa_diff_reg_n_0_[6]\,
-      O => \det_signal.diff_err_EW[7]_i_3_n_0\
+      O => \det_signal.diff_err_EW[12]_i_8_n_0\
     );
-\det_signal.diff_err_EW[7]_i_4\: unisim.vcomponents.LUT2
+\det_signal.diff_err_EW[12]_i_9\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_EW(5),
       I1 => \det_signal.max_doa_diff_reg_n_0_[5]\,
-      O => \det_signal.diff_err_EW[7]_i_4_n_0\
-    );
-\det_signal.diff_err_EW[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_EW(4),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[4]\,
-      O => \det_signal.diff_err_EW[7]_i_5_n_0\
-    );
-\det_signal.diff_err_EW[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_EW(3),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[3]\,
-      O => \det_signal.diff_err_EW[7]_i_6_n_0\
-    );
-\det_signal.diff_err_EW[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_EW(2),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[2]\,
-      O => \det_signal.diff_err_EW[7]_i_7_n_0\
-    );
-\det_signal.diff_err_EW[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_EW(1),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[1]\,
-      O => \det_signal.diff_err_EW[7]_i_8_n_0\
-    );
-\det_signal.diff_err_EW[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_EW(0),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[0]\,
-      O => \det_signal.diff_err_EW[7]_i_9_n_0\
-    );
-\det_signal.diff_err_EW_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(0),
-      Q => diff_err_EW(0),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(10),
-      Q => diff_err_EW(10),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(11),
-      Q => diff_err_EW(11),
-      R => '0'
+      O => \det_signal.diff_err_EW[12]_i_9_n_0\
     );
 \det_signal.diff_err_EW_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(12),
-      Q => diff_err_EW(12),
+      D => diff_err_EW0(12),
+      Q => p_2_in,
       R => '0'
     );
 \det_signal.diff_err_EW_reg[12]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \det_signal.diff_err_EW_reg[7]_i_1_n_0\,
+      CI => \det_signal.diff_err_EW_reg[12]_i_2_n_0\,
       CI_TOP => '0',
       CO(7 downto 4) => \NLW_det_signal.diff_err_EW_reg[12]_i_1_CO_UNCONNECTED\(7 downto 4),
       CO(3) => \det_signal.diff_err_EW_reg[12]_i_1_n_4\,
@@ -3697,116 +4588,81 @@ begin
       DI(7 downto 4) => B"0000",
       DI(3 downto 0) => err_EW(11 downto 8),
       O(7 downto 5) => \NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED\(7 downto 5),
-      O(4 downto 0) => \det_signal.diff_err_EW_reg00_out\(12 downto 8),
-      S(7 downto 5) => B"000",
-      S(4) => \det_signal.diff_err_EW[12]_i_2_n_0\,
+      O(4) => diff_err_EW0(12),
+      O(3 downto 0) => \NLW_det_signal.diff_err_EW_reg[12]_i_1_O_UNCONNECTED\(3 downto 0),
+      S(7 downto 4) => B"0001",
       S(3) => \det_signal.diff_err_EW[12]_i_3_n_0\,
       S(2) => \det_signal.diff_err_EW[12]_i_4_n_0\,
       S(1) => \det_signal.diff_err_EW[12]_i_5_n_0\,
       S(0) => \det_signal.diff_err_EW[12]_i_6_n_0\
     );
-\det_signal.diff_err_EW_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(1),
-      Q => diff_err_EW(1),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(2),
-      Q => diff_err_EW(2),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(3),
-      Q => diff_err_EW(3),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(4),
-      Q => diff_err_EW(4),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(5),
-      Q => diff_err_EW(5),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(6),
-      Q => diff_err_EW(6),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(7),
-      Q => diff_err_EW(7),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[7]_i_1\: unisim.vcomponents.CARRY8
+\det_signal.diff_err_EW_reg[12]_i_2\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \det_signal.diff_err_EW_reg[7]_i_1_n_0\,
-      CO(6) => \det_signal.diff_err_EW_reg[7]_i_1_n_1\,
-      CO(5) => \det_signal.diff_err_EW_reg[7]_i_1_n_2\,
-      CO(4) => \det_signal.diff_err_EW_reg[7]_i_1_n_3\,
-      CO(3) => \det_signal.diff_err_EW_reg[7]_i_1_n_4\,
-      CO(2) => \det_signal.diff_err_EW_reg[7]_i_1_n_5\,
-      CO(1) => \det_signal.diff_err_EW_reg[7]_i_1_n_6\,
-      CO(0) => \det_signal.diff_err_EW_reg[7]_i_1_n_7\,
+      CO(7) => \det_signal.diff_err_EW_reg[12]_i_2_n_0\,
+      CO(6) => \det_signal.diff_err_EW_reg[12]_i_2_n_1\,
+      CO(5) => \det_signal.diff_err_EW_reg[12]_i_2_n_2\,
+      CO(4) => \det_signal.diff_err_EW_reg[12]_i_2_n_3\,
+      CO(3) => \det_signal.diff_err_EW_reg[12]_i_2_n_4\,
+      CO(2) => \det_signal.diff_err_EW_reg[12]_i_2_n_5\,
+      CO(1) => \det_signal.diff_err_EW_reg[12]_i_2_n_6\,
+      CO(0) => \det_signal.diff_err_EW_reg[12]_i_2_n_7\,
       DI(7 downto 0) => err_EW(7 downto 0),
-      O(7 downto 0) => \det_signal.diff_err_EW_reg00_out\(7 downto 0),
-      S(7) => \det_signal.diff_err_EW[7]_i_2_n_0\,
-      S(6) => \det_signal.diff_err_EW[7]_i_3_n_0\,
-      S(5) => \det_signal.diff_err_EW[7]_i_4_n_0\,
-      S(4) => \det_signal.diff_err_EW[7]_i_5_n_0\,
-      S(3) => \det_signal.diff_err_EW[7]_i_6_n_0\,
-      S(2) => \det_signal.diff_err_EW[7]_i_7_n_0\,
-      S(1) => \det_signal.diff_err_EW[7]_i_8_n_0\,
-      S(0) => \det_signal.diff_err_EW[7]_i_9_n_0\
+      O(7 downto 0) => \NLW_det_signal.diff_err_EW_reg[12]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.diff_err_EW[12]_i_7_n_0\,
+      S(6) => \det_signal.diff_err_EW[12]_i_8_n_0\,
+      S(5) => \det_signal.diff_err_EW[12]_i_9_n_0\,
+      S(4) => \det_signal.diff_err_EW[12]_i_10_n_0\,
+      S(3) => \det_signal.diff_err_EW[12]_i_11_n_0\,
+      S(2) => \det_signal.diff_err_EW[12]_i_12_n_0\,
+      S(1) => \det_signal.diff_err_EW[12]_i_13_n_0\,
+      S(0) => \det_signal.diff_err_EW[12]_i_14_n_0\
     );
-\det_signal.diff_err_EW_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(8),
-      Q => diff_err_EW(8),
-      R => '0'
-    );
-\det_signal.diff_err_EW_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_EW_reg00_out\(9),
-      Q => diff_err_EW(9),
-      R => '0'
-    );
-\det_signal.diff_err_NE[12]_i_2\: unisim.vcomponents.LUT1
+\det_signal.diff_err_NE[12]_i_10\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"9"
     )
         port map (
-      I0 => err_NE(12),
-      O => \det_signal.diff_err_NE[12]_i_2_n_0\
+      I0 => err_NE(4),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[4]\,
+      O => \det_signal.diff_err_NE[12]_i_10_n_0\
+    );
+\det_signal.diff_err_NE[12]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NE(3),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[3]\,
+      O => \det_signal.diff_err_NE[12]_i_11_n_0\
+    );
+\det_signal.diff_err_NE[12]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NE(2),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[2]\,
+      O => \det_signal.diff_err_NE[12]_i_12_n_0\
+    );
+\det_signal.diff_err_NE[12]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NE(1),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[1]\,
+      O => \det_signal.diff_err_NE[12]_i_13_n_0\
+    );
+\det_signal.diff_err_NE[12]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NE(0),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[0]\,
+      O => \det_signal.diff_err_NE[12]_i_14_n_0\
     );
 \det_signal.diff_err_NE[12]_i_3\: unisim.vcomponents.LUT2
     generic map(
@@ -3844,113 +4700,44 @@ begin
       I1 => \det_signal.max_doa_diff_reg_n_0_[8]\,
       O => \det_signal.diff_err_NE[12]_i_6_n_0\
     );
-\det_signal.diff_err_NE[7]_i_2\: unisim.vcomponents.LUT2
+\det_signal.diff_err_NE[12]_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_NE(7),
       I1 => \det_signal.max_doa_diff_reg_n_0_[7]\,
-      O => \det_signal.diff_err_NE[7]_i_2_n_0\
+      O => \det_signal.diff_err_NE[12]_i_7_n_0\
     );
-\det_signal.diff_err_NE[7]_i_3\: unisim.vcomponents.LUT2
+\det_signal.diff_err_NE[12]_i_8\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_NE(6),
       I1 => \det_signal.max_doa_diff_reg_n_0_[6]\,
-      O => \det_signal.diff_err_NE[7]_i_3_n_0\
+      O => \det_signal.diff_err_NE[12]_i_8_n_0\
     );
-\det_signal.diff_err_NE[7]_i_4\: unisim.vcomponents.LUT2
+\det_signal.diff_err_NE[12]_i_9\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_NE(5),
       I1 => \det_signal.max_doa_diff_reg_n_0_[5]\,
-      O => \det_signal.diff_err_NE[7]_i_4_n_0\
-    );
-\det_signal.diff_err_NE[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NE(4),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[4]\,
-      O => \det_signal.diff_err_NE[7]_i_5_n_0\
-    );
-\det_signal.diff_err_NE[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NE(3),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[3]\,
-      O => \det_signal.diff_err_NE[7]_i_6_n_0\
-    );
-\det_signal.diff_err_NE[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NE(2),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[2]\,
-      O => \det_signal.diff_err_NE[7]_i_7_n_0\
-    );
-\det_signal.diff_err_NE[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NE(1),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[1]\,
-      O => \det_signal.diff_err_NE[7]_i_8_n_0\
-    );
-\det_signal.diff_err_NE[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NE(0),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[0]\,
-      O => \det_signal.diff_err_NE[7]_i_9_n_0\
-    );
-\det_signal.diff_err_NE_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(0),
-      Q => diff_err_NE(0),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(10),
-      Q => diff_err_NE(10),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(11),
-      Q => diff_err_NE(11),
-      R => '0'
+      O => \det_signal.diff_err_NE[12]_i_9_n_0\
     );
 \det_signal.diff_err_NE_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(12),
-      Q => diff_err_NE(12),
+      D => diff_err_NE0(12),
+      Q => p_1_in9_in,
       R => '0'
     );
 \det_signal.diff_err_NE_reg[12]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \det_signal.diff_err_NE_reg[7]_i_1_n_0\,
+      CI => \det_signal.diff_err_NE_reg[12]_i_2_n_0\,
       CI_TOP => '0',
       CO(7 downto 4) => \NLW_det_signal.diff_err_NE_reg[12]_i_1_CO_UNCONNECTED\(7 downto 4),
       CO(3) => \det_signal.diff_err_NE_reg[12]_i_1_n_4\,
@@ -3960,116 +4747,81 @@ begin
       DI(7 downto 4) => B"0000",
       DI(3 downto 0) => err_NE(11 downto 8),
       O(7 downto 5) => \NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED\(7 downto 5),
-      O(4 downto 0) => \det_signal.diff_err_NE_reg0\(12 downto 8),
-      S(7 downto 5) => B"000",
-      S(4) => \det_signal.diff_err_NE[12]_i_2_n_0\,
+      O(4) => diff_err_NE0(12),
+      O(3 downto 0) => \NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED\(3 downto 0),
+      S(7 downto 4) => B"0001",
       S(3) => \det_signal.diff_err_NE[12]_i_3_n_0\,
       S(2) => \det_signal.diff_err_NE[12]_i_4_n_0\,
       S(1) => \det_signal.diff_err_NE[12]_i_5_n_0\,
       S(0) => \det_signal.diff_err_NE[12]_i_6_n_0\
     );
-\det_signal.diff_err_NE_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(1),
-      Q => diff_err_NE(1),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(2),
-      Q => diff_err_NE(2),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(3),
-      Q => diff_err_NE(3),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(4),
-      Q => diff_err_NE(4),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(5),
-      Q => diff_err_NE(5),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(6),
-      Q => diff_err_NE(6),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(7),
-      Q => diff_err_NE(7),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[7]_i_1\: unisim.vcomponents.CARRY8
+\det_signal.diff_err_NE_reg[12]_i_2\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \det_signal.diff_err_NE_reg[7]_i_1_n_0\,
-      CO(6) => \det_signal.diff_err_NE_reg[7]_i_1_n_1\,
-      CO(5) => \det_signal.diff_err_NE_reg[7]_i_1_n_2\,
-      CO(4) => \det_signal.diff_err_NE_reg[7]_i_1_n_3\,
-      CO(3) => \det_signal.diff_err_NE_reg[7]_i_1_n_4\,
-      CO(2) => \det_signal.diff_err_NE_reg[7]_i_1_n_5\,
-      CO(1) => \det_signal.diff_err_NE_reg[7]_i_1_n_6\,
-      CO(0) => \det_signal.diff_err_NE_reg[7]_i_1_n_7\,
+      CO(7) => \det_signal.diff_err_NE_reg[12]_i_2_n_0\,
+      CO(6) => \det_signal.diff_err_NE_reg[12]_i_2_n_1\,
+      CO(5) => \det_signal.diff_err_NE_reg[12]_i_2_n_2\,
+      CO(4) => \det_signal.diff_err_NE_reg[12]_i_2_n_3\,
+      CO(3) => \det_signal.diff_err_NE_reg[12]_i_2_n_4\,
+      CO(2) => \det_signal.diff_err_NE_reg[12]_i_2_n_5\,
+      CO(1) => \det_signal.diff_err_NE_reg[12]_i_2_n_6\,
+      CO(0) => \det_signal.diff_err_NE_reg[12]_i_2_n_7\,
       DI(7 downto 0) => err_NE(7 downto 0),
-      O(7 downto 0) => \det_signal.diff_err_NE_reg0\(7 downto 0),
-      S(7) => \det_signal.diff_err_NE[7]_i_2_n_0\,
-      S(6) => \det_signal.diff_err_NE[7]_i_3_n_0\,
-      S(5) => \det_signal.diff_err_NE[7]_i_4_n_0\,
-      S(4) => \det_signal.diff_err_NE[7]_i_5_n_0\,
-      S(3) => \det_signal.diff_err_NE[7]_i_6_n_0\,
-      S(2) => \det_signal.diff_err_NE[7]_i_7_n_0\,
-      S(1) => \det_signal.diff_err_NE[7]_i_8_n_0\,
-      S(0) => \det_signal.diff_err_NE[7]_i_9_n_0\
+      O(7 downto 0) => \NLW_det_signal.diff_err_NE_reg[12]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.diff_err_NE[12]_i_7_n_0\,
+      S(6) => \det_signal.diff_err_NE[12]_i_8_n_0\,
+      S(5) => \det_signal.diff_err_NE[12]_i_9_n_0\,
+      S(4) => \det_signal.diff_err_NE[12]_i_10_n_0\,
+      S(3) => \det_signal.diff_err_NE[12]_i_11_n_0\,
+      S(2) => \det_signal.diff_err_NE[12]_i_12_n_0\,
+      S(1) => \det_signal.diff_err_NE[12]_i_13_n_0\,
+      S(0) => \det_signal.diff_err_NE[12]_i_14_n_0\
     );
-\det_signal.diff_err_NE_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(8),
-      Q => diff_err_NE(8),
-      R => '0'
-    );
-\det_signal.diff_err_NE_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NE_reg0\(9),
-      Q => diff_err_NE(9),
-      R => '0'
-    );
-\det_signal.diff_err_NW[12]_i_2\: unisim.vcomponents.LUT1
+\det_signal.diff_err_NW[12]_i_10\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"9"
     )
         port map (
-      I0 => err_NW(12),
-      O => \det_signal.diff_err_NW[12]_i_2_n_0\
+      I0 => err_NW(4),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[4]\,
+      O => \det_signal.diff_err_NW[12]_i_10_n_0\
+    );
+\det_signal.diff_err_NW[12]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NW(3),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[3]\,
+      O => \det_signal.diff_err_NW[12]_i_11_n_0\
+    );
+\det_signal.diff_err_NW[12]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NW(2),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[2]\,
+      O => \det_signal.diff_err_NW[12]_i_12_n_0\
+    );
+\det_signal.diff_err_NW[12]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NW(1),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[1]\,
+      O => \det_signal.diff_err_NW[12]_i_13_n_0\
+    );
+\det_signal.diff_err_NW[12]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => err_NW(0),
+      I1 => \det_signal.max_doa_diff_reg_n_0_[0]\,
+      O => \det_signal.diff_err_NW[12]_i_14_n_0\
     );
 \det_signal.diff_err_NW[12]_i_3\: unisim.vcomponents.LUT2
     generic map(
@@ -4107,113 +4859,44 @@ begin
       I1 => \det_signal.max_doa_diff_reg_n_0_[8]\,
       O => \det_signal.diff_err_NW[12]_i_6_n_0\
     );
-\det_signal.diff_err_NW[7]_i_2\: unisim.vcomponents.LUT2
+\det_signal.diff_err_NW[12]_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_NW(7),
       I1 => \det_signal.max_doa_diff_reg_n_0_[7]\,
-      O => \det_signal.diff_err_NW[7]_i_2_n_0\
+      O => \det_signal.diff_err_NW[12]_i_7_n_0\
     );
-\det_signal.diff_err_NW[7]_i_3\: unisim.vcomponents.LUT2
+\det_signal.diff_err_NW[12]_i_8\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_NW(6),
       I1 => \det_signal.max_doa_diff_reg_n_0_[6]\,
-      O => \det_signal.diff_err_NW[7]_i_3_n_0\
+      O => \det_signal.diff_err_NW[12]_i_8_n_0\
     );
-\det_signal.diff_err_NW[7]_i_4\: unisim.vcomponents.LUT2
+\det_signal.diff_err_NW[12]_i_9\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => err_NW(5),
       I1 => \det_signal.max_doa_diff_reg_n_0_[5]\,
-      O => \det_signal.diff_err_NW[7]_i_4_n_0\
-    );
-\det_signal.diff_err_NW[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NW(4),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[4]\,
-      O => \det_signal.diff_err_NW[7]_i_5_n_0\
-    );
-\det_signal.diff_err_NW[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NW(3),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[3]\,
-      O => \det_signal.diff_err_NW[7]_i_6_n_0\
-    );
-\det_signal.diff_err_NW[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NW(2),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[2]\,
-      O => \det_signal.diff_err_NW[7]_i_7_n_0\
-    );
-\det_signal.diff_err_NW[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NW(1),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[1]\,
-      O => \det_signal.diff_err_NW[7]_i_8_n_0\
-    );
-\det_signal.diff_err_NW[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => err_NW(0),
-      I1 => \det_signal.max_doa_diff_reg_n_0_[0]\,
-      O => \det_signal.diff_err_NW[7]_i_9_n_0\
-    );
-\det_signal.diff_err_NW_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(0),
-      Q => diff_err_NW(0),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(10),
-      Q => diff_err_NW(10),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(11),
-      Q => diff_err_NW(11),
-      R => '0'
+      O => \det_signal.diff_err_NW[12]_i_9_n_0\
     );
 \det_signal.diff_err_NW_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(12),
-      Q => diff_err_NW(12),
+      D => diff_err_NW0(12),
+      Q => p_0_in8_in,
       R => '0'
     );
 \det_signal.diff_err_NW_reg[12]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \det_signal.diff_err_NW_reg[7]_i_1_n_0\,
+      CI => \det_signal.diff_err_NW_reg[12]_i_2_n_0\,
       CI_TOP => '0',
       CO(7 downto 4) => \NLW_det_signal.diff_err_NW_reg[12]_i_1_CO_UNCONNECTED\(7 downto 4),
       CO(3) => \det_signal.diff_err_NW_reg[12]_i_1_n_4\,
@@ -4223,108 +4906,36 @@ begin
       DI(7 downto 4) => B"0000",
       DI(3 downto 0) => err_NW(11 downto 8),
       O(7 downto 5) => \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\(7 downto 5),
-      O(4 downto 0) => \det_signal.diff_err_NW_reg0\(12 downto 8),
-      S(7 downto 5) => B"000",
-      S(4) => \det_signal.diff_err_NW[12]_i_2_n_0\,
+      O(4) => diff_err_NW0(12),
+      O(3 downto 0) => \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\(3 downto 0),
+      S(7 downto 4) => B"0001",
       S(3) => \det_signal.diff_err_NW[12]_i_3_n_0\,
       S(2) => \det_signal.diff_err_NW[12]_i_4_n_0\,
       S(1) => \det_signal.diff_err_NW[12]_i_5_n_0\,
       S(0) => \det_signal.diff_err_NW[12]_i_6_n_0\
     );
-\det_signal.diff_err_NW_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(1),
-      Q => diff_err_NW(1),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(2),
-      Q => diff_err_NW(2),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(3),
-      Q => diff_err_NW(3),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(4),
-      Q => diff_err_NW(4),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(5),
-      Q => diff_err_NW(5),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(6),
-      Q => diff_err_NW(6),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(7),
-      Q => diff_err_NW(7),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[7]_i_1\: unisim.vcomponents.CARRY8
+\det_signal.diff_err_NW_reg[12]_i_2\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \det_signal.diff_err_NW_reg[7]_i_1_n_0\,
-      CO(6) => \det_signal.diff_err_NW_reg[7]_i_1_n_1\,
-      CO(5) => \det_signal.diff_err_NW_reg[7]_i_1_n_2\,
-      CO(4) => \det_signal.diff_err_NW_reg[7]_i_1_n_3\,
-      CO(3) => \det_signal.diff_err_NW_reg[7]_i_1_n_4\,
-      CO(2) => \det_signal.diff_err_NW_reg[7]_i_1_n_5\,
-      CO(1) => \det_signal.diff_err_NW_reg[7]_i_1_n_6\,
-      CO(0) => \det_signal.diff_err_NW_reg[7]_i_1_n_7\,
+      CO(7) => \det_signal.diff_err_NW_reg[12]_i_2_n_0\,
+      CO(6) => \det_signal.diff_err_NW_reg[12]_i_2_n_1\,
+      CO(5) => \det_signal.diff_err_NW_reg[12]_i_2_n_2\,
+      CO(4) => \det_signal.diff_err_NW_reg[12]_i_2_n_3\,
+      CO(3) => \det_signal.diff_err_NW_reg[12]_i_2_n_4\,
+      CO(2) => \det_signal.diff_err_NW_reg[12]_i_2_n_5\,
+      CO(1) => \det_signal.diff_err_NW_reg[12]_i_2_n_6\,
+      CO(0) => \det_signal.diff_err_NW_reg[12]_i_2_n_7\,
       DI(7 downto 0) => err_NW(7 downto 0),
-      O(7 downto 0) => \det_signal.diff_err_NW_reg0\(7 downto 0),
-      S(7) => \det_signal.diff_err_NW[7]_i_2_n_0\,
-      S(6) => \det_signal.diff_err_NW[7]_i_3_n_0\,
-      S(5) => \det_signal.diff_err_NW[7]_i_4_n_0\,
-      S(4) => \det_signal.diff_err_NW[7]_i_5_n_0\,
-      S(3) => \det_signal.diff_err_NW[7]_i_6_n_0\,
-      S(2) => \det_signal.diff_err_NW[7]_i_7_n_0\,
-      S(1) => \det_signal.diff_err_NW[7]_i_8_n_0\,
-      S(0) => \det_signal.diff_err_NW[7]_i_9_n_0\
-    );
-\det_signal.diff_err_NW_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(8),
-      Q => diff_err_NW(8),
-      R => '0'
-    );
-\det_signal.diff_err_NW_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.run_reg[0]__0\,
-      D => \det_signal.diff_err_NW_reg0\(9),
-      Q => diff_err_NW(9),
-      R => '0'
+      O(7 downto 0) => \NLW_det_signal.diff_err_NW_reg[12]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.diff_err_NW[12]_i_7_n_0\,
+      S(6) => \det_signal.diff_err_NW[12]_i_8_n_0\,
+      S(5) => \det_signal.diff_err_NW[12]_i_9_n_0\,
+      S(4) => \det_signal.diff_err_NW[12]_i_10_n_0\,
+      S(3) => \det_signal.diff_err_NW[12]_i_11_n_0\,
+      S(2) => \det_signal.diff_err_NW[12]_i_12_n_0\,
+      S(1) => \det_signal.diff_err_NW[12]_i_13_n_0\,
+      S(0) => \det_signal.diff_err_NW[12]_i_14_n_0\
     );
 \det_signal.diff_phase_E[15]_i_11\: unisim.vcomponents.LUT1
     generic map(
@@ -6234,6 +6845,510 @@ begin
       Q => diff_phase_W(9),
       R => '0'
     );
+\det_signal.dsp_phase_E_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(0),
+      Q => dsp_phase_E(0),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(10),
+      Q => dsp_phase_E(10),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(11),
+      Q => dsp_phase_E(11),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(12),
+      Q => dsp_phase_E(12),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(13),
+      Q => dsp_phase_E(13),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(14),
+      Q => dsp_phase_E(14),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(15),
+      Q => dsp_phase_E(15),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(16),
+      Q => dsp_phase_E(16),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(17),
+      Q => dsp_phase_E(17),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(18),
+      Q => dsp_phase_E(18),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(19),
+      Q => dsp_phase_E(19),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(1),
+      Q => dsp_phase_E(1),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => '0',
+      Q => dsp_phase_E(20),
+      R => '0'
+    );
+\det_signal.dsp_phase_E_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(2),
+      Q => dsp_phase_E(2),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(3),
+      Q => dsp_phase_E(3),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(4),
+      Q => dsp_phase_E(4),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(5),
+      Q => dsp_phase_E(5),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(6),
+      Q => dsp_phase_E(6),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(7),
+      Q => dsp_phase_E(7),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(8),
+      Q => dsp_phase_E(8),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_E_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_E(9),
+      Q => dsp_phase_E(9),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(0),
+      Q => dsp_phase_N(0),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(10),
+      Q => dsp_phase_N(10),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(11),
+      Q => dsp_phase_N(11),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(12),
+      Q => dsp_phase_N(12),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(13),
+      Q => dsp_phase_N(13),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(14),
+      Q => dsp_phase_N(14),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(15),
+      Q => dsp_phase_N(15),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(16),
+      Q => dsp_phase_N(16),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(17),
+      Q => dsp_phase_N(17),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(18),
+      Q => dsp_phase_N(18),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(19),
+      Q => dsp_phase_N(19),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(1),
+      Q => dsp_phase_N(1),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => '0',
+      Q => dsp_phase_N(20),
+      R => '0'
+    );
+\det_signal.dsp_phase_N_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(2),
+      Q => dsp_phase_N(2),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(3),
+      Q => dsp_phase_N(3),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(4),
+      Q => dsp_phase_N(4),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(5),
+      Q => dsp_phase_N(5),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(6),
+      Q => dsp_phase_N(6),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(7),
+      Q => dsp_phase_N(7),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(8),
+      Q => dsp_phase_N(8),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_N_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_N(9),
+      Q => dsp_phase_N(9),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(0),
+      Q => dsp_phase_W(0),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(10),
+      Q => dsp_phase_W(10),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(11),
+      Q => dsp_phase_W(11),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(12),
+      Q => dsp_phase_W(12),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(13),
+      Q => dsp_phase_W(13),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(14),
+      Q => dsp_phase_W(14),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(15),
+      Q => dsp_phase_W(15),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(16),
+      Q => dsp_phase_W(16),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(17),
+      Q => dsp_phase_W(17),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(18),
+      Q => dsp_phase_W(18),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(19),
+      Q => dsp_phase_W(19),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(1),
+      Q => dsp_phase_W(1),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => '0',
+      Q => dsp_phase_W(20),
+      R => '0'
+    );
+\det_signal.dsp_phase_W_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(2),
+      Q => dsp_phase_W(2),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(3),
+      Q => dsp_phase_W(3),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(4),
+      Q => dsp_phase_W(4),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(5),
+      Q => dsp_phase_W(5),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(6),
+      Q => dsp_phase_W(6),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(7),
+      Q => dsp_phase_W(7),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(8),
+      Q => dsp_phase_W(8),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
+\det_signal.dsp_phase_W_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => diff_phase_W(9),
+      Q => dsp_phase_W(9),
+      R => \det_signal.curr_signal_counter[9]_i_1_n_0\
+    );
 \det_signal.env_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -6913,8 +8028,8 @@ begin
         port map (
       I0 => \det_signal.run_reg[2]__0\,
       I1 => has_signal,
-      I2 => valid_count,
-      I3 => err_ov,
+      I2 => \det_signal.valid_count_reg_n_0\,
+      I3 => \det_signal.err_ov_reg_n_0\,
       I4 => err_count(0),
       O => \det_signal.err_count[0]_i_1_n_0\
     );
@@ -6924,7 +8039,7 @@ begin
     )
         port map (
       I0 => \det_signal.run_reg[2]__0\,
-      I1 => valid_count,
+      I1 => \det_signal.valid_count_reg_n_0\,
       I2 => valid_err,
       I3 => valid_env,
       O => \det_signal.err_count[1]_i_1_n_0\
@@ -6936,8 +8051,8 @@ begin
         port map (
       I0 => \det_signal.run_reg[2]__0\,
       I1 => err_count(1),
-      I2 => err_ov,
-      I3 => valid_count,
+      I2 => \det_signal.err_ov_reg_n_0\,
+      I3 => \det_signal.valid_count_reg_n_0\,
       I4 => has_signal,
       I5 => err_count(0),
       O => \det_signal.err_count[1]_i_2_n_0\
@@ -6963,7 +8078,7 @@ begin
       INIT => X"FCCCAAAA"
     )
         port map (
-      I0 => err_ov,
+      I0 => \det_signal.err_ov_reg_n_0\,
       I1 => \det_signal.err_ov_i_2_n_0\,
       I2 => err_count(0),
       I3 => err_count(1),
@@ -6984,7 +8099,7 @@ begin
       C => clk,
       CE => '1',
       D => \det_signal.err_ov_i_1_n_0\,
-      Q => err_ov,
+      Q => \det_signal.err_ov_reg_n_0\,
       R => '0'
     );
 \det_signal.has_signal_i_1\: unisim.vcomponents.LUT6
@@ -6993,19 +8108,2048 @@ begin
     )
         port map (
       I0 => \det_signal.run_reg[2]__0\,
-      I1 => err_ov,
-      I2 => valid_count,
+      I1 => \det_signal.err_ov_reg_n_0\,
+      I2 => \det_signal.valid_count_reg_n_0\,
       I3 => has_signal,
       I4 => valid_env,
       I5 => valid_err,
-      O => has_signal4_out
+      O => has_signal0_out
     );
 \det_signal.has_signal_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => has_signal4_out,
+      D => has_signal0_out,
       Q => has_signal,
+      R => '0'
+    );
+\det_signal.hi_env_sum_E[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_E(16),
+      I1 => carry_env_sum_E,
+      O => \det_signal.hi_env_sum_E[7]_i_2_n_0\
+    );
+\det_signal.hi_env_sum_E_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(0),
+      Q => curr_env_sum_E(16),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(10),
+      Q => curr_env_sum_E(26),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(11),
+      Q => curr_env_sum_E(27),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(12),
+      Q => curr_env_sum_E(28),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(13),
+      Q => curr_env_sum_E(29),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(14),
+      Q => curr_env_sum_E(30),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(15),
+      Q => curr_env_sum_E(31),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.hi_env_sum_E_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.hi_env_sum_E_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.hi_env_sum_E_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 0) => hi_env_sum_E0(15 downto 8),
+      S(7 downto 0) => curr_env_sum_E(31 downto 24)
+    );
+\det_signal.hi_env_sum_E_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(1),
+      Q => curr_env_sum_E(17),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(2),
+      Q => curr_env_sum_E(18),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(3),
+      Q => curr_env_sum_E(19),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(4),
+      Q => curr_env_sum_E(20),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(5),
+      Q => curr_env_sum_E(21),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(6),
+      Q => curr_env_sum_E(22),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(7),
+      Q => curr_env_sum_E(23),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.hi_env_sum_E_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => curr_env_sum_E(16),
+      O(7 downto 0) => hi_env_sum_E0(7 downto 0),
+      S(7 downto 1) => curr_env_sum_E(23 downto 17),
+      S(0) => \det_signal.hi_env_sum_E[7]_i_2_n_0\
+    );
+\det_signal.hi_env_sum_E_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(8),
+      Q => curr_env_sum_E(24),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_E_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_E0(9),
+      Q => curr_env_sum_E(25),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00010000"
+    )
+        port map (
+      I0 => curr_signal_counter(2),
+      I1 => curr_signal_counter(3),
+      I2 => curr_signal_counter(0),
+      I3 => curr_signal_counter(1),
+      I4 => \det_signal.hi_env_sum_N[15]_i_3_n_0\,
+      O => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => curr_signal_counter(6),
+      I1 => curr_signal_counter(7),
+      I2 => curr_signal_counter(4),
+      I3 => curr_signal_counter(5),
+      I4 => curr_signal_counter(9),
+      I5 => curr_signal_counter(8),
+      O => \det_signal.hi_env_sum_N[15]_i_3_n_0\
+    );
+\det_signal.hi_env_sum_N[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_N(16),
+      I1 => carry_env_sum_N,
+      O => \det_signal.hi_env_sum_N[7]_i_2_n_0\
+    );
+\det_signal.hi_env_sum_N_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(0),
+      Q => curr_env_sum_N(16),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(10),
+      Q => curr_env_sum_N(26),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(11),
+      Q => curr_env_sum_N(27),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(12),
+      Q => curr_env_sum_N(28),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(13),
+      Q => curr_env_sum_N(29),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(14),
+      Q => curr_env_sum_N(30),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(15),
+      Q => curr_env_sum_N(31),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.hi_env_sum_N_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.hi_env_sum_N_reg[15]_i_2_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_1\,
+      CO(5) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_2\,
+      CO(4) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_3\,
+      CO(3) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_4\,
+      CO(2) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_5\,
+      CO(1) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_6\,
+      CO(0) => \det_signal.hi_env_sum_N_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 0) => hi_env_sum_N0(15 downto 8),
+      S(7 downto 0) => curr_env_sum_N(31 downto 24)
+    );
+\det_signal.hi_env_sum_N_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(1),
+      Q => curr_env_sum_N(17),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(2),
+      Q => curr_env_sum_N(18),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(3),
+      Q => curr_env_sum_N(19),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(4),
+      Q => curr_env_sum_N(20),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(5),
+      Q => curr_env_sum_N(21),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(6),
+      Q => curr_env_sum_N(22),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(7),
+      Q => curr_env_sum_N(23),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.hi_env_sum_N_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => curr_env_sum_N(16),
+      O(7 downto 0) => hi_env_sum_N0(7 downto 0),
+      S(7 downto 1) => curr_env_sum_N(23 downto 17),
+      S(0) => \det_signal.hi_env_sum_N[7]_i_2_n_0\
+    );
+\det_signal.hi_env_sum_N_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(8),
+      Q => curr_env_sum_N(24),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_N_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_N0(9),
+      Q => curr_env_sum_N(25),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_env_sum_W(16),
+      I1 => \det_signal.carry_env_sum_W_reg_n_0\,
+      O => \det_signal.hi_env_sum_W[7]_i_2_n_0\
+    );
+\det_signal.hi_env_sum_W_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(0),
+      Q => curr_env_sum_W(16),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(10),
+      Q => curr_env_sum_W(26),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(11),
+      Q => curr_env_sum_W(27),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(12),
+      Q => curr_env_sum_W(28),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(13),
+      Q => curr_env_sum_W(29),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(14),
+      Q => curr_env_sum_W(30),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(15),
+      Q => curr_env_sum_W(31),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.hi_env_sum_W_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.hi_env_sum_W_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.hi_env_sum_W_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 0) => hi_env_sum_W0(15 downto 8),
+      S(7 downto 0) => curr_env_sum_W(31 downto 24)
+    );
+\det_signal.hi_env_sum_W_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(1),
+      Q => curr_env_sum_W(17),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(2),
+      Q => curr_env_sum_W(18),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(3),
+      Q => curr_env_sum_W(19),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(4),
+      Q => curr_env_sum_W(20),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(5),
+      Q => curr_env_sum_W(21),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(6),
+      Q => curr_env_sum_W(22),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(7),
+      Q => curr_env_sum_W(23),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.hi_env_sum_W_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => curr_env_sum_W(16),
+      O(7 downto 0) => hi_env_sum_W0(7 downto 0),
+      S(7 downto 1) => curr_env_sum_W(23 downto 17),
+      S(0) => \det_signal.hi_env_sum_W[7]_i_2_n_0\
+    );
+\det_signal.hi_env_sum_W_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(8),
+      Q => curr_env_sum_W(24),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.hi_env_sum_W_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => hi_env_sum_W0(9),
+      Q => curr_env_sum_W(25),
+      R => \hi_env_sum_W__0\(0)
+    );
+\det_signal.lo_env_sum_E[15]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(14),
+      I1 => acc_reset,
+      I2 => env_E(14),
+      O => \det_signal.lo_env_sum_E[15]_i_10_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_11\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(13),
+      I1 => acc_reset,
+      I2 => env_E(13),
+      O => \det_signal.lo_env_sum_E[15]_i_11_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_12\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(12),
+      I1 => acc_reset,
+      I2 => env_E(12),
+      O => \det_signal.lo_env_sum_E[15]_i_12_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(11),
+      I1 => acc_reset,
+      I2 => env_E(11),
+      O => \det_signal.lo_env_sum_E[15]_i_13_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_14\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(10),
+      I1 => acc_reset,
+      I2 => env_E(10),
+      O => \det_signal.lo_env_sum_E[15]_i_14_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_15\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(9),
+      I1 => acc_reset,
+      I2 => env_E(9),
+      O => \det_signal.lo_env_sum_E[15]_i_15_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_16\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(8),
+      I1 => acc_reset,
+      I2 => env_E(8),
+      O => \det_signal.lo_env_sum_E[15]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(14),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_2_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(13),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_3_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(12),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_4_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(11),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_5_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(10),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_6_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(9),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_7_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(8),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[15]_i_8_n_0\
+    );
+\det_signal.lo_env_sum_E[15]_i_9\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(15),
+      I1 => acc_reset,
+      I2 => env_E(15),
+      O => \det_signal.lo_env_sum_E[15]_i_9_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(7),
+      I1 => acc_reset,
+      I2 => env_E(7),
+      O => \det_signal.lo_env_sum_E[7]_i_10_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_11\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(6),
+      I1 => acc_reset,
+      I2 => env_E(6),
+      O => \det_signal.lo_env_sum_E[7]_i_11_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_12\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(5),
+      I1 => acc_reset,
+      I2 => env_E(5),
+      O => \det_signal.lo_env_sum_E[7]_i_12_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(4),
+      I1 => acc_reset,
+      I2 => env_E(4),
+      O => \det_signal.lo_env_sum_E[7]_i_13_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_14\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(3),
+      I1 => acc_reset,
+      I2 => env_E(3),
+      O => \det_signal.lo_env_sum_E[7]_i_14_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_15\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(2),
+      I1 => acc_reset,
+      I2 => env_E(2),
+      O => \det_signal.lo_env_sum_E[7]_i_15_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_16\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(1),
+      I1 => acc_reset,
+      I2 => env_E(1),
+      O => \det_signal.lo_env_sum_E[7]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_17\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_E(0),
+      I1 => acc_reset,
+      I2 => env_E(0),
+      O => \det_signal.lo_env_sum_E[7]_i_17_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(7),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_2_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(6),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_3_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(5),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_4_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(4),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_5_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(3),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_6_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(2),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_7_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(1),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_8_n_0\
+    );
+\det_signal.lo_env_sum_E[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_E(0),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_E[7]_i_9_n_0\
+    );
+\det_signal.lo_env_sum_E_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_15\,
+      Q => curr_env_sum_E(0),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_13\,
+      Q => curr_env_sum_E(10),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_12\,
+      Q => curr_env_sum_E(11),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_11\,
+      Q => curr_env_sum_E(12),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_10\,
+      Q => curr_env_sum_E(13),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_9\,
+      Q => curr_env_sum_E(14),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_8\,
+      Q => curr_env_sum_E(15),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.lo_env_sum_E_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.lo_env_sum_E_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_7\,
+      DI(7) => '0',
+      DI(6) => \det_signal.lo_env_sum_E[15]_i_2_n_0\,
+      DI(5) => \det_signal.lo_env_sum_E[15]_i_3_n_0\,
+      DI(4) => \det_signal.lo_env_sum_E[15]_i_4_n_0\,
+      DI(3) => \det_signal.lo_env_sum_E[15]_i_5_n_0\,
+      DI(2) => \det_signal.lo_env_sum_E[15]_i_6_n_0\,
+      DI(1) => \det_signal.lo_env_sum_E[15]_i_7_n_0\,
+      DI(0) => \det_signal.lo_env_sum_E[15]_i_8_n_0\,
+      O(7) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_8\,
+      O(6) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_9\,
+      O(5) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_10\,
+      O(4) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_11\,
+      O(3) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_12\,
+      O(2) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_13\,
+      O(1) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_14\,
+      O(0) => \det_signal.lo_env_sum_E_reg[15]_i_1_n_15\,
+      S(7) => \det_signal.lo_env_sum_E[15]_i_9_n_0\,
+      S(6) => \det_signal.lo_env_sum_E[15]_i_10_n_0\,
+      S(5) => \det_signal.lo_env_sum_E[15]_i_11_n_0\,
+      S(4) => \det_signal.lo_env_sum_E[15]_i_12_n_0\,
+      S(3) => \det_signal.lo_env_sum_E[15]_i_13_n_0\,
+      S(2) => \det_signal.lo_env_sum_E[15]_i_14_n_0\,
+      S(1) => \det_signal.lo_env_sum_E[15]_i_15_n_0\,
+      S(0) => \det_signal.lo_env_sum_E[15]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_E_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_14\,
+      Q => curr_env_sum_E(1),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_13\,
+      Q => curr_env_sum_E(2),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_12\,
+      Q => curr_env_sum_E(3),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_11\,
+      Q => curr_env_sum_E(4),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_10\,
+      Q => curr_env_sum_E(5),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_9\,
+      Q => curr_env_sum_E(6),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[7]_i_1_n_8\,
+      Q => curr_env_sum_E(7),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_7\,
+      DI(7) => \det_signal.lo_env_sum_E[7]_i_2_n_0\,
+      DI(6) => \det_signal.lo_env_sum_E[7]_i_3_n_0\,
+      DI(5) => \det_signal.lo_env_sum_E[7]_i_4_n_0\,
+      DI(4) => \det_signal.lo_env_sum_E[7]_i_5_n_0\,
+      DI(3) => \det_signal.lo_env_sum_E[7]_i_6_n_0\,
+      DI(2) => \det_signal.lo_env_sum_E[7]_i_7_n_0\,
+      DI(1) => \det_signal.lo_env_sum_E[7]_i_8_n_0\,
+      DI(0) => \det_signal.lo_env_sum_E[7]_i_9_n_0\,
+      O(7) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_8\,
+      O(6) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_9\,
+      O(5) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_10\,
+      O(4) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_11\,
+      O(3) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_12\,
+      O(2) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_13\,
+      O(1) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_14\,
+      O(0) => \det_signal.lo_env_sum_E_reg[7]_i_1_n_15\,
+      S(7) => \det_signal.lo_env_sum_E[7]_i_10_n_0\,
+      S(6) => \det_signal.lo_env_sum_E[7]_i_11_n_0\,
+      S(5) => \det_signal.lo_env_sum_E[7]_i_12_n_0\,
+      S(4) => \det_signal.lo_env_sum_E[7]_i_13_n_0\,
+      S(3) => \det_signal.lo_env_sum_E[7]_i_14_n_0\,
+      S(2) => \det_signal.lo_env_sum_E[7]_i_15_n_0\,
+      S(1) => \det_signal.lo_env_sum_E[7]_i_16_n_0\,
+      S(0) => \det_signal.lo_env_sum_E[7]_i_17_n_0\
+    );
+\det_signal.lo_env_sum_E_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_15\,
+      Q => curr_env_sum_E(8),
+      R => '0'
+    );
+\det_signal.lo_env_sum_E_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_E_reg[15]_i_1_n_14\,
+      Q => curr_env_sum_E(9),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N[15]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(14),
+      I1 => acc_reset,
+      I2 => env_N(14),
+      O => \det_signal.lo_env_sum_N[15]_i_10_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_11\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(13),
+      I1 => acc_reset,
+      I2 => env_N(13),
+      O => \det_signal.lo_env_sum_N[15]_i_11_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_12\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(12),
+      I1 => acc_reset,
+      I2 => env_N(12),
+      O => \det_signal.lo_env_sum_N[15]_i_12_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(11),
+      I1 => acc_reset,
+      I2 => env_N(11),
+      O => \det_signal.lo_env_sum_N[15]_i_13_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_14\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(10),
+      I1 => acc_reset,
+      I2 => env_N(10),
+      O => \det_signal.lo_env_sum_N[15]_i_14_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_15\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(9),
+      I1 => acc_reset,
+      I2 => env_N(9),
+      O => \det_signal.lo_env_sum_N[15]_i_15_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_16\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(8),
+      I1 => acc_reset,
+      I2 => env_N(8),
+      O => \det_signal.lo_env_sum_N[15]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(14),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_2_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(13),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_3_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(12),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_4_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(11),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_5_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(10),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_6_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(9),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_7_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(8),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[15]_i_8_n_0\
+    );
+\det_signal.lo_env_sum_N[15]_i_9\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(15),
+      I1 => acc_reset,
+      I2 => env_N(15),
+      O => \det_signal.lo_env_sum_N[15]_i_9_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(7),
+      I1 => acc_reset,
+      I2 => env_N(7),
+      O => \det_signal.lo_env_sum_N[7]_i_10_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_11\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(6),
+      I1 => acc_reset,
+      I2 => env_N(6),
+      O => \det_signal.lo_env_sum_N[7]_i_11_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_12\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(5),
+      I1 => acc_reset,
+      I2 => env_N(5),
+      O => \det_signal.lo_env_sum_N[7]_i_12_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(4),
+      I1 => acc_reset,
+      I2 => env_N(4),
+      O => \det_signal.lo_env_sum_N[7]_i_13_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_14\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(3),
+      I1 => acc_reset,
+      I2 => env_N(3),
+      O => \det_signal.lo_env_sum_N[7]_i_14_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_15\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(2),
+      I1 => acc_reset,
+      I2 => env_N(2),
+      O => \det_signal.lo_env_sum_N[7]_i_15_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_16\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(1),
+      I1 => acc_reset,
+      I2 => env_N(1),
+      O => \det_signal.lo_env_sum_N[7]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_17\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_N(0),
+      I1 => acc_reset,
+      I2 => env_N(0),
+      O => \det_signal.lo_env_sum_N[7]_i_17_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(7),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_2_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(6),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_3_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(5),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_4_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(4),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_5_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(3),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_6_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(2),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_7_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(1),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_8_n_0\
+    );
+\det_signal.lo_env_sum_N[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_N(0),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_N[7]_i_9_n_0\
+    );
+\det_signal.lo_env_sum_N_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_15\,
+      Q => curr_env_sum_N(0),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_13\,
+      Q => curr_env_sum_N(10),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_12\,
+      Q => curr_env_sum_N(11),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_11\,
+      Q => curr_env_sum_N(12),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_10\,
+      Q => curr_env_sum_N(13),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_9\,
+      Q => curr_env_sum_N(14),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_8\,
+      Q => curr_env_sum_N(15),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.lo_env_sum_N_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.lo_env_sum_N_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_7\,
+      DI(7) => '0',
+      DI(6) => \det_signal.lo_env_sum_N[15]_i_2_n_0\,
+      DI(5) => \det_signal.lo_env_sum_N[15]_i_3_n_0\,
+      DI(4) => \det_signal.lo_env_sum_N[15]_i_4_n_0\,
+      DI(3) => \det_signal.lo_env_sum_N[15]_i_5_n_0\,
+      DI(2) => \det_signal.lo_env_sum_N[15]_i_6_n_0\,
+      DI(1) => \det_signal.lo_env_sum_N[15]_i_7_n_0\,
+      DI(0) => \det_signal.lo_env_sum_N[15]_i_8_n_0\,
+      O(7) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_8\,
+      O(6) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_9\,
+      O(5) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_10\,
+      O(4) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_11\,
+      O(3) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_12\,
+      O(2) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_13\,
+      O(1) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_14\,
+      O(0) => \det_signal.lo_env_sum_N_reg[15]_i_1_n_15\,
+      S(7) => \det_signal.lo_env_sum_N[15]_i_9_n_0\,
+      S(6) => \det_signal.lo_env_sum_N[15]_i_10_n_0\,
+      S(5) => \det_signal.lo_env_sum_N[15]_i_11_n_0\,
+      S(4) => \det_signal.lo_env_sum_N[15]_i_12_n_0\,
+      S(3) => \det_signal.lo_env_sum_N[15]_i_13_n_0\,
+      S(2) => \det_signal.lo_env_sum_N[15]_i_14_n_0\,
+      S(1) => \det_signal.lo_env_sum_N[15]_i_15_n_0\,
+      S(0) => \det_signal.lo_env_sum_N[15]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_N_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_14\,
+      Q => curr_env_sum_N(1),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_13\,
+      Q => curr_env_sum_N(2),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_12\,
+      Q => curr_env_sum_N(3),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_11\,
+      Q => curr_env_sum_N(4),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_10\,
+      Q => curr_env_sum_N(5),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_9\,
+      Q => curr_env_sum_N(6),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[7]_i_1_n_8\,
+      Q => curr_env_sum_N(7),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_7\,
+      DI(7) => \det_signal.lo_env_sum_N[7]_i_2_n_0\,
+      DI(6) => \det_signal.lo_env_sum_N[7]_i_3_n_0\,
+      DI(5) => \det_signal.lo_env_sum_N[7]_i_4_n_0\,
+      DI(4) => \det_signal.lo_env_sum_N[7]_i_5_n_0\,
+      DI(3) => \det_signal.lo_env_sum_N[7]_i_6_n_0\,
+      DI(2) => \det_signal.lo_env_sum_N[7]_i_7_n_0\,
+      DI(1) => \det_signal.lo_env_sum_N[7]_i_8_n_0\,
+      DI(0) => \det_signal.lo_env_sum_N[7]_i_9_n_0\,
+      O(7) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_8\,
+      O(6) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_9\,
+      O(5) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_10\,
+      O(4) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_11\,
+      O(3) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_12\,
+      O(2) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_13\,
+      O(1) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_14\,
+      O(0) => \det_signal.lo_env_sum_N_reg[7]_i_1_n_15\,
+      S(7) => \det_signal.lo_env_sum_N[7]_i_10_n_0\,
+      S(6) => \det_signal.lo_env_sum_N[7]_i_11_n_0\,
+      S(5) => \det_signal.lo_env_sum_N[7]_i_12_n_0\,
+      S(4) => \det_signal.lo_env_sum_N[7]_i_13_n_0\,
+      S(3) => \det_signal.lo_env_sum_N[7]_i_14_n_0\,
+      S(2) => \det_signal.lo_env_sum_N[7]_i_15_n_0\,
+      S(1) => \det_signal.lo_env_sum_N[7]_i_16_n_0\,
+      S(0) => \det_signal.lo_env_sum_N[7]_i_17_n_0\
+    );
+\det_signal.lo_env_sum_N_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_15\,
+      Q => curr_env_sum_N(8),
+      R => '0'
+    );
+\det_signal.lo_env_sum_N_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_N_reg[15]_i_1_n_14\,
+      Q => curr_env_sum_N(9),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W[15]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(14),
+      I1 => acc_reset,
+      I2 => env_W(14),
+      O => \det_signal.lo_env_sum_W[15]_i_10_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_11\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(13),
+      I1 => acc_reset,
+      I2 => env_W(13),
+      O => \det_signal.lo_env_sum_W[15]_i_11_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_12\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(12),
+      I1 => acc_reset,
+      I2 => env_W(12),
+      O => \det_signal.lo_env_sum_W[15]_i_12_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(11),
+      I1 => acc_reset,
+      I2 => env_W(11),
+      O => \det_signal.lo_env_sum_W[15]_i_13_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_14\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(10),
+      I1 => acc_reset,
+      I2 => env_W(10),
+      O => \det_signal.lo_env_sum_W[15]_i_14_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_15\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(9),
+      I1 => acc_reset,
+      I2 => env_W(9),
+      O => \det_signal.lo_env_sum_W[15]_i_15_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_16\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(8),
+      I1 => acc_reset,
+      I2 => env_W(8),
+      O => \det_signal.lo_env_sum_W[15]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(14),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_2_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(13),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_3_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(12),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_4_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(11),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_5_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(10),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_6_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(9),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_7_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(8),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[15]_i_8_n_0\
+    );
+\det_signal.lo_env_sum_W[15]_i_9\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(15),
+      I1 => acc_reset,
+      I2 => env_W(15),
+      O => \det_signal.lo_env_sum_W[15]_i_9_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(7),
+      I1 => acc_reset,
+      I2 => env_W(7),
+      O => \det_signal.lo_env_sum_W[7]_i_10_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_11\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(6),
+      I1 => acc_reset,
+      I2 => env_W(6),
+      O => \det_signal.lo_env_sum_W[7]_i_11_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_12\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(5),
+      I1 => acc_reset,
+      I2 => env_W(5),
+      O => \det_signal.lo_env_sum_W[7]_i_12_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(4),
+      I1 => acc_reset,
+      I2 => env_W(4),
+      O => \det_signal.lo_env_sum_W[7]_i_13_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_14\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(3),
+      I1 => acc_reset,
+      I2 => env_W(3),
+      O => \det_signal.lo_env_sum_W[7]_i_14_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_15\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(2),
+      I1 => acc_reset,
+      I2 => env_W(2),
+      O => \det_signal.lo_env_sum_W[7]_i_15_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_16\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(1),
+      I1 => acc_reset,
+      I2 => env_W(1),
+      O => \det_signal.lo_env_sum_W[7]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_17\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"D2"
+    )
+        port map (
+      I0 => curr_env_sum_W(0),
+      I1 => acc_reset,
+      I2 => env_W(0),
+      O => \det_signal.lo_env_sum_W[7]_i_17_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(7),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_2_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(6),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_3_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(5),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_4_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(4),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_5_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(3),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_6_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(2),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_7_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(1),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_8_n_0\
+    );
+\det_signal.lo_env_sum_W[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_W(0),
+      I1 => acc_reset,
+      O => \det_signal.lo_env_sum_W[7]_i_9_n_0\
+    );
+\det_signal.lo_env_sum_W_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_15\,
+      Q => curr_env_sum_W(0),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_13\,
+      Q => curr_env_sum_W(10),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_12\,
+      Q => curr_env_sum_W(11),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_11\,
+      Q => curr_env_sum_W(12),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_10\,
+      Q => curr_env_sum_W(13),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_9\,
+      Q => curr_env_sum_W(14),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_8\,
+      Q => curr_env_sum_W(15),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.lo_env_sum_W_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.lo_env_sum_W_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_7\,
+      DI(7) => '0',
+      DI(6) => \det_signal.lo_env_sum_W[15]_i_2_n_0\,
+      DI(5) => \det_signal.lo_env_sum_W[15]_i_3_n_0\,
+      DI(4) => \det_signal.lo_env_sum_W[15]_i_4_n_0\,
+      DI(3) => \det_signal.lo_env_sum_W[15]_i_5_n_0\,
+      DI(2) => \det_signal.lo_env_sum_W[15]_i_6_n_0\,
+      DI(1) => \det_signal.lo_env_sum_W[15]_i_7_n_0\,
+      DI(0) => \det_signal.lo_env_sum_W[15]_i_8_n_0\,
+      O(7) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_8\,
+      O(6) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_9\,
+      O(5) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_10\,
+      O(4) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_11\,
+      O(3) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_12\,
+      O(2) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_13\,
+      O(1) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_14\,
+      O(0) => \det_signal.lo_env_sum_W_reg[15]_i_1_n_15\,
+      S(7) => \det_signal.lo_env_sum_W[15]_i_9_n_0\,
+      S(6) => \det_signal.lo_env_sum_W[15]_i_10_n_0\,
+      S(5) => \det_signal.lo_env_sum_W[15]_i_11_n_0\,
+      S(4) => \det_signal.lo_env_sum_W[15]_i_12_n_0\,
+      S(3) => \det_signal.lo_env_sum_W[15]_i_13_n_0\,
+      S(2) => \det_signal.lo_env_sum_W[15]_i_14_n_0\,
+      S(1) => \det_signal.lo_env_sum_W[15]_i_15_n_0\,
+      S(0) => \det_signal.lo_env_sum_W[15]_i_16_n_0\
+    );
+\det_signal.lo_env_sum_W_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_14\,
+      Q => curr_env_sum_W(1),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_13\,
+      Q => curr_env_sum_W(2),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_12\,
+      Q => curr_env_sum_W(3),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_11\,
+      Q => curr_env_sum_W(4),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_10\,
+      Q => curr_env_sum_W(5),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_9\,
+      Q => curr_env_sum_W(6),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[7]_i_1_n_8\,
+      Q => curr_env_sum_W(7),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_7\,
+      DI(7) => \det_signal.lo_env_sum_W[7]_i_2_n_0\,
+      DI(6) => \det_signal.lo_env_sum_W[7]_i_3_n_0\,
+      DI(5) => \det_signal.lo_env_sum_W[7]_i_4_n_0\,
+      DI(4) => \det_signal.lo_env_sum_W[7]_i_5_n_0\,
+      DI(3) => \det_signal.lo_env_sum_W[7]_i_6_n_0\,
+      DI(2) => \det_signal.lo_env_sum_W[7]_i_7_n_0\,
+      DI(1) => \det_signal.lo_env_sum_W[7]_i_8_n_0\,
+      DI(0) => \det_signal.lo_env_sum_W[7]_i_9_n_0\,
+      O(7) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_8\,
+      O(6) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_9\,
+      O(5) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_10\,
+      O(4) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_11\,
+      O(3) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_12\,
+      O(2) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_13\,
+      O(1) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_14\,
+      O(0) => \det_signal.lo_env_sum_W_reg[7]_i_1_n_15\,
+      S(7) => \det_signal.lo_env_sum_W[7]_i_10_n_0\,
+      S(6) => \det_signal.lo_env_sum_W[7]_i_11_n_0\,
+      S(5) => \det_signal.lo_env_sum_W[7]_i_12_n_0\,
+      S(4) => \det_signal.lo_env_sum_W[7]_i_13_n_0\,
+      S(3) => \det_signal.lo_env_sum_W[7]_i_14_n_0\,
+      S(2) => \det_signal.lo_env_sum_W[7]_i_15_n_0\,
+      S(1) => \det_signal.lo_env_sum_W[7]_i_16_n_0\,
+      S(0) => \det_signal.lo_env_sum_W[7]_i_17_n_0\
+    );
+\det_signal.lo_env_sum_W_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_15\,
+      Q => curr_env_sum_W(8),
+      R => '0'
+    );
+\det_signal.lo_env_sum_W_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => has_signal,
+      D => \det_signal.lo_env_sum_W_reg[15]_i_1_n_14\,
+      Q => curr_env_sum_W(9),
       R => '0'
     );
 \det_signal.max_doa_diff[11]_i_1\: unisim.vcomponents.LUT5
@@ -8232,7 +11376,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => '1',
+      D => proc_signal,
       Q => proc_done,
       R => '0'
     );
@@ -8278,371 +11422,370 @@ begin
       Q => \det_signal.run_reg[2]__0\,
       R => '0'
     );
-\det_signal.sample_counter[31]_i_1\: unisim.vcomponents.LUT1
+\det_signal.sample_counter[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \det_signal.run_reg[2]__0\,
-      O => \det_signal.sample_counter[31]_i_1_n_0\
+      O => clear
     );
-\det_signal.sample_counter[7]_i_2\: unisim.vcomponents.LUT1
+\det_signal.sample_counter[0]_i_3\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => sample_counter(0),
-      O => \det_signal.sample_counter[7]_i_2_n_0\
+      I0 => \det_signal.sample_counter_reg\(0),
+      O => \det_signal.sample_counter[0]_i_3_n_0\
     );
 \det_signal.sample_counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_15\,
-      Q => sample_counter(0),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_15\,
+      Q => \det_signal.sample_counter_reg\(0),
+      R => clear
+    );
+\det_signal.sample_counter_reg[0]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.sample_counter_reg[0]_i_2_n_0\,
+      CO(6) => \det_signal.sample_counter_reg[0]_i_2_n_1\,
+      CO(5) => \det_signal.sample_counter_reg[0]_i_2_n_2\,
+      CO(4) => \det_signal.sample_counter_reg[0]_i_2_n_3\,
+      CO(3) => \det_signal.sample_counter_reg[0]_i_2_n_4\,
+      CO(2) => \det_signal.sample_counter_reg[0]_i_2_n_5\,
+      CO(1) => \det_signal.sample_counter_reg[0]_i_2_n_6\,
+      CO(0) => \det_signal.sample_counter_reg[0]_i_2_n_7\,
+      DI(7 downto 0) => B"00000001",
+      O(7) => \det_signal.sample_counter_reg[0]_i_2_n_8\,
+      O(6) => \det_signal.sample_counter_reg[0]_i_2_n_9\,
+      O(5) => \det_signal.sample_counter_reg[0]_i_2_n_10\,
+      O(4) => \det_signal.sample_counter_reg[0]_i_2_n_11\,
+      O(3) => \det_signal.sample_counter_reg[0]_i_2_n_12\,
+      O(2) => \det_signal.sample_counter_reg[0]_i_2_n_13\,
+      O(1) => \det_signal.sample_counter_reg[0]_i_2_n_14\,
+      O(0) => \det_signal.sample_counter_reg[0]_i_2_n_15\,
+      S(7 downto 1) => \det_signal.sample_counter_reg\(7 downto 1),
+      S(0) => \det_signal.sample_counter[0]_i_3_n_0\
     );
 \det_signal.sample_counter_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_13\,
-      Q => sample_counter(10),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_13\,
+      Q => \det_signal.sample_counter_reg\(10),
+      R => clear
     );
 \det_signal.sample_counter_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_12\,
-      Q => sample_counter(11),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_12\,
+      Q => \det_signal.sample_counter_reg\(11),
+      R => clear
     );
 \det_signal.sample_counter_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_11\,
-      Q => sample_counter(12),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_11\,
+      Q => \det_signal.sample_counter_reg\(12),
+      R => clear
     );
 \det_signal.sample_counter_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_10\,
-      Q => sample_counter(13),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_10\,
+      Q => \det_signal.sample_counter_reg\(13),
+      R => clear
     );
 \det_signal.sample_counter_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_9\,
-      Q => sample_counter(14),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_9\,
+      Q => \det_signal.sample_counter_reg\(14),
+      R => clear
     );
 \det_signal.sample_counter_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_8\,
-      Q => sample_counter(15),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
-    );
-\det_signal.sample_counter_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.sample_counter_reg[7]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \det_signal.sample_counter_reg[15]_i_1_n_0\,
-      CO(6) => \det_signal.sample_counter_reg[15]_i_1_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[15]_i_1_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[15]_i_1_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[15]_i_1_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[15]_i_1_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[15]_i_1_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => B"00000000",
-      O(7) => \det_signal.sample_counter_reg[15]_i_1_n_8\,
-      O(6) => \det_signal.sample_counter_reg[15]_i_1_n_9\,
-      O(5) => \det_signal.sample_counter_reg[15]_i_1_n_10\,
-      O(4) => \det_signal.sample_counter_reg[15]_i_1_n_11\,
-      O(3) => \det_signal.sample_counter_reg[15]_i_1_n_12\,
-      O(2) => \det_signal.sample_counter_reg[15]_i_1_n_13\,
-      O(1) => \det_signal.sample_counter_reg[15]_i_1_n_14\,
-      O(0) => \det_signal.sample_counter_reg[15]_i_1_n_15\,
-      S(7 downto 0) => sample_counter(15 downto 8)
+      D => \det_signal.sample_counter_reg[8]_i_1_n_8\,
+      Q => \det_signal.sample_counter_reg\(15),
+      R => clear
     );
 \det_signal.sample_counter_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_15\,
-      Q => sample_counter(16),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_15\,
+      Q => \det_signal.sample_counter_reg\(16),
+      R => clear
+    );
+\det_signal.sample_counter_reg[16]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.sample_counter_reg[8]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.sample_counter_reg[16]_i_1_n_0\,
+      CO(6) => \det_signal.sample_counter_reg[16]_i_1_n_1\,
+      CO(5) => \det_signal.sample_counter_reg[16]_i_1_n_2\,
+      CO(4) => \det_signal.sample_counter_reg[16]_i_1_n_3\,
+      CO(3) => \det_signal.sample_counter_reg[16]_i_1_n_4\,
+      CO(2) => \det_signal.sample_counter_reg[16]_i_1_n_5\,
+      CO(1) => \det_signal.sample_counter_reg[16]_i_1_n_6\,
+      CO(0) => \det_signal.sample_counter_reg[16]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7) => \det_signal.sample_counter_reg[16]_i_1_n_8\,
+      O(6) => \det_signal.sample_counter_reg[16]_i_1_n_9\,
+      O(5) => \det_signal.sample_counter_reg[16]_i_1_n_10\,
+      O(4) => \det_signal.sample_counter_reg[16]_i_1_n_11\,
+      O(3) => \det_signal.sample_counter_reg[16]_i_1_n_12\,
+      O(2) => \det_signal.sample_counter_reg[16]_i_1_n_13\,
+      O(1) => \det_signal.sample_counter_reg[16]_i_1_n_14\,
+      O(0) => \det_signal.sample_counter_reg[16]_i_1_n_15\,
+      S(7 downto 0) => \det_signal.sample_counter_reg\(23 downto 16)
     );
 \det_signal.sample_counter_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_14\,
-      Q => sample_counter(17),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_14\,
+      Q => \det_signal.sample_counter_reg\(17),
+      R => clear
     );
 \det_signal.sample_counter_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_13\,
-      Q => sample_counter(18),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_13\,
+      Q => \det_signal.sample_counter_reg\(18),
+      R => clear
     );
 \det_signal.sample_counter_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_12\,
-      Q => sample_counter(19),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_12\,
+      Q => \det_signal.sample_counter_reg\(19),
+      R => clear
     );
 \det_signal.sample_counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_14\,
-      Q => sample_counter(1),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_14\,
+      Q => \det_signal.sample_counter_reg\(1),
+      R => clear
     );
 \det_signal.sample_counter_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_11\,
-      Q => sample_counter(20),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_11\,
+      Q => \det_signal.sample_counter_reg\(20),
+      R => clear
     );
 \det_signal.sample_counter_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_10\,
-      Q => sample_counter(21),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_10\,
+      Q => \det_signal.sample_counter_reg\(21),
+      R => clear
     );
 \det_signal.sample_counter_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_9\,
-      Q => sample_counter(22),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[16]_i_1_n_9\,
+      Q => \det_signal.sample_counter_reg\(22),
+      R => clear
     );
 \det_signal.sample_counter_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[23]_i_1_n_8\,
-      Q => sample_counter(23),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
-    );
-\det_signal.sample_counter_reg[23]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.sample_counter_reg[15]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \det_signal.sample_counter_reg[23]_i_1_n_0\,
-      CO(6) => \det_signal.sample_counter_reg[23]_i_1_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[23]_i_1_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[23]_i_1_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[23]_i_1_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[23]_i_1_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[23]_i_1_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[23]_i_1_n_7\,
-      DI(7 downto 0) => B"00000000",
-      O(7) => \det_signal.sample_counter_reg[23]_i_1_n_8\,
-      O(6) => \det_signal.sample_counter_reg[23]_i_1_n_9\,
-      O(5) => \det_signal.sample_counter_reg[23]_i_1_n_10\,
-      O(4) => \det_signal.sample_counter_reg[23]_i_1_n_11\,
-      O(3) => \det_signal.sample_counter_reg[23]_i_1_n_12\,
-      O(2) => \det_signal.sample_counter_reg[23]_i_1_n_13\,
-      O(1) => \det_signal.sample_counter_reg[23]_i_1_n_14\,
-      O(0) => \det_signal.sample_counter_reg[23]_i_1_n_15\,
-      S(7 downto 0) => sample_counter(23 downto 16)
+      D => \det_signal.sample_counter_reg[16]_i_1_n_8\,
+      Q => \det_signal.sample_counter_reg\(23),
+      R => clear
     );
 \det_signal.sample_counter_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_15\,
-      Q => sample_counter(24),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_15\,
+      Q => \det_signal.sample_counter_reg\(24),
+      R => clear
+    );
+\det_signal.sample_counter_reg[24]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.sample_counter_reg[16]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \NLW_det_signal.sample_counter_reg[24]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \det_signal.sample_counter_reg[24]_i_1_n_1\,
+      CO(5) => \det_signal.sample_counter_reg[24]_i_1_n_2\,
+      CO(4) => \det_signal.sample_counter_reg[24]_i_1_n_3\,
+      CO(3) => \det_signal.sample_counter_reg[24]_i_1_n_4\,
+      CO(2) => \det_signal.sample_counter_reg[24]_i_1_n_5\,
+      CO(1) => \det_signal.sample_counter_reg[24]_i_1_n_6\,
+      CO(0) => \det_signal.sample_counter_reg[24]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7) => \det_signal.sample_counter_reg[24]_i_1_n_8\,
+      O(6) => \det_signal.sample_counter_reg[24]_i_1_n_9\,
+      O(5) => \det_signal.sample_counter_reg[24]_i_1_n_10\,
+      O(4) => \det_signal.sample_counter_reg[24]_i_1_n_11\,
+      O(3) => \det_signal.sample_counter_reg[24]_i_1_n_12\,
+      O(2) => \det_signal.sample_counter_reg[24]_i_1_n_13\,
+      O(1) => \det_signal.sample_counter_reg[24]_i_1_n_14\,
+      O(0) => \det_signal.sample_counter_reg[24]_i_1_n_15\,
+      S(7 downto 0) => \det_signal.sample_counter_reg\(31 downto 24)
     );
 \det_signal.sample_counter_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_14\,
-      Q => sample_counter(25),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_14\,
+      Q => \det_signal.sample_counter_reg\(25),
+      R => clear
     );
 \det_signal.sample_counter_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_13\,
-      Q => sample_counter(26),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_13\,
+      Q => \det_signal.sample_counter_reg\(26),
+      R => clear
     );
 \det_signal.sample_counter_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_12\,
-      Q => sample_counter(27),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_12\,
+      Q => \det_signal.sample_counter_reg\(27),
+      R => clear
     );
 \det_signal.sample_counter_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_11\,
-      Q => sample_counter(28),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_11\,
+      Q => \det_signal.sample_counter_reg\(28),
+      R => clear
     );
 \det_signal.sample_counter_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_10\,
-      Q => sample_counter(29),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_10\,
+      Q => \det_signal.sample_counter_reg\(29),
+      R => clear
     );
 \det_signal.sample_counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_13\,
-      Q => sample_counter(2),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_13\,
+      Q => \det_signal.sample_counter_reg\(2),
+      R => clear
     );
 \det_signal.sample_counter_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_9\,
-      Q => sample_counter(30),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[24]_i_1_n_9\,
+      Q => \det_signal.sample_counter_reg\(30),
+      R => clear
     );
 \det_signal.sample_counter_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[31]_i_2_n_8\,
-      Q => sample_counter(31),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
-    );
-\det_signal.sample_counter_reg[31]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.sample_counter_reg[23]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_det_signal.sample_counter_reg[31]_i_2_CO_UNCONNECTED\(7),
-      CO(6) => \det_signal.sample_counter_reg[31]_i_2_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[31]_i_2_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[31]_i_2_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[31]_i_2_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[31]_i_2_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[31]_i_2_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[31]_i_2_n_7\,
-      DI(7 downto 0) => B"00000000",
-      O(7) => \det_signal.sample_counter_reg[31]_i_2_n_8\,
-      O(6) => \det_signal.sample_counter_reg[31]_i_2_n_9\,
-      O(5) => \det_signal.sample_counter_reg[31]_i_2_n_10\,
-      O(4) => \det_signal.sample_counter_reg[31]_i_2_n_11\,
-      O(3) => \det_signal.sample_counter_reg[31]_i_2_n_12\,
-      O(2) => \det_signal.sample_counter_reg[31]_i_2_n_13\,
-      O(1) => \det_signal.sample_counter_reg[31]_i_2_n_14\,
-      O(0) => \det_signal.sample_counter_reg[31]_i_2_n_15\,
-      S(7 downto 0) => sample_counter(31 downto 24)
+      D => \det_signal.sample_counter_reg[24]_i_1_n_8\,
+      Q => \det_signal.sample_counter_reg\(31),
+      R => clear
     );
 \det_signal.sample_counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_12\,
-      Q => sample_counter(3),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_12\,
+      Q => \det_signal.sample_counter_reg\(3),
+      R => clear
     );
 \det_signal.sample_counter_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_11\,
-      Q => sample_counter(4),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_11\,
+      Q => \det_signal.sample_counter_reg\(4),
+      R => clear
     );
 \det_signal.sample_counter_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_10\,
-      Q => sample_counter(5),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_10\,
+      Q => \det_signal.sample_counter_reg\(5),
+      R => clear
     );
 \det_signal.sample_counter_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_9\,
-      Q => sample_counter(6),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_9\,
+      Q => \det_signal.sample_counter_reg\(6),
+      R => clear
     );
 \det_signal.sample_counter_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[7]_i_1_n_8\,
-      Q => sample_counter(7),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
-    );
-\det_signal.sample_counter_reg[7]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '0',
-      CI_TOP => '0',
-      CO(7) => \det_signal.sample_counter_reg[7]_i_1_n_0\,
-      CO(6) => \det_signal.sample_counter_reg[7]_i_1_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[7]_i_1_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[7]_i_1_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[7]_i_1_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[7]_i_1_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[7]_i_1_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[7]_i_1_n_7\,
-      DI(7 downto 1) => B"0000000",
-      DI(0) => sample_counter(0),
-      O(7) => \det_signal.sample_counter_reg[7]_i_1_n_8\,
-      O(6) => \det_signal.sample_counter_reg[7]_i_1_n_9\,
-      O(5) => \det_signal.sample_counter_reg[7]_i_1_n_10\,
-      O(4) => \det_signal.sample_counter_reg[7]_i_1_n_11\,
-      O(3) => \det_signal.sample_counter_reg[7]_i_1_n_12\,
-      O(2) => \det_signal.sample_counter_reg[7]_i_1_n_13\,
-      O(1) => \det_signal.sample_counter_reg[7]_i_1_n_14\,
-      O(0) => \det_signal.sample_counter_reg[7]_i_1_n_15\,
-      S(7 downto 1) => sample_counter(7 downto 1),
-      S(0) => \det_signal.sample_counter[7]_i_2_n_0\
+      D => \det_signal.sample_counter_reg[0]_i_2_n_8\,
+      Q => \det_signal.sample_counter_reg\(7),
+      R => clear
     );
 \det_signal.sample_counter_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_15\,
-      Q => sample_counter(8),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_15\,
+      Q => \det_signal.sample_counter_reg\(8),
+      R => clear
+    );
+\det_signal.sample_counter_reg[8]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.sample_counter_reg[0]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.sample_counter_reg[8]_i_1_n_0\,
+      CO(6) => \det_signal.sample_counter_reg[8]_i_1_n_1\,
+      CO(5) => \det_signal.sample_counter_reg[8]_i_1_n_2\,
+      CO(4) => \det_signal.sample_counter_reg[8]_i_1_n_3\,
+      CO(3) => \det_signal.sample_counter_reg[8]_i_1_n_4\,
+      CO(2) => \det_signal.sample_counter_reg[8]_i_1_n_5\,
+      CO(1) => \det_signal.sample_counter_reg[8]_i_1_n_6\,
+      CO(0) => \det_signal.sample_counter_reg[8]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7) => \det_signal.sample_counter_reg[8]_i_1_n_8\,
+      O(6) => \det_signal.sample_counter_reg[8]_i_1_n_9\,
+      O(5) => \det_signal.sample_counter_reg[8]_i_1_n_10\,
+      O(4) => \det_signal.sample_counter_reg[8]_i_1_n_11\,
+      O(3) => \det_signal.sample_counter_reg[8]_i_1_n_12\,
+      O(2) => \det_signal.sample_counter_reg[8]_i_1_n_13\,
+      O(1) => \det_signal.sample_counter_reg[8]_i_1_n_14\,
+      O(0) => \det_signal.sample_counter_reg[8]_i_1_n_15\,
+      S(7 downto 0) => \det_signal.sample_counter_reg\(15 downto 8)
     );
 \det_signal.sample_counter_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[15]_i_1_n_14\,
-      Q => sample_counter(9),
-      R => \det_signal.sample_counter[31]_i_1_n_0\
+      D => \det_signal.sample_counter_reg[8]_i_1_n_14\,
+      Q => \det_signal.sample_counter_reg\(9),
+      R => clear
     );
 \det_signal.signal_counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -8734,26 +11877,16 @@ begin
     );
 \det_signal.start_proc_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000BFB000000000"
+      INIT => X"0C8C8C8C00000000"
     )
         port map (
-      I0 => err_ov,
-      I1 => valid_count,
-      I2 => has_signal,
-      I3 => start_proc,
-      I4 => err_count0,
-      I5 => \det_signal.run_reg[2]__0\,
+      I0 => \det_signal.err_ov_reg_n_0\,
+      I1 => \det_signal.run_reg[2]__0\,
+      I2 => \det_signal.valid_count_reg_n_0\,
+      I3 => valid_err,
+      I4 => valid_env,
+      I5 => has_signal,
       O => \det_signal.start_proc_i_1_n_0\
-    );
-\det_signal.start_proc_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"80"
-    )
-        port map (
-      I0 => valid_env,
-      I1 => valid_err,
-      I2 => valid_count,
-      O => err_count0
     );
 \det_signal.start_proc_reg\: unisim.vcomponents.FDRE
      port map (
@@ -8768,9 +11901,9 @@ begin
       INIT => X"0E"
     )
         port map (
-      I0 => valid_count,
+      I0 => \det_signal.valid_count_reg_n_0\,
       I1 => \det_signal.run_reg[1]__0\,
-      I2 => valid_count3_out,
+      I2 => valid_count6_out,
       O => \det_signal.valid_count_i_1_n_0\
     );
 \det_signal.valid_count_i_2\: unisim.vcomponents.LUT6
@@ -8784,7 +11917,7 @@ begin
       I3 => \det_signal.signal_counter_reg_n_0_[8]\,
       I4 => \det_signal.signal_counter_reg_n_0_[7]\,
       I5 => \det_signal.signal_counter_reg_n_0_[9]\,
-      O => valid_count3_out
+      O => valid_count6_out
     );
 \det_signal.valid_count_i_3\: unisim.vcomponents.LUT6
     generic map(
@@ -8804,7 +11937,7 @@ begin
       C => clk,
       CE => '1',
       D => \det_signal.valid_count_i_1_n_0\,
-      Q => valid_count,
+      Q => \det_signal.valid_count_reg_n_0\,
       R => '0'
     );
 \det_signal.valid_env_i_1\: unisim.vcomponents.LUT3
@@ -8815,13 +11948,13 @@ begin
       I0 => diff_env_N(16),
       I1 => diff_env_E(16),
       I2 => diff_env_W(16),
-      O => \det_signal.valid_env_reg0\
+      O => valid_env0
     );
 \det_signal.valid_env_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]__0\,
-      D => \det_signal.valid_env_reg0\,
+      D => valid_env0,
       Q => valid_env,
       R => '0'
     );
@@ -8830,18 +11963,42 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => diff_err_NE(12),
-      I1 => diff_err_NW(12),
-      I2 => diff_err_EW(12),
-      O => \det_signal.valid_err_reg0\
+      I0 => p_1_in9_in,
+      I1 => p_0_in8_in,
+      I2 => p_2_in,
+      O => valid_err0
     );
 \det_signal.valid_err_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]__0\,
-      D => \det_signal.valid_err_reg0\,
+      D => valid_err0,
       Q => valid_err,
       R => '0'
+    );
+dsp_incr_env_E: component ps_comp_low_0_0_dsp_incr_env
+     port map (
+      A(20 downto 0) => dsp_phase_E(20 downto 0),
+      B(16 downto 0) => env_E(16 downto 0),
+      CLK => clk,
+      P(47 downto 0) => dsp_sum_E(47 downto 0),
+      SCLRP => acc_reset
+    );
+dsp_incr_env_N: component ps_comp_low_0_0_dsp_incr_env
+     port map (
+      A(20 downto 0) => dsp_phase_N(20 downto 0),
+      B(16 downto 0) => env_N(16 downto 0),
+      CLK => clk,
+      P(47 downto 0) => dsp_sum_N(47 downto 0),
+      SCLRP => acc_reset
+    );
+dsp_incr_env_W: component ps_comp_low_0_0_dsp_incr_env_HD1
+     port map (
+      A(20 downto 0) => dsp_phase_W(20 downto 0),
+      B(16 downto 0) => env_W(16 downto 0),
+      CLK => clk,
+      P(47 downto 0) => dsp_sum_W(47 downto 0),
+      SCLRP => acc_reset
     );
 i_0: unisim.vcomponents.LUT1
     generic map(
@@ -8849,7 +12006,7 @@ i_0: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => err_NW(12)
+      O => env_E(16)
     );
 i_1: unisim.vcomponents.LUT1
     generic map(
@@ -8857,33 +12014,9 @@ i_1: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => err_EW(12)
-    );
-i_2: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => err_NE(12)
-    );
-i_3: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => env_E(16)
-    );
-i_4: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
       O => env_W(16)
     );
-i_5: unisim.vcomponents.LUT1
+i_2: unisim.vcomponents.LUT1
     generic map(
       INIT => X"2"
     )
@@ -8894,42 +12027,37 @@ i_5: unisim.vcomponents.LUT1
 ila_i: component ps_comp_low_0_0_ila_3
      port map (
       clk => clk,
-      probe0(0) => config_wr,
-      probe1(7 downto 0) => config_adr(7 downto 0),
-      probe10(19 downto 0) => phase_E(19 downto 0),
-      probe11(16 downto 0) => diff_env_E(16 downto 0),
-      probe12(19 downto 0) => diff_phase_E(19 downto 0),
-      probe13(16 downto 0) => env_W(16 downto 0),
-      probe14(19 downto 0) => phase_W(19 downto 0),
-      probe15(16 downto 0) => diff_env_W(16 downto 0),
-      probe16(19 downto 0) => diff_phase_W(19 downto 0),
-      probe17(11 downto 0) => err_NE(11 downto 0),
-      probe18(12 downto 0) => err_NW(12 downto 0),
-      probe19(12 downto 0) => err_EW(12 downto 0),
-      probe2(31 downto 0) => config_data(31 downto 0),
-      probe20(12 downto 0) => diff_err_NE(12 downto 0),
-      probe21(12 downto 0) => diff_err_NW(12 downto 0),
-      probe22(12 downto 0) => diff_err_EW(12 downto 0),
-      probe23(0) => valid_env,
-      probe24(0) => valid_err,
-      probe25(0) => valid_count,
-      probe26(0) => err_ov,
-      probe27(0) => has_signal,
-      probe28(31 downto 0) => curr_signal_sample(31 downto 0),
-      probe29(9 downto 0) => curr_signal_counter(9 downto 0),
-      probe3(0) => active,
-      probe30(1 downto 0) => err_count(1 downto 0),
-      probe31(0) => acc_reset,
-      probe32(0) => start_proc,
-      probe33(0) => proc_signal,
-      probe34(0) => proc_done,
-      probe35(0) => \^signal_done\,
-      probe4(31 downto 0) => sample_counter(31 downto 0),
-      probe5(16 downto 0) => env_N(16 downto 0),
-      probe6(19 downto 0) => phase_N(19 downto 0),
-      probe7(16 downto 0) => diff_env_N(16 downto 0),
-      probe8(19 downto 0) => diff_phase_N(19 downto 0),
-      probe9(16 downto 0) => env_E(16 downto 0)
+      probe0(0) => active,
+      probe1(16 downto 0) => env_N(16 downto 0),
+      probe10(16 downto 0) => diff_env_E(16 downto 0),
+      probe11(19 downto 0) => diff_phase_E(19 downto 0),
+      probe12(31 downto 0) => curr_env_sum_E(31 downto 0),
+      probe13(20 downto 0) => dsp_phase_E(20 downto 0),
+      probe14(47 downto 0) => dsp_sum_E(47 downto 0),
+      probe15(16 downto 0) => env_W(16 downto 0),
+      probe16(19 downto 0) => phase_W(19 downto 0),
+      probe17(16 downto 0) => diff_env_W(16 downto 0),
+      probe18(19 downto 0) => diff_phase_W(19 downto 0),
+      probe19(31 downto 0) => curr_env_sum_W(31 downto 0),
+      probe2(19 downto 0) => phase_N(19 downto 0),
+      probe20(20 downto 0) => dsp_phase_W(20 downto 0),
+      probe21(47 downto 0) => dsp_sum_W(47 downto 0),
+      probe22(0) => has_signal,
+      probe23(31 downto 0) => curr_signal_sample(31 downto 0),
+      probe24(9 downto 0) => curr_signal_counter(9 downto 0),
+      probe25(1 downto 0) => err_count(1 downto 0),
+      probe26(0) => acc_reset,
+      probe27(0) => start_proc,
+      probe28(0) => proc_signal,
+      probe29(0) => proc_done,
+      probe3(16 downto 0) => diff_env_N(16 downto 0),
+      probe30(0) => \^signal_done\,
+      probe4(19 downto 0) => diff_phase_N(19 downto 0),
+      probe5(31 downto 0) => curr_env_sum_N(31 downto 0),
+      probe6(20 downto 0) => dsp_phase_N(20 downto 0),
+      probe7(47 downto 0) => dsp_sum_N(47 downto 0),
+      probe8(16 downto 0) => env_E(16 downto 0),
+      probe9(19 downto 0) => phase_E(19 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -10576,7 +13704,8 @@ det_sig_i: entity work.ps_comp_low_0_0_det_signal
       active => doa_valid,
       clk => clk,
       config_adr(7 downto 0) => config_data_adr_out(7 downto 0),
-      config_data(31 downto 0) => config_data_adr_out(39 downto 8),
+      config_data(31 downto 16) => B"0000000000000000",
+      config_data(15 downto 0) => config_data_adr_out(23 downto 8),
       config_wr => det_sig_i_i_1_n_0,
       data(143 downto 0) => doa_data(143 downto 0),
       reset => '0',
