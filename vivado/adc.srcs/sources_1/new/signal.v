@@ -31,8 +31,8 @@ module det_signal(
     input wire active,
     input wire [143:0] data,
     
-    output reg [31:0] signal_sample,
-    output reg [9:0] signal_counter,
+    output reg [23:0] signal_sample,
+    output reg [8:0] signal_counter,
     output reg signal_done
     );
   
@@ -59,11 +59,7 @@ module det_signal(
   reg [19:0] diff_phase_N;
   reg [20:0] dsp_phase_N;
   wire [47:0] dsp_sum_N;
-  reg [15:0] lo_env_sum_N;
-  wire [16:0] env_sum_N = lo_env_sum_N + env_N;
-  reg carry_env_sum_N;
-  reg [15:0] hi_env_sum_N;
-  wire [31:0] curr_env_sum_N = {hi_env_sum_N, lo_env_sum_N};
+  reg [23:0] env_sum_N;
 
   reg [16:0] env_E;
   reg [19:0] phase_E;
@@ -72,11 +68,7 @@ module det_signal(
   reg [19:0] diff_phase_E;
   reg [20:0] dsp_phase_E;
   wire [47:0] dsp_sum_E;
-  reg [15:0] lo_env_sum_E;
-  wire [16:0] env_sum_E = lo_env_sum_E + env_E;
-  reg carry_env_sum_E;
-  reg [15:0] hi_env_sum_E;
-  wire [31:0] curr_env_sum_E = {hi_env_sum_E, lo_env_sum_E};
+  reg [23:0] env_sum_E;
 
   reg [16:0] env_W;
   reg [19:0] phase_W;
@@ -85,11 +77,7 @@ module det_signal(
   reg [19:0] diff_phase_W;
   reg [20:0] dsp_phase_W;
   wire [47:0] dsp_sum_W;
-  reg [15:0] lo_env_sum_W;
-  wire [16:0] env_sum_W = lo_env_sum_W + env_W;
-  reg carry_env_sum_W;
-  reg [15:0] hi_env_sum_W;
-  wire [31:0] curr_env_sum_W = {hi_env_sum_W, lo_env_sum_W};
+  reg [23:0] env_sum_W;
 
   reg [12:0] err_NE;
   reg [12:0] diff_err_NE;
@@ -100,9 +88,37 @@ module det_signal(
   reg [12:0] err_EW;
   reg [12:0] diff_err_EW;
 
+  reg [2:0] div_delay;
+  reg [5:0] div_counter;
+  reg div_start;
+    
+  reg [19:0] dsp_phase_NE;
+  reg [17:0] env_NE;
+  wire [47:0] dsp_sum_NE;
+  reg [31:0] env_sum_NE;
+  wire valid_phase_NE;
+  wire [79:0] div_phase_NE;
+  wire [19:0] phase_NE = div_phase_NE[51:32];
+
+  reg [19:0] dsp_phase_NW;
+  reg [17:0] env_NW;
+  wire [47:0] dsp_sum_NW;
+  reg [31:0] env_sum_NW;
+  wire valid_phase_NW;
+  wire [79:0] div_phase_NW;
+  wire [19:0] phase_NW = div_phase_NW[51:32];
+
+  reg [19:0] dsp_phase_EW;
+  reg [17:0] env_EW;
+  wire [47:0] dsp_sum_EW;
+  reg [31:0] env_sum_EW;
+  wire valid_phase_EW;
+  wire [79:0] div_phase_EW;
+  wire [19:0] phase_EW = div_phase_EW[51:32];
+
   reg [31:0] sample_counter;
   reg [31:0] curr_signal_sample;
-  reg [9:0] curr_signal_counter;
+  reg [8:0] curr_signal_counter;
   
   reg run[3:0];
   reg valid_env;
@@ -139,40 +155,90 @@ dsp_incr_env dsp_incr_env_W (
   .P(dsp_sum_W),       // output wire [47 : 0] P
   .SCLRP(acc_reset)    // input wire SCLRP
 );
-  
+
+dsp_phase_env dsp_phase_env_NE (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_NE),    // input wire [19 : 0] A
+  .B(env_NE),          // input wire [17 : 0] B
+  .P(dsp_sum_NE),      // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
+
+dsp_phase_env dsp_phase_env_NW (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_NW),    // input wire [19 : 0] A
+  .B(env_NW),          // input wire [17 : 0] B
+  .P(dsp_sum_NW),      // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
+
+dsp_phase_env dsp_phase_env_EW (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_EW),    // input wire [19 : 0] A
+  .B(env_EW),          // input wire [17 : 0] B
+  .P(dsp_sum_EW),      // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
+
+div_weighted div_phase_NE_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(env_sum_NE),                // input wire [31 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(dsp_sum_NE),               // input wire [47 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_phase_NE),              // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_phase_NE)                  // output wire [79 : 0] m_axis_dout_tdata
+);
+
+div_weighted div_phase_NW_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(env_sum_NW),                // input wire [31 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(dsp_sum_NW),               // input wire [47 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_phase_NW),              // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_phase_NW)                  // output wire [79 : 0] m_axis_dout_tdata
+);
+
+div_weighted div_phase_EW_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(env_sum_EW),                // input wire [31 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(dsp_sum_EW),               // input wire [47 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_phase_EW),              // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_phase_EW)                  // output wire [79 : 0] m_axis_dout_tdata
+);
+
 	ila_3 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(active),              // input wire [0:0]  probe3
-		.probe1(env_N),               // input wire [16:0]  probe3
-		.probe2(phase_N),             // input wire [19:0]  probe3
-		.probe3(diff_env_N),          // input wire [16:0]  probe3
-		.probe4(diff_phase_N),        // input wire [19:0]  probe3
-		.probe5(curr_env_sum_N),      // input wire [31:0]  probe3
-		.probe6(dsp_phase_N),         // input wire [20:0]  probe3
-		.probe7(dsp_sum_N),           // input wire [47:0]  probe3
-		.probe8(env_E),               // input wire [16:0]  probe3
-		.probe9(phase_E),             // input wire [19:0]  probe3
-		.probe10(diff_env_E),          // input wire [16:0]  probe3
-		.probe11(diff_phase_E),       // input wire [19:0]  probe3
-		.probe12(curr_env_sum_E),     // input wire [31:0]  probe3
-		.probe13(dsp_phase_E),        // input wire [20:0]  probe3
-		.probe14(dsp_sum_E),          // input wire [47:0]  probe3
-		.probe15(env_W),              // input wire [16:0]  probe3
-		.probe16(phase_W),            // input wire [19:0]  probe3
-		.probe17(diff_env_W),         // input wire [16:0]  probe3
-		.probe18(diff_phase_W),       // input wire [19:0]  probe3
-		.probe19(curr_env_sum_W),     // input wire [31:0]  probe3
-		.probe20(dsp_phase_W),        // input wire [20:0]  probe3
-		.probe21(dsp_sum_W),          // input wire [47:0]  probe3
-		.probe22(has_signal),         // input wire [0:0]  probe3
-		.probe23(curr_signal_sample), // input wire [31:0]  probe3
-		.probe24(curr_signal_counter),// input wire [9:0]  probe3
-		.probe25(err_count),          // input wire [1:0]  probe3
-		.probe26(acc_reset),          // input wire [0:0]  probe3
-		.probe27(start_proc),         // input wire [0:0]  probe3
-		.probe28(proc_signal),        // input wire [0:0]  probe3
-		.probe29(proc_done),          // input wire [0:0]  probe3
-		.probe30(signal_done)         // input wire [0:0]  probe3
+		.probe1(env_sum_N),           // input wire [23:0]  probe3
+		.probe2(env_sum_E),           // input wire [23:0]  probe3
+		.probe3(env_sum_W),           // input wire [23:0]  probe3
+		.probe4(env_NE),              // input wire [17:0]  probe3
+		.probe5(dsp_phase_NE),        // input wire [19:0]  probe3
+		.probe6(dsp_sum_NE),          // input wire [47:0]  probe3
+		.probe7(env_sum_NE),          // input wire [31:0]  probe3
+		.probe8(phase_NE),            // input wire [19:0]  probe3
+		.probe9(valid_phase_NE),      // input wire [0:0]  probe3
+		.probe10(dsp_phase_NW),       // input wire [19:0]  probe3
+		.probe11(dsp_sum_NW),         // input wire [47:0]  probe3
+		.probe12(env_sum_NW),         // input wire [31:0]  probe3
+		.probe13(phase_NW),           // input wire [19:0]  probe3
+		.probe14(valid_phase_NW),     // input wire [0:0]  probe3
+		.probe15(dsp_phase_EW),       // input wire [19:0]  probe3
+		.probe16(dsp_sum_EW),         // input wire [47:0]  probe3
+		.probe17(env_sum_EW),         // input wire [31:0]  probe3
+		.probe18(phase_EW),           // input wire [19:0]  probe3
+		.probe19(valid_phase_EW),     // input wire [0:0]  probe3
+		.probe20(start_proc),         // input wire [0:0]  probe3
+		.probe21(proc_signal),        // input wire [0:0]  probe3
+		.probe22(div_start),          // input wire [0:0]  probe3
+		.probe23(div_delay),          // input wire [2:0]  probe3
+		.probe24(div_counter),        // input wire [5:0]  probe3
+		.probe25(proc_done),          // input wire [0:0]  probe3
+		.probe26(signal_done)         // input wire [0:0]  probe3
 	);
 
 generate
@@ -252,7 +318,7 @@ generate
             valid_env <= diff_env_N[16] & diff_env_E[16] & diff_env_W[16];
             valid_err <= diff_err_NE[12] & diff_err_NW[12] & diff_err_EW[12];
 
-            if (signal_counter == 10'b1111111111)
+            if (signal_counter == 9'b111110000)
                 valid_count <= 0;
             else   
                 valid_count <= 1;
@@ -343,35 +409,21 @@ generate
         begin
             if (acc_reset)
             begin
-                lo_env_sum_N <= env_N;
-                lo_env_sum_E <= env_E;
-                lo_env_sum_W <= env_W;
-                
-                carry_env_sum_N <= 0;
-                carry_env_sum_E <= 0;
-                carry_env_sum_W <= 0;
+                env_sum_N <= {7'b0000000, env_N};
+                env_sum_E <= {7'b0000000, env_E};
+                env_sum_W <= {7'b0000000, env_W};
             end
             else
             begin
-                lo_env_sum_N <= env_sum_N[15:0];
-                carry_env_sum_N <= env_sum_N[16];
-
-                lo_env_sum_E <= env_sum_E[15:0];
-                carry_env_sum_E <= env_sum_E[16];
-                
-                lo_env_sum_W <= env_sum_W[15:0];
-                carry_env_sum_W <= env_sum_W[16];
+                env_sum_N <= env_sum_N + {7'b0000000, env_N};
+                env_sum_E <= env_sum_E + {7'b0000000, env_E};
+                env_sum_W <= env_sum_W + {7'b0000000, env_W};
             end
 
             curr_signal_counter <= curr_signal_counter + 1;
         end
         else
-        begin
             curr_signal_counter <= 0;
-            carry_env_sum_N <= 0;
-            carry_env_sum_E <= 0;
-            carry_env_sum_W <= 0;
-        end
     end
 
     always @(posedge clk) 
@@ -392,17 +444,33 @@ generate
 
     always @(posedge clk) 
 	begin
-        if (curr_signal_counter)
+        if (has_signal)
         begin
-            hi_env_sum_N <= hi_env_sum_N + carry_env_sum_N;
-            hi_env_sum_E <= hi_env_sum_E + carry_env_sum_E;
-            hi_env_sum_W <= hi_env_sum_W + carry_env_sum_W;
+            dsp_phase_NE <= phase_N - phase_E;
+            dsp_phase_NW <= phase_N - phase_W;
+            dsp_phase_EW <= phase_E - phase_W;
         end
         else
         begin
-            hi_env_sum_N <= 0;
-            hi_env_sum_E <= 0;
-            hi_env_sum_W <= 0;
+            dsp_phase_NE <= 0;
+            dsp_phase_NW <= 0;
+            dsp_phase_EW <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+        if (has_signal)
+        begin
+            env_NE <= {1'b0, env_N} + {1'b0, env_E};
+            env_NW <= {1'b0, env_N} + {1'b0, env_W};
+            env_EW <= {1'b0, env_E} + {1'b0, env_W};
+        end
+        else
+        begin
+            env_NE <= 0;
+            env_NW <= 0;
+            env_EW <= 0;
         end
     end
 
@@ -410,15 +478,71 @@ generate
 	begin
         if (proc_signal)
         begin
-            signal_sample <= curr_signal_sample;
-            signal_counter <= curr_signal_counter;
-            proc_done <= 1;
-            signal_done <= 1;
+            case (div_delay)
+				3'b000:
+                    begin
+                        env_sum_NE <= {8'b00000000, env_sum_N} + {8'b00000000, env_sum_E};
+                        env_sum_NW <= {8'b00000000, env_sum_N} + {8'b00000000, env_sum_W};
+                        env_sum_EW <= {8'b00000000, env_sum_E} + {8'b00000000, env_sum_W};
+                        div_start <= 0;
+                        div_delay <= div_delay + 1;
+					end
+				
+                3'b101: 
+                    begin
+                        div_start <= 1;
+                        div_delay <= div_delay + 1;
+                    end
+                
+                3'b110: div_start <= 0;
+                
+                default:
+                    begin
+                        div_start <= 0;
+                        div_delay <= div_delay + 1;
+                    end
+            endcase            
         end
         else
         begin
+            div_start <= 0;
+            div_delay <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+        if (proc_signal)
+        begin
+            case (div_delay)
+                3'b101: 
+                    begin
+                        div_counter <= 0;
+                        proc_done <= 0;
+                    end
+                
+                3'b110: 
+                    begin
+                        if (div_counter == 63)
+                            proc_done <= 1;
+                        else
+                        begin
+                            proc_done <= 0;
+                            div_counter <= div_counter + 1;
+                        end
+                    end
+                
+                default:
+                    begin
+                        div_counter <= 0;
+                        proc_done <= 0;
+                    end
+            endcase            
+        end
+        else
+        begin
+            div_counter <= 0;
             proc_done <= 0;
-            signal_done <= 0;
         end
     end
 

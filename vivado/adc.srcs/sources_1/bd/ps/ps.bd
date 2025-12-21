@@ -2974,15 +2974,15 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "comp_high/config_adr",
-          "comp_low/config_adr"
+          "comp_low/config_adr",
+          "comp_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "comp_high/config_data",
-          "comp_low/config_data"
+          "comp_low/config_data",
+          "comp_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -3429,8 +3429,8 @@
           "deci_high/sim_clk",
           "deci_low/sim_clk",
           "adc_control_0/clk",
-          "comp_high/config_clk",
-          "comp_low/config_clk"
+          "comp_low/config_clk",
+          "comp_high/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

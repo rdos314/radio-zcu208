@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../adc.gen/sources_1/ip/div_weighted/sim/div_weighted.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,2 @@
+dsp_phase_env.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/dsp_phase_env/sim/dsp_phase_env.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

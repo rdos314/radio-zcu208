@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../adc.gen/sources_1/ip/dsp_phase_env/sim/dsp_phase_env.vhd" \
+
+# Do not sort compile order
+nosort

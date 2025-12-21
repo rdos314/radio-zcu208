@@ -58,8 +58,8 @@ module comp_low(
   reg cfg_rd;
   wire cfg_empty;
   
-  wire [31:0] signal_sample;
-  wire [9:0] signal_counter;
+  wire [23:0] signal_sample;
+  wire [8:0] signal_counter;
   
   reg [15:0] raw_N0;
   reg [15:0] raw_N1;
