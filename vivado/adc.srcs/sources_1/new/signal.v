@@ -31,8 +31,15 @@ module det_signal(
     input wire active,
     input wire [143:0] data,
     
-    output reg [23:0] signal_sample,
-    output reg [8:0] signal_counter,
+    output reg [31:0] signal_sample,
+    output reg [8:0] signal_size,
+    output reg [19:0] signal_freq,
+    output reg [15:0] signal_env_N,
+    output reg [15:0] signal_env_E,
+    output reg [15:0] signal_env_W,
+    output reg [19:0] signal_phase_NE,
+    output reg [19:0] signal_phase_NW,
+    output reg [19:0] signal_phase_EW,
     output reg signal_done
     );
   
@@ -50,7 +57,7 @@ module det_signal(
   reg [19:0] min_freq;
   reg [19:0] max_freq;
   reg [12:0] max_doa_diff;
-  reg [15:0] min_samples;
+  reg [8:0] min_samples;
 
   reg [16:0] env_N;
   reg [19:0] phase_N;
@@ -60,6 +67,10 @@ module det_signal(
   reg [20:0] dsp_phase_N;
   wire [47:0] dsp_sum_N;
   reg [23:0] env_sum_N;
+  reg [31:0] div_env_sum_N;
+  wire valid_env_N;
+  wire [39:0] div_env_N;
+  wire [15:0] avg_env_N = div_env_N[31:16];
 
   reg [16:0] env_E;
   reg [19:0] phase_E;
@@ -69,6 +80,10 @@ module det_signal(
   reg [20:0] dsp_phase_E;
   wire [47:0] dsp_sum_E;
   reg [23:0] env_sum_E;
+  reg [31:0] div_env_sum_E;
+  wire valid_env_E;
+  wire [39:0] div_env_E;
+  wire [15:0] avg_env_E = div_env_E[31:16];
 
   reg [16:0] env_W;
   reg [19:0] phase_W;
@@ -78,6 +93,12 @@ module det_signal(
   reg [20:0] dsp_phase_W;
   wire [47:0] dsp_sum_W;
   reg [23:0] env_sum_W;
+  reg [31:0] div_env_sum_W;
+  wire valid_env_W;
+  wire [39:0] div_env_W;
+  wire [15:0] avg_env_W = div_env_W[31:16];
+
+  reg [15:0] div_sample_count;
 
   reg [31:0] div_env_NE;
   reg [31:0] div_env_all;
@@ -89,7 +110,9 @@ module det_signal(
   wire div_valid_freq;
   wire [79:0] div_freq_out;
   wire [19:0] freq = div_freq_out[51:32];
-
+  reg [20:0] min_freq_diff;
+  reg [20:0] max_freq_diff;
+  
   reg [12:0] err_NE;
   reg [12:0] diff_err_NE;
   
@@ -131,15 +154,16 @@ module det_signal(
   wire [19:0] phase_EW = div_phase_EW[51:32];
 
   reg [31:0] sample_counter;
-  reg [31:0] curr_signal_sample;
-  reg [8:0] curr_signal_counter;
+  reg [31:0] start_sample;
+  reg [8:0] sample_count;
+  reg sample_count_ok;
   
   reg run[3:0];
   reg valid_env;
   reg valid_err;
   reg valid_count;
   reg err_ov;
-  reg allow_next;
+  reg accept_new_burst;
   reg has_signal;
   reg acc_reset;
   reg [1:0] err_count;
@@ -235,47 +259,73 @@ div_weighted div_phase_EW_i (
   .m_axis_dout_tdata(div_phase_EW)                  // output wire [79 : 0] m_axis_dout_tdata
 );
 
+div_env div_env_N_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(div_sample_count),          // input wire [15 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(div_env_sum_N),            // input wire [23 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_env_N),                 // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_env_N)                     // output wire [39 : 0] m_axis_dout_tdata
+);
+
+div_env div_env_E_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(div_sample_count),          // input wire [15 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(div_env_sum_E),            // input wire [23 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_env_E),                 // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_env_E)                     // output wire [39 : 0] m_axis_dout_tdata
+);
+
+div_env div_env_W_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(div_sample_count),          // input wire [15 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(div_env_sum_W),            // input wire [23 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_env_W),                 // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_env_W)                     // output wire [39 : 0] m_axis_dout_tdata
+);
+
 	ila_3 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(active),              // input wire [0:0]  probe3
-		.probe1(env_N),               // input wire [16:0]  probe3
-		.probe2(diff_phase_N),        // input wire [19:0]  probe3
-		.probe3(env_sum_N),           // input wire [23:0]  probe3
-		.probe4(env_sum_E),           // input wire [23:0]  probe3
-		.probe5(env_sum_W),           // input wire [23:0]  probe3
-		.probe6(div_env_all),         // input wire [31:0]  probe3
-		.probe7(div_freq_sum),        // input wire [47:0]  probe3
-		.probe8(div_valid_freq),      // input wire [0:0]  probe3
-		.probe9(freq),                // input wire [19:0]  probe3
-		.probe10(div_env_sum_NE),     // input wire [31:0]  probe3
-		.probe11(div_env_sum_NW),     // input wire [31:0]  probe3
-		.probe12(div_env_sum_EW),     // input wire [31:0]  probe3
-		.probe13(div_phase_sum_NE),   // input wire [47:0]  probe3
-		.probe14(div_phase_sum_NW),   // input wire [47:0]  probe3
-		.probe15(div_phase_sum_EW),   // input wire [47:0]  probe3
-		.probe16(valid_phase_NE),     // input wire [0:0]  probe3
-		.probe17(valid_phase_NW),     // input wire [0:0]  probe3
-		.probe18(valid_phase_EW),     // input wire [0:0]  probe3
-		.probe19(phase_NE),           // input wire [19:0]  probe3
-		.probe20(phase_NW),           // input wire [19:0]  probe3
-		.probe21(phase_EW),           // input wire [19:0]  probe3
-		.probe22(has_signal),         // input wire [0:0]  probe3
-		.probe23(valid_env),          // input wire [0:0]  probe3
-		.probe24(valid_err),          // input wire [0:0]  probe3
-		.probe25(err_count),          // input wire [1:0]  probe3
-		.probe26(curr_signal_counter),  // input wire [8:0]  probe3
-		.probe27(has_signal),         // input wire [0:0]  probe3
-		.probe28(allow_next),         // input wire [0:0]  probe3
-		.probe29(acc_reset),          // input wire [0:0]  probe3
-		.probe30(start_proc),         // input wire [0:0]  probe3
-		.probe31(proc_signal),        // input wire [0:0]  probe3
-		.probe32(div_start),          // input wire [0:0]  probe3
-		.probe33(div_delay),          // input wire [3:0]  probe3
-		.probe34(div_counter),        // input wire [5:0]  probe3
-		.probe35(proc_done),          // input wire [0:0]  probe3
-		.probe36(signal_done)         // input wire [0:0]  probe3
+		.probe1(env_sum_N),           // input wire [23:0]  probe3
+		.probe2(env_sum_E),           // input wire [23:0]  probe3
+		.probe3(env_sum_W),           // input wire [23:0]  probe3
+		.probe4(freq),                // input wire [19:0]  probe3
+		.probe5(div_env_sum_N),      // input wire [31:0]  probe3
+		.probe6(div_env_sum_E),      // input wire [31:0]  probe3
+		.probe7(div_env_sum_W),      // input wire [31:0]  probe3
+		.probe8(valid_env_N),        // input wire [0:0]  probe3
+		.probe9(valid_env_E),        // input wire [0:0]  probe3
+		.probe10(valid_env_W),        // input wire [0:0]  probe3
+		.probe11(avg_env_N),          // input wire [15:0]  probe3
+		.probe12(avg_env_E),          // input wire [15:0]  probe3
+		.probe13(avg_env_W),          // input wire [15:0]  probe3
+		.probe14(has_signal),         // input wire [0:0]  probe3
+		.probe15(valid_env),          // input wire [0:0]  probe3
+		.probe16(valid_err),          // input wire [0:0]  probe3
+		.probe17(err_count),          // input wire [1:0]  probe3
+		.probe18(sample_count),       // input wire [8:0]  probe3
+		.probe19(sample_count_ok),    // input wire [0:0]  probe3
+		.probe20(accept_new_burst),   // input wire [0:0]  probe3
+		.probe21(acc_reset),          // input wire [0:0]  probe3
+		.probe22(start_proc),         // input wire [0:0]  probe3
+		.probe23(proc_signal),        // input wire [0:0]  probe3
+		.probe24(div_start),          // input wire [0:0]  probe3
+		.probe25(div_delay),          // input wire [3:0]  probe3
+		.probe26(div_counter),        // input wire [5:0]  probe3
+		.probe27(min_freq),           // input wire [19:0]  probe3
+		.probe28(max_freq),           // input wire [19:0]  probe3
+		.probe29(min_freq_diff),      // input wire [20:0]  probe3
+		.probe30(max_freq_diff),      // input wire [20:0]  probe3
+		.probe31(div_counter),        // input wire [5:0]  probe3
+		.probe32(proc_done),          // input wire [0:0]  probe3
+		.probe33(signal_done)         // input wire [0:0]  probe3
 	);
-
 
 generate
   begin : det_signal
@@ -289,7 +339,7 @@ generate
                 1 : min_freq <= config_data[19:0];
                 2 : max_freq <= config_data[19:0];
                 3 : max_doa_diff <= config_data[11:0];
-                4 : min_samples <= config_data[15:0];
+                4 : min_samples <= config_data[8:0] - 1;
             endcase            
         end
     end
@@ -354,7 +404,7 @@ generate
             valid_env <= diff_env_N[16] & diff_env_E[16] & diff_env_W[16];
             valid_err <= diff_err_NE[12] & diff_err_NW[12] & diff_err_EW[12];
 
-            if (signal_counter == 9'b111110000)
+            if (sample_count == 9'b111110000)
                 valid_count <= 0;
             else   
                 valid_count <= 1;
@@ -385,7 +435,7 @@ generate
 	begin
         if (run[2])
         begin
-            if (valid_env & valid_err & valid_count & allow_next)
+            if (valid_env & valid_err & valid_count & accept_new_burst)
             begin
                 err_count <= 0;
                 start_proc <= 0;
@@ -395,7 +445,7 @@ generate
                 else   
                 begin
                     has_signal <= 1;
-                    curr_signal_sample <= sample_counter;
+                    start_sample <= sample_counter;
                     acc_reset <= 1;
                 end
             end
@@ -406,7 +456,8 @@ generate
                     if (err_ov | !valid_count)
                     begin
                         has_signal <= 0;
-                        start_proc <= 1;
+                        if (sample_count_ok)
+                            start_proc <= 1;
                     end
                     else
                     begin
@@ -456,10 +507,19 @@ generate
                 env_sum_W <= env_sum_W + {7'b0000000, env_W};
             end
 
-            curr_signal_counter <= curr_signal_counter + 1;
+            sample_count <= sample_count + 1;
+
+            if (sample_count == min_samples)
+                sample_count_ok <= 1;
         end
         else
-            curr_signal_counter <= 0;
+        begin
+			if (sample_count)
+                div_sample_count <= {7'b0000000, sample_count};
+			
+            sample_count <= 0;
+            sample_count_ok <= 0;
+        end
     end
 
     always @(posedge clk) 
@@ -517,6 +577,13 @@ generate
             case (div_delay)
 				4'b0000:
                     begin
+                        signal_sample <= start_sample;
+                        signal_size <= sample_count;
+                        
+                        div_env_sum_N <= {8'b00000000, env_sum_N};
+                        div_env_sum_E <= {8'b00000000, env_sum_E};
+                        div_env_sum_W <= {8'b00000000, env_sum_W};
+
                         div_env_NE <= {8'b00000000, env_sum_N} + {8'b00000000, env_sum_E};
                         div_env_all <= {8'b00000000, env_sum_W};
 
@@ -526,7 +593,7 @@ generate
 
                         div_start <= 0;
                         div_delay <= div_delay + 1;
-						allow_next <= 0;
+						accept_new_burst <= 0;
 					end
 
                 4'b0100:
@@ -547,7 +614,7 @@ generate
                     begin
                         div_lo_freq_sum <= div_lo_freq_sum + {2'b00, dsp_sum_W[23:0]};
                         div_hi_freq_sum <= div_hi_freq_sum + dsp_sum_W[47:24];
-						allow_next <= 1;
+						accept_new_burst <= 1;
                         div_start <= 0;
                         div_delay <= div_delay + 1;
                     end
@@ -565,11 +632,18 @@ generate
                         div_delay <= div_delay + 1;
                     end
                 
-                4'b1000: div_start <= 0;
+                4'b1000:
+                    begin
+                        div_start <= 0;
+
+                        if (div_counter != 63)
+                            div_counter <= div_counter + 1;
+                    end
                 
                 default:
                     begin
                         div_start <= 0;
+                        div_counter <= 0;
                         div_delay <= div_delay + 1;
                     end
             endcase            
@@ -577,39 +651,43 @@ generate
         else
         begin
             div_start <= 0;
+            div_counter <= 0;
             div_delay <= 0;
-			allow_next <= 1;
+			accept_new_burst <= 1;
         end
     end
 
     always @(posedge clk) 
 	begin
-        if (proc_signal)
-        begin
-            case (div_delay)
-                4'b1000: 
+        case (div_counter)
+            0:  
+                begin
+                    proc_done <= 0;
+                    signal_done <= 0;
+                end
+            
+            62:
+                begin
+                    min_freq_diff <= {1'b0, freq} - {1'b0, min_freq};
+                    max_freq_diff <= {1'b0, freq} - {1'b0, max_freq};
+                end
+
+            63: 
+                begin
+                    if (!min_freq_diff[20] & max_freq_diff[20])
                     begin
-                        if (div_counter == 63)
-                            proc_done <= 1;
-                        else
-                        begin
-                            proc_done <= 0;
-                            div_counter <= div_counter + 1;
-                        end
+                        signal_freq <= freq;
+                        signal_env_N <= avg_env_N;
+                        signal_env_E <= avg_env_E;
+                        signal_env_W <= avg_env_W;
+                        signal_phase_NE <= phase_NE;
+                        signal_phase_NW <= phase_NW;
+                        signal_phase_EW <= phase_EW;
+                        signal_done <= 1;
                     end
-                
-                default:
-                    begin
-                        div_counter <= 0;
-                        proc_done <= 0;
-                    end
-            endcase            
-        end
-        else
-        begin
-            div_counter <= 0;
-            proc_done <= 0;
-        end
+                    proc_done <= 1;
+                end
+        endcase
     end
 
   end

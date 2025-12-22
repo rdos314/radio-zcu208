@@ -58,8 +58,16 @@ module comp_high(
   reg cfg_rd;
   wire cfg_empty;
   
-  wire [23:0] signal_sample;
-  wire [8:0] signal_counter;
+  wire [31:0] start_sample;
+  wire [8:0] size;
+  wire [19:0] freq;
+  wire [15:0] env_N;
+  wire [15:0] env_E;
+  wire [15:0] env_W;
+  wire [19:0] phase_NE;
+  wire [19:0] phase_NW;
+  wire [19:0] phase_EW;
+  wire burst;
 
   reg [15:0] raw_N0;
   reg [15:0] raw_N1;
@@ -129,8 +137,32 @@ det_signal det_sig_i (
     .config_data(cfg_data),
     .active(doa_valid),
     .data(doa_data),
-    .signal_sample(signal_sample),
-    .signal_counter(signal_counter)
+    .signal_sample(start_sample),
+    .signal_size(size),
+    .signal_freq(freq),
+    .signal_env_N(env_N),
+    .signal_env_E(env_E),
+    .signal_env_W(env_W),
+    .signal_phase_NE(phase_NE),
+    .signal_phase_NW(phase_NW),
+    .signal_phase_EW(phase_EW),
+    .signal_done(burst)
+);
+
+doa_calc doa_calc_i (
+    .clk(clk),
+    .reset(reset),
+    .config_wr(!cfg_empty),
+    .config_adr(cfg_adr),
+    .config_data(cfg_data),
+    .start(burst),
+    .freq(freq),
+    .env_N(env_N),
+    .env_E(env_E),
+    .env_W(env_W),
+    .phase_NE(phase_NE),
+    .phase_NW(phase_NW),
+    .phase_EW(phase_EW)
 );
 
 generate

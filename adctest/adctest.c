@@ -26,6 +26,7 @@
 #define CONFIG_MAX_INCR         2
 #define CONFIG_MAX_DOA_DIFF     3
 #define CONFIG_MIN_SAMPLES      4
+#define CONFIG_SAMPLE_DIST      5
 
 struct bram_control_t
 {
@@ -346,9 +347,9 @@ void StartSim()
 	control->cmd = 0;
 }
 
-int CalcIncr(double f)
+int CalcIncr(double f, int decimate)
 {
-    double incr = f / FS * (double)0x100000;
+    double incr = (double)decimate * f / FS * (double)0x100000;
     return (int)incr;
 }
 
@@ -358,13 +359,22 @@ int CalcSamples(double f, double periods)
     return (int)s;
 }
 
+int CalcInvSampleDistance(double dist, int decimate)
+{
+    int scale = 1 << 28;
+    double d_samples = dist * FS / (double)decimate * 1000.0 * 1000.0 / SPEED_OF_LIGHT;
+    double inv_dij = (1.0 / d_samples) * scale;
+    return (int)(inv_dij + 0.5);
+}
+
 int main()
 {
     SetConfig(CONFIG_MIN_ENV, 25, 25);
-    SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0), CalcIncr(185.0));
-    SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0), CalcIncr(195.0));
+    SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0, 8), CalcIncr(185.0, 8));
+    SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0, 8), CalcIncr(195.0, 8));
     SetConfig(CONFIG_MAX_DOA_DIFF, 100, 100);
     SetConfig(CONFIG_MIN_SAMPLES, CalcSamples(46.0, 1.5), CalcSamples(189.0, 1.5));
+    SetConfig(CONFIG_SAMPLE_DIST, CalcInvSampleDistance(LOW_DIST, 8), CalcInvSampleDistance(HIGH_DIST, 8));
     LoadConfig();
     
 	LoadLowZero(46.0, 30.0);

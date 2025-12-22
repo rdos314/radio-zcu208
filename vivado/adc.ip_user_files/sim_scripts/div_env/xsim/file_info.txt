@@ -1,0 +1,2 @@
+div_env.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/div_env/sim/div_env.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v
