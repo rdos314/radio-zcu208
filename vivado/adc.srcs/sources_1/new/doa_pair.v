@@ -31,30 +31,51 @@ module doa_pair(
     output reg [19:0] angle
 );
 
-  reg [2:0] delay;
-  reg mul_run;
-  reg start_asin;
-  reg asin_run;
-
   wire [39:0] prod;
-  wire [19:0] x_in = prod[39:20];
+  wire [19:0] x = prod[33:14];
 
-  reg signed [21:0] x;
-  reg signed [21:0] y;
-  reg signed [21:0] z;
-  reg signed [21:0] x_sh;
-  reg signed [21:0] y_sh;
-  reg signed [19:0] atan;
-  reg [5:0] iter_full; 
-  wire iter_op = iter_full[0];
-  wire [4:0] iter = iter_full[5:1];  
-
+  reg [5:0] counter; 
+  reg [3:0] ind;
+  reg run;
+  reg ignore;
+  reg add;
+  reg init;
+  reg [19:0] coeff;
+  wire [39:0] x2;
+  wire [39:0] cp;
+  wire [39:0] xp;
+  wire [19:0] p = init ? x : xp[38:19];
+  reg [20:0] sum;
   
-mul_doa mul_doa_i (
+mult_20x20 mul_doa_i (
   .CLK(clk),           // input wire CLK
   .A(k),               // input wire [19 : 0] A
   .B(phase),           // input wire [19 : 0] B
   .P(prod)             // output wire [39 : 0] P
+);
+  
+mult_20x20 mul_x2_i 
+(
+  .CLK(clk),         // input wire CLK
+  .A(x),             // input wire [19 : 0] A
+  .B(x),             // input wire [19 : 0] B
+  .P(x2)             // output wire [39 : 0] P
+);
+  
+mult_20x20 mul_x_i 
+(
+  .CLK(clk),         // input wire CLK
+  .A(x2[38:19]),     // input wire [19 : 0] A
+  .B(p),             // input wire [19 : 0] B
+  .P(xp)             // output wire [39 : 0] P
+);
+
+mult_20x20 mul_c_i 
+(
+  .CLK(clk),          // input wire CLK
+  .A(coeff),          // input wire [19 : 0] A
+  .B(p),              // input wire [19 : 0] B
+  .P(cp)              // output wire [39 : 0] P
 );
 
 	ila_7 ila_i (
@@ -62,20 +83,18 @@ mul_doa mul_doa_i (
 		.probe0(start),               // input wire [0:0]  probe3
 		.probe1(k),                   // input wire [19:0]  probe3
 		.probe2(phase),               // input wire [19:0]  probe3
-		.probe3(delay),               // input wire [2:0]  probe3
-		.probe4(mul_run),             // input wire [0:0]  probe3
-		.probe5(start_asin),          // input wire [0:0]  probe3
-		.probe6(asin_run),            // input wire [0:0]  probe3
-		.probe7(x_in),                // input wire [19:0]  probe3
-		.probe8(iter_op),             // input wire [0:0]  probe3
-		.probe9(iter),                // input wire [4:0]  probe3
-		.probe10(x_sh),               // input wire [21:0]  probe3
-		.probe11(y_sh),               // input wire [21:0]  probe3
-		.probe12(x),                  // input wire [21:0]  probe3
-		.probe13(y),                  // input wire [21:0]  probe3
-		.probe14(z),                  // input wire [21:0]  probe3
-		.probe15(done),               // input wire [0:0]  probe3
-		.probe16(angle)               // input wire [19:0]  probe3
+		.probe3(counter),             // input wire [5:0]  probe3
+		.probe4(ind),                 // input wire [3:0]  probe3
+		.probe5(run),                 // input wire [0:0]  probe3
+		.probe6(init),                // input wire [0:0]  probe3
+		.probe7(add),                 // input wire [0:0]  probe3
+		.probe8(igonre),              // input wire [0:0]  probe3
+		.probe9(coeff),               // input wire [19:0]  probe3
+		.probe10(x2),                  // input wire [39:0]  probe3
+		.probe11(cp),                  // input wire [39:0]  probe3
+		.probe12(xp),                 // input wire [39:0]  probe3
+		.probe13(sum),                // input wire [20:0]  probe3
+		.probe14(p)                   // input wire [19:0]  probe3
 );
 
 generate
@@ -85,139 +104,134 @@ generate
     begin
         if (reset)
         begin
-            start_asin <= 0;
-            mul_run <= 0;
-            delay <= 0;
+            run <= 0;
+            ignore <= 0;
+            counter <= 0;
         end
         else
-        begin            
+        begin
             if (start)
             begin
-                delay <= 0;
-                mul_run <= 1;
+                run <= 1;
+                ignore <= 0;
+                counter <= 0;
             end
             else
             begin
-                if (mul_run)
+                if (run)
                 begin
-                    if (delay == 3'b100)
-                    begin
-                        start_asin <= 1;
-                        mul_run <= 0;
-                    end
+                    if (p == -1)
+                        ignore <= 1;
+                        
+                    if (counter == 63)
+                        run <= 0;
                     else
-                        delay <= delay + 1;
+                        counter <= counter + 1;
                 end
-                else
-                    start_asin <= 0;
             end
         end
     end
 
     always @(posedge clk) 
     begin
-        if (asin_run & !iter_op) 
-        begin
-            x_sh <= x >>> iter;
-            y_sh <= y >>> iter;
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        case (iter) 
-            0 : atan <=  262144;
-            1 : atan <= 154193;
-            2 : atan <= 81589;
-            3 : atan <= 41349;
-            4 : atan <= 20753;
-            5 : atan <= 10392;
-            6 : atan <= 5196;
-            7 : atan <= 2598;
-            8 : atan <= 1299;
-            9 : atan <= 650;
-            10 : atan <= 325;
-            11 : atan <= 163;
-            12 : atan <= 81;
-            13 : atan <= 41;
-            14 : atan <= 20;
-            15 : atan <= 10;
-            16 : atan <= 5;
-            17 : atan <= 3;
-            default : atan <= 1;
+        case (counter)
+            2 : ind <= 0;
+            4 : ind <= 1;
+            7 : ind <= 2;
+            10 : ind <= 3;
+            13 : ind <= 4;
+            16 : ind <= 5;
+            19 : ind <= 6;
+            22 : ind <= 7;
+            25 : ind <= 8;
+            28 : ind <= 9;
+            31 : ind <= 10;
+            34 : ind <= 11;
+            37 : ind <= 12;
+            40 : ind <= 13;
+            43 : ind <= 14;
+            46 : ind <= 15;
         endcase
     end
 
     always @(posedge clk) 
     begin
-        if (asin_run & iter_op) 
-        begin
-            if (y >= 0) 
-            begin
-                x <= x + y_sh;
-                y <= y - x_sh;
-                z <= z + atan;
-            end 
-            else 
-            begin
-                x <= x - y_sh;
-                y <= y + x_sh;
-                z <= z - atan;
-            end
-        end 
-        else
-        begin
-            if (start_asin) 
-            begin
-                x <= 318391;
-                y <= x_in;
-                z <= 0;
-            end
-            else
-            begin
-                if (reset)
-                begin
-                    x <= 0;
-                    y <= 0;
-                    z <= 0;
-                end
-            end
-        end
+        case (counter)
+            0 : init <= 1;
+            5 : init <= 0;
+        endcase
     end
 
     always @(posedge clk) 
     begin
-        if (reset) 
-        begin
-            asin_run <= 0;
-            done <= 0;
-            angle <= 0;
-            iter_full <= 0;
-        end 
-        else 
-        begin
-            if (asin_run) 
-            begin
-                if (iter_full == 39) 
-                begin
-                    asin_run <= 0;
-                    done <= 1;
-                    angle <= z[19:0];
-                end
-                else
-                    iter_full <= iter_full + 1;
-            end
-            else
-            begin
-                done <= 0;
+        case (ind) 
+            0 : coeff <= 333772;
+            1 : coeff <= 55629;
+            2 : coeff <= 25033;
+            3 : coeff <= 14901;
+            4 : coeff <= 10141;
+            5 : coeff <= 7467;
+            6 : coeff <= 5792;
+            7 : coeff <= 4661;
+            8 : coeff <= 3856;
+            9 : coeff <= 3258;
+            10 : coeff <= 2800;
+            11 : coeff <= 2441;
+            12 : coeff <= 2152;
+            13 : coeff <= 1916;
+            14 : coeff <= 1720;
+            15 : coeff <= 1555;
+        endcase
+    end
 
-                if (start_asin) 
-                begin
-                    asin_run <= 1;
-                    iter_full <= 0;
-                end
-            end
+    always @(posedge clk) 
+    begin
+        case (counter)
+            0: add <= 0;
+            5 : add <= 1;
+            6 : add <= 0;
+            8 : add <= 1;
+            9 : add <= 0;
+            11 : add <= 1;
+            12 : add <= 0;
+            14 : add <= 1;
+            15 : add <= 0;
+            17 : add <= 1;
+            18 : add <= 0;
+            20 : add <= 1;
+            21 : add <= 0;
+            23 : add <= 1;
+            24 : add <= 0;
+            26 : add <= 1;
+            27 : add <= 0;
+            29 : add <= 1;
+            30 : add <= 0;
+            32 : add <= 1;
+            33 : add <= 0;
+            35 : add <= 1;
+            36 : add <= 0;
+            38 : add <= 1;
+            39 : add <= 0;
+            41 : add <= 1;
+            42 : add <= 0;
+            44 : add <= 1;
+            45 : add <= 0;
+            47 : add <= 1;
+            48 : add <= 0;
+            50 : add <= 1;
+            51 : add <= 0;
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        if (run)
+        begin
+            if (add & !ignore)
+                sum <= sum + cp[39:19];
         end
+        else
+            sum <= 0;                    
     end
 
   end

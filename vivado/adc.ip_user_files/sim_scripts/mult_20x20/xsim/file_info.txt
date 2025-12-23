@@ -1,0 +1,2 @@
+mult_20x20.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/mult_20x20/sim/mult_20x20.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

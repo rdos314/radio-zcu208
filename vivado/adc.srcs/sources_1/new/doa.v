@@ -41,10 +41,12 @@ module doa_calc(
 );
 
   reg [31:0] inv_dij;
+  wire [39:0] div_dij = {1'b0, inv_dij, 7'b0000000};
+  wire [23:0] div_freq = {4'b0000, freq};
 
   wire valid_k;
-  wire [51:0] k_out;
-  wire [19:0] k = k_out[39:20];
+  wire [63:0] k_out;
+  wire [19:0] k = k_out[43:24];
   
   wire done_NE;
   wire done_NW;
@@ -57,11 +59,11 @@ module doa_calc(
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
   .s_axis_divisor_tvalid(start),                    // input wire s_axis_divisor_tvalid
-  .s_axis_divisor_tdata(freq),                      // input wire [19 : 0] s_axis_divisor_tdata
+  .s_axis_divisor_tdata(div_freq),                  // input wire [23 : 0] s_axis_divisor_tdata
   .s_axis_dividend_tvalid(start),                   // input wire s_axis_dividend_tvalid
-  .s_axis_dividend_tdata(inv_dij),                  // input wire [31 : 0] s_axis_dividend_tdata
+  .s_axis_dividend_tdata(div_dij),                  // input wire [39 : 0] s_axis_dividend_tdata
   .m_axis_dout_tvalid(valid_k),                     // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(k_out)                         // output wire [51 : 0] m_axis_dout_tdata
+  .m_axis_dout_tdata(k_out)                         // output wire [63 : 0] m_axis_dout_tdata
 );
 
 doa_pair doa_NE_i(
