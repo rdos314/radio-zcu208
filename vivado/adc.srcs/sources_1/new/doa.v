@@ -51,6 +51,10 @@ module doa_calc(
   wire done_NE;
   wire done_NW;
   wire done_EW;
+  
+  wire fail_NE;
+  wire fail_NW;
+  wire fail_EW;
 
   wire [19:0] angle_NE;
   wire [19:0] angle_NW;
@@ -73,6 +77,7 @@ doa_pair doa_NE_i(
   .k(k),
   .phase(phase_NE),
   .done(done_NE),
+  .fail(fail_NE),
   .angle(angle_NE)
 );
 
@@ -83,6 +88,7 @@ doa_pair doa_NW_i(
   .k(k),
   .phase(phase_NW),
   .done(done_NW),
+  .fail(fail_NW),
   .angle(angle_NW)
 );
 
@@ -93,6 +99,7 @@ doa_pair doa_EW_i(
   .k(k),
   .phase(phase_EW),
   .done(done_EW),
+  .fail(fail_EW),
   .angle(angle_EW)
 );
 

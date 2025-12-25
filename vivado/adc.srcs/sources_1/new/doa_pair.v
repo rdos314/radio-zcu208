@@ -28,11 +28,13 @@ module doa_pair(
     input wire [19:0] phase,
 
     output reg done,
+    output reg fail,
     output reg [19:0] angle
 );
 
   wire [39:0] prod;
-  wire [19:0] x = prod[33:14];
+  reg [19:0] x;
+  reg [4:0] ov;
 
   reg [5:0] counter; 
   reg [3:0] ind;
@@ -88,13 +90,19 @@ mult_20x20 mul_c_i
 		.probe5(run),                 // input wire [0:0]  probe3
 		.probe6(init),                // input wire [0:0]  probe3
 		.probe7(add),                 // input wire [0:0]  probe3
-		.probe8(igonre),              // input wire [0:0]  probe3
+		.probe8(ignore),              // input wire [0:0]  probe3
 		.probe9(coeff),               // input wire [19:0]  probe3
-		.probe10(x2),                  // input wire [39:0]  probe3
-		.probe11(cp),                  // input wire [39:0]  probe3
-		.probe12(xp),                 // input wire [39:0]  probe3
-		.probe13(sum),                // input wire [20:0]  probe3
-		.probe14(p)                   // input wire [19:0]  probe3
+		.probe10(prod),               // input wire [39:0]  probe3
+		.probe11(x),                  // input wire [19:0]  probe3
+		.probe12(x2),                 // input wire [39:0]  probe3
+		.probe13(cp),                 // input wire [39:0]  probe3
+		.probe14(xp),                 // input wire [39:0]  probe3
+		.probe15(sum),                // input wire [20:0]  probe3
+		.probe16(done),               // input wire [0:0]  probe3
+		.probe17(fail),               // input wire [0:0]  probe3
+		.probe18(angle),              // input wire [19:0]  probe3
+		.probe19(ov),                 // input wire [4:0]  probe3
+		.probe20(p)                   // input wire [19:0]  probe3
 );
 
 generate
@@ -106,6 +114,7 @@ generate
         begin
             run <= 0;
             ignore <= 0;
+            done <= 0;
             counter <= 0;
         end
         else
@@ -114,19 +123,28 @@ generate
             begin
                 run <= 1;
                 ignore <= 0;
+                done <= 0;
                 counter <= 0;
             end
             else
             begin
                 if (run)
                 begin
-                    if (p == -1)
-                        ignore <= 1;
+                    if (add)
+                        if (xp[38:19] == 20'hFFFFF)
+                            ignore <= 1;
                         
-                    if (counter == 63)
+                    if (counter == 56)
+                    begin
                         run <= 0;
+                        done <= 1;
+                        angle <= sum[19:0];
+                    end
                     else
+                    begin
+                        done <= 0;
                         counter <= counter + 1;
+                    end
                 end
             end
         end
@@ -136,21 +154,21 @@ generate
     begin
         case (counter)
             2 : ind <= 0;
-            4 : ind <= 1;
-            7 : ind <= 2;
-            10 : ind <= 3;
-            13 : ind <= 4;
-            16 : ind <= 5;
-            19 : ind <= 6;
-            22 : ind <= 7;
-            25 : ind <= 8;
-            28 : ind <= 9;
-            31 : ind <= 10;
-            34 : ind <= 11;
-            37 : ind <= 12;
-            40 : ind <= 13;
-            43 : ind <= 14;
-            46 : ind <= 15;
+            8 : ind <= 1;
+            11 : ind <= 2;
+            14 : ind <= 3;
+            17 : ind <= 4;
+            20 : ind <= 5;
+            23 : ind <= 6;
+            26 : ind <= 7;
+            29 : ind <= 8;
+            32 : ind <= 9;
+            35 : ind <= 10;
+            38 : ind <= 11;
+            41 : ind <= 12;
+            44 : ind <= 13;
+            47 : ind <= 14;
+            50 : ind <= 15;
         endcase
     end
 
@@ -158,7 +176,48 @@ generate
     begin
         case (counter)
             0 : init <= 1;
-            5 : init <= 0;
+            9 : init <= 0;
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        case (counter)
+            0 : ov <= 5'b01111;
+            2 : ov <= prod[39:35];
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        case (ov)
+            5'b00000 : 
+                begin
+                    x <= prod[35:16];
+                    fail <= 0;
+                end
+
+            5'b00001 : 
+                begin
+                    x <= 20'h7FFFF;
+                    fail <= 0;
+                end
+
+            5'b11110 : 
+                begin
+                    x <= 20'h80001;
+                    fail <= 0;
+                end
+
+            5'b11111 : 
+                begin
+                    x <= prod[35:16];
+                    fail <= 0;
+                end
+                
+            default:
+                if (counter)
+                    fail <= 1;        
         endcase
     end
 
@@ -188,38 +247,38 @@ generate
     begin
         case (counter)
             0: add <= 0;
-            5 : add <= 1;
-            6 : add <= 0;
-            8 : add <= 1;
-            9 : add <= 0;
-            11 : add <= 1;
-            12 : add <= 0;
-            14 : add <= 1;
-            15 : add <= 0;
-            17 : add <= 1;
-            18 : add <= 0;
-            20 : add <= 1;
-            21 : add <= 0;
-            23 : add <= 1;
-            24 : add <= 0;
-            26 : add <= 1;
-            27 : add <= 0;
-            29 : add <= 1;
-            30 : add <= 0;
-            32 : add <= 1;
-            33 : add <= 0;
-            35 : add <= 1;
-            36 : add <= 0;
-            38 : add <= 1;
-            39 : add <= 0;
-            41 : add <= 1;
-            42 : add <= 0;
-            44 : add <= 1;
-            45 : add <= 0;
-            47 : add <= 1;
-            48 : add <= 0;
-            50 : add <= 1;
-            51 : add <= 0;
+            9 : add <= 1;
+            10 : add <= 0;
+            12 : add <= 1;
+            13 : add <= 0;
+            15 : add <= 1;
+            16 : add <= 0;
+            18 : add <= 1;
+            19 : add <= 0;
+            21 : add <= 1;
+            22 : add <= 0;
+            24 : add <= 1;
+            25 : add <= 0;
+            27 : add <= 1;
+            28 : add <= 0;
+            30 : add <= 1;
+            31 : add <= 0;
+            33 : add <= 1;
+            34 : add <= 0;
+            36 : add <= 1;
+            37 : add <= 0;
+            39 : add <= 1;
+            40 : add <= 0;
+            42 : add <= 1;
+            43 : add <= 0;
+            45 : add <= 1;
+            46 : add <= 0;
+            48 : add <= 1;
+            49 : add <= 0;
+            51 : add <= 1;
+            52 : add <= 0;
+            54 : add <= 1;
+            55 : add <= 0;
         endcase
     end
 
