@@ -17,7 +17,7 @@
       <NameColumnWidth column_width="59"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="21" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/comp_high/inst/doa_calc_i/phase_EW" type="array">
@@ -134,6 +134,35 @@
       <obj_property name="ElementShortName">ps_i/comp_high/inst/doa_calc_i/k[19:0]</obj_property>
       <obj_property name="ObjectShortName">k[19:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_high/inst/doa_calc_i/shadow_EW" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high/inst/doa_calc_i/shadow_EW</obj_property>
+      <obj_property name="ObjectShortName">shadow_EW</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_high/inst/doa_calc_i/shadow_limit" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high/inst/doa_calc_i/shadow_limit[19:0]</obj_property>
+      <obj_property name="ObjectShortName">shadow_limit[19:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_high/inst/doa_calc_i/shadow_NE" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high/inst/doa_calc_i/shadow_NE</obj_property>
+      <obj_property name="ObjectShortName">shadow_NE</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_high/inst/doa_calc_i/shadow_NW" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_high/inst/doa_calc_i/shadow_NW</obj_property>
+      <obj_property name="ObjectShortName">shadow_NW</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

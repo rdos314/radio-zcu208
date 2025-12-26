@@ -27,6 +27,7 @@
 #define CONFIG_MAX_DOA_DIFF     3
 #define CONFIG_MIN_SAMPLES      4
 #define CONFIG_SAMPLE_DIST      5
+#define CONFIG_SHADOW_ANGLE     6
 
 struct bram_control_t
 {
@@ -367,6 +368,13 @@ int CalcInvSampleDistance(double dist, int decimate)
     return (int)(inv_dij + 0.5);
 }
 
+int CalcShadowAngle(double angle)
+{
+    int scale = 1 << 19;
+    double diff = 1.0 - cos(angle * PI / 180.0);
+    return (int)(diff * scale + 0.5);
+}
+
 int main()
 {
     SetConfig(CONFIG_MIN_ENV, 25, 25);
@@ -375,15 +383,16 @@ int main()
     SetConfig(CONFIG_MAX_DOA_DIFF, 100, 100);
     SetConfig(CONFIG_MIN_SAMPLES, CalcSamples(46.0, 1.5), CalcSamples(189.0, 1.5));
     SetConfig(CONFIG_SAMPLE_DIST, CalcInvSampleDistance(LOW_DIST, 8), CalcInvSampleDistance(HIGH_DIST, 8));
+    SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
     LoadConfig();
-    
+
 	LoadLowZero(46.0, 30.0);
-	LoadLowMorlet(46.0, 5.0, 25000, 0.0);
+	LoadLowMorlet(46.0, 5.0, 25000, 290.0);
 //	LoadLowCos(46.0, 30.0, 25000, 45.0);
 	LoadLowZero(46.0, 30.0);
 
 	LoadHighZero(189.0, 120.0);
-	LoadHighMorlet(189.0, 20.0, 25000, 0.0);
+	LoadHighMorlet(189.0, 20.0, 25000, 290.0);
 //	LoadHighCos(189.0, 120.0, 25000, 45.0);
 	LoadHighZero(189.0, 120.0);
 

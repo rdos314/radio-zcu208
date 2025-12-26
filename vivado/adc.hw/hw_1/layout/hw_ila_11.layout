@@ -217,7 +217,7 @@
                 </DockParentState>
             </DockPreviousState>
         </DockContext>
-        <DockContext autohideHeight="0" autohideWidth="0" available="1" canMode="15" currentDockSide="8" currentMode="4" dockId="38289" dockedHeight="164" dockedWidth="273" initAutohideHeight="200" initAutohideWidth="200" initIndex="0" initMode="4" initPosition="0" initSide="4" key="ILA_TRIGGER_1">
+        <DockContext autohideHeight="0" autohideWidth="0" available="1" canMode="15" currentDockSide="8" currentMode="4" dockId="38289" dockedHeight="98" dockedWidth="273" initAutohideHeight="200" initAutohideWidth="200" initIndex="0" initMode="4" initPosition="0" initSide="4" key="ILA_TRIGGER_1">
             <DockPreviousState dockId="38289" fcId="24295" index="0" mode="4" rootId="2" side="8" type="close">
                 <Bounds height="810" width="1596" x="0" y="0"/>
                 <DockChild dockId="38289"/>
@@ -1826,25 +1826,25 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="40741"/>
-                <DockChild dockId="49051"/>
-                <DockChild dockId="1471"/>
-                <DockChild dockId="4065"/>
-                <DockChild dockId="47222"/>
-                <DockChild dockId="36279"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
+                <DockChild dockId="36279"/>
+                <DockChild dockId="47222"/>
+                <DockChild dockId="4065"/>
+                <DockChild dockId="1471"/>
+                <DockChild dockId="49051"/>
+                <DockChild dockId="40741"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -1888,24 +1888,24 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="49051"/>
-                <DockChild dockId="1471"/>
-                <DockChild dockId="4065"/>
-                <DockChild dockId="47222"/>
-                <DockChild dockId="36279"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
+                <DockChild dockId="36279"/>
+                <DockChild dockId="47222"/>
+                <DockChild dockId="4065"/>
+                <DockChild dockId="1471"/>
+                <DockChild dockId="49051"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -1949,23 +1949,23 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="1471"/>
-                <DockChild dockId="4065"/>
-                <DockChild dockId="47222"/>
-                <DockChild dockId="36279"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
+                <DockChild dockId="36279"/>
+                <DockChild dockId="47222"/>
+                <DockChild dockId="4065"/>
+                <DockChild dockId="1471"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2009,22 +2009,22 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="4065"/>
-                <DockChild dockId="47222"/>
-                <DockChild dockId="36279"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
+                <DockChild dockId="36279"/>
+                <DockChild dockId="47222"/>
+                <DockChild dockId="4065"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2068,21 +2068,21 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="47222"/>
-                <DockChild dockId="36279"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
+                <DockChild dockId="36279"/>
+                <DockChild dockId="47222"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2179,20 +2179,20 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="36279"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
+                <DockChild dockId="36279"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2253,19 +2253,19 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="53828"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
+                <DockChild dockId="53828"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2309,18 +2309,18 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="12483"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
+                <DockChild dockId="12483"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2364,17 +2364,17 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="23933"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
+                <DockChild dockId="23933"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2453,16 +2453,16 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="36921"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
+                <DockChild dockId="36921"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2540,15 +2540,15 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="22790"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
+                <DockChild dockId="22790"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2625,14 +2625,14 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="64462"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
+                <DockChild dockId="64462"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2676,13 +2676,13 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="64857"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
+                <DockChild dockId="64857"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2758,12 +2758,12 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="7727"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
+                <DockChild dockId="7727"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2838,11 +2838,11 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="51559"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
+                <DockChild dockId="51559"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2886,10 +2886,10 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="30965"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
+                <DockChild dockId="30965"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2933,9 +2933,9 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="40818"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
+                <DockChild dockId="40818"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -2944,7 +2944,7 @@
                 </DockParentState>
             </DockPreviousState>
         </DockContext>
-        <DockContext autohideHeight="0" autohideWidth="0" available="1" canMode="15" currentDockSide="8" currentMode="4" dockId="63887" dockedHeight="164" dockedWidth="273" initAutohideHeight="200" initAutohideWidth="200" initIndex="0" initMode="4" initPosition="0" initSide="4" key="ILA_CAPTURE_1">
+        <DockContext autohideHeight="0" autohideWidth="0" available="1" canMode="15" currentDockSide="8" currentMode="4" dockId="63887" dockedHeight="98" dockedWidth="273" initAutohideHeight="200" initAutohideWidth="200" initIndex="0" initMode="4" initPosition="0" initSide="4" key="ILA_CAPTURE_1">
             <DockPreviousState dockId="63887" fcId="24295" index="0" mode="4" rootId="2" side="8" type="close">
                 <Bounds height="810" width="1596" x="0" y="0"/>
                 <DockChild dockId="38289"/>
@@ -3194,8 +3194,8 @@
                 <Bounds height="0" width="0" x="0" y="0"/>
                 <DockChild dockId="38289"/>
                 <DockChild dockId="63887"/>
-                <DockChild dockId="19680"/>
                 <DockChild dockId="2708"/>
+                <DockChild dockId="19680"/>
                 <DockParentState ccId="47256" dockId="24295" orientation="1">
                     <DockChild dockId="1687"/>
                     <DockChild dockId="24295"/>
@@ -3507,7 +3507,7 @@
                 </DockParentState>
             </DockPreviousState>
         </DockContext>
-        <DockContext autohideHeight="0" autohideWidth="0" available="1" canMode="15" currentDockSide="1" currentMode="4" dockId="46897" dockedHeight="565" dockedWidth="314" initAutohideHeight="200" initAutohideWidth="200" initIndex="0" initMode="4" initPosition="0" initSide="4" key="ILA_WAVE_1">
+        <DockContext autohideHeight="0" autohideWidth="0" available="1" canMode="15" currentDockSide="1" currentMode="4" dockId="46897" dockedHeight="631" dockedWidth="314" initAutohideHeight="200" initAutohideWidth="200" initIndex="0" initMode="4" initPosition="0" initSide="4" key="ILA_WAVE_1">
             <DockPreviousState dockId="46897" fcId="60115" index="0" mode="4" rootId="2" side="1" type="close">
                 <Bounds height="810" width="1596" x="0" y="0"/>
                 <DockChild dockId="7981"/>
@@ -4112,7 +4112,7 @@
             </DockPreviousState>
         </DockContext>
         <ContainerContainer dockId="38445" initiallyEven="0" orientation="0" proportionLayout="0">
-            <FrameContainer dockId="60115" preferredHeight="599" preferredWidth="585" selectedIndex="9">
+            <FrameContainer dockId="60115" preferredHeight="665" preferredWidth="585" selectedIndex="9">
                 <DockableFrame key="ILA_WAVE_10"/>
                 <DockableFrame key="ILA_WAVE_5"/>
                 <DockableFrame key="ILA_WAVE_6"/>
@@ -4124,7 +4124,7 @@
                 <DockableFrame key="ILA_WAVE_4"/>
                 <DockableFrame key="ILA_WAVE_1"/>
             </FrameContainer>
-            <ContainerContainer dockId="47256" initiallyEven="0" orientation="1" preferredHeight="198" preferredWidth="279" proportionLayout="0">
+            <ContainerContainer dockId="47256" initiallyEven="0" orientation="1" preferredHeight="132" preferredWidth="279" proportionLayout="0">
                 <FrameContainer dockId="1687" preferredHeight="200" preferredWidth="409" selectedIndex="0">
                     <DockableFrame key="ILA_STATUS_4"/>
                     <DockableFrame key="ILA_STATUS_10"/>

@@ -25,16 +25,30 @@ module doa_pair(
     input wire reset,
     input wire start,
     input wire [19:0] k,
+    input wire [19:0] shadow_limit,
     input wire [19:0] phase,
 
     output reg done,
     output reg fail,
+    output reg shadow,
     output reg [19:0] angle
 );
 
   wire [39:0] prod;
   reg [19:0] x;
-  reg [4:0] ov;
+  reg [5:0] ov;
+  reg has_ov;
+  
+  reg check_raw;
+  reg [20:0] x_raw;
+  reg [19:0] x_abs;
+  
+  reg calc_diff;
+  reg has_diff;
+  reg [18:0] x_diff;
+
+  reg has_shadow_diff;
+  reg [19:0] shadow_diff;
 
   reg [5:0] counter; 
   reg [3:0] ind;
@@ -83,26 +97,25 @@ mult_20x20 mul_c_i
 	ila_7 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(start),               // input wire [0:0]  probe3
-		.probe1(k),                   // input wire [19:0]  probe3
-		.probe2(phase),               // input wire [19:0]  probe3
-		.probe3(counter),             // input wire [5:0]  probe3
-		.probe4(ind),                 // input wire [3:0]  probe3
-		.probe5(run),                 // input wire [0:0]  probe3
-		.probe6(init),                // input wire [0:0]  probe3
-		.probe7(add),                 // input wire [0:0]  probe3
-		.probe8(ignore),              // input wire [0:0]  probe3
-		.probe9(coeff),               // input wire [19:0]  probe3
-		.probe10(prod),               // input wire [39:0]  probe3
-		.probe11(x),                  // input wire [19:0]  probe3
-		.probe12(x2),                 // input wire [39:0]  probe3
-		.probe13(cp),                 // input wire [39:0]  probe3
-		.probe14(xp),                 // input wire [39:0]  probe3
-		.probe15(sum),                // input wire [20:0]  probe3
-		.probe16(done),               // input wire [0:0]  probe3
-		.probe17(fail),               // input wire [0:0]  probe3
-		.probe18(angle),              // input wire [19:0]  probe3
-		.probe19(ov),                 // input wire [4:0]  probe3
-		.probe20(p)                   // input wire [19:0]  probe3
+		.probe1(counter),             // input wire [5:0]  probe3
+		.probe2(run),                 // input wire [0:0]  probe3
+		.probe3(init),                // input wire [0:0]  probe3
+		.probe4(has_ov),              // input wire [0:0]  probe3
+		.probe5(ov),                  // input wire [5:0]  probe3
+		.probe6(check_raw),           // input wire [0:0]  probe3
+		.probe7(x_raw),               // input wire [20:0]  probe3
+		.probe8(x_abs),               // input wire [19:0]  probe3
+		.probe9(calc_diff),          // input wire [0:0]  probe3
+		.probe10(has_diff),           // input wire [0:0]  probe3
+		.probe11(x_diff),             // input wire [18:0]  probe3
+		.probe12(has_shadow_diff),    // input wire [0:0]  probe3
+		.probe13(shadow_diff),        // input wire [19:0]  probe3
+		.probe14(shadow),             // input wire [0:0]  probe3
+		.probe15(x),                  // input wire [19:0]  probe3
+		.probe16(sum),                // input wire [20:0]  probe3
+		.probe17(done),               // input wire [0:0]  probe3
+		.probe18(fail),               // input wire [0:0]  probe3
+		.probe19(angle)               // input wire [19:0]  probe3
 );
 
 generate
@@ -110,7 +123,7 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset)
+        if (reset | fail)
         begin
             run <= 0;
             ignore <= 0;
@@ -183,42 +196,155 @@ generate
     always @(posedge clk) 
     begin
         case (counter)
-            0 : ov <= 5'b01111;
-            2 : ov <= prod[39:35];
+            0 : ov <= 6'b100000;
+            2 : ov <= prod[39:34];
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        case (counter)
+            0 : has_ov <= 0;
+            2 : has_ov <= 1;
         endcase
     end
 
     always @(posedge clk) 
     begin
         case (ov)
-            5'b00000 : 
+            6'b000000 : 
                 begin
                     x <= prod[35:16];
+                    shadow <= 0;
+                    check_raw <= 0;
                     fail <= 0;
                 end
 
-            5'b00001 : 
+            6'b000001 : 
+                begin
+                    x <= prod[35:16];
+                    x_raw <= prod[36:16];
+                    check_raw <= 1;
+                    
+                    if (has_shadow_diff)
+                        shadow <= shadow_diff[19];
+
+                    fail <= 0;
+                end
+
+            6'b000010 : 
                 begin
                     x <= 20'h7FFFF;
-                    fail <= 0;
+                    x_raw <= prod[36:16];
+                    check_raw <= 1;
+
+                    if (has_shadow_diff)
+                    begin
+                        if (shadow_diff[19])
+                        begin
+                            shadow <= 1;
+                            fail <= 0;
+                        end
+                        else
+                            fail <= 1;
+                    end
+                    else
+                        fail <= 0;
                 end
 
-            5'b11110 : 
+            6'b000011 : fail <= 1; 
+
+            6'b111100 : fail <= 1;
+
+            6'b111101 :  
                 begin
                     x <= 20'h80001;
+                    x_raw <= prod[36:16];
+                    check_raw <= 1;
+
+                    if (has_shadow_diff)
+                    begin
+                        if (shadow_diff[19])
+                        begin
+                            shadow <= 1;
+                            fail <= 0;
+                        end
+                        else
+                            fail <= 1;
+                    end
+                    else
+                        fail <= 0;
+                end
+
+            6'b111110 : 
+                begin
+                    x <= prod[35:16];
+                    x_raw <= prod[36:16];
+                    check_raw <= 1;
+
+                    if (has_shadow_diff)
+                        shadow <= shadow_diff[19];
+
                     fail <= 0;
                 end
 
-            5'b11111 : 
+            6'b111111 : 
                 begin
                     x <= prod[35:16];
+                    check_raw <= 0;
+                    shadow <= 0;
                     fail <= 0;
                 end
                 
             default:
-                if (counter)
-                    fail <= 1;        
+                begin
+                    check_raw <= 0;
+                    shadow <= 0;
+                
+                    if (has_ov)
+                        fail <= 1;
+                end
         endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        if (check_raw)
+        begin
+            calc_diff <= 1;
+            
+            if (x_raw[20])
+                x_abs <= ~x_raw[19:0];
+            else
+                x_abs <= x_raw[19:0];
+        end
+        else
+            calc_diff <= 0;
+    end           
+
+    always @(posedge clk) 
+    begin
+        if (calc_diff)
+        begin
+            if (x_abs[19])
+                x_diff[18:0] <= x_abs[18:0];
+            else
+                x_diff[18:0] <= ~x_abs[18:0];
+            has_diff <= 1;
+        end
+        else
+            has_diff <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (has_diff)
+        begin
+            shadow_diff <= {1'b0, x_diff} - shadow_limit;
+            has_shadow_diff <= 1;
+        end
+        else
+            has_shadow_diff <= 0;
     end
 
     always @(posedge clk) 

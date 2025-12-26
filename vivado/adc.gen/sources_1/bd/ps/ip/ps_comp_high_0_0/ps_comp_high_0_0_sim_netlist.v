@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Dec 25 10:07:49 2025
+// Date        : Fri Dec 26 21:34:57 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.v
@@ -1035,14 +1035,14 @@ module ps_comp_high_0_0_comp_high
     \comp_high.doa_delay[0]_i_1 
        (.I0(doa_delay[0]),
         .O(doa_delay0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_high.doa_delay[1]_i_1 
        (.I0(doa_delay[0]),
         .I1(doa_delay[1]),
         .O(\comp_high.doa_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'hE1)) 
     \comp_high.doa_delay[2]_i_1 
@@ -1050,7 +1050,7 @@ module ps_comp_high_0_0_comp_high
         .I1(doa_delay[0]),
         .I2(doa_delay[2]),
         .O(\comp_high.doa_delay[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT4 #(
     .INIT(16'hFE01)) 
     \comp_high.doa_delay[3]_i_1 
@@ -1068,7 +1068,7 @@ module ps_comp_high_0_0_comp_high
         .I3(doa_delay[1]),
         .I4(doa_delay[2]),
         .O(\comp_high.doa_delay[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT5 #(
     .INIT(32'hFFFE0001)) 
     \comp_high.doa_delay[4]_i_2 
@@ -1141,14 +1141,14 @@ module ps_comp_high_0_0_comp_high
     \comp_high.fifo_sample_delay[0]_i_1 
        (.I0(fifo_sample_delay[0]),
         .O(fifo_sample_delay0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_high.fifo_sample_delay[1]_i_1 
        (.I0(fifo_sample_delay[1]),
         .I1(fifo_sample_delay[0]),
         .O(fifo_sample_delay0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hA9)) 
     \comp_high.fifo_sample_delay[2]_i_1 
@@ -1156,7 +1156,7 @@ module ps_comp_high_0_0_comp_high
         .I1(fifo_sample_delay[0]),
         .I2(fifo_sample_delay[1]),
         .O(fifo_sample_delay0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT4 #(
     .INIT(16'hAAA9)) 
     \comp_high.fifo_sample_delay[3]_i_1 
@@ -1165,7 +1165,7 @@ module ps_comp_high_0_0_comp_high
         .I2(fifo_sample_delay[0]),
         .I3(fifo_sample_delay[2]),
         .O(fifo_sample_delay0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT5 #(
     .INIT(32'hAAAAAAA9)) 
     \comp_high.fifo_sample_delay[4]_i_1 
@@ -17594,6 +17594,26 @@ module ps_comp_high_0_0_doa_calc
   wire [31:0]config_data;
   wire config_wr;
   wire \doa_calc.inv_dij[31]_i_2_n_0 ;
+  wire \doa_calc.shadow_limit[0]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[10]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[11]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[12]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[13]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[14]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[15]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[16]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[17]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[18]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[19]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[1]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[2]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[3]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[4]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[5]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[6]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[7]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[8]_i_1_n_0 ;
+  wire \doa_calc.shadow_limit[9]_i_1_n_0 ;
   (* MARK_DEBUG *) wire done_EW;
   (* MARK_DEBUG *) wire done_NE;
   (* MARK_DEBUG *) wire done_NW;
@@ -17602,12 +17622,16 @@ module ps_comp_high_0_0_doa_calc
   (* MARK_DEBUG *) wire [15:0]env_W;
   (* MARK_DEBUG *) wire [19:0]freq;
   (* MARK_DEBUG *) wire [31:0]inv_dij;
-  wire [31:0]inv_dij__0;
   (* MARK_DEBUG *) wire [19:0]k;
+  wire [31:0]p_0_in__0;
   (* MARK_DEBUG *) wire [19:0]phase_EW;
   (* MARK_DEBUG *) wire [19:0]phase_NE;
   (* MARK_DEBUG *) wire [19:0]phase_NW;
   wire reset;
+  (* MARK_DEBUG *) wire shadow_EW;
+  (* MARK_DEBUG *) wire shadow_NE;
+  (* MARK_DEBUG *) wire shadow_NW;
+  (* MARK_DEBUG *) wire [19:0]shadow_limit;
   (* MARK_DEBUG *) wire start;
   (* MARK_DEBUG *) wire valid_k;
   wire [63:0]NLW_div_k_i_m_axis_dout_tdata_UNCONNECTED;
@@ -17635,6 +17659,8 @@ module ps_comp_high_0_0_doa_calc
         .k(k),
         .phase(phase_EW),
         .reset(reset),
+        .shadow(shadow_EW),
+        .shadow_limit(shadow_limit),
         .start(valid_k));
   (* KEEP_HIERARCHY = "soft" *) 
   ps_comp_high_0_0_doa_pair__xdcDup__1 doa_NE_i
@@ -17645,6 +17671,8 @@ module ps_comp_high_0_0_doa_calc
         .k(k),
         .phase(phase_NE),
         .reset(reset),
+        .shadow(shadow_NE),
+        .shadow_limit(shadow_limit),
         .start(valid_k));
   (* KEEP_HIERARCHY = "soft" *) 
   ps_comp_high_0_0_doa_pair__xdcDup__2 doa_NW_i
@@ -17655,311 +17683,313 @@ module ps_comp_high_0_0_doa_calc
         .k(k),
         .phase(phase_NW),
         .reset(reset),
+        .shadow(shadow_NW),
+        .shadow_limit(shadow_limit),
         .start(valid_k));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[0]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[0]),
+       (.I0(inv_dij[0]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[0]),
-        .O(inv_dij__0[0]));
+        .O(p_0_in__0[0]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[10]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[10]),
+       (.I0(inv_dij[10]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[10]),
-        .O(inv_dij__0[10]));
+        .O(p_0_in__0[10]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[11]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[11]),
+       (.I0(inv_dij[11]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[11]),
-        .O(inv_dij__0[11]));
+        .O(p_0_in__0[11]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[12]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[12]),
+       (.I0(inv_dij[12]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[12]),
-        .O(inv_dij__0[12]));
+        .O(p_0_in__0[12]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[13]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[13]),
+       (.I0(inv_dij[13]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[13]),
-        .O(inv_dij__0[13]));
+        .O(p_0_in__0[13]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[14]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[14]),
+       (.I0(inv_dij[14]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[14]),
-        .O(inv_dij__0[14]));
+        .O(p_0_in__0[14]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[15]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[15]),
+       (.I0(inv_dij[15]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[15]),
-        .O(inv_dij__0[15]));
+        .O(p_0_in__0[15]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[16]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[16]),
+       (.I0(inv_dij[16]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[16]),
-        .O(inv_dij__0[16]));
+        .O(p_0_in__0[16]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[17]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[17]),
+       (.I0(inv_dij[17]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[17]),
-        .O(inv_dij__0[17]));
+        .O(p_0_in__0[17]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[18]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[18]),
+       (.I0(inv_dij[18]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[18]),
-        .O(inv_dij__0[18]));
+        .O(p_0_in__0[18]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[19]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[19]),
+       (.I0(inv_dij[19]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[19]),
-        .O(inv_dij__0[19]));
+        .O(p_0_in__0[19]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[1]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[1]),
+       (.I0(inv_dij[1]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[1]),
-        .O(inv_dij__0[1]));
+        .O(p_0_in__0[1]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[20]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[20]),
+       (.I0(inv_dij[20]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[20]),
-        .O(inv_dij__0[20]));
+        .O(p_0_in__0[20]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[21]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[21]),
+       (.I0(inv_dij[21]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[21]),
-        .O(inv_dij__0[21]));
+        .O(p_0_in__0[21]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[22]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[22]),
+       (.I0(inv_dij[22]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[22]),
-        .O(inv_dij__0[22]));
+        .O(p_0_in__0[22]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[23]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[23]),
+       (.I0(inv_dij[23]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[23]),
-        .O(inv_dij__0[23]));
+        .O(p_0_in__0[23]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[24]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[24]),
+       (.I0(inv_dij[24]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[24]),
-        .O(inv_dij__0[24]));
+        .O(p_0_in__0[24]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[25]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[25]),
+       (.I0(inv_dij[25]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[25]),
-        .O(inv_dij__0[25]));
+        .O(p_0_in__0[25]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[26]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[26]),
+       (.I0(inv_dij[26]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[26]),
-        .O(inv_dij__0[26]));
+        .O(p_0_in__0[26]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[27]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[27]),
+       (.I0(inv_dij[27]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[27]),
-        .O(inv_dij__0[27]));
+        .O(p_0_in__0[27]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[28]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[28]),
+       (.I0(inv_dij[28]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[28]),
-        .O(inv_dij__0[28]));
+        .O(p_0_in__0[28]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[29]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[29]),
+       (.I0(inv_dij[29]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[29]),
-        .O(inv_dij__0[29]));
+        .O(p_0_in__0[29]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[2]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[2]),
+       (.I0(inv_dij[2]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[2]),
-        .O(inv_dij__0[2]));
+        .O(p_0_in__0[2]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[30]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[30]),
+       (.I0(inv_dij[30]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[30]),
-        .O(inv_dij__0[30]));
+        .O(p_0_in__0[30]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[31]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[31]),
+       (.I0(inv_dij[31]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[31]),
-        .O(inv_dij__0[31]));
+        .O(p_0_in__0[31]));
   LUT6 #(
-    .INIT(64'hFFFEFFFFFFFFFFFF)) 
+    .INIT(64'hFFFFFFFFFFFEFFFF)) 
     \doa_calc.inv_dij[31]_i_2 
-       (.I0(config_adr[4]),
-        .I1(config_adr[3]),
-        .I2(config_adr[5]),
-        .I3(config_adr[1]),
-        .I4(config_adr[0]),
-        .I5(config_adr[2]),
+       (.I0(config_adr[6]),
+        .I1(config_adr[7]),
+        .I2(config_adr[4]),
+        .I3(config_adr[5]),
+        .I4(config_adr[2]),
+        .I5(config_adr[3]),
         .O(\doa_calc.inv_dij[31]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[3]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[3]),
+       (.I0(inv_dij[3]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[3]),
-        .O(inv_dij__0[3]));
+        .O(p_0_in__0[3]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[4]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[4]),
+       (.I0(inv_dij[4]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[4]),
-        .O(inv_dij__0[4]));
+        .O(p_0_in__0[4]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[5]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[5]),
+       (.I0(inv_dij[5]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[5]),
-        .O(inv_dij__0[5]));
+        .O(p_0_in__0[5]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[6]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[6]),
+       (.I0(inv_dij[6]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[6]),
-        .O(inv_dij__0[6]));
+        .O(p_0_in__0[6]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[7]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[7]),
+       (.I0(inv_dij[7]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[7]),
-        .O(inv_dij__0[7]));
+        .O(p_0_in__0[7]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[8]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[8]),
+       (.I0(inv_dij[8]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[8]),
-        .O(inv_dij__0[8]));
+        .O(p_0_in__0[8]));
   LUT5 #(
-    .INIT(32'hF0F1F0E0)) 
+    .INIT(32'hAAAEAAA2)) 
     \doa_calc.inv_dij[9]_i_1 
-       (.I0(config_adr[7]),
-        .I1(config_adr[6]),
-        .I2(inv_dij[9]),
+       (.I0(inv_dij[9]),
+        .I1(config_adr[0]),
+        .I2(config_adr[1]),
         .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
         .I4(config_data[9]),
-        .O(inv_dij__0[9]));
+        .O(p_0_in__0[9]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_calc.inv_dij_reg[0] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[0]),
+        .D(p_0_in__0[0]),
         .Q(inv_dij[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -17967,7 +17997,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[10] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[10]),
+        .D(p_0_in__0[10]),
         .Q(inv_dij[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -17975,7 +18005,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[11] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[11]),
+        .D(p_0_in__0[11]),
         .Q(inv_dij[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -17983,7 +18013,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[12] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[12]),
+        .D(p_0_in__0[12]),
         .Q(inv_dij[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -17991,7 +18021,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[13] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[13]),
+        .D(p_0_in__0[13]),
         .Q(inv_dij[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -17999,7 +18029,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[14] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[14]),
+        .D(p_0_in__0[14]),
         .Q(inv_dij[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18007,7 +18037,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[15] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[15]),
+        .D(p_0_in__0[15]),
         .Q(inv_dij[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18015,7 +18045,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[16] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[16]),
+        .D(p_0_in__0[16]),
         .Q(inv_dij[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18023,7 +18053,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[17] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[17]),
+        .D(p_0_in__0[17]),
         .Q(inv_dij[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18031,7 +18061,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[18] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[18]),
+        .D(p_0_in__0[18]),
         .Q(inv_dij[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18039,7 +18069,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[19] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[19]),
+        .D(p_0_in__0[19]),
         .Q(inv_dij[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18047,7 +18077,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[1] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[1]),
+        .D(p_0_in__0[1]),
         .Q(inv_dij[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18055,7 +18085,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[20] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[20]),
+        .D(p_0_in__0[20]),
         .Q(inv_dij[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18063,7 +18093,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[21] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[21]),
+        .D(p_0_in__0[21]),
         .Q(inv_dij[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18071,7 +18101,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[22] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[22]),
+        .D(p_0_in__0[22]),
         .Q(inv_dij[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18079,7 +18109,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[23] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[23]),
+        .D(p_0_in__0[23]),
         .Q(inv_dij[23]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18087,7 +18117,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[24] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[24]),
+        .D(p_0_in__0[24]),
         .Q(inv_dij[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18095,7 +18125,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[25] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[25]),
+        .D(p_0_in__0[25]),
         .Q(inv_dij[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18103,7 +18133,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[26] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[26]),
+        .D(p_0_in__0[26]),
         .Q(inv_dij[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18111,7 +18141,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[27] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[27]),
+        .D(p_0_in__0[27]),
         .Q(inv_dij[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18119,7 +18149,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[28] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[28]),
+        .D(p_0_in__0[28]),
         .Q(inv_dij[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18127,7 +18157,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[29] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[29]),
+        .D(p_0_in__0[29]),
         .Q(inv_dij[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18135,7 +18165,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[2] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[2]),
+        .D(p_0_in__0[2]),
         .Q(inv_dij[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18143,7 +18173,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[30] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[30]),
+        .D(p_0_in__0[30]),
         .Q(inv_dij[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18151,7 +18181,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[31] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[31]),
+        .D(p_0_in__0[31]),
         .Q(inv_dij[31]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18159,7 +18189,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[3] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[3]),
+        .D(p_0_in__0[3]),
         .Q(inv_dij[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18167,7 +18197,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[4] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[4]),
+        .D(p_0_in__0[4]),
         .Q(inv_dij[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18175,7 +18205,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[5] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[5]),
+        .D(p_0_in__0[5]),
         .Q(inv_dij[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18183,7 +18213,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[6] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[6]),
+        .D(p_0_in__0[6]),
         .Q(inv_dij[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18191,7 +18221,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[7] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[7]),
+        .D(p_0_in__0[7]),
         .Q(inv_dij[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18199,7 +18229,7 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[8] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[8]),
+        .D(p_0_in__0[8]),
         .Q(inv_dij[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -18207,8 +18237,348 @@ module ps_comp_high_0_0_doa_calc
   FDRE \doa_calc.inv_dij_reg[9] 
        (.C(clk),
         .CE(config_wr),
-        .D(inv_dij__0[9]),
+        .D(p_0_in__0[9]),
         .Q(inv_dij[9]),
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[0]_i_1 
+       (.I0(shadow_limit[0]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[0]),
+        .O(\doa_calc.shadow_limit[0]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[10]_i_1 
+       (.I0(shadow_limit[10]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[10]),
+        .O(\doa_calc.shadow_limit[10]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[11]_i_1 
+       (.I0(shadow_limit[11]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[11]),
+        .O(\doa_calc.shadow_limit[11]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[12]_i_1 
+       (.I0(shadow_limit[12]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[12]),
+        .O(\doa_calc.shadow_limit[12]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[13]_i_1 
+       (.I0(shadow_limit[13]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[13]),
+        .O(\doa_calc.shadow_limit[13]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[14]_i_1 
+       (.I0(shadow_limit[14]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[14]),
+        .O(\doa_calc.shadow_limit[14]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[15]_i_1 
+       (.I0(shadow_limit[15]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[15]),
+        .O(\doa_calc.shadow_limit[15]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[16]_i_1 
+       (.I0(shadow_limit[16]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[16]),
+        .O(\doa_calc.shadow_limit[16]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[17]_i_1 
+       (.I0(shadow_limit[17]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[17]),
+        .O(\doa_calc.shadow_limit[17]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[18]_i_1 
+       (.I0(shadow_limit[18]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[18]),
+        .O(\doa_calc.shadow_limit[18]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[19]_i_1 
+       (.I0(shadow_limit[19]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[19]),
+        .O(\doa_calc.shadow_limit[19]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[1]_i_1 
+       (.I0(shadow_limit[1]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[1]),
+        .O(\doa_calc.shadow_limit[1]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[2]_i_1 
+       (.I0(shadow_limit[2]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[2]),
+        .O(\doa_calc.shadow_limit[2]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[3]_i_1 
+       (.I0(shadow_limit[3]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[3]),
+        .O(\doa_calc.shadow_limit[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[4]_i_1 
+       (.I0(shadow_limit[4]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[4]),
+        .O(\doa_calc.shadow_limit[4]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[5]_i_1 
+       (.I0(shadow_limit[5]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[5]),
+        .O(\doa_calc.shadow_limit[5]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[6]_i_1 
+       (.I0(shadow_limit[6]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[6]),
+        .O(\doa_calc.shadow_limit[6]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[7]_i_1 
+       (.I0(shadow_limit[7]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[7]),
+        .O(\doa_calc.shadow_limit[7]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[8]_i_1 
+       (.I0(shadow_limit[8]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[8]),
+        .O(\doa_calc.shadow_limit[8]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAEAAA2)) 
+    \doa_calc.shadow_limit[9]_i_1 
+       (.I0(shadow_limit[9]),
+        .I1(config_adr[1]),
+        .I2(config_adr[0]),
+        .I3(\doa_calc.inv_dij[31]_i_2_n_0 ),
+        .I4(config_data[9]),
+        .O(\doa_calc.shadow_limit[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[0] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[0]_i_1_n_0 ),
+        .Q(shadow_limit[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[10] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[10]_i_1_n_0 ),
+        .Q(shadow_limit[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[11] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[11]_i_1_n_0 ),
+        .Q(shadow_limit[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[12] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[12]_i_1_n_0 ),
+        .Q(shadow_limit[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[13] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[13]_i_1_n_0 ),
+        .Q(shadow_limit[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[14] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[14]_i_1_n_0 ),
+        .Q(shadow_limit[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[15] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[15]_i_1_n_0 ),
+        .Q(shadow_limit[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[16] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[16]_i_1_n_0 ),
+        .Q(shadow_limit[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[17] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[17]_i_1_n_0 ),
+        .Q(shadow_limit[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[18] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[18]_i_1_n_0 ),
+        .Q(shadow_limit[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[19] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[19]_i_1_n_0 ),
+        .Q(shadow_limit[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[1] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[1]_i_1_n_0 ),
+        .Q(shadow_limit[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[2] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[2]_i_1_n_0 ),
+        .Q(shadow_limit[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[3] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[3]_i_1_n_0 ),
+        .Q(shadow_limit[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[4] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[4]_i_1_n_0 ),
+        .Q(shadow_limit[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[5] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[5]_i_1_n_0 ),
+        .Q(shadow_limit[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[6] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[6]_i_1_n_0 ),
+        .Q(shadow_limit[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[7] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[7]_i_1_n_0 ),
+        .Q(shadow_limit[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[8] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[8]_i_1_n_0 ),
+        .Q(shadow_limit[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_calc.shadow_limit_reg[9] 
+       (.C(clk),
+        .CE(config_wr),
+        .D(\doa_calc.shadow_limit[9]_i_1_n_0 ),
+        .Q(shadow_limit[9]),
         .R(1'b0));
   (* CHECK_LICENSE_TYPE = "ila_6,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -18216,22 +18586,26 @@ module ps_comp_high_0_0_doa_calc
   ps_comp_high_0_0_ila_6 ila_i
        (.clk(clk),
         .probe0(inv_dij),
-        .probe1(start),
-        .probe10(k),
-        .probe11(done_NE),
-        .probe12(done_NW),
-        .probe13(done_EW),
-        .probe14(angle_NE),
-        .probe15(angle_NW),
-        .probe16(angle_EW),
-        .probe2(freq),
-        .probe3(env_N),
-        .probe4(env_E),
-        .probe5(env_W),
-        .probe6(phase_NE),
-        .probe7(phase_NW),
-        .probe8(phase_EW),
-        .probe9(valid_k));
+        .probe1(shadow_limit),
+        .probe10(valid_k),
+        .probe11(k),
+        .probe12(done_NE),
+        .probe13(done_NW),
+        .probe14(done_EW),
+        .probe15(shadow_NE),
+        .probe16(shadow_NW),
+        .probe17(shadow_EW),
+        .probe18(angle_NE),
+        .probe19(angle_NW),
+        .probe2(start),
+        .probe20(angle_EW),
+        .probe3(freq),
+        .probe4(env_N),
+        .probe5(env_E),
+        .probe6(env_W),
+        .probe7(phase_NE),
+        .probe8(phase_NW),
+        .probe9(phase_EW));
 endmodule
 
 (* ORIG_REF_NAME = "doa_pair" *) (* keep_hierarchy = "soft" *) 
@@ -18240,54 +18614,56 @@ module ps_comp_high_0_0_doa_pair
     reset,
     start,
     k,
+    shadow_limit,
     phase,
     done,
     fail,
+    shadow,
     angle);
   input clk;
   input reset;
   input start;
   input [19:0]k;
+  input [19:0]shadow_limit;
   input [19:0]phase;
   output done;
   output fail;
+  output shadow;
   output [19:0]angle;
 
-  (* MARK_DEBUG *) wire add;
+  wire add;
   (* MARK_DEBUG *) wire [19:0]angle;
+  (* MARK_DEBUG *) wire calc_diff;
+  (* MARK_DEBUG *) wire check_raw;
+  wire check_raw__0;
   wire clk;
-  (* MARK_DEBUG *) wire [19:0]coeff;
-  wire [18:0]coeff__0;
+  wire [18:0]coeff;
   (* MARK_DEBUG *) wire [5:0]counter;
   wire [5:0]counter__0;
-  (* MARK_DEBUG *) wire [39:0]cp;
+  wire [39:19]cp;
   wire \doa_pair.add_i_1_n_0 ;
   wire \doa_pair.add_i_2_n_0 ;
   wire \doa_pair.angle[19]_i_1_n_0 ;
-  wire \doa_pair.coeff[11]_i_2_n_0 ;
-  wire \doa_pair.coeff[11]_i_3_n_0 ;
-  wire \doa_pair.coeff[12]_i_2_n_0 ;
-  wire \doa_pair.coeff[13]_i_2_n_0 ;
-  wire \doa_pair.coeff[14]_i_2_n_0 ;
-  wire \doa_pair.coeff[14]_i_3_n_0 ;
-  wire \doa_pair.coeff[14]_i_4_n_0 ;
-  wire \doa_pair.coeff[15]_i_2_n_0 ;
-  wire \doa_pair.coeff[15]_i_3_n_0 ;
-  wire \doa_pair.coeff[15]_i_4_n_0 ;
-  wire \doa_pair.coeff[16]_i_2_n_0 ;
-  wire \doa_pair.coeff[16]_i_3_n_0 ;
-  wire \doa_pair.coeff[16]_i_4_n_0 ;
-  wire \doa_pair.coeff[17]_i_2_n_0 ;
-  wire \doa_pair.coeff[17]_i_3_n_0 ;
-  wire \doa_pair.coeff[18]_i_2_n_0 ;
-  wire \doa_pair.coeff[18]_i_3_n_0 ;
-  wire \doa_pair.coeff[18]_i_4_n_0 ;
-  wire \doa_pair.coeff[1]_i_2_n_0 ;
-  wire \doa_pair.coeff[1]_i_3_n_0 ;
-  wire \doa_pair.coeff[2]_i_2_n_0 ;
-  wire \doa_pair.coeff[2]_i_3_n_0 ;
-  wire \doa_pair.coeff[6]_i_2_n_0 ;
-  wire \doa_pair.coeff[6]_i_3_n_0 ;
+  wire \doa_pair.check_raw_i_2_n_0 ;
+  wire \doa_pair.coeff_reg_n_0_[0] ;
+  wire \doa_pair.coeff_reg_n_0_[10] ;
+  wire \doa_pair.coeff_reg_n_0_[11] ;
+  wire \doa_pair.coeff_reg_n_0_[12] ;
+  wire \doa_pair.coeff_reg_n_0_[13] ;
+  wire \doa_pair.coeff_reg_n_0_[14] ;
+  wire \doa_pair.coeff_reg_n_0_[15] ;
+  wire \doa_pair.coeff_reg_n_0_[16] ;
+  wire \doa_pair.coeff_reg_n_0_[18] ;
+  wire \doa_pair.coeff_reg_n_0_[1] ;
+  wire \doa_pair.coeff_reg_n_0_[2] ;
+  wire \doa_pair.coeff_reg_n_0_[3] ;
+  wire \doa_pair.coeff_reg_n_0_[4] ;
+  wire \doa_pair.coeff_reg_n_0_[5] ;
+  wire \doa_pair.coeff_reg_n_0_[6] ;
+  wire \doa_pair.coeff_reg_n_0_[7] ;
+  wire \doa_pair.coeff_reg_n_0_[8] ;
+  wire \doa_pair.coeff_reg_n_0_[9] ;
+  wire \doa_pair.counter[0]_i_2_n_0 ;
   wire \doa_pair.counter[1]_i_1_n_0 ;
   wire \doa_pair.counter[2]_i_1_n_0 ;
   wire \doa_pair.counter[5]_i_1_n_0 ;
@@ -18295,6 +18671,10 @@ module ps_comp_high_0_0_doa_pair
   wire \doa_pair.done_i_1_n_0 ;
   wire \doa_pair.done_reg0 ;
   wire \doa_pair.fail_i_1_n_0 ;
+  wire \doa_pair.fail_i_3_n_0 ;
+  wire \doa_pair.fail_i_4_n_0 ;
+  wire \doa_pair.has_ov_i_1_n_0 ;
+  wire \doa_pair.has_ov_i_2_n_0 ;
   wire \doa_pair.ignore_i_1_n_0 ;
   wire \doa_pair.ignore_i_2_n_0 ;
   wire \doa_pair.ignore_i_3_n_0 ;
@@ -18303,11 +18683,60 @@ module ps_comp_high_0_0_doa_pair
   wire \doa_pair.ignore_i_6_n_0 ;
   wire \doa_pair.ignore_i_7_n_0 ;
   wire \doa_pair.ignore_i_8_n_0 ;
+  wire \doa_pair.ignore_reg_n_0 ;
+  wire \doa_pair.ind[0]_i_1_n_0 ;
   wire \doa_pair.ind[3]_i_1_n_0 ;
+  wire \doa_pair.ind_reg_n_0_[0] ;
+  wire \doa_pair.ind_reg_n_0_[1] ;
+  wire \doa_pair.ind_reg_n_0_[2] ;
+  wire \doa_pair.ind_reg_n_0_[3] ;
   wire \doa_pair.init_i_1_n_0 ;
   wire \doa_pair.init_i_2_n_0 ;
+  wire \doa_pair.ov[5]_i_1_n_0 ;
   wire \doa_pair.run_i_1_n_0 ;
-  wire \doa_pair.run_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_6_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_7_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_8_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_9_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_6_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_7_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_8_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_9_n_0 ;
+  wire [19:0]\doa_pair.shadow_diff_reg0 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_0 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_1 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_2 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_3 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_4 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_7 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_7 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_0 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_1 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_2 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_3 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_4 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_7 ;
+  wire \doa_pair.shadow_i_1_n_0 ;
+  wire \doa_pair.shadow_i_2_n_0 ;
+  wire \doa_pair.shadow_i_3_n_0 ;
   wire \doa_pair.sum[15]_i_10_n_0 ;
   wire \doa_pair.sum[15]_i_11_n_0 ;
   wire \doa_pair.sum[15]_i_12_n_0 ;
@@ -18390,50 +18819,67 @@ module ps_comp_high_0_0_doa_pair
   wire \doa_pair.sum_reg[7]_i_1_n_7 ;
   wire \doa_pair.sum_reg[7]_i_1_n_8 ;
   wire \doa_pair.sum_reg[7]_i_1_n_9 ;
-  wire \doa_pair.x[10]_i_1_n_0 ;
-  wire \doa_pair.x[11]_i_1_n_0 ;
-  wire \doa_pair.x[12]_i_1_n_0 ;
-  wire \doa_pair.x[13]_i_1_n_0 ;
-  wire \doa_pair.x[14]_i_1_n_0 ;
-  wire \doa_pair.x[15]_i_1_n_0 ;
-  wire \doa_pair.x[16]_i_1_n_0 ;
-  wire \doa_pair.x[17]_i_1_n_0 ;
-  wire \doa_pair.x[18]_i_1_n_0 ;
-  wire \doa_pair.x[18]_i_2_n_0 ;
   wire \doa_pair.x[19]_i_1_n_0 ;
-  wire \doa_pair.x[1]_i_1_n_0 ;
-  wire \doa_pair.x[2]_i_1_n_0 ;
-  wire \doa_pair.x[3]_i_1_n_0 ;
-  wire \doa_pair.x[4]_i_1_n_0 ;
-  wire \doa_pair.x[5]_i_1_n_0 ;
-  wire \doa_pair.x[6]_i_1_n_0 ;
-  wire \doa_pair.x[7]_i_1_n_0 ;
-  wire \doa_pair.x[8]_i_1_n_0 ;
-  wire \doa_pair.x[9]_i_1_n_0 ;
+  wire \doa_pair.x_abs[0]_i_1_n_0 ;
+  wire \doa_pair.x_abs[10]_i_1_n_0 ;
+  wire \doa_pair.x_abs[11]_i_1_n_0 ;
+  wire \doa_pair.x_abs[12]_i_1_n_0 ;
+  wire \doa_pair.x_abs[13]_i_1_n_0 ;
+  wire \doa_pair.x_abs[14]_i_1_n_0 ;
+  wire \doa_pair.x_abs[15]_i_1_n_0 ;
+  wire \doa_pair.x_abs[16]_i_1_n_0 ;
+  wire \doa_pair.x_abs[17]_i_1_n_0 ;
+  wire \doa_pair.x_abs[18]_i_1_n_0 ;
+  wire \doa_pair.x_abs[19]_i_1_n_0 ;
+  wire \doa_pair.x_abs[1]_i_1_n_0 ;
+  wire \doa_pair.x_abs[2]_i_1_n_0 ;
+  wire \doa_pair.x_abs[3]_i_1_n_0 ;
+  wire \doa_pair.x_abs[4]_i_1_n_0 ;
+  wire \doa_pair.x_abs[5]_i_1_n_0 ;
+  wire \doa_pair.x_abs[6]_i_1_n_0 ;
+  wire \doa_pair.x_abs[7]_i_1_n_0 ;
+  wire \doa_pair.x_abs[8]_i_1_n_0 ;
+  wire \doa_pair.x_abs[9]_i_1_n_0 ;
+  wire \doa_pair.x_raw[20]_i_1_n_0 ;
   (* MARK_DEBUG *) wire done;
   (* MARK_DEBUG *) wire fail;
+  wire fail2_out;
+  wire fail__0;
   wire g0_b0_n_0;
-  (* MARK_DEBUG *) wire ignore;
-  (* MARK_DEBUG *) wire [3:0]ind;
-  wire [3:0]ind__0;
+  (* MARK_DEBUG *) wire has_diff;
+  (* MARK_DEBUG *) wire has_ov;
+  (* MARK_DEBUG *) wire has_shadow_diff;
+  wire [3:1]ind;
   (* MARK_DEBUG *) wire init;
-  (* MARK_DEBUG *) wire [19:0]k;
-  (* MARK_DEBUG *) wire [4:0]ov;
-  wire ov__0;
-  (* MARK_DEBUG *) wire [19:0]p;
+  wire [19:0]k;
+  (* MARK_DEBUG *) wire [5:0]ov;
+  wire [19:0]p;
   wire p_0_in__0;
-  wire [19:0]p_1_in__0;
-  (* MARK_DEBUG *) wire [19:0]phase;
-  (* MARK_DEBUG *) wire [39:0]prod;
+  wire [18:0]p_1_in;
+  wire [19:0]phase;
+  wire [39:16]prod;
   wire reset;
   (* MARK_DEBUG *) wire run;
+  (* MARK_DEBUG *) wire shadow;
+  (* MARK_DEBUG *) wire [19:0]shadow_diff;
+  wire [19:0]shadow_limit;
   (* MARK_DEBUG *) wire start;
   (* MARK_DEBUG *) wire [20:0]sum;
   (* MARK_DEBUG *) wire [19:0]x;
-  (* MARK_DEBUG *) wire [39:0]x2;
-  (* MARK_DEBUG *) wire [39:0]xp;
+  wire [38:19]x2;
+  wire [19:0]x__0;
+  (* MARK_DEBUG *) wire [19:0]x_abs;
+  (* MARK_DEBUG *) wire [18:0]x_diff;
+  (* MARK_DEBUG *) wire [20:0]x_raw;
+  wire [38:19]xp;
+  wire [7:3]\NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [7:4]\NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED ;
   wire [7:4]\NLW_doa_pair.sum_reg[20]_i_1_CO_UNCONNECTED ;
   wire [7:5]\NLW_doa_pair.sum_reg[20]_i_1_O_UNCONNECTED ;
+  wire [18:0]NLW_mul_c_i_P_UNCONNECTED;
+  wire [15:0]NLW_mul_doa_i_P_UNCONNECTED;
+  wire [39:0]NLW_mul_x2_i_P_UNCONNECTED;
+  wire [39:0]NLW_mul_x_i_P_UNCONNECTED;
 
   LUT3 #(
     .INIT(8'hB8)) 
@@ -18443,30 +18889,29 @@ module ps_comp_high_0_0_doa_pair
         .I2(add),
         .O(\doa_pair.add_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h07E9097EE9707E91)) 
+    .INIT(64'h1E39271EE49C78E5)) 
     \doa_pair.add_i_2 
        (.I0(counter[0]),
-        .I1(counter[2]),
-        .I2(counter[4]),
-        .I3(counter[3]),
+        .I1(counter[4]),
+        .I2(counter[3]),
+        .I3(counter[2]),
         .I4(counter[1]),
         .I5(counter[5]),
         .O(\doa_pair.add_i_2_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.add_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.add_i_1_n_0 ),
         .Q(add),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h0008)) 
+  LUT5 #(
+    .INIT(32'h01000000)) 
     \doa_pair.angle[19]_i_1 
-       (.I0(\doa_pair.run_i_2_n_0 ),
-        .I1(run),
+       (.I0(fail),
+        .I1(reset),
         .I2(start),
-        .I3(reset),
+        .I3(\doa_pair.counter[0]_i_2_n_0 ),
+        .I4(run),
         .O(\doa_pair.angle[19]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.angle_reg[0] 
@@ -18608,466 +19053,324 @@ module ps_comp_high_0_0_doa_pair
         .D(sum[9]),
         .Q(angle[9]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.calc_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(check_raw),
+        .Q(calc_diff),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'h09)) 
+    \doa_pair.check_raw_i_1 
+       (.I0(ov[5]),
+        .I1(ov[4]),
+        .I2(\doa_pair.check_raw_i_2_n_0 ),
+        .O(check_raw__0));
+  LUT6 #(
+    .INIT(64'hC1FFFFFFFFFFFF43)) 
+    \doa_pair.check_raw_i_2 
+       (.I0(check_raw),
+        .I1(ov[1]),
+        .I2(ov[0]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .I5(ov[2]),
+        .O(\doa_pair.check_raw_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.check_raw_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(check_raw__0),
+        .Q(check_raw),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT4 #(
     .INIT(16'hF514)) 
     \doa_pair.coeff[0]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[0]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[0]));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT4 #(
     .INIT(16'h8EC7)) 
     \doa_pair.coeff[10]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[10]));
-  LUT5 #(
-    .INIT(32'h8BBB8888)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[10]));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  LUT4 #(
+    .INIT(16'h372A)) 
     \doa_pair.coeff[11]_i_1 
-       (.I0(\doa_pair.coeff[11]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[1]),
-        .I4(ind[0]),
-        .O(coeff__0[11]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[11]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b1),
-        .I2(\doa_pair.coeff[11]_i_3_n_0 ),
-        .O(\doa_pair.coeff[11]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[11]_i_3 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[11]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hBBB8BB8B)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[11]));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  LUT4 #(
+    .INIT(16'h00ED)) 
     \doa_pair.coeff[12]_i_1 
-       (.I0(\doa_pair.coeff[12]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[0]),
-        .I4(ind[1]),
-        .O(coeff__0[12]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[12]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[12]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h88BB8B88)) 
+       (.I0(\doa_pair.ind_reg_n_0_[1] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[2] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[12]));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  LUT4 #(
+    .INIT(16'h0026)) 
     \doa_pair.coeff[13]_i_1 
-       (.I0(\doa_pair.coeff[13]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[0]),
-        .I3(ind[2]),
-        .I4(ind[1]),
-        .O(coeff__0[13]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[13]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[13]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[1] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[13]));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT4 #(
+    .INIT(16'h0014)) 
     \doa_pair.coeff[14]_i_1 
-       (.I0(\doa_pair.coeff[14]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[14]_i_3_n_0 ),
-        .O(coeff__0[14]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[14]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[14]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[14]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[14]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[14]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \doa_pair.coeff[14]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[14]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[14]));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT4 #(
+    .INIT(16'h0004)) 
     \doa_pair.coeff[15]_i_1 
-       (.I0(\doa_pair.coeff[15]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[15]_i_3_n_0 ),
-        .O(coeff__0[15]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[15]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[15]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[15]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[15]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[15]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[15]_i_4 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[15]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[15]));
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \doa_pair.coeff[16]_i_1 
-       (.I0(\doa_pair.coeff[16]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[16]_i_3_n_0 ),
-        .O(coeff__0[16]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[16]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[16]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[16]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[16]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[16]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[16]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[16]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \doa_pair.coeff[17]_i_1 
-       (.I0(\doa_pair.coeff[17]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[17]_i_3_n_0 ),
-        .O(coeff__0[17]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[17]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[17]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[17]_i_3 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[17]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[16]));
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \doa_pair.coeff[18]_i_1 
-       (.I0(\doa_pair.coeff[18]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[18]_i_3_n_0 ),
-        .O(coeff__0[18]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[18]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[18]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[18]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[18]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[18]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[18]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[18]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'h84FF8400)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[18]));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT4 #(
+    .INIT(16'h8600)) 
     \doa_pair.coeff[1]_i_1 
-       (.I0(ind[2]),
-        .I1(ind[0]),
-        .I2(ind[1]),
-        .I3(ind[3]),
-        .I4(\doa_pair.coeff[1]_i_2_n_0 ),
-        .O(coeff__0[1]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[1]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(\doa_pair.coeff[1]_i_3_n_0 ),
-        .O(\doa_pair.coeff[1]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[1]_i_3 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[1]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hBB888BBB)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[1]));
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT4 #(
+    .INIT(16'h5095)) 
     \doa_pair.coeff[2]_i_1 
-       (.I0(\doa_pair.coeff[2]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[0]),
-        .I4(ind[1]),
-        .O(coeff__0[2]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[2]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(\doa_pair.coeff[2]_i_3_n_0 ),
-        .O(\doa_pair.coeff[2]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[2]_i_3 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[2]_i_3_n_0 ));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[1] ),
+        .O(coeff[2]));
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'h2F9D)) 
     \doa_pair.coeff[3]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[3]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[3]));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT4 #(
     .INIT(16'hDAA6)) 
     \doa_pair.coeff[4]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[4]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[4]));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT4 #(
     .INIT(16'h5EE8)) 
     \doa_pair.coeff[5]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[5]));
-  LUT5 #(
-    .INIT(32'h26FF2600)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[5]));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  LUT4 #(
+    .INIT(16'h0A35)) 
     \doa_pair.coeff[6]_i_1 
-       (.I0(ind[2]),
-        .I1(ind[1]),
-        .I2(ind[0]),
-        .I3(ind[3]),
-        .I4(\doa_pair.coeff[6]_i_2_n_0 ),
-        .O(coeff__0[6]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[6]_i_2 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[6]_i_3_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[6]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \doa_pair.coeff[6]_i_3 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[6]_i_3_n_0 ));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[2] ),
+        .O(coeff[6]));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT4 #(
     .INIT(16'h22F5)) 
     \doa_pair.coeff[7]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[7]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[7]));
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT4 #(
     .INIT(16'h2D17)) 
     \doa_pair.coeff[8]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[8]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[8]));
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT4 #(
     .INIT(16'hD8E7)) 
     \doa_pair.coeff[9]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[9]));
-  (* KEEP = "yes" *) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[9]));
   FDRE \doa_pair.coeff_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[0]),
-        .Q(coeff[0]),
+        .D(coeff[0]),
+        .Q(\doa_pair.coeff_reg_n_0_[0] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[10]),
-        .Q(coeff[10]),
+        .D(coeff[10]),
+        .Q(\doa_pair.coeff_reg_n_0_[10] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[11] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[11]),
-        .Q(coeff[11]),
+        .D(coeff[11]),
+        .Q(\doa_pair.coeff_reg_n_0_[11] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[12] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[12]),
-        .Q(coeff[12]),
+        .D(coeff[12]),
+        .Q(\doa_pair.coeff_reg_n_0_[12] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[13] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[13]),
-        .Q(coeff[13]),
+        .D(coeff[13]),
+        .Q(\doa_pair.coeff_reg_n_0_[13] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[14] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[14]),
-        .Q(coeff[14]),
+        .D(coeff[14]),
+        .Q(\doa_pair.coeff_reg_n_0_[14] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[15] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[15]),
-        .Q(coeff[15]),
+        .D(coeff[15]),
+        .Q(\doa_pair.coeff_reg_n_0_[15] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[16] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[16]),
-        .Q(coeff[16]),
+        .D(coeff[16]),
+        .Q(\doa_pair.coeff_reg_n_0_[16] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \doa_pair.coeff_reg[17] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(coeff__0[17]),
-        .Q(coeff[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[18] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[18]),
-        .Q(coeff[18]),
+        .D(coeff[18]),
+        .Q(\doa_pair.coeff_reg_n_0_[18] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \doa_pair.coeff_reg[19] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(1'b0),
-        .Q(coeff[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[1]),
-        .Q(coeff[1]),
+        .D(coeff[1]),
+        .Q(\doa_pair.coeff_reg_n_0_[1] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[2]),
-        .Q(coeff[2]),
+        .D(coeff[2]),
+        .Q(\doa_pair.coeff_reg_n_0_[2] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[3]),
-        .Q(coeff[3]),
+        .D(coeff[3]),
+        .Q(\doa_pair.coeff_reg_n_0_[3] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[4]),
-        .Q(coeff[4]),
+        .D(coeff[4]),
+        .Q(\doa_pair.coeff_reg_n_0_[4] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[5]),
-        .Q(coeff[5]),
+        .D(coeff[5]),
+        .Q(\doa_pair.coeff_reg_n_0_[5] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[6]),
-        .Q(coeff[6]),
+        .D(coeff[6]),
+        .Q(\doa_pair.coeff_reg_n_0_[6] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[7]),
-        .Q(coeff[7]),
+        .D(coeff[7]),
+        .Q(\doa_pair.coeff_reg_n_0_[7] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[8]),
-        .Q(coeff[8]),
+        .D(coeff[8]),
+        .Q(\doa_pair.coeff_reg_n_0_[8] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[9]),
-        .Q(coeff[9]),
+        .D(coeff[9]),
+        .Q(\doa_pair.coeff_reg_n_0_[9] ),
         .R(1'b0));
   LUT3 #(
     .INIT(8'h9A)) 
     \doa_pair.counter[0]_i_1 
        (.I0(counter[0]),
-        .I1(\doa_pair.run_i_2_n_0 ),
+        .I1(\doa_pair.counter[0]_i_2_n_0 ),
         .I2(run),
         .O(counter__0[0]));
+  LUT6 #(
+    .INIT(64'h0000000800000000)) 
+    \doa_pair.counter[0]_i_2 
+       (.I0(counter[4]),
+        .I1(counter[3]),
+        .I2(counter[2]),
+        .I3(counter[0]),
+        .I4(counter[1]),
+        .I5(counter[5]),
+        .O(\doa_pair.counter[0]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'h6A)) 
     \doa_pair.counter[1]_i_1 
@@ -19102,27 +19405,28 @@ module ps_comp_high_0_0_doa_pair
         .I4(run),
         .I5(counter[0]),
         .O(counter__0[4]));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     \doa_pair.counter[5]_i_1 
        (.I0(start),
         .I1(reset),
+        .I2(fail),
         .O(\doa_pair.counter[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+  LUT5 #(
+    .INIT(32'h9AAAAAAA)) 
     \doa_pair.counter[5]_i_2 
        (.I0(counter[5]),
-        .I1(counter[0]),
-        .I2(run),
-        .I3(counter[1]),
-        .I4(\doa_pair.counter[5]_i_3_n_0 ),
-        .I5(counter[2]),
+        .I1(\doa_pair.counter[5]_i_3_n_0 ),
+        .I2(counter[2]),
+        .I3(counter[3]),
+        .I4(counter[4]),
         .O(counter__0[5]));
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \doa_pair.counter[5]_i_3 
-       (.I0(counter[4]),
-        .I1(counter[3]),
+       (.I0(counter[0]),
+        .I1(run),
+        .I2(counter[1]),
         .O(\doa_pair.counter[5]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.counter_reg[0] 
@@ -19166,16 +19470,17 @@ module ps_comp_high_0_0_doa_pair
         .D(counter__0[5]),
         .Q(counter[5]),
         .R(\doa_pair.counter[5]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     \doa_pair.done_i_1 
        (.I0(start),
         .I1(reset),
+        .I2(fail),
         .O(\doa_pair.done_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \doa_pair.done_i_2 
-       (.I0(\doa_pair.run_i_2_n_0 ),
+       (.I0(\doa_pair.counter[0]_i_2_n_0 ),
         .I1(run),
         .I2(done),
         .O(\doa_pair.done_reg0 ));
@@ -19187,15 +19492,49 @@ module ps_comp_high_0_0_doa_pair
         .Q(done),
         .R(\doa_pair.done_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7FFE7FFE00007FFE)) 
+    .INIT(64'hCCB8FFFFCCB80000)) 
     \doa_pair.fail_i_1 
-       (.I0(ov[3]),
-        .I1(ov[2]),
-        .I2(ov[4]),
-        .I3(ov[1]),
-        .I4(ov__0),
+       (.I0(fail2_out),
+        .I1(\doa_pair.fail_i_3_n_0 ),
+        .I2(has_ov),
+        .I3(\doa_pair.fail_i_4_n_0 ),
+        .I4(fail__0),
         .I5(fail),
         .O(\doa_pair.fail_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \doa_pair.fail_i_2 
+       (.I0(has_shadow_diff),
+        .I1(shadow_diff[19]),
+        .O(fail2_out));
+  LUT5 #(
+    .INIT(32'h20000004)) 
+    \doa_pair.fail_i_3 
+       (.I0(ov[2]),
+        .I1(ov[1]),
+        .I2(ov[5]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .O(\doa_pair.fail_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h8001800000018001)) 
+    \doa_pair.fail_i_4 
+       (.I0(ov[5]),
+        .I1(ov[2]),
+        .I2(ov[3]),
+        .I3(ov[4]),
+        .I4(ov[0]),
+        .I5(ov[1]),
+        .O(\doa_pair.fail_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hEAAAAAAB)) 
+    \doa_pair.fail_i_5 
+       (.I0(has_ov),
+        .I1(ov[2]),
+        .I2(ov[3]),
+        .I3(ov[4]),
+        .I4(ov[5]),
+        .O(fail__0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.fail_reg 
@@ -19204,15 +19543,53 @@ module ps_comp_high_0_0_doa_pair
         .D(\doa_pair.fail_i_1_n_0 ),
         .Q(fail),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.has_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(calc_diff),
+        .Q(has_diff),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \doa_pair.has_ov_i_1 
+       (.I0(has_ov),
+        .I1(\doa_pair.has_ov_i_2_n_0 ),
+        .I2(counter[1]),
+        .O(\doa_pair.has_ov_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \doa_pair.has_ov_i_2 
+       (.I0(counter[2]),
+        .I1(counter[4]),
+        .I2(counter[5]),
+        .I3(counter[3]),
+        .I4(counter[0]),
+        .O(\doa_pair.has_ov_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.has_ov_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\doa_pair.has_ov_i_1_n_0 ),
+        .Q(has_ov),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.has_shadow_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(has_diff),
+        .Q(has_shadow_diff),
+        .R(1'b0));
   LUT6 #(
-    .INIT(64'hEAAAAAAAAAAAAAAA)) 
+    .INIT(64'hFFFFFFFF80000000)) 
     \doa_pair.ignore_i_1 
-       (.I0(ignore),
-        .I1(run),
-        .I2(add),
-        .I3(xp[38]),
-        .I4(\doa_pair.ignore_i_2_n_0 ),
-        .I5(xp[37]),
+       (.I0(xp[37]),
+        .I1(\doa_pair.ignore_i_2_n_0 ),
+        .I2(xp[38]),
+        .I3(add),
+        .I4(run),
+        .I5(\doa_pair.ignore_reg_n_0 ),
         .O(\doa_pair.ignore_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
@@ -19224,6 +19601,7 @@ module ps_comp_high_0_0_doa_pair
         .I4(xp[32]),
         .I5(\doa_pair.ignore_i_5_n_0 ),
         .O(\doa_pair.ignore_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \doa_pair.ignore_i_3 
@@ -19240,6 +19618,7 @@ module ps_comp_high_0_0_doa_pair
         .I4(xp[26]),
         .I5(\doa_pair.ignore_i_8_n_0 ),
         .O(\doa_pair.ignore_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hD5)) 
     \doa_pair.ignore_i_5 
@@ -19247,6 +19626,7 @@ module ps_comp_high_0_0_doa_pair
         .I1(xp[34]),
         .I2(xp[35]),
         .O(\doa_pair.ignore_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \doa_pair.ignore_i_6 
@@ -19263,6 +19643,7 @@ module ps_comp_high_0_0_doa_pair
         .I4(xp[22]),
         .I5(xp[23]),
         .O(\doa_pair.ignore_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'hD5)) 
     \doa_pair.ignore_i_8 
@@ -19270,12 +19651,11 @@ module ps_comp_high_0_0_doa_pair
         .I1(xp[28]),
         .I2(xp[29]),
         .O(\doa_pair.ignore_i_8_n_0 ));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.ignore_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.ignore_i_1_n_0 ),
-        .Q(ignore),
+        .Q(\doa_pair.ignore_reg_n_0 ),
         .R(\doa_pair.done_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h5554)) 
@@ -19284,7 +19664,7 @@ module ps_comp_high_0_0_doa_pair
         .I1(counter[2]),
         .I2(counter[5]),
         .I3(counter[3]),
-        .O(ind__0[0]));
+        .O(\doa_pair.ind[0]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hAAA8)) 
     \doa_pair.ind[1]_i_1 
@@ -19292,7 +19672,7 @@ module ps_comp_high_0_0_doa_pair
         .I1(counter[2]),
         .I2(counter[5]),
         .I3(counter[3]),
-        .O(ind__0[1]));
+        .O(ind[1]));
   LUT4 #(
     .INIT(16'hFC4C)) 
     \doa_pair.ind[2]_i_1 
@@ -19300,72 +19680,64 @@ module ps_comp_high_0_0_doa_pair
         .I1(counter[4]),
         .I2(counter[3]),
         .I3(counter[5]),
-        .O(ind__0[2]));
+        .O(ind[2]));
   LUT6 #(
-    .INIT(64'h0004249292494904)) 
+    .INIT(64'h0118866100866110)) 
     \doa_pair.ind[3]_i_1 
        (.I0(counter[0]),
-        .I1(counter[1]),
-        .I2(counter[2]),
-        .I3(counter[3]),
-        .I4(counter[5]),
-        .I5(counter[4]),
+        .I1(counter[2]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[1]),
         .O(\doa_pair.ind[3]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hEAAA)) 
     \doa_pair.ind[3]_i_2 
        (.I0(counter[5]),
-        .I1(counter[2]),
-        .I2(counter[4]),
-        .I3(counter[3]),
-        .O(ind__0[3]));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .I1(counter[4]),
+        .I2(counter[3]),
+        .I3(counter[2]),
+        .O(ind[3]));
   FDRE \doa_pair.ind_reg[0] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[0]),
-        .Q(ind[0]),
+        .D(\doa_pair.ind[0]_i_1_n_0 ),
+        .Q(\doa_pair.ind_reg_n_0_[0] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[1] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[1]),
-        .Q(ind[1]),
+        .D(ind[1]),
+        .Q(\doa_pair.ind_reg_n_0_[1] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[2] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[2]),
-        .Q(ind[2]),
+        .D(ind[2]),
+        .Q(\doa_pair.ind_reg_n_0_[2] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[3] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[3]),
-        .Q(ind[3]),
+        .D(ind[3]),
+        .Q(\doa_pair.ind_reg_n_0_[3] ),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'hBF01)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFF700000001)) 
     \doa_pair.init_i_1 
-       (.I0(\doa_pair.init_i_2_n_0 ),
+       (.I0(counter[3]),
         .I1(counter[0]),
-        .I2(counter[3]),
-        .I3(init),
+        .I2(counter[5]),
+        .I3(counter[1]),
+        .I4(\doa_pair.init_i_2_n_0 ),
+        .I5(init),
         .O(\doa_pair.init_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+  LUT2 #(
+    .INIT(4'hE)) 
     \doa_pair.init_i_2 
-       (.I0(counter[1]),
-        .I1(counter[4]),
-        .I2(counter[2]),
-        .I3(counter[5]),
+       (.I0(counter[4]),
+        .I1(counter[2]),
         .O(\doa_pair.init_i_2_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -19377,94 +19749,432 @@ module ps_comp_high_0_0_doa_pair
         .R(1'b0));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \doa_pair.ov[4]_i_1 
-       (.I0(counter[0]),
-        .I1(counter[3]),
-        .I2(counter[5]),
-        .I3(counter[2]),
-        .I4(counter[4]),
-        .I5(counter[1]),
-        .O(ov__0));
-  LUT6 #(
-    .INIT(64'h0000000000000010)) 
-    \doa_pair.ov[4]_i_2 
-       (.I0(counter[3]),
+    \doa_pair.ov[5]_i_1 
+       (.I0(counter[1]),
         .I1(counter[0]),
-        .I2(counter[1]),
-        .I3(counter[4]),
-        .I4(counter[2]),
-        .I5(counter[5]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[2]),
+        .O(\doa_pair.ov[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000002)) 
+    \doa_pair.ov[5]_i_2 
+       (.I0(counter[1]),
+        .I1(counter[0]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[2]),
         .O(p_0_in__0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[0] 
+  FDRE \doa_pair.ov_reg[0] 
+       (.C(clk),
+        .CE(p_0_in__0),
+        .D(prod[34]),
+        .Q(ov[0]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.ov_reg[1] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[35]),
-        .Q(ov[0]),
-        .S(ov__0));
+        .Q(ov[1]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[1] 
+  FDRE \doa_pair.ov_reg[2] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[36]),
-        .Q(ov[1]),
-        .S(ov__0));
+        .Q(ov[2]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[2] 
+  FDRE \doa_pair.ov_reg[3] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[37]),
-        .Q(ov[2]),
-        .S(ov__0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[3] 
-       (.C(clk),
-        .CE(p_0_in__0),
-        .D(prod[38]),
         .Q(ov[3]),
-        .S(ov__0));
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.ov_reg[4] 
        (.C(clk),
         .CE(p_0_in__0),
-        .D(prod[39]),
+        .D(prod[38]),
         .Q(ov[4]),
-        .R(ov__0));
-  LUT3 #(
-    .INIT(8'hBA)) 
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \doa_pair.ov_reg[5] 
+       (.C(clk),
+        .CE(p_0_in__0),
+        .D(prod[39]),
+        .Q(ov[5]),
+        .S(\doa_pair.ov[5]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h000000F2)) 
     \doa_pair.run_i_1 
-       (.I0(start),
-        .I1(\doa_pair.run_i_2_n_0 ),
-        .I2(run),
+       (.I0(run),
+        .I1(\doa_pair.counter[0]_i_2_n_0 ),
+        .I2(start),
+        .I3(reset),
+        .I4(fail),
         .O(\doa_pair.run_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000002000)) 
-    \doa_pair.run_i_2 
-       (.I0(counter[4]),
-        .I1(counter[2]),
-        .I2(counter[5]),
-        .I3(counter[3]),
-        .I4(counter[1]),
-        .I5(counter[0]),
-        .O(\doa_pair.run_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.run_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.run_i_1_n_0 ),
         .Q(run),
-        .R(reset));
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_2 
+       (.I0(x_diff[15]),
+        .I1(shadow_limit[15]),
+        .O(\doa_pair.shadow_diff[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_3 
+       (.I0(x_diff[14]),
+        .I1(shadow_limit[14]),
+        .O(\doa_pair.shadow_diff[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_4 
+       (.I0(x_diff[13]),
+        .I1(shadow_limit[13]),
+        .O(\doa_pair.shadow_diff[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_5 
+       (.I0(x_diff[12]),
+        .I1(shadow_limit[12]),
+        .O(\doa_pair.shadow_diff[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_6 
+       (.I0(x_diff[11]),
+        .I1(shadow_limit[11]),
+        .O(\doa_pair.shadow_diff[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_7 
+       (.I0(x_diff[10]),
+        .I1(shadow_limit[10]),
+        .O(\doa_pair.shadow_diff[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_8 
+       (.I0(x_diff[9]),
+        .I1(shadow_limit[9]),
+        .O(\doa_pair.shadow_diff[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_9 
+       (.I0(x_diff[8]),
+        .I1(shadow_limit[8]),
+        .O(\doa_pair.shadow_diff[15]_i_9_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \doa_pair.shadow_diff[19]_i_2 
+       (.I0(shadow_limit[19]),
+        .O(\doa_pair.shadow_diff[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_3 
+       (.I0(x_diff[18]),
+        .I1(shadow_limit[18]),
+        .O(\doa_pair.shadow_diff[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_4 
+       (.I0(x_diff[17]),
+        .I1(shadow_limit[17]),
+        .O(\doa_pair.shadow_diff[19]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_5 
+       (.I0(x_diff[16]),
+        .I1(shadow_limit[16]),
+        .O(\doa_pair.shadow_diff[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_2 
+       (.I0(x_diff[7]),
+        .I1(shadow_limit[7]),
+        .O(\doa_pair.shadow_diff[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_3 
+       (.I0(x_diff[6]),
+        .I1(shadow_limit[6]),
+        .O(\doa_pair.shadow_diff[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_4 
+       (.I0(x_diff[5]),
+        .I1(shadow_limit[5]),
+        .O(\doa_pair.shadow_diff[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_5 
+       (.I0(x_diff[4]),
+        .I1(shadow_limit[4]),
+        .O(\doa_pair.shadow_diff[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_6 
+       (.I0(x_diff[3]),
+        .I1(shadow_limit[3]),
+        .O(\doa_pair.shadow_diff[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_7 
+       (.I0(x_diff[2]),
+        .I1(shadow_limit[2]),
+        .O(\doa_pair.shadow_diff[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_8 
+       (.I0(x_diff[1]),
+        .I1(shadow_limit[1]),
+        .O(\doa_pair.shadow_diff[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_9 
+       (.I0(x_diff[0]),
+        .I1(shadow_limit[0]),
+        .O(\doa_pair.shadow_diff[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[0] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [0]),
+        .Q(shadow_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[10] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [10]),
+        .Q(shadow_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[11] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [11]),
+        .Q(shadow_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[12] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [12]),
+        .Q(shadow_diff[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[13] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [13]),
+        .Q(shadow_diff[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[14] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [14]),
+        .Q(shadow_diff[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[15] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [15]),
+        .Q(shadow_diff[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[15]_i_1 
+       (.CI(\doa_pair.shadow_diff_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\doa_pair.shadow_diff_reg[15]_i_1_n_0 ,\doa_pair.shadow_diff_reg[15]_i_1_n_1 ,\doa_pair.shadow_diff_reg[15]_i_1_n_2 ,\doa_pair.shadow_diff_reg[15]_i_1_n_3 ,\doa_pair.shadow_diff_reg[15]_i_1_n_4 ,\doa_pair.shadow_diff_reg[15]_i_1_n_5 ,\doa_pair.shadow_diff_reg[15]_i_1_n_6 ,\doa_pair.shadow_diff_reg[15]_i_1_n_7 }),
+        .DI(x_diff[15:8]),
+        .O(\doa_pair.shadow_diff_reg0 [15:8]),
+        .S({\doa_pair.shadow_diff[15]_i_2_n_0 ,\doa_pair.shadow_diff[15]_i_3_n_0 ,\doa_pair.shadow_diff[15]_i_4_n_0 ,\doa_pair.shadow_diff[15]_i_5_n_0 ,\doa_pair.shadow_diff[15]_i_6_n_0 ,\doa_pair.shadow_diff[15]_i_7_n_0 ,\doa_pair.shadow_diff[15]_i_8_n_0 ,\doa_pair.shadow_diff[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[16] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [16]),
+        .Q(shadow_diff[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[17] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [17]),
+        .Q(shadow_diff[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[18] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [18]),
+        .Q(shadow_diff[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[19] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [19]),
+        .Q(shadow_diff[19]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[19]_i_1 
+       (.CI(\doa_pair.shadow_diff_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED [7:3],\doa_pair.shadow_diff_reg[19]_i_1_n_5 ,\doa_pair.shadow_diff_reg[19]_i_1_n_6 ,\doa_pair.shadow_diff_reg[19]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,x_diff[18:16]}),
+        .O({\NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED [7:4],\doa_pair.shadow_diff_reg0 [19:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,\doa_pair.shadow_diff[19]_i_2_n_0 ,\doa_pair.shadow_diff[19]_i_3_n_0 ,\doa_pair.shadow_diff[19]_i_4_n_0 ,\doa_pair.shadow_diff[19]_i_5_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[1] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [1]),
+        .Q(shadow_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[2] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [2]),
+        .Q(shadow_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[3] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [3]),
+        .Q(shadow_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[4] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [4]),
+        .Q(shadow_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[5] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [5]),
+        .Q(shadow_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[6] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [6]),
+        .Q(shadow_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[7] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [7]),
+        .Q(shadow_diff[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\doa_pair.shadow_diff_reg[7]_i_1_n_0 ,\doa_pair.shadow_diff_reg[7]_i_1_n_1 ,\doa_pair.shadow_diff_reg[7]_i_1_n_2 ,\doa_pair.shadow_diff_reg[7]_i_1_n_3 ,\doa_pair.shadow_diff_reg[7]_i_1_n_4 ,\doa_pair.shadow_diff_reg[7]_i_1_n_5 ,\doa_pair.shadow_diff_reg[7]_i_1_n_6 ,\doa_pair.shadow_diff_reg[7]_i_1_n_7 }),
+        .DI(x_diff[7:0]),
+        .O(\doa_pair.shadow_diff_reg0 [7:0]),
+        .S({\doa_pair.shadow_diff[7]_i_2_n_0 ,\doa_pair.shadow_diff[7]_i_3_n_0 ,\doa_pair.shadow_diff[7]_i_4_n_0 ,\doa_pair.shadow_diff[7]_i_5_n_0 ,\doa_pair.shadow_diff[7]_i_6_n_0 ,\doa_pair.shadow_diff[7]_i_7_n_0 ,\doa_pair.shadow_diff[7]_i_8_n_0 ,\doa_pair.shadow_diff[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[8] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [8]),
+        .Q(shadow_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[9] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [9]),
+        .Q(shadow_diff[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h8080000000000300)) 
+    \doa_pair.shadow_i_1 
+       (.I0(\doa_pair.shadow_i_2_n_0 ),
+        .I1(ov[5]),
+        .I2(ov[2]),
+        .I3(\doa_pair.shadow_i_3_n_0 ),
+        .I4(ov[4]),
+        .I5(ov[3]),
+        .O(\doa_pair.shadow_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h55DF4080)) 
+    \doa_pair.shadow_i_2 
+       (.I0(ov[1]),
+        .I1(shadow_diff[19]),
+        .I2(has_shadow_diff),
+        .I3(ov[0]),
+        .I4(shadow),
+        .O(\doa_pair.shadow_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'hE6E0A0E0)) 
+    \doa_pair.shadow_i_3 
+       (.I0(ov[1]),
+        .I1(ov[0]),
+        .I2(shadow),
+        .I3(has_shadow_diff),
+        .I4(shadow_diff[19]),
+        .O(\doa_pair.shadow_i_3_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.shadow_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\doa_pair.shadow_i_1_n_0 ),
+        .Q(shadow),
+        .R(1'b0));
   LUT5 #(
     .INIT(32'hF7080000)) 
     \doa_pair.sum[15]_i_10 
        (.I0(cp[34]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[15]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_10_n_0 ));
@@ -19473,7 +20183,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_11 
        (.I0(cp[33]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[14]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_11_n_0 ));
@@ -19482,7 +20192,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_12 
        (.I0(cp[32]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[13]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_12_n_0 ));
@@ -19491,7 +20201,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_13 
        (.I0(cp[31]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[12]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_13_n_0 ));
@@ -19500,7 +20210,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_14 
        (.I0(cp[30]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[11]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_14_n_0 ));
@@ -19509,7 +20219,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_15 
        (.I0(cp[29]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[10]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_15_n_0 ));
@@ -19518,7 +20228,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_16 
        (.I0(cp[28]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[9]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_16_n_0 ));
@@ -19527,14 +20237,14 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[15]_i_17 
        (.I0(cp[27]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[8]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_17_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[34]),
         .I3(run),
@@ -19542,7 +20252,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[33]),
         .I3(run),
@@ -19550,7 +20260,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[32]),
         .I3(run),
@@ -19558,7 +20268,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[31]),
         .I3(run),
@@ -19566,7 +20276,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_6 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[30]),
         .I3(run),
@@ -19574,7 +20284,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_7 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[29]),
         .I3(run),
@@ -19582,7 +20292,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_8 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[28]),
         .I3(run),
@@ -19590,7 +20300,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_9 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[27]),
         .I3(run),
@@ -19600,14 +20310,14 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[20]_i_10 
        (.I0(cp[35]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[16]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_10_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[38]),
         .I3(run),
@@ -19615,7 +20325,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[37]),
         .I3(run),
@@ -19623,7 +20333,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[36]),
         .I3(run),
@@ -19631,7 +20341,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[35]),
         .I3(run),
@@ -19641,7 +20351,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[20]_i_6 
        (.I0(cp[39]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[20]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_6_n_0 ));
@@ -19650,7 +20360,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[20]_i_7 
        (.I0(cp[38]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[19]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_7_n_0 ));
@@ -19659,7 +20369,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[20]_i_8 
        (.I0(cp[37]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[18]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_8_n_0 ));
@@ -19668,7 +20378,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[20]_i_9 
        (.I0(cp[36]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[17]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_9_n_0 ));
@@ -19677,7 +20387,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_10 
        (.I0(cp[26]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[7]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_10_n_0 ));
@@ -19686,7 +20396,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_11 
        (.I0(cp[25]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[6]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_11_n_0 ));
@@ -19695,7 +20405,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_12 
        (.I0(cp[24]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[5]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_12_n_0 ));
@@ -19704,7 +20414,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_13 
        (.I0(cp[23]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[4]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_13_n_0 ));
@@ -19713,7 +20423,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_14 
        (.I0(cp[22]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[3]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_14_n_0 ));
@@ -19722,7 +20432,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_15 
        (.I0(cp[21]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[2]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_15_n_0 ));
@@ -19731,7 +20441,7 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_16 
        (.I0(cp[20]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[1]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_16_n_0 ));
@@ -19740,14 +20450,14 @@ module ps_comp_high_0_0_doa_pair
     \doa_pair.sum[7]_i_17 
        (.I0(cp[19]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[0]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_17_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[26]),
         .I3(run),
@@ -19755,7 +20465,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[25]),
         .I3(run),
@@ -19763,7 +20473,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[24]),
         .I3(run),
@@ -19771,7 +20481,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[23]),
         .I3(run),
@@ -19779,7 +20489,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_6 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[22]),
         .I3(run),
@@ -19787,7 +20497,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_7 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[21]),
         .I3(run),
@@ -19795,7 +20505,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_8 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[20]),
         .I3(run),
@@ -19803,7 +20513,7 @@ module ps_comp_high_0_0_doa_pair
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_9 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[19]),
         .I3(run),
@@ -19977,168 +20687,885 @@ module ps_comp_high_0_0_doa_pair
         .Q(sum[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'hBE)) 
+    .INIT(8'hF6)) 
     \doa_pair.x[0]_i_1 
-       (.I0(prod[16]),
-        .I1(ov[0]),
-        .I2(ov[1]),
-        .O(p_1_in__0[0]));
+       (.I0(ov[5]),
+        .I1(ov[1]),
+        .I2(prod[16]),
+        .O(x__0[0]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[10]_i_1 
-       (.I0(prod[26]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[10]_i_1_n_0 ));
+        .I2(prod[26]),
+        .O(x__0[10]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[11]_i_1 
-       (.I0(prod[27]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[11]_i_1_n_0 ));
+        .I2(prod[27]),
+        .O(x__0[11]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[12]_i_1 
-       (.I0(prod[28]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[12]_i_1_n_0 ));
+        .I2(prod[28]),
+        .O(x__0[12]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[13]_i_1 
-       (.I0(prod[29]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[13]_i_1_n_0 ));
+        .I2(prod[29]),
+        .O(x__0[13]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[14]_i_1 
-       (.I0(prod[30]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[14]_i_1_n_0 ));
+        .I2(prod[30]),
+        .O(x__0[14]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[15]_i_1 
-       (.I0(prod[31]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[15]_i_1_n_0 ));
+        .I2(prod[31]),
+        .O(x__0[15]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[16]_i_1 
-       (.I0(prod[32]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[16]_i_1_n_0 ));
+        .I2(prod[32]),
+        .O(x__0[16]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[17]_i_1 
-       (.I0(prod[33]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[17]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h40000000)) 
+        .I2(prod[33]),
+        .O(x__0[17]));
+  LUT3 #(
+    .INIT(8'hD4)) 
     \doa_pair.x[18]_i_1 
-       (.I0(ov[0]),
-        .I1(ov[3]),
-        .I2(ov[2]),
+       (.I0(ov[5]),
+        .I1(ov[1]),
+        .I2(prod[34]),
+        .O(x__0[18]));
+  LUT6 #(
+    .INIT(64'h8000800180010001)) 
+    \doa_pair.x[19]_i_1 
+       (.I0(ov[5]),
+        .I1(ov[2]),
+        .I2(ov[3]),
         .I3(ov[4]),
         .I4(ov[1]),
-        .O(\doa_pair.x[18]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hBA)) 
-    \doa_pair.x[18]_i_2 
-       (.I0(prod[34]),
-        .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[18]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h8001)) 
-    \doa_pair.x[19]_i_1 
-       (.I0(ov[1]),
-        .I1(ov[4]),
-        .I2(ov[2]),
-        .I3(ov[3]),
+        .I5(ov[0]),
         .O(\doa_pair.x[19]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h8E)) 
     \doa_pair.x[19]_i_2 
-       (.I0(prod[35]),
-        .I1(ov[1]),
-        .I2(ov[0]),
-        .O(p_1_in__0[19]));
+       (.I0(ov[5]),
+        .I1(prod[35]),
+        .I2(ov[1]),
+        .O(x__0[19]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[1]_i_1 
-       (.I0(prod[17]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[1]_i_1_n_0 ));
+        .I2(prod[17]),
+        .O(x__0[1]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[2]_i_1 
-       (.I0(prod[18]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[2]_i_1_n_0 ));
+        .I2(prod[18]),
+        .O(x__0[2]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[3]_i_1 
-       (.I0(prod[19]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[3]_i_1_n_0 ));
+        .I2(prod[19]),
+        .O(x__0[3]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[4]_i_1 
-       (.I0(prod[20]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[4]_i_1_n_0 ));
+        .I2(prod[20]),
+        .O(x__0[4]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[5]_i_1 
-       (.I0(prod[21]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[5]_i_1_n_0 ));
+        .I2(prod[21]),
+        .O(x__0[5]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[6]_i_1 
-       (.I0(prod[22]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[6]_i_1_n_0 ));
+        .I2(prod[22]),
+        .O(x__0[6]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[7]_i_1 
-       (.I0(prod[23]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[7]_i_1_n_0 ));
+        .I2(prod[23]),
+        .O(x__0[7]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[8]_i_1 
-       (.I0(prod[24]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[8]_i_1_n_0 ));
+        .I2(prod[24]),
+        .O(x__0[8]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[9]_i_1 
-       (.I0(prod[25]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[9]_i_1_n_0 ));
+        .I2(prod[25]),
+        .O(x__0[9]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[0]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[0]),
+        .O(\doa_pair.x_abs[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[10]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[10]),
+        .O(\doa_pair.x_abs[10]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[11]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[11]),
+        .O(\doa_pair.x_abs[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[12]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[12]),
+        .O(\doa_pair.x_abs[12]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[13]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[13]),
+        .O(\doa_pair.x_abs[13]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[14]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[14]),
+        .O(\doa_pair.x_abs[14]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[15]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[15]),
+        .O(\doa_pair.x_abs[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[16]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[16]),
+        .O(\doa_pair.x_abs[16]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[17]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[17]),
+        .O(\doa_pair.x_abs[17]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[18]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[18]),
+        .O(\doa_pair.x_abs[18]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[19]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[19]),
+        .O(\doa_pair.x_abs[19]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[1]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[1]),
+        .O(\doa_pair.x_abs[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[2]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[2]),
+        .O(\doa_pair.x_abs[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[3]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[3]),
+        .O(\doa_pair.x_abs[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[4]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[4]),
+        .O(\doa_pair.x_abs[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[5]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[5]),
+        .O(\doa_pair.x_abs[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[6]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[6]),
+        .O(\doa_pair.x_abs[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[7]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[7]),
+        .O(\doa_pair.x_abs[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[8]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[8]),
+        .O(\doa_pair.x_abs[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[9]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[9]),
+        .O(\doa_pair.x_abs[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[0] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[0]_i_1_n_0 ),
+        .Q(x_abs[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[10] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[10]_i_1_n_0 ),
+        .Q(x_abs[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[11] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[11]_i_1_n_0 ),
+        .Q(x_abs[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[12] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[12]_i_1_n_0 ),
+        .Q(x_abs[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[13] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[13]_i_1_n_0 ),
+        .Q(x_abs[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[14] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[14]_i_1_n_0 ),
+        .Q(x_abs[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[15] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[15]_i_1_n_0 ),
+        .Q(x_abs[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[16] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[16]_i_1_n_0 ),
+        .Q(x_abs[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[17] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[17]_i_1_n_0 ),
+        .Q(x_abs[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[18] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[18]_i_1_n_0 ),
+        .Q(x_abs[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[19] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[19]_i_1_n_0 ),
+        .Q(x_abs[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[1] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[1]_i_1_n_0 ),
+        .Q(x_abs[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[2] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[2]_i_1_n_0 ),
+        .Q(x_abs[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[3] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[3]_i_1_n_0 ),
+        .Q(x_abs[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[4] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[4]_i_1_n_0 ),
+        .Q(x_abs[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[5] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[5]_i_1_n_0 ),
+        .Q(x_abs[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[6] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[6]_i_1_n_0 ),
+        .Q(x_abs[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[7] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[7]_i_1_n_0 ),
+        .Q(x_abs[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[8] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[8]_i_1_n_0 ),
+        .Q(x_abs[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[9] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[9]_i_1_n_0 ),
+        .Q(x_abs[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[0]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[0]),
+        .O(p_1_in[0]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[10]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[10]),
+        .O(p_1_in[10]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[11]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[11]),
+        .O(p_1_in[11]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[12]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[12]),
+        .O(p_1_in[12]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[13]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[13]),
+        .O(p_1_in[13]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[14]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[14]),
+        .O(p_1_in[14]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[15]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[15]),
+        .O(p_1_in[15]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[16]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[16]),
+        .O(p_1_in[16]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[17]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[17]),
+        .O(p_1_in[17]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[18]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[18]),
+        .O(p_1_in[18]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[1]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[1]),
+        .O(p_1_in[1]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[2]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[2]),
+        .O(p_1_in[2]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[3]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[3]),
+        .O(p_1_in[3]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[4]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[4]),
+        .O(p_1_in[4]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[5]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[5]),
+        .O(p_1_in[5]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[6]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[6]),
+        .O(p_1_in[6]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[7]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[7]),
+        .O(p_1_in[7]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[8]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[8]),
+        .O(p_1_in[8]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[9]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[9]),
+        .O(p_1_in[9]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[0] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[0]),
+        .Q(x_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[10] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[10]),
+        .Q(x_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[11] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[11]),
+        .Q(x_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[12] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[12]),
+        .Q(x_diff[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[13] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[13]),
+        .Q(x_diff[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[14] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[14]),
+        .Q(x_diff[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[15] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[15]),
+        .Q(x_diff[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[16] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[16]),
+        .Q(x_diff[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[17] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[17]),
+        .Q(x_diff[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[18] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[18]),
+        .Q(x_diff[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[1] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[1]),
+        .Q(x_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[2] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[2]),
+        .Q(x_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[3] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[3]),
+        .Q(x_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[4] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[4]),
+        .Q(x_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[5] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[5]),
+        .Q(x_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[6] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[6]),
+        .Q(x_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[7] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[7]),
+        .Q(x_diff[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[8] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[8]),
+        .Q(x_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[9] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[9]),
+        .Q(x_diff[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h2800000000000014)) 
+    \doa_pair.x_raw[20]_i_1 
+       (.I0(ov[5]),
+        .I1(ov[0]),
+        .I2(ov[1]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .I5(ov[2]),
+        .O(\doa_pair.x_raw[20]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[0] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[16]),
+        .Q(x_raw[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[10] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[26]),
+        .Q(x_raw[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[11] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[27]),
+        .Q(x_raw[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[12] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[28]),
+        .Q(x_raw[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[13] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[29]),
+        .Q(x_raw[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[14] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[30]),
+        .Q(x_raw[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[15] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[31]),
+        .Q(x_raw[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[16] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[32]),
+        .Q(x_raw[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[17] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[33]),
+        .Q(x_raw[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[18] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[34]),
+        .Q(x_raw[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[19] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[35]),
+        .Q(x_raw[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[1] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[17]),
+        .Q(x_raw[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[20] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[36]),
+        .Q(x_raw[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[2] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[18]),
+        .Q(x_raw[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[3] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[19]),
+        .Q(x_raw[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[4] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[20]),
+        .Q(x_raw[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[5] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[21]),
+        .Q(x_raw[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[6] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[22]),
+        .Q(x_raw[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[7] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[23]),
+        .Q(x_raw[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[8] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[24]),
+        .Q(x_raw[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[9] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[25]),
+        .Q(x_raw[9]),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[0] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(p_1_in__0[0]),
+        .D(x__0[0]),
         .Q(x[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -20146,79 +21573,79 @@ module ps_comp_high_0_0_doa_pair
   FDRE \doa_pair.x_reg[10] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[10]_i_1_n_0 ),
+        .D(x__0[10]),
         .Q(x[10]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[11] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[11]_i_1_n_0 ),
+        .D(x__0[11]),
         .Q(x[11]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[12] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[12]_i_1_n_0 ),
+        .D(x__0[12]),
         .Q(x[12]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[13] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[13]_i_1_n_0 ),
+        .D(x__0[13]),
         .Q(x[13]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[14] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[14]_i_1_n_0 ),
+        .D(x__0[14]),
         .Q(x[14]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[15] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[15]_i_1_n_0 ),
+        .D(x__0[15]),
         .Q(x[15]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[16] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[16]_i_1_n_0 ),
+        .D(x__0[16]),
         .Q(x[16]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[17] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[17]_i_1_n_0 ),
+        .D(x__0[17]),
         .Q(x[17]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[18] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[18]_i_2_n_0 ),
+        .D(x__0[18]),
         .Q(x[18]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[19] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(p_1_in__0[19]),
+        .D(x__0[19]),
         .Q(x[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -20226,73 +21653,73 @@ module ps_comp_high_0_0_doa_pair
   FDRE \doa_pair.x_reg[1] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[1]_i_1_n_0 ),
+        .D(x__0[1]),
         .Q(x[1]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[2] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[2]_i_1_n_0 ),
+        .D(x__0[2]),
         .Q(x[2]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[3] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[3]_i_1_n_0 ),
+        .D(x__0[3]),
         .Q(x[3]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[4] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[4]_i_1_n_0 ),
+        .D(x__0[4]),
         .Q(x[4]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[5] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[5]_i_1_n_0 ),
+        .D(x__0[5]),
         .Q(x[5]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[6] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[6]_i_1_n_0 ),
+        .D(x__0[6]),
         .Q(x[6]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[7] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[7]_i_1_n_0 ),
+        .D(x__0[7]),
         .Q(x[7]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[8] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[8]_i_1_n_0 ),
+        .D(x__0[8]),
         .Q(x[8]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[9] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[9]_i_1_n_0 ),
+        .D(x__0[9]),
         .Q(x[9]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   LUT6 #(
     .INIT(64'h0049249249249200)) 
     g0_b0
@@ -20309,34 +21736,33 @@ module ps_comp_high_0_0_doa_pair
   ps_comp_high_0_0_ila_7_HD3 ila_i
        (.clk(clk),
         .probe0(start),
-        .probe1(k),
-        .probe10(prod),
-        .probe11(x),
-        .probe12(x2),
-        .probe13(cp),
-        .probe14(xp),
-        .probe15(sum),
-        .probe16(done),
-        .probe17(fail),
-        .probe18(angle),
-        .probe19(ov),
-        .probe2(phase),
-        .probe20(p),
-        .probe3(counter),
-        .probe4(ind),
-        .probe5(run),
-        .probe6(init),
-        .probe7(add),
-        .probe8(ignore),
-        .probe9(coeff));
+        .probe1(counter),
+        .probe10(has_diff),
+        .probe11(x_diff),
+        .probe12(has_shadow_diff),
+        .probe13(shadow_diff),
+        .probe14(shadow),
+        .probe15(x),
+        .probe16(sum),
+        .probe17(done),
+        .probe18(fail),
+        .probe19(angle),
+        .probe2(run),
+        .probe3(init),
+        .probe4(has_ov),
+        .probe5(ov),
+        .probe6(check_raw),
+        .probe7(x_raw),
+        .probe8(x_abs),
+        .probe9(calc_diff));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_comp_high_0_0_mult_20x20_HD4 mul_c_i
-       (.A(coeff),
+       (.A({1'b0,\doa_pair.coeff_reg_n_0_[18] ,1'b0,\doa_pair.coeff_reg_n_0_[16] ,\doa_pair.coeff_reg_n_0_[15] ,\doa_pair.coeff_reg_n_0_[14] ,\doa_pair.coeff_reg_n_0_[13] ,\doa_pair.coeff_reg_n_0_[12] ,\doa_pair.coeff_reg_n_0_[11] ,\doa_pair.coeff_reg_n_0_[10] ,\doa_pair.coeff_reg_n_0_[9] ,\doa_pair.coeff_reg_n_0_[8] ,\doa_pair.coeff_reg_n_0_[7] ,\doa_pair.coeff_reg_n_0_[6] ,\doa_pair.coeff_reg_n_0_[5] ,\doa_pair.coeff_reg_n_0_[4] ,\doa_pair.coeff_reg_n_0_[3] ,\doa_pair.coeff_reg_n_0_[2] ,\doa_pair.coeff_reg_n_0_[1] ,\doa_pair.coeff_reg_n_0_[0] }),
         .B(p),
         .CLK(clk),
-        .P(cp));
+        .P({cp,NLW_mul_c_i_P_UNCONNECTED[18:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
@@ -20344,7 +21770,7 @@ module ps_comp_high_0_0_doa_pair
        (.A(k),
         .B(phase),
         .CLK(clk),
-        .P(prod));
+        .P({prod,NLW_mul_doa_i_P_UNCONNECTED[15:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
@@ -20352,151 +21778,151 @@ module ps_comp_high_0_0_doa_pair
        (.A(x),
         .B(x),
         .CLK(clk),
-        .P(x2));
+        .P({NLW_mul_x2_i_P_UNCONNECTED[39],x2,NLW_mul_x2_i_P_UNCONNECTED[18:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_comp_high_0_0_mult_20x20 mul_x_i
-       (.A(x2[38:19]),
+       (.A(x2),
         .B(p),
         .CLK(clk),
-        .P(xp));
+        .P({NLW_mul_x_i_P_UNCONNECTED[39],xp,NLW_mul_x_i_P_UNCONNECTED[18:0]}));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_1
+    mul_x_i_i_1
        (.I0(x[19]),
         .I1(init),
         .I2(xp[38]),
         .O(p[19]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_10
+    mul_x_i_i_10
        (.I0(x[10]),
         .I1(init),
         .I2(xp[29]),
         .O(p[10]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_11
+    mul_x_i_i_11
        (.I0(x[9]),
         .I1(init),
         .I2(xp[28]),
         .O(p[9]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_12
+    mul_x_i_i_12
        (.I0(x[8]),
         .I1(init),
         .I2(xp[27]),
         .O(p[8]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_13
+    mul_x_i_i_13
        (.I0(x[7]),
         .I1(init),
         .I2(xp[26]),
         .O(p[7]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_14
+    mul_x_i_i_14
        (.I0(x[6]),
         .I1(init),
         .I2(xp[25]),
         .O(p[6]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_15
+    mul_x_i_i_15
        (.I0(x[5]),
         .I1(init),
         .I2(xp[24]),
         .O(p[5]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_16
+    mul_x_i_i_16
        (.I0(x[4]),
         .I1(init),
         .I2(xp[23]),
         .O(p[4]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_17
+    mul_x_i_i_17
        (.I0(x[3]),
         .I1(init),
         .I2(xp[22]),
         .O(p[3]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_18
+    mul_x_i_i_18
        (.I0(x[2]),
         .I1(init),
         .I2(xp[21]),
         .O(p[2]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_19
+    mul_x_i_i_19
        (.I0(x[1]),
         .I1(init),
         .I2(xp[20]),
         .O(p[1]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_2
+    mul_x_i_i_2
        (.I0(x[18]),
         .I1(init),
         .I2(xp[37]),
         .O(p[18]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_20
+    mul_x_i_i_20
        (.I0(x[0]),
         .I1(init),
         .I2(xp[19]),
         .O(p[0]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_3
+    mul_x_i_i_3
        (.I0(x[17]),
         .I1(init),
         .I2(xp[36]),
         .O(p[17]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_4
+    mul_x_i_i_4
        (.I0(x[16]),
         .I1(init),
         .I2(xp[35]),
         .O(p[16]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_5
+    mul_x_i_i_5
        (.I0(x[15]),
         .I1(init),
         .I2(xp[34]),
         .O(p[15]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_6
+    mul_x_i_i_6
        (.I0(x[14]),
         .I1(init),
         .I2(xp[33]),
         .O(p[14]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_7
+    mul_x_i_i_7
        (.I0(x[13]),
         .I1(init),
         .I2(xp[32]),
         .O(p[13]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_8
+    mul_x_i_i_8
        (.I0(x[12]),
         .I1(init),
         .I2(xp[31]),
         .O(p[12]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_9
+    mul_x_i_i_9
        (.I0(x[11]),
         .I1(init),
         .I2(xp[30]),
@@ -20509,54 +21935,56 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     reset,
     start,
     k,
+    shadow_limit,
     phase,
     done,
     fail,
+    shadow,
     angle);
   input clk;
   input reset;
   input start;
   input [19:0]k;
+  input [19:0]shadow_limit;
   input [19:0]phase;
   output done;
   output fail;
+  output shadow;
   output [19:0]angle;
 
-  (* MARK_DEBUG *) wire add;
+  wire add;
   (* MARK_DEBUG *) wire [19:0]angle;
+  (* MARK_DEBUG *) wire calc_diff;
+  (* MARK_DEBUG *) wire check_raw;
+  wire check_raw__0;
   wire clk;
-  (* MARK_DEBUG *) wire [19:0]coeff;
-  wire [18:0]coeff__0;
+  wire [18:0]coeff;
   (* MARK_DEBUG *) wire [5:0]counter;
   wire [5:0]counter__0;
-  (* MARK_DEBUG *) wire [39:0]cp;
+  wire [39:19]cp;
   wire \doa_pair.add_i_1_n_0 ;
   wire \doa_pair.add_i_2_n_0 ;
   wire \doa_pair.angle[19]_i_1_n_0 ;
-  wire \doa_pair.coeff[11]_i_2_n_0 ;
-  wire \doa_pair.coeff[11]_i_3_n_0 ;
-  wire \doa_pair.coeff[12]_i_2_n_0 ;
-  wire \doa_pair.coeff[13]_i_2_n_0 ;
-  wire \doa_pair.coeff[14]_i_2_n_0 ;
-  wire \doa_pair.coeff[14]_i_3_n_0 ;
-  wire \doa_pair.coeff[14]_i_4_n_0 ;
-  wire \doa_pair.coeff[15]_i_2_n_0 ;
-  wire \doa_pair.coeff[15]_i_3_n_0 ;
-  wire \doa_pair.coeff[15]_i_4_n_0 ;
-  wire \doa_pair.coeff[16]_i_2_n_0 ;
-  wire \doa_pair.coeff[16]_i_3_n_0 ;
-  wire \doa_pair.coeff[16]_i_4_n_0 ;
-  wire \doa_pair.coeff[17]_i_2_n_0 ;
-  wire \doa_pair.coeff[17]_i_3_n_0 ;
-  wire \doa_pair.coeff[18]_i_2_n_0 ;
-  wire \doa_pair.coeff[18]_i_3_n_0 ;
-  wire \doa_pair.coeff[18]_i_4_n_0 ;
-  wire \doa_pair.coeff[1]_i_2_n_0 ;
-  wire \doa_pair.coeff[1]_i_3_n_0 ;
-  wire \doa_pair.coeff[2]_i_2_n_0 ;
-  wire \doa_pair.coeff[2]_i_3_n_0 ;
-  wire \doa_pair.coeff[6]_i_2_n_0 ;
-  wire \doa_pair.coeff[6]_i_3_n_0 ;
+  wire \doa_pair.check_raw_i_2_n_0 ;
+  wire \doa_pair.coeff_reg_n_0_[0] ;
+  wire \doa_pair.coeff_reg_n_0_[10] ;
+  wire \doa_pair.coeff_reg_n_0_[11] ;
+  wire \doa_pair.coeff_reg_n_0_[12] ;
+  wire \doa_pair.coeff_reg_n_0_[13] ;
+  wire \doa_pair.coeff_reg_n_0_[14] ;
+  wire \doa_pair.coeff_reg_n_0_[15] ;
+  wire \doa_pair.coeff_reg_n_0_[16] ;
+  wire \doa_pair.coeff_reg_n_0_[18] ;
+  wire \doa_pair.coeff_reg_n_0_[1] ;
+  wire \doa_pair.coeff_reg_n_0_[2] ;
+  wire \doa_pair.coeff_reg_n_0_[3] ;
+  wire \doa_pair.coeff_reg_n_0_[4] ;
+  wire \doa_pair.coeff_reg_n_0_[5] ;
+  wire \doa_pair.coeff_reg_n_0_[6] ;
+  wire \doa_pair.coeff_reg_n_0_[7] ;
+  wire \doa_pair.coeff_reg_n_0_[8] ;
+  wire \doa_pair.coeff_reg_n_0_[9] ;
+  wire \doa_pair.counter[0]_i_2_n_0 ;
   wire \doa_pair.counter[1]_i_1_n_0 ;
   wire \doa_pair.counter[2]_i_1_n_0 ;
   wire \doa_pair.counter[5]_i_1_n_0 ;
@@ -20564,6 +21992,10 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   wire \doa_pair.done_i_1_n_0 ;
   wire \doa_pair.done_reg0 ;
   wire \doa_pair.fail_i_1_n_0 ;
+  wire \doa_pair.fail_i_3_n_0 ;
+  wire \doa_pair.fail_i_4_n_0 ;
+  wire \doa_pair.has_ov_i_1_n_0 ;
+  wire \doa_pair.has_ov_i_2_n_0 ;
   wire \doa_pair.ignore_i_1_n_0 ;
   wire \doa_pair.ignore_i_2_n_0 ;
   wire \doa_pair.ignore_i_3_n_0 ;
@@ -20572,11 +22004,60 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   wire \doa_pair.ignore_i_6_n_0 ;
   wire \doa_pair.ignore_i_7_n_0 ;
   wire \doa_pair.ignore_i_8_n_0 ;
+  wire \doa_pair.ignore_reg_n_0 ;
+  wire \doa_pair.ind[0]_i_1_n_0 ;
   wire \doa_pair.ind[3]_i_1_n_0 ;
+  wire \doa_pair.ind_reg_n_0_[0] ;
+  wire \doa_pair.ind_reg_n_0_[1] ;
+  wire \doa_pair.ind_reg_n_0_[2] ;
+  wire \doa_pair.ind_reg_n_0_[3] ;
   wire \doa_pair.init_i_1_n_0 ;
   wire \doa_pair.init_i_2_n_0 ;
+  wire \doa_pair.ov[5]_i_1_n_0 ;
   wire \doa_pair.run_i_1_n_0 ;
-  wire \doa_pair.run_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_6_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_7_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_8_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_9_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_6_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_7_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_8_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_9_n_0 ;
+  wire [19:0]\doa_pair.shadow_diff_reg0 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_0 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_1 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_2 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_3 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_4 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_7 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_7 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_0 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_1 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_2 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_3 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_4 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_7 ;
+  wire \doa_pair.shadow_i_1_n_0 ;
+  wire \doa_pair.shadow_i_2_n_0 ;
+  wire \doa_pair.shadow_i_3_n_0 ;
   wire \doa_pair.sum[15]_i_10_n_0 ;
   wire \doa_pair.sum[15]_i_11_n_0 ;
   wire \doa_pair.sum[15]_i_12_n_0 ;
@@ -20659,50 +22140,67 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   wire \doa_pair.sum_reg[7]_i_1_n_7 ;
   wire \doa_pair.sum_reg[7]_i_1_n_8 ;
   wire \doa_pair.sum_reg[7]_i_1_n_9 ;
-  wire \doa_pair.x[10]_i_1_n_0 ;
-  wire \doa_pair.x[11]_i_1_n_0 ;
-  wire \doa_pair.x[12]_i_1_n_0 ;
-  wire \doa_pair.x[13]_i_1_n_0 ;
-  wire \doa_pair.x[14]_i_1_n_0 ;
-  wire \doa_pair.x[15]_i_1_n_0 ;
-  wire \doa_pair.x[16]_i_1_n_0 ;
-  wire \doa_pair.x[17]_i_1_n_0 ;
-  wire \doa_pair.x[18]_i_1_n_0 ;
-  wire \doa_pair.x[18]_i_2_n_0 ;
   wire \doa_pair.x[19]_i_1_n_0 ;
-  wire \doa_pair.x[1]_i_1_n_0 ;
-  wire \doa_pair.x[2]_i_1_n_0 ;
-  wire \doa_pair.x[3]_i_1_n_0 ;
-  wire \doa_pair.x[4]_i_1_n_0 ;
-  wire \doa_pair.x[5]_i_1_n_0 ;
-  wire \doa_pair.x[6]_i_1_n_0 ;
-  wire \doa_pair.x[7]_i_1_n_0 ;
-  wire \doa_pair.x[8]_i_1_n_0 ;
-  wire \doa_pair.x[9]_i_1_n_0 ;
+  wire \doa_pair.x_abs[0]_i_1_n_0 ;
+  wire \doa_pair.x_abs[10]_i_1_n_0 ;
+  wire \doa_pair.x_abs[11]_i_1_n_0 ;
+  wire \doa_pair.x_abs[12]_i_1_n_0 ;
+  wire \doa_pair.x_abs[13]_i_1_n_0 ;
+  wire \doa_pair.x_abs[14]_i_1_n_0 ;
+  wire \doa_pair.x_abs[15]_i_1_n_0 ;
+  wire \doa_pair.x_abs[16]_i_1_n_0 ;
+  wire \doa_pair.x_abs[17]_i_1_n_0 ;
+  wire \doa_pair.x_abs[18]_i_1_n_0 ;
+  wire \doa_pair.x_abs[19]_i_1_n_0 ;
+  wire \doa_pair.x_abs[1]_i_1_n_0 ;
+  wire \doa_pair.x_abs[2]_i_1_n_0 ;
+  wire \doa_pair.x_abs[3]_i_1_n_0 ;
+  wire \doa_pair.x_abs[4]_i_1_n_0 ;
+  wire \doa_pair.x_abs[5]_i_1_n_0 ;
+  wire \doa_pair.x_abs[6]_i_1_n_0 ;
+  wire \doa_pair.x_abs[7]_i_1_n_0 ;
+  wire \doa_pair.x_abs[8]_i_1_n_0 ;
+  wire \doa_pair.x_abs[9]_i_1_n_0 ;
+  wire \doa_pair.x_raw[20]_i_1_n_0 ;
   (* MARK_DEBUG *) wire done;
   (* MARK_DEBUG *) wire fail;
+  wire fail2_out;
+  wire fail__0;
   wire g0_b0_n_0;
-  (* MARK_DEBUG *) wire ignore;
-  (* MARK_DEBUG *) wire [3:0]ind;
-  wire [3:0]ind__0;
+  (* MARK_DEBUG *) wire has_diff;
+  (* MARK_DEBUG *) wire has_ov;
+  (* MARK_DEBUG *) wire has_shadow_diff;
+  wire [3:1]ind;
   (* MARK_DEBUG *) wire init;
-  (* MARK_DEBUG *) wire [19:0]k;
-  (* MARK_DEBUG *) wire [4:0]ov;
-  wire ov__0;
-  (* MARK_DEBUG *) wire [19:0]p;
+  wire [19:0]k;
+  (* MARK_DEBUG *) wire [5:0]ov;
+  wire [19:0]p;
   wire p_0_in__0;
-  wire [19:0]p_1_in__0;
-  (* MARK_DEBUG *) wire [19:0]phase;
-  (* MARK_DEBUG *) wire [39:0]prod;
+  wire [18:0]p_1_in;
+  wire [19:0]phase;
+  wire [39:16]prod;
   wire reset;
   (* MARK_DEBUG *) wire run;
+  (* MARK_DEBUG *) wire shadow;
+  (* MARK_DEBUG *) wire [19:0]shadow_diff;
+  wire [19:0]shadow_limit;
   (* MARK_DEBUG *) wire start;
   (* MARK_DEBUG *) wire [20:0]sum;
   (* MARK_DEBUG *) wire [19:0]x;
-  (* MARK_DEBUG *) wire [39:0]x2;
-  (* MARK_DEBUG *) wire [39:0]xp;
+  wire [38:19]x2;
+  wire [19:0]x__0;
+  (* MARK_DEBUG *) wire [19:0]x_abs;
+  (* MARK_DEBUG *) wire [18:0]x_diff;
+  (* MARK_DEBUG *) wire [20:0]x_raw;
+  wire [38:19]xp;
+  wire [7:3]\NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [7:4]\NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED ;
   wire [7:4]\NLW_doa_pair.sum_reg[20]_i_1_CO_UNCONNECTED ;
   wire [7:5]\NLW_doa_pair.sum_reg[20]_i_1_O_UNCONNECTED ;
+  wire [18:0]NLW_mul_c_i_P_UNCONNECTED;
+  wire [15:0]NLW_mul_doa_i_P_UNCONNECTED;
+  wire [39:0]NLW_mul_x2_i_P_UNCONNECTED;
+  wire [39:0]NLW_mul_x_i_P_UNCONNECTED;
 
   LUT3 #(
     .INIT(8'hB8)) 
@@ -20712,30 +22210,29 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I2(add),
         .O(\doa_pair.add_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h07E9097EE9707E91)) 
+    .INIT(64'h1E39271EE49C78E5)) 
     \doa_pair.add_i_2 
        (.I0(counter[0]),
-        .I1(counter[2]),
-        .I2(counter[4]),
-        .I3(counter[3]),
+        .I1(counter[4]),
+        .I2(counter[3]),
+        .I3(counter[2]),
         .I4(counter[1]),
         .I5(counter[5]),
         .O(\doa_pair.add_i_2_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.add_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.add_i_1_n_0 ),
         .Q(add),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h0008)) 
+  LUT5 #(
+    .INIT(32'h01000000)) 
     \doa_pair.angle[19]_i_1 
-       (.I0(\doa_pair.run_i_2_n_0 ),
-        .I1(run),
+       (.I0(fail),
+        .I1(reset),
         .I2(start),
-        .I3(reset),
+        .I3(\doa_pair.counter[0]_i_2_n_0 ),
+        .I4(run),
         .O(\doa_pair.angle[19]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.angle_reg[0] 
@@ -20877,466 +22374,324 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .D(sum[9]),
         .Q(angle[9]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.calc_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(check_raw),
+        .Q(calc_diff),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'h09)) 
+    \doa_pair.check_raw_i_1 
+       (.I0(ov[5]),
+        .I1(ov[4]),
+        .I2(\doa_pair.check_raw_i_2_n_0 ),
+        .O(check_raw__0));
+  LUT6 #(
+    .INIT(64'hC1FFFFFFFFFFFF43)) 
+    \doa_pair.check_raw_i_2 
+       (.I0(check_raw),
+        .I1(ov[1]),
+        .I2(ov[0]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .I5(ov[2]),
+        .O(\doa_pair.check_raw_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.check_raw_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(check_raw__0),
+        .Q(check_raw),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
     .INIT(16'hF514)) 
     \doa_pair.coeff[0]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[0]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[0]));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
     .INIT(16'h8EC7)) 
     \doa_pair.coeff[10]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[10]));
-  LUT5 #(
-    .INIT(32'h8BBB8888)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[10]));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT4 #(
+    .INIT(16'h372A)) 
     \doa_pair.coeff[11]_i_1 
-       (.I0(\doa_pair.coeff[11]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[1]),
-        .I4(ind[0]),
-        .O(coeff__0[11]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[11]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b1),
-        .I2(\doa_pair.coeff[11]_i_3_n_0 ),
-        .O(\doa_pair.coeff[11]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[11]_i_3 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[11]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hBBB8BB8B)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[11]));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT4 #(
+    .INIT(16'h00ED)) 
     \doa_pair.coeff[12]_i_1 
-       (.I0(\doa_pair.coeff[12]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[0]),
-        .I4(ind[1]),
-        .O(coeff__0[12]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[12]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[12]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h88BB8B88)) 
+       (.I0(\doa_pair.ind_reg_n_0_[1] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[2] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[12]));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT4 #(
+    .INIT(16'h0026)) 
     \doa_pair.coeff[13]_i_1 
-       (.I0(\doa_pair.coeff[13]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[0]),
-        .I3(ind[2]),
-        .I4(ind[1]),
-        .O(coeff__0[13]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[13]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[13]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[1] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[13]));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h0014)) 
     \doa_pair.coeff[14]_i_1 
-       (.I0(\doa_pair.coeff[14]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[14]_i_3_n_0 ),
-        .O(coeff__0[14]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[14]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[14]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[14]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[14]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[14]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \doa_pair.coeff[14]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[14]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[14]));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h0004)) 
     \doa_pair.coeff[15]_i_1 
-       (.I0(\doa_pair.coeff[15]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[15]_i_3_n_0 ),
-        .O(coeff__0[15]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[15]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[15]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[15]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[15]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[15]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[15]_i_4 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[15]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[15]));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \doa_pair.coeff[16]_i_1 
-       (.I0(\doa_pair.coeff[16]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[16]_i_3_n_0 ),
-        .O(coeff__0[16]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[16]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[16]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[16]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[16]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[16]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[16]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[16]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \doa_pair.coeff[17]_i_1 
-       (.I0(\doa_pair.coeff[17]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[17]_i_3_n_0 ),
-        .O(coeff__0[17]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[17]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[17]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[17]_i_3 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[17]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[16]));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \doa_pair.coeff[18]_i_1 
-       (.I0(\doa_pair.coeff[18]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[18]_i_3_n_0 ),
-        .O(coeff__0[18]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[18]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[18]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[18]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[18]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[18]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[18]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[18]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'h84FF8400)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[18]));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT4 #(
+    .INIT(16'h8600)) 
     \doa_pair.coeff[1]_i_1 
-       (.I0(ind[2]),
-        .I1(ind[0]),
-        .I2(ind[1]),
-        .I3(ind[3]),
-        .I4(\doa_pair.coeff[1]_i_2_n_0 ),
-        .O(coeff__0[1]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[1]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(\doa_pair.coeff[1]_i_3_n_0 ),
-        .O(\doa_pair.coeff[1]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[1]_i_3 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[1]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hBB888BBB)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[1]));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'h5095)) 
     \doa_pair.coeff[2]_i_1 
-       (.I0(\doa_pair.coeff[2]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[0]),
-        .I4(ind[1]),
-        .O(coeff__0[2]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[2]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(\doa_pair.coeff[2]_i_3_n_0 ),
-        .O(\doa_pair.coeff[2]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[2]_i_3 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[2]_i_3_n_0 ));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[1] ),
+        .O(coeff[2]));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h2F9D)) 
     \doa_pair.coeff[3]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[3]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[3]));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'hDAA6)) 
     \doa_pair.coeff[4]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[4]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[4]));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h5EE8)) 
     \doa_pair.coeff[5]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[5]));
-  LUT5 #(
-    .INIT(32'h26FF2600)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[5]));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'h0A35)) 
     \doa_pair.coeff[6]_i_1 
-       (.I0(ind[2]),
-        .I1(ind[1]),
-        .I2(ind[0]),
-        .I3(ind[3]),
-        .I4(\doa_pair.coeff[6]_i_2_n_0 ),
-        .O(coeff__0[6]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[6]_i_2 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[6]_i_3_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[6]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \doa_pair.coeff[6]_i_3 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[6]_i_3_n_0 ));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[2] ),
+        .O(coeff[6]));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h22F5)) 
     \doa_pair.coeff[7]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[7]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[7]));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
     .INIT(16'h2D17)) 
     \doa_pair.coeff[8]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[8]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[8]));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
     .INIT(16'hD8E7)) 
     \doa_pair.coeff[9]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[9]));
-  (* KEEP = "yes" *) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[9]));
   FDRE \doa_pair.coeff_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[0]),
-        .Q(coeff[0]),
+        .D(coeff[0]),
+        .Q(\doa_pair.coeff_reg_n_0_[0] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[10]),
-        .Q(coeff[10]),
+        .D(coeff[10]),
+        .Q(\doa_pair.coeff_reg_n_0_[10] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[11] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[11]),
-        .Q(coeff[11]),
+        .D(coeff[11]),
+        .Q(\doa_pair.coeff_reg_n_0_[11] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[12] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[12]),
-        .Q(coeff[12]),
+        .D(coeff[12]),
+        .Q(\doa_pair.coeff_reg_n_0_[12] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[13] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[13]),
-        .Q(coeff[13]),
+        .D(coeff[13]),
+        .Q(\doa_pair.coeff_reg_n_0_[13] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[14] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[14]),
-        .Q(coeff[14]),
+        .D(coeff[14]),
+        .Q(\doa_pair.coeff_reg_n_0_[14] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[15] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[15]),
-        .Q(coeff[15]),
+        .D(coeff[15]),
+        .Q(\doa_pair.coeff_reg_n_0_[15] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[16] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[16]),
-        .Q(coeff[16]),
+        .D(coeff[16]),
+        .Q(\doa_pair.coeff_reg_n_0_[16] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \doa_pair.coeff_reg[17] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(coeff__0[17]),
-        .Q(coeff[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[18] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[18]),
-        .Q(coeff[18]),
+        .D(coeff[18]),
+        .Q(\doa_pair.coeff_reg_n_0_[18] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \doa_pair.coeff_reg[19] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(1'b0),
-        .Q(coeff[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[1]),
-        .Q(coeff[1]),
+        .D(coeff[1]),
+        .Q(\doa_pair.coeff_reg_n_0_[1] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[2]),
-        .Q(coeff[2]),
+        .D(coeff[2]),
+        .Q(\doa_pair.coeff_reg_n_0_[2] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[3]),
-        .Q(coeff[3]),
+        .D(coeff[3]),
+        .Q(\doa_pair.coeff_reg_n_0_[3] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[4]),
-        .Q(coeff[4]),
+        .D(coeff[4]),
+        .Q(\doa_pair.coeff_reg_n_0_[4] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[5]),
-        .Q(coeff[5]),
+        .D(coeff[5]),
+        .Q(\doa_pair.coeff_reg_n_0_[5] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[6]),
-        .Q(coeff[6]),
+        .D(coeff[6]),
+        .Q(\doa_pair.coeff_reg_n_0_[6] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[7]),
-        .Q(coeff[7]),
+        .D(coeff[7]),
+        .Q(\doa_pair.coeff_reg_n_0_[7] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[8]),
-        .Q(coeff[8]),
+        .D(coeff[8]),
+        .Q(\doa_pair.coeff_reg_n_0_[8] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[9]),
-        .Q(coeff[9]),
+        .D(coeff[9]),
+        .Q(\doa_pair.coeff_reg_n_0_[9] ),
         .R(1'b0));
   LUT3 #(
     .INIT(8'h9A)) 
     \doa_pair.counter[0]_i_1 
        (.I0(counter[0]),
-        .I1(\doa_pair.run_i_2_n_0 ),
+        .I1(\doa_pair.counter[0]_i_2_n_0 ),
         .I2(run),
         .O(counter__0[0]));
+  LUT6 #(
+    .INIT(64'h0000000800000000)) 
+    \doa_pair.counter[0]_i_2 
+       (.I0(counter[4]),
+        .I1(counter[3]),
+        .I2(counter[2]),
+        .I3(counter[0]),
+        .I4(counter[1]),
+        .I5(counter[5]),
+        .O(\doa_pair.counter[0]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'h6A)) 
     \doa_pair.counter[1]_i_1 
@@ -21371,27 +22726,28 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I4(run),
         .I5(counter[0]),
         .O(counter__0[4]));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     \doa_pair.counter[5]_i_1 
        (.I0(start),
         .I1(reset),
+        .I2(fail),
         .O(\doa_pair.counter[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+  LUT5 #(
+    .INIT(32'h9AAAAAAA)) 
     \doa_pair.counter[5]_i_2 
        (.I0(counter[5]),
-        .I1(counter[0]),
-        .I2(run),
-        .I3(counter[1]),
-        .I4(\doa_pair.counter[5]_i_3_n_0 ),
-        .I5(counter[2]),
+        .I1(\doa_pair.counter[5]_i_3_n_0 ),
+        .I2(counter[2]),
+        .I3(counter[3]),
+        .I4(counter[4]),
         .O(counter__0[5]));
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \doa_pair.counter[5]_i_3 
-       (.I0(counter[4]),
-        .I1(counter[3]),
+       (.I0(counter[0]),
+        .I1(run),
+        .I2(counter[1]),
         .O(\doa_pair.counter[5]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.counter_reg[0] 
@@ -21435,16 +22791,17 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .D(counter__0[5]),
         .Q(counter[5]),
         .R(\doa_pair.counter[5]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     \doa_pair.done_i_1 
        (.I0(start),
         .I1(reset),
+        .I2(fail),
         .O(\doa_pair.done_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \doa_pair.done_i_2 
-       (.I0(\doa_pair.run_i_2_n_0 ),
+       (.I0(\doa_pair.counter[0]_i_2_n_0 ),
         .I1(run),
         .I2(done),
         .O(\doa_pair.done_reg0 ));
@@ -21456,15 +22813,49 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .Q(done),
         .R(\doa_pair.done_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7FFE7FFE00007FFE)) 
+    .INIT(64'hCCB8FFFFCCB80000)) 
     \doa_pair.fail_i_1 
-       (.I0(ov[3]),
-        .I1(ov[2]),
-        .I2(ov[4]),
-        .I3(ov[1]),
-        .I4(ov__0),
+       (.I0(fail2_out),
+        .I1(\doa_pair.fail_i_3_n_0 ),
+        .I2(has_ov),
+        .I3(\doa_pair.fail_i_4_n_0 ),
+        .I4(fail__0),
         .I5(fail),
         .O(\doa_pair.fail_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \doa_pair.fail_i_2 
+       (.I0(has_shadow_diff),
+        .I1(shadow_diff[19]),
+        .O(fail2_out));
+  LUT5 #(
+    .INIT(32'h20000004)) 
+    \doa_pair.fail_i_3 
+       (.I0(ov[2]),
+        .I1(ov[1]),
+        .I2(ov[5]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .O(\doa_pair.fail_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h8001800000018001)) 
+    \doa_pair.fail_i_4 
+       (.I0(ov[5]),
+        .I1(ov[2]),
+        .I2(ov[3]),
+        .I3(ov[4]),
+        .I4(ov[0]),
+        .I5(ov[1]),
+        .O(\doa_pair.fail_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hEAAAAAAB)) 
+    \doa_pair.fail_i_5 
+       (.I0(has_ov),
+        .I1(ov[2]),
+        .I2(ov[3]),
+        .I3(ov[4]),
+        .I4(ov[5]),
+        .O(fail__0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.fail_reg 
@@ -21473,15 +22864,53 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .D(\doa_pair.fail_i_1_n_0 ),
         .Q(fail),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.has_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(calc_diff),
+        .Q(has_diff),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \doa_pair.has_ov_i_1 
+       (.I0(has_ov),
+        .I1(\doa_pair.has_ov_i_2_n_0 ),
+        .I2(counter[1]),
+        .O(\doa_pair.has_ov_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \doa_pair.has_ov_i_2 
+       (.I0(counter[2]),
+        .I1(counter[4]),
+        .I2(counter[5]),
+        .I3(counter[3]),
+        .I4(counter[0]),
+        .O(\doa_pair.has_ov_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.has_ov_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\doa_pair.has_ov_i_1_n_0 ),
+        .Q(has_ov),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.has_shadow_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(has_diff),
+        .Q(has_shadow_diff),
+        .R(1'b0));
   LUT6 #(
-    .INIT(64'hEAAAAAAAAAAAAAAA)) 
+    .INIT(64'hFFFFFFFF80000000)) 
     \doa_pair.ignore_i_1 
-       (.I0(ignore),
-        .I1(run),
-        .I2(add),
-        .I3(xp[38]),
-        .I4(\doa_pair.ignore_i_2_n_0 ),
-        .I5(xp[37]),
+       (.I0(xp[37]),
+        .I1(\doa_pair.ignore_i_2_n_0 ),
+        .I2(xp[38]),
+        .I3(add),
+        .I4(run),
+        .I5(\doa_pair.ignore_reg_n_0 ),
         .O(\doa_pair.ignore_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
@@ -21493,6 +22922,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I4(xp[32]),
         .I5(\doa_pair.ignore_i_5_n_0 ),
         .O(\doa_pair.ignore_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \doa_pair.ignore_i_3 
@@ -21509,6 +22939,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I4(xp[26]),
         .I5(\doa_pair.ignore_i_8_n_0 ),
         .O(\doa_pair.ignore_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
     .INIT(8'hD5)) 
     \doa_pair.ignore_i_5 
@@ -21516,6 +22947,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I1(xp[34]),
         .I2(xp[35]),
         .O(\doa_pair.ignore_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \doa_pair.ignore_i_6 
@@ -21532,6 +22964,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I4(xp[22]),
         .I5(xp[23]),
         .O(\doa_pair.ignore_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
     .INIT(8'hD5)) 
     \doa_pair.ignore_i_8 
@@ -21539,12 +22972,11 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I1(xp[28]),
         .I2(xp[29]),
         .O(\doa_pair.ignore_i_8_n_0 ));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.ignore_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.ignore_i_1_n_0 ),
-        .Q(ignore),
+        .Q(\doa_pair.ignore_reg_n_0 ),
         .R(\doa_pair.done_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h5554)) 
@@ -21553,7 +22985,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I1(counter[2]),
         .I2(counter[5]),
         .I3(counter[3]),
-        .O(ind__0[0]));
+        .O(\doa_pair.ind[0]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hAAA8)) 
     \doa_pair.ind[1]_i_1 
@@ -21561,7 +22993,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I1(counter[2]),
         .I2(counter[5]),
         .I3(counter[3]),
-        .O(ind__0[1]));
+        .O(ind[1]));
   LUT4 #(
     .INIT(16'hFC4C)) 
     \doa_pair.ind[2]_i_1 
@@ -21569,72 +23001,64 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .I1(counter[4]),
         .I2(counter[3]),
         .I3(counter[5]),
-        .O(ind__0[2]));
+        .O(ind[2]));
   LUT6 #(
-    .INIT(64'h0004249292494904)) 
+    .INIT(64'h0118866100866110)) 
     \doa_pair.ind[3]_i_1 
        (.I0(counter[0]),
-        .I1(counter[1]),
-        .I2(counter[2]),
-        .I3(counter[3]),
-        .I4(counter[5]),
-        .I5(counter[4]),
+        .I1(counter[2]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[1]),
         .O(\doa_pair.ind[3]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hEAAA)) 
     \doa_pair.ind[3]_i_2 
        (.I0(counter[5]),
-        .I1(counter[2]),
-        .I2(counter[4]),
-        .I3(counter[3]),
-        .O(ind__0[3]));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .I1(counter[4]),
+        .I2(counter[3]),
+        .I3(counter[2]),
+        .O(ind[3]));
   FDRE \doa_pair.ind_reg[0] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[0]),
-        .Q(ind[0]),
+        .D(\doa_pair.ind[0]_i_1_n_0 ),
+        .Q(\doa_pair.ind_reg_n_0_[0] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[1] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[1]),
-        .Q(ind[1]),
+        .D(ind[1]),
+        .Q(\doa_pair.ind_reg_n_0_[1] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[2] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[2]),
-        .Q(ind[2]),
+        .D(ind[2]),
+        .Q(\doa_pair.ind_reg_n_0_[2] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[3] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[3]),
-        .Q(ind[3]),
+        .D(ind[3]),
+        .Q(\doa_pair.ind_reg_n_0_[3] ),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'hBF01)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFF700000001)) 
     \doa_pair.init_i_1 
-       (.I0(\doa_pair.init_i_2_n_0 ),
+       (.I0(counter[3]),
         .I1(counter[0]),
-        .I2(counter[3]),
-        .I3(init),
+        .I2(counter[5]),
+        .I3(counter[1]),
+        .I4(\doa_pair.init_i_2_n_0 ),
+        .I5(init),
         .O(\doa_pair.init_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+  LUT2 #(
+    .INIT(4'hE)) 
     \doa_pair.init_i_2 
-       (.I0(counter[1]),
-        .I1(counter[4]),
-        .I2(counter[2]),
-        .I3(counter[5]),
+       (.I0(counter[4]),
+        .I1(counter[2]),
         .O(\doa_pair.init_i_2_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -21646,94 +23070,432 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .R(1'b0));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \doa_pair.ov[4]_i_1 
-       (.I0(counter[0]),
-        .I1(counter[3]),
-        .I2(counter[5]),
-        .I3(counter[2]),
-        .I4(counter[4]),
-        .I5(counter[1]),
-        .O(ov__0));
-  LUT6 #(
-    .INIT(64'h0000000000000010)) 
-    \doa_pair.ov[4]_i_2 
-       (.I0(counter[3]),
+    \doa_pair.ov[5]_i_1 
+       (.I0(counter[1]),
         .I1(counter[0]),
-        .I2(counter[1]),
-        .I3(counter[4]),
-        .I4(counter[2]),
-        .I5(counter[5]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[2]),
+        .O(\doa_pair.ov[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000002)) 
+    \doa_pair.ov[5]_i_2 
+       (.I0(counter[1]),
+        .I1(counter[0]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[2]),
         .O(p_0_in__0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[0] 
+  FDRE \doa_pair.ov_reg[0] 
+       (.C(clk),
+        .CE(p_0_in__0),
+        .D(prod[34]),
+        .Q(ov[0]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.ov_reg[1] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[35]),
-        .Q(ov[0]),
-        .S(ov__0));
+        .Q(ov[1]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[1] 
+  FDRE \doa_pair.ov_reg[2] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[36]),
-        .Q(ov[1]),
-        .S(ov__0));
+        .Q(ov[2]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[2] 
+  FDRE \doa_pair.ov_reg[3] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[37]),
-        .Q(ov[2]),
-        .S(ov__0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[3] 
-       (.C(clk),
-        .CE(p_0_in__0),
-        .D(prod[38]),
         .Q(ov[3]),
-        .S(ov__0));
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.ov_reg[4] 
        (.C(clk),
         .CE(p_0_in__0),
-        .D(prod[39]),
+        .D(prod[38]),
         .Q(ov[4]),
-        .R(ov__0));
-  LUT3 #(
-    .INIT(8'hBA)) 
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \doa_pair.ov_reg[5] 
+       (.C(clk),
+        .CE(p_0_in__0),
+        .D(prod[39]),
+        .Q(ov[5]),
+        .S(\doa_pair.ov[5]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h000000F2)) 
     \doa_pair.run_i_1 
-       (.I0(start),
-        .I1(\doa_pair.run_i_2_n_0 ),
-        .I2(run),
+       (.I0(run),
+        .I1(\doa_pair.counter[0]_i_2_n_0 ),
+        .I2(start),
+        .I3(reset),
+        .I4(fail),
         .O(\doa_pair.run_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000002000)) 
-    \doa_pair.run_i_2 
-       (.I0(counter[4]),
-        .I1(counter[2]),
-        .I2(counter[5]),
-        .I3(counter[3]),
-        .I4(counter[1]),
-        .I5(counter[0]),
-        .O(\doa_pair.run_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.run_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.run_i_1_n_0 ),
         .Q(run),
-        .R(reset));
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_2 
+       (.I0(x_diff[15]),
+        .I1(shadow_limit[15]),
+        .O(\doa_pair.shadow_diff[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_3 
+       (.I0(x_diff[14]),
+        .I1(shadow_limit[14]),
+        .O(\doa_pair.shadow_diff[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_4 
+       (.I0(x_diff[13]),
+        .I1(shadow_limit[13]),
+        .O(\doa_pair.shadow_diff[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_5 
+       (.I0(x_diff[12]),
+        .I1(shadow_limit[12]),
+        .O(\doa_pair.shadow_diff[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_6 
+       (.I0(x_diff[11]),
+        .I1(shadow_limit[11]),
+        .O(\doa_pair.shadow_diff[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_7 
+       (.I0(x_diff[10]),
+        .I1(shadow_limit[10]),
+        .O(\doa_pair.shadow_diff[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_8 
+       (.I0(x_diff[9]),
+        .I1(shadow_limit[9]),
+        .O(\doa_pair.shadow_diff[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_9 
+       (.I0(x_diff[8]),
+        .I1(shadow_limit[8]),
+        .O(\doa_pair.shadow_diff[15]_i_9_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \doa_pair.shadow_diff[19]_i_2 
+       (.I0(shadow_limit[19]),
+        .O(\doa_pair.shadow_diff[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_3 
+       (.I0(x_diff[18]),
+        .I1(shadow_limit[18]),
+        .O(\doa_pair.shadow_diff[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_4 
+       (.I0(x_diff[17]),
+        .I1(shadow_limit[17]),
+        .O(\doa_pair.shadow_diff[19]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_5 
+       (.I0(x_diff[16]),
+        .I1(shadow_limit[16]),
+        .O(\doa_pair.shadow_diff[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_2 
+       (.I0(x_diff[7]),
+        .I1(shadow_limit[7]),
+        .O(\doa_pair.shadow_diff[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_3 
+       (.I0(x_diff[6]),
+        .I1(shadow_limit[6]),
+        .O(\doa_pair.shadow_diff[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_4 
+       (.I0(x_diff[5]),
+        .I1(shadow_limit[5]),
+        .O(\doa_pair.shadow_diff[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_5 
+       (.I0(x_diff[4]),
+        .I1(shadow_limit[4]),
+        .O(\doa_pair.shadow_diff[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_6 
+       (.I0(x_diff[3]),
+        .I1(shadow_limit[3]),
+        .O(\doa_pair.shadow_diff[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_7 
+       (.I0(x_diff[2]),
+        .I1(shadow_limit[2]),
+        .O(\doa_pair.shadow_diff[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_8 
+       (.I0(x_diff[1]),
+        .I1(shadow_limit[1]),
+        .O(\doa_pair.shadow_diff[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_9 
+       (.I0(x_diff[0]),
+        .I1(shadow_limit[0]),
+        .O(\doa_pair.shadow_diff[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[0] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [0]),
+        .Q(shadow_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[10] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [10]),
+        .Q(shadow_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[11] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [11]),
+        .Q(shadow_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[12] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [12]),
+        .Q(shadow_diff[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[13] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [13]),
+        .Q(shadow_diff[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[14] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [14]),
+        .Q(shadow_diff[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[15] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [15]),
+        .Q(shadow_diff[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[15]_i_1 
+       (.CI(\doa_pair.shadow_diff_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\doa_pair.shadow_diff_reg[15]_i_1_n_0 ,\doa_pair.shadow_diff_reg[15]_i_1_n_1 ,\doa_pair.shadow_diff_reg[15]_i_1_n_2 ,\doa_pair.shadow_diff_reg[15]_i_1_n_3 ,\doa_pair.shadow_diff_reg[15]_i_1_n_4 ,\doa_pair.shadow_diff_reg[15]_i_1_n_5 ,\doa_pair.shadow_diff_reg[15]_i_1_n_6 ,\doa_pair.shadow_diff_reg[15]_i_1_n_7 }),
+        .DI(x_diff[15:8]),
+        .O(\doa_pair.shadow_diff_reg0 [15:8]),
+        .S({\doa_pair.shadow_diff[15]_i_2_n_0 ,\doa_pair.shadow_diff[15]_i_3_n_0 ,\doa_pair.shadow_diff[15]_i_4_n_0 ,\doa_pair.shadow_diff[15]_i_5_n_0 ,\doa_pair.shadow_diff[15]_i_6_n_0 ,\doa_pair.shadow_diff[15]_i_7_n_0 ,\doa_pair.shadow_diff[15]_i_8_n_0 ,\doa_pair.shadow_diff[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[16] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [16]),
+        .Q(shadow_diff[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[17] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [17]),
+        .Q(shadow_diff[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[18] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [18]),
+        .Q(shadow_diff[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[19] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [19]),
+        .Q(shadow_diff[19]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[19]_i_1 
+       (.CI(\doa_pair.shadow_diff_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED [7:3],\doa_pair.shadow_diff_reg[19]_i_1_n_5 ,\doa_pair.shadow_diff_reg[19]_i_1_n_6 ,\doa_pair.shadow_diff_reg[19]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,x_diff[18:16]}),
+        .O({\NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED [7:4],\doa_pair.shadow_diff_reg0 [19:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,\doa_pair.shadow_diff[19]_i_2_n_0 ,\doa_pair.shadow_diff[19]_i_3_n_0 ,\doa_pair.shadow_diff[19]_i_4_n_0 ,\doa_pair.shadow_diff[19]_i_5_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[1] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [1]),
+        .Q(shadow_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[2] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [2]),
+        .Q(shadow_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[3] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [3]),
+        .Q(shadow_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[4] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [4]),
+        .Q(shadow_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[5] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [5]),
+        .Q(shadow_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[6] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [6]),
+        .Q(shadow_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[7] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [7]),
+        .Q(shadow_diff[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\doa_pair.shadow_diff_reg[7]_i_1_n_0 ,\doa_pair.shadow_diff_reg[7]_i_1_n_1 ,\doa_pair.shadow_diff_reg[7]_i_1_n_2 ,\doa_pair.shadow_diff_reg[7]_i_1_n_3 ,\doa_pair.shadow_diff_reg[7]_i_1_n_4 ,\doa_pair.shadow_diff_reg[7]_i_1_n_5 ,\doa_pair.shadow_diff_reg[7]_i_1_n_6 ,\doa_pair.shadow_diff_reg[7]_i_1_n_7 }),
+        .DI(x_diff[7:0]),
+        .O(\doa_pair.shadow_diff_reg0 [7:0]),
+        .S({\doa_pair.shadow_diff[7]_i_2_n_0 ,\doa_pair.shadow_diff[7]_i_3_n_0 ,\doa_pair.shadow_diff[7]_i_4_n_0 ,\doa_pair.shadow_diff[7]_i_5_n_0 ,\doa_pair.shadow_diff[7]_i_6_n_0 ,\doa_pair.shadow_diff[7]_i_7_n_0 ,\doa_pair.shadow_diff[7]_i_8_n_0 ,\doa_pair.shadow_diff[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[8] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [8]),
+        .Q(shadow_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[9] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [9]),
+        .Q(shadow_diff[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h8080000000000300)) 
+    \doa_pair.shadow_i_1 
+       (.I0(\doa_pair.shadow_i_2_n_0 ),
+        .I1(ov[5]),
+        .I2(ov[2]),
+        .I3(\doa_pair.shadow_i_3_n_0 ),
+        .I4(ov[4]),
+        .I5(ov[3]),
+        .O(\doa_pair.shadow_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h55DF4080)) 
+    \doa_pair.shadow_i_2 
+       (.I0(ov[1]),
+        .I1(shadow_diff[19]),
+        .I2(has_shadow_diff),
+        .I3(ov[0]),
+        .I4(shadow),
+        .O(\doa_pair.shadow_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'hE6E0A0E0)) 
+    \doa_pair.shadow_i_3 
+       (.I0(ov[1]),
+        .I1(ov[0]),
+        .I2(shadow),
+        .I3(has_shadow_diff),
+        .I4(shadow_diff[19]),
+        .O(\doa_pair.shadow_i_3_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.shadow_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\doa_pair.shadow_i_1_n_0 ),
+        .Q(shadow),
+        .R(1'b0));
   LUT5 #(
     .INIT(32'hF7080000)) 
     \doa_pair.sum[15]_i_10 
        (.I0(cp[34]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[15]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_10_n_0 ));
@@ -21742,7 +23504,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_11 
        (.I0(cp[33]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[14]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_11_n_0 ));
@@ -21751,7 +23513,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_12 
        (.I0(cp[32]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[13]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_12_n_0 ));
@@ -21760,7 +23522,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_13 
        (.I0(cp[31]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[12]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_13_n_0 ));
@@ -21769,7 +23531,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_14 
        (.I0(cp[30]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[11]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_14_n_0 ));
@@ -21778,7 +23540,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_15 
        (.I0(cp[29]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[10]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_15_n_0 ));
@@ -21787,7 +23549,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_16 
        (.I0(cp[28]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[9]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_16_n_0 ));
@@ -21796,14 +23558,14 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[15]_i_17 
        (.I0(cp[27]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[8]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_17_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[34]),
         .I3(run),
@@ -21811,7 +23573,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[33]),
         .I3(run),
@@ -21819,7 +23581,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[32]),
         .I3(run),
@@ -21827,7 +23589,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[31]),
         .I3(run),
@@ -21835,7 +23597,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_6 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[30]),
         .I3(run),
@@ -21843,7 +23605,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_7 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[29]),
         .I3(run),
@@ -21851,7 +23613,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_8 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[28]),
         .I3(run),
@@ -21859,7 +23621,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_9 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[27]),
         .I3(run),
@@ -21869,14 +23631,14 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[20]_i_10 
        (.I0(cp[35]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[16]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_10_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[38]),
         .I3(run),
@@ -21884,7 +23646,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[37]),
         .I3(run),
@@ -21892,7 +23654,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[36]),
         .I3(run),
@@ -21900,7 +23662,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[35]),
         .I3(run),
@@ -21910,7 +23672,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[20]_i_6 
        (.I0(cp[39]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[20]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_6_n_0 ));
@@ -21919,7 +23681,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[20]_i_7 
        (.I0(cp[38]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[19]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_7_n_0 ));
@@ -21928,7 +23690,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[20]_i_8 
        (.I0(cp[37]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[18]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_8_n_0 ));
@@ -21937,7 +23699,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[20]_i_9 
        (.I0(cp[36]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[17]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_9_n_0 ));
@@ -21946,7 +23708,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_10 
        (.I0(cp[26]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[7]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_10_n_0 ));
@@ -21955,7 +23717,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_11 
        (.I0(cp[25]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[6]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_11_n_0 ));
@@ -21964,7 +23726,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_12 
        (.I0(cp[24]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[5]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_12_n_0 ));
@@ -21973,7 +23735,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_13 
        (.I0(cp[23]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[4]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_13_n_0 ));
@@ -21982,7 +23744,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_14 
        (.I0(cp[22]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[3]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_14_n_0 ));
@@ -21991,7 +23753,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_15 
        (.I0(cp[21]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[2]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_15_n_0 ));
@@ -22000,7 +23762,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_16 
        (.I0(cp[20]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[1]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_16_n_0 ));
@@ -22009,14 +23771,14 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
     \doa_pair.sum[7]_i_17 
        (.I0(cp[19]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[0]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_17_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[26]),
         .I3(run),
@@ -22024,7 +23786,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[25]),
         .I3(run),
@@ -22032,7 +23794,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[24]),
         .I3(run),
@@ -22040,7 +23802,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[23]),
         .I3(run),
@@ -22048,7 +23810,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_6 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[22]),
         .I3(run),
@@ -22056,7 +23818,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_7 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[21]),
         .I3(run),
@@ -22064,7 +23826,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_8 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[20]),
         .I3(run),
@@ -22072,7 +23834,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_9 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[19]),
         .I3(run),
@@ -22246,168 +24008,885 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
         .Q(sum[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'hBE)) 
+    .INIT(8'hF6)) 
     \doa_pair.x[0]_i_1 
-       (.I0(prod[16]),
-        .I1(ov[0]),
-        .I2(ov[1]),
-        .O(p_1_in__0[0]));
+       (.I0(ov[5]),
+        .I1(ov[1]),
+        .I2(prod[16]),
+        .O(x__0[0]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[10]_i_1 
-       (.I0(prod[26]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[10]_i_1_n_0 ));
+        .I2(prod[26]),
+        .O(x__0[10]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[11]_i_1 
-       (.I0(prod[27]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[11]_i_1_n_0 ));
+        .I2(prod[27]),
+        .O(x__0[11]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[12]_i_1 
-       (.I0(prod[28]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[12]_i_1_n_0 ));
+        .I2(prod[28]),
+        .O(x__0[12]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[13]_i_1 
-       (.I0(prod[29]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[13]_i_1_n_0 ));
+        .I2(prod[29]),
+        .O(x__0[13]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[14]_i_1 
-       (.I0(prod[30]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[14]_i_1_n_0 ));
+        .I2(prod[30]),
+        .O(x__0[14]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[15]_i_1 
-       (.I0(prod[31]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[15]_i_1_n_0 ));
+        .I2(prod[31]),
+        .O(x__0[15]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[16]_i_1 
-       (.I0(prod[32]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[16]_i_1_n_0 ));
+        .I2(prod[32]),
+        .O(x__0[16]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[17]_i_1 
-       (.I0(prod[33]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[17]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h40000000)) 
+        .I2(prod[33]),
+        .O(x__0[17]));
+  LUT3 #(
+    .INIT(8'hD4)) 
     \doa_pair.x[18]_i_1 
-       (.I0(ov[0]),
-        .I1(ov[3]),
-        .I2(ov[2]),
+       (.I0(ov[5]),
+        .I1(ov[1]),
+        .I2(prod[34]),
+        .O(x__0[18]));
+  LUT6 #(
+    .INIT(64'h8000800180010001)) 
+    \doa_pair.x[19]_i_1 
+       (.I0(ov[5]),
+        .I1(ov[2]),
+        .I2(ov[3]),
         .I3(ov[4]),
         .I4(ov[1]),
-        .O(\doa_pair.x[18]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hBA)) 
-    \doa_pair.x[18]_i_2 
-       (.I0(prod[34]),
-        .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[18]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h8001)) 
-    \doa_pair.x[19]_i_1 
-       (.I0(ov[1]),
-        .I1(ov[4]),
-        .I2(ov[2]),
-        .I3(ov[3]),
+        .I5(ov[0]),
         .O(\doa_pair.x[19]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h8E)) 
     \doa_pair.x[19]_i_2 
-       (.I0(prod[35]),
-        .I1(ov[1]),
-        .I2(ov[0]),
-        .O(p_1_in__0[19]));
+       (.I0(ov[5]),
+        .I1(prod[35]),
+        .I2(ov[1]),
+        .O(x__0[19]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[1]_i_1 
-       (.I0(prod[17]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[1]_i_1_n_0 ));
+        .I2(prod[17]),
+        .O(x__0[1]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[2]_i_1 
-       (.I0(prod[18]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[2]_i_1_n_0 ));
+        .I2(prod[18]),
+        .O(x__0[2]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[3]_i_1 
-       (.I0(prod[19]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[3]_i_1_n_0 ));
+        .I2(prod[19]),
+        .O(x__0[3]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[4]_i_1 
-       (.I0(prod[20]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[4]_i_1_n_0 ));
+        .I2(prod[20]),
+        .O(x__0[4]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[5]_i_1 
-       (.I0(prod[21]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[5]_i_1_n_0 ));
+        .I2(prod[21]),
+        .O(x__0[5]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[6]_i_1 
-       (.I0(prod[22]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[6]_i_1_n_0 ));
+        .I2(prod[22]),
+        .O(x__0[6]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[7]_i_1 
-       (.I0(prod[23]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[7]_i_1_n_0 ));
+        .I2(prod[23]),
+        .O(x__0[7]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[8]_i_1 
-       (.I0(prod[24]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[8]_i_1_n_0 ));
+        .I2(prod[24]),
+        .O(x__0[8]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[9]_i_1 
-       (.I0(prod[25]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[9]_i_1_n_0 ));
+        .I2(prod[25]),
+        .O(x__0[9]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[0]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[0]),
+        .O(\doa_pair.x_abs[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[10]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[10]),
+        .O(\doa_pair.x_abs[10]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[11]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[11]),
+        .O(\doa_pair.x_abs[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[12]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[12]),
+        .O(\doa_pair.x_abs[12]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[13]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[13]),
+        .O(\doa_pair.x_abs[13]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[14]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[14]),
+        .O(\doa_pair.x_abs[14]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[15]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[15]),
+        .O(\doa_pair.x_abs[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[16]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[16]),
+        .O(\doa_pair.x_abs[16]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[17]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[17]),
+        .O(\doa_pair.x_abs[17]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[18]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[18]),
+        .O(\doa_pair.x_abs[18]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[19]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[19]),
+        .O(\doa_pair.x_abs[19]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[1]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[1]),
+        .O(\doa_pair.x_abs[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[2]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[2]),
+        .O(\doa_pair.x_abs[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[3]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[3]),
+        .O(\doa_pair.x_abs[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[4]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[4]),
+        .O(\doa_pair.x_abs[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[5]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[5]),
+        .O(\doa_pair.x_abs[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[6]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[6]),
+        .O(\doa_pair.x_abs[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[7]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[7]),
+        .O(\doa_pair.x_abs[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[8]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[8]),
+        .O(\doa_pair.x_abs[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[9]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[9]),
+        .O(\doa_pair.x_abs[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[0] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[0]_i_1_n_0 ),
+        .Q(x_abs[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[10] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[10]_i_1_n_0 ),
+        .Q(x_abs[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[11] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[11]_i_1_n_0 ),
+        .Q(x_abs[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[12] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[12]_i_1_n_0 ),
+        .Q(x_abs[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[13] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[13]_i_1_n_0 ),
+        .Q(x_abs[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[14] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[14]_i_1_n_0 ),
+        .Q(x_abs[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[15] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[15]_i_1_n_0 ),
+        .Q(x_abs[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[16] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[16]_i_1_n_0 ),
+        .Q(x_abs[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[17] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[17]_i_1_n_0 ),
+        .Q(x_abs[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[18] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[18]_i_1_n_0 ),
+        .Q(x_abs[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[19] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[19]_i_1_n_0 ),
+        .Q(x_abs[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[1] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[1]_i_1_n_0 ),
+        .Q(x_abs[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[2] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[2]_i_1_n_0 ),
+        .Q(x_abs[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[3] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[3]_i_1_n_0 ),
+        .Q(x_abs[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[4] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[4]_i_1_n_0 ),
+        .Q(x_abs[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[5] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[5]_i_1_n_0 ),
+        .Q(x_abs[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[6] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[6]_i_1_n_0 ),
+        .Q(x_abs[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[7] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[7]_i_1_n_0 ),
+        .Q(x_abs[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[8] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[8]_i_1_n_0 ),
+        .Q(x_abs[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[9] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[9]_i_1_n_0 ),
+        .Q(x_abs[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[0]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[0]),
+        .O(p_1_in[0]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[10]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[10]),
+        .O(p_1_in[10]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[11]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[11]),
+        .O(p_1_in[11]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[12]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[12]),
+        .O(p_1_in[12]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[13]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[13]),
+        .O(p_1_in[13]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[14]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[14]),
+        .O(p_1_in[14]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[15]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[15]),
+        .O(p_1_in[15]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[16]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[16]),
+        .O(p_1_in[16]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[17]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[17]),
+        .O(p_1_in[17]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[18]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[18]),
+        .O(p_1_in[18]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[1]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[1]),
+        .O(p_1_in[1]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[2]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[2]),
+        .O(p_1_in[2]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[3]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[3]),
+        .O(p_1_in[3]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[4]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[4]),
+        .O(p_1_in[4]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[5]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[5]),
+        .O(p_1_in[5]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[6]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[6]),
+        .O(p_1_in[6]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[7]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[7]),
+        .O(p_1_in[7]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[8]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[8]),
+        .O(p_1_in[8]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[9]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[9]),
+        .O(p_1_in[9]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[0] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[0]),
+        .Q(x_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[10] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[10]),
+        .Q(x_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[11] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[11]),
+        .Q(x_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[12] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[12]),
+        .Q(x_diff[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[13] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[13]),
+        .Q(x_diff[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[14] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[14]),
+        .Q(x_diff[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[15] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[15]),
+        .Q(x_diff[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[16] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[16]),
+        .Q(x_diff[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[17] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[17]),
+        .Q(x_diff[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[18] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[18]),
+        .Q(x_diff[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[1] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[1]),
+        .Q(x_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[2] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[2]),
+        .Q(x_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[3] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[3]),
+        .Q(x_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[4] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[4]),
+        .Q(x_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[5] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[5]),
+        .Q(x_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[6] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[6]),
+        .Q(x_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[7] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[7]),
+        .Q(x_diff[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[8] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[8]),
+        .Q(x_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[9] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[9]),
+        .Q(x_diff[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h2800000000000014)) 
+    \doa_pair.x_raw[20]_i_1 
+       (.I0(ov[5]),
+        .I1(ov[0]),
+        .I2(ov[1]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .I5(ov[2]),
+        .O(\doa_pair.x_raw[20]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[0] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[16]),
+        .Q(x_raw[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[10] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[26]),
+        .Q(x_raw[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[11] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[27]),
+        .Q(x_raw[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[12] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[28]),
+        .Q(x_raw[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[13] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[29]),
+        .Q(x_raw[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[14] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[30]),
+        .Q(x_raw[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[15] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[31]),
+        .Q(x_raw[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[16] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[32]),
+        .Q(x_raw[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[17] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[33]),
+        .Q(x_raw[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[18] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[34]),
+        .Q(x_raw[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[19] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[35]),
+        .Q(x_raw[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[1] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[17]),
+        .Q(x_raw[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[20] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[36]),
+        .Q(x_raw[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[2] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[18]),
+        .Q(x_raw[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[3] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[19]),
+        .Q(x_raw[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[4] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[20]),
+        .Q(x_raw[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[5] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[21]),
+        .Q(x_raw[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[6] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[22]),
+        .Q(x_raw[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[7] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[23]),
+        .Q(x_raw[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[8] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[24]),
+        .Q(x_raw[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[9] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[25]),
+        .Q(x_raw[9]),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[0] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(p_1_in__0[0]),
+        .D(x__0[0]),
         .Q(x[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -22415,79 +24894,79 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   FDRE \doa_pair.x_reg[10] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[10]_i_1_n_0 ),
+        .D(x__0[10]),
         .Q(x[10]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[11] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[11]_i_1_n_0 ),
+        .D(x__0[11]),
         .Q(x[11]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[12] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[12]_i_1_n_0 ),
+        .D(x__0[12]),
         .Q(x[12]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[13] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[13]_i_1_n_0 ),
+        .D(x__0[13]),
         .Q(x[13]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[14] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[14]_i_1_n_0 ),
+        .D(x__0[14]),
         .Q(x[14]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[15] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[15]_i_1_n_0 ),
+        .D(x__0[15]),
         .Q(x[15]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[16] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[16]_i_1_n_0 ),
+        .D(x__0[16]),
         .Q(x[16]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[17] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[17]_i_1_n_0 ),
+        .D(x__0[17]),
         .Q(x[17]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[18] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[18]_i_2_n_0 ),
+        .D(x__0[18]),
         .Q(x[18]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[19] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(p_1_in__0[19]),
+        .D(x__0[19]),
         .Q(x[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -22495,73 +24974,73 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   FDRE \doa_pair.x_reg[1] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[1]_i_1_n_0 ),
+        .D(x__0[1]),
         .Q(x[1]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[2] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[2]_i_1_n_0 ),
+        .D(x__0[2]),
         .Q(x[2]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[3] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[3]_i_1_n_0 ),
+        .D(x__0[3]),
         .Q(x[3]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[4] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[4]_i_1_n_0 ),
+        .D(x__0[4]),
         .Q(x[4]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[5] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[5]_i_1_n_0 ),
+        .D(x__0[5]),
         .Q(x[5]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[6] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[6]_i_1_n_0 ),
+        .D(x__0[6]),
         .Q(x[6]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[7] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[7]_i_1_n_0 ),
+        .D(x__0[7]),
         .Q(x[7]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[8] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[8]_i_1_n_0 ),
+        .D(x__0[8]),
         .Q(x[8]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[9] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[9]_i_1_n_0 ),
+        .D(x__0[9]),
         .Q(x[9]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   LUT6 #(
     .INIT(64'h0049249249249200)) 
     g0_b0
@@ -22578,34 +25057,33 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
   ps_comp_high_0_0_ila_7 ila_i
        (.clk(clk),
         .probe0(start),
-        .probe1(k),
-        .probe10(prod),
-        .probe11(x),
-        .probe12(x2),
-        .probe13(cp),
-        .probe14(xp),
-        .probe15(sum),
-        .probe16(done),
-        .probe17(fail),
-        .probe18(angle),
-        .probe19(ov),
-        .probe2(phase),
-        .probe20(p),
-        .probe3(counter),
-        .probe4(ind),
-        .probe5(run),
-        .probe6(init),
-        .probe7(add),
-        .probe8(ignore),
-        .probe9(coeff));
+        .probe1(counter),
+        .probe10(has_diff),
+        .probe11(x_diff),
+        .probe12(has_shadow_diff),
+        .probe13(shadow_diff),
+        .probe14(shadow),
+        .probe15(x),
+        .probe16(sum),
+        .probe17(done),
+        .probe18(fail),
+        .probe19(angle),
+        .probe2(run),
+        .probe3(init),
+        .probe4(has_ov),
+        .probe5(ov),
+        .probe6(check_raw),
+        .probe7(x_raw),
+        .probe8(x_abs),
+        .probe9(calc_diff));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_comp_high_0_0_mult_20x20 mul_c_i
-       (.A(coeff),
+       (.A({1'b0,\doa_pair.coeff_reg_n_0_[18] ,1'b0,\doa_pair.coeff_reg_n_0_[16] ,\doa_pair.coeff_reg_n_0_[15] ,\doa_pair.coeff_reg_n_0_[14] ,\doa_pair.coeff_reg_n_0_[13] ,\doa_pair.coeff_reg_n_0_[12] ,\doa_pair.coeff_reg_n_0_[11] ,\doa_pair.coeff_reg_n_0_[10] ,\doa_pair.coeff_reg_n_0_[9] ,\doa_pair.coeff_reg_n_0_[8] ,\doa_pair.coeff_reg_n_0_[7] ,\doa_pair.coeff_reg_n_0_[6] ,\doa_pair.coeff_reg_n_0_[5] ,\doa_pair.coeff_reg_n_0_[4] ,\doa_pair.coeff_reg_n_0_[3] ,\doa_pair.coeff_reg_n_0_[2] ,\doa_pair.coeff_reg_n_0_[1] ,\doa_pair.coeff_reg_n_0_[0] }),
         .B(p),
         .CLK(clk),
-        .P(cp));
+        .P({cp,NLW_mul_c_i_P_UNCONNECTED[18:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
@@ -22613,7 +25091,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
        (.A(k),
         .B(phase),
         .CLK(clk),
-        .P(prod));
+        .P({prod,NLW_mul_doa_i_P_UNCONNECTED[15:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
@@ -22621,151 +25099,151 @@ module ps_comp_high_0_0_doa_pair__xdcDup__1
        (.A(x),
         .B(x),
         .CLK(clk),
-        .P(x2));
+        .P({NLW_mul_x2_i_P_UNCONNECTED[39],x2,NLW_mul_x2_i_P_UNCONNECTED[18:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_comp_high_0_0_mult_20x20 mul_x_i
-       (.A(x2[38:19]),
+       (.A(x2),
         .B(p),
         .CLK(clk),
-        .P(xp));
+        .P({NLW_mul_x_i_P_UNCONNECTED[39],xp,NLW_mul_x_i_P_UNCONNECTED[18:0]}));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_1
+    mul_x_i_i_1
        (.I0(x[19]),
         .I1(init),
         .I2(xp[38]),
         .O(p[19]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_10
+    mul_x_i_i_10
        (.I0(x[10]),
         .I1(init),
         .I2(xp[29]),
         .O(p[10]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_11
+    mul_x_i_i_11
        (.I0(x[9]),
         .I1(init),
         .I2(xp[28]),
         .O(p[9]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_12
+    mul_x_i_i_12
        (.I0(x[8]),
         .I1(init),
         .I2(xp[27]),
         .O(p[8]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_13
+    mul_x_i_i_13
        (.I0(x[7]),
         .I1(init),
         .I2(xp[26]),
         .O(p[7]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_14
+    mul_x_i_i_14
        (.I0(x[6]),
         .I1(init),
         .I2(xp[25]),
         .O(p[6]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_15
+    mul_x_i_i_15
        (.I0(x[5]),
         .I1(init),
         .I2(xp[24]),
         .O(p[5]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_16
+    mul_x_i_i_16
        (.I0(x[4]),
         .I1(init),
         .I2(xp[23]),
         .O(p[4]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_17
+    mul_x_i_i_17
        (.I0(x[3]),
         .I1(init),
         .I2(xp[22]),
         .O(p[3]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_18
+    mul_x_i_i_18
        (.I0(x[2]),
         .I1(init),
         .I2(xp[21]),
         .O(p[2]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_19
+    mul_x_i_i_19
        (.I0(x[1]),
         .I1(init),
         .I2(xp[20]),
         .O(p[1]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_2
+    mul_x_i_i_2
        (.I0(x[18]),
         .I1(init),
         .I2(xp[37]),
         .O(p[18]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_20
+    mul_x_i_i_20
        (.I0(x[0]),
         .I1(init),
         .I2(xp[19]),
         .O(p[0]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_3
+    mul_x_i_i_3
        (.I0(x[17]),
         .I1(init),
         .I2(xp[36]),
         .O(p[17]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_4
+    mul_x_i_i_4
        (.I0(x[16]),
         .I1(init),
         .I2(xp[35]),
         .O(p[16]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_5
+    mul_x_i_i_5
        (.I0(x[15]),
         .I1(init),
         .I2(xp[34]),
         .O(p[15]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_6
+    mul_x_i_i_6
        (.I0(x[14]),
         .I1(init),
         .I2(xp[33]),
         .O(p[14]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_7
+    mul_x_i_i_7
        (.I0(x[13]),
         .I1(init),
         .I2(xp[32]),
         .O(p[13]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_8
+    mul_x_i_i_8
        (.I0(x[12]),
         .I1(init),
         .I2(xp[31]),
         .O(p[12]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_9
+    mul_x_i_i_9
        (.I0(x[11]),
         .I1(init),
         .I2(xp[30]),
@@ -22778,54 +25256,56 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     reset,
     start,
     k,
+    shadow_limit,
     phase,
     done,
     fail,
+    shadow,
     angle);
   input clk;
   input reset;
   input start;
   input [19:0]k;
+  input [19:0]shadow_limit;
   input [19:0]phase;
   output done;
   output fail;
+  output shadow;
   output [19:0]angle;
 
-  (* MARK_DEBUG *) wire add;
+  wire add;
   (* MARK_DEBUG *) wire [19:0]angle;
+  (* MARK_DEBUG *) wire calc_diff;
+  (* MARK_DEBUG *) wire check_raw;
+  wire check_raw__0;
   wire clk;
-  (* MARK_DEBUG *) wire [19:0]coeff;
-  wire [18:0]coeff__0;
+  wire [18:0]coeff;
   (* MARK_DEBUG *) wire [5:0]counter;
   wire [5:0]counter__0;
-  (* MARK_DEBUG *) wire [39:0]cp;
+  wire [39:19]cp;
   wire \doa_pair.add_i_1_n_0 ;
   wire \doa_pair.add_i_2_n_0 ;
   wire \doa_pair.angle[19]_i_1_n_0 ;
-  wire \doa_pair.coeff[11]_i_2_n_0 ;
-  wire \doa_pair.coeff[11]_i_3_n_0 ;
-  wire \doa_pair.coeff[12]_i_2_n_0 ;
-  wire \doa_pair.coeff[13]_i_2_n_0 ;
-  wire \doa_pair.coeff[14]_i_2_n_0 ;
-  wire \doa_pair.coeff[14]_i_3_n_0 ;
-  wire \doa_pair.coeff[14]_i_4_n_0 ;
-  wire \doa_pair.coeff[15]_i_2_n_0 ;
-  wire \doa_pair.coeff[15]_i_3_n_0 ;
-  wire \doa_pair.coeff[15]_i_4_n_0 ;
-  wire \doa_pair.coeff[16]_i_2_n_0 ;
-  wire \doa_pair.coeff[16]_i_3_n_0 ;
-  wire \doa_pair.coeff[16]_i_4_n_0 ;
-  wire \doa_pair.coeff[17]_i_2_n_0 ;
-  wire \doa_pair.coeff[17]_i_3_n_0 ;
-  wire \doa_pair.coeff[18]_i_2_n_0 ;
-  wire \doa_pair.coeff[18]_i_3_n_0 ;
-  wire \doa_pair.coeff[18]_i_4_n_0 ;
-  wire \doa_pair.coeff[1]_i_2_n_0 ;
-  wire \doa_pair.coeff[1]_i_3_n_0 ;
-  wire \doa_pair.coeff[2]_i_2_n_0 ;
-  wire \doa_pair.coeff[2]_i_3_n_0 ;
-  wire \doa_pair.coeff[6]_i_2_n_0 ;
-  wire \doa_pair.coeff[6]_i_3_n_0 ;
+  wire \doa_pair.check_raw_i_2_n_0 ;
+  wire \doa_pair.coeff_reg_n_0_[0] ;
+  wire \doa_pair.coeff_reg_n_0_[10] ;
+  wire \doa_pair.coeff_reg_n_0_[11] ;
+  wire \doa_pair.coeff_reg_n_0_[12] ;
+  wire \doa_pair.coeff_reg_n_0_[13] ;
+  wire \doa_pair.coeff_reg_n_0_[14] ;
+  wire \doa_pair.coeff_reg_n_0_[15] ;
+  wire \doa_pair.coeff_reg_n_0_[16] ;
+  wire \doa_pair.coeff_reg_n_0_[18] ;
+  wire \doa_pair.coeff_reg_n_0_[1] ;
+  wire \doa_pair.coeff_reg_n_0_[2] ;
+  wire \doa_pair.coeff_reg_n_0_[3] ;
+  wire \doa_pair.coeff_reg_n_0_[4] ;
+  wire \doa_pair.coeff_reg_n_0_[5] ;
+  wire \doa_pair.coeff_reg_n_0_[6] ;
+  wire \doa_pair.coeff_reg_n_0_[7] ;
+  wire \doa_pair.coeff_reg_n_0_[8] ;
+  wire \doa_pair.coeff_reg_n_0_[9] ;
+  wire \doa_pair.counter[0]_i_2_n_0 ;
   wire \doa_pair.counter[1]_i_1_n_0 ;
   wire \doa_pair.counter[2]_i_1_n_0 ;
   wire \doa_pair.counter[5]_i_1_n_0 ;
@@ -22833,6 +25313,10 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   wire \doa_pair.done_i_1_n_0 ;
   wire \doa_pair.done_reg0 ;
   wire \doa_pair.fail_i_1_n_0 ;
+  wire \doa_pair.fail_i_3_n_0 ;
+  wire \doa_pair.fail_i_4_n_0 ;
+  wire \doa_pair.has_ov_i_1_n_0 ;
+  wire \doa_pair.has_ov_i_2_n_0 ;
   wire \doa_pair.ignore_i_1_n_0 ;
   wire \doa_pair.ignore_i_2_n_0 ;
   wire \doa_pair.ignore_i_3_n_0 ;
@@ -22841,11 +25325,60 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   wire \doa_pair.ignore_i_6_n_0 ;
   wire \doa_pair.ignore_i_7_n_0 ;
   wire \doa_pair.ignore_i_8_n_0 ;
+  wire \doa_pair.ignore_reg_n_0 ;
+  wire \doa_pair.ind[0]_i_1_n_0 ;
   wire \doa_pair.ind[3]_i_1_n_0 ;
+  wire \doa_pair.ind_reg_n_0_[0] ;
+  wire \doa_pair.ind_reg_n_0_[1] ;
+  wire \doa_pair.ind_reg_n_0_[2] ;
+  wire \doa_pair.ind_reg_n_0_[3] ;
   wire \doa_pair.init_i_1_n_0 ;
   wire \doa_pair.init_i_2_n_0 ;
+  wire \doa_pair.ov[5]_i_1_n_0 ;
   wire \doa_pair.run_i_1_n_0 ;
-  wire \doa_pair.run_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_6_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_7_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_8_n_0 ;
+  wire \doa_pair.shadow_diff[15]_i_9_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[19]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_2_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_3_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_4_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_5_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_6_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_7_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_8_n_0 ;
+  wire \doa_pair.shadow_diff[7]_i_9_n_0 ;
+  wire [19:0]\doa_pair.shadow_diff_reg0 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_0 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_1 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_2 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_3 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_4 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[15]_i_1_n_7 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[19]_i_1_n_7 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_0 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_1 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_2 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_3 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_4 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_5 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_6 ;
+  wire \doa_pair.shadow_diff_reg[7]_i_1_n_7 ;
+  wire \doa_pair.shadow_i_1_n_0 ;
+  wire \doa_pair.shadow_i_2_n_0 ;
+  wire \doa_pair.shadow_i_3_n_0 ;
   wire \doa_pair.sum[15]_i_10_n_0 ;
   wire \doa_pair.sum[15]_i_11_n_0 ;
   wire \doa_pair.sum[15]_i_12_n_0 ;
@@ -22928,50 +25461,67 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   wire \doa_pair.sum_reg[7]_i_1_n_7 ;
   wire \doa_pair.sum_reg[7]_i_1_n_8 ;
   wire \doa_pair.sum_reg[7]_i_1_n_9 ;
-  wire \doa_pair.x[10]_i_1_n_0 ;
-  wire \doa_pair.x[11]_i_1_n_0 ;
-  wire \doa_pair.x[12]_i_1_n_0 ;
-  wire \doa_pair.x[13]_i_1_n_0 ;
-  wire \doa_pair.x[14]_i_1_n_0 ;
-  wire \doa_pair.x[15]_i_1_n_0 ;
-  wire \doa_pair.x[16]_i_1_n_0 ;
-  wire \doa_pair.x[17]_i_1_n_0 ;
-  wire \doa_pair.x[18]_i_1_n_0 ;
-  wire \doa_pair.x[18]_i_2_n_0 ;
   wire \doa_pair.x[19]_i_1_n_0 ;
-  wire \doa_pair.x[1]_i_1_n_0 ;
-  wire \doa_pair.x[2]_i_1_n_0 ;
-  wire \doa_pair.x[3]_i_1_n_0 ;
-  wire \doa_pair.x[4]_i_1_n_0 ;
-  wire \doa_pair.x[5]_i_1_n_0 ;
-  wire \doa_pair.x[6]_i_1_n_0 ;
-  wire \doa_pair.x[7]_i_1_n_0 ;
-  wire \doa_pair.x[8]_i_1_n_0 ;
-  wire \doa_pair.x[9]_i_1_n_0 ;
+  wire \doa_pair.x_abs[0]_i_1_n_0 ;
+  wire \doa_pair.x_abs[10]_i_1_n_0 ;
+  wire \doa_pair.x_abs[11]_i_1_n_0 ;
+  wire \doa_pair.x_abs[12]_i_1_n_0 ;
+  wire \doa_pair.x_abs[13]_i_1_n_0 ;
+  wire \doa_pair.x_abs[14]_i_1_n_0 ;
+  wire \doa_pair.x_abs[15]_i_1_n_0 ;
+  wire \doa_pair.x_abs[16]_i_1_n_0 ;
+  wire \doa_pair.x_abs[17]_i_1_n_0 ;
+  wire \doa_pair.x_abs[18]_i_1_n_0 ;
+  wire \doa_pair.x_abs[19]_i_1_n_0 ;
+  wire \doa_pair.x_abs[1]_i_1_n_0 ;
+  wire \doa_pair.x_abs[2]_i_1_n_0 ;
+  wire \doa_pair.x_abs[3]_i_1_n_0 ;
+  wire \doa_pair.x_abs[4]_i_1_n_0 ;
+  wire \doa_pair.x_abs[5]_i_1_n_0 ;
+  wire \doa_pair.x_abs[6]_i_1_n_0 ;
+  wire \doa_pair.x_abs[7]_i_1_n_0 ;
+  wire \doa_pair.x_abs[8]_i_1_n_0 ;
+  wire \doa_pair.x_abs[9]_i_1_n_0 ;
+  wire \doa_pair.x_raw[20]_i_1_n_0 ;
   (* MARK_DEBUG *) wire done;
   (* MARK_DEBUG *) wire fail;
+  wire fail2_out;
+  wire fail__0;
   wire g0_b0_n_0;
-  (* MARK_DEBUG *) wire ignore;
-  (* MARK_DEBUG *) wire [3:0]ind;
-  wire [3:0]ind__0;
+  (* MARK_DEBUG *) wire has_diff;
+  (* MARK_DEBUG *) wire has_ov;
+  (* MARK_DEBUG *) wire has_shadow_diff;
+  wire [3:1]ind;
   (* MARK_DEBUG *) wire init;
-  (* MARK_DEBUG *) wire [19:0]k;
-  (* MARK_DEBUG *) wire [4:0]ov;
-  wire ov__0;
-  (* MARK_DEBUG *) wire [19:0]p;
+  wire [19:0]k;
+  (* MARK_DEBUG *) wire [5:0]ov;
+  wire [19:0]p;
   wire p_0_in__0;
-  wire [19:0]p_1_in__0;
-  (* MARK_DEBUG *) wire [19:0]phase;
-  (* MARK_DEBUG *) wire [39:0]prod;
+  wire [18:0]p_1_in;
+  wire [19:0]phase;
+  wire [39:16]prod;
   wire reset;
   (* MARK_DEBUG *) wire run;
+  (* MARK_DEBUG *) wire shadow;
+  (* MARK_DEBUG *) wire [19:0]shadow_diff;
+  wire [19:0]shadow_limit;
   (* MARK_DEBUG *) wire start;
   (* MARK_DEBUG *) wire [20:0]sum;
   (* MARK_DEBUG *) wire [19:0]x;
-  (* MARK_DEBUG *) wire [39:0]x2;
-  (* MARK_DEBUG *) wire [39:0]xp;
+  wire [38:19]x2;
+  wire [19:0]x__0;
+  (* MARK_DEBUG *) wire [19:0]x_abs;
+  (* MARK_DEBUG *) wire [18:0]x_diff;
+  (* MARK_DEBUG *) wire [20:0]x_raw;
+  wire [38:19]xp;
+  wire [7:3]\NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [7:4]\NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED ;
   wire [7:4]\NLW_doa_pair.sum_reg[20]_i_1_CO_UNCONNECTED ;
   wire [7:5]\NLW_doa_pair.sum_reg[20]_i_1_O_UNCONNECTED ;
+  wire [18:0]NLW_mul_c_i_P_UNCONNECTED;
+  wire [15:0]NLW_mul_doa_i_P_UNCONNECTED;
+  wire [39:0]NLW_mul_x2_i_P_UNCONNECTED;
+  wire [39:0]NLW_mul_x_i_P_UNCONNECTED;
 
   LUT3 #(
     .INIT(8'hB8)) 
@@ -22981,30 +25531,29 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I2(add),
         .O(\doa_pair.add_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h07E9097EE9707E91)) 
+    .INIT(64'h1E39271EE49C78E5)) 
     \doa_pair.add_i_2 
        (.I0(counter[0]),
-        .I1(counter[2]),
-        .I2(counter[4]),
-        .I3(counter[3]),
+        .I1(counter[4]),
+        .I2(counter[3]),
+        .I3(counter[2]),
         .I4(counter[1]),
         .I5(counter[5]),
         .O(\doa_pair.add_i_2_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.add_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.add_i_1_n_0 ),
         .Q(add),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h0008)) 
+  LUT5 #(
+    .INIT(32'h01000000)) 
     \doa_pair.angle[19]_i_1 
-       (.I0(\doa_pair.run_i_2_n_0 ),
-        .I1(run),
+       (.I0(fail),
+        .I1(reset),
         .I2(start),
-        .I3(reset),
+        .I3(\doa_pair.counter[0]_i_2_n_0 ),
+        .I4(run),
         .O(\doa_pair.angle[19]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.angle_reg[0] 
@@ -23146,466 +25695,324 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .D(sum[9]),
         .Q(angle[9]),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.calc_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(check_raw),
+        .Q(calc_diff),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'h09)) 
+    \doa_pair.check_raw_i_1 
+       (.I0(ov[5]),
+        .I1(ov[4]),
+        .I2(\doa_pair.check_raw_i_2_n_0 ),
+        .O(check_raw__0));
+  LUT6 #(
+    .INIT(64'hC1FFFFFFFFFFFF43)) 
+    \doa_pair.check_raw_i_2 
+       (.I0(check_raw),
+        .I1(ov[1]),
+        .I2(ov[0]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .I5(ov[2]),
+        .O(\doa_pair.check_raw_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.check_raw_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(check_raw__0),
+        .Q(check_raw),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT4 #(
     .INIT(16'hF514)) 
     \doa_pair.coeff[0]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[0]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[0]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT4 #(
     .INIT(16'h8EC7)) 
     \doa_pair.coeff[10]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[10]));
-  LUT5 #(
-    .INIT(32'h8BBB8888)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[10]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT4 #(
+    .INIT(16'h372A)) 
     \doa_pair.coeff[11]_i_1 
-       (.I0(\doa_pair.coeff[11]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[1]),
-        .I4(ind[0]),
-        .O(coeff__0[11]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[11]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b1),
-        .I2(\doa_pair.coeff[11]_i_3_n_0 ),
-        .O(\doa_pair.coeff[11]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[11]_i_3 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[11]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hBBB8BB8B)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[11]));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT4 #(
+    .INIT(16'h00ED)) 
     \doa_pair.coeff[12]_i_1 
-       (.I0(\doa_pair.coeff[12]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[0]),
-        .I4(ind[1]),
-        .O(coeff__0[12]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[12]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[12]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h88BB8B88)) 
+       (.I0(\doa_pair.ind_reg_n_0_[1] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[2] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[12]));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT4 #(
+    .INIT(16'h0026)) 
     \doa_pair.coeff[13]_i_1 
-       (.I0(\doa_pair.coeff[13]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[0]),
-        .I3(ind[2]),
-        .I4(ind[1]),
-        .O(coeff__0[13]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[13]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[13]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[1] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[13]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT4 #(
+    .INIT(16'h0014)) 
     \doa_pair.coeff[14]_i_1 
-       (.I0(\doa_pair.coeff[14]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[14]_i_3_n_0 ),
-        .O(coeff__0[14]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[14]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[14]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[14]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[14]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[14]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \doa_pair.coeff[14]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[14]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[14]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT4 #(
+    .INIT(16'h0004)) 
     \doa_pair.coeff[15]_i_1 
-       (.I0(\doa_pair.coeff[15]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[15]_i_3_n_0 ),
-        .O(coeff__0[15]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[15]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[15]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[15]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[15]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[15]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[15]_i_4 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[15]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[15]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \doa_pair.coeff[16]_i_1 
-       (.I0(\doa_pair.coeff[16]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[16]_i_3_n_0 ),
-        .O(coeff__0[16]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[16]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[16]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[16]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[16]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[16]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[16]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[16]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \doa_pair.coeff[17]_i_1 
-       (.I0(\doa_pair.coeff[17]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[17]_i_3_n_0 ),
-        .O(coeff__0[17]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[17]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[17]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[17]_i_3 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[17]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[16]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \doa_pair.coeff[18]_i_1 
-       (.I0(\doa_pair.coeff[18]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(\doa_pair.coeff[18]_i_3_n_0 ),
-        .O(coeff__0[18]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[18]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[18]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[18]_i_3 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[18]_i_4_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[18]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \doa_pair.coeff[18]_i_4 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[18]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'h84FF8400)) 
+       (.I0(\doa_pair.ind_reg_n_0_[2] ),
+        .I1(\doa_pair.ind_reg_n_0_[1] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[3] ),
+        .O(coeff[18]));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT4 #(
+    .INIT(16'h8600)) 
     \doa_pair.coeff[1]_i_1 
-       (.I0(ind[2]),
-        .I1(ind[0]),
-        .I2(ind[1]),
-        .I3(ind[3]),
-        .I4(\doa_pair.coeff[1]_i_2_n_0 ),
-        .O(coeff__0[1]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[1]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(\doa_pair.coeff[1]_i_3_n_0 ),
-        .O(\doa_pair.coeff[1]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[1]_i_3 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[1]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hBB888BBB)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[1]));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT4 #(
+    .INIT(16'h5095)) 
     \doa_pair.coeff[2]_i_1 
-       (.I0(\doa_pair.coeff[2]_i_2_n_0 ),
-        .I1(ind[3]),
-        .I2(ind[2]),
-        .I3(ind[0]),
-        .I4(ind[1]),
-        .O(coeff__0[2]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[2]_i_2 
-       (.I0(ind[2]),
-        .I1(1'b0),
-        .I2(\doa_pair.coeff[2]_i_3_n_0 ),
-        .O(\doa_pair.coeff[2]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \doa_pair.coeff[2]_i_3 
-       (.I0(ind[0]),
-        .I1(ind[1]),
-        .O(\doa_pair.coeff[2]_i_3_n_0 ));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[0] ),
+        .I3(\doa_pair.ind_reg_n_0_[1] ),
+        .O(coeff[2]));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT4 #(
     .INIT(16'h2F9D)) 
     \doa_pair.coeff[3]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[3]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[3]));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'hDAA6)) 
     \doa_pair.coeff[4]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[4]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[4]));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'h5EE8)) 
     \doa_pair.coeff[5]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[5]));
-  LUT5 #(
-    .INIT(32'h26FF2600)) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[5]));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT4 #(
+    .INIT(16'h0A35)) 
     \doa_pair.coeff[6]_i_1 
-       (.I0(ind[2]),
-        .I1(ind[1]),
-        .I2(ind[0]),
-        .I3(ind[3]),
-        .I4(\doa_pair.coeff[6]_i_2_n_0 ),
-        .O(coeff__0[6]));
-  LUT3 #(
-    .INIT(8'hE4)) 
-    \doa_pair.coeff[6]_i_2 
-       (.I0(ind[2]),
-        .I1(\doa_pair.coeff[6]_i_3_n_0 ),
-        .I2(1'b0),
-        .O(\doa_pair.coeff[6]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \doa_pair.coeff[6]_i_3 
-       (.I0(ind[1]),
-        .I1(ind[0]),
-        .O(\doa_pair.coeff[6]_i_3_n_0 ));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[0] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[2] ),
+        .O(coeff[6]));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT4 #(
     .INIT(16'h22F5)) 
     \doa_pair.coeff[7]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[7]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[7]));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT4 #(
     .INIT(16'h2D17)) 
     \doa_pair.coeff[8]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[8]));
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[8]));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT4 #(
     .INIT(16'hD8E7)) 
     \doa_pair.coeff[9]_i_1 
-       (.I0(ind[3]),
-        .I1(ind[2]),
-        .I2(ind[1]),
-        .I3(ind[0]),
-        .O(coeff__0[9]));
-  (* KEEP = "yes" *) 
+       (.I0(\doa_pair.ind_reg_n_0_[3] ),
+        .I1(\doa_pair.ind_reg_n_0_[2] ),
+        .I2(\doa_pair.ind_reg_n_0_[1] ),
+        .I3(\doa_pair.ind_reg_n_0_[0] ),
+        .O(coeff[9]));
   FDRE \doa_pair.coeff_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[0]),
-        .Q(coeff[0]),
+        .D(coeff[0]),
+        .Q(\doa_pair.coeff_reg_n_0_[0] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[10]),
-        .Q(coeff[10]),
+        .D(coeff[10]),
+        .Q(\doa_pair.coeff_reg_n_0_[10] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[11] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[11]),
-        .Q(coeff[11]),
+        .D(coeff[11]),
+        .Q(\doa_pair.coeff_reg_n_0_[11] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[12] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[12]),
-        .Q(coeff[12]),
+        .D(coeff[12]),
+        .Q(\doa_pair.coeff_reg_n_0_[12] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[13] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[13]),
-        .Q(coeff[13]),
+        .D(coeff[13]),
+        .Q(\doa_pair.coeff_reg_n_0_[13] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[14] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[14]),
-        .Q(coeff[14]),
+        .D(coeff[14]),
+        .Q(\doa_pair.coeff_reg_n_0_[14] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[15] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[15]),
-        .Q(coeff[15]),
+        .D(coeff[15]),
+        .Q(\doa_pair.coeff_reg_n_0_[15] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[16] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[16]),
-        .Q(coeff[16]),
+        .D(coeff[16]),
+        .Q(\doa_pair.coeff_reg_n_0_[16] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \doa_pair.coeff_reg[17] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(coeff__0[17]),
-        .Q(coeff[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[18] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[18]),
-        .Q(coeff[18]),
+        .D(coeff[18]),
+        .Q(\doa_pair.coeff_reg_n_0_[18] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \doa_pair.coeff_reg[19] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(1'b0),
-        .Q(coeff[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[1]),
-        .Q(coeff[1]),
+        .D(coeff[1]),
+        .Q(\doa_pair.coeff_reg_n_0_[1] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[2]),
-        .Q(coeff[2]),
+        .D(coeff[2]),
+        .Q(\doa_pair.coeff_reg_n_0_[2] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[3]),
-        .Q(coeff[3]),
+        .D(coeff[3]),
+        .Q(\doa_pair.coeff_reg_n_0_[3] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[4]),
-        .Q(coeff[4]),
+        .D(coeff[4]),
+        .Q(\doa_pair.coeff_reg_n_0_[4] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[5]),
-        .Q(coeff[5]),
+        .D(coeff[5]),
+        .Q(\doa_pair.coeff_reg_n_0_[5] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[6]),
-        .Q(coeff[6]),
+        .D(coeff[6]),
+        .Q(\doa_pair.coeff_reg_n_0_[6] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[7]),
-        .Q(coeff[7]),
+        .D(coeff[7]),
+        .Q(\doa_pair.coeff_reg_n_0_[7] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[8]),
-        .Q(coeff[8]),
+        .D(coeff[8]),
+        .Q(\doa_pair.coeff_reg_n_0_[8] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.coeff_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(coeff__0[9]),
-        .Q(coeff[9]),
+        .D(coeff[9]),
+        .Q(\doa_pair.coeff_reg_n_0_[9] ),
         .R(1'b0));
   LUT3 #(
     .INIT(8'h9A)) 
     \doa_pair.counter[0]_i_1 
        (.I0(counter[0]),
-        .I1(\doa_pair.run_i_2_n_0 ),
+        .I1(\doa_pair.counter[0]_i_2_n_0 ),
         .I2(run),
         .O(counter__0[0]));
+  LUT6 #(
+    .INIT(64'h0000000800000000)) 
+    \doa_pair.counter[0]_i_2 
+       (.I0(counter[4]),
+        .I1(counter[3]),
+        .I2(counter[2]),
+        .I3(counter[0]),
+        .I4(counter[1]),
+        .I5(counter[5]),
+        .O(\doa_pair.counter[0]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'h6A)) 
     \doa_pair.counter[1]_i_1 
@@ -23640,27 +26047,28 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I4(run),
         .I5(counter[0]),
         .O(counter__0[4]));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     \doa_pair.counter[5]_i_1 
        (.I0(start),
         .I1(reset),
+        .I2(fail),
         .O(\doa_pair.counter[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+  LUT5 #(
+    .INIT(32'h9AAAAAAA)) 
     \doa_pair.counter[5]_i_2 
        (.I0(counter[5]),
-        .I1(counter[0]),
-        .I2(run),
-        .I3(counter[1]),
-        .I4(\doa_pair.counter[5]_i_3_n_0 ),
-        .I5(counter[2]),
+        .I1(\doa_pair.counter[5]_i_3_n_0 ),
+        .I2(counter[2]),
+        .I3(counter[3]),
+        .I4(counter[4]),
         .O(counter__0[5]));
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \doa_pair.counter[5]_i_3 
-       (.I0(counter[4]),
-        .I1(counter[3]),
+       (.I0(counter[0]),
+        .I1(run),
+        .I2(counter[1]),
         .O(\doa_pair.counter[5]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.counter_reg[0] 
@@ -23704,16 +26112,17 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .D(counter__0[5]),
         .Q(counter[5]),
         .R(\doa_pair.counter[5]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     \doa_pair.done_i_1 
        (.I0(start),
         .I1(reset),
+        .I2(fail),
         .O(\doa_pair.done_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \doa_pair.done_i_2 
-       (.I0(\doa_pair.run_i_2_n_0 ),
+       (.I0(\doa_pair.counter[0]_i_2_n_0 ),
         .I1(run),
         .I2(done),
         .O(\doa_pair.done_reg0 ));
@@ -23725,15 +26134,49 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .Q(done),
         .R(\doa_pair.done_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7FFE7FFE00007FFE)) 
+    .INIT(64'hCCB8FFFFCCB80000)) 
     \doa_pair.fail_i_1 
-       (.I0(ov[3]),
-        .I1(ov[2]),
-        .I2(ov[4]),
-        .I3(ov[1]),
-        .I4(ov__0),
+       (.I0(fail2_out),
+        .I1(\doa_pair.fail_i_3_n_0 ),
+        .I2(has_ov),
+        .I3(\doa_pair.fail_i_4_n_0 ),
+        .I4(fail__0),
         .I5(fail),
         .O(\doa_pair.fail_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \doa_pair.fail_i_2 
+       (.I0(has_shadow_diff),
+        .I1(shadow_diff[19]),
+        .O(fail2_out));
+  LUT5 #(
+    .INIT(32'h20000004)) 
+    \doa_pair.fail_i_3 
+       (.I0(ov[2]),
+        .I1(ov[1]),
+        .I2(ov[5]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .O(\doa_pair.fail_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h8001800000018001)) 
+    \doa_pair.fail_i_4 
+       (.I0(ov[5]),
+        .I1(ov[2]),
+        .I2(ov[3]),
+        .I3(ov[4]),
+        .I4(ov[0]),
+        .I5(ov[1]),
+        .O(\doa_pair.fail_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hEAAAAAAB)) 
+    \doa_pair.fail_i_5 
+       (.I0(has_ov),
+        .I1(ov[2]),
+        .I2(ov[3]),
+        .I3(ov[4]),
+        .I4(ov[5]),
+        .O(fail__0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.fail_reg 
@@ -23742,15 +26185,53 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .D(\doa_pair.fail_i_1_n_0 ),
         .Q(fail),
         .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.has_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(calc_diff),
+        .Q(has_diff),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \doa_pair.has_ov_i_1 
+       (.I0(has_ov),
+        .I1(\doa_pair.has_ov_i_2_n_0 ),
+        .I2(counter[1]),
+        .O(\doa_pair.has_ov_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \doa_pair.has_ov_i_2 
+       (.I0(counter[2]),
+        .I1(counter[4]),
+        .I2(counter[5]),
+        .I3(counter[3]),
+        .I4(counter[0]),
+        .O(\doa_pair.has_ov_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.has_ov_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\doa_pair.has_ov_i_1_n_0 ),
+        .Q(has_ov),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.has_shadow_diff_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(has_diff),
+        .Q(has_shadow_diff),
+        .R(1'b0));
   LUT6 #(
-    .INIT(64'hEAAAAAAAAAAAAAAA)) 
+    .INIT(64'hFFFFFFFF80000000)) 
     \doa_pair.ignore_i_1 
-       (.I0(ignore),
-        .I1(run),
-        .I2(add),
-        .I3(xp[38]),
-        .I4(\doa_pair.ignore_i_2_n_0 ),
-        .I5(xp[37]),
+       (.I0(xp[37]),
+        .I1(\doa_pair.ignore_i_2_n_0 ),
+        .I2(xp[38]),
+        .I3(add),
+        .I4(run),
+        .I5(\doa_pair.ignore_reg_n_0 ),
         .O(\doa_pair.ignore_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
@@ -23762,6 +26243,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I4(xp[32]),
         .I5(\doa_pair.ignore_i_5_n_0 ),
         .O(\doa_pair.ignore_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \doa_pair.ignore_i_3 
@@ -23778,6 +26260,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I4(xp[26]),
         .I5(\doa_pair.ignore_i_8_n_0 ),
         .O(\doa_pair.ignore_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT3 #(
     .INIT(8'hD5)) 
     \doa_pair.ignore_i_5 
@@ -23785,6 +26268,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I1(xp[34]),
         .I2(xp[35]),
         .O(\doa_pair.ignore_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \doa_pair.ignore_i_6 
@@ -23801,6 +26285,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I4(xp[22]),
         .I5(xp[23]),
         .O(\doa_pair.ignore_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'hD5)) 
     \doa_pair.ignore_i_8 
@@ -23808,12 +26293,11 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I1(xp[28]),
         .I2(xp[29]),
         .O(\doa_pair.ignore_i_8_n_0 ));
-  (* KEEP = "yes" *) 
   FDRE \doa_pair.ignore_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.ignore_i_1_n_0 ),
-        .Q(ignore),
+        .Q(\doa_pair.ignore_reg_n_0 ),
         .R(\doa_pair.done_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h5554)) 
@@ -23822,7 +26306,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I1(counter[2]),
         .I2(counter[5]),
         .I3(counter[3]),
-        .O(ind__0[0]));
+        .O(\doa_pair.ind[0]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hAAA8)) 
     \doa_pair.ind[1]_i_1 
@@ -23830,7 +26314,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I1(counter[2]),
         .I2(counter[5]),
         .I3(counter[3]),
-        .O(ind__0[1]));
+        .O(ind[1]));
   LUT4 #(
     .INIT(16'hFC4C)) 
     \doa_pair.ind[2]_i_1 
@@ -23838,72 +26322,64 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .I1(counter[4]),
         .I2(counter[3]),
         .I3(counter[5]),
-        .O(ind__0[2]));
+        .O(ind[2]));
   LUT6 #(
-    .INIT(64'h0004249292494904)) 
+    .INIT(64'h0118866100866110)) 
     \doa_pair.ind[3]_i_1 
        (.I0(counter[0]),
-        .I1(counter[1]),
-        .I2(counter[2]),
-        .I3(counter[3]),
-        .I4(counter[5]),
-        .I5(counter[4]),
+        .I1(counter[2]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[1]),
         .O(\doa_pair.ind[3]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hEAAA)) 
     \doa_pair.ind[3]_i_2 
        (.I0(counter[5]),
-        .I1(counter[2]),
-        .I2(counter[4]),
-        .I3(counter[3]),
-        .O(ind__0[3]));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
+        .I1(counter[4]),
+        .I2(counter[3]),
+        .I3(counter[2]),
+        .O(ind[3]));
   FDRE \doa_pair.ind_reg[0] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[0]),
-        .Q(ind[0]),
+        .D(\doa_pair.ind[0]_i_1_n_0 ),
+        .Q(\doa_pair.ind_reg_n_0_[0] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[1] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[1]),
-        .Q(ind[1]),
+        .D(ind[1]),
+        .Q(\doa_pair.ind_reg_n_0_[1] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[2] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[2]),
-        .Q(ind[2]),
+        .D(ind[2]),
+        .Q(\doa_pair.ind_reg_n_0_[2] ),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \doa_pair.ind_reg[3] 
        (.C(clk),
         .CE(\doa_pair.ind[3]_i_1_n_0 ),
-        .D(ind__0[3]),
-        .Q(ind[3]),
+        .D(ind[3]),
+        .Q(\doa_pair.ind_reg_n_0_[3] ),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'hBF01)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFF700000001)) 
     \doa_pair.init_i_1 
-       (.I0(\doa_pair.init_i_2_n_0 ),
+       (.I0(counter[3]),
         .I1(counter[0]),
-        .I2(counter[3]),
-        .I3(init),
+        .I2(counter[5]),
+        .I3(counter[1]),
+        .I4(\doa_pair.init_i_2_n_0 ),
+        .I5(init),
         .O(\doa_pair.init_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+  LUT2 #(
+    .INIT(4'hE)) 
     \doa_pair.init_i_2 
-       (.I0(counter[1]),
-        .I1(counter[4]),
-        .I2(counter[2]),
-        .I3(counter[5]),
+       (.I0(counter[4]),
+        .I1(counter[2]),
         .O(\doa_pair.init_i_2_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -23915,94 +26391,432 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .R(1'b0));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \doa_pair.ov[4]_i_1 
-       (.I0(counter[0]),
-        .I1(counter[3]),
-        .I2(counter[5]),
-        .I3(counter[2]),
-        .I4(counter[4]),
-        .I5(counter[1]),
-        .O(ov__0));
-  LUT6 #(
-    .INIT(64'h0000000000000010)) 
-    \doa_pair.ov[4]_i_2 
-       (.I0(counter[3]),
+    \doa_pair.ov[5]_i_1 
+       (.I0(counter[1]),
         .I1(counter[0]),
-        .I2(counter[1]),
-        .I3(counter[4]),
-        .I4(counter[2]),
-        .I5(counter[5]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[2]),
+        .O(\doa_pair.ov[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000002)) 
+    \doa_pair.ov[5]_i_2 
+       (.I0(counter[1]),
+        .I1(counter[0]),
+        .I2(counter[3]),
+        .I3(counter[5]),
+        .I4(counter[4]),
+        .I5(counter[2]),
         .O(p_0_in__0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[0] 
+  FDRE \doa_pair.ov_reg[0] 
+       (.C(clk),
+        .CE(p_0_in__0),
+        .D(prod[34]),
+        .Q(ov[0]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.ov_reg[1] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[35]),
-        .Q(ov[0]),
-        .S(ov__0));
+        .Q(ov[1]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[1] 
+  FDRE \doa_pair.ov_reg[2] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[36]),
-        .Q(ov[1]),
-        .S(ov__0));
+        .Q(ov[2]),
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[2] 
+  FDRE \doa_pair.ov_reg[3] 
        (.C(clk),
         .CE(p_0_in__0),
         .D(prod[37]),
-        .Q(ov[2]),
-        .S(ov__0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDSE \doa_pair.ov_reg[3] 
-       (.C(clk),
-        .CE(p_0_in__0),
-        .D(prod[38]),
         .Q(ov[3]),
-        .S(ov__0));
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.ov_reg[4] 
        (.C(clk),
         .CE(p_0_in__0),
-        .D(prod[39]),
+        .D(prod[38]),
         .Q(ov[4]),
-        .R(ov__0));
-  LUT3 #(
-    .INIT(8'hBA)) 
+        .R(\doa_pair.ov[5]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDSE \doa_pair.ov_reg[5] 
+       (.C(clk),
+        .CE(p_0_in__0),
+        .D(prod[39]),
+        .Q(ov[5]),
+        .S(\doa_pair.ov[5]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h000000F2)) 
     \doa_pair.run_i_1 
-       (.I0(start),
-        .I1(\doa_pair.run_i_2_n_0 ),
-        .I2(run),
+       (.I0(run),
+        .I1(\doa_pair.counter[0]_i_2_n_0 ),
+        .I2(start),
+        .I3(reset),
+        .I4(fail),
         .O(\doa_pair.run_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000002000)) 
-    \doa_pair.run_i_2 
-       (.I0(counter[4]),
-        .I1(counter[2]),
-        .I2(counter[5]),
-        .I3(counter[3]),
-        .I4(counter[1]),
-        .I5(counter[0]),
-        .O(\doa_pair.run_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \doa_pair.run_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\doa_pair.run_i_1_n_0 ),
         .Q(run),
-        .R(reset));
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_2 
+       (.I0(x_diff[15]),
+        .I1(shadow_limit[15]),
+        .O(\doa_pair.shadow_diff[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_3 
+       (.I0(x_diff[14]),
+        .I1(shadow_limit[14]),
+        .O(\doa_pair.shadow_diff[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_4 
+       (.I0(x_diff[13]),
+        .I1(shadow_limit[13]),
+        .O(\doa_pair.shadow_diff[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_5 
+       (.I0(x_diff[12]),
+        .I1(shadow_limit[12]),
+        .O(\doa_pair.shadow_diff[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_6 
+       (.I0(x_diff[11]),
+        .I1(shadow_limit[11]),
+        .O(\doa_pair.shadow_diff[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_7 
+       (.I0(x_diff[10]),
+        .I1(shadow_limit[10]),
+        .O(\doa_pair.shadow_diff[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_8 
+       (.I0(x_diff[9]),
+        .I1(shadow_limit[9]),
+        .O(\doa_pair.shadow_diff[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[15]_i_9 
+       (.I0(x_diff[8]),
+        .I1(shadow_limit[8]),
+        .O(\doa_pair.shadow_diff[15]_i_9_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \doa_pair.shadow_diff[19]_i_2 
+       (.I0(shadow_limit[19]),
+        .O(\doa_pair.shadow_diff[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_3 
+       (.I0(x_diff[18]),
+        .I1(shadow_limit[18]),
+        .O(\doa_pair.shadow_diff[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_4 
+       (.I0(x_diff[17]),
+        .I1(shadow_limit[17]),
+        .O(\doa_pair.shadow_diff[19]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[19]_i_5 
+       (.I0(x_diff[16]),
+        .I1(shadow_limit[16]),
+        .O(\doa_pair.shadow_diff[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_2 
+       (.I0(x_diff[7]),
+        .I1(shadow_limit[7]),
+        .O(\doa_pair.shadow_diff[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_3 
+       (.I0(x_diff[6]),
+        .I1(shadow_limit[6]),
+        .O(\doa_pair.shadow_diff[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_4 
+       (.I0(x_diff[5]),
+        .I1(shadow_limit[5]),
+        .O(\doa_pair.shadow_diff[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_5 
+       (.I0(x_diff[4]),
+        .I1(shadow_limit[4]),
+        .O(\doa_pair.shadow_diff[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_6 
+       (.I0(x_diff[3]),
+        .I1(shadow_limit[3]),
+        .O(\doa_pair.shadow_diff[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_7 
+       (.I0(x_diff[2]),
+        .I1(shadow_limit[2]),
+        .O(\doa_pair.shadow_diff[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_8 
+       (.I0(x_diff[1]),
+        .I1(shadow_limit[1]),
+        .O(\doa_pair.shadow_diff[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.shadow_diff[7]_i_9 
+       (.I0(x_diff[0]),
+        .I1(shadow_limit[0]),
+        .O(\doa_pair.shadow_diff[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[0] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [0]),
+        .Q(shadow_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[10] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [10]),
+        .Q(shadow_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[11] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [11]),
+        .Q(shadow_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[12] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [12]),
+        .Q(shadow_diff[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[13] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [13]),
+        .Q(shadow_diff[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[14] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [14]),
+        .Q(shadow_diff[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[15] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [15]),
+        .Q(shadow_diff[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[15]_i_1 
+       (.CI(\doa_pair.shadow_diff_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\doa_pair.shadow_diff_reg[15]_i_1_n_0 ,\doa_pair.shadow_diff_reg[15]_i_1_n_1 ,\doa_pair.shadow_diff_reg[15]_i_1_n_2 ,\doa_pair.shadow_diff_reg[15]_i_1_n_3 ,\doa_pair.shadow_diff_reg[15]_i_1_n_4 ,\doa_pair.shadow_diff_reg[15]_i_1_n_5 ,\doa_pair.shadow_diff_reg[15]_i_1_n_6 ,\doa_pair.shadow_diff_reg[15]_i_1_n_7 }),
+        .DI(x_diff[15:8]),
+        .O(\doa_pair.shadow_diff_reg0 [15:8]),
+        .S({\doa_pair.shadow_diff[15]_i_2_n_0 ,\doa_pair.shadow_diff[15]_i_3_n_0 ,\doa_pair.shadow_diff[15]_i_4_n_0 ,\doa_pair.shadow_diff[15]_i_5_n_0 ,\doa_pair.shadow_diff[15]_i_6_n_0 ,\doa_pair.shadow_diff[15]_i_7_n_0 ,\doa_pair.shadow_diff[15]_i_8_n_0 ,\doa_pair.shadow_diff[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[16] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [16]),
+        .Q(shadow_diff[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[17] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [17]),
+        .Q(shadow_diff[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[18] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [18]),
+        .Q(shadow_diff[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[19] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [19]),
+        .Q(shadow_diff[19]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[19]_i_1 
+       (.CI(\doa_pair.shadow_diff_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED [7:3],\doa_pair.shadow_diff_reg[19]_i_1_n_5 ,\doa_pair.shadow_diff_reg[19]_i_1_n_6 ,\doa_pair.shadow_diff_reg[19]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,x_diff[18:16]}),
+        .O({\NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED [7:4],\doa_pair.shadow_diff_reg0 [19:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,\doa_pair.shadow_diff[19]_i_2_n_0 ,\doa_pair.shadow_diff[19]_i_3_n_0 ,\doa_pair.shadow_diff[19]_i_4_n_0 ,\doa_pair.shadow_diff[19]_i_5_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[1] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [1]),
+        .Q(shadow_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[2] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [2]),
+        .Q(shadow_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[3] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [3]),
+        .Q(shadow_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[4] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [4]),
+        .Q(shadow_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[5] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [5]),
+        .Q(shadow_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[6] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [6]),
+        .Q(shadow_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[7] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [7]),
+        .Q(shadow_diff[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \doa_pair.shadow_diff_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\doa_pair.shadow_diff_reg[7]_i_1_n_0 ,\doa_pair.shadow_diff_reg[7]_i_1_n_1 ,\doa_pair.shadow_diff_reg[7]_i_1_n_2 ,\doa_pair.shadow_diff_reg[7]_i_1_n_3 ,\doa_pair.shadow_diff_reg[7]_i_1_n_4 ,\doa_pair.shadow_diff_reg[7]_i_1_n_5 ,\doa_pair.shadow_diff_reg[7]_i_1_n_6 ,\doa_pair.shadow_diff_reg[7]_i_1_n_7 }),
+        .DI(x_diff[7:0]),
+        .O(\doa_pair.shadow_diff_reg0 [7:0]),
+        .S({\doa_pair.shadow_diff[7]_i_2_n_0 ,\doa_pair.shadow_diff[7]_i_3_n_0 ,\doa_pair.shadow_diff[7]_i_4_n_0 ,\doa_pair.shadow_diff[7]_i_5_n_0 ,\doa_pair.shadow_diff[7]_i_6_n_0 ,\doa_pair.shadow_diff[7]_i_7_n_0 ,\doa_pair.shadow_diff[7]_i_8_n_0 ,\doa_pair.shadow_diff[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[8] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [8]),
+        .Q(shadow_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.shadow_diff_reg[9] 
+       (.C(clk),
+        .CE(has_diff),
+        .D(\doa_pair.shadow_diff_reg0 [9]),
+        .Q(shadow_diff[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h8080000000000300)) 
+    \doa_pair.shadow_i_1 
+       (.I0(\doa_pair.shadow_i_2_n_0 ),
+        .I1(ov[5]),
+        .I2(ov[2]),
+        .I3(\doa_pair.shadow_i_3_n_0 ),
+        .I4(ov[4]),
+        .I5(ov[3]),
+        .O(\doa_pair.shadow_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h55DF4080)) 
+    \doa_pair.shadow_i_2 
+       (.I0(ov[1]),
+        .I1(shadow_diff[19]),
+        .I2(has_shadow_diff),
+        .I3(ov[0]),
+        .I4(shadow),
+        .O(\doa_pair.shadow_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'hE6E0A0E0)) 
+    \doa_pair.shadow_i_3 
+       (.I0(ov[1]),
+        .I1(ov[0]),
+        .I2(shadow),
+        .I3(has_shadow_diff),
+        .I4(shadow_diff[19]),
+        .O(\doa_pair.shadow_i_3_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \doa_pair.shadow_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\doa_pair.shadow_i_1_n_0 ),
+        .Q(shadow),
+        .R(1'b0));
   LUT5 #(
     .INIT(32'hF7080000)) 
     \doa_pair.sum[15]_i_10 
        (.I0(cp[34]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[15]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_10_n_0 ));
@@ -24011,7 +26825,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_11 
        (.I0(cp[33]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[14]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_11_n_0 ));
@@ -24020,7 +26834,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_12 
        (.I0(cp[32]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[13]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_12_n_0 ));
@@ -24029,7 +26843,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_13 
        (.I0(cp[31]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[12]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_13_n_0 ));
@@ -24038,7 +26852,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_14 
        (.I0(cp[30]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[11]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_14_n_0 ));
@@ -24047,7 +26861,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_15 
        (.I0(cp[29]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[10]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_15_n_0 ));
@@ -24056,7 +26870,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_16 
        (.I0(cp[28]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[9]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_16_n_0 ));
@@ -24065,14 +26879,14 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[15]_i_17 
        (.I0(cp[27]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[8]),
         .I4(run),
         .O(\doa_pair.sum[15]_i_17_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[34]),
         .I3(run),
@@ -24080,7 +26894,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[33]),
         .I3(run),
@@ -24088,7 +26902,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[32]),
         .I3(run),
@@ -24096,7 +26910,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[31]),
         .I3(run),
@@ -24104,7 +26918,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_6 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[30]),
         .I3(run),
@@ -24112,7 +26926,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_7 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[29]),
         .I3(run),
@@ -24120,7 +26934,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_8 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[28]),
         .I3(run),
@@ -24128,7 +26942,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[15]_i_9 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[27]),
         .I3(run),
@@ -24138,14 +26952,14 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[20]_i_10 
        (.I0(cp[35]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[16]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_10_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[38]),
         .I3(run),
@@ -24153,7 +26967,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[37]),
         .I3(run),
@@ -24161,7 +26975,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[36]),
         .I3(run),
@@ -24169,7 +26983,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[20]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[35]),
         .I3(run),
@@ -24179,7 +26993,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[20]_i_6 
        (.I0(cp[39]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[20]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_6_n_0 ));
@@ -24188,7 +27002,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[20]_i_7 
        (.I0(cp[38]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[19]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_7_n_0 ));
@@ -24197,7 +27011,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[20]_i_8 
        (.I0(cp[37]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[18]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_8_n_0 ));
@@ -24206,7 +27020,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[20]_i_9 
        (.I0(cp[36]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[17]),
         .I4(run),
         .O(\doa_pair.sum[20]_i_9_n_0 ));
@@ -24215,7 +27029,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_10 
        (.I0(cp[26]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[7]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_10_n_0 ));
@@ -24224,7 +27038,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_11 
        (.I0(cp[25]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[6]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_11_n_0 ));
@@ -24233,7 +27047,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_12 
        (.I0(cp[24]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[5]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_12_n_0 ));
@@ -24242,7 +27056,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_13 
        (.I0(cp[23]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[4]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_13_n_0 ));
@@ -24251,7 +27065,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_14 
        (.I0(cp[22]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[3]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_14_n_0 ));
@@ -24260,7 +27074,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_15 
        (.I0(cp[21]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[2]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_15_n_0 ));
@@ -24269,7 +27083,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_16 
        (.I0(cp[20]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[1]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_16_n_0 ));
@@ -24278,14 +27092,14 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
     \doa_pair.sum[7]_i_17 
        (.I0(cp[19]),
         .I1(add),
-        .I2(ignore),
+        .I2(\doa_pair.ignore_reg_n_0 ),
         .I3(sum[0]),
         .I4(run),
         .O(\doa_pair.sum[7]_i_17_n_0 ));
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_2 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[26]),
         .I3(run),
@@ -24293,7 +27107,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_3 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[25]),
         .I3(run),
@@ -24301,7 +27115,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_4 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[24]),
         .I3(run),
@@ -24309,7 +27123,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_5 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[23]),
         .I3(run),
@@ -24317,7 +27131,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_6 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[22]),
         .I3(run),
@@ -24325,7 +27139,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_7 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[21]),
         .I3(run),
@@ -24333,7 +27147,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_8 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[20]),
         .I3(run),
@@ -24341,7 +27155,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   LUT4 #(
     .INIT(16'h4000)) 
     \doa_pair.sum[7]_i_9 
-       (.I0(ignore),
+       (.I0(\doa_pair.ignore_reg_n_0 ),
         .I1(add),
         .I2(cp[19]),
         .I3(run),
@@ -24515,168 +27329,885 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
         .Q(sum[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'hBE)) 
+    .INIT(8'hF6)) 
     \doa_pair.x[0]_i_1 
-       (.I0(prod[16]),
-        .I1(ov[0]),
-        .I2(ov[1]),
-        .O(p_1_in__0[0]));
+       (.I0(ov[5]),
+        .I1(ov[1]),
+        .I2(prod[16]),
+        .O(x__0[0]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[10]_i_1 
-       (.I0(prod[26]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[10]_i_1_n_0 ));
+        .I2(prod[26]),
+        .O(x__0[10]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[11]_i_1 
-       (.I0(prod[27]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[11]_i_1_n_0 ));
+        .I2(prod[27]),
+        .O(x__0[11]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[12]_i_1 
-       (.I0(prod[28]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[12]_i_1_n_0 ));
+        .I2(prod[28]),
+        .O(x__0[12]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[13]_i_1 
-       (.I0(prod[29]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[13]_i_1_n_0 ));
+        .I2(prod[29]),
+        .O(x__0[13]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[14]_i_1 
-       (.I0(prod[30]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[14]_i_1_n_0 ));
+        .I2(prod[30]),
+        .O(x__0[14]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[15]_i_1 
-       (.I0(prod[31]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[15]_i_1_n_0 ));
+        .I2(prod[31]),
+        .O(x__0[15]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[16]_i_1 
-       (.I0(prod[32]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[16]_i_1_n_0 ));
+        .I2(prod[32]),
+        .O(x__0[16]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[17]_i_1 
-       (.I0(prod[33]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[17]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h40000000)) 
+        .I2(prod[33]),
+        .O(x__0[17]));
+  LUT3 #(
+    .INIT(8'hD4)) 
     \doa_pair.x[18]_i_1 
-       (.I0(ov[0]),
-        .I1(ov[3]),
-        .I2(ov[2]),
+       (.I0(ov[5]),
+        .I1(ov[1]),
+        .I2(prod[34]),
+        .O(x__0[18]));
+  LUT6 #(
+    .INIT(64'h8000800180010001)) 
+    \doa_pair.x[19]_i_1 
+       (.I0(ov[5]),
+        .I1(ov[2]),
+        .I2(ov[3]),
         .I3(ov[4]),
         .I4(ov[1]),
-        .O(\doa_pair.x[18]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hBA)) 
-    \doa_pair.x[18]_i_2 
-       (.I0(prod[34]),
-        .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[18]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h8001)) 
-    \doa_pair.x[19]_i_1 
-       (.I0(ov[1]),
-        .I1(ov[4]),
-        .I2(ov[2]),
-        .I3(ov[3]),
+        .I5(ov[0]),
         .O(\doa_pair.x[19]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h8E)) 
     \doa_pair.x[19]_i_2 
-       (.I0(prod[35]),
-        .I1(ov[1]),
-        .I2(ov[0]),
-        .O(p_1_in__0[19]));
+       (.I0(ov[5]),
+        .I1(prod[35]),
+        .I2(ov[1]),
+        .O(x__0[19]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[1]_i_1 
-       (.I0(prod[17]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[1]_i_1_n_0 ));
+        .I2(prod[17]),
+        .O(x__0[1]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[2]_i_1 
-       (.I0(prod[18]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[2]_i_1_n_0 ));
+        .I2(prod[18]),
+        .O(x__0[2]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[3]_i_1 
-       (.I0(prod[19]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[3]_i_1_n_0 ));
+        .I2(prod[19]),
+        .O(x__0[3]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[4]_i_1 
-       (.I0(prod[20]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[4]_i_1_n_0 ));
+        .I2(prod[20]),
+        .O(x__0[4]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[5]_i_1 
-       (.I0(prod[21]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[5]_i_1_n_0 ));
+        .I2(prod[21]),
+        .O(x__0[5]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[6]_i_1 
-       (.I0(prod[22]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[6]_i_1_n_0 ));
+        .I2(prod[22]),
+        .O(x__0[6]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[7]_i_1 
-       (.I0(prod[23]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[7]_i_1_n_0 ));
+        .I2(prod[23]),
+        .O(x__0[7]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[8]_i_1 
-       (.I0(prod[24]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[8]_i_1_n_0 ));
+        .I2(prod[24]),
+        .O(x__0[8]));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hD4)) 
     \doa_pair.x[9]_i_1 
-       (.I0(prod[25]),
+       (.I0(ov[5]),
         .I1(ov[1]),
-        .I2(ov[0]),
-        .O(\doa_pair.x[9]_i_1_n_0 ));
+        .I2(prod[25]),
+        .O(x__0[9]));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[0]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[0]),
+        .O(\doa_pair.x_abs[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[10]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[10]),
+        .O(\doa_pair.x_abs[10]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[11]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[11]),
+        .O(\doa_pair.x_abs[11]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[12]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[12]),
+        .O(\doa_pair.x_abs[12]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[13]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[13]),
+        .O(\doa_pair.x_abs[13]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[14]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[14]),
+        .O(\doa_pair.x_abs[14]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[15]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[15]),
+        .O(\doa_pair.x_abs[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[16]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[16]),
+        .O(\doa_pair.x_abs[16]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[17]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[17]),
+        .O(\doa_pair.x_abs[17]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[18]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[18]),
+        .O(\doa_pair.x_abs[18]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[19]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[19]),
+        .O(\doa_pair.x_abs[19]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[1]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[1]),
+        .O(\doa_pair.x_abs[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[2]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[2]),
+        .O(\doa_pair.x_abs[2]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[3]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[3]),
+        .O(\doa_pair.x_abs[3]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[4]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[4]),
+        .O(\doa_pair.x_abs[4]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[5]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[5]),
+        .O(\doa_pair.x_abs[5]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[6]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[6]),
+        .O(\doa_pair.x_abs[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[7]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[7]),
+        .O(\doa_pair.x_abs[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[8]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[8]),
+        .O(\doa_pair.x_abs[8]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \doa_pair.x_abs[9]_i_1 
+       (.I0(x_raw[20]),
+        .I1(x_raw[9]),
+        .O(\doa_pair.x_abs[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[0] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[0]_i_1_n_0 ),
+        .Q(x_abs[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[10] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[10]_i_1_n_0 ),
+        .Q(x_abs[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[11] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[11]_i_1_n_0 ),
+        .Q(x_abs[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[12] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[12]_i_1_n_0 ),
+        .Q(x_abs[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[13] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[13]_i_1_n_0 ),
+        .Q(x_abs[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[14] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[14]_i_1_n_0 ),
+        .Q(x_abs[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[15] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[15]_i_1_n_0 ),
+        .Q(x_abs[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[16] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[16]_i_1_n_0 ),
+        .Q(x_abs[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[17] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[17]_i_1_n_0 ),
+        .Q(x_abs[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[18] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[18]_i_1_n_0 ),
+        .Q(x_abs[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[19] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[19]_i_1_n_0 ),
+        .Q(x_abs[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[1] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[1]_i_1_n_0 ),
+        .Q(x_abs[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[2] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[2]_i_1_n_0 ),
+        .Q(x_abs[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[3] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[3]_i_1_n_0 ),
+        .Q(x_abs[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[4] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[4]_i_1_n_0 ),
+        .Q(x_abs[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[5] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[5]_i_1_n_0 ),
+        .Q(x_abs[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[6] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[6]_i_1_n_0 ),
+        .Q(x_abs[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[7] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[7]_i_1_n_0 ),
+        .Q(x_abs[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[8] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[8]_i_1_n_0 ),
+        .Q(x_abs[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_abs_reg[9] 
+       (.C(clk),
+        .CE(check_raw),
+        .D(\doa_pair.x_abs[9]_i_1_n_0 ),
+        .Q(x_abs[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[0]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[0]),
+        .O(p_1_in[0]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[10]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[10]),
+        .O(p_1_in[10]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[11]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[11]),
+        .O(p_1_in[11]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[12]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[12]),
+        .O(p_1_in[12]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[13]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[13]),
+        .O(p_1_in[13]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[14]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[14]),
+        .O(p_1_in[14]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[15]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[15]),
+        .O(p_1_in[15]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[16]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[16]),
+        .O(p_1_in[16]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[17]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[17]),
+        .O(p_1_in[17]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[18]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[18]),
+        .O(p_1_in[18]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[1]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[1]),
+        .O(p_1_in[1]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[2]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[2]),
+        .O(p_1_in[2]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[3]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[3]),
+        .O(p_1_in[3]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[4]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[4]),
+        .O(p_1_in[4]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[5]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[5]),
+        .O(p_1_in[5]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[6]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[6]),
+        .O(p_1_in[6]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[7]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[7]),
+        .O(p_1_in[7]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[8]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[8]),
+        .O(p_1_in[8]));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \doa_pair.x_diff[9]_i_1 
+       (.I0(x_abs[19]),
+        .I1(x_abs[9]),
+        .O(p_1_in[9]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[0] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[0]),
+        .Q(x_diff[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[10] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[10]),
+        .Q(x_diff[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[11] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[11]),
+        .Q(x_diff[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[12] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[12]),
+        .Q(x_diff[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[13] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[13]),
+        .Q(x_diff[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[14] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[14]),
+        .Q(x_diff[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[15] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[15]),
+        .Q(x_diff[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[16] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[16]),
+        .Q(x_diff[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[17] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[17]),
+        .Q(x_diff[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[18] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[18]),
+        .Q(x_diff[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[1] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[1]),
+        .Q(x_diff[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[2] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[2]),
+        .Q(x_diff[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[3] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[3]),
+        .Q(x_diff[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[4] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[4]),
+        .Q(x_diff[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[5] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[5]),
+        .Q(x_diff[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[6] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[6]),
+        .Q(x_diff[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[7] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[7]),
+        .Q(x_diff[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[8] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[8]),
+        .Q(x_diff[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_diff_reg[9] 
+       (.C(clk),
+        .CE(calc_diff),
+        .D(p_1_in[9]),
+        .Q(x_diff[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h2800000000000014)) 
+    \doa_pair.x_raw[20]_i_1 
+       (.I0(ov[5]),
+        .I1(ov[0]),
+        .I2(ov[1]),
+        .I3(ov[4]),
+        .I4(ov[3]),
+        .I5(ov[2]),
+        .O(\doa_pair.x_raw[20]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[0] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[16]),
+        .Q(x_raw[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[10] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[26]),
+        .Q(x_raw[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[11] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[27]),
+        .Q(x_raw[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[12] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[28]),
+        .Q(x_raw[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[13] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[29]),
+        .Q(x_raw[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[14] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[30]),
+        .Q(x_raw[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[15] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[31]),
+        .Q(x_raw[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[16] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[32]),
+        .Q(x_raw[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[17] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[33]),
+        .Q(x_raw[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[18] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[34]),
+        .Q(x_raw[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[19] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[35]),
+        .Q(x_raw[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[1] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[17]),
+        .Q(x_raw[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[20] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[36]),
+        .Q(x_raw[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[2] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[18]),
+        .Q(x_raw[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[3] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[19]),
+        .Q(x_raw[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[4] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[20]),
+        .Q(x_raw[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[5] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[21]),
+        .Q(x_raw[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[6] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[22]),
+        .Q(x_raw[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[7] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[23]),
+        .Q(x_raw[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[8] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[24]),
+        .Q(x_raw[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \doa_pair.x_raw_reg[9] 
+       (.C(clk),
+        .CE(\doa_pair.x_raw[20]_i_1_n_0 ),
+        .D(prod[25]),
+        .Q(x_raw[9]),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[0] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(p_1_in__0[0]),
+        .D(x__0[0]),
         .Q(x[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -24684,79 +28215,79 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   FDRE \doa_pair.x_reg[10] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[10]_i_1_n_0 ),
+        .D(x__0[10]),
         .Q(x[10]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[11] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[11]_i_1_n_0 ),
+        .D(x__0[11]),
         .Q(x[11]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[12] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[12]_i_1_n_0 ),
+        .D(x__0[12]),
         .Q(x[12]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[13] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[13]_i_1_n_0 ),
+        .D(x__0[13]),
         .Q(x[13]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[14] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[14]_i_1_n_0 ),
+        .D(x__0[14]),
         .Q(x[14]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[15] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[15]_i_1_n_0 ),
+        .D(x__0[15]),
         .Q(x[15]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[16] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[16]_i_1_n_0 ),
+        .D(x__0[16]),
         .Q(x[16]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[17] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[17]_i_1_n_0 ),
+        .D(x__0[17]),
         .Q(x[17]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[18] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[18]_i_2_n_0 ),
+        .D(x__0[18]),
         .Q(x[18]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[19] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(p_1_in__0[19]),
+        .D(x__0[19]),
         .Q(x[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -24764,73 +28295,73 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   FDRE \doa_pair.x_reg[1] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[1]_i_1_n_0 ),
+        .D(x__0[1]),
         .Q(x[1]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[2] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[2]_i_1_n_0 ),
+        .D(x__0[2]),
         .Q(x[2]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[3] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[3]_i_1_n_0 ),
+        .D(x__0[3]),
         .Q(x[3]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[4] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[4]_i_1_n_0 ),
+        .D(x__0[4]),
         .Q(x[4]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[5] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[5]_i_1_n_0 ),
+        .D(x__0[5]),
         .Q(x[5]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[6] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[6]_i_1_n_0 ),
+        .D(x__0[6]),
         .Q(x[6]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[7] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[7]_i_1_n_0 ),
+        .D(x__0[7]),
         .Q(x[7]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[8] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[8]_i_1_n_0 ),
+        .D(x__0[8]),
         .Q(x[8]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \doa_pair.x_reg[9] 
        (.C(clk),
         .CE(\doa_pair.x[19]_i_1_n_0 ),
-        .D(\doa_pair.x[9]_i_1_n_0 ),
+        .D(x__0[9]),
         .Q(x[9]),
-        .R(\doa_pair.x[18]_i_1_n_0 ));
+        .R(1'b0));
   LUT6 #(
     .INIT(64'h0049249249249200)) 
     g0_b0
@@ -24847,34 +28378,33 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
   ps_comp_high_0_0_ila_7 ila_i
        (.clk(clk),
         .probe0(start),
-        .probe1(k),
-        .probe10(prod),
-        .probe11(x),
-        .probe12(x2),
-        .probe13(cp),
-        .probe14(xp),
-        .probe15(sum),
-        .probe16(done),
-        .probe17(fail),
-        .probe18(angle),
-        .probe19(ov),
-        .probe2(phase),
-        .probe20(p),
-        .probe3(counter),
-        .probe4(ind),
-        .probe5(run),
-        .probe6(init),
-        .probe7(add),
-        .probe8(ignore),
-        .probe9(coeff));
+        .probe1(counter),
+        .probe10(has_diff),
+        .probe11(x_diff),
+        .probe12(has_shadow_diff),
+        .probe13(shadow_diff),
+        .probe14(shadow),
+        .probe15(x),
+        .probe16(sum),
+        .probe17(done),
+        .probe18(fail),
+        .probe19(angle),
+        .probe2(run),
+        .probe3(init),
+        .probe4(has_ov),
+        .probe5(ov),
+        .probe6(check_raw),
+        .probe7(x_raw),
+        .probe8(x_abs),
+        .probe9(calc_diff));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_comp_high_0_0_mult_20x20 mul_c_i
-       (.A(coeff),
+       (.A({1'b0,\doa_pair.coeff_reg_n_0_[18] ,1'b0,\doa_pair.coeff_reg_n_0_[16] ,\doa_pair.coeff_reg_n_0_[15] ,\doa_pair.coeff_reg_n_0_[14] ,\doa_pair.coeff_reg_n_0_[13] ,\doa_pair.coeff_reg_n_0_[12] ,\doa_pair.coeff_reg_n_0_[11] ,\doa_pair.coeff_reg_n_0_[10] ,\doa_pair.coeff_reg_n_0_[9] ,\doa_pair.coeff_reg_n_0_[8] ,\doa_pair.coeff_reg_n_0_[7] ,\doa_pair.coeff_reg_n_0_[6] ,\doa_pair.coeff_reg_n_0_[5] ,\doa_pair.coeff_reg_n_0_[4] ,\doa_pair.coeff_reg_n_0_[3] ,\doa_pair.coeff_reg_n_0_[2] ,\doa_pair.coeff_reg_n_0_[1] ,\doa_pair.coeff_reg_n_0_[0] }),
         .B(p),
         .CLK(clk),
-        .P(cp));
+        .P({cp,NLW_mul_c_i_P_UNCONNECTED[18:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
@@ -24882,7 +28412,7 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
        (.A(k),
         .B(phase),
         .CLK(clk),
-        .P(prod));
+        .P({prod,NLW_mul_doa_i_P_UNCONNECTED[15:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
@@ -24890,151 +28420,151 @@ module ps_comp_high_0_0_doa_pair__xdcDup__2
        (.A(x),
         .B(x),
         .CLK(clk),
-        .P(x2));
+        .P({NLW_mul_x2_i_P_UNCONNECTED[39],x2,NLW_mul_x2_i_P_UNCONNECTED[18:0]}));
   (* CHECK_LICENSE_TYPE = "mult_20x20,mult_gen_v12_0_23,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "mult_gen_v12_0_23,Vivado 2025.1" *) 
   ps_comp_high_0_0_mult_20x20 mul_x_i
-       (.A(x2[38:19]),
+       (.A(x2),
         .B(p),
         .CLK(clk),
-        .P(xp));
+        .P({NLW_mul_x_i_P_UNCONNECTED[39],xp,NLW_mul_x_i_P_UNCONNECTED[18:0]}));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_1
+    mul_x_i_i_1
        (.I0(x[19]),
         .I1(init),
         .I2(xp[38]),
         .O(p[19]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_10
+    mul_x_i_i_10
        (.I0(x[10]),
         .I1(init),
         .I2(xp[29]),
         .O(p[10]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_11
+    mul_x_i_i_11
        (.I0(x[9]),
         .I1(init),
         .I2(xp[28]),
         .O(p[9]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_12
+    mul_x_i_i_12
        (.I0(x[8]),
         .I1(init),
         .I2(xp[27]),
         .O(p[8]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_13
+    mul_x_i_i_13
        (.I0(x[7]),
         .I1(init),
         .I2(xp[26]),
         .O(p[7]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_14
+    mul_x_i_i_14
        (.I0(x[6]),
         .I1(init),
         .I2(xp[25]),
         .O(p[6]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_15
+    mul_x_i_i_15
        (.I0(x[5]),
         .I1(init),
         .I2(xp[24]),
         .O(p[5]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_16
+    mul_x_i_i_16
        (.I0(x[4]),
         .I1(init),
         .I2(xp[23]),
         .O(p[4]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_17
+    mul_x_i_i_17
        (.I0(x[3]),
         .I1(init),
         .I2(xp[22]),
         .O(p[3]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_18
+    mul_x_i_i_18
        (.I0(x[2]),
         .I1(init),
         .I2(xp[21]),
         .O(p[2]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_19
+    mul_x_i_i_19
        (.I0(x[1]),
         .I1(init),
         .I2(xp[20]),
         .O(p[1]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_2
+    mul_x_i_i_2
        (.I0(x[18]),
         .I1(init),
         .I2(xp[37]),
         .O(p[18]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_20
+    mul_x_i_i_20
        (.I0(x[0]),
         .I1(init),
         .I2(xp[19]),
         .O(p[0]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_3
+    mul_x_i_i_3
        (.I0(x[17]),
         .I1(init),
         .I2(xp[36]),
         .O(p[17]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_4
+    mul_x_i_i_4
        (.I0(x[16]),
         .I1(init),
         .I2(xp[35]),
         .O(p[16]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_5
+    mul_x_i_i_5
        (.I0(x[15]),
         .I1(init),
         .I2(xp[34]),
         .O(p[15]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_6
+    mul_x_i_i_6
        (.I0(x[14]),
         .I1(init),
         .I2(xp[33]),
         .O(p[14]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_7
+    mul_x_i_i_7
        (.I0(x[13]),
         .I1(init),
         .I2(xp[32]),
         .O(p[13]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_8
+    mul_x_i_i_8
        (.I0(x[12]),
         .I1(init),
         .I2(xp[31]),
         .O(p[12]));
   LUT3 #(
     .INIT(8'hB8)) 
-    p_inferred_i_9
+    mul_x_i_i_9
        (.I0(x[11]),
         .I1(init),
         .I2(xp[30]),
@@ -25285,25 +28815,33 @@ module ps_comp_high_0_0_ila_6
     probe13,
     probe14,
     probe15,
-    probe16);
+    probe16,
+    probe17,
+    probe18,
+    probe19,
+    probe20);
   (* syn_isclock = "1" *) input clk;
   input [31:0]probe0;
-  input [0:0]probe1;
-  input [19:0]probe2;
-  input [15:0]probe3;
+  input [19:0]probe1;
+  input [0:0]probe2;
+  input [19:0]probe3;
   input [15:0]probe4;
   input [15:0]probe5;
-  input [19:0]probe6;
+  input [15:0]probe6;
   input [19:0]probe7;
   input [19:0]probe8;
-  input [0:0]probe9;
-  input [19:0]probe10;
-  input [0:0]probe11;
+  input [19:0]probe9;
+  input [0:0]probe10;
+  input [19:0]probe11;
   input [0:0]probe12;
   input [0:0]probe13;
-  input [19:0]probe14;
-  input [19:0]probe15;
-  input [19:0]probe16;
+  input [0:0]probe14;
+  input [0:0]probe15;
+  input [0:0]probe16;
+  input [0:0]probe17;
+  input [19:0]probe18;
+  input [19:0]probe19;
+  input [19:0]probe20;
 
 
 endmodule
@@ -25331,30 +28869,28 @@ module ps_comp_high_0_0_ila_7
     probe16,
     probe17,
     probe18,
-    probe19,
-    probe20);
+    probe19);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [19:0]probe1;
-  input [19:0]probe2;
-  input [5:0]probe3;
-  input [3:0]probe4;
-  input [0:0]probe5;
+  input [5:0]probe1;
+  input [0:0]probe2;
+  input [0:0]probe3;
+  input [0:0]probe4;
+  input [5:0]probe5;
   input [0:0]probe6;
-  input [0:0]probe7;
-  input [0:0]probe8;
-  input [19:0]probe9;
-  input [39:0]probe10;
-  input [19:0]probe11;
-  input [39:0]probe12;
-  input [39:0]probe13;
-  input [39:0]probe14;
-  input [20:0]probe15;
-  input [0:0]probe16;
+  input [20:0]probe7;
+  input [19:0]probe8;
+  input [0:0]probe9;
+  input [0:0]probe10;
+  input [18:0]probe11;
+  input [0:0]probe12;
+  input [19:0]probe13;
+  input [0:0]probe14;
+  input [19:0]probe15;
+  input [20:0]probe16;
   input [0:0]probe17;
-  input [19:0]probe18;
-  input [4:0]probe19;
-  input [19:0]probe20;
+  input [0:0]probe18;
+  input [19:0]probe19;
 
 
 endmodule
@@ -25376,7 +28912,6 @@ module ps_comp_high_0_0_ila_7_HD3
     probe18,
     probe19,
     probe2,
-    probe20,
     probe3,
     probe4,
     probe5,
@@ -25386,26 +28921,25 @@ module ps_comp_high_0_0_ila_7_HD3
     probe9);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [19:0]probe1;
-  input [39:0]probe10;
-  input [19:0]probe11;
-  input [39:0]probe12;
-  input [39:0]probe13;
-  input [39:0]probe14;
-  input [20:0]probe15;
-  input [0:0]probe16;
+  input [5:0]probe1;
+  input [0:0]probe10;
+  input [18:0]probe11;
+  input [0:0]probe12;
+  input [19:0]probe13;
+  input [0:0]probe14;
+  input [19:0]probe15;
+  input [20:0]probe16;
   input [0:0]probe17;
-  input [19:0]probe18;
-  input [4:0]probe19;
-  input [19:0]probe2;
-  input [19:0]probe20;
-  input [5:0]probe3;
-  input [3:0]probe4;
-  input [0:0]probe5;
+  input [0:0]probe18;
+  input [19:0]probe19;
+  input [0:0]probe2;
+  input [0:0]probe3;
+  input [0:0]probe4;
+  input [5:0]probe5;
   input [0:0]probe6;
-  input [0:0]probe7;
-  input [0:0]probe8;
-  input [19:0]probe9;
+  input [20:0]probe7;
+  input [19:0]probe8;
+  input [0:0]probe9;
 
 
 endmodule
