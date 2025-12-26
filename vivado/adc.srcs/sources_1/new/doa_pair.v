@@ -1,23 +1,120 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 28.10.2025 23:09:03
-// Design Name: 
-// Module Name: composite
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+
+// ============================================================================
+// Module: doa_pair
+// ============================================================================
+// Description:
+// -----------
+// Direction-of-Arrival (DoA) processing block for a single antenna pair.
+//
+// This module computes an angular contribution from a measured phase
+// difference using a fixed-point polynomial approximation of asin(x).
+// In parallel, it evaluates whether the antenna pair is affected by
+// geometric shadowing based on proximity to endfire reception.
+//
+// The design is fully pipelined with fixed latency and intended to be
+// instantiated multiple times (e.g. NE, NW, EW antenna pairs) operating
+// in parallel.
+//
+// ----------------------------------------------------------------------------
+// Mathematical Model:
+// -------------------
+//   x = k * phase
+//   angle ≈ asin(x)
+//
+// where x is constrained to approximately ±1.5 by saturation logic.
+//
+// ----------------------------------------------------------------------------
+// Fixed-Point Formats:
+// --------------------
+//
+//   phase        : unsigned Q1.19
+//                  - Represents normalized phase difference
+//                  - Nominal range: [-0.5, +0.5]
+//                  - Encoded as unsigned with two’s-complement interpretation
+//
+//   k            : unsigned Q1.19
+//                  - Geometry-dependent scaling factor
+//                  - Converts phase difference into sin(theta)
+//
+//   x            : signed Q1.19
+//                  - Internal scaled phase value
+//
+//   shadow_limit : unsigned Q1.19
+//                  - Threshold applied to |1 − |x||
+//                  - Typically derived as (1 − cos(shadow_angle))
+//
+//   angle        : signed Q1.19
+//                  - Output angular contribution
+//                  - Nominal range: [-0.5, +0.5]
+//
+// ----------------------------------------------------------------------------
+// Output Angle Interpretation:
+// -----------------------------
+// The output 'angle' represents the angular direction of arrival projected
+// onto the axis defined by the antenna pair.
+//
+// Sign convention:
+//   - Positive angle: signal arrives closer to the second antenna
+//   - Negative angle: signal arrives closer to the first antenna
+//
+// The exact physical meaning depends on antenna ordering:
+//   - For a pair (A, B):
+//       angle > 0  → source is closer to antenna B
+//       angle < 0  → source is closer to antenna A
+//
+// Higher-level logic must combine multiple doa_pair outputs (e.g. NE, NW, EW)
+// to resolve a full 2D compass direction.
+//
+// ----------------------------------------------------------------------------
+// Shadow Detection:
+// -----------------
+// Shadowing is detected by evaluating proximity to endfire reception:
+//
+//   shadow_metric ≈ |1 − |x||
+//
+// If:
+//   shadow_metric < shadow_limit
+//
+// then the antenna pair is considered shadowed.
+//
+// To improve timing closure, bitwise inversion is used instead of true
+// subtraction. This introduces at most ±1 LSB error, which is acceptable
+// given the configurable shadow margin.
+//
+// ----------------------------------------------------------------------------
+// Interface:
+// ----------
+// Inputs:
+//   clk           - System clock
+//   reset         - Synchronous reset
+//   start         - Start calculation
+//   k             - Geometry scaling factor (Q1.19)
+//   phase         - Phase difference input (Q1.19)
+//   shadow_limit  - Shadow margin threshold (Q1.19)
+//
+// Outputs:
+//   done          - Calculation complete
+//   fail          - Invalid input or unrecoverable overflow
+//   shadow        - Shadowing detected for this antenna pair
+//   angle         - Signed angular contribution (Q1.19)
+//
+// ----------------------------------------------------------------------------
+// Timing:
+// -------
+// - Fixed latency: 57 clock cycles from 'start' to 'done'
+// - All instances complete simultaneously
+// - No data-dependent stalls
+//
+// ----------------------------------------------------------------------------
+// Notes:
+// ------
+// - Designed for high-frequency FPGA operation
+// - Uses 20x20 DSP multipliers
+// - Safe for synthesis in Vivado
+// - Deterministic control FSM
+//
+// ============================================================================
 
 
 module doa_pair(
@@ -94,30 +191,6 @@ mult_20x20 mul_c_i
   .P(cp)              // output wire [39 : 0] P
 );
 
-	ila_7 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(start),               // input wire [0:0]  probe3
-		.probe1(counter),             // input wire [5:0]  probe3
-		.probe2(run),                 // input wire [0:0]  probe3
-		.probe3(init),                // input wire [0:0]  probe3
-		.probe4(has_ov),              // input wire [0:0]  probe3
-		.probe5(ov),                  // input wire [5:0]  probe3
-		.probe6(check_raw),           // input wire [0:0]  probe3
-		.probe7(x_raw),               // input wire [20:0]  probe3
-		.probe8(x_abs),               // input wire [19:0]  probe3
-		.probe9(calc_diff),          // input wire [0:0]  probe3
-		.probe10(has_diff),           // input wire [0:0]  probe3
-		.probe11(x_diff),             // input wire [18:0]  probe3
-		.probe12(has_shadow_diff),    // input wire [0:0]  probe3
-		.probe13(shadow_diff),        // input wire [19:0]  probe3
-		.probe14(shadow),             // input wire [0:0]  probe3
-		.probe15(x),                  // input wire [19:0]  probe3
-		.probe16(sum),                // input wire [20:0]  probe3
-		.probe17(done),               // input wire [0:0]  probe3
-		.probe18(fail),               // input wire [0:0]  probe3
-		.probe19(angle)               // input wire [19:0]  probe3
-);
-
 generate
   begin : doa_pair
 
@@ -159,6 +232,8 @@ generate
                         counter <= counter + 1;
                     end
                 end
+				else
+					done <= 0;
             end
         end
     end
@@ -327,9 +402,9 @@ generate
         if (calc_diff)
         begin
             if (x_abs[19])
-                x_diff[18:0] <= x_abs[18:0];
+                x_diff <= x_abs[18:0];
             else
-                x_diff[18:0] <= ~x_abs[18:0];
+                x_diff <= ~x_abs[18:0];
             has_diff <= 1;
         end
         else

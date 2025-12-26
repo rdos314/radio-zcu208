@@ -1,24 +1,161 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 28.10.2025 23:09:03
-// Design Name: 
-// Module Name: composite
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
+//------------------------------------------------------------------------------
+// Module: det_signal
+//
+// Description:
+// -----------
+// Signal detection and parameter estimation module operating on narrow-band
+// complex Morlet wavelet output from three antennas (N, E, W).
+//
+// The module detects valid signal bursts, accumulates weighted phase and
+// envelope information using DSP slices, and computes:
+//
+//   • Signal start sample index
+//   • Burst length (number of samples)
+//   • Estimated signal frequency
+//   • Average envelope per antenna (N, E, W)
+//   • Weighted inter-antenna phase differences (NE, NW, EW)
+//
+// Results are reported once per detected burst and validated against
+// configurable envelope, frequency, and DoA error thresholds.
+//
+//------------------------------------------------------------------------------
+// Input Interface:
+// ----------------
+//
+// clk           : System clock.
+// reset         : Global reset (not heavily used internally).
+//
+// active        : Indicates valid input sample on `data`.
+//                 When high, one sample is consumed per clock.
+//
+// data[143:0]   : Packed input sample containing per-antenna envelope,
+//                 phase, and DoA error metrics:
+//
+//   data[15:0]    = env_N   (envelope, North antenna)
+//   data[35:16]   = phase_N (instantaneous phase, North)
+//   data[51:36]   = env_E
+//   data[71:52]   = phase_E
+//   data[87:72]   = env_W
+//   data[107:88]  = phase_W
+//   data[119:108] = err_NE  (DoA phase error N–E)
+//   data[131:120] = err_NW  (DoA phase error N–W)
+//   data[143:132] = err_EW  (DoA phase error E–W)
+//
+//------------------------------------------------------------------------------
+// Configuration Interface (write-only):
+// ------------------------------------
+//
+// config_wr    : Write strobe.
+// config_adr   : Configuration register address.
+// config_data  : Configuration data.
+//
+// Address map:
+//
+//   0 : min_env        [15:0]
+//       Minimum envelope threshold (all antennas must exceed).
+//
+//   1 : min_freq       [19:0]
+//       Minimum accepted frequency.
+//
+//   2 : max_freq       [19:0]
+//       Maximum accepted frequency.
+//
+//   3 : max_doa_diff   [11:0]
+//       Maximum allowed inter-antenna phase error.
+//
+//   4 : min_samples    [8:0]
+//       Minimum required samples for a valid burst.
+//       (Internally stored as min_samples - 1)
+//
+//------------------------------------------------------------------------------
+// Signal Detection Logic:
+// -----------------------
+//
+// A signal burst is considered valid when:
+//
+//   • env_N, env_E, env_W >= min_env
+//   • err_NE, err_NW, err_EW <= max_doa_diff
+//   • sample_count < internal overflow limit
+//
+// Detection is pipelined using run[0..2] stages.
+// A new burst begins when valid conditions are met and accept_new_burst = 1.
+//
+//------------------------------------------------------------------------------
+// Accumulation and DSP Usage:
+// ---------------------------
+//
+// During an active burst:
+//
+//   • Envelope sums:
+//       env_sum_N/E/W += env_N/E/W
+//
+//   • Phase increments:
+//       diff_phase_X = phase_X[n] - phase_X[n-1]
+//
+//   • Frequency estimation:
+//       Weighted sum of phase increments using envelope weighting:
+//
+//         dsp_sum_X += diff_phase_X * env_X
+//
+//   • Inter-antenna phase estimation:
+//       Weighted sums of phase differences:
+//
+//         (phase_N - phase_E) * (env_N + env_E)
+//         (phase_N - phase_W) * (env_N + env_W)
+//         (phase_E - phase_W) * (env_E + env_W)
+//
+// All accumulation is implemented using DSP48 blocks.
+// acc_reset synchronously clears DSP accumulators at burst start.
+//
+//------------------------------------------------------------------------------
+// Division and Post-Processing:
+// ------------------------------
+//
+// When a burst ends and minimum sample count is met:
+//
+//   • Frequency estimate:
+//       freq = (Σ weighted phase increments) / (Σ envelopes)
+//
+//   • Average envelope per antenna:
+//       avg_env_X = env_sum_X / sample_count
+//
+//   • Inter-antenna phase differences:
+//       phase_XY = (Σ weighted phase_XY) / (Σ env_XY)
+//
+// All divisions are performed using AXI-stream divider IPs.
+// Divider inputs are aligned to byte boundaries (48-bit dividend,
+// 32-bit divisor).
+//
+// A fixed post-accumulation latency is enforced using div_delay and
+// div_counter to ensure DSP results are stable before division.
+//
+//------------------------------------------------------------------------------
+// Output Interface:
+// -----------------
+//
+// signal_sample   : Sample index where burst started.
+// signal_size     : Number of samples in burst.
+// signal_freq     : Estimated frequency (20-bit).
+// signal_env_N/E/W: Average envelope per antenna.
+// signal_phase_NE : Weighted phase difference N–E.
+// signal_phase_NW : Weighted phase difference N–W.
+// signal_phase_EW : Weighted phase difference E–W.
+// signal_done     : Pulsed high for one clock when outputs are valid.
+//
+// Output is only asserted if:
+//   min_freq <= signal_freq <= max_freq
+//
+//------------------------------------------------------------------------------
+// Notes:
+// ------
+// • diff_phase values are assumed non-negative due to narrow-band Morlet
+//   filtering; negative values would indicate aliasing above Fs/2.
+//
+// • accept_new_burst prevents accumulator reset until all pipeline stages
+//   have safely completed.
+//
+//------------------------------------------------------------------------------
 
 module det_signal(
     input wire clk,
@@ -288,44 +425,6 @@ div_env div_env_W_i (
   .m_axis_dout_tvalid(valid_env_W),                 // output wire m_axis_dout_tvalid
   .m_axis_dout_tdata(div_env_W)                     // output wire [39 : 0] m_axis_dout_tdata
 );
-
-	ila_3 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(active),              // input wire [0:0]  probe3
-		.probe1(env_sum_N),           // input wire [23:0]  probe3
-		.probe2(env_sum_E),           // input wire [23:0]  probe3
-		.probe3(env_sum_W),           // input wire [23:0]  probe3
-		.probe4(freq),                // input wire [19:0]  probe3
-		.probe5(div_env_sum_N),      // input wire [31:0]  probe3
-		.probe6(div_env_sum_E),      // input wire [31:0]  probe3
-		.probe7(div_env_sum_W),      // input wire [31:0]  probe3
-		.probe8(valid_env_N),        // input wire [0:0]  probe3
-		.probe9(valid_env_E),        // input wire [0:0]  probe3
-		.probe10(valid_env_W),        // input wire [0:0]  probe3
-		.probe11(avg_env_N),          // input wire [15:0]  probe3
-		.probe12(avg_env_E),          // input wire [15:0]  probe3
-		.probe13(avg_env_W),          // input wire [15:0]  probe3
-		.probe14(has_signal),         // input wire [0:0]  probe3
-		.probe15(valid_env),          // input wire [0:0]  probe3
-		.probe16(valid_err),          // input wire [0:0]  probe3
-		.probe17(err_count),          // input wire [1:0]  probe3
-		.probe18(sample_count),       // input wire [8:0]  probe3
-		.probe19(sample_count_ok),    // input wire [0:0]  probe3
-		.probe20(accept_new_burst),   // input wire [0:0]  probe3
-		.probe21(acc_reset),          // input wire [0:0]  probe3
-		.probe22(start_proc),         // input wire [0:0]  probe3
-		.probe23(proc_signal),        // input wire [0:0]  probe3
-		.probe24(div_start),          // input wire [0:0]  probe3
-		.probe25(div_delay),          // input wire [3:0]  probe3
-		.probe26(div_counter),        // input wire [5:0]  probe3
-		.probe27(min_freq),           // input wire [19:0]  probe3
-		.probe28(max_freq),           // input wire [19:0]  probe3
-		.probe29(min_freq_diff),      // input wire [20:0]  probe3
-		.probe30(max_freq_diff),      // input wire [20:0]  probe3
-		.probe31(div_counter),        // input wire [5:0]  probe3
-		.probe32(proc_done),          // input wire [0:0]  probe3
-		.probe33(signal_done)         // input wire [0:0]  probe3
-	);
 
 generate
   begin : det_signal

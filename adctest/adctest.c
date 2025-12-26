@@ -12,7 +12,7 @@
 #define RAD2DEG         (180.0 / PI)
 #define SPEED_OF_LIGHT  299792458.0 // m/s
 #define LOW_DIST        2.0 // m
-#define HIGH_DIST       1.0 // m
+#define HIGH_DIST       0.5 // m
 #define FS              4000.0
 
 #define CMD_LOAD		1
@@ -387,12 +387,12 @@ int main()
     LoadConfig();
 
 	LoadLowZero(46.0, 30.0);
-	LoadLowMorlet(46.0, 5.0, 25000, 290.0);
+	LoadLowMorlet(46.0, 5.0, 25000, 90.0);
 //	LoadLowCos(46.0, 30.0, 25000, 45.0);
 	LoadLowZero(46.0, 30.0);
 
 	LoadHighZero(189.0, 120.0);
-	LoadHighMorlet(189.0, 20.0, 25000, 290.0);
+	LoadHighMorlet(189.0, 20.0, 25000, 90.0);
 //	LoadHighCos(189.0, 120.0, 25000, 45.0);
 	LoadHighZero(189.0, 120.0);
 
