@@ -65,8 +65,8 @@ module comp_low(
   wire [15:0] env_E;
   wire [15:0] env_W;
   wire [19:0] phase_NE;
-  wire [19:0] phase_NW;
   wire [19:0] phase_EW;
+  wire [19:0] phase_WN;
   wire burst;
   
   reg [15:0] raw_N0;
@@ -132,8 +132,8 @@ det_signal det_sig_i (
     .signal_env_E(env_E),
     .signal_env_W(env_W),
     .signal_phase_NE(phase_NE),
-    .signal_phase_NW(phase_NW),
     .signal_phase_EW(phase_EW),
+    .signal_phase_WN(phase_WN),
     .signal_done(burst)
 );
 
@@ -149,8 +149,8 @@ doa_calc doa_calc_i (
     .env_E(env_E),
     .env_W(env_W),
     .phase_NE(phase_NE),
-    .phase_NW(phase_NW),
-    .phase_EW(phase_EW)
+    .phase_EW(phase_EW),
+    .phase_WN(phase_WN)
 );
 
 generate

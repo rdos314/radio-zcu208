@@ -14,7 +14,7 @@
 //   • Burst length (number of samples)
 //   • Estimated signal frequency
 //   • Average envelope per antenna (N, E, W)
-//   • Weighted inter-antenna phase differences (NE, NW, EW)
+//   • Weighted inter-antenna phase differences (NE, EW, WN)
 //
 // Results are reported once per detected burst and validated against
 // configurable envelope, frequency, and DoA error thresholds.
@@ -39,8 +39,8 @@
 //   data[87:72]   = env_W
 //   data[107:88]  = phase_W
 //   data[119:108] = err_NE  (DoA phase error N–E)
-//   data[131:120] = err_NW  (DoA phase error N–W)
 //   data[143:132] = err_EW  (DoA phase error E–W)
+//   data[131:120] = err_WN  (DoA phase error W–N)
 //
 //------------------------------------------------------------------------------
 // Configuration Interface (write-only):
@@ -75,7 +75,7 @@
 // A signal burst is considered valid when:
 //
 //   • env_N, env_E, env_W >= min_env
-//   • err_NE, err_NW, err_EW <= max_doa_diff
+//   • err_NE, err_EW, err_WN <= max_doa_diff
 //   • sample_count < internal overflow limit
 //
 // Detection is pipelined using run[0..2] stages.
@@ -138,9 +138,9 @@
 // signal_size     : Number of samples in burst.
 // signal_freq     : Estimated frequency (20-bit).
 // signal_env_N/E/W: Average envelope per antenna.
-// signal_phase_NE : Weighted phase difference N–E.
-// signal_phase_NW : Weighted phase difference N–W.
+// signal_phase_NE : Weighted phase difference N-E.
 // signal_phase_EW : Weighted phase difference E–W.
+// signal_phase_WN : Weighted phase difference W-N.
 // signal_done     : Pulsed high for one clock when outputs are valid.
 //
 // Output is only asserted if:
@@ -175,8 +175,8 @@ module det_signal(
     output reg [15:0] signal_env_E,
     output reg [15:0] signal_env_W,
     output reg [19:0] signal_phase_NE,
-    output reg [19:0] signal_phase_NW,
     output reg [19:0] signal_phase_EW,
+    output reg [19:0] signal_phase_WN,
     output reg signal_done
     );
   
@@ -252,12 +252,12 @@ module det_signal(
   
   reg [12:0] err_NE;
   reg [12:0] diff_err_NE;
-  
-  reg [12:0] err_NW;
-  reg [12:0] diff_err_NW;
 
   reg [12:0] err_EW;
   reg [12:0] diff_err_EW;
+  
+  reg [12:0] err_WN;
+  reg [12:0] diff_err_WN;
 
   reg [3:0] div_delay;
   reg [5:0] div_counter;
@@ -272,15 +272,6 @@ module det_signal(
   wire [79:0] div_phase_NE;
   wire [19:0] phase_NE = div_phase_NE[51:32];
 
-  reg [19:0] dsp_phase_NW;
-  reg [17:0] env_NW;
-  wire [47:0] dsp_sum_NW;
-  reg [47:0] div_phase_sum_NW;
-  reg [31:0] div_env_sum_NW;
-  wire valid_phase_NW;
-  wire [79:0] div_phase_NW;
-  wire [19:0] phase_NW = div_phase_NW[51:32];
-
   reg [19:0] dsp_phase_EW;
   reg [17:0] env_EW;
   wire [47:0] dsp_sum_EW;
@@ -289,6 +280,15 @@ module det_signal(
   wire valid_phase_EW;
   wire [79:0] div_phase_EW;
   wire [19:0] phase_EW = div_phase_EW[51:32];
+
+  reg [19:0] dsp_phase_WN;
+  reg [17:0] env_WN;
+  wire [47:0] dsp_sum_WN;
+  reg [47:0] div_phase_sum_WN;
+  reg [31:0] div_env_sum_WN;
+  wire valid_phase_WN;
+  wire [79:0] div_phase_WN;
+  wire [19:0] phase_WN = div_phase_WN[51:32];
 
   reg [31:0] sample_counter;
   reg [31:0] start_sample;
@@ -340,19 +340,19 @@ dsp_phase_env dsp_phase_env_NE (
   .SCLRP(acc_reset)    // input wire SCLRP
 );
 
-dsp_phase_env dsp_phase_env_NW (
-  .CLK(clk),           // input wire CLK
-  .A(dsp_phase_NW),    // input wire [19 : 0] A
-  .B(env_NW),          // input wire [17 : 0] B
-  .P(dsp_sum_NW),      // output wire [47 : 0] P
-  .SCLRP(acc_reset)    // input wire SCLRP
-);
-
 dsp_phase_env dsp_phase_env_EW (
   .CLK(clk),           // input wire CLK
   .A(dsp_phase_EW),    // input wire [19 : 0] A
   .B(env_EW),          // input wire [17 : 0] B
   .P(dsp_sum_EW),      // output wire [47 : 0] P
+  .SCLRP(acc_reset)    // input wire SCLRP
+);
+
+dsp_phase_env dsp_phase_env_WN (
+  .CLK(clk),           // input wire CLK
+  .A(dsp_phase_WN),    // input wire [19 : 0] A
+  .B(env_WN),          // input wire [17 : 0] B
+  .P(dsp_sum_WN),      // output wire [47 : 0] P
   .SCLRP(acc_reset)    // input wire SCLRP
 );
 
@@ -376,16 +376,6 @@ div_weighted div_phase_NE_i (
   .m_axis_dout_tdata(div_phase_NE)                  // output wire [79 : 0] m_axis_dout_tdata
 );
 
-div_weighted div_phase_NW_i (
-  .aclk(clk),                                       // input wire aclk
-  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
-  .s_axis_divisor_tdata(div_env_sum_NW),            // input wire [31 : 0] s_axis_divisor_tdata
-  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
-  .s_axis_dividend_tdata(div_phase_sum_NW),         // input wire [47 : 0] s_axis_dividend_tdata
-  .m_axis_dout_tvalid(valid_phase_NW),              // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(div_phase_NW)                  // output wire [79 : 0] m_axis_dout_tdata
-);
-
 div_weighted div_phase_EW_i (
   .aclk(clk),                                       // input wire aclk
   .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
@@ -394,6 +384,16 @@ div_weighted div_phase_EW_i (
   .s_axis_dividend_tdata(div_phase_sum_EW),         // input wire [47 : 0] s_axis_dividend_tdata
   .m_axis_dout_tvalid(valid_phase_EW),              // output wire m_axis_dout_tvalid
   .m_axis_dout_tdata(div_phase_EW)                  // output wire [79 : 0] m_axis_dout_tdata
+);
+
+div_weighted div_phase_WN_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
+  .s_axis_divisor_tdata(div_env_sum_WN),            // input wire [31 : 0] s_axis_divisor_tdata
+  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
+  .s_axis_dividend_tdata(div_phase_sum_WN),         // input wire [47 : 0] s_axis_dividend_tdata
+  .m_axis_dout_tvalid(valid_phase_WN),              // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(div_phase_WN)                  // output wire [79 : 0] m_axis_dout_tdata
 );
 
 div_env div_env_N_i (
@@ -463,10 +463,10 @@ generate
             
             err_NE[11:0] <= data[119:108];
             err_NE[12] <= 0;
-            err_NW[11:0] <= data[131:120];
-            err_NW[12] <= 0;
-            err_EW[11:0] <= data[143:132];            
+            err_EW[11:0] <= data[131:120];
             err_EW[12] <= 0;
+            err_WN[11:0] <= data[143:132];            
+            err_WN[12] <= 0;
         end
         else
             run[0] <= 0;
@@ -487,8 +487,8 @@ generate
             diff_env_W <= min_env - env_W;
             
             diff_err_NE <= err_NE - max_doa_diff;
-            diff_err_NW <= err_NW - max_doa_diff;
             diff_err_EW <= err_EW - max_doa_diff;
+            diff_err_WN <= err_WN - max_doa_diff;
         end
         else
             run[1] <= 0;
@@ -501,7 +501,7 @@ generate
             run[2] <= 1;
 
             valid_env <= diff_env_N[16] & diff_env_E[16] & diff_env_W[16];
-            valid_err <= diff_err_NE[12] & diff_err_NW[12] & diff_err_EW[12];
+            valid_err <= diff_err_NE[12] & diff_err_EW[12] & diff_err_WN[12];
 
             if (sample_count == 9'b111110000)
                 valid_count <= 0;
@@ -642,14 +642,14 @@ generate
         if (has_signal)
         begin
             dsp_phase_NE <= phase_N - phase_E;
-            dsp_phase_NW <= phase_N - phase_W;
             dsp_phase_EW <= phase_E - phase_W;
+            dsp_phase_WN <= phase_W - phase_N;
         end
         else
         begin
             dsp_phase_NE <= 0;
-            dsp_phase_NW <= 0;
             dsp_phase_EW <= 0;
+            dsp_phase_WN <= 0;
         end
     end
 
@@ -658,14 +658,14 @@ generate
         if (has_signal)
         begin
             env_NE <= {1'b0, env_N} + {1'b0, env_E};
-            env_NW <= {1'b0, env_N} + {1'b0, env_W};
             env_EW <= {1'b0, env_E} + {1'b0, env_W};
+            env_WN <= {1'b0, env_W} + {1'b0, env_N};
         end
         else
         begin
             env_NE <= 0;
-            env_NW <= 0;
             env_EW <= 0;
+            env_WN <= 0;
         end
     end
 
@@ -687,8 +687,8 @@ generate
                         div_env_all <= {8'b00000000, env_sum_W};
 
                         div_env_sum_NE <= {8'b00000000, env_sum_N} + {8'b00000000, env_sum_E};
-                        div_env_sum_NW <= {8'b00000000, env_sum_N} + {8'b00000000, env_sum_W};
                         div_env_sum_EW <= {8'b00000000, env_sum_E} + {8'b00000000, env_sum_W};
+                        div_env_sum_WN <= {8'b00000000, env_sum_W} + {8'b00000000, env_sum_N};
 
                         div_start <= 0;
                         div_delay <= div_delay + 1;
@@ -700,8 +700,8 @@ generate
                         div_env_all <= div_env_all + div_env_NE;
 
 						div_phase_sum_NE <= dsp_sum_NE;
-						div_phase_sum_NW <= dsp_sum_NW;
 						div_phase_sum_EW <= dsp_sum_EW;
+						div_phase_sum_WN <= dsp_sum_WN;
                         
                         div_lo_freq_sum <= {2'b00, dsp_sum_N[23:0]} + {2'b00, dsp_sum_E[23:0]};
                         div_hi_freq_sum <= dsp_sum_N[47:24] + dsp_sum_E[47:24];
@@ -780,8 +780,8 @@ generate
                         signal_env_E <= avg_env_E;
                         signal_env_W <= avg_env_W;
                         signal_phase_NE <= phase_NE;
-                        signal_phase_NW <= phase_NW;
                         signal_phase_EW <= phase_EW;
+                        signal_phase_WN <= phase_WN;
                         signal_done <= 1;
                     end
                     proc_done <= 1;

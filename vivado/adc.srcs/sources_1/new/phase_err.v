@@ -38,8 +38,8 @@ module phase_err(
     output reg [19:0] phase_out_W,
 
     output reg [11:0] err_NE,
-    output reg [11:0] err_NW,
-    output reg [11:0] err_EW
+    output reg [11:0] err_EW,
+    output reg [11:0] err_WN
     );
 
     reg valid_1;    
@@ -67,20 +67,20 @@ module phase_err(
     reg [19:0] phase_W_3;
     
     reg [19:0] raw_diff_NE;
-    reg [19:0] raw_diff_NW;
     reg [19:0] raw_diff_EW;
+    reg [19:0] raw_diff_WN;
 
     reg [18:0] prev_NE;
-    reg [18:0] prev_NW;
     reg [18:0] prev_EW;
+    reg [18:0] prev_WN;
 
     reg [18:0] diff_NE;
-    reg [18:0] diff_NW;
     reg [18:0] diff_EW;
+    reg [18:0] diff_WN;
 
     reg [18:0] raw_err_NE;
-    reg [18:0] raw_err_NW;
     reg [18:0] raw_err_EW;
+    reg [18:0] raw_err_WN;
 
 /*    
 ila_7 ila_i (
@@ -94,19 +94,19 @@ ila_7 ila_i (
 		.probe6(phase_out_E),          // input wire [19:0]  probe3
 		.probe7(phase_out_W),          // input wire [19:0]  probe3
 		.probe8(raw_diff_NE),          // input wire [19:0]  probe3
-		.probe9(raw_diff_NW),          // input wire [19:0]  probe3
+		.probe9(raw_diff_WN),          // input wire [19:0]  probe3
 		.probe10(raw_diff_EW),         // input wire [19:0]  probe3
 		.probe11(prev_NE),             // input wire [19:0]  probe3
-		.probe12(prev_NW),             // input wire [19:0]  probe3
+		.probe12(prev_WN),             // input wire [19:0]  probe3
 		.probe13(prev_EW),             // input wire [19:0]  probe3
 		.probe14(diff_NE),             // input wire [18:0]  probe3
-		.probe15(diff_NW),             // input wire [18:0]  probe3
+		.probe15(diff_WN),             // input wire [18:0]  probe3
 		.probe16(diff_EW),             // input wire [18:0]  probe3
 		.probe17(raw_err_NE),          // input wire [18:0]  probe3
-		.probe18(raw_err_NW),          // input wire [18:0]  probe3
+		.probe18(raw_err_WN),          // input wire [18:0]  probe3
 		.probe19(raw_err_EW),          // input wire [18:0]  probe3
 		.probe20(err_NE),              // input wire [11:0]  probe3
-		.probe21(err_NW),              // input wire [11:0]  probe3
+		.probe21(err_WN),              // input wire [11:0]  probe3
 		.probe22(err_EW)               // input wire [11:0]  probe3
     );
 */
@@ -128,8 +128,8 @@ generate
     always @(posedge clk) 
     begin
         raw_diff_NE <= phase_in_N - phase_in_E;
-        raw_diff_NW <= phase_in_N - phase_in_W;
         raw_diff_EW <= phase_in_E - phase_in_W;
+        raw_diff_WN <= phase_in_W - phase_in_N;
     end
 
     always @(posedge clk) 
@@ -153,14 +153,6 @@ generate
 
     always @(posedge clk) 
     begin
-        if (raw_diff_NW[19])
-            diff_NW <= ~raw_diff_NW[18:0];
-        else
-            diff_NW <= raw_diff_NW[18:0];
-    end
-
-    always @(posedge clk) 
-    begin
         if (raw_diff_EW[19])
             diff_EW <= ~raw_diff_EW[18:0];
         else
@@ -169,17 +161,25 @@ generate
 
     always @(posedge clk) 
     begin
+        if (raw_diff_WN[19])
+            diff_WN <= ~raw_diff_WN[18:0];
+        else
+            diff_WN <= raw_diff_WN[18:0];
+    end
+
+    always @(posedge clk) 
+    begin
         if (valid_2)
         begin
             prev_NE <= diff_NE;
-            prev_NW <= diff_NW;
             prev_EW <= diff_EW;
+            prev_WN <= diff_WN;
         end
         else
         begin
             prev_NE <= 0;
-            prev_NW <= 0;
             prev_EW <= 0;
+            prev_WN <= 0;
         end
     end
 
@@ -197,8 +197,8 @@ generate
     always @(posedge clk) 
     begin
         raw_err_NE <= diff_NE - prev_NE;
-        raw_err_NW <= diff_NW - prev_NW;
         raw_err_EW <= diff_EW - prev_EW;
+        raw_err_WN <= diff_WN - prev_WN;
     end
 
     always @(posedge clk) 
@@ -223,19 +223,19 @@ generate
 
     always @(posedge clk) 
     begin
-        case (raw_err_NW[18:12])
-            7'b0000000: err_NW <= raw_err_NW[11:0];
-            7'b1111111: err_NW <= ~raw_err_NW[11:0];
-            default: err_NW <= 12'hFFF;
+        case (raw_err_EW[18:12])
+            7'b0000000: err_EW <= raw_err_EW[11:0];
+            7'b1111111: err_EW <= ~raw_err_EW[11:0];
+            default: err_EW <= 12'hFFF;
         endcase
     end
 
     always @(posedge clk) 
     begin
-        case (raw_err_EW[18:12])
-            7'b0000000: err_EW <= raw_err_EW[11:0];
-            7'b1111111: err_EW <= ~raw_err_EW[11:0];
-            default: err_EW <= 12'hFFF;
+        case (raw_err_WN[18:12])
+            7'b0000000: err_WN <= raw_err_WN[11:0];
+            7'b1111111: err_WN <= ~raw_err_WN[11:0];
+            default: err_WN <= 12'hFFF;
         endcase
     end
 	

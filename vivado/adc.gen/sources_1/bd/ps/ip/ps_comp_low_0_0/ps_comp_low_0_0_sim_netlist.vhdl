@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Dec 27 00:08:04 2025
+-- Date        : Sat Dec 27 14:02:44 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -23,8 +23,8 @@ entity ps_comp_low_0_0_det_signal is
     \det_signal.signal_env_E_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \det_signal.signal_env_W_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \det_signal.signal_phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
-    \det_signal.signal_phase_NW_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \det_signal.signal_phase_EW_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    \det_signal.signal_phase_WN_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     clk : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     dout : in STD_LOGIC_VECTOR ( 27 downto 0 );
@@ -98,15 +98,6 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component ps_comp_low_0_0_dsp_incr_env_HD6;
-  component dsp_phase_env_HD7 is
-  port (
-    CLK : in STD_LOGIC;
-    SCLRP : in STD_LOGIC;
-    A : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    B : in STD_LOGIC_VECTOR ( 17 downto 0 );
-    P : out STD_LOGIC_VECTOR ( 47 downto 0 )
-  );
-  end component dsp_phase_env_HD7;
   component ps_comp_low_0_0_dsp_phase_env is
   port (
     CLK : in STD_LOGIC;
@@ -116,6 +107,15 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
     SCLRP : in STD_LOGIC
   );
   end component ps_comp_low_0_0_dsp_phase_env;
+  component ps_comp_low_0_0_dsp_phase_env_HD7 is
+  port (
+    CLK : in STD_LOGIC;
+    SCLRP : in STD_LOGIC;
+    A : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    P : out STD_LOGIC_VECTOR ( 47 downto 0 )
+  );
+  end component ps_comp_low_0_0_dsp_phase_env_HD7;
   signal \_inferred__9/i__carry__0_n_0\ : STD_LOGIC;
   signal \_inferred__9/i__carry__0_n_1\ : STD_LOGIC;
   signal \_inferred__9/i__carry__0_n_2\ : STD_LOGIC;
@@ -288,30 +288,30 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.diff_err_NE_reg[12]_i_2_n_5\ : STD_LOGIC;
   signal \det_signal.diff_err_NE_reg[12]_i_2_n_6\ : STD_LOGIC;
   signal \det_signal.diff_err_NE_reg[12]_i_2_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_10_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_11_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_12_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_13_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_14_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW[12]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_1\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_2\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_3\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_4\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_5\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_6\ : STD_LOGIC;
-  signal \det_signal.diff_err_NW_reg[12]_i_2_n_7\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_10_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_11_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_12_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_13_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_14_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN[12]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_1\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.diff_err_WN_reg[12]_i_2_n_7\ : STD_LOGIC;
   signal \det_signal.div_counter[0]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[1]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[2]_i_1_n_0\ : STD_LOGIC;
@@ -537,79 +537,79 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.div_env_sum_EW_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.div_env_sum_EW_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.div_env_sum_EW_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[0]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[10]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[11]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[12]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[13]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[14]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[15]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[16]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[17]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[18]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[19]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[1]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[20]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[21]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[22]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[23]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[24]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[2]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[3]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[4]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[5]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[6]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[7]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[8]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_EW_reg_n_0_[9]\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[15]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[23]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW[7]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[23]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.div_env_sum_NW_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[15]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[23]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN[7]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[23]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[0]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[10]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[11]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[12]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[13]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[14]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[15]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[16]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[17]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[18]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[19]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[1]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[20]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[21]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[22]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[23]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[24]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[2]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[3]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[4]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[5]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[6]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[7]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[8]\ : STD_LOGIC;
+  signal \det_signal.div_env_sum_WN_reg_n_0_[9]\ : STD_LOGIC;
   signal \det_signal.div_hi_freq_sum[23]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_lo_freq_sum[0]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_lo_freq_sum[10]_i_1_n_0\ : STD_LOGIC;
@@ -734,54 +734,6 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.div_lo_freq_sum_reg[7]_i_3_n_5\ : STD_LOGIC;
   signal \det_signal.div_lo_freq_sum_reg[7]_i_3_n_6\ : STD_LOGIC;
   signal \det_signal.div_lo_freq_sum_reg[7]_i_3_n_7\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[0]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[10]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[11]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[12]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[13]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[14]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[15]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[16]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[17]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[18]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[19]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[1]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[20]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[21]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[22]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[23]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[24]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[25]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[26]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[27]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[28]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[29]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[2]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[30]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[31]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[32]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[33]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[34]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[35]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[36]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[37]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[38]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[39]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[3]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[40]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[41]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[42]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[43]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[44]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[45]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[46]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[47]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[4]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[5]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[6]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[7]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[8]\ : STD_LOGIC;
-  signal \det_signal.div_phase_sum_EW_reg_n_0_[9]\ : STD_LOGIC;
   signal \det_signal.div_phase_sum_NE_reg_n_0_[0]\ : STD_LOGIC;
   signal \det_signal.div_phase_sum_NE_reg_n_0_[10]\ : STD_LOGIC;
   signal \det_signal.div_phase_sum_NE_reg_n_0_[11]\ : STD_LOGIC;
@@ -830,6 +782,54 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.div_phase_sum_NE_reg_n_0_[7]\ : STD_LOGIC;
   signal \det_signal.div_phase_sum_NE_reg_n_0_[8]\ : STD_LOGIC;
   signal \det_signal.div_phase_sum_NE_reg_n_0_[9]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[0]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[10]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[11]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[12]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[13]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[14]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[15]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[16]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[17]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[18]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[19]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[1]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[20]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[21]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[22]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[23]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[24]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[25]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[26]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[27]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[28]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[29]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[2]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[30]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[31]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[32]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[33]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[34]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[35]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[36]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[37]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[38]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[39]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[3]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[40]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[41]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[42]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[43]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[44]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[45]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[46]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[47]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[4]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[5]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[6]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[7]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[8]\ : STD_LOGIC;
+  signal \det_signal.div_phase_sum_WN_reg_n_0_[9]\ : STD_LOGIC;
   signal \det_signal.div_sample_count[8]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_sample_count[8]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.div_sample_count_reg_n_0_[0]\ : STD_LOGIC;
@@ -906,38 +906,38 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \det_signal.env_NE_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.env_NE_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.env_NE_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[15]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_4_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_5_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_6_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_7_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_8_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW[7]_i_9_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.env_NW_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[15]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_2_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_3_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_5_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_6_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_7_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_8_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN[7]_i_9_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \det_signal.env_WN_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \det_signal.env_sum_E[15]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.env_sum_E[15]_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.env_sum_E[15]_i_4_n_0\ : STD_LOGIC;
@@ -1280,9 +1280,9 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal diff_env_W0 : STD_LOGIC_VECTOR ( 16 to 16 );
   signal diff_err_EW0 : STD_LOGIC_VECTOR ( 12 to 12 );
   signal diff_err_NE0 : STD_LOGIC_VECTOR ( 12 to 12 );
-  signal diff_err_NW0 : STD_LOGIC_VECTOR ( 12 to 12 );
+  signal diff_err_WN0 : STD_LOGIC_VECTOR ( 12 to 12 );
   signal diff_phase_E : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal diff_phase_E03_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diff_phase_E04_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \diff_phase_E0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \diff_phase_E0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \diff_phase_E0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -1323,7 +1323,7 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal diff_phase_E0_carry_n_6 : STD_LOGIC;
   signal diff_phase_E0_carry_n_7 : STD_LOGIC;
   signal diff_phase_N : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal diff_phase_N04_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diff_phase_N05_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \diff_phase_N0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \diff_phase_N0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \diff_phase_N0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -1364,7 +1364,7 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal diff_phase_N0_carry_n_6 : STD_LOGIC;
   signal diff_phase_N0_carry_n_7 : STD_LOGIC;
   signal diff_phase_W : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal diff_phase_W02_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal diff_phase_W03_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \diff_phase_W0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \diff_phase_W0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \diff_phase_W0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -1412,12 +1412,12 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal div_env_W : STD_LOGIC_VECTOR ( 31 downto 16 );
   signal div_env_all0 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal div_env_sum_E : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal div_env_sum_EW : STD_LOGIC_VECTOR ( 24 downto 0 );
   signal div_env_sum_EW0 : STD_LOGIC_VECTOR ( 24 downto 0 );
   signal div_env_sum_N : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal div_env_sum_NE : STD_LOGIC_VECTOR ( 24 downto 0 );
-  signal div_env_sum_NW : STD_LOGIC_VECTOR ( 24 downto 0 );
-  signal div_env_sum_NW0 : STD_LOGIC_VECTOR ( 24 downto 0 );
   signal div_env_sum_W : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal div_env_sum_WN0 : STD_LOGIC_VECTOR ( 24 downto 0 );
   signal div_freq_out : STD_LOGIC_VECTOR ( 51 downto 32 );
   signal div_freq_sum : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal div_hi_freq_sum0_in : STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -1426,13 +1426,13 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal div_lo_freq_sum00_in : STD_LOGIC_VECTOR ( 24 downto 0 );
   signal div_phase_EW : STD_LOGIC_VECTOR ( 51 downto 32 );
   signal div_phase_NE : STD_LOGIC_VECTOR ( 51 downto 32 );
-  signal div_phase_NW : STD_LOGIC_VECTOR ( 51 downto 32 );
+  signal div_phase_WN : STD_LOGIC_VECTOR ( 51 downto 32 );
+  signal div_phase_sum_EW : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal div_phase_sum_NE : STD_LOGIC;
-  signal div_phase_sum_NW : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal div_start : STD_LOGIC;
   signal dsp_phase_E : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal dsp_phase_EW : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal dsp_phase_EW00_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal dsp_phase_EW01_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \dsp_phase_EW0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \dsp_phase_EW0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \dsp_phase_EW0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -1474,7 +1474,7 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal dsp_phase_EW0_carry_n_7 : STD_LOGIC;
   signal dsp_phase_N : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal dsp_phase_NE : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal dsp_phase_NE01_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal dsp_phase_NE02_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \dsp_phase_NE0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \dsp_phase_NE0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \dsp_phase_NE0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -1514,70 +1514,70 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal dsp_phase_NE0_carry_n_5 : STD_LOGIC;
   signal dsp_phase_NE0_carry_n_6 : STD_LOGIC;
   signal dsp_phase_NE0_carry_n_7 : STD_LOGIC;
-  signal dsp_phase_NW : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal dsp_phase_NW0 : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal \dsp_phase_NW0_carry__0_i_1_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_2_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_3_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_4_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_5_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_6_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_7_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_i_8_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_1\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_2\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_3\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_4\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_5\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_6\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__0_n_7\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_i_1_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_i_2_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_i_3_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_i_4_n_0\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_n_5\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_n_6\ : STD_LOGIC;
-  signal \dsp_phase_NW0_carry__1_n_7\ : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_1_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_2_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_3_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_4_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_5_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_6_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_7_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_i_8_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_0 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_1 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_2 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_3 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_4 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_5 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_6 : STD_LOGIC;
-  signal dsp_phase_NW0_carry_n_7 : STD_LOGIC;
   signal dsp_phase_W : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal dsp_phase_WN : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal dsp_phase_WN00_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal \dsp_phase_WN0_carry__0_i_1_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_2_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_3_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_4_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_5_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_6_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_7_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_i_8_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_1\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_2\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_3\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_4\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_5\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_6\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__0_n_7\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_i_1_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_i_2_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_i_3_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_i_4_n_0\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_n_5\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_n_6\ : STD_LOGIC;
+  signal \dsp_phase_WN0_carry__1_n_7\ : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_1_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_2_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_3_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_4_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_5_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_6_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_7_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_i_8_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_0 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_1 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_2 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_3 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_4 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_5 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_6 : STD_LOGIC;
+  signal dsp_phase_WN0_carry_n_7 : STD_LOGIC;
   signal dsp_phase_W_4 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal dsp_sum_E : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal dsp_sum_EW : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal dsp_sum_N : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal dsp_sum_NE : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal dsp_sum_NW : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal dsp_sum_W : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal dsp_sum_WN : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal env_E : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal env_EW : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal env_EW0 : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal env_N : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal env_NE : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal env_NE0 : STD_LOGIC_VECTOR ( 16 downto 0 );
-  signal env_NW : STD_LOGIC_VECTOR ( 16 downto 0 );
-  signal env_NW0 : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal env_W : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal env_WN : STD_LOGIC_VECTOR ( 16 downto 0 );
+  signal env_WN0 : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal env_sum_E : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal env_sum_N0_in : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal env_sum_W : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal err_EW : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal err_NE : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal err_NW : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal err_WN : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal err_count : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal err_count0 : STD_LOGIC;
   signal has_signal : STD_LOGIC;
@@ -1659,16 +1659,16 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \NLW_det_signal.diff_err_NE_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_det_signal.diff_err_NE_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.diff_err_NE_reg[12]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_det_signal.diff_err_NW_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_det_signal.diff_err_NW_reg[12]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.diff_err_WN_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_det_signal.diff_err_WN_reg[12]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.diff_err_WN_reg[12]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.div_env_NE_reg[24]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.div_env_NE_reg[24]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.div_env_all_reg[31]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_det_signal.div_env_sum_EW_reg[24]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.div_env_sum_EW_reg[24]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
-  signal \NLW_det_signal.div_env_sum_NW_reg[24]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_det_signal.div_env_sum_NW_reg[24]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_det_signal.div_env_sum_WN_reg[24]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.div_env_sum_WN_reg[24]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.div_lo_freq_sum_reg[24]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.div_lo_freq_sum_reg[24]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.div_lo_freq_sum_reg[25]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
@@ -1677,8 +1677,8 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal \NLW_det_signal.env_EW_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.env_NE_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.env_NE_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
-  signal \NLW_det_signal.env_NW_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_det_signal.env_NW_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_det_signal.env_WN_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_det_signal.env_WN_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_det_signal.env_sum_E_reg[23]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_det_signal.env_sum_N_reg[23]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_det_signal.env_sum_W_reg[23]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
@@ -1708,14 +1708,14 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   signal NLW_div_phase_EW_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 79 downto 0 );
   signal NLW_div_phase_NE_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_div_phase_NE_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 79 downto 0 );
-  signal NLW_div_phase_NW_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
-  signal NLW_div_phase_NW_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 79 downto 0 );
+  signal NLW_div_phase_WN_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
+  signal NLW_div_phase_WN_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 79 downto 0 );
   signal \NLW_dsp_phase_EW0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_dsp_phase_EW0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_dsp_phase_NE0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_dsp_phase_NE0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_dsp_phase_NW0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_dsp_phase_NW0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_dsp_phase_WN0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_dsp_phase_WN0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \_inferred__9/i__carry\ : label is 35;
   attribute METHODOLOGY_DRC_VIOS : string;
@@ -1737,8 +1737,8 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.diff_err_EW_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.diff_err_NE_reg[12]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.diff_err_NE_reg[12]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \det_signal.diff_err_NW_reg[12]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \det_signal.diff_err_NW_reg[12]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.diff_err_WN_reg[12]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.diff_err_WN_reg[12]_i_2\ : label is 35;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \det_signal.div_counter[0]_i_1\ : label is "soft_lutpair170";
   attribute SOFT_HLUTNM of \det_signal.div_counter[1]_i_1\ : label is "soft_lutpair170";
@@ -1763,14 +1763,14 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_EW_reg[24]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute ADDER_THRESHOLD of \det_signal.div_env_sum_EW_reg[7]_i_1\ : label is 35;
   attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_EW_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_NW_reg[15]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_NW_reg[15]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_NW_reg[23]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_NW_reg[23]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_NW_reg[24]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_NW_reg[24]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_NW_reg[7]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_NW_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_WN_reg[15]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_WN_reg[15]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_WN_reg[23]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_WN_reg[23]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_WN_reg[24]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_WN_reg[24]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.div_env_sum_WN_reg[7]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.div_env_sum_WN_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[15]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[23]_i_2\ : label is 35;
@@ -1792,12 +1792,12 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute METHODOLOGY_DRC_VIOS of \det_signal.env_NE_reg[16]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute ADDER_THRESHOLD of \det_signal.env_NE_reg[7]_i_1\ : label is 35;
   attribute METHODOLOGY_DRC_VIOS of \det_signal.env_NE_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.env_NW_reg[15]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.env_NW_reg[15]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.env_NW_reg[16]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.env_NW_reg[16]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \det_signal.env_NW_reg[7]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \det_signal.env_NW_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.env_WN_reg[15]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.env_WN_reg[15]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.env_WN_reg[16]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.env_WN_reg[16]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute ADDER_THRESHOLD of \det_signal.env_WN_reg[7]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \det_signal.env_WN_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute ADDER_THRESHOLD of \det_signal.env_sum_E_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.env_sum_E_reg[23]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.env_sum_E_reg[7]_i_1\ : label is 35;
@@ -1859,9 +1859,9 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute CHECK_LICENSE_TYPE of div_phase_NE_i : label is "div_weighted,div_gen_v5_1_24,{}";
   attribute downgradeipidentifiedwarnings of div_phase_NE_i : label is "yes";
   attribute x_core_info of div_phase_NE_i : label is "div_gen_v5_1_24,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of div_phase_NW_i : label is "div_weighted,div_gen_v5_1_24,{}";
-  attribute downgradeipidentifiedwarnings of div_phase_NW_i : label is "yes";
-  attribute x_core_info of div_phase_NW_i : label is "div_gen_v5_1_24,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of div_phase_WN_i : label is "div_weighted,div_gen_v5_1_24,{}";
+  attribute downgradeipidentifiedwarnings of div_phase_WN_i : label is "yes";
+  attribute x_core_info of div_phase_WN_i : label is "div_gen_v5_1_24,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of dsp_incr_env_E : label is "dsp_incr_env,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of dsp_incr_env_E : label is "yes";
   attribute x_core_info of dsp_incr_env_E : label is "dsp_macro_v1_0_8,Vivado 2025.1";
@@ -1877,18 +1877,18 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute ADDER_THRESHOLD of dsp_phase_NE0_carry : label is 35;
   attribute ADDER_THRESHOLD of \dsp_phase_NE0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \dsp_phase_NE0_carry__1\ : label is 35;
-  attribute ADDER_THRESHOLD of dsp_phase_NW0_carry : label is 35;
-  attribute ADDER_THRESHOLD of \dsp_phase_NW0_carry__0\ : label is 35;
-  attribute ADDER_THRESHOLD of \dsp_phase_NW0_carry__1\ : label is 35;
+  attribute ADDER_THRESHOLD of dsp_phase_WN0_carry : label is 35;
+  attribute ADDER_THRESHOLD of \dsp_phase_WN0_carry__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \dsp_phase_WN0_carry__1\ : label is 35;
   attribute CHECK_LICENSE_TYPE of dsp_phase_env_EW : label is "dsp_phase_env,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of dsp_phase_env_EW : label is "yes";
   attribute x_core_info of dsp_phase_env_EW : label is "dsp_macro_v1_0_8,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of dsp_phase_env_NE : label is "dsp_phase_env,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of dsp_phase_env_NE : label is "yes";
   attribute x_core_info of dsp_phase_env_NE : label is "dsp_macro_v1_0_8,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of dsp_phase_env_NW : label is "dsp_phase_env,dsp_macro_v1_0_8,{}";
-  attribute downgradeipidentifiedwarnings of dsp_phase_env_NW : label is "yes";
-  attribute x_core_info of dsp_phase_env_NW : label is "dsp_macro_v1_0_8,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of dsp_phase_env_WN : label is "dsp_phase_env,dsp_macro_v1_0_8,{}";
+  attribute downgradeipidentifiedwarnings of dsp_phase_env_WN : label is "yes";
+  attribute x_core_info of dsp_phase_env_WN : label is "dsp_macro_v1_0_8,Vivado 2025.1";
 begin
   start <= \^start\;
 \_inferred__9/i__carry\: unisim.vcomponents.CARRY8
@@ -2739,7 +2739,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_err_EW0(12),
-      Q => p_2_in_1,
+      Q => p_0_in9_in,
       R => '0'
     );
 \det_signal.diff_err_EW_reg[12]_i_1\: unisim.vcomponents.CARRY8
@@ -2944,170 +2944,170 @@ begin
       S(1) => \det_signal.diff_err_NE[12]_i_13_n_0\,
       S(0) => \det_signal.diff_err_NE[12]_i_14_n_0\
     );
-\det_signal.diff_err_NW[12]_i_10\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_10\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(4),
+      I0 => err_WN(4),
       I1 => max_doa_diff(4),
-      O => \det_signal.diff_err_NW[12]_i_10_n_0\
+      O => \det_signal.diff_err_WN[12]_i_10_n_0\
     );
-\det_signal.diff_err_NW[12]_i_11\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_11\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(3),
+      I0 => err_WN(3),
       I1 => max_doa_diff(3),
-      O => \det_signal.diff_err_NW[12]_i_11_n_0\
+      O => \det_signal.diff_err_WN[12]_i_11_n_0\
     );
-\det_signal.diff_err_NW[12]_i_12\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_12\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(2),
+      I0 => err_WN(2),
       I1 => max_doa_diff(2),
-      O => \det_signal.diff_err_NW[12]_i_12_n_0\
+      O => \det_signal.diff_err_WN[12]_i_12_n_0\
     );
-\det_signal.diff_err_NW[12]_i_13\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_13\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(1),
+      I0 => err_WN(1),
       I1 => max_doa_diff(1),
-      O => \det_signal.diff_err_NW[12]_i_13_n_0\
+      O => \det_signal.diff_err_WN[12]_i_13_n_0\
     );
-\det_signal.diff_err_NW[12]_i_14\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_14\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(0),
+      I0 => err_WN(0),
       I1 => max_doa_diff(0),
-      O => \det_signal.diff_err_NW[12]_i_14_n_0\
+      O => \det_signal.diff_err_WN[12]_i_14_n_0\
     );
-\det_signal.diff_err_NW[12]_i_3\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(11),
+      I0 => err_WN(11),
       I1 => max_doa_diff(11),
-      O => \det_signal.diff_err_NW[12]_i_3_n_0\
+      O => \det_signal.diff_err_WN[12]_i_3_n_0\
     );
-\det_signal.diff_err_NW[12]_i_4\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(10),
+      I0 => err_WN(10),
       I1 => max_doa_diff(10),
-      O => \det_signal.diff_err_NW[12]_i_4_n_0\
+      O => \det_signal.diff_err_WN[12]_i_4_n_0\
     );
-\det_signal.diff_err_NW[12]_i_5\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_5\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(9),
+      I0 => err_WN(9),
       I1 => max_doa_diff(9),
-      O => \det_signal.diff_err_NW[12]_i_5_n_0\
+      O => \det_signal.diff_err_WN[12]_i_5_n_0\
     );
-\det_signal.diff_err_NW[12]_i_6\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_6\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(8),
+      I0 => err_WN(8),
       I1 => max_doa_diff(8),
-      O => \det_signal.diff_err_NW[12]_i_6_n_0\
+      O => \det_signal.diff_err_WN[12]_i_6_n_0\
     );
-\det_signal.diff_err_NW[12]_i_7\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(7),
+      I0 => err_WN(7),
       I1 => max_doa_diff(7),
-      O => \det_signal.diff_err_NW[12]_i_7_n_0\
+      O => \det_signal.diff_err_WN[12]_i_7_n_0\
     );
-\det_signal.diff_err_NW[12]_i_8\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_8\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(6),
+      I0 => err_WN(6),
       I1 => max_doa_diff(6),
-      O => \det_signal.diff_err_NW[12]_i_8_n_0\
+      O => \det_signal.diff_err_WN[12]_i_8_n_0\
     );
-\det_signal.diff_err_NW[12]_i_9\: unisim.vcomponents.LUT2
+\det_signal.diff_err_WN[12]_i_9\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => err_NW(5),
+      I0 => err_WN(5),
       I1 => max_doa_diff(5),
-      O => \det_signal.diff_err_NW[12]_i_9_n_0\
+      O => \det_signal.diff_err_WN[12]_i_9_n_0\
     );
-\det_signal.diff_err_NW_reg[12]\: unisim.vcomponents.FDRE
+\det_signal.diff_err_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
-      D => diff_err_NW0(12),
-      Q => p_0_in9_in,
+      D => diff_err_WN0(12),
+      Q => p_2_in_1,
       R => '0'
     );
-\det_signal.diff_err_NW_reg[12]_i_1\: unisim.vcomponents.CARRY8
+\det_signal.diff_err_WN_reg[12]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \det_signal.diff_err_NW_reg[12]_i_2_n_0\,
+      CI => \det_signal.diff_err_WN_reg[12]_i_2_n_0\,
       CI_TOP => '0',
-      CO(7 downto 4) => \NLW_det_signal.diff_err_NW_reg[12]_i_1_CO_UNCONNECTED\(7 downto 4),
-      CO(3) => \det_signal.diff_err_NW_reg[12]_i_1_n_4\,
-      CO(2) => \det_signal.diff_err_NW_reg[12]_i_1_n_5\,
-      CO(1) => \det_signal.diff_err_NW_reg[12]_i_1_n_6\,
-      CO(0) => \det_signal.diff_err_NW_reg[12]_i_1_n_7\,
+      CO(7 downto 4) => \NLW_det_signal.diff_err_WN_reg[12]_i_1_CO_UNCONNECTED\(7 downto 4),
+      CO(3) => \det_signal.diff_err_WN_reg[12]_i_1_n_4\,
+      CO(2) => \det_signal.diff_err_WN_reg[12]_i_1_n_5\,
+      CO(1) => \det_signal.diff_err_WN_reg[12]_i_1_n_6\,
+      CO(0) => \det_signal.diff_err_WN_reg[12]_i_1_n_7\,
       DI(7 downto 4) => B"0000",
-      DI(3 downto 0) => err_NW(11 downto 8),
-      O(7 downto 5) => \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\(7 downto 5),
-      O(4) => diff_err_NW0(12),
-      O(3 downto 0) => \NLW_det_signal.diff_err_NW_reg[12]_i_1_O_UNCONNECTED\(3 downto 0),
+      DI(3 downto 0) => err_WN(11 downto 8),
+      O(7 downto 5) => \NLW_det_signal.diff_err_WN_reg[12]_i_1_O_UNCONNECTED\(7 downto 5),
+      O(4) => diff_err_WN0(12),
+      O(3 downto 0) => \NLW_det_signal.diff_err_WN_reg[12]_i_1_O_UNCONNECTED\(3 downto 0),
       S(7 downto 4) => B"0001",
-      S(3) => \det_signal.diff_err_NW[12]_i_3_n_0\,
-      S(2) => \det_signal.diff_err_NW[12]_i_4_n_0\,
-      S(1) => \det_signal.diff_err_NW[12]_i_5_n_0\,
-      S(0) => \det_signal.diff_err_NW[12]_i_6_n_0\
+      S(3) => \det_signal.diff_err_WN[12]_i_3_n_0\,
+      S(2) => \det_signal.diff_err_WN[12]_i_4_n_0\,
+      S(1) => \det_signal.diff_err_WN[12]_i_5_n_0\,
+      S(0) => \det_signal.diff_err_WN[12]_i_6_n_0\
     );
-\det_signal.diff_err_NW_reg[12]_i_2\: unisim.vcomponents.CARRY8
+\det_signal.diff_err_WN_reg[12]_i_2\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \det_signal.diff_err_NW_reg[12]_i_2_n_0\,
-      CO(6) => \det_signal.diff_err_NW_reg[12]_i_2_n_1\,
-      CO(5) => \det_signal.diff_err_NW_reg[12]_i_2_n_2\,
-      CO(4) => \det_signal.diff_err_NW_reg[12]_i_2_n_3\,
-      CO(3) => \det_signal.diff_err_NW_reg[12]_i_2_n_4\,
-      CO(2) => \det_signal.diff_err_NW_reg[12]_i_2_n_5\,
-      CO(1) => \det_signal.diff_err_NW_reg[12]_i_2_n_6\,
-      CO(0) => \det_signal.diff_err_NW_reg[12]_i_2_n_7\,
-      DI(7 downto 0) => err_NW(7 downto 0),
-      O(7 downto 0) => \NLW_det_signal.diff_err_NW_reg[12]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \det_signal.diff_err_NW[12]_i_7_n_0\,
-      S(6) => \det_signal.diff_err_NW[12]_i_8_n_0\,
-      S(5) => \det_signal.diff_err_NW[12]_i_9_n_0\,
-      S(4) => \det_signal.diff_err_NW[12]_i_10_n_0\,
-      S(3) => \det_signal.diff_err_NW[12]_i_11_n_0\,
-      S(2) => \det_signal.diff_err_NW[12]_i_12_n_0\,
-      S(1) => \det_signal.diff_err_NW[12]_i_13_n_0\,
-      S(0) => \det_signal.diff_err_NW[12]_i_14_n_0\
+      CO(7) => \det_signal.diff_err_WN_reg[12]_i_2_n_0\,
+      CO(6) => \det_signal.diff_err_WN_reg[12]_i_2_n_1\,
+      CO(5) => \det_signal.diff_err_WN_reg[12]_i_2_n_2\,
+      CO(4) => \det_signal.diff_err_WN_reg[12]_i_2_n_3\,
+      CO(3) => \det_signal.diff_err_WN_reg[12]_i_2_n_4\,
+      CO(2) => \det_signal.diff_err_WN_reg[12]_i_2_n_5\,
+      CO(1) => \det_signal.diff_err_WN_reg[12]_i_2_n_6\,
+      CO(0) => \det_signal.diff_err_WN_reg[12]_i_2_n_7\,
+      DI(7 downto 0) => err_WN(7 downto 0),
+      O(7 downto 0) => \NLW_det_signal.diff_err_WN_reg[12]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \det_signal.diff_err_WN[12]_i_7_n_0\,
+      S(6) => \det_signal.diff_err_WN[12]_i_8_n_0\,
+      S(5) => \det_signal.diff_err_WN[12]_i_9_n_0\,
+      S(4) => \det_signal.diff_err_WN[12]_i_10_n_0\,
+      S(3) => \det_signal.diff_err_WN[12]_i_11_n_0\,
+      S(2) => \det_signal.diff_err_WN[12]_i_12_n_0\,
+      S(1) => \det_signal.diff_err_WN[12]_i_13_n_0\,
+      S(0) => \det_signal.diff_err_WN[12]_i_14_n_0\
     );
 \det_signal.diff_phase_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(0),
+      D => diff_phase_E04_out(0),
       Q => diff_phase_E(0),
       R => '0'
     );
@@ -3115,7 +3115,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(10),
+      D => diff_phase_E04_out(10),
       Q => diff_phase_E(10),
       R => '0'
     );
@@ -3123,7 +3123,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(11),
+      D => diff_phase_E04_out(11),
       Q => diff_phase_E(11),
       R => '0'
     );
@@ -3131,7 +3131,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(12),
+      D => diff_phase_E04_out(12),
       Q => diff_phase_E(12),
       R => '0'
     );
@@ -3139,7 +3139,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(13),
+      D => diff_phase_E04_out(13),
       Q => diff_phase_E(13),
       R => '0'
     );
@@ -3147,7 +3147,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(14),
+      D => diff_phase_E04_out(14),
       Q => diff_phase_E(14),
       R => '0'
     );
@@ -3155,7 +3155,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(15),
+      D => diff_phase_E04_out(15),
       Q => diff_phase_E(15),
       R => '0'
     );
@@ -3163,7 +3163,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(16),
+      D => diff_phase_E04_out(16),
       Q => diff_phase_E(16),
       R => '0'
     );
@@ -3171,7 +3171,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(17),
+      D => diff_phase_E04_out(17),
       Q => diff_phase_E(17),
       R => '0'
     );
@@ -3179,7 +3179,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(18),
+      D => diff_phase_E04_out(18),
       Q => diff_phase_E(18),
       R => '0'
     );
@@ -3187,7 +3187,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(19),
+      D => diff_phase_E04_out(19),
       Q => diff_phase_E(19),
       R => '0'
     );
@@ -3195,7 +3195,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(1),
+      D => diff_phase_E04_out(1),
       Q => diff_phase_E(1),
       R => '0'
     );
@@ -3203,7 +3203,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(2),
+      D => diff_phase_E04_out(2),
       Q => diff_phase_E(2),
       R => '0'
     );
@@ -3211,7 +3211,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(3),
+      D => diff_phase_E04_out(3),
       Q => diff_phase_E(3),
       R => '0'
     );
@@ -3219,7 +3219,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(4),
+      D => diff_phase_E04_out(4),
       Q => diff_phase_E(4),
       R => '0'
     );
@@ -3227,7 +3227,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(5),
+      D => diff_phase_E04_out(5),
       Q => diff_phase_E(5),
       R => '0'
     );
@@ -3235,7 +3235,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(6),
+      D => diff_phase_E04_out(6),
       Q => diff_phase_E(6),
       R => '0'
     );
@@ -3243,7 +3243,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(7),
+      D => diff_phase_E04_out(7),
       Q => diff_phase_E(7),
       R => '0'
     );
@@ -3251,7 +3251,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(8),
+      D => diff_phase_E04_out(8),
       Q => diff_phase_E(8),
       R => '0'
     );
@@ -3259,7 +3259,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_E03_out(9),
+      D => diff_phase_E04_out(9),
       Q => diff_phase_E(9),
       R => '0'
     );
@@ -3267,7 +3267,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(0),
+      D => diff_phase_N05_out(0),
       Q => diff_phase_N(0),
       R => '0'
     );
@@ -3275,7 +3275,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(10),
+      D => diff_phase_N05_out(10),
       Q => diff_phase_N(10),
       R => '0'
     );
@@ -3283,7 +3283,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(11),
+      D => diff_phase_N05_out(11),
       Q => diff_phase_N(11),
       R => '0'
     );
@@ -3291,7 +3291,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(12),
+      D => diff_phase_N05_out(12),
       Q => diff_phase_N(12),
       R => '0'
     );
@@ -3299,7 +3299,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(13),
+      D => diff_phase_N05_out(13),
       Q => diff_phase_N(13),
       R => '0'
     );
@@ -3307,7 +3307,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(14),
+      D => diff_phase_N05_out(14),
       Q => diff_phase_N(14),
       R => '0'
     );
@@ -3315,7 +3315,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(15),
+      D => diff_phase_N05_out(15),
       Q => diff_phase_N(15),
       R => '0'
     );
@@ -3323,7 +3323,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(16),
+      D => diff_phase_N05_out(16),
       Q => diff_phase_N(16),
       R => '0'
     );
@@ -3331,7 +3331,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(17),
+      D => diff_phase_N05_out(17),
       Q => diff_phase_N(17),
       R => '0'
     );
@@ -3339,7 +3339,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(18),
+      D => diff_phase_N05_out(18),
       Q => diff_phase_N(18),
       R => '0'
     );
@@ -3347,7 +3347,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(19),
+      D => diff_phase_N05_out(19),
       Q => diff_phase_N(19),
       R => '0'
     );
@@ -3355,7 +3355,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(1),
+      D => diff_phase_N05_out(1),
       Q => diff_phase_N(1),
       R => '0'
     );
@@ -3363,7 +3363,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(2),
+      D => diff_phase_N05_out(2),
       Q => diff_phase_N(2),
       R => '0'
     );
@@ -3371,7 +3371,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(3),
+      D => diff_phase_N05_out(3),
       Q => diff_phase_N(3),
       R => '0'
     );
@@ -3379,7 +3379,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(4),
+      D => diff_phase_N05_out(4),
       Q => diff_phase_N(4),
       R => '0'
     );
@@ -3387,7 +3387,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(5),
+      D => diff_phase_N05_out(5),
       Q => diff_phase_N(5),
       R => '0'
     );
@@ -3395,7 +3395,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(6),
+      D => diff_phase_N05_out(6),
       Q => diff_phase_N(6),
       R => '0'
     );
@@ -3403,7 +3403,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(7),
+      D => diff_phase_N05_out(7),
       Q => diff_phase_N(7),
       R => '0'
     );
@@ -3411,7 +3411,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(8),
+      D => diff_phase_N05_out(8),
       Q => diff_phase_N(8),
       R => '0'
     );
@@ -3419,7 +3419,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_N04_out(9),
+      D => diff_phase_N05_out(9),
       Q => diff_phase_N(9),
       R => '0'
     );
@@ -3427,7 +3427,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(0),
+      D => diff_phase_W03_out(0),
       Q => diff_phase_W(0),
       R => '0'
     );
@@ -3435,7 +3435,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(10),
+      D => diff_phase_W03_out(10),
       Q => diff_phase_W(10),
       R => '0'
     );
@@ -3443,7 +3443,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(11),
+      D => diff_phase_W03_out(11),
       Q => diff_phase_W(11),
       R => '0'
     );
@@ -3451,7 +3451,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(12),
+      D => diff_phase_W03_out(12),
       Q => diff_phase_W(12),
       R => '0'
     );
@@ -3459,7 +3459,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(13),
+      D => diff_phase_W03_out(13),
       Q => diff_phase_W(13),
       R => '0'
     );
@@ -3467,7 +3467,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(14),
+      D => diff_phase_W03_out(14),
       Q => diff_phase_W(14),
       R => '0'
     );
@@ -3475,7 +3475,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(15),
+      D => diff_phase_W03_out(15),
       Q => diff_phase_W(15),
       R => '0'
     );
@@ -3483,7 +3483,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(16),
+      D => diff_phase_W03_out(16),
       Q => diff_phase_W(16),
       R => '0'
     );
@@ -3491,7 +3491,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(17),
+      D => diff_phase_W03_out(17),
       Q => diff_phase_W(17),
       R => '0'
     );
@@ -3499,7 +3499,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(18),
+      D => diff_phase_W03_out(18),
       Q => diff_phase_W(18),
       R => '0'
     );
@@ -3507,7 +3507,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(19),
+      D => diff_phase_W03_out(19),
       Q => diff_phase_W(19),
       R => '0'
     );
@@ -3515,7 +3515,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(1),
+      D => diff_phase_W03_out(1),
       Q => diff_phase_W(1),
       R => '0'
     );
@@ -3523,7 +3523,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(2),
+      D => diff_phase_W03_out(2),
       Q => diff_phase_W(2),
       R => '0'
     );
@@ -3531,7 +3531,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(3),
+      D => diff_phase_W03_out(3),
       Q => diff_phase_W(3),
       R => '0'
     );
@@ -3539,7 +3539,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(4),
+      D => diff_phase_W03_out(4),
       Q => diff_phase_W(4),
       R => '0'
     );
@@ -3547,7 +3547,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(5),
+      D => diff_phase_W03_out(5),
       Q => diff_phase_W(5),
       R => '0'
     );
@@ -3555,7 +3555,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(6),
+      D => diff_phase_W03_out(6),
       Q => diff_phase_W(6),
       R => '0'
     );
@@ -3563,7 +3563,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(7),
+      D => diff_phase_W03_out(7),
       Q => diff_phase_W(7),
       R => '0'
     );
@@ -3571,7 +3571,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(8),
+      D => diff_phase_W03_out(8),
       Q => diff_phase_W(8),
       R => '0'
     );
@@ -3579,7 +3579,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.run_reg[1]_0\,
-      D => diff_phase_W02_out(9),
+      D => diff_phase_W03_out(9),
       Q => diff_phase_W(9),
       R => '0'
     );
@@ -5445,7 +5445,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(0),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[0]\,
+      Q => div_env_sum_EW(0),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[10]\: unisim.vcomponents.FDRE
@@ -5453,7 +5453,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(10),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[10]\,
+      Q => div_env_sum_EW(10),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[11]\: unisim.vcomponents.FDRE
@@ -5461,7 +5461,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(11),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[11]\,
+      Q => div_env_sum_EW(11),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[12]\: unisim.vcomponents.FDRE
@@ -5469,7 +5469,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(12),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[12]\,
+      Q => div_env_sum_EW(12),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[13]\: unisim.vcomponents.FDRE
@@ -5477,7 +5477,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(13),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[13]\,
+      Q => div_env_sum_EW(13),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[14]\: unisim.vcomponents.FDRE
@@ -5485,7 +5485,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(14),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[14]\,
+      Q => div_env_sum_EW(14),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[15]\: unisim.vcomponents.FDRE
@@ -5493,7 +5493,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(15),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[15]\,
+      Q => div_env_sum_EW(15),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -5531,7 +5531,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(16),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[16]\,
+      Q => div_env_sum_EW(16),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[17]\: unisim.vcomponents.FDRE
@@ -5539,7 +5539,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(17),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[17]\,
+      Q => div_env_sum_EW(17),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[18]\: unisim.vcomponents.FDRE
@@ -5547,7 +5547,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(18),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[18]\,
+      Q => div_env_sum_EW(18),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[19]\: unisim.vcomponents.FDRE
@@ -5555,7 +5555,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(19),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[19]\,
+      Q => div_env_sum_EW(19),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[1]\: unisim.vcomponents.FDRE
@@ -5563,7 +5563,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(1),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[1]\,
+      Q => div_env_sum_EW(1),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[20]\: unisim.vcomponents.FDRE
@@ -5571,7 +5571,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(20),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[20]\,
+      Q => div_env_sum_EW(20),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[21]\: unisim.vcomponents.FDRE
@@ -5579,7 +5579,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(21),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[21]\,
+      Q => div_env_sum_EW(21),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[22]\: unisim.vcomponents.FDRE
@@ -5587,7 +5587,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(22),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[22]\,
+      Q => div_env_sum_EW(22),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[23]\: unisim.vcomponents.FDRE
@@ -5595,7 +5595,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(23),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[23]\,
+      Q => div_env_sum_EW(23),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[23]_i_1\: unisim.vcomponents.CARRY8
@@ -5633,7 +5633,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(24),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[24]\,
+      Q => div_env_sum_EW(24),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[24]_i_1\: unisim.vcomponents.CARRY8
@@ -5651,7 +5651,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(2),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[2]\,
+      Q => div_env_sum_EW(2),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[3]\: unisim.vcomponents.FDRE
@@ -5659,7 +5659,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(3),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[3]\,
+      Q => div_env_sum_EW(3),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[4]\: unisim.vcomponents.FDRE
@@ -5667,7 +5667,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(4),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[4]\,
+      Q => div_env_sum_EW(4),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[5]\: unisim.vcomponents.FDRE
@@ -5675,7 +5675,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(5),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[5]\,
+      Q => div_env_sum_EW(5),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[6]\: unisim.vcomponents.FDRE
@@ -5683,7 +5683,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(6),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[6]\,
+      Q => div_env_sum_EW(6),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[7]\: unisim.vcomponents.FDRE
@@ -5691,7 +5691,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(7),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[7]\,
+      Q => div_env_sum_EW(7),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[7]_i_1\: unisim.vcomponents.CARRY8
@@ -5729,7 +5729,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(8),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[8]\,
+      Q => div_env_sum_EW(8),
       R => '0'
     );
 \det_signal.div_env_sum_EW_reg[9]\: unisim.vcomponents.FDRE
@@ -5737,7 +5737,7 @@ begin
       C => clk,
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => div_env_sum_EW0(9),
-      Q => \det_signal.div_env_sum_EW_reg_n_0_[9]\,
+      Q => div_env_sum_EW(9),
       R => '0'
     );
 \det_signal.div_env_sum_E_reg[0]\: unisim.vcomponents.FDRE
@@ -5932,522 +5932,6 @@ begin
       Q => div_env_sum_E(9),
       R => '0'
     );
-\det_signal.div_env_sum_NW[15]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[15]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[15]\,
-      O => \det_signal.div_env_sum_NW[15]_i_2_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[14]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[14]\,
-      O => \det_signal.div_env_sum_NW[15]_i_3_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[13]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[13]\,
-      O => \det_signal.div_env_sum_NW[15]_i_4_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[12]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[12]\,
-      O => \det_signal.div_env_sum_NW[15]_i_5_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[11]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[11]\,
-      O => \det_signal.div_env_sum_NW[15]_i_6_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[10]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[10]\,
-      O => \det_signal.div_env_sum_NW[15]_i_7_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[9]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[9]\,
-      O => \det_signal.div_env_sum_NW[15]_i_8_n_0\
-    );
-\det_signal.div_env_sum_NW[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[8]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[8]\,
-      O => \det_signal.div_env_sum_NW[15]_i_9_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[23]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[23]\,
-      O => \det_signal.div_env_sum_NW[23]_i_2_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[22]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[22]\,
-      O => \det_signal.div_env_sum_NW[23]_i_3_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[21]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[21]\,
-      O => \det_signal.div_env_sum_NW[23]_i_4_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[20]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[20]\,
-      O => \det_signal.div_env_sum_NW[23]_i_5_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[19]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[19]\,
-      O => \det_signal.div_env_sum_NW[23]_i_6_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[18]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[18]\,
-      O => \det_signal.div_env_sum_NW[23]_i_7_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[17]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[17]\,
-      O => \det_signal.div_env_sum_NW[23]_i_8_n_0\
-    );
-\det_signal.div_env_sum_NW[23]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[16]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[16]\,
-      O => \det_signal.div_env_sum_NW[23]_i_9_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[7]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[7]\,
-      O => \det_signal.div_env_sum_NW[7]_i_2_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[6]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[6]\,
-      O => \det_signal.div_env_sum_NW[7]_i_3_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[5]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[5]\,
-      O => \det_signal.div_env_sum_NW[7]_i_4_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[4]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[4]\,
-      O => \det_signal.div_env_sum_NW[7]_i_5_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[3]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[3]\,
-      O => \det_signal.div_env_sum_NW[7]_i_6_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[2]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[2]\,
-      O => \det_signal.div_env_sum_NW[7]_i_7_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[1]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[1]\,
-      O => \det_signal.div_env_sum_NW[7]_i_8_n_0\
-    );
-\det_signal.div_env_sum_NW[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.env_sum_N_reg_n_0_[0]\,
-      I1 => \det_signal.env_sum_W_reg_n_0_[0]\,
-      O => \det_signal.div_env_sum_NW[7]_i_9_n_0\
-    );
-\det_signal.div_env_sum_NW_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(0),
-      Q => div_env_sum_NW(0),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(10),
-      Q => div_env_sum_NW(10),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(11),
-      Q => div_env_sum_NW(11),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(12),
-      Q => div_env_sum_NW(12),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(13),
-      Q => div_env_sum_NW(13),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(14),
-      Q => div_env_sum_NW(14),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(15),
-      Q => div_env_sum_NW(15),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.div_env_sum_NW_reg[7]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_0\,
-      CO(6) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_1\,
-      CO(5) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_2\,
-      CO(4) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_3\,
-      CO(3) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_4\,
-      CO(2) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_5\,
-      CO(1) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_6\,
-      CO(0) => \det_signal.div_env_sum_NW_reg[15]_i_1_n_7\,
-      DI(7) => \det_signal.env_sum_N_reg_n_0_[15]\,
-      DI(6) => \det_signal.env_sum_N_reg_n_0_[14]\,
-      DI(5) => \det_signal.env_sum_N_reg_n_0_[13]\,
-      DI(4) => \det_signal.env_sum_N_reg_n_0_[12]\,
-      DI(3) => \det_signal.env_sum_N_reg_n_0_[11]\,
-      DI(2) => \det_signal.env_sum_N_reg_n_0_[10]\,
-      DI(1) => \det_signal.env_sum_N_reg_n_0_[9]\,
-      DI(0) => \det_signal.env_sum_N_reg_n_0_[8]\,
-      O(7 downto 0) => div_env_sum_NW0(15 downto 8),
-      S(7) => \det_signal.div_env_sum_NW[15]_i_2_n_0\,
-      S(6) => \det_signal.div_env_sum_NW[15]_i_3_n_0\,
-      S(5) => \det_signal.div_env_sum_NW[15]_i_4_n_0\,
-      S(4) => \det_signal.div_env_sum_NW[15]_i_5_n_0\,
-      S(3) => \det_signal.div_env_sum_NW[15]_i_6_n_0\,
-      S(2) => \det_signal.div_env_sum_NW[15]_i_7_n_0\,
-      S(1) => \det_signal.div_env_sum_NW[15]_i_8_n_0\,
-      S(0) => \det_signal.div_env_sum_NW[15]_i_9_n_0\
-    );
-\det_signal.div_env_sum_NW_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(16),
-      Q => div_env_sum_NW(16),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(17),
-      Q => div_env_sum_NW(17),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(18),
-      Q => div_env_sum_NW(18),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(19),
-      Q => div_env_sum_NW(19),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(1),
-      Q => div_env_sum_NW(1),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(20),
-      Q => div_env_sum_NW(20),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(21),
-      Q => div_env_sum_NW(21),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(22),
-      Q => div_env_sum_NW(22),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(23),
-      Q => div_env_sum_NW(23),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[23]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.div_env_sum_NW_reg[15]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_0\,
-      CO(6) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_1\,
-      CO(5) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_2\,
-      CO(4) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_3\,
-      CO(3) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_4\,
-      CO(2) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_5\,
-      CO(1) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_6\,
-      CO(0) => \det_signal.div_env_sum_NW_reg[23]_i_1_n_7\,
-      DI(7) => \det_signal.env_sum_N_reg_n_0_[23]\,
-      DI(6) => \det_signal.env_sum_N_reg_n_0_[22]\,
-      DI(5) => \det_signal.env_sum_N_reg_n_0_[21]\,
-      DI(4) => \det_signal.env_sum_N_reg_n_0_[20]\,
-      DI(3) => \det_signal.env_sum_N_reg_n_0_[19]\,
-      DI(2) => \det_signal.env_sum_N_reg_n_0_[18]\,
-      DI(1) => \det_signal.env_sum_N_reg_n_0_[17]\,
-      DI(0) => \det_signal.env_sum_N_reg_n_0_[16]\,
-      O(7 downto 0) => div_env_sum_NW0(23 downto 16),
-      S(7) => \det_signal.div_env_sum_NW[23]_i_2_n_0\,
-      S(6) => \det_signal.div_env_sum_NW[23]_i_3_n_0\,
-      S(5) => \det_signal.div_env_sum_NW[23]_i_4_n_0\,
-      S(4) => \det_signal.div_env_sum_NW[23]_i_5_n_0\,
-      S(3) => \det_signal.div_env_sum_NW[23]_i_6_n_0\,
-      S(2) => \det_signal.div_env_sum_NW[23]_i_7_n_0\,
-      S(1) => \det_signal.div_env_sum_NW[23]_i_8_n_0\,
-      S(0) => \det_signal.div_env_sum_NW[23]_i_9_n_0\
-    );
-\det_signal.div_env_sum_NW_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(24),
-      Q => div_env_sum_NW(24),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[24]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.div_env_sum_NW_reg[23]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 0) => \NLW_det_signal.div_env_sum_NW_reg[24]_i_1_CO_UNCONNECTED\(7 downto 0),
-      DI(7 downto 0) => B"00000000",
-      O(7 downto 1) => \NLW_det_signal.div_env_sum_NW_reg[24]_i_1_O_UNCONNECTED\(7 downto 1),
-      O(0) => div_env_sum_NW0(24),
-      S(7 downto 0) => B"00000000"
-    );
-\det_signal.div_env_sum_NW_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(2),
-      Q => div_env_sum_NW(2),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(3),
-      Q => div_env_sum_NW(3),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(4),
-      Q => div_env_sum_NW(4),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(5),
-      Q => div_env_sum_NW(5),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(6),
-      Q => div_env_sum_NW(6),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(7),
-      Q => div_env_sum_NW(7),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[7]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '0',
-      CI_TOP => '0',
-      CO(7) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_0\,
-      CO(6) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_1\,
-      CO(5) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_2\,
-      CO(4) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_3\,
-      CO(3) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_4\,
-      CO(2) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_5\,
-      CO(1) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_6\,
-      CO(0) => \det_signal.div_env_sum_NW_reg[7]_i_1_n_7\,
-      DI(7) => \det_signal.env_sum_N_reg_n_0_[7]\,
-      DI(6) => \det_signal.env_sum_N_reg_n_0_[6]\,
-      DI(5) => \det_signal.env_sum_N_reg_n_0_[5]\,
-      DI(4) => \det_signal.env_sum_N_reg_n_0_[4]\,
-      DI(3) => \det_signal.env_sum_N_reg_n_0_[3]\,
-      DI(2) => \det_signal.env_sum_N_reg_n_0_[2]\,
-      DI(1) => \det_signal.env_sum_N_reg_n_0_[1]\,
-      DI(0) => \det_signal.env_sum_N_reg_n_0_[0]\,
-      O(7 downto 0) => div_env_sum_NW0(7 downto 0),
-      S(7) => \det_signal.div_env_sum_NW[7]_i_2_n_0\,
-      S(6) => \det_signal.div_env_sum_NW[7]_i_3_n_0\,
-      S(5) => \det_signal.div_env_sum_NW[7]_i_4_n_0\,
-      S(4) => \det_signal.div_env_sum_NW[7]_i_5_n_0\,
-      S(3) => \det_signal.div_env_sum_NW[7]_i_6_n_0\,
-      S(2) => \det_signal.div_env_sum_NW[7]_i_7_n_0\,
-      S(1) => \det_signal.div_env_sum_NW[7]_i_8_n_0\,
-      S(0) => \det_signal.div_env_sum_NW[7]_i_9_n_0\
-    );
-\det_signal.div_env_sum_NW_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(8),
-      Q => div_env_sum_NW(8),
-      R => '0'
-    );
-\det_signal.div_env_sum_NW_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
-      D => div_env_sum_NW0(9),
-      Q => div_env_sum_NW(9),
-      R => '0'
-    );
 \det_signal.div_env_sum_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -6638,6 +6122,522 @@ begin
       CE => \det_signal.div_env_NE[24]_i_1_n_0\,
       D => \det_signal.env_sum_N_reg_n_0_[9]\,
       Q => div_env_sum_N(9),
+      R => '0'
+    );
+\det_signal.div_env_sum_WN[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[15]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[15]\,
+      O => \det_signal.div_env_sum_WN[15]_i_2_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[14]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[14]\,
+      O => \det_signal.div_env_sum_WN[15]_i_3_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[13]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[13]\,
+      O => \det_signal.div_env_sum_WN[15]_i_4_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[12]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[12]\,
+      O => \det_signal.div_env_sum_WN[15]_i_5_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[11]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[11]\,
+      O => \det_signal.div_env_sum_WN[15]_i_6_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[10]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[10]\,
+      O => \det_signal.div_env_sum_WN[15]_i_7_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[9]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[9]\,
+      O => \det_signal.div_env_sum_WN[15]_i_8_n_0\
+    );
+\det_signal.div_env_sum_WN[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[8]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[8]\,
+      O => \det_signal.div_env_sum_WN[15]_i_9_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[23]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[23]\,
+      O => \det_signal.div_env_sum_WN[23]_i_2_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[22]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[22]\,
+      O => \det_signal.div_env_sum_WN[23]_i_3_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[21]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[21]\,
+      O => \det_signal.div_env_sum_WN[23]_i_4_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[20]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[20]\,
+      O => \det_signal.div_env_sum_WN[23]_i_5_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[19]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[19]\,
+      O => \det_signal.div_env_sum_WN[23]_i_6_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[18]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[18]\,
+      O => \det_signal.div_env_sum_WN[23]_i_7_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[17]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[17]\,
+      O => \det_signal.div_env_sum_WN[23]_i_8_n_0\
+    );
+\det_signal.div_env_sum_WN[23]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[16]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[16]\,
+      O => \det_signal.div_env_sum_WN[23]_i_9_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[7]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[7]\,
+      O => \det_signal.div_env_sum_WN[7]_i_2_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[6]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[6]\,
+      O => \det_signal.div_env_sum_WN[7]_i_3_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[5]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[5]\,
+      O => \det_signal.div_env_sum_WN[7]_i_4_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[4]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[4]\,
+      O => \det_signal.div_env_sum_WN[7]_i_5_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[3]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[3]\,
+      O => \det_signal.div_env_sum_WN[7]_i_6_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[2]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[2]\,
+      O => \det_signal.div_env_sum_WN[7]_i_7_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[1]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[1]\,
+      O => \det_signal.div_env_sum_WN[7]_i_8_n_0\
+    );
+\det_signal.div_env_sum_WN[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \det_signal.env_sum_W_reg_n_0_[0]\,
+      I1 => \det_signal.env_sum_N_reg_n_0_[0]\,
+      O => \det_signal.div_env_sum_WN[7]_i_9_n_0\
+    );
+\det_signal.div_env_sum_WN_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(0),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[0]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(10),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[10]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(11),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[11]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(12),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[12]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(13),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[13]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(14),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[14]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(15),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[15]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.div_env_sum_WN_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_0\,
+      CO(6) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.div_env_sum_WN_reg[15]_i_1_n_7\,
+      DI(7) => \det_signal.env_sum_W_reg_n_0_[15]\,
+      DI(6) => \det_signal.env_sum_W_reg_n_0_[14]\,
+      DI(5) => \det_signal.env_sum_W_reg_n_0_[13]\,
+      DI(4) => \det_signal.env_sum_W_reg_n_0_[12]\,
+      DI(3) => \det_signal.env_sum_W_reg_n_0_[11]\,
+      DI(2) => \det_signal.env_sum_W_reg_n_0_[10]\,
+      DI(1) => \det_signal.env_sum_W_reg_n_0_[9]\,
+      DI(0) => \det_signal.env_sum_W_reg_n_0_[8]\,
+      O(7 downto 0) => div_env_sum_WN0(15 downto 8),
+      S(7) => \det_signal.div_env_sum_WN[15]_i_2_n_0\,
+      S(6) => \det_signal.div_env_sum_WN[15]_i_3_n_0\,
+      S(5) => \det_signal.div_env_sum_WN[15]_i_4_n_0\,
+      S(4) => \det_signal.div_env_sum_WN[15]_i_5_n_0\,
+      S(3) => \det_signal.div_env_sum_WN[15]_i_6_n_0\,
+      S(2) => \det_signal.div_env_sum_WN[15]_i_7_n_0\,
+      S(1) => \det_signal.div_env_sum_WN[15]_i_8_n_0\,
+      S(0) => \det_signal.div_env_sum_WN[15]_i_9_n_0\
+    );
+\det_signal.div_env_sum_WN_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(16),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[16]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(17),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[17]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(18),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[18]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(19),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[19]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(1),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[1]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(20),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[20]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(21),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[21]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(22),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[22]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(23),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[23]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[23]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.div_env_sum_WN_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_0\,
+      CO(6) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_1\,
+      CO(5) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_2\,
+      CO(4) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_3\,
+      CO(3) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_4\,
+      CO(2) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_5\,
+      CO(1) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_6\,
+      CO(0) => \det_signal.div_env_sum_WN_reg[23]_i_1_n_7\,
+      DI(7) => \det_signal.env_sum_W_reg_n_0_[23]\,
+      DI(6) => \det_signal.env_sum_W_reg_n_0_[22]\,
+      DI(5) => \det_signal.env_sum_W_reg_n_0_[21]\,
+      DI(4) => \det_signal.env_sum_W_reg_n_0_[20]\,
+      DI(3) => \det_signal.env_sum_W_reg_n_0_[19]\,
+      DI(2) => \det_signal.env_sum_W_reg_n_0_[18]\,
+      DI(1) => \det_signal.env_sum_W_reg_n_0_[17]\,
+      DI(0) => \det_signal.env_sum_W_reg_n_0_[16]\,
+      O(7 downto 0) => div_env_sum_WN0(23 downto 16),
+      S(7) => \det_signal.div_env_sum_WN[23]_i_2_n_0\,
+      S(6) => \det_signal.div_env_sum_WN[23]_i_3_n_0\,
+      S(5) => \det_signal.div_env_sum_WN[23]_i_4_n_0\,
+      S(4) => \det_signal.div_env_sum_WN[23]_i_5_n_0\,
+      S(3) => \det_signal.div_env_sum_WN[23]_i_6_n_0\,
+      S(2) => \det_signal.div_env_sum_WN[23]_i_7_n_0\,
+      S(1) => \det_signal.div_env_sum_WN[23]_i_8_n_0\,
+      S(0) => \det_signal.div_env_sum_WN[23]_i_9_n_0\
+    );
+\det_signal.div_env_sum_WN_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(24),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[24]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[24]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.div_env_sum_WN_reg[23]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 0) => \NLW_det_signal.div_env_sum_WN_reg[24]_i_1_CO_UNCONNECTED\(7 downto 0),
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 1) => \NLW_det_signal.div_env_sum_WN_reg[24]_i_1_O_UNCONNECTED\(7 downto 1),
+      O(0) => div_env_sum_WN0(24),
+      S(7 downto 0) => B"00000000"
+    );
+\det_signal.div_env_sum_WN_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(2),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[2]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(3),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[3]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(4),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[4]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(5),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[5]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(6),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[6]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(7),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[7]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.div_env_sum_WN_reg[7]_i_1_n_7\,
+      DI(7) => \det_signal.env_sum_W_reg_n_0_[7]\,
+      DI(6) => \det_signal.env_sum_W_reg_n_0_[6]\,
+      DI(5) => \det_signal.env_sum_W_reg_n_0_[5]\,
+      DI(4) => \det_signal.env_sum_W_reg_n_0_[4]\,
+      DI(3) => \det_signal.env_sum_W_reg_n_0_[3]\,
+      DI(2) => \det_signal.env_sum_W_reg_n_0_[2]\,
+      DI(1) => \det_signal.env_sum_W_reg_n_0_[1]\,
+      DI(0) => \det_signal.env_sum_W_reg_n_0_[0]\,
+      O(7 downto 0) => div_env_sum_WN0(7 downto 0),
+      S(7) => \det_signal.div_env_sum_WN[7]_i_2_n_0\,
+      S(6) => \det_signal.div_env_sum_WN[7]_i_3_n_0\,
+      S(5) => \det_signal.div_env_sum_WN[7]_i_4_n_0\,
+      S(4) => \det_signal.div_env_sum_WN[7]_i_5_n_0\,
+      S(3) => \det_signal.div_env_sum_WN[7]_i_6_n_0\,
+      S(2) => \det_signal.div_env_sum_WN[7]_i_7_n_0\,
+      S(1) => \det_signal.div_env_sum_WN[7]_i_8_n_0\,
+      S(0) => \det_signal.div_env_sum_WN[7]_i_9_n_0\
+    );
+\det_signal.div_env_sum_WN_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(8),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[8]\,
+      R => '0'
+    );
+\det_signal.div_env_sum_WN_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \det_signal.div_env_NE[24]_i_1_n_0\,
+      D => div_env_sum_WN0(9),
+      Q => \det_signal.div_env_sum_WN_reg_n_0_[9]\,
       R => '0'
     );
 \det_signal.div_env_sum_W_reg[0]\: unisim.vcomponents.FDRE
@@ -8111,7 +8111,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(0),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[0]\,
+      Q => div_phase_sum_EW(0),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[10]\: unisim.vcomponents.FDRE
@@ -8119,7 +8119,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(10),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[10]\,
+      Q => div_phase_sum_EW(10),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[11]\: unisim.vcomponents.FDRE
@@ -8127,7 +8127,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(11),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[11]\,
+      Q => div_phase_sum_EW(11),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[12]\: unisim.vcomponents.FDRE
@@ -8135,7 +8135,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(12),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[12]\,
+      Q => div_phase_sum_EW(12),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[13]\: unisim.vcomponents.FDRE
@@ -8143,7 +8143,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(13),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[13]\,
+      Q => div_phase_sum_EW(13),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[14]\: unisim.vcomponents.FDRE
@@ -8151,7 +8151,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(14),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[14]\,
+      Q => div_phase_sum_EW(14),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[15]\: unisim.vcomponents.FDRE
@@ -8159,7 +8159,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(15),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[15]\,
+      Q => div_phase_sum_EW(15),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[16]\: unisim.vcomponents.FDRE
@@ -8167,7 +8167,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(16),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[16]\,
+      Q => div_phase_sum_EW(16),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[17]\: unisim.vcomponents.FDRE
@@ -8175,7 +8175,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(17),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[17]\,
+      Q => div_phase_sum_EW(17),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[18]\: unisim.vcomponents.FDRE
@@ -8183,7 +8183,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(18),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[18]\,
+      Q => div_phase_sum_EW(18),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[19]\: unisim.vcomponents.FDRE
@@ -8191,7 +8191,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(19),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[19]\,
+      Q => div_phase_sum_EW(19),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[1]\: unisim.vcomponents.FDRE
@@ -8199,7 +8199,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(1),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[1]\,
+      Q => div_phase_sum_EW(1),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[20]\: unisim.vcomponents.FDRE
@@ -8207,7 +8207,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(20),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[20]\,
+      Q => div_phase_sum_EW(20),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[21]\: unisim.vcomponents.FDRE
@@ -8215,7 +8215,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(21),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[21]\,
+      Q => div_phase_sum_EW(21),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[22]\: unisim.vcomponents.FDRE
@@ -8223,7 +8223,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(22),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[22]\,
+      Q => div_phase_sum_EW(22),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[23]\: unisim.vcomponents.FDRE
@@ -8231,7 +8231,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(23),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[23]\,
+      Q => div_phase_sum_EW(23),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[24]\: unisim.vcomponents.FDRE
@@ -8239,7 +8239,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(24),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[24]\,
+      Q => div_phase_sum_EW(24),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[25]\: unisim.vcomponents.FDRE
@@ -8247,7 +8247,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(25),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[25]\,
+      Q => div_phase_sum_EW(25),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[26]\: unisim.vcomponents.FDRE
@@ -8255,7 +8255,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(26),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[26]\,
+      Q => div_phase_sum_EW(26),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[27]\: unisim.vcomponents.FDRE
@@ -8263,7 +8263,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(27),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[27]\,
+      Q => div_phase_sum_EW(27),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[28]\: unisim.vcomponents.FDRE
@@ -8271,7 +8271,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(28),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[28]\,
+      Q => div_phase_sum_EW(28),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[29]\: unisim.vcomponents.FDRE
@@ -8279,7 +8279,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(29),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[29]\,
+      Q => div_phase_sum_EW(29),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[2]\: unisim.vcomponents.FDRE
@@ -8287,7 +8287,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(2),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[2]\,
+      Q => div_phase_sum_EW(2),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[30]\: unisim.vcomponents.FDRE
@@ -8295,7 +8295,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(30),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[30]\,
+      Q => div_phase_sum_EW(30),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[31]\: unisim.vcomponents.FDRE
@@ -8303,7 +8303,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(31),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[31]\,
+      Q => div_phase_sum_EW(31),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[32]\: unisim.vcomponents.FDRE
@@ -8311,7 +8311,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(32),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[32]\,
+      Q => div_phase_sum_EW(32),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[33]\: unisim.vcomponents.FDRE
@@ -8319,7 +8319,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(33),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[33]\,
+      Q => div_phase_sum_EW(33),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[34]\: unisim.vcomponents.FDRE
@@ -8327,7 +8327,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(34),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[34]\,
+      Q => div_phase_sum_EW(34),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[35]\: unisim.vcomponents.FDRE
@@ -8335,7 +8335,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(35),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[35]\,
+      Q => div_phase_sum_EW(35),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[36]\: unisim.vcomponents.FDRE
@@ -8343,7 +8343,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(36),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[36]\,
+      Q => div_phase_sum_EW(36),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[37]\: unisim.vcomponents.FDRE
@@ -8351,7 +8351,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(37),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[37]\,
+      Q => div_phase_sum_EW(37),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[38]\: unisim.vcomponents.FDRE
@@ -8359,7 +8359,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(38),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[38]\,
+      Q => div_phase_sum_EW(38),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[39]\: unisim.vcomponents.FDRE
@@ -8367,7 +8367,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(39),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[39]\,
+      Q => div_phase_sum_EW(39),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[3]\: unisim.vcomponents.FDRE
@@ -8375,7 +8375,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(3),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[3]\,
+      Q => div_phase_sum_EW(3),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[40]\: unisim.vcomponents.FDRE
@@ -8383,7 +8383,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(40),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[40]\,
+      Q => div_phase_sum_EW(40),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[41]\: unisim.vcomponents.FDRE
@@ -8391,7 +8391,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(41),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[41]\,
+      Q => div_phase_sum_EW(41),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[42]\: unisim.vcomponents.FDRE
@@ -8399,7 +8399,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(42),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[42]\,
+      Q => div_phase_sum_EW(42),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[43]\: unisim.vcomponents.FDRE
@@ -8407,7 +8407,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(43),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[43]\,
+      Q => div_phase_sum_EW(43),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[44]\: unisim.vcomponents.FDRE
@@ -8415,7 +8415,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(44),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[44]\,
+      Q => div_phase_sum_EW(44),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[45]\: unisim.vcomponents.FDRE
@@ -8423,7 +8423,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(45),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[45]\,
+      Q => div_phase_sum_EW(45),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[46]\: unisim.vcomponents.FDRE
@@ -8431,7 +8431,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(46),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[46]\,
+      Q => div_phase_sum_EW(46),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[47]\: unisim.vcomponents.FDRE
@@ -8439,7 +8439,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(47),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[47]\,
+      Q => div_phase_sum_EW(47),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[4]\: unisim.vcomponents.FDRE
@@ -8447,7 +8447,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(4),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[4]\,
+      Q => div_phase_sum_EW(4),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[5]\: unisim.vcomponents.FDRE
@@ -8455,7 +8455,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(5),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[5]\,
+      Q => div_phase_sum_EW(5),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[6]\: unisim.vcomponents.FDRE
@@ -8463,7 +8463,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(6),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[6]\,
+      Q => div_phase_sum_EW(6),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[7]\: unisim.vcomponents.FDRE
@@ -8471,7 +8471,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(7),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[7]\,
+      Q => div_phase_sum_EW(7),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[8]\: unisim.vcomponents.FDRE
@@ -8479,7 +8479,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(8),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[8]\,
+      Q => div_phase_sum_EW(8),
       R => '0'
     );
 \det_signal.div_phase_sum_EW_reg[9]\: unisim.vcomponents.FDRE
@@ -8487,7 +8487,7 @@ begin
       C => clk,
       CE => div_phase_sum_NE,
       D => dsp_sum_EW(9),
-      Q => \det_signal.div_phase_sum_EW_reg_n_0_[9]\,
+      Q => div_phase_sum_EW(9),
       R => '0'
     );
 \det_signal.div_phase_sum_NE[47]_i_1\: unisim.vcomponents.LUT5
@@ -8886,388 +8886,388 @@ begin
       Q => \det_signal.div_phase_sum_NE_reg_n_0_[9]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[0]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(0),
-      Q => div_phase_sum_NW(0),
+      D => dsp_sum_WN(0),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[0]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[10]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(10),
-      Q => div_phase_sum_NW(10),
+      D => dsp_sum_WN(10),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[10]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[11]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(11),
-      Q => div_phase_sum_NW(11),
+      D => dsp_sum_WN(11),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[11]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[12]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(12),
-      Q => div_phase_sum_NW(12),
+      D => dsp_sum_WN(12),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[12]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[13]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(13),
-      Q => div_phase_sum_NW(13),
+      D => dsp_sum_WN(13),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[13]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[14]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(14),
-      Q => div_phase_sum_NW(14),
+      D => dsp_sum_WN(14),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[14]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[15]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(15),
-      Q => div_phase_sum_NW(15),
+      D => dsp_sum_WN(15),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[15]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[16]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(16),
-      Q => div_phase_sum_NW(16),
+      D => dsp_sum_WN(16),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[16]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[17]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(17),
-      Q => div_phase_sum_NW(17),
+      D => dsp_sum_WN(17),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[17]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[18]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(18),
-      Q => div_phase_sum_NW(18),
+      D => dsp_sum_WN(18),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[18]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[19]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(19),
-      Q => div_phase_sum_NW(19),
+      D => dsp_sum_WN(19),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[19]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[1]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(1),
-      Q => div_phase_sum_NW(1),
+      D => dsp_sum_WN(1),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[1]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[20]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(20),
-      Q => div_phase_sum_NW(20),
+      D => dsp_sum_WN(20),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[20]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[21]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(21),
-      Q => div_phase_sum_NW(21),
+      D => dsp_sum_WN(21),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[21]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[22]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(22),
-      Q => div_phase_sum_NW(22),
+      D => dsp_sum_WN(22),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[22]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[23]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(23),
-      Q => div_phase_sum_NW(23),
+      D => dsp_sum_WN(23),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[23]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[24]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(24),
-      Q => div_phase_sum_NW(24),
+      D => dsp_sum_WN(24),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[24]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[25]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(25),
-      Q => div_phase_sum_NW(25),
+      D => dsp_sum_WN(25),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[25]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[26]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(26),
-      Q => div_phase_sum_NW(26),
+      D => dsp_sum_WN(26),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[26]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[27]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(27),
-      Q => div_phase_sum_NW(27),
+      D => dsp_sum_WN(27),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[27]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[28]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(28),
-      Q => div_phase_sum_NW(28),
+      D => dsp_sum_WN(28),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[28]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[29]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(29),
-      Q => div_phase_sum_NW(29),
+      D => dsp_sum_WN(29),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[29]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[2]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(2),
-      Q => div_phase_sum_NW(2),
+      D => dsp_sum_WN(2),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[2]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[30]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(30),
-      Q => div_phase_sum_NW(30),
+      D => dsp_sum_WN(30),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[30]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[31]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(31),
-      Q => div_phase_sum_NW(31),
+      D => dsp_sum_WN(31),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[31]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[32]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(32),
-      Q => div_phase_sum_NW(32),
+      D => dsp_sum_WN(32),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[32]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[33]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(33),
-      Q => div_phase_sum_NW(33),
+      D => dsp_sum_WN(33),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[33]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[34]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(34),
-      Q => div_phase_sum_NW(34),
+      D => dsp_sum_WN(34),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[34]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[35]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(35),
-      Q => div_phase_sum_NW(35),
+      D => dsp_sum_WN(35),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[35]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[36]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(36),
-      Q => div_phase_sum_NW(36),
+      D => dsp_sum_WN(36),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[36]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[37]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(37),
-      Q => div_phase_sum_NW(37),
+      D => dsp_sum_WN(37),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[37]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[38]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(38),
-      Q => div_phase_sum_NW(38),
+      D => dsp_sum_WN(38),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[38]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[39]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(39),
-      Q => div_phase_sum_NW(39),
+      D => dsp_sum_WN(39),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[39]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[3]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(3),
-      Q => div_phase_sum_NW(3),
+      D => dsp_sum_WN(3),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[3]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[40]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(40),
-      Q => div_phase_sum_NW(40),
+      D => dsp_sum_WN(40),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[40]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[41]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(41),
-      Q => div_phase_sum_NW(41),
+      D => dsp_sum_WN(41),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[41]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[42]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(42),
-      Q => div_phase_sum_NW(42),
+      D => dsp_sum_WN(42),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[42]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[43]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(43),
-      Q => div_phase_sum_NW(43),
+      D => dsp_sum_WN(43),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[43]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[44]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(44),
-      Q => div_phase_sum_NW(44),
+      D => dsp_sum_WN(44),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[44]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[45]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(45),
-      Q => div_phase_sum_NW(45),
+      D => dsp_sum_WN(45),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[45]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[46]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(46),
-      Q => div_phase_sum_NW(46),
+      D => dsp_sum_WN(46),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[46]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[47]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(47),
-      Q => div_phase_sum_NW(47),
+      D => dsp_sum_WN(47),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[47]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[4]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(4),
-      Q => div_phase_sum_NW(4),
+      D => dsp_sum_WN(4),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[4]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[5]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(5),
-      Q => div_phase_sum_NW(5),
+      D => dsp_sum_WN(5),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[5]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[6]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(6),
-      Q => div_phase_sum_NW(6),
+      D => dsp_sum_WN(6),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[6]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[7]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(7),
-      Q => div_phase_sum_NW(7),
+      D => dsp_sum_WN(7),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[7]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[8]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(8),
-      Q => div_phase_sum_NW(8),
+      D => dsp_sum_WN(8),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[8]\,
       R => '0'
     );
-\det_signal.div_phase_sum_NW_reg[9]\: unisim.vcomponents.FDRE
+\det_signal.div_phase_sum_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => div_phase_sum_NE,
-      D => dsp_sum_NW(9),
-      Q => div_phase_sum_NW(9),
+      D => dsp_sum_WN(9),
+      Q => \det_signal.div_phase_sum_WN_reg_n_0_[9]\,
       R => '0'
     );
 \det_signal.div_sample_count[8]_i_1\: unisim.vcomponents.LUT5
@@ -9390,7 +9390,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(0),
+      D => dsp_phase_EW01_out(0),
       Q => dsp_phase_EW(0),
       R => dsp_phase_W(0)
     );
@@ -9398,7 +9398,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(10),
+      D => dsp_phase_EW01_out(10),
       Q => dsp_phase_EW(10),
       R => dsp_phase_W(0)
     );
@@ -9406,7 +9406,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(11),
+      D => dsp_phase_EW01_out(11),
       Q => dsp_phase_EW(11),
       R => dsp_phase_W(0)
     );
@@ -9414,7 +9414,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(12),
+      D => dsp_phase_EW01_out(12),
       Q => dsp_phase_EW(12),
       R => dsp_phase_W(0)
     );
@@ -9422,7 +9422,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(13),
+      D => dsp_phase_EW01_out(13),
       Q => dsp_phase_EW(13),
       R => dsp_phase_W(0)
     );
@@ -9430,7 +9430,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(14),
+      D => dsp_phase_EW01_out(14),
       Q => dsp_phase_EW(14),
       R => dsp_phase_W(0)
     );
@@ -9438,7 +9438,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(15),
+      D => dsp_phase_EW01_out(15),
       Q => dsp_phase_EW(15),
       R => dsp_phase_W(0)
     );
@@ -9446,7 +9446,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(16),
+      D => dsp_phase_EW01_out(16),
       Q => dsp_phase_EW(16),
       R => dsp_phase_W(0)
     );
@@ -9454,7 +9454,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(17),
+      D => dsp_phase_EW01_out(17),
       Q => dsp_phase_EW(17),
       R => dsp_phase_W(0)
     );
@@ -9462,7 +9462,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(18),
+      D => dsp_phase_EW01_out(18),
       Q => dsp_phase_EW(18),
       R => dsp_phase_W(0)
     );
@@ -9470,7 +9470,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(19),
+      D => dsp_phase_EW01_out(19),
       Q => dsp_phase_EW(19),
       R => dsp_phase_W(0)
     );
@@ -9478,7 +9478,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(1),
+      D => dsp_phase_EW01_out(1),
       Q => dsp_phase_EW(1),
       R => dsp_phase_W(0)
     );
@@ -9486,7 +9486,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(2),
+      D => dsp_phase_EW01_out(2),
       Q => dsp_phase_EW(2),
       R => dsp_phase_W(0)
     );
@@ -9494,7 +9494,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(3),
+      D => dsp_phase_EW01_out(3),
       Q => dsp_phase_EW(3),
       R => dsp_phase_W(0)
     );
@@ -9502,7 +9502,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(4),
+      D => dsp_phase_EW01_out(4),
       Q => dsp_phase_EW(4),
       R => dsp_phase_W(0)
     );
@@ -9510,7 +9510,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(5),
+      D => dsp_phase_EW01_out(5),
       Q => dsp_phase_EW(5),
       R => dsp_phase_W(0)
     );
@@ -9518,7 +9518,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(6),
+      D => dsp_phase_EW01_out(6),
       Q => dsp_phase_EW(6),
       R => dsp_phase_W(0)
     );
@@ -9526,7 +9526,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(7),
+      D => dsp_phase_EW01_out(7),
       Q => dsp_phase_EW(7),
       R => dsp_phase_W(0)
     );
@@ -9534,7 +9534,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(8),
+      D => dsp_phase_EW01_out(8),
       Q => dsp_phase_EW(8),
       R => dsp_phase_W(0)
     );
@@ -9542,7 +9542,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_EW00_out(9),
+      D => dsp_phase_EW01_out(9),
       Q => dsp_phase_EW(9),
       R => dsp_phase_W(0)
     );
@@ -9710,7 +9710,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(0),
+      D => dsp_phase_NE02_out(0),
       Q => dsp_phase_NE(0),
       R => dsp_phase_W(0)
     );
@@ -9718,7 +9718,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(10),
+      D => dsp_phase_NE02_out(10),
       Q => dsp_phase_NE(10),
       R => dsp_phase_W(0)
     );
@@ -9726,7 +9726,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(11),
+      D => dsp_phase_NE02_out(11),
       Q => dsp_phase_NE(11),
       R => dsp_phase_W(0)
     );
@@ -9734,7 +9734,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(12),
+      D => dsp_phase_NE02_out(12),
       Q => dsp_phase_NE(12),
       R => dsp_phase_W(0)
     );
@@ -9742,7 +9742,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(13),
+      D => dsp_phase_NE02_out(13),
       Q => dsp_phase_NE(13),
       R => dsp_phase_W(0)
     );
@@ -9750,7 +9750,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(14),
+      D => dsp_phase_NE02_out(14),
       Q => dsp_phase_NE(14),
       R => dsp_phase_W(0)
     );
@@ -9758,7 +9758,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(15),
+      D => dsp_phase_NE02_out(15),
       Q => dsp_phase_NE(15),
       R => dsp_phase_W(0)
     );
@@ -9766,7 +9766,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(16),
+      D => dsp_phase_NE02_out(16),
       Q => dsp_phase_NE(16),
       R => dsp_phase_W(0)
     );
@@ -9774,7 +9774,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(17),
+      D => dsp_phase_NE02_out(17),
       Q => dsp_phase_NE(17),
       R => dsp_phase_W(0)
     );
@@ -9782,7 +9782,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(18),
+      D => dsp_phase_NE02_out(18),
       Q => dsp_phase_NE(18),
       R => dsp_phase_W(0)
     );
@@ -9790,7 +9790,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(19),
+      D => dsp_phase_NE02_out(19),
       Q => dsp_phase_NE(19),
       R => dsp_phase_W(0)
     );
@@ -9798,7 +9798,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(1),
+      D => dsp_phase_NE02_out(1),
       Q => dsp_phase_NE(1),
       R => dsp_phase_W(0)
     );
@@ -9806,7 +9806,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(2),
+      D => dsp_phase_NE02_out(2),
       Q => dsp_phase_NE(2),
       R => dsp_phase_W(0)
     );
@@ -9814,7 +9814,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(3),
+      D => dsp_phase_NE02_out(3),
       Q => dsp_phase_NE(3),
       R => dsp_phase_W(0)
     );
@@ -9822,7 +9822,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(4),
+      D => dsp_phase_NE02_out(4),
       Q => dsp_phase_NE(4),
       R => dsp_phase_W(0)
     );
@@ -9830,7 +9830,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(5),
+      D => dsp_phase_NE02_out(5),
       Q => dsp_phase_NE(5),
       R => dsp_phase_W(0)
     );
@@ -9838,7 +9838,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(6),
+      D => dsp_phase_NE02_out(6),
       Q => dsp_phase_NE(6),
       R => dsp_phase_W(0)
     );
@@ -9846,7 +9846,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(7),
+      D => dsp_phase_NE02_out(7),
       Q => dsp_phase_NE(7),
       R => dsp_phase_W(0)
     );
@@ -9854,7 +9854,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(8),
+      D => dsp_phase_NE02_out(8),
       Q => dsp_phase_NE(8),
       R => dsp_phase_W(0)
     );
@@ -9862,168 +9862,8 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => dsp_phase_NE01_out(9),
+      D => dsp_phase_NE02_out(9),
       Q => dsp_phase_NE(9),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(0),
-      Q => dsp_phase_NW(0),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(10),
-      Q => dsp_phase_NW(10),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(11),
-      Q => dsp_phase_NW(11),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(12),
-      Q => dsp_phase_NW(12),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(13),
-      Q => dsp_phase_NW(13),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(14),
-      Q => dsp_phase_NW(14),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(15),
-      Q => dsp_phase_NW(15),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(16),
-      Q => dsp_phase_NW(16),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(17),
-      Q => dsp_phase_NW(17),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(18),
-      Q => dsp_phase_NW(18),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(19),
-      Q => dsp_phase_NW(19),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(1),
-      Q => dsp_phase_NW(1),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(2),
-      Q => dsp_phase_NW(2),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(3),
-      Q => dsp_phase_NW(3),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(4),
-      Q => dsp_phase_NW(4),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(5),
-      Q => dsp_phase_NW(5),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(6),
-      Q => dsp_phase_NW(6),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(7),
-      Q => dsp_phase_NW(7),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(8),
-      Q => dsp_phase_NW(8),
-      R => dsp_phase_W(0)
-    );
-\det_signal.dsp_phase_NW_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => dsp_phase_NW0(9),
-      Q => dsp_phase_NW(9),
       R => dsp_phase_W(0)
     );
 \det_signal.dsp_phase_N_reg[0]\: unisim.vcomponents.FDRE
@@ -10184,6 +10024,166 @@ begin
       CE => '1',
       D => diff_phase_N(9),
       Q => dsp_phase_N(9),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(0),
+      Q => dsp_phase_WN(0),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(10),
+      Q => dsp_phase_WN(10),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(11),
+      Q => dsp_phase_WN(11),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(12),
+      Q => dsp_phase_WN(12),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(13),
+      Q => dsp_phase_WN(13),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(14),
+      Q => dsp_phase_WN(14),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(15),
+      Q => dsp_phase_WN(15),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(16),
+      Q => dsp_phase_WN(16),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(17),
+      Q => dsp_phase_WN(17),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(18),
+      Q => dsp_phase_WN(18),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(19),
+      Q => dsp_phase_WN(19),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(1),
+      Q => dsp_phase_WN(1),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(2),
+      Q => dsp_phase_WN(2),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(3),
+      Q => dsp_phase_WN(3),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(4),
+      Q => dsp_phase_WN(4),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(5),
+      Q => dsp_phase_WN(5),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(6),
+      Q => dsp_phase_WN(6),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(7),
+      Q => dsp_phase_WN(7),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(8),
+      Q => dsp_phase_WN(8),
+      R => dsp_phase_W(0)
+    );
+\det_signal.dsp_phase_WN_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => dsp_phase_WN00_out(9),
+      Q => dsp_phase_WN(9),
       R => dsp_phase_W(0)
     );
 \det_signal.dsp_phase_W[19]_i_1\: unisim.vcomponents.LUT1
@@ -11154,342 +11154,6 @@ begin
       Q => env_NE(9),
       R => dsp_phase_W(0)
     );
-\det_signal.env_NW[15]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(15),
-      I1 => env_W(15),
-      O => \det_signal.env_NW[15]_i_2_n_0\
-    );
-\det_signal.env_NW[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(14),
-      I1 => env_W(14),
-      O => \det_signal.env_NW[15]_i_3_n_0\
-    );
-\det_signal.env_NW[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(13),
-      I1 => env_W(13),
-      O => \det_signal.env_NW[15]_i_4_n_0\
-    );
-\det_signal.env_NW[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(12),
-      I1 => env_W(12),
-      O => \det_signal.env_NW[15]_i_5_n_0\
-    );
-\det_signal.env_NW[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(11),
-      I1 => env_W(11),
-      O => \det_signal.env_NW[15]_i_6_n_0\
-    );
-\det_signal.env_NW[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(10),
-      I1 => env_W(10),
-      O => \det_signal.env_NW[15]_i_7_n_0\
-    );
-\det_signal.env_NW[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(9),
-      I1 => env_W(9),
-      O => \det_signal.env_NW[15]_i_8_n_0\
-    );
-\det_signal.env_NW[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(8),
-      I1 => env_W(8),
-      O => \det_signal.env_NW[15]_i_9_n_0\
-    );
-\det_signal.env_NW[7]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(7),
-      I1 => env_W(7),
-      O => \det_signal.env_NW[7]_i_2_n_0\
-    );
-\det_signal.env_NW[7]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(6),
-      I1 => env_W(6),
-      O => \det_signal.env_NW[7]_i_3_n_0\
-    );
-\det_signal.env_NW[7]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(5),
-      I1 => env_W(5),
-      O => \det_signal.env_NW[7]_i_4_n_0\
-    );
-\det_signal.env_NW[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(4),
-      I1 => env_W(4),
-      O => \det_signal.env_NW[7]_i_5_n_0\
-    );
-\det_signal.env_NW[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(3),
-      I1 => env_W(3),
-      O => \det_signal.env_NW[7]_i_6_n_0\
-    );
-\det_signal.env_NW[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(2),
-      I1 => env_W(2),
-      O => \det_signal.env_NW[7]_i_7_n_0\
-    );
-\det_signal.env_NW[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(1),
-      I1 => env_W(1),
-      O => \det_signal.env_NW[7]_i_8_n_0\
-    );
-\det_signal.env_NW[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => env_N(0),
-      I1 => env_W(0),
-      O => \det_signal.env_NW[7]_i_9_n_0\
-    );
-\det_signal.env_NW_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(0),
-      Q => env_NW(0),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(10),
-      Q => env_NW(10),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(11),
-      Q => env_NW(11),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(12),
-      Q => env_NW(12),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(13),
-      Q => env_NW(13),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(14),
-      Q => env_NW(14),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(15),
-      Q => env_NW(15),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.env_NW_reg[7]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \det_signal.env_NW_reg[15]_i_1_n_0\,
-      CO(6) => \det_signal.env_NW_reg[15]_i_1_n_1\,
-      CO(5) => \det_signal.env_NW_reg[15]_i_1_n_2\,
-      CO(4) => \det_signal.env_NW_reg[15]_i_1_n_3\,
-      CO(3) => \det_signal.env_NW_reg[15]_i_1_n_4\,
-      CO(2) => \det_signal.env_NW_reg[15]_i_1_n_5\,
-      CO(1) => \det_signal.env_NW_reg[15]_i_1_n_6\,
-      CO(0) => \det_signal.env_NW_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => env_N(15 downto 8),
-      O(7 downto 0) => env_NW0(15 downto 8),
-      S(7) => \det_signal.env_NW[15]_i_2_n_0\,
-      S(6) => \det_signal.env_NW[15]_i_3_n_0\,
-      S(5) => \det_signal.env_NW[15]_i_4_n_0\,
-      S(4) => \det_signal.env_NW[15]_i_5_n_0\,
-      S(3) => \det_signal.env_NW[15]_i_6_n_0\,
-      S(2) => \det_signal.env_NW[15]_i_7_n_0\,
-      S(1) => \det_signal.env_NW[15]_i_8_n_0\,
-      S(0) => \det_signal.env_NW[15]_i_9_n_0\
-    );
-\det_signal.env_NW_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(16),
-      Q => env_NW(16),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[16]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.env_NW_reg[15]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 0) => \NLW_det_signal.env_NW_reg[16]_i_1_CO_UNCONNECTED\(7 downto 0),
-      DI(7 downto 0) => B"00000000",
-      O(7 downto 1) => \NLW_det_signal.env_NW_reg[16]_i_1_O_UNCONNECTED\(7 downto 1),
-      O(0) => env_NW0(16),
-      S(7 downto 0) => B"00000000"
-    );
-\det_signal.env_NW_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(1),
-      Q => env_NW(1),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(2),
-      Q => env_NW(2),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(3),
-      Q => env_NW(3),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(4),
-      Q => env_NW(4),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(5),
-      Q => env_NW(5),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(6),
-      Q => env_NW(6),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(7),
-      Q => env_NW(7),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[7]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '0',
-      CI_TOP => '0',
-      CO(7) => \det_signal.env_NW_reg[7]_i_1_n_0\,
-      CO(6) => \det_signal.env_NW_reg[7]_i_1_n_1\,
-      CO(5) => \det_signal.env_NW_reg[7]_i_1_n_2\,
-      CO(4) => \det_signal.env_NW_reg[7]_i_1_n_3\,
-      CO(3) => \det_signal.env_NW_reg[7]_i_1_n_4\,
-      CO(2) => \det_signal.env_NW_reg[7]_i_1_n_5\,
-      CO(1) => \det_signal.env_NW_reg[7]_i_1_n_6\,
-      CO(0) => \det_signal.env_NW_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => env_N(7 downto 0),
-      O(7 downto 0) => env_NW0(7 downto 0),
-      S(7) => \det_signal.env_NW[7]_i_2_n_0\,
-      S(6) => \det_signal.env_NW[7]_i_3_n_0\,
-      S(5) => \det_signal.env_NW[7]_i_4_n_0\,
-      S(4) => \det_signal.env_NW[7]_i_5_n_0\,
-      S(3) => \det_signal.env_NW[7]_i_6_n_0\,
-      S(2) => \det_signal.env_NW[7]_i_7_n_0\,
-      S(1) => \det_signal.env_NW[7]_i_8_n_0\,
-      S(0) => \det_signal.env_NW[7]_i_9_n_0\
-    );
-\det_signal.env_NW_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(8),
-      Q => env_NW(8),
-      R => dsp_phase_W(0)
-    );
-\det_signal.env_NW_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_NW0(9),
-      Q => env_NW(9),
-      R => dsp_phase_W(0)
-    );
 \det_signal.env_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -11617,6 +11281,342 @@ begin
       D => Q(9),
       Q => env_N(9),
       R => '0'
+    );
+\det_signal.env_WN[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(15),
+      I1 => env_N(15),
+      O => \det_signal.env_WN[15]_i_2_n_0\
+    );
+\det_signal.env_WN[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(14),
+      I1 => env_N(14),
+      O => \det_signal.env_WN[15]_i_3_n_0\
+    );
+\det_signal.env_WN[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(13),
+      I1 => env_N(13),
+      O => \det_signal.env_WN[15]_i_4_n_0\
+    );
+\det_signal.env_WN[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(12),
+      I1 => env_N(12),
+      O => \det_signal.env_WN[15]_i_5_n_0\
+    );
+\det_signal.env_WN[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(11),
+      I1 => env_N(11),
+      O => \det_signal.env_WN[15]_i_6_n_0\
+    );
+\det_signal.env_WN[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(10),
+      I1 => env_N(10),
+      O => \det_signal.env_WN[15]_i_7_n_0\
+    );
+\det_signal.env_WN[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(9),
+      I1 => env_N(9),
+      O => \det_signal.env_WN[15]_i_8_n_0\
+    );
+\det_signal.env_WN[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(8),
+      I1 => env_N(8),
+      O => \det_signal.env_WN[15]_i_9_n_0\
+    );
+\det_signal.env_WN[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(7),
+      I1 => env_N(7),
+      O => \det_signal.env_WN[7]_i_2_n_0\
+    );
+\det_signal.env_WN[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(6),
+      I1 => env_N(6),
+      O => \det_signal.env_WN[7]_i_3_n_0\
+    );
+\det_signal.env_WN[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(5),
+      I1 => env_N(5),
+      O => \det_signal.env_WN[7]_i_4_n_0\
+    );
+\det_signal.env_WN[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(4),
+      I1 => env_N(4),
+      O => \det_signal.env_WN[7]_i_5_n_0\
+    );
+\det_signal.env_WN[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(3),
+      I1 => env_N(3),
+      O => \det_signal.env_WN[7]_i_6_n_0\
+    );
+\det_signal.env_WN[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(2),
+      I1 => env_N(2),
+      O => \det_signal.env_WN[7]_i_7_n_0\
+    );
+\det_signal.env_WN[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(1),
+      I1 => env_N(1),
+      O => \det_signal.env_WN[7]_i_8_n_0\
+    );
+\det_signal.env_WN[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_W(0),
+      I1 => env_N(0),
+      O => \det_signal.env_WN[7]_i_9_n_0\
+    );
+\det_signal.env_WN_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(0),
+      Q => env_WN(0),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(10),
+      Q => env_WN(10),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(11),
+      Q => env_WN(11),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(12),
+      Q => env_WN(12),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(13),
+      Q => env_WN(13),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(14),
+      Q => env_WN(14),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(15),
+      Q => env_WN(15),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.env_WN_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \det_signal.env_WN_reg[15]_i_1_n_0\,
+      CO(6) => \det_signal.env_WN_reg[15]_i_1_n_1\,
+      CO(5) => \det_signal.env_WN_reg[15]_i_1_n_2\,
+      CO(4) => \det_signal.env_WN_reg[15]_i_1_n_3\,
+      CO(3) => \det_signal.env_WN_reg[15]_i_1_n_4\,
+      CO(2) => \det_signal.env_WN_reg[15]_i_1_n_5\,
+      CO(1) => \det_signal.env_WN_reg[15]_i_1_n_6\,
+      CO(0) => \det_signal.env_WN_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => env_W(15 downto 8),
+      O(7 downto 0) => env_WN0(15 downto 8),
+      S(7) => \det_signal.env_WN[15]_i_2_n_0\,
+      S(6) => \det_signal.env_WN[15]_i_3_n_0\,
+      S(5) => \det_signal.env_WN[15]_i_4_n_0\,
+      S(4) => \det_signal.env_WN[15]_i_5_n_0\,
+      S(3) => \det_signal.env_WN[15]_i_6_n_0\,
+      S(2) => \det_signal.env_WN[15]_i_7_n_0\,
+      S(1) => \det_signal.env_WN[15]_i_8_n_0\,
+      S(0) => \det_signal.env_WN[15]_i_9_n_0\
+    );
+\det_signal.env_WN_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(16),
+      Q => env_WN(16),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[16]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \det_signal.env_WN_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 0) => \NLW_det_signal.env_WN_reg[16]_i_1_CO_UNCONNECTED\(7 downto 0),
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 1) => \NLW_det_signal.env_WN_reg[16]_i_1_O_UNCONNECTED\(7 downto 1),
+      O(0) => env_WN0(16),
+      S(7 downto 0) => B"00000000"
+    );
+\det_signal.env_WN_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(1),
+      Q => env_WN(1),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(2),
+      Q => env_WN(2),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(3),
+      Q => env_WN(3),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(4),
+      Q => env_WN(4),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(5),
+      Q => env_WN(5),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(6),
+      Q => env_WN(6),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(7),
+      Q => env_WN(7),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \det_signal.env_WN_reg[7]_i_1_n_0\,
+      CO(6) => \det_signal.env_WN_reg[7]_i_1_n_1\,
+      CO(5) => \det_signal.env_WN_reg[7]_i_1_n_2\,
+      CO(4) => \det_signal.env_WN_reg[7]_i_1_n_3\,
+      CO(3) => \det_signal.env_WN_reg[7]_i_1_n_4\,
+      CO(2) => \det_signal.env_WN_reg[7]_i_1_n_5\,
+      CO(1) => \det_signal.env_WN_reg[7]_i_1_n_6\,
+      CO(0) => \det_signal.env_WN_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => env_W(7 downto 0),
+      O(7 downto 0) => env_WN0(7 downto 0),
+      S(7) => \det_signal.env_WN[7]_i_2_n_0\,
+      S(6) => \det_signal.env_WN[7]_i_3_n_0\,
+      S(5) => \det_signal.env_WN[7]_i_4_n_0\,
+      S(4) => \det_signal.env_WN[7]_i_5_n_0\,
+      S(3) => \det_signal.env_WN[7]_i_6_n_0\,
+      S(2) => \det_signal.env_WN[7]_i_7_n_0\,
+      S(1) => \det_signal.env_WN[7]_i_8_n_0\,
+      S(0) => \det_signal.env_WN[7]_i_9_n_0\
+    );
+\det_signal.env_WN_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(8),
+      Q => env_WN(8),
+      R => dsp_phase_W(0)
+    );
+\det_signal.env_WN_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => env_WN0(9),
+      Q => env_WN(9),
+      R => dsp_phase_W(0)
     );
 \det_signal.env_W_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -13238,7 +13238,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(132),
+      D => Q(120),
       Q => err_EW(0),
       R => '0'
     );
@@ -13246,7 +13246,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(142),
+      D => Q(130),
       Q => err_EW(10),
       R => '0'
     );
@@ -13254,7 +13254,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(143),
+      D => Q(131),
       Q => err_EW(11),
       R => '0'
     );
@@ -13262,7 +13262,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(133),
+      D => Q(121),
       Q => err_EW(1),
       R => '0'
     );
@@ -13270,7 +13270,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(134),
+      D => Q(122),
       Q => err_EW(2),
       R => '0'
     );
@@ -13278,7 +13278,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(135),
+      D => Q(123),
       Q => err_EW(3),
       R => '0'
     );
@@ -13286,7 +13286,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(136),
+      D => Q(124),
       Q => err_EW(4),
       R => '0'
     );
@@ -13294,7 +13294,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(137),
+      D => Q(125),
       Q => err_EW(5),
       R => '0'
     );
@@ -13302,7 +13302,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(138),
+      D => Q(126),
       Q => err_EW(6),
       R => '0'
     );
@@ -13310,7 +13310,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(139),
+      D => Q(127),
       Q => err_EW(7),
       R => '0'
     );
@@ -13318,7 +13318,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(140),
+      D => Q(128),
       Q => err_EW(8),
       R => '0'
     );
@@ -13326,7 +13326,7 @@ begin
      port map (
       C => clk,
       CE => E(0),
-      D => Q(141),
+      D => Q(129),
       Q => err_EW(9),
       R => '0'
     );
@@ -13426,100 +13426,100 @@ begin
       Q => err_NE(9),
       R => '0'
     );
-\det_signal.err_NW_reg[0]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(120),
-      Q => err_NW(0),
+      D => Q(132),
+      Q => err_WN(0),
       R => '0'
     );
-\det_signal.err_NW_reg[10]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(130),
-      Q => err_NW(10),
+      D => Q(142),
+      Q => err_WN(10),
       R => '0'
     );
-\det_signal.err_NW_reg[11]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(131),
-      Q => err_NW(11),
+      D => Q(143),
+      Q => err_WN(11),
       R => '0'
     );
-\det_signal.err_NW_reg[1]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(121),
-      Q => err_NW(1),
+      D => Q(133),
+      Q => err_WN(1),
       R => '0'
     );
-\det_signal.err_NW_reg[2]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(122),
-      Q => err_NW(2),
+      D => Q(134),
+      Q => err_WN(2),
       R => '0'
     );
-\det_signal.err_NW_reg[3]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(123),
-      Q => err_NW(3),
+      D => Q(135),
+      Q => err_WN(3),
       R => '0'
     );
-\det_signal.err_NW_reg[4]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(124),
-      Q => err_NW(4),
+      D => Q(136),
+      Q => err_WN(4),
       R => '0'
     );
-\det_signal.err_NW_reg[5]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(125),
-      Q => err_NW(5),
+      D => Q(137),
+      Q => err_WN(5),
       R => '0'
     );
-\det_signal.err_NW_reg[6]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(126),
-      Q => err_NW(6),
+      D => Q(138),
+      Q => err_WN(6),
       R => '0'
     );
-\det_signal.err_NW_reg[7]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(127),
-      Q => err_NW(7),
+      D => Q(139),
+      Q => err_WN(7),
       R => '0'
     );
-\det_signal.err_NW_reg[8]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(128),
-      Q => err_NW(8),
+      D => Q(140),
+      Q => err_WN(8),
       R => '0'
     );
-\det_signal.err_NW_reg[9]\: unisim.vcomponents.FDRE
+\det_signal.err_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => E(0),
-      D => Q(129),
-      Q => err_NW(9),
+      D => Q(141),
+      Q => err_WN(9),
       R => '0'
     );
 \det_signal.err_count[0]_i_1\: unisim.vcomponents.LUT1
@@ -17136,164 +17136,164 @@ begin
       Q => \det_signal.signal_phase_NE_reg[19]_0\(9),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[0]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(32),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(0),
+      D => div_phase_WN(32),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(0),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[10]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(42),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(10),
+      D => div_phase_WN(42),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(10),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[11]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(43),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(11),
+      D => div_phase_WN(43),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(11),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[12]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(44),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(12),
+      D => div_phase_WN(44),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(12),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[13]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(45),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(13),
+      D => div_phase_WN(45),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(13),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[14]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(46),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(14),
+      D => div_phase_WN(46),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(14),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[15]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(47),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(15),
+      D => div_phase_WN(47),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(15),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[16]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(48),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(16),
+      D => div_phase_WN(48),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(16),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[17]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(49),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(17),
+      D => div_phase_WN(49),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(17),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[18]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(50),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(18),
+      D => div_phase_WN(50),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(18),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[19]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(51),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(19),
+      D => div_phase_WN(51),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(19),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[1]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(33),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(1),
+      D => div_phase_WN(33),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(1),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[2]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(34),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(2),
+      D => div_phase_WN(34),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(2),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[3]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(35),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(3),
+      D => div_phase_WN(35),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(3),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[4]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(36),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(4),
+      D => div_phase_WN(36),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(4),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[5]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(37),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(5),
+      D => div_phase_WN(37),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(5),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[6]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(38),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(6),
+      D => div_phase_WN(38),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(6),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[7]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(39),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(7),
+      D => div_phase_WN(39),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(7),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[8]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(40),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(8),
+      D => div_phase_WN(40),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(8),
       R => '0'
     );
-\det_signal.signal_phase_NW_reg[9]\: unisim.vcomponents.FDRE
+\det_signal.signal_phase_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \det_signal.signal_freq[19]_i_1_n_0\,
-      D => div_phase_NW(41),
-      Q => \det_signal.signal_phase_NW_reg[19]_0\(9),
+      D => div_phase_WN(41),
+      Q => \det_signal.signal_phase_WN_reg[19]_0\(9),
       R => '0'
     );
 \det_signal.start_proc_i_1\: unisim.vcomponents.LUT5
@@ -17401,7 +17401,7 @@ diff_phase_E0_carry: unisim.vcomponents.CARRY8
       CO(1) => diff_phase_E0_carry_n_6,
       CO(0) => diff_phase_E0_carry_n_7,
       DI(7 downto 0) => phase_E(7 downto 0),
-      O(7 downto 0) => diff_phase_E03_out(7 downto 0),
+      O(7 downto 0) => diff_phase_E04_out(7 downto 0),
       S(7) => diff_phase_E0_carry_i_1_n_0,
       S(6) => diff_phase_E0_carry_i_2_n_0,
       S(5) => diff_phase_E0_carry_i_3_n_0,
@@ -17424,7 +17424,7 @@ diff_phase_E0_carry: unisim.vcomponents.CARRY8
       CO(1) => \diff_phase_E0_carry__0_n_6\,
       CO(0) => \diff_phase_E0_carry__0_n_7\,
       DI(7 downto 0) => phase_E(15 downto 8),
-      O(7 downto 0) => diff_phase_E03_out(15 downto 8),
+      O(7 downto 0) => diff_phase_E04_out(15 downto 8),
       S(7) => \diff_phase_E0_carry__0_i_1_n_0\,
       S(6) => \diff_phase_E0_carry__0_i_2_n_0\,
       S(5) => \diff_phase_E0_carry__0_i_3_n_0\,
@@ -17517,7 +17517,7 @@ diff_phase_E0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => phase_E(18 downto 16),
       O(7 downto 4) => \NLW_diff_phase_E0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => diff_phase_E03_out(19 downto 16),
+      O(3 downto 0) => diff_phase_E04_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3) => \diff_phase_E0_carry__1_i_1_n_0\,
       S(2) => \diff_phase_E0_carry__1_i_2_n_0\,
@@ -17645,7 +17645,7 @@ diff_phase_N0_carry: unisim.vcomponents.CARRY8
       CO(1) => diff_phase_N0_carry_n_6,
       CO(0) => diff_phase_N0_carry_n_7,
       DI(7 downto 0) => phase_N(7 downto 0),
-      O(7 downto 0) => diff_phase_N04_out(7 downto 0),
+      O(7 downto 0) => diff_phase_N05_out(7 downto 0),
       S(7) => diff_phase_N0_carry_i_1_n_0,
       S(6) => diff_phase_N0_carry_i_2_n_0,
       S(5) => diff_phase_N0_carry_i_3_n_0,
@@ -17668,7 +17668,7 @@ diff_phase_N0_carry: unisim.vcomponents.CARRY8
       CO(1) => \diff_phase_N0_carry__0_n_6\,
       CO(0) => \diff_phase_N0_carry__0_n_7\,
       DI(7 downto 0) => phase_N(15 downto 8),
-      O(7 downto 0) => diff_phase_N04_out(15 downto 8),
+      O(7 downto 0) => diff_phase_N05_out(15 downto 8),
       S(7) => \diff_phase_N0_carry__0_i_1_n_0\,
       S(6) => \diff_phase_N0_carry__0_i_2_n_0\,
       S(5) => \diff_phase_N0_carry__0_i_3_n_0\,
@@ -17761,7 +17761,7 @@ diff_phase_N0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => phase_N(18 downto 16),
       O(7 downto 4) => \NLW_diff_phase_N0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => diff_phase_N04_out(19 downto 16),
+      O(3 downto 0) => diff_phase_N05_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3) => \diff_phase_N0_carry__1_i_1_n_0\,
       S(2) => \diff_phase_N0_carry__1_i_2_n_0\,
@@ -17889,7 +17889,7 @@ diff_phase_W0_carry: unisim.vcomponents.CARRY8
       CO(1) => diff_phase_W0_carry_n_6,
       CO(0) => diff_phase_W0_carry_n_7,
       DI(7 downto 0) => phase_W(7 downto 0),
-      O(7 downto 0) => diff_phase_W02_out(7 downto 0),
+      O(7 downto 0) => diff_phase_W03_out(7 downto 0),
       S(7) => diff_phase_W0_carry_i_1_n_0,
       S(6) => diff_phase_W0_carry_i_2_n_0,
       S(5) => diff_phase_W0_carry_i_3_n_0,
@@ -17912,7 +17912,7 @@ diff_phase_W0_carry: unisim.vcomponents.CARRY8
       CO(1) => \diff_phase_W0_carry__0_n_6\,
       CO(0) => \diff_phase_W0_carry__0_n_7\,
       DI(7 downto 0) => phase_W(15 downto 8),
-      O(7 downto 0) => diff_phase_W02_out(15 downto 8),
+      O(7 downto 0) => diff_phase_W03_out(15 downto 8),
       S(7) => \diff_phase_W0_carry__0_i_1_n_0\,
       S(6) => \diff_phase_W0_carry__0_i_2_n_0\,
       S(5) => \diff_phase_W0_carry__0_i_3_n_0\,
@@ -18005,7 +18005,7 @@ diff_phase_W0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => phase_W(18 downto 16),
       O(7 downto 4) => \NLW_diff_phase_W0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => diff_phase_W02_out(19 downto 16),
+      O(3 downto 0) => diff_phase_W03_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3) => \diff_phase_W0_carry__1_i_1_n_0\,
       S(2) => \diff_phase_W0_carry__1_i_2_n_0\,
@@ -18226,88 +18226,17 @@ div_incr_i: component ps_comp_low_0_0_div_weighted
       s_axis_divisor_tdata(0) => \det_signal.div_env_all_reg_n_0_[0]\,
       s_axis_divisor_tvalid => div_start
     );
-div_phase_EW_i: component ps_comp_low_0_0_div_weighted_HD5
+div_phase_EW_i: component ps_comp_low_0_0_div_weighted
      port map (
       aclk => clk,
       m_axis_dout_tdata(79 downto 52) => NLW_div_phase_EW_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
       m_axis_dout_tdata(51 downto 32) => div_phase_EW(51 downto 32),
       m_axis_dout_tdata(31 downto 0) => NLW_div_phase_EW_i_m_axis_dout_tdata_UNCONNECTED(31 downto 0),
       m_axis_dout_tvalid => NLW_div_phase_EW_i_m_axis_dout_tvalid_UNCONNECTED,
-      s_axis_dividend_tdata(47) => \det_signal.div_phase_sum_EW_reg_n_0_[47]\,
-      s_axis_dividend_tdata(46) => \det_signal.div_phase_sum_EW_reg_n_0_[46]\,
-      s_axis_dividend_tdata(45) => \det_signal.div_phase_sum_EW_reg_n_0_[45]\,
-      s_axis_dividend_tdata(44) => \det_signal.div_phase_sum_EW_reg_n_0_[44]\,
-      s_axis_dividend_tdata(43) => \det_signal.div_phase_sum_EW_reg_n_0_[43]\,
-      s_axis_dividend_tdata(42) => \det_signal.div_phase_sum_EW_reg_n_0_[42]\,
-      s_axis_dividend_tdata(41) => \det_signal.div_phase_sum_EW_reg_n_0_[41]\,
-      s_axis_dividend_tdata(40) => \det_signal.div_phase_sum_EW_reg_n_0_[40]\,
-      s_axis_dividend_tdata(39) => \det_signal.div_phase_sum_EW_reg_n_0_[39]\,
-      s_axis_dividend_tdata(38) => \det_signal.div_phase_sum_EW_reg_n_0_[38]\,
-      s_axis_dividend_tdata(37) => \det_signal.div_phase_sum_EW_reg_n_0_[37]\,
-      s_axis_dividend_tdata(36) => \det_signal.div_phase_sum_EW_reg_n_0_[36]\,
-      s_axis_dividend_tdata(35) => \det_signal.div_phase_sum_EW_reg_n_0_[35]\,
-      s_axis_dividend_tdata(34) => \det_signal.div_phase_sum_EW_reg_n_0_[34]\,
-      s_axis_dividend_tdata(33) => \det_signal.div_phase_sum_EW_reg_n_0_[33]\,
-      s_axis_dividend_tdata(32) => \det_signal.div_phase_sum_EW_reg_n_0_[32]\,
-      s_axis_dividend_tdata(31) => \det_signal.div_phase_sum_EW_reg_n_0_[31]\,
-      s_axis_dividend_tdata(30) => \det_signal.div_phase_sum_EW_reg_n_0_[30]\,
-      s_axis_dividend_tdata(29) => \det_signal.div_phase_sum_EW_reg_n_0_[29]\,
-      s_axis_dividend_tdata(28) => \det_signal.div_phase_sum_EW_reg_n_0_[28]\,
-      s_axis_dividend_tdata(27) => \det_signal.div_phase_sum_EW_reg_n_0_[27]\,
-      s_axis_dividend_tdata(26) => \det_signal.div_phase_sum_EW_reg_n_0_[26]\,
-      s_axis_dividend_tdata(25) => \det_signal.div_phase_sum_EW_reg_n_0_[25]\,
-      s_axis_dividend_tdata(24) => \det_signal.div_phase_sum_EW_reg_n_0_[24]\,
-      s_axis_dividend_tdata(23) => \det_signal.div_phase_sum_EW_reg_n_0_[23]\,
-      s_axis_dividend_tdata(22) => \det_signal.div_phase_sum_EW_reg_n_0_[22]\,
-      s_axis_dividend_tdata(21) => \det_signal.div_phase_sum_EW_reg_n_0_[21]\,
-      s_axis_dividend_tdata(20) => \det_signal.div_phase_sum_EW_reg_n_0_[20]\,
-      s_axis_dividend_tdata(19) => \det_signal.div_phase_sum_EW_reg_n_0_[19]\,
-      s_axis_dividend_tdata(18) => \det_signal.div_phase_sum_EW_reg_n_0_[18]\,
-      s_axis_dividend_tdata(17) => \det_signal.div_phase_sum_EW_reg_n_0_[17]\,
-      s_axis_dividend_tdata(16) => \det_signal.div_phase_sum_EW_reg_n_0_[16]\,
-      s_axis_dividend_tdata(15) => \det_signal.div_phase_sum_EW_reg_n_0_[15]\,
-      s_axis_dividend_tdata(14) => \det_signal.div_phase_sum_EW_reg_n_0_[14]\,
-      s_axis_dividend_tdata(13) => \det_signal.div_phase_sum_EW_reg_n_0_[13]\,
-      s_axis_dividend_tdata(12) => \det_signal.div_phase_sum_EW_reg_n_0_[12]\,
-      s_axis_dividend_tdata(11) => \det_signal.div_phase_sum_EW_reg_n_0_[11]\,
-      s_axis_dividend_tdata(10) => \det_signal.div_phase_sum_EW_reg_n_0_[10]\,
-      s_axis_dividend_tdata(9) => \det_signal.div_phase_sum_EW_reg_n_0_[9]\,
-      s_axis_dividend_tdata(8) => \det_signal.div_phase_sum_EW_reg_n_0_[8]\,
-      s_axis_dividend_tdata(7) => \det_signal.div_phase_sum_EW_reg_n_0_[7]\,
-      s_axis_dividend_tdata(6) => \det_signal.div_phase_sum_EW_reg_n_0_[6]\,
-      s_axis_dividend_tdata(5) => \det_signal.div_phase_sum_EW_reg_n_0_[5]\,
-      s_axis_dividend_tdata(4) => \det_signal.div_phase_sum_EW_reg_n_0_[4]\,
-      s_axis_dividend_tdata(3) => \det_signal.div_phase_sum_EW_reg_n_0_[3]\,
-      s_axis_dividend_tdata(2) => \det_signal.div_phase_sum_EW_reg_n_0_[2]\,
-      s_axis_dividend_tdata(1) => \det_signal.div_phase_sum_EW_reg_n_0_[1]\,
-      s_axis_dividend_tdata(0) => \det_signal.div_phase_sum_EW_reg_n_0_[0]\,
+      s_axis_dividend_tdata(47 downto 0) => div_phase_sum_EW(47 downto 0),
       s_axis_dividend_tvalid => div_start,
       s_axis_divisor_tdata(31 downto 25) => B"0000000",
-      s_axis_divisor_tdata(24) => \det_signal.div_env_sum_EW_reg_n_0_[24]\,
-      s_axis_divisor_tdata(23) => \det_signal.div_env_sum_EW_reg_n_0_[23]\,
-      s_axis_divisor_tdata(22) => \det_signal.div_env_sum_EW_reg_n_0_[22]\,
-      s_axis_divisor_tdata(21) => \det_signal.div_env_sum_EW_reg_n_0_[21]\,
-      s_axis_divisor_tdata(20) => \det_signal.div_env_sum_EW_reg_n_0_[20]\,
-      s_axis_divisor_tdata(19) => \det_signal.div_env_sum_EW_reg_n_0_[19]\,
-      s_axis_divisor_tdata(18) => \det_signal.div_env_sum_EW_reg_n_0_[18]\,
-      s_axis_divisor_tdata(17) => \det_signal.div_env_sum_EW_reg_n_0_[17]\,
-      s_axis_divisor_tdata(16) => \det_signal.div_env_sum_EW_reg_n_0_[16]\,
-      s_axis_divisor_tdata(15) => \det_signal.div_env_sum_EW_reg_n_0_[15]\,
-      s_axis_divisor_tdata(14) => \det_signal.div_env_sum_EW_reg_n_0_[14]\,
-      s_axis_divisor_tdata(13) => \det_signal.div_env_sum_EW_reg_n_0_[13]\,
-      s_axis_divisor_tdata(12) => \det_signal.div_env_sum_EW_reg_n_0_[12]\,
-      s_axis_divisor_tdata(11) => \det_signal.div_env_sum_EW_reg_n_0_[11]\,
-      s_axis_divisor_tdata(10) => \det_signal.div_env_sum_EW_reg_n_0_[10]\,
-      s_axis_divisor_tdata(9) => \det_signal.div_env_sum_EW_reg_n_0_[9]\,
-      s_axis_divisor_tdata(8) => \det_signal.div_env_sum_EW_reg_n_0_[8]\,
-      s_axis_divisor_tdata(7) => \det_signal.div_env_sum_EW_reg_n_0_[7]\,
-      s_axis_divisor_tdata(6) => \det_signal.div_env_sum_EW_reg_n_0_[6]\,
-      s_axis_divisor_tdata(5) => \det_signal.div_env_sum_EW_reg_n_0_[5]\,
-      s_axis_divisor_tdata(4) => \det_signal.div_env_sum_EW_reg_n_0_[4]\,
-      s_axis_divisor_tdata(3) => \det_signal.div_env_sum_EW_reg_n_0_[3]\,
-      s_axis_divisor_tdata(2) => \det_signal.div_env_sum_EW_reg_n_0_[2]\,
-      s_axis_divisor_tdata(1) => \det_signal.div_env_sum_EW_reg_n_0_[1]\,
-      s_axis_divisor_tdata(0) => \det_signal.div_env_sum_EW_reg_n_0_[0]\,
+      s_axis_divisor_tdata(24 downto 0) => div_env_sum_EW(24 downto 0),
       s_axis_divisor_tvalid => div_start
     );
 div_phase_NE_i: component ps_comp_low_0_0_div_weighted
@@ -18370,17 +18299,88 @@ div_phase_NE_i: component ps_comp_low_0_0_div_weighted
       s_axis_divisor_tdata(24 downto 0) => div_env_sum_NE(24 downto 0),
       s_axis_divisor_tvalid => div_start
     );
-div_phase_NW_i: component ps_comp_low_0_0_div_weighted
+div_phase_WN_i: component ps_comp_low_0_0_div_weighted_HD5
      port map (
       aclk => clk,
-      m_axis_dout_tdata(79 downto 52) => NLW_div_phase_NW_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
-      m_axis_dout_tdata(51 downto 32) => div_phase_NW(51 downto 32),
-      m_axis_dout_tdata(31 downto 0) => NLW_div_phase_NW_i_m_axis_dout_tdata_UNCONNECTED(31 downto 0),
-      m_axis_dout_tvalid => NLW_div_phase_NW_i_m_axis_dout_tvalid_UNCONNECTED,
-      s_axis_dividend_tdata(47 downto 0) => div_phase_sum_NW(47 downto 0),
+      m_axis_dout_tdata(79 downto 52) => NLW_div_phase_WN_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
+      m_axis_dout_tdata(51 downto 32) => div_phase_WN(51 downto 32),
+      m_axis_dout_tdata(31 downto 0) => NLW_div_phase_WN_i_m_axis_dout_tdata_UNCONNECTED(31 downto 0),
+      m_axis_dout_tvalid => NLW_div_phase_WN_i_m_axis_dout_tvalid_UNCONNECTED,
+      s_axis_dividend_tdata(47) => \det_signal.div_phase_sum_WN_reg_n_0_[47]\,
+      s_axis_dividend_tdata(46) => \det_signal.div_phase_sum_WN_reg_n_0_[46]\,
+      s_axis_dividend_tdata(45) => \det_signal.div_phase_sum_WN_reg_n_0_[45]\,
+      s_axis_dividend_tdata(44) => \det_signal.div_phase_sum_WN_reg_n_0_[44]\,
+      s_axis_dividend_tdata(43) => \det_signal.div_phase_sum_WN_reg_n_0_[43]\,
+      s_axis_dividend_tdata(42) => \det_signal.div_phase_sum_WN_reg_n_0_[42]\,
+      s_axis_dividend_tdata(41) => \det_signal.div_phase_sum_WN_reg_n_0_[41]\,
+      s_axis_dividend_tdata(40) => \det_signal.div_phase_sum_WN_reg_n_0_[40]\,
+      s_axis_dividend_tdata(39) => \det_signal.div_phase_sum_WN_reg_n_0_[39]\,
+      s_axis_dividend_tdata(38) => \det_signal.div_phase_sum_WN_reg_n_0_[38]\,
+      s_axis_dividend_tdata(37) => \det_signal.div_phase_sum_WN_reg_n_0_[37]\,
+      s_axis_dividend_tdata(36) => \det_signal.div_phase_sum_WN_reg_n_0_[36]\,
+      s_axis_dividend_tdata(35) => \det_signal.div_phase_sum_WN_reg_n_0_[35]\,
+      s_axis_dividend_tdata(34) => \det_signal.div_phase_sum_WN_reg_n_0_[34]\,
+      s_axis_dividend_tdata(33) => \det_signal.div_phase_sum_WN_reg_n_0_[33]\,
+      s_axis_dividend_tdata(32) => \det_signal.div_phase_sum_WN_reg_n_0_[32]\,
+      s_axis_dividend_tdata(31) => \det_signal.div_phase_sum_WN_reg_n_0_[31]\,
+      s_axis_dividend_tdata(30) => \det_signal.div_phase_sum_WN_reg_n_0_[30]\,
+      s_axis_dividend_tdata(29) => \det_signal.div_phase_sum_WN_reg_n_0_[29]\,
+      s_axis_dividend_tdata(28) => \det_signal.div_phase_sum_WN_reg_n_0_[28]\,
+      s_axis_dividend_tdata(27) => \det_signal.div_phase_sum_WN_reg_n_0_[27]\,
+      s_axis_dividend_tdata(26) => \det_signal.div_phase_sum_WN_reg_n_0_[26]\,
+      s_axis_dividend_tdata(25) => \det_signal.div_phase_sum_WN_reg_n_0_[25]\,
+      s_axis_dividend_tdata(24) => \det_signal.div_phase_sum_WN_reg_n_0_[24]\,
+      s_axis_dividend_tdata(23) => \det_signal.div_phase_sum_WN_reg_n_0_[23]\,
+      s_axis_dividend_tdata(22) => \det_signal.div_phase_sum_WN_reg_n_0_[22]\,
+      s_axis_dividend_tdata(21) => \det_signal.div_phase_sum_WN_reg_n_0_[21]\,
+      s_axis_dividend_tdata(20) => \det_signal.div_phase_sum_WN_reg_n_0_[20]\,
+      s_axis_dividend_tdata(19) => \det_signal.div_phase_sum_WN_reg_n_0_[19]\,
+      s_axis_dividend_tdata(18) => \det_signal.div_phase_sum_WN_reg_n_0_[18]\,
+      s_axis_dividend_tdata(17) => \det_signal.div_phase_sum_WN_reg_n_0_[17]\,
+      s_axis_dividend_tdata(16) => \det_signal.div_phase_sum_WN_reg_n_0_[16]\,
+      s_axis_dividend_tdata(15) => \det_signal.div_phase_sum_WN_reg_n_0_[15]\,
+      s_axis_dividend_tdata(14) => \det_signal.div_phase_sum_WN_reg_n_0_[14]\,
+      s_axis_dividend_tdata(13) => \det_signal.div_phase_sum_WN_reg_n_0_[13]\,
+      s_axis_dividend_tdata(12) => \det_signal.div_phase_sum_WN_reg_n_0_[12]\,
+      s_axis_dividend_tdata(11) => \det_signal.div_phase_sum_WN_reg_n_0_[11]\,
+      s_axis_dividend_tdata(10) => \det_signal.div_phase_sum_WN_reg_n_0_[10]\,
+      s_axis_dividend_tdata(9) => \det_signal.div_phase_sum_WN_reg_n_0_[9]\,
+      s_axis_dividend_tdata(8) => \det_signal.div_phase_sum_WN_reg_n_0_[8]\,
+      s_axis_dividend_tdata(7) => \det_signal.div_phase_sum_WN_reg_n_0_[7]\,
+      s_axis_dividend_tdata(6) => \det_signal.div_phase_sum_WN_reg_n_0_[6]\,
+      s_axis_dividend_tdata(5) => \det_signal.div_phase_sum_WN_reg_n_0_[5]\,
+      s_axis_dividend_tdata(4) => \det_signal.div_phase_sum_WN_reg_n_0_[4]\,
+      s_axis_dividend_tdata(3) => \det_signal.div_phase_sum_WN_reg_n_0_[3]\,
+      s_axis_dividend_tdata(2) => \det_signal.div_phase_sum_WN_reg_n_0_[2]\,
+      s_axis_dividend_tdata(1) => \det_signal.div_phase_sum_WN_reg_n_0_[1]\,
+      s_axis_dividend_tdata(0) => \det_signal.div_phase_sum_WN_reg_n_0_[0]\,
       s_axis_dividend_tvalid => div_start,
       s_axis_divisor_tdata(31 downto 25) => B"0000000",
-      s_axis_divisor_tdata(24 downto 0) => div_env_sum_NW(24 downto 0),
+      s_axis_divisor_tdata(24) => \det_signal.div_env_sum_WN_reg_n_0_[24]\,
+      s_axis_divisor_tdata(23) => \det_signal.div_env_sum_WN_reg_n_0_[23]\,
+      s_axis_divisor_tdata(22) => \det_signal.div_env_sum_WN_reg_n_0_[22]\,
+      s_axis_divisor_tdata(21) => \det_signal.div_env_sum_WN_reg_n_0_[21]\,
+      s_axis_divisor_tdata(20) => \det_signal.div_env_sum_WN_reg_n_0_[20]\,
+      s_axis_divisor_tdata(19) => \det_signal.div_env_sum_WN_reg_n_0_[19]\,
+      s_axis_divisor_tdata(18) => \det_signal.div_env_sum_WN_reg_n_0_[18]\,
+      s_axis_divisor_tdata(17) => \det_signal.div_env_sum_WN_reg_n_0_[17]\,
+      s_axis_divisor_tdata(16) => \det_signal.div_env_sum_WN_reg_n_0_[16]\,
+      s_axis_divisor_tdata(15) => \det_signal.div_env_sum_WN_reg_n_0_[15]\,
+      s_axis_divisor_tdata(14) => \det_signal.div_env_sum_WN_reg_n_0_[14]\,
+      s_axis_divisor_tdata(13) => \det_signal.div_env_sum_WN_reg_n_0_[13]\,
+      s_axis_divisor_tdata(12) => \det_signal.div_env_sum_WN_reg_n_0_[12]\,
+      s_axis_divisor_tdata(11) => \det_signal.div_env_sum_WN_reg_n_0_[11]\,
+      s_axis_divisor_tdata(10) => \det_signal.div_env_sum_WN_reg_n_0_[10]\,
+      s_axis_divisor_tdata(9) => \det_signal.div_env_sum_WN_reg_n_0_[9]\,
+      s_axis_divisor_tdata(8) => \det_signal.div_env_sum_WN_reg_n_0_[8]\,
+      s_axis_divisor_tdata(7) => \det_signal.div_env_sum_WN_reg_n_0_[7]\,
+      s_axis_divisor_tdata(6) => \det_signal.div_env_sum_WN_reg_n_0_[6]\,
+      s_axis_divisor_tdata(5) => \det_signal.div_env_sum_WN_reg_n_0_[5]\,
+      s_axis_divisor_tdata(4) => \det_signal.div_env_sum_WN_reg_n_0_[4]\,
+      s_axis_divisor_tdata(3) => \det_signal.div_env_sum_WN_reg_n_0_[3]\,
+      s_axis_divisor_tdata(2) => \det_signal.div_env_sum_WN_reg_n_0_[2]\,
+      s_axis_divisor_tdata(1) => \det_signal.div_env_sum_WN_reg_n_0_[1]\,
+      s_axis_divisor_tdata(0) => \det_signal.div_env_sum_WN_reg_n_0_[0]\,
       s_axis_divisor_tvalid => div_start
     );
 dsp_incr_env_E: component ps_comp_low_0_0_dsp_incr_env
@@ -18426,7 +18426,7 @@ dsp_phase_EW0_carry: unisim.vcomponents.CARRY8
       CO(1) => dsp_phase_EW0_carry_n_6,
       CO(0) => dsp_phase_EW0_carry_n_7,
       DI(7 downto 0) => phase_E(7 downto 0),
-      O(7 downto 0) => dsp_phase_EW00_out(7 downto 0),
+      O(7 downto 0) => dsp_phase_EW01_out(7 downto 0),
       S(7) => dsp_phase_EW0_carry_i_1_n_0,
       S(6) => dsp_phase_EW0_carry_i_2_n_0,
       S(5) => dsp_phase_EW0_carry_i_3_n_0,
@@ -18449,7 +18449,7 @@ dsp_phase_EW0_carry: unisim.vcomponents.CARRY8
       CO(1) => \dsp_phase_EW0_carry__0_n_6\,
       CO(0) => \dsp_phase_EW0_carry__0_n_7\,
       DI(7 downto 0) => phase_E(15 downto 8),
-      O(7 downto 0) => dsp_phase_EW00_out(15 downto 8),
+      O(7 downto 0) => dsp_phase_EW01_out(15 downto 8),
       S(7) => \dsp_phase_EW0_carry__0_i_1_n_0\,
       S(6) => \dsp_phase_EW0_carry__0_i_2_n_0\,
       S(5) => \dsp_phase_EW0_carry__0_i_3_n_0\,
@@ -18542,7 +18542,7 @@ dsp_phase_EW0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => phase_E(18 downto 16),
       O(7 downto 4) => \NLW_dsp_phase_EW0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => dsp_phase_EW00_out(19 downto 16),
+      O(3 downto 0) => dsp_phase_EW01_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3) => \dsp_phase_EW0_carry__1_i_1_n_0\,
       S(2) => \dsp_phase_EW0_carry__1_i_2_n_0\,
@@ -18670,7 +18670,7 @@ dsp_phase_NE0_carry: unisim.vcomponents.CARRY8
       CO(1) => dsp_phase_NE0_carry_n_6,
       CO(0) => dsp_phase_NE0_carry_n_7,
       DI(7 downto 0) => phase_N(7 downto 0),
-      O(7 downto 0) => dsp_phase_NE01_out(7 downto 0),
+      O(7 downto 0) => dsp_phase_NE02_out(7 downto 0),
       S(7) => dsp_phase_NE0_carry_i_1_n_0,
       S(6) => dsp_phase_NE0_carry_i_2_n_0,
       S(5) => dsp_phase_NE0_carry_i_3_n_0,
@@ -18693,7 +18693,7 @@ dsp_phase_NE0_carry: unisim.vcomponents.CARRY8
       CO(1) => \dsp_phase_NE0_carry__0_n_6\,
       CO(0) => \dsp_phase_NE0_carry__0_n_7\,
       DI(7 downto 0) => phase_N(15 downto 8),
-      O(7 downto 0) => dsp_phase_NE01_out(15 downto 8),
+      O(7 downto 0) => dsp_phase_NE02_out(15 downto 8),
       S(7) => \dsp_phase_NE0_carry__0_i_1_n_0\,
       S(6) => \dsp_phase_NE0_carry__0_i_2_n_0\,
       S(5) => \dsp_phase_NE0_carry__0_i_3_n_0\,
@@ -18786,7 +18786,7 @@ dsp_phase_NE0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => phase_N(18 downto 16),
       O(7 downto 4) => \NLW_dsp_phase_NE0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => dsp_phase_NE01_out(19 downto 16),
+      O(3 downto 0) => dsp_phase_NE02_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3) => \dsp_phase_NE0_carry__1_i_1_n_0\,
       S(2) => \dsp_phase_NE0_carry__1_i_2_n_0\,
@@ -18901,251 +18901,251 @@ dsp_phase_NE0_carry_i_8: unisim.vcomponents.LUT2
       I1 => phase_E(0),
       O => dsp_phase_NE0_carry_i_8_n_0
     );
-dsp_phase_NW0_carry: unisim.vcomponents.CARRY8
+dsp_phase_WN0_carry: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => dsp_phase_NW0_carry_n_0,
-      CO(6) => dsp_phase_NW0_carry_n_1,
-      CO(5) => dsp_phase_NW0_carry_n_2,
-      CO(4) => dsp_phase_NW0_carry_n_3,
-      CO(3) => dsp_phase_NW0_carry_n_4,
-      CO(2) => dsp_phase_NW0_carry_n_5,
-      CO(1) => dsp_phase_NW0_carry_n_6,
-      CO(0) => dsp_phase_NW0_carry_n_7,
-      DI(7 downto 0) => phase_N(7 downto 0),
-      O(7 downto 0) => dsp_phase_NW0(7 downto 0),
-      S(7) => dsp_phase_NW0_carry_i_1_n_0,
-      S(6) => dsp_phase_NW0_carry_i_2_n_0,
-      S(5) => dsp_phase_NW0_carry_i_3_n_0,
-      S(4) => dsp_phase_NW0_carry_i_4_n_0,
-      S(3) => dsp_phase_NW0_carry_i_5_n_0,
-      S(2) => dsp_phase_NW0_carry_i_6_n_0,
-      S(1) => dsp_phase_NW0_carry_i_7_n_0,
-      S(0) => dsp_phase_NW0_carry_i_8_n_0
+      CO(7) => dsp_phase_WN0_carry_n_0,
+      CO(6) => dsp_phase_WN0_carry_n_1,
+      CO(5) => dsp_phase_WN0_carry_n_2,
+      CO(4) => dsp_phase_WN0_carry_n_3,
+      CO(3) => dsp_phase_WN0_carry_n_4,
+      CO(2) => dsp_phase_WN0_carry_n_5,
+      CO(1) => dsp_phase_WN0_carry_n_6,
+      CO(0) => dsp_phase_WN0_carry_n_7,
+      DI(7 downto 0) => phase_W(7 downto 0),
+      O(7 downto 0) => dsp_phase_WN00_out(7 downto 0),
+      S(7) => dsp_phase_WN0_carry_i_1_n_0,
+      S(6) => dsp_phase_WN0_carry_i_2_n_0,
+      S(5) => dsp_phase_WN0_carry_i_3_n_0,
+      S(4) => dsp_phase_WN0_carry_i_4_n_0,
+      S(3) => dsp_phase_WN0_carry_i_5_n_0,
+      S(2) => dsp_phase_WN0_carry_i_6_n_0,
+      S(1) => dsp_phase_WN0_carry_i_7_n_0,
+      S(0) => dsp_phase_WN0_carry_i_8_n_0
     );
-\dsp_phase_NW0_carry__0\: unisim.vcomponents.CARRY8
+\dsp_phase_WN0_carry__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => dsp_phase_NW0_carry_n_0,
+      CI => dsp_phase_WN0_carry_n_0,
       CI_TOP => '0',
-      CO(7) => \dsp_phase_NW0_carry__0_n_0\,
-      CO(6) => \dsp_phase_NW0_carry__0_n_1\,
-      CO(5) => \dsp_phase_NW0_carry__0_n_2\,
-      CO(4) => \dsp_phase_NW0_carry__0_n_3\,
-      CO(3) => \dsp_phase_NW0_carry__0_n_4\,
-      CO(2) => \dsp_phase_NW0_carry__0_n_5\,
-      CO(1) => \dsp_phase_NW0_carry__0_n_6\,
-      CO(0) => \dsp_phase_NW0_carry__0_n_7\,
-      DI(7 downto 0) => phase_N(15 downto 8),
-      O(7 downto 0) => dsp_phase_NW0(15 downto 8),
-      S(7) => \dsp_phase_NW0_carry__0_i_1_n_0\,
-      S(6) => \dsp_phase_NW0_carry__0_i_2_n_0\,
-      S(5) => \dsp_phase_NW0_carry__0_i_3_n_0\,
-      S(4) => \dsp_phase_NW0_carry__0_i_4_n_0\,
-      S(3) => \dsp_phase_NW0_carry__0_i_5_n_0\,
-      S(2) => \dsp_phase_NW0_carry__0_i_6_n_0\,
-      S(1) => \dsp_phase_NW0_carry__0_i_7_n_0\,
-      S(0) => \dsp_phase_NW0_carry__0_i_8_n_0\
+      CO(7) => \dsp_phase_WN0_carry__0_n_0\,
+      CO(6) => \dsp_phase_WN0_carry__0_n_1\,
+      CO(5) => \dsp_phase_WN0_carry__0_n_2\,
+      CO(4) => \dsp_phase_WN0_carry__0_n_3\,
+      CO(3) => \dsp_phase_WN0_carry__0_n_4\,
+      CO(2) => \dsp_phase_WN0_carry__0_n_5\,
+      CO(1) => \dsp_phase_WN0_carry__0_n_6\,
+      CO(0) => \dsp_phase_WN0_carry__0_n_7\,
+      DI(7 downto 0) => phase_W(15 downto 8),
+      O(7 downto 0) => dsp_phase_WN00_out(15 downto 8),
+      S(7) => \dsp_phase_WN0_carry__0_i_1_n_0\,
+      S(6) => \dsp_phase_WN0_carry__0_i_2_n_0\,
+      S(5) => \dsp_phase_WN0_carry__0_i_3_n_0\,
+      S(4) => \dsp_phase_WN0_carry__0_i_4_n_0\,
+      S(3) => \dsp_phase_WN0_carry__0_i_5_n_0\,
+      S(2) => \dsp_phase_WN0_carry__0_i_6_n_0\,
+      S(1) => \dsp_phase_WN0_carry__0_i_7_n_0\,
+      S(0) => \dsp_phase_WN0_carry__0_i_8_n_0\
     );
-\dsp_phase_NW0_carry__0_i_1\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(15),
-      I1 => phase_W(15),
-      O => \dsp_phase_NW0_carry__0_i_1_n_0\
+      I0 => phase_W(15),
+      I1 => phase_N(15),
+      O => \dsp_phase_WN0_carry__0_i_1_n_0\
     );
-\dsp_phase_NW0_carry__0_i_2\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(14),
-      I1 => phase_W(14),
-      O => \dsp_phase_NW0_carry__0_i_2_n_0\
+      I0 => phase_W(14),
+      I1 => phase_N(14),
+      O => \dsp_phase_WN0_carry__0_i_2_n_0\
     );
-\dsp_phase_NW0_carry__0_i_3\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(13),
-      I1 => phase_W(13),
-      O => \dsp_phase_NW0_carry__0_i_3_n_0\
+      I0 => phase_W(13),
+      I1 => phase_N(13),
+      O => \dsp_phase_WN0_carry__0_i_3_n_0\
     );
-\dsp_phase_NW0_carry__0_i_4\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(12),
-      I1 => phase_W(12),
-      O => \dsp_phase_NW0_carry__0_i_4_n_0\
+      I0 => phase_W(12),
+      I1 => phase_N(12),
+      O => \dsp_phase_WN0_carry__0_i_4_n_0\
     );
-\dsp_phase_NW0_carry__0_i_5\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_5\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(11),
-      I1 => phase_W(11),
-      O => \dsp_phase_NW0_carry__0_i_5_n_0\
+      I0 => phase_W(11),
+      I1 => phase_N(11),
+      O => \dsp_phase_WN0_carry__0_i_5_n_0\
     );
-\dsp_phase_NW0_carry__0_i_6\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_6\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(10),
-      I1 => phase_W(10),
-      O => \dsp_phase_NW0_carry__0_i_6_n_0\
+      I0 => phase_W(10),
+      I1 => phase_N(10),
+      O => \dsp_phase_WN0_carry__0_i_6_n_0\
     );
-\dsp_phase_NW0_carry__0_i_7\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(9),
-      I1 => phase_W(9),
-      O => \dsp_phase_NW0_carry__0_i_7_n_0\
+      I0 => phase_W(9),
+      I1 => phase_N(9),
+      O => \dsp_phase_WN0_carry__0_i_7_n_0\
     );
-\dsp_phase_NW0_carry__0_i_8\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__0_i_8\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(8),
-      I1 => phase_W(8),
-      O => \dsp_phase_NW0_carry__0_i_8_n_0\
+      I0 => phase_W(8),
+      I1 => phase_N(8),
+      O => \dsp_phase_WN0_carry__0_i_8_n_0\
     );
-\dsp_phase_NW0_carry__1\: unisim.vcomponents.CARRY8
+\dsp_phase_WN0_carry__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \dsp_phase_NW0_carry__0_n_0\,
+      CI => \dsp_phase_WN0_carry__0_n_0\,
       CI_TOP => '0',
-      CO(7 downto 3) => \NLW_dsp_phase_NW0_carry__1_CO_UNCONNECTED\(7 downto 3),
-      CO(2) => \dsp_phase_NW0_carry__1_n_5\,
-      CO(1) => \dsp_phase_NW0_carry__1_n_6\,
-      CO(0) => \dsp_phase_NW0_carry__1_n_7\,
+      CO(7 downto 3) => \NLW_dsp_phase_WN0_carry__1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \dsp_phase_WN0_carry__1_n_5\,
+      CO(1) => \dsp_phase_WN0_carry__1_n_6\,
+      CO(0) => \dsp_phase_WN0_carry__1_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => phase_N(18 downto 16),
-      O(7 downto 4) => \NLW_dsp_phase_NW0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => dsp_phase_NW0(19 downto 16),
+      DI(2 downto 0) => phase_W(18 downto 16),
+      O(7 downto 4) => \NLW_dsp_phase_WN0_carry__1_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => dsp_phase_WN00_out(19 downto 16),
       S(7 downto 4) => B"0000",
-      S(3) => \dsp_phase_NW0_carry__1_i_1_n_0\,
-      S(2) => \dsp_phase_NW0_carry__1_i_2_n_0\,
-      S(1) => \dsp_phase_NW0_carry__1_i_3_n_0\,
-      S(0) => \dsp_phase_NW0_carry__1_i_4_n_0\
+      S(3) => \dsp_phase_WN0_carry__1_i_1_n_0\,
+      S(2) => \dsp_phase_WN0_carry__1_i_2_n_0\,
+      S(1) => \dsp_phase_WN0_carry__1_i_3_n_0\,
+      S(0) => \dsp_phase_WN0_carry__1_i_4_n_0\
     );
-\dsp_phase_NW0_carry__1_i_1\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__1_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(19),
-      I1 => phase_W(19),
-      O => \dsp_phase_NW0_carry__1_i_1_n_0\
+      I0 => phase_W(19),
+      I1 => phase_N(19),
+      O => \dsp_phase_WN0_carry__1_i_1_n_0\
     );
-\dsp_phase_NW0_carry__1_i_2\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__1_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(18),
-      I1 => phase_W(18),
-      O => \dsp_phase_NW0_carry__1_i_2_n_0\
+      I0 => phase_W(18),
+      I1 => phase_N(18),
+      O => \dsp_phase_WN0_carry__1_i_2_n_0\
     );
-\dsp_phase_NW0_carry__1_i_3\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__1_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(17),
-      I1 => phase_W(17),
-      O => \dsp_phase_NW0_carry__1_i_3_n_0\
+      I0 => phase_W(17),
+      I1 => phase_N(17),
+      O => \dsp_phase_WN0_carry__1_i_3_n_0\
     );
-\dsp_phase_NW0_carry__1_i_4\: unisim.vcomponents.LUT2
+\dsp_phase_WN0_carry__1_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(16),
-      I1 => phase_W(16),
-      O => \dsp_phase_NW0_carry__1_i_4_n_0\
+      I0 => phase_W(16),
+      I1 => phase_N(16),
+      O => \dsp_phase_WN0_carry__1_i_4_n_0\
     );
-dsp_phase_NW0_carry_i_1: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_1: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(7),
-      I1 => phase_W(7),
-      O => dsp_phase_NW0_carry_i_1_n_0
+      I0 => phase_W(7),
+      I1 => phase_N(7),
+      O => dsp_phase_WN0_carry_i_1_n_0
     );
-dsp_phase_NW0_carry_i_2: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_2: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(6),
-      I1 => phase_W(6),
-      O => dsp_phase_NW0_carry_i_2_n_0
+      I0 => phase_W(6),
+      I1 => phase_N(6),
+      O => dsp_phase_WN0_carry_i_2_n_0
     );
-dsp_phase_NW0_carry_i_3: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_3: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(5),
-      I1 => phase_W(5),
-      O => dsp_phase_NW0_carry_i_3_n_0
+      I0 => phase_W(5),
+      I1 => phase_N(5),
+      O => dsp_phase_WN0_carry_i_3_n_0
     );
-dsp_phase_NW0_carry_i_4: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_4: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(4),
-      I1 => phase_W(4),
-      O => dsp_phase_NW0_carry_i_4_n_0
+      I0 => phase_W(4),
+      I1 => phase_N(4),
+      O => dsp_phase_WN0_carry_i_4_n_0
     );
-dsp_phase_NW0_carry_i_5: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_5: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(3),
-      I1 => phase_W(3),
-      O => dsp_phase_NW0_carry_i_5_n_0
+      I0 => phase_W(3),
+      I1 => phase_N(3),
+      O => dsp_phase_WN0_carry_i_5_n_0
     );
-dsp_phase_NW0_carry_i_6: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_6: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(2),
-      I1 => phase_W(2),
-      O => dsp_phase_NW0_carry_i_6_n_0
+      I0 => phase_W(2),
+      I1 => phase_N(2),
+      O => dsp_phase_WN0_carry_i_6_n_0
     );
-dsp_phase_NW0_carry_i_7: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_7: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(1),
-      I1 => phase_W(1),
-      O => dsp_phase_NW0_carry_i_7_n_0
+      I0 => phase_W(1),
+      I1 => phase_N(1),
+      O => dsp_phase_WN0_carry_i_7_n_0
     );
-dsp_phase_NW0_carry_i_8: unisim.vcomponents.LUT2
+dsp_phase_WN0_carry_i_8: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(0),
-      I1 => phase_W(0),
-      O => dsp_phase_NW0_carry_i_8_n_0
+      I0 => phase_W(0),
+      I1 => phase_N(0),
+      O => dsp_phase_WN0_carry_i_8_n_0
     );
-dsp_phase_env_EW: component dsp_phase_env_HD7
+dsp_phase_env_EW: component ps_comp_low_0_0_dsp_phase_env
      port map (
       A(19 downto 0) => dsp_phase_EW(19 downto 0),
       B(17) => '0',
@@ -19163,13 +19163,13 @@ dsp_phase_env_NE: component ps_comp_low_0_0_dsp_phase_env
       P(47 downto 0) => dsp_sum_NE(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
-dsp_phase_env_NW: component ps_comp_low_0_0_dsp_phase_env
+dsp_phase_env_WN: component ps_comp_low_0_0_dsp_phase_env_HD7
      port map (
-      A(19 downto 0) => dsp_phase_NW(19 downto 0),
+      A(19 downto 0) => dsp_phase_WN(19 downto 0),
       B(17) => '0',
-      B(16 downto 0) => env_NW(16 downto 0),
+      B(16 downto 0) => env_WN(16 downto 0),
       CLK => clk,
-      P(47 downto 0) => dsp_sum_NW(47 downto 0),
+      P(47 downto 0) => dsp_sum_WN(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
 \i__carry__0_i_1\: unisim.vcomponents.LUT4
@@ -19780,14 +19780,14 @@ entity ps_comp_low_0_0_doa_pair is
 end ps_comp_low_0_0_doa_pair;
 
 architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
-  component ps_comp_low_0_0_mult_20x20_HD3 is
+  component mult_20x20_HD3 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_comp_low_0_0_mult_20x20_HD3;
+  end component mult_20x20_HD3;
   component ps_comp_low_0_0_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
@@ -23297,7 +23297,7 @@ g0_b0: unisim.vcomponents.LUT6
       I5 => \doa_pair.counter_reg\(5),
       O => g0_b0_n_0
     );
-mul_c_i: component ps_comp_low_0_0_mult_20x20_HD3
+mul_c_i: component mult_20x20_HD3
      port map (
       A(19) => '0',
       A(18) => \doa_pair.coeff_reg_n_0_[18]\,
@@ -31252,8 +31252,8 @@ entity ps_comp_low_0_0_doa_calc is
     env_E : in STD_LOGIC_VECTOR ( 15 downto 0 );
     env_W : in STD_LOGIC_VECTOR ( 15 downto 0 );
     phase_NE : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    phase_NW : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    phase_EW : in STD_LOGIC_VECTOR ( 19 downto 0 )
+    phase_EW : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_WN : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_comp_low_0_0_doa_calc : entity is "doa_calc";
@@ -31304,8 +31304,8 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute MARK_DEBUG of angle_EW : signal is std.standard.true;
   signal angle_NE : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of angle_NE : signal is std.standard.true;
-  signal angle_NW : STD_LOGIC_VECTOR ( 19 downto 0 );
-  attribute MARK_DEBUG of angle_NW : signal is std.standard.true;
+  signal angle_WN : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of angle_WN : signal is std.standard.true;
   signal \doa_calc.inv_dij[31]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.shadow_limit[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.shadow_limit[10]_i_1_n_0\ : STD_LOGIC;
@@ -31331,8 +31331,8 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute MARK_DEBUG of done_EW : signal is std.standard.true;
   signal done_NE : STD_LOGIC;
   attribute MARK_DEBUG of done_NE : signal is std.standard.true;
-  signal done_NW : STD_LOGIC;
-  attribute MARK_DEBUG of done_NW : signal is std.standard.true;
+  signal done_WN : STD_LOGIC;
+  attribute MARK_DEBUG of done_WN : signal is std.standard.true;
   signal inv_dij : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of inv_dij : signal is std.standard.true;
   signal k : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -31342,8 +31342,8 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute MARK_DEBUG of shadow_EW : signal is std.standard.true;
   signal shadow_NE : STD_LOGIC;
   attribute MARK_DEBUG of shadow_NE : signal is std.standard.true;
-  signal shadow_NW : STD_LOGIC;
-  attribute MARK_DEBUG of shadow_NW : signal is std.standard.true;
+  signal shadow_WN : STD_LOGIC;
+  attribute MARK_DEBUG of shadow_WN : signal is std.standard.true;
   signal shadow_limit : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of shadow_limit : signal is std.standard.true;
   signal valid_k : STD_LOGIC;
@@ -31351,7 +31351,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal NLW_div_k_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal NLW_doa_EW_i_fail_UNCONNECTED : STD_LOGIC;
   signal NLW_doa_NE_i_fail_UNCONNECTED : STD_LOGIC;
-  signal NLW_doa_NW_i_fail_UNCONNECTED : STD_LOGIC;
+  signal NLW_doa_WN_i_fail_UNCONNECTED : STD_LOGIC;
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of div_k_i : label is "div_k,div_gen_v5_1_24,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -31360,7 +31360,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute x_core_info of div_k_i : label is "div_gen_v5_1_24,Vivado 2025.1";
   attribute KEEP_HIERARCHY of doa_EW_i : label is "soft";
   attribute KEEP_HIERARCHY of doa_NE_i : label is "soft";
-  attribute KEEP_HIERARCHY of doa_NW_i : label is "soft";
+  attribute KEEP_HIERARCHY of doa_WN_i : label is "soft";
   attribute KEEP : string;
   attribute KEEP of \doa_calc.inv_dij_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -31486,7 +31486,7 @@ div_k_i: component ps_comp_low_0_0_div_k
       s_axis_divisor_tdata(19 downto 0) => freq(19 downto 0),
       s_axis_divisor_tvalid => start
     );
-doa_EW_i: entity work.ps_comp_low_0_0_doa_pair
+doa_EW_i: entity work.\ps_comp_low_0_0_doa_pair__xdcDup__2\
      port map (
       angle(19 downto 0) => angle_EW(19 downto 0),
       clk => clk,
@@ -31512,16 +31512,16 @@ doa_NE_i: entity work.\ps_comp_low_0_0_doa_pair__xdcDup__1\
       shadow_limit(19 downto 0) => shadow_limit(19 downto 0),
       start => valid_k
     );
-doa_NW_i: entity work.\ps_comp_low_0_0_doa_pair__xdcDup__2\
+doa_WN_i: entity work.ps_comp_low_0_0_doa_pair
      port map (
-      angle(19 downto 0) => angle_NW(19 downto 0),
+      angle(19 downto 0) => angle_WN(19 downto 0),
       clk => clk,
-      done => done_NW,
-      fail => NLW_doa_NW_i_fail_UNCONNECTED,
+      done => done_WN,
+      fail => NLW_doa_WN_i_fail_UNCONNECTED,
       k(19 downto 0) => k(19 downto 0),
-      phase(19 downto 0) => phase_NW(19 downto 0),
+      phase(19 downto 0) => phase_WN(19 downto 0),
       reset => reset,
-      shadow => shadow_NW,
+      shadow => shadow_WN,
       shadow_limit(19 downto 0) => shadow_limit(19 downto 0),
       start => valid_k
     );
@@ -32586,22 +32586,22 @@ ila_i: component ps_comp_low_0_0_ila_6
       probe10(0) => valid_k,
       probe11(19 downto 0) => k(19 downto 0),
       probe12(0) => done_NE,
-      probe13(0) => done_NW,
-      probe14(0) => done_EW,
+      probe13(0) => done_EW,
+      probe14(0) => done_WN,
       probe15(0) => shadow_NE,
-      probe16(0) => shadow_NW,
+      probe16(0) => shadow_WN,
       probe17(0) => shadow_EW,
       probe18(19 downto 0) => angle_NE(19 downto 0),
-      probe19(19 downto 0) => angle_NW(19 downto 0),
+      probe19(19 downto 0) => angle_EW(19 downto 0),
       probe2(0) => start,
-      probe20(19 downto 0) => angle_EW(19 downto 0),
+      probe20(19 downto 0) => angle_WN(19 downto 0),
       probe3(19 downto 0) => freq(19 downto 0),
       probe4(15 downto 0) => env_N(15 downto 0),
       probe5(15 downto 0) => env_E(15 downto 0),
       probe6(15 downto 0) => env_W(15 downto 0),
       probe7(19 downto 0) => phase_NE(19 downto 0),
-      probe8(19 downto 0) => phase_NW(19 downto 0),
-      probe9(19 downto 0) => phase_EW(19 downto 0)
+      probe8(19 downto 0) => phase_EW(19 downto 0),
+      probe9(19 downto 0) => phase_WN(19 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -32702,7 +32702,7 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal freq : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_EW : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_NE : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal phase_NW : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal phase_WN : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal sample_rd : STD_LOGIC;
   signal NLW_fifo_config_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_config_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
@@ -34258,7 +34258,7 @@ det_sig_i: entity work.ps_comp_low_0_0_det_signal
       \det_signal.signal_freq_reg[19]_0\(19 downto 0) => freq(19 downto 0),
       \det_signal.signal_phase_EW_reg[19]_0\(19 downto 0) => phase_EW(19 downto 0),
       \det_signal.signal_phase_NE_reg[19]_0\(19 downto 0) => phase_NE(19 downto 0),
-      \det_signal.signal_phase_NW_reg[19]_0\(19 downto 0) => phase_NW(19 downto 0),
+      \det_signal.signal_phase_WN_reg[19]_0\(19 downto 0) => phase_WN(19 downto 0),
       dout(27 downto 0) => config_data_adr_out(27 downto 0),
       empty => cfg_empty,
       start => burst
@@ -34275,7 +34275,7 @@ doa_calc_i: entity work.ps_comp_low_0_0_doa_calc
       freq(19 downto 0) => freq(19 downto 0),
       phase_EW(19 downto 0) => phase_EW(19 downto 0),
       phase_NE(19 downto 0) => phase_NE(19 downto 0),
-      phase_NW(19 downto 0) => phase_NW(19 downto 0),
+      phase_WN(19 downto 0) => phase_WN(19 downto 0),
       reset => reset,
       start => burst
     );

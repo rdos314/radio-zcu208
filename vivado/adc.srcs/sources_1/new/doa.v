@@ -36,8 +36,8 @@ module doa_calc(
     input wire [15:0] env_W,
 
     input wire [19:0] phase_NE,
-    input wire [19:0] phase_NW,
-    input wire [19:0] phase_EW
+    input wire [19:0] phase_EW,
+    input wire [19:0] phase_WN
 );
 
   reg [19:0] shadow_limit;
@@ -50,20 +50,20 @@ module doa_calc(
   wire [19:0] k = k_out[43:24];
   
   wire done_NE;
-  wire done_NW;
   wire done_EW;
+  wire done_WN;
   
   wire fail_NE;
-  wire fail_NW;
   wire fail_EW;
+  wire fail_WN;
   
   wire shadow_NE;
-  wire shadow_NW;
   wire shadow_EW;
+  wire shadow_WN;
   
   wire [19:0] angle_NE;
-  wire [19:0] angle_NW;
   wire [19:0] angle_EW;
+  wire [19:0] angle_WN;
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -88,19 +88,6 @@ doa_pair doa_NE_i(
   .angle(angle_NE)
 );
 
-doa_pair doa_NW_i(
-  .clk(clk),
-  .reset(reset),
-  .start(valid_k),
-  .k(k),
-  .shadow_limit(shadow_limit),
-  .phase(phase_NW),
-  .done(done_NW),
-  .fail(fail_NW),
-  .shadow(shadow_NW),
-  .angle(angle_NW)
-);
-
 doa_pair doa_EW_i(
   .clk(clk),
   .reset(reset),
@@ -114,6 +101,19 @@ doa_pair doa_EW_i(
   .angle(angle_EW)
 );
 
+doa_pair doa_WN_i(
+  .clk(clk),
+  .reset(reset),
+  .start(valid_k),
+  .k(k),
+  .shadow_limit(shadow_limit),
+  .phase(phase_WN),
+  .done(done_WN),
+  .fail(fail_WN),
+  .shadow(shadow_WN),
+  .angle(angle_WN)
+);
+
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(inv_dij),             // input wire [31:0]  probe3
@@ -124,19 +124,19 @@ doa_pair doa_EW_i(
 		.probe5(env_E),               // input wire [15:0]  probe3
 		.probe6(env_W),               // input wire [15:0]  probe3
 		.probe7(phase_NE),            // input wire [19:0]  probe3
-		.probe8(phase_NW),            // input wire [19:0]  probe3
-		.probe9(phase_EW),            // input wire [19:0]  probe3
+		.probe8(phase_EW),            // input wire [19:0]  probe3
+		.probe9(phase_WN),            // input wire [19:0]  probe3
 		.probe10(valid_k),            // input wire [0:0]  probe3
 		.probe11(k),                  // input wire [19:0]  probe3
 		.probe12(done_NE),            // input wire [0:0]  probe3
-		.probe13(done_NW),            // input wire [0:0]  probe3
-		.probe14(done_EW),            // input wire [0:0]  probe3
+		.probe13(done_EW),            // input wire [0:0]  probe3
+		.probe14(done_WN),            // input wire [0:0]  probe3
 		.probe15(shadow_NE),          // input wire [0:0]  probe3
-		.probe16(shadow_NW),          // input wire [0:0]  probe3
 		.probe17(shadow_EW),          // input wire [0:0]  probe3
+		.probe16(shadow_WN),          // input wire [0:0]  probe3
 		.probe18(angle_NE),           // input wire [19:0]  probe3
-		.probe19(angle_NW),           // input wire [19:0]  probe3
-		.probe20(angle_EW)            // input wire [19:0]  probe3
+		.probe19(angle_EW),            // input wire [19:0]  probe3
+		.probe20(angle_WN)           // input wire [19:0]  probe3
 );
 
 generate

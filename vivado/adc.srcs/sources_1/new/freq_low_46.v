@@ -89,8 +89,8 @@ module freq_low_46(
 
   wire valid;
   wire [11:0] errNE;
-  wire [11:0] errNW;
   wire [11:0] errEW;
+  wire [11:0] errWN;
     
   wire ready_re_N;
   wire valid_re_N;
@@ -245,8 +245,8 @@ phase_err phase_err_i (
   .env_out_W(envW),
   .phase_out_W(phaseW),
   .err_NE(errNE),
-  .err_NW(errNW),
-  .err_EW(errEW)
+  .err_EW(errEW),
+  .err_WN(errWN)
   );
      
 /*
@@ -360,8 +360,8 @@ generate
             doa_data[107:88] <= phaseW;
             
             doa_data[119:108] <= errNE;
-            doa_data[131:120] <= errNW;
-            doa_data[143:132] <= errEW;            
+            doa_data[131:120] <= errEW;
+            doa_data[143:132] <= errWN;            
         end
 	end
 

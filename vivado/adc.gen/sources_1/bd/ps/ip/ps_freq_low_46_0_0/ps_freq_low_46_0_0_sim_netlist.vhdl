@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Dec 15 23:18:48 2025
+-- Date        : Sat Dec 27 14:05:47 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.vhdl
@@ -33,12 +33,12 @@ entity ps_freq_low_46_0_0_phase_err is
     S : in STD_LOGIC_VECTOR ( 7 downto 0 );
     \phase_err.raw_diff_NE_reg[15]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
     \phase_err.raw_diff_NE_reg[19]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    \phase_err.raw_diff_NW_reg[7]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    \phase_err.raw_diff_NW_reg[15]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    \phase_err.raw_diff_NW_reg[19]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \phase_err.raw_diff_EW_reg[7]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
     \phase_err.raw_diff_EW_reg[15]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    \phase_err.raw_diff_EW_reg[19]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    \phase_err.raw_diff_EW_reg[19]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    \phase_err.raw_diff_WN_reg[7]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    \phase_err.raw_diff_WN_reg[15]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    \phase_err.raw_diff_WN_reg[19]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_freq_low_46_0_0_phase_err : entity is "phase_err";
@@ -47,7 +47,7 @@ end ps_freq_low_46_0_0_phase_err;
 architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal diff_EW : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal diff_NE : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal diff_NW : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal diff_WN : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal \phase_err.diff_EW[0]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.diff_EW[10]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.diff_EW[11]_i_1_n_0\ : STD_LOGIC;
@@ -86,25 +86,25 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal \phase_err.diff_NE[7]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.diff_NE[8]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.diff_NE[9]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[0]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[10]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[11]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[12]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[13]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[14]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[15]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[16]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[17]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[18]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[1]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[2]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[3]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[4]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[5]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[6]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[7]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[8]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.diff_NW[9]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[0]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[10]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[11]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[12]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[13]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[14]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[15]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[16]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[17]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[18]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[1]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[2]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[3]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[4]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[5]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[6]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[7]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[8]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.diff_WN[9]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.err_EW[0]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.err_EW[10]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.err_EW[11]_i_1_n_0\ : STD_LOGIC;
@@ -133,20 +133,20 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal \phase_err.err_NE[7]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.err_NE[8]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.err_NE[9]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[0]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[10]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[11]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[11]_i_2_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[11]_i_3_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[1]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[2]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[3]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[4]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[5]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[6]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[7]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[8]_i_1_n_0\ : STD_LOGIC;
-  signal \phase_err.err_NW[9]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[0]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[10]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[11]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[11]_i_2_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[11]_i_3_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[1]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[2]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[3]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[4]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[5]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[6]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[7]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[8]_i_1_n_0\ : STD_LOGIC;
+  signal \phase_err.err_WN[9]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.prev_NE[18]_i_1_n_0\ : STD_LOGIC;
   signal \phase_err.raw_err_EW_reg_n_0_[0]\ : STD_LOGIC;
   signal \phase_err.raw_err_EW_reg_n_0_[10]\ : STD_LOGIC;
@@ -186,30 +186,30 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal \phase_err.raw_err_NE_reg_n_0_[7]\ : STD_LOGIC;
   signal \phase_err.raw_err_NE_reg_n_0_[8]\ : STD_LOGIC;
   signal \phase_err.raw_err_NE_reg_n_0_[9]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[0]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[10]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[11]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[12]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[13]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[14]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[15]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[16]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[17]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[18]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[1]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[2]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[3]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[4]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[5]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[6]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[7]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[8]\ : STD_LOGIC;
-  signal \phase_err.raw_err_NW_reg_n_0_[9]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[0]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[10]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[11]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[12]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[13]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[14]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[15]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[16]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[17]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[18]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[1]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[2]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[3]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[4]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[5]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[6]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[7]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[8]\ : STD_LOGIC;
+  signal \phase_err.raw_err_WN_reg_n_0_[9]\ : STD_LOGIC;
   signal prev_EW : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal prev_NE : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal prev_NW : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal prev_WN : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal raw_diff_EW : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal raw_diff_EW00_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal raw_diff_EW01_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \raw_diff_EW0_carry__0_n_0\ : STD_LOGIC;
   signal \raw_diff_EW0_carry__0_n_1\ : STD_LOGIC;
   signal \raw_diff_EW0_carry__0_n_2\ : STD_LOGIC;
@@ -230,7 +230,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal raw_diff_EW0_carry_n_6 : STD_LOGIC;
   signal raw_diff_EW0_carry_n_7 : STD_LOGIC;
   signal raw_diff_NE : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal raw_diff_NE01_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal raw_diff_NE02_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \raw_diff_NE0_carry__0_n_0\ : STD_LOGIC;
   signal \raw_diff_NE0_carry__0_n_1\ : STD_LOGIC;
   signal \raw_diff_NE0_carry__0_n_2\ : STD_LOGIC;
@@ -250,28 +250,28 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal raw_diff_NE0_carry_n_5 : STD_LOGIC;
   signal raw_diff_NE0_carry_n_6 : STD_LOGIC;
   signal raw_diff_NE0_carry_n_7 : STD_LOGIC;
-  signal raw_diff_NW : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal raw_diff_NW0 : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal \raw_diff_NW0_carry__0_n_0\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_1\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_2\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_3\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_4\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_5\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_6\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__0_n_7\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__1_n_5\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__1_n_6\ : STD_LOGIC;
-  signal \raw_diff_NW0_carry__1_n_7\ : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_0 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_1 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_2 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_3 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_4 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_5 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_6 : STD_LOGIC;
-  signal raw_diff_NW0_carry_n_7 : STD_LOGIC;
-  signal raw_err_EW00_out : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal raw_diff_WN : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal raw_diff_WN00_out : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal \raw_diff_WN0_carry__0_n_0\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_1\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_2\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_3\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_4\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_5\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_6\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__0_n_7\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__1_n_5\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__1_n_6\ : STD_LOGIC;
+  signal \raw_diff_WN0_carry__1_n_7\ : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_0 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_1 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_2 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_3 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_4 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_5 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_6 : STD_LOGIC;
+  signal raw_diff_WN0_carry_n_7 : STD_LOGIC;
+  signal raw_err_EW01_out : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal \raw_err_EW0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \raw_err_EW0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \raw_err_EW0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -347,44 +347,44 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal raw_err_NE0_carry_n_5 : STD_LOGIC;
   signal raw_err_NE0_carry_n_6 : STD_LOGIC;
   signal raw_err_NE0_carry_n_7 : STD_LOGIC;
-  signal raw_err_NW01_out : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal \raw_err_NW0_carry__0_i_1_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_2_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_3_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_4_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_5_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_6_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_7_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_i_8_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_1\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_2\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_3\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_4\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_5\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_6\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__0_n_7\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__1_i_1_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__1_i_2_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__1_i_3_n_0\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__1_n_6\ : STD_LOGIC;
-  signal \raw_err_NW0_carry__1_n_7\ : STD_LOGIC;
-  signal raw_err_NW0_carry_i_1_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_2_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_3_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_4_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_5_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_6_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_7_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_i_8_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_0 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_1 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_2 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_3 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_4 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_5 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_6 : STD_LOGIC;
-  signal raw_err_NW0_carry_n_7 : STD_LOGIC;
+  signal raw_err_WN00_out : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal \raw_err_WN0_carry__0_i_1_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_2_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_3_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_4_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_5_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_6_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_7_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_i_8_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_1\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_2\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_3\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_4\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_5\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_6\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__0_n_7\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__1_i_1_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__1_i_2_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__1_i_3_n_0\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__1_n_6\ : STD_LOGIC;
+  signal \raw_err_WN0_carry__1_n_7\ : STD_LOGIC;
+  signal raw_err_WN0_carry_i_1_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_2_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_3_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_4_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_5_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_6_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_7_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_i_8_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_0 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_1 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_2 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_3 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_4 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_5 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_6 : STD_LOGIC;
+  signal raw_err_WN0_carry_n_7 : STD_LOGIC;
   signal valid_1 : STD_LOGIC;
   signal valid_2 : STD_LOGIC;
   signal valid_3 : STD_LOGIC;
@@ -392,33 +392,33 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   signal \NLW_raw_diff_EW0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_raw_diff_NE0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_raw_diff_NE0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_raw_diff_NW0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_raw_diff_NW0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_raw_diff_WN0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_raw_diff_WN0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_raw_err_EW0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_raw_err_EW0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_raw_err_NE0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_raw_err_NE0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_raw_err_NW0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
-  signal \NLW_raw_err_NW0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_raw_err_WN0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_raw_err_WN0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[0]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[10]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[11]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[12]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[13]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[14]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[15]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[16]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[17]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[1]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[2]_i_1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[3]_i_1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[4]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[5]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[6]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[7]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[8]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \phase_err.diff_EW[9]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[0]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[10]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[11]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[12]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[13]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[14]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[15]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[16]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[17]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[1]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[2]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[3]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[4]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[5]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[6]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[7]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[8]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \phase_err.diff_EW[9]_i_1\ : label is "soft_lutpair16";
   attribute SOFT_HLUTNM of \phase_err.diff_NE[0]_i_1\ : label is "soft_lutpair11";
   attribute SOFT_HLUTNM of \phase_err.diff_NE[10]_i_1\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \phase_err.diff_NE[11]_i_1\ : label is "soft_lutpair6";
@@ -437,24 +437,24 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   attribute SOFT_HLUTNM of \phase_err.diff_NE[7]_i_1\ : label is "soft_lutpair8";
   attribute SOFT_HLUTNM of \phase_err.diff_NE[8]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \phase_err.diff_NE[9]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[0]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[10]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[11]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[12]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[13]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[14]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[15]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[16]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[17]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[1]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[2]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[3]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[4]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[5]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[6]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[7]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[8]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \phase_err.diff_NW[9]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[0]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[10]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[11]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[12]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[13]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[14]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[15]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[16]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[17]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[1]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[2]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[3]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[4]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[5]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[6]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[7]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[8]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \phase_err.diff_WN[9]_i_1\ : label is "soft_lutpair25";
   attribute srl_bus_name : string;
   attribute srl_bus_name of \phase_err.env_E_3_reg[0]_srl8\ : label is "inst/\phase_err_i/phase_err.env_E_3_reg ";
   attribute srl_name : string;
@@ -553,18 +553,18 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   attribute srl_name of \phase_err.env_W_3_reg[8]_srl8\ : label is "inst/\phase_err_i/phase_err.env_W_3_reg[8]_srl8 ";
   attribute srl_bus_name of \phase_err.env_W_3_reg[9]_srl8\ : label is "inst/\phase_err_i/phase_err.env_W_3_reg ";
   attribute srl_name of \phase_err.env_W_3_reg[9]_srl8\ : label is "inst/\phase_err_i/phase_err.env_W_3_reg[9]_srl8 ";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[0]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[10]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[11]_i_2\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[1]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[2]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[3]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[4]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[5]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[6]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[7]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[8]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \phase_err.err_EW[9]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[0]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[10]_i_1\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[11]_i_2\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[1]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[2]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[3]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[4]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[5]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[6]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[7]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[8]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \phase_err.err_EW[9]_i_1\ : label is "soft_lutpair40";
   attribute SOFT_HLUTNM of \phase_err.err_NE[0]_i_1\ : label is "soft_lutpair38";
   attribute SOFT_HLUTNM of \phase_err.err_NE[10]_i_1\ : label is "soft_lutpair33";
   attribute SOFT_HLUTNM of \phase_err.err_NE[11]_i_2\ : label is "soft_lutpair33";
@@ -577,18 +577,18 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   attribute SOFT_HLUTNM of \phase_err.err_NE[7]_i_1\ : label is "soft_lutpair35";
   attribute SOFT_HLUTNM of \phase_err.err_NE[8]_i_1\ : label is "soft_lutpair34";
   attribute SOFT_HLUTNM of \phase_err.err_NE[9]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[0]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[10]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[11]_i_2\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[1]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[2]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[3]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[4]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[5]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[6]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[7]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[8]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \phase_err.err_NW[9]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[0]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[10]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[11]_i_2\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[1]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[2]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[3]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[4]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[5]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[6]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[7]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[8]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \phase_err.err_WN[9]_i_1\ : label is "soft_lutpair46";
   attribute srl_bus_name of \phase_err.phase_out_E_reg[0]_srl4\ : label is "inst/\phase_err_i/phase_err.phase_out_E_reg ";
   attribute srl_name of \phase_err.phase_out_E_reg[0]_srl4\ : label is "inst/\phase_err_i/phase_err.phase_out_E_reg[0]_srl4 ";
   attribute srl_bus_name of \phase_err.phase_out_E_reg[10]_srl4\ : label is "inst/\phase_err_i/phase_err.phase_out_E_reg ";
@@ -716,18 +716,18 @@ architecture STRUCTURE of ps_freq_low_46_0_0_phase_err is
   attribute ADDER_THRESHOLD of raw_diff_NE0_carry : label is 35;
   attribute ADDER_THRESHOLD of \raw_diff_NE0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \raw_diff_NE0_carry__1\ : label is 35;
-  attribute ADDER_THRESHOLD of raw_diff_NW0_carry : label is 35;
-  attribute ADDER_THRESHOLD of \raw_diff_NW0_carry__0\ : label is 35;
-  attribute ADDER_THRESHOLD of \raw_diff_NW0_carry__1\ : label is 35;
+  attribute ADDER_THRESHOLD of raw_diff_WN0_carry : label is 35;
+  attribute ADDER_THRESHOLD of \raw_diff_WN0_carry__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \raw_diff_WN0_carry__1\ : label is 35;
   attribute ADDER_THRESHOLD of raw_err_EW0_carry : label is 35;
   attribute ADDER_THRESHOLD of \raw_err_EW0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \raw_err_EW0_carry__1\ : label is 35;
   attribute ADDER_THRESHOLD of raw_err_NE0_carry : label is 35;
   attribute ADDER_THRESHOLD of \raw_err_NE0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \raw_err_NE0_carry__1\ : label is 35;
-  attribute ADDER_THRESHOLD of raw_err_NW0_carry : label is 35;
-  attribute ADDER_THRESHOLD of \raw_err_NW0_carry__0\ : label is 35;
-  attribute ADDER_THRESHOLD of \raw_err_NW0_carry__1\ : label is 35;
+  attribute ADDER_THRESHOLD of raw_err_WN0_carry : label is 35;
+  attribute ADDER_THRESHOLD of \raw_err_WN0_carry__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \raw_err_WN0_carry__1\ : label is 35;
 begin
 \phase_err.diff_EW[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1375,327 +1375,327 @@ begin
       Q => diff_NE(9),
       R => '0'
     );
-\phase_err.diff_NW[0]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(0),
-      O => \phase_err.diff_NW[0]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(0),
+      O => \phase_err.diff_WN[0]_i_1_n_0\
     );
-\phase_err.diff_NW[10]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[10]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(10),
-      O => \phase_err.diff_NW[10]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(10),
+      O => \phase_err.diff_WN[10]_i_1_n_0\
     );
-\phase_err.diff_NW[11]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[11]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(11),
-      O => \phase_err.diff_NW[11]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(11),
+      O => \phase_err.diff_WN[11]_i_1_n_0\
     );
-\phase_err.diff_NW[12]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[12]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(12),
-      O => \phase_err.diff_NW[12]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(12),
+      O => \phase_err.diff_WN[12]_i_1_n_0\
     );
-\phase_err.diff_NW[13]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[13]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(13),
-      O => \phase_err.diff_NW[13]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(13),
+      O => \phase_err.diff_WN[13]_i_1_n_0\
     );
-\phase_err.diff_NW[14]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[14]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(14),
-      O => \phase_err.diff_NW[14]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(14),
+      O => \phase_err.diff_WN[14]_i_1_n_0\
     );
-\phase_err.diff_NW[15]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(15),
-      O => \phase_err.diff_NW[15]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(15),
+      O => \phase_err.diff_WN[15]_i_1_n_0\
     );
-\phase_err.diff_NW[16]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[16]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(16),
-      O => \phase_err.diff_NW[16]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(16),
+      O => \phase_err.diff_WN[16]_i_1_n_0\
     );
-\phase_err.diff_NW[17]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[17]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(17),
-      O => \phase_err.diff_NW[17]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(17),
+      O => \phase_err.diff_WN[17]_i_1_n_0\
     );
-\phase_err.diff_NW[18]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[18]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(18),
-      O => \phase_err.diff_NW[18]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(18),
+      O => \phase_err.diff_WN[18]_i_1_n_0\
     );
-\phase_err.diff_NW[1]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(1),
-      O => \phase_err.diff_NW[1]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(1),
+      O => \phase_err.diff_WN[1]_i_1_n_0\
     );
-\phase_err.diff_NW[2]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(2),
-      O => \phase_err.diff_NW[2]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(2),
+      O => \phase_err.diff_WN[2]_i_1_n_0\
     );
-\phase_err.diff_NW[3]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(3),
-      O => \phase_err.diff_NW[3]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(3),
+      O => \phase_err.diff_WN[3]_i_1_n_0\
     );
-\phase_err.diff_NW[4]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[4]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(4),
-      O => \phase_err.diff_NW[4]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(4),
+      O => \phase_err.diff_WN[4]_i_1_n_0\
     );
-\phase_err.diff_NW[5]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[5]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(5),
-      O => \phase_err.diff_NW[5]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(5),
+      O => \phase_err.diff_WN[5]_i_1_n_0\
     );
-\phase_err.diff_NW[6]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(6),
-      O => \phase_err.diff_NW[6]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(6),
+      O => \phase_err.diff_WN[6]_i_1_n_0\
     );
-\phase_err.diff_NW[7]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[7]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(7),
-      O => \phase_err.diff_NW[7]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(7),
+      O => \phase_err.diff_WN[7]_i_1_n_0\
     );
-\phase_err.diff_NW[8]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[8]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(8),
-      O => \phase_err.diff_NW[8]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(8),
+      O => \phase_err.diff_WN[8]_i_1_n_0\
     );
-\phase_err.diff_NW[9]_i_1\: unisim.vcomponents.LUT2
+\phase_err.diff_WN[9]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => raw_diff_NW(19),
-      I1 => raw_diff_NW(9),
-      O => \phase_err.diff_NW[9]_i_1_n_0\
+      I0 => raw_diff_WN(19),
+      I1 => raw_diff_WN(9),
+      O => \phase_err.diff_WN[9]_i_1_n_0\
     );
-\phase_err.diff_NW_reg[0]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[0]_i_1_n_0\,
-      Q => diff_NW(0),
+      D => \phase_err.diff_WN[0]_i_1_n_0\,
+      Q => diff_WN(0),
       R => '0'
     );
-\phase_err.diff_NW_reg[10]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[10]_i_1_n_0\,
-      Q => diff_NW(10),
+      D => \phase_err.diff_WN[10]_i_1_n_0\,
+      Q => diff_WN(10),
       R => '0'
     );
-\phase_err.diff_NW_reg[11]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[11]_i_1_n_0\,
-      Q => diff_NW(11),
+      D => \phase_err.diff_WN[11]_i_1_n_0\,
+      Q => diff_WN(11),
       R => '0'
     );
-\phase_err.diff_NW_reg[12]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[12]_i_1_n_0\,
-      Q => diff_NW(12),
+      D => \phase_err.diff_WN[12]_i_1_n_0\,
+      Q => diff_WN(12),
       R => '0'
     );
-\phase_err.diff_NW_reg[13]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[13]_i_1_n_0\,
-      Q => diff_NW(13),
+      D => \phase_err.diff_WN[13]_i_1_n_0\,
+      Q => diff_WN(13),
       R => '0'
     );
-\phase_err.diff_NW_reg[14]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[14]_i_1_n_0\,
-      Q => diff_NW(14),
+      D => \phase_err.diff_WN[14]_i_1_n_0\,
+      Q => diff_WN(14),
       R => '0'
     );
-\phase_err.diff_NW_reg[15]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[15]_i_1_n_0\,
-      Q => diff_NW(15),
+      D => \phase_err.diff_WN[15]_i_1_n_0\,
+      Q => diff_WN(15),
       R => '0'
     );
-\phase_err.diff_NW_reg[16]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[16]_i_1_n_0\,
-      Q => diff_NW(16),
+      D => \phase_err.diff_WN[16]_i_1_n_0\,
+      Q => diff_WN(16),
       R => '0'
     );
-\phase_err.diff_NW_reg[17]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[17]_i_1_n_0\,
-      Q => diff_NW(17),
+      D => \phase_err.diff_WN[17]_i_1_n_0\,
+      Q => diff_WN(17),
       R => '0'
     );
-\phase_err.diff_NW_reg[18]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[18]_i_1_n_0\,
-      Q => diff_NW(18),
+      D => \phase_err.diff_WN[18]_i_1_n_0\,
+      Q => diff_WN(18),
       R => '0'
     );
-\phase_err.diff_NW_reg[1]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[1]_i_1_n_0\,
-      Q => diff_NW(1),
+      D => \phase_err.diff_WN[1]_i_1_n_0\,
+      Q => diff_WN(1),
       R => '0'
     );
-\phase_err.diff_NW_reg[2]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[2]_i_1_n_0\,
-      Q => diff_NW(2),
+      D => \phase_err.diff_WN[2]_i_1_n_0\,
+      Q => diff_WN(2),
       R => '0'
     );
-\phase_err.diff_NW_reg[3]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[3]_i_1_n_0\,
-      Q => diff_NW(3),
+      D => \phase_err.diff_WN[3]_i_1_n_0\,
+      Q => diff_WN(3),
       R => '0'
     );
-\phase_err.diff_NW_reg[4]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[4]_i_1_n_0\,
-      Q => diff_NW(4),
+      D => \phase_err.diff_WN[4]_i_1_n_0\,
+      Q => diff_WN(4),
       R => '0'
     );
-\phase_err.diff_NW_reg[5]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[5]_i_1_n_0\,
-      Q => diff_NW(5),
+      D => \phase_err.diff_WN[5]_i_1_n_0\,
+      Q => diff_WN(5),
       R => '0'
     );
-\phase_err.diff_NW_reg[6]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[6]_i_1_n_0\,
-      Q => diff_NW(6),
+      D => \phase_err.diff_WN[6]_i_1_n_0\,
+      Q => diff_WN(6),
       R => '0'
     );
-\phase_err.diff_NW_reg[7]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[7]_i_1_n_0\,
-      Q => diff_NW(7),
+      D => \phase_err.diff_WN[7]_i_1_n_0\,
+      Q => diff_WN(7),
       R => '0'
     );
-\phase_err.diff_NW_reg[8]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[8]_i_1_n_0\,
-      Q => diff_NW(8),
+      D => \phase_err.diff_WN[8]_i_1_n_0\,
+      Q => diff_WN(8),
       R => '0'
     );
-\phase_err.diff_NW_reg[9]\: unisim.vcomponents.FDRE
+\phase_err.diff_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.diff_NW[9]_i_1_n_0\,
-      Q => diff_NW(9),
+      D => \phase_err.diff_WN[9]_i_1_n_0\,
+      Q => diff_WN(9),
       R => '0'
     );
 \phase_err.env_E_3_reg[0]_srl8\: unisim.vcomponents.SRL16E
@@ -2362,7 +2362,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[0]_i_1_n_0\,
-      Q => D(84),
+      Q => D(72),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[10]\: unisim.vcomponents.FDSE
@@ -2370,7 +2370,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[10]_i_1_n_0\,
-      Q => D(94),
+      Q => D(82),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[11]\: unisim.vcomponents.FDSE
@@ -2378,7 +2378,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[11]_i_2_n_0\,
-      Q => D(95),
+      Q => D(83),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[1]\: unisim.vcomponents.FDSE
@@ -2386,7 +2386,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[1]_i_1_n_0\,
-      Q => D(85),
+      Q => D(73),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[2]\: unisim.vcomponents.FDSE
@@ -2394,7 +2394,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[2]_i_1_n_0\,
-      Q => D(86),
+      Q => D(74),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[3]\: unisim.vcomponents.FDSE
@@ -2402,7 +2402,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[3]_i_1_n_0\,
-      Q => D(87),
+      Q => D(75),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[4]\: unisim.vcomponents.FDSE
@@ -2410,7 +2410,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[4]_i_1_n_0\,
-      Q => D(88),
+      Q => D(76),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[5]\: unisim.vcomponents.FDSE
@@ -2418,7 +2418,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[5]_i_1_n_0\,
-      Q => D(89),
+      Q => D(77),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[6]\: unisim.vcomponents.FDSE
@@ -2426,7 +2426,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[6]_i_1_n_0\,
-      Q => D(90),
+      Q => D(78),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[7]\: unisim.vcomponents.FDSE
@@ -2434,7 +2434,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[7]_i_1_n_0\,
-      Q => D(91),
+      Q => D(79),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[8]\: unisim.vcomponents.FDSE
@@ -2442,7 +2442,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[8]_i_1_n_0\,
-      Q => D(92),
+      Q => D(80),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_EW_reg[9]\: unisim.vcomponents.FDSE
@@ -2450,7 +2450,7 @@ begin
       C => clk,
       CE => '1',
       D => \phase_err.err_EW[9]_i_1_n_0\,
-      Q => D(93),
+      Q => D(81),
       S => \phase_err.err_EW[11]_i_1_n_0\
     );
 \phase_err.err_NE[0]_i_1\: unisim.vcomponents.LUT2
@@ -2680,232 +2680,232 @@ begin
       Q => D(69),
       S => \phase_err.err_NE[11]_i_1_n_0\
     );
-\phase_err.err_NW[0]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[0]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[0]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[0]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[0]_i_1_n_0\
     );
-\phase_err.err_NW[10]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[10]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[10]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[10]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[10]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[10]_i_1_n_0\
     );
-\phase_err.err_NW[11]_i_1\: unisim.vcomponents.LUT4
+\phase_err.err_WN[11]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"BFFE"
     )
         port map (
-      I0 => \phase_err.err_NW[11]_i_3_n_0\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      I2 => \phase_err.raw_err_NW_reg_n_0_[14]\,
-      I3 => \phase_err.raw_err_NW_reg_n_0_[13]\,
-      O => \phase_err.err_NW[11]_i_1_n_0\
+      I0 => \phase_err.err_WN[11]_i_3_n_0\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      I2 => \phase_err.raw_err_WN_reg_n_0_[14]\,
+      I3 => \phase_err.raw_err_WN_reg_n_0_[13]\,
+      O => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW[11]_i_2\: unisim.vcomponents.LUT2
+\phase_err.err_WN[11]_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[11]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[11]_i_2_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[11]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[11]_i_2_n_0\
     );
-\phase_err.err_NW[11]_i_3\: unisim.vcomponents.LUT5
+\phase_err.err_WN[11]_i_3\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"7FFFFFFE"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[16]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[15]\,
-      I2 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      I3 => \phase_err.raw_err_NW_reg_n_0_[18]\,
-      I4 => \phase_err.raw_err_NW_reg_n_0_[17]\,
-      O => \phase_err.err_NW[11]_i_3_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[16]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[15]\,
+      I2 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      I3 => \phase_err.raw_err_WN_reg_n_0_[18]\,
+      I4 => \phase_err.raw_err_WN_reg_n_0_[17]\,
+      O => \phase_err.err_WN[11]_i_3_n_0\
     );
-\phase_err.err_NW[1]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[1]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[1]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[1]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[1]_i_1_n_0\
     );
-\phase_err.err_NW[2]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[2]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[2]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[2]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[2]_i_1_n_0\
     );
-\phase_err.err_NW[3]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[3]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[3]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[3]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[3]_i_1_n_0\
     );
-\phase_err.err_NW[4]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[4]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[4]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[4]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[4]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[4]_i_1_n_0\
     );
-\phase_err.err_NW[5]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[5]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[5]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[5]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[5]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[5]_i_1_n_0\
     );
-\phase_err.err_NW[6]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[6]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[6]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[6]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[6]_i_1_n_0\
     );
-\phase_err.err_NW[7]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[7]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[7]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[7]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[7]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[7]_i_1_n_0\
     );
-\phase_err.err_NW[8]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[8]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[8]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[8]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[8]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[8]_i_1_n_0\
     );
-\phase_err.err_NW[9]_i_1\: unisim.vcomponents.LUT2
+\phase_err.err_WN[9]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \phase_err.raw_err_NW_reg_n_0_[9]\,
-      I1 => \phase_err.raw_err_NW_reg_n_0_[12]\,
-      O => \phase_err.err_NW[9]_i_1_n_0\
+      I0 => \phase_err.raw_err_WN_reg_n_0_[9]\,
+      I1 => \phase_err.raw_err_WN_reg_n_0_[12]\,
+      O => \phase_err.err_WN[9]_i_1_n_0\
     );
-\phase_err.err_NW_reg[0]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[0]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[0]_i_1_n_0\,
-      Q => D(72),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[0]_i_1_n_0\,
+      Q => D(84),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[10]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[10]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[10]_i_1_n_0\,
-      Q => D(82),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[10]_i_1_n_0\,
+      Q => D(94),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[11]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[11]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[11]_i_2_n_0\,
-      Q => D(83),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[11]_i_2_n_0\,
+      Q => D(95),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[1]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[1]_i_1_n_0\,
-      Q => D(73),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[1]_i_1_n_0\,
+      Q => D(85),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[2]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[2]_i_1_n_0\,
-      Q => D(74),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[2]_i_1_n_0\,
+      Q => D(86),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[3]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[3]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[3]_i_1_n_0\,
-      Q => D(75),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[3]_i_1_n_0\,
+      Q => D(87),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[4]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[4]_i_1_n_0\,
-      Q => D(76),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[4]_i_1_n_0\,
+      Q => D(88),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[5]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[5]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[5]_i_1_n_0\,
-      Q => D(77),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[5]_i_1_n_0\,
+      Q => D(89),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[6]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[6]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[6]_i_1_n_0\,
-      Q => D(78),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[6]_i_1_n_0\,
+      Q => D(90),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[7]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[7]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[7]_i_1_n_0\,
-      Q => D(79),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[7]_i_1_n_0\,
+      Q => D(91),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[8]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[8]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[8]_i_1_n_0\,
-      Q => D(80),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[8]_i_1_n_0\,
+      Q => D(92),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
-\phase_err.err_NW_reg[9]\: unisim.vcomponents.FDSE
+\phase_err.err_WN_reg[9]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \phase_err.err_NW[9]_i_1_n_0\,
-      Q => D(81),
-      S => \phase_err.err_NW[11]_i_1_n_0\
+      D => \phase_err.err_WN[9]_i_1_n_0\,
+      Q => D(93),
+      S => \phase_err.err_WN[11]_i_1_n_0\
     );
 \phase_err.phase_out_E_reg[0]_srl4\: unisim.vcomponents.SRL16E
      port map (
@@ -3879,163 +3879,163 @@ begin
       Q => prev_NE(9),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[0]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(0),
-      Q => prev_NW(0),
+      D => diff_WN(0),
+      Q => prev_WN(0),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[10]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(10),
-      Q => prev_NW(10),
+      D => diff_WN(10),
+      Q => prev_WN(10),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[11]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(11),
-      Q => prev_NW(11),
+      D => diff_WN(11),
+      Q => prev_WN(11),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[12]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(12),
-      Q => prev_NW(12),
+      D => diff_WN(12),
+      Q => prev_WN(12),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[13]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(13),
-      Q => prev_NW(13),
+      D => diff_WN(13),
+      Q => prev_WN(13),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[14]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(14),
-      Q => prev_NW(14),
+      D => diff_WN(14),
+      Q => prev_WN(14),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[15]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(15),
-      Q => prev_NW(15),
+      D => diff_WN(15),
+      Q => prev_WN(15),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[16]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(16),
-      Q => prev_NW(16),
+      D => diff_WN(16),
+      Q => prev_WN(16),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[17]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(17),
-      Q => prev_NW(17),
+      D => diff_WN(17),
+      Q => prev_WN(17),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[18]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(18),
-      Q => prev_NW(18),
+      D => diff_WN(18),
+      Q => prev_WN(18),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[1]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(1),
-      Q => prev_NW(1),
+      D => diff_WN(1),
+      Q => prev_WN(1),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[2]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(2),
-      Q => prev_NW(2),
+      D => diff_WN(2),
+      Q => prev_WN(2),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[3]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(3),
-      Q => prev_NW(3),
+      D => diff_WN(3),
+      Q => prev_WN(3),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[4]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(4),
-      Q => prev_NW(4),
+      D => diff_WN(4),
+      Q => prev_WN(4),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[5]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(5),
-      Q => prev_NW(5),
+      D => diff_WN(5),
+      Q => prev_WN(5),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[6]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(6),
-      Q => prev_NW(6),
+      D => diff_WN(6),
+      Q => prev_WN(6),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[7]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(7),
-      Q => prev_NW(7),
+      D => diff_WN(7),
+      Q => prev_WN(7),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[8]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(8),
-      Q => prev_NW(8),
+      D => diff_WN(8),
+      Q => prev_WN(8),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
-\phase_err.prev_NW_reg[9]\: unisim.vcomponents.FDRE
+\phase_err.prev_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => diff_NW(9),
-      Q => prev_NW(9),
+      D => diff_WN(9),
+      Q => prev_WN(9),
       R => \phase_err.prev_NE[18]_i_1_n_0\
     );
 \phase_err.raw_diff_EW_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(0),
+      D => raw_diff_EW01_out(0),
       Q => raw_diff_EW(0),
       R => '0'
     );
@@ -4043,7 +4043,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(10),
+      D => raw_diff_EW01_out(10),
       Q => raw_diff_EW(10),
       R => '0'
     );
@@ -4051,7 +4051,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(11),
+      D => raw_diff_EW01_out(11),
       Q => raw_diff_EW(11),
       R => '0'
     );
@@ -4059,7 +4059,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(12),
+      D => raw_diff_EW01_out(12),
       Q => raw_diff_EW(12),
       R => '0'
     );
@@ -4067,7 +4067,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(13),
+      D => raw_diff_EW01_out(13),
       Q => raw_diff_EW(13),
       R => '0'
     );
@@ -4075,7 +4075,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(14),
+      D => raw_diff_EW01_out(14),
       Q => raw_diff_EW(14),
       R => '0'
     );
@@ -4083,7 +4083,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(15),
+      D => raw_diff_EW01_out(15),
       Q => raw_diff_EW(15),
       R => '0'
     );
@@ -4091,7 +4091,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(16),
+      D => raw_diff_EW01_out(16),
       Q => raw_diff_EW(16),
       R => '0'
     );
@@ -4099,7 +4099,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(17),
+      D => raw_diff_EW01_out(17),
       Q => raw_diff_EW(17),
       R => '0'
     );
@@ -4107,7 +4107,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(18),
+      D => raw_diff_EW01_out(18),
       Q => raw_diff_EW(18),
       R => '0'
     );
@@ -4115,7 +4115,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(19),
+      D => raw_diff_EW01_out(19),
       Q => raw_diff_EW(19),
       R => '0'
     );
@@ -4123,7 +4123,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(1),
+      D => raw_diff_EW01_out(1),
       Q => raw_diff_EW(1),
       R => '0'
     );
@@ -4131,7 +4131,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(2),
+      D => raw_diff_EW01_out(2),
       Q => raw_diff_EW(2),
       R => '0'
     );
@@ -4139,7 +4139,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(3),
+      D => raw_diff_EW01_out(3),
       Q => raw_diff_EW(3),
       R => '0'
     );
@@ -4147,7 +4147,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(4),
+      D => raw_diff_EW01_out(4),
       Q => raw_diff_EW(4),
       R => '0'
     );
@@ -4155,7 +4155,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(5),
+      D => raw_diff_EW01_out(5),
       Q => raw_diff_EW(5),
       R => '0'
     );
@@ -4163,7 +4163,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(6),
+      D => raw_diff_EW01_out(6),
       Q => raw_diff_EW(6),
       R => '0'
     );
@@ -4171,7 +4171,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(7),
+      D => raw_diff_EW01_out(7),
       Q => raw_diff_EW(7),
       R => '0'
     );
@@ -4179,7 +4179,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(8),
+      D => raw_diff_EW01_out(8),
       Q => raw_diff_EW(8),
       R => '0'
     );
@@ -4187,7 +4187,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_EW00_out(9),
+      D => raw_diff_EW01_out(9),
       Q => raw_diff_EW(9),
       R => '0'
     );
@@ -4195,7 +4195,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(0),
+      D => raw_diff_NE02_out(0),
       Q => raw_diff_NE(0),
       R => '0'
     );
@@ -4203,7 +4203,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(10),
+      D => raw_diff_NE02_out(10),
       Q => raw_diff_NE(10),
       R => '0'
     );
@@ -4211,7 +4211,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(11),
+      D => raw_diff_NE02_out(11),
       Q => raw_diff_NE(11),
       R => '0'
     );
@@ -4219,7 +4219,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(12),
+      D => raw_diff_NE02_out(12),
       Q => raw_diff_NE(12),
       R => '0'
     );
@@ -4227,7 +4227,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(13),
+      D => raw_diff_NE02_out(13),
       Q => raw_diff_NE(13),
       R => '0'
     );
@@ -4235,7 +4235,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(14),
+      D => raw_diff_NE02_out(14),
       Q => raw_diff_NE(14),
       R => '0'
     );
@@ -4243,7 +4243,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(15),
+      D => raw_diff_NE02_out(15),
       Q => raw_diff_NE(15),
       R => '0'
     );
@@ -4251,7 +4251,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(16),
+      D => raw_diff_NE02_out(16),
       Q => raw_diff_NE(16),
       R => '0'
     );
@@ -4259,7 +4259,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(17),
+      D => raw_diff_NE02_out(17),
       Q => raw_diff_NE(17),
       R => '0'
     );
@@ -4267,7 +4267,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(18),
+      D => raw_diff_NE02_out(18),
       Q => raw_diff_NE(18),
       R => '0'
     );
@@ -4275,7 +4275,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(19),
+      D => raw_diff_NE02_out(19),
       Q => raw_diff_NE(19),
       R => '0'
     );
@@ -4283,7 +4283,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(1),
+      D => raw_diff_NE02_out(1),
       Q => raw_diff_NE(1),
       R => '0'
     );
@@ -4291,7 +4291,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(2),
+      D => raw_diff_NE02_out(2),
       Q => raw_diff_NE(2),
       R => '0'
     );
@@ -4299,7 +4299,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(3),
+      D => raw_diff_NE02_out(3),
       Q => raw_diff_NE(3),
       R => '0'
     );
@@ -4307,7 +4307,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(4),
+      D => raw_diff_NE02_out(4),
       Q => raw_diff_NE(4),
       R => '0'
     );
@@ -4315,7 +4315,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(5),
+      D => raw_diff_NE02_out(5),
       Q => raw_diff_NE(5),
       R => '0'
     );
@@ -4323,7 +4323,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(6),
+      D => raw_diff_NE02_out(6),
       Q => raw_diff_NE(6),
       R => '0'
     );
@@ -4331,7 +4331,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(7),
+      D => raw_diff_NE02_out(7),
       Q => raw_diff_NE(7),
       R => '0'
     );
@@ -4339,7 +4339,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(8),
+      D => raw_diff_NE02_out(8),
       Q => raw_diff_NE(8),
       R => '0'
     );
@@ -4347,175 +4347,175 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NE01_out(9),
+      D => raw_diff_NE02_out(9),
       Q => raw_diff_NE(9),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[0]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(0),
-      Q => raw_diff_NW(0),
+      D => raw_diff_WN00_out(0),
+      Q => raw_diff_WN(0),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[10]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(10),
-      Q => raw_diff_NW(10),
+      D => raw_diff_WN00_out(10),
+      Q => raw_diff_WN(10),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[11]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(11),
-      Q => raw_diff_NW(11),
+      D => raw_diff_WN00_out(11),
+      Q => raw_diff_WN(11),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[12]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(12),
-      Q => raw_diff_NW(12),
+      D => raw_diff_WN00_out(12),
+      Q => raw_diff_WN(12),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[13]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(13),
-      Q => raw_diff_NW(13),
+      D => raw_diff_WN00_out(13),
+      Q => raw_diff_WN(13),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[14]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(14),
-      Q => raw_diff_NW(14),
+      D => raw_diff_WN00_out(14),
+      Q => raw_diff_WN(14),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[15]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(15),
-      Q => raw_diff_NW(15),
+      D => raw_diff_WN00_out(15),
+      Q => raw_diff_WN(15),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[16]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(16),
-      Q => raw_diff_NW(16),
+      D => raw_diff_WN00_out(16),
+      Q => raw_diff_WN(16),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[17]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(17),
-      Q => raw_diff_NW(17),
+      D => raw_diff_WN00_out(17),
+      Q => raw_diff_WN(17),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[18]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(18),
-      Q => raw_diff_NW(18),
+      D => raw_diff_WN00_out(18),
+      Q => raw_diff_WN(18),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[19]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(19),
-      Q => raw_diff_NW(19),
+      D => raw_diff_WN00_out(19),
+      Q => raw_diff_WN(19),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[1]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(1),
-      Q => raw_diff_NW(1),
+      D => raw_diff_WN00_out(1),
+      Q => raw_diff_WN(1),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[2]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(2),
-      Q => raw_diff_NW(2),
+      D => raw_diff_WN00_out(2),
+      Q => raw_diff_WN(2),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[3]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(3),
-      Q => raw_diff_NW(3),
+      D => raw_diff_WN00_out(3),
+      Q => raw_diff_WN(3),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[4]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(4),
-      Q => raw_diff_NW(4),
+      D => raw_diff_WN00_out(4),
+      Q => raw_diff_WN(4),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[5]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(5),
-      Q => raw_diff_NW(5),
+      D => raw_diff_WN00_out(5),
+      Q => raw_diff_WN(5),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[6]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(6),
-      Q => raw_diff_NW(6),
+      D => raw_diff_WN00_out(6),
+      Q => raw_diff_WN(6),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[7]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(7),
-      Q => raw_diff_NW(7),
+      D => raw_diff_WN00_out(7),
+      Q => raw_diff_WN(7),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[8]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(8),
-      Q => raw_diff_NW(8),
+      D => raw_diff_WN00_out(8),
+      Q => raw_diff_WN(8),
       R => '0'
     );
-\phase_err.raw_diff_NW_reg[9]\: unisim.vcomponents.FDRE
+\phase_err.raw_diff_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_diff_NW0(9),
-      Q => raw_diff_NW(9),
+      D => raw_diff_WN00_out(9),
+      Q => raw_diff_WN(9),
       R => '0'
     );
 \phase_err.raw_err_EW_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(0),
+      D => raw_err_EW01_out(0),
       Q => \phase_err.raw_err_EW_reg_n_0_[0]\,
       R => '0'
     );
@@ -4523,7 +4523,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(10),
+      D => raw_err_EW01_out(10),
       Q => \phase_err.raw_err_EW_reg_n_0_[10]\,
       R => '0'
     );
@@ -4531,7 +4531,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(11),
+      D => raw_err_EW01_out(11),
       Q => \phase_err.raw_err_EW_reg_n_0_[11]\,
       R => '0'
     );
@@ -4539,7 +4539,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(12),
+      D => raw_err_EW01_out(12),
       Q => \phase_err.raw_err_EW_reg_n_0_[12]\,
       R => '0'
     );
@@ -4547,7 +4547,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(13),
+      D => raw_err_EW01_out(13),
       Q => \phase_err.raw_err_EW_reg_n_0_[13]\,
       R => '0'
     );
@@ -4555,7 +4555,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(14),
+      D => raw_err_EW01_out(14),
       Q => \phase_err.raw_err_EW_reg_n_0_[14]\,
       R => '0'
     );
@@ -4563,7 +4563,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(15),
+      D => raw_err_EW01_out(15),
       Q => \phase_err.raw_err_EW_reg_n_0_[15]\,
       R => '0'
     );
@@ -4571,7 +4571,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(16),
+      D => raw_err_EW01_out(16),
       Q => \phase_err.raw_err_EW_reg_n_0_[16]\,
       R => '0'
     );
@@ -4579,7 +4579,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(17),
+      D => raw_err_EW01_out(17),
       Q => \phase_err.raw_err_EW_reg_n_0_[17]\,
       R => '0'
     );
@@ -4587,7 +4587,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(18),
+      D => raw_err_EW01_out(18),
       Q => \phase_err.raw_err_EW_reg_n_0_[18]\,
       R => '0'
     );
@@ -4595,7 +4595,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(1),
+      D => raw_err_EW01_out(1),
       Q => \phase_err.raw_err_EW_reg_n_0_[1]\,
       R => '0'
     );
@@ -4603,7 +4603,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(2),
+      D => raw_err_EW01_out(2),
       Q => \phase_err.raw_err_EW_reg_n_0_[2]\,
       R => '0'
     );
@@ -4611,7 +4611,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(3),
+      D => raw_err_EW01_out(3),
       Q => \phase_err.raw_err_EW_reg_n_0_[3]\,
       R => '0'
     );
@@ -4619,7 +4619,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(4),
+      D => raw_err_EW01_out(4),
       Q => \phase_err.raw_err_EW_reg_n_0_[4]\,
       R => '0'
     );
@@ -4627,7 +4627,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(5),
+      D => raw_err_EW01_out(5),
       Q => \phase_err.raw_err_EW_reg_n_0_[5]\,
       R => '0'
     );
@@ -4635,7 +4635,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(6),
+      D => raw_err_EW01_out(6),
       Q => \phase_err.raw_err_EW_reg_n_0_[6]\,
       R => '0'
     );
@@ -4643,7 +4643,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(7),
+      D => raw_err_EW01_out(7),
       Q => \phase_err.raw_err_EW_reg_n_0_[7]\,
       R => '0'
     );
@@ -4651,7 +4651,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(8),
+      D => raw_err_EW01_out(8),
       Q => \phase_err.raw_err_EW_reg_n_0_[8]\,
       R => '0'
     );
@@ -4659,7 +4659,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_EW00_out(9),
+      D => raw_err_EW01_out(9),
       Q => \phase_err.raw_err_EW_reg_n_0_[9]\,
       R => '0'
     );
@@ -4815,156 +4815,156 @@ begin
       Q => \phase_err.raw_err_NE_reg_n_0_[9]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[0]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(0),
-      Q => \phase_err.raw_err_NW_reg_n_0_[0]\,
+      D => raw_err_WN00_out(0),
+      Q => \phase_err.raw_err_WN_reg_n_0_[0]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[10]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(10),
-      Q => \phase_err.raw_err_NW_reg_n_0_[10]\,
+      D => raw_err_WN00_out(10),
+      Q => \phase_err.raw_err_WN_reg_n_0_[10]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[11]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(11),
-      Q => \phase_err.raw_err_NW_reg_n_0_[11]\,
+      D => raw_err_WN00_out(11),
+      Q => \phase_err.raw_err_WN_reg_n_0_[11]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[12]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(12),
-      Q => \phase_err.raw_err_NW_reg_n_0_[12]\,
+      D => raw_err_WN00_out(12),
+      Q => \phase_err.raw_err_WN_reg_n_0_[12]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[13]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(13),
-      Q => \phase_err.raw_err_NW_reg_n_0_[13]\,
+      D => raw_err_WN00_out(13),
+      Q => \phase_err.raw_err_WN_reg_n_0_[13]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[14]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(14),
-      Q => \phase_err.raw_err_NW_reg_n_0_[14]\,
+      D => raw_err_WN00_out(14),
+      Q => \phase_err.raw_err_WN_reg_n_0_[14]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[15]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(15),
-      Q => \phase_err.raw_err_NW_reg_n_0_[15]\,
+      D => raw_err_WN00_out(15),
+      Q => \phase_err.raw_err_WN_reg_n_0_[15]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[16]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(16),
-      Q => \phase_err.raw_err_NW_reg_n_0_[16]\,
+      D => raw_err_WN00_out(16),
+      Q => \phase_err.raw_err_WN_reg_n_0_[16]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[17]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(17),
-      Q => \phase_err.raw_err_NW_reg_n_0_[17]\,
+      D => raw_err_WN00_out(17),
+      Q => \phase_err.raw_err_WN_reg_n_0_[17]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[18]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(18),
-      Q => \phase_err.raw_err_NW_reg_n_0_[18]\,
+      D => raw_err_WN00_out(18),
+      Q => \phase_err.raw_err_WN_reg_n_0_[18]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[1]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(1),
-      Q => \phase_err.raw_err_NW_reg_n_0_[1]\,
+      D => raw_err_WN00_out(1),
+      Q => \phase_err.raw_err_WN_reg_n_0_[1]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[2]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(2),
-      Q => \phase_err.raw_err_NW_reg_n_0_[2]\,
+      D => raw_err_WN00_out(2),
+      Q => \phase_err.raw_err_WN_reg_n_0_[2]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[3]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(3),
-      Q => \phase_err.raw_err_NW_reg_n_0_[3]\,
+      D => raw_err_WN00_out(3),
+      Q => \phase_err.raw_err_WN_reg_n_0_[3]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[4]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(4),
-      Q => \phase_err.raw_err_NW_reg_n_0_[4]\,
+      D => raw_err_WN00_out(4),
+      Q => \phase_err.raw_err_WN_reg_n_0_[4]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[5]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(5),
-      Q => \phase_err.raw_err_NW_reg_n_0_[5]\,
+      D => raw_err_WN00_out(5),
+      Q => \phase_err.raw_err_WN_reg_n_0_[5]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[6]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(6),
-      Q => \phase_err.raw_err_NW_reg_n_0_[6]\,
+      D => raw_err_WN00_out(6),
+      Q => \phase_err.raw_err_WN_reg_n_0_[6]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[7]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(7),
-      Q => \phase_err.raw_err_NW_reg_n_0_[7]\,
+      D => raw_err_WN00_out(7),
+      Q => \phase_err.raw_err_WN_reg_n_0_[7]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[8]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(8),
-      Q => \phase_err.raw_err_NW_reg_n_0_[8]\,
+      D => raw_err_WN00_out(8),
+      Q => \phase_err.raw_err_WN_reg_n_0_[8]\,
       R => '0'
     );
-\phase_err.raw_err_NW_reg[9]\: unisim.vcomponents.FDRE
+\phase_err.raw_err_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => raw_err_NW01_out(9),
-      Q => \phase_err.raw_err_NW_reg_n_0_[9]\,
+      D => raw_err_WN00_out(9),
+      Q => \phase_err.raw_err_WN_reg_n_0_[9]\,
       R => '0'
     );
 \phase_err.valid_1_reg\: unisim.vcomponents.FDRE
@@ -5012,7 +5012,7 @@ raw_diff_EW0_carry: unisim.vcomponents.CARRY8
       CO(1) => raw_diff_EW0_carry_n_6,
       CO(0) => raw_diff_EW0_carry_n_7,
       DI(7 downto 0) => \freq_low_46.doa_data_reg[71]\(7 downto 0),
-      O(7 downto 0) => raw_diff_EW00_out(7 downto 0),
+      O(7 downto 0) => raw_diff_EW01_out(7 downto 0),
       S(7 downto 0) => \phase_err.raw_diff_EW_reg[7]_0\(7 downto 0)
     );
 \raw_diff_EW0_carry__0\: unisim.vcomponents.CARRY8
@@ -5028,7 +5028,7 @@ raw_diff_EW0_carry: unisim.vcomponents.CARRY8
       CO(1) => \raw_diff_EW0_carry__0_n_6\,
       CO(0) => \raw_diff_EW0_carry__0_n_7\,
       DI(7 downto 0) => \freq_low_46.doa_data_reg[71]\(15 downto 8),
-      O(7 downto 0) => raw_diff_EW00_out(15 downto 8),
+      O(7 downto 0) => raw_diff_EW01_out(15 downto 8),
       S(7 downto 0) => \phase_err.raw_diff_EW_reg[15]_0\(7 downto 0)
     );
 \raw_diff_EW0_carry__1\: unisim.vcomponents.CARRY8
@@ -5042,7 +5042,7 @@ raw_diff_EW0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => \freq_low_46.doa_data_reg[71]\(18 downto 16),
       O(7 downto 4) => \NLW_raw_diff_EW0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => raw_diff_EW00_out(19 downto 16),
+      O(3 downto 0) => raw_diff_EW01_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3 downto 0) => \phase_err.raw_diff_EW_reg[19]_0\(3 downto 0)
     );
@@ -5059,7 +5059,7 @@ raw_diff_NE0_carry: unisim.vcomponents.CARRY8
       CO(1) => raw_diff_NE0_carry_n_6,
       CO(0) => raw_diff_NE0_carry_n_7,
       DI(7 downto 0) => Q(7 downto 0),
-      O(7 downto 0) => raw_diff_NE01_out(7 downto 0),
+      O(7 downto 0) => raw_diff_NE02_out(7 downto 0),
       S(7 downto 0) => S(7 downto 0)
     );
 \raw_diff_NE0_carry__0\: unisim.vcomponents.CARRY8
@@ -5075,7 +5075,7 @@ raw_diff_NE0_carry: unisim.vcomponents.CARRY8
       CO(1) => \raw_diff_NE0_carry__0_n_6\,
       CO(0) => \raw_diff_NE0_carry__0_n_7\,
       DI(7 downto 0) => Q(15 downto 8),
-      O(7 downto 0) => raw_diff_NE01_out(15 downto 8),
+      O(7 downto 0) => raw_diff_NE02_out(15 downto 8),
       S(7 downto 0) => \phase_err.raw_diff_NE_reg[15]_0\(7 downto 0)
     );
 \raw_diff_NE0_carry__1\: unisim.vcomponents.CARRY8
@@ -5089,56 +5089,56 @@ raw_diff_NE0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 3) => B"00000",
       DI(2 downto 0) => Q(18 downto 16),
       O(7 downto 4) => \NLW_raw_diff_NE0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => raw_diff_NE01_out(19 downto 16),
+      O(3 downto 0) => raw_diff_NE02_out(19 downto 16),
       S(7 downto 4) => B"0000",
       S(3 downto 0) => \phase_err.raw_diff_NE_reg[19]_0\(3 downto 0)
     );
-raw_diff_NW0_carry: unisim.vcomponents.CARRY8
+raw_diff_WN0_carry: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => raw_diff_NW0_carry_n_0,
-      CO(6) => raw_diff_NW0_carry_n_1,
-      CO(5) => raw_diff_NW0_carry_n_2,
-      CO(4) => raw_diff_NW0_carry_n_3,
-      CO(3) => raw_diff_NW0_carry_n_4,
-      CO(2) => raw_diff_NW0_carry_n_5,
-      CO(1) => raw_diff_NW0_carry_n_6,
-      CO(0) => raw_diff_NW0_carry_n_7,
-      DI(7 downto 0) => Q(7 downto 0),
-      O(7 downto 0) => raw_diff_NW0(7 downto 0),
-      S(7 downto 0) => \phase_err.raw_diff_NW_reg[7]_0\(7 downto 0)
+      CO(7) => raw_diff_WN0_carry_n_0,
+      CO(6) => raw_diff_WN0_carry_n_1,
+      CO(5) => raw_diff_WN0_carry_n_2,
+      CO(4) => raw_diff_WN0_carry_n_3,
+      CO(3) => raw_diff_WN0_carry_n_4,
+      CO(2) => raw_diff_WN0_carry_n_5,
+      CO(1) => raw_diff_WN0_carry_n_6,
+      CO(0) => raw_diff_WN0_carry_n_7,
+      DI(7 downto 0) => \freq_low_46.doa_data_reg[107]\(7 downto 0),
+      O(7 downto 0) => raw_diff_WN00_out(7 downto 0),
+      S(7 downto 0) => \phase_err.raw_diff_WN_reg[7]_0\(7 downto 0)
     );
-\raw_diff_NW0_carry__0\: unisim.vcomponents.CARRY8
+\raw_diff_WN0_carry__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => raw_diff_NW0_carry_n_0,
+      CI => raw_diff_WN0_carry_n_0,
       CI_TOP => '0',
-      CO(7) => \raw_diff_NW0_carry__0_n_0\,
-      CO(6) => \raw_diff_NW0_carry__0_n_1\,
-      CO(5) => \raw_diff_NW0_carry__0_n_2\,
-      CO(4) => \raw_diff_NW0_carry__0_n_3\,
-      CO(3) => \raw_diff_NW0_carry__0_n_4\,
-      CO(2) => \raw_diff_NW0_carry__0_n_5\,
-      CO(1) => \raw_diff_NW0_carry__0_n_6\,
-      CO(0) => \raw_diff_NW0_carry__0_n_7\,
-      DI(7 downto 0) => Q(15 downto 8),
-      O(7 downto 0) => raw_diff_NW0(15 downto 8),
-      S(7 downto 0) => \phase_err.raw_diff_NW_reg[15]_0\(7 downto 0)
+      CO(7) => \raw_diff_WN0_carry__0_n_0\,
+      CO(6) => \raw_diff_WN0_carry__0_n_1\,
+      CO(5) => \raw_diff_WN0_carry__0_n_2\,
+      CO(4) => \raw_diff_WN0_carry__0_n_3\,
+      CO(3) => \raw_diff_WN0_carry__0_n_4\,
+      CO(2) => \raw_diff_WN0_carry__0_n_5\,
+      CO(1) => \raw_diff_WN0_carry__0_n_6\,
+      CO(0) => \raw_diff_WN0_carry__0_n_7\,
+      DI(7 downto 0) => \freq_low_46.doa_data_reg[107]\(15 downto 8),
+      O(7 downto 0) => raw_diff_WN00_out(15 downto 8),
+      S(7 downto 0) => \phase_err.raw_diff_WN_reg[15]_0\(7 downto 0)
     );
-\raw_diff_NW0_carry__1\: unisim.vcomponents.CARRY8
+\raw_diff_WN0_carry__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \raw_diff_NW0_carry__0_n_0\,
+      CI => \raw_diff_WN0_carry__0_n_0\,
       CI_TOP => '0',
-      CO(7 downto 3) => \NLW_raw_diff_NW0_carry__1_CO_UNCONNECTED\(7 downto 3),
-      CO(2) => \raw_diff_NW0_carry__1_n_5\,
-      CO(1) => \raw_diff_NW0_carry__1_n_6\,
-      CO(0) => \raw_diff_NW0_carry__1_n_7\,
+      CO(7 downto 3) => \NLW_raw_diff_WN0_carry__1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \raw_diff_WN0_carry__1_n_5\,
+      CO(1) => \raw_diff_WN0_carry__1_n_6\,
+      CO(0) => \raw_diff_WN0_carry__1_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => Q(18 downto 16),
-      O(7 downto 4) => \NLW_raw_diff_NW0_carry__1_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => raw_diff_NW0(19 downto 16),
+      DI(2 downto 0) => \freq_low_46.doa_data_reg[107]\(18 downto 16),
+      O(7 downto 4) => \NLW_raw_diff_WN0_carry__1_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => raw_diff_WN00_out(19 downto 16),
       S(7 downto 4) => B"0000",
-      S(3 downto 0) => \phase_err.raw_diff_NW_reg[19]_0\(3 downto 0)
+      S(3 downto 0) => \phase_err.raw_diff_WN_reg[19]_0\(3 downto 0)
     );
 raw_err_EW0_carry: unisim.vcomponents.CARRY8
      port map (
@@ -5153,7 +5153,7 @@ raw_err_EW0_carry: unisim.vcomponents.CARRY8
       CO(1) => raw_err_EW0_carry_n_6,
       CO(0) => raw_err_EW0_carry_n_7,
       DI(7 downto 0) => diff_EW(7 downto 0),
-      O(7 downto 0) => raw_err_EW00_out(7 downto 0),
+      O(7 downto 0) => raw_err_EW01_out(7 downto 0),
       S(7) => raw_err_EW0_carry_i_1_n_0,
       S(6) => raw_err_EW0_carry_i_2_n_0,
       S(5) => raw_err_EW0_carry_i_3_n_0,
@@ -5176,7 +5176,7 @@ raw_err_EW0_carry: unisim.vcomponents.CARRY8
       CO(1) => \raw_err_EW0_carry__0_n_6\,
       CO(0) => \raw_err_EW0_carry__0_n_7\,
       DI(7 downto 0) => diff_EW(15 downto 8),
-      O(7 downto 0) => raw_err_EW00_out(15 downto 8),
+      O(7 downto 0) => raw_err_EW01_out(15 downto 8),
       S(7) => \raw_err_EW0_carry__0_i_1_n_0\,
       S(6) => \raw_err_EW0_carry__0_i_2_n_0\,
       S(5) => \raw_err_EW0_carry__0_i_3_n_0\,
@@ -5268,7 +5268,7 @@ raw_err_EW0_carry: unisim.vcomponents.CARRY8
       DI(7 downto 2) => B"000000",
       DI(1 downto 0) => diff_EW(17 downto 16),
       O(7 downto 3) => \NLW_raw_err_EW0_carry__1_O_UNCONNECTED\(7 downto 3),
-      O(2 downto 0) => raw_err_EW00_out(18 downto 16),
+      O(2 downto 0) => raw_err_EW01_out(18 downto 16),
       S(7 downto 3) => B"00000",
       S(2) => \raw_err_EW0_carry__1_i_1_n_0\,
       S(1) => \raw_err_EW0_carry__1_i_2_n_0\,
@@ -5606,238 +5606,238 @@ raw_err_NE0_carry_i_8: unisim.vcomponents.LUT2
       I1 => prev_NE(0),
       O => raw_err_NE0_carry_i_8_n_0
     );
-raw_err_NW0_carry: unisim.vcomponents.CARRY8
+raw_err_WN0_carry: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => raw_err_NW0_carry_n_0,
-      CO(6) => raw_err_NW0_carry_n_1,
-      CO(5) => raw_err_NW0_carry_n_2,
-      CO(4) => raw_err_NW0_carry_n_3,
-      CO(3) => raw_err_NW0_carry_n_4,
-      CO(2) => raw_err_NW0_carry_n_5,
-      CO(1) => raw_err_NW0_carry_n_6,
-      CO(0) => raw_err_NW0_carry_n_7,
-      DI(7 downto 0) => diff_NW(7 downto 0),
-      O(7 downto 0) => raw_err_NW01_out(7 downto 0),
-      S(7) => raw_err_NW0_carry_i_1_n_0,
-      S(6) => raw_err_NW0_carry_i_2_n_0,
-      S(5) => raw_err_NW0_carry_i_3_n_0,
-      S(4) => raw_err_NW0_carry_i_4_n_0,
-      S(3) => raw_err_NW0_carry_i_5_n_0,
-      S(2) => raw_err_NW0_carry_i_6_n_0,
-      S(1) => raw_err_NW0_carry_i_7_n_0,
-      S(0) => raw_err_NW0_carry_i_8_n_0
+      CO(7) => raw_err_WN0_carry_n_0,
+      CO(6) => raw_err_WN0_carry_n_1,
+      CO(5) => raw_err_WN0_carry_n_2,
+      CO(4) => raw_err_WN0_carry_n_3,
+      CO(3) => raw_err_WN0_carry_n_4,
+      CO(2) => raw_err_WN0_carry_n_5,
+      CO(1) => raw_err_WN0_carry_n_6,
+      CO(0) => raw_err_WN0_carry_n_7,
+      DI(7 downto 0) => diff_WN(7 downto 0),
+      O(7 downto 0) => raw_err_WN00_out(7 downto 0),
+      S(7) => raw_err_WN0_carry_i_1_n_0,
+      S(6) => raw_err_WN0_carry_i_2_n_0,
+      S(5) => raw_err_WN0_carry_i_3_n_0,
+      S(4) => raw_err_WN0_carry_i_4_n_0,
+      S(3) => raw_err_WN0_carry_i_5_n_0,
+      S(2) => raw_err_WN0_carry_i_6_n_0,
+      S(1) => raw_err_WN0_carry_i_7_n_0,
+      S(0) => raw_err_WN0_carry_i_8_n_0
     );
-\raw_err_NW0_carry__0\: unisim.vcomponents.CARRY8
+\raw_err_WN0_carry__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => raw_err_NW0_carry_n_0,
+      CI => raw_err_WN0_carry_n_0,
       CI_TOP => '0',
-      CO(7) => \raw_err_NW0_carry__0_n_0\,
-      CO(6) => \raw_err_NW0_carry__0_n_1\,
-      CO(5) => \raw_err_NW0_carry__0_n_2\,
-      CO(4) => \raw_err_NW0_carry__0_n_3\,
-      CO(3) => \raw_err_NW0_carry__0_n_4\,
-      CO(2) => \raw_err_NW0_carry__0_n_5\,
-      CO(1) => \raw_err_NW0_carry__0_n_6\,
-      CO(0) => \raw_err_NW0_carry__0_n_7\,
-      DI(7 downto 0) => diff_NW(15 downto 8),
-      O(7 downto 0) => raw_err_NW01_out(15 downto 8),
-      S(7) => \raw_err_NW0_carry__0_i_1_n_0\,
-      S(6) => \raw_err_NW0_carry__0_i_2_n_0\,
-      S(5) => \raw_err_NW0_carry__0_i_3_n_0\,
-      S(4) => \raw_err_NW0_carry__0_i_4_n_0\,
-      S(3) => \raw_err_NW0_carry__0_i_5_n_0\,
-      S(2) => \raw_err_NW0_carry__0_i_6_n_0\,
-      S(1) => \raw_err_NW0_carry__0_i_7_n_0\,
-      S(0) => \raw_err_NW0_carry__0_i_8_n_0\
+      CO(7) => \raw_err_WN0_carry__0_n_0\,
+      CO(6) => \raw_err_WN0_carry__0_n_1\,
+      CO(5) => \raw_err_WN0_carry__0_n_2\,
+      CO(4) => \raw_err_WN0_carry__0_n_3\,
+      CO(3) => \raw_err_WN0_carry__0_n_4\,
+      CO(2) => \raw_err_WN0_carry__0_n_5\,
+      CO(1) => \raw_err_WN0_carry__0_n_6\,
+      CO(0) => \raw_err_WN0_carry__0_n_7\,
+      DI(7 downto 0) => diff_WN(15 downto 8),
+      O(7 downto 0) => raw_err_WN00_out(15 downto 8),
+      S(7) => \raw_err_WN0_carry__0_i_1_n_0\,
+      S(6) => \raw_err_WN0_carry__0_i_2_n_0\,
+      S(5) => \raw_err_WN0_carry__0_i_3_n_0\,
+      S(4) => \raw_err_WN0_carry__0_i_4_n_0\,
+      S(3) => \raw_err_WN0_carry__0_i_5_n_0\,
+      S(2) => \raw_err_WN0_carry__0_i_6_n_0\,
+      S(1) => \raw_err_WN0_carry__0_i_7_n_0\,
+      S(0) => \raw_err_WN0_carry__0_i_8_n_0\
     );
-\raw_err_NW0_carry__0_i_1\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(15),
-      I1 => prev_NW(15),
-      O => \raw_err_NW0_carry__0_i_1_n_0\
+      I0 => diff_WN(15),
+      I1 => prev_WN(15),
+      O => \raw_err_WN0_carry__0_i_1_n_0\
     );
-\raw_err_NW0_carry__0_i_2\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(14),
-      I1 => prev_NW(14),
-      O => \raw_err_NW0_carry__0_i_2_n_0\
+      I0 => diff_WN(14),
+      I1 => prev_WN(14),
+      O => \raw_err_WN0_carry__0_i_2_n_0\
     );
-\raw_err_NW0_carry__0_i_3\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(13),
-      I1 => prev_NW(13),
-      O => \raw_err_NW0_carry__0_i_3_n_0\
+      I0 => diff_WN(13),
+      I1 => prev_WN(13),
+      O => \raw_err_WN0_carry__0_i_3_n_0\
     );
-\raw_err_NW0_carry__0_i_4\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(12),
-      I1 => prev_NW(12),
-      O => \raw_err_NW0_carry__0_i_4_n_0\
+      I0 => diff_WN(12),
+      I1 => prev_WN(12),
+      O => \raw_err_WN0_carry__0_i_4_n_0\
     );
-\raw_err_NW0_carry__0_i_5\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_5\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(11),
-      I1 => prev_NW(11),
-      O => \raw_err_NW0_carry__0_i_5_n_0\
+      I0 => diff_WN(11),
+      I1 => prev_WN(11),
+      O => \raw_err_WN0_carry__0_i_5_n_0\
     );
-\raw_err_NW0_carry__0_i_6\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_6\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(10),
-      I1 => prev_NW(10),
-      O => \raw_err_NW0_carry__0_i_6_n_0\
+      I0 => diff_WN(10),
+      I1 => prev_WN(10),
+      O => \raw_err_WN0_carry__0_i_6_n_0\
     );
-\raw_err_NW0_carry__0_i_7\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(9),
-      I1 => prev_NW(9),
-      O => \raw_err_NW0_carry__0_i_7_n_0\
+      I0 => diff_WN(9),
+      I1 => prev_WN(9),
+      O => \raw_err_WN0_carry__0_i_7_n_0\
     );
-\raw_err_NW0_carry__0_i_8\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__0_i_8\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(8),
-      I1 => prev_NW(8),
-      O => \raw_err_NW0_carry__0_i_8_n_0\
+      I0 => diff_WN(8),
+      I1 => prev_WN(8),
+      O => \raw_err_WN0_carry__0_i_8_n_0\
     );
-\raw_err_NW0_carry__1\: unisim.vcomponents.CARRY8
+\raw_err_WN0_carry__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \raw_err_NW0_carry__0_n_0\,
+      CI => \raw_err_WN0_carry__0_n_0\,
       CI_TOP => '0',
-      CO(7 downto 2) => \NLW_raw_err_NW0_carry__1_CO_UNCONNECTED\(7 downto 2),
-      CO(1) => \raw_err_NW0_carry__1_n_6\,
-      CO(0) => \raw_err_NW0_carry__1_n_7\,
+      CO(7 downto 2) => \NLW_raw_err_WN0_carry__1_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \raw_err_WN0_carry__1_n_6\,
+      CO(0) => \raw_err_WN0_carry__1_n_7\,
       DI(7 downto 2) => B"000000",
-      DI(1 downto 0) => diff_NW(17 downto 16),
-      O(7 downto 3) => \NLW_raw_err_NW0_carry__1_O_UNCONNECTED\(7 downto 3),
-      O(2 downto 0) => raw_err_NW01_out(18 downto 16),
+      DI(1 downto 0) => diff_WN(17 downto 16),
+      O(7 downto 3) => \NLW_raw_err_WN0_carry__1_O_UNCONNECTED\(7 downto 3),
+      O(2 downto 0) => raw_err_WN00_out(18 downto 16),
       S(7 downto 3) => B"00000",
-      S(2) => \raw_err_NW0_carry__1_i_1_n_0\,
-      S(1) => \raw_err_NW0_carry__1_i_2_n_0\,
-      S(0) => \raw_err_NW0_carry__1_i_3_n_0\
+      S(2) => \raw_err_WN0_carry__1_i_1_n_0\,
+      S(1) => \raw_err_WN0_carry__1_i_2_n_0\,
+      S(0) => \raw_err_WN0_carry__1_i_3_n_0\
     );
-\raw_err_NW0_carry__1_i_1\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__1_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(18),
-      I1 => prev_NW(18),
-      O => \raw_err_NW0_carry__1_i_1_n_0\
+      I0 => diff_WN(18),
+      I1 => prev_WN(18),
+      O => \raw_err_WN0_carry__1_i_1_n_0\
     );
-\raw_err_NW0_carry__1_i_2\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__1_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(17),
-      I1 => prev_NW(17),
-      O => \raw_err_NW0_carry__1_i_2_n_0\
+      I0 => diff_WN(17),
+      I1 => prev_WN(17),
+      O => \raw_err_WN0_carry__1_i_2_n_0\
     );
-\raw_err_NW0_carry__1_i_3\: unisim.vcomponents.LUT2
+\raw_err_WN0_carry__1_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(16),
-      I1 => prev_NW(16),
-      O => \raw_err_NW0_carry__1_i_3_n_0\
+      I0 => diff_WN(16),
+      I1 => prev_WN(16),
+      O => \raw_err_WN0_carry__1_i_3_n_0\
     );
-raw_err_NW0_carry_i_1: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_1: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(7),
-      I1 => prev_NW(7),
-      O => raw_err_NW0_carry_i_1_n_0
+      I0 => diff_WN(7),
+      I1 => prev_WN(7),
+      O => raw_err_WN0_carry_i_1_n_0
     );
-raw_err_NW0_carry_i_2: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_2: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(6),
-      I1 => prev_NW(6),
-      O => raw_err_NW0_carry_i_2_n_0
+      I0 => diff_WN(6),
+      I1 => prev_WN(6),
+      O => raw_err_WN0_carry_i_2_n_0
     );
-raw_err_NW0_carry_i_3: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_3: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(5),
-      I1 => prev_NW(5),
-      O => raw_err_NW0_carry_i_3_n_0
+      I0 => diff_WN(5),
+      I1 => prev_WN(5),
+      O => raw_err_WN0_carry_i_3_n_0
     );
-raw_err_NW0_carry_i_4: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_4: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(4),
-      I1 => prev_NW(4),
-      O => raw_err_NW0_carry_i_4_n_0
+      I0 => diff_WN(4),
+      I1 => prev_WN(4),
+      O => raw_err_WN0_carry_i_4_n_0
     );
-raw_err_NW0_carry_i_5: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_5: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(3),
-      I1 => prev_NW(3),
-      O => raw_err_NW0_carry_i_5_n_0
+      I0 => diff_WN(3),
+      I1 => prev_WN(3),
+      O => raw_err_WN0_carry_i_5_n_0
     );
-raw_err_NW0_carry_i_6: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_6: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(2),
-      I1 => prev_NW(2),
-      O => raw_err_NW0_carry_i_6_n_0
+      I0 => diff_WN(2),
+      I1 => prev_WN(2),
+      O => raw_err_WN0_carry_i_6_n_0
     );
-raw_err_NW0_carry_i_7: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_7: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(1),
-      I1 => prev_NW(1),
-      O => raw_err_NW0_carry_i_7_n_0
+      I0 => diff_WN(1),
+      I1 => prev_WN(1),
+      O => raw_err_WN0_carry_i_7_n_0
     );
-raw_err_NW0_carry_i_8: unisim.vcomponents.LUT2
+raw_err_WN0_carry_i_8: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => diff_NW(0),
-      I1 => prev_NW(0),
-      O => raw_err_NW0_carry_i_8_n_0
+      I0 => diff_WN(0),
+      I1 => prev_WN(0),
+      O => raw_err_WN0_carry_i_8_n_0
     );
 end STRUCTURE;
 library IEEE;
@@ -5848,11 +5848,15 @@ entity ps_freq_low_46_0_0_morlet_to_phase_env is
   port (
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
     valid_W : out STD_LOGIC;
-    D : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    S : out STD_LOGIC_VECTOR ( 7 downto 0 );
     Q : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    \morlet_to_phase_env.phase_reg[15]_0\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    \morlet_to_phase_env.phase_reg[19]_0\ : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    D : out STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    \morlet_to_phase_env.phase_reg[19]_0\ : in STD_LOGIC;
+    \morlet_to_phase_env.phase_reg[19]_1\ : in STD_LOGIC;
+    \phase_err.raw_diff_WN_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     env_W_3 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -5894,6 +5898,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component cordic_atan2_16_HD7;
+  signal \^q\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal im2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal lphase : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \morlet_to_phase_env.delay[0]_i_1__1_n_0\ : STD_LOGIC;
@@ -6041,6 +6046,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_morlet_to_phase_env is
   attribute downgradeipidentifiedwarnings of tan2_i : label is "yes";
   attribute x_core_info of tan2_i : label is "cordic_v6_0_24,Vivado 2025.1";
 begin
+  Q(19 downto 0) <= \^q\(19 downto 0);
   valid_W <= \^valid_w\;
 \morlet_to_phase_env.delay[0]_i_1__1\: unisim.vcomponents.LUT1
     generic map(
@@ -6056,7 +6062,7 @@ begin
     )
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(0),
-      I1 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I1 => \morlet_to_phase_env.phase_reg[19]_1\,
       I2 => \morlet_to_phase_env.delay_reg\(1),
       O => \morlet_to_phase_env.delay[1]_i_1__1_n_0\
     );
@@ -6066,7 +6072,7 @@ begin
     )
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(0),
-      I1 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I1 => \morlet_to_phase_env.phase_reg[19]_1\,
       I2 => \morlet_to_phase_env.delay_reg\(2),
       I3 => \morlet_to_phase_env.delay_reg\(1),
       O => \morlet_to_phase_env.delay[2]_i_1__1_n_0\
@@ -6078,7 +6084,7 @@ begin
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(1),
       I1 => \morlet_to_phase_env.delay_reg\(0),
-      I2 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I2 => \morlet_to_phase_env.phase_reg[19]_1\,
       I3 => \morlet_to_phase_env.delay_reg\(3),
       I4 => \morlet_to_phase_env.delay_reg\(2),
       O => \morlet_to_phase_env.delay[3]_i_1__1_n_0\
@@ -6090,7 +6096,7 @@ begin
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(2),
       I1 => \morlet_to_phase_env.delay_reg\(1),
-      I2 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I2 => \morlet_to_phase_env.phase_reg[19]_1\,
       I3 => \morlet_to_phase_env.delay_reg\(3),
       I4 => \morlet_to_phase_env.delay_reg\(4),
       I5 => \morlet_to_phase_env.delay_reg\(0),
@@ -6104,7 +6110,7 @@ begin
       I0 => \morlet_to_phase_env.delay_reg\(2),
       I1 => \morlet_to_phase_env.delay_reg\(0),
       I2 => \morlet_to_phase_env.delay_reg\(1),
-      I3 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I3 => \morlet_to_phase_env.phase_reg[19]_1\,
       I4 => \morlet_to_phase_env.delay_reg\(4),
       I5 => \morlet_to_phase_env.delay_reg\(3),
       O => \morlet_to_phase_env.delay[4]_i_2__1_n_0\
@@ -6966,7 +6972,7 @@ begin
       INIT => X"7555555555555554"
     )
         port map (
-      I0 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I0 => \morlet_to_phase_env.phase_reg[19]_1\,
       I1 => \morlet_to_phase_env.delay_reg\(2),
       I2 => \morlet_to_phase_env.delay_reg\(0),
       I3 => \morlet_to_phase_env.delay_reg\(1),
@@ -6979,7 +6985,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(0),
-      Q => Q(0),
+      Q => \^q\(0),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[10]\: unisim.vcomponents.FDRE
@@ -6987,7 +6993,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(10),
-      Q => Q(10),
+      Q => \^q\(10),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[11]\: unisim.vcomponents.FDRE
@@ -6995,7 +7001,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(11),
-      Q => Q(11),
+      Q => \^q\(11),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[12]\: unisim.vcomponents.FDRE
@@ -7003,7 +7009,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(12),
-      Q => Q(12),
+      Q => \^q\(12),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[13]\: unisim.vcomponents.FDRE
@@ -7011,7 +7017,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(13),
-      Q => Q(13),
+      Q => \^q\(13),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[14]\: unisim.vcomponents.FDRE
@@ -7019,7 +7025,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(14),
-      Q => Q(14),
+      Q => \^q\(14),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[15]\: unisim.vcomponents.FDRE
@@ -7027,7 +7033,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(15),
-      Q => Q(15),
+      Q => \^q\(15),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[16]\: unisim.vcomponents.FDRE
@@ -7035,7 +7041,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(16),
-      Q => Q(16),
+      Q => \^q\(16),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[17]\: unisim.vcomponents.FDRE
@@ -7043,7 +7049,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(17),
-      Q => Q(17),
+      Q => \^q\(17),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[18]\: unisim.vcomponents.FDRE
@@ -7051,7 +7057,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(18),
-      Q => Q(18),
+      Q => \^q\(18),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[19]\: unisim.vcomponents.FDRE
@@ -7059,7 +7065,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(19),
-      Q => Q(19),
+      Q => \^q\(19),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[1]\: unisim.vcomponents.FDRE
@@ -7067,7 +7073,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(1),
-      Q => Q(1),
+      Q => \^q\(1),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[2]\: unisim.vcomponents.FDRE
@@ -7075,7 +7081,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(2),
-      Q => Q(2),
+      Q => \^q\(2),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[3]\: unisim.vcomponents.FDRE
@@ -7083,7 +7089,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(3),
-      Q => Q(3),
+      Q => \^q\(3),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[4]\: unisim.vcomponents.FDRE
@@ -7091,7 +7097,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(4),
-      Q => Q(4),
+      Q => \^q\(4),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[5]\: unisim.vcomponents.FDRE
@@ -7099,7 +7105,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(5),
-      Q => Q(5),
+      Q => \^q\(5),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[6]\: unisim.vcomponents.FDRE
@@ -7107,7 +7113,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(6),
-      Q => Q(6),
+      Q => \^q\(6),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[7]\: unisim.vcomponents.FDRE
@@ -7115,7 +7121,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(7),
-      Q => Q(7),
+      Q => \^q\(7),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[8]\: unisim.vcomponents.FDRE
@@ -7123,7 +7129,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(8),
-      Q => Q(8),
+      Q => \^q\(8),
       R => '0'
     );
 \morlet_to_phase_env.phase_reg[9]\: unisim.vcomponents.FDRE
@@ -7131,7 +7137,7 @@ begin
       C => clk,
       CE => \morlet_to_phase_env.phase[19]_i_1__1_n_0\,
       D => lphase(9),
-      Q => Q(9),
+      Q => \^q\(9),
       R => '0'
     );
 \morlet_to_phase_env.valid_i_1__1\: unisim.vcomponents.LUT6
@@ -7143,7 +7149,7 @@ begin
       I1 => \morlet_to_phase_env.delay_reg\(0),
       I2 => \morlet_to_phase_env.delay_reg\(2),
       I3 => \morlet_to_phase_env.valid_i_3__1_n_0\,
-      I4 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I4 => \morlet_to_phase_env.phase_reg[19]_1\,
       I5 => \^valid_w\,
       O => \morlet_to_phase_env.valid_i_1__1_n_0\
     );
@@ -7154,7 +7160,7 @@ begin
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(4),
       I1 => \morlet_to_phase_env.delay_reg\(3),
-      I2 => \morlet_to_phase_env.phase_reg[19]_0\,
+      I2 => \morlet_to_phase_env.phase_reg[19]_1\,
       I3 => \morlet_to_phase_env.delay_reg\(1),
       O => \morlet_to_phase_env.valid_i_2__1_n_0\
     );
@@ -7192,13 +7198,193 @@ mult_re_i: component ps_freq_low_46_0_0_mult_16_16
       CLK => clk,
       P(31 downto 0) => re2(31 downto 0)
     );
+\raw_diff_WN0_carry__0_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(15),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(15),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(7)
+    );
+\raw_diff_WN0_carry__0_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(14),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(14),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(6)
+    );
+\raw_diff_WN0_carry__0_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(13),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(13),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(5)
+    );
+\raw_diff_WN0_carry__0_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(12),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(12),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(4)
+    );
+\raw_diff_WN0_carry__0_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(11),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(11),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(3)
+    );
+\raw_diff_WN0_carry__0_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(10),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(10),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(2)
+    );
+\raw_diff_WN0_carry__0_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(9),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(9),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(1)
+    );
+\raw_diff_WN0_carry__0_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(8),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(8),
+      O => \morlet_to_phase_env.phase_reg[15]_0\(0)
+    );
+\raw_diff_WN0_carry__1_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(19),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(19),
+      O => \morlet_to_phase_env.phase_reg[19]_0\(3)
+    );
+\raw_diff_WN0_carry__1_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(18),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(18),
+      O => \morlet_to_phase_env.phase_reg[19]_0\(2)
+    );
+\raw_diff_WN0_carry__1_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(17),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(17),
+      O => \morlet_to_phase_env.phase_reg[19]_0\(1)
+    );
+\raw_diff_WN0_carry__1_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(16),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(16),
+      O => \morlet_to_phase_env.phase_reg[19]_0\(0)
+    );
+raw_diff_WN0_carry_i_1: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(7),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(7),
+      O => S(7)
+    );
+raw_diff_WN0_carry_i_2: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(6),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(6),
+      O => S(6)
+    );
+raw_diff_WN0_carry_i_3: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(5),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(5),
+      O => S(5)
+    );
+raw_diff_WN0_carry_i_4: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(4),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(4),
+      O => S(4)
+    );
+raw_diff_WN0_carry_i_5: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(3),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(3),
+      O => S(3)
+    );
+raw_diff_WN0_carry_i_6: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(2),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(2),
+      O => S(2)
+    );
+raw_diff_WN0_carry_i_7: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(1),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(1),
+      O => S(1)
+    );
+raw_diff_WN0_carry_i_8: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \^q\(0),
+      I1 => \phase_err.raw_diff_WN_reg[19]\(0),
+      O => S(0)
+    );
 sqrt_i: component cordic_sqrt_16_HD6
      port map (
       aclk => clk,
       m_axis_dout_tdata(15 downto 0) => m_axis_dout_tdata(15 downto 0),
       m_axis_dout_tvalid => NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(31 downto 0) => p2(31 downto 0),
-      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_0\
+      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_1\
     );
 tan2_i: component cordic_atan2_16_HD7
      port map (
@@ -7207,7 +7393,7 @@ tan2_i: component cordic_atan2_16_HD7
       m_axis_dout_tdata(19 downto 0) => lphase(19 downto 0),
       m_axis_dout_tvalid => NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(47 downto 0) => s_axis_cartesian_tdata(47 downto 0),
-      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_0\
+      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_1\
     );
 end STRUCTURE;
 library IEEE;
@@ -7222,17 +7408,13 @@ entity \ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\ is
     Q : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \morlet_to_phase_env.phase_reg[15]_0\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
     \morlet_to_phase_env.phase_reg[19]_0\ : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    \morlet_to_phase_env.phase_reg[7]_0\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    \morlet_to_phase_env.phase_reg[15]_1\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    \morlet_to_phase_env.phase_reg[19]_1\ : out STD_LOGIC_VECTOR ( 3 downto 0 );
     D : out STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    \morlet_to_phase_env.phase_reg[19]_2\ : in STD_LOGIC;
+    \morlet_to_phase_env.phase_reg[19]_1\ : in STD_LOGIC;
     valid_E : in STD_LOGIC;
     valid_W : in STD_LOGIC;
     \phase_err.raw_diff_NE_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    \phase_err.raw_diff_NW_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     env_N_3 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -7430,7 +7612,7 @@ begin
     )
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(0),
-      I1 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I1 => \morlet_to_phase_env.phase_reg[19]_1\,
       I2 => \morlet_to_phase_env.delay_reg\(1),
       O => \morlet_to_phase_env.delay[1]_i_1_n_0\
     );
@@ -7440,7 +7622,7 @@ begin
     )
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(0),
-      I1 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I1 => \morlet_to_phase_env.phase_reg[19]_1\,
       I2 => \morlet_to_phase_env.delay_reg\(2),
       I3 => \morlet_to_phase_env.delay_reg\(1),
       O => \morlet_to_phase_env.delay[2]_i_1_n_0\
@@ -7452,7 +7634,7 @@ begin
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(2),
       I1 => \morlet_to_phase_env.delay_reg\(1),
-      I2 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I2 => \morlet_to_phase_env.phase_reg[19]_1\,
       I3 => \morlet_to_phase_env.delay_reg\(3),
       I4 => \morlet_to_phase_env.delay_reg\(4),
       I5 => \morlet_to_phase_env.delay_reg\(0),
@@ -7465,7 +7647,7 @@ begin
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(1),
       I1 => \morlet_to_phase_env.delay_reg\(0),
-      I2 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I2 => \morlet_to_phase_env.phase_reg[19]_1\,
       I3 => \morlet_to_phase_env.delay_reg\(3),
       I4 => \morlet_to_phase_env.delay_reg\(2),
       O => \morlet_to_phase_env.delay[3]_i_2_n_0\
@@ -7488,7 +7670,7 @@ begin
       I0 => \morlet_to_phase_env.delay_reg\(2),
       I1 => \morlet_to_phase_env.delay_reg\(0),
       I2 => \morlet_to_phase_env.delay_reg\(1),
-      I3 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I3 => \morlet_to_phase_env.phase_reg[19]_1\,
       I4 => \morlet_to_phase_env.delay_reg\(4),
       I5 => \morlet_to_phase_env.delay_reg\(3),
       O => \morlet_to_phase_env.delay[4]_i_2_n_0\
@@ -8350,7 +8532,7 @@ begin
       INIT => X"7555555555555554"
     )
         port map (
-      I0 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I0 => \morlet_to_phase_env.phase_reg[19]_1\,
       I1 => \morlet_to_phase_env.delay_reg\(2),
       I2 => \morlet_to_phase_env.delay_reg\(0),
       I3 => \morlet_to_phase_env.delay_reg\(1),
@@ -8527,7 +8709,7 @@ begin
       I1 => \morlet_to_phase_env.delay_reg\(0),
       I2 => \morlet_to_phase_env.delay_reg\(2),
       I3 => \morlet_to_phase_env.valid_i_3_n_0\,
-      I4 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I4 => \morlet_to_phase_env.phase_reg[19]_1\,
       I5 => valid_N,
       O => \morlet_to_phase_env.valid_i_1_n_0\
     );
@@ -8538,7 +8720,7 @@ begin
         port map (
       I0 => \morlet_to_phase_env.delay_reg\(4),
       I1 => \morlet_to_phase_env.delay_reg\(3),
-      I2 => \morlet_to_phase_env.phase_reg[19]_2\,
+      I2 => \morlet_to_phase_env.phase_reg[19]_1\,
       I3 => \morlet_to_phase_env.delay_reg\(1),
       O => \morlet_to_phase_env.valid_i_2_n_0\
     );
@@ -8766,193 +8948,13 @@ raw_diff_NE0_carry_i_8: unisim.vcomponents.LUT2
       I1 => \phase_err.raw_diff_NE_reg[19]\(0),
       O => S(0)
     );
-\raw_diff_NW0_carry__0_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(15),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(15),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(7)
-    );
-\raw_diff_NW0_carry__0_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(14),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(14),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(6)
-    );
-\raw_diff_NW0_carry__0_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(13),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(13),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(5)
-    );
-\raw_diff_NW0_carry__0_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(12),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(12),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(4)
-    );
-\raw_diff_NW0_carry__0_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(11),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(11),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(3)
-    );
-\raw_diff_NW0_carry__0_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(10),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(10),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(2)
-    );
-\raw_diff_NW0_carry__0_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(9),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(9),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(1)
-    );
-\raw_diff_NW0_carry__0_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(8),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(8),
-      O => \morlet_to_phase_env.phase_reg[15]_1\(0)
-    );
-\raw_diff_NW0_carry__1_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(19),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(19),
-      O => \morlet_to_phase_env.phase_reg[19]_1\(3)
-    );
-\raw_diff_NW0_carry__1_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(18),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(18),
-      O => \morlet_to_phase_env.phase_reg[19]_1\(2)
-    );
-\raw_diff_NW0_carry__1_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(17),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(17),
-      O => \morlet_to_phase_env.phase_reg[19]_1\(1)
-    );
-\raw_diff_NW0_carry__1_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(16),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(16),
-      O => \morlet_to_phase_env.phase_reg[19]_1\(0)
-    );
-raw_diff_NW0_carry_i_1: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(7),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(7),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(7)
-    );
-raw_diff_NW0_carry_i_2: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(6),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(6),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(6)
-    );
-raw_diff_NW0_carry_i_3: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(5),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(5),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(5)
-    );
-raw_diff_NW0_carry_i_4: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(4),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(4),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(4)
-    );
-raw_diff_NW0_carry_i_5: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(3),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(3),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(3)
-    );
-raw_diff_NW0_carry_i_6: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(2),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(2),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(2)
-    );
-raw_diff_NW0_carry_i_7: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(1),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(1),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(1)
-    );
-raw_diff_NW0_carry_i_8: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^q\(0),
-      I1 => \phase_err.raw_diff_NW_reg[19]\(0),
-      O => \morlet_to_phase_env.phase_reg[7]_0\(0)
-    );
 sqrt_i: component ps_freq_low_46_0_0_cordic_sqrt_16
      port map (
       aclk => clk,
       m_axis_dout_tdata(15 downto 0) => m_axis_dout_tdata(15 downto 0),
       m_axis_dout_tvalid => NLW_sqrt_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(31 downto 0) => p2(31 downto 0),
-      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_2\
+      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_1\
     );
 tan2_i: component ps_freq_low_46_0_0_cordic_atan2_16
      port map (
@@ -8961,7 +8963,7 @@ tan2_i: component ps_freq_low_46_0_0_cordic_atan2_16
       m_axis_dout_tdata(19 downto 0) => lphase(19 downto 0),
       m_axis_dout_tvalid => NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED,
       s_axis_cartesian_tdata(47 downto 0) => s_axis_cartesian_tdata(47 downto 0),
-      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_2\
+      s_axis_cartesian_tvalid => \morlet_to_phase_env.phase_reg[19]_1\
     );
 end STRUCTURE;
 library IEEE;
@@ -10622,7 +10624,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal env_out_W : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal err_EW : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal err_NE : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal err_NW : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal err_WN : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal fir_freq_low_re_N_i_i_1_n_0 : STD_LOGIC;
   signal fir_im_E : STD_LOGIC_VECTOR ( 36 downto 13 );
   signal fir_im_N : STD_LOGIC_VECTOR ( 36 downto 13 );
@@ -10690,26 +10692,22 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal freq_N_i_n_54 : STD_LOGIC;
   signal freq_N_i_n_55 : STD_LOGIC;
   signal freq_N_i_n_56 : STD_LOGIC;
-  signal freq_N_i_n_57 : STD_LOGIC;
-  signal freq_N_i_n_58 : STD_LOGIC;
-  signal freq_N_i_n_59 : STD_LOGIC;
-  signal freq_N_i_n_60 : STD_LOGIC;
-  signal freq_N_i_n_61 : STD_LOGIC;
-  signal freq_N_i_n_62 : STD_LOGIC;
-  signal freq_N_i_n_63 : STD_LOGIC;
-  signal freq_N_i_n_64 : STD_LOGIC;
-  signal freq_N_i_n_65 : STD_LOGIC;
-  signal freq_N_i_n_66 : STD_LOGIC;
-  signal freq_N_i_n_67 : STD_LOGIC;
-  signal freq_N_i_n_68 : STD_LOGIC;
-  signal freq_N_i_n_69 : STD_LOGIC;
-  signal freq_N_i_n_70 : STD_LOGIC;
-  signal freq_N_i_n_71 : STD_LOGIC;
-  signal freq_N_i_n_72 : STD_LOGIC;
-  signal freq_N_i_n_73 : STD_LOGIC;
-  signal freq_N_i_n_74 : STD_LOGIC;
-  signal freq_N_i_n_75 : STD_LOGIC;
-  signal freq_N_i_n_76 : STD_LOGIC;
+  signal freq_W_i_n_17 : STD_LOGIC;
+  signal freq_W_i_n_18 : STD_LOGIC;
+  signal freq_W_i_n_19 : STD_LOGIC;
+  signal freq_W_i_n_20 : STD_LOGIC;
+  signal freq_W_i_n_21 : STD_LOGIC;
+  signal freq_W_i_n_22 : STD_LOGIC;
+  signal freq_W_i_n_23 : STD_LOGIC;
+  signal freq_W_i_n_24 : STD_LOGIC;
+  signal freq_W_i_n_25 : STD_LOGIC;
+  signal freq_W_i_n_26 : STD_LOGIC;
+  signal freq_W_i_n_27 : STD_LOGIC;
+  signal freq_W_i_n_28 : STD_LOGIC;
+  signal freq_W_i_n_29 : STD_LOGIC;
+  signal freq_W_i_n_30 : STD_LOGIC;
+  signal freq_W_i_n_31 : STD_LOGIC;
+  signal freq_W_i_n_32 : STD_LOGIC;
   signal freq_W_i_n_33 : STD_LOGIC;
   signal freq_W_i_n_34 : STD_LOGIC;
   signal freq_W_i_n_35 : STD_LOGIC;
@@ -10730,6 +10728,10 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal freq_W_i_n_50 : STD_LOGIC;
   signal freq_W_i_n_51 : STD_LOGIC;
   signal freq_W_i_n_52 : STD_LOGIC;
+  signal freq_W_i_n_53 : STD_LOGIC;
+  signal freq_W_i_n_54 : STD_LOGIC;
+  signal freq_W_i_n_55 : STD_LOGIC;
+  signal freq_W_i_n_56 : STD_LOGIC;
   signal freq_fifo_data : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal freq_fifo_empty : STD_LOGIC;
   signal freq_fifo_rd : STD_LOGIC;
@@ -11018,26 +11020,26 @@ freq_E_i: entity work.\ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__2\
       \morlet_to_phase_env.phase_reg[19]_0\(1) => freq_E_i_n_55,
       \morlet_to_phase_env.phase_reg[19]_0\(0) => freq_E_i_n_56,
       \morlet_to_phase_env.phase_reg[19]_1\ => \freq_low_46.morlet_active_reg_n_0\,
-      \phase_err.raw_diff_EW_reg[19]\(19) => freq_W_i_n_33,
-      \phase_err.raw_diff_EW_reg[19]\(18) => freq_W_i_n_34,
-      \phase_err.raw_diff_EW_reg[19]\(17) => freq_W_i_n_35,
-      \phase_err.raw_diff_EW_reg[19]\(16) => freq_W_i_n_36,
-      \phase_err.raw_diff_EW_reg[19]\(15) => freq_W_i_n_37,
-      \phase_err.raw_diff_EW_reg[19]\(14) => freq_W_i_n_38,
-      \phase_err.raw_diff_EW_reg[19]\(13) => freq_W_i_n_39,
-      \phase_err.raw_diff_EW_reg[19]\(12) => freq_W_i_n_40,
-      \phase_err.raw_diff_EW_reg[19]\(11) => freq_W_i_n_41,
-      \phase_err.raw_diff_EW_reg[19]\(10) => freq_W_i_n_42,
-      \phase_err.raw_diff_EW_reg[19]\(9) => freq_W_i_n_43,
-      \phase_err.raw_diff_EW_reg[19]\(8) => freq_W_i_n_44,
-      \phase_err.raw_diff_EW_reg[19]\(7) => freq_W_i_n_45,
-      \phase_err.raw_diff_EW_reg[19]\(6) => freq_W_i_n_46,
-      \phase_err.raw_diff_EW_reg[19]\(5) => freq_W_i_n_47,
-      \phase_err.raw_diff_EW_reg[19]\(4) => freq_W_i_n_48,
-      \phase_err.raw_diff_EW_reg[19]\(3) => freq_W_i_n_49,
-      \phase_err.raw_diff_EW_reg[19]\(2) => freq_W_i_n_50,
-      \phase_err.raw_diff_EW_reg[19]\(1) => freq_W_i_n_51,
-      \phase_err.raw_diff_EW_reg[19]\(0) => freq_W_i_n_52,
+      \phase_err.raw_diff_EW_reg[19]\(19) => freq_W_i_n_25,
+      \phase_err.raw_diff_EW_reg[19]\(18) => freq_W_i_n_26,
+      \phase_err.raw_diff_EW_reg[19]\(17) => freq_W_i_n_27,
+      \phase_err.raw_diff_EW_reg[19]\(16) => freq_W_i_n_28,
+      \phase_err.raw_diff_EW_reg[19]\(15) => freq_W_i_n_29,
+      \phase_err.raw_diff_EW_reg[19]\(14) => freq_W_i_n_30,
+      \phase_err.raw_diff_EW_reg[19]\(13) => freq_W_i_n_31,
+      \phase_err.raw_diff_EW_reg[19]\(12) => freq_W_i_n_32,
+      \phase_err.raw_diff_EW_reg[19]\(11) => freq_W_i_n_33,
+      \phase_err.raw_diff_EW_reg[19]\(10) => freq_W_i_n_34,
+      \phase_err.raw_diff_EW_reg[19]\(9) => freq_W_i_n_35,
+      \phase_err.raw_diff_EW_reg[19]\(8) => freq_W_i_n_36,
+      \phase_err.raw_diff_EW_reg[19]\(7) => freq_W_i_n_37,
+      \phase_err.raw_diff_EW_reg[19]\(6) => freq_W_i_n_38,
+      \phase_err.raw_diff_EW_reg[19]\(5) => freq_W_i_n_39,
+      \phase_err.raw_diff_EW_reg[19]\(4) => freq_W_i_n_40,
+      \phase_err.raw_diff_EW_reg[19]\(3) => freq_W_i_n_41,
+      \phase_err.raw_diff_EW_reg[19]\(2) => freq_W_i_n_42,
+      \phase_err.raw_diff_EW_reg[19]\(1) => freq_W_i_n_43,
+      \phase_err.raw_diff_EW_reg[19]\(0) => freq_W_i_n_44,
       s_axis_cartesian_tdata(47 downto 24) => fir_im_E(36 downto 13),
       s_axis_cartesian_tdata(23 downto 0) => fir_re_E(36 downto 13),
       valid_E => valid_E
@@ -11066,31 +11068,11 @@ freq_N_i: entity work.\ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\
       \morlet_to_phase_env.phase_reg[15]_0\(2) => freq_N_i_n_50,
       \morlet_to_phase_env.phase_reg[15]_0\(1) => freq_N_i_n_51,
       \morlet_to_phase_env.phase_reg[15]_0\(0) => freq_N_i_n_52,
-      \morlet_to_phase_env.phase_reg[15]_1\(7) => freq_N_i_n_65,
-      \morlet_to_phase_env.phase_reg[15]_1\(6) => freq_N_i_n_66,
-      \morlet_to_phase_env.phase_reg[15]_1\(5) => freq_N_i_n_67,
-      \morlet_to_phase_env.phase_reg[15]_1\(4) => freq_N_i_n_68,
-      \morlet_to_phase_env.phase_reg[15]_1\(3) => freq_N_i_n_69,
-      \morlet_to_phase_env.phase_reg[15]_1\(2) => freq_N_i_n_70,
-      \morlet_to_phase_env.phase_reg[15]_1\(1) => freq_N_i_n_71,
-      \morlet_to_phase_env.phase_reg[15]_1\(0) => freq_N_i_n_72,
       \morlet_to_phase_env.phase_reg[19]_0\(3) => freq_N_i_n_53,
       \morlet_to_phase_env.phase_reg[19]_0\(2) => freq_N_i_n_54,
       \morlet_to_phase_env.phase_reg[19]_0\(1) => freq_N_i_n_55,
       \morlet_to_phase_env.phase_reg[19]_0\(0) => freq_N_i_n_56,
-      \morlet_to_phase_env.phase_reg[19]_1\(3) => freq_N_i_n_73,
-      \morlet_to_phase_env.phase_reg[19]_1\(2) => freq_N_i_n_74,
-      \morlet_to_phase_env.phase_reg[19]_1\(1) => freq_N_i_n_75,
-      \morlet_to_phase_env.phase_reg[19]_1\(0) => freq_N_i_n_76,
-      \morlet_to_phase_env.phase_reg[19]_2\ => \freq_low_46.morlet_active_reg_n_0\,
-      \morlet_to_phase_env.phase_reg[7]_0\(7) => freq_N_i_n_57,
-      \morlet_to_phase_env.phase_reg[7]_0\(6) => freq_N_i_n_58,
-      \morlet_to_phase_env.phase_reg[7]_0\(5) => freq_N_i_n_59,
-      \morlet_to_phase_env.phase_reg[7]_0\(4) => freq_N_i_n_60,
-      \morlet_to_phase_env.phase_reg[7]_0\(3) => freq_N_i_n_61,
-      \morlet_to_phase_env.phase_reg[7]_0\(2) => freq_N_i_n_62,
-      \morlet_to_phase_env.phase_reg[7]_0\(1) => freq_N_i_n_63,
-      \morlet_to_phase_env.phase_reg[7]_0\(0) => freq_N_i_n_64,
+      \morlet_to_phase_env.phase_reg[19]_1\ => \freq_low_46.morlet_active_reg_n_0\,
       \phase_err.raw_diff_NE_reg[19]\(19) => freq_E_i_n_25,
       \phase_err.raw_diff_NE_reg[19]\(18) => freq_E_i_n_26,
       \phase_err.raw_diff_NE_reg[19]\(17) => freq_E_i_n_27,
@@ -11111,26 +11093,6 @@ freq_N_i: entity work.\ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\
       \phase_err.raw_diff_NE_reg[19]\(2) => freq_E_i_n_42,
       \phase_err.raw_diff_NE_reg[19]\(1) => freq_E_i_n_43,
       \phase_err.raw_diff_NE_reg[19]\(0) => freq_E_i_n_44,
-      \phase_err.raw_diff_NW_reg[19]\(19) => freq_W_i_n_33,
-      \phase_err.raw_diff_NW_reg[19]\(18) => freq_W_i_n_34,
-      \phase_err.raw_diff_NW_reg[19]\(17) => freq_W_i_n_35,
-      \phase_err.raw_diff_NW_reg[19]\(16) => freq_W_i_n_36,
-      \phase_err.raw_diff_NW_reg[19]\(15) => freq_W_i_n_37,
-      \phase_err.raw_diff_NW_reg[19]\(14) => freq_W_i_n_38,
-      \phase_err.raw_diff_NW_reg[19]\(13) => freq_W_i_n_39,
-      \phase_err.raw_diff_NW_reg[19]\(12) => freq_W_i_n_40,
-      \phase_err.raw_diff_NW_reg[19]\(11) => freq_W_i_n_41,
-      \phase_err.raw_diff_NW_reg[19]\(10) => freq_W_i_n_42,
-      \phase_err.raw_diff_NW_reg[19]\(9) => freq_W_i_n_43,
-      \phase_err.raw_diff_NW_reg[19]\(8) => freq_W_i_n_44,
-      \phase_err.raw_diff_NW_reg[19]\(7) => freq_W_i_n_45,
-      \phase_err.raw_diff_NW_reg[19]\(6) => freq_W_i_n_46,
-      \phase_err.raw_diff_NW_reg[19]\(5) => freq_W_i_n_47,
-      \phase_err.raw_diff_NW_reg[19]\(4) => freq_W_i_n_48,
-      \phase_err.raw_diff_NW_reg[19]\(3) => freq_W_i_n_49,
-      \phase_err.raw_diff_NW_reg[19]\(2) => freq_W_i_n_50,
-      \phase_err.raw_diff_NW_reg[19]\(1) => freq_W_i_n_51,
-      \phase_err.raw_diff_NW_reg[19]\(0) => freq_W_i_n_52,
       s_axis_cartesian_tdata(47 downto 24) => fir_im_N(36 downto 13),
       s_axis_cartesian_tdata(23 downto 0) => fir_re_N(36 downto 13),
       valid_E => valid_E,
@@ -11139,30 +11101,51 @@ freq_N_i: entity work.\ps_freq_low_46_0_0_morlet_to_phase_env__xdcDup__1\
 freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       D(15 downto 0) => env_out_W(15 downto 0),
-      Q(19) => freq_W_i_n_33,
-      Q(18) => freq_W_i_n_34,
-      Q(17) => freq_W_i_n_35,
-      Q(16) => freq_W_i_n_36,
-      Q(15) => freq_W_i_n_37,
-      Q(14) => freq_W_i_n_38,
-      Q(13) => freq_W_i_n_39,
-      Q(12) => freq_W_i_n_40,
-      Q(11) => freq_W_i_n_41,
-      Q(10) => freq_W_i_n_42,
-      Q(9) => freq_W_i_n_43,
-      Q(8) => freq_W_i_n_44,
-      Q(7) => freq_W_i_n_45,
-      Q(6) => freq_W_i_n_46,
-      Q(5) => freq_W_i_n_47,
-      Q(4) => freq_W_i_n_48,
-      Q(3) => freq_W_i_n_49,
-      Q(2) => freq_W_i_n_50,
-      Q(1) => freq_W_i_n_51,
-      Q(0) => freq_W_i_n_52,
+      Q(19) => freq_W_i_n_25,
+      Q(18) => freq_W_i_n_26,
+      Q(17) => freq_W_i_n_27,
+      Q(16) => freq_W_i_n_28,
+      Q(15) => freq_W_i_n_29,
+      Q(14) => freq_W_i_n_30,
+      Q(13) => freq_W_i_n_31,
+      Q(12) => freq_W_i_n_32,
+      Q(11) => freq_W_i_n_33,
+      Q(10) => freq_W_i_n_34,
+      Q(9) => freq_W_i_n_35,
+      Q(8) => freq_W_i_n_36,
+      Q(7) => freq_W_i_n_37,
+      Q(6) => freq_W_i_n_38,
+      Q(5) => freq_W_i_n_39,
+      Q(4) => freq_W_i_n_40,
+      Q(3) => freq_W_i_n_41,
+      Q(2) => freq_W_i_n_42,
+      Q(1) => freq_W_i_n_43,
+      Q(0) => freq_W_i_n_44,
+      S(7) => freq_W_i_n_17,
+      S(6) => freq_W_i_n_18,
+      S(5) => freq_W_i_n_19,
+      S(4) => freq_W_i_n_20,
+      S(3) => freq_W_i_n_21,
+      S(2) => freq_W_i_n_22,
+      S(1) => freq_W_i_n_23,
+      S(0) => freq_W_i_n_24,
       clk => clk,
       env_W_3(15 downto 0) => env_W_3(15 downto 0),
       m_axis_dout_tdata(15 downto 0) => lenv_1(15 downto 0),
-      \morlet_to_phase_env.phase_reg[19]_0\ => \freq_low_46.morlet_active_reg_n_0\,
+      \morlet_to_phase_env.phase_reg[15]_0\(7) => freq_W_i_n_45,
+      \morlet_to_phase_env.phase_reg[15]_0\(6) => freq_W_i_n_46,
+      \morlet_to_phase_env.phase_reg[15]_0\(5) => freq_W_i_n_47,
+      \morlet_to_phase_env.phase_reg[15]_0\(4) => freq_W_i_n_48,
+      \morlet_to_phase_env.phase_reg[15]_0\(3) => freq_W_i_n_49,
+      \morlet_to_phase_env.phase_reg[15]_0\(2) => freq_W_i_n_50,
+      \morlet_to_phase_env.phase_reg[15]_0\(1) => freq_W_i_n_51,
+      \morlet_to_phase_env.phase_reg[15]_0\(0) => freq_W_i_n_52,
+      \morlet_to_phase_env.phase_reg[19]_0\(3) => freq_W_i_n_53,
+      \morlet_to_phase_env.phase_reg[19]_0\(2) => freq_W_i_n_54,
+      \morlet_to_phase_env.phase_reg[19]_0\(1) => freq_W_i_n_55,
+      \morlet_to_phase_env.phase_reg[19]_0\(0) => freq_W_i_n_56,
+      \morlet_to_phase_env.phase_reg[19]_1\ => \freq_low_46.morlet_active_reg_n_0\,
+      \phase_err.raw_diff_WN_reg[19]\(19 downto 0) => phase(19 downto 0),
       s_axis_cartesian_tdata(47 downto 24) => fir_im_W(36 downto 13),
       s_axis_cartesian_tdata(23 downto 0) => fir_re_W(36 downto 13),
       valid_W => valid_W
@@ -11975,7 +11958,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(0),
+      D => err_EW(0),
       Q => doa_data(120),
       R => '0'
     );
@@ -11983,7 +11966,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(1),
+      D => err_EW(1),
       Q => doa_data(121),
       R => '0'
     );
@@ -11991,7 +11974,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(2),
+      D => err_EW(2),
       Q => doa_data(122),
       R => '0'
     );
@@ -11999,7 +11982,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(3),
+      D => err_EW(3),
       Q => doa_data(123),
       R => '0'
     );
@@ -12007,7 +11990,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(4),
+      D => err_EW(4),
       Q => doa_data(124),
       R => '0'
     );
@@ -12015,7 +11998,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(5),
+      D => err_EW(5),
       Q => doa_data(125),
       R => '0'
     );
@@ -12023,7 +12006,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(6),
+      D => err_EW(6),
       Q => doa_data(126),
       R => '0'
     );
@@ -12031,7 +12014,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(7),
+      D => err_EW(7),
       Q => doa_data(127),
       R => '0'
     );
@@ -12039,7 +12022,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(8),
+      D => err_EW(8),
       Q => doa_data(128),
       R => '0'
     );
@@ -12047,7 +12030,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(9),
+      D => err_EW(9),
       Q => doa_data(129),
       R => '0'
     );
@@ -12063,7 +12046,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(10),
+      D => err_EW(10),
       Q => doa_data(130),
       R => '0'
     );
@@ -12071,7 +12054,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_NW(11),
+      D => err_EW(11),
       Q => doa_data(131),
       R => '0'
     );
@@ -12079,7 +12062,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(0),
+      D => err_WN(0),
       Q => doa_data(132),
       R => '0'
     );
@@ -12087,7 +12070,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(1),
+      D => err_WN(1),
       Q => doa_data(133),
       R => '0'
     );
@@ -12095,7 +12078,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(2),
+      D => err_WN(2),
       Q => doa_data(134),
       R => '0'
     );
@@ -12103,7 +12086,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(3),
+      D => err_WN(3),
       Q => doa_data(135),
       R => '0'
     );
@@ -12111,7 +12094,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(4),
+      D => err_WN(4),
       Q => doa_data(136),
       R => '0'
     );
@@ -12119,7 +12102,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(5),
+      D => err_WN(5),
       Q => doa_data(137),
       R => '0'
     );
@@ -12127,7 +12110,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(6),
+      D => err_WN(6),
       Q => doa_data(138),
       R => '0'
     );
@@ -12135,7 +12118,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(7),
+      D => err_WN(7),
       Q => doa_data(139),
       R => '0'
     );
@@ -12151,7 +12134,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(8),
+      D => err_WN(8),
       Q => doa_data(140),
       R => '0'
     );
@@ -12159,7 +12142,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(9),
+      D => err_WN(9),
       Q => doa_data(141),
       R => '0'
     );
@@ -12167,7 +12150,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(10),
+      D => err_WN(10),
       Q => doa_data(142),
       R => '0'
     );
@@ -12175,7 +12158,7 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
      port map (
       C => clk,
       CE => valid,
-      D => err_EW(11),
+      D => err_WN(11),
       Q => doa_data(143),
       R => '0'
     );
@@ -14892,8 +14875,8 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
     );
 phase_err_i: entity work.ps_freq_low_46_0_0_phase_err
      port map (
-      D(95 downto 84) => err_EW(11 downto 0),
-      D(83 downto 72) => err_NW(11 downto 0),
+      D(95 downto 84) => err_WN(11 downto 0),
+      D(83 downto 72) => err_EW(11 downto 0),
       D(71 downto 60) => err_NE(11 downto 0),
       D(59 downto 40) => phase_out_W(19 downto 0),
       D(39 downto 20) => phase_out_E(19 downto 0),
@@ -14913,26 +14896,26 @@ phase_err_i: entity work.ps_freq_low_46_0_0_phase_err
       env_E_3(15 downto 0) => env_E_3(15 downto 0),
       env_N_3(15 downto 0) => env_N_3(15 downto 0),
       env_W_3(15 downto 0) => env_W_3(15 downto 0),
-      \freq_low_46.doa_data_reg[107]\(19) => freq_W_i_n_33,
-      \freq_low_46.doa_data_reg[107]\(18) => freq_W_i_n_34,
-      \freq_low_46.doa_data_reg[107]\(17) => freq_W_i_n_35,
-      \freq_low_46.doa_data_reg[107]\(16) => freq_W_i_n_36,
-      \freq_low_46.doa_data_reg[107]\(15) => freq_W_i_n_37,
-      \freq_low_46.doa_data_reg[107]\(14) => freq_W_i_n_38,
-      \freq_low_46.doa_data_reg[107]\(13) => freq_W_i_n_39,
-      \freq_low_46.doa_data_reg[107]\(12) => freq_W_i_n_40,
-      \freq_low_46.doa_data_reg[107]\(11) => freq_W_i_n_41,
-      \freq_low_46.doa_data_reg[107]\(10) => freq_W_i_n_42,
-      \freq_low_46.doa_data_reg[107]\(9) => freq_W_i_n_43,
-      \freq_low_46.doa_data_reg[107]\(8) => freq_W_i_n_44,
-      \freq_low_46.doa_data_reg[107]\(7) => freq_W_i_n_45,
-      \freq_low_46.doa_data_reg[107]\(6) => freq_W_i_n_46,
-      \freq_low_46.doa_data_reg[107]\(5) => freq_W_i_n_47,
-      \freq_low_46.doa_data_reg[107]\(4) => freq_W_i_n_48,
-      \freq_low_46.doa_data_reg[107]\(3) => freq_W_i_n_49,
-      \freq_low_46.doa_data_reg[107]\(2) => freq_W_i_n_50,
-      \freq_low_46.doa_data_reg[107]\(1) => freq_W_i_n_51,
-      \freq_low_46.doa_data_reg[107]\(0) => freq_W_i_n_52,
+      \freq_low_46.doa_data_reg[107]\(19) => freq_W_i_n_25,
+      \freq_low_46.doa_data_reg[107]\(18) => freq_W_i_n_26,
+      \freq_low_46.doa_data_reg[107]\(17) => freq_W_i_n_27,
+      \freq_low_46.doa_data_reg[107]\(16) => freq_W_i_n_28,
+      \freq_low_46.doa_data_reg[107]\(15) => freq_W_i_n_29,
+      \freq_low_46.doa_data_reg[107]\(14) => freq_W_i_n_30,
+      \freq_low_46.doa_data_reg[107]\(13) => freq_W_i_n_31,
+      \freq_low_46.doa_data_reg[107]\(12) => freq_W_i_n_32,
+      \freq_low_46.doa_data_reg[107]\(11) => freq_W_i_n_33,
+      \freq_low_46.doa_data_reg[107]\(10) => freq_W_i_n_34,
+      \freq_low_46.doa_data_reg[107]\(9) => freq_W_i_n_35,
+      \freq_low_46.doa_data_reg[107]\(8) => freq_W_i_n_36,
+      \freq_low_46.doa_data_reg[107]\(7) => freq_W_i_n_37,
+      \freq_low_46.doa_data_reg[107]\(6) => freq_W_i_n_38,
+      \freq_low_46.doa_data_reg[107]\(5) => freq_W_i_n_39,
+      \freq_low_46.doa_data_reg[107]\(4) => freq_W_i_n_40,
+      \freq_low_46.doa_data_reg[107]\(3) => freq_W_i_n_41,
+      \freq_low_46.doa_data_reg[107]\(2) => freq_W_i_n_42,
+      \freq_low_46.doa_data_reg[107]\(1) => freq_W_i_n_43,
+      \freq_low_46.doa_data_reg[107]\(0) => freq_W_i_n_44,
       \freq_low_46.doa_data_reg[71]\(19) => freq_E_i_n_25,
       \freq_low_46.doa_data_reg[71]\(18) => freq_E_i_n_26,
       \freq_low_46.doa_data_reg[71]\(17) => freq_E_i_n_27,
@@ -14988,26 +14971,26 @@ phase_err_i: entity work.ps_freq_low_46_0_0_phase_err
       \phase_err.raw_diff_NE_reg[19]_0\(2) => freq_N_i_n_54,
       \phase_err.raw_diff_NE_reg[19]_0\(1) => freq_N_i_n_55,
       \phase_err.raw_diff_NE_reg[19]_0\(0) => freq_N_i_n_56,
-      \phase_err.raw_diff_NW_reg[15]_0\(7) => freq_N_i_n_65,
-      \phase_err.raw_diff_NW_reg[15]_0\(6) => freq_N_i_n_66,
-      \phase_err.raw_diff_NW_reg[15]_0\(5) => freq_N_i_n_67,
-      \phase_err.raw_diff_NW_reg[15]_0\(4) => freq_N_i_n_68,
-      \phase_err.raw_diff_NW_reg[15]_0\(3) => freq_N_i_n_69,
-      \phase_err.raw_diff_NW_reg[15]_0\(2) => freq_N_i_n_70,
-      \phase_err.raw_diff_NW_reg[15]_0\(1) => freq_N_i_n_71,
-      \phase_err.raw_diff_NW_reg[15]_0\(0) => freq_N_i_n_72,
-      \phase_err.raw_diff_NW_reg[19]_0\(3) => freq_N_i_n_73,
-      \phase_err.raw_diff_NW_reg[19]_0\(2) => freq_N_i_n_74,
-      \phase_err.raw_diff_NW_reg[19]_0\(1) => freq_N_i_n_75,
-      \phase_err.raw_diff_NW_reg[19]_0\(0) => freq_N_i_n_76,
-      \phase_err.raw_diff_NW_reg[7]_0\(7) => freq_N_i_n_57,
-      \phase_err.raw_diff_NW_reg[7]_0\(6) => freq_N_i_n_58,
-      \phase_err.raw_diff_NW_reg[7]_0\(5) => freq_N_i_n_59,
-      \phase_err.raw_diff_NW_reg[7]_0\(4) => freq_N_i_n_60,
-      \phase_err.raw_diff_NW_reg[7]_0\(3) => freq_N_i_n_61,
-      \phase_err.raw_diff_NW_reg[7]_0\(2) => freq_N_i_n_62,
-      \phase_err.raw_diff_NW_reg[7]_0\(1) => freq_N_i_n_63,
-      \phase_err.raw_diff_NW_reg[7]_0\(0) => freq_N_i_n_64
+      \phase_err.raw_diff_WN_reg[15]_0\(7) => freq_W_i_n_45,
+      \phase_err.raw_diff_WN_reg[15]_0\(6) => freq_W_i_n_46,
+      \phase_err.raw_diff_WN_reg[15]_0\(5) => freq_W_i_n_47,
+      \phase_err.raw_diff_WN_reg[15]_0\(4) => freq_W_i_n_48,
+      \phase_err.raw_diff_WN_reg[15]_0\(3) => freq_W_i_n_49,
+      \phase_err.raw_diff_WN_reg[15]_0\(2) => freq_W_i_n_50,
+      \phase_err.raw_diff_WN_reg[15]_0\(1) => freq_W_i_n_51,
+      \phase_err.raw_diff_WN_reg[15]_0\(0) => freq_W_i_n_52,
+      \phase_err.raw_diff_WN_reg[19]_0\(3) => freq_W_i_n_53,
+      \phase_err.raw_diff_WN_reg[19]_0\(2) => freq_W_i_n_54,
+      \phase_err.raw_diff_WN_reg[19]_0\(1) => freq_W_i_n_55,
+      \phase_err.raw_diff_WN_reg[19]_0\(0) => freq_W_i_n_56,
+      \phase_err.raw_diff_WN_reg[7]_0\(7) => freq_W_i_n_17,
+      \phase_err.raw_diff_WN_reg[7]_0\(6) => freq_W_i_n_18,
+      \phase_err.raw_diff_WN_reg[7]_0\(5) => freq_W_i_n_19,
+      \phase_err.raw_diff_WN_reg[7]_0\(4) => freq_W_i_n_20,
+      \phase_err.raw_diff_WN_reg[7]_0\(3) => freq_W_i_n_21,
+      \phase_err.raw_diff_WN_reg[7]_0\(2) => freq_W_i_n_22,
+      \phase_err.raw_diff_WN_reg[7]_0\(1) => freq_W_i_n_23,
+      \phase_err.raw_diff_WN_reg[7]_0\(0) => freq_W_i_n_24
     );
 end STRUCTURE;
 library IEEE;

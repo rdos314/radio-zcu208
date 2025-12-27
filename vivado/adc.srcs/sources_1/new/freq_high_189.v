@@ -274,7 +274,7 @@ phase_err phase_err_i (
   .env_out_W(envW),
   .phase_out_W(phaseW),
   .err_NE(errNE),
-  .err_NW(errNW),
+  .err_WN(errWN),
   .err_EW(errEW)
   );
 
