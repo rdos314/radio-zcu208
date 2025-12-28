@@ -386,13 +386,13 @@ int main()
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
     LoadConfig();
 
-	LoadLowZero(46.0, 30.0);
-	LoadLowMorlet(46.0, 5.0, 25000, 90.0);
+	LoadLowZero(46.0, 40.0);
+	LoadLowMorlet(46.0, 5.0, 25000, 170.0);
 //	LoadLowCos(46.0, 30.0, 25000, 45.0);
 	LoadLowZero(46.0, 30.0);
 
 	LoadHighZero(189.0, 120.0);
-	LoadHighMorlet(189.0, 20.0, 25000, 90.0);
+	LoadHighMorlet(189.0, 20.0, 25000, 170.0);
 //	LoadHighCos(189.0, 120.0, 25000, 45.0);
 	LoadHighZero(189.0, 120.0);
 

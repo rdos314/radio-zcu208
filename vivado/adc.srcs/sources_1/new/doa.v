@@ -64,6 +64,9 @@ module doa_calc(
   wire [19:0] angle_NE;
   wire [19:0] angle_EW;
   wire [19:0] angle_WN;
+  
+  wire angle_done;
+  wire [19:0] angle_done;
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -112,6 +115,20 @@ doa_pair doa_WN_i(
   .fail(fail_WN),
   .shadow(shadow_WN),
   .angle(angle_WN)
+);
+
+doa_angle doa_angle_i(
+  .clk(clk),
+  .reset(reset),
+  .start(done_NE & done_EW & done_WN),
+  .angle_NE(angle_NE),
+  .angle_EW(angle_EW),
+  .angle_WN(angle_WN),
+  .shadow_NE(shadow_NE),
+  .shadow_EW(shadow_EW),
+  .shadow_WN(shadow_WN),
+  .done(angle_done),
+  .angle(angle)
 );
 
 	ila_6 ila_i (

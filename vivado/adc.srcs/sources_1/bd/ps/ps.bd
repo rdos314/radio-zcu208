@@ -3250,8 +3250,8 @@
       "mts_0_freq0_clk": {
         "ports": [
           "mts_0/freq0_clk",
-          "comp_low/fifo_clk",
-          "freq_low_46_0/clk"
+          "freq_low_46_0/clk",
+          "comp_low/fifo_clk"
         ]
       },
       "mts_0_freq0_reset": {
@@ -3263,8 +3263,8 @@
       "mts_0_freq1_clk": {
         "ports": [
           "mts_0/freq1_clk",
-          "comp_high/fifo_clk",
-          "freq_high_189_0/clk"
+          "freq_high_189_0/clk",
+          "comp_high/fifo_clk"
         ]
       },
       "mts_0_freq1_reset": {

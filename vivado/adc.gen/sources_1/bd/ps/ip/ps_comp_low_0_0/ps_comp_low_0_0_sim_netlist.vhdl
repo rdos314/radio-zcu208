@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Dec 27 14:02:44 2025
+-- Date        : Sun Dec 28 22:04:38 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -19762,6 +19762,3846 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
+entity ps_comp_low_0_0_doa_angle is
+  port (
+    clk : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    start : in STD_LOGIC;
+    angle_NE : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    angle_EW : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    angle_WN : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    shadow_NE : in STD_LOGIC;
+    shadow_EW : in STD_LOGIC;
+    shadow_WN : in STD_LOGIC;
+    done : out STD_LOGIC;
+    angle : out STD_LOGIC_VECTOR ( 19 downto 0 )
+  );
+  attribute ANGLE_0 : string;
+  attribute ANGLE_0 of ps_comp_low_0_0_doa_angle : entity is "20'b00000000000000000000";
+  attribute ANGLE_120 : string;
+  attribute ANGLE_120 of ps_comp_low_0_0_doa_angle : entity is "20'b01010101010101010101";
+  attribute ANGLE_180 : string;
+  attribute ANGLE_180 of ps_comp_low_0_0_doa_angle : entity is "20'b10000000000000000000";
+  attribute ANGLE_240 : string;
+  attribute ANGLE_240 of ps_comp_low_0_0_doa_angle : entity is "20'b10101010101010101011";
+  attribute ANGLE_300 : string;
+  attribute ANGLE_300 of ps_comp_low_0_0_doa_angle : entity is "20'b11010101010101010101";
+  attribute ANGLE_60 : string;
+  attribute ANGLE_60 of ps_comp_low_0_0_doa_angle : entity is "20'b00101010101010101011";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_comp_low_0_0_doa_angle : entity is "doa_angle";
+  attribute keep_hierarchy : string;
+  attribute keep_hierarchy of ps_comp_low_0_0_doa_angle : entity is "soft";
+end ps_comp_low_0_0_doa_angle;
+
+architecture STRUCTURE of ps_comp_low_0_0_doa_angle is
+  component ps_comp_low_0_0_ila_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 19 downto 0 )
+  );
+  end component ps_comp_low_0_0_ila_0;
+  signal \<const0>\ : STD_LOGIC;
+  signal \^angle\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of \^angle\ : signal is std.standard.true;
+  signal base_angle : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of base_angle : signal is std.standard.true;
+  signal diff_angle : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of diff_angle : signal is std.standard.true;
+  signal \doa_angle.angle[15]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_6_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_7_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_8_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[15]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[19]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[19]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[19]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[19]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_10_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_6_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_7_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_8_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle[7]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_10\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_11\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_12\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_13\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_14\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_15\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_8\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[15]_i_1_n_9\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_12\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_13\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_14\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_15\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_5\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_6\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[19]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \doa_angle.angle_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \doa_angle.base_angle[17]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.base_angle[18]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.base_angle[19]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_6_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_7_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_8_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[15]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[19]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[19]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[19]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[19]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_6_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_7_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_8_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle[7]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg0\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[19]_i_1_n_5\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[19]_i_1_n_6\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[19]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \doa_angle.diff_angle_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_angle.first_angle[0]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[0]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[10]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[10]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[11]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[11]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[12]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[12]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[13]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[13]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[14]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[14]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[15]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[15]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[16]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[16]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[17]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[17]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[18]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[18]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[1]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[1]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[2]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[2]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[3]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[3]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[4]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[4]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[5]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[6]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[6]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[7]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[7]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[8]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[8]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[9]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.first_angle[9]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.front_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.id[0]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.id[1]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.run[0]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.run[1]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.run[2]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.run[3]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.run[4]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.run[4]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[0]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[0]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[10]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[10]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[11]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[11]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[12]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[12]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[13]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[13]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[14]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[14]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[15]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[15]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[16]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[16]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[17]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[17]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[18]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[18]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[1]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[1]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[2]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[2]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[3]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[3]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[4]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[4]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[5]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[6]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[6]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[7]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[7]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[8]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[8]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[9]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_angle.second_angle[9]_i_3_n_0\ : STD_LOGIC;
+  signal \doa_angle.sign_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[0]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[10]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[11]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[12]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[13]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[14]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[15]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[16]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[17]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[19]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[1]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[2]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[3]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[4]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[5]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[6]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[7]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[8]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_angle[9]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_angle.use_id[0]_i_1_n_0\ : STD_LOGIC;
+  signal first_angle : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of first_angle : signal is std.standard.true;
+  signal \first_angle__0\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal front : STD_LOGIC;
+  attribute MARK_DEBUG of front : signal is std.standard.true;
+  signal id : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute MARK_DEBUG of id : signal is std.standard.true;
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal run : STD_LOGIC_VECTOR ( 4 downto 0 );
+  attribute MARK_DEBUG of run : signal is std.standard.true;
+  signal second_angle : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of second_angle : signal is std.standard.true;
+  signal \second_angle__0\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal sign : STD_LOGIC;
+  attribute MARK_DEBUG of sign : signal is std.standard.true;
+  signal use_angle : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of use_angle : signal is std.standard.true;
+  signal use_id : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute MARK_DEBUG of use_id : signal is std.standard.true;
+  signal \use_id__0\ : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal \NLW_doa_angle.angle_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_doa_angle.angle_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_doa_angle.diff_angle_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_doa_angle.diff_angle_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  attribute KEEP : string;
+  attribute KEEP of \doa_angle.angle_reg[0]\ : label is "yes";
+  attribute mark_debug_string : string;
+  attribute mark_debug_string of \doa_angle.angle_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \doa_angle.angle_reg[15]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS : string;
+  attribute METHODOLOGY_DRC_VIOS of \doa_angle.angle_reg[15]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute KEEP of \doa_angle.angle_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[16]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[17]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[18]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[19]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \doa_angle.angle_reg[19]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \doa_angle.angle_reg[19]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute KEEP of \doa_angle.angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \doa_angle.angle_reg[7]_i_1\ : label is 35;
+  attribute METHODOLOGY_DRC_VIOS of \doa_angle.angle_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute KEEP of \doa_angle.angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_angle.angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.angle_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[15]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[16]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[17]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[18]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[19]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[7]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_angle.base_angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.base_angle_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \doa_angle.diff_angle_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \doa_angle.diff_angle_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[16]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[17]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[18]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[19]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \doa_angle.diff_angle_reg[19]_i_1\ : label is 35;
+  attribute KEEP of \doa_angle.diff_angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \doa_angle.diff_angle_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \doa_angle.diff_angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_angle.diff_angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.diff_angle_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[15]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[16]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[17]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[18]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[19]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[7]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_angle.first_angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.first_angle_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_angle.front_reg\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.front_reg\ : label is "yes";
+  attribute KEEP of \doa_angle.id_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.id_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.id_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.id_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.run_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.run_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.run_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.run_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.run_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[15]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[16]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[17]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[18]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[19]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[7]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_angle.second_angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.second_angle_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_angle.sign_reg\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.sign_reg\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[15]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[16]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[17]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[18]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[19]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[7]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_angle_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_id_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_id_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_angle.use_id_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_angle.use_id_reg[1]\ : label is "yes";
+  attribute CHECK_LICENSE_TYPE : string;
+  attribute CHECK_LICENSE_TYPE of ila_0_i : label is "ila_0,ila,{}";
+  attribute downgradeipidentifiedwarnings : string;
+  attribute downgradeipidentifiedwarnings of ila_0_i : label is "yes";
+  attribute x_core_info : string;
+  attribute x_core_info of ila_0_i : label is "ila,Vivado 2025.1";
+begin
+  angle(19 downto 0) <= \^angle\(19 downto 0);
+  done <= \<const0>\;
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
+    );
+\doa_angle.angle[15]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(15),
+      I1 => use_angle(15),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_2_n_0\
+    );
+\doa_angle.angle[15]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(14),
+      I1 => use_angle(14),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_3_n_0\
+    );
+\doa_angle.angle[15]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(13),
+      I1 => use_angle(13),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_4_n_0\
+    );
+\doa_angle.angle[15]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(12),
+      I1 => use_angle(12),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_5_n_0\
+    );
+\doa_angle.angle[15]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(11),
+      I1 => use_angle(11),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_6_n_0\
+    );
+\doa_angle.angle[15]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(10),
+      I1 => use_angle(10),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_7_n_0\
+    );
+\doa_angle.angle[15]_i_8\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(9),
+      I1 => use_angle(9),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_8_n_0\
+    );
+\doa_angle.angle[15]_i_9\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(8),
+      I1 => use_angle(8),
+      I2 => front,
+      O => \doa_angle.angle[15]_i_9_n_0\
+    );
+\doa_angle.angle[19]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(19),
+      I1 => use_angle(19),
+      I2 => front,
+      O => \doa_angle.angle[19]_i_2_n_0\
+    );
+\doa_angle.angle[19]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(18),
+      I1 => use_angle(18),
+      I2 => front,
+      O => \doa_angle.angle[19]_i_3_n_0\
+    );
+\doa_angle.angle[19]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(17),
+      I1 => use_angle(17),
+      I2 => front,
+      O => \doa_angle.angle[19]_i_4_n_0\
+    );
+\doa_angle.angle[19]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(16),
+      I1 => use_angle(16),
+      I2 => front,
+      O => \doa_angle.angle[19]_i_5_n_0\
+    );
+\doa_angle.angle[7]_i_10\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(0),
+      I1 => use_angle(0),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_10_n_0\
+    );
+\doa_angle.angle[7]_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => front,
+      O => \doa_angle.angle[7]_i_2_n_0\
+    );
+\doa_angle.angle[7]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(7),
+      I1 => use_angle(7),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_3_n_0\
+    );
+\doa_angle.angle[7]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(6),
+      I1 => use_angle(6),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_4_n_0\
+    );
+\doa_angle.angle[7]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(5),
+      I1 => use_angle(5),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_5_n_0\
+    );
+\doa_angle.angle[7]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(4),
+      I1 => use_angle(4),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_6_n_0\
+    );
+\doa_angle.angle[7]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(3),
+      I1 => use_angle(3),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_7_n_0\
+    );
+\doa_angle.angle[7]_i_8\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(2),
+      I1 => use_angle(2),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_8_n_0\
+    );
+\doa_angle.angle[7]_i_9\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => base_angle(1),
+      I1 => use_angle(1),
+      I2 => front,
+      O => \doa_angle.angle[7]_i_9_n_0\
+    );
+\doa_angle.angle_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_15\,
+      Q => \^angle\(0),
+      R => '0'
+    );
+\doa_angle.angle_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_13\,
+      Q => \^angle\(10),
+      R => '0'
+    );
+\doa_angle.angle_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_12\,
+      Q => \^angle\(11),
+      R => '0'
+    );
+\doa_angle.angle_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_11\,
+      Q => \^angle\(12),
+      R => '0'
+    );
+\doa_angle.angle_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_10\,
+      Q => \^angle\(13),
+      R => '0'
+    );
+\doa_angle.angle_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_9\,
+      Q => \^angle\(14),
+      R => '0'
+    );
+\doa_angle.angle_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_8\,
+      Q => \^angle\(15),
+      R => '0'
+    );
+\doa_angle.angle_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \doa_angle.angle_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \doa_angle.angle_reg[15]_i_1_n_0\,
+      CO(6) => \doa_angle.angle_reg[15]_i_1_n_1\,
+      CO(5) => \doa_angle.angle_reg[15]_i_1_n_2\,
+      CO(4) => \doa_angle.angle_reg[15]_i_1_n_3\,
+      CO(3) => \doa_angle.angle_reg[15]_i_1_n_4\,
+      CO(2) => \doa_angle.angle_reg[15]_i_1_n_5\,
+      CO(1) => \doa_angle.angle_reg[15]_i_1_n_6\,
+      CO(0) => \doa_angle.angle_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => base_angle(15 downto 8),
+      O(7) => \doa_angle.angle_reg[15]_i_1_n_8\,
+      O(6) => \doa_angle.angle_reg[15]_i_1_n_9\,
+      O(5) => \doa_angle.angle_reg[15]_i_1_n_10\,
+      O(4) => \doa_angle.angle_reg[15]_i_1_n_11\,
+      O(3) => \doa_angle.angle_reg[15]_i_1_n_12\,
+      O(2) => \doa_angle.angle_reg[15]_i_1_n_13\,
+      O(1) => \doa_angle.angle_reg[15]_i_1_n_14\,
+      O(0) => \doa_angle.angle_reg[15]_i_1_n_15\,
+      S(7) => \doa_angle.angle[15]_i_2_n_0\,
+      S(6) => \doa_angle.angle[15]_i_3_n_0\,
+      S(5) => \doa_angle.angle[15]_i_4_n_0\,
+      S(4) => \doa_angle.angle[15]_i_5_n_0\,
+      S(3) => \doa_angle.angle[15]_i_6_n_0\,
+      S(2) => \doa_angle.angle[15]_i_7_n_0\,
+      S(1) => \doa_angle.angle[15]_i_8_n_0\,
+      S(0) => \doa_angle.angle[15]_i_9_n_0\
+    );
+\doa_angle.angle_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[19]_i_1_n_15\,
+      Q => \^angle\(16),
+      R => '0'
+    );
+\doa_angle.angle_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[19]_i_1_n_14\,
+      Q => \^angle\(17),
+      R => '0'
+    );
+\doa_angle.angle_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[19]_i_1_n_13\,
+      Q => \^angle\(18),
+      R => '0'
+    );
+\doa_angle.angle_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[19]_i_1_n_12\,
+      Q => \^angle\(19),
+      R => '0'
+    );
+\doa_angle.angle_reg[19]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \doa_angle.angle_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_doa_angle.angle_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \doa_angle.angle_reg[19]_i_1_n_5\,
+      CO(1) => \doa_angle.angle_reg[19]_i_1_n_6\,
+      CO(0) => \doa_angle.angle_reg[19]_i_1_n_7\,
+      DI(7 downto 3) => B"00000",
+      DI(2 downto 0) => base_angle(18 downto 16),
+      O(7 downto 4) => \NLW_doa_angle.angle_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
+      O(3) => \doa_angle.angle_reg[19]_i_1_n_12\,
+      O(2) => \doa_angle.angle_reg[19]_i_1_n_13\,
+      O(1) => \doa_angle.angle_reg[19]_i_1_n_14\,
+      O(0) => \doa_angle.angle_reg[19]_i_1_n_15\,
+      S(7 downto 4) => B"0000",
+      S(3) => \doa_angle.angle[19]_i_2_n_0\,
+      S(2) => \doa_angle.angle[19]_i_3_n_0\,
+      S(1) => \doa_angle.angle[19]_i_4_n_0\,
+      S(0) => \doa_angle.angle[19]_i_5_n_0\
+    );
+\doa_angle.angle_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_14\,
+      Q => \^angle\(1),
+      R => '0'
+    );
+\doa_angle.angle_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_13\,
+      Q => \^angle\(2),
+      R => '0'
+    );
+\doa_angle.angle_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_12\,
+      Q => \^angle\(3),
+      R => '0'
+    );
+\doa_angle.angle_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_11\,
+      Q => \^angle\(4),
+      R => '0'
+    );
+\doa_angle.angle_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_10\,
+      Q => \^angle\(5),
+      R => '0'
+    );
+\doa_angle.angle_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_9\,
+      Q => \^angle\(6),
+      R => '0'
+    );
+\doa_angle.angle_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[7]_i_1_n_8\,
+      Q => \^angle\(7),
+      R => '0'
+    );
+\doa_angle.angle_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \doa_angle.angle[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \doa_angle.angle_reg[7]_i_1_n_0\,
+      CO(6) => \doa_angle.angle_reg[7]_i_1_n_1\,
+      CO(5) => \doa_angle.angle_reg[7]_i_1_n_2\,
+      CO(4) => \doa_angle.angle_reg[7]_i_1_n_3\,
+      CO(3) => \doa_angle.angle_reg[7]_i_1_n_4\,
+      CO(2) => \doa_angle.angle_reg[7]_i_1_n_5\,
+      CO(1) => \doa_angle.angle_reg[7]_i_1_n_6\,
+      CO(0) => \doa_angle.angle_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => base_angle(7 downto 0),
+      O(7) => \doa_angle.angle_reg[7]_i_1_n_8\,
+      O(6) => \doa_angle.angle_reg[7]_i_1_n_9\,
+      O(5) => \doa_angle.angle_reg[7]_i_1_n_10\,
+      O(4) => \doa_angle.angle_reg[7]_i_1_n_11\,
+      O(3) => \doa_angle.angle_reg[7]_i_1_n_12\,
+      O(2) => \doa_angle.angle_reg[7]_i_1_n_13\,
+      O(1) => \doa_angle.angle_reg[7]_i_1_n_14\,
+      O(0) => \doa_angle.angle_reg[7]_i_1_n_15\,
+      S(7) => \doa_angle.angle[7]_i_3_n_0\,
+      S(6) => \doa_angle.angle[7]_i_4_n_0\,
+      S(5) => \doa_angle.angle[7]_i_5_n_0\,
+      S(4) => \doa_angle.angle[7]_i_6_n_0\,
+      S(3) => \doa_angle.angle[7]_i_7_n_0\,
+      S(2) => \doa_angle.angle[7]_i_8_n_0\,
+      S(1) => \doa_angle.angle[7]_i_9_n_0\,
+      S(0) => \doa_angle.angle[7]_i_10_n_0\
+    );
+\doa_angle.angle_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_15\,
+      Q => \^angle\(8),
+      R => '0'
+    );
+\doa_angle.angle_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(4),
+      D => \doa_angle.angle_reg[15]_i_1_n_14\,
+      Q => \^angle\(9),
+      R => '0'
+    );
+\doa_angle.base_angle[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => use_id(1),
+      I1 => use_id(0),
+      O => \p_1_in__0\(0)
+    );
+\doa_angle.base_angle[17]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => use_id(0),
+      I1 => use_id(1),
+      O => \doa_angle.base_angle[17]_i_1_n_0\
+    );
+\doa_angle.base_angle[18]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => use_id(0),
+      I1 => run(3),
+      O => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle[19]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"69"
+    )
+        port map (
+      I0 => use_id(1),
+      I1 => use_id(0),
+      I2 => front,
+      O => \doa_angle.base_angle[19]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \p_1_in__0\(0),
+      Q => base_angle(0),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(10),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(11),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(12),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(13),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(14),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(15),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(16),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(17),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(18),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[19]_i_1_n_0\,
+      Q => base_angle(19),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(1),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(2),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(3),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(4),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(5),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(6),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(7),
+      R => '0'
+    );
+\doa_angle.base_angle_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => use_id(1),
+      Q => base_angle(8),
+      R => \doa_angle.base_angle[18]_i_1_n_0\
+    );
+\doa_angle.base_angle_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(3),
+      D => \doa_angle.base_angle[17]_i_1_n_0\,
+      Q => base_angle(9),
+      R => '0'
+    );
+\doa_angle.diff_angle[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(15),
+      I1 => second_angle(15),
+      O => \doa_angle.diff_angle[15]_i_2_n_0\
+    );
+\doa_angle.diff_angle[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(14),
+      I1 => second_angle(14),
+      O => \doa_angle.diff_angle[15]_i_3_n_0\
+    );
+\doa_angle.diff_angle[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(13),
+      I1 => second_angle(13),
+      O => \doa_angle.diff_angle[15]_i_4_n_0\
+    );
+\doa_angle.diff_angle[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(12),
+      I1 => second_angle(12),
+      O => \doa_angle.diff_angle[15]_i_5_n_0\
+    );
+\doa_angle.diff_angle[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(11),
+      I1 => second_angle(11),
+      O => \doa_angle.diff_angle[15]_i_6_n_0\
+    );
+\doa_angle.diff_angle[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(10),
+      I1 => second_angle(10),
+      O => \doa_angle.diff_angle[15]_i_7_n_0\
+    );
+\doa_angle.diff_angle[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(9),
+      I1 => second_angle(9),
+      O => \doa_angle.diff_angle[15]_i_8_n_0\
+    );
+\doa_angle.diff_angle[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(8),
+      I1 => second_angle(8),
+      O => \doa_angle.diff_angle[15]_i_9_n_0\
+    );
+\doa_angle.diff_angle[19]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(19),
+      I1 => second_angle(19),
+      O => \doa_angle.diff_angle[19]_i_2_n_0\
+    );
+\doa_angle.diff_angle[19]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(18),
+      I1 => second_angle(18),
+      O => \doa_angle.diff_angle[19]_i_3_n_0\
+    );
+\doa_angle.diff_angle[19]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(17),
+      I1 => second_angle(17),
+      O => \doa_angle.diff_angle[19]_i_4_n_0\
+    );
+\doa_angle.diff_angle[19]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(16),
+      I1 => second_angle(16),
+      O => \doa_angle.diff_angle[19]_i_5_n_0\
+    );
+\doa_angle.diff_angle[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(7),
+      I1 => second_angle(7),
+      O => \doa_angle.diff_angle[7]_i_2_n_0\
+    );
+\doa_angle.diff_angle[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(6),
+      I1 => second_angle(6),
+      O => \doa_angle.diff_angle[7]_i_3_n_0\
+    );
+\doa_angle.diff_angle[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(5),
+      I1 => second_angle(5),
+      O => \doa_angle.diff_angle[7]_i_4_n_0\
+    );
+\doa_angle.diff_angle[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(4),
+      I1 => second_angle(4),
+      O => \doa_angle.diff_angle[7]_i_5_n_0\
+    );
+\doa_angle.diff_angle[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(3),
+      I1 => second_angle(3),
+      O => \doa_angle.diff_angle[7]_i_6_n_0\
+    );
+\doa_angle.diff_angle[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(2),
+      I1 => second_angle(2),
+      O => \doa_angle.diff_angle[7]_i_7_n_0\
+    );
+\doa_angle.diff_angle[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(1),
+      I1 => second_angle(1),
+      O => \doa_angle.diff_angle[7]_i_8_n_0\
+    );
+\doa_angle.diff_angle[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => first_angle(0),
+      I1 => second_angle(0),
+      O => \doa_angle.diff_angle[7]_i_9_n_0\
+    );
+\doa_angle.diff_angle_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(0),
+      Q => diff_angle(0),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(10),
+      Q => diff_angle(10),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(11),
+      Q => diff_angle(11),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(12),
+      Q => diff_angle(12),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(13),
+      Q => diff_angle(13),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(14),
+      Q => diff_angle(14),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(15),
+      Q => diff_angle(15),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \doa_angle.diff_angle_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \doa_angle.diff_angle_reg[15]_i_1_n_0\,
+      CO(6) => \doa_angle.diff_angle_reg[15]_i_1_n_1\,
+      CO(5) => \doa_angle.diff_angle_reg[15]_i_1_n_2\,
+      CO(4) => \doa_angle.diff_angle_reg[15]_i_1_n_3\,
+      CO(3) => \doa_angle.diff_angle_reg[15]_i_1_n_4\,
+      CO(2) => \doa_angle.diff_angle_reg[15]_i_1_n_5\,
+      CO(1) => \doa_angle.diff_angle_reg[15]_i_1_n_6\,
+      CO(0) => \doa_angle.diff_angle_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => first_angle(15 downto 8),
+      O(7 downto 0) => \doa_angle.diff_angle_reg0\(15 downto 8),
+      S(7) => \doa_angle.diff_angle[15]_i_2_n_0\,
+      S(6) => \doa_angle.diff_angle[15]_i_3_n_0\,
+      S(5) => \doa_angle.diff_angle[15]_i_4_n_0\,
+      S(4) => \doa_angle.diff_angle[15]_i_5_n_0\,
+      S(3) => \doa_angle.diff_angle[15]_i_6_n_0\,
+      S(2) => \doa_angle.diff_angle[15]_i_7_n_0\,
+      S(1) => \doa_angle.diff_angle[15]_i_8_n_0\,
+      S(0) => \doa_angle.diff_angle[15]_i_9_n_0\
+    );
+\doa_angle.diff_angle_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(16),
+      Q => diff_angle(16),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(17),
+      Q => diff_angle(17),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(18),
+      Q => diff_angle(18),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(19),
+      Q => diff_angle(19),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[19]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \doa_angle.diff_angle_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_doa_angle.diff_angle_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \doa_angle.diff_angle_reg[19]_i_1_n_5\,
+      CO(1) => \doa_angle.diff_angle_reg[19]_i_1_n_6\,
+      CO(0) => \doa_angle.diff_angle_reg[19]_i_1_n_7\,
+      DI(7 downto 3) => B"00000",
+      DI(2 downto 0) => first_angle(18 downto 16),
+      O(7 downto 4) => \NLW_doa_angle.diff_angle_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => \doa_angle.diff_angle_reg0\(19 downto 16),
+      S(7 downto 4) => B"0000",
+      S(3) => \doa_angle.diff_angle[19]_i_2_n_0\,
+      S(2) => \doa_angle.diff_angle[19]_i_3_n_0\,
+      S(1) => \doa_angle.diff_angle[19]_i_4_n_0\,
+      S(0) => \doa_angle.diff_angle[19]_i_5_n_0\
+    );
+\doa_angle.diff_angle_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(1),
+      Q => diff_angle(1),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(2),
+      Q => diff_angle(2),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(3),
+      Q => diff_angle(3),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(4),
+      Q => diff_angle(4),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(5),
+      Q => diff_angle(5),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(6),
+      Q => diff_angle(6),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(7),
+      Q => diff_angle(7),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \doa_angle.diff_angle_reg[7]_i_1_n_0\,
+      CO(6) => \doa_angle.diff_angle_reg[7]_i_1_n_1\,
+      CO(5) => \doa_angle.diff_angle_reg[7]_i_1_n_2\,
+      CO(4) => \doa_angle.diff_angle_reg[7]_i_1_n_3\,
+      CO(3) => \doa_angle.diff_angle_reg[7]_i_1_n_4\,
+      CO(2) => \doa_angle.diff_angle_reg[7]_i_1_n_5\,
+      CO(1) => \doa_angle.diff_angle_reg[7]_i_1_n_6\,
+      CO(0) => \doa_angle.diff_angle_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => first_angle(7 downto 0),
+      O(7 downto 0) => \doa_angle.diff_angle_reg0\(7 downto 0),
+      S(7) => \doa_angle.diff_angle[7]_i_2_n_0\,
+      S(6) => \doa_angle.diff_angle[7]_i_3_n_0\,
+      S(5) => \doa_angle.diff_angle[7]_i_4_n_0\,
+      S(4) => \doa_angle.diff_angle[7]_i_5_n_0\,
+      S(3) => \doa_angle.diff_angle[7]_i_6_n_0\,
+      S(2) => \doa_angle.diff_angle[7]_i_7_n_0\,
+      S(1) => \doa_angle.diff_angle[7]_i_8_n_0\,
+      S(0) => \doa_angle.diff_angle[7]_i_9_n_0\
+    );
+\doa_angle.diff_angle_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(8),
+      Q => diff_angle(8),
+      R => '0'
+    );
+\doa_angle.diff_angle_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(0),
+      D => \doa_angle.diff_angle_reg0\(9),
+      Q => diff_angle(9),
+      R => '0'
+    );
+\doa_angle.first_angle[0]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(0),
+      I1 => angle_WN(0),
+      I2 => angle_EW(19),
+      I3 => angle_NE(0),
+      I4 => angle_WN(19),
+      I5 => first_angle(0),
+      O => \doa_angle.first_angle[0]_i_2_n_0\
+    );
+\doa_angle.first_angle[0]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(0),
+      I1 => angle_NE(0),
+      I2 => angle_EW(19),
+      I3 => angle_WN(0),
+      I4 => angle_WN(19),
+      I5 => angle_EW(0),
+      O => \doa_angle.first_angle[0]_i_3_n_0\
+    );
+\doa_angle.first_angle[10]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(10),
+      I1 => angle_WN(10),
+      I2 => angle_EW(19),
+      I3 => angle_NE(10),
+      I4 => angle_WN(19),
+      I5 => first_angle(10),
+      O => \doa_angle.first_angle[10]_i_2_n_0\
+    );
+\doa_angle.first_angle[10]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(10),
+      I1 => angle_NE(10),
+      I2 => angle_EW(19),
+      I3 => angle_WN(10),
+      I4 => angle_WN(19),
+      I5 => angle_EW(10),
+      O => \doa_angle.first_angle[10]_i_3_n_0\
+    );
+\doa_angle.first_angle[11]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(11),
+      I1 => angle_WN(11),
+      I2 => angle_EW(19),
+      I3 => angle_NE(11),
+      I4 => angle_WN(19),
+      I5 => first_angle(11),
+      O => \doa_angle.first_angle[11]_i_2_n_0\
+    );
+\doa_angle.first_angle[11]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(11),
+      I1 => angle_NE(11),
+      I2 => angle_EW(19),
+      I3 => angle_WN(11),
+      I4 => angle_WN(19),
+      I5 => angle_EW(11),
+      O => \doa_angle.first_angle[11]_i_3_n_0\
+    );
+\doa_angle.first_angle[12]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(12),
+      I1 => angle_WN(12),
+      I2 => angle_EW(19),
+      I3 => angle_NE(12),
+      I4 => angle_WN(19),
+      I5 => first_angle(12),
+      O => \doa_angle.first_angle[12]_i_2_n_0\
+    );
+\doa_angle.first_angle[12]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(12),
+      I1 => angle_NE(12),
+      I2 => angle_EW(19),
+      I3 => angle_WN(12),
+      I4 => angle_WN(19),
+      I5 => angle_EW(12),
+      O => \doa_angle.first_angle[12]_i_3_n_0\
+    );
+\doa_angle.first_angle[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(13),
+      I1 => angle_WN(13),
+      I2 => angle_EW(19),
+      I3 => angle_NE(13),
+      I4 => angle_WN(19),
+      I5 => first_angle(13),
+      O => \doa_angle.first_angle[13]_i_2_n_0\
+    );
+\doa_angle.first_angle[13]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(13),
+      I1 => angle_NE(13),
+      I2 => angle_EW(19),
+      I3 => angle_WN(13),
+      I4 => angle_WN(19),
+      I5 => angle_EW(13),
+      O => \doa_angle.first_angle[13]_i_3_n_0\
+    );
+\doa_angle.first_angle[14]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(14),
+      I1 => angle_WN(14),
+      I2 => angle_EW(19),
+      I3 => angle_NE(14),
+      I4 => angle_WN(19),
+      I5 => first_angle(14),
+      O => \doa_angle.first_angle[14]_i_2_n_0\
+    );
+\doa_angle.first_angle[14]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(14),
+      I1 => angle_NE(14),
+      I2 => angle_EW(19),
+      I3 => angle_WN(14),
+      I4 => angle_WN(19),
+      I5 => angle_EW(14),
+      O => \doa_angle.first_angle[14]_i_3_n_0\
+    );
+\doa_angle.first_angle[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(15),
+      I1 => angle_WN(15),
+      I2 => angle_EW(19),
+      I3 => angle_NE(15),
+      I4 => angle_WN(19),
+      I5 => first_angle(15),
+      O => \doa_angle.first_angle[15]_i_2_n_0\
+    );
+\doa_angle.first_angle[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(15),
+      I1 => angle_NE(15),
+      I2 => angle_EW(19),
+      I3 => angle_WN(15),
+      I4 => angle_WN(19),
+      I5 => angle_EW(15),
+      O => \doa_angle.first_angle[15]_i_3_n_0\
+    );
+\doa_angle.first_angle[16]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(16),
+      I1 => angle_WN(16),
+      I2 => angle_EW(19),
+      I3 => angle_NE(16),
+      I4 => angle_WN(19),
+      I5 => first_angle(16),
+      O => \doa_angle.first_angle[16]_i_2_n_0\
+    );
+\doa_angle.first_angle[16]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(16),
+      I1 => angle_NE(16),
+      I2 => angle_EW(19),
+      I3 => angle_WN(16),
+      I4 => angle_WN(19),
+      I5 => angle_EW(16),
+      O => \doa_angle.first_angle[16]_i_3_n_0\
+    );
+\doa_angle.first_angle[17]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(17),
+      I1 => angle_WN(17),
+      I2 => angle_EW(19),
+      I3 => angle_NE(17),
+      I4 => angle_WN(19),
+      I5 => first_angle(17),
+      O => \doa_angle.first_angle[17]_i_2_n_0\
+    );
+\doa_angle.first_angle[17]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(17),
+      I1 => angle_NE(17),
+      I2 => angle_EW(19),
+      I3 => angle_WN(17),
+      I4 => angle_WN(19),
+      I5 => angle_EW(17),
+      O => \doa_angle.first_angle[17]_i_3_n_0\
+    );
+\doa_angle.first_angle[18]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(18),
+      I1 => angle_WN(18),
+      I2 => angle_EW(19),
+      I3 => angle_NE(18),
+      I4 => angle_WN(19),
+      I5 => first_angle(18),
+      O => \doa_angle.first_angle[18]_i_2_n_0\
+    );
+\doa_angle.first_angle[18]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(18),
+      I1 => angle_NE(18),
+      I2 => angle_EW(19),
+      I3 => angle_WN(18),
+      I4 => angle_WN(19),
+      I5 => angle_EW(18),
+      O => \doa_angle.first_angle[18]_i_3_n_0\
+    );
+\doa_angle.first_angle[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8100"
+    )
+        port map (
+      I0 => angle_NE(19),
+      I1 => angle_EW(19),
+      I2 => angle_WN(19),
+      I3 => first_angle(19),
+      O => \first_angle__0\(19)
+    );
+\doa_angle.first_angle[1]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(1),
+      I1 => angle_WN(1),
+      I2 => angle_EW(19),
+      I3 => angle_NE(1),
+      I4 => angle_WN(19),
+      I5 => first_angle(1),
+      O => \doa_angle.first_angle[1]_i_2_n_0\
+    );
+\doa_angle.first_angle[1]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(1),
+      I1 => angle_NE(1),
+      I2 => angle_EW(19),
+      I3 => angle_WN(1),
+      I4 => angle_WN(19),
+      I5 => angle_EW(1),
+      O => \doa_angle.first_angle[1]_i_3_n_0\
+    );
+\doa_angle.first_angle[2]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(2),
+      I1 => angle_WN(2),
+      I2 => angle_EW(19),
+      I3 => angle_NE(2),
+      I4 => angle_WN(19),
+      I5 => first_angle(2),
+      O => \doa_angle.first_angle[2]_i_2_n_0\
+    );
+\doa_angle.first_angle[2]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(2),
+      I1 => angle_NE(2),
+      I2 => angle_EW(19),
+      I3 => angle_WN(2),
+      I4 => angle_WN(19),
+      I5 => angle_EW(2),
+      O => \doa_angle.first_angle[2]_i_3_n_0\
+    );
+\doa_angle.first_angle[3]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(3),
+      I1 => angle_WN(3),
+      I2 => angle_EW(19),
+      I3 => angle_NE(3),
+      I4 => angle_WN(19),
+      I5 => first_angle(3),
+      O => \doa_angle.first_angle[3]_i_2_n_0\
+    );
+\doa_angle.first_angle[3]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(3),
+      I1 => angle_NE(3),
+      I2 => angle_EW(19),
+      I3 => angle_WN(3),
+      I4 => angle_WN(19),
+      I5 => angle_EW(3),
+      O => \doa_angle.first_angle[3]_i_3_n_0\
+    );
+\doa_angle.first_angle[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(4),
+      I1 => angle_WN(4),
+      I2 => angle_EW(19),
+      I3 => angle_NE(4),
+      I4 => angle_WN(19),
+      I5 => first_angle(4),
+      O => \doa_angle.first_angle[4]_i_2_n_0\
+    );
+\doa_angle.first_angle[4]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(4),
+      I1 => angle_NE(4),
+      I2 => angle_EW(19),
+      I3 => angle_WN(4),
+      I4 => angle_WN(19),
+      I5 => angle_EW(4),
+      O => \doa_angle.first_angle[4]_i_3_n_0\
+    );
+\doa_angle.first_angle[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(5),
+      I1 => angle_WN(5),
+      I2 => angle_EW(19),
+      I3 => angle_NE(5),
+      I4 => angle_WN(19),
+      I5 => first_angle(5),
+      O => \doa_angle.first_angle[5]_i_2_n_0\
+    );
+\doa_angle.first_angle[5]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(5),
+      I1 => angle_NE(5),
+      I2 => angle_EW(19),
+      I3 => angle_WN(5),
+      I4 => angle_WN(19),
+      I5 => angle_EW(5),
+      O => \doa_angle.first_angle[5]_i_3_n_0\
+    );
+\doa_angle.first_angle[6]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(6),
+      I1 => angle_WN(6),
+      I2 => angle_EW(19),
+      I3 => angle_NE(6),
+      I4 => angle_WN(19),
+      I5 => first_angle(6),
+      O => \doa_angle.first_angle[6]_i_2_n_0\
+    );
+\doa_angle.first_angle[6]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(6),
+      I1 => angle_NE(6),
+      I2 => angle_EW(19),
+      I3 => angle_WN(6),
+      I4 => angle_WN(19),
+      I5 => angle_EW(6),
+      O => \doa_angle.first_angle[6]_i_3_n_0\
+    );
+\doa_angle.first_angle[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(7),
+      I1 => angle_WN(7),
+      I2 => angle_EW(19),
+      I3 => angle_NE(7),
+      I4 => angle_WN(19),
+      I5 => first_angle(7),
+      O => \doa_angle.first_angle[7]_i_2_n_0\
+    );
+\doa_angle.first_angle[7]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(7),
+      I1 => angle_NE(7),
+      I2 => angle_EW(19),
+      I3 => angle_WN(7),
+      I4 => angle_WN(19),
+      I5 => angle_EW(7),
+      O => \doa_angle.first_angle[7]_i_3_n_0\
+    );
+\doa_angle.first_angle[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(8),
+      I1 => angle_WN(8),
+      I2 => angle_EW(19),
+      I3 => angle_NE(8),
+      I4 => angle_WN(19),
+      I5 => first_angle(8),
+      O => \doa_angle.first_angle[8]_i_2_n_0\
+    );
+\doa_angle.first_angle[8]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(8),
+      I1 => angle_NE(8),
+      I2 => angle_EW(19),
+      I3 => angle_WN(8),
+      I4 => angle_WN(19),
+      I5 => angle_EW(8),
+      O => \doa_angle.first_angle[8]_i_3_n_0\
+    );
+\doa_angle.first_angle[9]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_EW(9),
+      I1 => angle_WN(9),
+      I2 => angle_EW(19),
+      I3 => angle_NE(9),
+      I4 => angle_WN(19),
+      I5 => first_angle(9),
+      O => \doa_angle.first_angle[9]_i_2_n_0\
+    );
+\doa_angle.first_angle[9]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => first_angle(9),
+      I1 => angle_NE(9),
+      I2 => angle_EW(19),
+      I3 => angle_WN(9),
+      I4 => angle_WN(19),
+      I5 => angle_EW(9),
+      O => \doa_angle.first_angle[9]_i_3_n_0\
+    );
+\doa_angle.first_angle_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(0),
+      Q => first_angle(0),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[0]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[0]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[0]_i_3_n_0\,
+      O => \first_angle__0\(0),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(10),
+      Q => first_angle(10),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[10]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[10]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[10]_i_3_n_0\,
+      O => \first_angle__0\(10),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(11),
+      Q => first_angle(11),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[11]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[11]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[11]_i_3_n_0\,
+      O => \first_angle__0\(11),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(12),
+      Q => first_angle(12),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[12]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[12]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[12]_i_3_n_0\,
+      O => \first_angle__0\(12),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(13),
+      Q => first_angle(13),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[13]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[13]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[13]_i_3_n_0\,
+      O => \first_angle__0\(13),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(14),
+      Q => first_angle(14),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[14]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[14]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[14]_i_3_n_0\,
+      O => \first_angle__0\(14),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(15),
+      Q => first_angle(15),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[15]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[15]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[15]_i_3_n_0\,
+      O => \first_angle__0\(15),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(16),
+      Q => first_angle(16),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[16]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[16]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[16]_i_3_n_0\,
+      O => \first_angle__0\(16),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(17),
+      Q => first_angle(17),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[17]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[17]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[17]_i_3_n_0\,
+      O => \first_angle__0\(17),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(18),
+      Q => first_angle(18),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[18]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[18]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[18]_i_3_n_0\,
+      O => \first_angle__0\(18),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(19),
+      Q => first_angle(19),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(1),
+      Q => first_angle(1),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[1]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[1]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[1]_i_3_n_0\,
+      O => \first_angle__0\(1),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(2),
+      Q => first_angle(2),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[2]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[2]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[2]_i_3_n_0\,
+      O => \first_angle__0\(2),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(3),
+      Q => first_angle(3),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[3]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[3]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[3]_i_3_n_0\,
+      O => \first_angle__0\(3),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(4),
+      Q => first_angle(4),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[4]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[4]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[4]_i_3_n_0\,
+      O => \first_angle__0\(4),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(5),
+      Q => first_angle(5),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[5]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[5]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[5]_i_3_n_0\,
+      O => \first_angle__0\(5),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(6),
+      Q => first_angle(6),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[6]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[6]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[6]_i_3_n_0\,
+      O => \first_angle__0\(6),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(7),
+      Q => first_angle(7),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[7]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[7]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[7]_i_3_n_0\,
+      O => \first_angle__0\(7),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(8),
+      Q => first_angle(8),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[8]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[8]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[8]_i_3_n_0\,
+      O => \first_angle__0\(8),
+      S => angle_NE(19)
+    );
+\doa_angle.first_angle_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \first_angle__0\(9),
+      Q => first_angle(9),
+      R => '0'
+    );
+\doa_angle.first_angle_reg[9]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.first_angle[9]_i_2_n_0\,
+      I1 => \doa_angle.first_angle[9]_i_3_n_0\,
+      O => \first_angle__0\(9),
+      S => angle_NE(19)
+    );
+\doa_angle.front_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => diff_angle(19),
+      I1 => sign,
+      O => \doa_angle.front_i_1_n_0\
+    );
+\doa_angle.front_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(1),
+      D => \doa_angle.front_i_1_n_0\,
+      Q => front,
+      R => '0'
+    );
+\doa_angle.id[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9198"
+    )
+        port map (
+      I0 => angle_WN(19),
+      I1 => angle_EW(19),
+      I2 => id(0),
+      I3 => angle_NE(19),
+      O => \doa_angle.id[0]_i_1_n_0\
+    );
+\doa_angle.id[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9198"
+    )
+        port map (
+      I0 => angle_WN(19),
+      I1 => angle_NE(19),
+      I2 => id(1),
+      I3 => angle_EW(19),
+      O => \doa_angle.id[1]_i_1_n_0\
+    );
+\doa_angle.id_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \doa_angle.id[0]_i_1_n_0\,
+      Q => id(0),
+      R => '0'
+    );
+\doa_angle.id_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \doa_angle.id[1]_i_1_n_0\,
+      Q => id(1),
+      R => '0'
+    );
+\doa_angle.run[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7E00"
+    )
+        port map (
+      I0 => angle_WN(19),
+      I1 => angle_NE(19),
+      I2 => angle_EW(19),
+      I3 => start,
+      O => \doa_angle.run[0]_i_1_n_0\
+    );
+\doa_angle.run[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => run(0),
+      I1 => start,
+      O => \doa_angle.run[1]_i_1_n_0\
+    );
+\doa_angle.run[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => run(1),
+      I1 => start,
+      O => \doa_angle.run[2]_i_1_n_0\
+    );
+\doa_angle.run[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => run(2),
+      I1 => start,
+      O => \doa_angle.run[3]_i_1_n_0\
+    );
+\doa_angle.run[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => reset,
+      I1 => start,
+      O => \doa_angle.run[4]_i_1_n_0\
+    );
+\doa_angle.run[4]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => run(3),
+      I1 => start,
+      O => \doa_angle.run[4]_i_2_n_0\
+    );
+\doa_angle.run_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \doa_angle.run[0]_i_1_n_0\,
+      Q => run(0),
+      R => '0'
+    );
+\doa_angle.run_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \doa_angle.run[1]_i_1_n_0\,
+      Q => run(1),
+      R => \doa_angle.run[4]_i_1_n_0\
+    );
+\doa_angle.run_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \doa_angle.run[2]_i_1_n_0\,
+      Q => run(2),
+      R => \doa_angle.run[4]_i_1_n_0\
+    );
+\doa_angle.run_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \doa_angle.run[3]_i_1_n_0\,
+      Q => run(3),
+      R => \doa_angle.run[4]_i_1_n_0\
+    );
+\doa_angle.run_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \doa_angle.run[4]_i_2_n_0\,
+      Q => run(4),
+      R => \doa_angle.run[4]_i_1_n_0\
+    );
+\doa_angle.second_angle[0]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(0),
+      I1 => angle_NE(0),
+      I2 => angle_EW(19),
+      I3 => angle_EW(0),
+      I4 => angle_WN(19),
+      I5 => second_angle(0),
+      O => \doa_angle.second_angle[0]_i_2_n_0\
+    );
+\doa_angle.second_angle[0]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(0),
+      I1 => angle_EW(0),
+      I2 => angle_EW(19),
+      I3 => angle_NE(0),
+      I4 => angle_WN(19),
+      I5 => angle_WN(0),
+      O => \doa_angle.second_angle[0]_i_3_n_0\
+    );
+\doa_angle.second_angle[10]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(10),
+      I1 => angle_NE(10),
+      I2 => angle_EW(19),
+      I3 => angle_EW(10),
+      I4 => angle_WN(19),
+      I5 => second_angle(10),
+      O => \doa_angle.second_angle[10]_i_2_n_0\
+    );
+\doa_angle.second_angle[10]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(10),
+      I1 => angle_EW(10),
+      I2 => angle_EW(19),
+      I3 => angle_NE(10),
+      I4 => angle_WN(19),
+      I5 => angle_WN(10),
+      O => \doa_angle.second_angle[10]_i_3_n_0\
+    );
+\doa_angle.second_angle[11]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(11),
+      I1 => angle_NE(11),
+      I2 => angle_EW(19),
+      I3 => angle_EW(11),
+      I4 => angle_WN(19),
+      I5 => second_angle(11),
+      O => \doa_angle.second_angle[11]_i_2_n_0\
+    );
+\doa_angle.second_angle[11]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(11),
+      I1 => angle_EW(11),
+      I2 => angle_EW(19),
+      I3 => angle_NE(11),
+      I4 => angle_WN(19),
+      I5 => angle_WN(11),
+      O => \doa_angle.second_angle[11]_i_3_n_0\
+    );
+\doa_angle.second_angle[12]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(12),
+      I1 => angle_NE(12),
+      I2 => angle_EW(19),
+      I3 => angle_EW(12),
+      I4 => angle_WN(19),
+      I5 => second_angle(12),
+      O => \doa_angle.second_angle[12]_i_2_n_0\
+    );
+\doa_angle.second_angle[12]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(12),
+      I1 => angle_EW(12),
+      I2 => angle_EW(19),
+      I3 => angle_NE(12),
+      I4 => angle_WN(19),
+      I5 => angle_WN(12),
+      O => \doa_angle.second_angle[12]_i_3_n_0\
+    );
+\doa_angle.second_angle[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(13),
+      I1 => angle_NE(13),
+      I2 => angle_EW(19),
+      I3 => angle_EW(13),
+      I4 => angle_WN(19),
+      I5 => second_angle(13),
+      O => \doa_angle.second_angle[13]_i_2_n_0\
+    );
+\doa_angle.second_angle[13]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(13),
+      I1 => angle_EW(13),
+      I2 => angle_EW(19),
+      I3 => angle_NE(13),
+      I4 => angle_WN(19),
+      I5 => angle_WN(13),
+      O => \doa_angle.second_angle[13]_i_3_n_0\
+    );
+\doa_angle.second_angle[14]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(14),
+      I1 => angle_NE(14),
+      I2 => angle_EW(19),
+      I3 => angle_EW(14),
+      I4 => angle_WN(19),
+      I5 => second_angle(14),
+      O => \doa_angle.second_angle[14]_i_2_n_0\
+    );
+\doa_angle.second_angle[14]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(14),
+      I1 => angle_EW(14),
+      I2 => angle_EW(19),
+      I3 => angle_NE(14),
+      I4 => angle_WN(19),
+      I5 => angle_WN(14),
+      O => \doa_angle.second_angle[14]_i_3_n_0\
+    );
+\doa_angle.second_angle[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(15),
+      I1 => angle_NE(15),
+      I2 => angle_EW(19),
+      I3 => angle_EW(15),
+      I4 => angle_WN(19),
+      I5 => second_angle(15),
+      O => \doa_angle.second_angle[15]_i_2_n_0\
+    );
+\doa_angle.second_angle[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(15),
+      I1 => angle_EW(15),
+      I2 => angle_EW(19),
+      I3 => angle_NE(15),
+      I4 => angle_WN(19),
+      I5 => angle_WN(15),
+      O => \doa_angle.second_angle[15]_i_3_n_0\
+    );
+\doa_angle.second_angle[16]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(16),
+      I1 => angle_NE(16),
+      I2 => angle_EW(19),
+      I3 => angle_EW(16),
+      I4 => angle_WN(19),
+      I5 => second_angle(16),
+      O => \doa_angle.second_angle[16]_i_2_n_0\
+    );
+\doa_angle.second_angle[16]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(16),
+      I1 => angle_EW(16),
+      I2 => angle_EW(19),
+      I3 => angle_NE(16),
+      I4 => angle_WN(19),
+      I5 => angle_WN(16),
+      O => \doa_angle.second_angle[16]_i_3_n_0\
+    );
+\doa_angle.second_angle[17]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(17),
+      I1 => angle_NE(17),
+      I2 => angle_EW(19),
+      I3 => angle_EW(17),
+      I4 => angle_WN(19),
+      I5 => second_angle(17),
+      O => \doa_angle.second_angle[17]_i_2_n_0\
+    );
+\doa_angle.second_angle[17]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(17),
+      I1 => angle_EW(17),
+      I2 => angle_EW(19),
+      I3 => angle_NE(17),
+      I4 => angle_WN(19),
+      I5 => angle_WN(17),
+      O => \doa_angle.second_angle[17]_i_3_n_0\
+    );
+\doa_angle.second_angle[18]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(18),
+      I1 => angle_NE(18),
+      I2 => angle_EW(19),
+      I3 => angle_EW(18),
+      I4 => angle_WN(19),
+      I5 => second_angle(18),
+      O => \doa_angle.second_angle[18]_i_2_n_0\
+    );
+\doa_angle.second_angle[18]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(18),
+      I1 => angle_EW(18),
+      I2 => angle_EW(19),
+      I3 => angle_NE(18),
+      I4 => angle_WN(19),
+      I5 => angle_WN(18),
+      O => \doa_angle.second_angle[18]_i_3_n_0\
+    );
+\doa_angle.second_angle[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8100"
+    )
+        port map (
+      I0 => angle_NE(19),
+      I1 => angle_EW(19),
+      I2 => angle_WN(19),
+      I3 => second_angle(19),
+      O => \second_angle__0\(19)
+    );
+\doa_angle.second_angle[1]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(1),
+      I1 => angle_NE(1),
+      I2 => angle_EW(19),
+      I3 => angle_EW(1),
+      I4 => angle_WN(19),
+      I5 => second_angle(1),
+      O => \doa_angle.second_angle[1]_i_2_n_0\
+    );
+\doa_angle.second_angle[1]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(1),
+      I1 => angle_EW(1),
+      I2 => angle_EW(19),
+      I3 => angle_NE(1),
+      I4 => angle_WN(19),
+      I5 => angle_WN(1),
+      O => \doa_angle.second_angle[1]_i_3_n_0\
+    );
+\doa_angle.second_angle[2]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(2),
+      I1 => angle_NE(2),
+      I2 => angle_EW(19),
+      I3 => angle_EW(2),
+      I4 => angle_WN(19),
+      I5 => second_angle(2),
+      O => \doa_angle.second_angle[2]_i_2_n_0\
+    );
+\doa_angle.second_angle[2]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(2),
+      I1 => angle_EW(2),
+      I2 => angle_EW(19),
+      I3 => angle_NE(2),
+      I4 => angle_WN(19),
+      I5 => angle_WN(2),
+      O => \doa_angle.second_angle[2]_i_3_n_0\
+    );
+\doa_angle.second_angle[3]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(3),
+      I1 => angle_NE(3),
+      I2 => angle_EW(19),
+      I3 => angle_EW(3),
+      I4 => angle_WN(19),
+      I5 => second_angle(3),
+      O => \doa_angle.second_angle[3]_i_2_n_0\
+    );
+\doa_angle.second_angle[3]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(3),
+      I1 => angle_EW(3),
+      I2 => angle_EW(19),
+      I3 => angle_NE(3),
+      I4 => angle_WN(19),
+      I5 => angle_WN(3),
+      O => \doa_angle.second_angle[3]_i_3_n_0\
+    );
+\doa_angle.second_angle[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(4),
+      I1 => angle_NE(4),
+      I2 => angle_EW(19),
+      I3 => angle_EW(4),
+      I4 => angle_WN(19),
+      I5 => second_angle(4),
+      O => \doa_angle.second_angle[4]_i_2_n_0\
+    );
+\doa_angle.second_angle[4]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(4),
+      I1 => angle_EW(4),
+      I2 => angle_EW(19),
+      I3 => angle_NE(4),
+      I4 => angle_WN(19),
+      I5 => angle_WN(4),
+      O => \doa_angle.second_angle[4]_i_3_n_0\
+    );
+\doa_angle.second_angle[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(5),
+      I1 => angle_NE(5),
+      I2 => angle_EW(19),
+      I3 => angle_EW(5),
+      I4 => angle_WN(19),
+      I5 => second_angle(5),
+      O => \doa_angle.second_angle[5]_i_2_n_0\
+    );
+\doa_angle.second_angle[5]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(5),
+      I1 => angle_EW(5),
+      I2 => angle_EW(19),
+      I3 => angle_NE(5),
+      I4 => angle_WN(19),
+      I5 => angle_WN(5),
+      O => \doa_angle.second_angle[5]_i_3_n_0\
+    );
+\doa_angle.second_angle[6]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(6),
+      I1 => angle_NE(6),
+      I2 => angle_EW(19),
+      I3 => angle_EW(6),
+      I4 => angle_WN(19),
+      I5 => second_angle(6),
+      O => \doa_angle.second_angle[6]_i_2_n_0\
+    );
+\doa_angle.second_angle[6]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(6),
+      I1 => angle_EW(6),
+      I2 => angle_EW(19),
+      I3 => angle_NE(6),
+      I4 => angle_WN(19),
+      I5 => angle_WN(6),
+      O => \doa_angle.second_angle[6]_i_3_n_0\
+    );
+\doa_angle.second_angle[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(7),
+      I1 => angle_NE(7),
+      I2 => angle_EW(19),
+      I3 => angle_EW(7),
+      I4 => angle_WN(19),
+      I5 => second_angle(7),
+      O => \doa_angle.second_angle[7]_i_2_n_0\
+    );
+\doa_angle.second_angle[7]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(7),
+      I1 => angle_EW(7),
+      I2 => angle_EW(19),
+      I3 => angle_NE(7),
+      I4 => angle_WN(19),
+      I5 => angle_WN(7),
+      O => \doa_angle.second_angle[7]_i_3_n_0\
+    );
+\doa_angle.second_angle[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(8),
+      I1 => angle_NE(8),
+      I2 => angle_EW(19),
+      I3 => angle_EW(8),
+      I4 => angle_WN(19),
+      I5 => second_angle(8),
+      O => \doa_angle.second_angle[8]_i_2_n_0\
+    );
+\doa_angle.second_angle[8]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(8),
+      I1 => angle_EW(8),
+      I2 => angle_EW(19),
+      I3 => angle_NE(8),
+      I4 => angle_WN(19),
+      I5 => angle_WN(8),
+      O => \doa_angle.second_angle[8]_i_3_n_0\
+    );
+\doa_angle.second_angle[9]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5F50CFCF5F50C0C0"
+    )
+        port map (
+      I0 => angle_WN(9),
+      I1 => angle_NE(9),
+      I2 => angle_EW(19),
+      I3 => angle_EW(9),
+      I4 => angle_WN(19),
+      I5 => second_angle(9),
+      O => \doa_angle.second_angle[9]_i_2_n_0\
+    );
+\doa_angle.second_angle[9]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A0AF3F3FA0AF3030"
+    )
+        port map (
+      I0 => second_angle(9),
+      I1 => angle_EW(9),
+      I2 => angle_EW(19),
+      I3 => angle_NE(9),
+      I4 => angle_WN(19),
+      I5 => angle_WN(9),
+      O => \doa_angle.second_angle[9]_i_3_n_0\
+    );
+\doa_angle.second_angle_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(0),
+      Q => second_angle(0),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[0]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[0]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[0]_i_3_n_0\,
+      O => \second_angle__0\(0),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(10),
+      Q => second_angle(10),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[10]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[10]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[10]_i_3_n_0\,
+      O => \second_angle__0\(10),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(11),
+      Q => second_angle(11),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[11]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[11]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[11]_i_3_n_0\,
+      O => \second_angle__0\(11),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(12),
+      Q => second_angle(12),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[12]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[12]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[12]_i_3_n_0\,
+      O => \second_angle__0\(12),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(13),
+      Q => second_angle(13),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[13]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[13]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[13]_i_3_n_0\,
+      O => \second_angle__0\(13),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(14),
+      Q => second_angle(14),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[14]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[14]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[14]_i_3_n_0\,
+      O => \second_angle__0\(14),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(15),
+      Q => second_angle(15),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[15]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[15]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[15]_i_3_n_0\,
+      O => \second_angle__0\(15),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(16),
+      Q => second_angle(16),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[16]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[16]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[16]_i_3_n_0\,
+      O => \second_angle__0\(16),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(17),
+      Q => second_angle(17),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[17]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[17]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[17]_i_3_n_0\,
+      O => \second_angle__0\(17),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(18),
+      Q => second_angle(18),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[18]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[18]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[18]_i_3_n_0\,
+      O => \second_angle__0\(18),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(19),
+      Q => second_angle(19),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(1),
+      Q => second_angle(1),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[1]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[1]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[1]_i_3_n_0\,
+      O => \second_angle__0\(1),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(2),
+      Q => second_angle(2),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[2]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[2]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[2]_i_3_n_0\,
+      O => \second_angle__0\(2),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(3),
+      Q => second_angle(3),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[3]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[3]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[3]_i_3_n_0\,
+      O => \second_angle__0\(3),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(4),
+      Q => second_angle(4),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[4]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[4]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[4]_i_3_n_0\,
+      O => \second_angle__0\(4),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(5),
+      Q => second_angle(5),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[5]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[5]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[5]_i_3_n_0\,
+      O => \second_angle__0\(5),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(6),
+      Q => second_angle(6),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[6]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[6]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[6]_i_3_n_0\,
+      O => \second_angle__0\(6),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(7),
+      Q => second_angle(7),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[7]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[7]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[7]_i_3_n_0\,
+      O => \second_angle__0\(7),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(8),
+      Q => second_angle(8),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[8]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[8]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[8]_i_3_n_0\,
+      O => \second_angle__0\(8),
+      S => angle_NE(19)
+    );
+\doa_angle.second_angle_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \second_angle__0\(9),
+      Q => second_angle(9),
+      R => '0'
+    );
+\doa_angle.second_angle_reg[9]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \doa_angle.second_angle[9]_i_2_n_0\,
+      I1 => \doa_angle.second_angle[9]_i_3_n_0\,
+      O => \second_angle__0\(9),
+      S => angle_NE(19)
+    );
+\doa_angle.sign_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"BCC2"
+    )
+        port map (
+      I0 => sign,
+      I1 => angle_NE(19),
+      I2 => angle_EW(19),
+      I3 => angle_WN(19),
+      O => \doa_angle.sign_i_1_n_0\
+    );
+\doa_angle.sign_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => start,
+      D => \doa_angle.sign_i_1_n_0\,
+      Q => sign,
+      R => '0'
+    );
+\doa_angle.use_angle[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(1),
+      I1 => angle_NE(1),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(1),
+      O => \doa_angle.use_angle[0]_i_1_n_0\
+    );
+\doa_angle.use_angle[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(11),
+      I1 => angle_NE(11),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(11),
+      O => \doa_angle.use_angle[10]_i_1_n_0\
+    );
+\doa_angle.use_angle[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(12),
+      I1 => angle_NE(12),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(12),
+      O => \doa_angle.use_angle[11]_i_1_n_0\
+    );
+\doa_angle.use_angle[12]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(13),
+      I1 => angle_NE(13),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(13),
+      O => \doa_angle.use_angle[12]_i_1_n_0\
+    );
+\doa_angle.use_angle[13]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(14),
+      I1 => angle_NE(14),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(14),
+      O => \doa_angle.use_angle[13]_i_1_n_0\
+    );
+\doa_angle.use_angle[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(15),
+      I1 => angle_NE(15),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(15),
+      O => \doa_angle.use_angle[14]_i_1_n_0\
+    );
+\doa_angle.use_angle[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(16),
+      I1 => angle_NE(16),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(16),
+      O => \doa_angle.use_angle[15]_i_1_n_0\
+    );
+\doa_angle.use_angle[16]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(17),
+      I1 => angle_NE(17),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(17),
+      O => \doa_angle.use_angle[16]_i_1_n_0\
+    );
+\doa_angle.use_angle[17]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(18),
+      I1 => angle_NE(18),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(18),
+      O => \doa_angle.use_angle[17]_i_1_n_0\
+    );
+\doa_angle.use_angle[19]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(19),
+      I1 => angle_NE(19),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(19),
+      O => \doa_angle.use_angle[19]_i_1_n_0\
+    );
+\doa_angle.use_angle[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(2),
+      I1 => angle_NE(2),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(2),
+      O => \doa_angle.use_angle[1]_i_1_n_0\
+    );
+\doa_angle.use_angle[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(3),
+      I1 => angle_NE(3),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(3),
+      O => \doa_angle.use_angle[2]_i_1_n_0\
+    );
+\doa_angle.use_angle[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(4),
+      I1 => angle_NE(4),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(4),
+      O => \doa_angle.use_angle[3]_i_1_n_0\
+    );
+\doa_angle.use_angle[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(5),
+      I1 => angle_NE(5),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(5),
+      O => \doa_angle.use_angle[4]_i_1_n_0\
+    );
+\doa_angle.use_angle[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(6),
+      I1 => angle_NE(6),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(6),
+      O => \doa_angle.use_angle[5]_i_1_n_0\
+    );
+\doa_angle.use_angle[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(7),
+      I1 => angle_NE(7),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(7),
+      O => \doa_angle.use_angle[6]_i_1_n_0\
+    );
+\doa_angle.use_angle[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(8),
+      I1 => angle_NE(8),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(8),
+      O => \doa_angle.use_angle[7]_i_1_n_0\
+    );
+\doa_angle.use_angle[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(9),
+      I1 => angle_NE(9),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(9),
+      O => \doa_angle.use_angle[8]_i_1_n_0\
+    );
+\doa_angle.use_angle[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CAFCCA0C"
+    )
+        port map (
+      I0 => angle_EW(10),
+      I1 => angle_NE(10),
+      I2 => use_id(1),
+      I3 => use_id(0),
+      I4 => angle_WN(10),
+      O => \doa_angle.use_angle[9]_i_1_n_0\
+    );
+\doa_angle.use_angle_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[0]_i_1_n_0\,
+      Q => use_angle(0),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[10]_i_1_n_0\,
+      Q => use_angle(10),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[11]_i_1_n_0\,
+      Q => use_angle(11),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[12]_i_1_n_0\,
+      Q => use_angle(12),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[13]_i_1_n_0\,
+      Q => use_angle(13),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[14]_i_1_n_0\,
+      Q => use_angle(14),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[15]_i_1_n_0\,
+      Q => use_angle(15),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[16]_i_1_n_0\,
+      Q => use_angle(16),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[17]_i_1_n_0\,
+      Q => use_angle(17),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[19]_i_1_n_0\,
+      Q => use_angle(18),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[19]_i_1_n_0\,
+      Q => use_angle(19),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[1]_i_1_n_0\,
+      Q => use_angle(1),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[2]_i_1_n_0\,
+      Q => use_angle(2),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[3]_i_1_n_0\,
+      Q => use_angle(3),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[4]_i_1_n_0\,
+      Q => use_angle(4),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[5]_i_1_n_0\,
+      Q => use_angle(5),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[6]_i_1_n_0\,
+      Q => use_angle(6),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[7]_i_1_n_0\,
+      Q => use_angle(7),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[8]_i_1_n_0\,
+      Q => use_angle(8),
+      R => '0'
+    );
+\doa_angle.use_angle_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(2),
+      D => \doa_angle.use_angle[9]_i_1_n_0\,
+      Q => use_angle(9),
+      R => '0'
+    );
+\doa_angle.use_id[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => id(0),
+      I1 => diff_angle(19),
+      O => \doa_angle.use_id[0]_i_1_n_0\
+    );
+\doa_angle.use_id[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B4"
+    )
+        port map (
+      I0 => diff_angle(19),
+      I1 => id(0),
+      I2 => id(1),
+      O => \use_id__0\(1)
+    );
+\doa_angle.use_id_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(1),
+      D => \doa_angle.use_id[0]_i_1_n_0\,
+      Q => use_id(0),
+      R => '0'
+    );
+\doa_angle.use_id_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => run(1),
+      D => \use_id__0\(1),
+      Q => use_id(1),
+      R => '0'
+    );
+ila_0_i: component ps_comp_low_0_0_ila_0
+     port map (
+      clk => clk,
+      probe0(0) => start,
+      probe1(4 downto 0) => run(4 downto 0),
+      probe10(19 downto 0) => diff_angle(19 downto 0),
+      probe11(19 downto 0) => use_angle(19 downto 0),
+      probe12(1 downto 0) => use_id(1 downto 0),
+      probe13(19 downto 0) => base_angle(19 downto 0),
+      probe14(19 downto 0) => \^angle\(19 downto 0),
+      probe2(0) => front,
+      probe3(19 downto 0) => angle_NE(19 downto 0),
+      probe4(19 downto 0) => angle_EW(19 downto 0),
+      probe5(19 downto 0) => angle_WN(19 downto 0),
+      probe6(0) => sign,
+      probe7(1 downto 0) => id(1 downto 0),
+      probe8(19 downto 0) => first_angle(19 downto 0),
+      probe9(19 downto 0) => second_angle(19 downto 0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
 entity ps_comp_low_0_0_doa_pair is
   port (
     clk : in STD_LOGIC;
@@ -31338,6 +35178,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal k : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of k : signal is std.standard.true;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal p_3_out : STD_LOGIC;
   signal shadow_EW : STD_LOGIC;
   attribute MARK_DEBUG of shadow_EW : signal is std.standard.true;
   signal shadow_NE : STD_LOGIC;
@@ -31352,6 +35193,8 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal NLW_doa_EW_i_fail_UNCONNECTED : STD_LOGIC;
   signal NLW_doa_NE_i_fail_UNCONNECTED : STD_LOGIC;
   signal NLW_doa_WN_i_fail_UNCONNECTED : STD_LOGIC;
+  signal NLW_doa_angle_i_done_UNCONNECTED : STD_LOGIC;
+  signal NLW_doa_angle_i_angle_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of div_k_i : label is "div_k,div_gen_v5_1_24,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -31361,6 +35204,19 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute KEEP_HIERARCHY of doa_EW_i : label is "soft";
   attribute KEEP_HIERARCHY of doa_NE_i : label is "soft";
   attribute KEEP_HIERARCHY of doa_WN_i : label is "soft";
+  attribute ANGLE_0 : string;
+  attribute ANGLE_0 of doa_angle_i : label is "20'b00000000000000000000";
+  attribute ANGLE_120 : string;
+  attribute ANGLE_120 of doa_angle_i : label is "20'b01010101010101010101";
+  attribute ANGLE_180 : string;
+  attribute ANGLE_180 of doa_angle_i : label is "20'b10000000000000000000";
+  attribute ANGLE_240 : string;
+  attribute ANGLE_240 of doa_angle_i : label is "20'b10101010101010101011";
+  attribute ANGLE_300 : string;
+  attribute ANGLE_300 of doa_angle_i : label is "20'b11010101010101010101";
+  attribute ANGLE_60 : string;
+  attribute ANGLE_60 of doa_angle_i : label is "20'b00101010101010101011";
+  attribute KEEP_HIERARCHY of doa_angle_i : label is "soft";
   attribute KEEP : string;
   attribute KEEP of \doa_calc.inv_dij_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -31524,6 +35380,30 @@ doa_WN_i: entity work.ps_comp_low_0_0_doa_pair
       shadow => shadow_WN,
       shadow_limit(19 downto 0) => shadow_limit(19 downto 0),
       start => valid_k
+    );
+doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
+     port map (
+      angle(19 downto 0) => NLW_doa_angle_i_angle_UNCONNECTED(19 downto 0),
+      angle_EW(19 downto 0) => angle_EW(19 downto 0),
+      angle_NE(19 downto 0) => angle_NE(19 downto 0),
+      angle_WN(19 downto 0) => angle_WN(19 downto 0),
+      clk => clk,
+      done => NLW_doa_angle_i_done_UNCONNECTED,
+      reset => reset,
+      shadow_EW => '0',
+      shadow_NE => '0',
+      shadow_WN => '0',
+      start => p_3_out
+    );
+doa_angle_i_i_1: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
+    )
+        port map (
+      I0 => done_EW,
+      I1 => done_NE,
+      I2 => done_WN,
+      O => p_3_out
     );
 \doa_calc.inv_dij[0]_i_1\: unisim.vcomponents.LUT5
     generic map(

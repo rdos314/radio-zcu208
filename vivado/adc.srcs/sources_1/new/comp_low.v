@@ -34,7 +34,7 @@ module comp_low(
     input wire clk,
     input wire reset
     );
-
+    
   reg sample_rd;
   wire [191:0] sample_data;
   wire fifo_sample_empty;
