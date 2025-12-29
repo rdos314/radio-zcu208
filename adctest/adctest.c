@@ -377,6 +377,9 @@ int CalcShadowAngle(double angle)
 
 int main()
 {
+    int i;
+    double a;
+
     SetConfig(CONFIG_MIN_ENV, 25, 25);
     SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0, 8), CalcIncr(185.0, 8));
     SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0, 8), CalcIncr(195.0, 8));
@@ -386,17 +389,22 @@ int main()
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
     LoadConfig();
 
-	LoadLowZero(46.0, 40.0);
-	LoadLowMorlet(46.0, 5.0, 25000, 170.0);
-//	LoadLowCos(46.0, 30.0, 25000, 45.0);
-	LoadLowZero(46.0, 30.0);
+    for (i = 0; i < 36; i++)
+    {
+        a = (double)i * 10.0;
 
-	LoadHighZero(189.0, 120.0);
-	LoadHighMorlet(189.0, 20.0, 25000, 170.0);
-//	LoadHighCos(189.0, 120.0, 25000, 45.0);
-	LoadHighZero(189.0, 120.0);
+    	LoadLowZero(46.0, 40.0);
+	    LoadLowMorlet(46.0, 5.0, 25000, a);
+//	    LoadLowCos(46.0, 30.0, 25000, 45.0);
+    	LoadLowZero(46.0, 30.0);
 
-	StartSim();
+	    LoadHighZero(189.0, 120.0);
+	    LoadHighMorlet(189.0, 20.0, 25000, a);
+//  	LoadHighCos(189.0, 120.0, 25000, 45.0);
+	    LoadHighZero(189.0, 120.0);
+
+    	StartSim();
+    }
 
     return 0;
 }

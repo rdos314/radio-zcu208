@@ -11,13 +11,13 @@
    <zoom_setting>
       <ZoomStartTime time="501"></ZoomStartTime>
       <ZoomEndTime time="525"></ZoomEndTime>
-      <Cursor1Time time="512"></Cursor1Time>
+      <Cursor1Time time="520"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="376"></NameColumnWidth>
+      <NameColumnWidth column_width="372"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="21" />
    <wave_markers>
    </wave_markers>
    <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/angle_EW" type="array">
@@ -64,7 +64,7 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/second_angle[19:0]</obj_property>
       <obj_property name="ObjectShortName">second_angle[19:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -80,14 +80,6 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/angle[19:0]</obj_property>
       <obj_property name="ObjectShortName">angle[19:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/base_angle" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/base_angle[19:0]</obj_property>
-      <obj_property name="ObjectShortName">base_angle[19:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -109,9 +101,52 @@
    </wvobject>
    <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/run" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/run[4:0]</obj_property>
-      <obj_property name="ObjectShortName">run[4:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/run[3:0]</obj_property>
+      <obj_property name="ObjectShortName">run[3:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow</obj_property>
+      <obj_property name="ObjectShortName">shadow</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_E" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_E</obj_property>
+      <obj_property name="ObjectShortName">shadow_E</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_err" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_err</obj_property>
+      <obj_property name="ObjectShortName">shadow_err</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_id" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_id[1:0]</obj_property>
+      <obj_property name="ObjectShortName">shadow_id[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_N" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_N</obj_property>
+      <obj_property name="ObjectShortName">shadow_N</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_W" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/shadow_W</obj_property>
+      <obj_property name="ObjectShortName">shadow_W</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -134,6 +169,14 @@
       <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/use_id[1:0]</obj_property>
       <obj_property name="ObjectShortName">use_id[1:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_low/inst/doa_calc_i/doa_angle_i/base_angle" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_calc_i/doa_angle_i/base_angle[19:0]</obj_property>
+      <obj_property name="ObjectShortName">base_angle[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

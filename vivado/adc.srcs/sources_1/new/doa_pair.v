@@ -13,7 +13,7 @@
 // geometric shadowing based on proximity to endfire reception.
 //
 // The design is fully pipelined with fixed latency and intended to be
-// instantiated multiple times (e.g. NE, NW, EW antenna pairs) operating
+// instantiated multiple times (e.g. NE, EW, WN antenna pairs) operating
 // in parallel.
 //
 // ----------------------------------------------------------------------------
@@ -22,29 +22,32 @@
 //   x = k * phase
 //   angle ≈ asin(x)
 //
-// where x is constrained to approximately ±1.5 by saturation logic.
+// where x is constrained to approximately ±1.0 by saturation logic.
 //
 // ----------------------------------------------------------------------------
 // Fixed-Point Formats:
 // --------------------
 //
-//   phase        : unsigned Q1.19
-//                  - Represents normalized phase difference
+//   phase        : signed Q0.19
+//                  - Represents phase difference
 //                  - Nominal range: [-0.5, +0.5]
-//                  - Encoded as unsigned with two’s-complement interpretation
+//                  - Encoded as signed with two’s-complement interpretation
 //
-//   k            : unsigned Q1.19
+//   k            : unsigned Q4.16
 //                  - Geometry-dependent scaling factor
+//                  - Nominal range: [0.0, +16.0]
 //                  - Converts phase difference into sin(theta)
 //
-//   x            : signed Q1.19
+//   x            : signed Q1.18
 //                  - Internal scaled phase value
+//                  - Nominal range: [-1.0, +1.0]
 //
-//   shadow_limit : unsigned Q1.19
+//   shadow_limit : unsigned Q0.19
+//                  - Nominal range: [0.0, +0.25]
 //                  - Threshold applied to |1 − |x||
 //                  - Typically derived as (1 − cos(shadow_angle))
 //
-//   angle        : signed Q1.19
+//   angle        : signed Q0.19
 //                  - Output angular contribution
 //                  - Nominal range: [-0.5, +0.5]
 //
@@ -63,7 +66,7 @@
 //       angle > 0  → source is closer to antenna B
 //       angle < 0  → source is closer to antenna A
 //
-// Higher-level logic must combine multiple doa_pair outputs (e.g. NE, NW, EW)
+// Higher-level logic must combine multiple doa_pair outputs (e.g. NE, EW, WN)
 // to resolve a full 2D compass direction.
 //
 // ----------------------------------------------------------------------------
@@ -89,15 +92,15 @@
 //   clk           - System clock
 //   reset         - Synchronous reset
 //   start         - Start calculation
-//   k             - Geometry scaling factor (Q1.19)
-//   phase         - Phase difference input (Q1.19)
-//   shadow_limit  - Shadow margin threshold (Q1.19)
+//   k             - Geometry scaling factor (Q4.16)
+//   phase         - Phase difference input (Q0.19)
+//   shadow_limit  - Shadow margin threshold (Q0.19)
 //
 // Outputs:
 //   done          - Calculation complete
 //   fail          - Invalid input or unrecoverable overflow
 //   shadow        - Shadowing detected for this antenna pair
-//   angle         - Signed angular contribution (Q1.19)
+//   angle         - Signed angular contribution (Q0.19)
 //
 // ----------------------------------------------------------------------------
 // Timing:
@@ -114,6 +117,9 @@
 // - Safe for synthesis in Vivado
 // - Deterministic control FSM
 //
+// ----------------------------------------------------------------------------
+// Author:
+//   Leif Ekblad
 // ============================================================================
 
 
@@ -224,7 +230,7 @@ generate
                     begin
                         run <= 0;
                         done <= 1;
-                        angle <= sum[19:0];
+                        angle <= sum[20:1];
                     end
                     else
                     begin
