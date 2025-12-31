@@ -51,6 +51,10 @@
 //
 //   angle      : DOA compass angle (Q0.19)
 //
+//   delay_NE   : Normalized delay between North-East pair (Q1.18)
+//   delay_EW   : Normalized delay between East-West pair (Q1.18)
+//   delay_WN   : Normalized delay between West-North pair (Q1.18)
+//
 // Notes:
 //   - This module assumes that all input angles are already scaled to
 //     (-π, +π). Any required normalization or scaling must be handled
@@ -81,7 +85,10 @@ module doa_angle(
     output reg shadow_N,
     output reg shadow_E,
     output reg shadow_W,
-    output reg [19:0] angle    
+    output reg [19:0] angle,
+    output reg [19:0] delay_NE,
+    output reg [19:0] delay_EW,
+    output reg [19:0] delay_WN
 );
 
   localparam ANGLE_0 = 20'h00000;
@@ -109,35 +116,75 @@ module doa_angle(
   reg [19:0] base_angle;
   wire use_first = diff_angle[19];
   reg front;
-  reg [3:0] run;
+  reg [4:0] run;
 
   reg shadow;
   reg shadow_err;
   reg [1:0] shadow_id;
   
+  reg [1:0] delay_id;
+  reg delay_front;
+  reg [19:0] delay_base;
+  reg [19:0] delay_diff;
+
+  reg cordic_start;
+  wire [23:0] cordic_phase = {delay_diff[19], delay_diff[19], delay_diff[19], delay_diff[19], delay_diff}; 
+  wire cordic_done;
+  wire [47:0] cordic_out;
+  wire [19:0] cordic_sin = cordic_out[43:24];
+  wire [19:0] cordic_cos = cordic_out[19:0];
+  wire [19:0] sqrt3 = 454047;
+  wire [39:0] delay_mul;
+
+  reg [19:0] delay_sin_2;
+  reg [19:0] delay_curr;
+  reg [19:0] delay_prev;
+  reg [19:0] delay_next;
+  reg [5:0] d_run;
+  reg [19:0] d_curr;
+  reg [19:0] d_prev;
+  reg [19:0] d_next;
+  
+doa_sincos sincos_i (
+  .aclk(clk),                                       // input wire aclk
+  .s_axis_phase_tvalid(cordic_start),               // input wire s_axis_divisor_tvalid
+  .s_axis_phase_tdata(cordic_phase),                // input wire [23 : 0] s_axis_divisor_tdata
+  .m_axis_dout_tvalid(cordic_done),                 // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(cordic_out)                    // output wire [47 : 0] m_axis_dout_tdata
+);
+
+mult_20x20 mul_c_i 
+(
+  .CLK(clk),          // input wire CLK
+  .A(cordic_cos),     // input wire [19 : 0] A
+  .B(sqrt3),          // input wire [19 : 0] B
+  .P(delay_mul)       // output wire [39 : 0] P
+);
+  
 ila_0 ila_0_i (
 		.clk(clk),                  // input wire clk
 		.probe0(start),             // input wire [0:0]  probe3
-		.probe1(run),               // input wire [3:0]  probe3
-		.probe2(front),             // input wire [0:0]  probe3
-		.probe3(angle_NE),          // input wire [19:0]  probe3
-		.probe4(angle_EW),          // input wire [19:0]  probe3
-		.probe5(angle_WN),          // input wire [19:0]  probe3
-		.probe6(sign),              // input wire [0:0]  probe3
-		.probe7(shadow),            // input wire [0:0]  probe3
-		.probe8(shadow_N),          // input wire [0:0]  probe3
-		.probe9(shadow_E),          // input wire [0:0]  probe3
-		.probe10(shadow_W),         // input wire [0:0]  probe3
-		.probe11(shadow_err),       // input wire [0:0]  probe3
-		.probe12(shadow_id),        // input wire [1:0]  probe3
-		.probe13(id),               // input wire [1:0]  probe3
-		.probe14(first_angle),      // input wire [19:0]  probe3
-		.probe15(second_angle),     // input wire [19:0]  probe3
-		.probe16(diff_angle),       // input wire [19:0]  probe3
-		.probe17(use_angle),        // input wire [19:0]  probe3
-		.probe18(use_id),           // input wire [1:0]  probe3
-		.probe19(base_angle),       // input wire [19:0]  probe3
-		.probe20(angle)             // input wire [19:0]  probe3
+		.probe1(run),               // input wire [4:0]  probe3
+		.probe2(delay_id),          // input wire [1:0]  probe3
+		.probe3(delay_front),       // input wire [0:0]  probe3
+		.probe4(delay_base),        // input wire [19:0]  probe3
+		.probe5(delay_diff),        // input wire [19:0]  probe3
+		.probe6(delay_prev),       // input wire [19:0]  probe3
+		.probe7(delay_curr),       // input wire [19:0]  probe3
+		.probe8(delay_next),       // input wire [19:0]  probe3
+		.probe9(cordic_start),     // input wire [0:0]  probe3
+		.probe10(cordic_done),      // input wire [0:0]  probe3
+		.probe11(cordic_sin),       // input wire [19:0]  probe3
+		.probe12(cordic_cos),       // input wire [19:0]  probe3
+		.probe13(delay_mul),        // input wire [39:0]  probe3
+		.probe14(d_run),            // input wire [5:0]  probe3
+		.probe15(d_prev),           // input wire [19:0]  probe3
+		.probe16(d_curr),           // input wire [19:0]  probe3
+		.probe17(d_next),           // input wire [19:0]  probe3
+		.probe18(delay_NE),         // input wire [19:0]  probe3
+		.probe19(delay_EW),         // input wire [19:0]  probe3
+		.probe20(delay_WN),         // input wire [19:0]  probe3
+		.probe21(angle)             // input wire [19:0]  probe3
 );
 
 generate
@@ -214,7 +261,7 @@ generate
                 if (shadow_err)
                     run <= 0;
                 else
-                    run <= {run[2:0], 1'b0};
+                    run <= {run[3:0], 1'b0};
             end
         end
     end
@@ -361,6 +408,23 @@ generate
 
     always @(posedge clk) 
     begin
+        if (run[1])
+        begin
+            if (use_first)
+            begin
+                delay_id <= id;
+                delay_front <= sign; 
+            end
+            else
+            begin
+                delay_id <= id + 1;
+                delay_front <= ~sign;
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
         if (run[2])
         begin
             case (use_id)
@@ -391,17 +455,134 @@ generate
 
     always @(posedge clk) 
     begin
+        if (run[2])
+        begin
+            case ({delay_front, delay_id})
+                3'b000: delay_base <= ANGLE_240;
+                3'b001: delay_base <= ANGLE_0;
+                3'b010: delay_base <= ANGLE_120;
+                3'b011: delay_base <= ANGLE_240;
+                3'b100: delay_base <= ANGLE_60;
+                3'b101: delay_base <= ANGLE_180;
+                3'b110: delay_base <= ANGLE_300;
+                3'b111: delay_base <= ANGLE_60;
+            endcase
+        end
+    end
+
+    always @(posedge clk) 
+    begin
         if (run[3])
         begin
-            done <= 1;
             if (front)
                 angle <= base_angle + use_angle;
             else
                 angle <= base_angle - use_angle;
         end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (run[4])
+        begin
+            delay_diff <= angle - delay_base;
+            cordic_start <= 1;
+        end
+        else
+            cordic_start <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (cordic_done)
+        begin
+            delay_sin_2 <= {cordic_sin[19], cordic_sin[19:1]};
+            d_run <= 1;
+        end
+        else
+        begin
+            if (reset)
+                d_run <= 0;
+            else
+                d_run <= {d_run[4:0], 1'b0};
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (d_run[3])
+        begin
+            delay_curr <= cordic_sin;
+            delay_prev <= delay_sin_2 + delay_mul[38:19];
+            delay_next <= delay_sin_2 - delay_mul[38:19];
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (d_run[4])
+        begin
+            if (delay_front)
+            begin
+                d_curr <= delay_curr ;
+                d_prev <= delay_prev;
+                d_next <= delay_next;
+            end
+            else
+            begin
+                d_curr <= -delay_curr ;
+                d_prev <= -delay_prev;
+                d_next <= -delay_next;
+            end
+        end
+    end
+    
+    always @(posedge clk) 
+    begin
+        if (d_run[5])
+        begin
+            case (delay_id)                
+                2'b00:
+                    begin
+                        delay_WN <= d_prev;
+                        delay_NE <= d_curr;
+                        delay_EW <= d_next;
+                        done <= 1;
+                    end
+
+                2'b01:
+                    begin
+                        delay_NE <= d_prev;
+                        delay_EW <= d_curr;
+                        delay_WN <= d_next;
+                        done <= 1;
+                    end
+                
+                2'b10:
+                    begin
+                        delay_EW <= d_prev;
+                        delay_WN <= d_curr;
+                        delay_NE <= d_next;
+                        done <= 1;
+                    end
+                
+                2'b11:
+                    begin
+                        delay_EW <= d_prev;
+                        delay_WN <= d_curr;
+                        delay_NE <= d_next;
+                        done <= 1;
+                    end
+            endcase
+        end
         else
             done <= 0;
     end
+
+// curr: sin(a)
+// prev: sin(a + 60) = (sin(a) + sqrt(3) * cos(a)) / 2
+// next: sin(a - 60) = (sin(a) - sqrt(3) * cos(a)) / 2
+
 
   end
 

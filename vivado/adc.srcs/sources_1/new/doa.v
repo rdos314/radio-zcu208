@@ -65,8 +65,12 @@ module doa_calc(
   wire [19:0] angle_EW;
   wire [19:0] angle_WN;
   
+  wire [19:0] delay_NE;
+  wire [19:0] delay_EW;
+  wire [19:0] delay_WN;
+  
   wire angle_done;
-  wire [19:0] angle_done;
+  wire [19:0] angle;
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -128,7 +132,10 @@ doa_angle doa_angle_i(
   .shadow_EW(shadow_EW),
   .shadow_WN(shadow_WN),
   .done(angle_done),
-  .angle(angle)
+  .angle(angle),
+  .delay_NE(delay_NE),
+  .delay_EW(delay_EW),
+  .delay_WN(delay_WN)
 );
 
 	ila_6 ila_i (
@@ -149,11 +156,14 @@ doa_angle doa_angle_i(
 		.probe13(done_EW),            // input wire [0:0]  probe3
 		.probe14(done_WN),            // input wire [0:0]  probe3
 		.probe15(shadow_NE),          // input wire [0:0]  probe3
-		.probe17(shadow_EW),          // input wire [0:0]  probe3
-		.probe16(shadow_WN),          // input wire [0:0]  probe3
+		.probe16(shadow_EW),          // input wire [0:0]  probe3
+		.probe17(shadow_WN),          // input wire [0:0]  probe3
 		.probe18(angle_NE),           // input wire [19:0]  probe3
-		.probe19(angle_EW),            // input wire [19:0]  probe3
-		.probe20(angle_WN)           // input wire [19:0]  probe3
+		.probe19(angle_EW),           // input wire [19:0]  probe3
+		.probe20(angle_WN),           // input wire [19:0]  probe3
+		.probe21(delay_NE),           // input wire [19:0]  probe3
+		.probe22(delay_EW),           // input wire [19:0]  probe3
+		.probe23(delay_WN)            // input wire [19:0]  probe3
 );
 
 generate
