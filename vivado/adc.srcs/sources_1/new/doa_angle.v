@@ -4,65 +4,103 @@
 // Module: doa_angle
 // ============================================================================
 // Description:
-//   Direction-of-Arrival (DOA) angle resolver for a 3-axis antenna geometry
-//   (NE, EW, WN). The module combines three signed pairwise angles into a
-//   single absolute bearing expressed as a fractional turn.
+//   Direction-of-Arrival (DOA) resolver for a 3-axis antenna geometry
+//   (NE, EW, WN). The module combines three signed pairwise angle estimates
+//   into a single absolute compass bearing and corresponding per-antenna
+//   relative delays.
 //
-//   All input angles are assumed to be in the range (-π, +π), represented
-//   as signed fractional values. One full revolution corresponds to 2^20.
-//   No modulo, wrap, or normalization is performed inside this module.
+//   All angles are represented as signed fractional turns. One full
+//   revolution corresponds to 2^20. No modulo, wrap, or normalization is
+//   performed inside this module.
 //
 //   The algorithm:
 //     1. Determines the active 120-degree sector from input angle signs.
-//     2. Selects the optimal angle pair by magnitude comparison.
+//     2. Selects the optimal antenna pair by magnitude comparison.
 //     3. Applies shadowing logic to resolve occluded directions.
-//     4. Adds or subtracts a fixed sector base angle.
+//     4. Selects a fixed sector base angle (0, 60, 120, 180, 240, 300 degrees).
+//     5. Adds or subtracts the fine angle offset to form a global bearing.
+//     6. Projects the bearing back into per-antenna delays using a CORDIC
+//        sin/cos implementation and fixed geometric relationships.
 //
-//   The output is the compass angle covering the full 360° range.
+//   The output compass angle spans the full 360° range. Delay outputs are
+//   integer-aligned values suitable for coherent signal combination without
+//   fractional sample delays.
 //
-// Angle Representation: (Q0.19)
-//   - Signed 20-bit fractional turn
-//   - Range: (-π, +π)
+// ---------------------------------------------------------------------------
+// Numeric Formats
+// ---------------------------------------------------------------------------
+//
+// Angle representation (fractional turn):
+//   - Signed 20-bit fixed-point, Q0.19
+//   - Range: [-0.5, +0.5) turns (±180°)
 //   - One full revolution = 2^20
 //   - 60° = 2^20 / 6
 //
-// Latency:
-//   - Fixed pipeline latency of 4 clock cycles from 'start' to 'done'
+// CORDIC phase input format:
+//   - Signed 22-bit value
+//   - Consists of the 20-bit Q0.19 angle with two redundant sign bits
+//   - Format: {sign, sign, angle[19:0]}
+//   - Range matches the CORDIC sin/cos IP configuration
 //
-// Inputs:
+// CORDIC output format:
+//   - Signed 20-bit sine and cosine outputs
+//
+// Delay representation:
+//   - Signed 20-bit fixed-point, Q2.17
+//   - Represents relative geometric delay (normalized units)
+//   - Scaling supports √3 projection and antenna geometry without overflow
+//
+// ---------------------------------------------------------------------------
+// Latency
+// ---------------------------------------------------------------------------
+//   - Fixed, deterministic pipeline latency
+//   - Angle and delay paths have different internal depths
+//   - 'done' pulses when all outputs are valid
+//
+// ---------------------------------------------------------------------------
+// Inputs
+// ---------------------------------------------------------------------------
 //   clk        : System clock
 //   reset      : Synchronous reset
 //   start      : Starts a new DOA calculation
 //
-//   angle_NE   : Signed angle in the North-East plane (Q0.19)
-//   angle_EW   : Signed angle in the East-West plane (Q0.19)
-//   angle_WN   : Signed angle in the West-North plane (Q0.19)
+//   angle_NE   : Signed NE pair angle, Q0.19 (fractional turn)
+//   angle_EW   : Signed EW pair angle, Q0.19 (fractional turn)
+//   angle_WN   : Signed WN pair angle, Q0.19 (fractional turn)
 //
 //   shadow_NE  : Shadow indication for NE pair
 //   shadow_EW  : Shadow indication for EW pair
 //   shadow_WN  : Shadow indication for WN pair
 //
-// Outputs:
-//   done       : Pulses high for one cycle when 'angle' is valid
+// ---------------------------------------------------------------------------
+// Outputs
+// ---------------------------------------------------------------------------
+//   done       : Pulses high for one cycle when outputs are valid
 //
-//   shadow_N   : Indicates North direction is shadowed
-//   shadow_E   : Indicates East direction is shadowed
-//   shadow_W   : Indicates West direction is shadowed
+//   shadow_N   : North antenna is shadowed
+//   shadow_E   : East antenna is shadowed
+//   shadow_W   : West antenna is shadowed
 //
-//   angle      : DOA compass angle (Q0.19)
+//   angle      : Absolute compass angle, Q0.19 (fractional turn)
 //
-//   delay_NE   : Normalized delay between North-East pair (Q1.18)
-//   delay_EW   : Normalized delay between East-West pair (Q1.18)
-//   delay_WN   : Normalized delay between West-North pair (Q1.18)
+//   delay_NE   : Relative delay for NE antenna, Q2.17
+//   delay_EW   : Relative delay for EW antenna, Q2.17
+//   delay_WN   : Relative delay for WN antenna, Q2.17
 //
-// Notes:
-//   - This module assumes that all input angles are already scaled to
-//     (-π, +π). Any required normalization or scaling must be handled
-//     upstream (e.g., in doa_pair).
+// ---------------------------------------------------------------------------
+// Notes
+// ---------------------------------------------------------------------------
+//   - Input angles must already be scaled to the fractional-turn domain.
+//     Any normalization or arcsin processing must be handled upstream
+//     (e.g., in doa_pair).
 //
 //   - Shadowing overrides magnitude-based angle selection.
 //
-//   - The design is fully synchronous and free of combinational feedback.
+//   - Delay outputs are derived from sin/cos projection of the final
+//     compass angle and reflect the physical antenna geometry.
+//
+//   - The design is fully synchronous, fully pipelined, and free of
+//     combinational feedback, making it suitable for high-frequency operation.
 //
 // Author:
 //   Leif Ekblad
@@ -161,32 +199,6 @@ mult_20x20 mul_c_i
   .P(delay_mul)       // output wire [39 : 0] P
 );
   
-ila_0 ila_0_i (
-		.clk(clk),                  // input wire clk
-		.probe0(start),             // input wire [0:0]  probe3
-		.probe1(run),               // input wire [4:0]  probe3
-		.probe2(delay_id),          // input wire [1:0]  probe3
-		.probe3(delay_front),       // input wire [0:0]  probe3
-		.probe4(delay_base),        // input wire [19:0]  probe3
-		.probe5(delay_diff),        // input wire [19:0]  probe3
-		.probe6(delay_prev),       // input wire [19:0]  probe3
-		.probe7(delay_curr),       // input wire [19:0]  probe3
-		.probe8(delay_next),       // input wire [19:0]  probe3
-		.probe9(cordic_start),     // input wire [0:0]  probe3
-		.probe10(cordic_done),      // input wire [0:0]  probe3
-		.probe11(cordic_sin),       // input wire [19:0]  probe3
-		.probe12(cordic_cos),       // input wire [19:0]  probe3
-		.probe13(delay_mul),        // input wire [39:0]  probe3
-		.probe14(d_run),            // input wire [5:0]  probe3
-		.probe15(d_prev),           // input wire [19:0]  probe3
-		.probe16(d_curr),           // input wire [19:0]  probe3
-		.probe17(d_next),           // input wire [19:0]  probe3
-		.probe18(delay_NE),         // input wire [19:0]  probe3
-		.probe19(delay_EW),         // input wire [19:0]  probe3
-		.probe20(delay_WN),         // input wire [19:0]  probe3
-		.probe21(angle)             // input wire [19:0]  probe3
-);
-
 generate
   begin : doa_angle
 
@@ -513,8 +525,8 @@ generate
         if (d_run[3])
         begin
             delay_curr <= cordic_sin;
-            delay_prev <= delay_sin_2 + delay_mul[38:19];
-            delay_next <= delay_sin_2 - delay_mul[38:19];
+            delay_prev <= delay_sin_2 - delay_mul[38:19];
+            delay_next <= delay_sin_2 + delay_mul[38:19];
         end
     end
 
@@ -525,14 +537,14 @@ generate
             if (delay_front)
             begin
                 d_curr <= delay_curr ;
-                d_prev <= delay_prev;
-                d_next <= delay_next;
+                d_prev <= -delay_prev;
+                d_next <= -delay_next;
             end
             else
             begin
                 d_curr <= -delay_curr ;
-                d_prev <= -delay_prev;
-                d_next <= -delay_next;
+                d_prev <= delay_prev;
+                d_next <= delay_next;
             end
         end
     end
@@ -568,9 +580,9 @@ generate
                 
                 2'b11:
                     begin
-                        delay_EW <= d_prev;
-                        delay_WN <= d_curr;
-                        delay_NE <= d_next;
+                        delay_WN <= d_prev;
+                        delay_NE <= d_curr;
+                        delay_EW <= d_next;
                         done <= 1;
                     end
             endcase
@@ -578,11 +590,6 @@ generate
         else
             done <= 0;
     end
-
-// curr: sin(a)
-// prev: sin(a + 60) = (sin(a) + sqrt(3) * cos(a)) / 2
-// next: sin(a - 60) = (sin(a) - sqrt(3) * cos(a)) / 2
-
 
   end
 
