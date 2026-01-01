@@ -47,7 +47,7 @@
 //                  - Threshold applied to |1 − |x||
 //                  - Typically derived as (1 − cos(shadow_angle))
 //
-//   angle        : signed Q0.19
+//   angle        : signed Q0.15
 //                  - Output angular contribution
 //                  - Nominal range: [-0.5, +0.5]
 //
@@ -105,7 +105,7 @@
 // ----------------------------------------------------------------------------
 // Timing:
 // -------
-// - Fixed latency: 57 clock cycles from 'start' to 'done'
+// - Fixed latency: 30 clock cycles from 'start' to 'done'
 // - All instances complete simultaneously
 // - No data-dependent stalls
 //
@@ -134,7 +134,7 @@ module doa_pair(
     output reg done,
     output reg fail,
     output reg shadow,
-    output reg [19:0] angle
+    output reg [15:0] angle
 );
 
   wire [39:0] prod;
@@ -153,8 +153,8 @@ module doa_pair(
   reg has_shadow_diff;
   reg [19:0] shadow_diff;
 
-  reg [5:0] counter; 
-  reg [3:0] ind;
+  reg [4:0] counter; 
+  reg [2:0] ind;
   reg run;
   reg ignore;
   reg add;
@@ -226,11 +226,11 @@ generate
                         if (xp[38:19] == 20'hFFFFF)
                             ignore <= 1;
                         
-                    if (counter == 56)
+                    if (counter == 29)
                     begin
                         run <= 0;
                         done <= 1;
-                        angle <= sum[20:1];
+                        angle <= sum[20:5];
                     end
                     else
                     begin
@@ -254,15 +254,6 @@ generate
             17 : ind <= 4;
             20 : ind <= 5;
             23 : ind <= 6;
-            26 : ind <= 7;
-            29 : ind <= 8;
-            32 : ind <= 9;
-            35 : ind <= 10;
-            38 : ind <= 11;
-            41 : ind <= 12;
-            44 : ind <= 13;
-            47 : ind <= 14;
-            50 : ind <= 15;
         endcase
     end
 
@@ -439,14 +430,6 @@ generate
             5 : coeff <= 7467;
             6 : coeff <= 5792;
             7 : coeff <= 4661;
-            8 : coeff <= 3856;
-            9 : coeff <= 3258;
-            10 : coeff <= 2800;
-            11 : coeff <= 2441;
-            12 : coeff <= 2152;
-            13 : coeff <= 1916;
-            14 : coeff <= 1720;
-            15 : coeff <= 1555;
         endcase
     end
 
@@ -468,24 +451,6 @@ generate
             25 : add <= 0;
             27 : add <= 1;
             28 : add <= 0;
-            30 : add <= 1;
-            31 : add <= 0;
-            33 : add <= 1;
-            34 : add <= 0;
-            36 : add <= 1;
-            37 : add <= 0;
-            39 : add <= 1;
-            40 : add <= 0;
-            42 : add <= 1;
-            43 : add <= 0;
-            45 : add <= 1;
-            46 : add <= 0;
-            48 : add <= 1;
-            49 : add <= 0;
-            51 : add <= 1;
-            52 : add <= 0;
-            54 : add <= 1;
-            55 : add <= 0;
         endcase
     end
 

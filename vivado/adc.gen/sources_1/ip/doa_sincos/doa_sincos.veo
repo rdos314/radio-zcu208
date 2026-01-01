@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -60,7 +60,7 @@ doa_sincos your_instance_name (
   .s_axis_phase_tready(s_axis_phase_tready),  // output wire s_axis_phase_tready
   .s_axis_phase_tdata(s_axis_phase_tdata),    // input wire [23 : 0] s_axis_phase_tdata
   .m_axis_dout_tvalid(m_axis_dout_tvalid),    // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(m_axis_dout_tdata)      // output wire [47 : 0] m_axis_dout_tdata
+  .m_axis_dout_tdata(m_axis_dout_tdata)      // output wire [31 : 0] m_axis_dout_tdata
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

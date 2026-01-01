@@ -111,9 +111,9 @@ module doa_angle(
     input wire reset,
     input wire start,
 
-    input wire [19:0] angle_NE,
-    input wire [19:0] angle_EW,
-    input wire [19:0] angle_WN,
+    input wire [15:0] angle_NE,
+    input wire [15:0] angle_EW,
+    input wire [15:0] angle_WN,
     
     input wire shadow_NE,
     input wire shadow_EW,
@@ -123,36 +123,36 @@ module doa_angle(
     output reg shadow_N,
     output reg shadow_E,
     output reg shadow_W,
-    output reg [19:0] angle,
-    output reg [19:0] delay_NE,
-    output reg [19:0] delay_EW,
-    output reg [19:0] delay_WN
+    output reg [15:0] angle,
+    output reg [15:0] delay_NE,
+    output reg [15:0] delay_EW,
+    output reg [15:0] delay_WN
 );
 
-  localparam ANGLE_0 = 20'h00000;
-  localparam ANGLE_60 = 20'h2AAAB;
-  localparam ANGLE_120 = 20'h55555;
-  localparam ANGLE_180 = 20'h80000;
-  localparam ANGLE_240 = 20'hAAAAB;
-  localparam ANGLE_300 = 20'hD5555;
+  localparam ANGLE_0 = 16'h0000;
+  localparam ANGLE_60 = 16'h2AAB;
+  localparam ANGLE_120 = 16'h5555;
+  localparam ANGLE_180 = 16'h8000;
+  localparam ANGLE_240 = 16'hAAAB;
+  localparam ANGLE_300 = 16'hD555;
 
   localparam ID_NE = 0;
   localparam ID_EW = 1;
   localparam ID_WN = 2;
 
-  wire sign_NE = angle_NE[19];
-  wire sign_EW = angle_EW[19];
-  wire sign_WN = angle_WN[19];
+  wire sign_NE = angle_NE[15];
+  wire sign_EW = angle_EW[15];
+  wire sign_WN = angle_WN[15];
 
   reg sign;
   reg [1:0] id;
-  reg [19:0] first_angle;
-  reg [19:0] second_angle;
-  reg [19:0] diff_angle;
+  reg [15:0] first_angle;
+  reg [15:0] second_angle;
+  reg [15:0] diff_angle;
   reg [1:0] use_id;
-  reg [19:0] use_angle;
-  reg [19:0] base_angle;
-  wire use_first = diff_angle[19];
+  reg [15:0] use_angle;
+  reg [15:0] base_angle;
+  wire use_first = diff_angle[15];
   reg front;
   reg [4:0] run;
 
@@ -162,33 +162,33 @@ module doa_angle(
   
   reg [1:0] delay_id;
   reg delay_front;
-  reg [19:0] delay_base;
-  reg [19:0] delay_diff;
+  reg [15:0] delay_base;
+  reg [15:0] delay_diff;
 
   reg cordic_start;
-  wire [23:0] cordic_phase = {delay_diff[19], delay_diff[19], delay_diff[19], delay_diff[19], delay_diff}; 
+  wire [23:0] cordic_phase = {delay_diff[15], delay_diff[15], delay_diff[15], delay_diff[15], delay_diff, 4'b0000}; 
   wire cordic_done;
-  wire [47:0] cordic_out;
-  wire [19:0] cordic_sin = cordic_out[43:24];
-  wire [19:0] cordic_cos = cordic_out[19:0];
+  wire [31:0] cordic_out;
+  wire [15:0] cordic_sin = cordic_out[31:16];
+  wire [19:0] cordic_cos = {cordic_out[15:0], 4'b0000};
   wire [19:0] sqrt3 = 454047;
   wire [39:0] delay_mul;
 
-  reg [19:0] delay_sin_2;
-  reg [19:0] delay_curr;
-  reg [19:0] delay_prev;
-  reg [19:0] delay_next;
+  reg [15:0] delay_sin_2;
+  reg [15:0] delay_curr;
+  reg [15:0] delay_prev;
+  reg [15:0] delay_next;
   reg [5:0] d_run;
-  reg [19:0] d_curr;
-  reg [19:0] d_prev;
-  reg [19:0] d_next;
+  reg [15:0] d_curr;
+  reg [15:0] d_prev;
+  reg [15:0] d_next;
   
 doa_sincos sincos_i (
   .aclk(clk),                                       // input wire aclk
   .s_axis_phase_tvalid(cordic_start),               // input wire s_axis_divisor_tvalid
   .s_axis_phase_tdata(cordic_phase),                // input wire [23 : 0] s_axis_divisor_tdata
   .m_axis_dout_tvalid(cordic_done),                 // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(cordic_out)                    // output wire [47 : 0] m_axis_dout_tdata
+  .m_axis_dout_tdata(cordic_out)                    // output wire [31 : 0] m_axis_dout_tdata
 );
 
 mult_20x20 mul_c_i 
@@ -508,7 +508,7 @@ generate
     begin
         if (cordic_done)
         begin
-            delay_sin_2 <= {cordic_sin[19], cordic_sin[19:1]};
+            delay_sin_2 <= {cordic_sin[15], cordic_sin[15:1]};
             d_run <= 1;
         end
         else
@@ -525,8 +525,8 @@ generate
         if (d_run[3])
         begin
             delay_curr <= cordic_sin;
-            delay_prev <= delay_sin_2 - delay_mul[38:19];
-            delay_next <= delay_sin_2 + delay_mul[38:19];
+            delay_prev <= delay_sin_2 - delay_mul[38:23];
+            delay_next <= delay_sin_2 + delay_mul[38:23];
         end
     end
 
