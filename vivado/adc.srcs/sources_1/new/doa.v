@@ -41,6 +41,7 @@ module doa_calc(
 );
 
   reg [19:0] shadow_limit;
+  reg [19:0] sample_fact;
   reg [31:0] inv_dij;
   wire [39:0] div_dij = {1'b0, inv_dij, 7'b0000000};
   wire [23:0] div_freq = {4'b0000, freq};
@@ -71,6 +72,14 @@ module doa_calc(
   
   wire angle_done;
   wire [15:0] angle;
+  
+  wire [39:0] mul_NE;
+  wire [39:0] mul_EW;
+  wire [39:0] mul_WN;
+  
+  wire [15:0] dist_NE = mul_NE[35:20];
+  wire [15:0] dist_EW = mul_EW[35:20];
+  wire [15:0] dist_WN = mul_WN[35:20];
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -137,6 +146,30 @@ doa_angle doa_angle_i(
   .delay_EW(delay_EW),
   .delay_WN(delay_WN)
 );
+  
+mult_20x20 mul_delay_NE_i 
+(
+  .CLK(clk),                // input wire CLK
+  .A(sample_fact),          // input wire [19 : 0] A
+  .B({delay_NE, 4'b0000}),  // input wire [19 : 0] B
+  .P(mul_NE)                // output wire [39 : 0] P
+);
+  
+mult_20x20 mul_delay_EW_i 
+(
+  .CLK(clk),                // input wire CLK
+  .A(sample_fact),          // input wire [19 : 0] A
+  .B({delay_EW, 4'b0000}),  // input wire [19 : 0] B
+  .P(mul_EW)                // output wire [39 : 0] P
+);
+  
+mult_20x20 mul_delay_WN_i 
+(
+  .CLK(clk),               // input wire CLK
+  .A(sample_fact),         // input wire [19 : 0] A
+  .B({delay_WN, 4'b0000}), // input wire [19 : 0] B
+  .P(mul_WN)               // output wire [39 : 0] P
+);
 
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
@@ -157,8 +190,12 @@ doa_angle doa_angle_i(
 		.probe14(delay_NE),           // input wire [15:0]  probe3
 		.probe15(delay_EW),           // input wire [15:0]  probe3
 		.probe16(delay_WN),           // input wire [15:0]  probe3
-		.probe17(done_angle),         // input wire [0:0]  probe3
-		.probe18(angle)               // input wire [15:0]  probe3
+		.probe17(sample_fact),        // input wire [19:0]  probe3
+		.probe18(dist_NE),            // input wire [15:0]  probe3
+		.probe19(dist_EW),            // input wire [15:0]  probe3
+		.probe20(dist_WN),            // input wire [15:0]  probe3
+		.probe21(done_angle),         // input wire [0:0]  probe3
+		.probe22(angle)               // input wire [15:0]  probe3
 );
 
 generate
@@ -171,6 +208,7 @@ generate
             case (config_adr)
                 5 : inv_dij <= config_data;
                 6 : shadow_limit <= config_data[19:0];
+                7 : sample_fact <= config_data[19:0];
             endcase            
         end
     end
