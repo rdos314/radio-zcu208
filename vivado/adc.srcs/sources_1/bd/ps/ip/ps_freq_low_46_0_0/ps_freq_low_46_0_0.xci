@@ -38,13 +38,13 @@
       "ports": {
         "fifo_clk": [ { "direction": "in" } ],
         "raw_wr": [ { "direction": "in" } ],
-        "raw_data": [ { "direction": "in", "size_left": "191", "size_right": "0" } ],
+        "raw_data": [ { "direction": "in", "size_left": "383", "size_right": "0" } ],
         "freq_wr": [ { "direction": "in" } ],
         "freq_data": [ { "direction": "in", "size_left": "47", "size_right": "0" } ],
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
         "doa_wr": [ { "direction": "out" } ],
-        "sample_data": [ { "direction": "out", "size_left": "191", "size_right": "0" } ],
+        "sample_data": [ { "direction": "out", "size_left": "383", "size_right": "0" } ],
         "doa_data": [ { "direction": "out", "size_left": "143", "size_right": "0" } ]
       },
       "interfaces": {

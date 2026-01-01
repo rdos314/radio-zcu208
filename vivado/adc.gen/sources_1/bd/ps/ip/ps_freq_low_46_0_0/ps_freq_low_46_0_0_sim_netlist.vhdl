@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Dec 27 14:05:47 2025
+-- Date        : Wed Dec 31 15:20:05 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.vhdl
@@ -10522,13 +10522,13 @@ entity ps_freq_low_46_0_0_freq_low_46 is
   port (
     fifo_clk : in STD_LOGIC;
     raw_wr : in STD_LOGIC;
-    raw_data : in STD_LOGIC_VECTOR ( 191 downto 0 );
+    raw_data : in STD_LOGIC_VECTOR ( 383 downto 0 );
     freq_wr : in STD_LOGIC;
     freq_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     doa_wr : out STD_LOGIC;
-    sample_data : out STD_LOGIC_VECTOR ( 191 downto 0 );
+    sample_data : out STD_LOGIC_VECTOR ( 383 downto 0 );
     doa_data : out STD_LOGIC_VECTOR ( 143 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -10551,21 +10551,21 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
     rd_rst_busy : out STD_LOGIC
   );
   end component ps_freq_low_46_0_0_fifo_doa_low;
-  component ps_freq_low_46_0_0_fifo_raw_low is
+  component ps_freq_low_46_0_0_fifo_raw_high is
   port (
     rst : in STD_LOGIC;
     wr_clk : in STD_LOGIC;
     rd_clk : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 191 downto 0 );
+    din : in STD_LOGIC_VECTOR ( 383 downto 0 );
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 191 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 383 downto 0 );
     full : out STD_LOGIC;
     empty : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
     rd_rst_busy : out STD_LOGIC
   );
-  end component ps_freq_low_46_0_0_fifo_raw_low;
+  end component ps_freq_low_46_0_0_fifo_raw_high;
   component ps_freq_low_46_0_0_fir_doa_low_im is
   port (
     aresetn : in STD_LOGIC;
@@ -10791,7 +10791,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   signal phase_out_E : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_out_N : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_out_W : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal raw_fifo_data : STD_LOGIC_VECTOR ( 191 downto 0 );
+  signal raw_fifo_data : STD_LOGIC_VECTOR ( 383 downto 0 );
   signal start_delay0 : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal valid : STD_LOGIC;
   signal valid_E : STD_LOGIC;
@@ -10829,7 +10829,7 @@ architecture STRUCTURE of ps_freq_low_46_0_0_freq_low_46 is
   attribute downgradeipidentifiedwarnings of fifo_freq_i : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of fifo_freq_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw_low,fifo_generator_v13_2_13,{}";
+  attribute CHECK_LICENSE_TYPE of fifo_raw_i : label is "fifo_raw_high,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_raw_i : label is "yes";
   attribute x_core_info of fifo_raw_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fir_freq_low_im_E_i : label is "fir_doa_low_im,fir_compiler_v7_2_24,{}";
@@ -10879,10 +10879,10 @@ fifo_freq_i: component ps_freq_low_46_0_0_fifo_doa_low
       wr_en => freq_wr,
       wr_rst_busy => NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED
     );
-fifo_raw_i: component ps_freq_low_46_0_0_fifo_raw_low
+fifo_raw_i: component ps_freq_low_46_0_0_fifo_raw_high
      port map (
-      din(191 downto 0) => raw_data(191 downto 0),
-      dout(191 downto 0) => raw_fifo_data(191 downto 0),
+      din(383 downto 0) => raw_data(383 downto 0),
+      dout(383 downto 0) => raw_fifo_data(383 downto 0),
       empty => NLW_fifo_raw_i_empty_UNCONNECTED,
       full => NLW_fifo_raw_i_full_UNCONNECTED,
       rd_clk => clk,
@@ -13904,6 +13904,70 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(191),
       R => '0'
     );
+\freq_low_46.sample_data_reg[192]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(192),
+      Q => sample_data(192),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[193]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(193),
+      Q => sample_data(193),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[194]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(194),
+      Q => sample_data(194),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[195]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(195),
+      Q => sample_data(195),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[196]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(196),
+      Q => sample_data(196),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[197]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(197),
+      Q => sample_data(197),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[198]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(198),
+      Q => sample_data(198),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[199]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(199),
+      Q => sample_data(199),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -13920,12 +13984,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(1),
       R => '0'
     );
+\freq_low_46.sample_data_reg[200]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(200),
+      Q => sample_data(200),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[201]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(201),
+      Q => sample_data(201),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[202]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(202),
+      Q => sample_data(202),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[203]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(203),
+      Q => sample_data(203),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[204]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(204),
+      Q => sample_data(204),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[205]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(205),
+      Q => sample_data(205),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[206]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(206),
+      Q => sample_data(206),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[207]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(207),
+      Q => sample_data(207),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[208]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(208),
+      Q => sample_data(208),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[209]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(209),
+      Q => sample_data(209),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(20),
       Q => sample_data(20),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[210]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(210),
+      Q => sample_data(210),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[211]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(211),
+      Q => sample_data(211),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[212]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(212),
+      Q => sample_data(212),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[213]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(213),
+      Q => sample_data(213),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[214]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(214),
+      Q => sample_data(214),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[215]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(215),
+      Q => sample_data(215),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[216]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(216),
+      Q => sample_data(216),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[217]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(217),
+      Q => sample_data(217),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[218]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(218),
+      Q => sample_data(218),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[219]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(219),
+      Q => sample_data(219),
       R => '0'
     );
 \freq_low_46.sample_data_reg[21]\: unisim.vcomponents.FDRE
@@ -13936,12 +14160,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(21),
       R => '0'
     );
+\freq_low_46.sample_data_reg[220]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(220),
+      Q => sample_data(220),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[221]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(221),
+      Q => sample_data(221),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[222]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(222),
+      Q => sample_data(222),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[223]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(223),
+      Q => sample_data(223),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[224]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(224),
+      Q => sample_data(224),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[225]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(225),
+      Q => sample_data(225),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[226]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(226),
+      Q => sample_data(226),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[227]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(227),
+      Q => sample_data(227),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[228]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(228),
+      Q => sample_data(228),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[229]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(229),
+      Q => sample_data(229),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(22),
       Q => sample_data(22),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[230]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(230),
+      Q => sample_data(230),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[231]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(231),
+      Q => sample_data(231),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[232]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(232),
+      Q => sample_data(232),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[233]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(233),
+      Q => sample_data(233),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[234]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(234),
+      Q => sample_data(234),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[235]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(235),
+      Q => sample_data(235),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[236]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(236),
+      Q => sample_data(236),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[237]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(237),
+      Q => sample_data(237),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[238]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(238),
+      Q => sample_data(238),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[239]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(239),
+      Q => sample_data(239),
       R => '0'
     );
 \freq_low_46.sample_data_reg[23]\: unisim.vcomponents.FDRE
@@ -13952,12 +14336,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(23),
       R => '0'
     );
+\freq_low_46.sample_data_reg[240]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(240),
+      Q => sample_data(240),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[241]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(241),
+      Q => sample_data(241),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[242]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(242),
+      Q => sample_data(242),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[243]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(243),
+      Q => sample_data(243),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[244]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(244),
+      Q => sample_data(244),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[245]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(245),
+      Q => sample_data(245),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[246]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(246),
+      Q => sample_data(246),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[247]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(247),
+      Q => sample_data(247),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[248]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(248),
+      Q => sample_data(248),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[249]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(249),
+      Q => sample_data(249),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(24),
       Q => sample_data(24),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[250]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(250),
+      Q => sample_data(250),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[251]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(251),
+      Q => sample_data(251),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[252]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(252),
+      Q => sample_data(252),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[253]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(253),
+      Q => sample_data(253),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[254]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(254),
+      Q => sample_data(254),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[255]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(255),
+      Q => sample_data(255),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[256]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(256),
+      Q => sample_data(256),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[257]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(257),
+      Q => sample_data(257),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[258]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(258),
+      Q => sample_data(258),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[259]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(259),
+      Q => sample_data(259),
       R => '0'
     );
 \freq_low_46.sample_data_reg[25]\: unisim.vcomponents.FDRE
@@ -13968,12 +14512,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(25),
       R => '0'
     );
+\freq_low_46.sample_data_reg[260]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(260),
+      Q => sample_data(260),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[261]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(261),
+      Q => sample_data(261),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[262]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(262),
+      Q => sample_data(262),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[263]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(263),
+      Q => sample_data(263),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[264]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(264),
+      Q => sample_data(264),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[265]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(265),
+      Q => sample_data(265),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[266]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(266),
+      Q => sample_data(266),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[267]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(267),
+      Q => sample_data(267),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[268]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(268),
+      Q => sample_data(268),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[269]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(269),
+      Q => sample_data(269),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(26),
       Q => sample_data(26),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[270]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(270),
+      Q => sample_data(270),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[271]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(271),
+      Q => sample_data(271),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[272]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(272),
+      Q => sample_data(272),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[273]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(273),
+      Q => sample_data(273),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[274]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(274),
+      Q => sample_data(274),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[275]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(275),
+      Q => sample_data(275),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[276]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(276),
+      Q => sample_data(276),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[277]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(277),
+      Q => sample_data(277),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[278]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(278),
+      Q => sample_data(278),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[279]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(279),
+      Q => sample_data(279),
       R => '0'
     );
 \freq_low_46.sample_data_reg[27]\: unisim.vcomponents.FDRE
@@ -13984,12 +14688,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(27),
       R => '0'
     );
+\freq_low_46.sample_data_reg[280]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(280),
+      Q => sample_data(280),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[281]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(281),
+      Q => sample_data(281),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[282]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(282),
+      Q => sample_data(282),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[283]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(283),
+      Q => sample_data(283),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[284]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(284),
+      Q => sample_data(284),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[285]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(285),
+      Q => sample_data(285),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[286]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(286),
+      Q => sample_data(286),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[287]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(287),
+      Q => sample_data(287),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[288]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(288),
+      Q => sample_data(288),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[289]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(289),
+      Q => sample_data(289),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(28),
       Q => sample_data(28),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[290]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(290),
+      Q => sample_data(290),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[291]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(291),
+      Q => sample_data(291),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[292]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(292),
+      Q => sample_data(292),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[293]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(293),
+      Q => sample_data(293),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[294]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(294),
+      Q => sample_data(294),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[295]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(295),
+      Q => sample_data(295),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[296]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(296),
+      Q => sample_data(296),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[297]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(297),
+      Q => sample_data(297),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[298]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(298),
+      Q => sample_data(298),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[299]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(299),
+      Q => sample_data(299),
       R => '0'
     );
 \freq_low_46.sample_data_reg[29]\: unisim.vcomponents.FDRE
@@ -14008,12 +14872,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(2),
       R => '0'
     );
+\freq_low_46.sample_data_reg[300]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(300),
+      Q => sample_data(300),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[301]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(301),
+      Q => sample_data(301),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[302]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(302),
+      Q => sample_data(302),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[303]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(303),
+      Q => sample_data(303),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[304]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(304),
+      Q => sample_data(304),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[305]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(305),
+      Q => sample_data(305),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[306]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(306),
+      Q => sample_data(306),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[307]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(307),
+      Q => sample_data(307),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[308]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(308),
+      Q => sample_data(308),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[309]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(309),
+      Q => sample_data(309),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(30),
       Q => sample_data(30),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[310]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(310),
+      Q => sample_data(310),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[311]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(311),
+      Q => sample_data(311),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[312]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(312),
+      Q => sample_data(312),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[313]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(313),
+      Q => sample_data(313),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[314]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(314),
+      Q => sample_data(314),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[315]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(315),
+      Q => sample_data(315),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[316]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(316),
+      Q => sample_data(316),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[317]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(317),
+      Q => sample_data(317),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[318]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(318),
+      Q => sample_data(318),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[319]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(319),
+      Q => sample_data(319),
       R => '0'
     );
 \freq_low_46.sample_data_reg[31]\: unisim.vcomponents.FDRE
@@ -14024,12 +15048,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(31),
       R => '0'
     );
+\freq_low_46.sample_data_reg[320]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(320),
+      Q => sample_data(320),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[321]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(321),
+      Q => sample_data(321),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[322]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(322),
+      Q => sample_data(322),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[323]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(323),
+      Q => sample_data(323),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[324]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(324),
+      Q => sample_data(324),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[325]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(325),
+      Q => sample_data(325),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[326]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(326),
+      Q => sample_data(326),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[327]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(327),
+      Q => sample_data(327),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[328]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(328),
+      Q => sample_data(328),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[329]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(329),
+      Q => sample_data(329),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(32),
       Q => sample_data(32),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[330]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(330),
+      Q => sample_data(330),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[331]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(331),
+      Q => sample_data(331),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[332]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(332),
+      Q => sample_data(332),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[333]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(333),
+      Q => sample_data(333),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[334]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(334),
+      Q => sample_data(334),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[335]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(335),
+      Q => sample_data(335),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[336]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(336),
+      Q => sample_data(336),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[337]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(337),
+      Q => sample_data(337),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[338]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(338),
+      Q => sample_data(338),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[339]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(339),
+      Q => sample_data(339),
       R => '0'
     );
 \freq_low_46.sample_data_reg[33]\: unisim.vcomponents.FDRE
@@ -14040,12 +15224,172 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(33),
       R => '0'
     );
+\freq_low_46.sample_data_reg[340]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(340),
+      Q => sample_data(340),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[341]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(341),
+      Q => sample_data(341),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[342]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(342),
+      Q => sample_data(342),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[343]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(343),
+      Q => sample_data(343),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[344]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(344),
+      Q => sample_data(344),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[345]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(345),
+      Q => sample_data(345),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[346]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(346),
+      Q => sample_data(346),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[347]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(347),
+      Q => sample_data(347),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[348]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(348),
+      Q => sample_data(348),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[349]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(349),
+      Q => sample_data(349),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(34),
       Q => sample_data(34),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[350]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(350),
+      Q => sample_data(350),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[351]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(351),
+      Q => sample_data(351),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[352]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(352),
+      Q => sample_data(352),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[353]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(353),
+      Q => sample_data(353),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[354]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(354),
+      Q => sample_data(354),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[355]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(355),
+      Q => sample_data(355),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[356]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(356),
+      Q => sample_data(356),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[357]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(357),
+      Q => sample_data(357),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[358]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(358),
+      Q => sample_data(358),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[359]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(359),
+      Q => sample_data(359),
       R => '0'
     );
 \freq_low_46.sample_data_reg[35]\: unisim.vcomponents.FDRE
@@ -14056,6 +15400,86 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(35),
       R => '0'
     );
+\freq_low_46.sample_data_reg[360]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(360),
+      Q => sample_data(360),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[361]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(361),
+      Q => sample_data(361),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[362]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(362),
+      Q => sample_data(362),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[363]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(363),
+      Q => sample_data(363),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[364]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(364),
+      Q => sample_data(364),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[365]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(365),
+      Q => sample_data(365),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[366]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(366),
+      Q => sample_data(366),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[367]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(367),
+      Q => sample_data(367),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[368]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(368),
+      Q => sample_data(368),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[369]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(369),
+      Q => sample_data(369),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -14064,12 +15488,124 @@ freq_W_i: entity work.ps_freq_low_46_0_0_morlet_to_phase_env
       Q => sample_data(36),
       R => '0'
     );
+\freq_low_46.sample_data_reg[370]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(370),
+      Q => sample_data(370),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[371]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(371),
+      Q => sample_data(371),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[372]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(372),
+      Q => sample_data(372),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[373]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(373),
+      Q => sample_data(373),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[374]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(374),
+      Q => sample_data(374),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[375]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(375),
+      Q => sample_data(375),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[376]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(376),
+      Q => sample_data(376),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[377]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(377),
+      Q => sample_data(377),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[378]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(378),
+      Q => sample_data(378),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[379]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(379),
+      Q => sample_data(379),
+      R => '0'
+    );
 \freq_low_46.sample_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid,
       D => raw_fifo_data(37),
       Q => sample_data(37),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[380]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(380),
+      Q => sample_data(380),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[381]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(381),
+      Q => sample_data(381),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[382]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(382),
+      Q => sample_data(382),
+      R => '0'
+    );
+\freq_low_46.sample_data_reg[383]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => valid,
+      D => raw_fifo_data(383),
+      Q => sample_data(383),
       R => '0'
     );
 \freq_low_46.sample_data_reg[38]\: unisim.vcomponents.FDRE
@@ -15001,13 +16537,13 @@ entity ps_freq_low_46_0_0 is
   port (
     fifo_clk : in STD_LOGIC;
     raw_wr : in STD_LOGIC;
-    raw_data : in STD_LOGIC_VECTOR ( 191 downto 0 );
+    raw_data : in STD_LOGIC_VECTOR ( 383 downto 0 );
     freq_wr : in STD_LOGIC;
     freq_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     doa_wr : out STD_LOGIC;
-    sample_data : out STD_LOGIC_VECTOR ( 191 downto 0 );
+    sample_data : out STD_LOGIC_VECTOR ( 383 downto 0 );
     doa_data : out STD_LOGIC_VECTOR ( 143 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
@@ -15044,9 +16580,9 @@ inst: entity work.ps_freq_low_46_0_0_freq_low_46
       fifo_clk => fifo_clk,
       freq_data(47 downto 0) => freq_data(47 downto 0),
       freq_wr => freq_wr,
-      raw_data(191 downto 0) => raw_data(191 downto 0),
+      raw_data(383 downto 0) => raw_data(383 downto 0),
       raw_wr => raw_wr,
       reset => reset,
-      sample_data(191 downto 0) => sample_data(191 downto 0)
+      sample_data(383 downto 0) => sample_data(383 downto 0)
     );
 end STRUCTURE;

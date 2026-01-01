@@ -2144,7 +2144,7 @@
           },
           "raw_data": {
             "direction": "O",
-            "left": "191",
+            "left": "383",
             "right": "0"
           },
           "freq_wr": {
@@ -2519,7 +2519,7 @@
           },
           "raw_data": {
             "direction": "I",
-            "left": "191",
+            "left": "383",
             "right": "0"
           },
           "freq_wr": {
@@ -2557,7 +2557,7 @@
           },
           "sample_data": {
             "direction": "O",
-            "left": "191",
+            "left": "383",
             "right": "0"
           },
           "doa_data": {
@@ -2687,7 +2687,7 @@
           },
           "fifo_sample_data": {
             "direction": "I",
-            "left": "191",
+            "left": "383",
             "right": "0"
           },
           "fifo_doa_data": {
@@ -2974,15 +2974,15 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "comp_low/config_adr",
-          "comp_high/config_adr"
+          "comp_high/config_adr",
+          "comp_low/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "comp_low/config_data",
-          "comp_high/config_data"
+          "comp_high/config_data",
+          "comp_low/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -3218,9 +3218,9 @@
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
           "deci_high/clk",
+          "freq_high_189_0/fifo_clk",
           "deci_low/clk",
-          "freq_low_46_0/fifo_clk",
-          "freq_high_189_0/fifo_clk"
+          "freq_low_46_0/fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -3325,8 +3325,8 @@
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
           "deci_high/sim_resetn",
-          "deci_low/sim_resetn",
-          "adc_control_0/resetn"
+          "adc_control_0/resetn",
+          "deci_low/sim_resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3427,10 +3427,10 @@
           "axi_bram/clkb",
           "mts_0/axi_clk",
           "deci_high/sim_clk",
-          "deci_low/sim_clk",
           "adc_control_0/clk",
-          "comp_low/config_clk",
-          "comp_high/config_clk"
+          "deci_low/sim_clk",
+          "comp_high/config_clk",
+          "comp_low/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

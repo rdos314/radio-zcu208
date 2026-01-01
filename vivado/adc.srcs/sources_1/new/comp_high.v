@@ -100,10 +100,10 @@ fifo_raw_high fifo_raw_i (
   .rst(reset),                   // input wire rst
   .wr_clk(fifo_clk),             // input wire wr_clk
   .rd_clk(clk),                  // input wire rd_clk
-  .din(fifo_sample_data),        // input wire [191 : 0] din
+  .din(fifo_sample_data),        // input wire [383 : 0] din
   .wr_en(fifo_wr),               // input wire wr_en
   .rd_en(sample_rd),             // input wire rd_en
-  .dout(sample_data),            // output wire [191 : 0] dout
+  .dout(sample_data),            // output wire [383 : 0] dout
   .empty(fifo_sample_empty)      // output wire empty
 );
 

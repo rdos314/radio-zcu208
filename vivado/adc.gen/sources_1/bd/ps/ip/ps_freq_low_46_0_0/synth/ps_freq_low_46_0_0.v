@@ -73,7 +73,7 @@ module ps_freq_low_46_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
 input wire raw_wr;
-input wire [191 : 0] raw_data;
+input wire [383 : 0] raw_data;
 input wire freq_wr;
 input wire [47 : 0] freq_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
@@ -85,7 +85,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
 output wire doa_wr;
-output wire [191 : 0] sample_data;
+output wire [383 : 0] sample_data;
 output wire [143 : 0] doa_data;
 
   freq_low_46 inst (

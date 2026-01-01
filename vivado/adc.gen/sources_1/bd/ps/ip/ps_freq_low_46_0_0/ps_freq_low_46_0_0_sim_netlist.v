@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Dec 27 14:05:47 2025
+// Date        : Wed Dec 31 15:20:05 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_sim_netlist.v
@@ -81,13 +81,13 @@ module ps_freq_low_46_0_0
     doa_data);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input fifo_clk;
   input raw_wr;
-  input [191:0]raw_data;
+  input [383:0]raw_data;
   input freq_wr;
   input [47:0]freq_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   output doa_wr;
-  output [191:0]sample_data;
+  output [383:0]sample_data;
   output [143:0]doa_data;
 
   wire clk;
@@ -96,10 +96,10 @@ module ps_freq_low_46_0_0
   wire fifo_clk;
   wire [47:0]freq_data;
   wire freq_wr;
-  wire [191:0]raw_data;
+  wire [383:0]raw_data;
   wire raw_wr;
   wire reset;
-  wire [191:0]sample_data;
+  wire [383:0]sample_data;
 
   ps_freq_low_46_0_0_freq_low_46 inst
        (.clk(clk),
@@ -181,9 +181,9 @@ module ps_freq_low_46_0_0_fifo_doa_low
 
 endmodule
 
-(* CHECK_LICENSE_TYPE = "fifo_raw_low,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_raw_low" *) 
+(* CHECK_LICENSE_TYPE = "fifo_raw_high,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_raw_high" *) 
 (* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-module ps_freq_low_46_0_0_fifo_raw_low
+module ps_freq_low_46_0_0_fifo_raw_high
    (rst,
     wr_clk,
     rd_clk,
@@ -200,10 +200,10 @@ module ps_freq_low_46_0_0_fifo_raw_low
   (* syn_isclock = "1" *) input wr_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
   (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [191:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [383:0]din;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [191:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [383:0]dout;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
   output wr_rst_busy;
@@ -314,13 +314,13 @@ module ps_freq_low_46_0_0_freq_low_46
     doa_data);
   input fifo_clk;
   input raw_wr;
-  input [191:0]raw_data;
+  input [383:0]raw_data;
   input freq_wr;
   input [47:0]freq_data;
   input clk;
   input reset;
   output doa_wr;
-  output [191:0]sample_data;
+  output [383:0]sample_data;
   output [143:0]doa_data;
 
   wire [15:0]E;
@@ -509,11 +509,11 @@ module ps_freq_low_46_0_0_freq_low_46
   wire [19:0]phase_out_E;
   wire [19:0]phase_out_N;
   wire [19:0]phase_out_W;
-  wire [191:0]raw_data;
-  wire [191:0]raw_fifo_data;
+  wire [383:0]raw_data;
+  wire [383:0]raw_fifo_data;
   wire raw_wr;
   wire reset;
-  wire [191:0]sample_data;
+  wire [383:0]sample_data;
   wire [7:1]start_delay0;
   wire valid;
   wire valid_E;
@@ -561,10 +561,10 @@ module ps_freq_low_46_0_0_freq_low_46
         .wr_clk(fifo_clk),
         .wr_en(freq_wr),
         .wr_rst_busy(NLW_fifo_freq_i_wr_rst_busy_UNCONNECTED));
-  (* CHECK_LICENSE_TYPE = "fifo_raw_low,fifo_generator_v13_2_13,{}" *) 
+  (* CHECK_LICENSE_TYPE = "fifo_raw_high,fifo_generator_v13_2_13,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-  ps_freq_low_46_0_0_fifo_raw_low fifo_raw_i
+  ps_freq_low_46_0_0_fifo_raw_high fifo_raw_i
        (.din(raw_data),
         .dout(raw_fifo_data),
         .empty(NLW_fifo_raw_i_empty_UNCONNECTED),
@@ -2733,6 +2733,54 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[191]),
         .Q(sample_data[191]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[192] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[192]),
+        .Q(sample_data[192]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[193] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[193]),
+        .Q(sample_data[193]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[194] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[194]),
+        .Q(sample_data[194]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[195] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[195]),
+        .Q(sample_data[195]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[196] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[196]),
+        .Q(sample_data[196]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[197] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[197]),
+        .Q(sample_data[197]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[198] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[198]),
+        .Q(sample_data[198]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[199] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[199]),
+        .Q(sample_data[199]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[19] 
        (.C(clk),
         .CE(valid),
@@ -2745,11 +2793,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[1]),
         .Q(sample_data[1]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[200] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[200]),
+        .Q(sample_data[200]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[201] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[201]),
+        .Q(sample_data[201]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[202] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[202]),
+        .Q(sample_data[202]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[203] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[203]),
+        .Q(sample_data[203]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[204] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[204]),
+        .Q(sample_data[204]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[205] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[205]),
+        .Q(sample_data[205]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[206] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[206]),
+        .Q(sample_data[206]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[207] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[207]),
+        .Q(sample_data[207]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[208] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[208]),
+        .Q(sample_data[208]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[209] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[209]),
+        .Q(sample_data[209]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[20] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[20]),
         .Q(sample_data[20]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[210] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[210]),
+        .Q(sample_data[210]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[211] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[211]),
+        .Q(sample_data[211]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[212] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[212]),
+        .Q(sample_data[212]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[213] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[213]),
+        .Q(sample_data[213]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[214] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[214]),
+        .Q(sample_data[214]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[215] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[215]),
+        .Q(sample_data[215]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[216] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[216]),
+        .Q(sample_data[216]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[217] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[217]),
+        .Q(sample_data[217]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[218] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[218]),
+        .Q(sample_data[218]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[219] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[219]),
+        .Q(sample_data[219]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[21] 
        (.C(clk),
@@ -2757,11 +2925,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[21]),
         .Q(sample_data[21]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[220] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[220]),
+        .Q(sample_data[220]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[221] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[221]),
+        .Q(sample_data[221]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[222] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[222]),
+        .Q(sample_data[222]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[223] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[223]),
+        .Q(sample_data[223]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[224] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[224]),
+        .Q(sample_data[224]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[225] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[225]),
+        .Q(sample_data[225]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[226] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[226]),
+        .Q(sample_data[226]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[227] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[227]),
+        .Q(sample_data[227]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[228] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[228]),
+        .Q(sample_data[228]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[229] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[229]),
+        .Q(sample_data[229]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[22] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[22]),
         .Q(sample_data[22]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[230] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[230]),
+        .Q(sample_data[230]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[231] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[231]),
+        .Q(sample_data[231]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[232] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[232]),
+        .Q(sample_data[232]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[233] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[233]),
+        .Q(sample_data[233]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[234] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[234]),
+        .Q(sample_data[234]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[235] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[235]),
+        .Q(sample_data[235]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[236] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[236]),
+        .Q(sample_data[236]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[237] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[237]),
+        .Q(sample_data[237]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[238] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[238]),
+        .Q(sample_data[238]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[239] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[239]),
+        .Q(sample_data[239]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[23] 
        (.C(clk),
@@ -2769,11 +3057,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[23]),
         .Q(sample_data[23]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[240] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[240]),
+        .Q(sample_data[240]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[241] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[241]),
+        .Q(sample_data[241]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[242] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[242]),
+        .Q(sample_data[242]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[243] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[243]),
+        .Q(sample_data[243]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[244] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[244]),
+        .Q(sample_data[244]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[245] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[245]),
+        .Q(sample_data[245]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[246] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[246]),
+        .Q(sample_data[246]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[247] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[247]),
+        .Q(sample_data[247]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[248] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[248]),
+        .Q(sample_data[248]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[249] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[249]),
+        .Q(sample_data[249]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[24] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[24]),
         .Q(sample_data[24]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[250] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[250]),
+        .Q(sample_data[250]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[251] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[251]),
+        .Q(sample_data[251]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[252] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[252]),
+        .Q(sample_data[252]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[253] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[253]),
+        .Q(sample_data[253]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[254] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[254]),
+        .Q(sample_data[254]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[255] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[255]),
+        .Q(sample_data[255]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[256] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[256]),
+        .Q(sample_data[256]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[257] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[257]),
+        .Q(sample_data[257]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[258] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[258]),
+        .Q(sample_data[258]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[259] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[259]),
+        .Q(sample_data[259]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[25] 
        (.C(clk),
@@ -2781,11 +3189,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[25]),
         .Q(sample_data[25]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[260] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[260]),
+        .Q(sample_data[260]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[261] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[261]),
+        .Q(sample_data[261]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[262] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[262]),
+        .Q(sample_data[262]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[263] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[263]),
+        .Q(sample_data[263]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[264] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[264]),
+        .Q(sample_data[264]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[265] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[265]),
+        .Q(sample_data[265]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[266] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[266]),
+        .Q(sample_data[266]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[267] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[267]),
+        .Q(sample_data[267]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[268] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[268]),
+        .Q(sample_data[268]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[269] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[269]),
+        .Q(sample_data[269]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[26] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[26]),
         .Q(sample_data[26]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[270] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[270]),
+        .Q(sample_data[270]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[271] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[271]),
+        .Q(sample_data[271]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[272] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[272]),
+        .Q(sample_data[272]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[273] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[273]),
+        .Q(sample_data[273]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[274] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[274]),
+        .Q(sample_data[274]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[275] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[275]),
+        .Q(sample_data[275]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[276] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[276]),
+        .Q(sample_data[276]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[277] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[277]),
+        .Q(sample_data[277]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[278] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[278]),
+        .Q(sample_data[278]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[279] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[279]),
+        .Q(sample_data[279]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[27] 
        (.C(clk),
@@ -2793,11 +3321,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[27]),
         .Q(sample_data[27]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[280] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[280]),
+        .Q(sample_data[280]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[281] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[281]),
+        .Q(sample_data[281]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[282] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[282]),
+        .Q(sample_data[282]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[283] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[283]),
+        .Q(sample_data[283]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[284] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[284]),
+        .Q(sample_data[284]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[285] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[285]),
+        .Q(sample_data[285]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[286] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[286]),
+        .Q(sample_data[286]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[287] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[287]),
+        .Q(sample_data[287]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[288] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[288]),
+        .Q(sample_data[288]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[289] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[289]),
+        .Q(sample_data[289]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[28] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[28]),
         .Q(sample_data[28]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[290] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[290]),
+        .Q(sample_data[290]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[291] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[291]),
+        .Q(sample_data[291]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[292] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[292]),
+        .Q(sample_data[292]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[293] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[293]),
+        .Q(sample_data[293]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[294] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[294]),
+        .Q(sample_data[294]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[295] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[295]),
+        .Q(sample_data[295]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[296] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[296]),
+        .Q(sample_data[296]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[297] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[297]),
+        .Q(sample_data[297]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[298] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[298]),
+        .Q(sample_data[298]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[299] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[299]),
+        .Q(sample_data[299]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[29] 
        (.C(clk),
@@ -2811,11 +3459,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[2]),
         .Q(sample_data[2]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[300] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[300]),
+        .Q(sample_data[300]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[301] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[301]),
+        .Q(sample_data[301]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[302] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[302]),
+        .Q(sample_data[302]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[303] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[303]),
+        .Q(sample_data[303]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[304] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[304]),
+        .Q(sample_data[304]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[305] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[305]),
+        .Q(sample_data[305]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[306] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[306]),
+        .Q(sample_data[306]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[307] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[307]),
+        .Q(sample_data[307]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[308] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[308]),
+        .Q(sample_data[308]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[309] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[309]),
+        .Q(sample_data[309]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[30] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[30]),
         .Q(sample_data[30]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[310] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[310]),
+        .Q(sample_data[310]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[311] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[311]),
+        .Q(sample_data[311]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[312] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[312]),
+        .Q(sample_data[312]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[313] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[313]),
+        .Q(sample_data[313]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[314] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[314]),
+        .Q(sample_data[314]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[315] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[315]),
+        .Q(sample_data[315]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[316] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[316]),
+        .Q(sample_data[316]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[317] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[317]),
+        .Q(sample_data[317]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[318] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[318]),
+        .Q(sample_data[318]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[319] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[319]),
+        .Q(sample_data[319]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[31] 
        (.C(clk),
@@ -2823,11 +3591,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[31]),
         .Q(sample_data[31]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[320] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[320]),
+        .Q(sample_data[320]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[321] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[321]),
+        .Q(sample_data[321]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[322] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[322]),
+        .Q(sample_data[322]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[323] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[323]),
+        .Q(sample_data[323]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[324] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[324]),
+        .Q(sample_data[324]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[325] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[325]),
+        .Q(sample_data[325]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[326] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[326]),
+        .Q(sample_data[326]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[327] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[327]),
+        .Q(sample_data[327]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[328] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[328]),
+        .Q(sample_data[328]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[329] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[329]),
+        .Q(sample_data[329]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[32] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[32]),
         .Q(sample_data[32]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[330] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[330]),
+        .Q(sample_data[330]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[331] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[331]),
+        .Q(sample_data[331]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[332] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[332]),
+        .Q(sample_data[332]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[333] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[333]),
+        .Q(sample_data[333]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[334] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[334]),
+        .Q(sample_data[334]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[335] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[335]),
+        .Q(sample_data[335]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[336] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[336]),
+        .Q(sample_data[336]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[337] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[337]),
+        .Q(sample_data[337]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[338] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[338]),
+        .Q(sample_data[338]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[339] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[339]),
+        .Q(sample_data[339]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[33] 
        (.C(clk),
@@ -2835,11 +3723,131 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[33]),
         .Q(sample_data[33]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[340] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[340]),
+        .Q(sample_data[340]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[341] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[341]),
+        .Q(sample_data[341]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[342] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[342]),
+        .Q(sample_data[342]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[343] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[343]),
+        .Q(sample_data[343]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[344] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[344]),
+        .Q(sample_data[344]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[345] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[345]),
+        .Q(sample_data[345]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[346] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[346]),
+        .Q(sample_data[346]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[347] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[347]),
+        .Q(sample_data[347]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[348] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[348]),
+        .Q(sample_data[348]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[349] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[349]),
+        .Q(sample_data[349]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[34] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[34]),
         .Q(sample_data[34]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[350] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[350]),
+        .Q(sample_data[350]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[351] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[351]),
+        .Q(sample_data[351]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[352] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[352]),
+        .Q(sample_data[352]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[353] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[353]),
+        .Q(sample_data[353]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[354] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[354]),
+        .Q(sample_data[354]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[355] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[355]),
+        .Q(sample_data[355]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[356] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[356]),
+        .Q(sample_data[356]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[357] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[357]),
+        .Q(sample_data[357]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[358] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[358]),
+        .Q(sample_data[358]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[359] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[359]),
+        .Q(sample_data[359]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[35] 
        (.C(clk),
@@ -2847,17 +3855,161 @@ module ps_freq_low_46_0_0_freq_low_46
         .D(raw_fifo_data[35]),
         .Q(sample_data[35]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[360] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[360]),
+        .Q(sample_data[360]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[361] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[361]),
+        .Q(sample_data[361]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[362] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[362]),
+        .Q(sample_data[362]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[363] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[363]),
+        .Q(sample_data[363]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[364] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[364]),
+        .Q(sample_data[364]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[365] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[365]),
+        .Q(sample_data[365]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[366] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[366]),
+        .Q(sample_data[366]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[367] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[367]),
+        .Q(sample_data[367]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[368] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[368]),
+        .Q(sample_data[368]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[369] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[369]),
+        .Q(sample_data[369]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[36] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[36]),
         .Q(sample_data[36]),
         .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[370] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[370]),
+        .Q(sample_data[370]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[371] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[371]),
+        .Q(sample_data[371]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[372] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[372]),
+        .Q(sample_data[372]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[373] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[373]),
+        .Q(sample_data[373]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[374] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[374]),
+        .Q(sample_data[374]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[375] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[375]),
+        .Q(sample_data[375]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[376] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[376]),
+        .Q(sample_data[376]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[377] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[377]),
+        .Q(sample_data[377]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[378] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[378]),
+        .Q(sample_data[378]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[379] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[379]),
+        .Q(sample_data[379]),
+        .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[37] 
        (.C(clk),
         .CE(valid),
         .D(raw_fifo_data[37]),
         .Q(sample_data[37]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[380] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[380]),
+        .Q(sample_data[380]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[381] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[381]),
+        .Q(sample_data[381]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[382] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[382]),
+        .Q(sample_data[382]),
+        .R(1'b0));
+  FDRE \freq_low_46.sample_data_reg[383] 
+       (.C(clk),
+        .CE(valid),
+        .D(raw_fifo_data[383]),
+        .Q(sample_data[383]),
         .R(1'b0));
   FDRE \freq_low_46.sample_data_reg[38] 
        (.C(clk),

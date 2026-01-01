@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -72,7 +72,7 @@ module ps_comp_low_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
 input wire fifo_wr;
-input wire [191 : 0] fifo_sample_data;
+input wire [383 : 0] fifo_sample_data;
 input wire [143 : 0] fifo_doa_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)

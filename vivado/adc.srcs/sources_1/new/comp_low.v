@@ -23,7 +23,7 @@
 module comp_low(
     input wire	fifo_clk,
     input wire fifo_wr,
-    input wire [191:0] fifo_sample_data,
+    input wire [383:0] fifo_sample_data,
     input wire [143:0] fifo_doa_data,
 
     input wire config_clk,
@@ -34,9 +34,9 @@ module comp_low(
     input wire clk,
     input wire reset
     );
-    
+
   reg sample_rd;
-  wire [191:0] sample_data;
+  wire [383:0] sample_data;
   wire fifo_sample_empty;
   reg [8:0] fifo_sample_delay;
 
@@ -68,30 +68,50 @@ module comp_low(
   wire [19:0] phase_EW;
   wire [19:0] phase_WN;
   wire burst;
-  
+
   reg [15:0] raw_N0;
   reg [15:0] raw_N1;
   reg [15:0] raw_N2;
   reg [15:0] raw_N3;
+  reg [15:0] raw_N4;
+  reg [15:0] raw_N5;
+  reg [15:0] raw_N6;
+  reg [15:0] raw_N7;
   
   reg [15:0] raw_E0;
   reg [15:0] raw_E1;
   reg [15:0] raw_E2;
   reg [15:0] raw_E3;  
+  reg [15:0] raw_E4;  
+  reg [15:0] raw_E5;  
+  reg [15:0] raw_E6;  
+  reg [15:0] raw_E7;  
   
   reg [15:0] raw_W0;
   reg [15:0] raw_W1;
   reg [15:0] raw_W2;
   reg [15:0] raw_W3;
+  reg [15:0] raw_W4;
+  reg [15:0] raw_W5;
+  reg [15:0] raw_W6;
+  reg [15:0] raw_W7;
 
-fifo_raw_low fifo_raw_i (
+  wire [127:0] comp_N;
+  wire [127:0] comp_E;
+  wire [127:0] comp_W;
+
+  reg sel_N;
+  reg sel_E;
+  reg sel_W;
+
+fifo_raw_high fifo_raw_i (
   .rst(reset),                   // input wire rst
   .wr_clk(fifo_clk),             // input wire wr_clk
   .rd_clk(clk),                  // input wire rd_clk
-  .din(fifo_sample_data),        // input wire [191 : 0] din
+  .din(fifo_sample_data),        // input wire [383 : 0] din
   .wr_en(fifo_wr),               // input wire wr_en
   .rd_en(sample_rd),             // input wire rd_en
-  .dout(sample_data),            // output wire [191 : 0] dout
+  .dout(sample_data),            // output wire [383 : 0] dout
   .empty(fifo_sample_empty)      // output wire empty
 );
 
@@ -153,8 +173,45 @@ doa_calc doa_calc_i (
     .phase_WN(phase_WN)
 );
 
+comp_sel6 sel_N_i (
+    .clk(clk),
+    .data_in(sample_data[127:0]),
+    .select(sel_N),
+    .data_out(comp_N)
+);
+
+comp_sel6 sel_E_i (
+    .clk(clk),
+    .data_in(sample_data[255:128]),
+    .select(sel_E),
+    .data_out(comp_E)
+);
+
+comp_sel6 sel_W_i (
+    .clk(clk),
+    .data_in(sample_data[383:256]),
+    .select(sel_W),
+    .data_out(comp_W)
+);
+
 generate
   begin : comp_low
+
+    always @(posedge clk) 
+	begin
+	   if (reset)
+	   begin
+	       sel_N <= 0;
+	       sel_E <= 0;
+	       sel_W <= 0;
+	    end
+	    else
+	    begin
+	       sel_N <= sel_N + 1;
+	       sel_E <= sel_E + 1;
+	       sel_W <= sel_W + 1;
+	    end
+	end
 
     always @(posedge clk) 
 	begin
@@ -221,18 +278,30 @@ generate
             raw_N1 <= sample_data[31:16];
             raw_N2 <= sample_data[47:32];
             raw_N3 <= sample_data[63:48];
+            raw_N4 <= sample_data[79:64];
+            raw_N5 <= sample_data[95:80];
+            raw_N6 <= sample_data[111:96];
+            raw_N7 <= sample_data[127:112];
 
-            raw_E0 <= sample_data[79:64];
-            raw_E1 <= sample_data[95:80];
-            raw_E2 <= sample_data[111:96];
-            raw_E3 <= sample_data[127:112];
+            raw_E0 <= sample_data[143:128];
+            raw_E1 <= sample_data[159:144];
+            raw_E2 <= sample_data[175:160];
+            raw_E3 <= sample_data[191:176];
+            raw_E4 <= sample_data[207:192];
+            raw_E5 <= sample_data[223:208];
+            raw_E6 <= sample_data[239:224];
+            raw_E7 <= sample_data[255:240];
       
-            raw_W0 <= sample_data[143:128];
-            raw_W1 <= sample_data[159:144];
-            raw_W2 <= sample_data[175:160];
-            raw_W3 <= sample_data[191:176];
+            raw_W0 <= sample_data[271:256];
+            raw_W1 <= sample_data[287:272];
+            raw_W2 <= sample_data[303:288];
+            raw_W3 <= sample_data[319:304];
+            raw_W4 <= sample_data[335:320];
+            raw_W5 <= sample_data[351:336];
+            raw_W6 <= sample_data[367:352];
+            raw_W7 <= sample_data[383:368];
         end
-	end
+    end
 
   end
     

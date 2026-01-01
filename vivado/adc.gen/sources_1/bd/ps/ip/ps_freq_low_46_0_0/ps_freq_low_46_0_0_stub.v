@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Dec 27 14:05:47 2025
+// Date        : Wed Dec 31 15:20:05 2025
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_stub.v
@@ -18,16 +18,16 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "freq_low_46,Vivado 2025.1" *) 
 module ps_freq_low_46_0_0(fifo_clk, raw_wr, raw_data, freq_wr, freq_data, 
   clk, reset, doa_wr, sample_data, doa_data)
-/* synthesis syn_black_box black_box_pad_pin="fifo_clk,raw_wr,raw_data[191:0],freq_wr,freq_data[47:0],reset,doa_wr,sample_data[191:0],doa_data[143:0]" */
+/* synthesis syn_black_box black_box_pad_pin="fifo_clk,raw_wr,raw_data[383:0],freq_wr,freq_data[47:0],reset,doa_wr,sample_data[383:0],doa_data[143:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input fifo_clk;
   input raw_wr;
-  input [191:0]raw_data;
+  input [383:0]raw_data;
   input freq_wr;
   input [47:0]freq_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   output doa_wr;
-  output [191:0]sample_data;
+  output [383:0]sample_data;
   output [143:0]doa_data;
 endmodule

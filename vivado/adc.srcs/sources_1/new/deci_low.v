@@ -42,17 +42,16 @@ module deci_low(
 	input wire [31:0] sim_data,
 
     output reg raw_wr,
-    output reg [191:0] raw_data,
+    output reg [383:0] raw_data,
     output reg freq_wr,
     output reg [47:0] freq_data
     );
-	
+
   reg mux_active;
   reg [127:0] mux_N;
   reg [127:0] mux_E;
   reg [127:0] mux_W;
 
-  reg [3:0] raw_wr_delay;
   reg [3:0] freq_wr_delay;
 
   reg sim_wr_N;
@@ -110,25 +109,6 @@ module deci_low(
   wire [15:0] W6 = data_W[111:96];
   wire [15:0] W7 = data_W[127:112];
 
-  wire	[127:0] fir_raw_N;
-  wire	[127:0] fir_raw_E;
-  wire	[127:0] fir_raw_W;
-
-  wire [15:0] raw_N0 = fir_raw_N[30:15];
-  wire [15:0] raw_N1 = fir_raw_N[62:47];
-  wire [15:0] raw_N2 = fir_raw_N[94:79];
-  wire [15:0] raw_N3 = fir_raw_N[126:111];
-
-  wire [15:0] raw_E0 = fir_raw_E[30:15];
-  wire [15:0] raw_E1 = fir_raw_E[62:47];
-  wire [15:0] raw_E2 = fir_raw_E[94:79];
-  wire [15:0] raw_E3 = fir_raw_E[126:111];
-
-  wire [15:0] raw_W0 = fir_raw_W[30:15];
-  wire [15:0] raw_W1 = fir_raw_W[62:47];
-  wire [15:0] raw_W2 = fir_raw_W[94:79];
-  wire [15:0] raw_W3 = fir_raw_W[126:111];
-
   wire [15:0] mux_N0 = mux_N[15:0];
   wire [15:0] mux_N1 = mux_N[31:16];
   wire [15:0] mux_N2 = mux_N[47:32];
@@ -155,30 +135,6 @@ module deci_low(
   wire [15:0] mux_W5 = mux_W[95:80];
   wire [15:0] mux_W6 = mux_W[111:96];
   wire [15:0] mux_W7 = mux_W[127:112];
-
-fir_raw_deci fir_raw_N_i (
-  .aresetn(fir_resetn),             // input wire aresetn
-  .aclk(clk),                       // input wire aclk
-  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(mux_N),        // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tdata(fir_raw_N)     // output wire [127 : 0] m_axis_data_tdata
-);
-
-fir_raw_deci fir_raw_E_i (
-  .aresetn(fir_resetn),             // input wire aresetn
-  .aclk(clk),                       // input wire aclk
-  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(mux_E),        // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tdata(fir_raw_E)     // output wire [127 : 0] m_axis_data_tdata
-);
-
-fir_raw_deci fir_raw_W_i (
-  .aresetn(fir_resetn),             // input wire aresetn
-  .aclk(clk),                       // input wire aclk
-  .s_axis_data_tvalid(mux_active),  // input wire s_axis_data_tvalid
-  .s_axis_data_tdata(mux_W),        // input wire [127 : 0] s_axis_data_tdata
-  .m_axis_data_tdata(fir_raw_W)     // output wire [127 : 0] m_axis_data_tdata
-);
 
 fir_deci_low fir_freq_N_i (
   .aresetn(fir_resetn),             // input wire aresetn
@@ -237,76 +193,6 @@ fifo_sim fifo_sim_W_i (
   .empty(sim_empty_W)       // output wire empty
 );
 
-/*
-ila_5 ila_5_i (
-		.clk(sim_clk),             // input wire clk
-		.probe0(sim_resetn),       // input wire [0:0]  probe3
-		.probe1(sim_data),         // input wire [31:0]  probe3
-		.probe2(sim_channel),      // input wire [1:0]  probe3
-		.probe3(sim_wr_N),         // input wire [0:0]  probe3
-		.probe4(sim_wr_E),         // input wire [0:0]  probe3
-		.probe5(sim_wr_W),         // input wire [0:0]  probe3
-		.probe6(sim_in_data),      // input wire [127:0]  probe3
-		.probe7(sim_count),        // input wire [1:0]  probe3
-		.probe8(sim_curr_wr),      // input wire [0:0]  probe3
-		.probe9(sim_curr_data)     // input wire [127:0]  probe3
-);
-*/
-
-/*
-ila_2 ila_2_i (
-		.clk(clk),                   // input wire clk
-		.probe0(reset_delay),        // input wire [2:0]  probe3
-		.probe1(reset_active),       // input wire [2:0]  probe3
-		.probe2(fir_resetn),         // input wire [0:0]  probe3
-		.probe3(adc_active),         // input wire [0:0]  probe3
-		.probe4(mux_active),         // input wire [0:0]  probe3
-		.probe5(raw_wr_delay),       // input wire [3:0]  probe3
-		.probe6(raw_fifo_wr),        // input wire [0:0]  probe3
-		.probe7(raw_in_data[15:0]),  // input wire [15:0]  probe3
-		.probe8(freq_wr_delay),       // input wire [3:0]  probe3
-		.probe9(freq_fifo_wr),        // input wire [0:0]  probe3
-		.probe10(freq_in_data[15:0]), // input wire [15:0]  probe3
-		.probe11(mux_N0),            // input wire [15:0]  probe3
-		.probe12(mux_N1),            // input wire [15:0]  probe3
-		.probe13(mux_N2),            // input wire [15:0]  probe3
-		.probe14(mux_N3),            // input wire [15:0]  probe3
-		.probe15(mux_N4),            // input wire [15:0]  probe3
-		.probe16(mux_N5),            // input wire [15:0]  probe3
-		.probe17(mux_N6),            // input wire [15:0]  probe3
-		.probe18(mux_N7),            // input wire [15:0]  probe3
-		.probe19(raw_N0),            // input wire [15:0]  probe3
-		.probe20(raw_N1),            // input wire [15:0]  probe3
-		.probe21(raw_N2),            // input wire [15:0]  probe3
-		.probe22(raw_N3),            // input wire [15:0]  probe3
-		.probe23(freq_N),             // input wire [15:0]  probe3
-		.probe24(freq_E),             // input wire [15:0]  probe3
-		.probe25(freq_W)              // input wire [15:0]  probe3
-);
-*/
-
-/*
-ila_7 ila_7_i (
-		.clk(raw_clk),               // input wire clk
-		.probe0(raw_fifo_empty),     // input wire [0:0]  probe3
-		.probe1(raw_delay),          // input wire [11:0]  probe3
-		.probe2(raw_out_rd),         // input wire [0:0]  probe3
-		.probe3(raw_out_data[15:0]), // input wire [15:0]  probe3
-		.probe4(raw_ready),          // input wire [0:0]  probe3
-		.probe5(raw_data[15:0])      // input wire [15:0]  probe3
-);
-*/
-
-/*
-ila_8 ila_8_i (
-		.clk(freq_clk),               // input wire clk
-		.probe0(freq_fifo_empty),     // input wire [0:0]  probe3
-		.probe1(freq_out_rd),          // input wire [0:0]  probe3
-		.probe2(freq_out_data[15:0]), // input wire [15:0]  probe3
-		.probe3(freq_ready),          // input wire [0:0]  probe3
-		.probe4(freq_data[15:0])      // input wire [15:0]  probe3
-);
-*/
 
 generate
   begin : deci_low
@@ -493,51 +379,38 @@ generate
 	  end
 	end
 
-    always @(posedge clk) 
+	always @(posedge clk) 
 	begin
 	  if (mux_active)
 	  begin
-	    if (raw_wr_delay == 14)
-	    begin
-          raw_wr <= 1;
-          raw_data[15:0] <= raw_N0;
-          raw_data[31:16] <= raw_N1;
-          raw_data[47:32] <= raw_N2;
-          raw_data[63:48] <= raw_N3;
-          raw_data[79:64] <= raw_E0;
-          raw_data[95:80] <= raw_E1;
-          raw_data[111:96] <= raw_E2;
-          raw_data[127:112] <= raw_E3;
-          raw_data[143:128] <= raw_W0;
-          raw_data[159:144] <= raw_W1;
-          raw_data[175:160] <= raw_W2;
-          raw_data[191:176] <= raw_W3;
-        end
-        else
-          raw_wr_delay <= raw_wr_delay + 1;
+        raw_wr <= 1;
+        raw_data[15:0] <= mux_N0;
+        raw_data[31:16] <= mux_N1;
+        raw_data[47:32] <= mux_N2;
+        raw_data[63:48] <= mux_N3;
+        raw_data[79:64] <= mux_N4;
+        raw_data[95:80] <= mux_N5;
+        raw_data[111:96] <= mux_N6;
+        raw_data[127:112] <= mux_N7;
+        raw_data[143:128] <= mux_E0;
+        raw_data[159:144] <= mux_E1;
+        raw_data[175:160] <= mux_E2;
+        raw_data[191:176] <= mux_E3;
+        raw_data[207:192] <= mux_E4;
+        raw_data[223:208] <= mux_E5;
+        raw_data[239:224] <= mux_E6;
+        raw_data[255:240] <= mux_E7;
+        raw_data[271:256] <= mux_W0;
+        raw_data[287:272] <= mux_W1;
+        raw_data[303:288] <= mux_W2;
+        raw_data[319:304] <= mux_W3;
+        raw_data[335:320] <= mux_W4;
+        raw_data[351:336] <= mux_W5;
+        raw_data[367:352] <= mux_W6;
+        raw_data[383:368] <= mux_W7;
       end
       else
-      begin
-        if (raw_wr_delay)
-		begin
-          raw_wr <= 1;
-          raw_data[15:0] <= raw_N0;
-          raw_data[31:16] <= raw_N1;
-          raw_data[47:32] <= raw_N2;
-          raw_data[63:48] <= raw_N3;
-          raw_data[79:64] <= raw_E0;
-          raw_data[95:80] <= raw_E1;
-          raw_data[111:96] <= raw_E2;
-          raw_data[127:112] <= raw_E3;
-          raw_data[143:128] <= raw_W0;
-          raw_data[159:144] <= raw_W1;
-          raw_data[175:160] <= raw_W2;
-          raw_data[191:176] <= raw_W3;
-          raw_wr_delay <= raw_wr_delay - 1;
-		end
-        else
-          raw_wr <= 0;
-      end
+        raw_wr <= 0;
     end
 
     always @(posedge clk) 
@@ -563,14 +436,14 @@ generate
           freq_data[31:16] <= freq_E;
           freq_data[47:32] <= freq_W;
           freq_wr_delay <= freq_wr_delay - 1;
-	    end
+		end
         else
           freq_wr <= 0;
       end
  	end
-
+         
   end
-
+     
 endgenerate
     
 endmodule

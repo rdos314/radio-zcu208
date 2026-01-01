@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Wed Dec 31 12:59:37 2025
+//Date        : Thu Jan  1 19:26:31 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -189,7 +189,7 @@ module ps
   wire deci_high_raw_wr;
   wire [47:0]deci_low_freq_data;
   wire deci_low_freq_wr;
-  wire [191:0]deci_low_raw_data;
+  wire [383:0]deci_low_raw_data;
   wire deci_low_raw_wr;
   wire deci_low_sim_active;
   wire [143:0]freq_high_189_0_doa_data;
@@ -197,7 +197,7 @@ module ps
   wire [383:0]freq_high_189_0_sample_data;
   wire [143:0]freq_low_46_0_doa_data;
   wire freq_low_46_0_doa_wr;
-  wire [191:0]freq_low_46_0_sample_data;
+  wire [383:0]freq_low_46_0_sample_data;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_comp0_clk;
   wire mts_0_comp0_reset;

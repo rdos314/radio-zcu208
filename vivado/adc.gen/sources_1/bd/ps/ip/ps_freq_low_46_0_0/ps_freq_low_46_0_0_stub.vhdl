@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Dec 27 14:05:47 2025
+-- Date        : Wed Dec 31 15:20:05 2025
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_stub.vhdl
@@ -17,13 +17,13 @@ entity ps_freq_low_46_0_0 is
   Port ( 
     fifo_clk : in STD_LOGIC;
     raw_wr : in STD_LOGIC;
-    raw_data : in STD_LOGIC_VECTOR ( 191 downto 0 );
+    raw_data : in STD_LOGIC_VECTOR ( 383 downto 0 );
     freq_wr : in STD_LOGIC;
     freq_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     doa_wr : out STD_LOGIC;
-    sample_data : out STD_LOGIC_VECTOR ( 191 downto 0 );
+    sample_data : out STD_LOGIC_VECTOR ( 383 downto 0 );
     doa_data : out STD_LOGIC_VECTOR ( 143 downto 0 )
   );
 
@@ -41,7 +41,7 @@ architecture stub of ps_freq_low_46_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "fifo_clk,raw_wr,raw_data[191:0],freq_wr,freq_data[47:0],clk,reset,doa_wr,sample_data[191:0],doa_data[143:0]";
+  attribute black_box_pad_pin of stub : architecture is "fifo_clk,raw_wr,raw_data[383:0],freq_wr,freq_data[47:0],clk,reset,doa_wr,sample_data[383:0],doa_data[143:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

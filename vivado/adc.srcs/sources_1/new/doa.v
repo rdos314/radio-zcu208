@@ -140,30 +140,22 @@ doa_angle doa_angle_i(
 
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(inv_dij),             // input wire [31:0]  probe3
-		.probe1(shadow_limit),        // input wire [19:0]  probe3
-		.probe2(start),               // input wire [0:0]  probe3
-		.probe3(freq),                // input wire [19:0]  probe3
-		.probe4(env_N),               // input wire [15:0]  probe3
-		.probe5(env_E),               // input wire [15:0]  probe3
-		.probe6(env_W),               // input wire [15:0]  probe3
-		.probe7(phase_NE),            // input wire [19:0]  probe3
-		.probe8(phase_EW),            // input wire [19:0]  probe3
-		.probe9(phase_WN),            // input wire [19:0]  probe3
-		.probe10(valid_k),            // input wire [0:0]  probe3
-		.probe11(k),                  // input wire [19:0]  probe3
-		.probe12(done_NE),            // input wire [0:0]  probe3
-		.probe13(done_EW),            // input wire [0:0]  probe3
-		.probe14(done_WN),            // input wire [0:0]  probe3
-		.probe15(shadow_NE),          // input wire [0:0]  probe3
-		.probe16(shadow_EW),          // input wire [0:0]  probe3
-		.probe17(shadow_WN),          // input wire [0:0]  probe3
-		.probe18(angle_NE),           // input wire [19:0]  probe3
-		.probe19(angle_EW),           // input wire [19:0]  probe3
-		.probe20(angle_WN),           // input wire [19:0]  probe3
-		.probe21(delay_NE),           // input wire [19:0]  probe3
-		.probe22(delay_EW),           // input wire [19:0]  probe3
-		.probe23(delay_WN)            // input wire [19:0]  probe3
+		.probe0(start),               // input wire [0:0]  probe3
+		.probe1(freq),                // input wire [19:0]  probe3
+		.probe2(env_N),               // input wire [15:0]  probe3
+		.probe3(env_E),               // input wire [15:0]  probe3
+		.probe4(env_W),               // input wire [15:0]  probe3
+		.probe5(phase_NE),            // input wire [19:0]  probe3
+		.probe6(phase_EW),            // input wire [19:0]  probe3
+		.probe7(phase_WN),            // input wire [19:0]  probe3
+		.probe8(shadow_NE),           // input wire [0:0]  probe3
+		.probe9(shadow_EW),           // input wire [0:0]  probe3
+		.probe10(shadow_WN),          // input wire [0:0]  probe3
+		.probe11(delay_NE),           // input wire [19:0]  probe3
+		.probe12(delay_EW),           // input wire [19:0]  probe3
+		.probe13(delay_WN),           // input wire [19:0]  probe3
+		.probe14(done_angle),         // input wire [0:0]  probe3
+		.probe15(angle)               // input wire [19:0]  probe3
 );
 
 generate

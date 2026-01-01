@@ -106,7 +106,7 @@ input wire sim_wr;
 input wire [1 : 0] sim_channel;
 input wire [31 : 0] sim_data;
 output wire raw_wr;
-output wire [191 : 0] raw_data;
+output wire [383 : 0] raw_data;
 output wire freq_wr;
 output wire [47 : 0] freq_data;
 
