@@ -111,6 +111,18 @@ module doa_angle(
     input wire reset,
     input wire start,
 
+    input wire [31:0] sample_in,
+    input wire [8:0] size_in,
+    input wire [19:0] freq_in,
+
+    input wire [15:0] env_N_in,
+    input wire [15:0] env_E_in,
+    input wire [15:0] env_W_in,
+
+    input wire [19:0] phase_NE_in,
+    input wire [19:0] phase_EW_in,
+    input wire [19:0] phase_WN_in,
+
     input wire [15:0] angle_NE,
     input wire [15:0] angle_EW,
     input wire [15:0] angle_WN,
@@ -120,10 +132,25 @@ module doa_angle(
     input wire shadow_WN,
     
     output reg done,
+
+    output reg [31:0] sample,
+    output reg [8:0] size,
+    output reg [19:0] freq,
+
+    output reg [15:0] env_N,
+    output reg [15:0] env_E,
+    output reg [15:0] env_W,
+
     output reg shadow_N,
     output reg shadow_E,
     output reg shadow_W,
+
     output reg [15:0] angle,
+
+    output reg [19:0] phase_NE,
+    output reg [19:0] phase_EW,
+    output reg [19:0] phase_WN,
+
     output reg [15:0] delay_NE,
     output reg [15:0] delay_EW,
     output reg [15:0] delay_WN
@@ -157,6 +184,9 @@ module doa_angle(
   reg [4:0] run;
 
   reg shadow;
+  reg shadow_N_loc;
+  reg shadow_E_loc;
+  reg shadow_W_loc;
   reg shadow_err;
   reg [1:0] shadow_id;
   
@@ -166,6 +196,23 @@ module doa_angle(
   reg [15:0] delay_diff;
 
   reg cordic_start;
+  reg [31:0] sample_run;
+  reg [8:0] size_run;
+  reg [19:0] freq_run;
+  reg [15:0] angle_run;
+
+  reg [15:0] env_N_run;
+  reg [15:0] env_E_run;
+  reg [15:0] env_W_run;
+
+  reg shadow_N_run;
+  reg shadow_E_run;
+  reg shadow_W_run;
+
+  reg [19:0] phase_NE_run;
+  reg [19:0] phase_EW_run;
+  reg [19:0] phase_WN_run;
+  
   wire [23:0] cordic_phase = {delay_diff[15], delay_diff[15], delay_diff[15], delay_diff[15], delay_diff, 4'b0000}; 
   wire cordic_done;
   wire [31:0] cordic_out;
@@ -173,6 +220,23 @@ module doa_angle(
   wire [19:0] cordic_cos = {cordic_out[15:0], 4'b0000};
   wire [19:0] sqrt3 = 454047;
   wire [39:0] delay_mul;
+
+  reg [31:0] sample_cordic;
+  reg [8:0] size_cordic;
+  reg [19:0] freq_cordic;
+  reg [15:0] angle_cordic;
+
+  reg [15:0] env_N_cordic;
+  reg [15:0] env_E_cordic;
+  reg [15:0] env_W_cordic;
+
+  reg shadow_N_cordic;
+  reg shadow_E_cordic;
+  reg shadow_W_cordic;
+
+  reg [19:0] phase_NE_cordic;
+  reg [19:0] phase_EW_cordic;
+  reg [19:0] phase_WN_cordic;
 
   reg [15:0] delay_sin_2;
   reg [15:0] delay_curr;
@@ -286,59 +350,59 @@ generate
                 3'b000: 
                     begin
                         shadow_err <= 0;
-                        shadow_N <= 0;
-                        shadow_E <= 0;
-                        shadow_W <= 0;
+                        shadow_N_loc <= 0;
+                        shadow_E_loc <= 0;
+                        shadow_W_loc <= 0;
                     end
 
                 3'b001: 
                     begin
                         shadow_err <= 0;
-                        shadow_E <= 0;
+                        shadow_E_loc <= 0;
 
                         if (sign_WN)
                         begin
-                            shadow_N <= 1;
-                            shadow_W <= 0;
+                            shadow_N_loc <= 1;
+                            shadow_W_loc <= 0;
                         end
                         else
                         begin
-                            shadow_W <= 1;
-                            shadow_N <= 0;
+                            shadow_W_loc <= 1;
+                            shadow_N_loc <= 0;
                         end
                     end
 
                 3'b010: 
                     begin
                         shadow_err <= 0;
-                        shadow_N <= 0;
+                        shadow_N_loc <= 0;
 
                         if (sign_EW)
                         begin
-                            shadow_W <= 1;
-                            shadow_E <= 0;
+                            shadow_W_loc <= 1;
+                            shadow_E_loc <= 0;
                         end
                         else
                         begin
-                            shadow_E <= 1;
-                            shadow_W <= 0;
+                            shadow_E_loc <= 1;
+                            shadow_W_loc <= 0;
                         end
                     end            
 
                 3'b100:                 
                     begin
                         shadow_err <= 0;
-                        shadow_W <= 0;
+                        shadow_W_loc <= 0;
                         
                         if (sign_NE)
                         begin
-                            shadow_E <= 1;
-                            shadow_N <= 0;
+                            shadow_E_loc <= 1;
+                            shadow_N_loc <= 0;
                         end
                         else
                         begin
-                            shadow_N <= 1;
-                            shadow_E <= 0;
+                            shadow_N_loc <= 1;
+                            shadow_E_loc <= 0;
                         end
                     end            
                     
@@ -349,9 +413,9 @@ generate
         begin
             if (reset)
             begin
-                shadow_N <= 0;
-                shadow_E <= 0;
-                shadow_W <= 0;
+                shadow_N_loc <= 0;
+                shadow_E_loc <= 0;
+                shadow_W_loc <= 0;
             end
 
             shadow_err <= 0;
@@ -369,7 +433,7 @@ generate
     begin
         if (run[0])
         begin
-            case ({shadow_N, shadow_E, shadow_W})
+            case ({shadow_N_loc, shadow_E_loc, shadow_W_loc})
                 3'b001:
                     begin
                         shadow <= 1;
@@ -487,9 +551,9 @@ generate
         if (run[3])
         begin
             if (front)
-                angle <= base_angle + use_angle;
+                angle_run <= base_angle + use_angle;
             else
-                angle <= base_angle - use_angle;
+                angle_run <= base_angle - use_angle;
         end
     end
 
@@ -497,8 +561,24 @@ generate
     begin
         if (run[4])
         begin
-            delay_diff <= angle - delay_base;
+            delay_diff <= angle_run - delay_base;
             cordic_start <= 1;
+
+            sample_run <= sample_in;
+            size_run <= size_in;
+            freq_run <= freq_in;
+            
+            env_N_run <= env_N_in;
+            env_E_run <= env_E_in;
+            env_W_run <= env_W_in;
+            
+            shadow_N_run <= shadow_N_loc;
+            shadow_E_run <= shadow_E_loc;
+            shadow_W_run <= shadow_W_loc;
+
+            phase_NE_run <= phase_NE_in;
+            phase_EW_run <= phase_EW_in;
+            phase_WN_run <= phase_WN_in;
         end
         else
             cordic_start <= 0;
@@ -510,6 +590,23 @@ generate
         begin
             delay_sin_2 <= {cordic_sin[15], cordic_sin[15:1]};
             d_run <= 1;
+
+            sample_cordic <= sample_run;
+            size_cordic <= size_run;
+            freq_cordic <= freq_run;
+            angle_cordic <= angle_run;
+            
+            env_N_cordic <= env_N_run;
+            env_E_cordic <= env_E_run;
+            env_W_cordic <= env_W_run;
+            
+            shadow_N_cordic <= shadow_N_run;
+            shadow_E_cordic <= shadow_E_run;
+            shadow_W_cordic <= shadow_W_run;
+
+            phase_NE_cordic <= phase_NE_run;
+            phase_EW_cordic <= phase_EW_run;
+            phase_WN_cordic <= phase_WN_run;
         end
         else
         begin
@@ -553,13 +650,30 @@ generate
     begin
         if (d_run[5])
         begin
+            done <= 1;
+            sample <= sample_cordic;
+            size <= size_cordic;
+            freq <= freq_cordic;
+            angle <= angle_cordic;
+            
+            env_N <= env_N_cordic;
+            env_E <= env_E_cordic;
+            env_W <= env_W_cordic;
+            
+            shadow_N <= shadow_N_cordic;
+            shadow_E <= shadow_E_cordic;
+            shadow_W <= shadow_W_cordic;
+
+            phase_NE <= phase_NE_cordic;
+            phase_EW <= phase_EW_cordic;
+            phase_WN <= phase_WN_cordic;
+            
             case (delay_id)                
                 2'b00:
                     begin
                         delay_WN <= d_prev;
                         delay_NE <= d_curr;
                         delay_EW <= d_next;
-                        done <= 1;
                     end
 
                 2'b01:
@@ -567,7 +681,6 @@ generate
                         delay_NE <= d_prev;
                         delay_EW <= d_curr;
                         delay_WN <= d_next;
-                        done <= 1;
                     end
                 
                 2'b10:
@@ -575,7 +688,6 @@ generate
                         delay_EW <= d_prev;
                         delay_WN <= d_curr;
                         delay_NE <= d_next;
-                        done <= 1;
                     end
                 
                 2'b11:
@@ -583,7 +695,6 @@ generate
                         delay_WN <= d_prev;
                         delay_NE <= d_curr;
                         delay_EW <= d_next;
-                        done <= 1;
                     end
             endcase
         end

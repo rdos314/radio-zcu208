@@ -26,9 +26,10 @@
 #define CONFIG_MAX_INCR         2
 #define CONFIG_MAX_DOA_DIFF     3
 #define CONFIG_MIN_SAMPLES      4
-#define CONFIG_SAMPLE_DIST      5
+#define CONFIG_INV_SAMPLE_DIST  5
 #define CONFIG_SHADOW_ANGLE     6
 #define CONFIG_SAMPLE_FACTOR    7
+#define CONFIG_SAMPLE_DIST      8
 
 struct bram_control_t
 {
@@ -361,6 +362,13 @@ int CalcSamples(double f, double periods)
     return (int)s;
 }
 
+int CalcSampleDistance(double dist, int decimate)
+{
+    int scale = 1 << 16;
+    double d_samples = dist * FS / (double)decimate * 1000.0 * 1000.0 / SPEED_OF_LIGHT;
+    return (int)(d_samples * scale + 0.5);
+}
+
 int CalcInvSampleDistance(double dist, int decimate)
 {
     int scale = 1 << 28;
@@ -393,9 +401,10 @@ int main()
     SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0, 8), CalcIncr(195.0, 8));
     SetConfig(CONFIG_MAX_DOA_DIFF, 100, 100);
     SetConfig(CONFIG_MIN_SAMPLES, CalcSamples(46.0, 1.5), CalcSamples(189.0, 1.5));
-    SetConfig(CONFIG_SAMPLE_DIST, CalcInvSampleDistance(LOW_DIST, 8), CalcInvSampleDistance(HIGH_DIST, 8));
+    SetConfig(CONFIG_INV_SAMPLE_DIST, CalcInvSampleDistance(LOW_DIST, 8), CalcInvSampleDistance(HIGH_DIST, 8));
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
     SetConfig(CONFIG_SAMPLE_FACTOR, CalcSampleFactor(LOW_DIST), CalcSampleFactor(HIGH_DIST));
+    SetConfig(CONFIG_SAMPLE_DIST, CalcSampleDistance(LOW_DIST, 8), CalcSampleDistance(HIGH_DIST, 8));
     LoadConfig();
 
     for (i = 0; i < 36; i++)

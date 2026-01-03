@@ -104,6 +104,21 @@ module comp_low(
   reg sel_E;
   reg sel_W;
 
+  wire save;
+  wire [31:0] save_sample;
+  wire [8:0] save_size;
+  wire [19:0] save_freq;
+  wire [15:0] save_angle;
+
+  wire [15:0] save_env_N;
+  wire [15:0] save_env_E;
+  wire [15:0] save_env_W;
+ 
+  wire [5:0] save_sample_N;
+  wire [5:0] save_sample_E;
+  wire [5:0] save_sample_W;
+
+
 fifo_raw_high fifo_raw_i (
   .rst(reset),                   // input wire rst
   .wr_clk(fifo_clk),             // input wire wr_clk
@@ -164,13 +179,26 @@ doa_calc doa_calc_i (
     .config_adr(cfg_adr),
     .config_data(cfg_data),
     .start(burst),
-    .freq(freq),
-    .env_N(env_N),
-    .env_E(env_E),
-    .env_W(env_W),
-    .phase_NE(phase_NE),
-    .phase_EW(phase_EW),
-    .phase_WN(phase_WN)
+    .sample_in(start_sample),
+    .size_in(size),
+    .freq_in(freq),
+    .env_N_in(env_N),
+    .env_E_in(env_E),
+    .env_W_in(env_W),
+    .phase_NE_in(phase_NE),
+    .phase_EW_in(phase_EW),
+    .phase_WN_in(phase_WN),
+    .done(save),
+    .sample(save_sample),
+    .size(save_size),
+    .freq(save_freq),
+    .angle(save_angle),
+    .env_N(save_env_N),
+    .env_E(save_env_E),
+    .env_W(save_env_W),
+    .sample_N(save_sample_N),
+    .sample_E(save_sample_E),
+    .sample_W(save_sample_W)    
 );
 
 comp_sel6 sel_N_i (
