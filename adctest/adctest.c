@@ -30,6 +30,7 @@
 #define CONFIG_SHADOW_ANGLE     6
 #define CONFIG_SAMPLE_FACTOR    7
 #define CONFIG_SAMPLE_DIST      8
+#define CONFIG_MAX_PHASE_ERROR  9
 
 struct bram_control_t
 {
@@ -192,9 +193,9 @@ void CalcLowDist(double compass_deg, double dist[3])
     double avg;
 
     xp[0] = 0.0;
-    yp[0] = LOW_DIST / sqrt(3.0);
+    yp[0] = (LOW_DIST + 0.1) / sqrt(3.0);
     
-    xp[1] = 0.5 * LOW_DIST;
+    xp[1] = 0.5 * (LOW_DIST + 0.1);
     yp[1] = -0.5 * yp[0];
     
     xp[2] = -xp[1];
@@ -391,6 +392,13 @@ int CalcSampleFactor(double dist)
     return (int)(diff * scale + 0.5);
 }
 
+int CalcPhaseError(double error, int decimate)
+{
+    int scale = 1 << 14;
+    double diff = error * FS / (double)decimate  * 1000.0 * 1000.0 / SPEED_OF_LIGHT * 2.0;
+    return (int)(diff * scale + 0.5);
+}
+
 int main()
 {
     int i;
@@ -405,6 +413,7 @@ int main()
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
     SetConfig(CONFIG_SAMPLE_FACTOR, CalcSampleFactor(LOW_DIST), CalcSampleFactor(HIGH_DIST));
     SetConfig(CONFIG_SAMPLE_DIST, CalcSampleDistance(LOW_DIST, 8), CalcSampleDistance(HIGH_DIST, 8));
+    SetConfig(CONFIG_MAX_PHASE_ERROR, CalcPhaseError(0.1, 8), CalcPhaseError(0.1, 8));
     LoadConfig();
 
     for (i = 0; i < 36; i++)

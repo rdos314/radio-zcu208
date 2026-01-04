@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../adc.gen/sources_1/ip/sqrt_err/sim/sqrt_err.vhd" \
+
+# Do not sort compile order
+nosort

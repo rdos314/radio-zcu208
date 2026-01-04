@@ -42,6 +42,8 @@ module doa_calc(
     input wire [19:0] phase_WN_in,
     
     output reg done,
+    output reg pair_error,
+    output reg phase_error,
 
     output reg [31:0] sample,
     output reg [8:0] size,
@@ -61,6 +63,7 @@ module doa_calc(
   reg [19:0] sample_fact;
   reg [19:0] sample_dist;
   reg [31:0] inv_sample_dist;
+  reg [15:0] max_phase_error;
   wire [39:0] div_dij = {1'b0, inv_sample_dist, 7'b0000000};
   wire [23:0] div_freq = {4'b0000, freq_in};
 
@@ -156,6 +159,38 @@ module doa_calc(
   wire [15:0] dist_N = mul_N[35:20];
   wire [15:0] dist_E = mul_E[35:20];
   wire [15:0] dist_W = mul_W[35:20];
+
+  reg [19:0] diff_NE;
+  reg [19:0] diff_EW;
+  reg [19:0] diff_WN;
+
+  reg [31:0] sample_val;
+  reg [8:0] size_val;
+  reg [19:0] freq_val;
+
+  reg [15:0] env_N_val;
+  reg [15:0] env_E_val;
+  reg [15:0] env_W_val;
+
+  reg [15:0] angle_val;
+ 
+  reg [5:0] sample_N_val;
+  reg [5:0] sample_E_val;
+  reg [5:0] sample_W_val;
+  
+  reg [5:0] counter;
+  reg [17:0] err_in;
+  wire [47:0] err_sum;
+  reg err_clr;
+  reg err_sqrt_start;
+  wire err_sqrt_done;
+  wire [23:0] err_sqrt_data;
+  wire [15:0] err_sqrt = err_sqrt_data[17:2];
+  reg [15:0] err_diff;
+  reg check_err;
+  reg check_ok;
+  reg err_ok;
+  reg err_magn;
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -300,39 +335,39 @@ mult_20x20 mul_delay_W_i
   .P(mul_W)                // output wire [39 : 0] P
 );
 
+dsp_err_sqr err_sqr_sum_i (
+  .CLK(clk),           // input wire CLK
+  .A(err_in),          // input wire [17 : 0] A
+  .B(err_in),          // input wire [17 : 0] B
+  .P(err_sum),         // output wire [47 : 0] P
+  .SCLRP(err_clr)      // input wire SCLRP
+);
+
+sqrt_err err_sqrt_i (
+  .aclk(clk),                                        // input wire aclk
+  .s_axis_cartesian_tvalid(err_sqrt_start),          // input wire s_axis_cartesian_tvalid
+  .s_axis_cartesian_tdata(err_sum[31:0]),            // input wire [31 : 0] s_axis_cartesian_tdata
+  .m_axis_dout_tvalid(err_sqrt_done),                // output wire m_axis_dout_tvalid
+  .m_axis_dout_tdata(err_sqrt_data)                  // output wire [23 : 0] m_axis_dout_tdata
+);
+
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(start),               // input wire [0:0]  probe3
-		.probe1(freq_doa),            // input wire [19:0]  probe3
-		.probe2(env_N_doa),           // input wire [15:0]  probe3
-		.probe3(env_E_doa),           // input wire [15:0]  probe3
-		.probe4(env_W_doa),           // input wire [15:0]  probe3
-		.probe5(phase_NE_doa),        // input wire [19:0]  probe3
-		.probe6(phase_EW_doa),        // input wire [19:0]  probe3
-		.probe7(phase_WN_doa),        // input wire [19:0]  probe3
-		.probe8(sample_freq),         // input wire [19:0]  probe3
-		.probe9(calc_NE),             // input wire [19:0]  probe3
-		.probe10(calc_EW),            // input wire [19:0]  probe3
-		.probe11(calc_WN),            // input wire [19:0]  probe3
-		.probe12(angle_NE),           // input wire [15:0]  probe3
-		.probe13(angle_EW),           // input wire [15:0]  probe3
-		.probe14(angle_WN),           // input wire [15:0]  probe3
-		.probe15(delay_NE),           // input wire [15:0]  probe3
-		.probe16(delay_EW),           // input wire [15:0]  probe3
-		.probe17(delay_WN),           // input wire [15:0]  probe3
-		.probe18(delay_N),            // input wire [15:0]  probe3
-		.probe19(delay_E),            // input wire [15:0]  probe3
-		.probe20(delay_W),            // input wire [15:0]  probe3
-		.probe21(sample_fact),        // input wire [19:0]  probe3
-		.probe22(dist_N),             // input wire [15:0]  probe3
-		.probe23(dist_E),             // input wire [15:0]  probe3
-		.probe24(dist_W),             // input wire [15:0]  probe3
-		.probe25(valid_k),            // input wire [0:0]  probe3
-		.probe26(start_div),          // input wire [0:0]  probe3
-		.probe27(done_NE),            // input wire [0:0]  probe3
-		.probe28(start_pair),         // input wire [0:0]  probe3
-		.probe29(angle_done),         // input wire [0:0]  probe3
-		.probe30(angle_doa)           // input wire [15:0]  probe3
+		.probe1(valid_k),             // input wire [0:0]  probe3
+		.probe2(start_div),           // input wire [0:0]  probe3
+		.probe3(start_pair),         // input wire [0:0]  probe3
+		.probe4(angle_done),         // input wire [0:0]  probe3
+		.probe5(err_sqrt_done),      // input wire [0:0]  probe3
+		.probe6(err_sqrt_data),      // input wire [23:0]  probe3
+		.probe7(max_phase_error),    // input wire [15:0]  probe3
+		.probe8(err_magn),           // input wire [0:0]  probe3
+		.probe9(err_ok),             // input wire [0:0]  probe3
+		.probe10(phase_error),       // input wire [0:0]  probe3
+		.probe11(sample_N),          // input wire [5:0]  probe3
+		.probe12(sample_E),          // input wire [5:0]  probe3
+		.probe13(sample_W),          // input wire [5:0]  probe3
+		.probe14(angle_doa)          // input wire [15:0]  probe3
 );
 
 generate
@@ -347,6 +382,7 @@ generate
                 6 : shadow_limit <= config_data[19:0];
                 7 : sample_fact <= config_data[19:0];
                 8 : sample_dist <= config_data[19:0];
+                9 : max_phase_error <= config_data[15:0];
             endcase            
         end
     end
@@ -375,6 +411,14 @@ generate
 
     always @(posedge clk) 
 	begin
+        if (fail_NE | fail_EW | fail_WN)
+            pair_error <= 1;
+        else
+            pair_error <= 0;
+    end
+
+    always @(posedge clk) 
+	begin
         if (done_NE & done_EW & done_WN)
         begin
             start_pair <= 1;
@@ -397,6 +441,13 @@ generate
 
     always @(posedge clk) 
 	begin
+        diff_NE <= calc_NE - phase_NE_doa;
+        diff_EW <= calc_EW - phase_EW_doa;
+        diff_WN <= calc_WN - phase_WN_doa;
+    end
+
+    always @(posedge clk) 
+	begin
         delay_N <= delay_NE - delay_WN;
         delay_E <= delay_EW - delay_NE;
         delay_W <= delay_WN - delay_EW;
@@ -404,9 +455,144 @@ generate
 
     always @(posedge clk) 
 	begin
-        sample_N <= delay_N[15:10];
-        sample_E <= delay_E[15:10];
-        sample_W <= delay_W[15:10];
+        if (angle_done | reset)
+            err_clr <= 1;
+        else
+           err_clr <= 0;
+    end
+
+    always @(posedge clk) 
+	begin
+        if (angle_done)
+            counter <= 1;
+        else
+        begin
+            if (reset)
+                counter <= 0;
+            else
+            begin
+                if (counter)
+                begin
+                    if (err_sqrt_start)
+                        counter <= 0;
+                    else
+                        counter <= counter + 1;
+                end
+            end
+        end
+    end
+
+
+    always @(posedge clk) 
+	begin
+        if (err_sqrt_start)
+        begin
+            sample_val <= sample_doa;
+            size_val <= size_doa;
+            freq_val <= freq_doa;
+            angle_val <= angle_doa;
+            
+            env_N_val <= env_N_doa;
+            env_E_val <= env_E_doa;
+            env_W_val <= env_W_doa;
+
+            sample_N_val <= delay_N[15:10];
+            sample_E_val <= delay_E[15:10];
+            sample_W_val <= delay_W[15:10];
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+        case (counter)
+            7 : err_in <= diff_NE[19:2];
+            8 : err_in <= diff_EW[19:2];
+            9 : err_in <= diff_WN[19:2];
+            default : err_in <= 0;
+        endcase
+    end
+
+    always @(posedge clk) 
+	begin
+        if (counter == 14)
+            err_sqrt_start <= 1;
+        else
+            err_sqrt_start <= 0;        
+    end
+
+    always @(posedge clk) 
+	begin
+        if (err_sqrt_done)
+        begin
+            err_diff <= err_sqrt_data - max_phase_error;
+            check_err <= 1;
+        end
+        else
+            check_err <= 0;
+    end
+
+    always @(posedge clk) 
+	begin
+        if (check_err)
+        begin
+            check_ok <= 1;
+            case (err_sqrt_data[23:18])
+                6'b000000: err_ok <= err_diff[15];
+                6'b111111: err_ok <= err_diff[15];
+                default: err_ok <= 0;
+            endcase
+        end
+        else
+            check_ok <= 0;
+    end
+
+    always @(posedge clk) 
+	begin
+        if (check_err)
+        begin
+            case (err_sum[47:32])
+                16'h0000: err_magn <= 0;
+                16'hFFFF: err_magn <= 0;
+                default: err_magn <= 1;
+            endcase
+        end
+        else
+        begin
+            if (reset)
+                err_magn <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+        if (check_ok)
+        begin
+            if (err_ok & !err_magn)
+            begin
+                done <= 1;
+                phase_error <= 0;
+                sample <= sample_val;
+                size <= size_val;
+                freq <= freq_val;
+                angle <= angle_val;
+                env_N <= env_N_val;
+                env_E <= env_E_val;
+                env_W <= env_W_val;
+                sample_N <= sample_N_val;
+                sample_E <= sample_E_val;
+                sample_W <= sample_W_val;
+            end
+            else
+            begin
+                done <= 0;
+                phase_error <= 1;
+            end
+        end
+        else
+        begin
+            done <= 0;
+            phase_error <= 0;
+        end
     end
 
   end

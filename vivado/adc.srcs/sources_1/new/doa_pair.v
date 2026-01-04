@@ -197,6 +197,17 @@ mult_20x20 mul_c_i
   .P(cp)              // output wire [39 : 0] P
 );
 
+	ila_0 ila_i (
+		.clk(clk),                    // input wire clk
+		.probe0(start),               // input wire [0:0]  probe3
+		.probe1(done),                // input wire [0:0]  probe3
+		.probe2(fail),                // input wire [0:0]  probe3
+		.probe3(ov),                  // input wire [5:0]  probe3
+		.probe4(has_shadow_diff),     // input wire [0:0]  probe3
+		.probe5(shadow_diff),         // input wire [19:0]  probe3
+		.probe6(prod)                 // input wire [39:0]  probe3
+    );
+
 generate
   begin : doa_pair
 
@@ -375,6 +386,8 @@ generate
                 
                     if (has_ov)
                         fail <= 1;
+					else
+						fail <= 0;
                 end
         endcase
     end
