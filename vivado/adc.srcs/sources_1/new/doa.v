@@ -188,13 +188,16 @@ module doa_calc(
   wire err_sqrt_done;
   wire [23:0] err_sqrt_data;
   wire [15:0] err_sqrt = err_sqrt_data[17:2];
-  reg [15:0] err_diff;
-  reg check_err;
-  reg check_ok;
-  reg err_ok;
-  reg err_magn;
-
+  
+  reg [5:0] run;
   wire [39:0] err_pm;  
+  reg [9:0] err_diff;
+
+//  reg check_err;
+//  reg check_ok;
+//  reg err_ok;
+//  reg err_magn;
+
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -375,9 +378,21 @@ mult_20x20 mul_pm_i
 		.probe6(err_sqrt_data),      // input wire [23:0]  probe3
 		.probe7(antenna_pm),         // input wire [19:0]  probe3
 		.probe8(max_antenna_err),    // input wire [9:0]  probe3
-		.probe9(err_pm),             // input wire [39:0]  probe3
-		.probe10(doa_error),          // input wire [9:0]  probe3
-		.probe11(angle_doa)          // input wire [15:0]  probe3
+		.probe9(run),                // input wire [5:0]  probe3
+		.probe10(doa_error),         // input wire [9:0]  probe3
+		.probe11(err_diff),          // input wire [9:0]  probe3
+		.probe12(done),              // input wire [0:0]  probe3
+		.probe13(phase_error),       // input wire [0:0]  probe3
+		.probe14(sample),            // input wire [31:0]  probe3
+		.probe15(size),              // input wire [8:0]  probe3
+		.probe16(freq),              // input wire [19:0]  probe3
+		.probe17(angle),             // input wire [15:0]  probe3
+		.probe18(env_N),             // input wire [15:0]  probe3
+		.probe19(env_E),             // input wire [15:0]  probe3
+		.probe20(env_W),             // input wire [15:0]  probe3
+		.probe21(sample_N),          // input wire [5:0]  probe3
+		.probe22(sample_E),          // input wire [5:0]  probe3
+		.probe23(sample_W)           // input wire [5:0]  probe3
 );
 
 generate
@@ -533,59 +548,37 @@ generate
 
     always @(posedge clk) 
 	begin
-	   doa_error <= err_pm[27:18];
-    end
-
-/*
-
-    always @(posedge clk) 
-	begin
         if (err_sqrt_done)
-        begin
-            err_diff <= err_sqrt_data - max_phase_error;
-            check_err <= 1;
-        end
-        else
-            check_err <= 0;
-    end
-
-    always @(posedge clk) 
-	begin
-        if (check_err)
-        begin
-            check_ok <= 1;
-            case (err_sqrt_data[23:18])
-                6'b000000: err_ok <= err_diff[15];
-                6'b111111: err_ok <= err_diff[15];
-                default: err_ok <= 0;
-            endcase
-        end
-        else
-            check_ok <= 0;
-    end
-
-    always @(posedge clk) 
-	begin
-        if (check_err)
-        begin
-            case (err_sum[47:32])
-                16'h0000: err_magn <= 0;
-                16'hFFFF: err_magn <= 0;
-                default: err_magn <= 1;
-            endcase
-        end
+            run <= 1;
         else
         begin
             if (reset)
-                err_magn <= 0;
+                run <= 0;
+            else
+            begin
+                if (run)
+                    run <= {run[4:0], 1'b0};
+            end
         end
     end
 
     always @(posedge clk) 
 	begin
-        if (check_ok)
-        begin
-            if (err_ok & !err_magn)
+	   if (run[3])
+    	   doa_error <= err_pm[27:18];
+    end
+
+    always @(posedge clk) 
+	begin
+	   if (run[4])
+            err_diff <= doa_error - max_antenna_err; 
+    end
+
+    always @(posedge clk) 
+	begin
+	   if (run[5])
+       begin
+            if (err_diff[9]) 
             begin
                 done <= 1;
                 phase_error <= 0;
@@ -612,8 +605,6 @@ generate
             phase_error <= 0;
         end
     end
-	
-*/	
 
   end
     

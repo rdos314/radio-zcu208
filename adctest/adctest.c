@@ -11,8 +11,8 @@
 #define DEG2RAD         (PI / 180.0)
 #define RAD2DEG         (180.0 / PI)
 #define SPEED_OF_LIGHT  299792458.0 // m/s
-#define LOW_DIST        2.0 // m
-#define HIGH_DIST       0.5 // m
+#define LOW_DIST        3.0 // m
+#define HIGH_DIST       0.4 // m
 #define FS              4000.0
 
 #define CMD_LOAD		1
@@ -194,9 +194,9 @@ void CalcLowDist(double compass_deg, double dist[3])
     double avg;
 
     xp[0] = 0.0;
-    yp[0] = (LOW_DIST + 0.1) / sqrt(3.0);
+    yp[0] = (LOW_DIST) / sqrt(3.0);
     
-    xp[1] = 0.5 * (LOW_DIST + 0.1);
+    xp[1] = 0.5 * (LOW_DIST);
     yp[1] = -0.5 * yp[0];
     
     xp[2] = -xp[1];
