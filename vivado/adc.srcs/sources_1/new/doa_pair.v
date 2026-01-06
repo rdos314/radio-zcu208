@@ -197,17 +197,6 @@ mult_20x20 mul_c_i
   .P(cp)              // output wire [39 : 0] P
 );
 
-	ila_0 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(start),               // input wire [0:0]  probe3
-		.probe1(done),                // input wire [0:0]  probe3
-		.probe2(fail),                // input wire [0:0]  probe3
-		.probe3(ov),                  // input wire [5:0]  probe3
-		.probe4(has_shadow_diff),     // input wire [0:0]  probe3
-		.probe5(shadow_diff),         // input wire [19:0]  probe3
-		.probe6(prod)                 // input wire [39:0]  probe3
-    );
-
 generate
   begin : doa_pair
 
@@ -320,19 +309,14 @@ generate
                     x <= 20'h7FFFF;
                     x_raw <= prod[36:16];
                     check_raw <= 1;
-
-                    if (has_shadow_diff)
-                    begin
-                        if (shadow_diff[19])
-                        begin
-                            shadow <= 1;
-                            fail <= 0;
-                        end
-                        else
-                            fail <= 1;
-                    end
-                    else
+                    
+                    if (prod[33:32] == 2'b00)
                         fail <= 0;
+                    else
+                        fail <= 1;
+
+                    if (has_shadow_diff & shadow_diff[19])
+                        shadow <= 1;
                 end
 
             6'b000011 : fail <= 1; 
@@ -345,18 +329,13 @@ generate
                     x_raw <= prod[36:16];
                     check_raw <= 1;
 
-                    if (has_shadow_diff)
-                    begin
-                        if (shadow_diff[19])
-                        begin
-                            shadow <= 1;
-                            fail <= 0;
-                        end
-                        else
-                            fail <= 1;
-                    end
-                    else
+                    if (prod[33:32] == 2'b11)
                         fail <= 0;
+                    else
+                        fail <= 1;
+
+                    if (has_shadow_diff & shadow_diff[19])
+                        shadow <= 1;
                 end
 
             6'b111110 : 

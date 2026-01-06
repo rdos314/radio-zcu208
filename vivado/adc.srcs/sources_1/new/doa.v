@@ -49,6 +49,7 @@ module doa_calc(
     output reg [8:0] size,
     output reg [19:0] freq,
     output reg [15:0] angle,
+    output reg [9:0] doa_error,
 
     output reg [15:0] env_N,
     output reg [15:0] env_E,
@@ -63,7 +64,8 @@ module doa_calc(
   reg [19:0] sample_fact;
   reg [19:0] sample_dist;
   reg [31:0] inv_sample_dist;
-  reg [15:0] max_phase_error;
+  reg [19:0] antenna_pm;
+  reg [9:0] max_antenna_err;
   wire [39:0] div_dij = {1'b0, inv_sample_dist, 7'b0000000};
   wire [23:0] div_freq = {4'b0000, freq_in};
 
@@ -191,6 +193,8 @@ module doa_calc(
   reg check_ok;
   reg err_ok;
   reg err_magn;
+
+  wire [39:0] err_pm;  
 
 div_k div_k_i (
   .aclk(clk),                                       // input wire aclk
@@ -351,6 +355,15 @@ sqrt_err err_sqrt_i (
   .m_axis_dout_tdata(err_sqrt_data)                  // output wire [23 : 0] m_axis_dout_tdata
 );
 
+mult_20x20 mul_pm_i 
+(
+  .CLK(clk),                  // input wire CLK
+  .A(err_sqrt_data[19:0]),    // input wire [19 : 0] A
+  .B(antenna_pm),             // input wire [19 : 0] B
+  .P(err_pm)                  // output wire [39 : 0] P
+);
+
+
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(start),               // input wire [0:0]  probe3
@@ -360,14 +373,11 @@ sqrt_err err_sqrt_i (
 		.probe4(angle_done),         // input wire [0:0]  probe3
 		.probe5(err_sqrt_done),      // input wire [0:0]  probe3
 		.probe6(err_sqrt_data),      // input wire [23:0]  probe3
-		.probe7(max_phase_error),    // input wire [15:0]  probe3
-		.probe8(err_magn),           // input wire [0:0]  probe3
-		.probe9(err_ok),             // input wire [0:0]  probe3
-		.probe10(phase_error),       // input wire [0:0]  probe3
-		.probe11(sample_N),          // input wire [5:0]  probe3
-		.probe12(sample_E),          // input wire [5:0]  probe3
-		.probe13(sample_W),          // input wire [5:0]  probe3
-		.probe14(angle_doa)          // input wire [15:0]  probe3
+		.probe7(antenna_pm),         // input wire [19:0]  probe3
+		.probe8(max_antenna_err),    // input wire [9:0]  probe3
+		.probe9(err_pm),             // input wire [39:0]  probe3
+		.probe10(doa_error),          // input wire [9:0]  probe3
+		.probe11(angle_doa)          // input wire [15:0]  probe3
 );
 
 generate
@@ -382,7 +392,8 @@ generate
                 6 : shadow_limit <= config_data[19:0];
                 7 : sample_fact <= config_data[19:0];
                 8 : sample_dist <= config_data[19:0];
-                9 : max_phase_error <= config_data[15:0];
+                9 : antenna_pm <= config_data[19:0];
+                10 : max_antenna_err <= config_data[9:0];
             endcase            
         end
     end
@@ -522,6 +533,13 @@ generate
 
     always @(posedge clk) 
 	begin
+	   doa_error <= err_pm[27:18];
+    end
+
+/*
+
+    always @(posedge clk) 
+	begin
         if (err_sqrt_done)
         begin
             err_diff <= err_sqrt_data - max_phase_error;
@@ -594,6 +612,8 @@ generate
             phase_error <= 0;
         end
     end
+	
+*/	
 
   end
     

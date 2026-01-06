@@ -21,16 +21,17 @@
 #define CMD_STOP		4
 #define CMD_CONFIG		5
 
-#define CONFIG_MIN_ENV          0
-#define CONFIG_MIN_INCR         1
-#define CONFIG_MAX_INCR         2
-#define CONFIG_MAX_DOA_DIFF     3
-#define CONFIG_MIN_SAMPLES      4
-#define CONFIG_INV_SAMPLE_DIST  5
-#define CONFIG_SHADOW_ANGLE     6
-#define CONFIG_SAMPLE_FACTOR    7
-#define CONFIG_SAMPLE_DIST      8
-#define CONFIG_MAX_PHASE_ERROR  9
+#define CONFIG_MIN_ENV             0
+#define CONFIG_MIN_INCR            1
+#define CONFIG_MAX_INCR            2
+#define CONFIG_MAX_DOA_DIFF        3
+#define CONFIG_MIN_SAMPLES         4
+#define CONFIG_INV_SAMPLE_DIST     5
+#define CONFIG_SHADOW_ANGLE        6
+#define CONFIG_SAMPLE_FACTOR       7
+#define CONFIG_SAMPLE_DIST         8
+#define CONFIG_ANTENNA_PROMILLE    9
+#define CONFIG_MAX_ANTENNA_ERROR  10
 
 struct bram_control_t
 {
@@ -392,10 +393,17 @@ int CalcSampleFactor(double dist)
     return (int)(diff * scale + 0.5);
 }
 
-int CalcPhaseError(double error, int decimate)
+int CalcPhaseError(double dist, int decimate)
 {
     int scale = 1 << 14;
-    double diff = error * FS / (double)decimate  * 1000.0 * 1000.0 / SPEED_OF_LIGHT * 2.0;
+    double diff = dist * FS / (double)decimate  * 1000.0 * 1000.0 / SPEED_OF_LIGHT * 2.0;
+    return (int)(diff * scale + 0.5);
+}
+
+int CalcAntennaPromille(double dist, int decimate)
+{
+    int scale = 1 << 4;
+    double diff = SPEED_OF_LIGHT / FS * (double)decimate / 1000.0 / 2.0 / dist;
     return (int)(diff * scale + 0.5);
 }
 
@@ -413,7 +421,8 @@ int main()
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
     SetConfig(CONFIG_SAMPLE_FACTOR, CalcSampleFactor(LOW_DIST), CalcSampleFactor(HIGH_DIST));
     SetConfig(CONFIG_SAMPLE_DIST, CalcSampleDistance(LOW_DIST, 8), CalcSampleDistance(HIGH_DIST, 8));
-    SetConfig(CONFIG_MAX_PHASE_ERROR, CalcPhaseError(0.1, 8), CalcPhaseError(0.1, 8));
+    SetConfig(CONFIG_ANTENNA_PROMILLE, CalcAntennaPromille(LOW_DIST, 8), CalcAntennaPromille(HIGH_DIST, 8));
+    SetConfig(CONFIG_MAX_ANTENNA_ERROR, 50, 100);
     LoadConfig();
 
     for (i = 0; i < 36; i++)
