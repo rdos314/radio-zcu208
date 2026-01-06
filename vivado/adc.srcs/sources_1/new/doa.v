@@ -370,29 +370,31 @@ mult_20x20 mul_pm_i
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(start),               // input wire [0:0]  probe3
-		.probe1(valid_k),             // input wire [0:0]  probe3
-		.probe2(start_div),           // input wire [0:0]  probe3
-		.probe3(start_pair),         // input wire [0:0]  probe3
-		.probe4(angle_done),         // input wire [0:0]  probe3
-		.probe5(err_sqrt_done),      // input wire [0:0]  probe3
-		.probe6(err_sqrt_data),      // input wire [23:0]  probe3
-		.probe7(antenna_pm),         // input wire [19:0]  probe3
-		.probe8(max_antenna_err),    // input wire [9:0]  probe3
-		.probe9(run),                // input wire [5:0]  probe3
-		.probe10(doa_error),         // input wire [9:0]  probe3
-		.probe11(err_diff),          // input wire [9:0]  probe3
-		.probe12(done),              // input wire [0:0]  probe3
-		.probe13(phase_error),       // input wire [0:0]  probe3
-		.probe14(sample),            // input wire [31:0]  probe3
-		.probe15(size),              // input wire [8:0]  probe3
-		.probe16(freq),              // input wire [19:0]  probe3
-		.probe17(angle),             // input wire [15:0]  probe3
-		.probe18(env_N),             // input wire [15:0]  probe3
-		.probe19(env_E),             // input wire [15:0]  probe3
-		.probe20(env_W),             // input wire [15:0]  probe3
-		.probe21(sample_N),          // input wire [5:0]  probe3
-		.probe22(sample_E),          // input wire [5:0]  probe3
-		.probe23(sample_W)           // input wire [5:0]  probe3
+		.probe1(size_in),            // input wire [8:0]  probe3
+		.probe2(size_pair),            // input wire [8:0]  probe3
+		.probe3(size_div),            // input wire [8:0]  probe3
+		.probe4(size_doa),            // input wire [8:0]  probe3
+		.probe5(done),              // input wire [0:0]  probe3
+		.probe6(phase_error),       // input wire [0:0]  probe3
+		.probe7(sample),            // input wire [31:0]  probe3
+		.probe8(size),              // input wire [8:0]  probe3
+		.probe9(freq),              // input wire [19:0]  probe3
+		.probe10(angle),             // input wire [15:0]  probe3
+		.probe11(env_N),             // input wire [15:0]  probe3
+		.probe12(env_E),             // input wire [15:0]  probe3
+		.probe13(env_W),             // input wire [15:0]  probe3
+		.probe14(delay_NE),          // input wire [15:0]  probe3
+		.probe15(delay_EW),          // input wire [15:0]  probe3
+		.probe16(delay_WN),          // input wire [15:0]  probe3
+		.probe17(delay_N),          // input wire [15:0]  probe3
+		.probe18(delay_E),          // input wire [15:0]  probe3
+		.probe19(delay_W),           // input wire [15:0]  probe3
+		.probe20(dist_N),            // input wire [15:0]  probe3
+		.probe21(dist_E),            // input wire [15:0]  probe3
+		.probe22(dist_W),            // input wire [15:0]  probe3
+		.probe23(sample_N),          // input wire [5:0]  probe3
+		.probe24(sample_E),          // input wire [5:0]  probe3
+		.probe25(sample_W)           // input wire [5:0]  probe3
 );
 
 generate
@@ -521,10 +523,21 @@ generate
             env_N_val <= env_N_doa;
             env_E_val <= env_E_doa;
             env_W_val <= env_W_doa;
-
-            sample_N_val <= delay_N[15:10];
-            sample_E_val <= delay_E[15:10];
-            sample_W_val <= delay_W[15:10];
+            
+            if (dist_N[9])
+                sample_N_val <= dist_N[15:10] + 1;
+            else
+                sample_N_val <= dist_N[15:10];
+            
+            if (dist_E[9])
+                sample_E_val <= dist_E[15:10] + 1;
+            else
+                sample_E_val <= dist_E[15:10];
+            
+            if (dist_W[9])
+                sample_W_val <= dist_W[15:10] + 1;
+            else
+                sample_W_val <= dist_W[15:10];
         end
     end
 

@@ -677,7 +677,7 @@ generate
 				4'b0000:
                     begin
                         signal_sample <= start_sample;
-                        signal_size <= sample_count;
+                        signal_size <= div_sample_count[8:0];
                         
                         div_env_sum_N <= {8'b00000000, env_sum_N};
                         div_env_sum_E <= {8'b00000000, env_sum_E};

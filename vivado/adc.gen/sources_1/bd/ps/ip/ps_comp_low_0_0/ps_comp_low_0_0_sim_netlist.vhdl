@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Jan  6 17:38:37 2026
+-- Date        : Tue Jan  6 22:54:35 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -1809,13 +1809,13 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.diff_err_WN_reg[12]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.diff_err_WN_reg[12]_i_2\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \det_signal.div_counter[0]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[1]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[3]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[0]_i_1\ : label is "soft_lutpair194";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[1]_i_1\ : label is "soft_lutpair194";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[2]_i_2\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[3]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[0]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[1]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[3]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[0]_i_1\ : label is "soft_lutpair195";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[1]_i_1\ : label is "soft_lutpair195";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[2]_i_2\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[3]_i_1\ : label is "soft_lutpair191";
   attribute ADDER_THRESHOLD of \det_signal.div_env_NE_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_env_NE_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_env_NE_reg[24]_i_1\ : label is 35;
@@ -1848,7 +1848,7 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[25]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[7]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[7]_i_3\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.div_start_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \det_signal.div_start_i_1\ : label is "soft_lutpair191";
   attribute ADDER_THRESHOLD of \det_signal.env_EW_reg[15]_i_1\ : label is 35;
   attribute METHODOLOGY_DRC_VIOS of \det_signal.env_EW_reg[15]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute ADDER_THRESHOLD of \det_signal.env_EW_reg[16]_i_1\ : label is 35;
@@ -1876,26 +1876,26 @@ architecture STRUCTURE of ps_comp_low_0_0_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.env_sum_W_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.env_sum_W_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.env_sum_W_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.err_count[0]_i_1\ : label is "soft_lutpair196";
-  attribute SOFT_HLUTNM of \det_signal.err_count[1]_i_3\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \det_signal.err_count[0]_i_1\ : label is "soft_lutpair197";
+  attribute SOFT_HLUTNM of \det_signal.err_count[1]_i_3\ : label is "soft_lutpair197";
   attribute ADDER_THRESHOLD of \det_signal.max_freq_diff_reg[20]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.max_freq_diff_reg[20]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.max_freq_diff_reg[20]_i_7\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.min_freq_diff_reg[20]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.min_freq_diff_reg[20]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.min_freq_diff_reg[20]_i_8\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.min_samples[1]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[2]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[3]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[4]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[7]_i_1\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[8]_i_2\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[0]_i_1\ : label is "soft_lutpair195";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[1]_i_1\ : label is "soft_lutpair195";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[2]_i_1\ : label is "soft_lutpair191";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[3]_i_1\ : label is "soft_lutpair191";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[4]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[8]_i_2\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[1]_i_1\ : label is "soft_lutpair194";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[2]_i_1\ : label is "soft_lutpair194";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[3]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[4]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[7]_i_1\ : label is "soft_lutpair193";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[8]_i_2\ : label is "soft_lutpair193";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[0]_i_1\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[1]_i_1\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[2]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[3]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[4]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[8]_i_2\ : label is "soft_lutpair189";
   attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[0]_i_2\ : label is 16;
   attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[16]_i_1\ : label is 16;
   attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[24]_i_1\ : label is 16;
@@ -17974,7 +17974,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(0),
+      D => \det_signal.div_sample_count_reg_n_0_[0]\,
       Q => \det_signal.signal_size_reg[8]_0\(0),
       R => '0'
     );
@@ -17982,7 +17982,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(1),
+      D => \det_signal.div_sample_count_reg_n_0_[1]\,
       Q => \det_signal.signal_size_reg[8]_0\(1),
       R => '0'
     );
@@ -17990,7 +17990,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(2),
+      D => \det_signal.div_sample_count_reg_n_0_[2]\,
       Q => \det_signal.signal_size_reg[8]_0\(2),
       R => '0'
     );
@@ -17998,7 +17998,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(3),
+      D => \det_signal.div_sample_count_reg_n_0_[3]\,
       Q => \det_signal.signal_size_reg[8]_0\(3),
       R => '0'
     );
@@ -18006,7 +18006,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(4),
+      D => \det_signal.div_sample_count_reg_n_0_[4]\,
       Q => \det_signal.signal_size_reg[8]_0\(4),
       R => '0'
     );
@@ -18014,7 +18014,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(5),
+      D => \det_signal.div_sample_count_reg_n_0_[5]\,
       Q => \det_signal.signal_size_reg[8]_0\(5),
       R => '0'
     );
@@ -18022,7 +18022,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(6),
+      D => \det_signal.div_sample_count_reg_n_0_[6]\,
       Q => \det_signal.signal_size_reg[8]_0\(6),
       R => '0'
     );
@@ -18030,7 +18030,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(7),
+      D => \det_signal.div_sample_count_reg_n_0_[7]\,
       Q => \det_signal.signal_size_reg[8]_0\(7),
       R => '0'
     );
@@ -18038,7 +18038,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.sample_count_reg\(8),
+      D => \det_signal.div_sample_count_reg_n_0_[8]\,
       Q => \det_signal.signal_size_reg[8]_0\(8),
       R => '0'
     );
@@ -21383,74 +21383,74 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_angle is
   attribute ADDER_THRESHOLD of \doa_angle.angle_run_reg[7]_i_1\ : label is 35;
   attribute METHODOLOGY_DRC_VIOS of \doa_angle.angle_run_reg[7]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[0]_i_1\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[13]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[0]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[13]_i_1\ : label is "soft_lutpair20";
   attribute ADDER_THRESHOLD of \doa_angle.d_curr_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_curr_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair173";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair163";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair162";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair161";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair160";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair159";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair158";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair172";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair171";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair170";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair169";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair168";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair167";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair166";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair165";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair164";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair173";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair163";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair162";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair161";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair160";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair159";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair158";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair172";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair171";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair170";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair169";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair168";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair167";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair166";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair165";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair164";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair174";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[13]_i_1\ : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[13]_i_1\ : label is "soft_lutpair18";
   attribute ADDER_THRESHOLD of \doa_angle.delay_diff_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.delay_diff_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.delay_id[0]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \doa_angle.delay_id[1]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_angle.delay_id[0]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \doa_angle.delay_id[1]_i_1\ : label is "soft_lutpair22";
   attribute ADDER_THRESHOLD of \doa_angle.delay_next_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.delay_next_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.delay_prev_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.delay_prev_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.diff_angle_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.diff_angle_reg[15]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.first_angle[15]_i_1\ : label is "soft_lutpair156";
-  attribute SOFT_HLUTNM of \doa_angle.id[1]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \doa_angle.run[0]_i_1\ : label is "soft_lutpair157";
-  attribute SOFT_HLUTNM of \doa_angle.run[1]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \doa_angle.run[2]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \doa_angle.run[3]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \doa_angle.run[4]_i_2\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \doa_angle.second_angle[15]_i_2\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \doa_angle.sign_i_1\ : label is "soft_lutpair157";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[0]_i_1\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[15]_i_1\ : label is "soft_lutpair156";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[1]_i_1\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \doa_angle.use_id[0]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \doa_angle.use_id[1]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_angle.first_angle[15]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \doa_angle.id[1]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \doa_angle.run[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \doa_angle.run[1]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \doa_angle.run[2]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \doa_angle.run[3]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \doa_angle.run[4]_i_2\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \doa_angle.second_angle[15]_i_2\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \doa_angle.sign_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[0]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[15]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[1]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \doa_angle.use_id[0]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \doa_angle.use_id[1]_i_1\ : label is "soft_lutpair22";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -31364,22 +31364,29 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ps_comp_low_0_0_doa_pair is
   port (
+    done_WN : out STD_LOGIC;
+    shadow_WN : out STD_LOGIC;
+    \doa_pair.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
+    m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    Q : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    start_div : in STD_LOGIC;
     reset : in STD_LOGIC;
-    start : in STD_LOGIC;
-    k : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    shadow_limit : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    phase : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    done : out STD_LOGIC;
-    fail : out STD_LOGIC;
-    shadow : out STD_LOGIC;
-    angle : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_comp_low_0_0_doa_pair : entity is "doa_pair";
 end ps_comp_low_0_0_doa_pair;
 
 architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
+  component ps_comp_low_0_0_mult_20x20_HD5 is
+  port (
+    CLK : in STD_LOGIC;
+    A : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    P : out STD_LOGIC_VECTOR ( 39 downto 0 )
+  );
+  end component ps_comp_low_0_0_mult_20x20_HD5;
   component ps_comp_low_0_0_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
@@ -31388,29 +31395,27 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component ps_comp_low_0_0_mult_20x20;
-  signal \<const0>\ : STD_LOGIC;
   signal add : STD_LOGIC;
-  signal calc_diff : STD_LOGIC;
-  signal check_raw : STD_LOGIC;
-  signal clear : STD_LOGIC;
   signal coeff : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal counter : STD_LOGIC;
   signal cp : STD_LOGIC_VECTOR ( 39 downto 19 );
-  signal \doa_pair.add_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.angle[15]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.angle[15]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.check_raw_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.check_raw_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.check_raw_i_3_n_0\ : STD_LOGIC;
+  signal \doa_pair.add_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.angle[15]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.angle[15]_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.calc_diff_reg_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_reg_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[10]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.coeff[11]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.coeff[11]_i_1__1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[12]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[13]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[14]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[15]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[18]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.coeff[1]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.coeff[1]_i_1__1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[2]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[4]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[5]_i_1_n_0\ : STD_LOGIC;
@@ -31418,38 +31423,42 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
   signal \doa_pair.coeff[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.counter[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.counter_reg\ : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal \doa_pair.counter_reg__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
-  signal \doa_pair.done_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_reg_n_0\ : STD_LOGIC;
-  signal \doa_pair.has_ov_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.counter[4]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.counter_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \doa_pair.counter_reg__0\ : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal \doa_pair.done_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.fail_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.fail_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.fail_i_4__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.has_diff_reg_n_0\ : STD_LOGIC;
+  signal \doa_pair.has_ov_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.has_ov_reg_n_0\ : STD_LOGIC;
   signal \doa_pair.ignore_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_8_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_4__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_5__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_6__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_7__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_8__1_n_0\ : STD_LOGIC;
   signal \doa_pair.ignore_reg_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[0]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[1]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[2]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[2]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.init_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ov[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[0]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[1]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[2]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[2]_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.init_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.init_reg_n_0\ : STD_LOGIC;
+  signal \doa_pair.ov[5]_i_2__1_n_0\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[1]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[2]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[3]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[4]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[5]\ : STD_LOGIC;
-  signal \doa_pair.run_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.run_i_1__1_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_diff[19]_i_10_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_diff[19]_i_11_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_diff[19]_i_12_n_0\ : STD_LOGIC;
@@ -31470,98 +31479,100 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
   signal \doa_pair.shadow_diff[19]_i_6_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_diff[19]_i_8_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_diff[19]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_1_n_7\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_1\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_2\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_3\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_4\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_5\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_6\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_7\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_1\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_2\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_3\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_4\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_5\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_6\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_7\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_10_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_11_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_1\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_10\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_11\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_12\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_13\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_14\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_15\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_2\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_3\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_4\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_5\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_6\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_7\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_8\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_9\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_11\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_12\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_13\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_14\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_15\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_4\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_7\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_1\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_10\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_11\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_12\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_13\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_14\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_15\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_2\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_3\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_4\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_7\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_8\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_9\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__1_n_12\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__1_n_5\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__1_n_6\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__1_n_7\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_1\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_2\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_3\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_4\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_5\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_6\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__1_n_7\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_1\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_2\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_3\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_4\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_5\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_6\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__1_n_7\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_5__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_10__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_11__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_4__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_5__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_6__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_7__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_8__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_9__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_4__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_5__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_6__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_2__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_4__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_5__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_6__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_7__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_8__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_9__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg\ : STD_LOGIC_VECTOR ( 20 downto 5 );
+  signal \doa_pair.sum_reg[0]_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_1\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_10\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_11\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_12\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_13\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_14\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_15\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_2\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_3\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_4\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_5\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_6\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_7\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_8\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__1_n_9\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_11\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_12\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_13\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_14\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_15\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_4\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_5\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_6\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__1_n_7\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_1\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_10\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_11\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_12\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_13\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_14\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_15\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_2\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_3\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_4\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_5\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_6\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_7\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_8\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__1_n_9\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[1]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[2]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[3]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[4]\ : STD_LOGIC;
-  signal \doa_pair.x[19]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x[19]_i_1__1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[11]_i_1_n_0\ : STD_LOGIC;
@@ -31582,6 +31593,26 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
   signal \doa_pair.x_abs[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[9]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[19]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_pair.x_diff[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[11]_i_1_n_0\ : STD_LOGIC;
@@ -31601,7 +31632,47 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
   signal \doa_pair.x_diff[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.x_raw[20]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[9]\ : STD_LOGIC;
+  signal \doa_pair.x_raw[20]_i_1__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[19]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[20]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[10]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[11]\ : STD_LOGIC;
@@ -31622,130 +31693,124 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
   signal \doa_pair.x_reg_n_0_[7]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[8]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[9]\ : STD_LOGIC;
-  signal has_diff : STD_LOGIC;
-  signal has_ov : STD_LOGIC;
+  signal fail : STD_LOGIC;
+  signal fail_WN : STD_LOGIC;
   signal has_shadow_diff : STD_LOGIC;
-  signal ind : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal init : STD_LOGIC;
   signal ov : STD_LOGIC;
   signal p : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal p_0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal prod : STD_LOGIC_VECTOR ( 39 downto 16 );
   signal run : STD_LOGIC;
   signal run1_out : STD_LOGIC;
-  signal \^shadow\ : STD_LOGIC;
+  signal shadow : STD_LOGIC;
+  signal \^shadow_wn\ : STD_LOGIC;
   signal shadow_diff : STD_LOGIC_VECTOR ( 19 to 19 );
-  signal shadow_diff0 : STD_LOGIC_VECTOR ( 19 to 19 );
   signal sum0 : STD_LOGIC;
   signal x : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal x2 : STD_LOGIC_VECTOR ( 38 downto 19 );
-  signal x_abs : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal x_diff : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal x_raw : STD_LOGIC_VECTOR ( 20 downto 0 );
   signal xp : STD_LOGIC_VECTOR ( 38 downto 19 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_7_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_doa_pair.sum_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_doa_pair.sum_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_2__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_7__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_pair.sum_reg[16]_i_1__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_doa_pair.sum_reg[16]_i_1__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
   signal NLW_mul_c_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal NLW_mul_doa_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair120";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair122";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair118";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair120";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair122";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair135";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair135";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair118";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair117";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair119";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair117";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair119";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair155";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair155";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_3\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_4\ : label is "soft_lutpair124";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_5\ : label is "soft_lutpair124";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_7\ : label is "soft_lutpair123";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_8\ : label is "soft_lutpair123";
-  attribute SOFT_HLUTNM of \doa_pair.ind[0]_i_1\ : label is "soft_lutpair121";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__1\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair133";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair148";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__1\ : label is "soft_lutpair148";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair145";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair149";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair149";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair162";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1__1\ : label is "soft_lutpair162";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair145";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair144";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair147";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair144";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair133";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair147";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__1\ : label is "soft_lutpair132";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__1\ : label is "soft_lutpair132";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_3__1\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_4__1\ : label is "soft_lutpair151";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_5__1\ : label is "soft_lutpair151";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_7__1\ : label is "soft_lutpair150";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_8__1\ : label is "soft_lutpair150";
+  attribute SOFT_HLUTNM of \doa_pair.ind[0]_i_1__1\ : label is "soft_lutpair146";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__1\ : label is "soft_lutpair146";
   attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7\ : label is 35;
-  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3\ : label is 16;
-  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1\ : label is 16;
-  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair112";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair112";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair113";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair113";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair114";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair114";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair115";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair115";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_1\ : label is "soft_lutpair116";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair116";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair110";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair110";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair136";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair141";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair141";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair142";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair142";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair143";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair143";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair144";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair144";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair145";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair145";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair136";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair137";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair137";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair138";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair138";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair139";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair139";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair140";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair140";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair146";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair151";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair151";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair152";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair152";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair153";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair153";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair154";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair154";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair146";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair147";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair147";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair148";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair148";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair149";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair149";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair150";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair150";
+  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1__1\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2__1\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7__1\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3__1\ : label is 16;
+  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1__1\ : label is 16;
+  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1__1\ : label is 16;
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__1\ : label is "soft_lutpair134";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__1\ : label is "soft_lutpair139";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__1\ : label is "soft_lutpair139";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__1\ : label is "soft_lutpair140";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__1\ : label is "soft_lutpair140";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__1\ : label is "soft_lutpair141";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__1\ : label is "soft_lutpair141";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__1\ : label is "soft_lutpair142";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__1\ : label is "soft_lutpair142";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_1__1\ : label is "soft_lutpair143";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__1\ : label is "soft_lutpair143";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__1\ : label is "soft_lutpair134";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__1\ : label is "soft_lutpair135";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__1\ : label is "soft_lutpair135";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__1\ : label is "soft_lutpair136";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__1\ : label is "soft_lutpair136";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__1\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__1\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__1\ : label is "soft_lutpair138";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__1\ : label is "soft_lutpair138";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair163";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair169";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair169";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair170";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair170";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair171";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair171";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair172";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair172";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair163";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair164";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair164";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair165";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair165";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair166";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair166";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair167";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair167";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair173";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair173";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair177";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -31761,225 +31826,220 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_pair is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair134";
-  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair127";
-  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair127";
-  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair125";
-  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair134";
-  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair125";
-  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair133";
-  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair133";
-  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair132";
-  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair132";
-  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair131";
-  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair131";
-  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair130";
+  attribute SOFT_HLUTNM of \mul_x_i_i_10__1\ : label is "soft_lutpair157";
+  attribute SOFT_HLUTNM of \mul_x_i_i_11__1\ : label is "soft_lutpair156";
+  attribute SOFT_HLUTNM of \mul_x_i_i_12__1\ : label is "soft_lutpair156";
+  attribute SOFT_HLUTNM of \mul_x_i_i_13__1\ : label is "soft_lutpair155";
+  attribute SOFT_HLUTNM of \mul_x_i_i_14__1\ : label is "soft_lutpair155";
+  attribute SOFT_HLUTNM of \mul_x_i_i_15__1\ : label is "soft_lutpair154";
+  attribute SOFT_HLUTNM of \mul_x_i_i_16__1\ : label is "soft_lutpair154";
+  attribute SOFT_HLUTNM of \mul_x_i_i_17__1\ : label is "soft_lutpair153";
+  attribute SOFT_HLUTNM of \mul_x_i_i_18__1\ : label is "soft_lutpair153";
+  attribute SOFT_HLUTNM of \mul_x_i_i_19__1\ : label is "soft_lutpair152";
+  attribute SOFT_HLUTNM of \mul_x_i_i_1__1\ : label is "soft_lutpair161";
+  attribute SOFT_HLUTNM of \mul_x_i_i_20__1\ : label is "soft_lutpair152";
+  attribute SOFT_HLUTNM of \mul_x_i_i_2__1\ : label is "soft_lutpair161";
+  attribute SOFT_HLUTNM of \mul_x_i_i_3__1\ : label is "soft_lutpair160";
+  attribute SOFT_HLUTNM of \mul_x_i_i_4__1\ : label is "soft_lutpair160";
+  attribute SOFT_HLUTNM of \mul_x_i_i_5__1\ : label is "soft_lutpair159";
+  attribute SOFT_HLUTNM of \mul_x_i_i_6__1\ : label is "soft_lutpair159";
+  attribute SOFT_HLUTNM of \mul_x_i_i_7__1\ : label is "soft_lutpair158";
+  attribute SOFT_HLUTNM of \mul_x_i_i_8__1\ : label is "soft_lutpair158";
+  attribute SOFT_HLUTNM of \mul_x_i_i_9__1\ : label is "soft_lutpair157";
 begin
-  fail <= \<const0>\;
-  shadow <= \^shadow\;
-GND: unisim.vcomponents.GND
-     port map (
-      G => \<const0>\
-    );
-\doa_pair.add_i_1\: unisim.vcomponents.LUT6
+  shadow_WN <= \^shadow_wn\;
+\doa_pair.add_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"F99EDFF610868220"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(2),
-      I4 => \doa_pair.counter_reg__0\(4),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(2),
+      I4 => \doa_pair.counter_reg\(4),
       I5 => add,
-      O => \doa_pair.add_i_1_n_0\
+      O => \doa_pair.add_i_1__1_n_0\
     );
 \doa_pair.add_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.add_i_1_n_0\,
+      D => \doa_pair.add_i_1__1_n_0\,
       Q => add,
       R => '0'
     );
-\doa_pair.angle[15]_i_1\: unisim.vcomponents.LUT5
+\doa_pair.angle[15]_i_1__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"01000000"
     )
         port map (
-      I0 => start,
+      I0 => start_div,
       I1 => reset,
-      I2 => \doa_pair.fail_reg_n_0\,
-      I3 => \doa_pair.angle[15]_i_2_n_0\,
+      I2 => fail_WN,
+      I3 => \doa_pair.angle[15]_i_2__1_n_0\,
       I4 => run,
-      O => \doa_pair.angle[15]_i_1_n_0\
+      O => \doa_pair.angle[15]_i_1__1_n_0\
     );
-\doa_pair.angle[15]_i_2\: unisim.vcomponents.LUT5
+\doa_pair.angle[15]_i_2__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"40000000"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(4),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(2),
-      O => \doa_pair.angle[15]_i_2_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(4),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(2),
+      O => \doa_pair.angle[15]_i_2__1_n_0\
     );
 \doa_pair.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(0),
-      Q => angle(0),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(5),
+      Q => \doa_pair.angle_reg[15]_0\(0),
       R => '0'
     );
 \doa_pair.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(10),
-      Q => angle(10),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(15),
+      Q => \doa_pair.angle_reg[15]_0\(10),
       R => '0'
     );
 \doa_pair.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(11),
-      Q => angle(11),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(16),
+      Q => \doa_pair.angle_reg[15]_0\(11),
       R => '0'
     );
 \doa_pair.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(12),
-      Q => angle(12),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(17),
+      Q => \doa_pair.angle_reg[15]_0\(12),
       R => '0'
     );
 \doa_pair.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(13),
-      Q => angle(13),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(18),
+      Q => \doa_pair.angle_reg[15]_0\(13),
       R => '0'
     );
 \doa_pair.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(14),
-      Q => angle(14),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(19),
+      Q => \doa_pair.angle_reg[15]_0\(14),
       R => '0'
     );
 \doa_pair.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(15),
-      Q => angle(15),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(20),
+      Q => \doa_pair.angle_reg[15]_0\(15),
       R => '0'
     );
 \doa_pair.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(1),
-      Q => angle(1),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(6),
+      Q => \doa_pair.angle_reg[15]_0\(1),
       R => '0'
     );
 \doa_pair.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(2),
-      Q => angle(2),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(7),
+      Q => \doa_pair.angle_reg[15]_0\(2),
       R => '0'
     );
 \doa_pair.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(3),
-      Q => angle(3),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(8),
+      Q => \doa_pair.angle_reg[15]_0\(3),
       R => '0'
     );
 \doa_pair.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(4),
-      Q => angle(4),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(9),
+      Q => \doa_pair.angle_reg[15]_0\(4),
       R => '0'
     );
 \doa_pair.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(5),
-      Q => angle(5),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(10),
+      Q => \doa_pair.angle_reg[15]_0\(5),
       R => '0'
     );
 \doa_pair.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(6),
-      Q => angle(6),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(11),
+      Q => \doa_pair.angle_reg[15]_0\(6),
       R => '0'
     );
 \doa_pair.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(7),
-      Q => angle(7),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(12),
+      Q => \doa_pair.angle_reg[15]_0\(7),
       R => '0'
     );
 \doa_pair.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(8),
-      Q => angle(8),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(13),
+      Q => \doa_pair.angle_reg[15]_0\(8),
       R => '0'
     );
 \doa_pair.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(9),
-      Q => angle(9),
+      CE => \doa_pair.angle[15]_i_1__1_n_0\,
+      D => \doa_pair.sum_reg\(14),
+      Q => \doa_pair.angle_reg[15]_0\(9),
       R => '0'
     );
 \doa_pair.calc_diff_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => check_raw,
-      Q => calc_diff,
+      D => \doa_pair.check_raw_reg_n_0\,
+      Q => \doa_pair.calc_diff_reg_n_0\,
       R => '0'
     );
-\doa_pair.check_raw_i_1\: unisim.vcomponents.LUT3
+\doa_pair.check_raw_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => \doa_pair.check_raw_i_2_n_0\,
-      I1 => \doa_pair.check_raw_i_3_n_0\,
-      I2 => check_raw,
-      O => \doa_pair.check_raw_i_1_n_0\
+      I0 => \doa_pair.check_raw_i_2__1_n_0\,
+      I1 => \doa_pair.check_raw_i_3__1_n_0\,
+      I2 => \doa_pair.check_raw_reg_n_0\,
+      O => \doa_pair.check_raw_i_1__1_n_0\
     );
-\doa_pair.check_raw_i_2\: unisim.vcomponents.LUT6
+\doa_pair.check_raw_i_2__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"2800000000000014"
     )
@@ -31990,9 +32050,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[4]\,
       I4 => \doa_pair.ov_reg_n_0_[3]\,
       I5 => \doa_pair.ov_reg_n_0_[2]\,
-      O => \doa_pair.check_raw_i_2_n_0\
+      O => \doa_pair.check_raw_i_2__1_n_0\
     );
-\doa_pair.check_raw_i_3\: unisim.vcomponents.LUT6
+\doa_pair.check_raw_i_3__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FBFFFFFFFFFFFFDF"
     )
@@ -32003,14 +32063,14 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[5]\,
       I4 => \doa_pair.ov_reg_n_0_[4]\,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.check_raw_i_3_n_0\
+      O => \doa_pair.check_raw_i_3__1_n_0\
     );
 \doa_pair.check_raw_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.check_raw_i_1_n_0\,
-      Q => check_raw,
+      D => \doa_pair.check_raw_i_1__1_n_0\,
+      Q => \doa_pair.check_raw_reg_n_0\,
       R => '0'
     );
 \doa_pair.coeff[0]_i_1\: unisim.vcomponents.LUT3
@@ -32018,9 +32078,9 @@ GND: unisim.vcomponents.GND
       INIT => X"BE"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[0]_i_1_n_0\
     );
 \doa_pair.coeff[10]_i_1\: unisim.vcomponents.LUT3
@@ -32028,29 +32088,29 @@ GND: unisim.vcomponents.GND
       INIT => X"2B"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[10]_i_1_n_0\
     );
-\doa_pair.coeff[11]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.coeff[11]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"70"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(2),
-      I2 => ind(0),
-      O => \doa_pair.coeff[11]_i_1_n_0\
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
+      O => \doa_pair.coeff[11]_i_1__1_n_0\
     );
 \doa_pair.coeff[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"EB"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[12]_i_1_n_0\
     );
 \doa_pair.coeff[13]_i_1\: unisim.vcomponents.LUT3
@@ -32058,9 +32118,9 @@ GND: unisim.vcomponents.GND
       INIT => X"26"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(2),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[13]_i_1_n_0\
     );
 \doa_pair.coeff[14]_i_1\: unisim.vcomponents.LUT3
@@ -32068,9 +32128,9 @@ GND: unisim.vcomponents.GND
       INIT => X"06"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(0),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[0]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[14]_i_1_n_0\
     );
 \doa_pair.coeff[15]_i_1\: unisim.vcomponents.LUT2
@@ -32078,8 +32138,8 @@ GND: unisim.vcomponents.GND
       INIT => X"2"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[15]_i_1_n_0\
     );
 \doa_pair.coeff[18]_i_1\: unisim.vcomponents.LUT2
@@ -32087,27 +32147,27 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[18]_i_1_n_0\
     );
-\doa_pair.coeff[1]_i_1\: unisim.vcomponents.LUT2
+\doa_pair.coeff[1]_i_1__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      O => \doa_pair.coeff[1]_i_1_n_0\
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      O => \doa_pair.coeff[1]_i_1__1_n_0\
     );
 \doa_pair.coeff[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D3"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[2]_i_1_n_0\
     );
 \doa_pair.coeff[4]_i_1\: unisim.vcomponents.LUT3
@@ -32115,9 +32175,9 @@ GND: unisim.vcomponents.GND
       INIT => X"A4"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[4]_i_1_n_0\
     );
 \doa_pair.coeff[5]_i_1\: unisim.vcomponents.LUT3
@@ -32125,9 +32185,9 @@ GND: unisim.vcomponents.GND
       INIT => X"E8"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[5]_i_1_n_0\
     );
 \doa_pair.coeff[6]_i_1\: unisim.vcomponents.LUT3
@@ -32135,9 +32195,9 @@ GND: unisim.vcomponents.GND
       INIT => X"07"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(1),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[6]_i_1_n_0\
     );
 \doa_pair.coeff[7]_i_1\: unisim.vcomponents.LUT1
@@ -32145,7 +32205,7 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[7]_i_1_n_0\
     );
 \doa_pair.coeff[8]_i_1\: unisim.vcomponents.LUT3
@@ -32153,9 +32213,9 @@ GND: unisim.vcomponents.GND
       INIT => X"57"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(0),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[0]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[8]_i_1_n_0\
     );
 \doa_pair.coeff[9]_i_1\: unisim.vcomponents.LUT3
@@ -32163,9 +32223,9 @@ GND: unisim.vcomponents.GND
       INIT => X"CB"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[9]_i_1_n_0\
     );
 \doa_pair.coeff_reg[0]\: unisim.vcomponents.FDRE
@@ -32188,7 +32248,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.coeff[11]_i_1_n_0\,
+      D => \doa_pair.coeff[11]_i_1__1_n_0\,
       Q => coeff(11),
       R => '0'
     );
@@ -32222,7 +32282,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[15]_i_1_n_0\,
       Q => coeff(15),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -32230,7 +32290,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[18]_i_1_n_0\,
       Q => coeff(16),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -32238,15 +32298,15 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[18]_i_1_n_0\,
       Q => coeff(18),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.coeff[1]_i_1_n_0\,
+      D => \doa_pair.coeff[1]_i_1__1_n_0\,
       Q => coeff(1),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -32312,140 +32372,140 @@ GND: unisim.vcomponents.GND
       Q => coeff(9),
       R => '0'
     );
-\doa_pair.counter[0]_i_1\: unisim.vcomponents.LUT1
+\doa_pair.counter[0]_i_1__1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      O => \p_0_in__0\(0)
+      I0 => \doa_pair.counter_reg\(0),
+      O => p_0_in(0)
     );
-\doa_pair.counter[1]_i_1\: unisim.vcomponents.LUT2
+\doa_pair.counter[1]_i_1__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      O => \p_0_in__0\(1)
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      O => p_0_in(1)
     );
-\doa_pair.counter[2]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.counter[2]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"78"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \p_0_in__0\(2)
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(2),
+      O => p_0_in(2)
     );
-\doa_pair.counter[3]_i_1\: unisim.vcomponents.LUT4
+\doa_pair.counter[3]_i_1__1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"7F80"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(0),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(3),
-      O => \p_0_in__0\(3)
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(0),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(3),
+      O => p_0_in(3)
     );
-\doa_pair.counter[4]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.counter[4]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
         port map (
-      I0 => \doa_pair.fail_reg_n_0\,
+      I0 => fail_WN,
       I1 => reset,
-      I2 => start,
-      O => \doa_pair.counter[4]_i_1_n_0\
+      I2 => start_div,
+      O => \doa_pair.counter[4]_i_1__1_n_0\
     );
-\doa_pair.counter[4]_i_2\: unisim.vcomponents.LUT6
+\doa_pair.counter[4]_i_2__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AAAAAAAA2AAAAAAA"
     )
         port map (
       I0 => run,
-      I1 => \doa_pair.counter_reg__0\(4),
-      I2 => \doa_pair.counter_reg__0\(3),
-      I3 => \doa_pair.counter_reg__0\(0),
-      I4 => \doa_pair.counter_reg__0\(2),
-      I5 => \doa_pair.counter_reg\(1),
+      I1 => \doa_pair.counter_reg\(4),
+      I2 => \doa_pair.counter_reg\(3),
+      I3 => \doa_pair.counter_reg\(0),
+      I4 => \doa_pair.counter_reg\(2),
+      I5 => \doa_pair.counter_reg__0\(1),
       O => counter
     );
-\doa_pair.counter[4]_i_3\: unisim.vcomponents.LUT5
+\doa_pair.counter[4]_i_3__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(2),
-      I1 => \doa_pair.counter_reg__0\(0),
-      I2 => \doa_pair.counter_reg\(1),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \p_0_in__0\(4)
+      I0 => \doa_pair.counter_reg\(2),
+      I1 => \doa_pair.counter_reg\(0),
+      I2 => \doa_pair.counter_reg__0\(1),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => p_0_in(4)
     );
 \doa_pair.counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(0),
-      Q => \doa_pair.counter_reg__0\(0),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(0),
+      Q => \doa_pair.counter_reg\(0),
+      R => \doa_pair.counter[4]_i_1__1_n_0\
     );
 \doa_pair.counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(1),
-      Q => \doa_pair.counter_reg\(1),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(1),
+      Q => \doa_pair.counter_reg__0\(1),
+      R => \doa_pair.counter[4]_i_1__1_n_0\
     );
 \doa_pair.counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(2),
-      Q => \doa_pair.counter_reg__0\(2),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(2),
+      Q => \doa_pair.counter_reg\(2),
+      R => \doa_pair.counter[4]_i_1__1_n_0\
     );
 \doa_pair.counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(3),
-      Q => \doa_pair.counter_reg__0\(3),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(3),
+      Q => \doa_pair.counter_reg\(3),
+      R => \doa_pair.counter[4]_i_1__1_n_0\
     );
 \doa_pair.counter_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(4),
-      Q => \doa_pair.counter_reg__0\(4),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(4),
+      Q => \doa_pair.counter_reg\(4),
+      R => \doa_pair.counter[4]_i_1__1_n_0\
     );
-\doa_pair.done_i_1\: unisim.vcomponents.LUT3
+\doa_pair.done_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
         port map (
-      I0 => \doa_pair.fail_reg_n_0\,
+      I0 => fail_WN,
       I1 => reset,
-      I2 => start,
-      O => \doa_pair.done_i_1_n_0\
+      I2 => start_div,
+      O => \doa_pair.done_i_1__1_n_0\
     );
-\doa_pair.done_i_2\: unisim.vcomponents.LUT6
+\doa_pair.done_i_2__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
         port map (
       I0 => run,
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg__0\(3),
-      I3 => \doa_pair.counter_reg__0\(0),
-      I4 => \doa_pair.counter_reg__0\(4),
-      I5 => \doa_pair.counter_reg\(1),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg\(3),
+      I3 => \doa_pair.counter_reg\(0),
+      I4 => \doa_pair.counter_reg\(4),
+      I5 => \doa_pair.counter_reg__0\(1),
       O => run1_out
     );
 \doa_pair.done_reg\: unisim.vcomponents.FDRE
@@ -32453,23 +32513,23 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => '1',
       D => run1_out,
-      Q => done,
-      R => \doa_pair.done_i_1_n_0\
+      Q => done_WN,
+      R => \doa_pair.done_i_1__1_n_0\
     );
-\doa_pair.fail_i_1\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AAAAAAA0808A8A8A"
     )
         port map (
-      I0 => \doa_pair.fail_i_2_n_0\,
-      I1 => has_ov,
-      I2 => \doa_pair.fail_i_3_n_0\,
+      I0 => \doa_pair.fail_i_2__1_n_0\,
+      I1 => \doa_pair.has_ov_reg_n_0\,
+      I2 => \doa_pair.fail_i_3__1_n_0\,
       I3 => prod(33),
       I4 => prod(32),
-      I5 => \doa_pair.fail_i_4_n_0\,
-      O => \doa_pair.fail_i_1_n_0\
+      I5 => \doa_pair.fail_i_4__1_n_0\,
+      O => fail
     );
-\doa_pair.fail_i_2\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_2__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"77FFFFFFFFFFFFEE"
     )
@@ -32480,9 +32540,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[1]\,
       I4 => \doa_pair.ov_reg_n_0_[5]\,
       I5 => \doa_pair.ov_reg_n_0_[4]\,
-      O => \doa_pair.fail_i_2_n_0\
+      O => \doa_pair.fail_i_2__1_n_0\
     );
-\doa_pair.fail_i_3\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_3__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"DFFFFFFFFFFFFFFB"
     )
@@ -32493,9 +32553,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[5]\,
       I4 => \doa_pair.ov_reg_n_0_[4]\,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.fail_i_3_n_0\
+      O => \doa_pair.fail_i_3__1_n_0\
     );
-\doa_pair.fail_i_4\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_4__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0200000000000044"
     )
@@ -32506,50 +32566,50 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[2]\,
       I4 => \doa_pair.ov_reg_n_0_[3]\,
       I5 => \doa_pair.ov_reg_n_0_[4]\,
-      O => \doa_pair.fail_i_4_n_0\
+      O => \doa_pair.fail_i_4__1_n_0\
     );
 \doa_pair.fail_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.fail_i_1_n_0\,
-      Q => \doa_pair.fail_reg_n_0\,
+      D => fail,
+      Q => fail_WN,
       R => '0'
     );
 \doa_pair.has_diff_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => calc_diff,
-      Q => has_diff,
+      D => \doa_pair.calc_diff_reg_n_0\,
+      Q => \doa_pair.has_diff_reg_n_0\,
       R => '0'
     );
-\doa_pair.has_ov_i_1\: unisim.vcomponents.LUT6
+\doa_pair.has_ov_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFE00000002"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(4),
-      I4 => \doa_pair.counter_reg__0\(0),
-      I5 => has_ov,
-      O => \doa_pair.has_ov_i_1_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(4),
+      I4 => \doa_pair.counter_reg\(0),
+      I5 => \doa_pair.has_ov_reg_n_0\,
+      O => \doa_pair.has_ov_i_1__1_n_0\
     );
 \doa_pair.has_ov_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.has_ov_i_1_n_0\,
-      Q => has_ov,
+      D => \doa_pair.has_ov_i_1__1_n_0\,
+      Q => \doa_pair.has_ov_reg_n_0\,
       R => '0'
     );
 \doa_pair.has_shadow_diff_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => has_diff,
+      D => \doa_pair.has_diff_reg_n_0\,
       Q => has_shadow_diff,
       R => '0'
     );
@@ -32560,39 +32620,39 @@ GND: unisim.vcomponents.GND
         port map (
       I0 => run,
       I1 => xp(38),
-      I2 => \doa_pair.ignore_i_2_n_0\,
+      I2 => \doa_pair.ignore_i_2__1_n_0\,
       I3 => xp(37),
       I4 => add,
       I5 => \doa_pair.ignore_reg_n_0\,
       O => \doa_pair.ignore_i_1_n_0\
     );
-\doa_pair.ignore_i_2\: unisim.vcomponents.LUT6
+\doa_pair.ignore_i_2__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
         port map (
-      I0 => \doa_pair.ignore_i_3_n_0\,
+      I0 => \doa_pair.ignore_i_3__1_n_0\,
       I1 => xp(31),
       I2 => xp(33),
       I3 => xp(32),
-      I4 => \doa_pair.ignore_i_4_n_0\,
-      I5 => \doa_pair.ignore_i_5_n_0\,
-      O => \doa_pair.ignore_i_2_n_0\
+      I4 => \doa_pair.ignore_i_4__1_n_0\,
+      I5 => \doa_pair.ignore_i_5__1_n_0\,
+      O => \doa_pair.ignore_i_2__1_n_0\
     );
-\doa_pair.ignore_i_3\: unisim.vcomponents.LUT6
+\doa_pair.ignore_i_3__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
         port map (
-      I0 => \doa_pair.ignore_i_6_n_0\,
+      I0 => \doa_pair.ignore_i_6__1_n_0\,
       I1 => xp(25),
       I2 => xp(27),
       I3 => xp(26),
-      I4 => \doa_pair.ignore_i_7_n_0\,
-      I5 => \doa_pair.ignore_i_8_n_0\,
-      O => \doa_pair.ignore_i_3_n_0\
+      I4 => \doa_pair.ignore_i_7__1_n_0\,
+      I5 => \doa_pair.ignore_i_8__1_n_0\,
+      O => \doa_pair.ignore_i_3__1_n_0\
     );
-\doa_pair.ignore_i_4\: unisim.vcomponents.LUT3
+\doa_pair.ignore_i_4__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D5"
     )
@@ -32600,18 +32660,18 @@ GND: unisim.vcomponents.GND
       I0 => xp(36),
       I1 => xp(35),
       I2 => xp(34),
-      O => \doa_pair.ignore_i_4_n_0\
+      O => \doa_pair.ignore_i_4__1_n_0\
     );
-\doa_pair.ignore_i_5\: unisim.vcomponents.LUT2
+\doa_pair.ignore_i_5__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => xp(35),
       I1 => xp(36),
-      O => \doa_pair.ignore_i_5_n_0\
+      O => \doa_pair.ignore_i_5__1_n_0\
     );
-\doa_pair.ignore_i_6\: unisim.vcomponents.LUT6
+\doa_pair.ignore_i_6__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8000000000000000"
     )
@@ -32622,9 +32682,9 @@ GND: unisim.vcomponents.GND
       I3 => xp(22),
       I4 => xp(24),
       I5 => xp(23),
-      O => \doa_pair.ignore_i_6_n_0\
+      O => \doa_pair.ignore_i_6__1_n_0\
     );
-\doa_pair.ignore_i_7\: unisim.vcomponents.LUT3
+\doa_pair.ignore_i_7__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D5"
     )
@@ -32632,16 +32692,16 @@ GND: unisim.vcomponents.GND
       I0 => xp(30),
       I1 => xp(29),
       I2 => xp(28),
-      O => \doa_pair.ignore_i_7_n_0\
+      O => \doa_pair.ignore_i_7__1_n_0\
     );
-\doa_pair.ignore_i_8\: unisim.vcomponents.LUT2
+\doa_pair.ignore_i_8__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => xp(29),
       I1 => xp(30),
-      O => \doa_pair.ignore_i_8_n_0\
+      O => \doa_pair.ignore_i_8__1_n_0\
     );
 \doa_pair.ignore_reg\: unisim.vcomponents.FDRE
      port map (
@@ -32649,123 +32709,123 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.ignore_i_1_n_0\,
       Q => \doa_pair.ignore_reg_n_0\,
-      R => \doa_pair.done_i_1_n_0\
+      R => \doa_pair.done_i_1__1_n_0\
     );
-\doa_pair.ind[0]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.ind[0]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"54"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \doa_pair.ind[0]_i_1_n_0\
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      O => \doa_pair.ind[0]_i_1__1_n_0\
     );
-\doa_pair.ind[1]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.ind[1]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"A8"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \doa_pair.ind[1]_i_1_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      O => \doa_pair.ind[1]_i_1__1_n_0\
     );
-\doa_pair.ind[2]_i_1\: unisim.vcomponents.LUT5
+\doa_pair.ind[2]_i_1__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00924904"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \doa_pair.ind[2]_i_1_n_0\
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => \doa_pair.ind[2]_i_1__1_n_0\
     );
-\doa_pair.ind[2]_i_2\: unisim.vcomponents.LUT3
+\doa_pair.ind[2]_i_2__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"45"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg\(1),
-      O => \doa_pair.ind[2]_i_2_n_0\
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg__0\(1),
+      O => \doa_pair.ind[2]_i_2__1_n_0\
     );
 \doa_pair.ind_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ind[2]_i_1_n_0\,
-      D => \doa_pair.ind[0]_i_1_n_0\,
-      Q => ind(0),
+      CE => \doa_pair.ind[2]_i_1__1_n_0\,
+      D => \doa_pair.ind[0]_i_1__1_n_0\,
+      Q => \doa_pair.ind_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.ind_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ind[2]_i_1_n_0\,
-      D => \doa_pair.ind[1]_i_1_n_0\,
-      Q => ind(1),
+      CE => \doa_pair.ind[2]_i_1__1_n_0\,
+      D => \doa_pair.ind[1]_i_1__1_n_0\,
+      Q => \doa_pair.ind_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.ind_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ind[2]_i_1_n_0\,
-      D => \doa_pair.ind[2]_i_2_n_0\,
-      Q => ind(2),
+      CE => \doa_pair.ind[2]_i_1__1_n_0\,
+      D => \doa_pair.ind[2]_i_2__1_n_0\,
+      Q => \doa_pair.ind_reg_n_0_[2]\,
       R => '0'
     );
-\doa_pair.init_i_1\: unisim.vcomponents.LUT6
+\doa_pair.init_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFBF00000001"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(2),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg\(1),
-      I4 => \doa_pair.counter_reg__0\(4),
-      I5 => init,
-      O => \doa_pair.init_i_1_n_0\
+      I0 => \doa_pair.counter_reg\(2),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg__0\(1),
+      I4 => \doa_pair.counter_reg\(4),
+      I5 => \doa_pair.init_reg_n_0\,
+      O => \doa_pair.init_i_1__1_n_0\
     );
 \doa_pair.init_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.init_i_1_n_0\,
-      Q => init,
+      D => \doa_pair.init_i_1__1_n_0\,
+      Q => \doa_pair.init_reg_n_0\,
       R => '0'
     );
-\doa_pair.ov[5]_i_1\: unisim.vcomponents.LUT5
+\doa_pair.ov[5]_i_1__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000001"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(4),
-      I4 => \doa_pair.counter_reg__0\(2),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(4),
+      I4 => \doa_pair.counter_reg\(2),
       O => ov
     );
-\doa_pair.ov[5]_i_2\: unisim.vcomponents.LUT5
+\doa_pair.ov[5]_i_2__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000002"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \doa_pair.ov[5]_i_2_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => \doa_pair.ov[5]_i_2__1_n_0\
     );
 \doa_pair.ov_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__1_n_0\,
       D => prod(34),
       Q => \doa_pair.ov_reg_n_0_[0]\,
       R => ov
@@ -32773,7 +32833,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__1_n_0\,
       D => prod(35),
       Q => \doa_pair.ov_reg_n_0_[1]\,
       R => ov
@@ -32781,7 +32841,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__1_n_0\,
       D => prod(36),
       Q => \doa_pair.ov_reg_n_0_[2]\,
       R => ov
@@ -32789,7 +32849,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__1_n_0\,
       D => prod(37),
       Q => \doa_pair.ov_reg_n_0_[3]\,
       R => ov
@@ -32797,7 +32857,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__1_n_0\,
       D => prod(38),
       Q => \doa_pair.ov_reg_n_0_[4]\,
       R => ov
@@ -32805,28 +32865,28 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[5]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__1_n_0\,
       D => prod(39),
       Q => \doa_pair.ov_reg_n_0_[5]\,
       S => ov
     );
-\doa_pair.run_i_1\: unisim.vcomponents.LUT5
+\doa_pair.run_i_1__1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"000000CE"
     )
         port map (
       I0 => run,
-      I1 => start,
+      I1 => start_div,
       I2 => run1_out,
-      I3 => \doa_pair.fail_reg_n_0\,
+      I3 => fail_WN,
       I4 => reset,
-      O => \doa_pair.run_i_1_n_0\
+      O => \doa_pair.run_i_1__1_n_0\
     );
 \doa_pair.run_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.run_i_1_n_0\,
+      D => \doa_pair.run_i_1__1_n_0\,
       Q => run,
       R => '0'
     );
@@ -32835,8 +32895,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(13),
-      I1 => shadow_limit(13),
+      I0 => \doa_pair.x_diff_reg_n_0_[13]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(13),
       O => \doa_pair.shadow_diff[19]_i_10_n_0\
     );
 \doa_pair.shadow_diff[19]_i_11\: unisim.vcomponents.LUT2
@@ -32844,8 +32904,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(12),
-      I1 => shadow_limit(12),
+      I0 => \doa_pair.x_diff_reg_n_0_[12]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(12),
       O => \doa_pair.shadow_diff[19]_i_11_n_0\
     );
 \doa_pair.shadow_diff[19]_i_12\: unisim.vcomponents.LUT2
@@ -32853,8 +32913,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(11),
-      I1 => shadow_limit(11),
+      I0 => \doa_pair.x_diff_reg_n_0_[11]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(11),
       O => \doa_pair.shadow_diff[19]_i_12_n_0\
     );
 \doa_pair.shadow_diff[19]_i_13\: unisim.vcomponents.LUT2
@@ -32862,8 +32922,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(10),
-      I1 => shadow_limit(10),
+      I0 => \doa_pair.x_diff_reg_n_0_[10]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(10),
       O => \doa_pair.shadow_diff[19]_i_13_n_0\
     );
 \doa_pair.shadow_diff[19]_i_14\: unisim.vcomponents.LUT2
@@ -32871,8 +32931,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(9),
-      I1 => shadow_limit(9),
+      I0 => \doa_pair.x_diff_reg_n_0_[9]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(9),
       O => \doa_pair.shadow_diff[19]_i_14_n_0\
     );
 \doa_pair.shadow_diff[19]_i_15\: unisim.vcomponents.LUT2
@@ -32880,8 +32940,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(8),
-      I1 => shadow_limit(8),
+      I0 => \doa_pair.x_diff_reg_n_0_[8]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(8),
       O => \doa_pair.shadow_diff[19]_i_15_n_0\
     );
 \doa_pair.shadow_diff[19]_i_16\: unisim.vcomponents.LUT2
@@ -32889,8 +32949,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(7),
-      I1 => shadow_limit(7),
+      I0 => \doa_pair.x_diff_reg_n_0_[7]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(7),
       O => \doa_pair.shadow_diff[19]_i_16_n_0\
     );
 \doa_pair.shadow_diff[19]_i_17\: unisim.vcomponents.LUT2
@@ -32898,8 +32958,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(6),
-      I1 => shadow_limit(6),
+      I0 => \doa_pair.x_diff_reg_n_0_[6]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(6),
       O => \doa_pair.shadow_diff[19]_i_17_n_0\
     );
 \doa_pair.shadow_diff[19]_i_18\: unisim.vcomponents.LUT2
@@ -32907,8 +32967,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(5),
-      I1 => shadow_limit(5),
+      I0 => \doa_pair.x_diff_reg_n_0_[5]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(5),
       O => \doa_pair.shadow_diff[19]_i_18_n_0\
     );
 \doa_pair.shadow_diff[19]_i_19\: unisim.vcomponents.LUT2
@@ -32916,8 +32976,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(4),
-      I1 => shadow_limit(4),
+      I0 => \doa_pair.x_diff_reg_n_0_[4]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(4),
       O => \doa_pair.shadow_diff[19]_i_19_n_0\
     );
 \doa_pair.shadow_diff[19]_i_20\: unisim.vcomponents.LUT2
@@ -32925,8 +32985,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(3),
-      I1 => shadow_limit(3),
+      I0 => \doa_pair.x_diff_reg_n_0_[3]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(3),
       O => \doa_pair.shadow_diff[19]_i_20_n_0\
     );
 \doa_pair.shadow_diff[19]_i_21\: unisim.vcomponents.LUT2
@@ -32934,8 +32994,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(2),
-      I1 => shadow_limit(2),
+      I0 => \doa_pair.x_diff_reg_n_0_[2]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(2),
       O => \doa_pair.shadow_diff[19]_i_21_n_0\
     );
 \doa_pair.shadow_diff[19]_i_22\: unisim.vcomponents.LUT2
@@ -32943,8 +33003,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(1),
-      I1 => shadow_limit(1),
+      I0 => \doa_pair.x_diff_reg_n_0_[1]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(1),
       O => \doa_pair.shadow_diff[19]_i_22_n_0\
     );
 \doa_pair.shadow_diff[19]_i_23\: unisim.vcomponents.LUT2
@@ -32952,8 +33012,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(0),
-      I1 => shadow_limit(0),
+      I0 => \doa_pair.x_diff_reg_n_0_[0]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(0),
       O => \doa_pair.shadow_diff[19]_i_23_n_0\
     );
 \doa_pair.shadow_diff[19]_i_3\: unisim.vcomponents.LUT1
@@ -32961,7 +33021,7 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => shadow_limit(19),
+      I0 => \doa_pair.shadow_diff_reg[19]_0\(19),
       O => \doa_pair.shadow_diff[19]_i_3_n_0\
     );
 \doa_pair.shadow_diff[19]_i_4\: unisim.vcomponents.LUT2
@@ -32969,8 +33029,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(18),
-      I1 => shadow_limit(18),
+      I0 => \doa_pair.x_diff_reg_n_0_[18]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(18),
       O => \doa_pair.shadow_diff[19]_i_4_n_0\
     );
 \doa_pair.shadow_diff[19]_i_5\: unisim.vcomponents.LUT2
@@ -32978,8 +33038,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(17),
-      I1 => shadow_limit(17),
+      I0 => \doa_pair.x_diff_reg_n_0_[17]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(17),
       O => \doa_pair.shadow_diff[19]_i_5_n_0\
     );
 \doa_pair.shadow_diff[19]_i_6\: unisim.vcomponents.LUT2
@@ -32987,8 +33047,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(16),
-      I1 => shadow_limit(16),
+      I0 => \doa_pair.x_diff_reg_n_0_[16]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(16),
       O => \doa_pair.shadow_diff[19]_i_6_n_0\
     );
 \doa_pair.shadow_diff[19]_i_8\: unisim.vcomponents.LUT2
@@ -32996,8 +33056,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(15),
-      I1 => shadow_limit(15),
+      I0 => \doa_pair.x_diff_reg_n_0_[15]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(15),
       O => \doa_pair.shadow_diff[19]_i_8_n_0\
     );
 \doa_pair.shadow_diff[19]_i_9\: unisim.vcomponents.LUT2
@@ -33005,51 +33065,60 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(14),
-      I1 => shadow_limit(14),
+      I0 => \doa_pair.x_diff_reg_n_0_[14]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(14),
       O => \doa_pair.shadow_diff[19]_i_9_n_0\
     );
 \doa_pair.shadow_diff_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => has_diff,
-      D => shadow_diff0(19),
+      CE => \doa_pair.has_diff_reg_n_0\,
+      D => \doa_pair.shadow_diff_reg[19]_i_1__1_n_12\,
       Q => shadow_diff(19),
       R => '0'
     );
-\doa_pair.shadow_diff_reg[19]_i_1\: unisim.vcomponents.CARRY8
+\doa_pair.shadow_diff_reg[19]_i_1__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.shadow_diff_reg[19]_i_2_n_0\,
+      CI => \doa_pair.shadow_diff_reg[19]_i_2__1_n_0\,
       CI_TOP => '0',
-      CO(7 downto 3) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
-      CO(2) => \doa_pair.shadow_diff_reg[19]_i_1_n_5\,
-      CO(1) => \doa_pair.shadow_diff_reg[19]_i_1_n_6\,
-      CO(0) => \doa_pair.shadow_diff_reg[19]_i_1_n_7\,
+      CO(7 downto 3) => \NLW_doa_pair.shadow_diff_reg[19]_i_1__1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \doa_pair.shadow_diff_reg[19]_i_1__1_n_5\,
+      CO(1) => \doa_pair.shadow_diff_reg[19]_i_1__1_n_6\,
+      CO(0) => \doa_pair.shadow_diff_reg[19]_i_1__1_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => x_diff(18 downto 16),
-      O(7 downto 4) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
-      O(3) => shadow_diff0(19),
-      O(2 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\(2 downto 0),
+      DI(2) => \doa_pair.x_diff_reg_n_0_[18]\,
+      DI(1) => \doa_pair.x_diff_reg_n_0_[17]\,
+      DI(0) => \doa_pair.x_diff_reg_n_0_[16]\,
+      O(7 downto 4) => \NLW_doa_pair.shadow_diff_reg[19]_i_1__1_O_UNCONNECTED\(7 downto 4),
+      O(3) => \doa_pair.shadow_diff_reg[19]_i_1__1_n_12\,
+      O(2 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_1__1_O_UNCONNECTED\(2 downto 0),
       S(7 downto 4) => B"0000",
       S(3) => \doa_pair.shadow_diff[19]_i_3_n_0\,
       S(2) => \doa_pair.shadow_diff[19]_i_4_n_0\,
       S(1) => \doa_pair.shadow_diff[19]_i_5_n_0\,
       S(0) => \doa_pair.shadow_diff[19]_i_6_n_0\
     );
-\doa_pair.shadow_diff_reg[19]_i_2\: unisim.vcomponents.CARRY8
+\doa_pair.shadow_diff_reg[19]_i_2__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.shadow_diff_reg[19]_i_7_n_0\,
+      CI => \doa_pair.shadow_diff_reg[19]_i_7__1_n_0\,
       CI_TOP => '0',
-      CO(7) => \doa_pair.shadow_diff_reg[19]_i_2_n_0\,
-      CO(6) => \doa_pair.shadow_diff_reg[19]_i_2_n_1\,
-      CO(5) => \doa_pair.shadow_diff_reg[19]_i_2_n_2\,
-      CO(4) => \doa_pair.shadow_diff_reg[19]_i_2_n_3\,
-      CO(3) => \doa_pair.shadow_diff_reg[19]_i_2_n_4\,
-      CO(2) => \doa_pair.shadow_diff_reg[19]_i_2_n_5\,
-      CO(1) => \doa_pair.shadow_diff_reg[19]_i_2_n_6\,
-      CO(0) => \doa_pair.shadow_diff_reg[19]_i_2_n_7\,
-      DI(7 downto 0) => x_diff(15 downto 8),
-      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_2_O_UNCONNECTED\(7 downto 0),
+      CO(7) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_0\,
+      CO(6) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_1\,
+      CO(5) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_2\,
+      CO(4) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_3\,
+      CO(3) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_4\,
+      CO(2) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_5\,
+      CO(1) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_6\,
+      CO(0) => \doa_pair.shadow_diff_reg[19]_i_2__1_n_7\,
+      DI(7) => \doa_pair.x_diff_reg_n_0_[15]\,
+      DI(6) => \doa_pair.x_diff_reg_n_0_[14]\,
+      DI(5) => \doa_pair.x_diff_reg_n_0_[13]\,
+      DI(4) => \doa_pair.x_diff_reg_n_0_[12]\,
+      DI(3) => \doa_pair.x_diff_reg_n_0_[11]\,
+      DI(2) => \doa_pair.x_diff_reg_n_0_[10]\,
+      DI(1) => \doa_pair.x_diff_reg_n_0_[9]\,
+      DI(0) => \doa_pair.x_diff_reg_n_0_[8]\,
+      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_2__1_O_UNCONNECTED\(7 downto 0),
       S(7) => \doa_pair.shadow_diff[19]_i_8_n_0\,
       S(6) => \doa_pair.shadow_diff[19]_i_9_n_0\,
       S(5) => \doa_pair.shadow_diff[19]_i_10_n_0\,
@@ -33059,20 +33128,27 @@ GND: unisim.vcomponents.GND
       S(1) => \doa_pair.shadow_diff[19]_i_14_n_0\,
       S(0) => \doa_pair.shadow_diff[19]_i_15_n_0\
     );
-\doa_pair.shadow_diff_reg[19]_i_7\: unisim.vcomponents.CARRY8
+\doa_pair.shadow_diff_reg[19]_i_7__1\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \doa_pair.shadow_diff_reg[19]_i_7_n_0\,
-      CO(6) => \doa_pair.shadow_diff_reg[19]_i_7_n_1\,
-      CO(5) => \doa_pair.shadow_diff_reg[19]_i_7_n_2\,
-      CO(4) => \doa_pair.shadow_diff_reg[19]_i_7_n_3\,
-      CO(3) => \doa_pair.shadow_diff_reg[19]_i_7_n_4\,
-      CO(2) => \doa_pair.shadow_diff_reg[19]_i_7_n_5\,
-      CO(1) => \doa_pair.shadow_diff_reg[19]_i_7_n_6\,
-      CO(0) => \doa_pair.shadow_diff_reg[19]_i_7_n_7\,
-      DI(7 downto 0) => x_diff(7 downto 0),
-      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_7_O_UNCONNECTED\(7 downto 0),
+      CO(7) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_0\,
+      CO(6) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_1\,
+      CO(5) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_2\,
+      CO(4) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_3\,
+      CO(3) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_4\,
+      CO(2) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_5\,
+      CO(1) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_6\,
+      CO(0) => \doa_pair.shadow_diff_reg[19]_i_7__1_n_7\,
+      DI(7) => \doa_pair.x_diff_reg_n_0_[7]\,
+      DI(6) => \doa_pair.x_diff_reg_n_0_[6]\,
+      DI(5) => \doa_pair.x_diff_reg_n_0_[5]\,
+      DI(4) => \doa_pair.x_diff_reg_n_0_[4]\,
+      DI(3) => \doa_pair.x_diff_reg_n_0_[3]\,
+      DI(2) => \doa_pair.x_diff_reg_n_0_[2]\,
+      DI(1) => \doa_pair.x_diff_reg_n_0_[1]\,
+      DI(0) => \doa_pair.x_diff_reg_n_0_[0]\,
+      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_7__1_O_UNCONNECTED\(7 downto 0),
       S(7) => \doa_pair.shadow_diff[19]_i_16_n_0\,
       S(6) => \doa_pair.shadow_diff[19]_i_17_n_0\,
       S(5) => \doa_pair.shadow_diff[19]_i_18_n_0\,
@@ -33082,20 +33158,20 @@ GND: unisim.vcomponents.GND
       S(1) => \doa_pair.shadow_diff[19]_i_22_n_0\,
       S(0) => \doa_pair.shadow_diff[19]_i_23_n_0\
     );
-\doa_pair.shadow_i_1\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8830FFFF88300000"
     )
         port map (
-      I0 => \doa_pair.shadow_i_2_n_0\,
+      I0 => \doa_pair.shadow_i_2__1_n_0\,
       I1 => \doa_pair.ov_reg_n_0_[5]\,
-      I2 => \doa_pair.shadow_i_3_n_0\,
+      I2 => \doa_pair.shadow_i_3__1_n_0\,
       I3 => \doa_pair.ov_reg_n_0_[4]\,
-      I4 => \doa_pair.shadow_i_4_n_0\,
-      I5 => \^shadow\,
-      O => \doa_pair.shadow_i_1_n_0\
+      I4 => shadow,
+      I5 => \^shadow_wn\,
+      O => \doa_pair.shadow_i_1__1_n_0\
     );
-\doa_pair.shadow_i_2\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_2__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"2000A00020000000"
     )
@@ -33106,9 +33182,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[2]\,
       I4 => \doa_pair.ov_reg_n_0_[1]\,
       I5 => has_shadow_diff,
-      O => \doa_pair.shadow_i_2_n_0\
+      O => \doa_pair.shadow_i_2__1_n_0\
     );
-\doa_pair.shadow_i_3\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_3__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"000000000A080008"
     )
@@ -33119,22 +33195,22 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[1]\,
       I4 => has_shadow_diff,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.shadow_i_3_n_0\
+      O => \doa_pair.shadow_i_3__1_n_0\
     );
-\doa_pair.shadow_i_4\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_4__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FEEEAAAAAAAAFBBB"
     )
         port map (
-      I0 => \doa_pair.shadow_i_5_n_0\,
+      I0 => \doa_pair.shadow_i_5__1_n_0\,
       I1 => \doa_pair.ov_reg_n_0_[1]\,
       I2 => shadow_diff(19),
       I3 => has_shadow_diff,
       I4 => \doa_pair.ov_reg_n_0_[2]\,
       I5 => \doa_pair.ov_reg_n_0_[0]\,
-      O => \doa_pair.shadow_i_4_n_0\
+      O => shadow
     );
-\doa_pair.shadow_i_5\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_5__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"F7FF77FFFFEEFFFE"
     )
@@ -33145,43 +33221,43 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[2]\,
       I4 => \doa_pair.ov_reg_n_0_[1]\,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.shadow_i_5_n_0\
+      O => \doa_pair.shadow_i_5__1_n_0\
     );
 \doa_pair.shadow_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.shadow_i_1_n_0\,
-      Q => \^shadow\,
+      D => \doa_pair.shadow_i_1__1_n_0\,
+      Q => \^shadow_wn\,
       R => '0'
     );
-\doa_pair.sum[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => run,
-      O => clear
-    );
-\doa_pair.sum[0]_i_10\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_10__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(20),
       I1 => \doa_pair.sum_reg_n_0_[1]\,
-      O => \doa_pair.sum[0]_i_10_n_0\
+      O => \doa_pair.sum[0]_i_10__1_n_0\
     );
-\doa_pair.sum[0]_i_11\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_11__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(19),
       I1 => \doa_pair.sum_reg_n_0_[0]\,
-      O => \doa_pair.sum[0]_i_11_n_0\
+      O => \doa_pair.sum[0]_i_11__1_n_0\
     );
-\doa_pair.sum[0]_i_2\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_1__1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => run,
+      O => \doa_pair.sum[0]_i_1__1_n_0\
+    );
+\doa_pair.sum[0]_i_2__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
@@ -33190,430 +33266,430 @@ GND: unisim.vcomponents.GND
       I1 => \doa_pair.ignore_reg_n_0\,
       O => sum0
     );
-\doa_pair.sum[0]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_4__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(26),
-      I1 => p_0_in(2),
-      O => \doa_pair.sum[0]_i_4_n_0\
+      I1 => \doa_pair.sum_reg\(7),
+      O => \doa_pair.sum[0]_i_4__1_n_0\
     );
-\doa_pair.sum[0]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_5__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(25),
-      I1 => p_0_in(1),
-      O => \doa_pair.sum[0]_i_5_n_0\
+      I1 => \doa_pair.sum_reg\(6),
+      O => \doa_pair.sum[0]_i_5__1_n_0\
     );
-\doa_pair.sum[0]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_6__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(24),
-      I1 => p_0_in(0),
-      O => \doa_pair.sum[0]_i_6_n_0\
+      I1 => \doa_pair.sum_reg\(5),
+      O => \doa_pair.sum[0]_i_6__1_n_0\
     );
-\doa_pair.sum[0]_i_7\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_7__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(23),
       I1 => \doa_pair.sum_reg_n_0_[4]\,
-      O => \doa_pair.sum[0]_i_7_n_0\
+      O => \doa_pair.sum[0]_i_7__1_n_0\
     );
-\doa_pair.sum[0]_i_8\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_8__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(22),
       I1 => \doa_pair.sum_reg_n_0_[3]\,
-      O => \doa_pair.sum[0]_i_8_n_0\
+      O => \doa_pair.sum[0]_i_8__1_n_0\
     );
-\doa_pair.sum[0]_i_9\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_9__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(21),
       I1 => \doa_pair.sum_reg_n_0_[2]\,
-      O => \doa_pair.sum[0]_i_9_n_0\
+      O => \doa_pair.sum[0]_i_9__1_n_0\
     );
-\doa_pair.sum[16]_i_2\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_2__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(39),
-      I1 => p_0_in(15),
-      O => \doa_pair.sum[16]_i_2_n_0\
+      I1 => \doa_pair.sum_reg\(20),
+      O => \doa_pair.sum[16]_i_2__1_n_0\
     );
-\doa_pair.sum[16]_i_3\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_3__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(38),
-      I1 => p_0_in(14),
-      O => \doa_pair.sum[16]_i_3_n_0\
+      I1 => \doa_pair.sum_reg\(19),
+      O => \doa_pair.sum[16]_i_3__1_n_0\
     );
-\doa_pair.sum[16]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_4__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(37),
-      I1 => p_0_in(13),
-      O => \doa_pair.sum[16]_i_4_n_0\
+      I1 => \doa_pair.sum_reg\(18),
+      O => \doa_pair.sum[16]_i_4__1_n_0\
     );
-\doa_pair.sum[16]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_5__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(36),
-      I1 => p_0_in(12),
-      O => \doa_pair.sum[16]_i_5_n_0\
+      I1 => \doa_pair.sum_reg\(17),
+      O => \doa_pair.sum[16]_i_5__1_n_0\
     );
-\doa_pair.sum[16]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_6__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(35),
-      I1 => p_0_in(11),
-      O => \doa_pair.sum[16]_i_6_n_0\
+      I1 => \doa_pair.sum_reg\(16),
+      O => \doa_pair.sum[16]_i_6__1_n_0\
     );
-\doa_pair.sum[8]_i_2\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_2__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(34),
-      I1 => p_0_in(10),
-      O => \doa_pair.sum[8]_i_2_n_0\
+      I1 => \doa_pair.sum_reg\(15),
+      O => \doa_pair.sum[8]_i_2__1_n_0\
     );
-\doa_pair.sum[8]_i_3\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_3__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(33),
-      I1 => p_0_in(9),
-      O => \doa_pair.sum[8]_i_3_n_0\
+      I1 => \doa_pair.sum_reg\(14),
+      O => \doa_pair.sum[8]_i_3__1_n_0\
     );
-\doa_pair.sum[8]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_4__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(32),
-      I1 => p_0_in(8),
-      O => \doa_pair.sum[8]_i_4_n_0\
+      I1 => \doa_pair.sum_reg\(13),
+      O => \doa_pair.sum[8]_i_4__1_n_0\
     );
-\doa_pair.sum[8]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_5__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(31),
-      I1 => p_0_in(7),
-      O => \doa_pair.sum[8]_i_5_n_0\
+      I1 => \doa_pair.sum_reg\(12),
+      O => \doa_pair.sum[8]_i_5__1_n_0\
     );
-\doa_pair.sum[8]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_6__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(30),
-      I1 => p_0_in(6),
-      O => \doa_pair.sum[8]_i_6_n_0\
+      I1 => \doa_pair.sum_reg\(11),
+      O => \doa_pair.sum[8]_i_6__1_n_0\
     );
-\doa_pair.sum[8]_i_7\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_7__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(29),
-      I1 => p_0_in(5),
-      O => \doa_pair.sum[8]_i_7_n_0\
+      I1 => \doa_pair.sum_reg\(10),
+      O => \doa_pair.sum[8]_i_7__1_n_0\
     );
-\doa_pair.sum[8]_i_8\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_8__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(28),
-      I1 => p_0_in(4),
-      O => \doa_pair.sum[8]_i_8_n_0\
+      I1 => \doa_pair.sum_reg\(9),
+      O => \doa_pair.sum[8]_i_8__1_n_0\
     );
-\doa_pair.sum[8]_i_9\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_9__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(27),
-      I1 => p_0_in(3),
-      O => \doa_pair.sum[8]_i_9_n_0\
+      I1 => \doa_pair.sum_reg\(8),
+      O => \doa_pair.sum[8]_i_9__1_n_0\
     );
 \doa_pair.sum_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_15\,
+      D => \doa_pair.sum_reg[0]_i_3__1_n_15\,
       Q => \doa_pair.sum_reg_n_0_[0]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
-\doa_pair.sum_reg[0]_i_3\: unisim.vcomponents.CARRY8
+\doa_pair.sum_reg[0]_i_3__1\: unisim.vcomponents.CARRY8
      port map (
       CI => '0',
       CI_TOP => '0',
-      CO(7) => \doa_pair.sum_reg[0]_i_3_n_0\,
-      CO(6) => \doa_pair.sum_reg[0]_i_3_n_1\,
-      CO(5) => \doa_pair.sum_reg[0]_i_3_n_2\,
-      CO(4) => \doa_pair.sum_reg[0]_i_3_n_3\,
-      CO(3) => \doa_pair.sum_reg[0]_i_3_n_4\,
-      CO(2) => \doa_pair.sum_reg[0]_i_3_n_5\,
-      CO(1) => \doa_pair.sum_reg[0]_i_3_n_6\,
-      CO(0) => \doa_pair.sum_reg[0]_i_3_n_7\,
+      CO(7) => \doa_pair.sum_reg[0]_i_3__1_n_0\,
+      CO(6) => \doa_pair.sum_reg[0]_i_3__1_n_1\,
+      CO(5) => \doa_pair.sum_reg[0]_i_3__1_n_2\,
+      CO(4) => \doa_pair.sum_reg[0]_i_3__1_n_3\,
+      CO(3) => \doa_pair.sum_reg[0]_i_3__1_n_4\,
+      CO(2) => \doa_pair.sum_reg[0]_i_3__1_n_5\,
+      CO(1) => \doa_pair.sum_reg[0]_i_3__1_n_6\,
+      CO(0) => \doa_pair.sum_reg[0]_i_3__1_n_7\,
       DI(7 downto 0) => cp(26 downto 19),
-      O(7) => \doa_pair.sum_reg[0]_i_3_n_8\,
-      O(6) => \doa_pair.sum_reg[0]_i_3_n_9\,
-      O(5) => \doa_pair.sum_reg[0]_i_3_n_10\,
-      O(4) => \doa_pair.sum_reg[0]_i_3_n_11\,
-      O(3) => \doa_pair.sum_reg[0]_i_3_n_12\,
-      O(2) => \doa_pair.sum_reg[0]_i_3_n_13\,
-      O(1) => \doa_pair.sum_reg[0]_i_3_n_14\,
-      O(0) => \doa_pair.sum_reg[0]_i_3_n_15\,
-      S(7) => \doa_pair.sum[0]_i_4_n_0\,
-      S(6) => \doa_pair.sum[0]_i_5_n_0\,
-      S(5) => \doa_pair.sum[0]_i_6_n_0\,
-      S(4) => \doa_pair.sum[0]_i_7_n_0\,
-      S(3) => \doa_pair.sum[0]_i_8_n_0\,
-      S(2) => \doa_pair.sum[0]_i_9_n_0\,
-      S(1) => \doa_pair.sum[0]_i_10_n_0\,
-      S(0) => \doa_pair.sum[0]_i_11_n_0\
+      O(7) => \doa_pair.sum_reg[0]_i_3__1_n_8\,
+      O(6) => \doa_pair.sum_reg[0]_i_3__1_n_9\,
+      O(5) => \doa_pair.sum_reg[0]_i_3__1_n_10\,
+      O(4) => \doa_pair.sum_reg[0]_i_3__1_n_11\,
+      O(3) => \doa_pair.sum_reg[0]_i_3__1_n_12\,
+      O(2) => \doa_pair.sum_reg[0]_i_3__1_n_13\,
+      O(1) => \doa_pair.sum_reg[0]_i_3__1_n_14\,
+      O(0) => \doa_pair.sum_reg[0]_i_3__1_n_15\,
+      S(7) => \doa_pair.sum[0]_i_4__1_n_0\,
+      S(6) => \doa_pair.sum[0]_i_5__1_n_0\,
+      S(5) => \doa_pair.sum[0]_i_6__1_n_0\,
+      S(4) => \doa_pair.sum[0]_i_7__1_n_0\,
+      S(3) => \doa_pair.sum[0]_i_8__1_n_0\,
+      S(2) => \doa_pair.sum[0]_i_9__1_n_0\,
+      S(1) => \doa_pair.sum[0]_i_10__1_n_0\,
+      S(0) => \doa_pair.sum[0]_i_11__1_n_0\
     );
 \doa_pair.sum_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_13\,
-      Q => p_0_in(5),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_13\,
+      Q => \doa_pair.sum_reg\(10),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_12\,
-      Q => p_0_in(6),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_12\,
+      Q => \doa_pair.sum_reg\(11),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_11\,
-      Q => p_0_in(7),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_11\,
+      Q => \doa_pair.sum_reg\(12),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_10\,
-      Q => p_0_in(8),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_10\,
+      Q => \doa_pair.sum_reg\(13),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_9\,
-      Q => p_0_in(9),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_9\,
+      Q => \doa_pair.sum_reg\(14),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_8\,
-      Q => p_0_in(10),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_8\,
+      Q => \doa_pair.sum_reg\(15),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_15\,
-      Q => p_0_in(11),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__1_n_15\,
+      Q => \doa_pair.sum_reg\(16),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
-\doa_pair.sum_reg[16]_i_1\: unisim.vcomponents.CARRY8
+\doa_pair.sum_reg[16]_i_1__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.sum_reg[8]_i_1_n_0\,
+      CI => \doa_pair.sum_reg[8]_i_1__1_n_0\,
       CI_TOP => '0',
-      CO(7 downto 4) => \NLW_doa_pair.sum_reg[16]_i_1_CO_UNCONNECTED\(7 downto 4),
-      CO(3) => \doa_pair.sum_reg[16]_i_1_n_4\,
-      CO(2) => \doa_pair.sum_reg[16]_i_1_n_5\,
-      CO(1) => \doa_pair.sum_reg[16]_i_1_n_6\,
-      CO(0) => \doa_pair.sum_reg[16]_i_1_n_7\,
+      CO(7 downto 4) => \NLW_doa_pair.sum_reg[16]_i_1__1_CO_UNCONNECTED\(7 downto 4),
+      CO(3) => \doa_pair.sum_reg[16]_i_1__1_n_4\,
+      CO(2) => \doa_pair.sum_reg[16]_i_1__1_n_5\,
+      CO(1) => \doa_pair.sum_reg[16]_i_1__1_n_6\,
+      CO(0) => \doa_pair.sum_reg[16]_i_1__1_n_7\,
       DI(7 downto 4) => B"0000",
       DI(3 downto 0) => cp(38 downto 35),
-      O(7 downto 5) => \NLW_doa_pair.sum_reg[16]_i_1_O_UNCONNECTED\(7 downto 5),
-      O(4) => \doa_pair.sum_reg[16]_i_1_n_11\,
-      O(3) => \doa_pair.sum_reg[16]_i_1_n_12\,
-      O(2) => \doa_pair.sum_reg[16]_i_1_n_13\,
-      O(1) => \doa_pair.sum_reg[16]_i_1_n_14\,
-      O(0) => \doa_pair.sum_reg[16]_i_1_n_15\,
+      O(7 downto 5) => \NLW_doa_pair.sum_reg[16]_i_1__1_O_UNCONNECTED\(7 downto 5),
+      O(4) => \doa_pair.sum_reg[16]_i_1__1_n_11\,
+      O(3) => \doa_pair.sum_reg[16]_i_1__1_n_12\,
+      O(2) => \doa_pair.sum_reg[16]_i_1__1_n_13\,
+      O(1) => \doa_pair.sum_reg[16]_i_1__1_n_14\,
+      O(0) => \doa_pair.sum_reg[16]_i_1__1_n_15\,
       S(7 downto 5) => B"000",
-      S(4) => \doa_pair.sum[16]_i_2_n_0\,
-      S(3) => \doa_pair.sum[16]_i_3_n_0\,
-      S(2) => \doa_pair.sum[16]_i_4_n_0\,
-      S(1) => \doa_pair.sum[16]_i_5_n_0\,
-      S(0) => \doa_pair.sum[16]_i_6_n_0\
+      S(4) => \doa_pair.sum[16]_i_2__1_n_0\,
+      S(3) => \doa_pair.sum[16]_i_3__1_n_0\,
+      S(2) => \doa_pair.sum[16]_i_4__1_n_0\,
+      S(1) => \doa_pair.sum[16]_i_5__1_n_0\,
+      S(0) => \doa_pair.sum[16]_i_6__1_n_0\
     );
 \doa_pair.sum_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_14\,
-      Q => p_0_in(12),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__1_n_14\,
+      Q => \doa_pair.sum_reg\(17),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_13\,
-      Q => p_0_in(13),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__1_n_13\,
+      Q => \doa_pair.sum_reg\(18),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_12\,
-      Q => p_0_in(14),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__1_n_12\,
+      Q => \doa_pair.sum_reg\(19),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_14\,
+      D => \doa_pair.sum_reg[0]_i_3__1_n_14\,
       Q => \doa_pair.sum_reg_n_0_[1]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_11\,
-      Q => p_0_in(15),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__1_n_11\,
+      Q => \doa_pair.sum_reg\(20),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_13\,
+      D => \doa_pair.sum_reg[0]_i_3__1_n_13\,
       Q => \doa_pair.sum_reg_n_0_[2]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_12\,
+      D => \doa_pair.sum_reg[0]_i_3__1_n_12\,
       Q => \doa_pair.sum_reg_n_0_[3]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_11\,
+      D => \doa_pair.sum_reg[0]_i_3__1_n_11\,
       Q => \doa_pair.sum_reg_n_0_[4]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_10\,
-      Q => p_0_in(0),
-      R => clear
+      D => \doa_pair.sum_reg[0]_i_3__1_n_10\,
+      Q => \doa_pair.sum_reg\(5),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_9\,
-      Q => p_0_in(1),
-      R => clear
+      D => \doa_pair.sum_reg[0]_i_3__1_n_9\,
+      Q => \doa_pair.sum_reg\(6),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_8\,
-      Q => p_0_in(2),
-      R => clear
+      D => \doa_pair.sum_reg[0]_i_3__1_n_8\,
+      Q => \doa_pair.sum_reg\(7),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
 \doa_pair.sum_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_15\,
-      Q => p_0_in(3),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_15\,
+      Q => \doa_pair.sum_reg\(8),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
-\doa_pair.sum_reg[8]_i_1\: unisim.vcomponents.CARRY8
+\doa_pair.sum_reg[8]_i_1__1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.sum_reg[0]_i_3_n_0\,
+      CI => \doa_pair.sum_reg[0]_i_3__1_n_0\,
       CI_TOP => '0',
-      CO(7) => \doa_pair.sum_reg[8]_i_1_n_0\,
-      CO(6) => \doa_pair.sum_reg[8]_i_1_n_1\,
-      CO(5) => \doa_pair.sum_reg[8]_i_1_n_2\,
-      CO(4) => \doa_pair.sum_reg[8]_i_1_n_3\,
-      CO(3) => \doa_pair.sum_reg[8]_i_1_n_4\,
-      CO(2) => \doa_pair.sum_reg[8]_i_1_n_5\,
-      CO(1) => \doa_pair.sum_reg[8]_i_1_n_6\,
-      CO(0) => \doa_pair.sum_reg[8]_i_1_n_7\,
+      CO(7) => \doa_pair.sum_reg[8]_i_1__1_n_0\,
+      CO(6) => \doa_pair.sum_reg[8]_i_1__1_n_1\,
+      CO(5) => \doa_pair.sum_reg[8]_i_1__1_n_2\,
+      CO(4) => \doa_pair.sum_reg[8]_i_1__1_n_3\,
+      CO(3) => \doa_pair.sum_reg[8]_i_1__1_n_4\,
+      CO(2) => \doa_pair.sum_reg[8]_i_1__1_n_5\,
+      CO(1) => \doa_pair.sum_reg[8]_i_1__1_n_6\,
+      CO(0) => \doa_pair.sum_reg[8]_i_1__1_n_7\,
       DI(7 downto 0) => cp(34 downto 27),
-      O(7) => \doa_pair.sum_reg[8]_i_1_n_8\,
-      O(6) => \doa_pair.sum_reg[8]_i_1_n_9\,
-      O(5) => \doa_pair.sum_reg[8]_i_1_n_10\,
-      O(4) => \doa_pair.sum_reg[8]_i_1_n_11\,
-      O(3) => \doa_pair.sum_reg[8]_i_1_n_12\,
-      O(2) => \doa_pair.sum_reg[8]_i_1_n_13\,
-      O(1) => \doa_pair.sum_reg[8]_i_1_n_14\,
-      O(0) => \doa_pair.sum_reg[8]_i_1_n_15\,
-      S(7) => \doa_pair.sum[8]_i_2_n_0\,
-      S(6) => \doa_pair.sum[8]_i_3_n_0\,
-      S(5) => \doa_pair.sum[8]_i_4_n_0\,
-      S(4) => \doa_pair.sum[8]_i_5_n_0\,
-      S(3) => \doa_pair.sum[8]_i_6_n_0\,
-      S(2) => \doa_pair.sum[8]_i_7_n_0\,
-      S(1) => \doa_pair.sum[8]_i_8_n_0\,
-      S(0) => \doa_pair.sum[8]_i_9_n_0\
+      O(7) => \doa_pair.sum_reg[8]_i_1__1_n_8\,
+      O(6) => \doa_pair.sum_reg[8]_i_1__1_n_9\,
+      O(5) => \doa_pair.sum_reg[8]_i_1__1_n_10\,
+      O(4) => \doa_pair.sum_reg[8]_i_1__1_n_11\,
+      O(3) => \doa_pair.sum_reg[8]_i_1__1_n_12\,
+      O(2) => \doa_pair.sum_reg[8]_i_1__1_n_13\,
+      O(1) => \doa_pair.sum_reg[8]_i_1__1_n_14\,
+      O(0) => \doa_pair.sum_reg[8]_i_1__1_n_15\,
+      S(7) => \doa_pair.sum[8]_i_2__1_n_0\,
+      S(6) => \doa_pair.sum[8]_i_3__1_n_0\,
+      S(5) => \doa_pair.sum[8]_i_4__1_n_0\,
+      S(4) => \doa_pair.sum[8]_i_5__1_n_0\,
+      S(3) => \doa_pair.sum[8]_i_6__1_n_0\,
+      S(2) => \doa_pair.sum[8]_i_7__1_n_0\,
+      S(1) => \doa_pair.sum[8]_i_8__1_n_0\,
+      S(0) => \doa_pair.sum[8]_i_9__1_n_0\
     );
 \doa_pair.sum_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_14\,
-      Q => p_0_in(4),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__1_n_14\,
+      Q => \doa_pair.sum_reg\(9),
+      R => \doa_pair.sum[0]_i_1__1_n_0\
     );
-\doa_pair.x[0]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[0]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"F6"
     )
@@ -33623,7 +33699,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(16),
       O => x(0)
     );
-\doa_pair.x[10]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[10]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33633,7 +33709,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(26),
       O => x(10)
     );
-\doa_pair.x[11]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[11]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33643,7 +33719,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(27),
       O => x(11)
     );
-\doa_pair.x[12]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[12]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33653,7 +33729,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(28),
       O => x(12)
     );
-\doa_pair.x[13]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[13]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33663,7 +33739,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(29),
       O => x(13)
     );
-\doa_pair.x[14]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[14]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33673,7 +33749,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(30),
       O => x(14)
     );
-\doa_pair.x[15]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[15]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33683,7 +33759,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(31),
       O => x(15)
     );
-\doa_pair.x[16]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[16]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33693,7 +33769,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(32),
       O => x(16)
     );
-\doa_pair.x[17]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[17]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33703,7 +33779,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(33),
       O => x(17)
     );
-\doa_pair.x[18]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[18]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33713,7 +33789,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(34),
       O => x(18)
     );
-\doa_pair.x[19]_i_1\: unisim.vcomponents.LUT6
+\doa_pair.x[19]_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8000800180010001"
     )
@@ -33724,9 +33800,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[4]\,
       I4 => \doa_pair.ov_reg_n_0_[1]\,
       I5 => \doa_pair.ov_reg_n_0_[0]\,
-      O => \doa_pair.x[19]_i_1_n_0\
+      O => \doa_pair.x[19]_i_1__1_n_0\
     );
-\doa_pair.x[19]_i_2\: unisim.vcomponents.LUT3
+\doa_pair.x[19]_i_2__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"8E"
     )
@@ -33736,7 +33812,7 @@ GND: unisim.vcomponents.GND
       I2 => \doa_pair.ov_reg_n_0_[1]\,
       O => x(19)
     );
-\doa_pair.x[1]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[1]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33746,7 +33822,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(17),
       O => x(1)
     );
-\doa_pair.x[2]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[2]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33756,7 +33832,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(18),
       O => x(2)
     );
-\doa_pair.x[3]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[3]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33766,7 +33842,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(19),
       O => x(3)
     );
-\doa_pair.x[4]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[4]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33776,7 +33852,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(20),
       O => x(4)
     );
-\doa_pair.x[5]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[5]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33786,7 +33862,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(21),
       O => x(5)
     );
-\doa_pair.x[6]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[6]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33796,7 +33872,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(22),
       O => x(6)
     );
-\doa_pair.x[7]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[7]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33806,7 +33882,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(23),
       O => x(7)
     );
-\doa_pair.x[8]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[8]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33816,7 +33892,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(24),
       O => x(8)
     );
-\doa_pair.x[9]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[9]_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -33831,8 +33907,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(0),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[0]\,
       O => \doa_pair.x_abs[0]_i_1_n_0\
     );
 \doa_pair.x_abs[10]_i_1\: unisim.vcomponents.LUT2
@@ -33840,8 +33916,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(10),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[10]\,
       O => \doa_pair.x_abs[10]_i_1_n_0\
     );
 \doa_pair.x_abs[11]_i_1\: unisim.vcomponents.LUT2
@@ -33849,8 +33925,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(11),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[11]\,
       O => \doa_pair.x_abs[11]_i_1_n_0\
     );
 \doa_pair.x_abs[12]_i_1\: unisim.vcomponents.LUT2
@@ -33858,8 +33934,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(12),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[12]\,
       O => \doa_pair.x_abs[12]_i_1_n_0\
     );
 \doa_pair.x_abs[13]_i_1\: unisim.vcomponents.LUT2
@@ -33867,8 +33943,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(13),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[13]\,
       O => \doa_pair.x_abs[13]_i_1_n_0\
     );
 \doa_pair.x_abs[14]_i_1\: unisim.vcomponents.LUT2
@@ -33876,8 +33952,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(14),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[14]\,
       O => \doa_pair.x_abs[14]_i_1_n_0\
     );
 \doa_pair.x_abs[15]_i_1\: unisim.vcomponents.LUT2
@@ -33885,8 +33961,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(15),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[15]\,
       O => \doa_pair.x_abs[15]_i_1_n_0\
     );
 \doa_pair.x_abs[16]_i_1\: unisim.vcomponents.LUT2
@@ -33894,8 +33970,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(16),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[16]\,
       O => \doa_pair.x_abs[16]_i_1_n_0\
     );
 \doa_pair.x_abs[17]_i_1\: unisim.vcomponents.LUT2
@@ -33903,8 +33979,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(17),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[17]\,
       O => \doa_pair.x_abs[17]_i_1_n_0\
     );
 \doa_pair.x_abs[18]_i_1\: unisim.vcomponents.LUT2
@@ -33912,8 +33988,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(18),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[18]\,
       O => \doa_pair.x_abs[18]_i_1_n_0\
     );
 \doa_pair.x_abs[19]_i_1\: unisim.vcomponents.LUT2
@@ -33921,8 +33997,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(19),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[19]\,
       O => \doa_pair.x_abs[19]_i_1_n_0\
     );
 \doa_pair.x_abs[1]_i_1\: unisim.vcomponents.LUT2
@@ -33930,8 +34006,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(1),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[1]\,
       O => \doa_pair.x_abs[1]_i_1_n_0\
     );
 \doa_pair.x_abs[2]_i_1\: unisim.vcomponents.LUT2
@@ -33939,8 +34015,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(2),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[2]\,
       O => \doa_pair.x_abs[2]_i_1_n_0\
     );
 \doa_pair.x_abs[3]_i_1\: unisim.vcomponents.LUT2
@@ -33948,8 +34024,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(3),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[3]\,
       O => \doa_pair.x_abs[3]_i_1_n_0\
     );
 \doa_pair.x_abs[4]_i_1\: unisim.vcomponents.LUT2
@@ -33957,8 +34033,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(4),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[4]\,
       O => \doa_pair.x_abs[4]_i_1_n_0\
     );
 \doa_pair.x_abs[5]_i_1\: unisim.vcomponents.LUT2
@@ -33966,8 +34042,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(5),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[5]\,
       O => \doa_pair.x_abs[5]_i_1_n_0\
     );
 \doa_pair.x_abs[6]_i_1\: unisim.vcomponents.LUT2
@@ -33975,8 +34051,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(6),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[6]\,
       O => \doa_pair.x_abs[6]_i_1_n_0\
     );
 \doa_pair.x_abs[7]_i_1\: unisim.vcomponents.LUT2
@@ -33984,8 +34060,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(7),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[7]\,
       O => \doa_pair.x_abs[7]_i_1_n_0\
     );
 \doa_pair.x_abs[8]_i_1\: unisim.vcomponents.LUT2
@@ -33993,8 +34069,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(8),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[8]\,
       O => \doa_pair.x_abs[8]_i_1_n_0\
     );
 \doa_pair.x_abs[9]_i_1\: unisim.vcomponents.LUT2
@@ -34002,168 +34078,168 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(9),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[9]\,
       O => \doa_pair.x_abs[9]_i_1_n_0\
     );
 \doa_pair.x_abs_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[0]_i_1_n_0\,
-      Q => x_abs(0),
+      Q => \doa_pair.x_abs_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[10]_i_1_n_0\,
-      Q => x_abs(10),
+      Q => \doa_pair.x_abs_reg_n_0_[10]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[11]_i_1_n_0\,
-      Q => x_abs(11),
+      Q => \doa_pair.x_abs_reg_n_0_[11]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[12]_i_1_n_0\,
-      Q => x_abs(12),
+      Q => \doa_pair.x_abs_reg_n_0_[12]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[13]_i_1_n_0\,
-      Q => x_abs(13),
+      Q => \doa_pair.x_abs_reg_n_0_[13]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[14]_i_1_n_0\,
-      Q => x_abs(14),
+      Q => \doa_pair.x_abs_reg_n_0_[14]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[15]_i_1_n_0\,
-      Q => x_abs(15),
+      Q => \doa_pair.x_abs_reg_n_0_[15]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[16]_i_1_n_0\,
-      Q => x_abs(16),
+      Q => \doa_pair.x_abs_reg_n_0_[16]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[17]_i_1_n_0\,
-      Q => x_abs(17),
+      Q => \doa_pair.x_abs_reg_n_0_[17]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[18]_i_1_n_0\,
-      Q => x_abs(18),
+      Q => \doa_pair.x_abs_reg_n_0_[18]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[19]_i_1_n_0\,
-      Q => x_abs(19),
+      Q => \doa_pair.x_abs_reg_n_0_[19]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[1]_i_1_n_0\,
-      Q => x_abs(1),
+      Q => \doa_pair.x_abs_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[2]_i_1_n_0\,
-      Q => x_abs(2),
+      Q => \doa_pair.x_abs_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[3]_i_1_n_0\,
-      Q => x_abs(3),
+      Q => \doa_pair.x_abs_reg_n_0_[3]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[4]_i_1_n_0\,
-      Q => x_abs(4),
+      Q => \doa_pair.x_abs_reg_n_0_[4]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[5]_i_1_n_0\,
-      Q => x_abs(5),
+      Q => \doa_pair.x_abs_reg_n_0_[5]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[6]_i_1_n_0\,
-      Q => x_abs(6),
+      Q => \doa_pair.x_abs_reg_n_0_[6]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[7]_i_1_n_0\,
-      Q => x_abs(7),
+      Q => \doa_pair.x_abs_reg_n_0_[7]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[8]_i_1_n_0\,
-      Q => x_abs(8),
+      Q => \doa_pair.x_abs_reg_n_0_[8]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[9]_i_1_n_0\,
-      Q => x_abs(9),
+      Q => \doa_pair.x_abs_reg_n_0_[9]\,
       R => '0'
     );
 \doa_pair.x_diff[0]_i_1\: unisim.vcomponents.LUT2
@@ -34171,8 +34247,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(0),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[0]\,
       O => \doa_pair.x_diff[0]_i_1_n_0\
     );
 \doa_pair.x_diff[10]_i_1\: unisim.vcomponents.LUT2
@@ -34180,8 +34256,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(10),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[10]\,
       O => \doa_pair.x_diff[10]_i_1_n_0\
     );
 \doa_pair.x_diff[11]_i_1\: unisim.vcomponents.LUT2
@@ -34189,8 +34265,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(11),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[11]\,
       O => \doa_pair.x_diff[11]_i_1_n_0\
     );
 \doa_pair.x_diff[12]_i_1\: unisim.vcomponents.LUT2
@@ -34198,8 +34274,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(12),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[12]\,
       O => \doa_pair.x_diff[12]_i_1_n_0\
     );
 \doa_pair.x_diff[13]_i_1\: unisim.vcomponents.LUT2
@@ -34207,8 +34283,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(13),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[13]\,
       O => \doa_pair.x_diff[13]_i_1_n_0\
     );
 \doa_pair.x_diff[14]_i_1\: unisim.vcomponents.LUT2
@@ -34216,8 +34292,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(14),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[14]\,
       O => \doa_pair.x_diff[14]_i_1_n_0\
     );
 \doa_pair.x_diff[15]_i_1\: unisim.vcomponents.LUT2
@@ -34225,8 +34301,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(15),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[15]\,
       O => \doa_pair.x_diff[15]_i_1_n_0\
     );
 \doa_pair.x_diff[16]_i_1\: unisim.vcomponents.LUT2
@@ -34234,8 +34310,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(16),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[16]\,
       O => \doa_pair.x_diff[16]_i_1_n_0\
     );
 \doa_pair.x_diff[17]_i_1\: unisim.vcomponents.LUT2
@@ -34243,8 +34319,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(17),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[17]\,
       O => \doa_pair.x_diff[17]_i_1_n_0\
     );
 \doa_pair.x_diff[18]_i_1\: unisim.vcomponents.LUT2
@@ -34252,8 +34328,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(18),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[18]\,
       O => \doa_pair.x_diff[18]_i_1_n_0\
     );
 \doa_pair.x_diff[1]_i_1\: unisim.vcomponents.LUT2
@@ -34261,8 +34337,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(1),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[1]\,
       O => \doa_pair.x_diff[1]_i_1_n_0\
     );
 \doa_pair.x_diff[2]_i_1\: unisim.vcomponents.LUT2
@@ -34270,8 +34346,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(2),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[2]\,
       O => \doa_pair.x_diff[2]_i_1_n_0\
     );
 \doa_pair.x_diff[3]_i_1\: unisim.vcomponents.LUT2
@@ -34279,8 +34355,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(3),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[3]\,
       O => \doa_pair.x_diff[3]_i_1_n_0\
     );
 \doa_pair.x_diff[4]_i_1\: unisim.vcomponents.LUT2
@@ -34288,8 +34364,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(4),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[4]\,
       O => \doa_pair.x_diff[4]_i_1_n_0\
     );
 \doa_pair.x_diff[5]_i_1\: unisim.vcomponents.LUT2
@@ -34297,8 +34373,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(5),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[5]\,
       O => \doa_pair.x_diff[5]_i_1_n_0\
     );
 \doa_pair.x_diff[6]_i_1\: unisim.vcomponents.LUT2
@@ -34306,8 +34382,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(6),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[6]\,
       O => \doa_pair.x_diff[6]_i_1_n_0\
     );
 \doa_pair.x_diff[7]_i_1\: unisim.vcomponents.LUT2
@@ -34315,8 +34391,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(7),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[7]\,
       O => \doa_pair.x_diff[7]_i_1_n_0\
     );
 \doa_pair.x_diff[8]_i_1\: unisim.vcomponents.LUT2
@@ -34324,8 +34400,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(8),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[8]\,
       O => \doa_pair.x_diff[8]_i_1_n_0\
     );
 \doa_pair.x_diff[9]_i_1\: unisim.vcomponents.LUT2
@@ -34333,163 +34409,163 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(9),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[9]\,
       O => \doa_pair.x_diff[9]_i_1_n_0\
     );
 \doa_pair.x_diff_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[0]_i_1_n_0\,
-      Q => x_diff(0),
+      Q => \doa_pair.x_diff_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[10]_i_1_n_0\,
-      Q => x_diff(10),
+      Q => \doa_pair.x_diff_reg_n_0_[10]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[11]_i_1_n_0\,
-      Q => x_diff(11),
+      Q => \doa_pair.x_diff_reg_n_0_[11]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[12]_i_1_n_0\,
-      Q => x_diff(12),
+      Q => \doa_pair.x_diff_reg_n_0_[12]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[13]_i_1_n_0\,
-      Q => x_diff(13),
+      Q => \doa_pair.x_diff_reg_n_0_[13]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[14]_i_1_n_0\,
-      Q => x_diff(14),
+      Q => \doa_pair.x_diff_reg_n_0_[14]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[15]_i_1_n_0\,
-      Q => x_diff(15),
+      Q => \doa_pair.x_diff_reg_n_0_[15]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[16]_i_1_n_0\,
-      Q => x_diff(16),
+      Q => \doa_pair.x_diff_reg_n_0_[16]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[17]_i_1_n_0\,
-      Q => x_diff(17),
+      Q => \doa_pair.x_diff_reg_n_0_[17]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[18]_i_1_n_0\,
-      Q => x_diff(18),
+      Q => \doa_pair.x_diff_reg_n_0_[18]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[1]_i_1_n_0\,
-      Q => x_diff(1),
+      Q => \doa_pair.x_diff_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[2]_i_1_n_0\,
-      Q => x_diff(2),
+      Q => \doa_pair.x_diff_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[3]_i_1_n_0\,
-      Q => x_diff(3),
+      Q => \doa_pair.x_diff_reg_n_0_[3]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[4]_i_1_n_0\,
-      Q => x_diff(4),
+      Q => \doa_pair.x_diff_reg_n_0_[4]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[5]_i_1_n_0\,
-      Q => x_diff(5),
+      Q => \doa_pair.x_diff_reg_n_0_[5]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[6]_i_1_n_0\,
-      Q => x_diff(6),
+      Q => \doa_pair.x_diff_reg_n_0_[6]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[7]_i_1_n_0\,
-      Q => x_diff(7),
+      Q => \doa_pair.x_diff_reg_n_0_[7]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[8]_i_1_n_0\,
-      Q => x_diff(8),
+      Q => \doa_pair.x_diff_reg_n_0_[8]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[9]_i_1_n_0\,
-      Q => x_diff(9),
+      Q => \doa_pair.x_diff_reg_n_0_[9]\,
       R => '0'
     );
-\doa_pair.x_raw[20]_i_1\: unisim.vcomponents.LUT6
+\doa_pair.x_raw[20]_i_1__1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"2800000000000014"
     )
@@ -34500,180 +34576,180 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[4]\,
       I4 => \doa_pair.ov_reg_n_0_[3]\,
       I5 => \doa_pair.ov_reg_n_0_[2]\,
-      O => \doa_pair.x_raw[20]_i_1_n_0\
+      O => \doa_pair.x_raw[20]_i_1__1_n_0\
     );
 \doa_pair.x_raw_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(16),
-      Q => x_raw(0),
+      Q => \doa_pair.x_raw_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(26),
-      Q => x_raw(10),
+      Q => \doa_pair.x_raw_reg_n_0_[10]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(27),
-      Q => x_raw(11),
+      Q => \doa_pair.x_raw_reg_n_0_[11]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(28),
-      Q => x_raw(12),
+      Q => \doa_pair.x_raw_reg_n_0_[12]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(29),
-      Q => x_raw(13),
+      Q => \doa_pair.x_raw_reg_n_0_[13]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(30),
-      Q => x_raw(14),
+      Q => \doa_pair.x_raw_reg_n_0_[14]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(31),
-      Q => x_raw(15),
+      Q => \doa_pair.x_raw_reg_n_0_[15]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(32),
-      Q => x_raw(16),
+      Q => \doa_pair.x_raw_reg_n_0_[16]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(33),
-      Q => x_raw(17),
+      Q => \doa_pair.x_raw_reg_n_0_[17]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(34),
-      Q => x_raw(18),
+      Q => \doa_pair.x_raw_reg_n_0_[18]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(35),
-      Q => x_raw(19),
+      Q => \doa_pair.x_raw_reg_n_0_[19]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(17),
-      Q => x_raw(1),
+      Q => \doa_pair.x_raw_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(36),
-      Q => x_raw(20),
+      Q => \doa_pair.x_raw_reg_n_0_[20]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(18),
-      Q => x_raw(2),
+      Q => \doa_pair.x_raw_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(19),
-      Q => x_raw(3),
+      Q => \doa_pair.x_raw_reg_n_0_[3]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(20),
-      Q => x_raw(4),
+      Q => \doa_pair.x_raw_reg_n_0_[4]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(21),
-      Q => x_raw(5),
+      Q => \doa_pair.x_raw_reg_n_0_[5]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(22),
-      Q => x_raw(6),
+      Q => \doa_pair.x_raw_reg_n_0_[6]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(23),
-      Q => x_raw(7),
+      Q => \doa_pair.x_raw_reg_n_0_[7]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(24),
-      Q => x_raw(8),
+      Q => \doa_pair.x_raw_reg_n_0_[8]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__1_n_0\,
       D => prod(25),
-      Q => x_raw(9),
+      Q => \doa_pair.x_raw_reg_n_0_[9]\,
       R => '0'
     );
 \doa_pair.x_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(0),
       Q => \doa_pair.x_reg_n_0_[0]\,
       R => '0'
@@ -34681,7 +34757,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(10),
       Q => \doa_pair.x_reg_n_0_[10]\,
       R => '0'
@@ -34689,7 +34765,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(11),
       Q => \doa_pair.x_reg_n_0_[11]\,
       R => '0'
@@ -34697,7 +34773,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(12),
       Q => \doa_pair.x_reg_n_0_[12]\,
       R => '0'
@@ -34705,7 +34781,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(13),
       Q => \doa_pair.x_reg_n_0_[13]\,
       R => '0'
@@ -34713,7 +34789,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(14),
       Q => \doa_pair.x_reg_n_0_[14]\,
       R => '0'
@@ -34721,7 +34797,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(15),
       Q => \doa_pair.x_reg_n_0_[15]\,
       R => '0'
@@ -34729,7 +34805,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(16),
       Q => \doa_pair.x_reg_n_0_[16]\,
       R => '0'
@@ -34737,7 +34813,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(17),
       Q => \doa_pair.x_reg_n_0_[17]\,
       R => '0'
@@ -34745,7 +34821,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(18),
       Q => \doa_pair.x_reg_n_0_[18]\,
       R => '0'
@@ -34753,7 +34829,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(19),
       Q => \doa_pair.x_reg_n_0_[19]\,
       R => '0'
@@ -34761,7 +34837,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(1),
       Q => \doa_pair.x_reg_n_0_[1]\,
       R => '0'
@@ -34769,7 +34845,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(2),
       Q => \doa_pair.x_reg_n_0_[2]\,
       R => '0'
@@ -34777,7 +34853,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(3),
       Q => \doa_pair.x_reg_n_0_[3]\,
       R => '0'
@@ -34785,7 +34861,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(4),
       Q => \doa_pair.x_reg_n_0_[4]\,
       R => '0'
@@ -34793,7 +34869,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(5),
       Q => \doa_pair.x_reg_n_0_[5]\,
       R => '0'
@@ -34801,7 +34877,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(6),
       Q => \doa_pair.x_reg_n_0_[6]\,
       R => '0'
@@ -34809,7 +34885,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(7),
       Q => \doa_pair.x_reg_n_0_[7]\,
       R => '0'
@@ -34817,7 +34893,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(8),
       Q => \doa_pair.x_reg_n_0_[8]\,
       R => '0'
@@ -34825,12 +34901,12 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__1_n_0\,
       D => x(9),
       Q => \doa_pair.x_reg_n_0_[9]\,
       R => '0'
     );
-mul_c_i: component ps_comp_low_0_0_mult_20x20
+mul_c_i: component ps_comp_low_0_0_mult_20x20_HD5
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -34843,8 +34919,8 @@ mul_c_i: component ps_comp_low_0_0_mult_20x20
     );
 mul_doa_i: component ps_comp_low_0_0_mult_20x20
      port map (
-      A(19 downto 0) => k(19 downto 0),
-      B(19 downto 0) => phase(19 downto 0),
+      A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
+      B(19 downto 0) => Q(19 downto 0),
       CLK => clk,
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
@@ -34905,204 +34981,204 @@ mul_x_i: component ps_comp_low_0_0_mult_20x20
       P(38 downto 19) => xp(38 downto 19),
       P(18 downto 0) => NLW_mul_x_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i_i_1: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \doa_pair.x_reg_n_0_[19]\,
-      I1 => xp(38),
-      I2 => init,
-      O => p(19)
-    );
-mul_x_i_i_10: unisim.vcomponents.LUT3
+\mul_x_i_i_10__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[10]\,
       I1 => xp(29),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(10)
     );
-mul_x_i_i_11: unisim.vcomponents.LUT3
+\mul_x_i_i_11__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[9]\,
       I1 => xp(28),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(9)
     );
-mul_x_i_i_12: unisim.vcomponents.LUT3
+\mul_x_i_i_12__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[8]\,
       I1 => xp(27),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(8)
     );
-mul_x_i_i_13: unisim.vcomponents.LUT3
+\mul_x_i_i_13__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[7]\,
       I1 => xp(26),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(7)
     );
-mul_x_i_i_14: unisim.vcomponents.LUT3
+\mul_x_i_i_14__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[6]\,
       I1 => xp(25),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(6)
     );
-mul_x_i_i_15: unisim.vcomponents.LUT3
+\mul_x_i_i_15__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[5]\,
       I1 => xp(24),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(5)
     );
-mul_x_i_i_16: unisim.vcomponents.LUT3
+\mul_x_i_i_16__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[4]\,
       I1 => xp(23),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(4)
     );
-mul_x_i_i_17: unisim.vcomponents.LUT3
+\mul_x_i_i_17__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[3]\,
       I1 => xp(22),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(3)
     );
-mul_x_i_i_18: unisim.vcomponents.LUT3
+\mul_x_i_i_18__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[2]\,
       I1 => xp(21),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(2)
     );
-mul_x_i_i_19: unisim.vcomponents.LUT3
+\mul_x_i_i_19__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[1]\,
       I1 => xp(20),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(1)
     );
-mul_x_i_i_2: unisim.vcomponents.LUT3
+\mul_x_i_i_1__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
-      I0 => \doa_pair.x_reg_n_0_[18]\,
-      I1 => xp(37),
-      I2 => init,
-      O => p(18)
+      I0 => \doa_pair.x_reg_n_0_[19]\,
+      I1 => xp(38),
+      I2 => \doa_pair.init_reg_n_0\,
+      O => p(19)
     );
-mul_x_i_i_20: unisim.vcomponents.LUT3
+\mul_x_i_i_20__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[0]\,
       I1 => xp(19),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(0)
     );
-mul_x_i_i_3: unisim.vcomponents.LUT3
+\mul_x_i_i_2__1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => \doa_pair.x_reg_n_0_[18]\,
+      I1 => xp(37),
+      I2 => \doa_pair.init_reg_n_0\,
+      O => p(18)
+    );
+\mul_x_i_i_3__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[17]\,
       I1 => xp(36),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(17)
     );
-mul_x_i_i_4: unisim.vcomponents.LUT3
+\mul_x_i_i_4__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[16]\,
       I1 => xp(35),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(16)
     );
-mul_x_i_i_5: unisim.vcomponents.LUT3
+\mul_x_i_i_5__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[15]\,
       I1 => xp(34),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(15)
     );
-mul_x_i_i_6: unisim.vcomponents.LUT3
+\mul_x_i_i_6__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[14]\,
       I1 => xp(33),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(14)
     );
-mul_x_i_i_7: unisim.vcomponents.LUT3
+\mul_x_i_i_7__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[13]\,
       I1 => xp(32),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(13)
     );
-mul_x_i_i_8: unisim.vcomponents.LUT3
+\mul_x_i_i_8__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[12]\,
       I1 => xp(31),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(12)
     );
-mul_x_i_i_9: unisim.vcomponents.LUT3
+\mul_x_i_i_9__1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[11]\,
       I1 => xp(30),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(11)
     );
 end STRUCTURE;
@@ -35112,16 +35188,17 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   port (
+    shadow_NE : out STD_LOGIC;
+    E : out STD_LOGIC_VECTOR ( 0 to 0 );
+    \doa_pair.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
+    m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    Q : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    done_EW : in STD_LOGIC;
+    done_WN : in STD_LOGIC;
+    start_div : in STD_LOGIC;
     reset : in STD_LOGIC;
-    start : in STD_LOGIC;
-    k : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    shadow_limit : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    phase : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    done : out STD_LOGIC;
-    fail : out STD_LOGIC;
-    shadow : out STD_LOGIC;
-    angle : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \ps_comp_low_0_0_doa_pair__xdcDup__1\ : entity is "doa_pair";
@@ -35136,7 +35213,6 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component ps_comp_low_0_0_mult_20x20;
-  signal \<const0>\ : STD_LOGIC;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -35167,14 +35243,12 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal \doa_pair.coeff[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[9]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.counter[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.counter_reg\ : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal \doa_pair.counter_reg__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \doa_pair.counter_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \doa_pair.counter_reg__0\ : STD_LOGIC_VECTOR ( 1 to 1 );
   signal \doa_pair.done_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.fail_i_2_n_0\ : STD_LOGIC;
   signal \doa_pair.fail_i_3_n_0\ : STD_LOGIC;
   signal \doa_pair.fail_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_reg_n_0\ : STD_LOGIC;
   signal \doa_pair.has_ov_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.ignore_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.ignore_i_2_n_0\ : STD_LOGIC;
@@ -35189,6 +35263,9 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal \doa_pair.ind[1]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.ind[2]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.ind[2]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[2]\ : STD_LOGIC;
   signal \doa_pair.init_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.ov[5]_i_2_n_0\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[0]\ : STD_LOGIC;
@@ -35198,26 +35275,26 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal \doa_pair.ov_reg_n_0_[4]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[5]\ : STD_LOGIC;
   signal \doa_pair.run_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_10_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_11_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_12_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_13_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_14_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_15_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_16_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_17_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_18_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_19_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_20_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_21_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_22_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_23_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_10__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_11__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_12__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_13__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_14__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_15__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_16__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_17__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_18__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_19__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_20__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_21__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_22__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_23__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_4__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_5__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_6__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_8__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_9__0_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_diff_reg[19]_i_1_n_5\ : STD_LOGIC;
   signal \doa_pair.shadow_diff_reg[19]_i_1_n_6\ : STD_LOGIC;
   signal \doa_pair.shadow_diff_reg[19]_i_1_n_7\ : STD_LOGIC;
@@ -35240,7 +35317,6 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal \doa_pair.shadow_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_i_2_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_4_n_0\ : STD_LOGIC;
   signal \doa_pair.shadow_i_5_n_0\ : STD_LOGIC;
   signal \doa_pair.sum[0]_i_10_n_0\ : STD_LOGIC;
   signal \doa_pair.sum[0]_i_11_n_0\ : STD_LOGIC;
@@ -35263,6 +35339,7 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal \doa_pair.sum[8]_i_7_n_0\ : STD_LOGIC;
   signal \doa_pair.sum[8]_i_8_n_0\ : STD_LOGIC;
   signal \doa_pair.sum[8]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg\ : STD_LOGIC_VECTOR ( 20 downto 5 );
   signal \doa_pair.sum_reg[0]_i_3_n_0\ : STD_LOGIC;
   signal \doa_pair.sum_reg[0]_i_3_n_1\ : STD_LOGIC;
   signal \doa_pair.sum_reg[0]_i_3_n_10\ : STD_LOGIC;
@@ -35370,19 +35447,21 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal \doa_pair.x_reg_n_0_[7]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[8]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[9]\ : STD_LOGIC;
+  signal done_NE : STD_LOGIC;
+  signal fail : STD_LOGIC;
+  signal fail_NE : STD_LOGIC;
   signal has_diff : STD_LOGIC;
   signal has_ov : STD_LOGIC;
   signal has_shadow_diff : STD_LOGIC;
-  signal ind : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal init : STD_LOGIC;
   signal ov : STD_LOGIC;
   signal p : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal p_0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal prod : STD_LOGIC_VECTOR ( 39 downto 16 );
   signal run : STD_LOGIC;
   signal run1_out : STD_LOGIC;
-  signal \^shadow\ : STD_LOGIC;
+  signal shadow : STD_LOGIC;
+  signal \^shadow_ne\ : STD_LOGIC;
   signal shadow_diff : STD_LOGIC_VECTOR ( 19 to 19 );
   signal shadow_diff0 : STD_LOGIC_VECTOR ( 19 to 19 );
   signal sum0 : STD_LOGIC;
@@ -35403,32 +35482,32 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_3\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_4\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_5\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_7\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_8\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \doa_pair.ind[0]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair130";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair130";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_3\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_4\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_5\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_7\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_8\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \doa_pair.ind[0]_i_1\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair94";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2\ : label is 35;
@@ -35436,64 +35515,64 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair111";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair116";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair116";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair117";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair117";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair118";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair118";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair120";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair120";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair111";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair113";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair113";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair114";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair114";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair115";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair115";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair129";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair129";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair122";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair122";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair123";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair123";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair124";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair124";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair125";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -35509,43 +35588,48 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__1\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair105";
 begin
-  fail <= \<const0>\;
-  shadow <= \^shadow\;
-GND: unisim.vcomponents.GND
-     port map (
-      G => \<const0>\
+  shadow_NE <= \^shadow_ne\;
+\doa_calc.start_pair_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
+    )
+        port map (
+      I0 => done_NE,
+      I1 => done_EW,
+      I2 => done_WN,
+      O => E(0)
     );
 \doa_pair.add_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"F99EDFF610868220"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(2),
-      I4 => \doa_pair.counter_reg__0\(4),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(2),
+      I4 => \doa_pair.counter_reg\(4),
       I5 => add,
       O => \doa_pair.add_i_1_n_0\
     );
@@ -35562,9 +35646,9 @@ GND: unisim.vcomponents.GND
       INIT => X"01000000"
     )
         port map (
-      I0 => start,
+      I0 => start_div,
       I1 => reset,
-      I2 => \doa_pair.fail_reg_n_0\,
+      I2 => fail_NE,
       I3 => \doa_pair.angle[15]_i_2_n_0\,
       I4 => run,
       O => \doa_pair.angle[15]_i_1_n_0\
@@ -35574,139 +35658,139 @@ GND: unisim.vcomponents.GND
       INIT => X"40000000"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(4),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(2),
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(4),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(2),
       O => \doa_pair.angle[15]_i_2_n_0\
     );
 \doa_pair.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(0),
-      Q => angle(0),
+      D => \doa_pair.sum_reg\(5),
+      Q => \doa_pair.angle_reg[15]_0\(0),
       R => '0'
     );
 \doa_pair.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(10),
-      Q => angle(10),
+      D => \doa_pair.sum_reg\(15),
+      Q => \doa_pair.angle_reg[15]_0\(10),
       R => '0'
     );
 \doa_pair.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(11),
-      Q => angle(11),
+      D => \doa_pair.sum_reg\(16),
+      Q => \doa_pair.angle_reg[15]_0\(11),
       R => '0'
     );
 \doa_pair.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(12),
-      Q => angle(12),
+      D => \doa_pair.sum_reg\(17),
+      Q => \doa_pair.angle_reg[15]_0\(12),
       R => '0'
     );
 \doa_pair.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(13),
-      Q => angle(13),
+      D => \doa_pair.sum_reg\(18),
+      Q => \doa_pair.angle_reg[15]_0\(13),
       R => '0'
     );
 \doa_pair.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(14),
-      Q => angle(14),
+      D => \doa_pair.sum_reg\(19),
+      Q => \doa_pair.angle_reg[15]_0\(14),
       R => '0'
     );
 \doa_pair.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(15),
-      Q => angle(15),
+      D => \doa_pair.sum_reg\(20),
+      Q => \doa_pair.angle_reg[15]_0\(15),
       R => '0'
     );
 \doa_pair.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(1),
-      Q => angle(1),
+      D => \doa_pair.sum_reg\(6),
+      Q => \doa_pair.angle_reg[15]_0\(1),
       R => '0'
     );
 \doa_pair.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(2),
-      Q => angle(2),
+      D => \doa_pair.sum_reg\(7),
+      Q => \doa_pair.angle_reg[15]_0\(2),
       R => '0'
     );
 \doa_pair.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(3),
-      Q => angle(3),
+      D => \doa_pair.sum_reg\(8),
+      Q => \doa_pair.angle_reg[15]_0\(3),
       R => '0'
     );
 \doa_pair.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(4),
-      Q => angle(4),
+      D => \doa_pair.sum_reg\(9),
+      Q => \doa_pair.angle_reg[15]_0\(4),
       R => '0'
     );
 \doa_pair.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(5),
-      Q => angle(5),
+      D => \doa_pair.sum_reg\(10),
+      Q => \doa_pair.angle_reg[15]_0\(5),
       R => '0'
     );
 \doa_pair.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(6),
-      Q => angle(6),
+      D => \doa_pair.sum_reg\(11),
+      Q => \doa_pair.angle_reg[15]_0\(6),
       R => '0'
     );
 \doa_pair.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(7),
-      Q => angle(7),
+      D => \doa_pair.sum_reg\(12),
+      Q => \doa_pair.angle_reg[15]_0\(7),
       R => '0'
     );
 \doa_pair.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(8),
-      Q => angle(8),
+      D => \doa_pair.sum_reg\(13),
+      Q => \doa_pair.angle_reg[15]_0\(8),
       R => '0'
     );
 \doa_pair.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(9),
-      Q => angle(9),
+      D => \doa_pair.sum_reg\(14),
+      Q => \doa_pair.angle_reg[15]_0\(9),
       R => '0'
     );
 \doa_pair.calc_diff_reg\: unisim.vcomponents.FDRE
@@ -35766,9 +35850,9 @@ GND: unisim.vcomponents.GND
       INIT => X"BE"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[0]_i_1_n_0\
     );
 \doa_pair.coeff[10]_i_1\: unisim.vcomponents.LUT3
@@ -35776,9 +35860,9 @@ GND: unisim.vcomponents.GND
       INIT => X"2B"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[10]_i_1_n_0\
     );
 \doa_pair.coeff[11]_i_1\: unisim.vcomponents.LUT3
@@ -35786,9 +35870,9 @@ GND: unisim.vcomponents.GND
       INIT => X"70"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(2),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[11]_i_1_n_0\
     );
 \doa_pair.coeff[12]_i_1\: unisim.vcomponents.LUT3
@@ -35796,9 +35880,9 @@ GND: unisim.vcomponents.GND
       INIT => X"EB"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[12]_i_1_n_0\
     );
 \doa_pair.coeff[13]_i_1\: unisim.vcomponents.LUT3
@@ -35806,9 +35890,9 @@ GND: unisim.vcomponents.GND
       INIT => X"26"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(2),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[13]_i_1_n_0\
     );
 \doa_pair.coeff[14]_i_1\: unisim.vcomponents.LUT3
@@ -35816,9 +35900,9 @@ GND: unisim.vcomponents.GND
       INIT => X"06"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(0),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[0]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[14]_i_1_n_0\
     );
 \doa_pair.coeff[15]_i_1\: unisim.vcomponents.LUT2
@@ -35826,8 +35910,8 @@ GND: unisim.vcomponents.GND
       INIT => X"2"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[15]_i_1_n_0\
     );
 \doa_pair.coeff[18]_i_1\: unisim.vcomponents.LUT2
@@ -35835,8 +35919,8 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[18]_i_1_n_0\
     );
 \doa_pair.coeff[1]_i_1\: unisim.vcomponents.LUT2
@@ -35844,8 +35928,8 @@ GND: unisim.vcomponents.GND
       INIT => X"8"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[1]_i_1_n_0\
     );
 \doa_pair.coeff[2]_i_1\: unisim.vcomponents.LUT3
@@ -35853,9 +35937,9 @@ GND: unisim.vcomponents.GND
       INIT => X"D3"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[2]_i_1_n_0\
     );
 \doa_pair.coeff[4]_i_1\: unisim.vcomponents.LUT3
@@ -35863,9 +35947,9 @@ GND: unisim.vcomponents.GND
       INIT => X"A4"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[4]_i_1_n_0\
     );
 \doa_pair.coeff[5]_i_1\: unisim.vcomponents.LUT3
@@ -35873,9 +35957,9 @@ GND: unisim.vcomponents.GND
       INIT => X"E8"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[5]_i_1_n_0\
     );
 \doa_pair.coeff[6]_i_1\: unisim.vcomponents.LUT3
@@ -35883,9 +35967,9 @@ GND: unisim.vcomponents.GND
       INIT => X"07"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(1),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[6]_i_1_n_0\
     );
 \doa_pair.coeff[7]_i_1\: unisim.vcomponents.LUT1
@@ -35893,7 +35977,7 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[7]_i_1_n_0\
     );
 \doa_pair.coeff[8]_i_1\: unisim.vcomponents.LUT3
@@ -35901,9 +35985,9 @@ GND: unisim.vcomponents.GND
       INIT => X"57"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(0),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[0]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[8]_i_1_n_0\
     );
 \doa_pair.coeff[9]_i_1\: unisim.vcomponents.LUT3
@@ -35911,9 +35995,9 @@ GND: unisim.vcomponents.GND
       INIT => X"CB"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[9]_i_1_n_0\
     );
 \doa_pair.coeff_reg[0]\: unisim.vcomponents.FDRE
@@ -35970,7 +36054,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[15]_i_1_n_0\,
       Q => coeff(15),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -35978,7 +36062,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[18]_i_1_n_0\,
       Q => coeff(16),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -35986,7 +36070,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[18]_i_1_n_0\,
       Q => coeff(18),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -35994,7 +36078,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[1]_i_1_n_0\,
       Q => coeff(1),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -36065,47 +36149,47 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      O => \p_0_in__0\(0)
+      I0 => \doa_pair.counter_reg\(0),
+      O => p_0_in(0)
     );
 \doa_pair.counter[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      O => \p_0_in__0\(1)
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      O => p_0_in(1)
     );
 \doa_pair.counter[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"78"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \p_0_in__0\(2)
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(2),
+      O => p_0_in(2)
     );
 \doa_pair.counter[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"7F80"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(0),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(3),
-      O => \p_0_in__0\(3)
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(0),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(3),
+      O => p_0_in(3)
     );
 \doa_pair.counter[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
         port map (
-      I0 => \doa_pair.fail_reg_n_0\,
+      I0 => fail_NE,
       I1 => reset,
-      I2 => start,
+      I2 => start_div,
       O => \doa_pair.counter[4]_i_1_n_0\
     );
 \doa_pair.counter[4]_i_2\: unisim.vcomponents.LUT6
@@ -36114,11 +36198,11 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => run,
-      I1 => \doa_pair.counter_reg__0\(4),
-      I2 => \doa_pair.counter_reg__0\(3),
-      I3 => \doa_pair.counter_reg__0\(0),
-      I4 => \doa_pair.counter_reg__0\(2),
-      I5 => \doa_pair.counter_reg\(1),
+      I1 => \doa_pair.counter_reg\(4),
+      I2 => \doa_pair.counter_reg\(3),
+      I3 => \doa_pair.counter_reg\(0),
+      I4 => \doa_pair.counter_reg\(2),
+      I5 => \doa_pair.counter_reg__0\(1),
       O => counter
     );
 \doa_pair.counter[4]_i_3\: unisim.vcomponents.LUT5
@@ -36126,51 +36210,51 @@ GND: unisim.vcomponents.GND
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(2),
-      I1 => \doa_pair.counter_reg__0\(0),
-      I2 => \doa_pair.counter_reg\(1),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \p_0_in__0\(4)
+      I0 => \doa_pair.counter_reg\(2),
+      I1 => \doa_pair.counter_reg\(0),
+      I2 => \doa_pair.counter_reg__0\(1),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => p_0_in(4)
     );
 \doa_pair.counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(0),
-      Q => \doa_pair.counter_reg__0\(0),
+      D => p_0_in(0),
+      Q => \doa_pair.counter_reg\(0),
       R => \doa_pair.counter[4]_i_1_n_0\
     );
 \doa_pair.counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(1),
-      Q => \doa_pair.counter_reg\(1),
+      D => p_0_in(1),
+      Q => \doa_pair.counter_reg__0\(1),
       R => \doa_pair.counter[4]_i_1_n_0\
     );
 \doa_pair.counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(2),
-      Q => \doa_pair.counter_reg__0\(2),
+      D => p_0_in(2),
+      Q => \doa_pair.counter_reg\(2),
       R => \doa_pair.counter[4]_i_1_n_0\
     );
 \doa_pair.counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(3),
-      Q => \doa_pair.counter_reg__0\(3),
+      D => p_0_in(3),
+      Q => \doa_pair.counter_reg\(3),
       R => \doa_pair.counter[4]_i_1_n_0\
     );
 \doa_pair.counter_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(4),
-      Q => \doa_pair.counter_reg__0\(4),
+      D => p_0_in(4),
+      Q => \doa_pair.counter_reg\(4),
       R => \doa_pair.counter[4]_i_1_n_0\
     );
 \doa_pair.done_i_1\: unisim.vcomponents.LUT3
@@ -36178,9 +36262,9 @@ GND: unisim.vcomponents.GND
       INIT => X"FE"
     )
         port map (
-      I0 => \doa_pair.fail_reg_n_0\,
+      I0 => fail_NE,
       I1 => reset,
-      I2 => start,
+      I2 => start_div,
       O => \doa_pair.done_i_1_n_0\
     );
 \doa_pair.done_i_2\: unisim.vcomponents.LUT6
@@ -36189,11 +36273,11 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => run,
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg__0\(3),
-      I3 => \doa_pair.counter_reg__0\(0),
-      I4 => \doa_pair.counter_reg__0\(4),
-      I5 => \doa_pair.counter_reg\(1),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg\(3),
+      I3 => \doa_pair.counter_reg\(0),
+      I4 => \doa_pair.counter_reg\(4),
+      I5 => \doa_pair.counter_reg__0\(1),
       O => run1_out
     );
 \doa_pair.done_reg\: unisim.vcomponents.FDRE
@@ -36201,7 +36285,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => '1',
       D => run1_out,
-      Q => done,
+      Q => done_NE,
       R => \doa_pair.done_i_1_n_0\
     );
 \doa_pair.fail_i_1\: unisim.vcomponents.LUT6
@@ -36215,7 +36299,7 @@ GND: unisim.vcomponents.GND
       I3 => prod(33),
       I4 => prod(32),
       I5 => \doa_pair.fail_i_4_n_0\,
-      O => \doa_pair.fail_i_1_n_0\
+      O => fail
     );
 \doa_pair.fail_i_2\: unisim.vcomponents.LUT6
     generic map(
@@ -36260,8 +36344,8 @@ GND: unisim.vcomponents.GND
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.fail_i_1_n_0\,
-      Q => \doa_pair.fail_reg_n_0\,
+      D => fail,
+      Q => fail_NE,
       R => '0'
     );
 \doa_pair.has_diff_reg\: unisim.vcomponents.FDRE
@@ -36277,11 +36361,11 @@ GND: unisim.vcomponents.GND
       INIT => X"FFFFFFFE00000002"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(4),
-      I4 => \doa_pair.counter_reg__0\(0),
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(4),
+      I4 => \doa_pair.counter_reg\(0),
       I5 => has_ov,
       O => \doa_pair.has_ov_i_1_n_0\
     );
@@ -36404,9 +36488,9 @@ GND: unisim.vcomponents.GND
       INIT => X"54"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
       O => \doa_pair.ind[0]_i_1_n_0\
     );
 \doa_pair.ind[1]_i_1\: unisim.vcomponents.LUT3
@@ -36414,9 +36498,9 @@ GND: unisim.vcomponents.GND
       INIT => X"A8"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
       O => \doa_pair.ind[1]_i_1_n_0\
     );
 \doa_pair.ind[2]_i_1\: unisim.vcomponents.LUT5
@@ -36424,11 +36508,11 @@ GND: unisim.vcomponents.GND
       INIT => X"00924904"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
       O => \doa_pair.ind[2]_i_1_n_0\
     );
 \doa_pair.ind[2]_i_2\: unisim.vcomponents.LUT3
@@ -36436,9 +36520,9 @@ GND: unisim.vcomponents.GND
       INIT => X"45"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg\(1),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg__0\(1),
       O => \doa_pair.ind[2]_i_2_n_0\
     );
 \doa_pair.ind_reg[0]\: unisim.vcomponents.FDRE
@@ -36446,7 +36530,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => \doa_pair.ind[2]_i_1_n_0\,
       D => \doa_pair.ind[0]_i_1_n_0\,
-      Q => ind(0),
+      Q => \doa_pair.ind_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.ind_reg[1]\: unisim.vcomponents.FDRE
@@ -36454,7 +36538,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => \doa_pair.ind[2]_i_1_n_0\,
       D => \doa_pair.ind[1]_i_1_n_0\,
-      Q => ind(1),
+      Q => \doa_pair.ind_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.ind_reg[2]\: unisim.vcomponents.FDRE
@@ -36462,7 +36546,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => \doa_pair.ind[2]_i_1_n_0\,
       D => \doa_pair.ind[2]_i_2_n_0\,
-      Q => ind(2),
+      Q => \doa_pair.ind_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.init_i_1\: unisim.vcomponents.LUT6
@@ -36470,11 +36554,11 @@ GND: unisim.vcomponents.GND
       INIT => X"FFFFFFBF00000001"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(2),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg\(1),
-      I4 => \doa_pair.counter_reg__0\(4),
+      I0 => \doa_pair.counter_reg\(2),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg__0\(1),
+      I4 => \doa_pair.counter_reg\(4),
       I5 => init,
       O => \doa_pair.init_i_1_n_0\
     );
@@ -36491,11 +36575,11 @@ GND: unisim.vcomponents.GND
       INIT => X"00000001"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(4),
-      I4 => \doa_pair.counter_reg__0\(2),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(4),
+      I4 => \doa_pair.counter_reg\(2),
       O => ov
     );
 \doa_pair.ov[5]_i_2\: unisim.vcomponents.LUT5
@@ -36503,11 +36587,11 @@ GND: unisim.vcomponents.GND
       INIT => X"00000002"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
       O => \doa_pair.ov[5]_i_2_n_0\
     );
 \doa_pair.ov_reg[0]\: unisim.vcomponents.FDRE
@@ -36564,9 +36648,9 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => run,
-      I1 => start,
+      I1 => start_div,
       I2 => run1_out,
-      I3 => \doa_pair.fail_reg_n_0\,
+      I3 => fail_NE,
       I4 => reset,
       O => \doa_pair.run_i_1_n_0\
     );
@@ -36578,184 +36662,184 @@ GND: unisim.vcomponents.GND
       Q => run,
       R => '0'
     );
-\doa_pair.shadow_diff[19]_i_10\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_10__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(13),
-      I1 => shadow_limit(13),
-      O => \doa_pair.shadow_diff[19]_i_10_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(13),
+      O => \doa_pair.shadow_diff[19]_i_10__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_11\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_11__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(12),
-      I1 => shadow_limit(12),
-      O => \doa_pair.shadow_diff[19]_i_11_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(12),
+      O => \doa_pair.shadow_diff[19]_i_11__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_12\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_12__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(11),
-      I1 => shadow_limit(11),
-      O => \doa_pair.shadow_diff[19]_i_12_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(11),
+      O => \doa_pair.shadow_diff[19]_i_12__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_13\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_13__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(10),
-      I1 => shadow_limit(10),
-      O => \doa_pair.shadow_diff[19]_i_13_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(10),
+      O => \doa_pair.shadow_diff[19]_i_13__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_14\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_14__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(9),
-      I1 => shadow_limit(9),
-      O => \doa_pair.shadow_diff[19]_i_14_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(9),
+      O => \doa_pair.shadow_diff[19]_i_14__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_15\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_15__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(8),
-      I1 => shadow_limit(8),
-      O => \doa_pair.shadow_diff[19]_i_15_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(8),
+      O => \doa_pair.shadow_diff[19]_i_15__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_16\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_16__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(7),
-      I1 => shadow_limit(7),
-      O => \doa_pair.shadow_diff[19]_i_16_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(7),
+      O => \doa_pair.shadow_diff[19]_i_16__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_17\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_17__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(6),
-      I1 => shadow_limit(6),
-      O => \doa_pair.shadow_diff[19]_i_17_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(6),
+      O => \doa_pair.shadow_diff[19]_i_17__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_18\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_18__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(5),
-      I1 => shadow_limit(5),
-      O => \doa_pair.shadow_diff[19]_i_18_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(5),
+      O => \doa_pair.shadow_diff[19]_i_18__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_19\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_19__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(4),
-      I1 => shadow_limit(4),
-      O => \doa_pair.shadow_diff[19]_i_19_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(4),
+      O => \doa_pair.shadow_diff[19]_i_19__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_20\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_20__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(3),
-      I1 => shadow_limit(3),
-      O => \doa_pair.shadow_diff[19]_i_20_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(3),
+      O => \doa_pair.shadow_diff[19]_i_20__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_21\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_21__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(2),
-      I1 => shadow_limit(2),
-      O => \doa_pair.shadow_diff[19]_i_21_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(2),
+      O => \doa_pair.shadow_diff[19]_i_21__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_22\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_22__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(1),
-      I1 => shadow_limit(1),
-      O => \doa_pair.shadow_diff[19]_i_22_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(1),
+      O => \doa_pair.shadow_diff[19]_i_22__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_23\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_23__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(0),
-      I1 => shadow_limit(0),
-      O => \doa_pair.shadow_diff[19]_i_23_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(0),
+      O => \doa_pair.shadow_diff[19]_i_23__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_3\: unisim.vcomponents.LUT1
+\doa_pair.shadow_diff[19]_i_3__0\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => shadow_limit(19),
-      O => \doa_pair.shadow_diff[19]_i_3_n_0\
+      I0 => \doa_pair.shadow_diff_reg[19]_0\(19),
+      O => \doa_pair.shadow_diff[19]_i_3__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_4__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(18),
-      I1 => shadow_limit(18),
-      O => \doa_pair.shadow_diff[19]_i_4_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(18),
+      O => \doa_pair.shadow_diff[19]_i_4__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_5__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(17),
-      I1 => shadow_limit(17),
-      O => \doa_pair.shadow_diff[19]_i_5_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(17),
+      O => \doa_pair.shadow_diff[19]_i_5__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_6__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(16),
-      I1 => shadow_limit(16),
-      O => \doa_pair.shadow_diff[19]_i_6_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(16),
+      O => \doa_pair.shadow_diff[19]_i_6__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_8\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_8__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(15),
-      I1 => shadow_limit(15),
-      O => \doa_pair.shadow_diff[19]_i_8_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(15),
+      O => \doa_pair.shadow_diff[19]_i_8__0_n_0\
     );
-\doa_pair.shadow_diff[19]_i_9\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_9__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => x_diff(14),
-      I1 => shadow_limit(14),
-      O => \doa_pair.shadow_diff[19]_i_9_n_0\
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(14),
+      O => \doa_pair.shadow_diff[19]_i_9__0_n_0\
     );
 \doa_pair.shadow_diff_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -36779,10 +36863,10 @@ GND: unisim.vcomponents.GND
       O(3) => shadow_diff0(19),
       O(2 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\(2 downto 0),
       S(7 downto 4) => B"0000",
-      S(3) => \doa_pair.shadow_diff[19]_i_3_n_0\,
-      S(2) => \doa_pair.shadow_diff[19]_i_4_n_0\,
-      S(1) => \doa_pair.shadow_diff[19]_i_5_n_0\,
-      S(0) => \doa_pair.shadow_diff[19]_i_6_n_0\
+      S(3) => \doa_pair.shadow_diff[19]_i_3__0_n_0\,
+      S(2) => \doa_pair.shadow_diff[19]_i_4__0_n_0\,
+      S(1) => \doa_pair.shadow_diff[19]_i_5__0_n_0\,
+      S(0) => \doa_pair.shadow_diff[19]_i_6__0_n_0\
     );
 \doa_pair.shadow_diff_reg[19]_i_2\: unisim.vcomponents.CARRY8
      port map (
@@ -36798,14 +36882,14 @@ GND: unisim.vcomponents.GND
       CO(0) => \doa_pair.shadow_diff_reg[19]_i_2_n_7\,
       DI(7 downto 0) => x_diff(15 downto 8),
       O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \doa_pair.shadow_diff[19]_i_8_n_0\,
-      S(6) => \doa_pair.shadow_diff[19]_i_9_n_0\,
-      S(5) => \doa_pair.shadow_diff[19]_i_10_n_0\,
-      S(4) => \doa_pair.shadow_diff[19]_i_11_n_0\,
-      S(3) => \doa_pair.shadow_diff[19]_i_12_n_0\,
-      S(2) => \doa_pair.shadow_diff[19]_i_13_n_0\,
-      S(1) => \doa_pair.shadow_diff[19]_i_14_n_0\,
-      S(0) => \doa_pair.shadow_diff[19]_i_15_n_0\
+      S(7) => \doa_pair.shadow_diff[19]_i_8__0_n_0\,
+      S(6) => \doa_pair.shadow_diff[19]_i_9__0_n_0\,
+      S(5) => \doa_pair.shadow_diff[19]_i_10__0_n_0\,
+      S(4) => \doa_pair.shadow_diff[19]_i_11__0_n_0\,
+      S(3) => \doa_pair.shadow_diff[19]_i_12__0_n_0\,
+      S(2) => \doa_pair.shadow_diff[19]_i_13__0_n_0\,
+      S(1) => \doa_pair.shadow_diff[19]_i_14__0_n_0\,
+      S(0) => \doa_pair.shadow_diff[19]_i_15__0_n_0\
     );
 \doa_pair.shadow_diff_reg[19]_i_7\: unisim.vcomponents.CARRY8
      port map (
@@ -36821,14 +36905,14 @@ GND: unisim.vcomponents.GND
       CO(0) => \doa_pair.shadow_diff_reg[19]_i_7_n_7\,
       DI(7 downto 0) => x_diff(7 downto 0),
       O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_7_O_UNCONNECTED\(7 downto 0),
-      S(7) => \doa_pair.shadow_diff[19]_i_16_n_0\,
-      S(6) => \doa_pair.shadow_diff[19]_i_17_n_0\,
-      S(5) => \doa_pair.shadow_diff[19]_i_18_n_0\,
-      S(4) => \doa_pair.shadow_diff[19]_i_19_n_0\,
-      S(3) => \doa_pair.shadow_diff[19]_i_20_n_0\,
-      S(2) => \doa_pair.shadow_diff[19]_i_21_n_0\,
-      S(1) => \doa_pair.shadow_diff[19]_i_22_n_0\,
-      S(0) => \doa_pair.shadow_diff[19]_i_23_n_0\
+      S(7) => \doa_pair.shadow_diff[19]_i_16__0_n_0\,
+      S(6) => \doa_pair.shadow_diff[19]_i_17__0_n_0\,
+      S(5) => \doa_pair.shadow_diff[19]_i_18__0_n_0\,
+      S(4) => \doa_pair.shadow_diff[19]_i_19__0_n_0\,
+      S(3) => \doa_pair.shadow_diff[19]_i_20__0_n_0\,
+      S(2) => \doa_pair.shadow_diff[19]_i_21__0_n_0\,
+      S(1) => \doa_pair.shadow_diff[19]_i_22__0_n_0\,
+      S(0) => \doa_pair.shadow_diff[19]_i_23__0_n_0\
     );
 \doa_pair.shadow_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -36839,8 +36923,8 @@ GND: unisim.vcomponents.GND
       I1 => \doa_pair.ov_reg_n_0_[5]\,
       I2 => \doa_pair.shadow_i_3_n_0\,
       I3 => \doa_pair.ov_reg_n_0_[4]\,
-      I4 => \doa_pair.shadow_i_4_n_0\,
-      I5 => \^shadow\,
+      I4 => shadow,
+      I5 => \^shadow_ne\,
       O => \doa_pair.shadow_i_1_n_0\
     );
 \doa_pair.shadow_i_2\: unisim.vcomponents.LUT6
@@ -36880,7 +36964,7 @@ GND: unisim.vcomponents.GND
       I3 => has_shadow_diff,
       I4 => \doa_pair.ov_reg_n_0_[2]\,
       I5 => \doa_pair.ov_reg_n_0_[0]\,
-      O => \doa_pair.shadow_i_4_n_0\
+      O => shadow
     );
 \doa_pair.shadow_i_5\: unisim.vcomponents.LUT6
     generic map(
@@ -36900,7 +36984,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => '1',
       D => \doa_pair.shadow_i_1_n_0\,
-      Q => \^shadow\,
+      Q => \^shadow_ne\,
       R => '0'
     );
 \doa_pair.sum[0]_i_1\: unisim.vcomponents.LUT1
@@ -36944,7 +37028,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(26),
-      I1 => p_0_in(2),
+      I1 => \doa_pair.sum_reg\(7),
       O => \doa_pair.sum[0]_i_4_n_0\
     );
 \doa_pair.sum[0]_i_5\: unisim.vcomponents.LUT2
@@ -36953,7 +37037,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(25),
-      I1 => p_0_in(1),
+      I1 => \doa_pair.sum_reg\(6),
       O => \doa_pair.sum[0]_i_5_n_0\
     );
 \doa_pair.sum[0]_i_6\: unisim.vcomponents.LUT2
@@ -36962,7 +37046,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(24),
-      I1 => p_0_in(0),
+      I1 => \doa_pair.sum_reg\(5),
       O => \doa_pair.sum[0]_i_6_n_0\
     );
 \doa_pair.sum[0]_i_7\: unisim.vcomponents.LUT2
@@ -36998,7 +37082,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(39),
-      I1 => p_0_in(15),
+      I1 => \doa_pair.sum_reg\(20),
       O => \doa_pair.sum[16]_i_2_n_0\
     );
 \doa_pair.sum[16]_i_3\: unisim.vcomponents.LUT2
@@ -37007,7 +37091,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(38),
-      I1 => p_0_in(14),
+      I1 => \doa_pair.sum_reg\(19),
       O => \doa_pair.sum[16]_i_3_n_0\
     );
 \doa_pair.sum[16]_i_4\: unisim.vcomponents.LUT2
@@ -37016,7 +37100,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(37),
-      I1 => p_0_in(13),
+      I1 => \doa_pair.sum_reg\(18),
       O => \doa_pair.sum[16]_i_4_n_0\
     );
 \doa_pair.sum[16]_i_5\: unisim.vcomponents.LUT2
@@ -37025,7 +37109,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(36),
-      I1 => p_0_in(12),
+      I1 => \doa_pair.sum_reg\(17),
       O => \doa_pair.sum[16]_i_5_n_0\
     );
 \doa_pair.sum[16]_i_6\: unisim.vcomponents.LUT2
@@ -37034,7 +37118,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(35),
-      I1 => p_0_in(11),
+      I1 => \doa_pair.sum_reg\(16),
       O => \doa_pair.sum[16]_i_6_n_0\
     );
 \doa_pair.sum[8]_i_2\: unisim.vcomponents.LUT2
@@ -37043,7 +37127,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(34),
-      I1 => p_0_in(10),
+      I1 => \doa_pair.sum_reg\(15),
       O => \doa_pair.sum[8]_i_2_n_0\
     );
 \doa_pair.sum[8]_i_3\: unisim.vcomponents.LUT2
@@ -37052,7 +37136,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(33),
-      I1 => p_0_in(9),
+      I1 => \doa_pair.sum_reg\(14),
       O => \doa_pair.sum[8]_i_3_n_0\
     );
 \doa_pair.sum[8]_i_4\: unisim.vcomponents.LUT2
@@ -37061,7 +37145,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(32),
-      I1 => p_0_in(8),
+      I1 => \doa_pair.sum_reg\(13),
       O => \doa_pair.sum[8]_i_4_n_0\
     );
 \doa_pair.sum[8]_i_5\: unisim.vcomponents.LUT2
@@ -37070,7 +37154,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(31),
-      I1 => p_0_in(7),
+      I1 => \doa_pair.sum_reg\(12),
       O => \doa_pair.sum[8]_i_5_n_0\
     );
 \doa_pair.sum[8]_i_6\: unisim.vcomponents.LUT2
@@ -37079,7 +37163,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(30),
-      I1 => p_0_in(6),
+      I1 => \doa_pair.sum_reg\(11),
       O => \doa_pair.sum[8]_i_6_n_0\
     );
 \doa_pair.sum[8]_i_7\: unisim.vcomponents.LUT2
@@ -37088,7 +37172,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(29),
-      I1 => p_0_in(5),
+      I1 => \doa_pair.sum_reg\(10),
       O => \doa_pair.sum[8]_i_7_n_0\
     );
 \doa_pair.sum[8]_i_8\: unisim.vcomponents.LUT2
@@ -37097,7 +37181,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(28),
-      I1 => p_0_in(4),
+      I1 => \doa_pair.sum_reg\(9),
       O => \doa_pair.sum[8]_i_8_n_0\
     );
 \doa_pair.sum[8]_i_9\: unisim.vcomponents.LUT2
@@ -37106,7 +37190,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => cp(27),
-      I1 => p_0_in(3),
+      I1 => \doa_pair.sum_reg\(8),
       O => \doa_pair.sum[8]_i_9_n_0\
     );
 \doa_pair.sum_reg[0]\: unisim.vcomponents.FDRE
@@ -37152,7 +37236,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_13\,
-      Q => p_0_in(5),
+      Q => \doa_pair.sum_reg\(10),
       R => clear
     );
 \doa_pair.sum_reg[11]\: unisim.vcomponents.FDRE
@@ -37160,7 +37244,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_12\,
-      Q => p_0_in(6),
+      Q => \doa_pair.sum_reg\(11),
       R => clear
     );
 \doa_pair.sum_reg[12]\: unisim.vcomponents.FDRE
@@ -37168,7 +37252,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_11\,
-      Q => p_0_in(7),
+      Q => \doa_pair.sum_reg\(12),
       R => clear
     );
 \doa_pair.sum_reg[13]\: unisim.vcomponents.FDRE
@@ -37176,7 +37260,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_10\,
-      Q => p_0_in(8),
+      Q => \doa_pair.sum_reg\(13),
       R => clear
     );
 \doa_pair.sum_reg[14]\: unisim.vcomponents.FDRE
@@ -37184,7 +37268,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_9\,
-      Q => p_0_in(9),
+      Q => \doa_pair.sum_reg\(14),
       R => clear
     );
 \doa_pair.sum_reg[15]\: unisim.vcomponents.FDRE
@@ -37192,7 +37276,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_8\,
-      Q => p_0_in(10),
+      Q => \doa_pair.sum_reg\(15),
       R => clear
     );
 \doa_pair.sum_reg[16]\: unisim.vcomponents.FDRE
@@ -37200,7 +37284,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[16]_i_1_n_15\,
-      Q => p_0_in(11),
+      Q => \doa_pair.sum_reg\(16),
       R => clear
     );
 \doa_pair.sum_reg[16]_i_1\: unisim.vcomponents.CARRY8
@@ -37232,7 +37316,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[16]_i_1_n_14\,
-      Q => p_0_in(12),
+      Q => \doa_pair.sum_reg\(17),
       R => clear
     );
 \doa_pair.sum_reg[18]\: unisim.vcomponents.FDRE
@@ -37240,7 +37324,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[16]_i_1_n_13\,
-      Q => p_0_in(13),
+      Q => \doa_pair.sum_reg\(18),
       R => clear
     );
 \doa_pair.sum_reg[19]\: unisim.vcomponents.FDRE
@@ -37248,7 +37332,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[16]_i_1_n_12\,
-      Q => p_0_in(14),
+      Q => \doa_pair.sum_reg\(19),
       R => clear
     );
 \doa_pair.sum_reg[1]\: unisim.vcomponents.FDRE
@@ -37264,7 +37348,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[16]_i_1_n_11\,
-      Q => p_0_in(15),
+      Q => \doa_pair.sum_reg\(20),
       R => clear
     );
 \doa_pair.sum_reg[2]\: unisim.vcomponents.FDRE
@@ -37296,7 +37380,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[0]_i_3_n_10\,
-      Q => p_0_in(0),
+      Q => \doa_pair.sum_reg\(5),
       R => clear
     );
 \doa_pair.sum_reg[6]\: unisim.vcomponents.FDRE
@@ -37304,7 +37388,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[0]_i_3_n_9\,
-      Q => p_0_in(1),
+      Q => \doa_pair.sum_reg\(6),
       R => clear
     );
 \doa_pair.sum_reg[7]\: unisim.vcomponents.FDRE
@@ -37312,7 +37396,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[0]_i_3_n_8\,
-      Q => p_0_in(2),
+      Q => \doa_pair.sum_reg\(7),
       R => clear
     );
 \doa_pair.sum_reg[8]\: unisim.vcomponents.FDRE
@@ -37320,7 +37404,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_15\,
-      Q => p_0_in(3),
+      Q => \doa_pair.sum_reg\(8),
       R => clear
     );
 \doa_pair.sum_reg[8]_i_1\: unisim.vcomponents.CARRY8
@@ -37358,7 +37442,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => sum0,
       D => \doa_pair.sum_reg[8]_i_1_n_14\,
-      Q => p_0_in(4),
+      Q => \doa_pair.sum_reg\(9),
       R => clear
     );
 \doa_pair.x[0]_i_1\: unisim.vcomponents.LUT3
@@ -38591,8 +38675,8 @@ mul_c_i: component ps_comp_low_0_0_mult_20x20
     );
 mul_doa_i: component ps_comp_low_0_0_mult_20x20
      port map (
-      A(19 downto 0) => k(19 downto 0),
-      B(19 downto 0) => phase(19 downto 0),
+      A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
+      B(19 downto 0) => Q(19 downto 0),
       CLK => clk,
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
@@ -38860,16 +38944,15 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
   port (
+    done_EW : out STD_LOGIC;
+    shadow_EW : out STD_LOGIC;
+    \doa_pair.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
+    m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    Q : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    start_div : in STD_LOGIC;
     reset : in STD_LOGIC;
-    start : in STD_LOGIC;
-    k : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    shadow_limit : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    phase : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    done : out STD_LOGIC;
-    fail : out STD_LOGIC;
-    shadow : out STD_LOGIC;
-    angle : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \ps_comp_low_0_0_doa_pair__xdcDup__2\ : entity is "doa_pair";
@@ -38884,29 +38967,27 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component ps_comp_low_0_0_mult_20x20;
-  signal \<const0>\ : STD_LOGIC;
   signal add : STD_LOGIC;
-  signal calc_diff : STD_LOGIC;
-  signal check_raw : STD_LOGIC;
-  signal clear : STD_LOGIC;
   signal coeff : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal counter : STD_LOGIC;
   signal cp : STD_LOGIC_VECTOR ( 39 downto 19 );
-  signal \doa_pair.add_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.angle[15]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.angle[15]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.check_raw_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.check_raw_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.check_raw_i_3_n_0\ : STD_LOGIC;
+  signal \doa_pair.add_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.angle[15]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.angle[15]_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.calc_diff_reg_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.check_raw_reg_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[10]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.coeff[11]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.coeff[11]_i_1__0_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[12]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[13]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[14]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[15]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[18]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.coeff[1]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.coeff[1]_i_1__0_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[2]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[4]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[5]_i_1_n_0\ : STD_LOGIC;
@@ -38914,150 +38995,156 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
   signal \doa_pair.coeff[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.coeff[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.counter[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.counter_reg\ : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal \doa_pair.counter_reg__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
-  signal \doa_pair.done_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.fail_reg_n_0\ : STD_LOGIC;
-  signal \doa_pair.has_ov_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.counter[4]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.counter_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \doa_pair.counter_reg__0\ : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal \doa_pair.done_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.fail_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.fail_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.fail_i_4__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.has_diff_reg_n_0\ : STD_LOGIC;
+  signal \doa_pair.has_ov_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.has_ov_reg_n_0\ : STD_LOGIC;
   signal \doa_pair.ignore_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.ignore_i_8_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_4__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_5__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_6__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_7__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ignore_i_8__0_n_0\ : STD_LOGIC;
   signal \doa_pair.ignore_reg_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[0]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[1]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[2]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ind[2]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.init_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.ov[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[0]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[1]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[2]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind[2]_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.ind_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.init_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.init_reg_n_0\ : STD_LOGIC;
+  signal \doa_pair.ov[5]_i_2__0_n_0\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[1]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[2]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[3]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[4]\ : STD_LOGIC;
   signal \doa_pair.ov_reg_n_0_[5]\ : STD_LOGIC;
-  signal \doa_pair.run_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_10_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_11_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_12_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_13_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_14_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_15_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_16_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_17_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_18_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_19_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_20_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_21_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_22_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_23_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff[19]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_1_n_7\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_1\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_2\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_3\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_4\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_5\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_6\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_2_n_7\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_1\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_2\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_3\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_4\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_5\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_6\ : STD_LOGIC;
-  signal \doa_pair.shadow_diff_reg[19]_i_7_n_7\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.shadow_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_10_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_11_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[0]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[16]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum[8]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_1\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_10\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_11\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_12\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_13\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_14\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_15\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_2\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_3\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_4\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_5\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_6\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_7\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_8\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[0]_i_3_n_9\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_11\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_12\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_13\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_14\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_15\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_4\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[16]_i_1_n_7\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_1\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_10\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_11\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_12\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_13\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_14\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_15\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_2\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_3\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_4\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_7\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_8\ : STD_LOGIC;
-  signal \doa_pair.sum_reg[8]_i_1_n_9\ : STD_LOGIC;
+  signal \doa_pair.run_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_10__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_11__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_12__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_13__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_14__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_15__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_16__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_17__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_18__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_19__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_20__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_21__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_22__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_23__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_3__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_4__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_5__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_6__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_8__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff[19]_i_9__1_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__0_n_12\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__0_n_5\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__0_n_6\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_1__0_n_7\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_1\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_2\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_3\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_4\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_5\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_6\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_2__0_n_7\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_1\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_2\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_3\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_4\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_5\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_6\ : STD_LOGIC;
+  signal \doa_pair.shadow_diff_reg[19]_i_7__0_n_7\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.shadow_i_5__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_10__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_11__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_4__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_5__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_6__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_7__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_8__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[0]_i_9__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_4__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_5__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[16]_i_6__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_2__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_4__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_5__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_6__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_7__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_8__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum[8]_i_9__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg\ : STD_LOGIC_VECTOR ( 20 downto 5 );
+  signal \doa_pair.sum_reg[0]_i_3__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_1\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_10\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_11\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_12\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_13\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_14\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_15\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_2\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_3\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_4\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_5\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_6\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_7\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_8\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[0]_i_3__0_n_9\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_11\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_12\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_13\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_14\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_15\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_4\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_5\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_6\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[16]_i_1__0_n_7\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_1\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_10\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_11\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_12\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_13\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_14\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_15\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_2\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_3\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_4\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_5\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_6\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_7\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_8\ : STD_LOGIC;
+  signal \doa_pair.sum_reg[8]_i_1__0_n_9\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[1]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[2]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[3]\ : STD_LOGIC;
   signal \doa_pair.sum_reg_n_0_[4]\ : STD_LOGIC;
-  signal \doa_pair.x[19]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x[19]_i_1__0_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[11]_i_1_n_0\ : STD_LOGIC;
@@ -39078,6 +39165,26 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
   signal \doa_pair.x_abs[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_abs[9]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[19]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_pair.x_abs_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_pair.x_diff[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[11]_i_1_n_0\ : STD_LOGIC;
@@ -39097,7 +39204,47 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
   signal \doa_pair.x_diff[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_pair.x_diff[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_pair.x_raw[20]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_pair.x_diff_reg_n_0_[9]\ : STD_LOGIC;
+  signal \doa_pair.x_raw[20]_i_1__0_n_0\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[19]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[20]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_pair.x_raw_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[10]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[11]\ : STD_LOGIC;
@@ -39118,130 +39265,124 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
   signal \doa_pair.x_reg_n_0_[7]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[8]\ : STD_LOGIC;
   signal \doa_pair.x_reg_n_0_[9]\ : STD_LOGIC;
-  signal has_diff : STD_LOGIC;
-  signal has_ov : STD_LOGIC;
+  signal fail : STD_LOGIC;
+  signal fail_EW : STD_LOGIC;
   signal has_shadow_diff : STD_LOGIC;
-  signal ind : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal init : STD_LOGIC;
   signal ov : STD_LOGIC;
   signal p : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal p_0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal prod : STD_LOGIC_VECTOR ( 39 downto 16 );
   signal run : STD_LOGIC;
   signal run1_out : STD_LOGIC;
-  signal \^shadow\ : STD_LOGIC;
+  signal shadow : STD_LOGIC;
+  signal \^shadow_ew\ : STD_LOGIC;
   signal shadow_diff : STD_LOGIC_VECTOR ( 19 to 19 );
-  signal shadow_diff0 : STD_LOGIC_VECTOR ( 19 to 19 );
   signal sum0 : STD_LOGIC;
   signal x : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal x2 : STD_LOGIC_VECTOR ( 38 downto 19 );
-  signal x_abs : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal x_diff : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal x_raw : STD_LOGIC_VECTOR ( 20 downto 0 );
   signal xp : STD_LOGIC_VECTOR ( 38 downto 19 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_doa_pair.shadow_diff_reg[19]_i_7_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_doa_pair.sum_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_doa_pair.sum_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1__0_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_1__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_2__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_pair.shadow_diff_reg[19]_i_7__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_pair.sum_reg[16]_i_1__0_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_doa_pair.sum_reg[16]_i_1__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
   signal NLW_mul_c_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal NLW_mul_doa_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_3\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_4\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_5\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_7\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \doa_pair.ignore_i_8\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \doa_pair.ind[0]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__0\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__0\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1__0\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__0\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__0\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__0\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__0\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_3__0\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_4__0\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_5__0\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_7__0\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \doa_pair.ignore_i_8__0\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \doa_pair.ind[0]_i_1__0\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__0\ : label is "soft_lutpair42";
   attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7\ : label is 35;
-  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3\ : label is 16;
-  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1\ : label is 16;
-  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair98";
+  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3__0\ : label is 16;
+  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1__0\ : label is 16;
+  attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1__0\ : label is 16;
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__0\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__0\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__0\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__0\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__0\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__0\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__0\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__0\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__0\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_1__0\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__0\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__0\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__0\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__0\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__0\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__0\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__0\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__0\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__0\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__0\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair73";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -39257,225 +39398,220 @@ architecture STRUCTURE of \ps_comp_low_0_0_doa_pair__xdcDup__2\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \mul_x_i_i_10__0\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \mul_x_i_i_11__0\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \mul_x_i_i_12__0\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \mul_x_i_i_13__0\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \mul_x_i_i_14__0\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \mul_x_i_i_15__0\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \mul_x_i_i_16__0\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \mul_x_i_i_17__0\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \mul_x_i_i_18__0\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \mul_x_i_i_19__0\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \mul_x_i_i_1__0\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \mul_x_i_i_20__0\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \mul_x_i_i_2__0\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \mul_x_i_i_3__0\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \mul_x_i_i_4__0\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \mul_x_i_i_5__0\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \mul_x_i_i_6__0\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \mul_x_i_i_7__0\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \mul_x_i_i_8__0\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \mul_x_i_i_9__0\ : label is "soft_lutpair53";
 begin
-  fail <= \<const0>\;
-  shadow <= \^shadow\;
-GND: unisim.vcomponents.GND
-     port map (
-      G => \<const0>\
-    );
-\doa_pair.add_i_1\: unisim.vcomponents.LUT6
+  shadow_EW <= \^shadow_ew\;
+\doa_pair.add_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"F99EDFF610868220"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(2),
-      I4 => \doa_pair.counter_reg__0\(4),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(2),
+      I4 => \doa_pair.counter_reg\(4),
       I5 => add,
-      O => \doa_pair.add_i_1_n_0\
+      O => \doa_pair.add_i_1__0_n_0\
     );
 \doa_pair.add_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.add_i_1_n_0\,
+      D => \doa_pair.add_i_1__0_n_0\,
       Q => add,
       R => '0'
     );
-\doa_pair.angle[15]_i_1\: unisim.vcomponents.LUT5
+\doa_pair.angle[15]_i_1__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"01000000"
     )
         port map (
-      I0 => start,
+      I0 => start_div,
       I1 => reset,
-      I2 => \doa_pair.fail_reg_n_0\,
-      I3 => \doa_pair.angle[15]_i_2_n_0\,
+      I2 => fail_EW,
+      I3 => \doa_pair.angle[15]_i_2__0_n_0\,
       I4 => run,
-      O => \doa_pair.angle[15]_i_1_n_0\
+      O => \doa_pair.angle[15]_i_1__0_n_0\
     );
-\doa_pair.angle[15]_i_2\: unisim.vcomponents.LUT5
+\doa_pair.angle[15]_i_2__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"40000000"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(4),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(2),
-      O => \doa_pair.angle[15]_i_2_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(4),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(2),
+      O => \doa_pair.angle[15]_i_2__0_n_0\
     );
 \doa_pair.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(0),
-      Q => angle(0),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(5),
+      Q => \doa_pair.angle_reg[15]_0\(0),
       R => '0'
     );
 \doa_pair.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(10),
-      Q => angle(10),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(15),
+      Q => \doa_pair.angle_reg[15]_0\(10),
       R => '0'
     );
 \doa_pair.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(11),
-      Q => angle(11),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(16),
+      Q => \doa_pair.angle_reg[15]_0\(11),
       R => '0'
     );
 \doa_pair.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(12),
-      Q => angle(12),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(17),
+      Q => \doa_pair.angle_reg[15]_0\(12),
       R => '0'
     );
 \doa_pair.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(13),
-      Q => angle(13),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(18),
+      Q => \doa_pair.angle_reg[15]_0\(13),
       R => '0'
     );
 \doa_pair.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(14),
-      Q => angle(14),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(19),
+      Q => \doa_pair.angle_reg[15]_0\(14),
       R => '0'
     );
 \doa_pair.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(15),
-      Q => angle(15),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(20),
+      Q => \doa_pair.angle_reg[15]_0\(15),
       R => '0'
     );
 \doa_pair.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(1),
-      Q => angle(1),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(6),
+      Q => \doa_pair.angle_reg[15]_0\(1),
       R => '0'
     );
 \doa_pair.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(2),
-      Q => angle(2),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(7),
+      Q => \doa_pair.angle_reg[15]_0\(2),
       R => '0'
     );
 \doa_pair.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(3),
-      Q => angle(3),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(8),
+      Q => \doa_pair.angle_reg[15]_0\(3),
       R => '0'
     );
 \doa_pair.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(4),
-      Q => angle(4),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(9),
+      Q => \doa_pair.angle_reg[15]_0\(4),
       R => '0'
     );
 \doa_pair.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(5),
-      Q => angle(5),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(10),
+      Q => \doa_pair.angle_reg[15]_0\(5),
       R => '0'
     );
 \doa_pair.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(6),
-      Q => angle(6),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(11),
+      Q => \doa_pair.angle_reg[15]_0\(6),
       R => '0'
     );
 \doa_pair.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(7),
-      Q => angle(7),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(12),
+      Q => \doa_pair.angle_reg[15]_0\(7),
       R => '0'
     );
 \doa_pair.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(8),
-      Q => angle(8),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(13),
+      Q => \doa_pair.angle_reg[15]_0\(8),
       R => '0'
     );
 \doa_pair.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.angle[15]_i_1_n_0\,
-      D => p_0_in(9),
-      Q => angle(9),
+      CE => \doa_pair.angle[15]_i_1__0_n_0\,
+      D => \doa_pair.sum_reg\(14),
+      Q => \doa_pair.angle_reg[15]_0\(9),
       R => '0'
     );
 \doa_pair.calc_diff_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => check_raw,
-      Q => calc_diff,
+      D => \doa_pair.check_raw_reg_n_0\,
+      Q => \doa_pair.calc_diff_reg_n_0\,
       R => '0'
     );
-\doa_pair.check_raw_i_1\: unisim.vcomponents.LUT3
+\doa_pair.check_raw_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => \doa_pair.check_raw_i_2_n_0\,
-      I1 => \doa_pair.check_raw_i_3_n_0\,
-      I2 => check_raw,
-      O => \doa_pair.check_raw_i_1_n_0\
+      I0 => \doa_pair.check_raw_i_2__0_n_0\,
+      I1 => \doa_pair.check_raw_i_3__0_n_0\,
+      I2 => \doa_pair.check_raw_reg_n_0\,
+      O => \doa_pair.check_raw_i_1__0_n_0\
     );
-\doa_pair.check_raw_i_2\: unisim.vcomponents.LUT6
+\doa_pair.check_raw_i_2__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"2800000000000014"
     )
@@ -39486,9 +39622,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[4]\,
       I4 => \doa_pair.ov_reg_n_0_[3]\,
       I5 => \doa_pair.ov_reg_n_0_[2]\,
-      O => \doa_pair.check_raw_i_2_n_0\
+      O => \doa_pair.check_raw_i_2__0_n_0\
     );
-\doa_pair.check_raw_i_3\: unisim.vcomponents.LUT6
+\doa_pair.check_raw_i_3__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FBFFFFFFFFFFFFDF"
     )
@@ -39499,14 +39635,14 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[5]\,
       I4 => \doa_pair.ov_reg_n_0_[4]\,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.check_raw_i_3_n_0\
+      O => \doa_pair.check_raw_i_3__0_n_0\
     );
 \doa_pair.check_raw_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.check_raw_i_1_n_0\,
-      Q => check_raw,
+      D => \doa_pair.check_raw_i_1__0_n_0\,
+      Q => \doa_pair.check_raw_reg_n_0\,
       R => '0'
     );
 \doa_pair.coeff[0]_i_1\: unisim.vcomponents.LUT3
@@ -39514,9 +39650,9 @@ GND: unisim.vcomponents.GND
       INIT => X"BE"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[0]_i_1_n_0\
     );
 \doa_pair.coeff[10]_i_1\: unisim.vcomponents.LUT3
@@ -39524,29 +39660,29 @@ GND: unisim.vcomponents.GND
       INIT => X"2B"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[10]_i_1_n_0\
     );
-\doa_pair.coeff[11]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.coeff[11]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"70"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(2),
-      I2 => ind(0),
-      O => \doa_pair.coeff[11]_i_1_n_0\
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
+      O => \doa_pair.coeff[11]_i_1__0_n_0\
     );
 \doa_pair.coeff[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"EB"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[12]_i_1_n_0\
     );
 \doa_pair.coeff[13]_i_1\: unisim.vcomponents.LUT3
@@ -39554,9 +39690,9 @@ GND: unisim.vcomponents.GND
       INIT => X"26"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(2),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[13]_i_1_n_0\
     );
 \doa_pair.coeff[14]_i_1\: unisim.vcomponents.LUT3
@@ -39564,9 +39700,9 @@ GND: unisim.vcomponents.GND
       INIT => X"06"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(0),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[0]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[14]_i_1_n_0\
     );
 \doa_pair.coeff[15]_i_1\: unisim.vcomponents.LUT2
@@ -39574,8 +39710,8 @@ GND: unisim.vcomponents.GND
       INIT => X"2"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[15]_i_1_n_0\
     );
 \doa_pair.coeff[18]_i_1\: unisim.vcomponents.LUT2
@@ -39583,27 +39719,27 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[18]_i_1_n_0\
     );
-\doa_pair.coeff[1]_i_1\: unisim.vcomponents.LUT2
+\doa_pair.coeff[1]_i_1__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      O => \doa_pair.coeff[1]_i_1_n_0\
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      O => \doa_pair.coeff[1]_i_1__0_n_0\
     );
 \doa_pair.coeff[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D3"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[2]_i_1_n_0\
     );
 \doa_pair.coeff[4]_i_1\: unisim.vcomponents.LUT3
@@ -39611,9 +39747,9 @@ GND: unisim.vcomponents.GND
       INIT => X"A4"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(2),
-      I2 => ind(1),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[2]\,
+      I2 => \doa_pair.ind_reg_n_0_[1]\,
       O => \doa_pair.coeff[4]_i_1_n_0\
     );
 \doa_pair.coeff[5]_i_1\: unisim.vcomponents.LUT3
@@ -39621,9 +39757,9 @@ GND: unisim.vcomponents.GND
       INIT => X"E8"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[5]_i_1_n_0\
     );
 \doa_pair.coeff[6]_i_1\: unisim.vcomponents.LUT3
@@ -39631,9 +39767,9 @@ GND: unisim.vcomponents.GND
       INIT => X"07"
     )
         port map (
-      I0 => ind(0),
-      I1 => ind(1),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[6]_i_1_n_0\
     );
 \doa_pair.coeff[7]_i_1\: unisim.vcomponents.LUT1
@@ -39641,7 +39777,7 @@ GND: unisim.vcomponents.GND
       INIT => X"1"
     )
         port map (
-      I0 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[7]_i_1_n_0\
     );
 \doa_pair.coeff[8]_i_1\: unisim.vcomponents.LUT3
@@ -39649,9 +39785,9 @@ GND: unisim.vcomponents.GND
       INIT => X"57"
     )
         port map (
-      I0 => ind(1),
-      I1 => ind(0),
-      I2 => ind(2),
+      I0 => \doa_pair.ind_reg_n_0_[1]\,
+      I1 => \doa_pair.ind_reg_n_0_[0]\,
+      I2 => \doa_pair.ind_reg_n_0_[2]\,
       O => \doa_pair.coeff[8]_i_1_n_0\
     );
 \doa_pair.coeff[9]_i_1\: unisim.vcomponents.LUT3
@@ -39659,9 +39795,9 @@ GND: unisim.vcomponents.GND
       INIT => X"CB"
     )
         port map (
-      I0 => ind(2),
-      I1 => ind(1),
-      I2 => ind(0),
+      I0 => \doa_pair.ind_reg_n_0_[2]\,
+      I1 => \doa_pair.ind_reg_n_0_[1]\,
+      I2 => \doa_pair.ind_reg_n_0_[0]\,
       O => \doa_pair.coeff[9]_i_1_n_0\
     );
 \doa_pair.coeff_reg[0]\: unisim.vcomponents.FDRE
@@ -39684,7 +39820,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.coeff[11]_i_1_n_0\,
+      D => \doa_pair.coeff[11]_i_1__0_n_0\,
       Q => coeff(11),
       R => '0'
     );
@@ -39718,7 +39854,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[15]_i_1_n_0\,
       Q => coeff(15),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -39726,7 +39862,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[18]_i_1_n_0\,
       Q => coeff(16),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -39734,15 +39870,15 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.coeff[18]_i_1_n_0\,
       Q => coeff(18),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.coeff[1]_i_1_n_0\,
+      D => \doa_pair.coeff[1]_i_1__0_n_0\,
       Q => coeff(1),
-      R => ind(1)
+      R => \doa_pair.ind_reg_n_0_[1]\
     );
 \doa_pair.coeff_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -39808,140 +39944,140 @@ GND: unisim.vcomponents.GND
       Q => coeff(9),
       R => '0'
     );
-\doa_pair.counter[0]_i_1\: unisim.vcomponents.LUT1
+\doa_pair.counter[0]_i_1__0\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      O => \p_0_in__0\(0)
+      I0 => \doa_pair.counter_reg\(0),
+      O => p_0_in(0)
     );
-\doa_pair.counter[1]_i_1\: unisim.vcomponents.LUT2
+\doa_pair.counter[1]_i_1__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      O => \p_0_in__0\(1)
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      O => p_0_in(1)
     );
-\doa_pair.counter[2]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.counter[2]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"78"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \p_0_in__0\(2)
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(2),
+      O => p_0_in(2)
     );
-\doa_pair.counter[3]_i_1\: unisim.vcomponents.LUT4
+\doa_pair.counter[3]_i_1__0\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"7F80"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(0),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(3),
-      O => \p_0_in__0\(3)
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(0),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(3),
+      O => p_0_in(3)
     );
-\doa_pair.counter[4]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.counter[4]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
         port map (
-      I0 => \doa_pair.fail_reg_n_0\,
+      I0 => fail_EW,
       I1 => reset,
-      I2 => start,
-      O => \doa_pair.counter[4]_i_1_n_0\
+      I2 => start_div,
+      O => \doa_pair.counter[4]_i_1__0_n_0\
     );
-\doa_pair.counter[4]_i_2\: unisim.vcomponents.LUT6
+\doa_pair.counter[4]_i_2__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AAAAAAAA2AAAAAAA"
     )
         port map (
       I0 => run,
-      I1 => \doa_pair.counter_reg__0\(4),
-      I2 => \doa_pair.counter_reg__0\(3),
-      I3 => \doa_pair.counter_reg__0\(0),
-      I4 => \doa_pair.counter_reg__0\(2),
-      I5 => \doa_pair.counter_reg\(1),
+      I1 => \doa_pair.counter_reg\(4),
+      I2 => \doa_pair.counter_reg\(3),
+      I3 => \doa_pair.counter_reg\(0),
+      I4 => \doa_pair.counter_reg\(2),
+      I5 => \doa_pair.counter_reg__0\(1),
       O => counter
     );
-\doa_pair.counter[4]_i_3\: unisim.vcomponents.LUT5
+\doa_pair.counter[4]_i_3__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(2),
-      I1 => \doa_pair.counter_reg__0\(0),
-      I2 => \doa_pair.counter_reg\(1),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \p_0_in__0\(4)
+      I0 => \doa_pair.counter_reg\(2),
+      I1 => \doa_pair.counter_reg\(0),
+      I2 => \doa_pair.counter_reg__0\(1),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => p_0_in(4)
     );
 \doa_pair.counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(0),
-      Q => \doa_pair.counter_reg__0\(0),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(0),
+      Q => \doa_pair.counter_reg\(0),
+      R => \doa_pair.counter[4]_i_1__0_n_0\
     );
 \doa_pair.counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(1),
-      Q => \doa_pair.counter_reg\(1),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(1),
+      Q => \doa_pair.counter_reg__0\(1),
+      R => \doa_pair.counter[4]_i_1__0_n_0\
     );
 \doa_pair.counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(2),
-      Q => \doa_pair.counter_reg__0\(2),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(2),
+      Q => \doa_pair.counter_reg\(2),
+      R => \doa_pair.counter[4]_i_1__0_n_0\
     );
 \doa_pair.counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(3),
-      Q => \doa_pair.counter_reg__0\(3),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(3),
+      Q => \doa_pair.counter_reg\(3),
+      R => \doa_pair.counter[4]_i_1__0_n_0\
     );
 \doa_pair.counter_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => counter,
-      D => \p_0_in__0\(4),
-      Q => \doa_pair.counter_reg__0\(4),
-      R => \doa_pair.counter[4]_i_1_n_0\
+      D => p_0_in(4),
+      Q => \doa_pair.counter_reg\(4),
+      R => \doa_pair.counter[4]_i_1__0_n_0\
     );
-\doa_pair.done_i_1\: unisim.vcomponents.LUT3
+\doa_pair.done_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
         port map (
-      I0 => \doa_pair.fail_reg_n_0\,
+      I0 => fail_EW,
       I1 => reset,
-      I2 => start,
-      O => \doa_pair.done_i_1_n_0\
+      I2 => start_div,
+      O => \doa_pair.done_i_1__0_n_0\
     );
-\doa_pair.done_i_2\: unisim.vcomponents.LUT6
+\doa_pair.done_i_2__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
         port map (
       I0 => run,
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg__0\(3),
-      I3 => \doa_pair.counter_reg__0\(0),
-      I4 => \doa_pair.counter_reg__0\(4),
-      I5 => \doa_pair.counter_reg\(1),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg\(3),
+      I3 => \doa_pair.counter_reg\(0),
+      I4 => \doa_pair.counter_reg\(4),
+      I5 => \doa_pair.counter_reg__0\(1),
       O => run1_out
     );
 \doa_pair.done_reg\: unisim.vcomponents.FDRE
@@ -39949,23 +40085,23 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => '1',
       D => run1_out,
-      Q => done,
-      R => \doa_pair.done_i_1_n_0\
+      Q => done_EW,
+      R => \doa_pair.done_i_1__0_n_0\
     );
-\doa_pair.fail_i_1\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AAAAAAA0808A8A8A"
     )
         port map (
-      I0 => \doa_pair.fail_i_2_n_0\,
-      I1 => has_ov,
-      I2 => \doa_pair.fail_i_3_n_0\,
+      I0 => \doa_pair.fail_i_2__0_n_0\,
+      I1 => \doa_pair.has_ov_reg_n_0\,
+      I2 => \doa_pair.fail_i_3__0_n_0\,
       I3 => prod(33),
       I4 => prod(32),
-      I5 => \doa_pair.fail_i_4_n_0\,
-      O => \doa_pair.fail_i_1_n_0\
+      I5 => \doa_pair.fail_i_4__0_n_0\,
+      O => fail
     );
-\doa_pair.fail_i_2\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_2__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"77FFFFFFFFFFFFEE"
     )
@@ -39976,9 +40112,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[1]\,
       I4 => \doa_pair.ov_reg_n_0_[5]\,
       I5 => \doa_pair.ov_reg_n_0_[4]\,
-      O => \doa_pair.fail_i_2_n_0\
+      O => \doa_pair.fail_i_2__0_n_0\
     );
-\doa_pair.fail_i_3\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_3__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"DFFFFFFFFFFFFFFB"
     )
@@ -39989,9 +40125,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[5]\,
       I4 => \doa_pair.ov_reg_n_0_[4]\,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.fail_i_3_n_0\
+      O => \doa_pair.fail_i_3__0_n_0\
     );
-\doa_pair.fail_i_4\: unisim.vcomponents.LUT6
+\doa_pair.fail_i_4__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0200000000000044"
     )
@@ -40002,50 +40138,50 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[2]\,
       I4 => \doa_pair.ov_reg_n_0_[3]\,
       I5 => \doa_pair.ov_reg_n_0_[4]\,
-      O => \doa_pair.fail_i_4_n_0\
+      O => \doa_pair.fail_i_4__0_n_0\
     );
 \doa_pair.fail_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.fail_i_1_n_0\,
-      Q => \doa_pair.fail_reg_n_0\,
+      D => fail,
+      Q => fail_EW,
       R => '0'
     );
 \doa_pair.has_diff_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => calc_diff,
-      Q => has_diff,
+      D => \doa_pair.calc_diff_reg_n_0\,
+      Q => \doa_pair.has_diff_reg_n_0\,
       R => '0'
     );
-\doa_pair.has_ov_i_1\: unisim.vcomponents.LUT6
+\doa_pair.has_ov_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFE00000002"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(4),
-      I4 => \doa_pair.counter_reg__0\(0),
-      I5 => has_ov,
-      O => \doa_pair.has_ov_i_1_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(4),
+      I4 => \doa_pair.counter_reg\(0),
+      I5 => \doa_pair.has_ov_reg_n_0\,
+      O => \doa_pair.has_ov_i_1__0_n_0\
     );
 \doa_pair.has_ov_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.has_ov_i_1_n_0\,
-      Q => has_ov,
+      D => \doa_pair.has_ov_i_1__0_n_0\,
+      Q => \doa_pair.has_ov_reg_n_0\,
       R => '0'
     );
 \doa_pair.has_shadow_diff_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => has_diff,
+      D => \doa_pair.has_diff_reg_n_0\,
       Q => has_shadow_diff,
       R => '0'
     );
@@ -40056,39 +40192,39 @@ GND: unisim.vcomponents.GND
         port map (
       I0 => run,
       I1 => xp(38),
-      I2 => \doa_pair.ignore_i_2_n_0\,
+      I2 => \doa_pair.ignore_i_2__0_n_0\,
       I3 => xp(37),
       I4 => add,
       I5 => \doa_pair.ignore_reg_n_0\,
       O => \doa_pair.ignore_i_1_n_0\
     );
-\doa_pair.ignore_i_2\: unisim.vcomponents.LUT6
+\doa_pair.ignore_i_2__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
         port map (
-      I0 => \doa_pair.ignore_i_3_n_0\,
+      I0 => \doa_pair.ignore_i_3__0_n_0\,
       I1 => xp(31),
       I2 => xp(33),
       I3 => xp(32),
-      I4 => \doa_pair.ignore_i_4_n_0\,
-      I5 => \doa_pair.ignore_i_5_n_0\,
-      O => \doa_pair.ignore_i_2_n_0\
+      I4 => \doa_pair.ignore_i_4__0_n_0\,
+      I5 => \doa_pair.ignore_i_5__0_n_0\,
+      O => \doa_pair.ignore_i_2__0_n_0\
     );
-\doa_pair.ignore_i_3\: unisim.vcomponents.LUT6
+\doa_pair.ignore_i_3__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
         port map (
-      I0 => \doa_pair.ignore_i_6_n_0\,
+      I0 => \doa_pair.ignore_i_6__0_n_0\,
       I1 => xp(25),
       I2 => xp(27),
       I3 => xp(26),
-      I4 => \doa_pair.ignore_i_7_n_0\,
-      I5 => \doa_pair.ignore_i_8_n_0\,
-      O => \doa_pair.ignore_i_3_n_0\
+      I4 => \doa_pair.ignore_i_7__0_n_0\,
+      I5 => \doa_pair.ignore_i_8__0_n_0\,
+      O => \doa_pair.ignore_i_3__0_n_0\
     );
-\doa_pair.ignore_i_4\: unisim.vcomponents.LUT3
+\doa_pair.ignore_i_4__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D5"
     )
@@ -40096,18 +40232,18 @@ GND: unisim.vcomponents.GND
       I0 => xp(36),
       I1 => xp(35),
       I2 => xp(34),
-      O => \doa_pair.ignore_i_4_n_0\
+      O => \doa_pair.ignore_i_4__0_n_0\
     );
-\doa_pair.ignore_i_5\: unisim.vcomponents.LUT2
+\doa_pair.ignore_i_5__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => xp(35),
       I1 => xp(36),
-      O => \doa_pair.ignore_i_5_n_0\
+      O => \doa_pair.ignore_i_5__0_n_0\
     );
-\doa_pair.ignore_i_6\: unisim.vcomponents.LUT6
+\doa_pair.ignore_i_6__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8000000000000000"
     )
@@ -40118,9 +40254,9 @@ GND: unisim.vcomponents.GND
       I3 => xp(22),
       I4 => xp(24),
       I5 => xp(23),
-      O => \doa_pair.ignore_i_6_n_0\
+      O => \doa_pair.ignore_i_6__0_n_0\
     );
-\doa_pair.ignore_i_7\: unisim.vcomponents.LUT3
+\doa_pair.ignore_i_7__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D5"
     )
@@ -40128,16 +40264,16 @@ GND: unisim.vcomponents.GND
       I0 => xp(30),
       I1 => xp(29),
       I2 => xp(28),
-      O => \doa_pair.ignore_i_7_n_0\
+      O => \doa_pair.ignore_i_7__0_n_0\
     );
-\doa_pair.ignore_i_8\: unisim.vcomponents.LUT2
+\doa_pair.ignore_i_8__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => xp(29),
       I1 => xp(30),
-      O => \doa_pair.ignore_i_8_n_0\
+      O => \doa_pair.ignore_i_8__0_n_0\
     );
 \doa_pair.ignore_reg\: unisim.vcomponents.FDRE
      port map (
@@ -40145,123 +40281,123 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \doa_pair.ignore_i_1_n_0\,
       Q => \doa_pair.ignore_reg_n_0\,
-      R => \doa_pair.done_i_1_n_0\
+      R => \doa_pair.done_i_1__0_n_0\
     );
-\doa_pair.ind[0]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.ind[0]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"54"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \doa_pair.ind[0]_i_1_n_0\
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      O => \doa_pair.ind[0]_i_1__0_n_0\
     );
-\doa_pair.ind[1]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.ind[1]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"A8"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(2),
-      O => \doa_pair.ind[1]_i_1_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(2),
+      O => \doa_pair.ind[1]_i_1__0_n_0\
     );
-\doa_pair.ind[2]_i_1\: unisim.vcomponents.LUT5
+\doa_pair.ind[2]_i_1__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00924904"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(0),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(2),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \doa_pair.ind[2]_i_1_n_0\
+      I0 => \doa_pair.counter_reg\(0),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(2),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => \doa_pair.ind[2]_i_1__0_n_0\
     );
-\doa_pair.ind[2]_i_2\: unisim.vcomponents.LUT3
+\doa_pair.ind[2]_i_2__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"45"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg\(1),
-      O => \doa_pair.ind[2]_i_2_n_0\
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg__0\(1),
+      O => \doa_pair.ind[2]_i_2__0_n_0\
     );
 \doa_pair.ind_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ind[2]_i_1_n_0\,
-      D => \doa_pair.ind[0]_i_1_n_0\,
-      Q => ind(0),
+      CE => \doa_pair.ind[2]_i_1__0_n_0\,
+      D => \doa_pair.ind[0]_i_1__0_n_0\,
+      Q => \doa_pair.ind_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.ind_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ind[2]_i_1_n_0\,
-      D => \doa_pair.ind[1]_i_1_n_0\,
-      Q => ind(1),
+      CE => \doa_pair.ind[2]_i_1__0_n_0\,
+      D => \doa_pair.ind[1]_i_1__0_n_0\,
+      Q => \doa_pair.ind_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.ind_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ind[2]_i_1_n_0\,
-      D => \doa_pair.ind[2]_i_2_n_0\,
-      Q => ind(2),
+      CE => \doa_pair.ind[2]_i_1__0_n_0\,
+      D => \doa_pair.ind[2]_i_2__0_n_0\,
+      Q => \doa_pair.ind_reg_n_0_[2]\,
       R => '0'
     );
-\doa_pair.init_i_1\: unisim.vcomponents.LUT6
+\doa_pair.init_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFBF00000001"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(2),
-      I1 => \doa_pair.counter_reg__0\(3),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg\(1),
-      I4 => \doa_pair.counter_reg__0\(4),
-      I5 => init,
-      O => \doa_pair.init_i_1_n_0\
+      I0 => \doa_pair.counter_reg\(2),
+      I1 => \doa_pair.counter_reg\(3),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg__0\(1),
+      I4 => \doa_pair.counter_reg\(4),
+      I5 => \doa_pair.init_reg_n_0\,
+      O => \doa_pair.init_i_1__0_n_0\
     );
 \doa_pair.init_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.init_i_1_n_0\,
-      Q => init,
+      D => \doa_pair.init_i_1__0_n_0\,
+      Q => \doa_pair.init_reg_n_0\,
       R => '0'
     );
-\doa_pair.ov[5]_i_1\: unisim.vcomponents.LUT5
+\doa_pair.ov[5]_i_1__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000001"
     )
         port map (
-      I0 => \doa_pair.counter_reg__0\(3),
-      I1 => \doa_pair.counter_reg\(1),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(4),
-      I4 => \doa_pair.counter_reg__0\(2),
+      I0 => \doa_pair.counter_reg\(3),
+      I1 => \doa_pair.counter_reg__0\(1),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(4),
+      I4 => \doa_pair.counter_reg\(2),
       O => ov
     );
-\doa_pair.ov[5]_i_2\: unisim.vcomponents.LUT5
+\doa_pair.ov[5]_i_2__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000002"
     )
         port map (
-      I0 => \doa_pair.counter_reg\(1),
-      I1 => \doa_pair.counter_reg__0\(2),
-      I2 => \doa_pair.counter_reg__0\(0),
-      I3 => \doa_pair.counter_reg__0\(3),
-      I4 => \doa_pair.counter_reg__0\(4),
-      O => \doa_pair.ov[5]_i_2_n_0\
+      I0 => \doa_pair.counter_reg__0\(1),
+      I1 => \doa_pair.counter_reg\(2),
+      I2 => \doa_pair.counter_reg\(0),
+      I3 => \doa_pair.counter_reg\(3),
+      I4 => \doa_pair.counter_reg\(4),
+      O => \doa_pair.ov[5]_i_2__0_n_0\
     );
 \doa_pair.ov_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__0_n_0\,
       D => prod(34),
       Q => \doa_pair.ov_reg_n_0_[0]\,
       R => ov
@@ -40269,7 +40405,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__0_n_0\,
       D => prod(35),
       Q => \doa_pair.ov_reg_n_0_[1]\,
       R => ov
@@ -40277,7 +40413,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__0_n_0\,
       D => prod(36),
       Q => \doa_pair.ov_reg_n_0_[2]\,
       R => ov
@@ -40285,7 +40421,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__0_n_0\,
       D => prod(37),
       Q => \doa_pair.ov_reg_n_0_[3]\,
       R => ov
@@ -40293,7 +40429,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__0_n_0\,
       D => prod(38),
       Q => \doa_pair.ov_reg_n_0_[4]\,
       R => ov
@@ -40301,297 +40437,313 @@ GND: unisim.vcomponents.GND
 \doa_pair.ov_reg[5]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \doa_pair.ov[5]_i_2_n_0\,
+      CE => \doa_pair.ov[5]_i_2__0_n_0\,
       D => prod(39),
       Q => \doa_pair.ov_reg_n_0_[5]\,
       S => ov
     );
-\doa_pair.run_i_1\: unisim.vcomponents.LUT5
+\doa_pair.run_i_1__0\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"000000CE"
     )
         port map (
       I0 => run,
-      I1 => start,
+      I1 => start_div,
       I2 => run1_out,
-      I3 => \doa_pair.fail_reg_n_0\,
+      I3 => fail_EW,
       I4 => reset,
-      O => \doa_pair.run_i_1_n_0\
+      O => \doa_pair.run_i_1__0_n_0\
     );
 \doa_pair.run_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.run_i_1_n_0\,
+      D => \doa_pair.run_i_1__0_n_0\,
       Q => run,
       R => '0'
     );
-\doa_pair.shadow_diff[19]_i_10\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_10__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(13),
-      I1 => shadow_limit(13),
-      O => \doa_pair.shadow_diff[19]_i_10_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[13]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(13),
+      O => \doa_pair.shadow_diff[19]_i_10__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_11\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_11__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(12),
-      I1 => shadow_limit(12),
-      O => \doa_pair.shadow_diff[19]_i_11_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[12]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(12),
+      O => \doa_pair.shadow_diff[19]_i_11__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_12\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_12__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(11),
-      I1 => shadow_limit(11),
-      O => \doa_pair.shadow_diff[19]_i_12_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[11]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(11),
+      O => \doa_pair.shadow_diff[19]_i_12__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_13\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_13__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(10),
-      I1 => shadow_limit(10),
-      O => \doa_pair.shadow_diff[19]_i_13_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[10]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(10),
+      O => \doa_pair.shadow_diff[19]_i_13__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_14\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_14__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(9),
-      I1 => shadow_limit(9),
-      O => \doa_pair.shadow_diff[19]_i_14_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[9]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(9),
+      O => \doa_pair.shadow_diff[19]_i_14__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_15\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_15__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(8),
-      I1 => shadow_limit(8),
-      O => \doa_pair.shadow_diff[19]_i_15_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[8]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(8),
+      O => \doa_pair.shadow_diff[19]_i_15__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_16\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_16__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(7),
-      I1 => shadow_limit(7),
-      O => \doa_pair.shadow_diff[19]_i_16_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[7]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(7),
+      O => \doa_pair.shadow_diff[19]_i_16__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_17\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_17__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(6),
-      I1 => shadow_limit(6),
-      O => \doa_pair.shadow_diff[19]_i_17_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[6]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(6),
+      O => \doa_pair.shadow_diff[19]_i_17__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_18\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_18__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(5),
-      I1 => shadow_limit(5),
-      O => \doa_pair.shadow_diff[19]_i_18_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[5]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(5),
+      O => \doa_pair.shadow_diff[19]_i_18__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_19\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_19__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(4),
-      I1 => shadow_limit(4),
-      O => \doa_pair.shadow_diff[19]_i_19_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[4]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(4),
+      O => \doa_pair.shadow_diff[19]_i_19__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_20\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_20__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(3),
-      I1 => shadow_limit(3),
-      O => \doa_pair.shadow_diff[19]_i_20_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[3]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(3),
+      O => \doa_pair.shadow_diff[19]_i_20__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_21\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_21__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(2),
-      I1 => shadow_limit(2),
-      O => \doa_pair.shadow_diff[19]_i_21_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[2]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(2),
+      O => \doa_pair.shadow_diff[19]_i_21__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_22\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_22__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(1),
-      I1 => shadow_limit(1),
-      O => \doa_pair.shadow_diff[19]_i_22_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[1]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(1),
+      O => \doa_pair.shadow_diff[19]_i_22__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_23\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_23__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(0),
-      I1 => shadow_limit(0),
-      O => \doa_pair.shadow_diff[19]_i_23_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[0]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(0),
+      O => \doa_pair.shadow_diff[19]_i_23__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_3\: unisim.vcomponents.LUT1
+\doa_pair.shadow_diff[19]_i_3__1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => shadow_limit(19),
-      O => \doa_pair.shadow_diff[19]_i_3_n_0\
+      I0 => \doa_pair.shadow_diff_reg[19]_0\(19),
+      O => \doa_pair.shadow_diff[19]_i_3__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_4__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(18),
-      I1 => shadow_limit(18),
-      O => \doa_pair.shadow_diff[19]_i_4_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[18]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(18),
+      O => \doa_pair.shadow_diff[19]_i_4__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_5__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(17),
-      I1 => shadow_limit(17),
-      O => \doa_pair.shadow_diff[19]_i_5_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[17]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(17),
+      O => \doa_pair.shadow_diff[19]_i_5__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_6__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(16),
-      I1 => shadow_limit(16),
-      O => \doa_pair.shadow_diff[19]_i_6_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[16]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(16),
+      O => \doa_pair.shadow_diff[19]_i_6__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_8\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_8__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(15),
-      I1 => shadow_limit(15),
-      O => \doa_pair.shadow_diff[19]_i_8_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[15]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(15),
+      O => \doa_pair.shadow_diff[19]_i_8__1_n_0\
     );
-\doa_pair.shadow_diff[19]_i_9\: unisim.vcomponents.LUT2
+\doa_pair.shadow_diff[19]_i_9__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => x_diff(14),
-      I1 => shadow_limit(14),
-      O => \doa_pair.shadow_diff[19]_i_9_n_0\
+      I0 => \doa_pair.x_diff_reg_n_0_[14]\,
+      I1 => \doa_pair.shadow_diff_reg[19]_0\(14),
+      O => \doa_pair.shadow_diff[19]_i_9__1_n_0\
     );
 \doa_pair.shadow_diff_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => has_diff,
-      D => shadow_diff0(19),
+      CE => \doa_pair.has_diff_reg_n_0\,
+      D => \doa_pair.shadow_diff_reg[19]_i_1__0_n_12\,
       Q => shadow_diff(19),
       R => '0'
     );
-\doa_pair.shadow_diff_reg[19]_i_1\: unisim.vcomponents.CARRY8
+\doa_pair.shadow_diff_reg[19]_i_1__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.shadow_diff_reg[19]_i_2_n_0\,
+      CI => \doa_pair.shadow_diff_reg[19]_i_2__0_n_0\,
       CI_TOP => '0',
-      CO(7 downto 3) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
-      CO(2) => \doa_pair.shadow_diff_reg[19]_i_1_n_5\,
-      CO(1) => \doa_pair.shadow_diff_reg[19]_i_1_n_6\,
-      CO(0) => \doa_pair.shadow_diff_reg[19]_i_1_n_7\,
+      CO(7 downto 3) => \NLW_doa_pair.shadow_diff_reg[19]_i_1__0_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \doa_pair.shadow_diff_reg[19]_i_1__0_n_5\,
+      CO(1) => \doa_pair.shadow_diff_reg[19]_i_1__0_n_6\,
+      CO(0) => \doa_pair.shadow_diff_reg[19]_i_1__0_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => x_diff(18 downto 16),
-      O(7 downto 4) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
-      O(3) => shadow_diff0(19),
-      O(2 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_1_O_UNCONNECTED\(2 downto 0),
+      DI(2) => \doa_pair.x_diff_reg_n_0_[18]\,
+      DI(1) => \doa_pair.x_diff_reg_n_0_[17]\,
+      DI(0) => \doa_pair.x_diff_reg_n_0_[16]\,
+      O(7 downto 4) => \NLW_doa_pair.shadow_diff_reg[19]_i_1__0_O_UNCONNECTED\(7 downto 4),
+      O(3) => \doa_pair.shadow_diff_reg[19]_i_1__0_n_12\,
+      O(2 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_1__0_O_UNCONNECTED\(2 downto 0),
       S(7 downto 4) => B"0000",
-      S(3) => \doa_pair.shadow_diff[19]_i_3_n_0\,
-      S(2) => \doa_pair.shadow_diff[19]_i_4_n_0\,
-      S(1) => \doa_pair.shadow_diff[19]_i_5_n_0\,
-      S(0) => \doa_pair.shadow_diff[19]_i_6_n_0\
+      S(3) => \doa_pair.shadow_diff[19]_i_3__1_n_0\,
+      S(2) => \doa_pair.shadow_diff[19]_i_4__1_n_0\,
+      S(1) => \doa_pair.shadow_diff[19]_i_5__1_n_0\,
+      S(0) => \doa_pair.shadow_diff[19]_i_6__1_n_0\
     );
-\doa_pair.shadow_diff_reg[19]_i_2\: unisim.vcomponents.CARRY8
+\doa_pair.shadow_diff_reg[19]_i_2__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.shadow_diff_reg[19]_i_7_n_0\,
+      CI => \doa_pair.shadow_diff_reg[19]_i_7__0_n_0\,
       CI_TOP => '0',
-      CO(7) => \doa_pair.shadow_diff_reg[19]_i_2_n_0\,
-      CO(6) => \doa_pair.shadow_diff_reg[19]_i_2_n_1\,
-      CO(5) => \doa_pair.shadow_diff_reg[19]_i_2_n_2\,
-      CO(4) => \doa_pair.shadow_diff_reg[19]_i_2_n_3\,
-      CO(3) => \doa_pair.shadow_diff_reg[19]_i_2_n_4\,
-      CO(2) => \doa_pair.shadow_diff_reg[19]_i_2_n_5\,
-      CO(1) => \doa_pair.shadow_diff_reg[19]_i_2_n_6\,
-      CO(0) => \doa_pair.shadow_diff_reg[19]_i_2_n_7\,
-      DI(7 downto 0) => x_diff(15 downto 8),
-      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \doa_pair.shadow_diff[19]_i_8_n_0\,
-      S(6) => \doa_pair.shadow_diff[19]_i_9_n_0\,
-      S(5) => \doa_pair.shadow_diff[19]_i_10_n_0\,
-      S(4) => \doa_pair.shadow_diff[19]_i_11_n_0\,
-      S(3) => \doa_pair.shadow_diff[19]_i_12_n_0\,
-      S(2) => \doa_pair.shadow_diff[19]_i_13_n_0\,
-      S(1) => \doa_pair.shadow_diff[19]_i_14_n_0\,
-      S(0) => \doa_pair.shadow_diff[19]_i_15_n_0\
+      CO(7) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_0\,
+      CO(6) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_1\,
+      CO(5) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_2\,
+      CO(4) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_3\,
+      CO(3) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_4\,
+      CO(2) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_5\,
+      CO(1) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_6\,
+      CO(0) => \doa_pair.shadow_diff_reg[19]_i_2__0_n_7\,
+      DI(7) => \doa_pair.x_diff_reg_n_0_[15]\,
+      DI(6) => \doa_pair.x_diff_reg_n_0_[14]\,
+      DI(5) => \doa_pair.x_diff_reg_n_0_[13]\,
+      DI(4) => \doa_pair.x_diff_reg_n_0_[12]\,
+      DI(3) => \doa_pair.x_diff_reg_n_0_[11]\,
+      DI(2) => \doa_pair.x_diff_reg_n_0_[10]\,
+      DI(1) => \doa_pair.x_diff_reg_n_0_[9]\,
+      DI(0) => \doa_pair.x_diff_reg_n_0_[8]\,
+      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_2__0_O_UNCONNECTED\(7 downto 0),
+      S(7) => \doa_pair.shadow_diff[19]_i_8__1_n_0\,
+      S(6) => \doa_pair.shadow_diff[19]_i_9__1_n_0\,
+      S(5) => \doa_pair.shadow_diff[19]_i_10__1_n_0\,
+      S(4) => \doa_pair.shadow_diff[19]_i_11__1_n_0\,
+      S(3) => \doa_pair.shadow_diff[19]_i_12__1_n_0\,
+      S(2) => \doa_pair.shadow_diff[19]_i_13__1_n_0\,
+      S(1) => \doa_pair.shadow_diff[19]_i_14__1_n_0\,
+      S(0) => \doa_pair.shadow_diff[19]_i_15__1_n_0\
     );
-\doa_pair.shadow_diff_reg[19]_i_7\: unisim.vcomponents.CARRY8
+\doa_pair.shadow_diff_reg[19]_i_7__0\: unisim.vcomponents.CARRY8
      port map (
       CI => '1',
       CI_TOP => '0',
-      CO(7) => \doa_pair.shadow_diff_reg[19]_i_7_n_0\,
-      CO(6) => \doa_pair.shadow_diff_reg[19]_i_7_n_1\,
-      CO(5) => \doa_pair.shadow_diff_reg[19]_i_7_n_2\,
-      CO(4) => \doa_pair.shadow_diff_reg[19]_i_7_n_3\,
-      CO(3) => \doa_pair.shadow_diff_reg[19]_i_7_n_4\,
-      CO(2) => \doa_pair.shadow_diff_reg[19]_i_7_n_5\,
-      CO(1) => \doa_pair.shadow_diff_reg[19]_i_7_n_6\,
-      CO(0) => \doa_pair.shadow_diff_reg[19]_i_7_n_7\,
-      DI(7 downto 0) => x_diff(7 downto 0),
-      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_7_O_UNCONNECTED\(7 downto 0),
-      S(7) => \doa_pair.shadow_diff[19]_i_16_n_0\,
-      S(6) => \doa_pair.shadow_diff[19]_i_17_n_0\,
-      S(5) => \doa_pair.shadow_diff[19]_i_18_n_0\,
-      S(4) => \doa_pair.shadow_diff[19]_i_19_n_0\,
-      S(3) => \doa_pair.shadow_diff[19]_i_20_n_0\,
-      S(2) => \doa_pair.shadow_diff[19]_i_21_n_0\,
-      S(1) => \doa_pair.shadow_diff[19]_i_22_n_0\,
-      S(0) => \doa_pair.shadow_diff[19]_i_23_n_0\
+      CO(7) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_0\,
+      CO(6) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_1\,
+      CO(5) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_2\,
+      CO(4) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_3\,
+      CO(3) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_4\,
+      CO(2) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_5\,
+      CO(1) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_6\,
+      CO(0) => \doa_pair.shadow_diff_reg[19]_i_7__0_n_7\,
+      DI(7) => \doa_pair.x_diff_reg_n_0_[7]\,
+      DI(6) => \doa_pair.x_diff_reg_n_0_[6]\,
+      DI(5) => \doa_pair.x_diff_reg_n_0_[5]\,
+      DI(4) => \doa_pair.x_diff_reg_n_0_[4]\,
+      DI(3) => \doa_pair.x_diff_reg_n_0_[3]\,
+      DI(2) => \doa_pair.x_diff_reg_n_0_[2]\,
+      DI(1) => \doa_pair.x_diff_reg_n_0_[1]\,
+      DI(0) => \doa_pair.x_diff_reg_n_0_[0]\,
+      O(7 downto 0) => \NLW_doa_pair.shadow_diff_reg[19]_i_7__0_O_UNCONNECTED\(7 downto 0),
+      S(7) => \doa_pair.shadow_diff[19]_i_16__1_n_0\,
+      S(6) => \doa_pair.shadow_diff[19]_i_17__1_n_0\,
+      S(5) => \doa_pair.shadow_diff[19]_i_18__1_n_0\,
+      S(4) => \doa_pair.shadow_diff[19]_i_19__1_n_0\,
+      S(3) => \doa_pair.shadow_diff[19]_i_20__1_n_0\,
+      S(2) => \doa_pair.shadow_diff[19]_i_21__1_n_0\,
+      S(1) => \doa_pair.shadow_diff[19]_i_22__1_n_0\,
+      S(0) => \doa_pair.shadow_diff[19]_i_23__1_n_0\
     );
-\doa_pair.shadow_i_1\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8830FFFF88300000"
     )
         port map (
-      I0 => \doa_pair.shadow_i_2_n_0\,
+      I0 => \doa_pair.shadow_i_2__0_n_0\,
       I1 => \doa_pair.ov_reg_n_0_[5]\,
-      I2 => \doa_pair.shadow_i_3_n_0\,
+      I2 => \doa_pair.shadow_i_3__0_n_0\,
       I3 => \doa_pair.ov_reg_n_0_[4]\,
-      I4 => \doa_pair.shadow_i_4_n_0\,
-      I5 => \^shadow\,
-      O => \doa_pair.shadow_i_1_n_0\
+      I4 => shadow,
+      I5 => \^shadow_ew\,
+      O => \doa_pair.shadow_i_1__0_n_0\
     );
-\doa_pair.shadow_i_2\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_2__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"2000A00020000000"
     )
@@ -40602,9 +40754,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[2]\,
       I4 => \doa_pair.ov_reg_n_0_[1]\,
       I5 => has_shadow_diff,
-      O => \doa_pair.shadow_i_2_n_0\
+      O => \doa_pair.shadow_i_2__0_n_0\
     );
-\doa_pair.shadow_i_3\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_3__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"000000000A080008"
     )
@@ -40615,22 +40767,22 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[1]\,
       I4 => has_shadow_diff,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.shadow_i_3_n_0\
+      O => \doa_pair.shadow_i_3__0_n_0\
     );
-\doa_pair.shadow_i_4\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_4__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FEEEAAAAAAAAFBBB"
     )
         port map (
-      I0 => \doa_pair.shadow_i_5_n_0\,
+      I0 => \doa_pair.shadow_i_5__0_n_0\,
       I1 => \doa_pair.ov_reg_n_0_[1]\,
       I2 => shadow_diff(19),
       I3 => has_shadow_diff,
       I4 => \doa_pair.ov_reg_n_0_[2]\,
       I5 => \doa_pair.ov_reg_n_0_[0]\,
-      O => \doa_pair.shadow_i_4_n_0\
+      O => shadow
     );
-\doa_pair.shadow_i_5\: unisim.vcomponents.LUT6
+\doa_pair.shadow_i_5__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"F7FF77FFFFEEFFFE"
     )
@@ -40641,43 +40793,43 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[2]\,
       I4 => \doa_pair.ov_reg_n_0_[1]\,
       I5 => \doa_pair.ov_reg_n_0_[3]\,
-      O => \doa_pair.shadow_i_5_n_0\
+      O => \doa_pair.shadow_i_5__0_n_0\
     );
 \doa_pair.shadow_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_pair.shadow_i_1_n_0\,
-      Q => \^shadow\,
+      D => \doa_pair.shadow_i_1__0_n_0\,
+      Q => \^shadow_ew\,
       R => '0'
     );
-\doa_pair.sum[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => run,
-      O => clear
-    );
-\doa_pair.sum[0]_i_10\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_10__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(20),
       I1 => \doa_pair.sum_reg_n_0_[1]\,
-      O => \doa_pair.sum[0]_i_10_n_0\
+      O => \doa_pair.sum[0]_i_10__0_n_0\
     );
-\doa_pair.sum[0]_i_11\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_11__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(19),
       I1 => \doa_pair.sum_reg_n_0_[0]\,
-      O => \doa_pair.sum[0]_i_11_n_0\
+      O => \doa_pair.sum[0]_i_11__0_n_0\
     );
-\doa_pair.sum[0]_i_2\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_1__0\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => run,
+      O => \doa_pair.sum[0]_i_1__0_n_0\
+    );
+\doa_pair.sum[0]_i_2__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
@@ -40686,430 +40838,430 @@ GND: unisim.vcomponents.GND
       I1 => \doa_pair.ignore_reg_n_0\,
       O => sum0
     );
-\doa_pair.sum[0]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_4__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(26),
-      I1 => p_0_in(2),
-      O => \doa_pair.sum[0]_i_4_n_0\
+      I1 => \doa_pair.sum_reg\(7),
+      O => \doa_pair.sum[0]_i_4__0_n_0\
     );
-\doa_pair.sum[0]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_5__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(25),
-      I1 => p_0_in(1),
-      O => \doa_pair.sum[0]_i_5_n_0\
+      I1 => \doa_pair.sum_reg\(6),
+      O => \doa_pair.sum[0]_i_5__0_n_0\
     );
-\doa_pair.sum[0]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_6__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(24),
-      I1 => p_0_in(0),
-      O => \doa_pair.sum[0]_i_6_n_0\
+      I1 => \doa_pair.sum_reg\(5),
+      O => \doa_pair.sum[0]_i_6__0_n_0\
     );
-\doa_pair.sum[0]_i_7\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_7__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(23),
       I1 => \doa_pair.sum_reg_n_0_[4]\,
-      O => \doa_pair.sum[0]_i_7_n_0\
+      O => \doa_pair.sum[0]_i_7__0_n_0\
     );
-\doa_pair.sum[0]_i_8\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_8__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(22),
       I1 => \doa_pair.sum_reg_n_0_[3]\,
-      O => \doa_pair.sum[0]_i_8_n_0\
+      O => \doa_pair.sum[0]_i_8__0_n_0\
     );
-\doa_pair.sum[0]_i_9\: unisim.vcomponents.LUT2
+\doa_pair.sum[0]_i_9__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(21),
       I1 => \doa_pair.sum_reg_n_0_[2]\,
-      O => \doa_pair.sum[0]_i_9_n_0\
+      O => \doa_pair.sum[0]_i_9__0_n_0\
     );
-\doa_pair.sum[16]_i_2\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_2__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(39),
-      I1 => p_0_in(15),
-      O => \doa_pair.sum[16]_i_2_n_0\
+      I1 => \doa_pair.sum_reg\(20),
+      O => \doa_pair.sum[16]_i_2__0_n_0\
     );
-\doa_pair.sum[16]_i_3\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_3__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(38),
-      I1 => p_0_in(14),
-      O => \doa_pair.sum[16]_i_3_n_0\
+      I1 => \doa_pair.sum_reg\(19),
+      O => \doa_pair.sum[16]_i_3__0_n_0\
     );
-\doa_pair.sum[16]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_4__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(37),
-      I1 => p_0_in(13),
-      O => \doa_pair.sum[16]_i_4_n_0\
+      I1 => \doa_pair.sum_reg\(18),
+      O => \doa_pair.sum[16]_i_4__0_n_0\
     );
-\doa_pair.sum[16]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_5__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(36),
-      I1 => p_0_in(12),
-      O => \doa_pair.sum[16]_i_5_n_0\
+      I1 => \doa_pair.sum_reg\(17),
+      O => \doa_pair.sum[16]_i_5__0_n_0\
     );
-\doa_pair.sum[16]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.sum[16]_i_6__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(35),
-      I1 => p_0_in(11),
-      O => \doa_pair.sum[16]_i_6_n_0\
+      I1 => \doa_pair.sum_reg\(16),
+      O => \doa_pair.sum[16]_i_6__0_n_0\
     );
-\doa_pair.sum[8]_i_2\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_2__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(34),
-      I1 => p_0_in(10),
-      O => \doa_pair.sum[8]_i_2_n_0\
+      I1 => \doa_pair.sum_reg\(15),
+      O => \doa_pair.sum[8]_i_2__0_n_0\
     );
-\doa_pair.sum[8]_i_3\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_3__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(33),
-      I1 => p_0_in(9),
-      O => \doa_pair.sum[8]_i_3_n_0\
+      I1 => \doa_pair.sum_reg\(14),
+      O => \doa_pair.sum[8]_i_3__0_n_0\
     );
-\doa_pair.sum[8]_i_4\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_4__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(32),
-      I1 => p_0_in(8),
-      O => \doa_pair.sum[8]_i_4_n_0\
+      I1 => \doa_pair.sum_reg\(13),
+      O => \doa_pair.sum[8]_i_4__0_n_0\
     );
-\doa_pair.sum[8]_i_5\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_5__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(31),
-      I1 => p_0_in(7),
-      O => \doa_pair.sum[8]_i_5_n_0\
+      I1 => \doa_pair.sum_reg\(12),
+      O => \doa_pair.sum[8]_i_5__0_n_0\
     );
-\doa_pair.sum[8]_i_6\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_6__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(30),
-      I1 => p_0_in(6),
-      O => \doa_pair.sum[8]_i_6_n_0\
+      I1 => \doa_pair.sum_reg\(11),
+      O => \doa_pair.sum[8]_i_6__0_n_0\
     );
-\doa_pair.sum[8]_i_7\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_7__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(29),
-      I1 => p_0_in(5),
-      O => \doa_pair.sum[8]_i_7_n_0\
+      I1 => \doa_pair.sum_reg\(10),
+      O => \doa_pair.sum[8]_i_7__0_n_0\
     );
-\doa_pair.sum[8]_i_8\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_8__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(28),
-      I1 => p_0_in(4),
-      O => \doa_pair.sum[8]_i_8_n_0\
+      I1 => \doa_pair.sum_reg\(9),
+      O => \doa_pair.sum[8]_i_8__0_n_0\
     );
-\doa_pair.sum[8]_i_9\: unisim.vcomponents.LUT2
+\doa_pair.sum[8]_i_9__0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => cp(27),
-      I1 => p_0_in(3),
-      O => \doa_pair.sum[8]_i_9_n_0\
+      I1 => \doa_pair.sum_reg\(8),
+      O => \doa_pair.sum[8]_i_9__0_n_0\
     );
 \doa_pair.sum_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_15\,
+      D => \doa_pair.sum_reg[0]_i_3__0_n_15\,
       Q => \doa_pair.sum_reg_n_0_[0]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
-\doa_pair.sum_reg[0]_i_3\: unisim.vcomponents.CARRY8
+\doa_pair.sum_reg[0]_i_3__0\: unisim.vcomponents.CARRY8
      port map (
       CI => '0',
       CI_TOP => '0',
-      CO(7) => \doa_pair.sum_reg[0]_i_3_n_0\,
-      CO(6) => \doa_pair.sum_reg[0]_i_3_n_1\,
-      CO(5) => \doa_pair.sum_reg[0]_i_3_n_2\,
-      CO(4) => \doa_pair.sum_reg[0]_i_3_n_3\,
-      CO(3) => \doa_pair.sum_reg[0]_i_3_n_4\,
-      CO(2) => \doa_pair.sum_reg[0]_i_3_n_5\,
-      CO(1) => \doa_pair.sum_reg[0]_i_3_n_6\,
-      CO(0) => \doa_pair.sum_reg[0]_i_3_n_7\,
+      CO(7) => \doa_pair.sum_reg[0]_i_3__0_n_0\,
+      CO(6) => \doa_pair.sum_reg[0]_i_3__0_n_1\,
+      CO(5) => \doa_pair.sum_reg[0]_i_3__0_n_2\,
+      CO(4) => \doa_pair.sum_reg[0]_i_3__0_n_3\,
+      CO(3) => \doa_pair.sum_reg[0]_i_3__0_n_4\,
+      CO(2) => \doa_pair.sum_reg[0]_i_3__0_n_5\,
+      CO(1) => \doa_pair.sum_reg[0]_i_3__0_n_6\,
+      CO(0) => \doa_pair.sum_reg[0]_i_3__0_n_7\,
       DI(7 downto 0) => cp(26 downto 19),
-      O(7) => \doa_pair.sum_reg[0]_i_3_n_8\,
-      O(6) => \doa_pair.sum_reg[0]_i_3_n_9\,
-      O(5) => \doa_pair.sum_reg[0]_i_3_n_10\,
-      O(4) => \doa_pair.sum_reg[0]_i_3_n_11\,
-      O(3) => \doa_pair.sum_reg[0]_i_3_n_12\,
-      O(2) => \doa_pair.sum_reg[0]_i_3_n_13\,
-      O(1) => \doa_pair.sum_reg[0]_i_3_n_14\,
-      O(0) => \doa_pair.sum_reg[0]_i_3_n_15\,
-      S(7) => \doa_pair.sum[0]_i_4_n_0\,
-      S(6) => \doa_pair.sum[0]_i_5_n_0\,
-      S(5) => \doa_pair.sum[0]_i_6_n_0\,
-      S(4) => \doa_pair.sum[0]_i_7_n_0\,
-      S(3) => \doa_pair.sum[0]_i_8_n_0\,
-      S(2) => \doa_pair.sum[0]_i_9_n_0\,
-      S(1) => \doa_pair.sum[0]_i_10_n_0\,
-      S(0) => \doa_pair.sum[0]_i_11_n_0\
+      O(7) => \doa_pair.sum_reg[0]_i_3__0_n_8\,
+      O(6) => \doa_pair.sum_reg[0]_i_3__0_n_9\,
+      O(5) => \doa_pair.sum_reg[0]_i_3__0_n_10\,
+      O(4) => \doa_pair.sum_reg[0]_i_3__0_n_11\,
+      O(3) => \doa_pair.sum_reg[0]_i_3__0_n_12\,
+      O(2) => \doa_pair.sum_reg[0]_i_3__0_n_13\,
+      O(1) => \doa_pair.sum_reg[0]_i_3__0_n_14\,
+      O(0) => \doa_pair.sum_reg[0]_i_3__0_n_15\,
+      S(7) => \doa_pair.sum[0]_i_4__0_n_0\,
+      S(6) => \doa_pair.sum[0]_i_5__0_n_0\,
+      S(5) => \doa_pair.sum[0]_i_6__0_n_0\,
+      S(4) => \doa_pair.sum[0]_i_7__0_n_0\,
+      S(3) => \doa_pair.sum[0]_i_8__0_n_0\,
+      S(2) => \doa_pair.sum[0]_i_9__0_n_0\,
+      S(1) => \doa_pair.sum[0]_i_10__0_n_0\,
+      S(0) => \doa_pair.sum[0]_i_11__0_n_0\
     );
 \doa_pair.sum_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_13\,
-      Q => p_0_in(5),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_13\,
+      Q => \doa_pair.sum_reg\(10),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_12\,
-      Q => p_0_in(6),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_12\,
+      Q => \doa_pair.sum_reg\(11),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_11\,
-      Q => p_0_in(7),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_11\,
+      Q => \doa_pair.sum_reg\(12),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_10\,
-      Q => p_0_in(8),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_10\,
+      Q => \doa_pair.sum_reg\(13),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_9\,
-      Q => p_0_in(9),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_9\,
+      Q => \doa_pair.sum_reg\(14),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_8\,
-      Q => p_0_in(10),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_8\,
+      Q => \doa_pair.sum_reg\(15),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_15\,
-      Q => p_0_in(11),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__0_n_15\,
+      Q => \doa_pair.sum_reg\(16),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
-\doa_pair.sum_reg[16]_i_1\: unisim.vcomponents.CARRY8
+\doa_pair.sum_reg[16]_i_1__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.sum_reg[8]_i_1_n_0\,
+      CI => \doa_pair.sum_reg[8]_i_1__0_n_0\,
       CI_TOP => '0',
-      CO(7 downto 4) => \NLW_doa_pair.sum_reg[16]_i_1_CO_UNCONNECTED\(7 downto 4),
-      CO(3) => \doa_pair.sum_reg[16]_i_1_n_4\,
-      CO(2) => \doa_pair.sum_reg[16]_i_1_n_5\,
-      CO(1) => \doa_pair.sum_reg[16]_i_1_n_6\,
-      CO(0) => \doa_pair.sum_reg[16]_i_1_n_7\,
+      CO(7 downto 4) => \NLW_doa_pair.sum_reg[16]_i_1__0_CO_UNCONNECTED\(7 downto 4),
+      CO(3) => \doa_pair.sum_reg[16]_i_1__0_n_4\,
+      CO(2) => \doa_pair.sum_reg[16]_i_1__0_n_5\,
+      CO(1) => \doa_pair.sum_reg[16]_i_1__0_n_6\,
+      CO(0) => \doa_pair.sum_reg[16]_i_1__0_n_7\,
       DI(7 downto 4) => B"0000",
       DI(3 downto 0) => cp(38 downto 35),
-      O(7 downto 5) => \NLW_doa_pair.sum_reg[16]_i_1_O_UNCONNECTED\(7 downto 5),
-      O(4) => \doa_pair.sum_reg[16]_i_1_n_11\,
-      O(3) => \doa_pair.sum_reg[16]_i_1_n_12\,
-      O(2) => \doa_pair.sum_reg[16]_i_1_n_13\,
-      O(1) => \doa_pair.sum_reg[16]_i_1_n_14\,
-      O(0) => \doa_pair.sum_reg[16]_i_1_n_15\,
+      O(7 downto 5) => \NLW_doa_pair.sum_reg[16]_i_1__0_O_UNCONNECTED\(7 downto 5),
+      O(4) => \doa_pair.sum_reg[16]_i_1__0_n_11\,
+      O(3) => \doa_pair.sum_reg[16]_i_1__0_n_12\,
+      O(2) => \doa_pair.sum_reg[16]_i_1__0_n_13\,
+      O(1) => \doa_pair.sum_reg[16]_i_1__0_n_14\,
+      O(0) => \doa_pair.sum_reg[16]_i_1__0_n_15\,
       S(7 downto 5) => B"000",
-      S(4) => \doa_pair.sum[16]_i_2_n_0\,
-      S(3) => \doa_pair.sum[16]_i_3_n_0\,
-      S(2) => \doa_pair.sum[16]_i_4_n_0\,
-      S(1) => \doa_pair.sum[16]_i_5_n_0\,
-      S(0) => \doa_pair.sum[16]_i_6_n_0\
+      S(4) => \doa_pair.sum[16]_i_2__0_n_0\,
+      S(3) => \doa_pair.sum[16]_i_3__0_n_0\,
+      S(2) => \doa_pair.sum[16]_i_4__0_n_0\,
+      S(1) => \doa_pair.sum[16]_i_5__0_n_0\,
+      S(0) => \doa_pair.sum[16]_i_6__0_n_0\
     );
 \doa_pair.sum_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_14\,
-      Q => p_0_in(12),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__0_n_14\,
+      Q => \doa_pair.sum_reg\(17),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_13\,
-      Q => p_0_in(13),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__0_n_13\,
+      Q => \doa_pair.sum_reg\(18),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_12\,
-      Q => p_0_in(14),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__0_n_12\,
+      Q => \doa_pair.sum_reg\(19),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_14\,
+      D => \doa_pair.sum_reg[0]_i_3__0_n_14\,
       Q => \doa_pair.sum_reg_n_0_[1]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[16]_i_1_n_11\,
-      Q => p_0_in(15),
-      R => clear
+      D => \doa_pair.sum_reg[16]_i_1__0_n_11\,
+      Q => \doa_pair.sum_reg\(20),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_13\,
+      D => \doa_pair.sum_reg[0]_i_3__0_n_13\,
       Q => \doa_pair.sum_reg_n_0_[2]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_12\,
+      D => \doa_pair.sum_reg[0]_i_3__0_n_12\,
       Q => \doa_pair.sum_reg_n_0_[3]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_11\,
+      D => \doa_pair.sum_reg[0]_i_3__0_n_11\,
       Q => \doa_pair.sum_reg_n_0_[4]\,
-      R => clear
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_10\,
-      Q => p_0_in(0),
-      R => clear
+      D => \doa_pair.sum_reg[0]_i_3__0_n_10\,
+      Q => \doa_pair.sum_reg\(5),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_9\,
-      Q => p_0_in(1),
-      R => clear
+      D => \doa_pair.sum_reg[0]_i_3__0_n_9\,
+      Q => \doa_pair.sum_reg\(6),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[0]_i_3_n_8\,
-      Q => p_0_in(2),
-      R => clear
+      D => \doa_pair.sum_reg[0]_i_3__0_n_8\,
+      Q => \doa_pair.sum_reg\(7),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
 \doa_pair.sum_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_15\,
-      Q => p_0_in(3),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_15\,
+      Q => \doa_pair.sum_reg\(8),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
-\doa_pair.sum_reg[8]_i_1\: unisim.vcomponents.CARRY8
+\doa_pair.sum_reg[8]_i_1__0\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_pair.sum_reg[0]_i_3_n_0\,
+      CI => \doa_pair.sum_reg[0]_i_3__0_n_0\,
       CI_TOP => '0',
-      CO(7) => \doa_pair.sum_reg[8]_i_1_n_0\,
-      CO(6) => \doa_pair.sum_reg[8]_i_1_n_1\,
-      CO(5) => \doa_pair.sum_reg[8]_i_1_n_2\,
-      CO(4) => \doa_pair.sum_reg[8]_i_1_n_3\,
-      CO(3) => \doa_pair.sum_reg[8]_i_1_n_4\,
-      CO(2) => \doa_pair.sum_reg[8]_i_1_n_5\,
-      CO(1) => \doa_pair.sum_reg[8]_i_1_n_6\,
-      CO(0) => \doa_pair.sum_reg[8]_i_1_n_7\,
+      CO(7) => \doa_pair.sum_reg[8]_i_1__0_n_0\,
+      CO(6) => \doa_pair.sum_reg[8]_i_1__0_n_1\,
+      CO(5) => \doa_pair.sum_reg[8]_i_1__0_n_2\,
+      CO(4) => \doa_pair.sum_reg[8]_i_1__0_n_3\,
+      CO(3) => \doa_pair.sum_reg[8]_i_1__0_n_4\,
+      CO(2) => \doa_pair.sum_reg[8]_i_1__0_n_5\,
+      CO(1) => \doa_pair.sum_reg[8]_i_1__0_n_6\,
+      CO(0) => \doa_pair.sum_reg[8]_i_1__0_n_7\,
       DI(7 downto 0) => cp(34 downto 27),
-      O(7) => \doa_pair.sum_reg[8]_i_1_n_8\,
-      O(6) => \doa_pair.sum_reg[8]_i_1_n_9\,
-      O(5) => \doa_pair.sum_reg[8]_i_1_n_10\,
-      O(4) => \doa_pair.sum_reg[8]_i_1_n_11\,
-      O(3) => \doa_pair.sum_reg[8]_i_1_n_12\,
-      O(2) => \doa_pair.sum_reg[8]_i_1_n_13\,
-      O(1) => \doa_pair.sum_reg[8]_i_1_n_14\,
-      O(0) => \doa_pair.sum_reg[8]_i_1_n_15\,
-      S(7) => \doa_pair.sum[8]_i_2_n_0\,
-      S(6) => \doa_pair.sum[8]_i_3_n_0\,
-      S(5) => \doa_pair.sum[8]_i_4_n_0\,
-      S(4) => \doa_pair.sum[8]_i_5_n_0\,
-      S(3) => \doa_pair.sum[8]_i_6_n_0\,
-      S(2) => \doa_pair.sum[8]_i_7_n_0\,
-      S(1) => \doa_pair.sum[8]_i_8_n_0\,
-      S(0) => \doa_pair.sum[8]_i_9_n_0\
+      O(7) => \doa_pair.sum_reg[8]_i_1__0_n_8\,
+      O(6) => \doa_pair.sum_reg[8]_i_1__0_n_9\,
+      O(5) => \doa_pair.sum_reg[8]_i_1__0_n_10\,
+      O(4) => \doa_pair.sum_reg[8]_i_1__0_n_11\,
+      O(3) => \doa_pair.sum_reg[8]_i_1__0_n_12\,
+      O(2) => \doa_pair.sum_reg[8]_i_1__0_n_13\,
+      O(1) => \doa_pair.sum_reg[8]_i_1__0_n_14\,
+      O(0) => \doa_pair.sum_reg[8]_i_1__0_n_15\,
+      S(7) => \doa_pair.sum[8]_i_2__0_n_0\,
+      S(6) => \doa_pair.sum[8]_i_3__0_n_0\,
+      S(5) => \doa_pair.sum[8]_i_4__0_n_0\,
+      S(4) => \doa_pair.sum[8]_i_5__0_n_0\,
+      S(3) => \doa_pair.sum[8]_i_6__0_n_0\,
+      S(2) => \doa_pair.sum[8]_i_7__0_n_0\,
+      S(1) => \doa_pair.sum[8]_i_8__0_n_0\,
+      S(0) => \doa_pair.sum[8]_i_9__0_n_0\
     );
 \doa_pair.sum_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sum0,
-      D => \doa_pair.sum_reg[8]_i_1_n_14\,
-      Q => p_0_in(4),
-      R => clear
+      D => \doa_pair.sum_reg[8]_i_1__0_n_14\,
+      Q => \doa_pair.sum_reg\(9),
+      R => \doa_pair.sum[0]_i_1__0_n_0\
     );
-\doa_pair.x[0]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[0]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"F6"
     )
@@ -41119,7 +41271,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(16),
       O => x(0)
     );
-\doa_pair.x[10]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[10]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41129,7 +41281,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(26),
       O => x(10)
     );
-\doa_pair.x[11]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[11]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41139,7 +41291,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(27),
       O => x(11)
     );
-\doa_pair.x[12]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[12]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41149,7 +41301,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(28),
       O => x(12)
     );
-\doa_pair.x[13]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[13]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41159,7 +41311,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(29),
       O => x(13)
     );
-\doa_pair.x[14]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[14]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41169,7 +41321,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(30),
       O => x(14)
     );
-\doa_pair.x[15]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[15]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41179,7 +41331,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(31),
       O => x(15)
     );
-\doa_pair.x[16]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[16]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41189,7 +41341,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(32),
       O => x(16)
     );
-\doa_pair.x[17]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[17]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41199,7 +41351,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(33),
       O => x(17)
     );
-\doa_pair.x[18]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[18]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41209,7 +41361,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(34),
       O => x(18)
     );
-\doa_pair.x[19]_i_1\: unisim.vcomponents.LUT6
+\doa_pair.x[19]_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8000800180010001"
     )
@@ -41220,9 +41372,9 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[4]\,
       I4 => \doa_pair.ov_reg_n_0_[1]\,
       I5 => \doa_pair.ov_reg_n_0_[0]\,
-      O => \doa_pair.x[19]_i_1_n_0\
+      O => \doa_pair.x[19]_i_1__0_n_0\
     );
-\doa_pair.x[19]_i_2\: unisim.vcomponents.LUT3
+\doa_pair.x[19]_i_2__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"8E"
     )
@@ -41232,7 +41384,7 @@ GND: unisim.vcomponents.GND
       I2 => \doa_pair.ov_reg_n_0_[1]\,
       O => x(19)
     );
-\doa_pair.x[1]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[1]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41242,7 +41394,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(17),
       O => x(1)
     );
-\doa_pair.x[2]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[2]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41252,7 +41404,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(18),
       O => x(2)
     );
-\doa_pair.x[3]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[3]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41262,7 +41414,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(19),
       O => x(3)
     );
-\doa_pair.x[4]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[4]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41272,7 +41424,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(20),
       O => x(4)
     );
-\doa_pair.x[5]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[5]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41282,7 +41434,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(21),
       O => x(5)
     );
-\doa_pair.x[6]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[6]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41292,7 +41444,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(22),
       O => x(6)
     );
-\doa_pair.x[7]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[7]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41302,7 +41454,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(23),
       O => x(7)
     );
-\doa_pair.x[8]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[8]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41312,7 +41464,7 @@ GND: unisim.vcomponents.GND
       I2 => prod(24),
       O => x(8)
     );
-\doa_pair.x[9]_i_1\: unisim.vcomponents.LUT3
+\doa_pair.x[9]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"D4"
     )
@@ -41327,8 +41479,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(0),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[0]\,
       O => \doa_pair.x_abs[0]_i_1_n_0\
     );
 \doa_pair.x_abs[10]_i_1\: unisim.vcomponents.LUT2
@@ -41336,8 +41488,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(10),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[10]\,
       O => \doa_pair.x_abs[10]_i_1_n_0\
     );
 \doa_pair.x_abs[11]_i_1\: unisim.vcomponents.LUT2
@@ -41345,8 +41497,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(11),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[11]\,
       O => \doa_pair.x_abs[11]_i_1_n_0\
     );
 \doa_pair.x_abs[12]_i_1\: unisim.vcomponents.LUT2
@@ -41354,8 +41506,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(12),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[12]\,
       O => \doa_pair.x_abs[12]_i_1_n_0\
     );
 \doa_pair.x_abs[13]_i_1\: unisim.vcomponents.LUT2
@@ -41363,8 +41515,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(13),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[13]\,
       O => \doa_pair.x_abs[13]_i_1_n_0\
     );
 \doa_pair.x_abs[14]_i_1\: unisim.vcomponents.LUT2
@@ -41372,8 +41524,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(14),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[14]\,
       O => \doa_pair.x_abs[14]_i_1_n_0\
     );
 \doa_pair.x_abs[15]_i_1\: unisim.vcomponents.LUT2
@@ -41381,8 +41533,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(15),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[15]\,
       O => \doa_pair.x_abs[15]_i_1_n_0\
     );
 \doa_pair.x_abs[16]_i_1\: unisim.vcomponents.LUT2
@@ -41390,8 +41542,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(16),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[16]\,
       O => \doa_pair.x_abs[16]_i_1_n_0\
     );
 \doa_pair.x_abs[17]_i_1\: unisim.vcomponents.LUT2
@@ -41399,8 +41551,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(17),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[17]\,
       O => \doa_pair.x_abs[17]_i_1_n_0\
     );
 \doa_pair.x_abs[18]_i_1\: unisim.vcomponents.LUT2
@@ -41408,8 +41560,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(18),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[18]\,
       O => \doa_pair.x_abs[18]_i_1_n_0\
     );
 \doa_pair.x_abs[19]_i_1\: unisim.vcomponents.LUT2
@@ -41417,8 +41569,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(19),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[19]\,
       O => \doa_pair.x_abs[19]_i_1_n_0\
     );
 \doa_pair.x_abs[1]_i_1\: unisim.vcomponents.LUT2
@@ -41426,8 +41578,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(1),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[1]\,
       O => \doa_pair.x_abs[1]_i_1_n_0\
     );
 \doa_pair.x_abs[2]_i_1\: unisim.vcomponents.LUT2
@@ -41435,8 +41587,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(2),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[2]\,
       O => \doa_pair.x_abs[2]_i_1_n_0\
     );
 \doa_pair.x_abs[3]_i_1\: unisim.vcomponents.LUT2
@@ -41444,8 +41596,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(3),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[3]\,
       O => \doa_pair.x_abs[3]_i_1_n_0\
     );
 \doa_pair.x_abs[4]_i_1\: unisim.vcomponents.LUT2
@@ -41453,8 +41605,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(4),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[4]\,
       O => \doa_pair.x_abs[4]_i_1_n_0\
     );
 \doa_pair.x_abs[5]_i_1\: unisim.vcomponents.LUT2
@@ -41462,8 +41614,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(5),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[5]\,
       O => \doa_pair.x_abs[5]_i_1_n_0\
     );
 \doa_pair.x_abs[6]_i_1\: unisim.vcomponents.LUT2
@@ -41471,8 +41623,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(6),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[6]\,
       O => \doa_pair.x_abs[6]_i_1_n_0\
     );
 \doa_pair.x_abs[7]_i_1\: unisim.vcomponents.LUT2
@@ -41480,8 +41632,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(7),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[7]\,
       O => \doa_pair.x_abs[7]_i_1_n_0\
     );
 \doa_pair.x_abs[8]_i_1\: unisim.vcomponents.LUT2
@@ -41489,8 +41641,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(8),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[8]\,
       O => \doa_pair.x_abs[8]_i_1_n_0\
     );
 \doa_pair.x_abs[9]_i_1\: unisim.vcomponents.LUT2
@@ -41498,168 +41650,168 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => x_raw(20),
-      I1 => x_raw(9),
+      I0 => \doa_pair.x_raw_reg_n_0_[20]\,
+      I1 => \doa_pair.x_raw_reg_n_0_[9]\,
       O => \doa_pair.x_abs[9]_i_1_n_0\
     );
 \doa_pair.x_abs_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[0]_i_1_n_0\,
-      Q => x_abs(0),
+      Q => \doa_pair.x_abs_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[10]_i_1_n_0\,
-      Q => x_abs(10),
+      Q => \doa_pair.x_abs_reg_n_0_[10]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[11]_i_1_n_0\,
-      Q => x_abs(11),
+      Q => \doa_pair.x_abs_reg_n_0_[11]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[12]_i_1_n_0\,
-      Q => x_abs(12),
+      Q => \doa_pair.x_abs_reg_n_0_[12]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[13]_i_1_n_0\,
-      Q => x_abs(13),
+      Q => \doa_pair.x_abs_reg_n_0_[13]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[14]_i_1_n_0\,
-      Q => x_abs(14),
+      Q => \doa_pair.x_abs_reg_n_0_[14]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[15]_i_1_n_0\,
-      Q => x_abs(15),
+      Q => \doa_pair.x_abs_reg_n_0_[15]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[16]_i_1_n_0\,
-      Q => x_abs(16),
+      Q => \doa_pair.x_abs_reg_n_0_[16]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[17]_i_1_n_0\,
-      Q => x_abs(17),
+      Q => \doa_pair.x_abs_reg_n_0_[17]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[18]_i_1_n_0\,
-      Q => x_abs(18),
+      Q => \doa_pair.x_abs_reg_n_0_[18]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[19]_i_1_n_0\,
-      Q => x_abs(19),
+      Q => \doa_pair.x_abs_reg_n_0_[19]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[1]_i_1_n_0\,
-      Q => x_abs(1),
+      Q => \doa_pair.x_abs_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[2]_i_1_n_0\,
-      Q => x_abs(2),
+      Q => \doa_pair.x_abs_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[3]_i_1_n_0\,
-      Q => x_abs(3),
+      Q => \doa_pair.x_abs_reg_n_0_[3]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[4]_i_1_n_0\,
-      Q => x_abs(4),
+      Q => \doa_pair.x_abs_reg_n_0_[4]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[5]_i_1_n_0\,
-      Q => x_abs(5),
+      Q => \doa_pair.x_abs_reg_n_0_[5]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[6]_i_1_n_0\,
-      Q => x_abs(6),
+      Q => \doa_pair.x_abs_reg_n_0_[6]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[7]_i_1_n_0\,
-      Q => x_abs(7),
+      Q => \doa_pair.x_abs_reg_n_0_[7]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[8]_i_1_n_0\,
-      Q => x_abs(8),
+      Q => \doa_pair.x_abs_reg_n_0_[8]\,
       R => '0'
     );
 \doa_pair.x_abs_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => check_raw,
+      CE => \doa_pair.check_raw_reg_n_0\,
       D => \doa_pair.x_abs[9]_i_1_n_0\,
-      Q => x_abs(9),
+      Q => \doa_pair.x_abs_reg_n_0_[9]\,
       R => '0'
     );
 \doa_pair.x_diff[0]_i_1\: unisim.vcomponents.LUT2
@@ -41667,8 +41819,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(0),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[0]\,
       O => \doa_pair.x_diff[0]_i_1_n_0\
     );
 \doa_pair.x_diff[10]_i_1\: unisim.vcomponents.LUT2
@@ -41676,8 +41828,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(10),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[10]\,
       O => \doa_pair.x_diff[10]_i_1_n_0\
     );
 \doa_pair.x_diff[11]_i_1\: unisim.vcomponents.LUT2
@@ -41685,8 +41837,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(11),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[11]\,
       O => \doa_pair.x_diff[11]_i_1_n_0\
     );
 \doa_pair.x_diff[12]_i_1\: unisim.vcomponents.LUT2
@@ -41694,8 +41846,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(12),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[12]\,
       O => \doa_pair.x_diff[12]_i_1_n_0\
     );
 \doa_pair.x_diff[13]_i_1\: unisim.vcomponents.LUT2
@@ -41703,8 +41855,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(13),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[13]\,
       O => \doa_pair.x_diff[13]_i_1_n_0\
     );
 \doa_pair.x_diff[14]_i_1\: unisim.vcomponents.LUT2
@@ -41712,8 +41864,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(14),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[14]\,
       O => \doa_pair.x_diff[14]_i_1_n_0\
     );
 \doa_pair.x_diff[15]_i_1\: unisim.vcomponents.LUT2
@@ -41721,8 +41873,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(15),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[15]\,
       O => \doa_pair.x_diff[15]_i_1_n_0\
     );
 \doa_pair.x_diff[16]_i_1\: unisim.vcomponents.LUT2
@@ -41730,8 +41882,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(16),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[16]\,
       O => \doa_pair.x_diff[16]_i_1_n_0\
     );
 \doa_pair.x_diff[17]_i_1\: unisim.vcomponents.LUT2
@@ -41739,8 +41891,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(17),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[17]\,
       O => \doa_pair.x_diff[17]_i_1_n_0\
     );
 \doa_pair.x_diff[18]_i_1\: unisim.vcomponents.LUT2
@@ -41748,8 +41900,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(18),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[18]\,
       O => \doa_pair.x_diff[18]_i_1_n_0\
     );
 \doa_pair.x_diff[1]_i_1\: unisim.vcomponents.LUT2
@@ -41757,8 +41909,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(1),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[1]\,
       O => \doa_pair.x_diff[1]_i_1_n_0\
     );
 \doa_pair.x_diff[2]_i_1\: unisim.vcomponents.LUT2
@@ -41766,8 +41918,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(2),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[2]\,
       O => \doa_pair.x_diff[2]_i_1_n_0\
     );
 \doa_pair.x_diff[3]_i_1\: unisim.vcomponents.LUT2
@@ -41775,8 +41927,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(3),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[3]\,
       O => \doa_pair.x_diff[3]_i_1_n_0\
     );
 \doa_pair.x_diff[4]_i_1\: unisim.vcomponents.LUT2
@@ -41784,8 +41936,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(4),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[4]\,
       O => \doa_pair.x_diff[4]_i_1_n_0\
     );
 \doa_pair.x_diff[5]_i_1\: unisim.vcomponents.LUT2
@@ -41793,8 +41945,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(5),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[5]\,
       O => \doa_pair.x_diff[5]_i_1_n_0\
     );
 \doa_pair.x_diff[6]_i_1\: unisim.vcomponents.LUT2
@@ -41802,8 +41954,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(6),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[6]\,
       O => \doa_pair.x_diff[6]_i_1_n_0\
     );
 \doa_pair.x_diff[7]_i_1\: unisim.vcomponents.LUT2
@@ -41811,8 +41963,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(7),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[7]\,
       O => \doa_pair.x_diff[7]_i_1_n_0\
     );
 \doa_pair.x_diff[8]_i_1\: unisim.vcomponents.LUT2
@@ -41820,8 +41972,8 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(8),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[8]\,
       O => \doa_pair.x_diff[8]_i_1_n_0\
     );
 \doa_pair.x_diff[9]_i_1\: unisim.vcomponents.LUT2
@@ -41829,163 +41981,163 @@ GND: unisim.vcomponents.GND
       INIT => X"9"
     )
         port map (
-      I0 => x_abs(19),
-      I1 => x_abs(9),
+      I0 => \doa_pair.x_abs_reg_n_0_[19]\,
+      I1 => \doa_pair.x_abs_reg_n_0_[9]\,
       O => \doa_pair.x_diff[9]_i_1_n_0\
     );
 \doa_pair.x_diff_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[0]_i_1_n_0\,
-      Q => x_diff(0),
+      Q => \doa_pair.x_diff_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[10]_i_1_n_0\,
-      Q => x_diff(10),
+      Q => \doa_pair.x_diff_reg_n_0_[10]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[11]_i_1_n_0\,
-      Q => x_diff(11),
+      Q => \doa_pair.x_diff_reg_n_0_[11]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[12]_i_1_n_0\,
-      Q => x_diff(12),
+      Q => \doa_pair.x_diff_reg_n_0_[12]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[13]_i_1_n_0\,
-      Q => x_diff(13),
+      Q => \doa_pair.x_diff_reg_n_0_[13]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[14]_i_1_n_0\,
-      Q => x_diff(14),
+      Q => \doa_pair.x_diff_reg_n_0_[14]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[15]_i_1_n_0\,
-      Q => x_diff(15),
+      Q => \doa_pair.x_diff_reg_n_0_[15]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[16]_i_1_n_0\,
-      Q => x_diff(16),
+      Q => \doa_pair.x_diff_reg_n_0_[16]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[17]_i_1_n_0\,
-      Q => x_diff(17),
+      Q => \doa_pair.x_diff_reg_n_0_[17]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[18]_i_1_n_0\,
-      Q => x_diff(18),
+      Q => \doa_pair.x_diff_reg_n_0_[18]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[1]_i_1_n_0\,
-      Q => x_diff(1),
+      Q => \doa_pair.x_diff_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[2]_i_1_n_0\,
-      Q => x_diff(2),
+      Q => \doa_pair.x_diff_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[3]_i_1_n_0\,
-      Q => x_diff(3),
+      Q => \doa_pair.x_diff_reg_n_0_[3]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[4]_i_1_n_0\,
-      Q => x_diff(4),
+      Q => \doa_pair.x_diff_reg_n_0_[4]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[5]_i_1_n_0\,
-      Q => x_diff(5),
+      Q => \doa_pair.x_diff_reg_n_0_[5]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[6]_i_1_n_0\,
-      Q => x_diff(6),
+      Q => \doa_pair.x_diff_reg_n_0_[6]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[7]_i_1_n_0\,
-      Q => x_diff(7),
+      Q => \doa_pair.x_diff_reg_n_0_[7]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[8]_i_1_n_0\,
-      Q => x_diff(8),
+      Q => \doa_pair.x_diff_reg_n_0_[8]\,
       R => '0'
     );
 \doa_pair.x_diff_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => calc_diff,
+      CE => \doa_pair.calc_diff_reg_n_0\,
       D => \doa_pair.x_diff[9]_i_1_n_0\,
-      Q => x_diff(9),
+      Q => \doa_pair.x_diff_reg_n_0_[9]\,
       R => '0'
     );
-\doa_pair.x_raw[20]_i_1\: unisim.vcomponents.LUT6
+\doa_pair.x_raw[20]_i_1__0\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"2800000000000014"
     )
@@ -41996,180 +42148,180 @@ GND: unisim.vcomponents.GND
       I3 => \doa_pair.ov_reg_n_0_[4]\,
       I4 => \doa_pair.ov_reg_n_0_[3]\,
       I5 => \doa_pair.ov_reg_n_0_[2]\,
-      O => \doa_pair.x_raw[20]_i_1_n_0\
+      O => \doa_pair.x_raw[20]_i_1__0_n_0\
     );
 \doa_pair.x_raw_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(16),
-      Q => x_raw(0),
+      Q => \doa_pair.x_raw_reg_n_0_[0]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(26),
-      Q => x_raw(10),
+      Q => \doa_pair.x_raw_reg_n_0_[10]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(27),
-      Q => x_raw(11),
+      Q => \doa_pair.x_raw_reg_n_0_[11]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(28),
-      Q => x_raw(12),
+      Q => \doa_pair.x_raw_reg_n_0_[12]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(29),
-      Q => x_raw(13),
+      Q => \doa_pair.x_raw_reg_n_0_[13]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(30),
-      Q => x_raw(14),
+      Q => \doa_pair.x_raw_reg_n_0_[14]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(31),
-      Q => x_raw(15),
+      Q => \doa_pair.x_raw_reg_n_0_[15]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(32),
-      Q => x_raw(16),
+      Q => \doa_pair.x_raw_reg_n_0_[16]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(33),
-      Q => x_raw(17),
+      Q => \doa_pair.x_raw_reg_n_0_[17]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(34),
-      Q => x_raw(18),
+      Q => \doa_pair.x_raw_reg_n_0_[18]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(35),
-      Q => x_raw(19),
+      Q => \doa_pair.x_raw_reg_n_0_[19]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(17),
-      Q => x_raw(1),
+      Q => \doa_pair.x_raw_reg_n_0_[1]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(36),
-      Q => x_raw(20),
+      Q => \doa_pair.x_raw_reg_n_0_[20]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(18),
-      Q => x_raw(2),
+      Q => \doa_pair.x_raw_reg_n_0_[2]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(19),
-      Q => x_raw(3),
+      Q => \doa_pair.x_raw_reg_n_0_[3]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(20),
-      Q => x_raw(4),
+      Q => \doa_pair.x_raw_reg_n_0_[4]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(21),
-      Q => x_raw(5),
+      Q => \doa_pair.x_raw_reg_n_0_[5]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(22),
-      Q => x_raw(6),
+      Q => \doa_pair.x_raw_reg_n_0_[6]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(23),
-      Q => x_raw(7),
+      Q => \doa_pair.x_raw_reg_n_0_[7]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(24),
-      Q => x_raw(8),
+      Q => \doa_pair.x_raw_reg_n_0_[8]\,
       R => '0'
     );
 \doa_pair.x_raw_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x_raw[20]_i_1_n_0\,
+      CE => \doa_pair.x_raw[20]_i_1__0_n_0\,
       D => prod(25),
-      Q => x_raw(9),
+      Q => \doa_pair.x_raw_reg_n_0_[9]\,
       R => '0'
     );
 \doa_pair.x_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(0),
       Q => \doa_pair.x_reg_n_0_[0]\,
       R => '0'
@@ -42177,7 +42329,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(10),
       Q => \doa_pair.x_reg_n_0_[10]\,
       R => '0'
@@ -42185,7 +42337,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(11),
       Q => \doa_pair.x_reg_n_0_[11]\,
       R => '0'
@@ -42193,7 +42345,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(12),
       Q => \doa_pair.x_reg_n_0_[12]\,
       R => '0'
@@ -42201,7 +42353,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(13),
       Q => \doa_pair.x_reg_n_0_[13]\,
       R => '0'
@@ -42209,7 +42361,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(14),
       Q => \doa_pair.x_reg_n_0_[14]\,
       R => '0'
@@ -42217,7 +42369,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(15),
       Q => \doa_pair.x_reg_n_0_[15]\,
       R => '0'
@@ -42225,7 +42377,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(16),
       Q => \doa_pair.x_reg_n_0_[16]\,
       R => '0'
@@ -42233,7 +42385,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(17),
       Q => \doa_pair.x_reg_n_0_[17]\,
       R => '0'
@@ -42241,7 +42393,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(18),
       Q => \doa_pair.x_reg_n_0_[18]\,
       R => '0'
@@ -42249,7 +42401,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(19),
       Q => \doa_pair.x_reg_n_0_[19]\,
       R => '0'
@@ -42257,7 +42409,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(1),
       Q => \doa_pair.x_reg_n_0_[1]\,
       R => '0'
@@ -42265,7 +42417,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(2),
       Q => \doa_pair.x_reg_n_0_[2]\,
       R => '0'
@@ -42273,7 +42425,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(3),
       Q => \doa_pair.x_reg_n_0_[3]\,
       R => '0'
@@ -42281,7 +42433,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(4),
       Q => \doa_pair.x_reg_n_0_[4]\,
       R => '0'
@@ -42289,7 +42441,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(5),
       Q => \doa_pair.x_reg_n_0_[5]\,
       R => '0'
@@ -42297,7 +42449,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(6),
       Q => \doa_pair.x_reg_n_0_[6]\,
       R => '0'
@@ -42305,7 +42457,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(7),
       Q => \doa_pair.x_reg_n_0_[7]\,
       R => '0'
@@ -42313,7 +42465,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(8),
       Q => \doa_pair.x_reg_n_0_[8]\,
       R => '0'
@@ -42321,7 +42473,7 @@ GND: unisim.vcomponents.GND
 \doa_pair.x_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_pair.x[19]_i_1_n_0\,
+      CE => \doa_pair.x[19]_i_1__0_n_0\,
       D => x(9),
       Q => \doa_pair.x_reg_n_0_[9]\,
       R => '0'
@@ -42339,8 +42491,8 @@ mul_c_i: component ps_comp_low_0_0_mult_20x20
     );
 mul_doa_i: component ps_comp_low_0_0_mult_20x20
      port map (
-      A(19 downto 0) => k(19 downto 0),
-      B(19 downto 0) => phase(19 downto 0),
+      A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
+      B(19 downto 0) => Q(19 downto 0),
       CLK => clk,
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
@@ -42401,204 +42553,204 @@ mul_x_i: component ps_comp_low_0_0_mult_20x20
       P(38 downto 19) => xp(38 downto 19),
       P(18 downto 0) => NLW_mul_x_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i_i_1: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \doa_pair.x_reg_n_0_[19]\,
-      I1 => xp(38),
-      I2 => init,
-      O => p(19)
-    );
-mul_x_i_i_10: unisim.vcomponents.LUT3
+\mul_x_i_i_10__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[10]\,
       I1 => xp(29),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(10)
     );
-mul_x_i_i_11: unisim.vcomponents.LUT3
+\mul_x_i_i_11__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[9]\,
       I1 => xp(28),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(9)
     );
-mul_x_i_i_12: unisim.vcomponents.LUT3
+\mul_x_i_i_12__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[8]\,
       I1 => xp(27),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(8)
     );
-mul_x_i_i_13: unisim.vcomponents.LUT3
+\mul_x_i_i_13__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[7]\,
       I1 => xp(26),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(7)
     );
-mul_x_i_i_14: unisim.vcomponents.LUT3
+\mul_x_i_i_14__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[6]\,
       I1 => xp(25),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(6)
     );
-mul_x_i_i_15: unisim.vcomponents.LUT3
+\mul_x_i_i_15__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[5]\,
       I1 => xp(24),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(5)
     );
-mul_x_i_i_16: unisim.vcomponents.LUT3
+\mul_x_i_i_16__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[4]\,
       I1 => xp(23),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(4)
     );
-mul_x_i_i_17: unisim.vcomponents.LUT3
+\mul_x_i_i_17__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[3]\,
       I1 => xp(22),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(3)
     );
-mul_x_i_i_18: unisim.vcomponents.LUT3
+\mul_x_i_i_18__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[2]\,
       I1 => xp(21),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(2)
     );
-mul_x_i_i_19: unisim.vcomponents.LUT3
+\mul_x_i_i_19__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[1]\,
       I1 => xp(20),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(1)
     );
-mul_x_i_i_2: unisim.vcomponents.LUT3
+\mul_x_i_i_1__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
-      I0 => \doa_pair.x_reg_n_0_[18]\,
-      I1 => xp(37),
-      I2 => init,
-      O => p(18)
+      I0 => \doa_pair.x_reg_n_0_[19]\,
+      I1 => xp(38),
+      I2 => \doa_pair.init_reg_n_0\,
+      O => p(19)
     );
-mul_x_i_i_20: unisim.vcomponents.LUT3
+\mul_x_i_i_20__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[0]\,
       I1 => xp(19),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(0)
     );
-mul_x_i_i_3: unisim.vcomponents.LUT3
+\mul_x_i_i_2__0\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => \doa_pair.x_reg_n_0_[18]\,
+      I1 => xp(37),
+      I2 => \doa_pair.init_reg_n_0\,
+      O => p(18)
+    );
+\mul_x_i_i_3__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[17]\,
       I1 => xp(36),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(17)
     );
-mul_x_i_i_4: unisim.vcomponents.LUT3
+\mul_x_i_i_4__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[16]\,
       I1 => xp(35),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(16)
     );
-mul_x_i_i_5: unisim.vcomponents.LUT3
+\mul_x_i_i_5__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[15]\,
       I1 => xp(34),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(15)
     );
-mul_x_i_i_6: unisim.vcomponents.LUT3
+\mul_x_i_i_6__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[14]\,
       I1 => xp(33),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(14)
     );
-mul_x_i_i_7: unisim.vcomponents.LUT3
+\mul_x_i_i_7__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[13]\,
       I1 => xp(32),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(13)
     );
-mul_x_i_i_8: unisim.vcomponents.LUT3
+\mul_x_i_i_8__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[12]\,
       I1 => xp(31),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(12)
     );
-mul_x_i_i_9: unisim.vcomponents.LUT3
+\mul_x_i_i_9__0\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
         port map (
       I0 => \doa_pair.x_reg_n_0_[11]\,
       I1 => xp(30),
-      I2 => init,
+      I2 => \doa_pair.init_reg_n_0\,
       O => p(11)
     );
 end STRUCTURE;
@@ -42678,29 +42830,31 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 8 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 5 downto 0 )
+    probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   end component ps_comp_low_0_0_ila_6;
   component ps_comp_low_0_0_mult_20x20 is
@@ -42711,14 +42865,6 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component ps_comp_low_0_0_mult_20x20;
-  component ps_comp_low_0_0_mult_20x20_HD5 is
-  port (
-    CLK : in STD_LOGIC;
-    A : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    B : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    P : out STD_LOGIC_VECTOR ( 39 downto 0 )
-  );
-  end component ps_comp_low_0_0_mult_20x20_HD5;
   signal \<const0>\ : STD_LOGIC;
   signal \^angle\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG : boolean;
@@ -42728,26 +42874,33 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal angle_WN : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_doa : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_done : STD_LOGIC;
-  attribute MARK_DEBUG of angle_done : signal is std.standard.true;
   signal angle_val : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal antenna_pm : STD_LOGIC_VECTOR ( 19 downto 0 );
-  attribute MARK_DEBUG of antenna_pm : signal is std.standard.true;
+  signal antenna_pm : STD_LOGIC;
   signal counter : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal data0 : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal data1 : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal data2 : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal delay_E : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal delay_E01_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of delay_E : signal is std.standard.true;
   signal delay_EW : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of delay_EW : signal is std.standard.true;
   signal delay_N : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal delay_N02_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of delay_N : signal is std.standard.true;
   signal delay_NE : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of delay_NE : signal is std.standard.true;
   signal delay_W : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal delay_W00_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of delay_W : signal is std.standard.true;
   signal delay_WN : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of delay_WN : signal is std.standard.true;
   signal diff_EW01_out : STD_LOGIC_VECTOR ( 19 downto 2 );
   signal diff_NE02_out : STD_LOGIC_VECTOR ( 19 downto 2 );
   signal diff_WN00_out : STD_LOGIC_VECTOR ( 19 downto 2 );
+  signal dist_E : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of dist_E : signal is std.standard.true;
+  signal dist_N : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of dist_N : signal is std.standard.true;
+  signal dist_W : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of dist_W : signal is std.standard.true;
   signal div_dij : STD_LOGIC_VECTOR ( 38 downto 7 );
   signal \doa_calc.angle[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.angle[10]_i_1_n_0\ : STD_LOGIC;
@@ -42765,30 +42918,29 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.angle[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.angle[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.angle[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[0]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[10]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[11]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[12]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[13]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[14]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[15]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[16]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[17]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[18]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[19]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[1]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[2]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[3]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[5]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[6]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[7]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[8]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.antenna_pm[9]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[19]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_calc.antenna_pm_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_calc.counter[0]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.counter[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.counter[4]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.counter[5]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_calc.counter[5]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_E[15]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_E[15]_i_3_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_E[15]_i_4_n_0\ : STD_LOGIC;
@@ -42805,6 +42957,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.delay_E[7]_i_7_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_E[7]_i_8_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_E[7]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_calc.delay_E_reg01_out\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_calc.delay_E_reg[15]_i_1_n_1\ : STD_LOGIC;
   signal \doa_calc.delay_E_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \doa_calc.delay_E_reg[15]_i_1_n_3\ : STD_LOGIC;
@@ -42836,6 +42989,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.delay_N[7]_i_7_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_N[7]_i_8_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_N[7]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_calc.delay_N_reg03_out\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_calc.delay_N_reg[15]_i_1_n_1\ : STD_LOGIC;
   signal \doa_calc.delay_N_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \doa_calc.delay_N_reg[15]_i_1_n_3\ : STD_LOGIC;
@@ -42867,6 +43021,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.delay_W[7]_i_7_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_W[7]_i_8_n_0\ : STD_LOGIC;
   signal \doa_calc.delay_W[7]_i_9_n_0\ : STD_LOGIC;
+  signal \doa_calc.delay_W_reg00_out\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_calc.delay_W_reg[15]_i_1_n_1\ : STD_LOGIC;
   signal \doa_calc.delay_W_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \doa_calc.delay_W_reg[15]_i_1_n_3\ : STD_LOGIC;
@@ -42999,6 +43154,16 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.diff_WN_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \doa_calc.diff_WN_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \doa_calc.diff_WN_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_calc.doa_error_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_calc.done_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.env_E[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.env_E[10]_i_1_n_0\ : STD_LOGIC;
@@ -43048,26 +43213,25 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.env_W[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.env_W[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.env_W[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_4_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_5_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_6_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_7_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_8_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[7]_i_9_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff[9]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_10_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_11_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_12_n_0\ : STD_LOGIC;
   signal \doa_calc.err_diff[9]_i_3_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg0\ : STD_LOGIC_VECTOR ( 9 downto 0 );
-  signal \doa_calc.err_diff_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \doa_calc.err_diff_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_4_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_5_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_6_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_7_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_8_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff[9]_i_9_n_0\ : STD_LOGIC;
   signal \doa_calc.err_diff_reg[9]_i_1_n_7\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_1\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_2\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_3\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_4\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_5\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_6\ : STD_LOGIC;
+  signal \doa_calc.err_diff_reg[9]_i_2_n_7\ : STD_LOGIC;
   signal \doa_calc.err_in[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.err_in[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.err_in[11]_i_1_n_0\ : STD_LOGIC;
@@ -43110,25 +43274,19 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.freq[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.freq[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.freq[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[0]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[1]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[2]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[3]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[5]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[6]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[7]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[8]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[9]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.max_antenna_err[9]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_calc.max_antenna_err_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_calc.phase_error_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.run[0]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.run[0]_i_2_n_0\ : STD_LOGIC;
-  signal \doa_calc.run[1]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.run[2]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.run[3]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.run[4]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.run[5]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_calc.run[5]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.sample[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample[11]_i_1_n_0\ : STD_LOGIC;
@@ -43167,18 +43325,39 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.sample_E[3]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_E[4]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_E[5]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.sample_E_val_reg_n_0_[5]\ : STD_LOGIC;
   signal \doa_calc.sample_N[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_N[1]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_N[2]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_N[3]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_N[4]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_N[5]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.sample_N_val_reg_n_0_[5]\ : STD_LOGIC;
   signal \doa_calc.sample_W[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_W[1]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_W[2]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_W[3]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_W[4]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.sample_W[5]_i_1_n_0\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val[5]_i_2_n_0\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.sample_W_val_reg_n_0_[5]\ : STD_LOGIC;
   signal \doa_calc.sample_dist_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_calc.sample_dist_reg_n_0_[10]\ : STD_LOGIC;
   signal \doa_calc.sample_dist_reg_n_0_[11]\ : STD_LOGIC;
@@ -43199,6 +43378,26 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.sample_dist_reg_n_0_[7]\ : STD_LOGIC;
   signal \doa_calc.sample_dist_reg_n_0_[8]\ : STD_LOGIC;
   signal \doa_calc.sample_dist_reg_n_0_[9]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[0]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[10]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[11]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[12]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[13]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[14]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[15]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[16]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[17]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[18]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[19]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[1]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[2]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[3]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[4]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[5]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[6]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[7]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[8]\ : STD_LOGIC;
+  signal \doa_calc.sample_fact_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_calc.shadow_limit[19]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.shadow_limit_reg_n_0_[0]\ : STD_LOGIC;
   signal \doa_calc.shadow_limit_reg_n_0_[10]\ : STD_LOGIC;
@@ -43229,13 +43428,9 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \doa_calc.size[6]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.size[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.size[8]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.start_pair_reg0\ : STD_LOGIC;
-  signal \^doa_error\ : STD_LOGIC_VECTOR ( 9 downto 0 );
-  attribute MARK_DEBUG of \^doa_error\ : signal is std.standard.true;
   signal \^done\ : STD_LOGIC;
   attribute MARK_DEBUG of done : signal is std.standard.true;
   signal done_EW : STD_LOGIC;
-  signal done_NE : STD_LOGIC;
   signal done_WN : STD_LOGIC;
   signal \^env_e\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^env_e\ : signal is std.standard.true;
@@ -43257,14 +43452,12 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal env_W_val : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal err_clr : STD_LOGIC;
   signal err_clr0 : STD_LOGIC;
-  signal err_diff : STD_LOGIC_VECTOR ( 9 downto 0 );
-  attribute MARK_DEBUG of err_diff : signal is std.standard.true;
+  signal err_diff : STD_LOGIC_VECTOR ( 9 to 9 );
+  signal err_diff0 : STD_LOGIC_VECTOR ( 9 to 9 );
   signal err_in : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal err_pm : STD_LOGIC_VECTOR ( 27 downto 18 );
-  signal err_sqrt_data : STD_LOGIC_VECTOR ( 23 downto 0 );
-  attribute MARK_DEBUG of err_sqrt_data : signal is std.standard.true;
+  signal err_sqrt_data : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal err_sqrt_done : STD_LOGIC;
-  attribute MARK_DEBUG of err_sqrt_done : signal is std.standard.true;
   signal err_sqrt_start : STD_LOGIC;
   signal err_sum : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^freq\ : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -43275,12 +43468,13 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal freq_val : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal inv_sample_dist : STD_LOGIC;
   signal k_out : STD_LOGIC_VECTOR ( 43 downto 24 );
-  signal max_antenna_err : STD_LOGIC_VECTOR ( 9 downto 0 );
-  attribute MARK_DEBUG of max_antenna_err : signal is std.standard.true;
+  signal max_antenna_err : STD_LOGIC;
   signal mul_EW : STD_LOGIC_VECTOR ( 34 downto 15 );
   signal mul_NE : STD_LOGIC_VECTOR ( 34 downto 15 );
   signal mul_WN : STD_LOGIC_VECTOR ( 34 downto 15 );
   signal mul_freq : STD_LOGIC_VECTOR ( 38 downto 19 );
+  signal p_0_in0_in : STD_LOGIC;
+  signal p_2_in : STD_LOGIC_VECTOR ( 5 downto 1 );
   signal p_3_in : STD_LOGIC_VECTOR ( 5 downto 1 );
   signal phase_EW_div : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_EW_doa : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -43293,8 +43487,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal phase_WN_pair : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \^phase_error\ : STD_LOGIC;
   attribute MARK_DEBUG of phase_error : signal is std.standard.true;
-  signal run : STD_LOGIC_VECTOR ( 5 downto 0 );
-  attribute MARK_DEBUG of run : signal is std.standard.true;
+  signal run : STD_LOGIC_VECTOR ( 1 to 1 );
   signal \^sample\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
   signal \^sample_e\ : STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -43309,8 +43502,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal sample_dist : STD_LOGIC;
   signal sample_div : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal sample_doa : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_fact : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal sample_fact0 : STD_LOGIC;
+  signal sample_fact : STD_LOGIC;
   signal sample_pair : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal sample_val : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal shadow_EW : STD_LOGIC;
@@ -43320,19 +43512,17 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \^size\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of \^size\ : signal is std.standard.true;
   signal size_div : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of size_div : signal is std.standard.true;
   signal size_doa : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of size_doa : signal is std.standard.true;
   signal size_pair : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of size_pair : signal is std.standard.true;
   signal size_val : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal start_div : STD_LOGIC;
-  attribute MARK_DEBUG of start_div : signal is std.standard.true;
   signal start_pair : STD_LOGIC;
-  attribute MARK_DEBUG of start_pair : signal is std.standard.true;
+  signal start_pair0 : STD_LOGIC;
   signal valid_k : STD_LOGIC;
-  attribute MARK_DEBUG of valid_k : signal is std.standard.true;
   signal NLW_div_k_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal NLW_doa_EW_i_fail_UNCONNECTED : STD_LOGIC;
-  signal NLW_doa_NE_i_fail_UNCONNECTED : STD_LOGIC;
-  signal NLW_doa_WN_i_fail_UNCONNECTED : STD_LOGIC;
   signal NLW_doa_angle_i_shadow_E_UNCONNECTED : STD_LOGIC;
   signal NLW_doa_angle_i_shadow_N_UNCONNECTED : STD_LOGIC;
   signal NLW_doa_angle_i_shadow_W_UNCONNECTED : STD_LOGIC;
@@ -43349,8 +43539,10 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   signal \NLW_doa_calc.diff_WN_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_doa_calc.diff_WN_reg[7]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \NLW_doa_calc.err_diff_reg[9]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
-  signal \NLW_doa_calc.err_diff_reg[9]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_doa_calc.err_diff_reg[9]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_doa_calc.err_diff_reg[9]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_err_sqr_sum_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 32 );
+  signal NLW_err_sqrt_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   signal NLW_mul_delay_EW_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_delay_E_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_delay_NE_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
@@ -43365,9 +43557,6 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute downgradeipidentifiedwarnings of div_k_i : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of div_k_i : label is "div_gen_v5_1_24,Vivado 2025.1";
-  attribute KEEP_HIERARCHY of doa_EW_i : label is "soft";
-  attribute KEEP_HIERARCHY of doa_NE_i : label is "soft";
-  attribute KEEP_HIERARCHY of doa_WN_i : label is "soft";
   attribute ANGLE_0 : string;
   attribute ANGLE_0 of doa_angle_i : label is "16'b0000000000000000";
   attribute ANGLE_120 : string;
@@ -43421,58 +43610,66 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute mark_debug_string of \doa_calc.angle_reg[8]\ : label is "yes";
   attribute KEEP of \doa_calc.angle_reg[9]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.angle_reg[9]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[0]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[10]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[11]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[12]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[13]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[14]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[15]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[16]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[17]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[18]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[19]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[1]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[2]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[3]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[4]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[5]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[6]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[7]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[8]\ : label is "yes";
-  attribute KEEP of \doa_calc.antenna_pm_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.antenna_pm_reg[9]\ : label is "yes";
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \doa_calc.counter[1]_i_1\ : label is "soft_lutpair185";
   attribute SOFT_HLUTNM of \doa_calc.counter[2]_i_1\ : label is "soft_lutpair185";
   attribute SOFT_HLUTNM of \doa_calc.counter[3]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \doa_calc.counter[4]_i_3\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \doa_calc.counter[4]_i_1\ : label is "soft_lutpair183";
+  attribute KEEP of \doa_calc.delay_E_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_calc.delay_E_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \doa_calc.delay_E_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.delay_E_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \doa_calc.delay_E_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_E_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.delay_N_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \doa_calc.delay_N_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.delay_N_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \doa_calc.delay_N_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_N_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[10]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[11]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[12]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[13]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[14]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.delay_W_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \doa_calc.delay_W_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.delay_W_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \doa_calc.delay_W_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_calc.delay_W_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.diff_EW_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.diff_EW_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.diff_EW_reg[7]_i_1\ : label is 35;
@@ -43482,26 +43679,7 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute ADDER_THRESHOLD of \doa_calc.diff_WN_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.diff_WN_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.diff_WN_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \doa_calc.doa_error_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[0]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[1]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[2]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[3]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[4]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[5]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[6]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[7]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[8]\ : label is "yes";
-  attribute KEEP of \doa_calc.doa_error_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.doa_error_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \doa_calc.done_i_1\ : label is "soft_lutpair186";
   attribute KEEP of \doa_calc.done_reg\ : label is "yes";
   attribute KEEP of \doa_calc.env_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.env_E_reg[0]\ : label is "yes";
@@ -43599,28 +43777,8 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute mark_debug_string of \doa_calc.env_W_reg[8]\ : label is "yes";
   attribute KEEP of \doa_calc.env_W_reg[9]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.env_W_reg[9]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[0]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[1]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[2]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[3]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[4]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[5]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[6]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[7]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \doa_calc.err_diff_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[8]\ : label is "yes";
-  attribute KEEP of \doa_calc.err_diff_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.err_diff_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[9]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[9]_i_2\ : label is 35;
   attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_3\ : label is "soft_lutpair183";
   attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_4\ : label is "soft_lutpair184";
   attribute KEEP of \doa_calc.freq_reg[0]\ : label is "yes";
@@ -43663,33 +43821,8 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute mark_debug_string of \doa_calc.freq_reg[8]\ : label is "yes";
   attribute KEEP of \doa_calc.freq_reg[9]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.freq_reg[9]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[0]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[1]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[2]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[3]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[4]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[5]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[6]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[7]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[8]\ : label is "yes";
-  attribute KEEP of \doa_calc.max_antenna_err_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \doa_calc.max_antenna_err_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \doa_calc.phase_error_i_1\ : label is "soft_lutpair186";
   attribute KEEP of \doa_calc.phase_error_reg\ : label is "yes";
-  attribute KEEP of \doa_calc.run_reg[0]\ : label is "yes";
-  attribute KEEP of \doa_calc.run_reg[1]\ : label is "yes";
-  attribute KEEP of \doa_calc.run_reg[2]\ : label is "yes";
-  attribute KEEP of \doa_calc.run_reg[3]\ : label is "yes";
-  attribute KEEP of \doa_calc.run_reg[4]\ : label is "yes";
-  attribute KEEP of \doa_calc.run_reg[5]\ : label is "yes";
   attribute KEEP of \doa_calc.sample_E_reg[0]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.sample_E_reg[0]\ : label is "yes";
   attribute KEEP of \doa_calc.sample_E_reg[1]\ : label is "yes";
@@ -43790,6 +43923,42 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute mark_debug_string of \doa_calc.sample_reg[8]\ : label is "yes";
   attribute KEEP of \doa_calc.sample_reg[9]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.sample_reg[9]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[7]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_div_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_div_reg[8]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[0]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[1]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[2]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[3]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[4]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[5]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[6]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[7]\ : label is "yes";
+  attribute KEEP of \doa_calc.size_pair_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \doa_calc.size_pair_reg[8]\ : label is "yes";
   attribute KEEP of \doa_calc.size_reg[0]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.size_reg[0]\ : label is "yes";
   attribute KEEP of \doa_calc.size_reg[1]\ : label is "yes";
@@ -43808,8 +43977,6 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute mark_debug_string of \doa_calc.size_reg[7]\ : label is "yes";
   attribute KEEP of \doa_calc.size_reg[8]\ : label is "yes";
   attribute mark_debug_string of \doa_calc.size_reg[8]\ : label is "yes";
-  attribute KEEP of \doa_calc.start_div_reg\ : label is "yes";
-  attribute KEEP of \doa_calc.start_pair_reg\ : label is "yes";
   attribute CHECK_LICENSE_TYPE of err_sqr_sum_i : label is "dsp_err_sqr,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of err_sqr_sum_i : label is "yes";
   attribute x_core_info of err_sqr_sum_i : label is "dsp_macro_v1_0_8,Vivado 2025.1";
@@ -43845,7 +44012,16 @@ architecture STRUCTURE of ps_comp_low_0_0_doa_calc is
   attribute x_core_info of mul_pm_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
 begin
   angle(15 downto 0) <= \^angle\(15 downto 0);
-  doa_error(9 downto 0) <= \^doa_error\(9 downto 0);
+  doa_error(9) <= \<const0>\;
+  doa_error(8) <= \<const0>\;
+  doa_error(7) <= \<const0>\;
+  doa_error(6) <= \<const0>\;
+  doa_error(5) <= \<const0>\;
+  doa_error(4) <= \<const0>\;
+  doa_error(3) <= \<const0>\;
+  doa_error(2) <= \<const0>\;
+  doa_error(1) <= \<const0>\;
+  doa_error(0) <= \<const0>\;
   done <= \^done\;
   env_E(15 downto 0) <= \^env_e\(15 downto 0);
   env_N(15 downto 0) <= \^env_n\(15 downto 0);
@@ -43879,99 +44055,98 @@ div_k_i: component ps_comp_low_0_0_div_k
     );
 doa_EW_i: entity work.\ps_comp_low_0_0_doa_pair__xdcDup__2\
      port map (
-      angle(15 downto 0) => angle_EW(15 downto 0),
+      Q(19 downto 0) => phase_EW_div(19 downto 0),
       clk => clk,
-      done => done_EW,
-      fail => NLW_doa_EW_i_fail_UNCONNECTED,
-      k(19 downto 0) => k_out(43 downto 24),
-      phase(19 downto 0) => phase_EW_div(19 downto 0),
+      \doa_pair.angle_reg[15]_0\(15 downto 0) => angle_EW(15 downto 0),
+      \doa_pair.shadow_diff_reg[19]_0\(19) => \doa_calc.shadow_limit_reg_n_0_[19]\,
+      \doa_pair.shadow_diff_reg[19]_0\(18) => \doa_calc.shadow_limit_reg_n_0_[18]\,
+      \doa_pair.shadow_diff_reg[19]_0\(17) => \doa_calc.shadow_limit_reg_n_0_[17]\,
+      \doa_pair.shadow_diff_reg[19]_0\(16) => \doa_calc.shadow_limit_reg_n_0_[16]\,
+      \doa_pair.shadow_diff_reg[19]_0\(15) => \doa_calc.shadow_limit_reg_n_0_[15]\,
+      \doa_pair.shadow_diff_reg[19]_0\(14) => \doa_calc.shadow_limit_reg_n_0_[14]\,
+      \doa_pair.shadow_diff_reg[19]_0\(13) => \doa_calc.shadow_limit_reg_n_0_[13]\,
+      \doa_pair.shadow_diff_reg[19]_0\(12) => \doa_calc.shadow_limit_reg_n_0_[12]\,
+      \doa_pair.shadow_diff_reg[19]_0\(11) => \doa_calc.shadow_limit_reg_n_0_[11]\,
+      \doa_pair.shadow_diff_reg[19]_0\(10) => \doa_calc.shadow_limit_reg_n_0_[10]\,
+      \doa_pair.shadow_diff_reg[19]_0\(9) => \doa_calc.shadow_limit_reg_n_0_[9]\,
+      \doa_pair.shadow_diff_reg[19]_0\(8) => \doa_calc.shadow_limit_reg_n_0_[8]\,
+      \doa_pair.shadow_diff_reg[19]_0\(7) => \doa_calc.shadow_limit_reg_n_0_[7]\,
+      \doa_pair.shadow_diff_reg[19]_0\(6) => \doa_calc.shadow_limit_reg_n_0_[6]\,
+      \doa_pair.shadow_diff_reg[19]_0\(5) => \doa_calc.shadow_limit_reg_n_0_[5]\,
+      \doa_pair.shadow_diff_reg[19]_0\(4) => \doa_calc.shadow_limit_reg_n_0_[4]\,
+      \doa_pair.shadow_diff_reg[19]_0\(3) => \doa_calc.shadow_limit_reg_n_0_[3]\,
+      \doa_pair.shadow_diff_reg[19]_0\(2) => \doa_calc.shadow_limit_reg_n_0_[2]\,
+      \doa_pair.shadow_diff_reg[19]_0\(1) => \doa_calc.shadow_limit_reg_n_0_[1]\,
+      \doa_pair.shadow_diff_reg[19]_0\(0) => \doa_calc.shadow_limit_reg_n_0_[0]\,
+      done_EW => done_EW,
+      m_axis_dout_tdata(19 downto 0) => k_out(43 downto 24),
       reset => reset,
-      shadow => shadow_EW,
-      shadow_limit(19) => \doa_calc.shadow_limit_reg_n_0_[19]\,
-      shadow_limit(18) => \doa_calc.shadow_limit_reg_n_0_[18]\,
-      shadow_limit(17) => \doa_calc.shadow_limit_reg_n_0_[17]\,
-      shadow_limit(16) => \doa_calc.shadow_limit_reg_n_0_[16]\,
-      shadow_limit(15) => \doa_calc.shadow_limit_reg_n_0_[15]\,
-      shadow_limit(14) => \doa_calc.shadow_limit_reg_n_0_[14]\,
-      shadow_limit(13) => \doa_calc.shadow_limit_reg_n_0_[13]\,
-      shadow_limit(12) => \doa_calc.shadow_limit_reg_n_0_[12]\,
-      shadow_limit(11) => \doa_calc.shadow_limit_reg_n_0_[11]\,
-      shadow_limit(10) => \doa_calc.shadow_limit_reg_n_0_[10]\,
-      shadow_limit(9) => \doa_calc.shadow_limit_reg_n_0_[9]\,
-      shadow_limit(8) => \doa_calc.shadow_limit_reg_n_0_[8]\,
-      shadow_limit(7) => \doa_calc.shadow_limit_reg_n_0_[7]\,
-      shadow_limit(6) => \doa_calc.shadow_limit_reg_n_0_[6]\,
-      shadow_limit(5) => \doa_calc.shadow_limit_reg_n_0_[5]\,
-      shadow_limit(4) => \doa_calc.shadow_limit_reg_n_0_[4]\,
-      shadow_limit(3) => \doa_calc.shadow_limit_reg_n_0_[3]\,
-      shadow_limit(2) => \doa_calc.shadow_limit_reg_n_0_[2]\,
-      shadow_limit(1) => \doa_calc.shadow_limit_reg_n_0_[1]\,
-      shadow_limit(0) => \doa_calc.shadow_limit_reg_n_0_[0]\,
-      start => start_div
+      shadow_EW => shadow_EW,
+      start_div => start_div
     );
 doa_NE_i: entity work.\ps_comp_low_0_0_doa_pair__xdcDup__1\
      port map (
-      angle(15 downto 0) => angle_NE(15 downto 0),
+      E(0) => start_pair0,
+      Q(19 downto 0) => phase_NE_div(19 downto 0),
       clk => clk,
-      done => done_NE,
-      fail => NLW_doa_NE_i_fail_UNCONNECTED,
-      k(19 downto 0) => k_out(43 downto 24),
-      phase(19 downto 0) => phase_NE_div(19 downto 0),
+      \doa_pair.angle_reg[15]_0\(15 downto 0) => angle_NE(15 downto 0),
+      \doa_pair.shadow_diff_reg[19]_0\(19) => \doa_calc.shadow_limit_reg_n_0_[19]\,
+      \doa_pair.shadow_diff_reg[19]_0\(18) => \doa_calc.shadow_limit_reg_n_0_[18]\,
+      \doa_pair.shadow_diff_reg[19]_0\(17) => \doa_calc.shadow_limit_reg_n_0_[17]\,
+      \doa_pair.shadow_diff_reg[19]_0\(16) => \doa_calc.shadow_limit_reg_n_0_[16]\,
+      \doa_pair.shadow_diff_reg[19]_0\(15) => \doa_calc.shadow_limit_reg_n_0_[15]\,
+      \doa_pair.shadow_diff_reg[19]_0\(14) => \doa_calc.shadow_limit_reg_n_0_[14]\,
+      \doa_pair.shadow_diff_reg[19]_0\(13) => \doa_calc.shadow_limit_reg_n_0_[13]\,
+      \doa_pair.shadow_diff_reg[19]_0\(12) => \doa_calc.shadow_limit_reg_n_0_[12]\,
+      \doa_pair.shadow_diff_reg[19]_0\(11) => \doa_calc.shadow_limit_reg_n_0_[11]\,
+      \doa_pair.shadow_diff_reg[19]_0\(10) => \doa_calc.shadow_limit_reg_n_0_[10]\,
+      \doa_pair.shadow_diff_reg[19]_0\(9) => \doa_calc.shadow_limit_reg_n_0_[9]\,
+      \doa_pair.shadow_diff_reg[19]_0\(8) => \doa_calc.shadow_limit_reg_n_0_[8]\,
+      \doa_pair.shadow_diff_reg[19]_0\(7) => \doa_calc.shadow_limit_reg_n_0_[7]\,
+      \doa_pair.shadow_diff_reg[19]_0\(6) => \doa_calc.shadow_limit_reg_n_0_[6]\,
+      \doa_pair.shadow_diff_reg[19]_0\(5) => \doa_calc.shadow_limit_reg_n_0_[5]\,
+      \doa_pair.shadow_diff_reg[19]_0\(4) => \doa_calc.shadow_limit_reg_n_0_[4]\,
+      \doa_pair.shadow_diff_reg[19]_0\(3) => \doa_calc.shadow_limit_reg_n_0_[3]\,
+      \doa_pair.shadow_diff_reg[19]_0\(2) => \doa_calc.shadow_limit_reg_n_0_[2]\,
+      \doa_pair.shadow_diff_reg[19]_0\(1) => \doa_calc.shadow_limit_reg_n_0_[1]\,
+      \doa_pair.shadow_diff_reg[19]_0\(0) => \doa_calc.shadow_limit_reg_n_0_[0]\,
+      done_EW => done_EW,
+      done_WN => done_WN,
+      m_axis_dout_tdata(19 downto 0) => k_out(43 downto 24),
       reset => reset,
-      shadow => shadow_NE,
-      shadow_limit(19) => \doa_calc.shadow_limit_reg_n_0_[19]\,
-      shadow_limit(18) => \doa_calc.shadow_limit_reg_n_0_[18]\,
-      shadow_limit(17) => \doa_calc.shadow_limit_reg_n_0_[17]\,
-      shadow_limit(16) => \doa_calc.shadow_limit_reg_n_0_[16]\,
-      shadow_limit(15) => \doa_calc.shadow_limit_reg_n_0_[15]\,
-      shadow_limit(14) => \doa_calc.shadow_limit_reg_n_0_[14]\,
-      shadow_limit(13) => \doa_calc.shadow_limit_reg_n_0_[13]\,
-      shadow_limit(12) => \doa_calc.shadow_limit_reg_n_0_[12]\,
-      shadow_limit(11) => \doa_calc.shadow_limit_reg_n_0_[11]\,
-      shadow_limit(10) => \doa_calc.shadow_limit_reg_n_0_[10]\,
-      shadow_limit(9) => \doa_calc.shadow_limit_reg_n_0_[9]\,
-      shadow_limit(8) => \doa_calc.shadow_limit_reg_n_0_[8]\,
-      shadow_limit(7) => \doa_calc.shadow_limit_reg_n_0_[7]\,
-      shadow_limit(6) => \doa_calc.shadow_limit_reg_n_0_[6]\,
-      shadow_limit(5) => \doa_calc.shadow_limit_reg_n_0_[5]\,
-      shadow_limit(4) => \doa_calc.shadow_limit_reg_n_0_[4]\,
-      shadow_limit(3) => \doa_calc.shadow_limit_reg_n_0_[3]\,
-      shadow_limit(2) => \doa_calc.shadow_limit_reg_n_0_[2]\,
-      shadow_limit(1) => \doa_calc.shadow_limit_reg_n_0_[1]\,
-      shadow_limit(0) => \doa_calc.shadow_limit_reg_n_0_[0]\,
-      start => start_div
+      shadow_NE => shadow_NE,
+      start_div => start_div
     );
 doa_WN_i: entity work.ps_comp_low_0_0_doa_pair
      port map (
-      angle(15 downto 0) => angle_WN(15 downto 0),
+      Q(19 downto 0) => phase_WN_div(19 downto 0),
       clk => clk,
-      done => done_WN,
-      fail => NLW_doa_WN_i_fail_UNCONNECTED,
-      k(19 downto 0) => k_out(43 downto 24),
-      phase(19 downto 0) => phase_WN_div(19 downto 0),
+      \doa_pair.angle_reg[15]_0\(15 downto 0) => angle_WN(15 downto 0),
+      \doa_pair.shadow_diff_reg[19]_0\(19) => \doa_calc.shadow_limit_reg_n_0_[19]\,
+      \doa_pair.shadow_diff_reg[19]_0\(18) => \doa_calc.shadow_limit_reg_n_0_[18]\,
+      \doa_pair.shadow_diff_reg[19]_0\(17) => \doa_calc.shadow_limit_reg_n_0_[17]\,
+      \doa_pair.shadow_diff_reg[19]_0\(16) => \doa_calc.shadow_limit_reg_n_0_[16]\,
+      \doa_pair.shadow_diff_reg[19]_0\(15) => \doa_calc.shadow_limit_reg_n_0_[15]\,
+      \doa_pair.shadow_diff_reg[19]_0\(14) => \doa_calc.shadow_limit_reg_n_0_[14]\,
+      \doa_pair.shadow_diff_reg[19]_0\(13) => \doa_calc.shadow_limit_reg_n_0_[13]\,
+      \doa_pair.shadow_diff_reg[19]_0\(12) => \doa_calc.shadow_limit_reg_n_0_[12]\,
+      \doa_pair.shadow_diff_reg[19]_0\(11) => \doa_calc.shadow_limit_reg_n_0_[11]\,
+      \doa_pair.shadow_diff_reg[19]_0\(10) => \doa_calc.shadow_limit_reg_n_0_[10]\,
+      \doa_pair.shadow_diff_reg[19]_0\(9) => \doa_calc.shadow_limit_reg_n_0_[9]\,
+      \doa_pair.shadow_diff_reg[19]_0\(8) => \doa_calc.shadow_limit_reg_n_0_[8]\,
+      \doa_pair.shadow_diff_reg[19]_0\(7) => \doa_calc.shadow_limit_reg_n_0_[7]\,
+      \doa_pair.shadow_diff_reg[19]_0\(6) => \doa_calc.shadow_limit_reg_n_0_[6]\,
+      \doa_pair.shadow_diff_reg[19]_0\(5) => \doa_calc.shadow_limit_reg_n_0_[5]\,
+      \doa_pair.shadow_diff_reg[19]_0\(4) => \doa_calc.shadow_limit_reg_n_0_[4]\,
+      \doa_pair.shadow_diff_reg[19]_0\(3) => \doa_calc.shadow_limit_reg_n_0_[3]\,
+      \doa_pair.shadow_diff_reg[19]_0\(2) => \doa_calc.shadow_limit_reg_n_0_[2]\,
+      \doa_pair.shadow_diff_reg[19]_0\(1) => \doa_calc.shadow_limit_reg_n_0_[1]\,
+      \doa_pair.shadow_diff_reg[19]_0\(0) => \doa_calc.shadow_limit_reg_n_0_[0]\,
+      done_WN => done_WN,
+      m_axis_dout_tdata(19 downto 0) => k_out(43 downto 24),
       reset => reset,
-      shadow => shadow_WN,
-      shadow_limit(19) => \doa_calc.shadow_limit_reg_n_0_[19]\,
-      shadow_limit(18) => \doa_calc.shadow_limit_reg_n_0_[18]\,
-      shadow_limit(17) => \doa_calc.shadow_limit_reg_n_0_[17]\,
-      shadow_limit(16) => \doa_calc.shadow_limit_reg_n_0_[16]\,
-      shadow_limit(15) => \doa_calc.shadow_limit_reg_n_0_[15]\,
-      shadow_limit(14) => \doa_calc.shadow_limit_reg_n_0_[14]\,
-      shadow_limit(13) => \doa_calc.shadow_limit_reg_n_0_[13]\,
-      shadow_limit(12) => \doa_calc.shadow_limit_reg_n_0_[12]\,
-      shadow_limit(11) => \doa_calc.shadow_limit_reg_n_0_[11]\,
-      shadow_limit(10) => \doa_calc.shadow_limit_reg_n_0_[10]\,
-      shadow_limit(9) => \doa_calc.shadow_limit_reg_n_0_[9]\,
-      shadow_limit(8) => \doa_calc.shadow_limit_reg_n_0_[8]\,
-      shadow_limit(7) => \doa_calc.shadow_limit_reg_n_0_[7]\,
-      shadow_limit(6) => \doa_calc.shadow_limit_reg_n_0_[6]\,
-      shadow_limit(5) => \doa_calc.shadow_limit_reg_n_0_[5]\,
-      shadow_limit(4) => \doa_calc.shadow_limit_reg_n_0_[4]\,
-      shadow_limit(3) => \doa_calc.shadow_limit_reg_n_0_[3]\,
-      shadow_limit(2) => \doa_calc.shadow_limit_reg_n_0_[2]\,
-      shadow_limit(1) => \doa_calc.shadow_limit_reg_n_0_[1]\,
-      shadow_limit(0) => \doa_calc.shadow_limit_reg_n_0_[0]\,
-      start => start_div
+      shadow_WN => shadow_WN,
+      start_div => start_div
     );
 doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
@@ -44174,7 +44349,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[0]_i_1_n_0\,
       Q => \^angle\(0),
       R => '0'
@@ -44182,7 +44357,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[10]_i_1_n_0\,
       Q => \^angle\(10),
       R => '0'
@@ -44190,7 +44365,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[11]_i_1_n_0\,
       Q => \^angle\(11),
       R => '0'
@@ -44198,7 +44373,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[12]_i_1_n_0\,
       Q => \^angle\(12),
       R => '0'
@@ -44206,7 +44381,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[13]_i_1_n_0\,
       Q => \^angle\(13),
       R => '0'
@@ -44214,7 +44389,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[14]_i_1_n_0\,
       Q => \^angle\(14),
       R => '0'
@@ -44222,7 +44397,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[15]_i_1_n_0\,
       Q => \^angle\(15),
       R => '0'
@@ -44230,7 +44405,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[1]_i_1_n_0\,
       Q => \^angle\(1),
       R => '0'
@@ -44238,7 +44413,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[2]_i_1_n_0\,
       Q => \^angle\(2),
       R => '0'
@@ -44246,7 +44421,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[3]_i_1_n_0\,
       Q => \^angle\(3),
       R => '0'
@@ -44254,7 +44429,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[4]_i_1_n_0\,
       Q => \^angle\(4),
       R => '0'
@@ -44262,7 +44437,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[5]_i_1_n_0\,
       Q => \^angle\(5),
       R => '0'
@@ -44270,7 +44445,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[6]_i_1_n_0\,
       Q => \^angle\(6),
       R => '0'
@@ -44278,7 +44453,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[7]_i_1_n_0\,
       Q => \^angle\(7),
       R => '0'
@@ -44286,7 +44461,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[8]_i_1_n_0\,
       Q => \^angle\(8),
       R => '0'
@@ -44294,7 +44469,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.angle[9]_i_1_n_0\,
       Q => \^angle\(9),
       R => '0'
@@ -44427,404 +44602,177 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       Q => angle_val(9),
       R => '0'
     );
-\doa_calc.antenna_pm[0]_i_1\: unisim.vcomponents.LUT5
+\doa_calc.antenna_pm[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAAEAAA2"
+      INIT => X"0002000000000000"
     )
         port map (
-      I0 => antenna_pm(0),
-      I1 => config_adr(0),
+      I0 => config_wr,
+      I1 => \doa_calc.shadow_limit[19]_i_2_n_0\,
       I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(0),
-      O => \doa_calc.antenna_pm[0]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[10]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(10),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(10),
-      O => \doa_calc.antenna_pm[10]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[11]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(11),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(11),
-      O => \doa_calc.antenna_pm[11]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[12]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(12),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(12),
-      O => \doa_calc.antenna_pm[12]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[13]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(13),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(13),
-      O => \doa_calc.antenna_pm[13]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[14]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(14),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(14),
-      O => \doa_calc.antenna_pm[14]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[15]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(15),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(15),
-      O => \doa_calc.antenna_pm[15]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[16]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(16),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(16),
-      O => \doa_calc.antenna_pm[16]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[17]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(17),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(17),
-      O => \doa_calc.antenna_pm[17]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[18]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(18),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(18),
-      O => \doa_calc.antenna_pm[18]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[19]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(19),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(19),
-      O => \doa_calc.antenna_pm[19]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(1),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(1),
-      O => \doa_calc.antenna_pm[1]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[2]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(2),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(2),
-      O => \doa_calc.antenna_pm[2]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[3]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(3),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(3),
-      O => \doa_calc.antenna_pm[3]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(4),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(4),
-      O => \doa_calc.antenna_pm[4]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[5]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(5),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(5),
-      O => \doa_calc.antenna_pm[5]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[6]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(6),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(6),
-      O => \doa_calc.antenna_pm[6]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[7]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(7),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(7),
-      O => \doa_calc.antenna_pm[7]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[8]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(8),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(8),
-      O => \doa_calc.antenna_pm[8]_i_1_n_0\
-    );
-\doa_calc.antenna_pm[9]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => antenna_pm(9),
-      I1 => config_adr(0),
-      I2 => config_adr(1),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(9),
-      O => \doa_calc.antenna_pm[9]_i_1_n_0\
+      I3 => config_adr(2),
+      I4 => config_adr(0),
+      I5 => config_adr(3),
+      O => antenna_pm
     );
 \doa_calc.antenna_pm_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      Q => antenna_pm(0),
+      CE => antenna_pm,
+      D => config_data(0),
+      Q => \doa_calc.antenna_pm_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[10]_i_1_n_0\,
-      Q => antenna_pm(10),
+      CE => antenna_pm,
+      D => config_data(10),
+      Q => \doa_calc.antenna_pm_reg_n_0_[10]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[11]_i_1_n_0\,
-      Q => antenna_pm(11),
+      CE => antenna_pm,
+      D => config_data(11),
+      Q => \doa_calc.antenna_pm_reg_n_0_[11]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[12]_i_1_n_0\,
-      Q => antenna_pm(12),
+      CE => antenna_pm,
+      D => config_data(12),
+      Q => \doa_calc.antenna_pm_reg_n_0_[12]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[13]_i_1_n_0\,
-      Q => antenna_pm(13),
+      CE => antenna_pm,
+      D => config_data(13),
+      Q => \doa_calc.antenna_pm_reg_n_0_[13]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[14]_i_1_n_0\,
-      Q => antenna_pm(14),
+      CE => antenna_pm,
+      D => config_data(14),
+      Q => \doa_calc.antenna_pm_reg_n_0_[14]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[15]_i_1_n_0\,
-      Q => antenna_pm(15),
+      CE => antenna_pm,
+      D => config_data(15),
+      Q => \doa_calc.antenna_pm_reg_n_0_[15]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[16]_i_1_n_0\,
-      Q => antenna_pm(16),
+      CE => antenna_pm,
+      D => config_data(16),
+      Q => \doa_calc.antenna_pm_reg_n_0_[16]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[17]_i_1_n_0\,
-      Q => antenna_pm(17),
+      CE => antenna_pm,
+      D => config_data(17),
+      Q => \doa_calc.antenna_pm_reg_n_0_[17]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[18]_i_1_n_0\,
-      Q => antenna_pm(18),
+      CE => antenna_pm,
+      D => config_data(18),
+      Q => \doa_calc.antenna_pm_reg_n_0_[18]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[19]_i_1_n_0\,
-      Q => antenna_pm(19),
+      CE => antenna_pm,
+      D => config_data(19),
+      Q => \doa_calc.antenna_pm_reg_n_0_[19]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[1]_i_1_n_0\,
-      Q => antenna_pm(1),
+      CE => antenna_pm,
+      D => config_data(1),
+      Q => \doa_calc.antenna_pm_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[2]_i_1_n_0\,
-      Q => antenna_pm(2),
+      CE => antenna_pm,
+      D => config_data(2),
+      Q => \doa_calc.antenna_pm_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[3]_i_1_n_0\,
-      Q => antenna_pm(3),
+      CE => antenna_pm,
+      D => config_data(3),
+      Q => \doa_calc.antenna_pm_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[4]_i_1_n_0\,
-      Q => antenna_pm(4),
+      CE => antenna_pm,
+      D => config_data(4),
+      Q => \doa_calc.antenna_pm_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[5]_i_1_n_0\,
-      Q => antenna_pm(5),
+      CE => antenna_pm,
+      D => config_data(5),
+      Q => \doa_calc.antenna_pm_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[6]_i_1_n_0\,
-      Q => antenna_pm(6),
+      CE => antenna_pm,
+      D => config_data(6),
+      Q => \doa_calc.antenna_pm_reg_n_0_[6]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[7]_i_1_n_0\,
-      Q => antenna_pm(7),
+      CE => antenna_pm,
+      D => config_data(7),
+      Q => \doa_calc.antenna_pm_reg_n_0_[7]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[8]_i_1_n_0\,
-      Q => antenna_pm(8),
+      CE => antenna_pm,
+      D => config_data(8),
+      Q => \doa_calc.antenna_pm_reg_n_0_[8]\,
       R => '0'
     );
 \doa_calc.antenna_pm_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.antenna_pm[9]_i_1_n_0\,
-      Q => antenna_pm(9),
+      CE => antenna_pm,
+      D => config_data(9),
+      Q => \doa_calc.antenna_pm_reg_n_0_[9]\,
       R => '0'
     );
 \doa_calc.counter[0]_i_1\: unisim.vcomponents.LUT5
@@ -44835,7 +44783,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       I0 => counter(0),
       I1 => reset,
       I2 => err_sqrt_start,
-      I3 => \doa_calc.counter[4]_i_2_n_0\,
+      I3 => \doa_calc.counter[5]_i_2_n_0\,
       I4 => angle_done,
       O => \doa_calc.counter[0]_i_1_n_0\
     );
@@ -44869,31 +44817,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       I3 => counter(3),
       O => p_3_in(3)
     );
-\doa_calc.counter[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFEA"
-    )
-        port map (
-      I0 => angle_done,
-      I1 => err_sqrt_start,
-      I2 => \doa_calc.counter[4]_i_2_n_0\,
-      I3 => reset,
-      O => \doa_calc.counter[4]_i_1_n_0\
-    );
-\doa_calc.counter[4]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => counter(1),
-      I1 => counter(0),
-      I2 => counter(4),
-      I3 => counter(5),
-      I4 => counter(2),
-      I5 => counter(3),
-      O => \doa_calc.counter[4]_i_2_n_0\
-    );
-\doa_calc.counter[4]_i_3\: unisim.vcomponents.LUT5
+\doa_calc.counter[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"7FFF8000"
     )
@@ -44905,17 +44829,31 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       I4 => counter(4),
       O => p_3_in(4)
     );
-\doa_calc.counter[5]_i_1\: unisim.vcomponents.LUT3
+\doa_calc.counter[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"CA"
+      INIT => X"FFEA"
     )
         port map (
-      I0 => counter(5),
-      I1 => p_3_in(5),
-      I2 => \doa_calc.counter[4]_i_2_n_0\,
+      I0 => angle_done,
+      I1 => err_sqrt_start,
+      I2 => \doa_calc.counter[5]_i_2_n_0\,
+      I3 => reset,
       O => \doa_calc.counter[5]_i_1_n_0\
     );
 \doa_calc.counter[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => counter(1),
+      I1 => counter(0),
+      I2 => counter(4),
+      I3 => counter(5),
+      I4 => counter(2),
+      I5 => counter(3),
+      O => \doa_calc.counter[5]_i_2_n_0\
+    );
+\doa_calc.counter[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"7FFFFFFF80000000"
     )
@@ -44939,42 +44877,42 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.counter[4]_i_2_n_0\,
+      CE => \doa_calc.counter[5]_i_2_n_0\,
       D => p_3_in(1),
       Q => counter(1),
-      R => \doa_calc.counter[4]_i_1_n_0\
+      R => \doa_calc.counter[5]_i_1_n_0\
     );
 \doa_calc.counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.counter[4]_i_2_n_0\,
+      CE => \doa_calc.counter[5]_i_2_n_0\,
       D => p_3_in(2),
       Q => counter(2),
-      R => \doa_calc.counter[4]_i_1_n_0\
+      R => \doa_calc.counter[5]_i_1_n_0\
     );
 \doa_calc.counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.counter[4]_i_2_n_0\,
+      CE => \doa_calc.counter[5]_i_2_n_0\,
       D => p_3_in(3),
       Q => counter(3),
-      R => \doa_calc.counter[4]_i_1_n_0\
+      R => \doa_calc.counter[5]_i_1_n_0\
     );
 \doa_calc.counter_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.counter[4]_i_2_n_0\,
+      CE => \doa_calc.counter[5]_i_2_n_0\,
       D => p_3_in(4),
       Q => counter(4),
-      R => \doa_calc.counter[4]_i_1_n_0\
+      R => \doa_calc.counter[5]_i_1_n_0\
     );
 \doa_calc.counter_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \doa_calc.counter[5]_i_1_n_0\,
+      CE => \doa_calc.counter[5]_i_2_n_0\,
+      D => p_3_in(5),
       Q => counter(5),
-      R => \doa_calc.counter[4]_i_1_n_0\
+      R => \doa_calc.counter[5]_i_1_n_0\
     );
 \doa_calc.delay_E[15]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -45124,7 +45062,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(0),
+      D => \doa_calc.delay_E_reg01_out\(0),
       Q => delay_E(0),
       R => '0'
     );
@@ -45132,7 +45070,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(10),
+      D => \doa_calc.delay_E_reg01_out\(10),
       Q => delay_E(10),
       R => '0'
     );
@@ -45140,7 +45078,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(11),
+      D => \doa_calc.delay_E_reg01_out\(11),
       Q => delay_E(11),
       R => '0'
     );
@@ -45148,7 +45086,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(12),
+      D => \doa_calc.delay_E_reg01_out\(12),
       Q => delay_E(12),
       R => '0'
     );
@@ -45156,7 +45094,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(13),
+      D => \doa_calc.delay_E_reg01_out\(13),
       Q => delay_E(13),
       R => '0'
     );
@@ -45164,7 +45102,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(14),
+      D => \doa_calc.delay_E_reg01_out\(14),
       Q => delay_E(14),
       R => '0'
     );
@@ -45172,7 +45110,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(15),
+      D => \doa_calc.delay_E_reg01_out\(15),
       Q => delay_E(15),
       R => '0'
     );
@@ -45190,7 +45128,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       CO(0) => \doa_calc.delay_E_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => delay_EW(14 downto 8),
-      O(7 downto 0) => delay_E01_out(15 downto 8),
+      O(7 downto 0) => \doa_calc.delay_E_reg01_out\(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[15]_i_4_n_0\,
@@ -45204,7 +45142,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(1),
+      D => \doa_calc.delay_E_reg01_out\(1),
       Q => delay_E(1),
       R => '0'
     );
@@ -45212,7 +45150,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(2),
+      D => \doa_calc.delay_E_reg01_out\(2),
       Q => delay_E(2),
       R => '0'
     );
@@ -45220,7 +45158,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(3),
+      D => \doa_calc.delay_E_reg01_out\(3),
       Q => delay_E(3),
       R => '0'
     );
@@ -45228,7 +45166,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(4),
+      D => \doa_calc.delay_E_reg01_out\(4),
       Q => delay_E(4),
       R => '0'
     );
@@ -45236,7 +45174,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(5),
+      D => \doa_calc.delay_E_reg01_out\(5),
       Q => delay_E(5),
       R => '0'
     );
@@ -45244,7 +45182,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(6),
+      D => \doa_calc.delay_E_reg01_out\(6),
       Q => delay_E(6),
       R => '0'
     );
@@ -45252,7 +45190,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(7),
+      D => \doa_calc.delay_E_reg01_out\(7),
       Q => delay_E(7),
       R => '0'
     );
@@ -45269,7 +45207,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       CO(1) => \doa_calc.delay_E_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1_n_7\,
       DI(7 downto 0) => delay_EW(7 downto 0),
-      O(7 downto 0) => delay_E01_out(7 downto 0),
+      O(7 downto 0) => \doa_calc.delay_E_reg01_out\(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[7]_i_4_n_0\,
@@ -45283,7 +45221,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(8),
+      D => \doa_calc.delay_E_reg01_out\(8),
       Q => delay_E(8),
       R => '0'
     );
@@ -45291,7 +45229,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_E01_out(9),
+      D => \doa_calc.delay_E_reg01_out\(9),
       Q => delay_E(9),
       R => '0'
     );
@@ -45443,7 +45381,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(0),
+      D => \doa_calc.delay_N_reg03_out\(0),
       Q => delay_N(0),
       R => '0'
     );
@@ -45451,7 +45389,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(10),
+      D => \doa_calc.delay_N_reg03_out\(10),
       Q => delay_N(10),
       R => '0'
     );
@@ -45459,7 +45397,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(11),
+      D => \doa_calc.delay_N_reg03_out\(11),
       Q => delay_N(11),
       R => '0'
     );
@@ -45467,7 +45405,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(12),
+      D => \doa_calc.delay_N_reg03_out\(12),
       Q => delay_N(12),
       R => '0'
     );
@@ -45475,7 +45413,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(13),
+      D => \doa_calc.delay_N_reg03_out\(13),
       Q => delay_N(13),
       R => '0'
     );
@@ -45483,7 +45421,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(14),
+      D => \doa_calc.delay_N_reg03_out\(14),
       Q => delay_N(14),
       R => '0'
     );
@@ -45491,7 +45429,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(15),
+      D => \doa_calc.delay_N_reg03_out\(15),
       Q => delay_N(15),
       R => '0'
     );
@@ -45509,7 +45447,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       CO(0) => \doa_calc.delay_N_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => delay_NE(14 downto 8),
-      O(7 downto 0) => delay_N02_out(15 downto 8),
+      O(7 downto 0) => \doa_calc.delay_N_reg03_out\(15 downto 8),
       S(7) => \doa_calc.delay_N[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_N[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_N[15]_i_4_n_0\,
@@ -45523,7 +45461,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(1),
+      D => \doa_calc.delay_N_reg03_out\(1),
       Q => delay_N(1),
       R => '0'
     );
@@ -45531,7 +45469,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(2),
+      D => \doa_calc.delay_N_reg03_out\(2),
       Q => delay_N(2),
       R => '0'
     );
@@ -45539,7 +45477,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(3),
+      D => \doa_calc.delay_N_reg03_out\(3),
       Q => delay_N(3),
       R => '0'
     );
@@ -45547,7 +45485,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(4),
+      D => \doa_calc.delay_N_reg03_out\(4),
       Q => delay_N(4),
       R => '0'
     );
@@ -45555,7 +45493,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(5),
+      D => \doa_calc.delay_N_reg03_out\(5),
       Q => delay_N(5),
       R => '0'
     );
@@ -45563,7 +45501,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(6),
+      D => \doa_calc.delay_N_reg03_out\(6),
       Q => delay_N(6),
       R => '0'
     );
@@ -45571,7 +45509,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(7),
+      D => \doa_calc.delay_N_reg03_out\(7),
       Q => delay_N(7),
       R => '0'
     );
@@ -45588,7 +45526,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       CO(1) => \doa_calc.delay_N_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_N_reg[7]_i_1_n_7\,
       DI(7 downto 0) => delay_NE(7 downto 0),
-      O(7 downto 0) => delay_N02_out(7 downto 0),
+      O(7 downto 0) => \doa_calc.delay_N_reg03_out\(7 downto 0),
       S(7) => \doa_calc.delay_N[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_N[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_N[7]_i_4_n_0\,
@@ -45602,7 +45540,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(8),
+      D => \doa_calc.delay_N_reg03_out\(8),
       Q => delay_N(8),
       R => '0'
     );
@@ -45610,7 +45548,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_N02_out(9),
+      D => \doa_calc.delay_N_reg03_out\(9),
       Q => delay_N(9),
       R => '0'
     );
@@ -45762,7 +45700,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(0),
+      D => \doa_calc.delay_W_reg00_out\(0),
       Q => delay_W(0),
       R => '0'
     );
@@ -45770,7 +45708,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(10),
+      D => \doa_calc.delay_W_reg00_out\(10),
       Q => delay_W(10),
       R => '0'
     );
@@ -45778,7 +45716,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(11),
+      D => \doa_calc.delay_W_reg00_out\(11),
       Q => delay_W(11),
       R => '0'
     );
@@ -45786,7 +45724,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(12),
+      D => \doa_calc.delay_W_reg00_out\(12),
       Q => delay_W(12),
       R => '0'
     );
@@ -45794,7 +45732,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(13),
+      D => \doa_calc.delay_W_reg00_out\(13),
       Q => delay_W(13),
       R => '0'
     );
@@ -45802,7 +45740,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(14),
+      D => \doa_calc.delay_W_reg00_out\(14),
       Q => delay_W(14),
       R => '0'
     );
@@ -45810,7 +45748,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(15),
+      D => \doa_calc.delay_W_reg00_out\(15),
       Q => delay_W(15),
       R => '0'
     );
@@ -45828,7 +45766,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       CO(0) => \doa_calc.delay_W_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => delay_WN(14 downto 8),
-      O(7 downto 0) => delay_W00_out(15 downto 8),
+      O(7 downto 0) => \doa_calc.delay_W_reg00_out\(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[15]_i_4_n_0\,
@@ -45842,7 +45780,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(1),
+      D => \doa_calc.delay_W_reg00_out\(1),
       Q => delay_W(1),
       R => '0'
     );
@@ -45850,7 +45788,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(2),
+      D => \doa_calc.delay_W_reg00_out\(2),
       Q => delay_W(2),
       R => '0'
     );
@@ -45858,7 +45796,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(3),
+      D => \doa_calc.delay_W_reg00_out\(3),
       Q => delay_W(3),
       R => '0'
     );
@@ -45866,7 +45804,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(4),
+      D => \doa_calc.delay_W_reg00_out\(4),
       Q => delay_W(4),
       R => '0'
     );
@@ -45874,7 +45812,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(5),
+      D => \doa_calc.delay_W_reg00_out\(5),
       Q => delay_W(5),
       R => '0'
     );
@@ -45882,7 +45820,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(6),
+      D => \doa_calc.delay_W_reg00_out\(6),
       Q => delay_W(6),
       R => '0'
     );
@@ -45890,7 +45828,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(7),
+      D => \doa_calc.delay_W_reg00_out\(7),
       Q => delay_W(7),
       R => '0'
     );
@@ -45907,7 +45845,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       CO(1) => \doa_calc.delay_W_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1_n_7\,
       DI(7 downto 0) => delay_WN(7 downto 0),
-      O(7 downto 0) => delay_W00_out(7 downto 0),
+      O(7 downto 0) => \doa_calc.delay_W_reg00_out\(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[7]_i_4_n_0\,
@@ -45921,7 +45859,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(8),
+      D => \doa_calc.delay_W_reg00_out\(8),
       Q => delay_W(8),
       R => '0'
     );
@@ -45929,7 +45867,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
      port map (
       C => clk,
       CE => '1',
-      D => delay_W00_out(9),
+      D => \doa_calc.delay_W_reg00_out\(9),
       Q => delay_W(9),
       R => '0'
     );
@@ -47103,81 +47041,81 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.doa_error_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(18),
-      Q => \^doa_error\(0),
+      Q => \doa_calc.doa_error_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(19),
-      Q => \^doa_error\(1),
+      Q => \doa_calc.doa_error_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(20),
-      Q => \^doa_error\(2),
+      Q => \doa_calc.doa_error_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(21),
-      Q => \^doa_error\(3),
+      Q => \doa_calc.doa_error_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(22),
-      Q => \^doa_error\(4),
+      Q => \doa_calc.doa_error_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(23),
-      Q => \^doa_error\(5),
+      Q => \doa_calc.doa_error_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(24),
-      Q => \^doa_error\(6),
+      Q => \doa_calc.doa_error_reg_n_0_[6]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(25),
-      Q => \^doa_error\(7),
+      Q => \doa_calc.doa_error_reg_n_0_[7]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(26),
-      Q => \^doa_error\(8),
+      Q => \doa_calc.doa_error_reg_n_0_[8]\,
       R => '0'
     );
 \doa_calc.doa_error_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(3),
+      CE => p_2_in(4),
       D => err_pm(27),
-      Q => \^doa_error\(9),
+      Q => \doa_calc.doa_error_reg_n_0_[9]\,
       R => '0'
     );
 \doa_calc.done_i_1\: unisim.vcomponents.LUT2
@@ -47185,7 +47123,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"8"
     )
         port map (
-      I0 => run(5),
+      I0 => p_0_in0_in,
       I1 => err_diff(9),
       O => \doa_calc.done_i_1_n_0\
     );
@@ -47488,7 +47426,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(0),
       Q => env_E_pair(0),
       R => '0'
@@ -47496,7 +47434,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(10),
       Q => env_E_pair(10),
       R => '0'
@@ -47504,7 +47442,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(11),
       Q => env_E_pair(11),
       R => '0'
@@ -47512,7 +47450,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(12),
       Q => env_E_pair(12),
       R => '0'
@@ -47520,7 +47458,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(13),
       Q => env_E_pair(13),
       R => '0'
@@ -47528,7 +47466,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(14),
       Q => env_E_pair(14),
       R => '0'
@@ -47536,7 +47474,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(15),
       Q => env_E_pair(15),
       R => '0'
@@ -47544,7 +47482,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(1),
       Q => env_E_pair(1),
       R => '0'
@@ -47552,7 +47490,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(2),
       Q => env_E_pair(2),
       R => '0'
@@ -47560,7 +47498,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(3),
       Q => env_E_pair(3),
       R => '0'
@@ -47568,7 +47506,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(4),
       Q => env_E_pair(4),
       R => '0'
@@ -47576,7 +47514,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(5),
       Q => env_E_pair(5),
       R => '0'
@@ -47584,7 +47522,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(6),
       Q => env_E_pair(6),
       R => '0'
@@ -47592,7 +47530,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(7),
       Q => env_E_pair(7),
       R => '0'
@@ -47600,7 +47538,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(8),
       Q => env_E_pair(8),
       R => '0'
@@ -47608,7 +47546,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_E_div(9),
       Q => env_E_pair(9),
       R => '0'
@@ -47616,7 +47554,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[0]_i_1_n_0\,
       Q => \^env_e\(0),
       R => '0'
@@ -47624,7 +47562,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[10]_i_1_n_0\,
       Q => \^env_e\(10),
       R => '0'
@@ -47632,7 +47570,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[11]_i_1_n_0\,
       Q => \^env_e\(11),
       R => '0'
@@ -47640,7 +47578,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[12]_i_1_n_0\,
       Q => \^env_e\(12),
       R => '0'
@@ -47648,7 +47586,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[13]_i_1_n_0\,
       Q => \^env_e\(13),
       R => '0'
@@ -47656,7 +47594,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[14]_i_1_n_0\,
       Q => \^env_e\(14),
       R => '0'
@@ -47664,7 +47602,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[15]_i_1_n_0\,
       Q => \^env_e\(15),
       R => '0'
@@ -47672,7 +47610,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[1]_i_1_n_0\,
       Q => \^env_e\(1),
       R => '0'
@@ -47680,7 +47618,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[2]_i_1_n_0\,
       Q => \^env_e\(2),
       R => '0'
@@ -47688,7 +47626,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[3]_i_1_n_0\,
       Q => \^env_e\(3),
       R => '0'
@@ -47696,7 +47634,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[4]_i_1_n_0\,
       Q => \^env_e\(4),
       R => '0'
@@ -47704,7 +47642,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[5]_i_1_n_0\,
       Q => \^env_e\(5),
       R => '0'
@@ -47712,7 +47650,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[6]_i_1_n_0\,
       Q => \^env_e\(6),
       R => '0'
@@ -47720,7 +47658,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[7]_i_1_n_0\,
       Q => \^env_e\(7),
       R => '0'
@@ -47728,7 +47666,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[8]_i_1_n_0\,
       Q => \^env_e\(8),
       R => '0'
@@ -47736,7 +47674,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_E_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_E[9]_i_1_n_0\,
       Q => \^env_e\(9),
       R => '0'
@@ -48160,7 +48098,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(0),
       Q => env_N_pair(0),
       R => '0'
@@ -48168,7 +48106,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(10),
       Q => env_N_pair(10),
       R => '0'
@@ -48176,7 +48114,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(11),
       Q => env_N_pair(11),
       R => '0'
@@ -48184,7 +48122,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(12),
       Q => env_N_pair(12),
       R => '0'
@@ -48192,7 +48130,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(13),
       Q => env_N_pair(13),
       R => '0'
@@ -48200,7 +48138,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(14),
       Q => env_N_pair(14),
       R => '0'
@@ -48208,7 +48146,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(15),
       Q => env_N_pair(15),
       R => '0'
@@ -48216,7 +48154,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(1),
       Q => env_N_pair(1),
       R => '0'
@@ -48224,7 +48162,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(2),
       Q => env_N_pair(2),
       R => '0'
@@ -48232,7 +48170,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(3),
       Q => env_N_pair(3),
       R => '0'
@@ -48240,7 +48178,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(4),
       Q => env_N_pair(4),
       R => '0'
@@ -48248,7 +48186,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(5),
       Q => env_N_pair(5),
       R => '0'
@@ -48256,7 +48194,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(6),
       Q => env_N_pair(6),
       R => '0'
@@ -48264,7 +48202,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(7),
       Q => env_N_pair(7),
       R => '0'
@@ -48272,7 +48210,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(8),
       Q => env_N_pair(8),
       R => '0'
@@ -48280,7 +48218,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_N_div(9),
       Q => env_N_pair(9),
       R => '0'
@@ -48288,7 +48226,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[0]_i_1_n_0\,
       Q => \^env_n\(0),
       R => '0'
@@ -48296,7 +48234,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[10]_i_1_n_0\,
       Q => \^env_n\(10),
       R => '0'
@@ -48304,7 +48242,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[11]_i_1_n_0\,
       Q => \^env_n\(11),
       R => '0'
@@ -48312,7 +48250,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[12]_i_1_n_0\,
       Q => \^env_n\(12),
       R => '0'
@@ -48320,7 +48258,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[13]_i_1_n_0\,
       Q => \^env_n\(13),
       R => '0'
@@ -48328,7 +48266,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[14]_i_1_n_0\,
       Q => \^env_n\(14),
       R => '0'
@@ -48336,7 +48274,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[15]_i_1_n_0\,
       Q => \^env_n\(15),
       R => '0'
@@ -48344,7 +48282,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[1]_i_1_n_0\,
       Q => \^env_n\(1),
       R => '0'
@@ -48352,7 +48290,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[2]_i_1_n_0\,
       Q => \^env_n\(2),
       R => '0'
@@ -48360,7 +48298,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[3]_i_1_n_0\,
       Q => \^env_n\(3),
       R => '0'
@@ -48368,7 +48306,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[4]_i_1_n_0\,
       Q => \^env_n\(4),
       R => '0'
@@ -48376,7 +48314,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[5]_i_1_n_0\,
       Q => \^env_n\(5),
       R => '0'
@@ -48384,7 +48322,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[6]_i_1_n_0\,
       Q => \^env_n\(6),
       R => '0'
@@ -48392,7 +48330,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[7]_i_1_n_0\,
       Q => \^env_n\(7),
       R => '0'
@@ -48400,7 +48338,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[8]_i_1_n_0\,
       Q => \^env_n\(8),
       R => '0'
@@ -48408,7 +48346,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_N_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_N[9]_i_1_n_0\,
       Q => \^env_n\(9),
       R => '0'
@@ -48832,7 +48770,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(0),
       Q => env_W_pair(0),
       R => '0'
@@ -48840,7 +48778,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(10),
       Q => env_W_pair(10),
       R => '0'
@@ -48848,7 +48786,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(11),
       Q => env_W_pair(11),
       R => '0'
@@ -48856,7 +48794,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(12),
       Q => env_W_pair(12),
       R => '0'
@@ -48864,7 +48802,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(13),
       Q => env_W_pair(13),
       R => '0'
@@ -48872,7 +48810,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(14),
       Q => env_W_pair(14),
       R => '0'
@@ -48880,7 +48818,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(15),
       Q => env_W_pair(15),
       R => '0'
@@ -48888,7 +48826,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(1),
       Q => env_W_pair(1),
       R => '0'
@@ -48896,7 +48834,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(2),
       Q => env_W_pair(2),
       R => '0'
@@ -48904,7 +48842,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(3),
       Q => env_W_pair(3),
       R => '0'
@@ -48912,7 +48850,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(4),
       Q => env_W_pair(4),
       R => '0'
@@ -48920,7 +48858,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(5),
       Q => env_W_pair(5),
       R => '0'
@@ -48928,7 +48866,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(6),
       Q => env_W_pair(6),
       R => '0'
@@ -48936,7 +48874,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(7),
       Q => env_W_pair(7),
       R => '0'
@@ -48944,7 +48882,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(8),
       Q => env_W_pair(8),
       R => '0'
@@ -48952,7 +48890,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => env_W_div(9),
       Q => env_W_pair(9),
       R => '0'
@@ -48960,7 +48898,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[0]_i_1_n_0\,
       Q => \^env_w\(0),
       R => '0'
@@ -48968,7 +48906,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[10]_i_1_n_0\,
       Q => \^env_w\(10),
       R => '0'
@@ -48976,7 +48914,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[11]_i_1_n_0\,
       Q => \^env_w\(11),
       R => '0'
@@ -48984,7 +48922,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[12]_i_1_n_0\,
       Q => \^env_w\(12),
       R => '0'
@@ -48992,7 +48930,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[13]_i_1_n_0\,
       Q => \^env_w\(13),
       R => '0'
@@ -49000,7 +48938,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[14]_i_1_n_0\,
       Q => \^env_w\(14),
       R => '0'
@@ -49008,7 +48946,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[15]_i_1_n_0\,
       Q => \^env_w\(15),
       R => '0'
@@ -49016,7 +48954,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[1]_i_1_n_0\,
       Q => \^env_w\(1),
       R => '0'
@@ -49024,7 +48962,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[2]_i_1_n_0\,
       Q => \^env_w\(2),
       R => '0'
@@ -49032,7 +48970,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[3]_i_1_n_0\,
       Q => \^env_w\(3),
       R => '0'
@@ -49040,7 +48978,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[4]_i_1_n_0\,
       Q => \^env_w\(4),
       R => '0'
@@ -49048,7 +48986,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[5]_i_1_n_0\,
       Q => \^env_w\(5),
       R => '0'
@@ -49056,7 +48994,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[6]_i_1_n_0\,
       Q => \^env_w\(6),
       R => '0'
@@ -49064,7 +49002,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[7]_i_1_n_0\,
       Q => \^env_w\(7),
       R => '0'
@@ -49072,7 +49010,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[8]_i_1_n_0\,
       Q => \^env_w\(8),
       R => '0'
@@ -49080,7 +49018,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.env_W_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.env_W[9]_i_1_n_0\,
       Q => \^env_w\(9),
       R => '0'
@@ -49230,212 +49168,148 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       Q => err_clr,
       R => '0'
     );
-\doa_calc.err_diff[7]_i_2\: unisim.vcomponents.LUT2
+\doa_calc.err_diff[9]_i_10\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_error\(7),
-      I1 => max_antenna_err(7),
-      O => \doa_calc.err_diff[7]_i_2_n_0\
+      I0 => \doa_calc.doa_error_reg_n_0_[2]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[2]\,
+      O => \doa_calc.err_diff[9]_i_10_n_0\
     );
-\doa_calc.err_diff[7]_i_3\: unisim.vcomponents.LUT2
+\doa_calc.err_diff[9]_i_11\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_error\(6),
-      I1 => max_antenna_err(6),
-      O => \doa_calc.err_diff[7]_i_3_n_0\
+      I0 => \doa_calc.doa_error_reg_n_0_[1]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[1]\,
+      O => \doa_calc.err_diff[9]_i_11_n_0\
     );
-\doa_calc.err_diff[7]_i_4\: unisim.vcomponents.LUT2
+\doa_calc.err_diff[9]_i_12\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_error\(5),
-      I1 => max_antenna_err(5),
-      O => \doa_calc.err_diff[7]_i_4_n_0\
-    );
-\doa_calc.err_diff[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^doa_error\(4),
-      I1 => max_antenna_err(4),
-      O => \doa_calc.err_diff[7]_i_5_n_0\
-    );
-\doa_calc.err_diff[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^doa_error\(3),
-      I1 => max_antenna_err(3),
-      O => \doa_calc.err_diff[7]_i_6_n_0\
-    );
-\doa_calc.err_diff[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^doa_error\(2),
-      I1 => max_antenna_err(2),
-      O => \doa_calc.err_diff[7]_i_7_n_0\
-    );
-\doa_calc.err_diff[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^doa_error\(1),
-      I1 => max_antenna_err(1),
-      O => \doa_calc.err_diff[7]_i_8_n_0\
-    );
-\doa_calc.err_diff[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^doa_error\(0),
-      I1 => max_antenna_err(0),
-      O => \doa_calc.err_diff[7]_i_9_n_0\
-    );
-\doa_calc.err_diff[9]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^doa_error\(9),
-      I1 => max_antenna_err(9),
-      O => \doa_calc.err_diff[9]_i_2_n_0\
+      I0 => \doa_calc.doa_error_reg_n_0_[0]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[0]\,
+      O => \doa_calc.err_diff[9]_i_12_n_0\
     );
 \doa_calc.err_diff[9]_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_error\(8),
-      I1 => max_antenna_err(8),
+      I0 => \doa_calc.doa_error_reg_n_0_[9]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[9]\,
       O => \doa_calc.err_diff[9]_i_3_n_0\
     );
-\doa_calc.err_diff_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(0),
-      Q => err_diff(0),
-      R => '0'
+\doa_calc.err_diff[9]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \doa_calc.doa_error_reg_n_0_[8]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[8]\,
+      O => \doa_calc.err_diff[9]_i_4_n_0\
     );
-\doa_calc.err_diff_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(1),
-      Q => err_diff(1),
-      R => '0'
+\doa_calc.err_diff[9]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \doa_calc.doa_error_reg_n_0_[7]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[7]\,
+      O => \doa_calc.err_diff[9]_i_5_n_0\
     );
-\doa_calc.err_diff_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(2),
-      Q => err_diff(2),
-      R => '0'
+\doa_calc.err_diff[9]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \doa_calc.doa_error_reg_n_0_[6]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[6]\,
+      O => \doa_calc.err_diff[9]_i_6_n_0\
     );
-\doa_calc.err_diff_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(3),
-      Q => err_diff(3),
-      R => '0'
+\doa_calc.err_diff[9]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \doa_calc.doa_error_reg_n_0_[5]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[5]\,
+      O => \doa_calc.err_diff[9]_i_7_n_0\
     );
-\doa_calc.err_diff_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(4),
-      Q => err_diff(4),
-      R => '0'
+\doa_calc.err_diff[9]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \doa_calc.doa_error_reg_n_0_[4]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[4]\,
+      O => \doa_calc.err_diff[9]_i_8_n_0\
     );
-\doa_calc.err_diff_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(5),
-      Q => err_diff(5),
-      R => '0'
-    );
-\doa_calc.err_diff_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(6),
-      Q => err_diff(6),
-      R => '0'
-    );
-\doa_calc.err_diff_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(7),
-      Q => err_diff(7),
-      R => '0'
-    );
-\doa_calc.err_diff_reg[7]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \doa_calc.err_diff_reg[7]_i_1_n_0\,
-      CO(6) => \doa_calc.err_diff_reg[7]_i_1_n_1\,
-      CO(5) => \doa_calc.err_diff_reg[7]_i_1_n_2\,
-      CO(4) => \doa_calc.err_diff_reg[7]_i_1_n_3\,
-      CO(3) => \doa_calc.err_diff_reg[7]_i_1_n_4\,
-      CO(2) => \doa_calc.err_diff_reg[7]_i_1_n_5\,
-      CO(1) => \doa_calc.err_diff_reg[7]_i_1_n_6\,
-      CO(0) => \doa_calc.err_diff_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => \^doa_error\(7 downto 0),
-      O(7 downto 0) => \doa_calc.err_diff_reg0\(7 downto 0),
-      S(7) => \doa_calc.err_diff[7]_i_2_n_0\,
-      S(6) => \doa_calc.err_diff[7]_i_3_n_0\,
-      S(5) => \doa_calc.err_diff[7]_i_4_n_0\,
-      S(4) => \doa_calc.err_diff[7]_i_5_n_0\,
-      S(3) => \doa_calc.err_diff[7]_i_6_n_0\,
-      S(2) => \doa_calc.err_diff[7]_i_7_n_0\,
-      S(1) => \doa_calc.err_diff[7]_i_8_n_0\,
-      S(0) => \doa_calc.err_diff[7]_i_9_n_0\
-    );
-\doa_calc.err_diff_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(8),
-      Q => err_diff(8),
-      R => '0'
+\doa_calc.err_diff[9]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \doa_calc.doa_error_reg_n_0_[3]\,
+      I1 => \doa_calc.max_antenna_err_reg_n_0_[3]\,
+      O => \doa_calc.err_diff[9]_i_9_n_0\
     );
 \doa_calc.err_diff_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(4),
-      D => \doa_calc.err_diff_reg0\(9),
+      CE => p_2_in(5),
+      D => err_diff0(9),
       Q => err_diff(9),
       R => '0'
     );
 \doa_calc.err_diff_reg[9]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \doa_calc.err_diff_reg[7]_i_1_n_0\,
+      CI => \doa_calc.err_diff_reg[9]_i_2_n_0\,
       CI_TOP => '0',
       CO(7 downto 1) => \NLW_doa_calc.err_diff_reg[9]_i_1_CO_UNCONNECTED\(7 downto 1),
       CO(0) => \doa_calc.err_diff_reg[9]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => \^doa_error\(8),
+      DI(0) => \doa_calc.doa_error_reg_n_0_[8]\,
       O(7 downto 2) => \NLW_doa_calc.err_diff_reg[9]_i_1_O_UNCONNECTED\(7 downto 2),
-      O(1 downto 0) => \doa_calc.err_diff_reg0\(9 downto 8),
+      O(1) => err_diff0(9),
+      O(0) => \NLW_doa_calc.err_diff_reg[9]_i_1_O_UNCONNECTED\(0),
       S(7 downto 2) => B"000000",
-      S(1) => \doa_calc.err_diff[9]_i_2_n_0\,
-      S(0) => \doa_calc.err_diff[9]_i_3_n_0\
+      S(1) => \doa_calc.err_diff[9]_i_3_n_0\,
+      S(0) => \doa_calc.err_diff[9]_i_4_n_0\
+    );
+\doa_calc.err_diff_reg[9]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \doa_calc.err_diff_reg[9]_i_2_n_0\,
+      CO(6) => \doa_calc.err_diff_reg[9]_i_2_n_1\,
+      CO(5) => \doa_calc.err_diff_reg[9]_i_2_n_2\,
+      CO(4) => \doa_calc.err_diff_reg[9]_i_2_n_3\,
+      CO(3) => \doa_calc.err_diff_reg[9]_i_2_n_4\,
+      CO(2) => \doa_calc.err_diff_reg[9]_i_2_n_5\,
+      CO(1) => \doa_calc.err_diff_reg[9]_i_2_n_6\,
+      CO(0) => \doa_calc.err_diff_reg[9]_i_2_n_7\,
+      DI(7) => \doa_calc.doa_error_reg_n_0_[7]\,
+      DI(6) => \doa_calc.doa_error_reg_n_0_[6]\,
+      DI(5) => \doa_calc.doa_error_reg_n_0_[5]\,
+      DI(4) => \doa_calc.doa_error_reg_n_0_[4]\,
+      DI(3) => \doa_calc.doa_error_reg_n_0_[3]\,
+      DI(2) => \doa_calc.doa_error_reg_n_0_[2]\,
+      DI(1) => \doa_calc.doa_error_reg_n_0_[1]\,
+      DI(0) => \doa_calc.doa_error_reg_n_0_[0]\,
+      O(7 downto 0) => \NLW_doa_calc.err_diff_reg[9]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \doa_calc.err_diff[9]_i_5_n_0\,
+      S(6) => \doa_calc.err_diff[9]_i_6_n_0\,
+      S(5) => \doa_calc.err_diff[9]_i_7_n_0\,
+      S(4) => \doa_calc.err_diff[9]_i_8_n_0\,
+      S(3) => \doa_calc.err_diff[9]_i_9_n_0\,
+      S(2) => \doa_calc.err_diff[9]_i_10_n_0\,
+      S(1) => \doa_calc.err_diff[9]_i_11_n_0\,
+      S(0) => \doa_calc.err_diff[9]_i_12_n_0\
     );
 \doa_calc.err_in[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -50212,7 +50086,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(0),
       Q => freq_pair(0),
       R => '0'
@@ -50220,7 +50094,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(10),
       Q => freq_pair(10),
       R => '0'
@@ -50228,7 +50102,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(11),
       Q => freq_pair(11),
       R => '0'
@@ -50236,7 +50110,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(12),
       Q => freq_pair(12),
       R => '0'
@@ -50244,7 +50118,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(13),
       Q => freq_pair(13),
       R => '0'
@@ -50252,7 +50126,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(14),
       Q => freq_pair(14),
       R => '0'
@@ -50260,7 +50134,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(15),
       Q => freq_pair(15),
       R => '0'
@@ -50268,7 +50142,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(16),
       Q => freq_pair(16),
       R => '0'
@@ -50276,7 +50150,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(17),
       Q => freq_pair(17),
       R => '0'
@@ -50284,7 +50158,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(18),
       Q => freq_pair(18),
       R => '0'
@@ -50292,7 +50166,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(19),
       Q => freq_pair(19),
       R => '0'
@@ -50300,7 +50174,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(1),
       Q => freq_pair(1),
       R => '0'
@@ -50308,7 +50182,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(2),
       Q => freq_pair(2),
       R => '0'
@@ -50316,7 +50190,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(3),
       Q => freq_pair(3),
       R => '0'
@@ -50324,7 +50198,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(4),
       Q => freq_pair(4),
       R => '0'
@@ -50332,7 +50206,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(5),
       Q => freq_pair(5),
       R => '0'
@@ -50340,7 +50214,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(6),
       Q => freq_pair(6),
       R => '0'
@@ -50348,7 +50222,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(7),
       Q => freq_pair(7),
       R => '0'
@@ -50356,7 +50230,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(8),
       Q => freq_pair(8),
       R => '0'
@@ -50364,7 +50238,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => freq_div(9),
       Q => freq_pair(9),
       R => '0'
@@ -50372,7 +50246,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[0]_i_1_n_0\,
       Q => \^freq\(0),
       R => '0'
@@ -50380,7 +50254,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[10]_i_1_n_0\,
       Q => \^freq\(10),
       R => '0'
@@ -50388,7 +50262,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[11]_i_1_n_0\,
       Q => \^freq\(11),
       R => '0'
@@ -50396,7 +50270,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[12]_i_1_n_0\,
       Q => \^freq\(12),
       R => '0'
@@ -50404,7 +50278,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[13]_i_1_n_0\,
       Q => \^freq\(13),
       R => '0'
@@ -50412,7 +50286,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[14]_i_1_n_0\,
       Q => \^freq\(14),
       R => '0'
@@ -50420,7 +50294,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[15]_i_1_n_0\,
       Q => \^freq\(15),
       R => '0'
@@ -50428,7 +50302,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[16]_i_1_n_0\,
       Q => \^freq\(16),
       R => '0'
@@ -50436,7 +50310,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[17]_i_1_n_0\,
       Q => \^freq\(17),
       R => '0'
@@ -50444,7 +50318,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[18]_i_1_n_0\,
       Q => \^freq\(18),
       R => '0'
@@ -50452,7 +50326,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[19]_i_1_n_0\,
       Q => \^freq\(19),
       R => '0'
@@ -50460,7 +50334,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[1]_i_1_n_0\,
       Q => \^freq\(1),
       R => '0'
@@ -50468,7 +50342,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[2]_i_1_n_0\,
       Q => \^freq\(2),
       R => '0'
@@ -50476,7 +50350,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[3]_i_1_n_0\,
       Q => \^freq\(3),
       R => '0'
@@ -50484,7 +50358,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[4]_i_1_n_0\,
       Q => \^freq\(4),
       R => '0'
@@ -50492,7 +50366,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[5]_i_1_n_0\,
       Q => \^freq\(5),
       R => '0'
@@ -50500,7 +50374,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[6]_i_1_n_0\,
       Q => \^freq\(6),
       R => '0'
@@ -50508,7 +50382,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[7]_i_1_n_0\,
       Q => \^freq\(7),
       R => '0'
@@ -50516,7 +50390,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[8]_i_1_n_0\,
       Q => \^freq\(8),
       R => '0'
@@ -50524,7 +50398,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.freq[9]_i_1_n_0\,
       Q => \^freq\(9),
       R => '0'
@@ -50691,15 +50565,15 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
     );
 \doa_calc.inv_sample_dist[31]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000004000000"
+      INIT => X"0002000000000000"
     )
         port map (
-      I0 => config_adr(1),
-      I1 => config_adr(0),
+      I0 => config_wr,
+      I1 => \doa_calc.shadow_limit[19]_i_2_n_0\,
       I2 => config_adr(3),
-      I3 => config_wr,
-      I4 => config_adr(2),
-      I5 => \doa_calc.shadow_limit[19]_i_2_n_0\,
+      I3 => config_adr(1),
+      I4 => config_adr(0),
+      I5 => config_adr(2),
       O => inv_sample_dist
     );
 \doa_calc.inv_sample_dist_reg[0]\: unisim.vcomponents.FDRE
@@ -50958,217 +50832,97 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       Q => div_dij(16),
       R => '0'
     );
-\doa_calc.max_antenna_err[0]_i_1\: unisim.vcomponents.LUT5
+\doa_calc.max_antenna_err[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAAEAAA2"
+      INIT => X"0002000000000000"
     )
         port map (
-      I0 => max_antenna_err(0),
-      I1 => config_adr(1),
+      I0 => config_wr,
+      I1 => \doa_calc.shadow_limit[19]_i_2_n_0\,
       I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(0),
-      O => \doa_calc.max_antenna_err[0]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(1),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(1),
-      O => \doa_calc.max_antenna_err[1]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[2]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(2),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(2),
-      O => \doa_calc.max_antenna_err[2]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[3]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(3),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(3),
-      O => \doa_calc.max_antenna_err[3]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(4),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(4),
-      O => \doa_calc.max_antenna_err[4]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[5]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(5),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(5),
-      O => \doa_calc.max_antenna_err[5]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[6]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(6),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(6),
-      O => \doa_calc.max_antenna_err[6]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[7]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(7),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(7),
-      O => \doa_calc.max_antenna_err[7]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[8]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(8),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(8),
-      O => \doa_calc.max_antenna_err[8]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[9]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAEAAA2"
-    )
-        port map (
-      I0 => max_antenna_err(9),
-      I1 => config_adr(1),
-      I2 => config_adr(0),
-      I3 => \doa_calc.max_antenna_err[9]_i_2_n_0\,
-      I4 => config_data(9),
-      O => \doa_calc.max_antenna_err[9]_i_1_n_0\
-    );
-\doa_calc.max_antenna_err[9]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFD"
-    )
-        port map (
-      I0 => config_adr(3),
-      I1 => config_adr(2),
-      I2 => config_adr(6),
-      I3 => config_adr(7),
-      I4 => config_adr(4),
-      I5 => config_adr(5),
-      O => \doa_calc.max_antenna_err[9]_i_2_n_0\
+      I3 => config_adr(2),
+      I4 => config_adr(1),
+      I5 => config_adr(3),
+      O => max_antenna_err
     );
 \doa_calc.max_antenna_err_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[0]_i_1_n_0\,
-      Q => max_antenna_err(0),
+      CE => max_antenna_err,
+      D => config_data(0),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[1]_i_1_n_0\,
-      Q => max_antenna_err(1),
+      CE => max_antenna_err,
+      D => config_data(1),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[2]_i_1_n_0\,
-      Q => max_antenna_err(2),
+      CE => max_antenna_err,
+      D => config_data(2),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[3]_i_1_n_0\,
-      Q => max_antenna_err(3),
+      CE => max_antenna_err,
+      D => config_data(3),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[4]_i_1_n_0\,
-      Q => max_antenna_err(4),
+      CE => max_antenna_err,
+      D => config_data(4),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[5]_i_1_n_0\,
-      Q => max_antenna_err(5),
+      CE => max_antenna_err,
+      D => config_data(5),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[6]_i_1_n_0\,
-      Q => max_antenna_err(6),
+      CE => max_antenna_err,
+      D => config_data(6),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[6]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[7]_i_1_n_0\,
-      Q => max_antenna_err(7),
+      CE => max_antenna_err,
+      D => config_data(7),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[7]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[8]_i_1_n_0\,
-      Q => max_antenna_err(8),
+      CE => max_antenna_err,
+      D => config_data(8),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[8]\,
       R => '0'
     );
 \doa_calc.max_antenna_err_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => config_wr,
-      D => \doa_calc.max_antenna_err[9]_i_1_n_0\,
-      Q => max_antenna_err(9),
+      CE => max_antenna_err,
+      D => config_data(9),
+      Q => \doa_calc.max_antenna_err_reg_n_0_[9]\,
       R => '0'
     );
 \doa_calc.phase_EW_div_reg[0]\: unisim.vcomponents.FDRE
@@ -51334,7 +51088,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(0),
       Q => phase_EW_pair(0),
       R => '0'
@@ -51342,7 +51096,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(10),
       Q => phase_EW_pair(10),
       R => '0'
@@ -51350,7 +51104,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(11),
       Q => phase_EW_pair(11),
       R => '0'
@@ -51358,7 +51112,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(12),
       Q => phase_EW_pair(12),
       R => '0'
@@ -51366,7 +51120,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(13),
       Q => phase_EW_pair(13),
       R => '0'
@@ -51374,7 +51128,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(14),
       Q => phase_EW_pair(14),
       R => '0'
@@ -51382,7 +51136,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(15),
       Q => phase_EW_pair(15),
       R => '0'
@@ -51390,7 +51144,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(16),
       Q => phase_EW_pair(16),
       R => '0'
@@ -51398,7 +51152,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(17),
       Q => phase_EW_pair(17),
       R => '0'
@@ -51406,7 +51160,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(18),
       Q => phase_EW_pair(18),
       R => '0'
@@ -51414,7 +51168,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(19),
       Q => phase_EW_pair(19),
       R => '0'
@@ -51422,7 +51176,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(1),
       Q => phase_EW_pair(1),
       R => '0'
@@ -51430,7 +51184,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(2),
       Q => phase_EW_pair(2),
       R => '0'
@@ -51438,7 +51192,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(3),
       Q => phase_EW_pair(3),
       R => '0'
@@ -51446,7 +51200,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(4),
       Q => phase_EW_pair(4),
       R => '0'
@@ -51454,7 +51208,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(5),
       Q => phase_EW_pair(5),
       R => '0'
@@ -51462,7 +51216,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(6),
       Q => phase_EW_pair(6),
       R => '0'
@@ -51470,7 +51224,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(7),
       Q => phase_EW_pair(7),
       R => '0'
@@ -51478,7 +51232,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(8),
       Q => phase_EW_pair(8),
       R => '0'
@@ -51486,7 +51240,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_EW_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_EW_div(9),
       Q => phase_EW_pair(9),
       R => '0'
@@ -51654,7 +51408,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(0),
       Q => phase_NE_pair(0),
       R => '0'
@@ -51662,7 +51416,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(10),
       Q => phase_NE_pair(10),
       R => '0'
@@ -51670,7 +51424,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(11),
       Q => phase_NE_pair(11),
       R => '0'
@@ -51678,7 +51432,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(12),
       Q => phase_NE_pair(12),
       R => '0'
@@ -51686,7 +51440,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(13),
       Q => phase_NE_pair(13),
       R => '0'
@@ -51694,7 +51448,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(14),
       Q => phase_NE_pair(14),
       R => '0'
@@ -51702,7 +51456,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(15),
       Q => phase_NE_pair(15),
       R => '0'
@@ -51710,7 +51464,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(16),
       Q => phase_NE_pair(16),
       R => '0'
@@ -51718,7 +51472,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(17),
       Q => phase_NE_pair(17),
       R => '0'
@@ -51726,7 +51480,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(18),
       Q => phase_NE_pair(18),
       R => '0'
@@ -51734,7 +51488,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(19),
       Q => phase_NE_pair(19),
       R => '0'
@@ -51742,7 +51496,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(1),
       Q => phase_NE_pair(1),
       R => '0'
@@ -51750,7 +51504,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(2),
       Q => phase_NE_pair(2),
       R => '0'
@@ -51758,7 +51512,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(3),
       Q => phase_NE_pair(3),
       R => '0'
@@ -51766,7 +51520,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(4),
       Q => phase_NE_pair(4),
       R => '0'
@@ -51774,7 +51528,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(5),
       Q => phase_NE_pair(5),
       R => '0'
@@ -51782,7 +51536,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(6),
       Q => phase_NE_pair(6),
       R => '0'
@@ -51790,7 +51544,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(7),
       Q => phase_NE_pair(7),
       R => '0'
@@ -51798,7 +51552,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(8),
       Q => phase_NE_pair(8),
       R => '0'
@@ -51806,7 +51560,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_NE_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_NE_div(9),
       Q => phase_NE_pair(9),
       R => '0'
@@ -51974,7 +51728,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(0),
       Q => phase_WN_pair(0),
       R => '0'
@@ -51982,7 +51736,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(10),
       Q => phase_WN_pair(10),
       R => '0'
@@ -51990,7 +51744,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(11),
       Q => phase_WN_pair(11),
       R => '0'
@@ -51998,7 +51752,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(12),
       Q => phase_WN_pair(12),
       R => '0'
@@ -52006,7 +51760,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(13),
       Q => phase_WN_pair(13),
       R => '0'
@@ -52014,7 +51768,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(14),
       Q => phase_WN_pair(14),
       R => '0'
@@ -52022,7 +51776,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(15),
       Q => phase_WN_pair(15),
       R => '0'
@@ -52030,7 +51784,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(16),
       Q => phase_WN_pair(16),
       R => '0'
@@ -52038,7 +51792,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(17),
       Q => phase_WN_pair(17),
       R => '0'
@@ -52046,7 +51800,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(18),
       Q => phase_WN_pair(18),
       R => '0'
@@ -52054,7 +51808,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(19),
       Q => phase_WN_pair(19),
       R => '0'
@@ -52062,7 +51816,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(1),
       Q => phase_WN_pair(1),
       R => '0'
@@ -52070,7 +51824,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(2),
       Q => phase_WN_pair(2),
       R => '0'
@@ -52078,7 +51832,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(3),
       Q => phase_WN_pair(3),
       R => '0'
@@ -52086,7 +51840,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(4),
       Q => phase_WN_pair(4),
       R => '0'
@@ -52094,7 +51848,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(5),
       Q => phase_WN_pair(5),
       R => '0'
@@ -52102,7 +51856,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(6),
       Q => phase_WN_pair(6),
       R => '0'
@@ -52110,7 +51864,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(7),
       Q => phase_WN_pair(7),
       R => '0'
@@ -52118,7 +51872,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(8),
       Q => phase_WN_pair(8),
       R => '0'
@@ -52126,7 +51880,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.phase_WN_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => phase_WN_div(9),
       Q => phase_WN_pair(9),
       R => '0'
@@ -52137,7 +51891,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
     )
         port map (
       I0 => err_diff(9),
-      I1 => run(5),
+      I1 => p_0_in0_in,
       O => \doa_calc.phase_error_i_1_n_0\
     );
 \doa_calc.phase_error_reg\: unisim.vcomponents.FDRE
@@ -52150,130 +51904,84 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
     );
 \doa_calc.run[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AABA"
+      INIT => X"FF10"
     )
         port map (
-      I0 => err_sqrt_done,
-      I1 => reset,
-      I2 => run(0),
-      I3 => \doa_calc.run[0]_i_2_n_0\,
+      I0 => reset,
+      I1 => \doa_calc.run[5]_i_2_n_0\,
+      I2 => p_2_in(1),
+      I3 => err_sqrt_done,
       O => \doa_calc.run[0]_i_1_n_0\
     );
-\doa_calc.run[0]_i_2\: unisim.vcomponents.LUT6
+\doa_calc.run[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => reset,
+      I1 => err_sqrt_done,
+      O => run(1)
+    );
+\doa_calc.run[5]_i_2\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => run(1),
-      I1 => run(0),
-      I2 => run(4),
-      I3 => run(5),
-      I4 => run(2),
-      I5 => run(3),
-      O => \doa_calc.run[0]_i_2_n_0\
-    );
-\doa_calc.run[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"00E2"
-    )
-        port map (
-      I0 => run(1),
-      I1 => \doa_calc.run[0]_i_2_n_0\,
-      I2 => run(0),
-      I3 => reset,
-      O => \doa_calc.run[1]_i_1_n_0\
-    );
-\doa_calc.run[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"00E2"
-    )
-        port map (
-      I0 => run(2),
-      I1 => \doa_calc.run[0]_i_2_n_0\,
-      I2 => run(1),
-      I3 => reset,
-      O => \doa_calc.run[2]_i_1_n_0\
-    );
-\doa_calc.run[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"00E2"
-    )
-        port map (
-      I0 => run(3),
-      I1 => \doa_calc.run[0]_i_2_n_0\,
-      I2 => run(2),
-      I3 => reset,
-      O => \doa_calc.run[3]_i_1_n_0\
-    );
-\doa_calc.run[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"00E2"
-    )
-        port map (
-      I0 => run(4),
-      I1 => \doa_calc.run[0]_i_2_n_0\,
-      I2 => run(3),
-      I3 => reset,
-      O => \doa_calc.run[4]_i_1_n_0\
-    );
-\doa_calc.run[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"00E2"
-    )
-        port map (
-      I0 => run(5),
-      I1 => \doa_calc.run[0]_i_2_n_0\,
-      I2 => run(4),
-      I3 => reset,
-      O => \doa_calc.run[5]_i_1_n_0\
+      I0 => p_2_in(2),
+      I1 => p_2_in(1),
+      I2 => p_2_in(5),
+      I3 => p_0_in0_in,
+      I4 => p_2_in(3),
+      I5 => p_2_in(4),
+      O => \doa_calc.run[5]_i_2_n_0\
     );
 \doa_calc.run_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \doa_calc.run[0]_i_1_n_0\,
-      Q => run(0),
+      Q => p_2_in(1),
       R => '0'
     );
 \doa_calc.run_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \doa_calc.run[1]_i_1_n_0\,
-      Q => run(1),
-      R => err_sqrt_done
+      CE => \doa_calc.run[5]_i_2_n_0\,
+      D => p_2_in(1),
+      Q => p_2_in(2),
+      R => run(1)
     );
 \doa_calc.run_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \doa_calc.run[2]_i_1_n_0\,
-      Q => run(2),
-      R => err_sqrt_done
+      CE => \doa_calc.run[5]_i_2_n_0\,
+      D => p_2_in(2),
+      Q => p_2_in(3),
+      R => run(1)
     );
 \doa_calc.run_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \doa_calc.run[3]_i_1_n_0\,
-      Q => run(3),
-      R => err_sqrt_done
+      CE => \doa_calc.run[5]_i_2_n_0\,
+      D => p_2_in(3),
+      Q => p_2_in(4),
+      R => run(1)
     );
 \doa_calc.run_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \doa_calc.run[4]_i_1_n_0\,
-      Q => run(4),
-      R => err_sqrt_done
+      CE => \doa_calc.run[5]_i_2_n_0\,
+      D => p_2_in(4),
+      Q => p_2_in(5),
+      R => run(1)
     );
 \doa_calc.run_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \doa_calc.run[5]_i_1_n_0\,
-      Q => run(5),
-      R => err_sqrt_done
+      CE => \doa_calc.run[5]_i_2_n_0\,
+      D => p_2_in(5),
+      Q => p_0_in0_in,
+      R => run(1)
     );
 \doa_calc.sample[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -52600,7 +52308,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_E_val(0),
+      I0 => \doa_calc.sample_E_val_reg_n_0_[0]\,
       I1 => err_diff(9),
       I2 => \^sample_e\(0),
       O => \doa_calc.sample_E[0]_i_1_n_0\
@@ -52610,7 +52318,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_E_val(1),
+      I0 => \doa_calc.sample_E_val_reg_n_0_[1]\,
       I1 => err_diff(9),
       I2 => \^sample_e\(1),
       O => \doa_calc.sample_E[1]_i_1_n_0\
@@ -52620,7 +52328,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_E_val(2),
+      I0 => \doa_calc.sample_E_val_reg_n_0_[2]\,
       I1 => err_diff(9),
       I2 => \^sample_e\(2),
       O => \doa_calc.sample_E[2]_i_1_n_0\
@@ -52630,7 +52338,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_E_val(3),
+      I0 => \doa_calc.sample_E_val_reg_n_0_[3]\,
       I1 => err_diff(9),
       I2 => \^sample_e\(3),
       O => \doa_calc.sample_E[3]_i_1_n_0\
@@ -52640,7 +52348,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_E_val(4),
+      I0 => \doa_calc.sample_E_val_reg_n_0_[4]\,
       I1 => err_diff(9),
       I2 => \^sample_e\(4),
       O => \doa_calc.sample_E[4]_i_1_n_0\
@@ -52650,7 +52358,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_E_val(5),
+      I0 => \doa_calc.sample_E_val_reg_n_0_[5]\,
       I1 => err_diff(9),
       I2 => \^sample_e\(5),
       O => \doa_calc.sample_E[5]_i_1_n_0\
@@ -52658,7 +52366,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_E[0]_i_1_n_0\,
       Q => \^sample_e\(0),
       R => '0'
@@ -52666,7 +52374,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_E_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_E[1]_i_1_n_0\,
       Q => \^sample_e\(1),
       R => '0'
@@ -52674,7 +52382,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_E_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_E[2]_i_1_n_0\,
       Q => \^sample_e\(2),
       R => '0'
@@ -52682,7 +52390,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_E_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_E[3]_i_1_n_0\,
       Q => \^sample_e\(3),
       R => '0'
@@ -52690,7 +52398,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_E_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_E[4]_i_1_n_0\,
       Q => \^sample_e\(4),
       R => '0'
@@ -52698,57 +52406,134 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_E_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_E[5]_i_1_n_0\,
       Q => \^sample_e\(5),
       R => '0'
+    );
+\doa_calc.sample_E_val[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => dist_E(10),
+      I1 => dist_E(9),
+      O => sample_E_val(0)
+    );
+\doa_calc.sample_E_val[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => dist_E(10),
+      I1 => dist_E(9),
+      I2 => dist_E(11),
+      O => sample_E_val(1)
+    );
+\doa_calc.sample_E_val[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => dist_E(9),
+      I1 => dist_E(10),
+      I2 => dist_E(11),
+      I3 => dist_E(12),
+      O => sample_E_val(2)
+    );
+\doa_calc.sample_E_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFF8000"
+    )
+        port map (
+      I0 => dist_E(11),
+      I1 => dist_E(10),
+      I2 => dist_E(9),
+      I3 => dist_E(12),
+      I4 => dist_E(13),
+      O => sample_E_val(3)
+    );
+\doa_calc.sample_E_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
+    )
+        port map (
+      I0 => dist_E(12),
+      I1 => dist_E(9),
+      I2 => dist_E(10),
+      I3 => dist_E(11),
+      I4 => dist_E(13),
+      I5 => dist_E(14),
+      O => sample_E_val(4)
+    );
+\doa_calc.sample_E_val[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => \doa_calc.sample_E_val[5]_i_2_n_0\,
+      I1 => dist_E(14),
+      I2 => dist_E(15),
+      O => sample_E_val(5)
+    );
+\doa_calc.sample_E_val[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => dist_E(13),
+      I1 => dist_E(11),
+      I2 => dist_E(10),
+      I3 => dist_E(9),
+      I4 => dist_E(12),
+      O => \doa_calc.sample_E_val[5]_i_2_n_0\
     );
 \doa_calc.sample_E_val_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_E(10),
-      Q => sample_E_val(0),
+      D => sample_E_val(0),
+      Q => \doa_calc.sample_E_val_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.sample_E_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_E(11),
-      Q => sample_E_val(1),
+      D => sample_E_val(1),
+      Q => \doa_calc.sample_E_val_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.sample_E_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_E(12),
-      Q => sample_E_val(2),
+      D => sample_E_val(2),
+      Q => \doa_calc.sample_E_val_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.sample_E_val_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_E(13),
-      Q => sample_E_val(3),
+      D => sample_E_val(3),
+      Q => \doa_calc.sample_E_val_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.sample_E_val_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_E(14),
-      Q => sample_E_val(4),
+      D => sample_E_val(4),
+      Q => \doa_calc.sample_E_val_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.sample_E_val_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_E(15),
-      Q => sample_E_val(5),
+      D => sample_E_val(5),
+      Q => \doa_calc.sample_E_val_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.sample_N[0]_i_1\: unisim.vcomponents.LUT3
@@ -52756,7 +52541,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_N_val(0),
+      I0 => \doa_calc.sample_N_val_reg_n_0_[0]\,
       I1 => err_diff(9),
       I2 => \^sample_n\(0),
       O => \doa_calc.sample_N[0]_i_1_n_0\
@@ -52766,7 +52551,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_N_val(1),
+      I0 => \doa_calc.sample_N_val_reg_n_0_[1]\,
       I1 => err_diff(9),
       I2 => \^sample_n\(1),
       O => \doa_calc.sample_N[1]_i_1_n_0\
@@ -52776,7 +52561,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_N_val(2),
+      I0 => \doa_calc.sample_N_val_reg_n_0_[2]\,
       I1 => err_diff(9),
       I2 => \^sample_n\(2),
       O => \doa_calc.sample_N[2]_i_1_n_0\
@@ -52786,7 +52571,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_N_val(3),
+      I0 => \doa_calc.sample_N_val_reg_n_0_[3]\,
       I1 => err_diff(9),
       I2 => \^sample_n\(3),
       O => \doa_calc.sample_N[3]_i_1_n_0\
@@ -52796,7 +52581,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_N_val(4),
+      I0 => \doa_calc.sample_N_val_reg_n_0_[4]\,
       I1 => err_diff(9),
       I2 => \^sample_n\(4),
       O => \doa_calc.sample_N[4]_i_1_n_0\
@@ -52806,7 +52591,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_N_val(5),
+      I0 => \doa_calc.sample_N_val_reg_n_0_[5]\,
       I1 => err_diff(9),
       I2 => \^sample_n\(5),
       O => \doa_calc.sample_N[5]_i_1_n_0\
@@ -52814,7 +52599,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_N[0]_i_1_n_0\,
       Q => \^sample_n\(0),
       R => '0'
@@ -52822,7 +52607,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_N_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_N[1]_i_1_n_0\,
       Q => \^sample_n\(1),
       R => '0'
@@ -52830,7 +52615,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_N_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_N[2]_i_1_n_0\,
       Q => \^sample_n\(2),
       R => '0'
@@ -52838,7 +52623,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_N_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_N[3]_i_1_n_0\,
       Q => \^sample_n\(3),
       R => '0'
@@ -52846,7 +52631,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_N_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_N[4]_i_1_n_0\,
       Q => \^sample_n\(4),
       R => '0'
@@ -52854,57 +52639,134 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_N_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_N[5]_i_1_n_0\,
       Q => \^sample_n\(5),
       R => '0'
+    );
+\doa_calc.sample_N_val[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => dist_N(10),
+      I1 => dist_N(9),
+      O => sample_N_val(0)
+    );
+\doa_calc.sample_N_val[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => dist_N(10),
+      I1 => dist_N(9),
+      I2 => dist_N(11),
+      O => sample_N_val(1)
+    );
+\doa_calc.sample_N_val[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => dist_N(9),
+      I1 => dist_N(10),
+      I2 => dist_N(11),
+      I3 => dist_N(12),
+      O => sample_N_val(2)
+    );
+\doa_calc.sample_N_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFF8000"
+    )
+        port map (
+      I0 => dist_N(11),
+      I1 => dist_N(10),
+      I2 => dist_N(9),
+      I3 => dist_N(12),
+      I4 => dist_N(13),
+      O => sample_N_val(3)
+    );
+\doa_calc.sample_N_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
+    )
+        port map (
+      I0 => dist_N(12),
+      I1 => dist_N(9),
+      I2 => dist_N(10),
+      I3 => dist_N(11),
+      I4 => dist_N(13),
+      I5 => dist_N(14),
+      O => sample_N_val(4)
+    );
+\doa_calc.sample_N_val[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => \doa_calc.sample_N_val[5]_i_2_n_0\,
+      I1 => dist_N(14),
+      I2 => dist_N(15),
+      O => sample_N_val(5)
+    );
+\doa_calc.sample_N_val[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => dist_N(13),
+      I1 => dist_N(11),
+      I2 => dist_N(10),
+      I3 => dist_N(9),
+      I4 => dist_N(12),
+      O => \doa_calc.sample_N_val[5]_i_2_n_0\
     );
 \doa_calc.sample_N_val_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_N(10),
-      Q => sample_N_val(0),
+      D => sample_N_val(0),
+      Q => \doa_calc.sample_N_val_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.sample_N_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_N(11),
-      Q => sample_N_val(1),
+      D => sample_N_val(1),
+      Q => \doa_calc.sample_N_val_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.sample_N_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_N(12),
-      Q => sample_N_val(2),
+      D => sample_N_val(2),
+      Q => \doa_calc.sample_N_val_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.sample_N_val_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_N(13),
-      Q => sample_N_val(3),
+      D => sample_N_val(3),
+      Q => \doa_calc.sample_N_val_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.sample_N_val_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_N(14),
-      Q => sample_N_val(4),
+      D => sample_N_val(4),
+      Q => \doa_calc.sample_N_val_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.sample_N_val_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_N(15),
-      Q => sample_N_val(5),
+      D => sample_N_val(5),
+      Q => \doa_calc.sample_N_val_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.sample_W[0]_i_1\: unisim.vcomponents.LUT3
@@ -52912,7 +52774,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_W_val(0),
+      I0 => \doa_calc.sample_W_val_reg_n_0_[0]\,
       I1 => err_diff(9),
       I2 => \^sample_w\(0),
       O => \doa_calc.sample_W[0]_i_1_n_0\
@@ -52922,7 +52784,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_W_val(1),
+      I0 => \doa_calc.sample_W_val_reg_n_0_[1]\,
       I1 => err_diff(9),
       I2 => \^sample_w\(1),
       O => \doa_calc.sample_W[1]_i_1_n_0\
@@ -52932,7 +52794,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_W_val(2),
+      I0 => \doa_calc.sample_W_val_reg_n_0_[2]\,
       I1 => err_diff(9),
       I2 => \^sample_w\(2),
       O => \doa_calc.sample_W[2]_i_1_n_0\
@@ -52942,7 +52804,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_W_val(3),
+      I0 => \doa_calc.sample_W_val_reg_n_0_[3]\,
       I1 => err_diff(9),
       I2 => \^sample_w\(3),
       O => \doa_calc.sample_W[3]_i_1_n_0\
@@ -52952,7 +52814,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_W_val(4),
+      I0 => \doa_calc.sample_W_val_reg_n_0_[4]\,
       I1 => err_diff(9),
       I2 => \^sample_w\(4),
       O => \doa_calc.sample_W[4]_i_1_n_0\
@@ -52962,7 +52824,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"B8"
     )
         port map (
-      I0 => sample_W_val(5),
+      I0 => \doa_calc.sample_W_val_reg_n_0_[5]\,
       I1 => err_diff(9),
       I2 => \^sample_w\(5),
       O => \doa_calc.sample_W[5]_i_1_n_0\
@@ -52970,7 +52832,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_W_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_W[0]_i_1_n_0\,
       Q => \^sample_w\(0),
       R => '0'
@@ -52978,7 +52840,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_W_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_W[1]_i_1_n_0\,
       Q => \^sample_w\(1),
       R => '0'
@@ -52986,7 +52848,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_W_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_W[2]_i_1_n_0\,
       Q => \^sample_w\(2),
       R => '0'
@@ -52994,7 +52856,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_W_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_W[3]_i_1_n_0\,
       Q => \^sample_w\(3),
       R => '0'
@@ -53002,7 +52864,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_W_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_W[4]_i_1_n_0\,
       Q => \^sample_w\(4),
       R => '0'
@@ -53010,70 +52872,147 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_W_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample_W[5]_i_1_n_0\,
       Q => \^sample_w\(5),
       R => '0'
+    );
+\doa_calc.sample_W_val[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => dist_W(10),
+      I1 => dist_W(9),
+      O => sample_W_val(0)
+    );
+\doa_calc.sample_W_val[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => dist_W(10),
+      I1 => dist_W(9),
+      I2 => dist_W(11),
+      O => sample_W_val(1)
+    );
+\doa_calc.sample_W_val[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => dist_W(9),
+      I1 => dist_W(10),
+      I2 => dist_W(11),
+      I3 => dist_W(12),
+      O => sample_W_val(2)
+    );
+\doa_calc.sample_W_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFF8000"
+    )
+        port map (
+      I0 => dist_W(11),
+      I1 => dist_W(10),
+      I2 => dist_W(9),
+      I3 => dist_W(12),
+      I4 => dist_W(13),
+      O => sample_W_val(3)
+    );
+\doa_calc.sample_W_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
+    )
+        port map (
+      I0 => dist_W(12),
+      I1 => dist_W(9),
+      I2 => dist_W(10),
+      I3 => dist_W(11),
+      I4 => dist_W(13),
+      I5 => dist_W(14),
+      O => sample_W_val(4)
+    );
+\doa_calc.sample_W_val[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => \doa_calc.sample_W_val[5]_i_2_n_0\,
+      I1 => dist_W(14),
+      I2 => dist_W(15),
+      O => sample_W_val(5)
+    );
+\doa_calc.sample_W_val[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => dist_W(13),
+      I1 => dist_W(11),
+      I2 => dist_W(10),
+      I3 => dist_W(9),
+      I4 => dist_W(12),
+      O => \doa_calc.sample_W_val[5]_i_2_n_0\
     );
 \doa_calc.sample_W_val_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_W(10),
-      Q => sample_W_val(0),
+      D => sample_W_val(0),
+      Q => \doa_calc.sample_W_val_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.sample_W_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_W(11),
-      Q => sample_W_val(1),
+      D => sample_W_val(1),
+      Q => \doa_calc.sample_W_val_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.sample_W_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_W(12),
-      Q => sample_W_val(2),
+      D => sample_W_val(2),
+      Q => \doa_calc.sample_W_val_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.sample_W_val_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_W(13),
-      Q => sample_W_val(3),
+      D => sample_W_val(3),
+      Q => \doa_calc.sample_W_val_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.sample_W_val_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_W(14),
-      Q => sample_W_val(4),
+      D => sample_W_val(4),
+      Q => \doa_calc.sample_W_val_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.sample_W_val_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
-      D => delay_W(15),
-      Q => sample_W_val(5),
+      D => sample_W_val(5),
+      Q => \doa_calc.sample_W_val_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.sample_dist[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000400000000"
+      INIT => X"0000000000020000"
     )
         port map (
-      I0 => config_adr(0),
-      I1 => config_wr,
-      I2 => config_adr(1),
-      I3 => \doa_calc.shadow_limit[19]_i_2_n_0\,
-      I4 => config_adr(2),
-      I5 => config_adr(3),
+      I0 => config_wr,
+      I1 => \doa_calc.shadow_limit[19]_i_2_n_0\,
+      I2 => config_adr(0),
+      I3 => config_adr(2),
+      I4 => config_adr(3),
+      I5 => config_adr(1),
       O => sample_dist
     );
 \doa_calc.sample_dist_reg[0]\: unisim.vcomponents.FDRE
@@ -53494,181 +53433,181 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
     );
 \doa_calc.sample_fact[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000020000000"
+      INIT => X"0020000000000000"
     )
         port map (
       I0 => config_wr,
-      I1 => config_adr(3),
+      I1 => \doa_calc.shadow_limit[19]_i_2_n_0\,
       I2 => config_adr(2),
-      I3 => config_adr(1),
+      I3 => config_adr(3),
       I4 => config_adr(0),
-      I5 => \doa_calc.shadow_limit[19]_i_2_n_0\,
-      O => sample_fact0
+      I5 => config_adr(1),
+      O => sample_fact
     );
 \doa_calc.sample_fact_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(0),
-      Q => sample_fact(0),
+      Q => \doa_calc.sample_fact_reg_n_0_[0]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(10),
-      Q => sample_fact(10),
+      Q => \doa_calc.sample_fact_reg_n_0_[10]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(11),
-      Q => sample_fact(11),
+      Q => \doa_calc.sample_fact_reg_n_0_[11]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(12),
-      Q => sample_fact(12),
+      Q => \doa_calc.sample_fact_reg_n_0_[12]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(13),
-      Q => sample_fact(13),
+      Q => \doa_calc.sample_fact_reg_n_0_[13]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(14),
-      Q => sample_fact(14),
+      Q => \doa_calc.sample_fact_reg_n_0_[14]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(15),
-      Q => sample_fact(15),
+      Q => \doa_calc.sample_fact_reg_n_0_[15]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(16),
-      Q => sample_fact(16),
+      Q => \doa_calc.sample_fact_reg_n_0_[16]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(17),
-      Q => sample_fact(17),
+      Q => \doa_calc.sample_fact_reg_n_0_[17]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(18),
-      Q => sample_fact(18),
+      Q => \doa_calc.sample_fact_reg_n_0_[18]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(19),
-      Q => sample_fact(19),
+      Q => \doa_calc.sample_fact_reg_n_0_[19]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(1),
-      Q => sample_fact(1),
+      Q => \doa_calc.sample_fact_reg_n_0_[1]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(2),
-      Q => sample_fact(2),
+      Q => \doa_calc.sample_fact_reg_n_0_[2]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(3),
-      Q => sample_fact(3),
+      Q => \doa_calc.sample_fact_reg_n_0_[3]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(4),
-      Q => sample_fact(4),
+      Q => \doa_calc.sample_fact_reg_n_0_[4]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(5),
-      Q => sample_fact(5),
+      Q => \doa_calc.sample_fact_reg_n_0_[5]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(6),
-      Q => sample_fact(6),
+      Q => \doa_calc.sample_fact_reg_n_0_[6]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(7),
-      Q => sample_fact(7),
+      Q => \doa_calc.sample_fact_reg_n_0_[7]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(8),
-      Q => sample_fact(8),
+      Q => \doa_calc.sample_fact_reg_n_0_[8]\,
       R => '0'
     );
 \doa_calc.sample_fact_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sample_fact0,
+      CE => sample_fact,
       D => config_data(9),
-      Q => sample_fact(9),
+      Q => \doa_calc.sample_fact_reg_n_0_[9]\,
       R => '0'
     );
 \doa_calc.sample_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(0),
       Q => sample_pair(0),
       R => '0'
@@ -53676,7 +53615,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(10),
       Q => sample_pair(10),
       R => '0'
@@ -53684,7 +53623,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(11),
       Q => sample_pair(11),
       R => '0'
@@ -53692,7 +53631,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(12),
       Q => sample_pair(12),
       R => '0'
@@ -53700,7 +53639,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(13),
       Q => sample_pair(13),
       R => '0'
@@ -53708,7 +53647,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(14),
       Q => sample_pair(14),
       R => '0'
@@ -53716,7 +53655,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(15),
       Q => sample_pair(15),
       R => '0'
@@ -53724,7 +53663,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(16),
       Q => sample_pair(16),
       R => '0'
@@ -53732,7 +53671,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(17),
       Q => sample_pair(17),
       R => '0'
@@ -53740,7 +53679,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(18),
       Q => sample_pair(18),
       R => '0'
@@ -53748,7 +53687,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(19),
       Q => sample_pair(19),
       R => '0'
@@ -53756,7 +53695,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(1),
       Q => sample_pair(1),
       R => '0'
@@ -53764,7 +53703,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(20),
       Q => sample_pair(20),
       R => '0'
@@ -53772,7 +53711,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(21),
       Q => sample_pair(21),
       R => '0'
@@ -53780,7 +53719,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(22),
       Q => sample_pair(22),
       R => '0'
@@ -53788,7 +53727,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(23),
       Q => sample_pair(23),
       R => '0'
@@ -53796,7 +53735,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(24),
       Q => sample_pair(24),
       R => '0'
@@ -53804,7 +53743,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(25),
       Q => sample_pair(25),
       R => '0'
@@ -53812,7 +53751,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(26),
       Q => sample_pair(26),
       R => '0'
@@ -53820,7 +53759,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(27),
       Q => sample_pair(27),
       R => '0'
@@ -53828,7 +53767,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(28),
       Q => sample_pair(28),
       R => '0'
@@ -53836,7 +53775,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(29),
       Q => sample_pair(29),
       R => '0'
@@ -53844,7 +53783,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(2),
       Q => sample_pair(2),
       R => '0'
@@ -53852,7 +53791,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(30),
       Q => sample_pair(30),
       R => '0'
@@ -53860,7 +53799,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(31),
       Q => sample_pair(31),
       R => '0'
@@ -53868,7 +53807,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(3),
       Q => sample_pair(3),
       R => '0'
@@ -53876,7 +53815,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(4),
       Q => sample_pair(4),
       R => '0'
@@ -53884,7 +53823,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(5),
       Q => sample_pair(5),
       R => '0'
@@ -53892,7 +53831,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(6),
       Q => sample_pair(6),
       R => '0'
@@ -53900,7 +53839,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(7),
       Q => sample_pair(7),
       R => '0'
@@ -53908,7 +53847,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(8),
       Q => sample_pair(8),
       R => '0'
@@ -53916,7 +53855,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_pair_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => sample_div(9),
       Q => sample_pair(9),
       R => '0'
@@ -53924,7 +53863,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[0]_i_1_n_0\,
       Q => \^sample\(0),
       R => '0'
@@ -53932,7 +53871,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[10]_i_1_n_0\,
       Q => \^sample\(10),
       R => '0'
@@ -53940,7 +53879,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[11]_i_1_n_0\,
       Q => \^sample\(11),
       R => '0'
@@ -53948,7 +53887,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[12]_i_1_n_0\,
       Q => \^sample\(12),
       R => '0'
@@ -53956,7 +53895,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[13]_i_1_n_0\,
       Q => \^sample\(13),
       R => '0'
@@ -53964,7 +53903,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[14]_i_1_n_0\,
       Q => \^sample\(14),
       R => '0'
@@ -53972,7 +53911,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[15]_i_1_n_0\,
       Q => \^sample\(15),
       R => '0'
@@ -53980,7 +53919,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[16]_i_1_n_0\,
       Q => \^sample\(16),
       R => '0'
@@ -53988,7 +53927,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[17]_i_1_n_0\,
       Q => \^sample\(17),
       R => '0'
@@ -53996,7 +53935,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[18]_i_1_n_0\,
       Q => \^sample\(18),
       R => '0'
@@ -54004,7 +53943,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[19]_i_1_n_0\,
       Q => \^sample\(19),
       R => '0'
@@ -54012,7 +53951,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[1]_i_1_n_0\,
       Q => \^sample\(1),
       R => '0'
@@ -54020,7 +53959,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[20]_i_1_n_0\,
       Q => \^sample\(20),
       R => '0'
@@ -54028,7 +53967,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[21]_i_1_n_0\,
       Q => \^sample\(21),
       R => '0'
@@ -54036,7 +53975,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[22]_i_1_n_0\,
       Q => \^sample\(22),
       R => '0'
@@ -54044,7 +53983,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[23]_i_1_n_0\,
       Q => \^sample\(23),
       R => '0'
@@ -54052,7 +53991,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[24]_i_1_n_0\,
       Q => \^sample\(24),
       R => '0'
@@ -54060,7 +53999,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[25]_i_1_n_0\,
       Q => \^sample\(25),
       R => '0'
@@ -54068,7 +54007,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[26]_i_1_n_0\,
       Q => \^sample\(26),
       R => '0'
@@ -54076,7 +54015,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[27]_i_1_n_0\,
       Q => \^sample\(27),
       R => '0'
@@ -54084,7 +54023,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[28]_i_1_n_0\,
       Q => \^sample\(28),
       R => '0'
@@ -54092,7 +54031,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[29]_i_1_n_0\,
       Q => \^sample\(29),
       R => '0'
@@ -54100,7 +54039,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[2]_i_1_n_0\,
       Q => \^sample\(2),
       R => '0'
@@ -54108,7 +54047,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[30]_i_1_n_0\,
       Q => \^sample\(30),
       R => '0'
@@ -54116,7 +54055,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[31]_i_1_n_0\,
       Q => \^sample\(31),
       R => '0'
@@ -54124,7 +54063,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[3]_i_1_n_0\,
       Q => \^sample\(3),
       R => '0'
@@ -54132,7 +54071,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[4]_i_1_n_0\,
       Q => \^sample\(4),
       R => '0'
@@ -54140,7 +54079,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[5]_i_1_n_0\,
       Q => \^sample\(5),
       R => '0'
@@ -54148,7 +54087,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[6]_i_1_n_0\,
       Q => \^sample\(6),
       R => '0'
@@ -54156,7 +54095,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[7]_i_1_n_0\,
       Q => \^sample\(7),
       R => '0'
@@ -54164,7 +54103,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[8]_i_1_n_0\,
       Q => \^sample\(8),
       R => '0'
@@ -54172,7 +54111,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.sample[9]_i_1_n_0\,
       Q => \^sample\(9),
       R => '0'
@@ -54435,15 +54374,15 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
     );
 \doa_calc.shadow_limit[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000004000000"
+      INIT => X"0002000000000000"
     )
         port map (
-      I0 => config_adr(0),
-      I1 => config_adr(1),
+      I0 => config_wr,
+      I1 => \doa_calc.shadow_limit[19]_i_2_n_0\,
       I2 => config_adr(3),
-      I3 => config_wr,
-      I4 => config_adr(2),
-      I5 => \doa_calc.shadow_limit[19]_i_2_n_0\,
+      I3 => config_adr(0),
+      I4 => config_adr(1),
+      I5 => config_adr(2),
       O => shadow_limit
     );
 \doa_calc.shadow_limit[19]_i_2\: unisim.vcomponents.LUT4
@@ -54451,10 +54390,10 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       INIT => X"FFFE"
     )
         port map (
-      I0 => config_adr(5),
-      I1 => config_adr(4),
-      I2 => config_adr(7),
-      I3 => config_adr(6),
+      I0 => config_adr(6),
+      I1 => config_adr(7),
+      I2 => config_adr(4),
+      I3 => config_adr(5),
       O => \doa_calc.shadow_limit[19]_i_2_n_0\
     );
 \doa_calc.shadow_limit_reg[0]\: unisim.vcomponents.FDRE
@@ -54782,7 +54721,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(0),
       Q => size_pair(0),
       R => '0'
@@ -54790,7 +54729,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(1),
       Q => size_pair(1),
       R => '0'
@@ -54798,7 +54737,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(2),
       Q => size_pair(2),
       R => '0'
@@ -54806,7 +54745,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(3),
       Q => size_pair(3),
       R => '0'
@@ -54814,7 +54753,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(4),
       Q => size_pair(4),
       R => '0'
@@ -54822,7 +54761,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(5),
       Q => size_pair(5),
       R => '0'
@@ -54830,7 +54769,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(6),
       Q => size_pair(6),
       R => '0'
@@ -54838,7 +54777,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(7),
       Q => size_pair(7),
       R => '0'
@@ -54846,7 +54785,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_pair_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \doa_calc.start_pair_reg0\,
+      CE => start_pair0,
       D => size_div(8),
       Q => size_pair(8),
       R => '0'
@@ -54854,7 +54793,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[0]_i_1_n_0\,
       Q => \^size\(0),
       R => '0'
@@ -54862,7 +54801,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[1]_i_1_n_0\,
       Q => \^size\(1),
       R => '0'
@@ -54870,7 +54809,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[2]_i_1_n_0\,
       Q => \^size\(2),
       R => '0'
@@ -54878,7 +54817,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[3]_i_1_n_0\,
       Q => \^size\(3),
       R => '0'
@@ -54886,7 +54825,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[4]_i_1_n_0\,
       Q => \^size\(4),
       R => '0'
@@ -54894,7 +54833,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[5]_i_1_n_0\,
       Q => \^size\(5),
       R => '0'
@@ -54902,7 +54841,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[6]_i_1_n_0\,
       Q => \^size\(6),
       R => '0'
@@ -54910,7 +54849,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[7]_i_1_n_0\,
       Q => \^size\(7),
       R => '0'
@@ -54918,7 +54857,7 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
 \doa_calc.size_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => run(5),
+      CE => p_0_in0_in,
       D => \doa_calc.size[8]_i_1_n_0\,
       Q => \^size\(8),
       R => '0'
@@ -55003,21 +54942,11 @@ doa_angle_i: entity work.ps_comp_low_0_0_doa_angle
       Q => start_div,
       R => '0'
     );
-\doa_calc.start_pair_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"80"
-    )
-        port map (
-      I0 => done_NE,
-      I1 => done_EW,
-      I2 => done_WN,
-      O => \doa_calc.start_pair_reg0\
-    );
 \doa_calc.start_pair_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \doa_calc.start_pair_reg0\,
+      D => start_pair0,
       Q => start_pair,
       R => '0'
     );
@@ -55033,7 +54962,8 @@ err_sqr_sum_i: component ps_comp_low_0_0_dsp_err_sqr
 err_sqrt_i: component ps_comp_low_0_0_sqrt_err
      port map (
       aclk => clk,
-      m_axis_dout_tdata(23 downto 0) => err_sqrt_data(23 downto 0),
+      m_axis_dout_tdata(23 downto 20) => NLW_err_sqrt_i_m_axis_dout_tdata_UNCONNECTED(23 downto 20),
+      m_axis_dout_tdata(19 downto 0) => err_sqrt_data(19 downto 0),
       m_axis_dout_tvalid => err_sqrt_done,
       s_axis_cartesian_tdata(31 downto 0) => err_sum(31 downto 0),
       s_axis_cartesian_tvalid => err_sqrt_start
@@ -55042,29 +54972,31 @@ ila_i: component ps_comp_low_0_0_ila_6
      port map (
       clk => clk,
       probe0(0) => start,
-      probe1(0) => valid_k,
-      probe10(9 downto 0) => \^doa_error\(9 downto 0),
-      probe11(9 downto 0) => err_diff(9 downto 0),
-      probe12(0) => \^done\,
-      probe13(0) => \^phase_error\,
-      probe14(31 downto 0) => \^sample\(31 downto 0),
-      probe15(8 downto 0) => \^size\(8 downto 0),
-      probe16(19 downto 0) => \^freq\(19 downto 0),
-      probe17(15 downto 0) => \^angle\(15 downto 0),
-      probe18(15 downto 0) => \^env_n\(15 downto 0),
-      probe19(15 downto 0) => \^env_e\(15 downto 0),
-      probe2(0) => start_div,
-      probe20(15 downto 0) => \^env_w\(15 downto 0),
-      probe21(5 downto 0) => \^sample_n\(5 downto 0),
-      probe22(5 downto 0) => \^sample_e\(5 downto 0),
-      probe23(5 downto 0) => \^sample_w\(5 downto 0),
-      probe3(0) => start_pair,
-      probe4(0) => angle_done,
-      probe5(0) => err_sqrt_done,
-      probe6(23 downto 0) => err_sqrt_data(23 downto 0),
-      probe7(19 downto 0) => antenna_pm(19 downto 0),
-      probe8(9 downto 0) => max_antenna_err(9 downto 0),
-      probe9(5 downto 0) => run(5 downto 0)
+      probe1(8 downto 0) => size_in(8 downto 0),
+      probe10(15 downto 0) => \^angle\(15 downto 0),
+      probe11(15 downto 0) => \^env_n\(15 downto 0),
+      probe12(15 downto 0) => \^env_e\(15 downto 0),
+      probe13(15 downto 0) => \^env_w\(15 downto 0),
+      probe14(15 downto 0) => delay_NE(15 downto 0),
+      probe15(15 downto 0) => delay_EW(15 downto 0),
+      probe16(15 downto 0) => delay_WN(15 downto 0),
+      probe17(15 downto 0) => delay_N(15 downto 0),
+      probe18(15 downto 0) => delay_E(15 downto 0),
+      probe19(15 downto 0) => delay_W(15 downto 0),
+      probe2(8 downto 0) => size_pair(8 downto 0),
+      probe20(15 downto 0) => dist_N(15 downto 0),
+      probe21(15 downto 0) => dist_E(15 downto 0),
+      probe22(15 downto 0) => dist_W(15 downto 0),
+      probe23(5 downto 0) => \^sample_n\(5 downto 0),
+      probe24(5 downto 0) => \^sample_e\(5 downto 0),
+      probe25(5 downto 0) => \^sample_w\(5 downto 0),
+      probe3(8 downto 0) => size_div(8 downto 0),
+      probe4(8 downto 0) => size_doa(8 downto 0),
+      probe5(0) => \^done\,
+      probe6(0) => \^phase_error\,
+      probe7(31 downto 0) => \^sample\(31 downto 0),
+      probe8(8 downto 0) => \^size\(8 downto 0),
+      probe9(19 downto 0) => \^freq\(19 downto 0)
     );
 mul_delay_EW_i: component ps_comp_low_0_0_mult_20x20
      port map (
@@ -55078,11 +55010,32 @@ mul_delay_EW_i: component ps_comp_low_0_0_mult_20x20
     );
 mul_delay_E_i: component ps_comp_low_0_0_mult_20x20
      port map (
-      A(19 downto 0) => sample_fact(19 downto 0),
+      A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
+      A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
+      A(17) => \doa_calc.sample_fact_reg_n_0_[17]\,
+      A(16) => \doa_calc.sample_fact_reg_n_0_[16]\,
+      A(15) => \doa_calc.sample_fact_reg_n_0_[15]\,
+      A(14) => \doa_calc.sample_fact_reg_n_0_[14]\,
+      A(13) => \doa_calc.sample_fact_reg_n_0_[13]\,
+      A(12) => \doa_calc.sample_fact_reg_n_0_[12]\,
+      A(11) => \doa_calc.sample_fact_reg_n_0_[11]\,
+      A(10) => \doa_calc.sample_fact_reg_n_0_[10]\,
+      A(9) => \doa_calc.sample_fact_reg_n_0_[9]\,
+      A(8) => \doa_calc.sample_fact_reg_n_0_[8]\,
+      A(7) => \doa_calc.sample_fact_reg_n_0_[7]\,
+      A(6) => \doa_calc.sample_fact_reg_n_0_[6]\,
+      A(5) => \doa_calc.sample_fact_reg_n_0_[5]\,
+      A(4) => \doa_calc.sample_fact_reg_n_0_[4]\,
+      A(3) => \doa_calc.sample_fact_reg_n_0_[3]\,
+      A(2) => \doa_calc.sample_fact_reg_n_0_[2]\,
+      A(1) => \doa_calc.sample_fact_reg_n_0_[1]\,
+      A(0) => \doa_calc.sample_fact_reg_n_0_[0]\,
       B(19 downto 4) => delay_E(15 downto 0),
       B(3 downto 0) => B"0000",
       CLK => clk,
-      P(39 downto 0) => NLW_mul_delay_E_i_P_UNCONNECTED(39 downto 0)
+      P(39 downto 36) => NLW_mul_delay_E_i_P_UNCONNECTED(39 downto 36),
+      P(35 downto 20) => dist_E(15 downto 0),
+      P(19 downto 0) => NLW_mul_delay_E_i_P_UNCONNECTED(19 downto 0)
     );
 mul_delay_NE_i: component ps_comp_low_0_0_mult_20x20
      port map (
@@ -55096,11 +55049,32 @@ mul_delay_NE_i: component ps_comp_low_0_0_mult_20x20
     );
 mul_delay_N_i: component ps_comp_low_0_0_mult_20x20
      port map (
-      A(19 downto 0) => sample_fact(19 downto 0),
+      A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
+      A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
+      A(17) => \doa_calc.sample_fact_reg_n_0_[17]\,
+      A(16) => \doa_calc.sample_fact_reg_n_0_[16]\,
+      A(15) => \doa_calc.sample_fact_reg_n_0_[15]\,
+      A(14) => \doa_calc.sample_fact_reg_n_0_[14]\,
+      A(13) => \doa_calc.sample_fact_reg_n_0_[13]\,
+      A(12) => \doa_calc.sample_fact_reg_n_0_[12]\,
+      A(11) => \doa_calc.sample_fact_reg_n_0_[11]\,
+      A(10) => \doa_calc.sample_fact_reg_n_0_[10]\,
+      A(9) => \doa_calc.sample_fact_reg_n_0_[9]\,
+      A(8) => \doa_calc.sample_fact_reg_n_0_[8]\,
+      A(7) => \doa_calc.sample_fact_reg_n_0_[7]\,
+      A(6) => \doa_calc.sample_fact_reg_n_0_[6]\,
+      A(5) => \doa_calc.sample_fact_reg_n_0_[5]\,
+      A(4) => \doa_calc.sample_fact_reg_n_0_[4]\,
+      A(3) => \doa_calc.sample_fact_reg_n_0_[3]\,
+      A(2) => \doa_calc.sample_fact_reg_n_0_[2]\,
+      A(1) => \doa_calc.sample_fact_reg_n_0_[1]\,
+      A(0) => \doa_calc.sample_fact_reg_n_0_[0]\,
       B(19 downto 4) => delay_N(15 downto 0),
       B(3 downto 0) => B"0000",
       CLK => clk,
-      P(39 downto 0) => NLW_mul_delay_N_i_P_UNCONNECTED(39 downto 0)
+      P(39 downto 36) => NLW_mul_delay_N_i_P_UNCONNECTED(39 downto 36),
+      P(35 downto 20) => dist_N(15 downto 0),
+      P(19 downto 0) => NLW_mul_delay_N_i_P_UNCONNECTED(19 downto 0)
     );
 mul_delay_WN_i: component ps_comp_low_0_0_mult_20x20
      port map (
@@ -55114,11 +55088,32 @@ mul_delay_WN_i: component ps_comp_low_0_0_mult_20x20
     );
 mul_delay_W_i: component ps_comp_low_0_0_mult_20x20
      port map (
-      A(19 downto 0) => sample_fact(19 downto 0),
+      A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
+      A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
+      A(17) => \doa_calc.sample_fact_reg_n_0_[17]\,
+      A(16) => \doa_calc.sample_fact_reg_n_0_[16]\,
+      A(15) => \doa_calc.sample_fact_reg_n_0_[15]\,
+      A(14) => \doa_calc.sample_fact_reg_n_0_[14]\,
+      A(13) => \doa_calc.sample_fact_reg_n_0_[13]\,
+      A(12) => \doa_calc.sample_fact_reg_n_0_[12]\,
+      A(11) => \doa_calc.sample_fact_reg_n_0_[11]\,
+      A(10) => \doa_calc.sample_fact_reg_n_0_[10]\,
+      A(9) => \doa_calc.sample_fact_reg_n_0_[9]\,
+      A(8) => \doa_calc.sample_fact_reg_n_0_[8]\,
+      A(7) => \doa_calc.sample_fact_reg_n_0_[7]\,
+      A(6) => \doa_calc.sample_fact_reg_n_0_[6]\,
+      A(5) => \doa_calc.sample_fact_reg_n_0_[5]\,
+      A(4) => \doa_calc.sample_fact_reg_n_0_[4]\,
+      A(3) => \doa_calc.sample_fact_reg_n_0_[3]\,
+      A(2) => \doa_calc.sample_fact_reg_n_0_[2]\,
+      A(1) => \doa_calc.sample_fact_reg_n_0_[1]\,
+      A(0) => \doa_calc.sample_fact_reg_n_0_[0]\,
       B(19 downto 4) => delay_W(15 downto 0),
       B(3 downto 0) => B"0000",
       CLK => clk,
-      P(39 downto 0) => NLW_mul_delay_W_i_P_UNCONNECTED(39 downto 0)
+      P(39 downto 36) => NLW_mul_delay_W_i_P_UNCONNECTED(39 downto 36),
+      P(35 downto 20) => dist_W(15 downto 0),
+      P(19 downto 0) => NLW_mul_delay_W_i_P_UNCONNECTED(19 downto 0)
     );
 mul_delay_freq_i: component ps_comp_low_0_0_mult_20x20
      port map (
@@ -55148,10 +55143,29 @@ mul_delay_freq_i: component ps_comp_low_0_0_mult_20x20
       P(38 downto 19) => mul_freq(38 downto 19),
       P(18 downto 0) => NLW_mul_delay_freq_i_P_UNCONNECTED(18 downto 0)
     );
-mul_pm_i: component ps_comp_low_0_0_mult_20x20_HD5
+mul_pm_i: component ps_comp_low_0_0_mult_20x20
      port map (
       A(19 downto 0) => err_sqrt_data(19 downto 0),
-      B(19 downto 0) => antenna_pm(19 downto 0),
+      B(19) => \doa_calc.antenna_pm_reg_n_0_[19]\,
+      B(18) => \doa_calc.antenna_pm_reg_n_0_[18]\,
+      B(17) => \doa_calc.antenna_pm_reg_n_0_[17]\,
+      B(16) => \doa_calc.antenna_pm_reg_n_0_[16]\,
+      B(15) => \doa_calc.antenna_pm_reg_n_0_[15]\,
+      B(14) => \doa_calc.antenna_pm_reg_n_0_[14]\,
+      B(13) => \doa_calc.antenna_pm_reg_n_0_[13]\,
+      B(12) => \doa_calc.antenna_pm_reg_n_0_[12]\,
+      B(11) => \doa_calc.antenna_pm_reg_n_0_[11]\,
+      B(10) => \doa_calc.antenna_pm_reg_n_0_[10]\,
+      B(9) => \doa_calc.antenna_pm_reg_n_0_[9]\,
+      B(8) => \doa_calc.antenna_pm_reg_n_0_[8]\,
+      B(7) => \doa_calc.antenna_pm_reg_n_0_[7]\,
+      B(6) => \doa_calc.antenna_pm_reg_n_0_[6]\,
+      B(5) => \doa_calc.antenna_pm_reg_n_0_[5]\,
+      B(4) => \doa_calc.antenna_pm_reg_n_0_[4]\,
+      B(3) => \doa_calc.antenna_pm_reg_n_0_[3]\,
+      B(2) => \doa_calc.antenna_pm_reg_n_0_[2]\,
+      B(1) => \doa_calc.antenna_pm_reg_n_0_[1]\,
+      B(0) => \doa_calc.antenna_pm_reg_n_0_[0]\,
       CLK => clk,
       P(39 downto 28) => NLW_mul_pm_i_P_UNCONNECTED(39 downto 28),
       P(27 downto 18) => err_pm(27 downto 18),
@@ -55285,14 +55299,14 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_low.doa_delay[1]_i_1\ : label is "soft_lutpair199";
-  attribute SOFT_HLUTNM of \comp_low.doa_delay[2]_i_1\ : label is "soft_lutpair199";
-  attribute SOFT_HLUTNM of \comp_low.doa_delay[3]_i_1\ : label is "soft_lutpair197";
-  attribute SOFT_HLUTNM of \comp_low.doa_delay[4]_i_2\ : label is "soft_lutpair197";
-  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[1]_i_1\ : label is "soft_lutpair200";
-  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[2]_i_1\ : label is "soft_lutpair200";
-  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[3]_i_1\ : label is "soft_lutpair198";
-  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[4]_i_1\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \comp_low.doa_delay[1]_i_1\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \comp_low.doa_delay[2]_i_1\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \comp_low.doa_delay[3]_i_1\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \comp_low.doa_delay[4]_i_2\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[1]_i_1\ : label is "soft_lutpair201";
+  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[2]_i_1\ : label is "soft_lutpair201";
+  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[3]_i_1\ : label is "soft_lutpair199";
+  attribute SOFT_HLUTNM of \comp_low.fifo_sample_delay[4]_i_1\ : label is "soft_lutpair199";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of doa_calc_i : label is "soft";
   attribute CHECK_LICENSE_TYPE : string;
