@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -56,14 +56,11 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_freq_high_189_0_0 (
   fifo_clk,
-  raw_wr,
-  raw_data,
   freq_wr,
   freq_data,
   clk,
   reset,
   doa_wr,
-  sample_data,
   doa_data
 );
 
@@ -71,8 +68,6 @@ module ps_freq_high_189_0_0 (
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
-input wire raw_wr;
-input wire [383 : 0] raw_data;
 input wire freq_wr;
 input wire [95 : 0] freq_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
@@ -84,19 +79,15 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
 output wire doa_wr;
-output wire [383 : 0] sample_data;
 output wire [143 : 0] doa_data;
 
   freq_high_189 inst (
     .fifo_clk(fifo_clk),
-    .raw_wr(raw_wr),
-    .raw_data(raw_data),
     .freq_wr(freq_wr),
     .freq_data(freq_data),
     .clk(clk),
     .reset(reset),
     .doa_wr(doa_wr),
-    .sample_data(sample_data),
     .doa_data(doa_data)
   );
 endmodule

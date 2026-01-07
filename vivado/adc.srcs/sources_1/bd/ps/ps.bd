@@ -2566,14 +2566,6 @@
               }
             }
           },
-          "raw_wr": {
-            "direction": "I"
-          },
-          "raw_data": {
-            "direction": "I",
-            "left": "383",
-            "right": "0"
-          },
           "freq_wr": {
             "direction": "I"
           },
@@ -2606,11 +2598,6 @@
           },
           "doa_wr": {
             "direction": "O"
-          },
-          "sample_data": {
-            "direction": "O",
-            "left": "383",
-            "right": "0"
           },
           "doa_data": {
             "direction": "O",
@@ -2650,14 +2637,6 @@
               }
             }
           },
-          "raw_wr": {
-            "direction": "I"
-          },
-          "raw_data": {
-            "direction": "I",
-            "left": "383",
-            "right": "0"
-          },
           "freq_wr": {
             "direction": "I"
           },
@@ -2690,11 +2669,6 @@
           },
           "doa_wr": {
             "direction": "O"
-          },
-          "sample_data": {
-            "direction": "O",
-            "left": "383",
-            "right": "0"
           },
           "doa_data": {
             "direction": "O",
@@ -3145,14 +3119,12 @@
       },
       "deci_high_raw_data": {
         "ports": [
-          "deci_high/raw_data",
-          "freq_high_189_0/raw_data"
+          "deci_high/raw_data"
         ]
       },
       "deci_high_raw_wr": {
         "ports": [
-          "deci_high/raw_wr",
-          "freq_high_189_0/raw_wr"
+          "deci_high/raw_wr"
         ]
       },
       "deci_low_freq_data": {
@@ -3169,14 +3141,12 @@
       },
       "deci_low_raw_data": {
         "ports": [
-          "deci_low/raw_data",
-          "freq_low_46_0/raw_data"
+          "deci_low/raw_data"
         ]
       },
       "deci_low_raw_wr": {
         "ports": [
-          "deci_low/raw_wr",
-          "freq_low_46_0/raw_wr"
+          "deci_low/raw_wr"
         ]
       },
       "deci_low_sim_active": {
@@ -3248,9 +3218,9 @@
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
           "deci_high/clk",
-          "freq_high_189_0/fifo_clk",
           "deci_low/clk",
-          "freq_low_46_0/fifo_clk"
+          "freq_low_46_0/fifo_clk",
+          "freq_high_189_0/fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -3280,8 +3250,8 @@
       "mts_0_freq0_clk": {
         "ports": [
           "mts_0/freq0_clk",
-          "freq_low_46_0/clk",
-          "ana_low/fifo_clk"
+          "ana_low/fifo_clk",
+          "freq_low_46_0/clk"
         ]
       },
       "mts_0_freq0_reset": {
@@ -3293,8 +3263,8 @@
       "mts_0_freq1_clk": {
         "ports": [
           "mts_0/freq1_clk",
-          "freq_high_189_0/clk",
-          "ana_high/fifo_clk"
+          "ana_high/fifo_clk",
+          "freq_high_189_0/clk"
         ]
       },
       "mts_0_freq1_reset": {

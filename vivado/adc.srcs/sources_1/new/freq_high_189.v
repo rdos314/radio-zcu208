@@ -21,47 +21,14 @@
 
 module freq_high_189(
     input wire fifo_clk,
-    input wire raw_wr,
-    input wire [383:0] raw_data,
     input wire freq_wr,
     input wire [95:0] freq_data,
 
     input wire clk,
     input wire reset,
     output reg doa_wr,
-    output reg [383:0] sample_data,
     output reg [143:0] doa_data
     );
-
-  wire [383:0] raw_fifo_data;
-  wire raw_fifo_empty;
-
-  wire [15:0] raw_N0 = raw_fifo_data[15:0];
-  wire [15:0] raw_N1 = raw_fifo_data[31:16];
-  wire [15:0] raw_N2 = raw_fifo_data[47:32];
-  wire [15:0] raw_N3 = raw_fifo_data[63:48];
-  wire [15:0] raw_N4 = raw_fifo_data[79:64];
-  wire [15:0] raw_N5 = raw_fifo_data[95:80];
-  wire [15:0] raw_N6 = raw_fifo_data[111:96];
-  wire [15:0] raw_N7 = raw_fifo_data[127:112];
-
-  wire [15:0] raw_E0 = raw_fifo_data[143:128];
-  wire [15:0] raw_E1 = raw_fifo_data[159:144];
-  wire [15:0] raw_E2 = raw_fifo_data[175:160];
-  wire [15:0] raw_E3 = raw_fifo_data[191:176];
-  wire [15:0] raw_E4 = raw_fifo_data[207:192];
-  wire [15:0] raw_E5 = raw_fifo_data[223:208];
-  wire [15:0] raw_E6 = raw_fifo_data[239:224];
-  wire [15:0] raw_E7 = raw_fifo_data[255:240];
-  
-  wire [15:0] raw_W0 = raw_fifo_data[271:256];
-  wire [15:0] raw_W1 = raw_fifo_data[287:272];
-  wire [15:0] raw_W2 = raw_fifo_data[303:288];
-  wire [15:0] raw_W3 = raw_fifo_data[319:304];
-  wire [15:0] raw_W4 = raw_fifo_data[335:320];
-  wire [15:0] raw_W5 = raw_fifo_data[351:336];
-  wire [15:0] raw_W6 = raw_fifo_data[367:352];
-  wire [15:0] raw_W7 = raw_fifo_data[383:368];
   
   reg [4:0] freq_rd_delay;
   reg freq_fifo_rd;
@@ -144,17 +111,6 @@ module freq_high_189(
   wire ready_im_W;
   wire valid_im_W;
   wire [39:0] fir_im_W;
-
-fifo_raw_high fifo_raw_i (
-  .rst(reset),                   // input wire rst
-  .wr_clk(fifo_clk),             // input wire wr_clk
-  .rd_clk(clk),                  // input wire rd_clk
-  .din(raw_data),                // input wire [383 : 0] din
-  .wr_en(raw_wr),                // input wire wr_en
-  .rd_en(doa_wr),                // input wire rd_en
-  .dout(raw_fifo_data),          // output wire [383 : 0] dout
-  .empty(raw_fifo_empty)         // output wire empty
-);
 
 fifo_doa_high fifo_freq_i (
   .rst(reset),                   // input wire rst
@@ -394,39 +350,6 @@ generate
             doa_data[119:108] <= errNE;
             doa_data[131:120] <= errNW;
             doa_data[143:132] <= errEW;            
-        end
-	end
-
-    always @(posedge clk) 
-	begin
-        if (valid)
-        begin
-            sample_data[15:0] <= raw_N0;
-            sample_data[31:16] <= raw_N1;
-            sample_data[47:32] <= raw_N2;
-            sample_data[63:48] <= raw_N3;
-            sample_data[79:64] <= raw_N4;
-            sample_data[95:80] <= raw_N5;
-            sample_data[111:96] <= raw_N6;
-            sample_data[127:112] <= raw_N7;
-
-            sample_data[143:128] <= raw_E0;
-            sample_data[159:144] <= raw_E1;
-            sample_data[175:160] <= raw_E2;
-            sample_data[191:176] <= raw_E3;
-            sample_data[207:192] <= raw_E4;
-            sample_data[223:208] <= raw_E5;
-            sample_data[239:224] <= raw_E6;
-            sample_data[255:240] <= raw_E7;
-      
-            sample_data[271:256] <= raw_W0;
-            sample_data[287:272] <= raw_W1;
-            sample_data[303:288] <= raw_W2;
-            sample_data[319:304] <= raw_W3;
-            sample_data[335:320] <= raw_W4;
-            sample_data[351:336] <= raw_W5;
-            sample_data[367:352] <= raw_W6;
-            sample_data[383:368] <= raw_W7;
         end
 	end
 

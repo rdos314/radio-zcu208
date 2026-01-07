@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Dec 27 14:05:47 2025
+// Date        : Wed Jan  7 22:55:12 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_high_189_0_0/ps_freq_high_189_0_0_stub.v
@@ -16,18 +16,15 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* CHECK_LICENSE_TYPE = "ps_freq_high_189_0_0,freq_high_189,{}" *) (* CORE_GENERATION_INFO = "ps_freq_high_189_0_0,freq_high_189,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=freq_high_189,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "freq_high_189,Vivado 2025.1" *) 
-module ps_freq_high_189_0_0(fifo_clk, raw_wr, raw_data, freq_wr, freq_data, 
-  clk, reset, doa_wr, sample_data, doa_data)
-/* synthesis syn_black_box black_box_pad_pin="fifo_clk,raw_wr,raw_data[383:0],freq_wr,freq_data[95:0],reset,doa_wr,sample_data[383:0],doa_data[143:0]" */
+module ps_freq_high_189_0_0(fifo_clk, freq_wr, freq_data, clk, reset, doa_wr, 
+  doa_data)
+/* synthesis syn_black_box black_box_pad_pin="fifo_clk,freq_wr,freq_data[95:0],reset,doa_wr,doa_data[143:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) input fifo_clk;
-  input raw_wr;
-  input [383:0]raw_data;
   input freq_wr;
   input [95:0]freq_data;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq1_clk, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
   output doa_wr;
-  output [383:0]sample_data;
   output [143:0]doa_data;
 endmodule

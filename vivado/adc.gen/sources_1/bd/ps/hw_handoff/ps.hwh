@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jan  7 21:12:29 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jan  7 22:54:21 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -2774,16 +2774,8 @@
             <CONNECTION INSTANCE="freq_high_189_0" PORT="freq_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="freq_high_189_0" PORT="raw_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="freq_high_189_0" PORT="raw_wr"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="raw_wr" SIGIS="undef"/>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m22_axis_tvalid"/>
@@ -2884,16 +2876,8 @@
             <CONNECTION INSTANCE="freq_low_46_0" PORT="freq_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="freq_low_46_0" PORT="raw_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="freq_low_46_0" PORT="raw_wr"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="raw_wr" SIGIS="undef"/>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m02_axis_tvalid"/>
@@ -2989,22 +2973,11 @@
             <CONNECTION INSTANCE="deci_high" PORT="freq_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="raw_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="raw_wr"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_freq1_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="freq1_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="383" NAME="sample_data" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -3045,22 +3018,11 @@
             <CONNECTION INSTANCE="deci_low" PORT="freq_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="383" NAME="raw_data" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_wr"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_freq0_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="freq0_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="383" NAME="sample_data" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -3495,9 +3457,9 @@
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m2_axis_aclk"/>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m3_axis_aclk"/>
             <CONNECTION INSTANCE="deci_high" PORT="clk"/>
-            <CONNECTION INSTANCE="freq_high_189_0" PORT="fifo_clk"/>
             <CONNECTION INSTANCE="deci_low" PORT="clk"/>
             <CONNECTION INSTANCE="freq_low_46_0" PORT="fifo_clk"/>
+            <CONNECTION INSTANCE="freq_high_189_0" PORT="fifo_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
@@ -3528,8 +3490,8 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="freq0_clk" SIGIS="clk" SIGNAME="mts_0_freq0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="freq_low_46_0" PORT="clk"/>
             <CONNECTION INSTANCE="ana_low" PORT="fifo_clk"/>
+            <CONNECTION INSTANCE="freq_low_46_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="freq0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_freq0_reset">
@@ -3539,8 +3501,8 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="freq1_clk" SIGIS="clk" SIGNAME="mts_0_freq1_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="freq_high_189_0" PORT="clk"/>
             <CONNECTION INSTANCE="ana_high" PORT="fifo_clk"/>
+            <CONNECTION INSTANCE="freq_high_189_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="freq1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_freq1_reset">
