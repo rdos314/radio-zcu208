@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Jan  6 22:53:39 2026
+//Date        : Wed Jan  7 21:12:26 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -194,15 +194,13 @@ module ps
   wire deci_low_sim_active;
   wire [143:0]freq_high_189_0_doa_data;
   wire freq_high_189_0_doa_wr;
-  wire [383:0]freq_high_189_0_sample_data;
   wire [143:0]freq_low_46_0_doa_data;
   wire freq_low_46_0_doa_wr;
-  wire [383:0]freq_low_46_0_sample_data;
   wire [7:0]led_8bits_tri_o;
-  wire mts_0_comp0_clk;
-  wire mts_0_comp0_reset;
-  wire mts_0_comp1_clk;
-  wire mts_0_comp1_reset;
+  wire mts_0_ana0_clk;
+  wire mts_0_ana0_reset;
+  wire mts_0_ana1_clk;
+  wire mts_0_ana1_reset;
   wire mts_0_deci_adc_active;
   wire mts_0_deci_clk;
   wire mts_0_deci_resetn;
@@ -312,6 +310,26 @@ module ps
         .sim_low_wr(adc_control_0_sim_low_wr),
         .sim_start(adc_control_0_sim_start),
         .wr_en(adc_control_0_wr_en));
+  ps_ana_high_0_0 ana_high
+       (.clk(mts_0_ana1_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_high_wr),
+        .fifo_clk(mts_0_freq1_clk),
+        .fifo_doa_data(freq_high_189_0_doa_data),
+        .fifo_wr(freq_high_189_0_doa_wr),
+        .reset(mts_0_ana1_reset));
+  ps_ana_low_0_0 ana_low
+       (.clk(mts_0_ana0_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_low_wr),
+        .fifo_clk(mts_0_freq0_clk),
+        .fifo_doa_data(freq_low_46_0_doa_data),
+        .fifo_wr(freq_low_46_0_doa_wr),
+        .reset(mts_0_ana0_reset));
   ps_axi_bram_ctrl_0_bram_0 axi_bram
        (.addra(adc_control_0_bram_adr_out),
         .addrb(adc_control_0_address),
@@ -527,28 +545,6 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
-  ps_comp_high_0_0 comp_high
-       (.clk(mts_0_comp1_clk),
-        .config_adr(adc_control_0_config_adr),
-        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
-        .config_data(adc_control_0_config_data),
-        .config_wr(adc_control_0_config_high_wr),
-        .fifo_clk(mts_0_freq1_clk),
-        .fifo_doa_data(freq_high_189_0_doa_data),
-        .fifo_sample_data(freq_high_189_0_sample_data),
-        .fifo_wr(freq_high_189_0_doa_wr),
-        .reset(mts_0_comp1_reset));
-  ps_comp_low_0_0 comp_low
-       (.clk(mts_0_comp0_clk),
-        .config_adr(adc_control_0_config_adr),
-        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
-        .config_data(adc_control_0_config_data),
-        .config_wr(adc_control_0_config_low_wr),
-        .fifo_clk(mts_0_freq0_clk),
-        .fifo_doa_data(freq_low_46_0_doa_data),
-        .fifo_sample_data(freq_low_46_0_sample_data),
-        .fifo_wr(freq_low_46_0_doa_wr),
-        .reset(mts_0_comp0_reset));
   ps_deci_high_0_0 deci_high
        (.adc_active(mts_0_deci_adc_active),
         .clk(mts_0_deci_clk),
@@ -600,8 +596,7 @@ module ps
         .freq_wr(deci_high_freq_wr),
         .raw_data(deci_high_raw_data),
         .raw_wr(deci_high_raw_wr),
-        .reset(mts_0_freq1_reset),
-        .sample_data(freq_high_189_0_sample_data));
+        .reset(mts_0_freq1_reset));
   ps_freq_low_46_0_0 freq_low_46_0
        (.clk(mts_0_freq0_clk),
         .doa_data(freq_low_46_0_doa_data),
@@ -611,8 +606,7 @@ module ps
         .freq_wr(deci_low_freq_wr),
         .raw_data(deci_low_raw_data),
         .raw_wr(deci_low_raw_wr),
-        .reset(mts_0_freq0_reset),
-        .sample_data(freq_low_46_0_sample_data));
+        .reset(mts_0_freq0_reset));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -635,16 +629,16 @@ module ps
         .s_axi_wstrb(axi_smc_M00_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M00_AXI_WVALID));
   ps_mts_0_0 mts_0
-       (.axi_adc_active(adc_control_0_adc_active),
+       (.ana0_clk(mts_0_ana0_clk),
+        .ana0_reset(mts_0_ana0_reset),
+        .ana1_clk(mts_0_ana1_clk),
+        .ana1_reset(mts_0_ana1_reset),
+        .axi_adc_active(adc_control_0_adc_active),
         .axi_adc_start(adc_control_0_adc_start),
         .axi_adc_stop(adc_control_0_adc_stop),
         .axi_clk(zynq_ultra_ps_e_0_pl_clk0),
         .axi_sim_active(adc_control_0_sim_active),
         .axi_sim_start(adc_control_0_sim_start),
-        .comp0_clk(mts_0_comp0_clk),
-        .comp0_reset(mts_0_comp0_reset),
-        .comp1_clk(mts_0_comp1_clk),
-        .comp1_reset(mts_0_comp1_reset),
         .deci_adc_active(mts_0_deci_adc_active),
         .deci_clk(mts_0_deci_clk),
         .deci_resetn(mts_0_deci_resetn),

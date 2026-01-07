@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -73,14 +73,18 @@ module ps_mts_0_0 (
   deci_sim_start,
   deci_sim_active_low,
   deci_sim_active_high,
-  comp0_clk,
-  comp0_reset,
-  comp1_clk,
-  comp1_reset,
+  ana0_clk,
+  ana0_reset,
+  ana1_clk,
+  ana1_reset,
   freq0_clk,
   freq0_reset,
   freq1_clk,
-  freq1_reset
+  freq1_reset,
+  comp0_clk,
+  comp0_reset,
+  comp1_clk,
+  comp1_reset
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *)
@@ -115,22 +119,22 @@ output wire deci_adc_active;
 output wire deci_sim_start;
 input wire deci_sim_active_low;
 input wire deci_sim_active_high;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp0_clk CLK" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ana0_clk CLK" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_clk, ASSOCIATED_RESET comp0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
-output wire comp0_clk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp0_reset RST" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana0_clk, ASSOCIATED_RESET ana0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana0_clk, INSERT_VIP 0" *)
+output wire ana0_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ana0_reset RST" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-output wire comp0_reset;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp1_clk CLK" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire ana0_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ana1_clk CLK" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_clk, ASSOCIATED_RESET comp1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *)
-output wire comp1_clk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp1_reset RST" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana1_clk, ASSOCIATED_RESET ana1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *)
+output wire ana1_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ana1_reset RST" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-output wire comp1_reset;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire ana1_reset;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 freq0_clk CLK" *)
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME freq0_clk, ASSOCIATED_RESET freq0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
@@ -147,6 +151,22 @@ output wire freq1_clk;
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME freq1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire freq1_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp0_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_clk, ASSOCIATED_RESET comp0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *)
+output wire comp0_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp0_reset RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire comp0_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp1_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_clk, ASSOCIATED_RESET comp1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *)
+output wire comp1_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp1_reset RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire comp1_reset;
 
   mts inst (
     .pl_clk(pl_clk),
@@ -166,13 +186,17 @@ output wire freq1_reset;
     .deci_sim_start(deci_sim_start),
     .deci_sim_active_low(deci_sim_active_low),
     .deci_sim_active_high(deci_sim_active_high),
-    .comp0_clk(comp0_clk),
-    .comp0_reset(comp0_reset),
-    .comp1_clk(comp1_clk),
-    .comp1_reset(comp1_reset),
+    .ana0_clk(ana0_clk),
+    .ana0_reset(ana0_reset),
+    .ana1_clk(ana1_clk),
+    .ana1_reset(ana1_reset),
     .freq0_clk(freq0_clk),
     .freq0_reset(freq0_reset),
     .freq1_clk(freq1_clk),
-    .freq1_reset(freq1_reset)
+    .freq1_reset(freq1_reset),
+    .comp0_clk(comp0_clk),
+    .comp0_reset(comp0_reset),
+    .comp1_clk(comp1_clk),
+    .comp1_reset(comp1_reset)
   );
 endmodule

@@ -42,13 +42,13 @@ module mts(
 	input wire deci_sim_active_low,
 	input wire deci_sim_active_high,
 
-    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
-	output wire comp0_clk,
-    output reg  comp0_reset,
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ANA0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire ana0_clk,
+    output reg  ana0_reset,
 
-    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
-	output wire comp1_clk,
-    output reg  comp1_reset,
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ANA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire ana1_clk,
+    output reg  ana1_reset,
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FREQ0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	output wire freq0_clk,
@@ -56,7 +56,15 @@ module mts(
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FREQ1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	output wire freq1_clk,
-    output reg  freq1_reset
+    output reg  freq1_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire comp0_clk,
+    output reg  comp0_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire comp1_clk,
+    output reg  comp1_reset
  ); 
  
     reg adc_axi_start;
@@ -82,8 +90,9 @@ module mts(
 
 	wire pl_clk_buf;
 	wire rst_async = sys_reset | (~deci_locked);
-    wire comp_locked;
+    wire ana_locked;
     wire freq_locked;
+    wire comp_locked;
 
 	(* ASYNC_REG="TRUE" *)  reg  sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
@@ -94,14 +103,18 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  axi_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_2;
-	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_1;
-	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_2;
-	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_1;
-	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  ana0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  ana0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  ana1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  ana1_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  freq0_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  freq0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  freq1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  freq1_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_2;
 
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_2;
@@ -126,11 +139,11 @@ module mts(
 		.clk_out1	(deci_clk),
 		.locked		(deci_locked));
 		
-	clk_wiz_adc clk_wiz_comp_i (
+	clk_wiz_adc clk_wiz_ana_i (
 		.clk_in1	(pl_clk_buf),
-		.clk_out1	(comp0_clk),
-		.clk_out2	(comp1_clk),
-		.locked		(comp_locked)
+		.clk_out1	(ana0_clk),
+		.clk_out2	(ana1_clk),
+		.locked		(ana_locked)
 		);
 
 	clk_wiz_adc clk_wiz_freq_i (
@@ -139,6 +152,14 @@ module mts(
 		.clk_out2	(freq1_clk),
 		.locked		(freq_locked)
 		);
+		
+	clk_wiz_adc clk_wiz_comp_i (
+		.clk_in1	(pl_clk_buf),
+		.clk_out1	(comp0_clk),
+		.clk_out2	(comp1_clk),
+		.locked		(comp_locked)
+		);
+
 
 /*
 	ila_6 ila_i (
@@ -305,6 +326,20 @@ generate
 		axi_sim_active_1 <= sim_active;
 		axi_sim_active_2 <= axi_sim_active_1;
 		axi_sim_active <= axi_sim_active_2;
+	end
+
+	always @(posedge ana0_clk) 
+	begin
+		ana0_reset_1 <= deci_reset_async | (~ana_locked);
+		ana0_reset_2 <= ana0_reset_1;
+		ana0_reset <= ana0_reset_2;
+	end
+
+	always @(posedge ana1_clk) 
+	begin
+		ana1_reset_1 <= deci_reset_async | (~ana_locked);
+		ana1_reset_2 <= ana1_reset_1;
+		ana1_reset <= ana1_reset_2;
 	end
 
 	always @(posedge freq0_clk) 

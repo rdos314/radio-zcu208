@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Dec 14 15:59:03 2025
+-- Date        : Wed Jan  7 21:13:20 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -34,14 +34,18 @@ entity ps_mts_0_0_mts is
     deci_sim_start : out STD_LOGIC;
     deci_sim_active_low : in STD_LOGIC;
     deci_sim_active_high : in STD_LOGIC;
-    comp0_clk : out STD_LOGIC;
-    comp0_reset : out STD_LOGIC;
-    comp1_clk : out STD_LOGIC;
-    comp1_reset : out STD_LOGIC;
+    ana0_clk : out STD_LOGIC;
+    ana0_reset : out STD_LOGIC;
+    ana1_clk : out STD_LOGIC;
+    ana1_reset : out STD_LOGIC;
     freq0_clk : out STD_LOGIC;
     freq0_reset : out STD_LOGIC;
     freq1_clk : out STD_LOGIC;
-    freq1_reset : out STD_LOGIC
+    freq1_reset : out STD_LOGIC;
+    comp0_clk : out STD_LOGIC;
+    comp0_reset : out STD_LOGIC;
+    comp1_clk : out STD_LOGIC;
+    comp1_reset : out STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_mts_0_0_mts : entity is "mts";
@@ -56,13 +60,6 @@ architecture STRUCTURE of ps_mts_0_0_mts is
     clk_in1 : in STD_LOGIC
   );
   end component ps_mts_0_0_clk_wiz_adc;
-  component ps_mts_0_0_clk_wiz_deci is
-  port (
-    clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC;
-    clk_in1 : in STD_LOGIC
-  );
-  end component ps_mts_0_0_clk_wiz_deci;
   component ps_mts_0_0_clk_wiz_adc_HD1 is
   port (
     clk_in1 : in STD_LOGIC;
@@ -71,6 +68,13 @@ architecture STRUCTURE of ps_mts_0_0_mts is
     locked : out STD_LOGIC
   );
   end component ps_mts_0_0_clk_wiz_adc_HD1;
+  component ps_mts_0_0_clk_wiz_deci is
+  port (
+    clk_out1 : out STD_LOGIC;
+    locked : out STD_LOGIC;
+    clk_in1 : in STD_LOGIC
+  );
+  end component ps_mts_0_0_clk_wiz_deci;
   signal \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_onehot_mts.deci_adc_counter_reg_n_0_[0]\ : STD_LOGIC;
@@ -79,8 +83,19 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal adc_active : STD_LOGIC;
   signal adc_axi_start : STD_LOGIC;
   signal adc_axi_stop : STD_LOGIC;
-  signal axi_adc_active_1 : STD_LOGIC;
+  signal \^ana0_clk\ : STD_LOGIC;
+  signal ana0_reset_1 : STD_LOGIC;
   attribute async_reg : string;
+  attribute async_reg of ana0_reset_1 : signal is "true";
+  signal ana0_reset_2 : STD_LOGIC;
+  attribute async_reg of ana0_reset_2 : signal is "true";
+  signal \^ana1_clk\ : STD_LOGIC;
+  signal ana1_reset_1 : STD_LOGIC;
+  attribute async_reg of ana1_reset_1 : signal is "true";
+  signal ana1_reset_2 : STD_LOGIC;
+  attribute async_reg of ana1_reset_2 : signal is "true";
+  signal ana_locked : STD_LOGIC;
+  signal axi_adc_active_1 : STD_LOGIC;
   attribute async_reg of axi_adc_active_1 : signal is "true";
   signal axi_adc_active_2 : STD_LOGIC;
   attribute async_reg of axi_adc_active_2 : signal is "true";
@@ -151,6 +166,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal freq1_reset_2 : STD_LOGIC;
   attribute async_reg of freq1_reset_2 : signal is "true";
   signal freq_locked : STD_LOGIC;
+  signal \mts.ana0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.comp0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.deci_adc_active_i_1_n_0\ : STD_LOGIC;
   signal \mts.deci_resetn_i_1_n_0\ : STD_LOGIC;
@@ -174,8 +190,16 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[2]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
   attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[3]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
   attribute ASYNC_REG_boolean : boolean;
-  attribute ASYNC_REG_boolean of \mts.axi_adc_active_1_reg\ : label is std.standard.true;
+  attribute ASYNC_REG_boolean of \mts.ana0_reset_1_reg\ : label is std.standard.true;
   attribute KEEP : string;
+  attribute KEEP of \mts.ana0_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.ana0_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.ana0_reset_2_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.ana1_reset_1_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.ana1_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.ana1_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.ana1_reset_2_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.axi_adc_active_1_reg\ : label is std.standard.true;
   attribute KEEP of \mts.axi_adc_active_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.axi_adc_active_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.axi_adc_active_2_reg\ : label is "yes";
@@ -247,12 +271,16 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute XILINX_TRANSFORM_PINMAP : string;
   attribute XILINX_TRANSFORM_PINMAP of p_clk_i : label is "VCC:CE";
   attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of ana0_clk : signal is "XIL_INTERFACENAME ANA0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
+  attribute X_INTERFACE_PARAMETER of ana1_clk : signal is "XIL_INTERFACENAME ANA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
   attribute X_INTERFACE_PARAMETER of comp0_clk : signal is "XIL_INTERFACENAME COMP0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
   attribute X_INTERFACE_PARAMETER of comp1_clk : signal is "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
   attribute X_INTERFACE_PARAMETER of deci_clk : signal is "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
   attribute X_INTERFACE_PARAMETER of freq0_clk : signal is "XIL_INTERFACENAME FREQ0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
   attribute X_INTERFACE_PARAMETER of freq1_clk : signal is "XIL_INTERFACENAME FREQ1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
 begin
+  ana0_clk <= \^ana0_clk\;
+  ana1_clk <= \^ana1_clk\;
   comp0_clk <= \^comp0_clk\;
   comp1_clk <= \^comp1_clk\;
   deci_adc_active <= \^deci_adc_active\;
@@ -326,7 +354,14 @@ begin
       Q => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\,
       R => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
     );
-clk_wiz_comp_i: component ps_mts_0_0_clk_wiz_adc
+clk_wiz_ana_i: component ps_mts_0_0_clk_wiz_adc
+     port map (
+      clk_in1 => pl_clk_buf,
+      clk_out1 => \^ana0_clk\,
+      clk_out2 => \^ana1_clk\,
+      locked => ana_locked
+    );
+clk_wiz_comp_i: component ps_mts_0_0_clk_wiz_adc_HD1
      port map (
       clk_in1 => pl_clk_buf,
       clk_out1 => \^comp0_clk\,
@@ -339,7 +374,7 @@ clk_wiz_deci_i: component ps_mts_0_0_clk_wiz_deci
       clk_out1 => \^deci_clk\,
       locked => deci_locked
     );
-clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc_HD1
+clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc
      port map (
       clk_in1 => pl_clk_buf,
       clk_out1 => \^freq0_clk\,
@@ -368,6 +403,63 @@ clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc_HD1
       CE => '1',
       D => axi_adc_stop,
       Q => adc_axi_stop,
+      R => '0'
+    );
+\mts.ana0_reset_1_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => deci_reset_async,
+      I1 => ana_locked,
+      O => \mts.ana0_reset_1_reg0\
+    );
+\mts.ana0_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^ana0_clk\,
+      CE => '1',
+      D => \mts.ana0_reset_1_reg0\,
+      Q => ana0_reset_1,
+      R => '0'
+    );
+\mts.ana0_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^ana0_clk\,
+      CE => '1',
+      D => ana0_reset_1,
+      Q => ana0_reset_2,
+      R => '0'
+    );
+\mts.ana0_reset_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^ana0_clk\,
+      CE => '1',
+      D => ana0_reset_2,
+      Q => ana0_reset,
+      R => '0'
+    );
+\mts.ana1_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^ana1_clk\,
+      CE => '1',
+      D => \mts.ana0_reset_1_reg0\,
+      Q => ana1_reset_1,
+      R => '0'
+    );
+\mts.ana1_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^ana1_clk\,
+      CE => '1',
+      D => ana1_reset_1,
+      Q => ana1_reset_2,
+      R => '0'
+    );
+\mts.ana1_reset_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^ana1_clk\,
+      CE => '1',
+      D => ana1_reset_2,
+      Q => ana1_reset,
       R => '0'
     );
 \mts.axi_adc_active_1_reg\: unisim.vcomponents.FDRE
@@ -977,14 +1069,18 @@ entity ps_mts_0_0 is
     deci_sim_start : out STD_LOGIC;
     deci_sim_active_low : in STD_LOGIC;
     deci_sim_active_high : in STD_LOGIC;
-    comp0_clk : out STD_LOGIC;
-    comp0_reset : out STD_LOGIC;
-    comp1_clk : out STD_LOGIC;
-    comp1_reset : out STD_LOGIC;
+    ana0_clk : out STD_LOGIC;
+    ana0_reset : out STD_LOGIC;
+    ana1_clk : out STD_LOGIC;
+    ana1_reset : out STD_LOGIC;
     freq0_clk : out STD_LOGIC;
     freq0_reset : out STD_LOGIC;
     freq1_clk : out STD_LOGIC;
-    freq1_reset : out STD_LOGIC
+    freq1_reset : out STD_LOGIC;
+    comp0_clk : out STD_LOGIC;
+    comp0_reset : out STD_LOGIC;
+    comp1_clk : out STD_LOGIC;
+    comp1_reset : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ps_mts_0_0 : entity is true;
@@ -1000,10 +1096,22 @@ end ps_mts_0_0;
 
 architecture STRUCTURE of ps_mts_0_0 is
   attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of axi_clk : signal is "xilinx.com:signal:clock:1.0 axi_clk CLK";
+  attribute X_INTERFACE_INFO of ana0_clk : signal is "xilinx.com:signal:clock:1.0 ana0_clk CLK";
   attribute X_INTERFACE_MODE : string;
-  attribute X_INTERFACE_MODE of axi_clk : signal is "slave";
+  attribute X_INTERFACE_MODE of ana0_clk : signal is "master";
   attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of ana0_clk : signal is "XIL_INTERFACENAME ana0_clk, ASSOCIATED_RESET ana0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of ana0_reset : signal is "xilinx.com:signal:reset:1.0 ana0_reset RST";
+  attribute X_INTERFACE_MODE of ana0_reset : signal is "master";
+  attribute X_INTERFACE_PARAMETER of ana0_reset : signal is "XIL_INTERFACENAME ana0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of ana1_clk : signal is "xilinx.com:signal:clock:1.0 ana1_clk CLK";
+  attribute X_INTERFACE_MODE of ana1_clk : signal is "master";
+  attribute X_INTERFACE_PARAMETER of ana1_clk : signal is "XIL_INTERFACENAME ana1_clk, ASSOCIATED_RESET ana1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of ana1_reset : signal is "xilinx.com:signal:reset:1.0 ana1_reset RST";
+  attribute X_INTERFACE_MODE of ana1_reset : signal is "master";
+  attribute X_INTERFACE_PARAMETER of ana1_reset : signal is "XIL_INTERFACENAME ana1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of axi_clk : signal is "xilinx.com:signal:clock:1.0 axi_clk CLK";
+  attribute X_INTERFACE_MODE of axi_clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER of axi_clk : signal is "XIL_INTERFACENAME axi_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of comp0_clk : signal is "xilinx.com:signal:clock:1.0 comp0_clk CLK";
   attribute X_INTERFACE_MODE of comp0_clk : signal is "master";
@@ -1044,6 +1152,10 @@ architecture STRUCTURE of ps_mts_0_0 is
 begin
 inst: entity work.ps_mts_0_0_mts
      port map (
+      ana0_clk => ana0_clk,
+      ana0_reset => ana0_reset,
+      ana1_clk => ana1_clk,
+      ana1_reset => ana1_reset,
       axi_adc_active => axi_adc_active,
       axi_adc_start => axi_adc_start,
       axi_adc_stop => axi_adc_stop,

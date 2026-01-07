@@ -1,5 +1,5 @@
 # (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-# (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+# (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 # 
 # This file contains confidential and proprietary information
 # of AMD and is protected under U.S. and international copyright
@@ -51,6 +51,10 @@
 #
 # #########################################################
 
+
+create_clock -period 2 -name ana0_clk [get_ports ana0_clk]
+
+create_clock -period 2 -name ana1_clk [get_ports ana1_clk]
 
 create_clock -period 10 -name axi_clk [get_ports axi_clk]
 
