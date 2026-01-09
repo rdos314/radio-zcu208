@@ -66,13 +66,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="268"/>
-    <Option Name="WTModelSimExportSim" Val="268"/>
-    <Option Name="WTQuestaExportSim" Val="268"/>
+    <Option Name="WTXSimExportSim" Val="269"/>
+    <Option Name="WTModelSimExportSim" Val="269"/>
+    <Option Name="WTQuestaExportSim" Val="269"/>
     <Option Name="WTIesExportSim" Val="0"/>
     <Option Name="WTVcsExportSim" Val="0"/>
-    <Option Name="WTRivieraExportSim" Val="268"/>
-    <Option Name="WTActivehdlExportSim" Val="268"/>
+    <Option Name="WTRivieraExportSim" Val="269"/>
+    <Option Name="WTActivehdlExportSim" Val="269"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -778,6 +778,7 @@
     <FileSet Name="div_env" Type="BlockSrcs" RelSrcDir="$PSRCDIR/div_env" RelGenDir="$PGENDIR/div_env">
       <File Path="$PSRCDIR/sources_1/ip/div_env/div_env.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

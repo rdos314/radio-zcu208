@@ -2944,6 +2944,44 @@
           "reset": {
             "type": "rst",
             "direction": "I"
+          },
+          "comp_wr": {
+            "direction": "O"
+          },
+          "sample": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "size": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "freq": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "angle": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "sample_N": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "sample_E": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "sample_W": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
           }
         }
       },
@@ -3074,6 +3112,44 @@
           "reset": {
             "type": "rst",
             "direction": "I"
+          },
+          "comp_wr": {
+            "direction": "O"
+          },
+          "sample": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "size": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "freq": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "angle": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "sample_N": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "sample_E": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "sample_W": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
           }
         }
       }

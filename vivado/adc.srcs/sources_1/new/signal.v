@@ -171,9 +171,6 @@ module det_signal(
     output reg [31:0] signal_sample,
     output reg [8:0] signal_size,
     output reg [19:0] signal_freq,
-    output reg [15:0] signal_env_N,
-    output reg [15:0] signal_env_E,
-    output reg [15:0] signal_env_W,
     output reg [19:0] signal_phase_NE,
     output reg [19:0] signal_phase_EW,
     output reg [19:0] signal_phase_WN,
@@ -204,10 +201,7 @@ module det_signal(
   reg [20:0] dsp_phase_N;
   wire [47:0] dsp_sum_N;
   reg [23:0] env_sum_N;
-  reg [31:0] div_env_sum_N;
   wire valid_env_N;
-  wire [39:0] div_env_N;
-  wire [15:0] avg_env_N = div_env_N[31:16];
 
   reg [16:0] env_E;
   reg [19:0] phase_E;
@@ -217,10 +211,7 @@ module det_signal(
   reg [20:0] dsp_phase_E;
   wire [47:0] dsp_sum_E;
   reg [23:0] env_sum_E;
-  reg [31:0] div_env_sum_E;
   wire valid_env_E;
-  wire [39:0] div_env_E;
-  wire [15:0] avg_env_E = div_env_E[31:16];
 
   reg [16:0] env_W;
   reg [19:0] phase_W;
@@ -230,10 +221,7 @@ module det_signal(
   reg [20:0] dsp_phase_W;
   wire [47:0] dsp_sum_W;
   reg [23:0] env_sum_W;
-  reg [31:0] div_env_sum_W;
   wire valid_env_W;
-  wire [39:0] div_env_W;
-  wire [15:0] avg_env_W = div_env_W[31:16];
 
   reg [15:0] div_sample_count;
 
@@ -394,36 +382,6 @@ div_weighted div_phase_WN_i (
   .s_axis_dividend_tdata(div_phase_sum_WN),         // input wire [47 : 0] s_axis_dividend_tdata
   .m_axis_dout_tvalid(valid_phase_WN),              // output wire m_axis_dout_tvalid
   .m_axis_dout_tdata(div_phase_WN)                  // output wire [79 : 0] m_axis_dout_tdata
-);
-
-div_env div_env_N_i (
-  .aclk(clk),                                       // input wire aclk
-  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
-  .s_axis_divisor_tdata(div_sample_count),          // input wire [15 : 0] s_axis_divisor_tdata
-  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
-  .s_axis_dividend_tdata(div_env_sum_N),            // input wire [23 : 0] s_axis_dividend_tdata
-  .m_axis_dout_tvalid(valid_env_N),                 // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(div_env_N)                     // output wire [39 : 0] m_axis_dout_tdata
-);
-
-div_env div_env_E_i (
-  .aclk(clk),                                       // input wire aclk
-  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
-  .s_axis_divisor_tdata(div_sample_count),          // input wire [15 : 0] s_axis_divisor_tdata
-  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
-  .s_axis_dividend_tdata(div_env_sum_E),            // input wire [23 : 0] s_axis_dividend_tdata
-  .m_axis_dout_tvalid(valid_env_E),                 // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(div_env_E)                     // output wire [39 : 0] m_axis_dout_tdata
-);
-
-div_env div_env_W_i (
-  .aclk(clk),                                       // input wire aclk
-  .s_axis_divisor_tvalid(div_start),                // input wire s_axis_divisor_tvalid
-  .s_axis_divisor_tdata(div_sample_count),          // input wire [15 : 0] s_axis_divisor_tdata
-  .s_axis_dividend_tvalid(div_start),               // input wire s_axis_dividend_tvalid
-  .s_axis_dividend_tdata(div_env_sum_W),            // input wire [23 : 0] s_axis_dividend_tdata
-  .m_axis_dout_tvalid(valid_env_W),                 // output wire m_axis_dout_tvalid
-  .m_axis_dout_tdata(div_env_W)                     // output wire [39 : 0] m_axis_dout_tdata
 );
 
 generate
@@ -678,10 +636,6 @@ generate
                     begin
                         signal_sample <= start_sample;
                         signal_size <= div_sample_count[8:0];
-                        
-                        div_env_sum_N <= {8'b00000000, env_sum_N};
-                        div_env_sum_E <= {8'b00000000, env_sum_E};
-                        div_env_sum_W <= {8'b00000000, env_sum_W};
 
                         div_env_NE <= {8'b00000000, env_sum_N} + {8'b00000000, env_sum_E};
                         div_env_all <= {8'b00000000, env_sum_W};
@@ -776,9 +730,6 @@ generate
                     if (!min_freq_diff[20] & max_freq_diff[20])
                     begin
                         signal_freq <= freq;
-                        signal_env_N <= avg_env_N;
-                        signal_env_E <= avg_env_E;
-                        signal_env_W <= avg_env_W;
                         signal_phase_NE <= phase_NE;
                         signal_phase_EW <= phase_EW;
                         signal_phase_WN <= phase_WN;

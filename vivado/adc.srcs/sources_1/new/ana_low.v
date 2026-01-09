@@ -39,7 +39,16 @@ module ana_low(
     input wire [31:0] config_data,
 
     input wire clk,
-    input wire reset
+    input wire reset,
+    
+    output reg comp_wr,
+    output reg [31:0] sample,
+    output reg [8:0] size,
+    output reg [19:0] freq,
+    output reg [15:0] angle,
+    output reg [5:0] sample_N,
+    output reg [5:0] sample_E,
+    output reg [5:0] sample_W    
     );
 
   reg ana_fifo_wr;
@@ -62,38 +71,49 @@ module ana_low(
   reg cfg_rd;
   wire cfg_empty;
   
-  wire [31:0] start_sample;
-  wire [8:0] size;
-  wire [19:0] freq;
-  wire [15:0] env_doa_N;
-  wire [15:0] env_doa_E;
-  wire [15:0] env_doa_W;
-  wire [19:0] phase_NE;
-  wire [19:0] phase_EW;
-  wire [19:0] phase_WN;
-  wire burst;
+  wire [31:0] curr_sample;
+  wire [8:0] curr_size;
+  wire [19:0] curr_freq;
+  wire [19:0] curr_phase_NE;
+  wire [19:0] curr_phase_EW;
+  wire [19:0] curr_phase_WN;
+  wire curr_burst;
+  
+  reg curr_doa;
+  reg [1:0] burst;
+  wire [1:0] save;
+  
+  reg [31:0] sample_0;
+  reg [8:0] size_0;
+  reg [19:0] freq_0;
+  reg [19:0] phase_NE_0;
+  reg [19:0] phase_EW_0;
+  reg [19:0] phase_WN_0;
 
-  wire [127:0] comp_N;
-  wire [127:0] comp_E;
-  wire [127:0] comp_W;
-
-  reg sel_N;
-  reg sel_E;
-  reg sel_W;
-
-  wire save;
-  wire [31:0] save_sample;
-  wire [8:0] save_size;
-  wire [19:0] save_freq;
-  wire [15:0] save_angle;
-
-  wire [15:0] save_env_N;
-  wire [15:0] save_env_E;
-  wire [15:0] save_env_W;
+  wire [31:0] save_sample_0;
+  wire [8:0] save_size_0;
+  wire [19:0] save_freq_0;
+  wire [15:0] save_angle_0;
  
-  wire [5:0] save_sample_N;
-  wire [5:0] save_sample_E;
-  wire [5:0] save_sample_W;
+  wire [5:0] save_sample_N_0;
+  wire [5:0] save_sample_E_0;
+  wire [5:0] save_sample_W_0;
+
+  reg [31:0] sample_1;
+  reg [8:0] size_1;
+  reg [19:0] freq_1;
+  reg [19:0] phase_NE_1;
+  reg [19:0] phase_EW_1;
+  reg [19:0] phase_WN_1;
+
+  wire [31:0] save_sample_1;
+  wire [8:0] save_size_1;
+  wire [19:0] save_freq_1;
+  wire [15:0] save_angle_1;
+ 
+  wire [5:0] save_sample_N_1;
+  wire [5:0] save_sample_E_1;
+  wire [5:0] save_sample_W_1;
 
 fifo_doa fifo_doa_i (
   .rst(reset),                   // input wire rst
@@ -125,45 +145,82 @@ det_signal det_sig_i (
     .config_data(cfg_data),
     .active(ana_valid),
     .data(ana_data),
-    .signal_sample(start_sample),
-    .signal_size(size),
-    .signal_freq(freq),
-    .signal_env_N(env_doa_N),
-    .signal_env_E(env_doa_E),
-    .signal_env_W(env_doa_W),
-    .signal_phase_NE(phase_NE),
-    .signal_phase_EW(phase_EW),
-    .signal_phase_WN(phase_WN),
-    .signal_done(burst)
+    .signal_sample(curr_sample),
+    .signal_size(curr_size),
+    .signal_freq(curr_freq),
+    .signal_phase_NE(curr_phase_NE),
+    .signal_phase_EW(curr_phase_EW),
+    .signal_phase_WN(curr_phase_WN),
+    .signal_done(curr_burst)
 );
 
-doa_calc doa_calc_i (
+doa_calc doa_calc_0 (
     .clk(clk),
     .reset(reset),
     .config_wr(!cfg_empty),
     .config_adr(cfg_adr),
     .config_data(cfg_data),
-    .start(burst),
-    .sample_in(start_sample),
-    .size_in(size),
-    .freq_in(freq),
-    .env_N_in(env_doa_N),
-    .env_E_in(env_doa_E),
-    .env_W_in(env_doa_W),
-    .phase_NE_in(phase_NE),
-    .phase_EW_in(phase_EW),
-    .phase_WN_in(phase_WN),
-    .done(save),
-    .sample(save_sample),
-    .size(save_size),
-    .freq(save_freq),
-    .angle(save_angle),
-    .env_N(save_env_N),
-    .env_E(save_env_E),
-    .env_W(save_env_W),
-    .sample_N(save_sample_N),
-    .sample_E(save_sample_E),
-    .sample_W(save_sample_W)    
+    .start(burst[0]),
+    .sample_in(sample_0),
+    .size_in(size_0),
+    .freq_in(freq_0),
+    .phase_NE_in(phase_NE_0),
+    .phase_EW_in(phase_EW_0),
+    .phase_WN_in(phase_WN_0),
+    .done(save[0]),
+    .sample(save_sample_0),
+    .size(save_size_0),
+    .freq(save_freq_0),
+    .angle(save_angle_0),
+    .sample_N(save_sample_N_0),
+    .sample_E(save_sample_E_0),
+    .sample_W(save_sample_W_0)    
+);
+
+doa_calc doa_calc_1 (
+    .clk(clk),
+    .reset(reset),
+    .config_wr(!cfg_empty),
+    .config_adr(cfg_adr),
+    .config_data(cfg_data),
+    .start(burst[1]),
+    .sample_in(sample_1),
+    .size_in(size_1),
+    .freq_in(freq_1),
+    .phase_NE_in(phase_NE_1),
+    .phase_EW_in(phase_EW_1),
+    .phase_WN_in(phase_WN_1),
+    .done(save[1]),
+    .sample(save_sample_1),
+    .size(save_size_1),
+    .freq(save_freq_1),
+    .angle(save_angle_1),
+    .sample_N(save_sample_N_1),
+    .sample_E(save_sample_E_1),
+    .sample_W(save_sample_W_1)    
+);
+
+
+	ila_6 ila_i (
+		.clk(clk),                    // input wire clk
+		.probe0(curr_burst),          // input wire [0:0]  probe3
+		.probe1(curr_sample),         // input wire [31:0]  probe3
+		.probe2(curr_size),           // input wire [8:0]  probe3
+		.probe3(curr_freq),           // input wire [19:0]  probe3
+		.probe4(curr_phase_NE),       // input wire [19:0]  probe3
+		.probe5(curr_phase_EW),       // input wire [19:0]  probe3
+		.probe6(curr_phase_WN),       // input wire [19:0]  probe3
+		.probe7(curr_doa),           // input wire [0:0]  probe3
+		.probe8(burst),              // input wire [1:0]  probe3
+		.probe9(save),               // input wire [1:0]  probe3
+		.probe10(comp_wr),           // input wire [0:0]  probe3
+		.probe11(sample),            // input wire [31:0]  probe3
+		.probe12(size),              // input wire [8:0]  probe3
+		.probe13(freq),              // input wire [19:0]  probe3
+		.probe14(angle),             // input wire [15:0]  probe3
+		.probe15(sample_N),          // input wire [5:0]  probe3
+		.probe16(sample_E),          // input wire [5:0]  probe3
+		.probe17(sample_W)           // input wire [5:0]  probe3
 );
 
 generate
@@ -188,22 +245,6 @@ generate
        else
             ana_fifo_wr <= 0;
     end
-
-    always @(posedge clk) 
-	begin
-	   if (reset)
-	   begin
-	       sel_N <= 0;
-	       sel_E <= 0;
-	       sel_W <= 0;
-	    end
-	    else
-	    begin
-	       sel_N <= sel_N + 1;
-	       sel_E <= sel_E + 1;
-	       sel_W <= sel_W + 1;
-	    end
-	end
 
     always @(posedge clk) 
 	begin
@@ -242,6 +283,78 @@ generate
         else
             ana_valid <= 0;
 	end
+
+    always @(posedge clk) 
+	begin
+        if (curr_burst)
+        begin
+            curr_doa <= curr_doa + 1;
+            
+            case (curr_doa)
+                0 :
+                begin
+                    sample_0 <= curr_sample;
+                    size_0 <= curr_size;
+                    freq_0 <= curr_freq;
+                    phase_NE_0 <= curr_phase_NE;
+                    phase_EW_0 <= curr_phase_EW;
+                    phase_WN_0 <= curr_phase_WN;
+                    burst[0] <= 1;
+                    burst[1] <= 0;
+                end
+                
+                1 :
+                begin
+                    sample_1 <= curr_sample;
+                    size_1 <= curr_size;
+                    freq_1 <= curr_freq;
+                    phase_NE_1 <= curr_phase_NE;
+                    phase_EW_1 <= curr_phase_EW;
+                    phase_WN_1 <= curr_phase_WN;
+                    burst[1] <= 1;
+                    burst[0] <= 0;
+                end
+            endcase
+        end
+        else
+        begin
+            burst <= 0;
+            
+            if (reset)
+                curr_doa <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+        case (save)
+            2'b01:
+                begin
+                    comp_wr <= 1;
+                    sample <= save_sample_0;
+                    size <= save_size_0;
+                    freq <= save_freq_0;
+                    angle <= save_angle_0;
+                    sample_N <= save_sample_N_0;
+                    sample_E <= save_sample_E_0;
+                    sample_W <= save_sample_W_0;
+                end
+
+            2'b10:
+                begin
+                    comp_wr <= 1;
+                    sample <= save_sample_1;
+                    size <= save_size_1;
+                    freq <= save_freq_1;
+                    angle <= save_angle_1;
+                    sample_N <= save_sample_N_1;
+                    sample_E <= save_sample_E_1;
+                    sample_W <= save_sample_W_1;
+                end
+                
+            default: comp_wr <= 0;
+        endcase
+    end
 
   end
     

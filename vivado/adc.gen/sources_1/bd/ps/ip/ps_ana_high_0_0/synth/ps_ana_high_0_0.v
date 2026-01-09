@@ -72,7 +72,15 @@ module ps_ana_high_0_0 (
   config_adr,
   config_data,
   clk,
-  reset
+  reset,
+  comp_wr,
+  sample,
+  size,
+  freq,
+  angle,
+  sample_N,
+  sample_E,
+  sample_W
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
@@ -104,6 +112,14 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
+output wire comp_wr;
+output wire [31 : 0] sample;
+output wire [8 : 0] size;
+output wire [19 : 0] freq;
+output wire [15 : 0] angle;
+output wire [5 : 0] sample_N;
+output wire [5 : 0] sample_E;
+output wire [5 : 0] sample_W;
 
   ana_high inst (
     .fifo_clk(fifo_clk),
@@ -122,6 +138,14 @@ input wire reset;
     .config_adr(config_adr),
     .config_data(config_data),
     .clk(clk),
-    .reset(reset)
+    .reset(reset),
+    .comp_wr(comp_wr),
+    .sample(sample),
+    .size(size),
+    .freq(freq),
+    .angle(angle),
+    .sample_N(sample_N),
+    .sample_E(sample_E),
+    .sample_W(sample_W)
   );
 endmodule

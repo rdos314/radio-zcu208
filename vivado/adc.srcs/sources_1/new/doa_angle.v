@@ -115,10 +115,6 @@ module doa_angle(
     input wire [8:0] size_in,
     input wire [19:0] freq_in,
 
-    input wire [15:0] env_N_in,
-    input wire [15:0] env_E_in,
-    input wire [15:0] env_W_in,
-
     input wire [19:0] phase_NE_in,
     input wire [19:0] phase_EW_in,
     input wire [19:0] phase_WN_in,
@@ -136,10 +132,6 @@ module doa_angle(
     output reg [31:0] sample,
     output reg [8:0] size,
     output reg [19:0] freq,
-
-    output reg [15:0] env_N,
-    output reg [15:0] env_E,
-    output reg [15:0] env_W,
 
     output reg shadow_N,
     output reg shadow_E,
@@ -201,10 +193,6 @@ module doa_angle(
   reg [19:0] freq_run;
   reg [15:0] angle_run;
 
-  reg [15:0] env_N_run;
-  reg [15:0] env_E_run;
-  reg [15:0] env_W_run;
-
   reg shadow_N_run;
   reg shadow_E_run;
   reg shadow_W_run;
@@ -225,10 +213,6 @@ module doa_angle(
   reg [8:0] size_cordic;
   reg [19:0] freq_cordic;
   reg [15:0] angle_cordic;
-
-  reg [15:0] env_N_cordic;
-  reg [15:0] env_E_cordic;
-  reg [15:0] env_W_cordic;
 
   reg shadow_N_cordic;
   reg shadow_E_cordic;
@@ -568,10 +552,6 @@ generate
             size_run <= size_in;
             freq_run <= freq_in;
             
-            env_N_run <= env_N_in;
-            env_E_run <= env_E_in;
-            env_W_run <= env_W_in;
-            
             shadow_N_run <= shadow_N_loc;
             shadow_E_run <= shadow_E_loc;
             shadow_W_run <= shadow_W_loc;
@@ -595,10 +575,6 @@ generate
             size_cordic <= size_run;
             freq_cordic <= freq_run;
             angle_cordic <= angle_run;
-            
-            env_N_cordic <= env_N_run;
-            env_E_cordic <= env_E_run;
-            env_W_cordic <= env_W_run;
             
             shadow_N_cordic <= shadow_N_run;
             shadow_E_cordic <= shadow_E_run;
@@ -655,10 +631,6 @@ generate
             size <= size_cordic;
             freq <= freq_cordic;
             angle <= angle_cordic;
-            
-            env_N <= env_N_cordic;
-            env_E <= env_E_cordic;
-            env_W <= env_W_cordic;
             
             shadow_N <= shadow_N_cordic;
             shadow_E <= shadow_E_cordic;

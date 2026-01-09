@@ -33,10 +33,6 @@ module doa_calc(
     input wire [8:0] size_in,
     input wire [19:0] freq_in,
 
-    input wire [15:0] env_N_in,
-    input wire [15:0] env_E_in,
-    input wire [15:0] env_W_in,
-
     input wire [19:0] phase_NE_in,
     input wire [19:0] phase_EW_in,
     input wire [19:0] phase_WN_in,
@@ -50,10 +46,6 @@ module doa_calc(
     output reg [19:0] freq,
     output reg [15:0] angle,
     output reg [9:0] doa_error,
-
-    output reg [15:0] env_N,
-    output reg [15:0] env_E,
-    output reg [15:0] env_W,
  
     output reg [5:0] sample_N,
     output reg [5:0] sample_E,
@@ -78,10 +70,6 @@ module doa_calc(
   reg [8:0] size_div;
   reg [19:0] freq_div;
 
-  reg [15:0] env_N_div;
-  reg [15:0] env_E_div;
-  reg [15:0] env_W_div;
-
   reg [19:0] phase_NE_div;
   reg [19:0] phase_EW_div;
   reg [19:0] phase_WN_div;
@@ -90,10 +78,6 @@ module doa_calc(
   reg [31:0] sample_pair;
   reg [8:0] size_pair;
   reg [19:0] freq_pair;
-
-  reg [15:0] env_N_pair;
-  reg [15:0] env_E_pair;
-  reg [15:0] env_W_pair;
 
   reg [19:0] phase_NE_pair;
   reg [19:0] phase_EW_pair;
@@ -114,10 +98,6 @@ module doa_calc(
   wire [31:0] sample_doa;
   wire [8:0] size_doa;
   wire [19:0] freq_doa;
-
-  wire [15:0] env_N_doa;
-  wire [15:0] env_E_doa;
-  wire [15:0] env_W_doa;
 
   wire [19:0] phase_NE_doa;
   wire [19:0] phase_EW_doa;
@@ -169,10 +149,6 @@ module doa_calc(
   reg [31:0] sample_val;
   reg [8:0] size_val;
   reg [19:0] freq_val;
-
-  reg [15:0] env_N_val;
-  reg [15:0] env_E_val;
-  reg [15:0] env_W_val;
 
   reg [15:0] angle_val;
  
@@ -255,9 +231,6 @@ doa_angle doa_angle_i(
   .sample_in(sample_pair),
   .size_in(size_pair),
   .freq_in(freq_pair),
-  .env_N_in(env_N_pair),
-  .env_E_in(env_E_pair),
-  .env_W_in(env_W_pair),
   .phase_NE_in(phase_NE_pair),
   .phase_EW_in(phase_EW_pair),
   .phase_WN_in(phase_WN_pair),
@@ -271,9 +244,6 @@ doa_angle doa_angle_i(
   .sample(sample_doa),
   .size(size_doa),
   .freq(freq_doa),
-  .env_N(env_N_doa),
-  .env_E(env_E_doa),
-  .env_W(env_W_doa), 
   .shadow_N(shadow_N),
   .shadow_E(shadow_E),
   .shadow_W(shadow_W), 
@@ -366,37 +336,6 @@ mult_20x20 mul_pm_i
   .P(err_pm)                  // output wire [39 : 0] P
 );
 
-
-	ila_6 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(start),               // input wire [0:0]  probe3
-		.probe1(size_in),            // input wire [8:0]  probe3
-		.probe2(size_pair),            // input wire [8:0]  probe3
-		.probe3(size_div),            // input wire [8:0]  probe3
-		.probe4(size_doa),            // input wire [8:0]  probe3
-		.probe5(done),              // input wire [0:0]  probe3
-		.probe6(phase_error),       // input wire [0:0]  probe3
-		.probe7(sample),            // input wire [31:0]  probe3
-		.probe8(size),              // input wire [8:0]  probe3
-		.probe9(freq),              // input wire [19:0]  probe3
-		.probe10(angle),             // input wire [15:0]  probe3
-		.probe11(env_N),             // input wire [15:0]  probe3
-		.probe12(env_E),             // input wire [15:0]  probe3
-		.probe13(env_W),             // input wire [15:0]  probe3
-		.probe14(delay_NE),          // input wire [15:0]  probe3
-		.probe15(delay_EW),          // input wire [15:0]  probe3
-		.probe16(delay_WN),          // input wire [15:0]  probe3
-		.probe17(delay_N),          // input wire [15:0]  probe3
-		.probe18(delay_E),          // input wire [15:0]  probe3
-		.probe19(delay_W),           // input wire [15:0]  probe3
-		.probe20(dist_N),            // input wire [15:0]  probe3
-		.probe21(dist_E),            // input wire [15:0]  probe3
-		.probe22(dist_W),            // input wire [15:0]  probe3
-		.probe23(sample_N),          // input wire [5:0]  probe3
-		.probe24(sample_E),          // input wire [5:0]  probe3
-		.probe25(sample_W)           // input wire [5:0]  probe3
-);
-
 generate
   begin : doa_calc
 
@@ -424,10 +363,6 @@ generate
             sample_div <= sample_in;
             size_div <= size_in;
             freq_div <= freq_in;
-            
-            env_N_div <= env_N_in;
-            env_E_div <= env_E_in;
-            env_W_div <= env_W_in;
 
             phase_NE_div <= phase_NE_in;
             phase_EW_div <= phase_EW_in;
@@ -454,10 +389,6 @@ generate
             sample_pair <= sample_div;
             size_pair <= size_div;
             freq_pair <= freq_div;
-            
-            env_N_pair <= env_N_div;
-            env_E_pair <= env_E_div;
-            env_W_pair <= env_W_div;
 
             phase_NE_pair <= phase_NE_div;
             phase_EW_pair <= phase_EW_div;
@@ -519,10 +450,6 @@ generate
             size_val <= size_doa;
             freq_val <= freq_doa;
             angle_val <= angle_doa;
-            
-            env_N_val <= env_N_doa;
-            env_E_val <= env_E_doa;
-            env_W_val <= env_W_doa;
             
             if (dist_N[9])
                 sample_N_val <= dist_N[15:10] + 1;
@@ -599,9 +526,6 @@ generate
                 size <= size_val;
                 freq <= freq_val;
                 angle <= angle_val;
-                env_N <= env_N_val;
-                env_E <= env_E_val;
-                env_W <= env_W_val;
                 sample_N <= sample_N_val;
                 sample_E <= sample_E_val;
                 sample_W <= sample_W_val;
