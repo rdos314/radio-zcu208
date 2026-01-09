@@ -58,11 +58,21 @@
 module ps_freq_low_46_0_0 (
   fifo_clk,
   freq_wr,
-  freq_data,
+  freq_in_N,
+  freq_in_E,
+  freq_in_W,
   clk,
   reset,
-  doa_wr,
-  doa_data
+  ana_wr,
+  env_N,
+  env_E,
+  env_W,
+  phase_N,
+  phase_E,
+  phase_W,
+  err_NE,
+  err_EW,
+  err_WN
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
@@ -70,7 +80,9 @@ module ps_freq_low_46_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
 input wire freq_wr;
-input wire [47 : 0] freq_data;
+input wire [15 : 0] freq_in_N;
+input wire [15 : 0] freq_in_E;
+input wire [15 : 0] freq_in_W;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
@@ -79,16 +91,34 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
-output wire doa_wr;
-output wire [143 : 0] doa_data;
+output wire ana_wr;
+output wire [15 : 0] env_N;
+output wire [15 : 0] env_E;
+output wire [15 : 0] env_W;
+output wire [19 : 0] phase_N;
+output wire [19 : 0] phase_E;
+output wire [19 : 0] phase_W;
+output wire [11 : 0] err_NE;
+output wire [11 : 0] err_EW;
+output wire [11 : 0] err_WN;
 
   freq_low_46 inst (
     .fifo_clk(fifo_clk),
     .freq_wr(freq_wr),
-    .freq_data(freq_data),
+    .freq_in_N(freq_in_N),
+    .freq_in_E(freq_in_E),
+    .freq_in_W(freq_in_W),
     .clk(clk),
     .reset(reset),
-    .doa_wr(doa_wr),
-    .doa_data(doa_data)
+    .ana_wr(ana_wr),
+    .env_N(env_N),
+    .env_E(env_E),
+    .env_W(env_W),
+    .phase_N(phase_N),
+    .phase_E(phase_E),
+    .phase_W(phase_W),
+    .err_NE(err_NE),
+    .err_EW(err_EW),
+    .err_WN(err_WN)
   );
 endmodule

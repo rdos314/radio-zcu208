@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Dec 31 15:18:49 2025
+-- Date        : Thu Jan  8 20:00:28 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_deci_low_0_0/ps_deci_low_0_0_stub.vhdl
@@ -32,9 +32,13 @@ entity ps_deci_low_0_0 is
     sim_channel : in STD_LOGIC_VECTOR ( 1 downto 0 );
     sim_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     raw_wr : out STD_LOGIC;
-    raw_data : out STD_LOGIC_VECTOR ( 383 downto 0 );
+    raw_N : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    raw_E : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    raw_W : out STD_LOGIC_VECTOR ( 127 downto 0 );
     freq_wr : out STD_LOGIC;
-    freq_data : out STD_LOGIC_VECTOR ( 47 downto 0 )
+    freq_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    freq_E : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    freq_W : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -51,7 +55,7 @@ architecture stub of ps_deci_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,sim_start,adc_active,sim_active,sim_clk,sim_resetn,sim_wr,sim_channel[1:0],sim_data[31:0],raw_wr,raw_data[383:0],freq_wr,freq_data[47:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,data_N[127:0],ready_N,data_E[127:0],ready_E,data_W[127:0],ready_W,sim_start,adc_active,sim_active,sim_clk,sim_resetn,sim_wr,sim_channel[1:0],sim_data[31:0],raw_wr,raw_N[127:0],raw_E[127:0],raw_W[127:0],freq_wr,freq_N[15:0],freq_E[15:0],freq_W[15:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

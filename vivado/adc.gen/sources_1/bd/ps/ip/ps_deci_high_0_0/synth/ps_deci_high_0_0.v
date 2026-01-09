@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -73,9 +73,13 @@ module ps_deci_high_0_0 (
   sim_channel,
   sim_data,
   raw_wr,
-  raw_data,
+  raw_N,
+  raw_E,
+  raw_W,
   freq_wr,
-  freq_data
+  freq_N,
+  freq_E,
+  freq_W
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
@@ -107,9 +111,13 @@ input wire sim_wr;
 input wire [1 : 0] sim_channel;
 input wire [31 : 0] sim_data;
 output wire raw_wr;
-output wire [383 : 0] raw_data;
+output wire [127 : 0] raw_N;
+output wire [127 : 0] raw_E;
+output wire [127 : 0] raw_W;
 output wire freq_wr;
-output wire [95 : 0] freq_data;
+output wire [31 : 0] freq_N;
+output wire [31 : 0] freq_E;
+output wire [31 : 0] freq_W;
 
   deci_high inst (
     .clk(clk),
@@ -129,8 +137,12 @@ output wire [95 : 0] freq_data;
     .sim_channel(sim_channel),
     .sim_data(sim_data),
     .raw_wr(raw_wr),
-    .raw_data(raw_data),
+    .raw_N(raw_N),
+    .raw_E(raw_E),
+    .raw_W(raw_W),
     .freq_wr(freq_wr),
-    .freq_data(freq_data)
+    .freq_N(freq_N),
+    .freq_E(freq_E),
+    .freq_W(freq_W)
   );
 endmodule

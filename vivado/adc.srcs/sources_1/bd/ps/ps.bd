@@ -2194,17 +2194,37 @@
           "raw_wr": {
             "direction": "O"
           },
-          "raw_data": {
+          "raw_N": {
             "direction": "O",
-            "left": "383",
+            "left": "127",
+            "right": "0"
+          },
+          "raw_E": {
+            "direction": "O",
+            "left": "127",
+            "right": "0"
+          },
+          "raw_W": {
+            "direction": "O",
+            "left": "127",
             "right": "0"
           },
           "freq_wr": {
             "direction": "O"
           },
-          "freq_data": {
+          "freq_N": {
             "direction": "O",
-            "left": "47",
+            "left": "15",
+            "right": "0"
+          },
+          "freq_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "freq_W": {
+            "direction": "O",
+            "left": "15",
             "right": "0"
           }
         }
@@ -2331,17 +2351,37 @@
           "raw_wr": {
             "direction": "O"
           },
-          "raw_data": {
+          "raw_N": {
             "direction": "O",
-            "left": "383",
+            "left": "127",
+            "right": "0"
+          },
+          "raw_E": {
+            "direction": "O",
+            "left": "127",
+            "right": "0"
+          },
+          "raw_W": {
+            "direction": "O",
+            "left": "127",
             "right": "0"
           },
           "freq_wr": {
             "direction": "O"
           },
-          "freq_data": {
+          "freq_N": {
             "direction": "O",
-            "left": "95",
+            "left": "31",
+            "right": "0"
+          },
+          "freq_E": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "freq_W": {
+            "direction": "O",
+            "left": "31",
             "right": "0"
           }
         }
@@ -2569,9 +2609,19 @@
           "freq_wr": {
             "direction": "I"
           },
-          "freq_data": {
+          "freq_in_N": {
             "direction": "I",
-            "left": "47",
+            "left": "15",
+            "right": "0"
+          },
+          "freq_in_E": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "freq_in_W": {
+            "direction": "I",
+            "left": "15",
             "right": "0"
           },
           "clk": {
@@ -2596,12 +2646,52 @@
             "type": "rst",
             "direction": "I"
           },
-          "doa_wr": {
+          "ana_wr": {
             "direction": "O"
           },
-          "doa_data": {
+          "env_N": {
             "direction": "O",
-            "left": "143",
+            "left": "15",
+            "right": "0"
+          },
+          "env_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "env_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "err_NE": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "err_EW": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "err_WN": {
+            "direction": "O",
+            "left": "11",
             "right": "0"
           }
         }
@@ -2640,9 +2730,19 @@
           "freq_wr": {
             "direction": "I"
           },
-          "freq_data": {
+          "freq_in_N": {
             "direction": "I",
-            "left": "95",
+            "left": "31",
+            "right": "0"
+          },
+          "freq_in_E": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "freq_in_W": {
+            "direction": "I",
+            "left": "31",
             "right": "0"
           },
           "clk": {
@@ -2667,12 +2767,52 @@
             "type": "rst",
             "direction": "I"
           },
-          "doa_wr": {
+          "ana_wr": {
             "direction": "O"
           },
-          "doa_data": {
+          "env_N": {
             "direction": "O",
-            "left": "143",
+            "left": "15",
+            "right": "0"
+          },
+          "env_E": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "env_W": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "err_NE": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "err_EW": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "err_WN": {
+            "direction": "O",
+            "left": "11",
             "right": "0"
           }
         }
@@ -2708,12 +2848,52 @@
               }
             }
           },
-          "fifo_wr": {
+          "ana_wr": {
             "direction": "I"
           },
-          "fifo_doa_data": {
+          "env_N": {
             "direction": "I",
-            "left": "143",
+            "left": "15",
+            "right": "0"
+          },
+          "env_E": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "env_W": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "err_NE": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "err_EW": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "err_WN": {
+            "direction": "I",
+            "left": "11",
             "right": "0"
           },
           "config_clk": {
@@ -2798,12 +2978,52 @@
               }
             }
           },
-          "fifo_wr": {
+          "ana_wr": {
             "direction": "I"
           },
-          "fifo_doa_data": {
+          "env_N": {
             "direction": "I",
-            "left": "143",
+            "left": "15",
+            "right": "0"
+          },
+          "env_E": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "env_W": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_N": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_E": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "phase_W": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "err_NE": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "err_EW": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "err_WN": {
+            "direction": "I",
+            "left": "11",
             "right": "0"
           },
           "config_clk": {
@@ -2990,15 +3210,15 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "ana_high/config_adr",
-          "ana_low/config_adr"
+          "ana_low/config_adr",
+          "ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "ana_high/config_data",
-          "ana_low/config_data"
+          "ana_low/config_data",
+          "ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -3028,15 +3248,15 @@
       "adc_control_0_sim_channel": {
         "ports": [
           "adc_control_0/sim_channel",
-          "deci_high/sim_channel",
-          "deci_low/sim_channel"
+          "deci_low/sim_channel",
+          "deci_high/sim_channel"
         ]
       },
       "adc_control_0_sim_data": {
         "ports": [
           "adc_control_0/sim_data",
-          "deci_high/sim_data",
-          "deci_low/sim_data"
+          "deci_low/sim_data",
+          "deci_high/sim_data"
         ]
       },
       "adc_control_0_sim_high_wr": {
@@ -3105,10 +3325,22 @@
           "adc_control_0/data_in"
         ]
       },
-      "deci_high_freq_data": {
+      "deci_high_freq_E": {
         "ports": [
-          "deci_high/freq_data",
-          "freq_high_189_0/freq_data"
+          "deci_high/freq_E",
+          "freq_high_189_0/freq_in_E"
+        ]
+      },
+      "deci_high_freq_N": {
+        "ports": [
+          "deci_high/freq_N",
+          "freq_high_189_0/freq_in_N"
+        ]
+      },
+      "deci_high_freq_W": {
+        "ports": [
+          "deci_high/freq_W",
+          "freq_high_189_0/freq_in_W"
         ]
       },
       "deci_high_freq_wr": {
@@ -3117,31 +3349,33 @@
           "freq_high_189_0/freq_wr"
         ]
       },
-      "deci_high_raw_data": {
-        "ports": [
-          "deci_high/raw_data"
-        ]
-      },
       "deci_high_raw_wr": {
         "ports": [
           "deci_high/raw_wr"
         ]
       },
-      "deci_low_freq_data": {
+      "deci_low_freq_E": {
         "ports": [
-          "deci_low/freq_data",
-          "freq_low_46_0/freq_data"
+          "deci_low/freq_E",
+          "freq_low_46_0/freq_in_E"
+        ]
+      },
+      "deci_low_freq_N": {
+        "ports": [
+          "deci_low/freq_N",
+          "freq_low_46_0/freq_in_N"
+        ]
+      },
+      "deci_low_freq_W": {
+        "ports": [
+          "deci_low/freq_W",
+          "freq_low_46_0/freq_in_W"
         ]
       },
       "deci_low_freq_wr": {
         "ports": [
           "deci_low/freq_wr",
           "freq_low_46_0/freq_wr"
-        ]
-      },
-      "deci_low_raw_data": {
-        "ports": [
-          "deci_low/raw_data"
         ]
       },
       "deci_low_raw_wr": {
@@ -3155,28 +3389,124 @@
           "mts_0/deci_sim_active_low"
         ]
       },
-      "freq_high_189_0_doa_data": {
+      "freq_high_189_0_ana_wr": {
         "ports": [
-          "freq_high_189_0/doa_data",
-          "ana_high/fifo_doa_data"
+          "freq_high_189_0/ana_wr",
+          "ana_high/ana_wr"
         ]
       },
-      "freq_high_189_0_doa_wr": {
+      "freq_high_189_0_env_E": {
         "ports": [
-          "freq_high_189_0/doa_wr",
-          "ana_high/fifo_wr"
+          "freq_high_189_0/env_E",
+          "ana_high/env_E"
         ]
       },
-      "freq_low_46_0_doa_data": {
+      "freq_high_189_0_env_N": {
         "ports": [
-          "freq_low_46_0/doa_data",
-          "ana_low/fifo_doa_data"
+          "freq_high_189_0/env_N",
+          "ana_high/env_N"
         ]
       },
-      "freq_low_46_0_doa_wr": {
+      "freq_high_189_0_env_W": {
         "ports": [
-          "freq_low_46_0/doa_wr",
-          "ana_low/fifo_wr"
+          "freq_high_189_0/env_W",
+          "ana_high/env_W"
+        ]
+      },
+      "freq_high_189_0_err_EW": {
+        "ports": [
+          "freq_high_189_0/err_EW",
+          "ana_high/err_EW"
+        ]
+      },
+      "freq_high_189_0_err_NE": {
+        "ports": [
+          "freq_high_189_0/err_NE",
+          "ana_high/err_NE"
+        ]
+      },
+      "freq_high_189_0_err_WN": {
+        "ports": [
+          "freq_high_189_0/err_WN",
+          "ana_high/err_WN"
+        ]
+      },
+      "freq_high_189_0_phase_E": {
+        "ports": [
+          "freq_high_189_0/phase_E",
+          "ana_high/phase_E"
+        ]
+      },
+      "freq_high_189_0_phase_N": {
+        "ports": [
+          "freq_high_189_0/phase_N",
+          "ana_high/phase_N"
+        ]
+      },
+      "freq_high_189_0_phase_W": {
+        "ports": [
+          "freq_high_189_0/phase_W",
+          "ana_high/phase_W"
+        ]
+      },
+      "freq_low_46_0_ana_wr": {
+        "ports": [
+          "freq_low_46_0/ana_wr",
+          "ana_low/ana_wr"
+        ]
+      },
+      "freq_low_46_0_env_E": {
+        "ports": [
+          "freq_low_46_0/env_E",
+          "ana_low/env_E"
+        ]
+      },
+      "freq_low_46_0_env_N": {
+        "ports": [
+          "freq_low_46_0/env_N",
+          "ana_low/env_N"
+        ]
+      },
+      "freq_low_46_0_env_W": {
+        "ports": [
+          "freq_low_46_0/env_W",
+          "ana_low/env_W"
+        ]
+      },
+      "freq_low_46_0_err_EW": {
+        "ports": [
+          "freq_low_46_0/err_EW",
+          "ana_low/err_EW"
+        ]
+      },
+      "freq_low_46_0_err_NE": {
+        "ports": [
+          "freq_low_46_0/err_NE",
+          "ana_low/err_NE"
+        ]
+      },
+      "freq_low_46_0_err_WN": {
+        "ports": [
+          "freq_low_46_0/err_WN",
+          "ana_low/err_WN"
+        ]
+      },
+      "freq_low_46_0_phase_E": {
+        "ports": [
+          "freq_low_46_0/phase_E",
+          "ana_low/phase_E"
+        ]
+      },
+      "freq_low_46_0_phase_N": {
+        "ports": [
+          "freq_low_46_0/phase_N",
+          "ana_low/phase_N"
+        ]
+      },
+      "freq_low_46_0_phase_W": {
+        "ports": [
+          "freq_low_46_0/phase_W",
+          "ana_low/phase_W"
         ]
       },
       "mts_0_ana0_clk": {
@@ -3206,8 +3536,8 @@
       "mts_0_deci_adc_active": {
         "ports": [
           "mts_0/deci_adc_active",
-          "deci_high/adc_active",
-          "deci_low/adc_active"
+          "deci_low/adc_active",
+          "deci_high/adc_active"
         ]
       },
       "mts_0_deci_clk": {
@@ -3217,8 +3547,8 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "deci_high/clk",
           "deci_low/clk",
+          "deci_high/clk",
           "freq_low_46_0/fifo_clk",
           "freq_high_189_0/fifo_clk"
         ]
@@ -3230,8 +3560,8 @@
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
-          "deci_high/resetn",
-          "deci_low/resetn"
+          "deci_low/resetn",
+          "deci_high/resetn"
         ]
       },
       "mts_0_deci_sim_active": {
@@ -3243,15 +3573,15 @@
       "mts_0_deci_sim_start": {
         "ports": [
           "mts_0/deci_sim_start",
-          "deci_high/sim_start",
-          "deci_low/sim_start"
+          "deci_low/sim_start",
+          "deci_high/sim_start"
         ]
       },
       "mts_0_freq0_clk": {
         "ports": [
           "mts_0/freq0_clk",
-          "ana_low/fifo_clk",
-          "freq_low_46_0/clk"
+          "freq_low_46_0/clk",
+          "ana_low/fifo_clk"
         ]
       },
       "mts_0_freq0_reset": {
@@ -3263,8 +3593,8 @@
       "mts_0_freq1_clk": {
         "ports": [
           "mts_0/freq1_clk",
-          "ana_high/fifo_clk",
-          "freq_high_189_0/clk"
+          "freq_high_189_0/clk",
+          "ana_high/fifo_clk"
         ]
       },
       "mts_0_freq1_reset": {
@@ -3324,9 +3654,9 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "deci_high/sim_resetn",
           "adc_control_0/resetn",
-          "deci_low/sim_resetn"
+          "deci_low/sim_resetn",
+          "deci_high/sim_resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -3425,12 +3755,12 @@
           "usp_rf_data_converter_0/s_axi_aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "deci_high/sim_clk",
           "adc_control_0/clk",
-          "deci_low/sim_clk",
           "mts_0/axi_clk",
-          "ana_high/config_clk",
-          "ana_low/config_clk"
+          "deci_low/sim_clk",
+          "deci_high/sim_clk",
+          "ana_low/config_clk",
+          "ana_high/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

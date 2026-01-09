@@ -22,8 +22,16 @@
 
 module ana_low(
     input wire	fifo_clk,
-    input wire fifo_wr,
-    input wire [143:0] fifo_doa_data,
+    input wire ana_wr,
+    input wire [15:0] env_N,
+    input wire [15:0] env_E,
+    input wire [15:0] env_W,
+    input wire [19:0] phase_N,
+    input wire [19:0] phase_E,
+    input wire [19:0] phase_W,
+    input wire [11:0] err_NE,
+    input wire [11:0] err_EW,
+    input wire [11:0] err_WN,
 
     input wire config_clk,
     input wire config_wr,
@@ -34,13 +42,15 @@ module ana_low(
     input wire reset
     );
 
-  reg doa_rd;
-  wire [143:0] doa_out_data;
-  wire doa_empty;
-  reg [4:0] doa_delay;
+  reg ana_fifo_wr;
+  reg [143:0] ana_in_data;
+  reg ana_fifo_rd;
+  wire [143:0] ana_out_data;
+  wire ana_empty;
+  reg [4:0] ana_delay;
 
-  reg doa_valid;
-  reg [143:0] doa_data;
+  reg ana_valid;
+  reg [143:0] ana_data;
   
   wire [39:0] config_data_adr_in;
   assign config_data_adr_in[7:0] = config_adr;
@@ -55,9 +65,9 @@ module ana_low(
   wire [31:0] start_sample;
   wire [8:0] size;
   wire [19:0] freq;
-  wire [15:0] env_N;
-  wire [15:0] env_E;
-  wire [15:0] env_W;
+  wire [15:0] env_doa_N;
+  wire [15:0] env_doa_E;
+  wire [15:0] env_doa_W;
   wire [19:0] phase_NE;
   wire [19:0] phase_EW;
   wire [19:0] phase_WN;
@@ -89,11 +99,11 @@ fifo_doa fifo_doa_i (
   .rst(reset),                   // input wire rst
   .wr_clk(fifo_clk),             // input wire wr_clk
   .rd_clk(clk),                  // input wire rd_clk
-  .din(fifo_doa_data),           // input wire [143 : 0] din
-  .wr_en(fifo_wr),               // input wire wr_en
-  .rd_en(doa_rd),                // input wire rd_en
-  .dout(doa_out_data),           // output wire [143 : 0] dout
-  .empty(doa_empty)              // output wire empty
+  .din(ana_in_data),             // input wire [143 : 0] din
+  .wr_en(ana_fifo_wr),           // input wire wr_en
+  .rd_en(ana_fifo_rd),           // input wire rd_en
+  .dout(ana_out_data),           // output wire [143 : 0] dout
+  .empty(ana_empty)              // output wire empty
 );
 
 fifo_config fifo_config_i (
@@ -113,14 +123,14 @@ det_signal det_sig_i (
     .config_wr(!cfg_empty),
     .config_adr(cfg_adr),
     .config_data(cfg_data),
-    .active(doa_valid),
-    .data(doa_data),
+    .active(ana_valid),
+    .data(ana_data),
     .signal_sample(start_sample),
     .signal_size(size),
     .signal_freq(freq),
-    .signal_env_N(env_N),
-    .signal_env_E(env_E),
-    .signal_env_W(env_W),
+    .signal_env_N(env_doa_N),
+    .signal_env_E(env_doa_E),
+    .signal_env_W(env_doa_W),
     .signal_phase_NE(phase_NE),
     .signal_phase_EW(phase_EW),
     .signal_phase_WN(phase_WN),
@@ -137,9 +147,9 @@ doa_calc doa_calc_i (
     .sample_in(start_sample),
     .size_in(size),
     .freq_in(freq),
-    .env_N_in(env_N),
-    .env_E_in(env_E),
-    .env_W_in(env_W),
+    .env_N_in(env_doa_N),
+    .env_E_in(env_doa_E),
+    .env_W_in(env_doa_W),
     .phase_NE_in(phase_NE),
     .phase_EW_in(phase_EW),
     .phase_WN_in(phase_WN),
@@ -158,6 +168,26 @@ doa_calc doa_calc_i (
 
 generate
   begin : ana_low
+
+    always @(posedge fifo_clk) 
+    begin
+	   if (ana_wr)
+       begin
+            ana_in_data[15:0] <= env_N;
+            ana_in_data[35:16] <= phase_N;
+            ana_in_data[51:36] <= env_E;
+            ana_in_data[71:52] <= phase_E;
+            ana_in_data[87:72] <= env_W;
+            ana_in_data[107:88] <= phase_W;
+            
+            ana_in_data[119:108] <= err_NE;
+            ana_in_data[131:120] <= err_EW;
+            ana_in_data[143:132] <= err_WN;            
+            ana_fifo_wr <= 1;
+       end
+       else
+            ana_fifo_wr <= 0;
+    end
 
     always @(posedge clk) 
 	begin
@@ -185,32 +215,32 @@ generate
 
     always @(posedge clk) 
     begin
-	   if (doa_empty)
+	   if (ana_empty)
 	   begin
-	       doa_delay <= 5'b11111;
-           doa_rd <= 0;
+	       ana_delay <= 5'b11111;
+           ana_fifo_rd <= 0;
        end
 	   else
 	   begin
-	       if (doa_delay)
+	       if (ana_delay)
 	       begin
-	           doa_rd <= 0;
-	           doa_delay <= doa_delay - 1;
+	           ana_fifo_rd <= 0;
+	           ana_delay <= ana_delay - 1;
 	       end
 	       else
-	           doa_rd <= 1;
+	           ana_fifo_rd <= 1;
        end
     end
 
     always @(posedge clk) 
 	begin
-        if (doa_rd & (!doa_empty))
+        if (ana_fifo_rd & (!ana_empty))
         begin
-            doa_valid <= 1;
-            doa_data <= doa_out_data;
+            ana_valid <= 1;
+            ana_data <= ana_out_data;
         end
         else
-            doa_valid <= 0;
+            ana_valid <= 0;
 	end
 
   end

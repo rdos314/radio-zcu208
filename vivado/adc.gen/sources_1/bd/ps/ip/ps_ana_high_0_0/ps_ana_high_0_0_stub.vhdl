@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Jan  7 21:13:25 2026
+-- Date        : Fri Jan  9 00:12:16 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_high_0_0/ps_ana_high_0_0_stub.vhdl
@@ -16,8 +16,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ps_ana_high_0_0 is
   Port ( 
     fifo_clk : in STD_LOGIC;
-    fifo_wr : in STD_LOGIC;
-    fifo_doa_data : in STD_LOGIC_VECTOR ( 143 downto 0 );
+    ana_wr : in STD_LOGIC;
+    env_N : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_E : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_W : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_N : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_E : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_W : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    err_NE : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    err_EW : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    err_WN : in STD_LOGIC_VECTOR ( 11 downto 0 );
     config_clk : in STD_LOGIC;
     config_wr : in STD_LOGIC;
     config_adr : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -40,7 +48,7 @@ architecture stub of ps_ana_high_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "fifo_clk,fifo_wr,fifo_doa_data[143:0],config_clk,config_wr,config_adr[7:0],config_data[31:0],clk,reset";
+  attribute black_box_pad_pin of stub : architecture is "fifo_clk,ana_wr,env_N[15:0],env_E[15:0],env_W[15:0],phase_N[19:0],phase_E[19:0],phase_W[19:0],err_NE[11:0],err_EW[11:0],err_WN[11:0],config_clk,config_wr,config_adr[7:0],config_data[31:0],clk,reset";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

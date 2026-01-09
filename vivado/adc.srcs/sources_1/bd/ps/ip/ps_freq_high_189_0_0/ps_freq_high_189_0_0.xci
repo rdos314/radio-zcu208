@@ -38,11 +38,21 @@
       "ports": {
         "fifo_clk": [ { "direction": "in" } ],
         "freq_wr": [ { "direction": "in" } ],
-        "freq_data": [ { "direction": "in", "size_left": "95", "size_right": "0" } ],
+        "freq_in_N": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "freq_in_E": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "freq_in_W": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
-        "doa_wr": [ { "direction": "out" } ],
-        "doa_data": [ { "direction": "out", "size_left": "143", "size_right": "0" } ]
+        "ana_wr": [ { "direction": "out" } ],
+        "env_N": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
+        "env_E": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
+        "env_W": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
+        "phase_N": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
+        "phase_E": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
+        "phase_W": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
+        "err_NE": [ { "direction": "out", "size_left": "11", "size_right": "0" } ],
+        "err_EW": [ { "direction": "out", "size_left": "11", "size_right": "0" } ],
+        "err_WN": [ { "direction": "out", "size_left": "11", "size_right": "0" } ]
       },
       "interfaces": {
         "reset": {

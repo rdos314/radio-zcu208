@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Wed Jan  7 22:54:18 2026
+//Date        : Fri Jan  9 00:11:21 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -183,19 +183,37 @@ module ps
   wire axi_smc_M04_AXI_WREADY;
   wire [3:0]axi_smc_M04_AXI_WSTRB;
   wire axi_smc_M04_AXI_WVALID;
-  wire [95:0]deci_high_freq_data;
+  wire [31:0]deci_high_freq_E;
+  wire [31:0]deci_high_freq_N;
+  wire [31:0]deci_high_freq_W;
   wire deci_high_freq_wr;
-  wire [383:0]deci_high_raw_data;
   wire deci_high_raw_wr;
-  wire [47:0]deci_low_freq_data;
+  wire [15:0]deci_low_freq_E;
+  wire [15:0]deci_low_freq_N;
+  wire [15:0]deci_low_freq_W;
   wire deci_low_freq_wr;
-  wire [383:0]deci_low_raw_data;
   wire deci_low_raw_wr;
   wire deci_low_sim_active;
-  wire [143:0]freq_high_189_0_doa_data;
-  wire freq_high_189_0_doa_wr;
-  wire [143:0]freq_low_46_0_doa_data;
-  wire freq_low_46_0_doa_wr;
+  wire freq_high_189_0_ana_wr;
+  wire [15:0]freq_high_189_0_env_E;
+  wire [15:0]freq_high_189_0_env_N;
+  wire [15:0]freq_high_189_0_env_W;
+  wire [11:0]freq_high_189_0_err_EW;
+  wire [11:0]freq_high_189_0_err_NE;
+  wire [11:0]freq_high_189_0_err_WN;
+  wire [19:0]freq_high_189_0_phase_E;
+  wire [19:0]freq_high_189_0_phase_N;
+  wire [19:0]freq_high_189_0_phase_W;
+  wire freq_low_46_0_ana_wr;
+  wire [15:0]freq_low_46_0_env_E;
+  wire [15:0]freq_low_46_0_env_N;
+  wire [15:0]freq_low_46_0_env_W;
+  wire [11:0]freq_low_46_0_err_EW;
+  wire [11:0]freq_low_46_0_err_NE;
+  wire [11:0]freq_low_46_0_err_WN;
+  wire [19:0]freq_low_46_0_phase_E;
+  wire [19:0]freq_low_46_0_phase_N;
+  wire [19:0]freq_low_46_0_phase_W;
   wire [7:0]led_8bits_tri_o;
   wire mts_0_ana0_clk;
   wire mts_0_ana0_reset;
@@ -311,24 +329,40 @@ module ps
         .sim_start(adc_control_0_sim_start),
         .wr_en(adc_control_0_wr_en));
   ps_ana_high_0_0 ana_high
-       (.clk(mts_0_ana1_clk),
+       (.ana_wr(freq_high_189_0_ana_wr),
+        .clk(mts_0_ana1_clk),
         .config_adr(adc_control_0_config_adr),
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
         .config_wr(adc_control_0_config_high_wr),
+        .env_E(freq_high_189_0_env_E),
+        .env_N(freq_high_189_0_env_N),
+        .env_W(freq_high_189_0_env_W),
+        .err_EW(freq_high_189_0_err_EW),
+        .err_NE(freq_high_189_0_err_NE),
+        .err_WN(freq_high_189_0_err_WN),
         .fifo_clk(mts_0_freq1_clk),
-        .fifo_doa_data(freq_high_189_0_doa_data),
-        .fifo_wr(freq_high_189_0_doa_wr),
+        .phase_E(freq_high_189_0_phase_E),
+        .phase_N(freq_high_189_0_phase_N),
+        .phase_W(freq_high_189_0_phase_W),
         .reset(mts_0_ana1_reset));
   ps_ana_low_0_0 ana_low
-       (.clk(mts_0_ana0_clk),
+       (.ana_wr(freq_low_46_0_ana_wr),
+        .clk(mts_0_ana0_clk),
         .config_adr(adc_control_0_config_adr),
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
         .config_wr(adc_control_0_config_low_wr),
+        .env_E(freq_low_46_0_env_E),
+        .env_N(freq_low_46_0_env_N),
+        .env_W(freq_low_46_0_env_W),
+        .err_EW(freq_low_46_0_err_EW),
+        .err_NE(freq_low_46_0_err_NE),
+        .err_WN(freq_low_46_0_err_WN),
         .fifo_clk(mts_0_freq0_clk),
-        .fifo_doa_data(freq_low_46_0_doa_data),
-        .fifo_wr(freq_low_46_0_doa_wr),
+        .phase_E(freq_low_46_0_phase_E),
+        .phase_N(freq_low_46_0_phase_N),
+        .phase_W(freq_low_46_0_phase_W),
         .reset(mts_0_ana0_reset));
   ps_axi_bram_ctrl_0_bram_0 axi_bram
        (.addra(adc_control_0_bram_adr_out),
@@ -551,9 +585,10 @@ module ps
         .data_E(usp_rf_data_converter_0_m22_axis_tdata),
         .data_N(usp_rf_data_converter_0_m20_axis_tdata),
         .data_W(usp_rf_data_converter_0_m30_axis_tdata),
-        .freq_data(deci_high_freq_data),
+        .freq_E(deci_high_freq_E),
+        .freq_N(deci_high_freq_N),
+        .freq_W(deci_high_freq_W),
         .freq_wr(deci_high_freq_wr),
-        .raw_data(deci_high_raw_data),
         .raw_wr(deci_high_raw_wr),
         .ready_E(usp_rf_data_converter_0_m22_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m20_axis_tvalid),
@@ -572,9 +607,10 @@ module ps
         .data_E(usp_rf_data_converter_0_m02_axis_tdata),
         .data_N(usp_rf_data_converter_0_m00_axis_tdata),
         .data_W(usp_rf_data_converter_0_m10_axis_tdata),
-        .freq_data(deci_low_freq_data),
+        .freq_E(deci_low_freq_E),
+        .freq_N(deci_low_freq_N),
+        .freq_W(deci_low_freq_W),
         .freq_wr(deci_low_freq_wr),
-        .raw_data(deci_low_raw_data),
         .raw_wr(deci_low_raw_wr),
         .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
@@ -588,20 +624,40 @@ module ps
         .sim_start(mts_0_deci_sim_start),
         .sim_wr(adc_control_0_sim_low_wr));
   ps_freq_high_189_0_0 freq_high_189_0
-       (.clk(mts_0_freq1_clk),
-        .doa_data(freq_high_189_0_doa_data),
-        .doa_wr(freq_high_189_0_doa_wr),
+       (.ana_wr(freq_high_189_0_ana_wr),
+        .clk(mts_0_freq1_clk),
+        .env_E(freq_high_189_0_env_E),
+        .env_N(freq_high_189_0_env_N),
+        .env_W(freq_high_189_0_env_W),
+        .err_EW(freq_high_189_0_err_EW),
+        .err_NE(freq_high_189_0_err_NE),
+        .err_WN(freq_high_189_0_err_WN),
         .fifo_clk(mts_0_deci_clk),
-        .freq_data(deci_high_freq_data),
+        .freq_in_E(deci_high_freq_E),
+        .freq_in_N(deci_high_freq_N),
+        .freq_in_W(deci_high_freq_W),
         .freq_wr(deci_high_freq_wr),
+        .phase_E(freq_high_189_0_phase_E),
+        .phase_N(freq_high_189_0_phase_N),
+        .phase_W(freq_high_189_0_phase_W),
         .reset(mts_0_freq1_reset));
   ps_freq_low_46_0_0 freq_low_46_0
-       (.clk(mts_0_freq0_clk),
-        .doa_data(freq_low_46_0_doa_data),
-        .doa_wr(freq_low_46_0_doa_wr),
+       (.ana_wr(freq_low_46_0_ana_wr),
+        .clk(mts_0_freq0_clk),
+        .env_E(freq_low_46_0_env_E),
+        .env_N(freq_low_46_0_env_N),
+        .env_W(freq_low_46_0_env_W),
+        .err_EW(freq_low_46_0_err_EW),
+        .err_NE(freq_low_46_0_err_NE),
+        .err_WN(freq_low_46_0_err_WN),
         .fifo_clk(mts_0_deci_clk),
-        .freq_data(deci_low_freq_data),
+        .freq_in_E(deci_low_freq_E),
+        .freq_in_N(deci_low_freq_N),
+        .freq_in_W(deci_low_freq_W),
         .freq_wr(deci_low_freq_wr),
+        .phase_E(freq_low_46_0_phase_E),
+        .phase_N(freq_low_46_0_phase_N),
+        .phase_W(freq_low_46_0_phase_W),
         .reset(mts_0_freq0_reset));
   ps_axi_gpio_0_0 gpio_led
        (.gpio_io_o(led_8bits_tri_o),

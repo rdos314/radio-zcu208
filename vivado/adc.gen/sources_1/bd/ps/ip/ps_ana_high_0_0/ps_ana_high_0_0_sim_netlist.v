@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Jan  7 21:13:25 2026
+// Date        : Fri Jan  9 00:12:16 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_high_0_0/ps_ana_high_0_0_sim_netlist.v
@@ -18,8 +18,16 @@
 (* NotValidForBitStream *)
 module ps_ana_high_0_0
    (fifo_clk,
-    fifo_wr,
-    fifo_doa_data,
+    ana_wr,
+    env_N,
+    env_E,
+    env_W,
+    phase_N,
+    phase_E,
+    phase_W,
+    err_NE,
+    err_EW,
+    err_WN,
     config_clk,
     config_wr,
     config_adr,
@@ -27,8 +35,16 @@ module ps_ana_high_0_0
     clk,
     reset);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq1_clk, INSERT_VIP 0" *) input fifo_clk;
-  input fifo_wr;
-  input [143:0]fifo_doa_data;
+  input ana_wr;
+  input [15:0]env_N;
+  input [15:0]env_E;
+  input [15:0]env_W;
+  input [19:0]phase_N;
+  input [19:0]phase_E;
+  input [19:0]phase_W;
+  input [11:0]err_NE;
+  input [11:0]err_EW;
+  input [11:0]err_WN;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input config_clk;
   input config_wr;
   input [7:0]config_adr;
@@ -36,33 +52,57 @@ module ps_ana_high_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
 
+  wire ana_wr;
   wire clk;
   wire [7:0]config_adr;
   wire config_clk;
   wire [31:0]config_data;
   wire config_wr;
+  wire [15:0]env_E;
+  wire [15:0]env_N;
+  wire [15:0]env_W;
+  wire [11:0]err_EW;
+  wire [11:0]err_NE;
+  wire [11:0]err_WN;
   wire fifo_clk;
-  wire [143:0]fifo_doa_data;
-  wire fifo_wr;
+  wire [19:0]phase_E;
+  wire [19:0]phase_N;
+  wire [19:0]phase_W;
   wire reset;
 
   ps_ana_high_0_0_ana_high inst
-       (.clk(clk),
+       (.ana_wr(ana_wr),
+        .clk(clk),
         .config_adr(config_adr),
         .config_clk(config_clk),
         .config_data(config_data),
         .config_wr(config_wr),
+        .env_E(env_E),
+        .env_N(env_N),
+        .env_W(env_W),
+        .err_EW(err_EW),
+        .err_NE(err_NE),
+        .err_WN(err_WN),
         .fifo_clk(fifo_clk),
-        .fifo_doa_data(fifo_doa_data),
-        .fifo_wr(fifo_wr),
+        .phase_E(phase_E),
+        .phase_N(phase_N),
+        .phase_W(phase_W),
         .reset(reset));
 endmodule
 
 (* ORIG_REF_NAME = "ana_high" *) 
 module ps_ana_high_0_0_ana_high
    (fifo_clk,
-    fifo_wr,
-    fifo_doa_data,
+    ana_wr,
+    env_N,
+    env_E,
+    env_W,
+    phase_N,
+    phase_E,
+    phase_W,
+    err_NE,
+    err_EW,
+    err_WN,
     config_clk,
     config_wr,
     config_adr,
@@ -70,8 +110,16 @@ module ps_ana_high_0_0_ana_high
     clk,
     reset);
   input fifo_clk;
-  input fifo_wr;
-  input [143:0]fifo_doa_data;
+  input ana_wr;
+  input [15:0]env_N;
+  input [15:0]env_E;
+  input [15:0]env_W;
+  input [19:0]phase_N;
+  input [19:0]phase_E;
+  input [19:0]phase_W;
+  input [11:0]err_NE;
+  input [11:0]err_EW;
+  input [11:0]err_WN;
   input config_clk;
   input config_wr;
   input [7:0]config_adr;
@@ -79,13 +127,23 @@ module ps_ana_high_0_0_ana_high
   input clk;
   input reset;
 
-  wire \ana_high.doa_delay[1]_i_1_n_0 ;
-  wire \ana_high.doa_delay[2]_i_1_n_0 ;
-  wire \ana_high.doa_delay[3]_i_1_n_0 ;
-  wire \ana_high.doa_delay[4]_i_1_n_0 ;
-  wire \ana_high.doa_delay[4]_i_2_n_0 ;
-  wire \ana_high.doa_rd_i_1_n_0 ;
-  wire \ana_high.doa_valid_i_1_n_0 ;
+  wire [143:0]ana_data;
+  wire [4:0]ana_delay;
+  wire [0:0]ana_delay0;
+  wire ana_empty;
+  wire ana_fifo_rd;
+  wire ana_fifo_wr;
+  wire \ana_high.ana_delay[1]_i_1_n_0 ;
+  wire \ana_high.ana_delay[2]_i_1_n_0 ;
+  wire \ana_high.ana_delay[3]_i_1_n_0 ;
+  wire \ana_high.ana_delay[4]_i_1_n_0 ;
+  wire \ana_high.ana_delay[4]_i_2_n_0 ;
+  wire \ana_high.ana_fifo_rd_i_1_n_0 ;
+  wire \ana_high.ana_valid_i_1_n_0 ;
+  wire [143:0]ana_in_data;
+  wire [143:0]ana_out_data;
+  wire ana_valid;
+  wire ana_wr;
   wire burst;
   wire cfg_empty;
   wire cfg_rd;
@@ -96,22 +154,22 @@ module ps_ana_high_0_0_ana_high
   wire [39:0]config_data_adr_out;
   wire config_wr;
   wire doa_calc_i_i_1_n_0;
-  wire [143:0]doa_data;
-  wire [4:0]doa_delay;
-  wire [0:0]doa_delay0;
-  wire doa_empty;
-  wire [143:0]doa_out_data;
-  wire doa_rd;
-  wire doa_valid;
   wire [15:0]env_E;
   wire [15:0]env_N;
   wire [15:0]env_W;
+  wire [15:0]env_doa_E;
+  wire [15:0]env_doa_N;
+  wire [15:0]env_doa_W;
+  wire [11:0]err_EW;
+  wire [11:0]err_NE;
+  wire [11:0]err_WN;
   wire fifo_clk;
-  wire [143:0]fifo_doa_data;
-  wire fifo_wr;
   wire [19:0]freq;
+  wire [19:0]phase_E;
   wire [19:0]phase_EW;
+  wire [19:0]phase_N;
   wire [19:0]phase_NE;
+  wire [19:0]phase_W;
   wire [19:0]phase_WN;
   wire reset;
   wire [8:0]size;
@@ -137,989 +195,1859 @@ module ps_ana_high_0_0_ana_high
   wire NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED;
 
+  FDRE \ana_high.ana_data_reg[0] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[0]),
+        .Q(ana_data[0]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[100] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[100]),
+        .Q(ana_data[100]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[101] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[101]),
+        .Q(ana_data[101]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[102] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[102]),
+        .Q(ana_data[102]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[103] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[103]),
+        .Q(ana_data[103]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[104] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[104]),
+        .Q(ana_data[104]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[105] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[105]),
+        .Q(ana_data[105]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[106] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[106]),
+        .Q(ana_data[106]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[107] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[107]),
+        .Q(ana_data[107]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[108] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[108]),
+        .Q(ana_data[108]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[109] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[109]),
+        .Q(ana_data[109]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[10] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[10]),
+        .Q(ana_data[10]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[110] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[110]),
+        .Q(ana_data[110]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[111] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[111]),
+        .Q(ana_data[111]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[112] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[112]),
+        .Q(ana_data[112]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[113] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[113]),
+        .Q(ana_data[113]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[114] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[114]),
+        .Q(ana_data[114]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[115] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[115]),
+        .Q(ana_data[115]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[116] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[116]),
+        .Q(ana_data[116]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[117] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[117]),
+        .Q(ana_data[117]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[118] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[118]),
+        .Q(ana_data[118]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[119] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[119]),
+        .Q(ana_data[119]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[11] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[11]),
+        .Q(ana_data[11]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[120] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[120]),
+        .Q(ana_data[120]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[121] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[121]),
+        .Q(ana_data[121]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[122] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[122]),
+        .Q(ana_data[122]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[123] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[123]),
+        .Q(ana_data[123]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[124] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[124]),
+        .Q(ana_data[124]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[125] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[125]),
+        .Q(ana_data[125]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[126] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[126]),
+        .Q(ana_data[126]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[127] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[127]),
+        .Q(ana_data[127]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[128] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[128]),
+        .Q(ana_data[128]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[129] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[129]),
+        .Q(ana_data[129]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[12] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[12]),
+        .Q(ana_data[12]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[130] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[130]),
+        .Q(ana_data[130]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[131] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[131]),
+        .Q(ana_data[131]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[132] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[132]),
+        .Q(ana_data[132]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[133] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[133]),
+        .Q(ana_data[133]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[134] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[134]),
+        .Q(ana_data[134]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[135] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[135]),
+        .Q(ana_data[135]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[136] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[136]),
+        .Q(ana_data[136]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[137] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[137]),
+        .Q(ana_data[137]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[138] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[138]),
+        .Q(ana_data[138]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[139] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[139]),
+        .Q(ana_data[139]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[13] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[13]),
+        .Q(ana_data[13]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[140] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[140]),
+        .Q(ana_data[140]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[141] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[141]),
+        .Q(ana_data[141]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[142] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[142]),
+        .Q(ana_data[142]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[143] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[143]),
+        .Q(ana_data[143]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[14] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[14]),
+        .Q(ana_data[14]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[15] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[15]),
+        .Q(ana_data[15]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[16] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[16]),
+        .Q(ana_data[16]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[17] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[17]),
+        .Q(ana_data[17]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[18] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[18]),
+        .Q(ana_data[18]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[19] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[19]),
+        .Q(ana_data[19]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[1] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[1]),
+        .Q(ana_data[1]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[20] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[20]),
+        .Q(ana_data[20]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[21] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[21]),
+        .Q(ana_data[21]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[22] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[22]),
+        .Q(ana_data[22]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[23] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[23]),
+        .Q(ana_data[23]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[24] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[24]),
+        .Q(ana_data[24]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[25] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[25]),
+        .Q(ana_data[25]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[26] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[26]),
+        .Q(ana_data[26]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[27] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[27]),
+        .Q(ana_data[27]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[28] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[28]),
+        .Q(ana_data[28]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[29] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[29]),
+        .Q(ana_data[29]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[2] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[2]),
+        .Q(ana_data[2]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[30] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[30]),
+        .Q(ana_data[30]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[31] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[31]),
+        .Q(ana_data[31]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[32] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[32]),
+        .Q(ana_data[32]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[33] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[33]),
+        .Q(ana_data[33]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[34] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[34]),
+        .Q(ana_data[34]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[35] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[35]),
+        .Q(ana_data[35]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[36] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[36]),
+        .Q(ana_data[36]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[37] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[37]),
+        .Q(ana_data[37]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[38] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[38]),
+        .Q(ana_data[38]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[39] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[39]),
+        .Q(ana_data[39]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[3] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[3]),
+        .Q(ana_data[3]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[40] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[40]),
+        .Q(ana_data[40]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[41] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[41]),
+        .Q(ana_data[41]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[42] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[42]),
+        .Q(ana_data[42]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[43] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[43]),
+        .Q(ana_data[43]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[44] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[44]),
+        .Q(ana_data[44]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[45] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[45]),
+        .Q(ana_data[45]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[46] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[46]),
+        .Q(ana_data[46]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[47] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[47]),
+        .Q(ana_data[47]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[48] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[48]),
+        .Q(ana_data[48]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[49] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[49]),
+        .Q(ana_data[49]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[4] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[4]),
+        .Q(ana_data[4]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[50] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[50]),
+        .Q(ana_data[50]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[51] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[51]),
+        .Q(ana_data[51]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[52] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[52]),
+        .Q(ana_data[52]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[53] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[53]),
+        .Q(ana_data[53]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[54] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[54]),
+        .Q(ana_data[54]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[55] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[55]),
+        .Q(ana_data[55]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[56] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[56]),
+        .Q(ana_data[56]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[57] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[57]),
+        .Q(ana_data[57]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[58] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[58]),
+        .Q(ana_data[58]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[59] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[59]),
+        .Q(ana_data[59]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[5] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[5]),
+        .Q(ana_data[5]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[60] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[60]),
+        .Q(ana_data[60]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[61] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[61]),
+        .Q(ana_data[61]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[62] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[62]),
+        .Q(ana_data[62]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[63] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[63]),
+        .Q(ana_data[63]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[64] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[64]),
+        .Q(ana_data[64]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[65] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[65]),
+        .Q(ana_data[65]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[66] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[66]),
+        .Q(ana_data[66]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[67] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[67]),
+        .Q(ana_data[67]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[68] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[68]),
+        .Q(ana_data[68]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[69] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[69]),
+        .Q(ana_data[69]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[6] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[6]),
+        .Q(ana_data[6]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[70] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[70]),
+        .Q(ana_data[70]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[71] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[71]),
+        .Q(ana_data[71]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[72] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[72]),
+        .Q(ana_data[72]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[73] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[73]),
+        .Q(ana_data[73]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[74] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[74]),
+        .Q(ana_data[74]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[75] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[75]),
+        .Q(ana_data[75]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[76] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[76]),
+        .Q(ana_data[76]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[77] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[77]),
+        .Q(ana_data[77]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[78] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[78]),
+        .Q(ana_data[78]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[79] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[79]),
+        .Q(ana_data[79]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[7] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[7]),
+        .Q(ana_data[7]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[80] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[80]),
+        .Q(ana_data[80]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[81] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[81]),
+        .Q(ana_data[81]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[82] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[82]),
+        .Q(ana_data[82]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[83] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[83]),
+        .Q(ana_data[83]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[84] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[84]),
+        .Q(ana_data[84]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[85] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[85]),
+        .Q(ana_data[85]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[86] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[86]),
+        .Q(ana_data[86]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[87] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[87]),
+        .Q(ana_data[87]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[88] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[88]),
+        .Q(ana_data[88]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[89] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[89]),
+        .Q(ana_data[89]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[8] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[8]),
+        .Q(ana_data[8]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[90] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[90]),
+        .Q(ana_data[90]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[91] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[91]),
+        .Q(ana_data[91]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[92] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[92]),
+        .Q(ana_data[92]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[93] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[93]),
+        .Q(ana_data[93]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[94] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[94]),
+        .Q(ana_data[94]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[95] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[95]),
+        .Q(ana_data[95]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[96] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[96]),
+        .Q(ana_data[96]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[97] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[97]),
+        .Q(ana_data[97]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[98] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[98]),
+        .Q(ana_data[98]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[99] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[99]),
+        .Q(ana_data[99]),
+        .R(1'b0));
+  FDRE \ana_high.ana_data_reg[9] 
+       (.C(clk),
+        .CE(\ana_high.ana_valid_i_1_n_0 ),
+        .D(ana_out_data[9]),
+        .Q(ana_data[9]),
+        .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \ana_high.ana_delay[0]_i_1 
+       (.I0(ana_delay[0]),
+        .O(ana_delay0));
+  (* SOFT_HLUTNM = "soft_lutpair199" *) 
+  LUT2 #(
+    .INIT(4'h9)) 
+    \ana_high.ana_delay[1]_i_1 
+       (.I0(ana_delay[0]),
+        .I1(ana_delay[1]),
+        .O(\ana_high.ana_delay[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair199" *) 
+  LUT3 #(
+    .INIT(8'hE1)) 
+    \ana_high.ana_delay[2]_i_1 
+       (.I0(ana_delay[1]),
+        .I1(ana_delay[0]),
+        .I2(ana_delay[2]),
+        .O(\ana_high.ana_delay[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair198" *) 
+  LUT4 #(
+    .INIT(16'hFE01)) 
+    \ana_high.ana_delay[3]_i_1 
+       (.I0(ana_delay[2]),
+        .I1(ana_delay[0]),
+        .I2(ana_delay[1]),
+        .I3(ana_delay[3]),
+        .O(\ana_high.ana_delay[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \ana_high.ana_delay[4]_i_1 
+       (.I0(ana_delay[0]),
+        .I1(ana_delay[3]),
+        .I2(ana_delay[4]),
+        .I3(ana_delay[1]),
+        .I4(ana_delay[2]),
+        .O(\ana_high.ana_delay[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair198" *) 
+  LUT5 #(
+    .INIT(32'hFFFE0001)) 
+    \ana_high.ana_delay[4]_i_2 
+       (.I0(ana_delay[3]),
+        .I1(ana_delay[1]),
+        .I2(ana_delay[0]),
+        .I3(ana_delay[2]),
+        .I4(ana_delay[4]),
+        .O(\ana_high.ana_delay[4]_i_2_n_0 ));
+  FDSE \ana_high.ana_delay_reg[0] 
+       (.C(clk),
+        .CE(\ana_high.ana_delay[4]_i_1_n_0 ),
+        .D(ana_delay0),
+        .Q(ana_delay[0]),
+        .S(ana_empty));
+  FDSE \ana_high.ana_delay_reg[1] 
+       (.C(clk),
+        .CE(\ana_high.ana_delay[4]_i_1_n_0 ),
+        .D(\ana_high.ana_delay[1]_i_1_n_0 ),
+        .Q(ana_delay[1]),
+        .S(ana_empty));
+  FDSE \ana_high.ana_delay_reg[2] 
+       (.C(clk),
+        .CE(\ana_high.ana_delay[4]_i_1_n_0 ),
+        .D(\ana_high.ana_delay[2]_i_1_n_0 ),
+        .Q(ana_delay[2]),
+        .S(ana_empty));
+  FDSE \ana_high.ana_delay_reg[3] 
+       (.C(clk),
+        .CE(\ana_high.ana_delay[4]_i_1_n_0 ),
+        .D(\ana_high.ana_delay[3]_i_1_n_0 ),
+        .Q(ana_delay[3]),
+        .S(ana_empty));
+  FDSE \ana_high.ana_delay_reg[4] 
+       (.C(clk),
+        .CE(\ana_high.ana_delay[4]_i_1_n_0 ),
+        .D(\ana_high.ana_delay[4]_i_2_n_0 ),
+        .Q(ana_delay[4]),
+        .S(ana_empty));
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
+    \ana_high.ana_fifo_rd_i_1 
+       (.I0(ana_empty),
+        .I1(ana_delay[2]),
+        .I2(ana_delay[1]),
+        .I3(ana_delay[4]),
+        .I4(ana_delay[3]),
+        .I5(ana_delay[0]),
+        .O(\ana_high.ana_fifo_rd_i_1_n_0 ));
+  FDRE \ana_high.ana_fifo_rd_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\ana_high.ana_fifo_rd_i_1_n_0 ),
+        .Q(ana_fifo_rd),
+        .R(1'b0));
+  FDRE \ana_high.ana_fifo_wr_reg 
+       (.C(fifo_clk),
+        .CE(1'b1),
+        .D(ana_wr),
+        .Q(ana_fifo_wr),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[0] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[0]),
+        .Q(ana_in_data[0]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[100] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[12]),
+        .Q(ana_in_data[100]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[101] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[13]),
+        .Q(ana_in_data[101]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[102] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[14]),
+        .Q(ana_in_data[102]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[103] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[15]),
+        .Q(ana_in_data[103]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[104] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[16]),
+        .Q(ana_in_data[104]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[105] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[17]),
+        .Q(ana_in_data[105]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[106] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[18]),
+        .Q(ana_in_data[106]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[107] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[19]),
+        .Q(ana_in_data[107]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[108] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[0]),
+        .Q(ana_in_data[108]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[109] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[1]),
+        .Q(ana_in_data[109]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[10] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[10]),
+        .Q(ana_in_data[10]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[110] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[2]),
+        .Q(ana_in_data[110]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[111] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[3]),
+        .Q(ana_in_data[111]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[112] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[4]),
+        .Q(ana_in_data[112]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[113] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[5]),
+        .Q(ana_in_data[113]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[114] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[6]),
+        .Q(ana_in_data[114]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[115] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[7]),
+        .Q(ana_in_data[115]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[116] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[8]),
+        .Q(ana_in_data[116]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[117] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[9]),
+        .Q(ana_in_data[117]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[118] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[10]),
+        .Q(ana_in_data[118]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[119] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_NE[11]),
+        .Q(ana_in_data[119]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[11] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[11]),
+        .Q(ana_in_data[11]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[120] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[0]),
+        .Q(ana_in_data[120]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[121] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[1]),
+        .Q(ana_in_data[121]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[122] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[2]),
+        .Q(ana_in_data[122]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[123] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[3]),
+        .Q(ana_in_data[123]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[124] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[4]),
+        .Q(ana_in_data[124]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[125] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[5]),
+        .Q(ana_in_data[125]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[126] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[6]),
+        .Q(ana_in_data[126]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[127] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[7]),
+        .Q(ana_in_data[127]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[128] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[8]),
+        .Q(ana_in_data[128]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[129] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[9]),
+        .Q(ana_in_data[129]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[12] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[12]),
+        .Q(ana_in_data[12]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[130] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[10]),
+        .Q(ana_in_data[130]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[131] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_EW[11]),
+        .Q(ana_in_data[131]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[132] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[0]),
+        .Q(ana_in_data[132]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[133] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[1]),
+        .Q(ana_in_data[133]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[134] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[2]),
+        .Q(ana_in_data[134]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[135] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[3]),
+        .Q(ana_in_data[135]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[136] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[4]),
+        .Q(ana_in_data[136]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[137] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[5]),
+        .Q(ana_in_data[137]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[138] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[6]),
+        .Q(ana_in_data[138]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[139] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[7]),
+        .Q(ana_in_data[139]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[13] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[13]),
+        .Q(ana_in_data[13]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[140] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[8]),
+        .Q(ana_in_data[140]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[141] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[9]),
+        .Q(ana_in_data[141]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[142] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[10]),
+        .Q(ana_in_data[142]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[143] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(err_WN[11]),
+        .Q(ana_in_data[143]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[14] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[14]),
+        .Q(ana_in_data[14]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[15] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[15]),
+        .Q(ana_in_data[15]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[16] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[0]),
+        .Q(ana_in_data[16]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[17] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[1]),
+        .Q(ana_in_data[17]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[18] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[2]),
+        .Q(ana_in_data[18]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[19] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[3]),
+        .Q(ana_in_data[19]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[1] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[1]),
+        .Q(ana_in_data[1]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[20] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[4]),
+        .Q(ana_in_data[20]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[21] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[5]),
+        .Q(ana_in_data[21]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[22] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[6]),
+        .Q(ana_in_data[22]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[23] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[7]),
+        .Q(ana_in_data[23]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[24] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[8]),
+        .Q(ana_in_data[24]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[25] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[9]),
+        .Q(ana_in_data[25]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[26] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[10]),
+        .Q(ana_in_data[26]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[27] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[11]),
+        .Q(ana_in_data[27]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[28] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[12]),
+        .Q(ana_in_data[28]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[29] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[13]),
+        .Q(ana_in_data[29]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[2] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[2]),
+        .Q(ana_in_data[2]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[30] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[14]),
+        .Q(ana_in_data[30]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[31] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[15]),
+        .Q(ana_in_data[31]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[32] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[16]),
+        .Q(ana_in_data[32]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[33] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[17]),
+        .Q(ana_in_data[33]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[34] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[18]),
+        .Q(ana_in_data[34]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[35] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_N[19]),
+        .Q(ana_in_data[35]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[36] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[0]),
+        .Q(ana_in_data[36]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[37] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[1]),
+        .Q(ana_in_data[37]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[38] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[2]),
+        .Q(ana_in_data[38]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[39] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[3]),
+        .Q(ana_in_data[39]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[3] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[3]),
+        .Q(ana_in_data[3]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[40] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[4]),
+        .Q(ana_in_data[40]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[41] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[5]),
+        .Q(ana_in_data[41]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[42] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[6]),
+        .Q(ana_in_data[42]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[43] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[7]),
+        .Q(ana_in_data[43]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[44] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[8]),
+        .Q(ana_in_data[44]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[45] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[9]),
+        .Q(ana_in_data[45]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[46] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[10]),
+        .Q(ana_in_data[46]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[47] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[11]),
+        .Q(ana_in_data[47]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[48] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[12]),
+        .Q(ana_in_data[48]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[49] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[13]),
+        .Q(ana_in_data[49]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[4] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[4]),
+        .Q(ana_in_data[4]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[50] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[14]),
+        .Q(ana_in_data[50]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[51] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_E[15]),
+        .Q(ana_in_data[51]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[52] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[0]),
+        .Q(ana_in_data[52]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[53] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[1]),
+        .Q(ana_in_data[53]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[54] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[2]),
+        .Q(ana_in_data[54]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[55] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[3]),
+        .Q(ana_in_data[55]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[56] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[4]),
+        .Q(ana_in_data[56]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[57] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[5]),
+        .Q(ana_in_data[57]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[58] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[6]),
+        .Q(ana_in_data[58]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[59] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[7]),
+        .Q(ana_in_data[59]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[5] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[5]),
+        .Q(ana_in_data[5]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[60] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[8]),
+        .Q(ana_in_data[60]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[61] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[9]),
+        .Q(ana_in_data[61]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[62] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[10]),
+        .Q(ana_in_data[62]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[63] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[11]),
+        .Q(ana_in_data[63]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[64] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[12]),
+        .Q(ana_in_data[64]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[65] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[13]),
+        .Q(ana_in_data[65]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[66] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[14]),
+        .Q(ana_in_data[66]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[67] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[15]),
+        .Q(ana_in_data[67]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[68] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[16]),
+        .Q(ana_in_data[68]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[69] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[17]),
+        .Q(ana_in_data[69]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[6] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[6]),
+        .Q(ana_in_data[6]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[70] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[18]),
+        .Q(ana_in_data[70]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[71] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_E[19]),
+        .Q(ana_in_data[71]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[72] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[0]),
+        .Q(ana_in_data[72]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[73] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[1]),
+        .Q(ana_in_data[73]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[74] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[2]),
+        .Q(ana_in_data[74]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[75] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[3]),
+        .Q(ana_in_data[75]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[76] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[4]),
+        .Q(ana_in_data[76]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[77] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[5]),
+        .Q(ana_in_data[77]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[78] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[6]),
+        .Q(ana_in_data[78]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[79] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[7]),
+        .Q(ana_in_data[79]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[7] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[7]),
+        .Q(ana_in_data[7]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[80] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[8]),
+        .Q(ana_in_data[80]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[81] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[9]),
+        .Q(ana_in_data[81]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[82] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[10]),
+        .Q(ana_in_data[82]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[83] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[11]),
+        .Q(ana_in_data[83]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[84] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[12]),
+        .Q(ana_in_data[84]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[85] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[13]),
+        .Q(ana_in_data[85]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[86] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[14]),
+        .Q(ana_in_data[86]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[87] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_W[15]),
+        .Q(ana_in_data[87]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[88] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[0]),
+        .Q(ana_in_data[88]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[89] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[1]),
+        .Q(ana_in_data[89]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[8] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[8]),
+        .Q(ana_in_data[8]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[90] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[2]),
+        .Q(ana_in_data[90]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[91] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[3]),
+        .Q(ana_in_data[91]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[92] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[4]),
+        .Q(ana_in_data[92]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[93] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[5]),
+        .Q(ana_in_data[93]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[94] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[6]),
+        .Q(ana_in_data[94]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[95] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[7]),
+        .Q(ana_in_data[95]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[96] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[8]),
+        .Q(ana_in_data[96]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[97] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[9]),
+        .Q(ana_in_data[97]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[98] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[10]),
+        .Q(ana_in_data[98]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[99] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(phase_W[11]),
+        .Q(ana_in_data[99]),
+        .R(1'b0));
+  FDRE \ana_high.ana_in_data_reg[9] 
+       (.C(fifo_clk),
+        .CE(ana_wr),
+        .D(env_N[9]),
+        .Q(ana_in_data[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ana_high.ana_valid_i_1 
+       (.I0(ana_fifo_rd),
+        .I1(ana_empty),
+        .O(\ana_high.ana_valid_i_1_n_0 ));
+  FDRE \ana_high.ana_valid_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\ana_high.ana_valid_i_1_n_0 ),
+        .Q(ana_valid),
+        .R(1'b0));
   FDRE \ana_high.cfg_rd_reg 
        (.C(clk),
         .CE(1'b1),
         .D(doa_calc_i_i_1_n_0),
         .Q(cfg_rd),
         .R(1'b0));
-  FDRE \ana_high.doa_data_reg[0] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[0]),
-        .Q(doa_data[0]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[100] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[100]),
-        .Q(doa_data[100]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[101] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[101]),
-        .Q(doa_data[101]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[102] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[102]),
-        .Q(doa_data[102]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[103] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[103]),
-        .Q(doa_data[103]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[104] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[104]),
-        .Q(doa_data[104]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[105] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[105]),
-        .Q(doa_data[105]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[106] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[106]),
-        .Q(doa_data[106]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[107] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[107]),
-        .Q(doa_data[107]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[108] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[108]),
-        .Q(doa_data[108]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[109] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[109]),
-        .Q(doa_data[109]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[10] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[10]),
-        .Q(doa_data[10]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[110] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[110]),
-        .Q(doa_data[110]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[111] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[111]),
-        .Q(doa_data[111]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[112] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[112]),
-        .Q(doa_data[112]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[113] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[113]),
-        .Q(doa_data[113]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[114] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[114]),
-        .Q(doa_data[114]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[115] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[115]),
-        .Q(doa_data[115]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[116] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[116]),
-        .Q(doa_data[116]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[117] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[117]),
-        .Q(doa_data[117]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[118] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[118]),
-        .Q(doa_data[118]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[119] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[119]),
-        .Q(doa_data[119]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[11] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[11]),
-        .Q(doa_data[11]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[120] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[120]),
-        .Q(doa_data[120]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[121] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[121]),
-        .Q(doa_data[121]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[122] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[122]),
-        .Q(doa_data[122]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[123] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[123]),
-        .Q(doa_data[123]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[124] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[124]),
-        .Q(doa_data[124]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[125] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[125]),
-        .Q(doa_data[125]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[126] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[126]),
-        .Q(doa_data[126]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[127] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[127]),
-        .Q(doa_data[127]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[128] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[128]),
-        .Q(doa_data[128]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[129] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[129]),
-        .Q(doa_data[129]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[12] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[12]),
-        .Q(doa_data[12]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[130] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[130]),
-        .Q(doa_data[130]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[131] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[131]),
-        .Q(doa_data[131]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[132] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[132]),
-        .Q(doa_data[132]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[133] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[133]),
-        .Q(doa_data[133]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[134] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[134]),
-        .Q(doa_data[134]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[135] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[135]),
-        .Q(doa_data[135]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[136] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[136]),
-        .Q(doa_data[136]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[137] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[137]),
-        .Q(doa_data[137]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[138] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[138]),
-        .Q(doa_data[138]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[139] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[139]),
-        .Q(doa_data[139]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[13] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[13]),
-        .Q(doa_data[13]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[140] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[140]),
-        .Q(doa_data[140]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[141] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[141]),
-        .Q(doa_data[141]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[142] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[142]),
-        .Q(doa_data[142]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[143] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[143]),
-        .Q(doa_data[143]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[14] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[14]),
-        .Q(doa_data[14]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[15] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[15]),
-        .Q(doa_data[15]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[16] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[16]),
-        .Q(doa_data[16]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[17] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[17]),
-        .Q(doa_data[17]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[18] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[18]),
-        .Q(doa_data[18]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[19] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[19]),
-        .Q(doa_data[19]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[1] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[1]),
-        .Q(doa_data[1]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[20] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[20]),
-        .Q(doa_data[20]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[21] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[21]),
-        .Q(doa_data[21]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[22] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[22]),
-        .Q(doa_data[22]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[23] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[23]),
-        .Q(doa_data[23]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[24] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[24]),
-        .Q(doa_data[24]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[25] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[25]),
-        .Q(doa_data[25]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[26] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[26]),
-        .Q(doa_data[26]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[27] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[27]),
-        .Q(doa_data[27]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[28] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[28]),
-        .Q(doa_data[28]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[29] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[29]),
-        .Q(doa_data[29]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[2] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[2]),
-        .Q(doa_data[2]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[30] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[30]),
-        .Q(doa_data[30]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[31] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[31]),
-        .Q(doa_data[31]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[32] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[32]),
-        .Q(doa_data[32]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[33] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[33]),
-        .Q(doa_data[33]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[34] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[34]),
-        .Q(doa_data[34]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[35] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[35]),
-        .Q(doa_data[35]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[36] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[36]),
-        .Q(doa_data[36]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[37] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[37]),
-        .Q(doa_data[37]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[38] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[38]),
-        .Q(doa_data[38]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[39] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[39]),
-        .Q(doa_data[39]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[3] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[3]),
-        .Q(doa_data[3]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[40] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[40]),
-        .Q(doa_data[40]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[41] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[41]),
-        .Q(doa_data[41]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[42] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[42]),
-        .Q(doa_data[42]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[43] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[43]),
-        .Q(doa_data[43]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[44] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[44]),
-        .Q(doa_data[44]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[45] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[45]),
-        .Q(doa_data[45]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[46] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[46]),
-        .Q(doa_data[46]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[47] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[47]),
-        .Q(doa_data[47]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[48] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[48]),
-        .Q(doa_data[48]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[49] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[49]),
-        .Q(doa_data[49]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[4] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[4]),
-        .Q(doa_data[4]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[50] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[50]),
-        .Q(doa_data[50]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[51] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[51]),
-        .Q(doa_data[51]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[52] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[52]),
-        .Q(doa_data[52]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[53] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[53]),
-        .Q(doa_data[53]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[54] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[54]),
-        .Q(doa_data[54]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[55] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[55]),
-        .Q(doa_data[55]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[56] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[56]),
-        .Q(doa_data[56]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[57] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[57]),
-        .Q(doa_data[57]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[58] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[58]),
-        .Q(doa_data[58]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[59] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[59]),
-        .Q(doa_data[59]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[5] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[5]),
-        .Q(doa_data[5]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[60] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[60]),
-        .Q(doa_data[60]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[61] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[61]),
-        .Q(doa_data[61]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[62] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[62]),
-        .Q(doa_data[62]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[63] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[63]),
-        .Q(doa_data[63]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[64] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[64]),
-        .Q(doa_data[64]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[65] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[65]),
-        .Q(doa_data[65]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[66] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[66]),
-        .Q(doa_data[66]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[67] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[67]),
-        .Q(doa_data[67]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[68] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[68]),
-        .Q(doa_data[68]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[69] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[69]),
-        .Q(doa_data[69]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[6] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[6]),
-        .Q(doa_data[6]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[70] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[70]),
-        .Q(doa_data[70]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[71] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[71]),
-        .Q(doa_data[71]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[72] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[72]),
-        .Q(doa_data[72]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[73] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[73]),
-        .Q(doa_data[73]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[74] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[74]),
-        .Q(doa_data[74]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[75] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[75]),
-        .Q(doa_data[75]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[76] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[76]),
-        .Q(doa_data[76]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[77] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[77]),
-        .Q(doa_data[77]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[78] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[78]),
-        .Q(doa_data[78]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[79] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[79]),
-        .Q(doa_data[79]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[7] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[7]),
-        .Q(doa_data[7]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[80] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[80]),
-        .Q(doa_data[80]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[81] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[81]),
-        .Q(doa_data[81]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[82] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[82]),
-        .Q(doa_data[82]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[83] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[83]),
-        .Q(doa_data[83]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[84] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[84]),
-        .Q(doa_data[84]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[85] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[85]),
-        .Q(doa_data[85]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[86] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[86]),
-        .Q(doa_data[86]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[87] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[87]),
-        .Q(doa_data[87]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[88] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[88]),
-        .Q(doa_data[88]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[89] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[89]),
-        .Q(doa_data[89]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[8] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[8]),
-        .Q(doa_data[8]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[90] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[90]),
-        .Q(doa_data[90]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[91] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[91]),
-        .Q(doa_data[91]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[92] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[92]),
-        .Q(doa_data[92]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[93] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[93]),
-        .Q(doa_data[93]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[94] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[94]),
-        .Q(doa_data[94]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[95] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[95]),
-        .Q(doa_data[95]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[96] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[96]),
-        .Q(doa_data[96]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[97] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[97]),
-        .Q(doa_data[97]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[98] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[98]),
-        .Q(doa_data[98]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[99] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[99]),
-        .Q(doa_data[99]),
-        .R(1'b0));
-  FDRE \ana_high.doa_data_reg[9] 
-       (.C(clk),
-        .CE(\ana_high.doa_valid_i_1_n_0 ),
-        .D(doa_out_data[9]),
-        .Q(doa_data[9]),
-        .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \ana_high.doa_delay[0]_i_1 
-       (.I0(doa_delay[0]),
-        .O(doa_delay0));
-  (* SOFT_HLUTNM = "soft_lutpair199" *) 
-  LUT2 #(
-    .INIT(4'h9)) 
-    \ana_high.doa_delay[1]_i_1 
-       (.I0(doa_delay[0]),
-        .I1(doa_delay[1]),
-        .O(\ana_high.doa_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair199" *) 
-  LUT3 #(
-    .INIT(8'hE1)) 
-    \ana_high.doa_delay[2]_i_1 
-       (.I0(doa_delay[1]),
-        .I1(doa_delay[0]),
-        .I2(doa_delay[2]),
-        .O(\ana_high.doa_delay[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair198" *) 
-  LUT4 #(
-    .INIT(16'hFE01)) 
-    \ana_high.doa_delay[3]_i_1 
-       (.I0(doa_delay[2]),
-        .I1(doa_delay[0]),
-        .I2(doa_delay[1]),
-        .I3(doa_delay[3]),
-        .O(\ana_high.doa_delay[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \ana_high.doa_delay[4]_i_1 
-       (.I0(doa_delay[0]),
-        .I1(doa_delay[3]),
-        .I2(doa_delay[4]),
-        .I3(doa_delay[1]),
-        .I4(doa_delay[2]),
-        .O(\ana_high.doa_delay[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair198" *) 
-  LUT5 #(
-    .INIT(32'hFFFE0001)) 
-    \ana_high.doa_delay[4]_i_2 
-       (.I0(doa_delay[3]),
-        .I1(doa_delay[1]),
-        .I2(doa_delay[0]),
-        .I3(doa_delay[2]),
-        .I4(doa_delay[4]),
-        .O(\ana_high.doa_delay[4]_i_2_n_0 ));
-  FDSE \ana_high.doa_delay_reg[0] 
-       (.C(clk),
-        .CE(\ana_high.doa_delay[4]_i_1_n_0 ),
-        .D(doa_delay0),
-        .Q(doa_delay[0]),
-        .S(doa_empty));
-  FDSE \ana_high.doa_delay_reg[1] 
-       (.C(clk),
-        .CE(\ana_high.doa_delay[4]_i_1_n_0 ),
-        .D(\ana_high.doa_delay[1]_i_1_n_0 ),
-        .Q(doa_delay[1]),
-        .S(doa_empty));
-  FDSE \ana_high.doa_delay_reg[2] 
-       (.C(clk),
-        .CE(\ana_high.doa_delay[4]_i_1_n_0 ),
-        .D(\ana_high.doa_delay[2]_i_1_n_0 ),
-        .Q(doa_delay[2]),
-        .S(doa_empty));
-  FDSE \ana_high.doa_delay_reg[3] 
-       (.C(clk),
-        .CE(\ana_high.doa_delay[4]_i_1_n_0 ),
-        .D(\ana_high.doa_delay[3]_i_1_n_0 ),
-        .Q(doa_delay[3]),
-        .S(doa_empty));
-  FDSE \ana_high.doa_delay_reg[4] 
-       (.C(clk),
-        .CE(\ana_high.doa_delay[4]_i_1_n_0 ),
-        .D(\ana_high.doa_delay[4]_i_2_n_0 ),
-        .Q(doa_delay[4]),
-        .S(doa_empty));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \ana_high.doa_rd_i_1 
-       (.I0(doa_empty),
-        .I1(doa_delay[2]),
-        .I2(doa_delay[1]),
-        .I3(doa_delay[4]),
-        .I4(doa_delay[3]),
-        .I5(doa_delay[0]),
-        .O(\ana_high.doa_rd_i_1_n_0 ));
-  FDRE \ana_high.doa_rd_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\ana_high.doa_rd_i_1_n_0 ),
-        .Q(doa_rd),
-        .R(1'b0));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \ana_high.doa_valid_i_1 
-       (.I0(doa_rd),
-        .I1(doa_empty),
-        .O(\ana_high.doa_valid_i_1_n_0 ));
-  FDRE \ana_high.doa_valid_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\ana_high.doa_valid_i_1_n_0 ),
-        .Q(doa_valid),
-        .R(1'b0));
   ps_ana_high_0_0_det_signal det_sig_i
-       (.E(doa_valid),
-        .Q(doa_data),
+       (.E(ana_valid),
+        .Q(ana_data),
         .clk(clk),
-        .\det_signal.signal_env_E_reg[15]_0 (env_E),
-        .\det_signal.signal_env_N_reg[15]_0 (env_N),
-        .\det_signal.signal_env_W_reg[15]_0 (env_W),
+        .\det_signal.signal_env_E_reg[15]_0 (env_doa_E),
+        .\det_signal.signal_env_N_reg[15]_0 (env_doa_N),
+        .\det_signal.signal_env_W_reg[15]_0 (env_doa_W),
         .\det_signal.signal_freq_reg[19]_0 (freq),
         .\det_signal.signal_phase_EW_reg[19]_0 (phase_EW),
         .\det_signal.signal_phase_NE_reg[19]_0 (phase_NE),
@@ -1139,11 +2067,11 @@ module ps_ana_high_0_0_ana_high
         .doa_error(NLW_doa_calc_i_doa_error_UNCONNECTED[9:0]),
         .done(NLW_doa_calc_i_done_UNCONNECTED),
         .env_E(NLW_doa_calc_i_env_E_UNCONNECTED[15:0]),
-        .env_E_in(env_E),
+        .env_E_in(env_doa_E),
         .env_N(NLW_doa_calc_i_env_N_UNCONNECTED[15:0]),
-        .env_N_in(env_N),
+        .env_N_in(env_doa_N),
         .env_W(NLW_doa_calc_i_env_W_UNCONNECTED[15:0]),
-        .env_W_in(env_W),
+        .env_W_in(env_doa_W),
         .freq(NLW_doa_calc_i_freq_UNCONNECTED[19:0]),
         .freq_in(freq),
         .pair_error(NLW_doa_calc_i_pair_error_UNCONNECTED),
@@ -1184,16 +2112,16 @@ module ps_ana_high_0_0_ana_high
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
   ps_ana_high_0_0_fifo_doa fifo_doa_i
-       (.din(fifo_doa_data),
-        .dout(doa_out_data),
-        .empty(doa_empty),
+       (.din(ana_in_data),
+        .dout(ana_out_data),
+        .empty(ana_empty),
         .full(NLW_fifo_doa_i_full_UNCONNECTED),
         .rd_clk(clk),
-        .rd_en(doa_rd),
+        .rd_en(ana_fifo_rd),
         .rd_rst_busy(NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED),
         .rst(reset),
         .wr_clk(fifo_clk),
-        .wr_en(fifo_wr),
+        .wr_en(ana_fifo_wr),
         .wr_rst_busy(NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED));
 endmodule
 
@@ -2269,8 +3197,10 @@ module ps_ana_high_0_0_det_signal
   wire \det_signal.env_sum_W_reg_n_0_[7] ;
   wire \det_signal.env_sum_W_reg_n_0_[8] ;
   wire \det_signal.env_sum_W_reg_n_0_[9] ;
+  wire \det_signal.err_count[0]_i_1_n_0 ;
   wire \det_signal.err_count[1]_i_1_n_0 ;
   wire \det_signal.err_count[1]_i_2_n_0 ;
+  wire \det_signal.err_count[1]_i_3_n_0 ;
   wire \det_signal.err_ov_i_1_n_0 ;
   wire \det_signal.err_ov_reg_n_0 ;
   wire \det_signal.has_signal_i_1_n_0 ;
@@ -2746,7 +3676,7 @@ module ps_ana_high_0_0_det_signal
   wire dsp_phase_WN0_carry_n_5;
   wire dsp_phase_WN0_carry_n_6;
   wire dsp_phase_WN0_carry_n_7;
-  wire [19:0]dsp_phase_W_4;
+  wire [19:0]dsp_phase_W_3;
   wire [47:0]dsp_sum_E;
   wire [47:0]dsp_sum_EW;
   wire [47:0]dsp_sum_N;
@@ -2809,10 +3739,9 @@ module ps_ana_high_0_0_det_signal
   wire [8:0]p_0_in;
   wire p_0_in11_in;
   wire p_0_in9_in;
-  wire [1:0]p_1_in;
+  wire [22:0]p_1_in;
   wire p_1_in10_in;
   wire p_1_in13_in;
-  wire [22:0]p_1_in_3;
   wire [1:0]p_2_in;
   wire p_2_in12_in;
   wire p_2_in_1;
@@ -2829,7 +3758,7 @@ module ps_ana_high_0_0_det_signal
   wire start;
   wire start_proc;
   wire [31:0]start_sample;
-  wire start_sample_5;
+  wire start_sample_4;
   wire valid_env;
   wire valid_env0__0;
   wire valid_err;
@@ -2918,7 +3847,7 @@ module ps_ana_high_0_0_det_signal
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\_inferred__9/i__carry_n_0 ,\_inferred__9/i__carry_n_1 ,\_inferred__9/i__carry_n_2 ,\_inferred__9/i__carry_n_3 ,\_inferred__9/i__carry_n_4 ,\_inferred__9/i__carry_n_5 ,\_inferred__9/i__carry_n_6 ,\_inferred__9/i__carry_n_7 }),
-        .DI(p_1_in_3[7:0]),
+        .DI(p_1_in[7:0]),
         .O(div_hi_freq_sum0_in[7:0]),
         .S({i__carry_i_9_n_0,i__carry_i_10_n_0,i__carry_i_11_n_0,i__carry_i_12_n_0,i__carry_i_13_n_0,i__carry_i_14_n_0,i__carry_i_15_n_0,i__carry_i_16_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
@@ -2927,7 +3856,7 @@ module ps_ana_high_0_0_det_signal
        (.CI(\_inferred__9/i__carry_n_0 ),
         .CI_TOP(1'b0),
         .CO({\_inferred__9/i__carry__0_n_0 ,\_inferred__9/i__carry__0_n_1 ,\_inferred__9/i__carry__0_n_2 ,\_inferred__9/i__carry__0_n_3 ,\_inferred__9/i__carry__0_n_4 ,\_inferred__9/i__carry__0_n_5 ,\_inferred__9/i__carry__0_n_6 ,\_inferred__9/i__carry__0_n_7 }),
-        .DI(p_1_in_3[15:8]),
+        .DI(p_1_in[15:8]),
         .O(div_hi_freq_sum0_in[15:8]),
         .S({i__carry__0_i_9_n_0,i__carry__0_i_10_n_0,i__carry__0_i_11_n_0,i__carry__0_i_12_n_0,i__carry__0_i_13_n_0,i__carry__0_i_14_n_0,i__carry__0_i_15_n_0,i__carry__0_i_16_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
@@ -2936,7 +3865,7 @@ module ps_ana_high_0_0_det_signal
        (.CI(\_inferred__9/i__carry__0_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW__inferred__9/i__carry__1_CO_UNCONNECTED [7],\_inferred__9/i__carry__1_n_1 ,\_inferred__9/i__carry__1_n_2 ,\_inferred__9/i__carry__1_n_3 ,\_inferred__9/i__carry__1_n_4 ,\_inferred__9/i__carry__1_n_5 ,\_inferred__9/i__carry__1_n_6 ,\_inferred__9/i__carry__1_n_7 }),
-        .DI({1'b0,p_1_in_3[22:16]}),
+        .DI({1'b0,p_1_in[22:16]}),
         .O(div_hi_freq_sum0_in[23:16]),
         .S({i__carry__1_i_8_n_0,i__carry__1_i_9_n_0,i__carry__1_i_10_n_0,i__carry__1_i_11_n_0,i__carry__1_i_12_n_0,i__carry__1_i_13_n_0,i__carry__1_i_14_n_0,i__carry__1_i_15_n_0}));
   LUT6 #(
@@ -8583,121 +9512,121 @@ module ps_ana_high_0_0_det_signal
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[0]),
-        .Q(dsp_phase_W_4[0]),
+        .Q(dsp_phase_W_3[0]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[10]),
-        .Q(dsp_phase_W_4[10]),
+        .Q(dsp_phase_W_3[10]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[11]),
-        .Q(dsp_phase_W_4[11]),
+        .Q(dsp_phase_W_3[11]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[12]),
-        .Q(dsp_phase_W_4[12]),
+        .Q(dsp_phase_W_3[12]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[13]),
-        .Q(dsp_phase_W_4[13]),
+        .Q(dsp_phase_W_3[13]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[14]),
-        .Q(dsp_phase_W_4[14]),
+        .Q(dsp_phase_W_3[14]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[15]),
-        .Q(dsp_phase_W_4[15]),
+        .Q(dsp_phase_W_3[15]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[16] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[16]),
-        .Q(dsp_phase_W_4[16]),
+        .Q(dsp_phase_W_3[16]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[17] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[17]),
-        .Q(dsp_phase_W_4[17]),
+        .Q(dsp_phase_W_3[17]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[18] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[18]),
-        .Q(dsp_phase_W_4[18]),
+        .Q(dsp_phase_W_3[18]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[19] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[19]),
-        .Q(dsp_phase_W_4[19]),
+        .Q(dsp_phase_W_3[19]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[1]),
-        .Q(dsp_phase_W_4[1]),
+        .Q(dsp_phase_W_3[1]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[2]),
-        .Q(dsp_phase_W_4[2]),
+        .Q(dsp_phase_W_3[2]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[3]),
-        .Q(dsp_phase_W_4[3]),
+        .Q(dsp_phase_W_3[3]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[4]),
-        .Q(dsp_phase_W_4[4]),
+        .Q(dsp_phase_W_3[4]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[5]),
-        .Q(dsp_phase_W_4[5]),
+        .Q(dsp_phase_W_3[5]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[6]),
-        .Q(dsp_phase_W_4[6]),
+        .Q(dsp_phase_W_3[6]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[7]),
-        .Q(dsp_phase_W_4[7]),
+        .Q(dsp_phase_W_3[7]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[8]),
-        .Q(dsp_phase_W_4[8]),
+        .Q(dsp_phase_W_3[8]),
         .R(dsp_phase_W));
   FDRE \det_signal.dsp_phase_W_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(diff_phase_W[9]),
-        .Q(dsp_phase_W_4[9]),
+        .Q(dsp_phase_W_3[9]),
         .R(dsp_phase_W));
   LUT2 #(
     .INIT(4'h6)) 
@@ -10873,7 +11802,7 @@ module ps_ana_high_0_0_det_signal
     .INIT(2'h1)) 
     \det_signal.err_count[0]_i_1 
        (.I0(err_count[0]),
-        .O(p_1_in[0]));
+        .O(\det_signal.err_count[0]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'h8000FFFF)) 
     \det_signal.err_count[1]_i_1 
@@ -10896,17 +11825,17 @@ module ps_ana_high_0_0_det_signal
     \det_signal.err_count[1]_i_3 
        (.I0(err_count[0]),
         .I1(err_count[1]),
-        .O(p_1_in[1]));
+        .O(\det_signal.err_count[1]_i_3_n_0 ));
   FDRE \det_signal.err_count_reg[0] 
        (.C(clk),
         .CE(\det_signal.err_count[1]_i_2_n_0 ),
-        .D(p_1_in[0]),
+        .D(\det_signal.err_count[0]_i_1_n_0 ),
         .Q(err_count[0]),
         .R(\det_signal.err_count[1]_i_1_n_0 ));
   FDRE \det_signal.err_count_reg[1] 
        (.C(clk),
         .CE(\det_signal.err_count[1]_i_2_n_0 ),
-        .D(p_1_in[1]),
+        .D(\det_signal.err_count[1]_i_3_n_0 ),
         .Q(err_count[1]),
         .R(\det_signal.err_count[1]_i_1_n_0 ));
   LUT4 #(
@@ -14138,196 +15067,196 @@ module ps_ana_high_0_0_det_signal
         .I3(valid_env),
         .I4(accept_new_burst),
         .I5(has_signal),
-        .O(start_sample_5));
+        .O(start_sample_4));
   FDRE \det_signal.start_sample_reg[0] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [0]),
         .Q(start_sample[0]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[10] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [10]),
         .Q(start_sample[10]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[11] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [11]),
         .Q(start_sample[11]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[12] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [12]),
         .Q(start_sample[12]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[13] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [13]),
         .Q(start_sample[13]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[14] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [14]),
         .Q(start_sample[14]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[15] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [15]),
         .Q(start_sample[15]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[16] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [16]),
         .Q(start_sample[16]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[17] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [17]),
         .Q(start_sample[17]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[18] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [18]),
         .Q(start_sample[18]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[19] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [19]),
         .Q(start_sample[19]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[1] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [1]),
         .Q(start_sample[1]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[20] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [20]),
         .Q(start_sample[20]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[21] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [21]),
         .Q(start_sample[21]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[22] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [22]),
         .Q(start_sample[22]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[23] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [23]),
         .Q(start_sample[23]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[24] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [24]),
         .Q(start_sample[24]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[25] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [25]),
         .Q(start_sample[25]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[26] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [26]),
         .Q(start_sample[26]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[27] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [27]),
         .Q(start_sample[27]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[28] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [28]),
         .Q(start_sample[28]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[29] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [29]),
         .Q(start_sample[29]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[2] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [2]),
         .Q(start_sample[2]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[30] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [30]),
         .Q(start_sample[30]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[31] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [31]),
         .Q(start_sample[31]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[3] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [3]),
         .Q(start_sample[3]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[4] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [4]),
         .Q(start_sample[4]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[5] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [5]),
         .Q(start_sample[5]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[6] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [6]),
         .Q(start_sample[6]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[7] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [7]),
         .Q(start_sample[7]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[8] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [8]),
         .Q(start_sample[8]),
         .R(1'b0));
   FDRE \det_signal.start_sample_reg[9] 
        (.C(clk),
-        .CE(start_sample_5),
+        .CE(start_sample_4),
         .D(\det_signal.sample_counter_reg [9]),
         .Q(start_sample[9]),
         .R(1'b0));
@@ -14900,7 +15829,7 @@ module ps_ana_high_0_0_det_signal
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "dsp_macro_v1_0_8,Vivado 2025.1" *) 
   ps_ana_high_0_0_dsp_incr_env_HD6 dsp_incr_env_W
-       (.A({1'b0,dsp_phase_W_4}),
+       (.A({1'b0,dsp_phase_W_3}),
         .B({1'b0,env_W}),
         .CLK(clk),
         .P(dsp_sum_W),
@@ -15371,7 +16300,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[39]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[15]));
+        .O(p_1_in[15]));
   LUT6 #(
     .INIT(64'hF0F05A33F0F05ACC)) 
     i__carry__0_i_10
@@ -15449,7 +16378,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[38]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[14]));
+        .O(p_1_in[14]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__0_i_3
@@ -15457,7 +16386,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[37]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[13]));
+        .O(p_1_in[13]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__0_i_4
@@ -15465,7 +16394,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[36]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[12]));
+        .O(p_1_in[12]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__0_i_5
@@ -15473,7 +16402,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[35]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[11]));
+        .O(p_1_in[11]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__0_i_6
@@ -15481,7 +16410,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[34]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[10]));
+        .O(p_1_in[10]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__0_i_7
@@ -15489,7 +16418,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[33]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[9]));
+        .O(p_1_in[9]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__0_i_8
@@ -15497,7 +16426,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[32]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[8]));
+        .O(p_1_in[8]));
   LUT6 #(
     .INIT(64'hF0F05A33F0F05ACC)) 
     i__carry__0_i_9
@@ -15515,7 +16444,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[46]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[22]));
+        .O(p_1_in[22]));
   LUT6 #(
     .INIT(64'hF0F05A33F0F05ACC)) 
     i__carry__1_i_10
@@ -15583,7 +16512,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[45]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[21]));
+        .O(p_1_in[21]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__1_i_3
@@ -15591,7 +16520,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[44]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[20]));
+        .O(p_1_in[20]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__1_i_4
@@ -15599,7 +16528,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[43]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[19]));
+        .O(p_1_in[19]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__1_i_5
@@ -15607,7 +16536,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[42]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[18]));
+        .O(p_1_in[18]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__1_i_6
@@ -15615,7 +16544,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[41]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[17]));
+        .O(p_1_in[17]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry__1_i_7
@@ -15623,7 +16552,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[40]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[16]));
+        .O(p_1_in[16]));
   LUT6 #(
     .INIT(64'hF0F05A33F0F05ACC)) 
     i__carry__1_i_8
@@ -15651,7 +16580,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[31]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[7]));
+        .O(p_1_in[7]));
   LUT6 #(
     .INIT(64'hF0F05A33F0F05ACC)) 
     i__carry_i_10
@@ -15705,7 +16634,7 @@ module ps_ana_high_0_0_det_signal
   LUT5 #(
     .INIT(32'h6665666A)) 
     i__carry_i_15
-       (.I0(p_1_in_3[1]),
+       (.I0(p_1_in[1]),
         .I1(div_freq_sum[25]),
         .I2(div_delay[0]),
         .I3(div_delay[1]),
@@ -15714,7 +16643,7 @@ module ps_ana_high_0_0_det_signal
   LUT5 #(
     .INIT(32'h6665666A)) 
     i__carry_i_16
-       (.I0(p_1_in_3[0]),
+       (.I0(p_1_in[0]),
         .I1(div_freq_sum[24]),
         .I2(div_delay[0]),
         .I3(div_delay[1]),
@@ -15727,7 +16656,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[30]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[6]));
+        .O(p_1_in[6]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry_i_3
@@ -15735,7 +16664,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[29]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[5]));
+        .O(p_1_in[5]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry_i_4
@@ -15743,7 +16672,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[28]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[4]));
+        .O(p_1_in[4]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry_i_5
@@ -15751,7 +16680,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[27]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[3]));
+        .O(p_1_in[3]));
   LUT4 #(
     .INIT(16'h00E2)) 
     i__carry_i_6
@@ -15759,7 +16688,7 @@ module ps_ana_high_0_0_det_signal
         .I1(div_delay[0]),
         .I2(dsp_sum_W[26]),
         .I3(div_delay[1]),
-        .O(p_1_in_3[2]));
+        .O(p_1_in[2]));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
     i__carry_i_7
@@ -15768,7 +16697,7 @@ module ps_ana_high_0_0_det_signal
         .I2(dsp_sum_W[25]),
         .I3(div_delay[0]),
         .I4(dsp_sum_E[25]),
-        .O(p_1_in_3[1]));
+        .O(p_1_in[1]));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
     i__carry_i_8
@@ -15777,7 +16706,7 @@ module ps_ana_high_0_0_det_signal
         .I2(dsp_sum_W[24]),
         .I3(div_delay[0]),
         .I4(dsp_sum_E[24]),
-        .O(p_1_in_3[0]));
+        .O(p_1_in[0]));
   LUT6 #(
     .INIT(64'hF0F05A33F0F05ACC)) 
     i__carry_i_9

@@ -37,8 +37,16 @@
     "boundary": {
       "ports": {
         "fifo_clk": [ { "direction": "in" } ],
-        "fifo_wr": [ { "direction": "in" } ],
-        "fifo_doa_data": [ { "direction": "in", "size_left": "143", "size_right": "0" } ],
+        "ana_wr": [ { "direction": "in" } ],
+        "env_N": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
+        "env_E": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
+        "env_W": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
+        "phase_N": [ { "direction": "in", "size_left": "19", "size_right": "0" } ],
+        "phase_E": [ { "direction": "in", "size_left": "19", "size_right": "0" } ],
+        "phase_W": [ { "direction": "in", "size_left": "19", "size_right": "0" } ],
+        "err_NE": [ { "direction": "in", "size_left": "11", "size_right": "0" } ],
+        "err_EW": [ { "direction": "in", "size_left": "11", "size_right": "0" } ],
+        "err_WN": [ { "direction": "in", "size_left": "11", "size_right": "0" } ],
         "config_clk": [ { "direction": "in" } ],
         "config_wr": [ { "direction": "in" } ],
         "config_adr": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],

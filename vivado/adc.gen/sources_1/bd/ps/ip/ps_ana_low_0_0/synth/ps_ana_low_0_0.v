@@ -57,8 +57,16 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_ana_low_0_0 (
   fifo_clk,
-  fifo_wr,
-  fifo_doa_data,
+  ana_wr,
+  env_N,
+  env_E,
+  env_W,
+  phase_N,
+  phase_E,
+  phase_W,
+  err_NE,
+  err_EW,
+  err_WN,
   config_clk,
   config_wr,
   config_adr,
@@ -71,8 +79,16 @@ module ps_ana_low_0_0 (
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
-input wire fifo_wr;
-input wire [143 : 0] fifo_doa_data;
+input wire ana_wr;
+input wire [15 : 0] env_N;
+input wire [15 : 0] env_E;
+input wire [15 : 0] env_W;
+input wire [19 : 0] phase_N;
+input wire [19 : 0] phase_E;
+input wire [19 : 0] phase_W;
+input wire [11 : 0] err_NE;
+input wire [11 : 0] err_EW;
+input wire [11 : 0] err_WN;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -91,8 +107,16 @@ input wire reset;
 
   ana_low inst (
     .fifo_clk(fifo_clk),
-    .fifo_wr(fifo_wr),
-    .fifo_doa_data(fifo_doa_data),
+    .ana_wr(ana_wr),
+    .env_N(env_N),
+    .env_E(env_E),
+    .env_W(env_W),
+    .phase_N(phase_N),
+    .phase_E(phase_E),
+    .phase_W(phase_W),
+    .err_NE(err_NE),
+    .err_EW(err_EW),
+    .err_WN(err_WN),
     .config_clk(config_clk),
     .config_wr(config_wr),
     .config_adr(config_adr),

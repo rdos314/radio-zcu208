@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Jan  7 22:55:12 2026
+-- Date        : Thu Jan  8 22:18:36 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0_stub.vhdl
@@ -17,11 +17,21 @@ entity ps_freq_low_46_0_0 is
   Port ( 
     fifo_clk : in STD_LOGIC;
     freq_wr : in STD_LOGIC;
-    freq_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    freq_in_N : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    freq_in_E : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    freq_in_W : in STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    doa_wr : out STD_LOGIC;
-    doa_data : out STD_LOGIC_VECTOR ( 143 downto 0 )
+    ana_wr : out STD_LOGIC;
+    env_N : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_E : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_W : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_N : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_E : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_W : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    err_NE : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    err_EW : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    err_WN : out STD_LOGIC_VECTOR ( 11 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -38,7 +48,7 @@ architecture stub of ps_freq_low_46_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "fifo_clk,freq_wr,freq_data[47:0],clk,reset,doa_wr,doa_data[143:0]";
+  attribute black_box_pad_pin of stub : architecture is "fifo_clk,freq_wr,freq_in_N[15:0],freq_in_E[15:0],freq_in_W[15:0],clk,reset,ana_wr,env_N[15:0],env_E[15:0],env_W[15:0],phase_N[19:0],phase_E[19:0],phase_W[19:0],err_NE[11:0],err_EW[11:0],err_WN[11:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

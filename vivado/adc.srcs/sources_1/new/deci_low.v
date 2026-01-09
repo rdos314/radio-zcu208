@@ -42,9 +42,14 @@ module deci_low(
 	input wire [31:0] sim_data,
 
     output reg raw_wr,
-    output reg [383:0] raw_data,
+    output reg [127:0] raw_N,
+    output reg [127:0] raw_E,
+    output reg [127:0] raw_W,
+    
     output reg freq_wr,
-    output reg [47:0] freq_data
+    output reg [15:0] freq_N,
+    output reg [15:0] freq_E,
+    output reg [15:0] freq_W
     );
 
   reg mux_active;
@@ -78,9 +83,9 @@ module deci_low(
   wire	[31:0] fir_freq_E;
   wire	[31:0] fir_freq_W;
 
-  wire [15:0] freq_N = fir_freq_N[30:15];
-  wire [15:0] freq_E = fir_freq_E[30:15];
-  wire [15:0] freq_W = fir_freq_W[30:15];
+  wire [15:0] ff_N = fir_freq_N[30:15];
+  wire [15:0] ff_E = fir_freq_E[30:15];
+  wire [15:0] ff_W = fir_freq_W[30:15];
 
   wire [15:0] N0 = data_N[15:0];
   wire [15:0] N1 = data_N[31:16];
@@ -384,30 +389,30 @@ generate
 	  if (mux_active)
 	  begin
         raw_wr <= 1;
-        raw_data[15:0] <= mux_N0;
-        raw_data[31:16] <= mux_N1;
-        raw_data[47:32] <= mux_N2;
-        raw_data[63:48] <= mux_N3;
-        raw_data[79:64] <= mux_N4;
-        raw_data[95:80] <= mux_N5;
-        raw_data[111:96] <= mux_N6;
-        raw_data[127:112] <= mux_N7;
-        raw_data[143:128] <= mux_E0;
-        raw_data[159:144] <= mux_E1;
-        raw_data[175:160] <= mux_E2;
-        raw_data[191:176] <= mux_E3;
-        raw_data[207:192] <= mux_E4;
-        raw_data[223:208] <= mux_E5;
-        raw_data[239:224] <= mux_E6;
-        raw_data[255:240] <= mux_E7;
-        raw_data[271:256] <= mux_W0;
-        raw_data[287:272] <= mux_W1;
-        raw_data[303:288] <= mux_W2;
-        raw_data[319:304] <= mux_W3;
-        raw_data[335:320] <= mux_W4;
-        raw_data[351:336] <= mux_W5;
-        raw_data[367:352] <= mux_W6;
-        raw_data[383:368] <= mux_W7;
+        raw_N[15:0] <= mux_N0;
+        raw_N[31:16] <= mux_N1;
+        raw_N[47:32] <= mux_N2;
+        raw_N[63:48] <= mux_N3;
+        raw_N[79:64] <= mux_N4;
+        raw_N[95:80] <= mux_N5;
+        raw_N[111:96] <= mux_N6;
+        raw_N[127:112] <= mux_N7;
+        raw_E[15:0] <= mux_E0;
+        raw_E[31:16] <= mux_E1;
+        raw_E[47:32] <= mux_E2;
+        raw_E[63:48] <= mux_E3;
+        raw_E[79:64] <= mux_E4;
+        raw_E[95:80] <= mux_E5;
+        raw_E[111:96] <= mux_E6;
+        raw_E[127:112] <= mux_E7;
+        raw_W[15:0] <= mux_W0;
+        raw_W[31:16] <= mux_W1;
+        raw_W[47:32] <= mux_W2;
+        raw_W[63:48] <= mux_W3;
+        raw_W[79:64] <= mux_W4;
+        raw_W[95:80] <= mux_W5;
+        raw_W[111:96] <= mux_W6;
+        raw_W[127:112] <= mux_W7;
       end
       else
         raw_wr <= 0;
@@ -420,9 +425,9 @@ generate
 	    if (freq_wr_delay == 12)
 	    begin
           freq_wr <= 1;
-          freq_data[15:0] <= freq_N;
-          freq_data[31:16] <= freq_E;
-          freq_data[47:32] <= freq_W;
+          freq_N <= ff_N;
+          freq_E <= ff_E;
+          freq_W <= ff_W;
 	    end
         else
           freq_wr_delay <= freq_wr_delay + 1;
@@ -432,9 +437,9 @@ generate
         if (freq_wr_delay)
 		begin
           freq_wr <= 1;
-          freq_data[15:0] <= freq_N;
-          freq_data[31:16] <= freq_E;
-          freq_data[47:32] <= freq_W;
+          freq_N <= ff_N;
+          freq_E <= ff_E;
+          freq_W <= ff_W;
           freq_wr_delay <= freq_wr_delay - 1;
 		end
         else
