@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Jan  9 22:19:38 2026
+//Date        : Fri Jan  9 23:54:15 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -328,7 +328,7 @@ module ps
         .sim_low_wr(adc_control_0_sim_low_wr),
         .sim_start(adc_control_0_sim_start),
         .wr_en(adc_control_0_wr_en));
-  ps_ana_high_0_0 ana_high
+  ps_ana_0_0 ana_high
        (.ana_wr(freq_high_189_0_ana_wr),
         .clk(mts_0_ana1_clk),
         .config_adr(adc_control_0_config_adr),
@@ -346,7 +346,7 @@ module ps
         .phase_N(freq_high_189_0_phase_N),
         .phase_W(freq_high_189_0_phase_W),
         .reset(mts_0_ana1_reset));
-  ps_ana_low_0_0 ana_low
+  ps_ana_0_1 ana_low
        (.ana_wr(freq_low_46_0_ana_wr),
         .clk(mts_0_ana0_clk),
         .config_adr(adc_control_0_config_adr),

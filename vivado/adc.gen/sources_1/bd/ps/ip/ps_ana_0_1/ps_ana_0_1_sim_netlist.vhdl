@@ -2,11 +2,11 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Jan  9 22:20:40 2026
+-- Date        : Fri Jan  9 23:55:18 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_low_0_0/ps_ana_low_0_0_sim_netlist.vhdl
--- Design      : ps_ana_low_0_0
+--               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_1/ps_ana_0_1_sim_netlist.vhdl
+-- Design      : ps_ana_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xczu48dr-fsvg1517-2-e
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ps_ana_low_0_0_det_signal is
+entity ps_ana_0_1_det_signal is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
@@ -33,11 +33,11 @@ entity ps_ana_low_0_0_det_signal is
     signal_done : out STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of ps_ana_low_0_0_det_signal : entity is "det_signal";
-end ps_ana_low_0_0_det_signal;
+  attribute ORIG_REF_NAME of ps_ana_0_1_det_signal : entity is "det_signal";
+end ps_ana_0_1_det_signal;
 
-architecture STRUCTURE of ps_ana_low_0_0_det_signal is
-  component ps_ana_low_0_0_div_weighted is
+architecture STRUCTURE of ps_ana_0_1_det_signal is
+  component ps_ana_0_1_div_weighted is
   port (
     aclk : in STD_LOGIC;
     s_axis_divisor_tvalid : in STD_LOGIC;
@@ -47,8 +47,8 @@ architecture STRUCTURE of ps_ana_low_0_0_det_signal is
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 79 downto 0 )
   );
-  end component ps_ana_low_0_0_div_weighted;
-  component ps_ana_low_0_0_div_weighted_HD13 is
+  end component ps_ana_0_1_div_weighted;
+  component ps_ana_0_1_div_weighted_HD13 is
   port (
     aclk : in STD_LOGIC;
     m_axis_dout_tvalid : out STD_LOGIC;
@@ -58,8 +58,8 @@ architecture STRUCTURE of ps_ana_low_0_0_det_signal is
     s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
     s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component ps_ana_low_0_0_div_weighted_HD13;
-  component ps_ana_low_0_0_dsp_incr_env is
+  end component ps_ana_0_1_div_weighted_HD13;
+  component ps_ana_0_1_dsp_incr_env is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 20 downto 0 );
@@ -67,8 +67,8 @@ architecture STRUCTURE of ps_ana_low_0_0_det_signal is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 );
     SCLRP : in STD_LOGIC
   );
-  end component ps_ana_low_0_0_dsp_incr_env;
-  component ps_ana_low_0_0_dsp_incr_env_HD14 is
+  end component ps_ana_0_1_dsp_incr_env;
+  component ps_ana_0_1_dsp_incr_env_HD14 is
   port (
     CLK : in STD_LOGIC;
     SCLRP : in STD_LOGIC;
@@ -76,8 +76,8 @@ architecture STRUCTURE of ps_ana_low_0_0_det_signal is
     B : in STD_LOGIC_VECTOR ( 16 downto 0 );
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
-  end component ps_ana_low_0_0_dsp_incr_env_HD14;
-  component ps_ana_low_0_0_dsp_phase_env is
+  end component ps_ana_0_1_dsp_incr_env_HD14;
+  component ps_ana_0_1_dsp_phase_env is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -85,8 +85,8 @@ architecture STRUCTURE of ps_ana_low_0_0_det_signal is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 );
     SCLRP : in STD_LOGIC
   );
-  end component ps_ana_low_0_0_dsp_phase_env;
-  component ps_ana_low_0_0_dsp_phase_env_HD15 is
+  end component ps_ana_0_1_dsp_phase_env;
+  component ps_ana_0_1_dsp_phase_env_HD15 is
   port (
     CLK : in STD_LOGIC;
     SCLRP : in STD_LOGIC;
@@ -94,7 +94,7 @@ architecture STRUCTURE of ps_ana_low_0_0_det_signal is
     B : in STD_LOGIC_VECTOR ( 17 downto 0 );
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
-  end component ps_ana_low_0_0_dsp_phase_env_HD15;
+  end component ps_ana_0_1_dsp_phase_env_HD15;
   signal accept_new_burst : STD_LOGIC;
   signal clear : STD_LOGIC;
   signal data2 : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -19492,7 +19492,7 @@ begin
       Q => valid_err,
       R => '0'
     );
-div_incr_i: component ps_ana_low_0_0_div_weighted
+div_incr_i: component ps_ana_0_1_div_weighted
      port map (
       aclk => clk,
       m_axis_dout_tdata(79 downto 52) => NLW_div_incr_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
@@ -19535,7 +19535,7 @@ div_incr_i: component ps_ana_low_0_0_div_weighted
       s_axis_divisor_tdata(0) => \det_signal.div_env_all_reg_n_0_[0]\,
       s_axis_divisor_tvalid => div_start
     );
-div_phase_EW_i: component ps_ana_low_0_0_div_weighted
+div_phase_EW_i: component ps_ana_0_1_div_weighted
      port map (
       aclk => clk,
       m_axis_dout_tdata(79 downto 52) => NLW_div_phase_EW_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
@@ -19548,7 +19548,7 @@ div_phase_EW_i: component ps_ana_low_0_0_div_weighted
       s_axis_divisor_tdata(24 downto 0) => div_env_sum_EW(24 downto 0),
       s_axis_divisor_tvalid => div_start
     );
-div_phase_NE_i: component ps_ana_low_0_0_div_weighted
+div_phase_NE_i: component ps_ana_0_1_div_weighted
      port map (
       aclk => clk,
       m_axis_dout_tdata(79 downto 52) => NLW_div_phase_NE_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
@@ -19608,7 +19608,7 @@ div_phase_NE_i: component ps_ana_low_0_0_div_weighted
       s_axis_divisor_tdata(24 downto 0) => div_env_sum_NE(24 downto 0),
       s_axis_divisor_tvalid => div_start
     );
-div_phase_WN_i: component ps_ana_low_0_0_div_weighted_HD13
+div_phase_WN_i: component ps_ana_0_1_div_weighted_HD13
      port map (
       aclk => clk,
       m_axis_dout_tdata(79 downto 52) => NLW_div_phase_WN_i_m_axis_dout_tdata_UNCONNECTED(79 downto 52),
@@ -19692,7 +19692,7 @@ div_phase_WN_i: component ps_ana_low_0_0_div_weighted_HD13
       s_axis_divisor_tdata(0) => \det_signal.div_env_sum_WN_reg_n_0_[0]\,
       s_axis_divisor_tvalid => div_start
     );
-dsp_incr_env_E: component ps_ana_low_0_0_dsp_incr_env
+dsp_incr_env_E: component ps_ana_0_1_dsp_incr_env
      port map (
       A(20) => '0',
       A(19 downto 0) => dsp_phase_E(19 downto 0),
@@ -19702,7 +19702,7 @@ dsp_incr_env_E: component ps_ana_low_0_0_dsp_incr_env
       P(47 downto 0) => dsp_sum_E(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
-dsp_incr_env_N: component ps_ana_low_0_0_dsp_incr_env
+dsp_incr_env_N: component ps_ana_0_1_dsp_incr_env
      port map (
       A(20) => '0',
       A(19 downto 0) => dsp_phase_N(19 downto 0),
@@ -19712,7 +19712,7 @@ dsp_incr_env_N: component ps_ana_low_0_0_dsp_incr_env
       P(47 downto 0) => dsp_sum_N(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
-dsp_incr_env_W: component ps_ana_low_0_0_dsp_incr_env_HD14
+dsp_incr_env_W: component ps_ana_0_1_dsp_incr_env_HD14
      port map (
       A(20) => '0',
       A(19 downto 0) => dsp_phase_W(19 downto 0),
@@ -19722,7 +19722,7 @@ dsp_incr_env_W: component ps_ana_low_0_0_dsp_incr_env_HD14
       P(47 downto 0) => dsp_sum_W(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
-dsp_phase_env_EW: component ps_ana_low_0_0_dsp_phase_env
+dsp_phase_env_EW: component ps_ana_0_1_dsp_phase_env
      port map (
       A(19 downto 0) => dsp_phase_EW(19 downto 0),
       B(17) => '0',
@@ -19731,7 +19731,7 @@ dsp_phase_env_EW: component ps_ana_low_0_0_dsp_phase_env
       P(47 downto 0) => dsp_sum_EW(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
-dsp_phase_env_NE: component ps_ana_low_0_0_dsp_phase_env
+dsp_phase_env_NE: component ps_ana_0_1_dsp_phase_env
      port map (
       A(19 downto 0) => dsp_phase_NE(19 downto 0),
       B(17) => '0',
@@ -19740,7 +19740,7 @@ dsp_phase_env_NE: component ps_ana_low_0_0_dsp_phase_env
       P(47 downto 0) => dsp_sum_NE(47 downto 0),
       SCLRP => \det_signal.acc_reset_reg_n_0\
     );
-dsp_phase_env_WN: component ps_ana_low_0_0_dsp_phase_env_HD15
+dsp_phase_env_WN: component ps_ana_0_1_dsp_phase_env_HD15
      port map (
       A(19 downto 0) => dsp_phase_WN(19 downto 0),
       B(17) => '0',
@@ -19754,7 +19754,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ps_ana_low_0_0_doa_angle is
+entity ps_ana_0_1_doa_angle is
   port (
     \doa_calc.counter_reg[0]\ : out STD_LOGIC;
     \doa_calc.counter_reg[3]\ : out STD_LOGIC;
@@ -19803,18 +19803,18 @@ entity ps_ana_low_0_0_doa_angle is
     \doa_angle.phase_WN_run_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of ps_ana_low_0_0_doa_angle : entity is "doa_angle";
-end ps_ana_low_0_0_doa_angle;
+  attribute ORIG_REF_NAME of ps_ana_0_1_doa_angle : entity is "doa_angle";
+end ps_ana_0_1_doa_angle;
 
-architecture STRUCTURE of ps_ana_low_0_0_doa_angle is
-  component ps_ana_low_0_0_mult_20x20_HD11 is
+architecture STRUCTURE of ps_ana_0_1_doa_angle is
+  component ps_ana_0_1_mult_20x20_HD11 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20_HD11;
+  end component ps_ana_0_1_mult_20x20_HD11;
   component doa_sincos_HD12 is
   port (
     aclk : in STD_LOGIC;
@@ -29987,7 +29987,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       I1 => reset,
       O => err_clr0
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20_HD11
+mul_c_i: component ps_ana_0_1_mult_20x20_HD11
      port map (
       A(19 downto 4) => cordic_out(15 downto 0),
       A(3 downto 0) => B"0000",
@@ -30016,7 +30016,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_angle__xdcDup__1\ is
+entity \ps_ana_0_1_doa_angle__xdcDup__1\ is
   port (
     \doa_calc.counter_reg[0]\ : out STD_LOGIC;
     \doa_calc.counter_reg[3]\ : out STD_LOGIC;
@@ -30065,19 +30065,19 @@ entity \ps_ana_low_0_0_doa_angle__xdcDup__1\ is
     \doa_angle.phase_WN_run_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_angle__xdcDup__1\ : entity is "doa_angle";
-end \ps_ana_low_0_0_doa_angle__xdcDup__1\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_angle__xdcDup__1\ : entity is "doa_angle";
+end \ps_ana_0_1_doa_angle__xdcDup__1\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_angle__xdcDup__1\ is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of \ps_ana_0_1_doa_angle__xdcDup__1\ is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
-  component ps_ana_low_0_0_doa_sincos is
+  end component ps_ana_0_1_mult_20x20;
+  component ps_ana_0_1_doa_sincos is
   port (
     aclk : in STD_LOGIC;
     s_axis_phase_tvalid : in STD_LOGIC;
@@ -30086,7 +30086,7 @@ architecture STRUCTURE of \ps_ana_low_0_0_doa_angle__xdcDup__1\ is
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component ps_ana_low_0_0_doa_sincos;
+  end component ps_ana_0_1_doa_sincos;
   signal \^q\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_cordic : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_done : STD_LOGIC;
@@ -40249,7 +40249,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       I1 => reset,
       O => err_clr0
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 4) => cordic_out(15 downto 0),
       A(3 downto 0) => B"0000",
@@ -40259,7 +40259,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 23) => delay_mul(38 downto 23),
       P(22 downto 0) => NLW_mul_c_i_P_UNCONNECTED(22 downto 0)
     );
-sincos_i: component ps_ana_low_0_0_doa_sincos
+sincos_i: component ps_ana_0_1_doa_sincos
      port map (
       aclk => clk,
       m_axis_dout_tdata(31 downto 0) => cordic_out(31 downto 0),
@@ -40278,7 +40278,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ps_ana_low_0_0_doa_pair is
+entity ps_ana_0_1_doa_pair is
   port (
     done_WN : out STD_LOGIC;
     shadow_WN : out STD_LOGIC;
@@ -40303,18 +40303,18 @@ entity ps_ana_low_0_0_doa_pair is
     \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of ps_ana_low_0_0_doa_pair : entity is "doa_pair";
-end ps_ana_low_0_0_doa_pair;
+  attribute ORIG_REF_NAME of ps_ana_0_1_doa_pair : entity is "doa_pair";
+end ps_ana_0_1_doa_pair;
 
-architecture STRUCTURE of ps_ana_low_0_0_doa_pair is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of ps_ana_0_1_doa_pair is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -44167,7 +44167,7 @@ begin
       Q => \doa_pair.x_reg_n_0_[9]\,
       S => \doa_pair.x[18]_i_1__1_n_0\
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -44181,7 +44181,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 19) => cp(39 downto 19),
       P(18 downto 0) => NLW_mul_c_i_P_UNCONNECTED(18 downto 0)
     );
-mul_doa_i: component ps_ana_low_0_0_mult_20x20
+mul_doa_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
       B(19 downto 0) => Q(19 downto 0),
@@ -44189,7 +44189,7 @@ mul_doa_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
     );
-mul_x2_i: component ps_ana_low_0_0_mult_20x20
+mul_x2_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_pair.x_reg_n_0_[19]\,
       A(18) => \doa_pair.x_reg_n_0_[18]\,
@@ -44236,7 +44236,7 @@ mul_x2_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => x2(38 downto 19),
       P(18 downto 0) => NLW_mul_x2_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i: component ps_ana_low_0_0_mult_20x20
+mul_x_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => x2(38 downto 19),
       B(19 downto 0) => p(19 downto 0),
@@ -44450,7 +44450,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_pair__xdcDup__1\ is
+entity \ps_ana_0_1_doa_pair__xdcDup__1\ is
   port (
     shadow_NE : out STD_LOGIC;
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -44471,18 +44471,18 @@ entity \ps_ana_low_0_0_doa_pair__xdcDup__1\ is
     \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_pair__xdcDup__1\ : entity is "doa_pair";
-end \ps_ana_low_0_0_doa_pair__xdcDup__1\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_pair__xdcDup__1\ : entity is "doa_pair";
+end \ps_ana_0_1_doa_pair__xdcDup__1\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_pair__xdcDup__1\ is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__1\ is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -47913,7 +47913,7 @@ begin
       Q => \doa_pair.x_reg_n_0_[9]\,
       S => \doa_pair.x[18]_i_1_n_0\
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -47927,7 +47927,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 19) => cp(39 downto 19),
       P(18 downto 0) => NLW_mul_c_i_P_UNCONNECTED(18 downto 0)
     );
-mul_doa_i: component ps_ana_low_0_0_mult_20x20
+mul_doa_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
       B(19 downto 0) => Q(19 downto 0),
@@ -47935,7 +47935,7 @@ mul_doa_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
     );
-mul_x2_i: component ps_ana_low_0_0_mult_20x20
+mul_x2_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_pair.x_reg_n_0_[19]\,
       A(18) => \doa_pair.x_reg_n_0_[18]\,
@@ -47982,7 +47982,7 @@ mul_x2_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => x2(38 downto 19),
       P(18 downto 0) => NLW_mul_x2_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i: component ps_ana_low_0_0_mult_20x20
+mul_x_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => x2(38 downto 19),
       B(19 downto 0) => p(19 downto 0),
@@ -48196,7 +48196,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_pair__xdcDup__2\ is
+entity \ps_ana_0_1_doa_pair__xdcDup__2\ is
   port (
     done_EW : out STD_LOGIC;
     shadow_EW : out STD_LOGIC;
@@ -48215,18 +48215,18 @@ entity \ps_ana_low_0_0_doa_pair__xdcDup__2\ is
     \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_pair__xdcDup__2\ : entity is "doa_pair";
-end \ps_ana_low_0_0_doa_pair__xdcDup__2\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_pair__xdcDup__2\ : entity is "doa_pair";
+end \ps_ana_0_1_doa_pair__xdcDup__2\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_pair__xdcDup__2\ is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__2\ is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -51646,7 +51646,7 @@ begin
       Q => \doa_pair.x_reg_n_0_[9]\,
       S => \doa_pair.x[18]_i_1__0_n_0\
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -51660,7 +51660,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 19) => cp(39 downto 19),
       P(18 downto 0) => NLW_mul_c_i_P_UNCONNECTED(18 downto 0)
     );
-mul_doa_i: component ps_ana_low_0_0_mult_20x20
+mul_doa_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
       B(19 downto 0) => Q(19 downto 0),
@@ -51668,7 +51668,7 @@ mul_doa_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
     );
-mul_x2_i: component ps_ana_low_0_0_mult_20x20
+mul_x2_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_pair.x_reg_n_0_[19]\,
       A(18) => \doa_pair.x_reg_n_0_[18]\,
@@ -51715,7 +51715,7 @@ mul_x2_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => x2(38 downto 19),
       P(18 downto 0) => NLW_mul_x2_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i: component ps_ana_low_0_0_mult_20x20
+mul_x_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => x2(38 downto 19),
       B(19 downto 0) => p(19 downto 0),
@@ -51929,7 +51929,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_pair__xdcDup__3\ is
+entity \ps_ana_0_1_doa_pair__xdcDup__3\ is
   port (
     done_WN : out STD_LOGIC;
     shadow_WN : out STD_LOGIC;
@@ -51954,18 +51954,18 @@ entity \ps_ana_low_0_0_doa_pair__xdcDup__3\ is
     \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_pair__xdcDup__3\ : entity is "doa_pair";
-end \ps_ana_low_0_0_doa_pair__xdcDup__3\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_pair__xdcDup__3\ : entity is "doa_pair";
+end \ps_ana_0_1_doa_pair__xdcDup__3\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_pair__xdcDup__3\ is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__3\ is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -55818,7 +55818,7 @@ begin
       Q => \doa_pair.x_reg_n_0_[9]\,
       S => \doa_pair.x[18]_i_1__1_n_0\
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -55832,7 +55832,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 19) => cp(39 downto 19),
       P(18 downto 0) => NLW_mul_c_i_P_UNCONNECTED(18 downto 0)
     );
-mul_doa_i: component ps_ana_low_0_0_mult_20x20
+mul_doa_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
       B(19 downto 0) => Q(19 downto 0),
@@ -55840,7 +55840,7 @@ mul_doa_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
     );
-mul_x2_i: component ps_ana_low_0_0_mult_20x20
+mul_x2_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_pair.x_reg_n_0_[19]\,
       A(18) => \doa_pair.x_reg_n_0_[18]\,
@@ -55887,7 +55887,7 @@ mul_x2_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => x2(38 downto 19),
       P(18 downto 0) => NLW_mul_x2_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i: component ps_ana_low_0_0_mult_20x20
+mul_x_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => x2(38 downto 19),
       B(19 downto 0) => p(19 downto 0),
@@ -56101,7 +56101,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_pair__xdcDup__4\ is
+entity \ps_ana_0_1_doa_pair__xdcDup__4\ is
   port (
     shadow_NE : out STD_LOGIC;
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -56122,18 +56122,18 @@ entity \ps_ana_low_0_0_doa_pair__xdcDup__4\ is
     \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_pair__xdcDup__4\ : entity is "doa_pair";
-end \ps_ana_low_0_0_doa_pair__xdcDup__4\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_pair__xdcDup__4\ : entity is "doa_pair";
+end \ps_ana_0_1_doa_pair__xdcDup__4\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_pair__xdcDup__4\ is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__4\ is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -59564,7 +59564,7 @@ begin
       Q => \doa_pair.x_reg_n_0_[9]\,
       S => \doa_pair.x[18]_i_1_n_0\
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -59578,7 +59578,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 19) => cp(39 downto 19),
       P(18 downto 0) => NLW_mul_c_i_P_UNCONNECTED(18 downto 0)
     );
-mul_doa_i: component ps_ana_low_0_0_mult_20x20
+mul_doa_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
       B(19 downto 0) => Q(19 downto 0),
@@ -59586,7 +59586,7 @@ mul_doa_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
     );
-mul_x2_i: component ps_ana_low_0_0_mult_20x20
+mul_x2_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_pair.x_reg_n_0_[19]\,
       A(18) => \doa_pair.x_reg_n_0_[18]\,
@@ -59633,7 +59633,7 @@ mul_x2_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => x2(38 downto 19),
       P(18 downto 0) => NLW_mul_x2_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i: component ps_ana_low_0_0_mult_20x20
+mul_x_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => x2(38 downto 19),
       B(19 downto 0) => p(19 downto 0),
@@ -59847,7 +59847,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_pair__xdcDup__5\ is
+entity \ps_ana_0_1_doa_pair__xdcDup__5\ is
   port (
     done_EW : out STD_LOGIC;
     shadow_EW : out STD_LOGIC;
@@ -59866,18 +59866,18 @@ entity \ps_ana_low_0_0_doa_pair__xdcDup__5\ is
     \doa_pair.shadow_diff_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_pair__xdcDup__5\ : entity is "doa_pair";
-end \ps_ana_low_0_0_doa_pair__xdcDup__5\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_pair__xdcDup__5\ : entity is "doa_pair";
+end \ps_ana_0_1_doa_pair__xdcDup__5\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_pair__xdcDup__5\ is
-  component ps_ana_low_0_0_mult_20x20 is
+architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__5\ is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal add : STD_LOGIC;
   signal calc_diff : STD_LOGIC;
   signal check_raw : STD_LOGIC;
@@ -63297,7 +63297,7 @@ begin
       Q => \doa_pair.x_reg_n_0_[9]\,
       S => \doa_pair.x[18]_i_1__0_n_0\
     );
-mul_c_i: component ps_ana_low_0_0_mult_20x20
+mul_c_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => '0',
       A(18) => coeff(18),
@@ -63311,7 +63311,7 @@ mul_c_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 19) => cp(39 downto 19),
       P(18 downto 0) => NLW_mul_c_i_P_UNCONNECTED(18 downto 0)
     );
-mul_doa_i: component ps_ana_low_0_0_mult_20x20
+mul_doa_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => m_axis_dout_tdata(19 downto 0),
       B(19 downto 0) => Q(19 downto 0),
@@ -63319,7 +63319,7 @@ mul_doa_i: component ps_ana_low_0_0_mult_20x20
       P(39 downto 16) => prod(39 downto 16),
       P(15 downto 0) => NLW_mul_doa_i_P_UNCONNECTED(15 downto 0)
     );
-mul_x2_i: component ps_ana_low_0_0_mult_20x20
+mul_x2_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_pair.x_reg_n_0_[19]\,
       A(18) => \doa_pair.x_reg_n_0_[18]\,
@@ -63366,7 +63366,7 @@ mul_x2_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => x2(38 downto 19),
       P(18 downto 0) => NLW_mul_x2_i_P_UNCONNECTED(18 downto 0)
     );
-mul_x_i: component ps_ana_low_0_0_mult_20x20
+mul_x_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => x2(38 downto 19),
       B(19 downto 0) => p(19 downto 0),
@@ -63580,7 +63580,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ps_ana_low_0_0_doa_calc is
+entity ps_ana_0_1_doa_calc is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
@@ -63607,10 +63607,10 @@ entity ps_ana_low_0_0_doa_calc is
     sample_W : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of ps_ana_low_0_0_doa_calc : entity is "doa_calc";
-end ps_ana_low_0_0_doa_calc;
+  attribute ORIG_REF_NAME of ps_ana_0_1_doa_calc : entity is "doa_calc";
+end ps_ana_0_1_doa_calc;
 
-architecture STRUCTURE of ps_ana_low_0_0_doa_calc is
+architecture STRUCTURE of ps_ana_0_1_doa_calc is
   component div_k_HD8 is
   port (
     aclk : in STD_LOGIC;
@@ -63640,14 +63640,14 @@ architecture STRUCTURE of ps_ana_low_0_0_doa_calc is
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component sqrt_err_HD10;
-  component ps_ana_low_0_0_mult_20x20 is
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal \<const0>\ : STD_LOGIC;
   signal angle_EW : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_NE : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -64015,7 +64015,7 @@ div_k_i: component div_k_HD8
       s_axis_divisor_tdata(19 downto 0) => freq_in(19 downto 0),
       s_axis_divisor_tvalid => start
     );
-doa_EW_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__5\
+doa_EW_i: entity work.\ps_ana_0_1_doa_pair__xdcDup__5\
      port map (
       Q(19 downto 0) => phase_EW_div(19 downto 0),
       clk => clk,
@@ -64052,7 +64052,7 @@ doa_EW_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__5\
       shadow_WN => shadow_WN,
       start_div => start_div
     );
-doa_NE_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__4\
+doa_NE_i: entity work.\ps_ana_0_1_doa_pair__xdcDup__4\
      port map (
       E(0) => start_pair0,
       Q(19 downto 0) => phase_NE_div(19 downto 0),
@@ -64091,7 +64091,7 @@ doa_NE_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__4\
       start_div => start_div,
       start_pair => start_pair
     );
-doa_WN_i: entity work.ps_ana_low_0_0_doa_pair
+doa_WN_i: entity work.ps_ana_0_1_doa_pair
      port map (
       D(14 downto 0) => first_angle(14 downto 0),
       Q(19 downto 0) => phase_WN_div(19 downto 0),
@@ -64135,7 +64135,7 @@ doa_WN_i: entity work.ps_ana_low_0_0_doa_pair
       start_div => start_div,
       start_pair => start_pair
     );
-doa_angle_i: entity work.ps_ana_low_0_0_doa_angle
+doa_angle_i: entity work.ps_ana_0_1_doa_angle
      port map (
       D(0) => doa_WN_i_n_51,
       E(0) => sign,
@@ -70658,7 +70658,7 @@ err_sqrt_i: component sqrt_err_HD10
       s_axis_cartesian_tdata(31 downto 0) => err_sum(31 downto 0),
       s_axis_cartesian_tvalid => err_sqrt_start
     );
-mul_delay_EW_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_EW_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => mul_freq(38 downto 19),
       B(19 downto 4) => delay_EW(15 downto 0),
@@ -70668,7 +70668,7 @@ mul_delay_EW_i: component ps_ana_low_0_0_mult_20x20
       P(34 downto 15) => mul_EW(34 downto 15),
       P(14 downto 0) => NLW_mul_delay_EW_i_P_UNCONNECTED(14 downto 0)
     );
-mul_delay_E_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_E_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
@@ -70697,7 +70697,7 @@ mul_delay_E_i: component ps_ana_low_0_0_mult_20x20
       P(35 downto 29) => mul_E(35 downto 29),
       P(28 downto 0) => NLW_mul_delay_E_i_P_UNCONNECTED(28 downto 0)
     );
-mul_delay_NE_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_NE_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => mul_freq(38 downto 19),
       B(19 downto 4) => delay_NE(15 downto 0),
@@ -70707,7 +70707,7 @@ mul_delay_NE_i: component ps_ana_low_0_0_mult_20x20
       P(34 downto 15) => mul_NE(34 downto 15),
       P(14 downto 0) => NLW_mul_delay_NE_i_P_UNCONNECTED(14 downto 0)
     );
-mul_delay_N_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_N_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
@@ -70736,7 +70736,7 @@ mul_delay_N_i: component ps_ana_low_0_0_mult_20x20
       P(35 downto 29) => mul_N(35 downto 29),
       P(28 downto 0) => NLW_mul_delay_N_i_P_UNCONNECTED(28 downto 0)
     );
-mul_delay_WN_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_WN_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => mul_freq(38 downto 19),
       B(19 downto 4) => delay_WN(15 downto 0),
@@ -70746,7 +70746,7 @@ mul_delay_WN_i: component ps_ana_low_0_0_mult_20x20
       P(34 downto 15) => mul_WN(34 downto 15),
       P(14 downto 0) => NLW_mul_delay_WN_i_P_UNCONNECTED(14 downto 0)
     );
-mul_delay_W_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_W_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
@@ -70775,7 +70775,7 @@ mul_delay_W_i: component ps_ana_low_0_0_mult_20x20
       P(35 downto 29) => mul_W(35 downto 29),
       P(28 downto 0) => NLW_mul_delay_W_i_P_UNCONNECTED(28 downto 0)
     );
-mul_delay_freq_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_freq_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_dist_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_dist_reg_n_0_[18]\,
@@ -70803,7 +70803,7 @@ mul_delay_freq_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => mul_freq(38 downto 19),
       P(18 downto 0) => NLW_mul_delay_freq_i_P_UNCONNECTED(18 downto 0)
     );
-mul_pm_i: component ps_ana_low_0_0_mult_20x20
+mul_pm_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => err_sqrt_data(19 downto 0),
       B(19) => \doa_calc.antenna_pm_reg_n_0_[19]\,
@@ -70836,7 +70836,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity \ps_ana_low_0_0_doa_calc__xdcDup__1\ is
+entity \ps_ana_0_1_doa_calc__xdcDup__1\ is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
@@ -70863,11 +70863,11 @@ entity \ps_ana_low_0_0_doa_calc__xdcDup__1\ is
     sample_W : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of \ps_ana_low_0_0_doa_calc__xdcDup__1\ : entity is "doa_calc";
-end \ps_ana_low_0_0_doa_calc__xdcDup__1\;
+  attribute ORIG_REF_NAME of \ps_ana_0_1_doa_calc__xdcDup__1\ : entity is "doa_calc";
+end \ps_ana_0_1_doa_calc__xdcDup__1\;
 
-architecture STRUCTURE of \ps_ana_low_0_0_doa_calc__xdcDup__1\ is
-  component ps_ana_low_0_0_div_k is
+architecture STRUCTURE of \ps_ana_0_1_doa_calc__xdcDup__1\ is
+  component ps_ana_0_1_div_k is
   port (
     aclk : in STD_LOGIC;
     s_axis_divisor_tvalid : in STD_LOGIC;
@@ -70877,8 +70877,8 @@ architecture STRUCTURE of \ps_ana_low_0_0_doa_calc__xdcDup__1\ is
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
-  end component ps_ana_low_0_0_div_k;
-  component ps_ana_low_0_0_dsp_err_sqr is
+  end component ps_ana_0_1_div_k;
+  component ps_ana_0_1_dsp_err_sqr is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -70886,8 +70886,8 @@ architecture STRUCTURE of \ps_ana_low_0_0_doa_calc__xdcDup__1\ is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 );
     SCLRP : in STD_LOGIC
   );
-  end component ps_ana_low_0_0_dsp_err_sqr;
-  component ps_ana_low_0_0_sqrt_err is
+  end component ps_ana_0_1_dsp_err_sqr;
+  component ps_ana_0_1_sqrt_err is
   port (
     aclk : in STD_LOGIC;
     s_axis_cartesian_tvalid : in STD_LOGIC;
@@ -70895,15 +70895,15 @@ architecture STRUCTURE of \ps_ana_low_0_0_doa_calc__xdcDup__1\ is
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
   );
-  end component ps_ana_low_0_0_sqrt_err;
-  component ps_ana_low_0_0_mult_20x20 is
+  end component ps_ana_0_1_sqrt_err;
+  component ps_ana_0_1_mult_20x20 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
     B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
-  end component ps_ana_low_0_0_mult_20x20;
+  end component ps_ana_0_1_mult_20x20;
   signal \<const0>\ : STD_LOGIC;
   signal angle_EW : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_NE : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -71256,7 +71256,7 @@ GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
     );
-div_k_i: component ps_ana_low_0_0_div_k
+div_k_i: component ps_ana_0_1_div_k
      port map (
       aclk => clk,
       m_axis_dout_tdata(63 downto 44) => NLW_div_k_i_m_axis_dout_tdata_UNCONNECTED(63 downto 44),
@@ -71271,7 +71271,7 @@ div_k_i: component ps_ana_low_0_0_div_k
       s_axis_divisor_tdata(19 downto 0) => freq_in(19 downto 0),
       s_axis_divisor_tvalid => start
     );
-doa_EW_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__2\
+doa_EW_i: entity work.\ps_ana_0_1_doa_pair__xdcDup__2\
      port map (
       Q(19 downto 0) => phase_EW_div(19 downto 0),
       clk => clk,
@@ -71308,7 +71308,7 @@ doa_EW_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__2\
       shadow_WN => shadow_WN,
       start_div => start_div
     );
-doa_NE_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__1\
+doa_NE_i: entity work.\ps_ana_0_1_doa_pair__xdcDup__1\
      port map (
       E(0) => start_pair0,
       Q(19 downto 0) => phase_NE_div(19 downto 0),
@@ -71347,7 +71347,7 @@ doa_NE_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__1\
       start_div => start_div,
       start_pair => start_pair
     );
-doa_WN_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__3\
+doa_WN_i: entity work.\ps_ana_0_1_doa_pair__xdcDup__3\
      port map (
       D(14 downto 0) => first_angle(14 downto 0),
       Q(19 downto 0) => phase_WN_div(19 downto 0),
@@ -71391,7 +71391,7 @@ doa_WN_i: entity work.\ps_ana_low_0_0_doa_pair__xdcDup__3\
       start_div => start_div,
       start_pair => start_pair
     );
-doa_angle_i: entity work.\ps_ana_low_0_0_doa_angle__xdcDup__1\
+doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
      port map (
       D(0) => doa_WN_i_n_51,
       E(0) => sign,
@@ -77896,7 +77896,7 @@ doa_angle_i: entity work.\ps_ana_low_0_0_doa_angle__xdcDup__1\
       Q => start_pair,
       R => '0'
     );
-err_sqr_sum_i: component ps_ana_low_0_0_dsp_err_sqr
+err_sqr_sum_i: component ps_ana_0_1_dsp_err_sqr
      port map (
       A(17 downto 0) => err_in(17 downto 0),
       B(17 downto 0) => err_in(17 downto 0),
@@ -77905,7 +77905,7 @@ err_sqr_sum_i: component ps_ana_low_0_0_dsp_err_sqr
       P(31 downto 0) => err_sum(31 downto 0),
       SCLRP => err_clr
     );
-err_sqrt_i: component ps_ana_low_0_0_sqrt_err
+err_sqrt_i: component ps_ana_0_1_sqrt_err
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 20) => NLW_err_sqrt_i_m_axis_dout_tdata_UNCONNECTED(23 downto 20),
@@ -77914,7 +77914,7 @@ err_sqrt_i: component ps_ana_low_0_0_sqrt_err
       s_axis_cartesian_tdata(31 downto 0) => err_sum(31 downto 0),
       s_axis_cartesian_tvalid => err_sqrt_start
     );
-mul_delay_EW_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_EW_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => mul_freq(38 downto 19),
       B(19 downto 4) => delay_EW(15 downto 0),
@@ -77924,7 +77924,7 @@ mul_delay_EW_i: component ps_ana_low_0_0_mult_20x20
       P(34 downto 15) => mul_EW(34 downto 15),
       P(14 downto 0) => NLW_mul_delay_EW_i_P_UNCONNECTED(14 downto 0)
     );
-mul_delay_E_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_E_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
@@ -77953,7 +77953,7 @@ mul_delay_E_i: component ps_ana_low_0_0_mult_20x20
       P(35 downto 29) => mul_E(35 downto 29),
       P(28 downto 0) => NLW_mul_delay_E_i_P_UNCONNECTED(28 downto 0)
     );
-mul_delay_NE_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_NE_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => mul_freq(38 downto 19),
       B(19 downto 4) => delay_NE(15 downto 0),
@@ -77963,7 +77963,7 @@ mul_delay_NE_i: component ps_ana_low_0_0_mult_20x20
       P(34 downto 15) => mul_NE(34 downto 15),
       P(14 downto 0) => NLW_mul_delay_NE_i_P_UNCONNECTED(14 downto 0)
     );
-mul_delay_N_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_N_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
@@ -77992,7 +77992,7 @@ mul_delay_N_i: component ps_ana_low_0_0_mult_20x20
       P(35 downto 29) => mul_N(35 downto 29),
       P(28 downto 0) => NLW_mul_delay_N_i_P_UNCONNECTED(28 downto 0)
     );
-mul_delay_WN_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_WN_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => mul_freq(38 downto 19),
       B(19 downto 4) => delay_WN(15 downto 0),
@@ -78002,7 +78002,7 @@ mul_delay_WN_i: component ps_ana_low_0_0_mult_20x20
       P(34 downto 15) => mul_WN(34 downto 15),
       P(14 downto 0) => NLW_mul_delay_WN_i_P_UNCONNECTED(14 downto 0)
     );
-mul_delay_W_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_W_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_fact_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_fact_reg_n_0_[18]\,
@@ -78031,7 +78031,7 @@ mul_delay_W_i: component ps_ana_low_0_0_mult_20x20
       P(35 downto 29) => mul_W(35 downto 29),
       P(28 downto 0) => NLW_mul_delay_W_i_P_UNCONNECTED(28 downto 0)
     );
-mul_delay_freq_i: component ps_ana_low_0_0_mult_20x20
+mul_delay_freq_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19) => \doa_calc.sample_dist_reg_n_0_[19]\,
       A(18) => \doa_calc.sample_dist_reg_n_0_[18]\,
@@ -78059,7 +78059,7 @@ mul_delay_freq_i: component ps_ana_low_0_0_mult_20x20
       P(38 downto 19) => mul_freq(38 downto 19),
       P(18 downto 0) => NLW_mul_delay_freq_i_P_UNCONNECTED(18 downto 0)
     );
-mul_pm_i: component ps_ana_low_0_0_mult_20x20
+mul_pm_i: component ps_ana_0_1_mult_20x20
      port map (
       A(19 downto 0) => err_sqrt_data(19 downto 0),
       B(19) => \doa_calc.antenna_pm_reg_n_0_[19]\,
@@ -78092,7 +78092,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ps_ana_low_0_0_ana_low is
+entity ps_ana_0_1_ana is
   port (
     fifo_clk : in STD_LOGIC;
     ana_wr : in STD_LOGIC;
@@ -78121,13 +78121,13 @@ entity ps_ana_low_0_0_ana_low is
     sample_W : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of ps_ana_low_0_0_ana_low : entity is "ana_low";
+  attribute ORIG_REF_NAME of ps_ana_0_1_ana : entity is "ana";
   attribute keep_hierarchy : string;
-  attribute keep_hierarchy of ps_ana_low_0_0_ana_low : entity is "soft";
-end ps_ana_low_0_0_ana_low;
+  attribute keep_hierarchy of ps_ana_0_1_ana : entity is "soft";
+end ps_ana_0_1_ana;
 
-architecture STRUCTURE of ps_ana_low_0_0_ana_low is
-  component ps_ana_low_0_0_fifo_config is
+architecture STRUCTURE of ps_ana_0_1_ana is
+  component ps_ana_0_1_fifo_config is
   port (
     rst : in STD_LOGIC;
     wr_clk : in STD_LOGIC;
@@ -78141,8 +78141,8 @@ architecture STRUCTURE of ps_ana_low_0_0_ana_low is
     wr_rst_busy : out STD_LOGIC;
     rd_rst_busy : out STD_LOGIC
   );
-  end component ps_ana_low_0_0_fifo_config;
-  component ps_ana_low_0_0_fifo_doa is
+  end component ps_ana_0_1_fifo_config;
+  component ps_ana_0_1_fifo_doa is
   port (
     rst : in STD_LOGIC;
     wr_clk : in STD_LOGIC;
@@ -78156,8 +78156,8 @@ architecture STRUCTURE of ps_ana_low_0_0_ana_low is
     wr_rst_busy : out STD_LOGIC;
     rd_rst_busy : out STD_LOGIC
   );
-  end component ps_ana_low_0_0_fifo_doa;
-  component ps_ana_low_0_0_ila_6 is
+  end component ps_ana_0_1_fifo_doa;
+  component ps_ana_0_1_ila_6 is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -78179,203 +78179,203 @@ architecture STRUCTURE of ps_ana_low_0_0_ana_low is
     probe16 : in STD_LOGIC_VECTOR ( 5 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  end component ps_ana_low_0_0_ila_6;
+  end component ps_ana_0_1_ila_6;
+  signal \ana.ana_delay[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.ana_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.ana_delay[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.ana_delay[3]_i_2_n_0\ : STD_LOGIC;
+  signal \ana.ana_delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.ana_delay_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \ana.ana_fifo_rd_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[10]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[11]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[12]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[13]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[14]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[15]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[6]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[7]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[8]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.angle[9]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.burst[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.burst[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.comp_wr_i_1_n_0\ : STD_LOGIC;
+  signal \ana.curr_doa_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[10]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[11]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[12]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[13]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[14]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[15]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[16]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[17]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[18]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[19]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[6]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[7]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[8]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.freq[9]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[0]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[10]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[11]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[12]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[13]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[14]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[15]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[16]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[17]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[18]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[19]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[1]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[2]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[3]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[4]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[5]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[6]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[7]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[8]\ : STD_LOGIC;
+  signal \ana.phase_WN_0_reg_n_0_[9]\ : STD_LOGIC;
+  signal \ana.sample[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[10]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[11]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[12]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[13]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[14]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[15]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[16]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[17]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[18]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[19]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[20]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[21]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[22]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[23]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[24]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[25]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[26]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[27]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[28]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[29]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[30]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[31]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[6]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[7]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[8]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample[9]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[0]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[10]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[11]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[12]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[13]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[14]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[15]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[16]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[17]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[18]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[19]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[1]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[20]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[21]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[22]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[23]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[24]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[25]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[26]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[27]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[28]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[29]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[2]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[30]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[31]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[3]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[4]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[5]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[6]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[7]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[8]\ : STD_LOGIC;
+  signal \ana.sample_0_reg_n_0_[9]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[0]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[10]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[11]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[12]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[13]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[14]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[15]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[16]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[17]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[18]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[19]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[1]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[20]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[21]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[22]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[23]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[24]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[25]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[26]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[27]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[28]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[29]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[2]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[30]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[31]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[3]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[4]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[5]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[6]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[7]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[8]\ : STD_LOGIC;
+  signal \ana.sample_1_reg_n_0_[9]\ : STD_LOGIC;
+  signal \ana.sample_E[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_E[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_E[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_E[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_E[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_E[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_N[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_N[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_N[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_N[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_N[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_N[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_W[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_W[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_W[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_W[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_W[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.sample_W[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[1]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[3]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[4]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[5]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[6]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[7]_i_1_n_0\ : STD_LOGIC;
+  signal \ana.size[8]_i_1_n_0\ : STD_LOGIC;
   signal ana_data : STD_LOGIC_VECTOR ( 143 downto 0 );
   signal ana_delay0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ana_empty : STD_LOGIC;
   signal ana_fifo_rd : STD_LOGIC;
   signal ana_fifo_wr : STD_LOGIC;
   signal ana_in_data : STD_LOGIC_VECTOR ( 143 downto 0 );
-  signal \ana_low.ana_delay[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.ana_delay[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.ana_delay[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.ana_delay[3]_i_2_n_0\ : STD_LOGIC;
-  signal \ana_low.ana_delay[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.ana_delay_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
-  signal \ana_low.ana_fifo_rd_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[10]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[11]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[12]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[13]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[14]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[15]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[6]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[7]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[8]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.angle[9]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.burst[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.burst[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.comp_wr_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.curr_doa_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[10]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[11]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[12]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[13]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[14]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[15]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[16]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[17]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[18]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[19]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[6]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[7]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[8]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.freq[9]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[0]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[10]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[11]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[12]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[13]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[14]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[15]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[16]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[17]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[18]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[19]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[1]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[2]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[3]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[4]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[5]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[6]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[7]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[8]\ : STD_LOGIC;
-  signal \ana_low.phase_WN_0_reg_n_0_[9]\ : STD_LOGIC;
-  signal \ana_low.sample[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[10]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[11]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[12]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[13]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[14]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[15]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[16]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[17]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[18]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[19]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[20]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[21]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[22]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[23]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[24]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[25]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[26]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[27]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[28]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[29]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[30]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[31]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[6]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[7]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[8]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample[9]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[0]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[10]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[11]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[12]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[13]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[14]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[15]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[16]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[17]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[18]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[19]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[1]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[20]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[21]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[22]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[23]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[24]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[25]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[26]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[27]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[28]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[29]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[2]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[30]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[31]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[3]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[4]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[5]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[6]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[7]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[8]\ : STD_LOGIC;
-  signal \ana_low.sample_0_reg_n_0_[9]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[0]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[10]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[11]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[12]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[13]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[14]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[15]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[16]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[17]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[18]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[19]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[1]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[20]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[21]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[22]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[23]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[24]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[25]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[26]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[27]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[28]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[29]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[2]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[30]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[31]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[3]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[4]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[5]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[6]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[7]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[8]\ : STD_LOGIC;
-  signal \ana_low.sample_1_reg_n_0_[9]\ : STD_LOGIC;
-  signal \ana_low.sample_E[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_E[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_E[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_E[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_E[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_E[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_N[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_N[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_N[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_N[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_N[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_N[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_W[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_W[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_W[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_W[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_W[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.sample_W[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[6]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[7]_i_1_n_0\ : STD_LOGIC;
-  signal \ana_low.size[8]_i_1_n_0\ : STD_LOGIC;
   signal ana_out_data : STD_LOGIC_VECTOR ( 143 downto 0 );
   signal ana_valid : STD_LOGIC;
   signal ana_valid0 : STD_LOGIC;
@@ -78457,207 +78457,207 @@ architecture STRUCTURE of ps_ana_low_0_0_ana_low is
   signal NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \ana_low.ana_delay[0]_i_1\ : label is "soft_lutpair407";
-  attribute SOFT_HLUTNM of \ana_low.ana_delay[1]_i_1\ : label is "soft_lutpair407";
-  attribute SOFT_HLUTNM of \ana_low.ana_delay[2]_i_1\ : label is "soft_lutpair406";
-  attribute SOFT_HLUTNM of \ana_low.ana_delay[3]_i_2\ : label is "soft_lutpair406";
+  attribute SOFT_HLUTNM of \ana.ana_delay[0]_i_1\ : label is "soft_lutpair407";
+  attribute SOFT_HLUTNM of \ana.ana_delay[1]_i_1\ : label is "soft_lutpair407";
+  attribute SOFT_HLUTNM of \ana.ana_delay[2]_i_1\ : label is "soft_lutpair406";
+  attribute SOFT_HLUTNM of \ana.ana_delay[3]_i_2\ : label is "soft_lutpair406";
   attribute KEEP : string;
-  attribute KEEP of \ana_low.angle_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
-  attribute mark_debug_string of \ana_low.angle_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[10]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[11]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[12]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[13]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[14]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[15]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[6]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[7]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[8]\ : label is "yes";
-  attribute KEEP of \ana_low.angle_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.angle_reg[9]\ : label is "yes";
-  attribute KEEP of \ana_low.burst_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.burst_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.comp_wr_reg\ : label is "yes";
-  attribute KEEP of \ana_low.curr_doa_reg\ : label is "yes";
-  attribute mark_debug_string of \ana_low.curr_doa_reg\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[10]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[11]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[12]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[13]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[14]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[15]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[16]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[17]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[18]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[19]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[6]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[7]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[8]\ : label is "yes";
-  attribute KEEP of \ana_low.freq_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.freq_reg[9]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_E_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_E_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_E_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_E_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_E_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_E_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_E_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_E_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_E_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_E_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_E_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_E_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_N_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_N_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_N_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_N_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_N_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_N_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_N_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_N_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_N_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_N_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_N_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_N_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_W_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_W_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_W_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_W_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_W_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_W_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_W_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_W_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_W_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_W_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_W_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_W_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[10]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[11]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[12]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[13]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[14]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[15]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[16]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[17]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[18]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[19]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[20]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[21]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[22]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[23]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[24]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[25]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[26]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[27]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[28]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[29]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[30]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[31]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[6]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[7]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[8]\ : label is "yes";
-  attribute KEEP of \ana_low.sample_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.sample_reg[9]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[0]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[1]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[2]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[3]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[4]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[5]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[6]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[7]\ : label is "yes";
-  attribute KEEP of \ana_low.size_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \ana_low.size_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[10]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[11]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[12]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[13]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[14]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[15]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[6]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[7]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[8]\ : label is "yes";
+  attribute KEEP of \ana.angle_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \ana.angle_reg[9]\ : label is "yes";
+  attribute KEEP of \ana.burst_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.burst_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.comp_wr_reg\ : label is "yes";
+  attribute KEEP of \ana.curr_doa_reg\ : label is "yes";
+  attribute mark_debug_string of \ana.curr_doa_reg\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[10]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[11]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[12]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[13]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[14]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[15]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[16]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[17]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[18]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[19]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[6]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[7]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[8]\ : label is "yes";
+  attribute KEEP of \ana.freq_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \ana.freq_reg[9]\ : label is "yes";
+  attribute KEEP of \ana.sample_E_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_E_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.sample_E_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_E_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.sample_E_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_E_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.sample_E_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_E_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.sample_E_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_E_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.sample_E_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_E_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.sample_N_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_N_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.sample_N_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_N_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.sample_N_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_N_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.sample_N_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_N_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.sample_N_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_N_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.sample_N_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_N_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.sample_W_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_W_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.sample_W_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_W_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.sample_W_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_W_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.sample_W_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_W_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.sample_W_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_W_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.sample_W_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_W_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[10]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[11]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[12]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[13]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[14]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[15]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[16]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[17]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[18]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[19]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[20]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[21]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[22]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[23]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[24]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[25]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[26]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[27]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[28]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[29]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[30]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[31]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[6]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[7]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[8]\ : label is "yes";
+  attribute KEEP of \ana.sample_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \ana.sample_reg[9]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[0]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[1]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[2]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[3]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[4]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[5]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[6]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[7]\ : label is "yes";
+  attribute KEEP of \ana.size_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \ana.size_reg[8]\ : label is "yes";
   attribute KEEP_HIERARCHY of det_sig_i : label is "soft";
   attribute KEEP_HIERARCHY of doa_calc_0 : label is "soft";
   attribute KEEP_HIERARCHY of doa_calc_1 : label is "soft";
@@ -78682,7 +78682,7 @@ begin
   sample_N(5 downto 0) <= \^sample_n\(5 downto 0);
   sample_W(5 downto 0) <= \^sample_w\(5 downto 0);
   size(8 downto 0) <= \^size\(8 downto 0);
-\ana_low.ana_data_reg[0]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78690,7 +78690,7 @@ begin
       Q => ana_data(0),
       R => '0'
     );
-\ana_low.ana_data_reg[100]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[100]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78698,7 +78698,7 @@ begin
       Q => ana_data(100),
       R => '0'
     );
-\ana_low.ana_data_reg[101]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[101]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78706,7 +78706,7 @@ begin
       Q => ana_data(101),
       R => '0'
     );
-\ana_low.ana_data_reg[102]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[102]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78714,7 +78714,7 @@ begin
       Q => ana_data(102),
       R => '0'
     );
-\ana_low.ana_data_reg[103]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[103]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78722,7 +78722,7 @@ begin
       Q => ana_data(103),
       R => '0'
     );
-\ana_low.ana_data_reg[104]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[104]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78730,7 +78730,7 @@ begin
       Q => ana_data(104),
       R => '0'
     );
-\ana_low.ana_data_reg[105]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[105]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78738,7 +78738,7 @@ begin
       Q => ana_data(105),
       R => '0'
     );
-\ana_low.ana_data_reg[106]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[106]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78746,7 +78746,7 @@ begin
       Q => ana_data(106),
       R => '0'
     );
-\ana_low.ana_data_reg[107]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[107]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78754,7 +78754,7 @@ begin
       Q => ana_data(107),
       R => '0'
     );
-\ana_low.ana_data_reg[108]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[108]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78762,7 +78762,7 @@ begin
       Q => ana_data(108),
       R => '0'
     );
-\ana_low.ana_data_reg[109]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[109]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78770,7 +78770,7 @@ begin
       Q => ana_data(109),
       R => '0'
     );
-\ana_low.ana_data_reg[10]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78778,7 +78778,7 @@ begin
       Q => ana_data(10),
       R => '0'
     );
-\ana_low.ana_data_reg[110]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[110]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78786,7 +78786,7 @@ begin
       Q => ana_data(110),
       R => '0'
     );
-\ana_low.ana_data_reg[111]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[111]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78794,7 +78794,7 @@ begin
       Q => ana_data(111),
       R => '0'
     );
-\ana_low.ana_data_reg[112]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[112]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78802,7 +78802,7 @@ begin
       Q => ana_data(112),
       R => '0'
     );
-\ana_low.ana_data_reg[113]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[113]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78810,7 +78810,7 @@ begin
       Q => ana_data(113),
       R => '0'
     );
-\ana_low.ana_data_reg[114]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[114]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78818,7 +78818,7 @@ begin
       Q => ana_data(114),
       R => '0'
     );
-\ana_low.ana_data_reg[115]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[115]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78826,7 +78826,7 @@ begin
       Q => ana_data(115),
       R => '0'
     );
-\ana_low.ana_data_reg[116]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[116]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78834,7 +78834,7 @@ begin
       Q => ana_data(116),
       R => '0'
     );
-\ana_low.ana_data_reg[117]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[117]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78842,7 +78842,7 @@ begin
       Q => ana_data(117),
       R => '0'
     );
-\ana_low.ana_data_reg[118]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[118]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78850,7 +78850,7 @@ begin
       Q => ana_data(118),
       R => '0'
     );
-\ana_low.ana_data_reg[119]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[119]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78858,7 +78858,7 @@ begin
       Q => ana_data(119),
       R => '0'
     );
-\ana_low.ana_data_reg[11]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78866,7 +78866,7 @@ begin
       Q => ana_data(11),
       R => '0'
     );
-\ana_low.ana_data_reg[120]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[120]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78874,7 +78874,7 @@ begin
       Q => ana_data(120),
       R => '0'
     );
-\ana_low.ana_data_reg[121]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[121]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78882,7 +78882,7 @@ begin
       Q => ana_data(121),
       R => '0'
     );
-\ana_low.ana_data_reg[122]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[122]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78890,7 +78890,7 @@ begin
       Q => ana_data(122),
       R => '0'
     );
-\ana_low.ana_data_reg[123]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[123]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78898,7 +78898,7 @@ begin
       Q => ana_data(123),
       R => '0'
     );
-\ana_low.ana_data_reg[124]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[124]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78906,7 +78906,7 @@ begin
       Q => ana_data(124),
       R => '0'
     );
-\ana_low.ana_data_reg[125]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[125]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78914,7 +78914,7 @@ begin
       Q => ana_data(125),
       R => '0'
     );
-\ana_low.ana_data_reg[126]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[126]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78922,7 +78922,7 @@ begin
       Q => ana_data(126),
       R => '0'
     );
-\ana_low.ana_data_reg[127]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[127]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78930,7 +78930,7 @@ begin
       Q => ana_data(127),
       R => '0'
     );
-\ana_low.ana_data_reg[128]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[128]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78938,7 +78938,7 @@ begin
       Q => ana_data(128),
       R => '0'
     );
-\ana_low.ana_data_reg[129]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[129]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78946,7 +78946,7 @@ begin
       Q => ana_data(129),
       R => '0'
     );
-\ana_low.ana_data_reg[12]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78954,7 +78954,7 @@ begin
       Q => ana_data(12),
       R => '0'
     );
-\ana_low.ana_data_reg[130]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[130]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78962,7 +78962,7 @@ begin
       Q => ana_data(130),
       R => '0'
     );
-\ana_low.ana_data_reg[131]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[131]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78970,7 +78970,7 @@ begin
       Q => ana_data(131),
       R => '0'
     );
-\ana_low.ana_data_reg[132]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[132]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78978,7 +78978,7 @@ begin
       Q => ana_data(132),
       R => '0'
     );
-\ana_low.ana_data_reg[133]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[133]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78986,7 +78986,7 @@ begin
       Q => ana_data(133),
       R => '0'
     );
-\ana_low.ana_data_reg[134]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[134]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -78994,7 +78994,7 @@ begin
       Q => ana_data(134),
       R => '0'
     );
-\ana_low.ana_data_reg[135]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[135]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79002,7 +79002,7 @@ begin
       Q => ana_data(135),
       R => '0'
     );
-\ana_low.ana_data_reg[136]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[136]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79010,7 +79010,7 @@ begin
       Q => ana_data(136),
       R => '0'
     );
-\ana_low.ana_data_reg[137]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[137]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79018,7 +79018,7 @@ begin
       Q => ana_data(137),
       R => '0'
     );
-\ana_low.ana_data_reg[138]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[138]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79026,7 +79026,7 @@ begin
       Q => ana_data(138),
       R => '0'
     );
-\ana_low.ana_data_reg[139]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[139]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79034,7 +79034,7 @@ begin
       Q => ana_data(139),
       R => '0'
     );
-\ana_low.ana_data_reg[13]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79042,7 +79042,7 @@ begin
       Q => ana_data(13),
       R => '0'
     );
-\ana_low.ana_data_reg[140]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[140]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79050,7 +79050,7 @@ begin
       Q => ana_data(140),
       R => '0'
     );
-\ana_low.ana_data_reg[141]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[141]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79058,7 +79058,7 @@ begin
       Q => ana_data(141),
       R => '0'
     );
-\ana_low.ana_data_reg[142]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[142]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79066,7 +79066,7 @@ begin
       Q => ana_data(142),
       R => '0'
     );
-\ana_low.ana_data_reg[143]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[143]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79074,7 +79074,7 @@ begin
       Q => ana_data(143),
       R => '0'
     );
-\ana_low.ana_data_reg[14]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79082,7 +79082,7 @@ begin
       Q => ana_data(14),
       R => '0'
     );
-\ana_low.ana_data_reg[15]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79090,7 +79090,7 @@ begin
       Q => ana_data(15),
       R => '0'
     );
-\ana_low.ana_data_reg[16]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79098,7 +79098,7 @@ begin
       Q => ana_data(16),
       R => '0'
     );
-\ana_low.ana_data_reg[17]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79106,7 +79106,7 @@ begin
       Q => ana_data(17),
       R => '0'
     );
-\ana_low.ana_data_reg[18]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79114,7 +79114,7 @@ begin
       Q => ana_data(18),
       R => '0'
     );
-\ana_low.ana_data_reg[19]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79122,7 +79122,7 @@ begin
       Q => ana_data(19),
       R => '0'
     );
-\ana_low.ana_data_reg[1]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79130,7 +79130,7 @@ begin
       Q => ana_data(1),
       R => '0'
     );
-\ana_low.ana_data_reg[20]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79138,7 +79138,7 @@ begin
       Q => ana_data(20),
       R => '0'
     );
-\ana_low.ana_data_reg[21]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79146,7 +79146,7 @@ begin
       Q => ana_data(21),
       R => '0'
     );
-\ana_low.ana_data_reg[22]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79154,7 +79154,7 @@ begin
       Q => ana_data(22),
       R => '0'
     );
-\ana_low.ana_data_reg[23]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79162,7 +79162,7 @@ begin
       Q => ana_data(23),
       R => '0'
     );
-\ana_low.ana_data_reg[24]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79170,7 +79170,7 @@ begin
       Q => ana_data(24),
       R => '0'
     );
-\ana_low.ana_data_reg[25]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79178,7 +79178,7 @@ begin
       Q => ana_data(25),
       R => '0'
     );
-\ana_low.ana_data_reg[26]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79186,7 +79186,7 @@ begin
       Q => ana_data(26),
       R => '0'
     );
-\ana_low.ana_data_reg[27]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79194,7 +79194,7 @@ begin
       Q => ana_data(27),
       R => '0'
     );
-\ana_low.ana_data_reg[28]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79202,7 +79202,7 @@ begin
       Q => ana_data(28),
       R => '0'
     );
-\ana_low.ana_data_reg[29]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79210,7 +79210,7 @@ begin
       Q => ana_data(29),
       R => '0'
     );
-\ana_low.ana_data_reg[2]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79218,7 +79218,7 @@ begin
       Q => ana_data(2),
       R => '0'
     );
-\ana_low.ana_data_reg[30]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79226,7 +79226,7 @@ begin
       Q => ana_data(30),
       R => '0'
     );
-\ana_low.ana_data_reg[31]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79234,7 +79234,7 @@ begin
       Q => ana_data(31),
       R => '0'
     );
-\ana_low.ana_data_reg[32]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79242,7 +79242,7 @@ begin
       Q => ana_data(32),
       R => '0'
     );
-\ana_low.ana_data_reg[33]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79250,7 +79250,7 @@ begin
       Q => ana_data(33),
       R => '0'
     );
-\ana_low.ana_data_reg[34]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79258,7 +79258,7 @@ begin
       Q => ana_data(34),
       R => '0'
     );
-\ana_low.ana_data_reg[35]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79266,7 +79266,7 @@ begin
       Q => ana_data(35),
       R => '0'
     );
-\ana_low.ana_data_reg[36]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79274,7 +79274,7 @@ begin
       Q => ana_data(36),
       R => '0'
     );
-\ana_low.ana_data_reg[37]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79282,7 +79282,7 @@ begin
       Q => ana_data(37),
       R => '0'
     );
-\ana_low.ana_data_reg[38]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79290,7 +79290,7 @@ begin
       Q => ana_data(38),
       R => '0'
     );
-\ana_low.ana_data_reg[39]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79298,7 +79298,7 @@ begin
       Q => ana_data(39),
       R => '0'
     );
-\ana_low.ana_data_reg[3]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79306,7 +79306,7 @@ begin
       Q => ana_data(3),
       R => '0'
     );
-\ana_low.ana_data_reg[40]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79314,7 +79314,7 @@ begin
       Q => ana_data(40),
       R => '0'
     );
-\ana_low.ana_data_reg[41]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79322,7 +79322,7 @@ begin
       Q => ana_data(41),
       R => '0'
     );
-\ana_low.ana_data_reg[42]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79330,7 +79330,7 @@ begin
       Q => ana_data(42),
       R => '0'
     );
-\ana_low.ana_data_reg[43]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79338,7 +79338,7 @@ begin
       Q => ana_data(43),
       R => '0'
     );
-\ana_low.ana_data_reg[44]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79346,7 +79346,7 @@ begin
       Q => ana_data(44),
       R => '0'
     );
-\ana_low.ana_data_reg[45]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79354,7 +79354,7 @@ begin
       Q => ana_data(45),
       R => '0'
     );
-\ana_low.ana_data_reg[46]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79362,7 +79362,7 @@ begin
       Q => ana_data(46),
       R => '0'
     );
-\ana_low.ana_data_reg[47]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79370,7 +79370,7 @@ begin
       Q => ana_data(47),
       R => '0'
     );
-\ana_low.ana_data_reg[48]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79378,7 +79378,7 @@ begin
       Q => ana_data(48),
       R => '0'
     );
-\ana_low.ana_data_reg[49]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79386,7 +79386,7 @@ begin
       Q => ana_data(49),
       R => '0'
     );
-\ana_low.ana_data_reg[4]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79394,7 +79394,7 @@ begin
       Q => ana_data(4),
       R => '0'
     );
-\ana_low.ana_data_reg[50]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79402,7 +79402,7 @@ begin
       Q => ana_data(50),
       R => '0'
     );
-\ana_low.ana_data_reg[51]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79410,7 +79410,7 @@ begin
       Q => ana_data(51),
       R => '0'
     );
-\ana_low.ana_data_reg[52]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79418,7 +79418,7 @@ begin
       Q => ana_data(52),
       R => '0'
     );
-\ana_low.ana_data_reg[53]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79426,7 +79426,7 @@ begin
       Q => ana_data(53),
       R => '0'
     );
-\ana_low.ana_data_reg[54]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79434,7 +79434,7 @@ begin
       Q => ana_data(54),
       R => '0'
     );
-\ana_low.ana_data_reg[55]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79442,7 +79442,7 @@ begin
       Q => ana_data(55),
       R => '0'
     );
-\ana_low.ana_data_reg[56]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79450,7 +79450,7 @@ begin
       Q => ana_data(56),
       R => '0'
     );
-\ana_low.ana_data_reg[57]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79458,7 +79458,7 @@ begin
       Q => ana_data(57),
       R => '0'
     );
-\ana_low.ana_data_reg[58]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79466,7 +79466,7 @@ begin
       Q => ana_data(58),
       R => '0'
     );
-\ana_low.ana_data_reg[59]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79474,7 +79474,7 @@ begin
       Q => ana_data(59),
       R => '0'
     );
-\ana_low.ana_data_reg[5]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79482,7 +79482,7 @@ begin
       Q => ana_data(5),
       R => '0'
     );
-\ana_low.ana_data_reg[60]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79490,7 +79490,7 @@ begin
       Q => ana_data(60),
       R => '0'
     );
-\ana_low.ana_data_reg[61]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79498,7 +79498,7 @@ begin
       Q => ana_data(61),
       R => '0'
     );
-\ana_low.ana_data_reg[62]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79506,7 +79506,7 @@ begin
       Q => ana_data(62),
       R => '0'
     );
-\ana_low.ana_data_reg[63]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79514,7 +79514,7 @@ begin
       Q => ana_data(63),
       R => '0'
     );
-\ana_low.ana_data_reg[64]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79522,7 +79522,7 @@ begin
       Q => ana_data(64),
       R => '0'
     );
-\ana_low.ana_data_reg[65]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79530,7 +79530,7 @@ begin
       Q => ana_data(65),
       R => '0'
     );
-\ana_low.ana_data_reg[66]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79538,7 +79538,7 @@ begin
       Q => ana_data(66),
       R => '0'
     );
-\ana_low.ana_data_reg[67]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79546,7 +79546,7 @@ begin
       Q => ana_data(67),
       R => '0'
     );
-\ana_low.ana_data_reg[68]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79554,7 +79554,7 @@ begin
       Q => ana_data(68),
       R => '0'
     );
-\ana_low.ana_data_reg[69]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79562,7 +79562,7 @@ begin
       Q => ana_data(69),
       R => '0'
     );
-\ana_low.ana_data_reg[6]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79570,7 +79570,7 @@ begin
       Q => ana_data(6),
       R => '0'
     );
-\ana_low.ana_data_reg[70]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79578,7 +79578,7 @@ begin
       Q => ana_data(70),
       R => '0'
     );
-\ana_low.ana_data_reg[71]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79586,7 +79586,7 @@ begin
       Q => ana_data(71),
       R => '0'
     );
-\ana_low.ana_data_reg[72]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79594,7 +79594,7 @@ begin
       Q => ana_data(72),
       R => '0'
     );
-\ana_low.ana_data_reg[73]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79602,7 +79602,7 @@ begin
       Q => ana_data(73),
       R => '0'
     );
-\ana_low.ana_data_reg[74]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79610,7 +79610,7 @@ begin
       Q => ana_data(74),
       R => '0'
     );
-\ana_low.ana_data_reg[75]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79618,7 +79618,7 @@ begin
       Q => ana_data(75),
       R => '0'
     );
-\ana_low.ana_data_reg[76]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79626,7 +79626,7 @@ begin
       Q => ana_data(76),
       R => '0'
     );
-\ana_low.ana_data_reg[77]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79634,7 +79634,7 @@ begin
       Q => ana_data(77),
       R => '0'
     );
-\ana_low.ana_data_reg[78]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79642,7 +79642,7 @@ begin
       Q => ana_data(78),
       R => '0'
     );
-\ana_low.ana_data_reg[79]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79650,7 +79650,7 @@ begin
       Q => ana_data(79),
       R => '0'
     );
-\ana_low.ana_data_reg[7]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79658,7 +79658,7 @@ begin
       Q => ana_data(7),
       R => '0'
     );
-\ana_low.ana_data_reg[80]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79666,7 +79666,7 @@ begin
       Q => ana_data(80),
       R => '0'
     );
-\ana_low.ana_data_reg[81]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79674,7 +79674,7 @@ begin
       Q => ana_data(81),
       R => '0'
     );
-\ana_low.ana_data_reg[82]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79682,7 +79682,7 @@ begin
       Q => ana_data(82),
       R => '0'
     );
-\ana_low.ana_data_reg[83]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79690,7 +79690,7 @@ begin
       Q => ana_data(83),
       R => '0'
     );
-\ana_low.ana_data_reg[84]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79698,7 +79698,7 @@ begin
       Q => ana_data(84),
       R => '0'
     );
-\ana_low.ana_data_reg[85]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79706,7 +79706,7 @@ begin
       Q => ana_data(85),
       R => '0'
     );
-\ana_low.ana_data_reg[86]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79714,7 +79714,7 @@ begin
       Q => ana_data(86),
       R => '0'
     );
-\ana_low.ana_data_reg[87]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79722,7 +79722,7 @@ begin
       Q => ana_data(87),
       R => '0'
     );
-\ana_low.ana_data_reg[88]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79730,7 +79730,7 @@ begin
       Q => ana_data(88),
       R => '0'
     );
-\ana_low.ana_data_reg[89]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79738,7 +79738,7 @@ begin
       Q => ana_data(89),
       R => '0'
     );
-\ana_low.ana_data_reg[8]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79746,7 +79746,7 @@ begin
       Q => ana_data(8),
       R => '0'
     );
-\ana_low.ana_data_reg[90]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79754,7 +79754,7 @@ begin
       Q => ana_data(90),
       R => '0'
     );
-\ana_low.ana_data_reg[91]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79762,7 +79762,7 @@ begin
       Q => ana_data(91),
       R => '0'
     );
-\ana_low.ana_data_reg[92]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79770,7 +79770,7 @@ begin
       Q => ana_data(92),
       R => '0'
     );
-\ana_low.ana_data_reg[93]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79778,7 +79778,7 @@ begin
       Q => ana_data(93),
       R => '0'
     );
-\ana_low.ana_data_reg[94]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79786,7 +79786,7 @@ begin
       Q => ana_data(94),
       R => '0'
     );
-\ana_low.ana_data_reg[95]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79794,7 +79794,7 @@ begin
       Q => ana_data(95),
       R => '0'
     );
-\ana_low.ana_data_reg[96]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[96]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79802,7 +79802,7 @@ begin
       Q => ana_data(96),
       R => '0'
     );
-\ana_low.ana_data_reg[97]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[97]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79810,7 +79810,7 @@ begin
       Q => ana_data(97),
       R => '0'
     );
-\ana_low.ana_data_reg[98]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[98]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79818,7 +79818,7 @@ begin
       Q => ana_data(98),
       R => '0'
     );
-\ana_low.ana_data_reg[99]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[99]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79826,7 +79826,7 @@ begin
       Q => ana_data(99),
       R => '0'
     );
-\ana_low.ana_data_reg[9]\: unisim.vcomponents.FDRE
+\ana.ana_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => ana_valid0,
@@ -79834,130 +79834,130 @@ begin
       Q => ana_data(9),
       R => '0'
     );
-\ana_low.ana_delay[0]_i_1\: unisim.vcomponents.LUT1
+\ana.ana_delay[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => \ana_low.ana_delay_reg\(0),
+      I0 => \ana.ana_delay_reg\(0),
       O => ana_delay0(0)
     );
-\ana_low.ana_delay[1]_i_1\: unisim.vcomponents.LUT2
+\ana.ana_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => \ana_low.ana_delay_reg\(0),
-      I1 => \ana_low.ana_delay_reg\(1),
-      O => \ana_low.ana_delay[1]_i_1_n_0\
+      I0 => \ana.ana_delay_reg\(0),
+      I1 => \ana.ana_delay_reg\(1),
+      O => \ana.ana_delay[1]_i_1_n_0\
     );
-\ana_low.ana_delay[2]_i_1\: unisim.vcomponents.LUT3
+\ana.ana_delay[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"E1"
     )
         port map (
-      I0 => \ana_low.ana_delay_reg\(1),
-      I1 => \ana_low.ana_delay_reg\(0),
-      I2 => \ana_low.ana_delay_reg\(2),
-      O => \ana_low.ana_delay[2]_i_1_n_0\
+      I0 => \ana.ana_delay_reg\(1),
+      I1 => \ana.ana_delay_reg\(0),
+      I2 => \ana.ana_delay_reg\(2),
+      O => \ana.ana_delay[2]_i_1_n_0\
     );
-\ana_low.ana_delay[3]_i_1\: unisim.vcomponents.LUT5
+\ana.ana_delay[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"FFFFFFFE"
     )
         port map (
-      I0 => \ana_low.ana_delay_reg\(0),
-      I1 => \ana_low.ana_delay_reg\(3),
-      I2 => \ana_low.ana_delay_reg\(4),
-      I3 => \ana_low.ana_delay_reg\(1),
-      I4 => \ana_low.ana_delay_reg\(2),
-      O => \ana_low.ana_delay[3]_i_1_n_0\
+      I0 => \ana.ana_delay_reg\(0),
+      I1 => \ana.ana_delay_reg\(3),
+      I2 => \ana.ana_delay_reg\(4),
+      I3 => \ana.ana_delay_reg\(1),
+      I4 => \ana.ana_delay_reg\(2),
+      O => \ana.ana_delay[3]_i_1_n_0\
     );
-\ana_low.ana_delay[3]_i_2\: unisim.vcomponents.LUT4
+\ana.ana_delay[3]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FE01"
     )
         port map (
-      I0 => \ana_low.ana_delay_reg\(2),
-      I1 => \ana_low.ana_delay_reg\(0),
-      I2 => \ana_low.ana_delay_reg\(1),
-      I3 => \ana_low.ana_delay_reg\(3),
-      O => \ana_low.ana_delay[3]_i_2_n_0\
+      I0 => \ana.ana_delay_reg\(2),
+      I1 => \ana.ana_delay_reg\(0),
+      I2 => \ana.ana_delay_reg\(1),
+      I3 => \ana.ana_delay_reg\(3),
+      O => \ana.ana_delay[3]_i_2_n_0\
     );
-\ana_low.ana_delay[4]_i_1\: unisim.vcomponents.LUT5
+\ana.ana_delay[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"F0F0F0E0"
     )
         port map (
-      I0 => \ana_low.ana_delay_reg\(0),
-      I1 => \ana_low.ana_delay_reg\(3),
-      I2 => \ana_low.ana_delay_reg\(4),
-      I3 => \ana_low.ana_delay_reg\(1),
-      I4 => \ana_low.ana_delay_reg\(2),
-      O => \ana_low.ana_delay[4]_i_1_n_0\
+      I0 => \ana.ana_delay_reg\(0),
+      I1 => \ana.ana_delay_reg\(3),
+      I2 => \ana.ana_delay_reg\(4),
+      I3 => \ana.ana_delay_reg\(1),
+      I4 => \ana.ana_delay_reg\(2),
+      O => \ana.ana_delay[4]_i_1_n_0\
     );
-\ana_low.ana_delay_reg[0]\: unisim.vcomponents.FDSE
+\ana.ana_delay_reg[0]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \ana_low.ana_delay[3]_i_1_n_0\,
+      CE => \ana.ana_delay[3]_i_1_n_0\,
       D => ana_delay0(0),
-      Q => \ana_low.ana_delay_reg\(0),
+      Q => \ana.ana_delay_reg\(0),
       S => ana_empty
     );
-\ana_low.ana_delay_reg[1]\: unisim.vcomponents.FDSE
+\ana.ana_delay_reg[1]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \ana_low.ana_delay[3]_i_1_n_0\,
-      D => \ana_low.ana_delay[1]_i_1_n_0\,
-      Q => \ana_low.ana_delay_reg\(1),
+      CE => \ana.ana_delay[3]_i_1_n_0\,
+      D => \ana.ana_delay[1]_i_1_n_0\,
+      Q => \ana.ana_delay_reg\(1),
       S => ana_empty
     );
-\ana_low.ana_delay_reg[2]\: unisim.vcomponents.FDSE
+\ana.ana_delay_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \ana_low.ana_delay[3]_i_1_n_0\,
-      D => \ana_low.ana_delay[2]_i_1_n_0\,
-      Q => \ana_low.ana_delay_reg\(2),
+      CE => \ana.ana_delay[3]_i_1_n_0\,
+      D => \ana.ana_delay[2]_i_1_n_0\,
+      Q => \ana.ana_delay_reg\(2),
       S => ana_empty
     );
-\ana_low.ana_delay_reg[3]\: unisim.vcomponents.FDSE
+\ana.ana_delay_reg[3]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => \ana_low.ana_delay[3]_i_1_n_0\,
-      D => \ana_low.ana_delay[3]_i_2_n_0\,
-      Q => \ana_low.ana_delay_reg\(3),
+      CE => \ana.ana_delay[3]_i_1_n_0\,
+      D => \ana.ana_delay[3]_i_2_n_0\,
+      Q => \ana.ana_delay_reg\(3),
       S => ana_empty
     );
-\ana_low.ana_delay_reg[4]\: unisim.vcomponents.FDSE
+\ana.ana_delay_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \ana_low.ana_delay[4]_i_1_n_0\,
-      Q => \ana_low.ana_delay_reg\(4),
+      D => \ana.ana_delay[4]_i_1_n_0\,
+      Q => \ana.ana_delay_reg\(4),
       S => ana_empty
     );
-\ana_low.ana_fifo_rd_i_1\: unisim.vcomponents.LUT6
+\ana.ana_fifo_rd_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000000000001"
     )
         port map (
       I0 => ana_empty,
-      I1 => \ana_low.ana_delay_reg\(2),
-      I2 => \ana_low.ana_delay_reg\(1),
-      I3 => \ana_low.ana_delay_reg\(4),
-      I4 => \ana_low.ana_delay_reg\(3),
-      I5 => \ana_low.ana_delay_reg\(0),
-      O => \ana_low.ana_fifo_rd_i_1_n_0\
+      I1 => \ana.ana_delay_reg\(2),
+      I2 => \ana.ana_delay_reg\(1),
+      I3 => \ana.ana_delay_reg\(4),
+      I4 => \ana.ana_delay_reg\(3),
+      I5 => \ana.ana_delay_reg\(0),
+      O => \ana.ana_fifo_rd_i_1_n_0\
     );
-\ana_low.ana_fifo_rd_reg\: unisim.vcomponents.FDRE
+\ana.ana_fifo_rd_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \ana_low.ana_fifo_rd_i_1_n_0\,
+      D => \ana.ana_fifo_rd_i_1_n_0\,
       Q => ana_fifo_rd,
       R => '0'
     );
-\ana_low.ana_fifo_wr_reg\: unisim.vcomponents.FDRE
+\ana.ana_fifo_wr_reg\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => '1',
@@ -79965,7 +79965,7 @@ begin
       Q => ana_fifo_wr,
       R => '0'
     );
-\ana_low.ana_in_data_reg[0]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -79973,7 +79973,7 @@ begin
       Q => ana_in_data(0),
       R => '0'
     );
-\ana_low.ana_in_data_reg[100]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[100]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -79981,7 +79981,7 @@ begin
       Q => ana_in_data(100),
       R => '0'
     );
-\ana_low.ana_in_data_reg[101]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[101]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -79989,7 +79989,7 @@ begin
       Q => ana_in_data(101),
       R => '0'
     );
-\ana_low.ana_in_data_reg[102]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[102]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -79997,7 +79997,7 @@ begin
       Q => ana_in_data(102),
       R => '0'
     );
-\ana_low.ana_in_data_reg[103]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[103]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80005,7 +80005,7 @@ begin
       Q => ana_in_data(103),
       R => '0'
     );
-\ana_low.ana_in_data_reg[104]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[104]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80013,7 +80013,7 @@ begin
       Q => ana_in_data(104),
       R => '0'
     );
-\ana_low.ana_in_data_reg[105]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[105]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80021,7 +80021,7 @@ begin
       Q => ana_in_data(105),
       R => '0'
     );
-\ana_low.ana_in_data_reg[106]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[106]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80029,7 +80029,7 @@ begin
       Q => ana_in_data(106),
       R => '0'
     );
-\ana_low.ana_in_data_reg[107]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[107]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80037,7 +80037,7 @@ begin
       Q => ana_in_data(107),
       R => '0'
     );
-\ana_low.ana_in_data_reg[108]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[108]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80045,7 +80045,7 @@ begin
       Q => ana_in_data(108),
       R => '0'
     );
-\ana_low.ana_in_data_reg[109]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[109]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80053,7 +80053,7 @@ begin
       Q => ana_in_data(109),
       R => '0'
     );
-\ana_low.ana_in_data_reg[10]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80061,7 +80061,7 @@ begin
       Q => ana_in_data(10),
       R => '0'
     );
-\ana_low.ana_in_data_reg[110]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[110]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80069,7 +80069,7 @@ begin
       Q => ana_in_data(110),
       R => '0'
     );
-\ana_low.ana_in_data_reg[111]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[111]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80077,7 +80077,7 @@ begin
       Q => ana_in_data(111),
       R => '0'
     );
-\ana_low.ana_in_data_reg[112]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[112]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80085,7 +80085,7 @@ begin
       Q => ana_in_data(112),
       R => '0'
     );
-\ana_low.ana_in_data_reg[113]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[113]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80093,7 +80093,7 @@ begin
       Q => ana_in_data(113),
       R => '0'
     );
-\ana_low.ana_in_data_reg[114]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[114]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80101,7 +80101,7 @@ begin
       Q => ana_in_data(114),
       R => '0'
     );
-\ana_low.ana_in_data_reg[115]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[115]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80109,7 +80109,7 @@ begin
       Q => ana_in_data(115),
       R => '0'
     );
-\ana_low.ana_in_data_reg[116]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[116]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80117,7 +80117,7 @@ begin
       Q => ana_in_data(116),
       R => '0'
     );
-\ana_low.ana_in_data_reg[117]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[117]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80125,7 +80125,7 @@ begin
       Q => ana_in_data(117),
       R => '0'
     );
-\ana_low.ana_in_data_reg[118]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[118]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80133,7 +80133,7 @@ begin
       Q => ana_in_data(118),
       R => '0'
     );
-\ana_low.ana_in_data_reg[119]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[119]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80141,7 +80141,7 @@ begin
       Q => ana_in_data(119),
       R => '0'
     );
-\ana_low.ana_in_data_reg[11]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80149,7 +80149,7 @@ begin
       Q => ana_in_data(11),
       R => '0'
     );
-\ana_low.ana_in_data_reg[120]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[120]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80157,7 +80157,7 @@ begin
       Q => ana_in_data(120),
       R => '0'
     );
-\ana_low.ana_in_data_reg[121]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[121]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80165,7 +80165,7 @@ begin
       Q => ana_in_data(121),
       R => '0'
     );
-\ana_low.ana_in_data_reg[122]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[122]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80173,7 +80173,7 @@ begin
       Q => ana_in_data(122),
       R => '0'
     );
-\ana_low.ana_in_data_reg[123]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[123]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80181,7 +80181,7 @@ begin
       Q => ana_in_data(123),
       R => '0'
     );
-\ana_low.ana_in_data_reg[124]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[124]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80189,7 +80189,7 @@ begin
       Q => ana_in_data(124),
       R => '0'
     );
-\ana_low.ana_in_data_reg[125]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[125]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80197,7 +80197,7 @@ begin
       Q => ana_in_data(125),
       R => '0'
     );
-\ana_low.ana_in_data_reg[126]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[126]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80205,7 +80205,7 @@ begin
       Q => ana_in_data(126),
       R => '0'
     );
-\ana_low.ana_in_data_reg[127]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[127]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80213,7 +80213,7 @@ begin
       Q => ana_in_data(127),
       R => '0'
     );
-\ana_low.ana_in_data_reg[128]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[128]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80221,7 +80221,7 @@ begin
       Q => ana_in_data(128),
       R => '0'
     );
-\ana_low.ana_in_data_reg[129]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[129]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80229,7 +80229,7 @@ begin
       Q => ana_in_data(129),
       R => '0'
     );
-\ana_low.ana_in_data_reg[12]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80237,7 +80237,7 @@ begin
       Q => ana_in_data(12),
       R => '0'
     );
-\ana_low.ana_in_data_reg[130]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[130]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80245,7 +80245,7 @@ begin
       Q => ana_in_data(130),
       R => '0'
     );
-\ana_low.ana_in_data_reg[131]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[131]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80253,7 +80253,7 @@ begin
       Q => ana_in_data(131),
       R => '0'
     );
-\ana_low.ana_in_data_reg[132]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[132]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80261,7 +80261,7 @@ begin
       Q => ana_in_data(132),
       R => '0'
     );
-\ana_low.ana_in_data_reg[133]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[133]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80269,7 +80269,7 @@ begin
       Q => ana_in_data(133),
       R => '0'
     );
-\ana_low.ana_in_data_reg[134]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[134]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80277,7 +80277,7 @@ begin
       Q => ana_in_data(134),
       R => '0'
     );
-\ana_low.ana_in_data_reg[135]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[135]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80285,7 +80285,7 @@ begin
       Q => ana_in_data(135),
       R => '0'
     );
-\ana_low.ana_in_data_reg[136]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[136]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80293,7 +80293,7 @@ begin
       Q => ana_in_data(136),
       R => '0'
     );
-\ana_low.ana_in_data_reg[137]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[137]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80301,7 +80301,7 @@ begin
       Q => ana_in_data(137),
       R => '0'
     );
-\ana_low.ana_in_data_reg[138]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[138]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80309,7 +80309,7 @@ begin
       Q => ana_in_data(138),
       R => '0'
     );
-\ana_low.ana_in_data_reg[139]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[139]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80317,7 +80317,7 @@ begin
       Q => ana_in_data(139),
       R => '0'
     );
-\ana_low.ana_in_data_reg[13]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80325,7 +80325,7 @@ begin
       Q => ana_in_data(13),
       R => '0'
     );
-\ana_low.ana_in_data_reg[140]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[140]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80333,7 +80333,7 @@ begin
       Q => ana_in_data(140),
       R => '0'
     );
-\ana_low.ana_in_data_reg[141]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[141]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80341,7 +80341,7 @@ begin
       Q => ana_in_data(141),
       R => '0'
     );
-\ana_low.ana_in_data_reg[142]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[142]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80349,7 +80349,7 @@ begin
       Q => ana_in_data(142),
       R => '0'
     );
-\ana_low.ana_in_data_reg[143]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[143]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80357,7 +80357,7 @@ begin
       Q => ana_in_data(143),
       R => '0'
     );
-\ana_low.ana_in_data_reg[14]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80365,7 +80365,7 @@ begin
       Q => ana_in_data(14),
       R => '0'
     );
-\ana_low.ana_in_data_reg[15]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80373,7 +80373,7 @@ begin
       Q => ana_in_data(15),
       R => '0'
     );
-\ana_low.ana_in_data_reg[16]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80381,7 +80381,7 @@ begin
       Q => ana_in_data(16),
       R => '0'
     );
-\ana_low.ana_in_data_reg[17]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80389,7 +80389,7 @@ begin
       Q => ana_in_data(17),
       R => '0'
     );
-\ana_low.ana_in_data_reg[18]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80397,7 +80397,7 @@ begin
       Q => ana_in_data(18),
       R => '0'
     );
-\ana_low.ana_in_data_reg[19]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80405,7 +80405,7 @@ begin
       Q => ana_in_data(19),
       R => '0'
     );
-\ana_low.ana_in_data_reg[1]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80413,7 +80413,7 @@ begin
       Q => ana_in_data(1),
       R => '0'
     );
-\ana_low.ana_in_data_reg[20]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80421,7 +80421,7 @@ begin
       Q => ana_in_data(20),
       R => '0'
     );
-\ana_low.ana_in_data_reg[21]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80429,7 +80429,7 @@ begin
       Q => ana_in_data(21),
       R => '0'
     );
-\ana_low.ana_in_data_reg[22]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80437,7 +80437,7 @@ begin
       Q => ana_in_data(22),
       R => '0'
     );
-\ana_low.ana_in_data_reg[23]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80445,7 +80445,7 @@ begin
       Q => ana_in_data(23),
       R => '0'
     );
-\ana_low.ana_in_data_reg[24]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80453,7 +80453,7 @@ begin
       Q => ana_in_data(24),
       R => '0'
     );
-\ana_low.ana_in_data_reg[25]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80461,7 +80461,7 @@ begin
       Q => ana_in_data(25),
       R => '0'
     );
-\ana_low.ana_in_data_reg[26]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80469,7 +80469,7 @@ begin
       Q => ana_in_data(26),
       R => '0'
     );
-\ana_low.ana_in_data_reg[27]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80477,7 +80477,7 @@ begin
       Q => ana_in_data(27),
       R => '0'
     );
-\ana_low.ana_in_data_reg[28]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80485,7 +80485,7 @@ begin
       Q => ana_in_data(28),
       R => '0'
     );
-\ana_low.ana_in_data_reg[29]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80493,7 +80493,7 @@ begin
       Q => ana_in_data(29),
       R => '0'
     );
-\ana_low.ana_in_data_reg[2]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80501,7 +80501,7 @@ begin
       Q => ana_in_data(2),
       R => '0'
     );
-\ana_low.ana_in_data_reg[30]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80509,7 +80509,7 @@ begin
       Q => ana_in_data(30),
       R => '0'
     );
-\ana_low.ana_in_data_reg[31]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80517,7 +80517,7 @@ begin
       Q => ana_in_data(31),
       R => '0'
     );
-\ana_low.ana_in_data_reg[32]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80525,7 +80525,7 @@ begin
       Q => ana_in_data(32),
       R => '0'
     );
-\ana_low.ana_in_data_reg[33]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80533,7 +80533,7 @@ begin
       Q => ana_in_data(33),
       R => '0'
     );
-\ana_low.ana_in_data_reg[34]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80541,7 +80541,7 @@ begin
       Q => ana_in_data(34),
       R => '0'
     );
-\ana_low.ana_in_data_reg[35]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80549,7 +80549,7 @@ begin
       Q => ana_in_data(35),
       R => '0'
     );
-\ana_low.ana_in_data_reg[36]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80557,7 +80557,7 @@ begin
       Q => ana_in_data(36),
       R => '0'
     );
-\ana_low.ana_in_data_reg[37]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80565,7 +80565,7 @@ begin
       Q => ana_in_data(37),
       R => '0'
     );
-\ana_low.ana_in_data_reg[38]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80573,7 +80573,7 @@ begin
       Q => ana_in_data(38),
       R => '0'
     );
-\ana_low.ana_in_data_reg[39]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80581,7 +80581,7 @@ begin
       Q => ana_in_data(39),
       R => '0'
     );
-\ana_low.ana_in_data_reg[3]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80589,7 +80589,7 @@ begin
       Q => ana_in_data(3),
       R => '0'
     );
-\ana_low.ana_in_data_reg[40]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80597,7 +80597,7 @@ begin
       Q => ana_in_data(40),
       R => '0'
     );
-\ana_low.ana_in_data_reg[41]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80605,7 +80605,7 @@ begin
       Q => ana_in_data(41),
       R => '0'
     );
-\ana_low.ana_in_data_reg[42]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80613,7 +80613,7 @@ begin
       Q => ana_in_data(42),
       R => '0'
     );
-\ana_low.ana_in_data_reg[43]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80621,7 +80621,7 @@ begin
       Q => ana_in_data(43),
       R => '0'
     );
-\ana_low.ana_in_data_reg[44]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80629,7 +80629,7 @@ begin
       Q => ana_in_data(44),
       R => '0'
     );
-\ana_low.ana_in_data_reg[45]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80637,7 +80637,7 @@ begin
       Q => ana_in_data(45),
       R => '0'
     );
-\ana_low.ana_in_data_reg[46]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80645,7 +80645,7 @@ begin
       Q => ana_in_data(46),
       R => '0'
     );
-\ana_low.ana_in_data_reg[47]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80653,7 +80653,7 @@ begin
       Q => ana_in_data(47),
       R => '0'
     );
-\ana_low.ana_in_data_reg[48]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80661,7 +80661,7 @@ begin
       Q => ana_in_data(48),
       R => '0'
     );
-\ana_low.ana_in_data_reg[49]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80669,7 +80669,7 @@ begin
       Q => ana_in_data(49),
       R => '0'
     );
-\ana_low.ana_in_data_reg[4]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80677,7 +80677,7 @@ begin
       Q => ana_in_data(4),
       R => '0'
     );
-\ana_low.ana_in_data_reg[50]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80685,7 +80685,7 @@ begin
       Q => ana_in_data(50),
       R => '0'
     );
-\ana_low.ana_in_data_reg[51]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80693,7 +80693,7 @@ begin
       Q => ana_in_data(51),
       R => '0'
     );
-\ana_low.ana_in_data_reg[52]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80701,7 +80701,7 @@ begin
       Q => ana_in_data(52),
       R => '0'
     );
-\ana_low.ana_in_data_reg[53]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80709,7 +80709,7 @@ begin
       Q => ana_in_data(53),
       R => '0'
     );
-\ana_low.ana_in_data_reg[54]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80717,7 +80717,7 @@ begin
       Q => ana_in_data(54),
       R => '0'
     );
-\ana_low.ana_in_data_reg[55]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80725,7 +80725,7 @@ begin
       Q => ana_in_data(55),
       R => '0'
     );
-\ana_low.ana_in_data_reg[56]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80733,7 +80733,7 @@ begin
       Q => ana_in_data(56),
       R => '0'
     );
-\ana_low.ana_in_data_reg[57]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80741,7 +80741,7 @@ begin
       Q => ana_in_data(57),
       R => '0'
     );
-\ana_low.ana_in_data_reg[58]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80749,7 +80749,7 @@ begin
       Q => ana_in_data(58),
       R => '0'
     );
-\ana_low.ana_in_data_reg[59]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80757,7 +80757,7 @@ begin
       Q => ana_in_data(59),
       R => '0'
     );
-\ana_low.ana_in_data_reg[5]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80765,7 +80765,7 @@ begin
       Q => ana_in_data(5),
       R => '0'
     );
-\ana_low.ana_in_data_reg[60]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80773,7 +80773,7 @@ begin
       Q => ana_in_data(60),
       R => '0'
     );
-\ana_low.ana_in_data_reg[61]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80781,7 +80781,7 @@ begin
       Q => ana_in_data(61),
       R => '0'
     );
-\ana_low.ana_in_data_reg[62]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80789,7 +80789,7 @@ begin
       Q => ana_in_data(62),
       R => '0'
     );
-\ana_low.ana_in_data_reg[63]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80797,7 +80797,7 @@ begin
       Q => ana_in_data(63),
       R => '0'
     );
-\ana_low.ana_in_data_reg[64]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80805,7 +80805,7 @@ begin
       Q => ana_in_data(64),
       R => '0'
     );
-\ana_low.ana_in_data_reg[65]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80813,7 +80813,7 @@ begin
       Q => ana_in_data(65),
       R => '0'
     );
-\ana_low.ana_in_data_reg[66]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80821,7 +80821,7 @@ begin
       Q => ana_in_data(66),
       R => '0'
     );
-\ana_low.ana_in_data_reg[67]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80829,7 +80829,7 @@ begin
       Q => ana_in_data(67),
       R => '0'
     );
-\ana_low.ana_in_data_reg[68]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80837,7 +80837,7 @@ begin
       Q => ana_in_data(68),
       R => '0'
     );
-\ana_low.ana_in_data_reg[69]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80845,7 +80845,7 @@ begin
       Q => ana_in_data(69),
       R => '0'
     );
-\ana_low.ana_in_data_reg[6]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80853,7 +80853,7 @@ begin
       Q => ana_in_data(6),
       R => '0'
     );
-\ana_low.ana_in_data_reg[70]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80861,7 +80861,7 @@ begin
       Q => ana_in_data(70),
       R => '0'
     );
-\ana_low.ana_in_data_reg[71]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80869,7 +80869,7 @@ begin
       Q => ana_in_data(71),
       R => '0'
     );
-\ana_low.ana_in_data_reg[72]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80877,7 +80877,7 @@ begin
       Q => ana_in_data(72),
       R => '0'
     );
-\ana_low.ana_in_data_reg[73]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80885,7 +80885,7 @@ begin
       Q => ana_in_data(73),
       R => '0'
     );
-\ana_low.ana_in_data_reg[74]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80893,7 +80893,7 @@ begin
       Q => ana_in_data(74),
       R => '0'
     );
-\ana_low.ana_in_data_reg[75]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80901,7 +80901,7 @@ begin
       Q => ana_in_data(75),
       R => '0'
     );
-\ana_low.ana_in_data_reg[76]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80909,7 +80909,7 @@ begin
       Q => ana_in_data(76),
       R => '0'
     );
-\ana_low.ana_in_data_reg[77]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80917,7 +80917,7 @@ begin
       Q => ana_in_data(77),
       R => '0'
     );
-\ana_low.ana_in_data_reg[78]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80925,7 +80925,7 @@ begin
       Q => ana_in_data(78),
       R => '0'
     );
-\ana_low.ana_in_data_reg[79]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80933,7 +80933,7 @@ begin
       Q => ana_in_data(79),
       R => '0'
     );
-\ana_low.ana_in_data_reg[7]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80941,7 +80941,7 @@ begin
       Q => ana_in_data(7),
       R => '0'
     );
-\ana_low.ana_in_data_reg[80]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[80]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80949,7 +80949,7 @@ begin
       Q => ana_in_data(80),
       R => '0'
     );
-\ana_low.ana_in_data_reg[81]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[81]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80957,7 +80957,7 @@ begin
       Q => ana_in_data(81),
       R => '0'
     );
-\ana_low.ana_in_data_reg[82]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[82]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80965,7 +80965,7 @@ begin
       Q => ana_in_data(82),
       R => '0'
     );
-\ana_low.ana_in_data_reg[83]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[83]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80973,7 +80973,7 @@ begin
       Q => ana_in_data(83),
       R => '0'
     );
-\ana_low.ana_in_data_reg[84]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[84]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80981,7 +80981,7 @@ begin
       Q => ana_in_data(84),
       R => '0'
     );
-\ana_low.ana_in_data_reg[85]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[85]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80989,7 +80989,7 @@ begin
       Q => ana_in_data(85),
       R => '0'
     );
-\ana_low.ana_in_data_reg[86]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[86]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -80997,7 +80997,7 @@ begin
       Q => ana_in_data(86),
       R => '0'
     );
-\ana_low.ana_in_data_reg[87]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[87]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81005,7 +81005,7 @@ begin
       Q => ana_in_data(87),
       R => '0'
     );
-\ana_low.ana_in_data_reg[88]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[88]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81013,7 +81013,7 @@ begin
       Q => ana_in_data(88),
       R => '0'
     );
-\ana_low.ana_in_data_reg[89]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[89]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81021,7 +81021,7 @@ begin
       Q => ana_in_data(89),
       R => '0'
     );
-\ana_low.ana_in_data_reg[8]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81029,7 +81029,7 @@ begin
       Q => ana_in_data(8),
       R => '0'
     );
-\ana_low.ana_in_data_reg[90]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[90]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81037,7 +81037,7 @@ begin
       Q => ana_in_data(90),
       R => '0'
     );
-\ana_low.ana_in_data_reg[91]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[91]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81045,7 +81045,7 @@ begin
       Q => ana_in_data(91),
       R => '0'
     );
-\ana_low.ana_in_data_reg[92]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[92]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81053,7 +81053,7 @@ begin
       Q => ana_in_data(92),
       R => '0'
     );
-\ana_low.ana_in_data_reg[93]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[93]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81061,7 +81061,7 @@ begin
       Q => ana_in_data(93),
       R => '0'
     );
-\ana_low.ana_in_data_reg[94]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[94]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81069,7 +81069,7 @@ begin
       Q => ana_in_data(94),
       R => '0'
     );
-\ana_low.ana_in_data_reg[95]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[95]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81077,7 +81077,7 @@ begin
       Q => ana_in_data(95),
       R => '0'
     );
-\ana_low.ana_in_data_reg[96]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[96]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81085,7 +81085,7 @@ begin
       Q => ana_in_data(96),
       R => '0'
     );
-\ana_low.ana_in_data_reg[97]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[97]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81093,7 +81093,7 @@ begin
       Q => ana_in_data(97),
       R => '0'
     );
-\ana_low.ana_in_data_reg[98]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[98]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81101,7 +81101,7 @@ begin
       Q => ana_in_data(98),
       R => '0'
     );
-\ana_low.ana_in_data_reg[99]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[99]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81109,7 +81109,7 @@ begin
       Q => ana_in_data(99),
       R => '0'
     );
-\ana_low.ana_in_data_reg[9]\: unisim.vcomponents.FDRE
+\ana.ana_in_data_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => fifo_clk,
       CE => ana_wr,
@@ -81117,7 +81117,7 @@ begin
       Q => ana_in_data(9),
       R => '0'
     );
-\ana_low.ana_valid_i_1\: unisim.vcomponents.LUT2
+\ana.ana_valid_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
@@ -81126,7 +81126,7 @@ begin
       I1 => ana_empty,
       O => ana_valid0
     );
-\ana_low.ana_valid_reg\: unisim.vcomponents.FDRE
+\ana.ana_valid_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
@@ -81134,7 +81134,7 @@ begin
       Q => ana_valid,
       R => '0'
     );
-\ana_low.angle[0]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81142,9 +81142,9 @@ begin
       I0 => save_angle_1(0),
       I1 => save_angle_0(0),
       I2 => save(1),
-      O => \ana_low.angle[0]_i_1_n_0\
+      O => \ana.angle[0]_i_1_n_0\
     );
-\ana_low.angle[10]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81152,9 +81152,9 @@ begin
       I0 => save_angle_1(10),
       I1 => save_angle_0(10),
       I2 => save(1),
-      O => \ana_low.angle[10]_i_1_n_0\
+      O => \ana.angle[10]_i_1_n_0\
     );
-\ana_low.angle[11]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81162,9 +81162,9 @@ begin
       I0 => save_angle_1(11),
       I1 => save_angle_0(11),
       I2 => save(1),
-      O => \ana_low.angle[11]_i_1_n_0\
+      O => \ana.angle[11]_i_1_n_0\
     );
-\ana_low.angle[12]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81172,9 +81172,9 @@ begin
       I0 => save_angle_1(12),
       I1 => save_angle_0(12),
       I2 => save(1),
-      O => \ana_low.angle[12]_i_1_n_0\
+      O => \ana.angle[12]_i_1_n_0\
     );
-\ana_low.angle[13]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81182,9 +81182,9 @@ begin
       I0 => save_angle_1(13),
       I1 => save_angle_0(13),
       I2 => save(1),
-      O => \ana_low.angle[13]_i_1_n_0\
+      O => \ana.angle[13]_i_1_n_0\
     );
-\ana_low.angle[14]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81192,9 +81192,9 @@ begin
       I0 => save_angle_1(14),
       I1 => save_angle_0(14),
       I2 => save(1),
-      O => \ana_low.angle[14]_i_1_n_0\
+      O => \ana.angle[14]_i_1_n_0\
     );
-\ana_low.angle[15]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81202,9 +81202,9 @@ begin
       I0 => save_angle_1(15),
       I1 => save_angle_0(15),
       I2 => save(1),
-      O => \ana_low.angle[15]_i_1_n_0\
+      O => \ana.angle[15]_i_1_n_0\
     );
-\ana_low.angle[1]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81212,9 +81212,9 @@ begin
       I0 => save_angle_1(1),
       I1 => save_angle_0(1),
       I2 => save(1),
-      O => \ana_low.angle[1]_i_1_n_0\
+      O => \ana.angle[1]_i_1_n_0\
     );
-\ana_low.angle[2]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81222,9 +81222,9 @@ begin
       I0 => save_angle_1(2),
       I1 => save_angle_0(2),
       I2 => save(1),
-      O => \ana_low.angle[2]_i_1_n_0\
+      O => \ana.angle[2]_i_1_n_0\
     );
-\ana_low.angle[3]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81232,9 +81232,9 @@ begin
       I0 => save_angle_1(3),
       I1 => save_angle_0(3),
       I2 => save(1),
-      O => \ana_low.angle[3]_i_1_n_0\
+      O => \ana.angle[3]_i_1_n_0\
     );
-\ana_low.angle[4]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81242,9 +81242,9 @@ begin
       I0 => save_angle_1(4),
       I1 => save_angle_0(4),
       I2 => save(1),
-      O => \ana_low.angle[4]_i_1_n_0\
+      O => \ana.angle[4]_i_1_n_0\
     );
-\ana_low.angle[5]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81252,9 +81252,9 @@ begin
       I0 => save_angle_1(5),
       I1 => save_angle_0(5),
       I2 => save(1),
-      O => \ana_low.angle[5]_i_1_n_0\
+      O => \ana.angle[5]_i_1_n_0\
     );
-\ana_low.angle[6]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81262,9 +81262,9 @@ begin
       I0 => save_angle_1(6),
       I1 => save_angle_0(6),
       I2 => save(1),
-      O => \ana_low.angle[6]_i_1_n_0\
+      O => \ana.angle[6]_i_1_n_0\
     );
-\ana_low.angle[7]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81272,9 +81272,9 @@ begin
       I0 => save_angle_1(7),
       I1 => save_angle_0(7),
       I2 => save(1),
-      O => \ana_low.angle[7]_i_1_n_0\
+      O => \ana.angle[7]_i_1_n_0\
     );
-\ana_low.angle[8]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81282,9 +81282,9 @@ begin
       I0 => save_angle_1(8),
       I1 => save_angle_0(8),
       I2 => save(1),
-      O => \ana_low.angle[8]_i_1_n_0\
+      O => \ana.angle[8]_i_1_n_0\
     );
-\ana_low.angle[9]_i_1\: unisim.vcomponents.LUT3
+\ana.angle[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81292,171 +81292,171 @@ begin
       I0 => save_angle_1(9),
       I1 => save_angle_0(9),
       I2 => save(1),
-      O => \ana_low.angle[9]_i_1_n_0\
+      O => \ana.angle[9]_i_1_n_0\
     );
-\ana_low.angle_reg[0]\: unisim.vcomponents.FDRE
+\ana.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[0]_i_1_n_0\,
       Q => \^angle\(0),
       R => '0'
     );
-\ana_low.angle_reg[10]\: unisim.vcomponents.FDRE
+\ana.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[10]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[10]_i_1_n_0\,
       Q => \^angle\(10),
       R => '0'
     );
-\ana_low.angle_reg[11]\: unisim.vcomponents.FDRE
+\ana.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[11]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[11]_i_1_n_0\,
       Q => \^angle\(11),
       R => '0'
     );
-\ana_low.angle_reg[12]\: unisim.vcomponents.FDRE
+\ana.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[12]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[12]_i_1_n_0\,
       Q => \^angle\(12),
       R => '0'
     );
-\ana_low.angle_reg[13]\: unisim.vcomponents.FDRE
+\ana.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[13]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[13]_i_1_n_0\,
       Q => \^angle\(13),
       R => '0'
     );
-\ana_low.angle_reg[14]\: unisim.vcomponents.FDRE
+\ana.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[14]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[14]_i_1_n_0\,
       Q => \^angle\(14),
       R => '0'
     );
-\ana_low.angle_reg[15]\: unisim.vcomponents.FDRE
+\ana.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[15]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[15]_i_1_n_0\,
       Q => \^angle\(15),
       R => '0'
     );
-\ana_low.angle_reg[1]\: unisim.vcomponents.FDRE
+\ana.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[1]_i_1_n_0\,
       Q => \^angle\(1),
       R => '0'
     );
-\ana_low.angle_reg[2]\: unisim.vcomponents.FDRE
+\ana.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[2]_i_1_n_0\,
       Q => \^angle\(2),
       R => '0'
     );
-\ana_low.angle_reg[3]\: unisim.vcomponents.FDRE
+\ana.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[3]_i_1_n_0\,
       Q => \^angle\(3),
       R => '0'
     );
-\ana_low.angle_reg[4]\: unisim.vcomponents.FDRE
+\ana.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[4]_i_1_n_0\,
       Q => \^angle\(4),
       R => '0'
     );
-\ana_low.angle_reg[5]\: unisim.vcomponents.FDRE
+\ana.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[5]_i_1_n_0\,
       Q => \^angle\(5),
       R => '0'
     );
-\ana_low.angle_reg[6]\: unisim.vcomponents.FDRE
+\ana.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[6]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[6]_i_1_n_0\,
       Q => \^angle\(6),
       R => '0'
     );
-\ana_low.angle_reg[7]\: unisim.vcomponents.FDRE
+\ana.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[7]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[7]_i_1_n_0\,
       Q => \^angle\(7),
       R => '0'
     );
-\ana_low.angle_reg[8]\: unisim.vcomponents.FDRE
+\ana.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[8]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[8]_i_1_n_0\,
       Q => \^angle\(8),
       R => '0'
     );
-\ana_low.angle_reg[9]\: unisim.vcomponents.FDRE
+\ana.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.angle[9]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.angle[9]_i_1_n_0\,
       Q => \^angle\(9),
       R => '0'
     );
-\ana_low.burst[0]_i_1\: unisim.vcomponents.LUT2
+\ana.burst[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => curr_burst,
       I1 => curr_doa,
-      O => \ana_low.burst[0]_i_1_n_0\
+      O => \ana.burst[0]_i_1_n_0\
     );
-\ana_low.burst[1]_i_1\: unisim.vcomponents.LUT2
+\ana.burst[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => curr_doa,
       I1 => curr_burst,
-      O => \ana_low.burst[1]_i_1_n_0\
+      O => \ana.burst[1]_i_1_n_0\
     );
-\ana_low.burst_reg[0]\: unisim.vcomponents.FDRE
+\ana.burst_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \ana_low.burst[0]_i_1_n_0\,
+      D => \ana.burst[0]_i_1_n_0\,
       Q => burst(0),
       R => '0'
     );
-\ana_low.burst_reg[1]\: unisim.vcomponents.FDRE
+\ana.burst_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \ana_low.burst[1]_i_1_n_0\,
+      D => \ana.burst[1]_i_1_n_0\,
       Q => burst(1),
       R => '0'
     );
-\ana_low.cfg_rd_reg\: unisim.vcomponents.FDRE
+\ana.cfg_rd_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
@@ -81464,24 +81464,24 @@ begin
       Q => cfg_rd,
       R => '0'
     );
-\ana_low.comp_wr_i_1\: unisim.vcomponents.LUT2
+\ana.comp_wr_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => save(0),
       I1 => save(1),
-      O => \ana_low.comp_wr_i_1_n_0\
+      O => \ana.comp_wr_i_1_n_0\
     );
-\ana_low.comp_wr_reg\: unisim.vcomponents.FDRE
+\ana.comp_wr_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \ana_low.comp_wr_i_1_n_0\,
+      D => \ana.comp_wr_i_1_n_0\,
       Q => \^comp_wr\,
       R => '0'
     );
-\ana_low.curr_doa_i_1\: unisim.vcomponents.LUT4
+\ana.curr_doa_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"303A"
     )
@@ -81490,17 +81490,17 @@ begin
       I1 => curr_doa,
       I2 => curr_burst,
       I3 => reset,
-      O => \ana_low.curr_doa_i_1_n_0\
+      O => \ana.curr_doa_i_1_n_0\
     );
-\ana_low.curr_doa_reg\: unisim.vcomponents.FDRE
+\ana.curr_doa_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \ana_low.curr_doa_i_1_n_0\,
+      D => \ana.curr_doa_i_1_n_0\,
       Q => curr_doa,
       R => '0'
     );
-\ana_low.freq[0]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81508,9 +81508,9 @@ begin
       I0 => save_freq_1(0),
       I1 => save_freq_0(0),
       I2 => save(1),
-      O => \ana_low.freq[0]_i_1_n_0\
+      O => \ana.freq[0]_i_1_n_0\
     );
-\ana_low.freq[10]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81518,9 +81518,9 @@ begin
       I0 => save_freq_1(10),
       I1 => save_freq_0(10),
       I2 => save(1),
-      O => \ana_low.freq[10]_i_1_n_0\
+      O => \ana.freq[10]_i_1_n_0\
     );
-\ana_low.freq[11]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81528,9 +81528,9 @@ begin
       I0 => save_freq_1(11),
       I1 => save_freq_0(11),
       I2 => save(1),
-      O => \ana_low.freq[11]_i_1_n_0\
+      O => \ana.freq[11]_i_1_n_0\
     );
-\ana_low.freq[12]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81538,9 +81538,9 @@ begin
       I0 => save_freq_1(12),
       I1 => save_freq_0(12),
       I2 => save(1),
-      O => \ana_low.freq[12]_i_1_n_0\
+      O => \ana.freq[12]_i_1_n_0\
     );
-\ana_low.freq[13]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81548,9 +81548,9 @@ begin
       I0 => save_freq_1(13),
       I1 => save_freq_0(13),
       I2 => save(1),
-      O => \ana_low.freq[13]_i_1_n_0\
+      O => \ana.freq[13]_i_1_n_0\
     );
-\ana_low.freq[14]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81558,9 +81558,9 @@ begin
       I0 => save_freq_1(14),
       I1 => save_freq_0(14),
       I2 => save(1),
-      O => \ana_low.freq[14]_i_1_n_0\
+      O => \ana.freq[14]_i_1_n_0\
     );
-\ana_low.freq[15]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81568,9 +81568,9 @@ begin
       I0 => save_freq_1(15),
       I1 => save_freq_0(15),
       I2 => save(1),
-      O => \ana_low.freq[15]_i_1_n_0\
+      O => \ana.freq[15]_i_1_n_0\
     );
-\ana_low.freq[16]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[16]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81578,9 +81578,9 @@ begin
       I0 => save_freq_1(16),
       I1 => save_freq_0(16),
       I2 => save(1),
-      O => \ana_low.freq[16]_i_1_n_0\
+      O => \ana.freq[16]_i_1_n_0\
     );
-\ana_low.freq[17]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[17]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81588,9 +81588,9 @@ begin
       I0 => save_freq_1(17),
       I1 => save_freq_0(17),
       I2 => save(1),
-      O => \ana_low.freq[17]_i_1_n_0\
+      O => \ana.freq[17]_i_1_n_0\
     );
-\ana_low.freq[18]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[18]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81598,9 +81598,9 @@ begin
       I0 => save_freq_1(18),
       I1 => save_freq_0(18),
       I2 => save(1),
-      O => \ana_low.freq[18]_i_1_n_0\
+      O => \ana.freq[18]_i_1_n_0\
     );
-\ana_low.freq[19]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[19]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81608,9 +81608,9 @@ begin
       I0 => save_freq_1(19),
       I1 => save_freq_0(19),
       I2 => save(1),
-      O => \ana_low.freq[19]_i_1_n_0\
+      O => \ana.freq[19]_i_1_n_0\
     );
-\ana_low.freq[1]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81618,9 +81618,9 @@ begin
       I0 => save_freq_1(1),
       I1 => save_freq_0(1),
       I2 => save(1),
-      O => \ana_low.freq[1]_i_1_n_0\
+      O => \ana.freq[1]_i_1_n_0\
     );
-\ana_low.freq[2]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81628,9 +81628,9 @@ begin
       I0 => save_freq_1(2),
       I1 => save_freq_0(2),
       I2 => save(1),
-      O => \ana_low.freq[2]_i_1_n_0\
+      O => \ana.freq[2]_i_1_n_0\
     );
-\ana_low.freq[3]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81638,9 +81638,9 @@ begin
       I0 => save_freq_1(3),
       I1 => save_freq_0(3),
       I2 => save(1),
-      O => \ana_low.freq[3]_i_1_n_0\
+      O => \ana.freq[3]_i_1_n_0\
     );
-\ana_low.freq[4]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81648,9 +81648,9 @@ begin
       I0 => save_freq_1(4),
       I1 => save_freq_0(4),
       I2 => save(1),
-      O => \ana_low.freq[4]_i_1_n_0\
+      O => \ana.freq[4]_i_1_n_0\
     );
-\ana_low.freq[5]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81658,9 +81658,9 @@ begin
       I0 => save_freq_1(5),
       I1 => save_freq_0(5),
       I2 => save(1),
-      O => \ana_low.freq[5]_i_1_n_0\
+      O => \ana.freq[5]_i_1_n_0\
     );
-\ana_low.freq[6]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81668,9 +81668,9 @@ begin
       I0 => save_freq_1(6),
       I1 => save_freq_0(6),
       I2 => save(1),
-      O => \ana_low.freq[6]_i_1_n_0\
+      O => \ana.freq[6]_i_1_n_0\
     );
-\ana_low.freq[7]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81678,9 +81678,9 @@ begin
       I0 => save_freq_1(7),
       I1 => save_freq_0(7),
       I2 => save(1),
-      O => \ana_low.freq[7]_i_1_n_0\
+      O => \ana.freq[7]_i_1_n_0\
     );
-\ana_low.freq[8]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81688,9 +81688,9 @@ begin
       I0 => save_freq_1(8),
       I1 => save_freq_0(8),
       I2 => save(1),
-      O => \ana_low.freq[8]_i_1_n_0\
+      O => \ana.freq[8]_i_1_n_0\
     );
-\ana_low.freq[9]_i_1\: unisim.vcomponents.LUT3
+\ana.freq[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -81698,169 +81698,169 @@ begin
       I0 => save_freq_1(9),
       I1 => save_freq_0(9),
       I2 => save(1),
-      O => \ana_low.freq[9]_i_1_n_0\
+      O => \ana.freq[9]_i_1_n_0\
     );
-\ana_low.freq_0_reg[0]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(0),
       Q => freq_0(0),
       R => '0'
     );
-\ana_low.freq_0_reg[10]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(10),
       Q => freq_0(10),
       R => '0'
     );
-\ana_low.freq_0_reg[11]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(11),
       Q => freq_0(11),
       R => '0'
     );
-\ana_low.freq_0_reg[12]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(12),
       Q => freq_0(12),
       R => '0'
     );
-\ana_low.freq_0_reg[13]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(13),
       Q => freq_0(13),
       R => '0'
     );
-\ana_low.freq_0_reg[14]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(14),
       Q => freq_0(14),
       R => '0'
     );
-\ana_low.freq_0_reg[15]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(15),
       Q => freq_0(15),
       R => '0'
     );
-\ana_low.freq_0_reg[16]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(16),
       Q => freq_0(16),
       R => '0'
     );
-\ana_low.freq_0_reg[17]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(17),
       Q => freq_0(17),
       R => '0'
     );
-\ana_low.freq_0_reg[18]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(18),
       Q => freq_0(18),
       R => '0'
     );
-\ana_low.freq_0_reg[19]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(19),
       Q => freq_0(19),
       R => '0'
     );
-\ana_low.freq_0_reg[1]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(1),
       Q => freq_0(1),
       R => '0'
     );
-\ana_low.freq_0_reg[2]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(2),
       Q => freq_0(2),
       R => '0'
     );
-\ana_low.freq_0_reg[3]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(3),
       Q => freq_0(3),
       R => '0'
     );
-\ana_low.freq_0_reg[4]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(4),
       Q => freq_0(4),
       R => '0'
     );
-\ana_low.freq_0_reg[5]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(5),
       Q => freq_0(5),
       R => '0'
     );
-\ana_low.freq_0_reg[6]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(6),
       Q => freq_0(6),
       R => '0'
     );
-\ana_low.freq_0_reg[7]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(7),
       Q => freq_0(7),
       R => '0'
     );
-\ana_low.freq_0_reg[8]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(8),
       Q => freq_0(8),
       R => '0'
     );
-\ana_low.freq_0_reg[9]\: unisim.vcomponents.FDRE
+\ana.freq_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_freq(9),
       Q => freq_0(9),
       R => '0'
     );
-\ana_low.freq_1_reg[0]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81868,7 +81868,7 @@ begin
       Q => freq_1(0),
       R => '0'
     );
-\ana_low.freq_1_reg[10]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81876,7 +81876,7 @@ begin
       Q => freq_1(10),
       R => '0'
     );
-\ana_low.freq_1_reg[11]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81884,7 +81884,7 @@ begin
       Q => freq_1(11),
       R => '0'
     );
-\ana_low.freq_1_reg[12]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81892,7 +81892,7 @@ begin
       Q => freq_1(12),
       R => '0'
     );
-\ana_low.freq_1_reg[13]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81900,7 +81900,7 @@ begin
       Q => freq_1(13),
       R => '0'
     );
-\ana_low.freq_1_reg[14]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81908,7 +81908,7 @@ begin
       Q => freq_1(14),
       R => '0'
     );
-\ana_low.freq_1_reg[15]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81916,7 +81916,7 @@ begin
       Q => freq_1(15),
       R => '0'
     );
-\ana_low.freq_1_reg[16]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81924,7 +81924,7 @@ begin
       Q => freq_1(16),
       R => '0'
     );
-\ana_low.freq_1_reg[17]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81932,7 +81932,7 @@ begin
       Q => freq_1(17),
       R => '0'
     );
-\ana_low.freq_1_reg[18]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81940,7 +81940,7 @@ begin
       Q => freq_1(18),
       R => '0'
     );
-\ana_low.freq_1_reg[19]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81948,7 +81948,7 @@ begin
       Q => freq_1(19),
       R => '0'
     );
-\ana_low.freq_1_reg[1]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81956,7 +81956,7 @@ begin
       Q => freq_1(1),
       R => '0'
     );
-\ana_low.freq_1_reg[2]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81964,7 +81964,7 @@ begin
       Q => freq_1(2),
       R => '0'
     );
-\ana_low.freq_1_reg[3]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81972,7 +81972,7 @@ begin
       Q => freq_1(3),
       R => '0'
     );
-\ana_low.freq_1_reg[4]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81980,7 +81980,7 @@ begin
       Q => freq_1(4),
       R => '0'
     );
-\ana_low.freq_1_reg[5]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81988,7 +81988,7 @@ begin
       Q => freq_1(5),
       R => '0'
     );
-\ana_low.freq_1_reg[6]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -81996,7 +81996,7 @@ begin
       Q => freq_1(6),
       R => '0'
     );
-\ana_low.freq_1_reg[7]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82004,7 +82004,7 @@ begin
       Q => freq_1(7),
       R => '0'
     );
-\ana_low.freq_1_reg[8]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82012,7 +82012,7 @@ begin
       Q => freq_1(8),
       R => '0'
     );
-\ana_low.freq_1_reg[9]\: unisim.vcomponents.FDRE
+\ana.freq_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82020,327 +82020,327 @@ begin
       Q => freq_1(9),
       R => '0'
     );
-\ana_low.freq_reg[0]\: unisim.vcomponents.FDRE
+\ana.freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[0]_i_1_n_0\,
       Q => \^freq\(0),
       R => '0'
     );
-\ana_low.freq_reg[10]\: unisim.vcomponents.FDRE
+\ana.freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[10]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[10]_i_1_n_0\,
       Q => \^freq\(10),
       R => '0'
     );
-\ana_low.freq_reg[11]\: unisim.vcomponents.FDRE
+\ana.freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[11]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[11]_i_1_n_0\,
       Q => \^freq\(11),
       R => '0'
     );
-\ana_low.freq_reg[12]\: unisim.vcomponents.FDRE
+\ana.freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[12]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[12]_i_1_n_0\,
       Q => \^freq\(12),
       R => '0'
     );
-\ana_low.freq_reg[13]\: unisim.vcomponents.FDRE
+\ana.freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[13]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[13]_i_1_n_0\,
       Q => \^freq\(13),
       R => '0'
     );
-\ana_low.freq_reg[14]\: unisim.vcomponents.FDRE
+\ana.freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[14]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[14]_i_1_n_0\,
       Q => \^freq\(14),
       R => '0'
     );
-\ana_low.freq_reg[15]\: unisim.vcomponents.FDRE
+\ana.freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[15]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[15]_i_1_n_0\,
       Q => \^freq\(15),
       R => '0'
     );
-\ana_low.freq_reg[16]\: unisim.vcomponents.FDRE
+\ana.freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[16]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[16]_i_1_n_0\,
       Q => \^freq\(16),
       R => '0'
     );
-\ana_low.freq_reg[17]\: unisim.vcomponents.FDRE
+\ana.freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[17]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[17]_i_1_n_0\,
       Q => \^freq\(17),
       R => '0'
     );
-\ana_low.freq_reg[18]\: unisim.vcomponents.FDRE
+\ana.freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[18]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[18]_i_1_n_0\,
       Q => \^freq\(18),
       R => '0'
     );
-\ana_low.freq_reg[19]\: unisim.vcomponents.FDRE
+\ana.freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[19]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[19]_i_1_n_0\,
       Q => \^freq\(19),
       R => '0'
     );
-\ana_low.freq_reg[1]\: unisim.vcomponents.FDRE
+\ana.freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[1]_i_1_n_0\,
       Q => \^freq\(1),
       R => '0'
     );
-\ana_low.freq_reg[2]\: unisim.vcomponents.FDRE
+\ana.freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[2]_i_1_n_0\,
       Q => \^freq\(2),
       R => '0'
     );
-\ana_low.freq_reg[3]\: unisim.vcomponents.FDRE
+\ana.freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[3]_i_1_n_0\,
       Q => \^freq\(3),
       R => '0'
     );
-\ana_low.freq_reg[4]\: unisim.vcomponents.FDRE
+\ana.freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[4]_i_1_n_0\,
       Q => \^freq\(4),
       R => '0'
     );
-\ana_low.freq_reg[5]\: unisim.vcomponents.FDRE
+\ana.freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[5]_i_1_n_0\,
       Q => \^freq\(5),
       R => '0'
     );
-\ana_low.freq_reg[6]\: unisim.vcomponents.FDRE
+\ana.freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[6]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[6]_i_1_n_0\,
       Q => \^freq\(6),
       R => '0'
     );
-\ana_low.freq_reg[7]\: unisim.vcomponents.FDRE
+\ana.freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[7]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[7]_i_1_n_0\,
       Q => \^freq\(7),
       R => '0'
     );
-\ana_low.freq_reg[8]\: unisim.vcomponents.FDRE
+\ana.freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[8]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[8]_i_1_n_0\,
       Q => \^freq\(8),
       R => '0'
     );
-\ana_low.freq_reg[9]\: unisim.vcomponents.FDRE
+\ana.freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.freq[9]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.freq[9]_i_1_n_0\,
       Q => \^freq\(9),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[0]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(0),
       Q => phase_EW_0(0),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[10]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(10),
       Q => phase_EW_0(10),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[11]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(11),
       Q => phase_EW_0(11),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[12]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(12),
       Q => phase_EW_0(12),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[13]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(13),
       Q => phase_EW_0(13),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[14]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(14),
       Q => phase_EW_0(14),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[15]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(15),
       Q => phase_EW_0(15),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[16]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(16),
       Q => phase_EW_0(16),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[17]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(17),
       Q => phase_EW_0(17),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[18]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(18),
       Q => phase_EW_0(18),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[19]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(19),
       Q => phase_EW_0(19),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[1]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(1),
       Q => phase_EW_0(1),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[2]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(2),
       Q => phase_EW_0(2),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[3]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(3),
       Q => phase_EW_0(3),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[4]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(4),
       Q => phase_EW_0(4),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[5]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(5),
       Q => phase_EW_0(5),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[6]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(6),
       Q => phase_EW_0(6),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[7]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(7),
       Q => phase_EW_0(7),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[8]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(8),
       Q => phase_EW_0(8),
       R => '0'
     );
-\ana_low.phase_EW_0_reg[9]\: unisim.vcomponents.FDRE
+\ana.phase_EW_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_EW(9),
       Q => phase_EW_0(9),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[0]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82348,7 +82348,7 @@ begin
       Q => phase_EW_1(0),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[10]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82356,7 +82356,7 @@ begin
       Q => phase_EW_1(10),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[11]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82364,7 +82364,7 @@ begin
       Q => phase_EW_1(11),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[12]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82372,7 +82372,7 @@ begin
       Q => phase_EW_1(12),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[13]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82380,7 +82380,7 @@ begin
       Q => phase_EW_1(13),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[14]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82388,7 +82388,7 @@ begin
       Q => phase_EW_1(14),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[15]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82396,7 +82396,7 @@ begin
       Q => phase_EW_1(15),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[16]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82404,7 +82404,7 @@ begin
       Q => phase_EW_1(16),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[17]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82412,7 +82412,7 @@ begin
       Q => phase_EW_1(17),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[18]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82420,7 +82420,7 @@ begin
       Q => phase_EW_1(18),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[19]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82428,7 +82428,7 @@ begin
       Q => phase_EW_1(19),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[1]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82436,7 +82436,7 @@ begin
       Q => phase_EW_1(1),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[2]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82444,7 +82444,7 @@ begin
       Q => phase_EW_1(2),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[3]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82452,7 +82452,7 @@ begin
       Q => phase_EW_1(3),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[4]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82460,7 +82460,7 @@ begin
       Q => phase_EW_1(4),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[5]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82468,7 +82468,7 @@ begin
       Q => phase_EW_1(5),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[6]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82476,7 +82476,7 @@ begin
       Q => phase_EW_1(6),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[7]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82484,7 +82484,7 @@ begin
       Q => phase_EW_1(7),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[8]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82492,7 +82492,7 @@ begin
       Q => phase_EW_1(8),
       R => '0'
     );
-\ana_low.phase_EW_1_reg[9]\: unisim.vcomponents.FDRE
+\ana.phase_EW_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82500,167 +82500,167 @@ begin
       Q => phase_EW_1(9),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[0]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(0),
       Q => phase_NE_0(0),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[10]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(10),
       Q => phase_NE_0(10),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[11]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(11),
       Q => phase_NE_0(11),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[12]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(12),
       Q => phase_NE_0(12),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[13]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(13),
       Q => phase_NE_0(13),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[14]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(14),
       Q => phase_NE_0(14),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[15]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(15),
       Q => phase_NE_0(15),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[16]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(16),
       Q => phase_NE_0(16),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[17]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(17),
       Q => phase_NE_0(17),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[18]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(18),
       Q => phase_NE_0(18),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[19]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(19),
       Q => phase_NE_0(19),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[1]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(1),
       Q => phase_NE_0(1),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[2]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(2),
       Q => phase_NE_0(2),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[3]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(3),
       Q => phase_NE_0(3),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[4]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(4),
       Q => phase_NE_0(4),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[5]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(5),
       Q => phase_NE_0(5),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[6]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(6),
       Q => phase_NE_0(6),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[7]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(7),
       Q => phase_NE_0(7),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[8]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(8),
       Q => phase_NE_0(8),
       R => '0'
     );
-\ana_low.phase_NE_0_reg[9]\: unisim.vcomponents.FDRE
+\ana.phase_NE_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_NE(9),
       Q => phase_NE_0(9),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[0]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82668,7 +82668,7 @@ begin
       Q => phase_NE_1(0),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[10]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82676,7 +82676,7 @@ begin
       Q => phase_NE_1(10),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[11]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82684,7 +82684,7 @@ begin
       Q => phase_NE_1(11),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[12]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82692,7 +82692,7 @@ begin
       Q => phase_NE_1(12),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[13]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82700,7 +82700,7 @@ begin
       Q => phase_NE_1(13),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[14]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82708,7 +82708,7 @@ begin
       Q => phase_NE_1(14),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[15]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82716,7 +82716,7 @@ begin
       Q => phase_NE_1(15),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[16]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82724,7 +82724,7 @@ begin
       Q => phase_NE_1(16),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[17]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82732,7 +82732,7 @@ begin
       Q => phase_NE_1(17),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[18]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82740,7 +82740,7 @@ begin
       Q => phase_NE_1(18),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[19]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82748,7 +82748,7 @@ begin
       Q => phase_NE_1(19),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[1]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82756,7 +82756,7 @@ begin
       Q => phase_NE_1(1),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[2]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82764,7 +82764,7 @@ begin
       Q => phase_NE_1(2),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[3]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82772,7 +82772,7 @@ begin
       Q => phase_NE_1(3),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[4]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82780,7 +82780,7 @@ begin
       Q => phase_NE_1(4),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[5]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82788,7 +82788,7 @@ begin
       Q => phase_NE_1(5),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[6]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82796,7 +82796,7 @@ begin
       Q => phase_NE_1(6),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[7]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82804,7 +82804,7 @@ begin
       Q => phase_NE_1(7),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[8]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82812,7 +82812,7 @@ begin
       Q => phase_NE_1(8),
       R => '0'
     );
-\ana_low.phase_NE_1_reg[9]\: unisim.vcomponents.FDRE
+\ana.phase_NE_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82820,167 +82820,167 @@ begin
       Q => phase_NE_1(9),
       R => '0'
     );
-\ana_low.phase_WN_0_reg[0]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(0),
-      Q => \ana_low.phase_WN_0_reg_n_0_[0]\,
+      Q => \ana.phase_WN_0_reg_n_0_[0]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[10]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(10),
-      Q => \ana_low.phase_WN_0_reg_n_0_[10]\,
+      Q => \ana.phase_WN_0_reg_n_0_[10]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[11]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(11),
-      Q => \ana_low.phase_WN_0_reg_n_0_[11]\,
+      Q => \ana.phase_WN_0_reg_n_0_[11]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[12]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(12),
-      Q => \ana_low.phase_WN_0_reg_n_0_[12]\,
+      Q => \ana.phase_WN_0_reg_n_0_[12]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[13]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(13),
-      Q => \ana_low.phase_WN_0_reg_n_0_[13]\,
+      Q => \ana.phase_WN_0_reg_n_0_[13]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[14]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(14),
-      Q => \ana_low.phase_WN_0_reg_n_0_[14]\,
+      Q => \ana.phase_WN_0_reg_n_0_[14]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[15]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(15),
-      Q => \ana_low.phase_WN_0_reg_n_0_[15]\,
+      Q => \ana.phase_WN_0_reg_n_0_[15]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[16]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(16),
-      Q => \ana_low.phase_WN_0_reg_n_0_[16]\,
+      Q => \ana.phase_WN_0_reg_n_0_[16]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[17]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(17),
-      Q => \ana_low.phase_WN_0_reg_n_0_[17]\,
+      Q => \ana.phase_WN_0_reg_n_0_[17]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[18]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(18),
-      Q => \ana_low.phase_WN_0_reg_n_0_[18]\,
+      Q => \ana.phase_WN_0_reg_n_0_[18]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[19]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(19),
-      Q => \ana_low.phase_WN_0_reg_n_0_[19]\,
+      Q => \ana.phase_WN_0_reg_n_0_[19]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[1]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(1),
-      Q => \ana_low.phase_WN_0_reg_n_0_[1]\,
+      Q => \ana.phase_WN_0_reg_n_0_[1]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[2]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(2),
-      Q => \ana_low.phase_WN_0_reg_n_0_[2]\,
+      Q => \ana.phase_WN_0_reg_n_0_[2]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[3]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(3),
-      Q => \ana_low.phase_WN_0_reg_n_0_[3]\,
+      Q => \ana.phase_WN_0_reg_n_0_[3]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[4]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(4),
-      Q => \ana_low.phase_WN_0_reg_n_0_[4]\,
+      Q => \ana.phase_WN_0_reg_n_0_[4]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[5]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(5),
-      Q => \ana_low.phase_WN_0_reg_n_0_[5]\,
+      Q => \ana.phase_WN_0_reg_n_0_[5]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[6]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(6),
-      Q => \ana_low.phase_WN_0_reg_n_0_[6]\,
+      Q => \ana.phase_WN_0_reg_n_0_[6]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[7]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(7),
-      Q => \ana_low.phase_WN_0_reg_n_0_[7]\,
+      Q => \ana.phase_WN_0_reg_n_0_[7]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[8]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(8),
-      Q => \ana_low.phase_WN_0_reg_n_0_[8]\,
+      Q => \ana.phase_WN_0_reg_n_0_[8]\,
       R => '0'
     );
-\ana_low.phase_WN_0_reg[9]\: unisim.vcomponents.FDRE
+\ana.phase_WN_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_phase_WN(9),
-      Q => \ana_low.phase_WN_0_reg_n_0_[9]\,
+      Q => \ana.phase_WN_0_reg_n_0_[9]\,
       R => '0'
     );
-\ana_low.phase_WN_1_reg[0]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82988,7 +82988,7 @@ begin
       Q => phase_WN_1(0),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[10]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -82996,7 +82996,7 @@ begin
       Q => phase_WN_1(10),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[11]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83004,7 +83004,7 @@ begin
       Q => phase_WN_1(11),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[12]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83012,7 +83012,7 @@ begin
       Q => phase_WN_1(12),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[13]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83020,7 +83020,7 @@ begin
       Q => phase_WN_1(13),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[14]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83028,7 +83028,7 @@ begin
       Q => phase_WN_1(14),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[15]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83036,7 +83036,7 @@ begin
       Q => phase_WN_1(15),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[16]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83044,7 +83044,7 @@ begin
       Q => phase_WN_1(16),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[17]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83052,7 +83052,7 @@ begin
       Q => phase_WN_1(17),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[18]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83060,7 +83060,7 @@ begin
       Q => phase_WN_1(18),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[19]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83068,7 +83068,7 @@ begin
       Q => phase_WN_1(19),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[1]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83076,7 +83076,7 @@ begin
       Q => phase_WN_1(1),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[2]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83084,7 +83084,7 @@ begin
       Q => phase_WN_1(2),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[3]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83092,7 +83092,7 @@ begin
       Q => phase_WN_1(3),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[4]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83100,7 +83100,7 @@ begin
       Q => phase_WN_1(4),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[5]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83108,7 +83108,7 @@ begin
       Q => phase_WN_1(5),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[6]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83116,7 +83116,7 @@ begin
       Q => phase_WN_1(6),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[7]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83124,7 +83124,7 @@ begin
       Q => phase_WN_1(7),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[8]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83132,7 +83132,7 @@ begin
       Q => phase_WN_1(8),
       R => '0'
     );
-\ana_low.phase_WN_1_reg[9]\: unisim.vcomponents.FDRE
+\ana.phase_WN_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -83140,7 +83140,7 @@ begin
       Q => phase_WN_1(9),
       R => '0'
     );
-\ana_low.sample[0]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83148,9 +83148,9 @@ begin
       I0 => save_sample_1(0),
       I1 => save_sample_0(0),
       I2 => save(1),
-      O => \ana_low.sample[0]_i_1_n_0\
+      O => \ana.sample[0]_i_1_n_0\
     );
-\ana_low.sample[10]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83158,9 +83158,9 @@ begin
       I0 => save_sample_1(10),
       I1 => save_sample_0(10),
       I2 => save(1),
-      O => \ana_low.sample[10]_i_1_n_0\
+      O => \ana.sample[10]_i_1_n_0\
     );
-\ana_low.sample[11]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83168,9 +83168,9 @@ begin
       I0 => save_sample_1(11),
       I1 => save_sample_0(11),
       I2 => save(1),
-      O => \ana_low.sample[11]_i_1_n_0\
+      O => \ana.sample[11]_i_1_n_0\
     );
-\ana_low.sample[12]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83178,9 +83178,9 @@ begin
       I0 => save_sample_1(12),
       I1 => save_sample_0(12),
       I2 => save(1),
-      O => \ana_low.sample[12]_i_1_n_0\
+      O => \ana.sample[12]_i_1_n_0\
     );
-\ana_low.sample[13]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83188,9 +83188,9 @@ begin
       I0 => save_sample_1(13),
       I1 => save_sample_0(13),
       I2 => save(1),
-      O => \ana_low.sample[13]_i_1_n_0\
+      O => \ana.sample[13]_i_1_n_0\
     );
-\ana_low.sample[14]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83198,9 +83198,9 @@ begin
       I0 => save_sample_1(14),
       I1 => save_sample_0(14),
       I2 => save(1),
-      O => \ana_low.sample[14]_i_1_n_0\
+      O => \ana.sample[14]_i_1_n_0\
     );
-\ana_low.sample[15]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83208,9 +83208,9 @@ begin
       I0 => save_sample_1(15),
       I1 => save_sample_0(15),
       I2 => save(1),
-      O => \ana_low.sample[15]_i_1_n_0\
+      O => \ana.sample[15]_i_1_n_0\
     );
-\ana_low.sample[16]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[16]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83218,9 +83218,9 @@ begin
       I0 => save_sample_1(16),
       I1 => save_sample_0(16),
       I2 => save(1),
-      O => \ana_low.sample[16]_i_1_n_0\
+      O => \ana.sample[16]_i_1_n_0\
     );
-\ana_low.sample[17]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[17]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83228,9 +83228,9 @@ begin
       I0 => save_sample_1(17),
       I1 => save_sample_0(17),
       I2 => save(1),
-      O => \ana_low.sample[17]_i_1_n_0\
+      O => \ana.sample[17]_i_1_n_0\
     );
-\ana_low.sample[18]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[18]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83238,9 +83238,9 @@ begin
       I0 => save_sample_1(18),
       I1 => save_sample_0(18),
       I2 => save(1),
-      O => \ana_low.sample[18]_i_1_n_0\
+      O => \ana.sample[18]_i_1_n_0\
     );
-\ana_low.sample[19]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[19]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83248,9 +83248,9 @@ begin
       I0 => save_sample_1(19),
       I1 => save_sample_0(19),
       I2 => save(1),
-      O => \ana_low.sample[19]_i_1_n_0\
+      O => \ana.sample[19]_i_1_n_0\
     );
-\ana_low.sample[1]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83258,9 +83258,9 @@ begin
       I0 => save_sample_1(1),
       I1 => save_sample_0(1),
       I2 => save(1),
-      O => \ana_low.sample[1]_i_1_n_0\
+      O => \ana.sample[1]_i_1_n_0\
     );
-\ana_low.sample[20]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[20]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83268,9 +83268,9 @@ begin
       I0 => save_sample_1(20),
       I1 => save_sample_0(20),
       I2 => save(1),
-      O => \ana_low.sample[20]_i_1_n_0\
+      O => \ana.sample[20]_i_1_n_0\
     );
-\ana_low.sample[21]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[21]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83278,9 +83278,9 @@ begin
       I0 => save_sample_1(21),
       I1 => save_sample_0(21),
       I2 => save(1),
-      O => \ana_low.sample[21]_i_1_n_0\
+      O => \ana.sample[21]_i_1_n_0\
     );
-\ana_low.sample[22]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[22]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83288,9 +83288,9 @@ begin
       I0 => save_sample_1(22),
       I1 => save_sample_0(22),
       I2 => save(1),
-      O => \ana_low.sample[22]_i_1_n_0\
+      O => \ana.sample[22]_i_1_n_0\
     );
-\ana_low.sample[23]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[23]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83298,9 +83298,9 @@ begin
       I0 => save_sample_1(23),
       I1 => save_sample_0(23),
       I2 => save(1),
-      O => \ana_low.sample[23]_i_1_n_0\
+      O => \ana.sample[23]_i_1_n_0\
     );
-\ana_low.sample[24]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[24]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83308,9 +83308,9 @@ begin
       I0 => save_sample_1(24),
       I1 => save_sample_0(24),
       I2 => save(1),
-      O => \ana_low.sample[24]_i_1_n_0\
+      O => \ana.sample[24]_i_1_n_0\
     );
-\ana_low.sample[25]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[25]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83318,9 +83318,9 @@ begin
       I0 => save_sample_1(25),
       I1 => save_sample_0(25),
       I2 => save(1),
-      O => \ana_low.sample[25]_i_1_n_0\
+      O => \ana.sample[25]_i_1_n_0\
     );
-\ana_low.sample[26]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[26]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83328,9 +83328,9 @@ begin
       I0 => save_sample_1(26),
       I1 => save_sample_0(26),
       I2 => save(1),
-      O => \ana_low.sample[26]_i_1_n_0\
+      O => \ana.sample[26]_i_1_n_0\
     );
-\ana_low.sample[27]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[27]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83338,9 +83338,9 @@ begin
       I0 => save_sample_1(27),
       I1 => save_sample_0(27),
       I2 => save(1),
-      O => \ana_low.sample[27]_i_1_n_0\
+      O => \ana.sample[27]_i_1_n_0\
     );
-\ana_low.sample[28]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[28]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83348,9 +83348,9 @@ begin
       I0 => save_sample_1(28),
       I1 => save_sample_0(28),
       I2 => save(1),
-      O => \ana_low.sample[28]_i_1_n_0\
+      O => \ana.sample[28]_i_1_n_0\
     );
-\ana_low.sample[29]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[29]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83358,9 +83358,9 @@ begin
       I0 => save_sample_1(29),
       I1 => save_sample_0(29),
       I2 => save(1),
-      O => \ana_low.sample[29]_i_1_n_0\
+      O => \ana.sample[29]_i_1_n_0\
     );
-\ana_low.sample[2]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83368,9 +83368,9 @@ begin
       I0 => save_sample_1(2),
       I1 => save_sample_0(2),
       I2 => save(1),
-      O => \ana_low.sample[2]_i_1_n_0\
+      O => \ana.sample[2]_i_1_n_0\
     );
-\ana_low.sample[30]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[30]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83378,9 +83378,9 @@ begin
       I0 => save_sample_1(30),
       I1 => save_sample_0(30),
       I2 => save(1),
-      O => \ana_low.sample[30]_i_1_n_0\
+      O => \ana.sample[30]_i_1_n_0\
     );
-\ana_low.sample[31]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[31]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83388,9 +83388,9 @@ begin
       I0 => save_sample_1(31),
       I1 => save_sample_0(31),
       I2 => save(1),
-      O => \ana_low.sample[31]_i_1_n_0\
+      O => \ana.sample[31]_i_1_n_0\
     );
-\ana_low.sample[3]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83398,9 +83398,9 @@ begin
       I0 => save_sample_1(3),
       I1 => save_sample_0(3),
       I2 => save(1),
-      O => \ana_low.sample[3]_i_1_n_0\
+      O => \ana.sample[3]_i_1_n_0\
     );
-\ana_low.sample[4]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83408,9 +83408,9 @@ begin
       I0 => save_sample_1(4),
       I1 => save_sample_0(4),
       I2 => save(1),
-      O => \ana_low.sample[4]_i_1_n_0\
+      O => \ana.sample[4]_i_1_n_0\
     );
-\ana_low.sample[5]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83418,9 +83418,9 @@ begin
       I0 => save_sample_1(5),
       I1 => save_sample_0(5),
       I2 => save(1),
-      O => \ana_low.sample[5]_i_1_n_0\
+      O => \ana.sample[5]_i_1_n_0\
     );
-\ana_low.sample[6]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83428,9 +83428,9 @@ begin
       I0 => save_sample_1(6),
       I1 => save_sample_0(6),
       I2 => save(1),
-      O => \ana_low.sample[6]_i_1_n_0\
+      O => \ana.sample[6]_i_1_n_0\
     );
-\ana_low.sample[7]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83438,9 +83438,9 @@ begin
       I0 => save_sample_1(7),
       I1 => save_sample_0(7),
       I2 => save(1),
-      O => \ana_low.sample[7]_i_1_n_0\
+      O => \ana.sample[7]_i_1_n_0\
     );
-\ana_low.sample[8]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83448,9 +83448,9 @@ begin
       I0 => save_sample_1(8),
       I1 => save_sample_0(8),
       I2 => save(1),
-      O => \ana_low.sample[8]_i_1_n_0\
+      O => \ana.sample[8]_i_1_n_0\
     );
-\ana_low.sample[9]_i_1\: unisim.vcomponents.LUT3
+\ana.sample[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -83458,265 +83458,265 @@ begin
       I0 => save_sample_1(9),
       I1 => save_sample_0(9),
       I2 => save(1),
-      O => \ana_low.sample[9]_i_1_n_0\
+      O => \ana.sample[9]_i_1_n_0\
     );
-\ana_low.sample_0_reg[0]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(0),
-      Q => \ana_low.sample_0_reg_n_0_[0]\,
+      Q => \ana.sample_0_reg_n_0_[0]\,
       R => '0'
     );
-\ana_low.sample_0_reg[10]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(10),
-      Q => \ana_low.sample_0_reg_n_0_[10]\,
+      Q => \ana.sample_0_reg_n_0_[10]\,
       R => '0'
     );
-\ana_low.sample_0_reg[11]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(11),
-      Q => \ana_low.sample_0_reg_n_0_[11]\,
+      Q => \ana.sample_0_reg_n_0_[11]\,
       R => '0'
     );
-\ana_low.sample_0_reg[12]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(12),
-      Q => \ana_low.sample_0_reg_n_0_[12]\,
+      Q => \ana.sample_0_reg_n_0_[12]\,
       R => '0'
     );
-\ana_low.sample_0_reg[13]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(13),
-      Q => \ana_low.sample_0_reg_n_0_[13]\,
+      Q => \ana.sample_0_reg_n_0_[13]\,
       R => '0'
     );
-\ana_low.sample_0_reg[14]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(14),
-      Q => \ana_low.sample_0_reg_n_0_[14]\,
+      Q => \ana.sample_0_reg_n_0_[14]\,
       R => '0'
     );
-\ana_low.sample_0_reg[15]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(15),
-      Q => \ana_low.sample_0_reg_n_0_[15]\,
+      Q => \ana.sample_0_reg_n_0_[15]\,
       R => '0'
     );
-\ana_low.sample_0_reg[16]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(16),
-      Q => \ana_low.sample_0_reg_n_0_[16]\,
+      Q => \ana.sample_0_reg_n_0_[16]\,
       R => '0'
     );
-\ana_low.sample_0_reg[17]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(17),
-      Q => \ana_low.sample_0_reg_n_0_[17]\,
+      Q => \ana.sample_0_reg_n_0_[17]\,
       R => '0'
     );
-\ana_low.sample_0_reg[18]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(18),
-      Q => \ana_low.sample_0_reg_n_0_[18]\,
+      Q => \ana.sample_0_reg_n_0_[18]\,
       R => '0'
     );
-\ana_low.sample_0_reg[19]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(19),
-      Q => \ana_low.sample_0_reg_n_0_[19]\,
+      Q => \ana.sample_0_reg_n_0_[19]\,
       R => '0'
     );
-\ana_low.sample_0_reg[1]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(1),
-      Q => \ana_low.sample_0_reg_n_0_[1]\,
+      Q => \ana.sample_0_reg_n_0_[1]\,
       R => '0'
     );
-\ana_low.sample_0_reg[20]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(20),
-      Q => \ana_low.sample_0_reg_n_0_[20]\,
+      Q => \ana.sample_0_reg_n_0_[20]\,
       R => '0'
     );
-\ana_low.sample_0_reg[21]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(21),
-      Q => \ana_low.sample_0_reg_n_0_[21]\,
+      Q => \ana.sample_0_reg_n_0_[21]\,
       R => '0'
     );
-\ana_low.sample_0_reg[22]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(22),
-      Q => \ana_low.sample_0_reg_n_0_[22]\,
+      Q => \ana.sample_0_reg_n_0_[22]\,
       R => '0'
     );
-\ana_low.sample_0_reg[23]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(23),
-      Q => \ana_low.sample_0_reg_n_0_[23]\,
+      Q => \ana.sample_0_reg_n_0_[23]\,
       R => '0'
     );
-\ana_low.sample_0_reg[24]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(24),
-      Q => \ana_low.sample_0_reg_n_0_[24]\,
+      Q => \ana.sample_0_reg_n_0_[24]\,
       R => '0'
     );
-\ana_low.sample_0_reg[25]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(25),
-      Q => \ana_low.sample_0_reg_n_0_[25]\,
+      Q => \ana.sample_0_reg_n_0_[25]\,
       R => '0'
     );
-\ana_low.sample_0_reg[26]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(26),
-      Q => \ana_low.sample_0_reg_n_0_[26]\,
+      Q => \ana.sample_0_reg_n_0_[26]\,
       R => '0'
     );
-\ana_low.sample_0_reg[27]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(27),
-      Q => \ana_low.sample_0_reg_n_0_[27]\,
+      Q => \ana.sample_0_reg_n_0_[27]\,
       R => '0'
     );
-\ana_low.sample_0_reg[28]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(28),
-      Q => \ana_low.sample_0_reg_n_0_[28]\,
+      Q => \ana.sample_0_reg_n_0_[28]\,
       R => '0'
     );
-\ana_low.sample_0_reg[29]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(29),
-      Q => \ana_low.sample_0_reg_n_0_[29]\,
+      Q => \ana.sample_0_reg_n_0_[29]\,
       R => '0'
     );
-\ana_low.sample_0_reg[2]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(2),
-      Q => \ana_low.sample_0_reg_n_0_[2]\,
+      Q => \ana.sample_0_reg_n_0_[2]\,
       R => '0'
     );
-\ana_low.sample_0_reg[30]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(30),
-      Q => \ana_low.sample_0_reg_n_0_[30]\,
+      Q => \ana.sample_0_reg_n_0_[30]\,
       R => '0'
     );
-\ana_low.sample_0_reg[31]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(31),
-      Q => \ana_low.sample_0_reg_n_0_[31]\,
+      Q => \ana.sample_0_reg_n_0_[31]\,
       R => '0'
     );
-\ana_low.sample_0_reg[3]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(3),
-      Q => \ana_low.sample_0_reg_n_0_[3]\,
+      Q => \ana.sample_0_reg_n_0_[3]\,
       R => '0'
     );
-\ana_low.sample_0_reg[4]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(4),
-      Q => \ana_low.sample_0_reg_n_0_[4]\,
+      Q => \ana.sample_0_reg_n_0_[4]\,
       R => '0'
     );
-\ana_low.sample_0_reg[5]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(5),
-      Q => \ana_low.sample_0_reg_n_0_[5]\,
+      Q => \ana.sample_0_reg_n_0_[5]\,
       R => '0'
     );
-\ana_low.sample_0_reg[6]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(6),
-      Q => \ana_low.sample_0_reg_n_0_[6]\,
+      Q => \ana.sample_0_reg_n_0_[6]\,
       R => '0'
     );
-\ana_low.sample_0_reg[7]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(7),
-      Q => \ana_low.sample_0_reg_n_0_[7]\,
+      Q => \ana.sample_0_reg_n_0_[7]\,
       R => '0'
     );
-\ana_low.sample_0_reg[8]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(8),
-      Q => \ana_low.sample_0_reg_n_0_[8]\,
+      Q => \ana.sample_0_reg_n_0_[8]\,
       R => '0'
     );
-\ana_low.sample_0_reg[9]\: unisim.vcomponents.FDRE
+\ana.sample_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(9),
-      Q => \ana_low.sample_0_reg_n_0_[9]\,
+      Q => \ana.sample_0_reg_n_0_[9]\,
       R => '0'
     );
-\ana_low.sample_1[31]_i_1\: unisim.vcomponents.LUT2
+\ana.sample_1[31]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
@@ -83725,263 +83725,263 @@ begin
       I1 => curr_doa,
       O => sample_1
     );
-\ana_low.sample_1_reg[0]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(0),
-      Q => \ana_low.sample_1_reg_n_0_[0]\,
+      Q => \ana.sample_1_reg_n_0_[0]\,
       R => '0'
     );
-\ana_low.sample_1_reg[10]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(10),
-      Q => \ana_low.sample_1_reg_n_0_[10]\,
+      Q => \ana.sample_1_reg_n_0_[10]\,
       R => '0'
     );
-\ana_low.sample_1_reg[11]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(11),
-      Q => \ana_low.sample_1_reg_n_0_[11]\,
+      Q => \ana.sample_1_reg_n_0_[11]\,
       R => '0'
     );
-\ana_low.sample_1_reg[12]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(12),
-      Q => \ana_low.sample_1_reg_n_0_[12]\,
+      Q => \ana.sample_1_reg_n_0_[12]\,
       R => '0'
     );
-\ana_low.sample_1_reg[13]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(13),
-      Q => \ana_low.sample_1_reg_n_0_[13]\,
+      Q => \ana.sample_1_reg_n_0_[13]\,
       R => '0'
     );
-\ana_low.sample_1_reg[14]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(14),
-      Q => \ana_low.sample_1_reg_n_0_[14]\,
+      Q => \ana.sample_1_reg_n_0_[14]\,
       R => '0'
     );
-\ana_low.sample_1_reg[15]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(15),
-      Q => \ana_low.sample_1_reg_n_0_[15]\,
+      Q => \ana.sample_1_reg_n_0_[15]\,
       R => '0'
     );
-\ana_low.sample_1_reg[16]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(16),
-      Q => \ana_low.sample_1_reg_n_0_[16]\,
+      Q => \ana.sample_1_reg_n_0_[16]\,
       R => '0'
     );
-\ana_low.sample_1_reg[17]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(17),
-      Q => \ana_low.sample_1_reg_n_0_[17]\,
+      Q => \ana.sample_1_reg_n_0_[17]\,
       R => '0'
     );
-\ana_low.sample_1_reg[18]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(18),
-      Q => \ana_low.sample_1_reg_n_0_[18]\,
+      Q => \ana.sample_1_reg_n_0_[18]\,
       R => '0'
     );
-\ana_low.sample_1_reg[19]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(19),
-      Q => \ana_low.sample_1_reg_n_0_[19]\,
+      Q => \ana.sample_1_reg_n_0_[19]\,
       R => '0'
     );
-\ana_low.sample_1_reg[1]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(1),
-      Q => \ana_low.sample_1_reg_n_0_[1]\,
+      Q => \ana.sample_1_reg_n_0_[1]\,
       R => '0'
     );
-\ana_low.sample_1_reg[20]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(20),
-      Q => \ana_low.sample_1_reg_n_0_[20]\,
+      Q => \ana.sample_1_reg_n_0_[20]\,
       R => '0'
     );
-\ana_low.sample_1_reg[21]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(21),
-      Q => \ana_low.sample_1_reg_n_0_[21]\,
+      Q => \ana.sample_1_reg_n_0_[21]\,
       R => '0'
     );
-\ana_low.sample_1_reg[22]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(22),
-      Q => \ana_low.sample_1_reg_n_0_[22]\,
+      Q => \ana.sample_1_reg_n_0_[22]\,
       R => '0'
     );
-\ana_low.sample_1_reg[23]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(23),
-      Q => \ana_low.sample_1_reg_n_0_[23]\,
+      Q => \ana.sample_1_reg_n_0_[23]\,
       R => '0'
     );
-\ana_low.sample_1_reg[24]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(24),
-      Q => \ana_low.sample_1_reg_n_0_[24]\,
+      Q => \ana.sample_1_reg_n_0_[24]\,
       R => '0'
     );
-\ana_low.sample_1_reg[25]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(25),
-      Q => \ana_low.sample_1_reg_n_0_[25]\,
+      Q => \ana.sample_1_reg_n_0_[25]\,
       R => '0'
     );
-\ana_low.sample_1_reg[26]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(26),
-      Q => \ana_low.sample_1_reg_n_0_[26]\,
+      Q => \ana.sample_1_reg_n_0_[26]\,
       R => '0'
     );
-\ana_low.sample_1_reg[27]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(27),
-      Q => \ana_low.sample_1_reg_n_0_[27]\,
+      Q => \ana.sample_1_reg_n_0_[27]\,
       R => '0'
     );
-\ana_low.sample_1_reg[28]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(28),
-      Q => \ana_low.sample_1_reg_n_0_[28]\,
+      Q => \ana.sample_1_reg_n_0_[28]\,
       R => '0'
     );
-\ana_low.sample_1_reg[29]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(29),
-      Q => \ana_low.sample_1_reg_n_0_[29]\,
+      Q => \ana.sample_1_reg_n_0_[29]\,
       R => '0'
     );
-\ana_low.sample_1_reg[2]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(2),
-      Q => \ana_low.sample_1_reg_n_0_[2]\,
+      Q => \ana.sample_1_reg_n_0_[2]\,
       R => '0'
     );
-\ana_low.sample_1_reg[30]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(30),
-      Q => \ana_low.sample_1_reg_n_0_[30]\,
+      Q => \ana.sample_1_reg_n_0_[30]\,
       R => '0'
     );
-\ana_low.sample_1_reg[31]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(31),
-      Q => \ana_low.sample_1_reg_n_0_[31]\,
+      Q => \ana.sample_1_reg_n_0_[31]\,
       R => '0'
     );
-\ana_low.sample_1_reg[3]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(3),
-      Q => \ana_low.sample_1_reg_n_0_[3]\,
+      Q => \ana.sample_1_reg_n_0_[3]\,
       R => '0'
     );
-\ana_low.sample_1_reg[4]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(4),
-      Q => \ana_low.sample_1_reg_n_0_[4]\,
+      Q => \ana.sample_1_reg_n_0_[4]\,
       R => '0'
     );
-\ana_low.sample_1_reg[5]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(5),
-      Q => \ana_low.sample_1_reg_n_0_[5]\,
+      Q => \ana.sample_1_reg_n_0_[5]\,
       R => '0'
     );
-\ana_low.sample_1_reg[6]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(6),
-      Q => \ana_low.sample_1_reg_n_0_[6]\,
+      Q => \ana.sample_1_reg_n_0_[6]\,
       R => '0'
     );
-\ana_low.sample_1_reg[7]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(7),
-      Q => \ana_low.sample_1_reg_n_0_[7]\,
+      Q => \ana.sample_1_reg_n_0_[7]\,
       R => '0'
     );
-\ana_low.sample_1_reg[8]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(8),
-      Q => \ana_low.sample_1_reg_n_0_[8]\,
+      Q => \ana.sample_1_reg_n_0_[8]\,
       R => '0'
     );
-\ana_low.sample_1_reg[9]\: unisim.vcomponents.FDRE
+\ana.sample_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(9),
-      Q => \ana_low.sample_1_reg_n_0_[9]\,
+      Q => \ana.sample_1_reg_n_0_[9]\,
       R => '0'
     );
-\ana_low.sample_E[0]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_E[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -83989,9 +83989,9 @@ begin
       I0 => save_sample_E_1(0),
       I1 => save(1),
       I2 => save_sample_E_0(0),
-      O => \ana_low.sample_E[0]_i_1_n_0\
+      O => \ana.sample_E[0]_i_1_n_0\
     );
-\ana_low.sample_E[1]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_E[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -83999,9 +83999,9 @@ begin
       I0 => save_sample_E_1(1),
       I1 => save(1),
       I2 => save_sample_E_0(1),
-      O => \ana_low.sample_E[1]_i_1_n_0\
+      O => \ana.sample_E[1]_i_1_n_0\
     );
-\ana_low.sample_E[2]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_E[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84009,9 +84009,9 @@ begin
       I0 => save_sample_E_1(2),
       I1 => save(1),
       I2 => save_sample_E_0(2),
-      O => \ana_low.sample_E[2]_i_1_n_0\
+      O => \ana.sample_E[2]_i_1_n_0\
     );
-\ana_low.sample_E[3]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_E[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84019,9 +84019,9 @@ begin
       I0 => save_sample_E_1(3),
       I1 => save(1),
       I2 => save_sample_E_0(3),
-      O => \ana_low.sample_E[3]_i_1_n_0\
+      O => \ana.sample_E[3]_i_1_n_0\
     );
-\ana_low.sample_E[4]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_E[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84029,9 +84029,9 @@ begin
       I0 => save_sample_E_1(4),
       I1 => save(1),
       I2 => save_sample_E_0(4),
-      O => \ana_low.sample_E[4]_i_1_n_0\
+      O => \ana.sample_E[4]_i_1_n_0\
     );
-\ana_low.sample_E[5]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_E[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84039,57 +84039,57 @@ begin
       I0 => save_sample_E_1(5),
       I1 => save(1),
       I2 => save_sample_E_0(5),
-      O => \ana_low.sample_E[5]_i_1_n_0\
+      O => \ana.sample_E[5]_i_1_n_0\
     );
-\ana_low.sample_E_reg[0]\: unisim.vcomponents.FDRE
+\ana.sample_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_E[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_E[0]_i_1_n_0\,
       Q => \^sample_e\(0),
       R => '0'
     );
-\ana_low.sample_E_reg[1]\: unisim.vcomponents.FDRE
+\ana.sample_E_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_E[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_E[1]_i_1_n_0\,
       Q => \^sample_e\(1),
       R => '0'
     );
-\ana_low.sample_E_reg[2]\: unisim.vcomponents.FDRE
+\ana.sample_E_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_E[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_E[2]_i_1_n_0\,
       Q => \^sample_e\(2),
       R => '0'
     );
-\ana_low.sample_E_reg[3]\: unisim.vcomponents.FDRE
+\ana.sample_E_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_E[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_E[3]_i_1_n_0\,
       Q => \^sample_e\(3),
       R => '0'
     );
-\ana_low.sample_E_reg[4]\: unisim.vcomponents.FDRE
+\ana.sample_E_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_E[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_E[4]_i_1_n_0\,
       Q => \^sample_e\(4),
       R => '0'
     );
-\ana_low.sample_E_reg[5]\: unisim.vcomponents.FDRE
+\ana.sample_E_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_E[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_E[5]_i_1_n_0\,
       Q => \^sample_e\(5),
       R => '0'
     );
-\ana_low.sample_N[0]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_N[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84097,9 +84097,9 @@ begin
       I0 => save_sample_N_1(0),
       I1 => save(1),
       I2 => save_sample_N_0(0),
-      O => \ana_low.sample_N[0]_i_1_n_0\
+      O => \ana.sample_N[0]_i_1_n_0\
     );
-\ana_low.sample_N[1]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_N[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84107,9 +84107,9 @@ begin
       I0 => save_sample_N_1(1),
       I1 => save(1),
       I2 => save_sample_N_0(1),
-      O => \ana_low.sample_N[1]_i_1_n_0\
+      O => \ana.sample_N[1]_i_1_n_0\
     );
-\ana_low.sample_N[2]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_N[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84117,9 +84117,9 @@ begin
       I0 => save_sample_N_1(2),
       I1 => save(1),
       I2 => save_sample_N_0(2),
-      O => \ana_low.sample_N[2]_i_1_n_0\
+      O => \ana.sample_N[2]_i_1_n_0\
     );
-\ana_low.sample_N[3]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_N[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84127,9 +84127,9 @@ begin
       I0 => save_sample_N_1(3),
       I1 => save(1),
       I2 => save_sample_N_0(3),
-      O => \ana_low.sample_N[3]_i_1_n_0\
+      O => \ana.sample_N[3]_i_1_n_0\
     );
-\ana_low.sample_N[4]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_N[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84137,9 +84137,9 @@ begin
       I0 => save_sample_N_1(4),
       I1 => save(1),
       I2 => save_sample_N_0(4),
-      O => \ana_low.sample_N[4]_i_1_n_0\
+      O => \ana.sample_N[4]_i_1_n_0\
     );
-\ana_low.sample_N[5]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_N[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84147,57 +84147,57 @@ begin
       I0 => save_sample_N_1(5),
       I1 => save(1),
       I2 => save_sample_N_0(5),
-      O => \ana_low.sample_N[5]_i_1_n_0\
+      O => \ana.sample_N[5]_i_1_n_0\
     );
-\ana_low.sample_N_reg[0]\: unisim.vcomponents.FDRE
+\ana.sample_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_N[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_N[0]_i_1_n_0\,
       Q => \^sample_n\(0),
       R => '0'
     );
-\ana_low.sample_N_reg[1]\: unisim.vcomponents.FDRE
+\ana.sample_N_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_N[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_N[1]_i_1_n_0\,
       Q => \^sample_n\(1),
       R => '0'
     );
-\ana_low.sample_N_reg[2]\: unisim.vcomponents.FDRE
+\ana.sample_N_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_N[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_N[2]_i_1_n_0\,
       Q => \^sample_n\(2),
       R => '0'
     );
-\ana_low.sample_N_reg[3]\: unisim.vcomponents.FDRE
+\ana.sample_N_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_N[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_N[3]_i_1_n_0\,
       Q => \^sample_n\(3),
       R => '0'
     );
-\ana_low.sample_N_reg[4]\: unisim.vcomponents.FDRE
+\ana.sample_N_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_N[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_N[4]_i_1_n_0\,
       Q => \^sample_n\(4),
       R => '0'
     );
-\ana_low.sample_N_reg[5]\: unisim.vcomponents.FDRE
+\ana.sample_N_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_N[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_N[5]_i_1_n_0\,
       Q => \^sample_n\(5),
       R => '0'
     );
-\ana_low.sample_W[0]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_W[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84205,9 +84205,9 @@ begin
       I0 => save_sample_W_1(0),
       I1 => save(1),
       I2 => save_sample_W_0(0),
-      O => \ana_low.sample_W[0]_i_1_n_0\
+      O => \ana.sample_W[0]_i_1_n_0\
     );
-\ana_low.sample_W[1]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_W[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84215,9 +84215,9 @@ begin
       I0 => save_sample_W_1(1),
       I1 => save(1),
       I2 => save_sample_W_0(1),
-      O => \ana_low.sample_W[1]_i_1_n_0\
+      O => \ana.sample_W[1]_i_1_n_0\
     );
-\ana_low.sample_W[2]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_W[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84225,9 +84225,9 @@ begin
       I0 => save_sample_W_1(2),
       I1 => save(1),
       I2 => save_sample_W_0(2),
-      O => \ana_low.sample_W[2]_i_1_n_0\
+      O => \ana.sample_W[2]_i_1_n_0\
     );
-\ana_low.sample_W[3]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_W[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84235,9 +84235,9 @@ begin
       I0 => save_sample_W_1(3),
       I1 => save(1),
       I2 => save_sample_W_0(3),
-      O => \ana_low.sample_W[3]_i_1_n_0\
+      O => \ana.sample_W[3]_i_1_n_0\
     );
-\ana_low.sample_W[4]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_W[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84245,9 +84245,9 @@ begin
       I0 => save_sample_W_1(4),
       I1 => save(1),
       I2 => save_sample_W_0(4),
-      O => \ana_low.sample_W[4]_i_1_n_0\
+      O => \ana.sample_W[4]_i_1_n_0\
     );
-\ana_low.sample_W[5]_i_1\: unisim.vcomponents.LUT3
+\ana.sample_W[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
@@ -84255,313 +84255,313 @@ begin
       I0 => save_sample_W_1(5),
       I1 => save(1),
       I2 => save_sample_W_0(5),
-      O => \ana_low.sample_W[5]_i_1_n_0\
+      O => \ana.sample_W[5]_i_1_n_0\
     );
-\ana_low.sample_W_reg[0]\: unisim.vcomponents.FDRE
+\ana.sample_W_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_W[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_W[0]_i_1_n_0\,
       Q => \^sample_w\(0),
       R => '0'
     );
-\ana_low.sample_W_reg[1]\: unisim.vcomponents.FDRE
+\ana.sample_W_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_W[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_W[1]_i_1_n_0\,
       Q => \^sample_w\(1),
       R => '0'
     );
-\ana_low.sample_W_reg[2]\: unisim.vcomponents.FDRE
+\ana.sample_W_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_W[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_W[2]_i_1_n_0\,
       Q => \^sample_w\(2),
       R => '0'
     );
-\ana_low.sample_W_reg[3]\: unisim.vcomponents.FDRE
+\ana.sample_W_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_W[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_W[3]_i_1_n_0\,
       Q => \^sample_w\(3),
       R => '0'
     );
-\ana_low.sample_W_reg[4]\: unisim.vcomponents.FDRE
+\ana.sample_W_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_W[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_W[4]_i_1_n_0\,
       Q => \^sample_w\(4),
       R => '0'
     );
-\ana_low.sample_W_reg[5]\: unisim.vcomponents.FDRE
+\ana.sample_W_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample_W[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample_W[5]_i_1_n_0\,
       Q => \^sample_w\(5),
       R => '0'
     );
-\ana_low.sample_reg[0]\: unisim.vcomponents.FDRE
+\ana.sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[0]_i_1_n_0\,
       Q => \^sample\(0),
       R => '0'
     );
-\ana_low.sample_reg[10]\: unisim.vcomponents.FDRE
+\ana.sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[10]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[10]_i_1_n_0\,
       Q => \^sample\(10),
       R => '0'
     );
-\ana_low.sample_reg[11]\: unisim.vcomponents.FDRE
+\ana.sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[11]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[11]_i_1_n_0\,
       Q => \^sample\(11),
       R => '0'
     );
-\ana_low.sample_reg[12]\: unisim.vcomponents.FDRE
+\ana.sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[12]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[12]_i_1_n_0\,
       Q => \^sample\(12),
       R => '0'
     );
-\ana_low.sample_reg[13]\: unisim.vcomponents.FDRE
+\ana.sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[13]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[13]_i_1_n_0\,
       Q => \^sample\(13),
       R => '0'
     );
-\ana_low.sample_reg[14]\: unisim.vcomponents.FDRE
+\ana.sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[14]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[14]_i_1_n_0\,
       Q => \^sample\(14),
       R => '0'
     );
-\ana_low.sample_reg[15]\: unisim.vcomponents.FDRE
+\ana.sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[15]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[15]_i_1_n_0\,
       Q => \^sample\(15),
       R => '0'
     );
-\ana_low.sample_reg[16]\: unisim.vcomponents.FDRE
+\ana.sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[16]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[16]_i_1_n_0\,
       Q => \^sample\(16),
       R => '0'
     );
-\ana_low.sample_reg[17]\: unisim.vcomponents.FDRE
+\ana.sample_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[17]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[17]_i_1_n_0\,
       Q => \^sample\(17),
       R => '0'
     );
-\ana_low.sample_reg[18]\: unisim.vcomponents.FDRE
+\ana.sample_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[18]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[18]_i_1_n_0\,
       Q => \^sample\(18),
       R => '0'
     );
-\ana_low.sample_reg[19]\: unisim.vcomponents.FDRE
+\ana.sample_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[19]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[19]_i_1_n_0\,
       Q => \^sample\(19),
       R => '0'
     );
-\ana_low.sample_reg[1]\: unisim.vcomponents.FDRE
+\ana.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[1]_i_1_n_0\,
       Q => \^sample\(1),
       R => '0'
     );
-\ana_low.sample_reg[20]\: unisim.vcomponents.FDRE
+\ana.sample_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[20]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[20]_i_1_n_0\,
       Q => \^sample\(20),
       R => '0'
     );
-\ana_low.sample_reg[21]\: unisim.vcomponents.FDRE
+\ana.sample_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[21]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[21]_i_1_n_0\,
       Q => \^sample\(21),
       R => '0'
     );
-\ana_low.sample_reg[22]\: unisim.vcomponents.FDRE
+\ana.sample_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[22]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[22]_i_1_n_0\,
       Q => \^sample\(22),
       R => '0'
     );
-\ana_low.sample_reg[23]\: unisim.vcomponents.FDRE
+\ana.sample_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[23]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[23]_i_1_n_0\,
       Q => \^sample\(23),
       R => '0'
     );
-\ana_low.sample_reg[24]\: unisim.vcomponents.FDRE
+\ana.sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[24]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[24]_i_1_n_0\,
       Q => \^sample\(24),
       R => '0'
     );
-\ana_low.sample_reg[25]\: unisim.vcomponents.FDRE
+\ana.sample_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[25]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[25]_i_1_n_0\,
       Q => \^sample\(25),
       R => '0'
     );
-\ana_low.sample_reg[26]\: unisim.vcomponents.FDRE
+\ana.sample_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[26]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[26]_i_1_n_0\,
       Q => \^sample\(26),
       R => '0'
     );
-\ana_low.sample_reg[27]\: unisim.vcomponents.FDRE
+\ana.sample_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[27]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[27]_i_1_n_0\,
       Q => \^sample\(27),
       R => '0'
     );
-\ana_low.sample_reg[28]\: unisim.vcomponents.FDRE
+\ana.sample_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[28]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[28]_i_1_n_0\,
       Q => \^sample\(28),
       R => '0'
     );
-\ana_low.sample_reg[29]\: unisim.vcomponents.FDRE
+\ana.sample_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[29]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[29]_i_1_n_0\,
       Q => \^sample\(29),
       R => '0'
     );
-\ana_low.sample_reg[2]\: unisim.vcomponents.FDRE
+\ana.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[2]_i_1_n_0\,
       Q => \^sample\(2),
       R => '0'
     );
-\ana_low.sample_reg[30]\: unisim.vcomponents.FDRE
+\ana.sample_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[30]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[30]_i_1_n_0\,
       Q => \^sample\(30),
       R => '0'
     );
-\ana_low.sample_reg[31]\: unisim.vcomponents.FDRE
+\ana.sample_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[31]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[31]_i_1_n_0\,
       Q => \^sample\(31),
       R => '0'
     );
-\ana_low.sample_reg[3]\: unisim.vcomponents.FDRE
+\ana.sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[3]_i_1_n_0\,
       Q => \^sample\(3),
       R => '0'
     );
-\ana_low.sample_reg[4]\: unisim.vcomponents.FDRE
+\ana.sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[4]_i_1_n_0\,
       Q => \^sample\(4),
       R => '0'
     );
-\ana_low.sample_reg[5]\: unisim.vcomponents.FDRE
+\ana.sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[5]_i_1_n_0\,
       Q => \^sample\(5),
       R => '0'
     );
-\ana_low.sample_reg[6]\: unisim.vcomponents.FDRE
+\ana.sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[6]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[6]_i_1_n_0\,
       Q => \^sample\(6),
       R => '0'
     );
-\ana_low.sample_reg[7]\: unisim.vcomponents.FDRE
+\ana.sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[7]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[7]_i_1_n_0\,
       Q => \^sample\(7),
       R => '0'
     );
-\ana_low.sample_reg[8]\: unisim.vcomponents.FDRE
+\ana.sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[8]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[8]_i_1_n_0\,
       Q => \^sample\(8),
       R => '0'
     );
-\ana_low.sample_reg[9]\: unisim.vcomponents.FDRE
+\ana.sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.sample[9]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.sample[9]_i_1_n_0\,
       Q => \^sample\(9),
       R => '0'
     );
-\ana_low.size[0]_i_1\: unisim.vcomponents.LUT3
+\ana.size[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84569,9 +84569,9 @@ begin
       I0 => save_size_1(0),
       I1 => save_size_0(0),
       I2 => save(1),
-      O => \ana_low.size[0]_i_1_n_0\
+      O => \ana.size[0]_i_1_n_0\
     );
-\ana_low.size[1]_i_1\: unisim.vcomponents.LUT3
+\ana.size[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84579,9 +84579,9 @@ begin
       I0 => save_size_1(1),
       I1 => save_size_0(1),
       I2 => save(1),
-      O => \ana_low.size[1]_i_1_n_0\
+      O => \ana.size[1]_i_1_n_0\
     );
-\ana_low.size[2]_i_1\: unisim.vcomponents.LUT3
+\ana.size[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84589,9 +84589,9 @@ begin
       I0 => save_size_1(2),
       I1 => save_size_0(2),
       I2 => save(1),
-      O => \ana_low.size[2]_i_1_n_0\
+      O => \ana.size[2]_i_1_n_0\
     );
-\ana_low.size[3]_i_1\: unisim.vcomponents.LUT3
+\ana.size[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84599,9 +84599,9 @@ begin
       I0 => save_size_1(3),
       I1 => save_size_0(3),
       I2 => save(1),
-      O => \ana_low.size[3]_i_1_n_0\
+      O => \ana.size[3]_i_1_n_0\
     );
-\ana_low.size[4]_i_1\: unisim.vcomponents.LUT3
+\ana.size[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84609,9 +84609,9 @@ begin
       I0 => save_size_1(4),
       I1 => save_size_0(4),
       I2 => save(1),
-      O => \ana_low.size[4]_i_1_n_0\
+      O => \ana.size[4]_i_1_n_0\
     );
-\ana_low.size[5]_i_1\: unisim.vcomponents.LUT3
+\ana.size[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84619,9 +84619,9 @@ begin
       I0 => save_size_1(5),
       I1 => save_size_0(5),
       I2 => save(1),
-      O => \ana_low.size[5]_i_1_n_0\
+      O => \ana.size[5]_i_1_n_0\
     );
-\ana_low.size[6]_i_1\: unisim.vcomponents.LUT3
+\ana.size[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84629,9 +84629,9 @@ begin
       I0 => save_size_1(6),
       I1 => save_size_0(6),
       I2 => save(1),
-      O => \ana_low.size[6]_i_1_n_0\
+      O => \ana.size[6]_i_1_n_0\
     );
-\ana_low.size[7]_i_1\: unisim.vcomponents.LUT3
+\ana.size[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84639,9 +84639,9 @@ begin
       I0 => save_size_1(7),
       I1 => save_size_0(7),
       I2 => save(1),
-      O => \ana_low.size[7]_i_1_n_0\
+      O => \ana.size[7]_i_1_n_0\
     );
-\ana_low.size[8]_i_1\: unisim.vcomponents.LUT3
+\ana.size[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
     )
@@ -84649,81 +84649,81 @@ begin
       I0 => save_size_1(8),
       I1 => save_size_0(8),
       I2 => save(1),
-      O => \ana_low.size[8]_i_1_n_0\
+      O => \ana.size[8]_i_1_n_0\
     );
-\ana_low.size_0_reg[0]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(0),
       Q => size_0(0),
       R => '0'
     );
-\ana_low.size_0_reg[1]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(1),
       Q => size_0(1),
       R => '0'
     );
-\ana_low.size_0_reg[2]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(2),
       Q => size_0(2),
       R => '0'
     );
-\ana_low.size_0_reg[3]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(3),
       Q => size_0(3),
       R => '0'
     );
-\ana_low.size_0_reg[4]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(4),
       Q => size_0(4),
       R => '0'
     );
-\ana_low.size_0_reg[5]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(5),
       Q => size_0(5),
       R => '0'
     );
-\ana_low.size_0_reg[6]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(6),
       Q => size_0(6),
       R => '0'
     );
-\ana_low.size_0_reg[7]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(7),
       Q => size_0(7),
       R => '0'
     );
-\ana_low.size_0_reg[8]\: unisim.vcomponents.FDRE
+\ana.size_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.burst[0]_i_1_n_0\,
+      CE => \ana.burst[0]_i_1_n_0\,
       D => curr_size(8),
       Q => size_0(8),
       R => '0'
     );
-\ana_low.size_1_reg[0]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84731,7 +84731,7 @@ begin
       Q => size_1(0),
       R => '0'
     );
-\ana_low.size_1_reg[1]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84739,7 +84739,7 @@ begin
       Q => size_1(1),
       R => '0'
     );
-\ana_low.size_1_reg[2]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84747,7 +84747,7 @@ begin
       Q => size_1(2),
       R => '0'
     );
-\ana_low.size_1_reg[3]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84755,7 +84755,7 @@ begin
       Q => size_1(3),
       R => '0'
     );
-\ana_low.size_1_reg[4]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84763,7 +84763,7 @@ begin
       Q => size_1(4),
       R => '0'
     );
-\ana_low.size_1_reg[5]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84771,7 +84771,7 @@ begin
       Q => size_1(5),
       R => '0'
     );
-\ana_low.size_1_reg[6]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84779,7 +84779,7 @@ begin
       Q => size_1(6),
       R => '0'
     );
-\ana_low.size_1_reg[7]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84787,7 +84787,7 @@ begin
       Q => size_1(7),
       R => '0'
     );
-\ana_low.size_1_reg[8]\: unisim.vcomponents.FDRE
+\ana.size_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
@@ -84795,79 +84795,79 @@ begin
       Q => size_1(8),
       R => '0'
     );
-\ana_low.size_reg[0]\: unisim.vcomponents.FDRE
+\ana.size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[0]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[0]_i_1_n_0\,
       Q => \^size\(0),
       R => '0'
     );
-\ana_low.size_reg[1]\: unisim.vcomponents.FDRE
+\ana.size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[1]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[1]_i_1_n_0\,
       Q => \^size\(1),
       R => '0'
     );
-\ana_low.size_reg[2]\: unisim.vcomponents.FDRE
+\ana.size_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[2]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[2]_i_1_n_0\,
       Q => \^size\(2),
       R => '0'
     );
-\ana_low.size_reg[3]\: unisim.vcomponents.FDRE
+\ana.size_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[3]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[3]_i_1_n_0\,
       Q => \^size\(3),
       R => '0'
     );
-\ana_low.size_reg[4]\: unisim.vcomponents.FDRE
+\ana.size_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[4]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[4]_i_1_n_0\,
       Q => \^size\(4),
       R => '0'
     );
-\ana_low.size_reg[5]\: unisim.vcomponents.FDRE
+\ana.size_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[5]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[5]_i_1_n_0\,
       Q => \^size\(5),
       R => '0'
     );
-\ana_low.size_reg[6]\: unisim.vcomponents.FDRE
+\ana.size_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[6]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[6]_i_1_n_0\,
       Q => \^size\(6),
       R => '0'
     );
-\ana_low.size_reg[7]\: unisim.vcomponents.FDRE
+\ana.size_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[7]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[7]_i_1_n_0\,
       Q => \^size\(7),
       R => '0'
     );
-\ana_low.size_reg[8]\: unisim.vcomponents.FDRE
+\ana.size_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \ana_low.comp_wr_i_1_n_0\,
-      D => \ana_low.size[8]_i_1_n_0\,
+      CE => \ana.comp_wr_i_1_n_0\,
+      D => \ana.size[8]_i_1_n_0\,
       Q => \^size\(8),
       R => '0'
     );
-det_sig_i: entity work.ps_ana_low_0_0_det_signal
+det_sig_i: entity work.ps_ana_0_1_det_signal
      port map (
       active => ana_valid,
       clk => clk,
@@ -84893,7 +84893,7 @@ det_sig_i_i_1: unisim.vcomponents.LUT1
       I0 => cfg_empty,
       O => det_sig_i_i_1_n_0
     );
-doa_calc_0: entity work.\ps_ana_low_0_0_doa_calc__xdcDup__1\
+doa_calc_0: entity work.\ps_ana_0_1_doa_calc__xdcDup__1\
      port map (
       angle(15 downto 0) => save_angle_0(15 downto 0),
       clk => clk,
@@ -84907,69 +84907,69 @@ doa_calc_0: entity work.\ps_ana_low_0_0_doa_calc__xdcDup__1\
       pair_error => NLW_doa_calc_0_pair_error_UNCONNECTED,
       phase_EW_in(19 downto 0) => phase_EW_0(19 downto 0),
       phase_NE_in(19 downto 0) => phase_NE_0(19 downto 0),
-      phase_WN_in(19) => \ana_low.phase_WN_0_reg_n_0_[19]\,
-      phase_WN_in(18) => \ana_low.phase_WN_0_reg_n_0_[18]\,
-      phase_WN_in(17) => \ana_low.phase_WN_0_reg_n_0_[17]\,
-      phase_WN_in(16) => \ana_low.phase_WN_0_reg_n_0_[16]\,
-      phase_WN_in(15) => \ana_low.phase_WN_0_reg_n_0_[15]\,
-      phase_WN_in(14) => \ana_low.phase_WN_0_reg_n_0_[14]\,
-      phase_WN_in(13) => \ana_low.phase_WN_0_reg_n_0_[13]\,
-      phase_WN_in(12) => \ana_low.phase_WN_0_reg_n_0_[12]\,
-      phase_WN_in(11) => \ana_low.phase_WN_0_reg_n_0_[11]\,
-      phase_WN_in(10) => \ana_low.phase_WN_0_reg_n_0_[10]\,
-      phase_WN_in(9) => \ana_low.phase_WN_0_reg_n_0_[9]\,
-      phase_WN_in(8) => \ana_low.phase_WN_0_reg_n_0_[8]\,
-      phase_WN_in(7) => \ana_low.phase_WN_0_reg_n_0_[7]\,
-      phase_WN_in(6) => \ana_low.phase_WN_0_reg_n_0_[6]\,
-      phase_WN_in(5) => \ana_low.phase_WN_0_reg_n_0_[5]\,
-      phase_WN_in(4) => \ana_low.phase_WN_0_reg_n_0_[4]\,
-      phase_WN_in(3) => \ana_low.phase_WN_0_reg_n_0_[3]\,
-      phase_WN_in(2) => \ana_low.phase_WN_0_reg_n_0_[2]\,
-      phase_WN_in(1) => \ana_low.phase_WN_0_reg_n_0_[1]\,
-      phase_WN_in(0) => \ana_low.phase_WN_0_reg_n_0_[0]\,
+      phase_WN_in(19) => \ana.phase_WN_0_reg_n_0_[19]\,
+      phase_WN_in(18) => \ana.phase_WN_0_reg_n_0_[18]\,
+      phase_WN_in(17) => \ana.phase_WN_0_reg_n_0_[17]\,
+      phase_WN_in(16) => \ana.phase_WN_0_reg_n_0_[16]\,
+      phase_WN_in(15) => \ana.phase_WN_0_reg_n_0_[15]\,
+      phase_WN_in(14) => \ana.phase_WN_0_reg_n_0_[14]\,
+      phase_WN_in(13) => \ana.phase_WN_0_reg_n_0_[13]\,
+      phase_WN_in(12) => \ana.phase_WN_0_reg_n_0_[12]\,
+      phase_WN_in(11) => \ana.phase_WN_0_reg_n_0_[11]\,
+      phase_WN_in(10) => \ana.phase_WN_0_reg_n_0_[10]\,
+      phase_WN_in(9) => \ana.phase_WN_0_reg_n_0_[9]\,
+      phase_WN_in(8) => \ana.phase_WN_0_reg_n_0_[8]\,
+      phase_WN_in(7) => \ana.phase_WN_0_reg_n_0_[7]\,
+      phase_WN_in(6) => \ana.phase_WN_0_reg_n_0_[6]\,
+      phase_WN_in(5) => \ana.phase_WN_0_reg_n_0_[5]\,
+      phase_WN_in(4) => \ana.phase_WN_0_reg_n_0_[4]\,
+      phase_WN_in(3) => \ana.phase_WN_0_reg_n_0_[3]\,
+      phase_WN_in(2) => \ana.phase_WN_0_reg_n_0_[2]\,
+      phase_WN_in(1) => \ana.phase_WN_0_reg_n_0_[1]\,
+      phase_WN_in(0) => \ana.phase_WN_0_reg_n_0_[0]\,
       phase_error => NLW_doa_calc_0_phase_error_UNCONNECTED,
       reset => reset,
       sample(31 downto 0) => save_sample_0(31 downto 0),
       sample_E(5 downto 0) => save_sample_E_0(5 downto 0),
       sample_N(5 downto 0) => save_sample_N_0(5 downto 0),
       sample_W(5 downto 0) => save_sample_W_0(5 downto 0),
-      sample_in(31) => \ana_low.sample_0_reg_n_0_[31]\,
-      sample_in(30) => \ana_low.sample_0_reg_n_0_[30]\,
-      sample_in(29) => \ana_low.sample_0_reg_n_0_[29]\,
-      sample_in(28) => \ana_low.sample_0_reg_n_0_[28]\,
-      sample_in(27) => \ana_low.sample_0_reg_n_0_[27]\,
-      sample_in(26) => \ana_low.sample_0_reg_n_0_[26]\,
-      sample_in(25) => \ana_low.sample_0_reg_n_0_[25]\,
-      sample_in(24) => \ana_low.sample_0_reg_n_0_[24]\,
-      sample_in(23) => \ana_low.sample_0_reg_n_0_[23]\,
-      sample_in(22) => \ana_low.sample_0_reg_n_0_[22]\,
-      sample_in(21) => \ana_low.sample_0_reg_n_0_[21]\,
-      sample_in(20) => \ana_low.sample_0_reg_n_0_[20]\,
-      sample_in(19) => \ana_low.sample_0_reg_n_0_[19]\,
-      sample_in(18) => \ana_low.sample_0_reg_n_0_[18]\,
-      sample_in(17) => \ana_low.sample_0_reg_n_0_[17]\,
-      sample_in(16) => \ana_low.sample_0_reg_n_0_[16]\,
-      sample_in(15) => \ana_low.sample_0_reg_n_0_[15]\,
-      sample_in(14) => \ana_low.sample_0_reg_n_0_[14]\,
-      sample_in(13) => \ana_low.sample_0_reg_n_0_[13]\,
-      sample_in(12) => \ana_low.sample_0_reg_n_0_[12]\,
-      sample_in(11) => \ana_low.sample_0_reg_n_0_[11]\,
-      sample_in(10) => \ana_low.sample_0_reg_n_0_[10]\,
-      sample_in(9) => \ana_low.sample_0_reg_n_0_[9]\,
-      sample_in(8) => \ana_low.sample_0_reg_n_0_[8]\,
-      sample_in(7) => \ana_low.sample_0_reg_n_0_[7]\,
-      sample_in(6) => \ana_low.sample_0_reg_n_0_[6]\,
-      sample_in(5) => \ana_low.sample_0_reg_n_0_[5]\,
-      sample_in(4) => \ana_low.sample_0_reg_n_0_[4]\,
-      sample_in(3) => \ana_low.sample_0_reg_n_0_[3]\,
-      sample_in(2) => \ana_low.sample_0_reg_n_0_[2]\,
-      sample_in(1) => \ana_low.sample_0_reg_n_0_[1]\,
-      sample_in(0) => \ana_low.sample_0_reg_n_0_[0]\,
+      sample_in(31) => \ana.sample_0_reg_n_0_[31]\,
+      sample_in(30) => \ana.sample_0_reg_n_0_[30]\,
+      sample_in(29) => \ana.sample_0_reg_n_0_[29]\,
+      sample_in(28) => \ana.sample_0_reg_n_0_[28]\,
+      sample_in(27) => \ana.sample_0_reg_n_0_[27]\,
+      sample_in(26) => \ana.sample_0_reg_n_0_[26]\,
+      sample_in(25) => \ana.sample_0_reg_n_0_[25]\,
+      sample_in(24) => \ana.sample_0_reg_n_0_[24]\,
+      sample_in(23) => \ana.sample_0_reg_n_0_[23]\,
+      sample_in(22) => \ana.sample_0_reg_n_0_[22]\,
+      sample_in(21) => \ana.sample_0_reg_n_0_[21]\,
+      sample_in(20) => \ana.sample_0_reg_n_0_[20]\,
+      sample_in(19) => \ana.sample_0_reg_n_0_[19]\,
+      sample_in(18) => \ana.sample_0_reg_n_0_[18]\,
+      sample_in(17) => \ana.sample_0_reg_n_0_[17]\,
+      sample_in(16) => \ana.sample_0_reg_n_0_[16]\,
+      sample_in(15) => \ana.sample_0_reg_n_0_[15]\,
+      sample_in(14) => \ana.sample_0_reg_n_0_[14]\,
+      sample_in(13) => \ana.sample_0_reg_n_0_[13]\,
+      sample_in(12) => \ana.sample_0_reg_n_0_[12]\,
+      sample_in(11) => \ana.sample_0_reg_n_0_[11]\,
+      sample_in(10) => \ana.sample_0_reg_n_0_[10]\,
+      sample_in(9) => \ana.sample_0_reg_n_0_[9]\,
+      sample_in(8) => \ana.sample_0_reg_n_0_[8]\,
+      sample_in(7) => \ana.sample_0_reg_n_0_[7]\,
+      sample_in(6) => \ana.sample_0_reg_n_0_[6]\,
+      sample_in(5) => \ana.sample_0_reg_n_0_[5]\,
+      sample_in(4) => \ana.sample_0_reg_n_0_[4]\,
+      sample_in(3) => \ana.sample_0_reg_n_0_[3]\,
+      sample_in(2) => \ana.sample_0_reg_n_0_[2]\,
+      sample_in(1) => \ana.sample_0_reg_n_0_[1]\,
+      sample_in(0) => \ana.sample_0_reg_n_0_[0]\,
       size(8 downto 0) => save_size_0(8 downto 0),
       size_in(8 downto 0) => size_0(8 downto 0),
       start => burst(0)
     );
-doa_calc_1: entity work.ps_ana_low_0_0_doa_calc
+doa_calc_1: entity work.ps_ana_0_1_doa_calc
      port map (
       angle(15 downto 0) => save_angle_1(15 downto 0),
       clk => clk,
@@ -84990,43 +84990,43 @@ doa_calc_1: entity work.ps_ana_low_0_0_doa_calc
       sample_E(5 downto 0) => save_sample_E_1(5 downto 0),
       sample_N(5 downto 0) => save_sample_N_1(5 downto 0),
       sample_W(5 downto 0) => save_sample_W_1(5 downto 0),
-      sample_in(31) => \ana_low.sample_1_reg_n_0_[31]\,
-      sample_in(30) => \ana_low.sample_1_reg_n_0_[30]\,
-      sample_in(29) => \ana_low.sample_1_reg_n_0_[29]\,
-      sample_in(28) => \ana_low.sample_1_reg_n_0_[28]\,
-      sample_in(27) => \ana_low.sample_1_reg_n_0_[27]\,
-      sample_in(26) => \ana_low.sample_1_reg_n_0_[26]\,
-      sample_in(25) => \ana_low.sample_1_reg_n_0_[25]\,
-      sample_in(24) => \ana_low.sample_1_reg_n_0_[24]\,
-      sample_in(23) => \ana_low.sample_1_reg_n_0_[23]\,
-      sample_in(22) => \ana_low.sample_1_reg_n_0_[22]\,
-      sample_in(21) => \ana_low.sample_1_reg_n_0_[21]\,
-      sample_in(20) => \ana_low.sample_1_reg_n_0_[20]\,
-      sample_in(19) => \ana_low.sample_1_reg_n_0_[19]\,
-      sample_in(18) => \ana_low.sample_1_reg_n_0_[18]\,
-      sample_in(17) => \ana_low.sample_1_reg_n_0_[17]\,
-      sample_in(16) => \ana_low.sample_1_reg_n_0_[16]\,
-      sample_in(15) => \ana_low.sample_1_reg_n_0_[15]\,
-      sample_in(14) => \ana_low.sample_1_reg_n_0_[14]\,
-      sample_in(13) => \ana_low.sample_1_reg_n_0_[13]\,
-      sample_in(12) => \ana_low.sample_1_reg_n_0_[12]\,
-      sample_in(11) => \ana_low.sample_1_reg_n_0_[11]\,
-      sample_in(10) => \ana_low.sample_1_reg_n_0_[10]\,
-      sample_in(9) => \ana_low.sample_1_reg_n_0_[9]\,
-      sample_in(8) => \ana_low.sample_1_reg_n_0_[8]\,
-      sample_in(7) => \ana_low.sample_1_reg_n_0_[7]\,
-      sample_in(6) => \ana_low.sample_1_reg_n_0_[6]\,
-      sample_in(5) => \ana_low.sample_1_reg_n_0_[5]\,
-      sample_in(4) => \ana_low.sample_1_reg_n_0_[4]\,
-      sample_in(3) => \ana_low.sample_1_reg_n_0_[3]\,
-      sample_in(2) => \ana_low.sample_1_reg_n_0_[2]\,
-      sample_in(1) => \ana_low.sample_1_reg_n_0_[1]\,
-      sample_in(0) => \ana_low.sample_1_reg_n_0_[0]\,
+      sample_in(31) => \ana.sample_1_reg_n_0_[31]\,
+      sample_in(30) => \ana.sample_1_reg_n_0_[30]\,
+      sample_in(29) => \ana.sample_1_reg_n_0_[29]\,
+      sample_in(28) => \ana.sample_1_reg_n_0_[28]\,
+      sample_in(27) => \ana.sample_1_reg_n_0_[27]\,
+      sample_in(26) => \ana.sample_1_reg_n_0_[26]\,
+      sample_in(25) => \ana.sample_1_reg_n_0_[25]\,
+      sample_in(24) => \ana.sample_1_reg_n_0_[24]\,
+      sample_in(23) => \ana.sample_1_reg_n_0_[23]\,
+      sample_in(22) => \ana.sample_1_reg_n_0_[22]\,
+      sample_in(21) => \ana.sample_1_reg_n_0_[21]\,
+      sample_in(20) => \ana.sample_1_reg_n_0_[20]\,
+      sample_in(19) => \ana.sample_1_reg_n_0_[19]\,
+      sample_in(18) => \ana.sample_1_reg_n_0_[18]\,
+      sample_in(17) => \ana.sample_1_reg_n_0_[17]\,
+      sample_in(16) => \ana.sample_1_reg_n_0_[16]\,
+      sample_in(15) => \ana.sample_1_reg_n_0_[15]\,
+      sample_in(14) => \ana.sample_1_reg_n_0_[14]\,
+      sample_in(13) => \ana.sample_1_reg_n_0_[13]\,
+      sample_in(12) => \ana.sample_1_reg_n_0_[12]\,
+      sample_in(11) => \ana.sample_1_reg_n_0_[11]\,
+      sample_in(10) => \ana.sample_1_reg_n_0_[10]\,
+      sample_in(9) => \ana.sample_1_reg_n_0_[9]\,
+      sample_in(8) => \ana.sample_1_reg_n_0_[8]\,
+      sample_in(7) => \ana.sample_1_reg_n_0_[7]\,
+      sample_in(6) => \ana.sample_1_reg_n_0_[6]\,
+      sample_in(5) => \ana.sample_1_reg_n_0_[5]\,
+      sample_in(4) => \ana.sample_1_reg_n_0_[4]\,
+      sample_in(3) => \ana.sample_1_reg_n_0_[3]\,
+      sample_in(2) => \ana.sample_1_reg_n_0_[2]\,
+      sample_in(1) => \ana.sample_1_reg_n_0_[1]\,
+      sample_in(0) => \ana.sample_1_reg_n_0_[0]\,
       size(8 downto 0) => save_size_1(8 downto 0),
       size_in(8 downto 0) => size_1(8 downto 0),
       start => burst(1)
     );
-fifo_config_i: component ps_ana_low_0_0_fifo_config
+fifo_config_i: component ps_ana_0_1_fifo_config
      port map (
       din(39 downto 8) => config_data(31 downto 0),
       din(7 downto 0) => config_adr(7 downto 0),
@@ -85041,7 +85041,7 @@ fifo_config_i: component ps_ana_low_0_0_fifo_config
       wr_en => config_wr,
       wr_rst_busy => NLW_fifo_config_i_wr_rst_busy_UNCONNECTED
     );
-fifo_doa_i: component ps_ana_low_0_0_fifo_doa
+fifo_doa_i: component ps_ana_0_1_fifo_doa
      port map (
       din(143 downto 0) => ana_in_data(143 downto 0),
       dout(143 downto 0) => ana_out_data(143 downto 0),
@@ -85055,7 +85055,7 @@ fifo_doa_i: component ps_ana_low_0_0_fifo_doa
       wr_en => ana_fifo_wr,
       wr_rst_busy => NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED
     );
-ila_i: component ps_ana_low_0_0_ila_6
+ila_i: component ps_ana_0_1_ila_6
      port map (
       clk => clk,
       probe0(0) => curr_burst,
@@ -85082,7 +85082,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ps_ana_low_0_0 is
+entity ps_ana_0_1 is
   port (
     fifo_clk : in STD_LOGIC;
     ana_wr : in STD_LOGIC;
@@ -85111,18 +85111,18 @@ entity ps_ana_low_0_0 is
     sample_W : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of ps_ana_low_0_0 : entity is true;
+  attribute NotValidForBitStream of ps_ana_0_1 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of ps_ana_low_0_0 : entity is "ps_ana_low_0_0,ana_low,{}";
+  attribute CHECK_LICENSE_TYPE of ps_ana_0_1 : entity is "ps_ana_0_1,ana,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of ps_ana_low_0_0 : entity is "yes";
+  attribute DowngradeIPIdentifiedWarnings of ps_ana_0_1 : entity is "yes";
   attribute IP_DEFINITION_SOURCE : string;
-  attribute IP_DEFINITION_SOURCE of ps_ana_low_0_0 : entity is "module_ref";
+  attribute IP_DEFINITION_SOURCE of ps_ana_0_1 : entity is "module_ref";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of ps_ana_low_0_0 : entity is "ana_low,Vivado 2025.1";
-end ps_ana_low_0_0;
+  attribute X_CORE_INFO of ps_ana_0_1 : entity is "ana,Vivado 2025.1";
+end ps_ana_0_1;
 
-architecture STRUCTURE of ps_ana_low_0_0 is
+architecture STRUCTURE of ps_ana_0_1 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -85139,7 +85139,7 @@ architecture STRUCTURE of ps_ana_low_0_0 is
   attribute X_INTERFACE_MODE of reset : signal is "slave";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
-inst: entity work.ps_ana_low_0_0_ana_low
+inst: entity work.ps_ana_0_1_ana
      port map (
       ana_wr => ana_wr,
       angle(15 downto 0) => angle(15 downto 0),

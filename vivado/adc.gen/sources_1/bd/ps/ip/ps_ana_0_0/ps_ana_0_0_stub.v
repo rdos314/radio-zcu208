@@ -2,11 +2,11 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Jan  9 22:20:40 2026
+// Date        : Fri Jan  9 23:55:18 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_high_0_0/ps_ana_high_0_0_stub.v
-// Design      : ps_ana_high_0_0
+//               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_stub.v
+// Design      : ps_ana_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xczu48dr-fsvg1517-2-e
 // --------------------------------------------------------------------------------
@@ -14,9 +14,9 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* CHECK_LICENSE_TYPE = "ps_ana_high_0_0,ana_high,{}" *) (* CORE_GENERATION_INFO = "ps_ana_high_0_0,ana_high,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ana_high,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
-(* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "ana_high,Vivado 2025.1" *) 
-module ps_ana_high_0_0(fifo_clk, ana_wr, env_N, env_E, env_W, phase_N, 
+(* CHECK_LICENSE_TYPE = "ps_ana_0_0,ana,{}" *) (* CORE_GENERATION_INFO = "ps_ana_0_0,ana,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ana,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
+(* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "ana,Vivado 2025.1" *) 
+module ps_ana_0_0(fifo_clk, ana_wr, env_N, env_E, env_W, phase_N, 
   phase_E, phase_W, err_NE, err_EW, err_WN, config_clk, config_wr, config_adr, config_data, clk, reset, 
   comp_wr, sample, size, freq, angle, sample_N, sample_E, sample_W)
 /* synthesis syn_black_box black_box_pad_pin="ana_wr,env_N[15:0],env_E[15:0],env_W[15:0],phase_N[19:0],phase_E[19:0],phase_W[19:0],err_NE[11:0],err_EW[11:0],err_WN[11:0],config_clk,config_wr,config_adr[7:0],config_data[31:0],reset,comp_wr,sample[31:0],size[8:0],freq[19:0],angle[15:0],sample_N[5:0],sample_E[5:0],sample_W[5:0]" */

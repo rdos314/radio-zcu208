@@ -47,14 +47,15 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:ana_high:1.0
+// IP VLNV: xilinx.com:module_ref:ana:1.0
 // IP Revision: 1
 
-`timescale 1ns/1ps
-
+(* X_CORE_INFO = "ana,Vivado 2025.1" *)
+(* CHECK_LICENSE_TYPE = "ps_ana_0_1,ana,{}" *)
+(* CORE_GENERATION_INFO = "ps_ana_0_1,ana,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ana,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module ps_ana_high_0_0 (
+module ps_ana_0_1 (
   fifo_clk,
   ana_wr,
   env_N,
@@ -84,7 +85,7 @@ module ps_ana_high_0_0 (
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq1_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *)
 input wire fifo_clk;
 input wire ana_wr;
 input wire [15 : 0] env_N;
@@ -105,7 +106,7 @@ input wire [7 : 0] config_adr;
 input wire [31 : 0] config_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana0_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -120,7 +121,7 @@ output wire [5 : 0] sample_N;
 output wire [5 : 0] sample_E;
 output wire [5 : 0] sample_W;
 
-  ana_high inst (
+  ana inst (
     .fifo_clk(fifo_clk),
     .ana_wr(ana_wr),
     .env_N(env_N),

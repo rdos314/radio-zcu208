@@ -47,14 +47,14 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:ana_low:1.0
+// IP VLNV: xilinx.com:module_ref:ana:1.0
 // IP Revision: 1
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module ps_ana_low_0_0 (
+module ps_ana_0_1 (
   fifo_clk,
   ana_wr,
   env_N,
@@ -120,7 +120,7 @@ output wire [5 : 0] sample_N;
 output wire [5 : 0] sample_E;
 output wire [5 : 0] sample_W;
 
-  ana_low inst (
+  ana inst (
     .fifo_clk(fifo_clk),
     .ana_wr(ana_wr),
     .env_N(env_N),

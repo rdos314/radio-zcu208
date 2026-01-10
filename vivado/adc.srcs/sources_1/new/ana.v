@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ana_high(
+module ana(
     input wire	fifo_clk,
     input wire ana_wr,
     input wire [15:0] env_N,
@@ -70,7 +70,7 @@ module ana_high(
   wire [31:0] cfg_data = config_data_adr_out[39:8];
   reg cfg_rd;
   wire cfg_empty;
-    
+  
   wire [31:0] curr_sample;
   wire [8:0] curr_size;
   wire [19:0] curr_freq;
@@ -200,6 +200,7 @@ doa_calc doa_calc_1 (
     .sample_W(save_sample_W_1)    
 );
 
+
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(curr_burst),          // input wire [0:0]  probe3
@@ -223,7 +224,7 @@ doa_calc doa_calc_1 (
 );
 
 generate
-  begin : ana_high
+  begin : ana
 
     always @(posedge fifo_clk) 
     begin

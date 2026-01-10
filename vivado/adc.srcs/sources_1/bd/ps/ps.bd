@@ -2818,15 +2818,15 @@
         }
       },
       "ana_high": {
-        "vlnv": "xilinx.com:module_ref:ana_high:1.0",
+        "vlnv": "xilinx.com:module_ref:ana:1.0",
         "ip_revision": "1",
-        "xci_name": "ps_ana_high_0_0",
-        "xci_path": "ip\\ps_ana_high_0_0\\ps_ana_high_0_0.xci",
+        "xci_name": "ps_ana_0_0",
+        "xci_path": "ip\\ps_ana_0_0\\ps_ana_0_0.xci",
         "inst_hier_path": "ana_high",
         "has_run_ip_tcl": "true",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "ana_high",
+          "ref_name": "ana",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -2986,15 +2986,15 @@
         }
       },
       "ana_low": {
-        "vlnv": "xilinx.com:module_ref:ana_low:1.0",
+        "vlnv": "xilinx.com:module_ref:ana:1.0",
         "ip_revision": "1",
-        "xci_name": "ps_ana_low_0_0",
-        "xci_path": "ip\\ps_ana_low_0_0\\ps_ana_low_0_0.xci",
+        "xci_name": "ps_ana_0_1",
+        "xci_path": "ip\\ps_ana_0_1\\ps_ana_0_1.xci",
         "inst_hier_path": "ana_low",
         "has_run_ip_tcl": "true",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "ana_low",
+          "ref_name": "ana",
           "boundary_crc": "0x0"
         },
         "ports": {
