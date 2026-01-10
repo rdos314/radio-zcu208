@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sat Jan 10 12:28:47 2026
+//Date        : Sat Jan 10 14:20:23 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=21,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=10,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=23,numReposBlks=23,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -77,6 +77,22 @@ module ps
   wire adc_control_0_sim_low_wr;
   wire adc_control_0_sim_start;
   wire [3:0]adc_control_0_wr_en;
+  wire [15:0]ana_high_angle;
+  wire ana_high_comp_wr;
+  wire [19:0]ana_high_freq;
+  wire [31:0]ana_high_sample;
+  wire [5:0]ana_high_sample_E;
+  wire [5:0]ana_high_sample_N;
+  wire [5:0]ana_high_sample_W;
+  wire [8:0]ana_high_size;
+  wire [15:0]ana_low_angle;
+  wire ana_low_comp_wr;
+  wire [19:0]ana_low_freq;
+  wire [31:0]ana_low_sample;
+  wire [5:0]ana_low_sample_E;
+  wire [5:0]ana_low_sample_N;
+  wire [5:0]ana_low_sample_W;
+  wire [8:0]ana_low_size;
   wire [12:0]axi_bram_ctrl_0_bram_addr_a;
   wire axi_bram_ctrl_0_bram_clk_a;
   wire axi_bram_ctrl_0_bram_en_a;
@@ -244,6 +260,16 @@ module ps
   wire pl_sysref_n;
   wire pl_sysref_p;
   wire r5_timer_interrupt;
+  wire raw_high_active;
+  wire [127:0]raw_high_raw_E;
+  wire [127:0]raw_high_raw_N;
+  wire [127:0]raw_high_raw_W;
+  wire [63:0]raw_high_sample;
+  wire raw_low_active;
+  wire [127:0]raw_low_raw_E;
+  wire [127:0]raw_low_raw_N;
+  wire [127:0]raw_low_raw_W;
+  wire [63:0]raw_low_sample;
   wire rst_ps8_0_99M_mb_reset;
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
   wire sysref_in_diff_n;
@@ -340,7 +366,9 @@ module ps
         .wr_en(adc_control_0_wr_en));
   ps_ana_0_0 ana_high
        (.ana_wr(freq_high_189_0_ana_wr),
+        .angle(ana_high_angle),
         .clk(mts_0_ana1_clk),
+        .comp_wr(ana_high_comp_wr),
         .config_adr(adc_control_0_config_adr),
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
@@ -352,13 +380,21 @@ module ps
         .err_NE(freq_high_189_0_err_NE),
         .err_WN(freq_high_189_0_err_WN),
         .fifo_clk(mts_0_freq1_clk),
+        .freq(ana_high_freq),
         .phase_E(freq_high_189_0_phase_E),
         .phase_N(freq_high_189_0_phase_N),
         .phase_W(freq_high_189_0_phase_W),
-        .reset(mts_0_ana1_reset));
+        .reset(mts_0_ana1_reset),
+        .sample(ana_high_sample),
+        .sample_E(ana_high_sample_E),
+        .sample_N(ana_high_sample_N),
+        .sample_W(ana_high_sample_W),
+        .size(ana_high_size));
   ps_ana_0_1 ana_low
        (.ana_wr(freq_low_46_0_ana_wr),
+        .angle(ana_low_angle),
         .clk(mts_0_ana0_clk),
+        .comp_wr(ana_low_comp_wr),
         .config_adr(adc_control_0_config_adr),
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
@@ -370,10 +406,16 @@ module ps
         .err_NE(freq_low_46_0_err_NE),
         .err_WN(freq_low_46_0_err_WN),
         .fifo_clk(mts_0_freq0_clk),
+        .freq(ana_low_freq),
         .phase_E(freq_low_46_0_phase_E),
         .phase_N(freq_low_46_0_phase_N),
         .phase_W(freq_low_46_0_phase_W),
-        .reset(mts_0_ana0_reset));
+        .reset(mts_0_ana0_reset),
+        .sample(ana_low_sample),
+        .sample_E(ana_low_sample_E),
+        .sample_N(ana_low_sample_N),
+        .sample_W(ana_low_sample_W),
+        .size(ana_low_size));
   ps_axi_bram_ctrl_0_bram_0 axi_bram
        (.addra(adc_control_0_bram_adr_out),
         .addrb(adc_control_0_address),
@@ -589,6 +631,38 @@ module ps
         .s_axi_wready(axi_smc_M02_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
+  ps_comp_high_0_0 comp_high
+       (.clk(mts_0_comp1_clk),
+        .fifo_angle(ana_high_angle),
+        .fifo_clk(mts_0_ana1_clk),
+        .fifo_freq(ana_high_freq),
+        .fifo_sample(ana_high_sample),
+        .fifo_sample_E(ana_high_sample_E),
+        .fifo_sample_N(ana_high_sample_N),
+        .fifo_sample_W(ana_high_sample_W),
+        .fifo_size(ana_high_size),
+        .fifo_wr(ana_high_comp_wr),
+        .raw_E(raw_high_raw_E),
+        .raw_N(raw_high_raw_N),
+        .raw_W(raw_high_raw_W),
+        .raw_active(raw_high_active),
+        .raw_sample(raw_high_sample));
+  ps_comp_low_0_0 comp_low
+       (.clk(mts_0_comp0_clk),
+        .fifo_angle(ana_low_angle),
+        .fifo_clk(mts_0_ana0_clk),
+        .fifo_freq(ana_low_freq),
+        .fifo_sample(ana_low_sample),
+        .fifo_sample_E(ana_low_sample_E),
+        .fifo_sample_N(ana_low_sample_N),
+        .fifo_sample_W(ana_low_sample_W),
+        .fifo_size(ana_low_size),
+        .fifo_wr(ana_low_comp_wr),
+        .raw_E(raw_low_raw_E),
+        .raw_N(raw_low_raw_N),
+        .raw_W(raw_low_raw_W),
+        .raw_active(raw_low_active),
+        .raw_sample(raw_low_sample));
   ps_deci_high_0_0 deci_high
        (.adc_active(mts_0_deci_adc_active),
         .clk(mts_0_deci_clk),
@@ -758,21 +832,31 @@ module ps
         .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M01_AXI_WVALID));
   ps_raw_0_1 raw_high
-       (.clk(mts_0_comp1_clk),
+       (.active(raw_high_active),
+        .clk(mts_0_comp1_clk),
         .fifo_clk(mts_0_deci_clk),
         .fifo_wr(deci_high_raw_wr),
+        .raw_E(raw_high_raw_E),
+        .raw_N(raw_high_raw_N),
+        .raw_W(raw_high_raw_W),
         .raw_in_E(deci_high_raw_E),
         .raw_in_N(deci_high_raw_N),
         .raw_in_W(deci_high_raw_W),
-        .reset(mts_0_comp1_reset));
+        .reset(mts_0_comp1_reset),
+        .sample(raw_high_sample));
   ps_raw_0_0 raw_low
-       (.clk(mts_0_comp0_clk),
+       (.active(raw_low_active),
+        .clk(mts_0_comp0_clk),
         .fifo_clk(mts_0_deci_clk),
         .fifo_wr(deci_low_raw_wr),
+        .raw_E(raw_low_raw_E),
+        .raw_N(raw_low_raw_N),
+        .raw_W(raw_low_raw_W),
         .raw_in_E(deci_low_raw_E),
         .raw_in_N(deci_low_raw_N),
         .raw_in_W(deci_low_raw_W),
-        .reset(mts_0_comp0_reset));
+        .reset(mts_0_comp0_reset),
+        .sample(raw_low_sample));
   ps_rst_ps8_0_99M_0 rst_ps8_0_99M
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),
