@@ -1,1 +1,0 @@
---incr --debug typical --relax --mt 2  -L xil_defaultlib -L xbip_utils_v3_0_14 -L mult_gen_v12_0_23 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot mul_doa xil_defaultlib.mul_doa xil_defaultlib.glbl -log elaborate.log

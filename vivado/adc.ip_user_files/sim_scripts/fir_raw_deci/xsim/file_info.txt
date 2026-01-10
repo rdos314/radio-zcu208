@@ -1,2 +1,0 @@
-fir_raw_deci.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/fir_raw_deci/sim/fir_raw_deci.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
-glbl.v,Verilog,xil_defaultlib,glbl.v
