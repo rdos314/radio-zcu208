@@ -79,32 +79,41 @@ module comp_low(
   wire [127:0] data_E;
   wire [127:0] data_W;
   
-  reg [15:0] N0;
-  reg [15:0] N1;
-  reg [15:0] N2;
-  reg [15:0] N3;
-  reg [15:0] N4;
-  reg [15:0] N5;
-  reg [15:0] N6;
-  reg [15:0] N7;
+  reg [17:0] N0;
+  reg [17:0] N1;
+  reg [17:0] N2;
+  reg [17:0] N3;
+  reg [17:0] N4;
+  reg [17:0] N5;
+  reg [17:0] N6;
+  reg [17:0] N7;
   
-  reg [15:0] E0;
-  reg [15:0] E1;
-  reg [15:0] E2;
-  reg [15:0] E3;
-  reg [15:0] E4;
-  reg [15:0] E5;
-  reg [15:0] E6;
-  reg [15:0] E7;
+  reg [17:0] E0;
+  reg [17:0] E1;
+  reg [17:0] E2;
+  reg [17:0] E3;
+  reg [17:0] E4;
+  reg [17:0] E5;
+  reg [17:0] E6;
+  reg [17:0] E7;
   
-  reg [15:0] W0;
-  reg [15:0] W1;
-  reg [15:0] W2;
-  reg [15:0] W3;
-  reg [15:0] W4;
-  reg [15:0] W5;
-  reg [15:0] W6;
-  reg [15:0] W7;
+  reg [17:0] W0;
+  reg [17:0] W1;
+  reg [17:0] W2;
+  reg [17:0] W3;
+  reg [17:0] W4;
+  reg [17:0] W5;
+  reg [17:0] W6;
+  reg [17:0] W7;
+  
+  reg [17:0] C0;
+  reg [17:0] C1;
+  reg [17:0] C2;
+  reg [17:0] C3;
+  reg [17:0] C4;
+  reg [17:0] C5;
+  reg [17:0] C6;
+  reg [17:0] C7;
 
 fifo_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
@@ -169,30 +178,14 @@ comp_sel6 sel_W_i (
 		.probe12(raw_empty),          // input wire [0:0]  probe3
 		.probe13(raw_delay),          // input wire [9:0]  probe3
 		.probe14(raw_sample),         // input wire [63:0]  probe3
-		.probe15(N0),                 // input wire [15:0]  probe3
-		.probe16(N1),                 // input wire [15:0]  probe3
-		.probe17(N2),                 // input wire [15:0]  probe3
-		.probe18(N3),                 // input wire [15:0]  probe3
-		.probe19(N4),                 // input wire [15:0]  probe3
-		.probe20(N5),                 // input wire [15:0]  probe3
-		.probe21(N6),                 // input wire [15:0]  probe3
-		.probe22(N7),                 // input wire [15:0]  probe3
-		.probe23(E0),                 // input wire [15:0]  probe3
-		.probe24(E1),                 // input wire [15:0]  probe3
-		.probe25(E2),                 // input wire [15:0]  probe3
-		.probe26(E3),                 // input wire [15:0]  probe3
-		.probe27(E4),                 // input wire [15:0]  probe3
-		.probe28(E5),                 // input wire [15:0]  probe3
-		.probe29(E6),                 // input wire [15:0]  probe3
-		.probe30(E7),                 // input wire [15:0]  probe3
-		.probe31(W0),                 // input wire [15:0]  probe3
-		.probe32(W1),                 // input wire [15:0]  probe3
-		.probe33(W2),                 // input wire [15:0]  probe3
-		.probe34(W3),                 // input wire [15:0]  probe3
-		.probe35(W4),                 // input wire [15:0]  probe3
-		.probe36(W5),                 // input wire [15:0]  probe3
-		.probe37(W6),                 // input wire [15:0]  probe3
-		.probe38(W7)                  // input wire [15:0]  probe3
+		.probe15(C0),                 // input wire [17:0]  probe3
+		.probe16(C1),                 // input wire [17:0]  probe3
+		.probe17(C2),                 // input wire [17:0]  probe3
+		.probe18(C3),                 // input wire [17:0]  probe3
+		.probe19(C4),                 // input wire [17:0]  probe3
+		.probe20(C5),                 // input wire [17:0]  probe3
+		.probe21(C6),                 // input wire [17:0]  probe3
+		.probe22(C7)                  // input wire [17:0]  probe3
 	);
 
 generate
@@ -320,34 +313,46 @@ generate
 
     always @(posedge clk) 
 	begin
-	   N0 <= data_N[15:0];
-	   N1 <= data_N[31:16];
-	   N2 <= data_N[47:32];
-	   N3 <= data_N[63:48];
-	   N4 <= data_N[79:64];
-	   N5 <= data_N[95:80];
-	   N6 <= data_N[111:96];
-	   N7 <= data_N[127:112];
+	   N0 <= {data_N[15], data_N[15], data_N[15:0]};
+	   N1 <= {data_N[31], data_N[31], data_N[31:16]};
+	   N2 <= {data_N[47], data_N[47], data_N[47:32]};
+	   N3 <= {data_N[63], data_N[63], data_N[63:48]};
+	   N4 <= {data_N[79], data_N[79], data_N[79:64]};
+	   N5 <= {data_N[95], data_N[95], data_N[95:80]};
+	   N6 <= {data_N[111], data_N[111], data_N[111:96]};
+	   N7 <= {data_N[127], data_N[127], data_N[127:112]};
 
-	   E0 <= data_E[15:0];
-	   E1 <= data_E[31:16];
-	   E2 <= data_E[47:32];
-	   E3 <= data_E[63:48];
-	   E4 <= data_E[79:64];
-	   E5 <= data_E[95:80];
-	   E6 <= data_E[111:96];
-	   E7 <= data_E[127:112];
+	   E0 <= {data_E[15], data_E[15], data_E[15:0]};
+	   E1 <= {data_E[31], data_E[31], data_E[31:16]};
+	   E2 <= {data_E[47], data_E[47], data_E[47:32]};
+	   E3 <= {data_E[63], data_E[63], data_E[63:48]};
+	   E4 <= {data_E[79], data_E[79], data_E[79:64]};
+	   E5 <= {data_E[95], data_E[95], data_E[95:80]};
+	   E6 <= {data_E[111], data_E[111], data_E[111:96]};
+	   E7 <= {data_E[127], data_E[127], data_E[127:112]};
 
-	   W0 <= data_W[15:0];
-	   W1 <= data_W[31:16];
-	   W2 <= data_W[47:32];
-	   W3 <= data_W[63:48];
-	   W4 <= data_W[79:64];
-	   W5 <= data_W[95:80];
-	   W6 <= data_W[111:96];
-	   W7 <= data_W[127:112];
+	   W0 <= {data_W[15], data_W[15], data_W[15:0]};
+	   W1 <= {data_W[31], data_W[31], data_W[31:16]};
+	   W2 <= {data_W[47], data_W[47], data_W[47:32]};
+	   W3 <= {data_W[63], data_W[63], data_W[63:48]};
+	   W4 <= {data_W[79], data_W[79], data_W[79:64]};
+	   W5 <= {data_W[95], data_W[95], data_W[95:80]};
+	   W6 <= {data_W[111], data_W[111], data_W[111:96]};
+	   W7 <= {data_W[127], data_W[127], data_W[127:112]};
 	end
 
+    always @(posedge clk) 
+	begin
+	   C0 <= N0 + E0 + W0;
+	   C1 <= N1 + E1 + W1;
+	   C2 <= N2 + E2 + W2;
+	   C3 <= N3 + E3 + W3;
+	   C4 <= N4 + E4 + W4;
+	   C5 <= N5 + E5 + W5;
+	   C6 <= N6 + E6 + W6;
+	   C7 <= N7 + E7 + W7;
+	end
+  
   end
     
 endgenerate

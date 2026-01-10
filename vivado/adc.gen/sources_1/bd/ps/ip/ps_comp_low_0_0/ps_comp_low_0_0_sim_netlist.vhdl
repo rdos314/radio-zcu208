@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Jan 10 20:32:32 2026
+-- Date        : Sat Jan 10 23:05:09 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -104181,81 +104181,57 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe13 : in STD_LOGIC_VECTOR ( 9 downto 0 );
     probe14 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe33 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe34 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe35 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe36 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe37 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe15 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 17 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 17 downto 0 )
   );
   end component ps_comp_low_0_0_ila_0;
-  signal E0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal C0 : STD_LOGIC_VECTOR ( 17 downto 0 );
   attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of E0 : signal is std.standard.true;
-  signal E1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E1 : signal is std.standard.true;
-  signal E2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E2 : signal is std.standard.true;
-  signal E3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E3 : signal is std.standard.true;
-  signal E4 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E4 : signal is std.standard.true;
-  signal E5 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E5 : signal is std.standard.true;
-  signal E6 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E6 : signal is std.standard.true;
-  signal E7 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of E7 : signal is std.standard.true;
+  attribute MARK_DEBUG of C0 : signal is std.standard.true;
+  signal C1 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C1 : signal is std.standard.true;
+  signal C2 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C2 : signal is std.standard.true;
+  signal C3 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C3 : signal is std.standard.true;
+  signal C4 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C4 : signal is std.standard.true;
+  signal C5 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C5 : signal is std.standard.true;
+  signal C6 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C6 : signal is std.standard.true;
+  signal C7 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  attribute MARK_DEBUG of C7 : signal is std.standard.true;
+  signal E0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal E1 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal E2 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal E3 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal E4 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal E5 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal E6 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal E7 : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal N0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N0 : signal is std.standard.true;
-  signal N1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N1 : signal is std.standard.true;
-  signal N2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N2 : signal is std.standard.true;
-  signal N3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N3 : signal is std.standard.true;
-  signal N4 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N4 : signal is std.standard.true;
-  signal N5 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N5 : signal is std.standard.true;
-  signal N6 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N6 : signal is std.standard.true;
-  signal N7 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of N7 : signal is std.standard.true;
+  signal N1 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal N2 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal N3 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal N4 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal N5 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal N6 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal N7 : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal W0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W0 : signal is std.standard.true;
-  signal W1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W1 : signal is std.standard.true;
-  signal W2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W2 : signal is std.standard.true;
-  signal W3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W3 : signal is std.standard.true;
-  signal W4 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W4 : signal is std.standard.true;
-  signal W5 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W5 : signal is std.standard.true;
-  signal W6 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W6 : signal is std.standard.true;
-  signal W7 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of W7 : signal is std.standard.true;
+  signal W1 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal W2 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal W3 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal W4 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal W5 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal W6 : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal W7 : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal ana_angle : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of ana_angle : signal is std.standard.true;
   signal ana_burst : STD_LOGIC;
@@ -104279,6 +104255,574 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal ana_size : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of ana_size : signal is std.standard.true;
   signal ana_wr : STD_LOGIC;
+  signal \comp_low.C0[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_19_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[17]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C0[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C0_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C0_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C0_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C0_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C0_reg[17]_i_5_n_7\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C0_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C1[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C1_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C1_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C1_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C1_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C1_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C1_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C2[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C2_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C2_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C2_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C2_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C2_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C2_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C3[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C3_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C3_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C3_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C3_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C3_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C3_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C4[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C4_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C4_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C4_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C4_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C4_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C4_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C5[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C5_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C5_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C5_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C5_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C5_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C5_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C6[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C6_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C6_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C6_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C6_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C6_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C6_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[17]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[17]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[17]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.C7[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_low.C7_reg0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \comp_low.C7_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C7_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C7_reg[17]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C7_reg[17]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_low.C7_reg[7]_i_2_n_7\ : STD_LOGIC;
   signal \comp_low.ana_burst_reg0\ : STD_LOGIC;
   signal \comp_low.ana_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.ana_delay[2]_i_1_n_0\ : STD_LOGIC;
@@ -104369,7 +104913,15 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal data_N : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal data_W : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 63 downto 32 );
-  signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \p_0_in__2\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal p_2_in : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal p_3_in : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal p_4_in : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal p_5_in : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal p_6_in : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal p_7_in : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal raw_E : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal raw_N : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal raw_N0 : STD_LOGIC;
@@ -104387,6 +104939,38 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal raw_sample0 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal raw_sample_cy : STD_LOGIC;
   signal raw_wr : STD_LOGIC;
+  signal \NLW_comp_low.C0_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C0_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C0_reg[17]_i_5_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C0_reg[17]_i_5_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C1_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C1_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C1_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C1_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C2_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C2_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C2_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C2_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C3_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C3_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C3_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C3_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C4_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C4_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C4_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C4_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C5_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C5_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C5_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C5_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C6_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C6_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C6_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C6_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C7_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C7_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_low.C7_reg[17]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal \NLW_comp_low.C7_reg[17]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_comp_low.raw_sample_reg[31]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_low.raw_sample_reg[63]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal NLW_fifo_ana_i_full_UNCONNECTED : STD_LOGIC;
@@ -104397,390 +104981,199 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   attribute KEEP : string;
-  attribute KEEP of \comp_low.E0_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E0_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E1_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E2_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E3_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E4_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E5_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E6_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.E7_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N0_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N1_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N2_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N3_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N4_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N5_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N6_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.N7_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W0_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W1_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W2_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W3_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W4_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W5_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W6_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_low.W7_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \comp_low.C0_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C0_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C0_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C0_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C0_reg[17]_i_5\ : label is 35;
+  attribute KEEP of \comp_low.C0_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C0_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C0_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C0_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C0_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C1_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C1_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C1_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C1_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C1_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C1_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C1_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C1_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C1_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C1_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C2_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C2_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C2_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C2_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C2_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C2_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C2_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C2_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C2_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C2_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C3_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C3_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C3_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C3_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C3_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C3_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C3_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C3_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C3_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C3_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C4_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C4_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C4_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C4_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C4_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C4_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C4_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C4_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C4_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C4_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C5_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C5_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C5_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C5_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C5_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C5_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C5_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C5_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C5_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C5_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C6_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C6_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C6_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C6_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C6_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C6_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C6_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C6_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C6_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C6_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C7_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C7_reg[15]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C7_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[17]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C7_reg[17]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C7_reg[17]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C7_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_low.C7_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_low.C7_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_low.C7_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_low.C7_reg[9]\ : label is "yes";
   attribute KEEP of \comp_low.ana_angle_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
   attribute mark_debug_string of \comp_low.ana_angle_reg[0]\ : label is "yes";
@@ -104948,7 +105341,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute KEEP of \comp_low.raw_sample_reg[13]\ : label is "yes";
   attribute KEEP of \comp_low.raw_sample_reg[14]\ : label is "yes";
   attribute KEEP of \comp_low.raw_sample_reg[15]\ : label is "yes";
-  attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_low.raw_sample_reg[15]_i_1\ : label is 35;
   attribute KEEP of \comp_low.raw_sample_reg[16]\ : label is "yes";
   attribute KEEP of \comp_low.raw_sample_reg[17]\ : label is "yes";
@@ -105031,6 +105423,4707 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute KEEP_HIERARCHY of sel_N_i : label is "soft";
   attribute KEEP_HIERARCHY of sel_W_i : label is "soft";
 begin
+\comp_low.C0[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(8),
+      I1 => W0(8),
+      O => \comp_low.C0[15]_i_10_n_0\
+    );
+\comp_low.C0[15]_i_11\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => N0(15),
+      O => \comp_low.C0[15]_i_11_n_0\
+    );
+\comp_low.C0[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(15),
+      I1 => E0(15),
+      O => \comp_low.C0[15]_i_12_n_0\
+    );
+\comp_low.C0[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(14),
+      I1 => E0(14),
+      O => \comp_low.C0[15]_i_13_n_0\
+    );
+\comp_low.C0[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(13),
+      I1 => E0(13),
+      O => \comp_low.C0[15]_i_14_n_0\
+    );
+\comp_low.C0[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(12),
+      I1 => E0(12),
+      O => \comp_low.C0[15]_i_15_n_0\
+    );
+\comp_low.C0[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(11),
+      I1 => E0(11),
+      O => \comp_low.C0[15]_i_16_n_0\
+    );
+\comp_low.C0[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(10),
+      I1 => E0(10),
+      O => \comp_low.C0[15]_i_17_n_0\
+    );
+\comp_low.C0[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(9),
+      I1 => E0(9),
+      O => \comp_low.C0[15]_i_18_n_0\
+    );
+\comp_low.C0[15]_i_19\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(8),
+      I1 => E0(8),
+      O => \comp_low.C0[15]_i_19_n_0\
+    );
+\comp_low.C0[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => W0(15),
+      I1 => p_7_in(15),
+      O => \comp_low.C0[15]_i_3_n_0\
+    );
+\comp_low.C0[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(14),
+      I1 => W0(14),
+      O => \comp_low.C0[15]_i_4_n_0\
+    );
+\comp_low.C0[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(13),
+      I1 => W0(13),
+      O => \comp_low.C0[15]_i_5_n_0\
+    );
+\comp_low.C0[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(12),
+      I1 => W0(12),
+      O => \comp_low.C0[15]_i_6_n_0\
+    );
+\comp_low.C0[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(11),
+      I1 => W0(11),
+      O => \comp_low.C0[15]_i_7_n_0\
+    );
+\comp_low.C0[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(10),
+      I1 => W0(10),
+      O => \comp_low.C0[15]_i_8_n_0\
+    );
+\comp_low.C0[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(9),
+      I1 => W0(9),
+      O => \comp_low.C0[15]_i_9_n_0\
+    );
+\comp_low.C0[17]_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => W0(15),
+      O => \comp_low.C0[17]_i_2_n_0\
+    );
+\comp_low.C0[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p_7_in(16),
+      I1 => p_7_in(17),
+      O => \comp_low.C0[17]_i_3_n_0\
+    );
+\comp_low.C0[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => W0(15),
+      I1 => p_7_in(16),
+      O => \comp_low.C0[17]_i_4_n_0\
+    );
+\comp_low.C0[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(0),
+      I1 => W0(0),
+      O => \comp_low.C0[7]_i_10_n_0\
+    );
+\comp_low.C0[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(7),
+      I1 => E0(7),
+      O => \comp_low.C0[7]_i_11_n_0\
+    );
+\comp_low.C0[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(6),
+      I1 => E0(6),
+      O => \comp_low.C0[7]_i_12_n_0\
+    );
+\comp_low.C0[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(5),
+      I1 => E0(5),
+      O => \comp_low.C0[7]_i_13_n_0\
+    );
+\comp_low.C0[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(4),
+      I1 => E0(4),
+      O => \comp_low.C0[7]_i_14_n_0\
+    );
+\comp_low.C0[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(3),
+      I1 => E0(3),
+      O => \comp_low.C0[7]_i_15_n_0\
+    );
+\comp_low.C0[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(2),
+      I1 => E0(2),
+      O => \comp_low.C0[7]_i_16_n_0\
+    );
+\comp_low.C0[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(1),
+      I1 => E0(1),
+      O => \comp_low.C0[7]_i_17_n_0\
+    );
+\comp_low.C0[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N0(0),
+      I1 => E0(0),
+      O => \comp_low.C0[7]_i_18_n_0\
+    );
+\comp_low.C0[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(7),
+      I1 => W0(7),
+      O => \comp_low.C0[7]_i_3_n_0\
+    );
+\comp_low.C0[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(6),
+      I1 => W0(6),
+      O => \comp_low.C0[7]_i_4_n_0\
+    );
+\comp_low.C0[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(5),
+      I1 => W0(5),
+      O => \comp_low.C0[7]_i_5_n_0\
+    );
+\comp_low.C0[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(4),
+      I1 => W0(4),
+      O => \comp_low.C0[7]_i_6_n_0\
+    );
+\comp_low.C0[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(3),
+      I1 => W0(3),
+      O => \comp_low.C0[7]_i_7_n_0\
+    );
+\comp_low.C0[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(2),
+      I1 => W0(2),
+      O => \comp_low.C0[7]_i_8_n_0\
+    );
+\comp_low.C0[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_7_in(1),
+      I1 => W0(1),
+      O => \comp_low.C0[7]_i_9_n_0\
+    );
+\comp_low.C0_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(0),
+      Q => C0(0),
+      R => '0'
+    );
+\comp_low.C0_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(10),
+      Q => C0(10),
+      R => '0'
+    );
+\comp_low.C0_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(11),
+      Q => C0(11),
+      R => '0'
+    );
+\comp_low.C0_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(12),
+      Q => C0(12),
+      R => '0'
+    );
+\comp_low.C0_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(13),
+      Q => C0(13),
+      R => '0'
+    );
+\comp_low.C0_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(14),
+      Q => C0(14),
+      R => '0'
+    );
+\comp_low.C0_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(15),
+      Q => C0(15),
+      R => '0'
+    );
+\comp_low.C0_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C0_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C0_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C0_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C0_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C0_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C0_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C0_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C0_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C0_reg[15]_i_1_n_7\,
+      DI(7) => W0(15),
+      DI(6 downto 0) => p_7_in(14 downto 8),
+      O(7 downto 0) => \comp_low.C0_reg0\(15 downto 8),
+      S(7) => \comp_low.C0[15]_i_3_n_0\,
+      S(6) => \comp_low.C0[15]_i_4_n_0\,
+      S(5) => \comp_low.C0[15]_i_5_n_0\,
+      S(4) => \comp_low.C0[15]_i_6_n_0\,
+      S(3) => \comp_low.C0[15]_i_7_n_0\,
+      S(2) => \comp_low.C0[15]_i_8_n_0\,
+      S(1) => \comp_low.C0[15]_i_9_n_0\,
+      S(0) => \comp_low.C0[15]_i_10_n_0\
+    );
+\comp_low.C0_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C0_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C0_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C0_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C0_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C0_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C0_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C0_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C0_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C0_reg[15]_i_2_n_7\,
+      DI(7) => \comp_low.C0[15]_i_11_n_0\,
+      DI(6 downto 0) => N0(14 downto 8),
+      O(7 downto 0) => p_7_in(15 downto 8),
+      S(7) => \comp_low.C0[15]_i_12_n_0\,
+      S(6) => \comp_low.C0[15]_i_13_n_0\,
+      S(5) => \comp_low.C0[15]_i_14_n_0\,
+      S(4) => \comp_low.C0[15]_i_15_n_0\,
+      S(3) => \comp_low.C0[15]_i_16_n_0\,
+      S(2) => \comp_low.C0[15]_i_17_n_0\,
+      S(1) => \comp_low.C0[15]_i_18_n_0\,
+      S(0) => \comp_low.C0[15]_i_19_n_0\
+    );
+\comp_low.C0_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(16),
+      Q => C0(16),
+      R => '0'
+    );
+\comp_low.C0_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(17),
+      Q => C0(17),
+      R => '0'
+    );
+\comp_low.C0_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C0_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C0_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C0_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => \comp_low.C0[17]_i_2_n_0\,
+      O(7 downto 2) => \NLW_comp_low.C0_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C0_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C0[17]_i_3_n_0\,
+      S(0) => \comp_low.C0[17]_i_4_n_0\
+    );
+\comp_low.C0_reg[17]_i_5\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C0_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C0_reg[17]_i_5_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C0_reg[17]_i_5_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 2) => \NLW_comp_low.C0_reg[17]_i_5_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => p_7_in(17 downto 16),
+      S(7 downto 0) => B"00000011"
+    );
+\comp_low.C0_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(1),
+      Q => C0(1),
+      R => '0'
+    );
+\comp_low.C0_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(2),
+      Q => C0(2),
+      R => '0'
+    );
+\comp_low.C0_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(3),
+      Q => C0(3),
+      R => '0'
+    );
+\comp_low.C0_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(4),
+      Q => C0(4),
+      R => '0'
+    );
+\comp_low.C0_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(5),
+      Q => C0(5),
+      R => '0'
+    );
+\comp_low.C0_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(6),
+      Q => C0(6),
+      R => '0'
+    );
+\comp_low.C0_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(7),
+      Q => C0(7),
+      R => '0'
+    );
+\comp_low.C0_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C0_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C0_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C0_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C0_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C0_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C0_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C0_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C0_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p_7_in(7 downto 0),
+      O(7 downto 0) => \comp_low.C0_reg0\(7 downto 0),
+      S(7) => \comp_low.C0[7]_i_3_n_0\,
+      S(6) => \comp_low.C0[7]_i_4_n_0\,
+      S(5) => \comp_low.C0[7]_i_5_n_0\,
+      S(4) => \comp_low.C0[7]_i_6_n_0\,
+      S(3) => \comp_low.C0[7]_i_7_n_0\,
+      S(2) => \comp_low.C0[7]_i_8_n_0\,
+      S(1) => \comp_low.C0[7]_i_9_n_0\,
+      S(0) => \comp_low.C0[7]_i_10_n_0\
+    );
+\comp_low.C0_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C0_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C0_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C0_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C0_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C0_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C0_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C0_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C0_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N0(7 downto 0),
+      O(7 downto 0) => p_7_in(7 downto 0),
+      S(7) => \comp_low.C0[7]_i_11_n_0\,
+      S(6) => \comp_low.C0[7]_i_12_n_0\,
+      S(5) => \comp_low.C0[7]_i_13_n_0\,
+      S(4) => \comp_low.C0[7]_i_14_n_0\,
+      S(3) => \comp_low.C0[7]_i_15_n_0\,
+      S(2) => \comp_low.C0[7]_i_16_n_0\,
+      S(1) => \comp_low.C0[7]_i_17_n_0\,
+      S(0) => \comp_low.C0[7]_i_18_n_0\
+    );
+\comp_low.C0_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(8),
+      Q => C0(8),
+      R => '0'
+    );
+\comp_low.C0_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C0_reg0\(9),
+      Q => C0(9),
+      R => '0'
+    );
+\comp_low.C1[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(8),
+      I1 => W1(8),
+      O => \comp_low.C1[15]_i_10_n_0\
+    );
+\comp_low.C1[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(15),
+      I1 => E1(15),
+      O => \comp_low.C1[15]_i_11_n_0\
+    );
+\comp_low.C1[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(14),
+      I1 => E1(14),
+      O => \comp_low.C1[15]_i_12_n_0\
+    );
+\comp_low.C1[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(13),
+      I1 => E1(13),
+      O => \comp_low.C1[15]_i_13_n_0\
+    );
+\comp_low.C1[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(12),
+      I1 => E1(12),
+      O => \comp_low.C1[15]_i_14_n_0\
+    );
+\comp_low.C1[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(11),
+      I1 => E1(11),
+      O => \comp_low.C1[15]_i_15_n_0\
+    );
+\comp_low.C1[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(10),
+      I1 => E1(10),
+      O => \comp_low.C1[15]_i_16_n_0\
+    );
+\comp_low.C1[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(9),
+      I1 => E1(9),
+      O => \comp_low.C1[15]_i_17_n_0\
+    );
+\comp_low.C1[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(8),
+      I1 => E1(8),
+      O => \comp_low.C1[15]_i_18_n_0\
+    );
+\comp_low.C1[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(15),
+      I1 => W1(15),
+      O => \comp_low.C1[15]_i_3_n_0\
+    );
+\comp_low.C1[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(14),
+      I1 => W1(14),
+      O => \comp_low.C1[15]_i_4_n_0\
+    );
+\comp_low.C1[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(13),
+      I1 => W1(13),
+      O => \comp_low.C1[15]_i_5_n_0\
+    );
+\comp_low.C1[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(12),
+      I1 => W1(12),
+      O => \comp_low.C1[15]_i_6_n_0\
+    );
+\comp_low.C1[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(11),
+      I1 => W1(11),
+      O => \comp_low.C1[15]_i_7_n_0\
+    );
+\comp_low.C1[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(10),
+      I1 => W1(10),
+      O => \comp_low.C1[15]_i_8_n_0\
+    );
+\comp_low.C1[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(9),
+      I1 => W1(9),
+      O => \comp_low.C1[15]_i_9_n_0\
+    );
+\comp_low.C1[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(17),
+      I1 => W1(17),
+      O => \comp_low.C1[17]_i_3_n_0\
+    );
+\comp_low.C1[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(16),
+      I1 => W1(16),
+      O => \comp_low.C1[17]_i_4_n_0\
+    );
+\comp_low.C1[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(17),
+      I1 => E1(17),
+      O => \comp_low.C1[17]_i_5_n_0\
+    );
+\comp_low.C1[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(16),
+      I1 => E1(16),
+      O => \comp_low.C1[17]_i_6_n_0\
+    );
+\comp_low.C1[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(0),
+      I1 => W1(0),
+      O => \comp_low.C1[7]_i_10_n_0\
+    );
+\comp_low.C1[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(7),
+      I1 => E1(7),
+      O => \comp_low.C1[7]_i_11_n_0\
+    );
+\comp_low.C1[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(6),
+      I1 => E1(6),
+      O => \comp_low.C1[7]_i_12_n_0\
+    );
+\comp_low.C1[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(5),
+      I1 => E1(5),
+      O => \comp_low.C1[7]_i_13_n_0\
+    );
+\comp_low.C1[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(4),
+      I1 => E1(4),
+      O => \comp_low.C1[7]_i_14_n_0\
+    );
+\comp_low.C1[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(3),
+      I1 => E1(3),
+      O => \comp_low.C1[7]_i_15_n_0\
+    );
+\comp_low.C1[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(2),
+      I1 => E1(2),
+      O => \comp_low.C1[7]_i_16_n_0\
+    );
+\comp_low.C1[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(1),
+      I1 => E1(1),
+      O => \comp_low.C1[7]_i_17_n_0\
+    );
+\comp_low.C1[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N1(0),
+      I1 => E1(0),
+      O => \comp_low.C1[7]_i_18_n_0\
+    );
+\comp_low.C1[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(7),
+      I1 => W1(7),
+      O => \comp_low.C1[7]_i_3_n_0\
+    );
+\comp_low.C1[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(6),
+      I1 => W1(6),
+      O => \comp_low.C1[7]_i_4_n_0\
+    );
+\comp_low.C1[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(5),
+      I1 => W1(5),
+      O => \comp_low.C1[7]_i_5_n_0\
+    );
+\comp_low.C1[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(4),
+      I1 => W1(4),
+      O => \comp_low.C1[7]_i_6_n_0\
+    );
+\comp_low.C1[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(3),
+      I1 => W1(3),
+      O => \comp_low.C1[7]_i_7_n_0\
+    );
+\comp_low.C1[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(2),
+      I1 => W1(2),
+      O => \comp_low.C1[7]_i_8_n_0\
+    );
+\comp_low.C1[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_6_in(1),
+      I1 => W1(1),
+      O => \comp_low.C1[7]_i_9_n_0\
+    );
+\comp_low.C1_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(0),
+      Q => C1(0),
+      R => '0'
+    );
+\comp_low.C1_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(10),
+      Q => C1(10),
+      R => '0'
+    );
+\comp_low.C1_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(11),
+      Q => C1(11),
+      R => '0'
+    );
+\comp_low.C1_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(12),
+      Q => C1(12),
+      R => '0'
+    );
+\comp_low.C1_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(13),
+      Q => C1(13),
+      R => '0'
+    );
+\comp_low.C1_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(14),
+      Q => C1(14),
+      R => '0'
+    );
+\comp_low.C1_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(15),
+      Q => C1(15),
+      R => '0'
+    );
+\comp_low.C1_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C1_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C1_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C1_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C1_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C1_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C1_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C1_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C1_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C1_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => p_6_in(15 downto 8),
+      O(7 downto 0) => \comp_low.C1_reg0\(15 downto 8),
+      S(7) => \comp_low.C1[15]_i_3_n_0\,
+      S(6) => \comp_low.C1[15]_i_4_n_0\,
+      S(5) => \comp_low.C1[15]_i_5_n_0\,
+      S(4) => \comp_low.C1[15]_i_6_n_0\,
+      S(3) => \comp_low.C1[15]_i_7_n_0\,
+      S(2) => \comp_low.C1[15]_i_8_n_0\,
+      S(1) => \comp_low.C1[15]_i_9_n_0\,
+      S(0) => \comp_low.C1[15]_i_10_n_0\
+    );
+\comp_low.C1_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C1_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C1_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C1_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C1_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C1_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C1_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C1_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C1_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C1_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N1(15 downto 8),
+      O(7 downto 0) => p_6_in(15 downto 8),
+      S(7) => \comp_low.C1[15]_i_11_n_0\,
+      S(6) => \comp_low.C1[15]_i_12_n_0\,
+      S(5) => \comp_low.C1[15]_i_13_n_0\,
+      S(4) => \comp_low.C1[15]_i_14_n_0\,
+      S(3) => \comp_low.C1[15]_i_15_n_0\,
+      S(2) => \comp_low.C1[15]_i_16_n_0\,
+      S(1) => \comp_low.C1[15]_i_17_n_0\,
+      S(0) => \comp_low.C1[15]_i_18_n_0\
+    );
+\comp_low.C1_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(16),
+      Q => C1(16),
+      R => '0'
+    );
+\comp_low.C1_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(17),
+      Q => C1(17),
+      R => '0'
+    );
+\comp_low.C1_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C1_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C1_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C1_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => p_6_in(16),
+      O(7 downto 2) => \NLW_comp_low.C1_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C1_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C1[17]_i_3_n_0\,
+      S(0) => \comp_low.C1[17]_i_4_n_0\
+    );
+\comp_low.C1_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C1_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C1_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C1_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N1(16),
+      O(7 downto 2) => \NLW_comp_low.C1_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => p_6_in(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C1[17]_i_5_n_0\,
+      S(0) => \comp_low.C1[17]_i_6_n_0\
+    );
+\comp_low.C1_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(1),
+      Q => C1(1),
+      R => '0'
+    );
+\comp_low.C1_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(2),
+      Q => C1(2),
+      R => '0'
+    );
+\comp_low.C1_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(3),
+      Q => C1(3),
+      R => '0'
+    );
+\comp_low.C1_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(4),
+      Q => C1(4),
+      R => '0'
+    );
+\comp_low.C1_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(5),
+      Q => C1(5),
+      R => '0'
+    );
+\comp_low.C1_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(6),
+      Q => C1(6),
+      R => '0'
+    );
+\comp_low.C1_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(7),
+      Q => C1(7),
+      R => '0'
+    );
+\comp_low.C1_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C1_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C1_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C1_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C1_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C1_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C1_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C1_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C1_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p_6_in(7 downto 0),
+      O(7 downto 0) => \comp_low.C1_reg0\(7 downto 0),
+      S(7) => \comp_low.C1[7]_i_3_n_0\,
+      S(6) => \comp_low.C1[7]_i_4_n_0\,
+      S(5) => \comp_low.C1[7]_i_5_n_0\,
+      S(4) => \comp_low.C1[7]_i_6_n_0\,
+      S(3) => \comp_low.C1[7]_i_7_n_0\,
+      S(2) => \comp_low.C1[7]_i_8_n_0\,
+      S(1) => \comp_low.C1[7]_i_9_n_0\,
+      S(0) => \comp_low.C1[7]_i_10_n_0\
+    );
+\comp_low.C1_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C1_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C1_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C1_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C1_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C1_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C1_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C1_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C1_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N1(7 downto 0),
+      O(7 downto 0) => p_6_in(7 downto 0),
+      S(7) => \comp_low.C1[7]_i_11_n_0\,
+      S(6) => \comp_low.C1[7]_i_12_n_0\,
+      S(5) => \comp_low.C1[7]_i_13_n_0\,
+      S(4) => \comp_low.C1[7]_i_14_n_0\,
+      S(3) => \comp_low.C1[7]_i_15_n_0\,
+      S(2) => \comp_low.C1[7]_i_16_n_0\,
+      S(1) => \comp_low.C1[7]_i_17_n_0\,
+      S(0) => \comp_low.C1[7]_i_18_n_0\
+    );
+\comp_low.C1_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(8),
+      Q => C1(8),
+      R => '0'
+    );
+\comp_low.C1_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C1_reg0\(9),
+      Q => C1(9),
+      R => '0'
+    );
+\comp_low.C2[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(8),
+      I1 => W2(8),
+      O => \comp_low.C2[15]_i_10_n_0\
+    );
+\comp_low.C2[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(15),
+      I1 => E2(15),
+      O => \comp_low.C2[15]_i_11_n_0\
+    );
+\comp_low.C2[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(14),
+      I1 => E2(14),
+      O => \comp_low.C2[15]_i_12_n_0\
+    );
+\comp_low.C2[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(13),
+      I1 => E2(13),
+      O => \comp_low.C2[15]_i_13_n_0\
+    );
+\comp_low.C2[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(12),
+      I1 => E2(12),
+      O => \comp_low.C2[15]_i_14_n_0\
+    );
+\comp_low.C2[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(11),
+      I1 => E2(11),
+      O => \comp_low.C2[15]_i_15_n_0\
+    );
+\comp_low.C2[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(10),
+      I1 => E2(10),
+      O => \comp_low.C2[15]_i_16_n_0\
+    );
+\comp_low.C2[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(9),
+      I1 => E2(9),
+      O => \comp_low.C2[15]_i_17_n_0\
+    );
+\comp_low.C2[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(8),
+      I1 => E2(8),
+      O => \comp_low.C2[15]_i_18_n_0\
+    );
+\comp_low.C2[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(15),
+      I1 => W2(15),
+      O => \comp_low.C2[15]_i_3_n_0\
+    );
+\comp_low.C2[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(14),
+      I1 => W2(14),
+      O => \comp_low.C2[15]_i_4_n_0\
+    );
+\comp_low.C2[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(13),
+      I1 => W2(13),
+      O => \comp_low.C2[15]_i_5_n_0\
+    );
+\comp_low.C2[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(12),
+      I1 => W2(12),
+      O => \comp_low.C2[15]_i_6_n_0\
+    );
+\comp_low.C2[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(11),
+      I1 => W2(11),
+      O => \comp_low.C2[15]_i_7_n_0\
+    );
+\comp_low.C2[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(10),
+      I1 => W2(10),
+      O => \comp_low.C2[15]_i_8_n_0\
+    );
+\comp_low.C2[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(9),
+      I1 => W2(9),
+      O => \comp_low.C2[15]_i_9_n_0\
+    );
+\comp_low.C2[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(17),
+      I1 => W2(17),
+      O => \comp_low.C2[17]_i_3_n_0\
+    );
+\comp_low.C2[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(16),
+      I1 => W2(16),
+      O => \comp_low.C2[17]_i_4_n_0\
+    );
+\comp_low.C2[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(17),
+      I1 => E2(17),
+      O => \comp_low.C2[17]_i_5_n_0\
+    );
+\comp_low.C2[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(16),
+      I1 => E2(16),
+      O => \comp_low.C2[17]_i_6_n_0\
+    );
+\comp_low.C2[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(0),
+      I1 => W2(0),
+      O => \comp_low.C2[7]_i_10_n_0\
+    );
+\comp_low.C2[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(7),
+      I1 => E2(7),
+      O => \comp_low.C2[7]_i_11_n_0\
+    );
+\comp_low.C2[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(6),
+      I1 => E2(6),
+      O => \comp_low.C2[7]_i_12_n_0\
+    );
+\comp_low.C2[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(5),
+      I1 => E2(5),
+      O => \comp_low.C2[7]_i_13_n_0\
+    );
+\comp_low.C2[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(4),
+      I1 => E2(4),
+      O => \comp_low.C2[7]_i_14_n_0\
+    );
+\comp_low.C2[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(3),
+      I1 => E2(3),
+      O => \comp_low.C2[7]_i_15_n_0\
+    );
+\comp_low.C2[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(2),
+      I1 => E2(2),
+      O => \comp_low.C2[7]_i_16_n_0\
+    );
+\comp_low.C2[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(1),
+      I1 => E2(1),
+      O => \comp_low.C2[7]_i_17_n_0\
+    );
+\comp_low.C2[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N2(0),
+      I1 => E2(0),
+      O => \comp_low.C2[7]_i_18_n_0\
+    );
+\comp_low.C2[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(7),
+      I1 => W2(7),
+      O => \comp_low.C2[7]_i_3_n_0\
+    );
+\comp_low.C2[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(6),
+      I1 => W2(6),
+      O => \comp_low.C2[7]_i_4_n_0\
+    );
+\comp_low.C2[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(5),
+      I1 => W2(5),
+      O => \comp_low.C2[7]_i_5_n_0\
+    );
+\comp_low.C2[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(4),
+      I1 => W2(4),
+      O => \comp_low.C2[7]_i_6_n_0\
+    );
+\comp_low.C2[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(3),
+      I1 => W2(3),
+      O => \comp_low.C2[7]_i_7_n_0\
+    );
+\comp_low.C2[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(2),
+      I1 => W2(2),
+      O => \comp_low.C2[7]_i_8_n_0\
+    );
+\comp_low.C2[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_5_in(1),
+      I1 => W2(1),
+      O => \comp_low.C2[7]_i_9_n_0\
+    );
+\comp_low.C2_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(0),
+      Q => C2(0),
+      R => '0'
+    );
+\comp_low.C2_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(10),
+      Q => C2(10),
+      R => '0'
+    );
+\comp_low.C2_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(11),
+      Q => C2(11),
+      R => '0'
+    );
+\comp_low.C2_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(12),
+      Q => C2(12),
+      R => '0'
+    );
+\comp_low.C2_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(13),
+      Q => C2(13),
+      R => '0'
+    );
+\comp_low.C2_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(14),
+      Q => C2(14),
+      R => '0'
+    );
+\comp_low.C2_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(15),
+      Q => C2(15),
+      R => '0'
+    );
+\comp_low.C2_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C2_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C2_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C2_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C2_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C2_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C2_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C2_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C2_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C2_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => p_5_in(15 downto 8),
+      O(7 downto 0) => \comp_low.C2_reg0\(15 downto 8),
+      S(7) => \comp_low.C2[15]_i_3_n_0\,
+      S(6) => \comp_low.C2[15]_i_4_n_0\,
+      S(5) => \comp_low.C2[15]_i_5_n_0\,
+      S(4) => \comp_low.C2[15]_i_6_n_0\,
+      S(3) => \comp_low.C2[15]_i_7_n_0\,
+      S(2) => \comp_low.C2[15]_i_8_n_0\,
+      S(1) => \comp_low.C2[15]_i_9_n_0\,
+      S(0) => \comp_low.C2[15]_i_10_n_0\
+    );
+\comp_low.C2_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C2_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C2_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C2_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C2_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C2_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C2_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C2_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C2_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C2_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N2(15 downto 8),
+      O(7 downto 0) => p_5_in(15 downto 8),
+      S(7) => \comp_low.C2[15]_i_11_n_0\,
+      S(6) => \comp_low.C2[15]_i_12_n_0\,
+      S(5) => \comp_low.C2[15]_i_13_n_0\,
+      S(4) => \comp_low.C2[15]_i_14_n_0\,
+      S(3) => \comp_low.C2[15]_i_15_n_0\,
+      S(2) => \comp_low.C2[15]_i_16_n_0\,
+      S(1) => \comp_low.C2[15]_i_17_n_0\,
+      S(0) => \comp_low.C2[15]_i_18_n_0\
+    );
+\comp_low.C2_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(16),
+      Q => C2(16),
+      R => '0'
+    );
+\comp_low.C2_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(17),
+      Q => C2(17),
+      R => '0'
+    );
+\comp_low.C2_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C2_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C2_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C2_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => p_5_in(16),
+      O(7 downto 2) => \NLW_comp_low.C2_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C2_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C2[17]_i_3_n_0\,
+      S(0) => \comp_low.C2[17]_i_4_n_0\
+    );
+\comp_low.C2_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C2_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C2_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C2_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N2(16),
+      O(7 downto 2) => \NLW_comp_low.C2_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => p_5_in(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C2[17]_i_5_n_0\,
+      S(0) => \comp_low.C2[17]_i_6_n_0\
+    );
+\comp_low.C2_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(1),
+      Q => C2(1),
+      R => '0'
+    );
+\comp_low.C2_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(2),
+      Q => C2(2),
+      R => '0'
+    );
+\comp_low.C2_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(3),
+      Q => C2(3),
+      R => '0'
+    );
+\comp_low.C2_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(4),
+      Q => C2(4),
+      R => '0'
+    );
+\comp_low.C2_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(5),
+      Q => C2(5),
+      R => '0'
+    );
+\comp_low.C2_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(6),
+      Q => C2(6),
+      R => '0'
+    );
+\comp_low.C2_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(7),
+      Q => C2(7),
+      R => '0'
+    );
+\comp_low.C2_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C2_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C2_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C2_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C2_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C2_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C2_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C2_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C2_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p_5_in(7 downto 0),
+      O(7 downto 0) => \comp_low.C2_reg0\(7 downto 0),
+      S(7) => \comp_low.C2[7]_i_3_n_0\,
+      S(6) => \comp_low.C2[7]_i_4_n_0\,
+      S(5) => \comp_low.C2[7]_i_5_n_0\,
+      S(4) => \comp_low.C2[7]_i_6_n_0\,
+      S(3) => \comp_low.C2[7]_i_7_n_0\,
+      S(2) => \comp_low.C2[7]_i_8_n_0\,
+      S(1) => \comp_low.C2[7]_i_9_n_0\,
+      S(0) => \comp_low.C2[7]_i_10_n_0\
+    );
+\comp_low.C2_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C2_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C2_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C2_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C2_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C2_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C2_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C2_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C2_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N2(7 downto 0),
+      O(7 downto 0) => p_5_in(7 downto 0),
+      S(7) => \comp_low.C2[7]_i_11_n_0\,
+      S(6) => \comp_low.C2[7]_i_12_n_0\,
+      S(5) => \comp_low.C2[7]_i_13_n_0\,
+      S(4) => \comp_low.C2[7]_i_14_n_0\,
+      S(3) => \comp_low.C2[7]_i_15_n_0\,
+      S(2) => \comp_low.C2[7]_i_16_n_0\,
+      S(1) => \comp_low.C2[7]_i_17_n_0\,
+      S(0) => \comp_low.C2[7]_i_18_n_0\
+    );
+\comp_low.C2_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(8),
+      Q => C2(8),
+      R => '0'
+    );
+\comp_low.C2_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C2_reg0\(9),
+      Q => C2(9),
+      R => '0'
+    );
+\comp_low.C3[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(8),
+      I1 => W3(8),
+      O => \comp_low.C3[15]_i_10_n_0\
+    );
+\comp_low.C3[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(15),
+      I1 => E3(15),
+      O => \comp_low.C3[15]_i_11_n_0\
+    );
+\comp_low.C3[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(14),
+      I1 => E3(14),
+      O => \comp_low.C3[15]_i_12_n_0\
+    );
+\comp_low.C3[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(13),
+      I1 => E3(13),
+      O => \comp_low.C3[15]_i_13_n_0\
+    );
+\comp_low.C3[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(12),
+      I1 => E3(12),
+      O => \comp_low.C3[15]_i_14_n_0\
+    );
+\comp_low.C3[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(11),
+      I1 => E3(11),
+      O => \comp_low.C3[15]_i_15_n_0\
+    );
+\comp_low.C3[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(10),
+      I1 => E3(10),
+      O => \comp_low.C3[15]_i_16_n_0\
+    );
+\comp_low.C3[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(9),
+      I1 => E3(9),
+      O => \comp_low.C3[15]_i_17_n_0\
+    );
+\comp_low.C3[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(8),
+      I1 => E3(8),
+      O => \comp_low.C3[15]_i_18_n_0\
+    );
+\comp_low.C3[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(15),
+      I1 => W3(15),
+      O => \comp_low.C3[15]_i_3_n_0\
+    );
+\comp_low.C3[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(14),
+      I1 => W3(14),
+      O => \comp_low.C3[15]_i_4_n_0\
+    );
+\comp_low.C3[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(13),
+      I1 => W3(13),
+      O => \comp_low.C3[15]_i_5_n_0\
+    );
+\comp_low.C3[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(12),
+      I1 => W3(12),
+      O => \comp_low.C3[15]_i_6_n_0\
+    );
+\comp_low.C3[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(11),
+      I1 => W3(11),
+      O => \comp_low.C3[15]_i_7_n_0\
+    );
+\comp_low.C3[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(10),
+      I1 => W3(10),
+      O => \comp_low.C3[15]_i_8_n_0\
+    );
+\comp_low.C3[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(9),
+      I1 => W3(9),
+      O => \comp_low.C3[15]_i_9_n_0\
+    );
+\comp_low.C3[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(17),
+      I1 => W3(17),
+      O => \comp_low.C3[17]_i_3_n_0\
+    );
+\comp_low.C3[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(16),
+      I1 => W3(16),
+      O => \comp_low.C3[17]_i_4_n_0\
+    );
+\comp_low.C3[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(17),
+      I1 => E3(17),
+      O => \comp_low.C3[17]_i_5_n_0\
+    );
+\comp_low.C3[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(16),
+      I1 => E3(16),
+      O => \comp_low.C3[17]_i_6_n_0\
+    );
+\comp_low.C3[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(0),
+      I1 => W3(0),
+      O => \comp_low.C3[7]_i_10_n_0\
+    );
+\comp_low.C3[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(7),
+      I1 => E3(7),
+      O => \comp_low.C3[7]_i_11_n_0\
+    );
+\comp_low.C3[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(6),
+      I1 => E3(6),
+      O => \comp_low.C3[7]_i_12_n_0\
+    );
+\comp_low.C3[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(5),
+      I1 => E3(5),
+      O => \comp_low.C3[7]_i_13_n_0\
+    );
+\comp_low.C3[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(4),
+      I1 => E3(4),
+      O => \comp_low.C3[7]_i_14_n_0\
+    );
+\comp_low.C3[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(3),
+      I1 => E3(3),
+      O => \comp_low.C3[7]_i_15_n_0\
+    );
+\comp_low.C3[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(2),
+      I1 => E3(2),
+      O => \comp_low.C3[7]_i_16_n_0\
+    );
+\comp_low.C3[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(1),
+      I1 => E3(1),
+      O => \comp_low.C3[7]_i_17_n_0\
+    );
+\comp_low.C3[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N3(0),
+      I1 => E3(0),
+      O => \comp_low.C3[7]_i_18_n_0\
+    );
+\comp_low.C3[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(7),
+      I1 => W3(7),
+      O => \comp_low.C3[7]_i_3_n_0\
+    );
+\comp_low.C3[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(6),
+      I1 => W3(6),
+      O => \comp_low.C3[7]_i_4_n_0\
+    );
+\comp_low.C3[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(5),
+      I1 => W3(5),
+      O => \comp_low.C3[7]_i_5_n_0\
+    );
+\comp_low.C3[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(4),
+      I1 => W3(4),
+      O => \comp_low.C3[7]_i_6_n_0\
+    );
+\comp_low.C3[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(3),
+      I1 => W3(3),
+      O => \comp_low.C3[7]_i_7_n_0\
+    );
+\comp_low.C3[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(2),
+      I1 => W3(2),
+      O => \comp_low.C3[7]_i_8_n_0\
+    );
+\comp_low.C3[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_4_in(1),
+      I1 => W3(1),
+      O => \comp_low.C3[7]_i_9_n_0\
+    );
+\comp_low.C3_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(0),
+      Q => C3(0),
+      R => '0'
+    );
+\comp_low.C3_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(10),
+      Q => C3(10),
+      R => '0'
+    );
+\comp_low.C3_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(11),
+      Q => C3(11),
+      R => '0'
+    );
+\comp_low.C3_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(12),
+      Q => C3(12),
+      R => '0'
+    );
+\comp_low.C3_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(13),
+      Q => C3(13),
+      R => '0'
+    );
+\comp_low.C3_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(14),
+      Q => C3(14),
+      R => '0'
+    );
+\comp_low.C3_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(15),
+      Q => C3(15),
+      R => '0'
+    );
+\comp_low.C3_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C3_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C3_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C3_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C3_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C3_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C3_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C3_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C3_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C3_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => p_4_in(15 downto 8),
+      O(7 downto 0) => \comp_low.C3_reg0\(15 downto 8),
+      S(7) => \comp_low.C3[15]_i_3_n_0\,
+      S(6) => \comp_low.C3[15]_i_4_n_0\,
+      S(5) => \comp_low.C3[15]_i_5_n_0\,
+      S(4) => \comp_low.C3[15]_i_6_n_0\,
+      S(3) => \comp_low.C3[15]_i_7_n_0\,
+      S(2) => \comp_low.C3[15]_i_8_n_0\,
+      S(1) => \comp_low.C3[15]_i_9_n_0\,
+      S(0) => \comp_low.C3[15]_i_10_n_0\
+    );
+\comp_low.C3_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C3_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C3_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C3_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C3_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C3_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C3_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C3_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C3_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C3_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N3(15 downto 8),
+      O(7 downto 0) => p_4_in(15 downto 8),
+      S(7) => \comp_low.C3[15]_i_11_n_0\,
+      S(6) => \comp_low.C3[15]_i_12_n_0\,
+      S(5) => \comp_low.C3[15]_i_13_n_0\,
+      S(4) => \comp_low.C3[15]_i_14_n_0\,
+      S(3) => \comp_low.C3[15]_i_15_n_0\,
+      S(2) => \comp_low.C3[15]_i_16_n_0\,
+      S(1) => \comp_low.C3[15]_i_17_n_0\,
+      S(0) => \comp_low.C3[15]_i_18_n_0\
+    );
+\comp_low.C3_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(16),
+      Q => C3(16),
+      R => '0'
+    );
+\comp_low.C3_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(17),
+      Q => C3(17),
+      R => '0'
+    );
+\comp_low.C3_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C3_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C3_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C3_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => p_4_in(16),
+      O(7 downto 2) => \NLW_comp_low.C3_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C3_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C3[17]_i_3_n_0\,
+      S(0) => \comp_low.C3[17]_i_4_n_0\
+    );
+\comp_low.C3_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C3_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C3_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C3_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N3(16),
+      O(7 downto 2) => \NLW_comp_low.C3_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => p_4_in(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C3[17]_i_5_n_0\,
+      S(0) => \comp_low.C3[17]_i_6_n_0\
+    );
+\comp_low.C3_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(1),
+      Q => C3(1),
+      R => '0'
+    );
+\comp_low.C3_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(2),
+      Q => C3(2),
+      R => '0'
+    );
+\comp_low.C3_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(3),
+      Q => C3(3),
+      R => '0'
+    );
+\comp_low.C3_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(4),
+      Q => C3(4),
+      R => '0'
+    );
+\comp_low.C3_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(5),
+      Q => C3(5),
+      R => '0'
+    );
+\comp_low.C3_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(6),
+      Q => C3(6),
+      R => '0'
+    );
+\comp_low.C3_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(7),
+      Q => C3(7),
+      R => '0'
+    );
+\comp_low.C3_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C3_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C3_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C3_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C3_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C3_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C3_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C3_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C3_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p_4_in(7 downto 0),
+      O(7 downto 0) => \comp_low.C3_reg0\(7 downto 0),
+      S(7) => \comp_low.C3[7]_i_3_n_0\,
+      S(6) => \comp_low.C3[7]_i_4_n_0\,
+      S(5) => \comp_low.C3[7]_i_5_n_0\,
+      S(4) => \comp_low.C3[7]_i_6_n_0\,
+      S(3) => \comp_low.C3[7]_i_7_n_0\,
+      S(2) => \comp_low.C3[7]_i_8_n_0\,
+      S(1) => \comp_low.C3[7]_i_9_n_0\,
+      S(0) => \comp_low.C3[7]_i_10_n_0\
+    );
+\comp_low.C3_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C3_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C3_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C3_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C3_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C3_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C3_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C3_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C3_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N3(7 downto 0),
+      O(7 downto 0) => p_4_in(7 downto 0),
+      S(7) => \comp_low.C3[7]_i_11_n_0\,
+      S(6) => \comp_low.C3[7]_i_12_n_0\,
+      S(5) => \comp_low.C3[7]_i_13_n_0\,
+      S(4) => \comp_low.C3[7]_i_14_n_0\,
+      S(3) => \comp_low.C3[7]_i_15_n_0\,
+      S(2) => \comp_low.C3[7]_i_16_n_0\,
+      S(1) => \comp_low.C3[7]_i_17_n_0\,
+      S(0) => \comp_low.C3[7]_i_18_n_0\
+    );
+\comp_low.C3_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(8),
+      Q => C3(8),
+      R => '0'
+    );
+\comp_low.C3_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C3_reg0\(9),
+      Q => C3(9),
+      R => '0'
+    );
+\comp_low.C4[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(8),
+      I1 => W4(8),
+      O => \comp_low.C4[15]_i_10_n_0\
+    );
+\comp_low.C4[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(15),
+      I1 => E4(15),
+      O => \comp_low.C4[15]_i_11_n_0\
+    );
+\comp_low.C4[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(14),
+      I1 => E4(14),
+      O => \comp_low.C4[15]_i_12_n_0\
+    );
+\comp_low.C4[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(13),
+      I1 => E4(13),
+      O => \comp_low.C4[15]_i_13_n_0\
+    );
+\comp_low.C4[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(12),
+      I1 => E4(12),
+      O => \comp_low.C4[15]_i_14_n_0\
+    );
+\comp_low.C4[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(11),
+      I1 => E4(11),
+      O => \comp_low.C4[15]_i_15_n_0\
+    );
+\comp_low.C4[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(10),
+      I1 => E4(10),
+      O => \comp_low.C4[15]_i_16_n_0\
+    );
+\comp_low.C4[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(9),
+      I1 => E4(9),
+      O => \comp_low.C4[15]_i_17_n_0\
+    );
+\comp_low.C4[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(8),
+      I1 => E4(8),
+      O => \comp_low.C4[15]_i_18_n_0\
+    );
+\comp_low.C4[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(15),
+      I1 => W4(15),
+      O => \comp_low.C4[15]_i_3_n_0\
+    );
+\comp_low.C4[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(14),
+      I1 => W4(14),
+      O => \comp_low.C4[15]_i_4_n_0\
+    );
+\comp_low.C4[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(13),
+      I1 => W4(13),
+      O => \comp_low.C4[15]_i_5_n_0\
+    );
+\comp_low.C4[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(12),
+      I1 => W4(12),
+      O => \comp_low.C4[15]_i_6_n_0\
+    );
+\comp_low.C4[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(11),
+      I1 => W4(11),
+      O => \comp_low.C4[15]_i_7_n_0\
+    );
+\comp_low.C4[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(10),
+      I1 => W4(10),
+      O => \comp_low.C4[15]_i_8_n_0\
+    );
+\comp_low.C4[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(9),
+      I1 => W4(9),
+      O => \comp_low.C4[15]_i_9_n_0\
+    );
+\comp_low.C4[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(17),
+      I1 => W4(17),
+      O => \comp_low.C4[17]_i_3_n_0\
+    );
+\comp_low.C4[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(16),
+      I1 => W4(16),
+      O => \comp_low.C4[17]_i_4_n_0\
+    );
+\comp_low.C4[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(17),
+      I1 => E4(17),
+      O => \comp_low.C4[17]_i_5_n_0\
+    );
+\comp_low.C4[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(16),
+      I1 => E4(16),
+      O => \comp_low.C4[17]_i_6_n_0\
+    );
+\comp_low.C4[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(0),
+      I1 => W4(0),
+      O => \comp_low.C4[7]_i_10_n_0\
+    );
+\comp_low.C4[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(7),
+      I1 => E4(7),
+      O => \comp_low.C4[7]_i_11_n_0\
+    );
+\comp_low.C4[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(6),
+      I1 => E4(6),
+      O => \comp_low.C4[7]_i_12_n_0\
+    );
+\comp_low.C4[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(5),
+      I1 => E4(5),
+      O => \comp_low.C4[7]_i_13_n_0\
+    );
+\comp_low.C4[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(4),
+      I1 => E4(4),
+      O => \comp_low.C4[7]_i_14_n_0\
+    );
+\comp_low.C4[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(3),
+      I1 => E4(3),
+      O => \comp_low.C4[7]_i_15_n_0\
+    );
+\comp_low.C4[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(2),
+      I1 => E4(2),
+      O => \comp_low.C4[7]_i_16_n_0\
+    );
+\comp_low.C4[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(1),
+      I1 => E4(1),
+      O => \comp_low.C4[7]_i_17_n_0\
+    );
+\comp_low.C4[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N4(0),
+      I1 => E4(0),
+      O => \comp_low.C4[7]_i_18_n_0\
+    );
+\comp_low.C4[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(7),
+      I1 => W4(7),
+      O => \comp_low.C4[7]_i_3_n_0\
+    );
+\comp_low.C4[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(6),
+      I1 => W4(6),
+      O => \comp_low.C4[7]_i_4_n_0\
+    );
+\comp_low.C4[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(5),
+      I1 => W4(5),
+      O => \comp_low.C4[7]_i_5_n_0\
+    );
+\comp_low.C4[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(4),
+      I1 => W4(4),
+      O => \comp_low.C4[7]_i_6_n_0\
+    );
+\comp_low.C4[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(3),
+      I1 => W4(3),
+      O => \comp_low.C4[7]_i_7_n_0\
+    );
+\comp_low.C4[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(2),
+      I1 => W4(2),
+      O => \comp_low.C4[7]_i_8_n_0\
+    );
+\comp_low.C4[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_3_in(1),
+      I1 => W4(1),
+      O => \comp_low.C4[7]_i_9_n_0\
+    );
+\comp_low.C4_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(0),
+      Q => C4(0),
+      R => '0'
+    );
+\comp_low.C4_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(10),
+      Q => C4(10),
+      R => '0'
+    );
+\comp_low.C4_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(11),
+      Q => C4(11),
+      R => '0'
+    );
+\comp_low.C4_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(12),
+      Q => C4(12),
+      R => '0'
+    );
+\comp_low.C4_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(13),
+      Q => C4(13),
+      R => '0'
+    );
+\comp_low.C4_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(14),
+      Q => C4(14),
+      R => '0'
+    );
+\comp_low.C4_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(15),
+      Q => C4(15),
+      R => '0'
+    );
+\comp_low.C4_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C4_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C4_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C4_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C4_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C4_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C4_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C4_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C4_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C4_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => p_3_in(15 downto 8),
+      O(7 downto 0) => \comp_low.C4_reg0\(15 downto 8),
+      S(7) => \comp_low.C4[15]_i_3_n_0\,
+      S(6) => \comp_low.C4[15]_i_4_n_0\,
+      S(5) => \comp_low.C4[15]_i_5_n_0\,
+      S(4) => \comp_low.C4[15]_i_6_n_0\,
+      S(3) => \comp_low.C4[15]_i_7_n_0\,
+      S(2) => \comp_low.C4[15]_i_8_n_0\,
+      S(1) => \comp_low.C4[15]_i_9_n_0\,
+      S(0) => \comp_low.C4[15]_i_10_n_0\
+    );
+\comp_low.C4_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C4_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C4_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C4_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C4_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C4_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C4_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C4_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C4_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C4_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N4(15 downto 8),
+      O(7 downto 0) => p_3_in(15 downto 8),
+      S(7) => \comp_low.C4[15]_i_11_n_0\,
+      S(6) => \comp_low.C4[15]_i_12_n_0\,
+      S(5) => \comp_low.C4[15]_i_13_n_0\,
+      S(4) => \comp_low.C4[15]_i_14_n_0\,
+      S(3) => \comp_low.C4[15]_i_15_n_0\,
+      S(2) => \comp_low.C4[15]_i_16_n_0\,
+      S(1) => \comp_low.C4[15]_i_17_n_0\,
+      S(0) => \comp_low.C4[15]_i_18_n_0\
+    );
+\comp_low.C4_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(16),
+      Q => C4(16),
+      R => '0'
+    );
+\comp_low.C4_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(17),
+      Q => C4(17),
+      R => '0'
+    );
+\comp_low.C4_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C4_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C4_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C4_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => p_3_in(16),
+      O(7 downto 2) => \NLW_comp_low.C4_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C4_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C4[17]_i_3_n_0\,
+      S(0) => \comp_low.C4[17]_i_4_n_0\
+    );
+\comp_low.C4_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C4_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C4_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C4_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N4(16),
+      O(7 downto 2) => \NLW_comp_low.C4_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => p_3_in(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C4[17]_i_5_n_0\,
+      S(0) => \comp_low.C4[17]_i_6_n_0\
+    );
+\comp_low.C4_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(1),
+      Q => C4(1),
+      R => '0'
+    );
+\comp_low.C4_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(2),
+      Q => C4(2),
+      R => '0'
+    );
+\comp_low.C4_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(3),
+      Q => C4(3),
+      R => '0'
+    );
+\comp_low.C4_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(4),
+      Q => C4(4),
+      R => '0'
+    );
+\comp_low.C4_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(5),
+      Q => C4(5),
+      R => '0'
+    );
+\comp_low.C4_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(6),
+      Q => C4(6),
+      R => '0'
+    );
+\comp_low.C4_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(7),
+      Q => C4(7),
+      R => '0'
+    );
+\comp_low.C4_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C4_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C4_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C4_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C4_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C4_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C4_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C4_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C4_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p_3_in(7 downto 0),
+      O(7 downto 0) => \comp_low.C4_reg0\(7 downto 0),
+      S(7) => \comp_low.C4[7]_i_3_n_0\,
+      S(6) => \comp_low.C4[7]_i_4_n_0\,
+      S(5) => \comp_low.C4[7]_i_5_n_0\,
+      S(4) => \comp_low.C4[7]_i_6_n_0\,
+      S(3) => \comp_low.C4[7]_i_7_n_0\,
+      S(2) => \comp_low.C4[7]_i_8_n_0\,
+      S(1) => \comp_low.C4[7]_i_9_n_0\,
+      S(0) => \comp_low.C4[7]_i_10_n_0\
+    );
+\comp_low.C4_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C4_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C4_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C4_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C4_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C4_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C4_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C4_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C4_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N4(7 downto 0),
+      O(7 downto 0) => p_3_in(7 downto 0),
+      S(7) => \comp_low.C4[7]_i_11_n_0\,
+      S(6) => \comp_low.C4[7]_i_12_n_0\,
+      S(5) => \comp_low.C4[7]_i_13_n_0\,
+      S(4) => \comp_low.C4[7]_i_14_n_0\,
+      S(3) => \comp_low.C4[7]_i_15_n_0\,
+      S(2) => \comp_low.C4[7]_i_16_n_0\,
+      S(1) => \comp_low.C4[7]_i_17_n_0\,
+      S(0) => \comp_low.C4[7]_i_18_n_0\
+    );
+\comp_low.C4_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(8),
+      Q => C4(8),
+      R => '0'
+    );
+\comp_low.C4_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C4_reg0\(9),
+      Q => C4(9),
+      R => '0'
+    );
+\comp_low.C5[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(8),
+      I1 => W5(8),
+      O => \comp_low.C5[15]_i_10_n_0\
+    );
+\comp_low.C5[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(15),
+      I1 => E5(15),
+      O => \comp_low.C5[15]_i_11_n_0\
+    );
+\comp_low.C5[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(14),
+      I1 => E5(14),
+      O => \comp_low.C5[15]_i_12_n_0\
+    );
+\comp_low.C5[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(13),
+      I1 => E5(13),
+      O => \comp_low.C5[15]_i_13_n_0\
+    );
+\comp_low.C5[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(12),
+      I1 => E5(12),
+      O => \comp_low.C5[15]_i_14_n_0\
+    );
+\comp_low.C5[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(11),
+      I1 => E5(11),
+      O => \comp_low.C5[15]_i_15_n_0\
+    );
+\comp_low.C5[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(10),
+      I1 => E5(10),
+      O => \comp_low.C5[15]_i_16_n_0\
+    );
+\comp_low.C5[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(9),
+      I1 => E5(9),
+      O => \comp_low.C5[15]_i_17_n_0\
+    );
+\comp_low.C5[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(8),
+      I1 => E5(8),
+      O => \comp_low.C5[15]_i_18_n_0\
+    );
+\comp_low.C5[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(15),
+      I1 => W5(15),
+      O => \comp_low.C5[15]_i_3_n_0\
+    );
+\comp_low.C5[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(14),
+      I1 => W5(14),
+      O => \comp_low.C5[15]_i_4_n_0\
+    );
+\comp_low.C5[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(13),
+      I1 => W5(13),
+      O => \comp_low.C5[15]_i_5_n_0\
+    );
+\comp_low.C5[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(12),
+      I1 => W5(12),
+      O => \comp_low.C5[15]_i_6_n_0\
+    );
+\comp_low.C5[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(11),
+      I1 => W5(11),
+      O => \comp_low.C5[15]_i_7_n_0\
+    );
+\comp_low.C5[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(10),
+      I1 => W5(10),
+      O => \comp_low.C5[15]_i_8_n_0\
+    );
+\comp_low.C5[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(9),
+      I1 => W5(9),
+      O => \comp_low.C5[15]_i_9_n_0\
+    );
+\comp_low.C5[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(17),
+      I1 => W5(17),
+      O => \comp_low.C5[17]_i_3_n_0\
+    );
+\comp_low.C5[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(16),
+      I1 => W5(16),
+      O => \comp_low.C5[17]_i_4_n_0\
+    );
+\comp_low.C5[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(17),
+      I1 => E5(17),
+      O => \comp_low.C5[17]_i_5_n_0\
+    );
+\comp_low.C5[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(16),
+      I1 => E5(16),
+      O => \comp_low.C5[17]_i_6_n_0\
+    );
+\comp_low.C5[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(0),
+      I1 => W5(0),
+      O => \comp_low.C5[7]_i_10_n_0\
+    );
+\comp_low.C5[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(7),
+      I1 => E5(7),
+      O => \comp_low.C5[7]_i_11_n_0\
+    );
+\comp_low.C5[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(6),
+      I1 => E5(6),
+      O => \comp_low.C5[7]_i_12_n_0\
+    );
+\comp_low.C5[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(5),
+      I1 => E5(5),
+      O => \comp_low.C5[7]_i_13_n_0\
+    );
+\comp_low.C5[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(4),
+      I1 => E5(4),
+      O => \comp_low.C5[7]_i_14_n_0\
+    );
+\comp_low.C5[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(3),
+      I1 => E5(3),
+      O => \comp_low.C5[7]_i_15_n_0\
+    );
+\comp_low.C5[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(2),
+      I1 => E5(2),
+      O => \comp_low.C5[7]_i_16_n_0\
+    );
+\comp_low.C5[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(1),
+      I1 => E5(1),
+      O => \comp_low.C5[7]_i_17_n_0\
+    );
+\comp_low.C5[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N5(0),
+      I1 => E5(0),
+      O => \comp_low.C5[7]_i_18_n_0\
+    );
+\comp_low.C5[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(7),
+      I1 => W5(7),
+      O => \comp_low.C5[7]_i_3_n_0\
+    );
+\comp_low.C5[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(6),
+      I1 => W5(6),
+      O => \comp_low.C5[7]_i_4_n_0\
+    );
+\comp_low.C5[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(5),
+      I1 => W5(5),
+      O => \comp_low.C5[7]_i_5_n_0\
+    );
+\comp_low.C5[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(4),
+      I1 => W5(4),
+      O => \comp_low.C5[7]_i_6_n_0\
+    );
+\comp_low.C5[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(3),
+      I1 => W5(3),
+      O => \comp_low.C5[7]_i_7_n_0\
+    );
+\comp_low.C5[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(2),
+      I1 => W5(2),
+      O => \comp_low.C5[7]_i_8_n_0\
+    );
+\comp_low.C5[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_2_in(1),
+      I1 => W5(1),
+      O => \comp_low.C5[7]_i_9_n_0\
+    );
+\comp_low.C5_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(0),
+      Q => C5(0),
+      R => '0'
+    );
+\comp_low.C5_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(10),
+      Q => C5(10),
+      R => '0'
+    );
+\comp_low.C5_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(11),
+      Q => C5(11),
+      R => '0'
+    );
+\comp_low.C5_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(12),
+      Q => C5(12),
+      R => '0'
+    );
+\comp_low.C5_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(13),
+      Q => C5(13),
+      R => '0'
+    );
+\comp_low.C5_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(14),
+      Q => C5(14),
+      R => '0'
+    );
+\comp_low.C5_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(15),
+      Q => C5(15),
+      R => '0'
+    );
+\comp_low.C5_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C5_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C5_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C5_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C5_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C5_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C5_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C5_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C5_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C5_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => p_2_in(15 downto 8),
+      O(7 downto 0) => \comp_low.C5_reg0\(15 downto 8),
+      S(7) => \comp_low.C5[15]_i_3_n_0\,
+      S(6) => \comp_low.C5[15]_i_4_n_0\,
+      S(5) => \comp_low.C5[15]_i_5_n_0\,
+      S(4) => \comp_low.C5[15]_i_6_n_0\,
+      S(3) => \comp_low.C5[15]_i_7_n_0\,
+      S(2) => \comp_low.C5[15]_i_8_n_0\,
+      S(1) => \comp_low.C5[15]_i_9_n_0\,
+      S(0) => \comp_low.C5[15]_i_10_n_0\
+    );
+\comp_low.C5_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C5_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C5_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C5_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C5_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C5_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C5_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C5_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C5_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C5_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N5(15 downto 8),
+      O(7 downto 0) => p_2_in(15 downto 8),
+      S(7) => \comp_low.C5[15]_i_11_n_0\,
+      S(6) => \comp_low.C5[15]_i_12_n_0\,
+      S(5) => \comp_low.C5[15]_i_13_n_0\,
+      S(4) => \comp_low.C5[15]_i_14_n_0\,
+      S(3) => \comp_low.C5[15]_i_15_n_0\,
+      S(2) => \comp_low.C5[15]_i_16_n_0\,
+      S(1) => \comp_low.C5[15]_i_17_n_0\,
+      S(0) => \comp_low.C5[15]_i_18_n_0\
+    );
+\comp_low.C5_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(16),
+      Q => C5(16),
+      R => '0'
+    );
+\comp_low.C5_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(17),
+      Q => C5(17),
+      R => '0'
+    );
+\comp_low.C5_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C5_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C5_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C5_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => p_2_in(16),
+      O(7 downto 2) => \NLW_comp_low.C5_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C5_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C5[17]_i_3_n_0\,
+      S(0) => \comp_low.C5[17]_i_4_n_0\
+    );
+\comp_low.C5_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C5_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C5_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C5_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N5(16),
+      O(7 downto 2) => \NLW_comp_low.C5_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => p_2_in(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C5[17]_i_5_n_0\,
+      S(0) => \comp_low.C5[17]_i_6_n_0\
+    );
+\comp_low.C5_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(1),
+      Q => C5(1),
+      R => '0'
+    );
+\comp_low.C5_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(2),
+      Q => C5(2),
+      R => '0'
+    );
+\comp_low.C5_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(3),
+      Q => C5(3),
+      R => '0'
+    );
+\comp_low.C5_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(4),
+      Q => C5(4),
+      R => '0'
+    );
+\comp_low.C5_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(5),
+      Q => C5(5),
+      R => '0'
+    );
+\comp_low.C5_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(6),
+      Q => C5(6),
+      R => '0'
+    );
+\comp_low.C5_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(7),
+      Q => C5(7),
+      R => '0'
+    );
+\comp_low.C5_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C5_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C5_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C5_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C5_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C5_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C5_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C5_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C5_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p_2_in(7 downto 0),
+      O(7 downto 0) => \comp_low.C5_reg0\(7 downto 0),
+      S(7) => \comp_low.C5[7]_i_3_n_0\,
+      S(6) => \comp_low.C5[7]_i_4_n_0\,
+      S(5) => \comp_low.C5[7]_i_5_n_0\,
+      S(4) => \comp_low.C5[7]_i_6_n_0\,
+      S(3) => \comp_low.C5[7]_i_7_n_0\,
+      S(2) => \comp_low.C5[7]_i_8_n_0\,
+      S(1) => \comp_low.C5[7]_i_9_n_0\,
+      S(0) => \comp_low.C5[7]_i_10_n_0\
+    );
+\comp_low.C5_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C5_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C5_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C5_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C5_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C5_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C5_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C5_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C5_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N5(7 downto 0),
+      O(7 downto 0) => p_2_in(7 downto 0),
+      S(7) => \comp_low.C5[7]_i_11_n_0\,
+      S(6) => \comp_low.C5[7]_i_12_n_0\,
+      S(5) => \comp_low.C5[7]_i_13_n_0\,
+      S(4) => \comp_low.C5[7]_i_14_n_0\,
+      S(3) => \comp_low.C5[7]_i_15_n_0\,
+      S(2) => \comp_low.C5[7]_i_16_n_0\,
+      S(1) => \comp_low.C5[7]_i_17_n_0\,
+      S(0) => \comp_low.C5[7]_i_18_n_0\
+    );
+\comp_low.C5_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(8),
+      Q => C5(8),
+      R => '0'
+    );
+\comp_low.C5_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C5_reg0\(9),
+      Q => C5(9),
+      R => '0'
+    );
+\comp_low.C6[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(8),
+      I1 => W6(8),
+      O => \comp_low.C6[15]_i_10_n_0\
+    );
+\comp_low.C6[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(15),
+      I1 => E6(15),
+      O => \comp_low.C6[15]_i_11_n_0\
+    );
+\comp_low.C6[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(14),
+      I1 => E6(14),
+      O => \comp_low.C6[15]_i_12_n_0\
+    );
+\comp_low.C6[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(13),
+      I1 => E6(13),
+      O => \comp_low.C6[15]_i_13_n_0\
+    );
+\comp_low.C6[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(12),
+      I1 => E6(12),
+      O => \comp_low.C6[15]_i_14_n_0\
+    );
+\comp_low.C6[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(11),
+      I1 => E6(11),
+      O => \comp_low.C6[15]_i_15_n_0\
+    );
+\comp_low.C6[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(10),
+      I1 => E6(10),
+      O => \comp_low.C6[15]_i_16_n_0\
+    );
+\comp_low.C6[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(9),
+      I1 => E6(9),
+      O => \comp_low.C6[15]_i_17_n_0\
+    );
+\comp_low.C6[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(8),
+      I1 => E6(8),
+      O => \comp_low.C6[15]_i_18_n_0\
+    );
+\comp_low.C6[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(15),
+      I1 => W6(15),
+      O => \comp_low.C6[15]_i_3_n_0\
+    );
+\comp_low.C6[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(14),
+      I1 => W6(14),
+      O => \comp_low.C6[15]_i_4_n_0\
+    );
+\comp_low.C6[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(13),
+      I1 => W6(13),
+      O => \comp_low.C6[15]_i_5_n_0\
+    );
+\comp_low.C6[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(12),
+      I1 => W6(12),
+      O => \comp_low.C6[15]_i_6_n_0\
+    );
+\comp_low.C6[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(11),
+      I1 => W6(11),
+      O => \comp_low.C6[15]_i_7_n_0\
+    );
+\comp_low.C6[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(10),
+      I1 => W6(10),
+      O => \comp_low.C6[15]_i_8_n_0\
+    );
+\comp_low.C6[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(9),
+      I1 => W6(9),
+      O => \comp_low.C6[15]_i_9_n_0\
+    );
+\comp_low.C6[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(17),
+      I1 => W6(17),
+      O => \comp_low.C6[17]_i_3_n_0\
+    );
+\comp_low.C6[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(16),
+      I1 => W6(16),
+      O => \comp_low.C6[17]_i_4_n_0\
+    );
+\comp_low.C6[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(17),
+      I1 => E6(17),
+      O => \comp_low.C6[17]_i_5_n_0\
+    );
+\comp_low.C6[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(16),
+      I1 => E6(16),
+      O => \comp_low.C6[17]_i_6_n_0\
+    );
+\comp_low.C6[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(0),
+      I1 => W6(0),
+      O => \comp_low.C6[7]_i_10_n_0\
+    );
+\comp_low.C6[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(7),
+      I1 => E6(7),
+      O => \comp_low.C6[7]_i_11_n_0\
+    );
+\comp_low.C6[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(6),
+      I1 => E6(6),
+      O => \comp_low.C6[7]_i_12_n_0\
+    );
+\comp_low.C6[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(5),
+      I1 => E6(5),
+      O => \comp_low.C6[7]_i_13_n_0\
+    );
+\comp_low.C6[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(4),
+      I1 => E6(4),
+      O => \comp_low.C6[7]_i_14_n_0\
+    );
+\comp_low.C6[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(3),
+      I1 => E6(3),
+      O => \comp_low.C6[7]_i_15_n_0\
+    );
+\comp_low.C6[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(2),
+      I1 => E6(2),
+      O => \comp_low.C6[7]_i_16_n_0\
+    );
+\comp_low.C6[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(1),
+      I1 => E6(1),
+      O => \comp_low.C6[7]_i_17_n_0\
+    );
+\comp_low.C6[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N6(0),
+      I1 => E6(0),
+      O => \comp_low.C6[7]_i_18_n_0\
+    );
+\comp_low.C6[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(7),
+      I1 => W6(7),
+      O => \comp_low.C6[7]_i_3_n_0\
+    );
+\comp_low.C6[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(6),
+      I1 => W6(6),
+      O => \comp_low.C6[7]_i_4_n_0\
+    );
+\comp_low.C6[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(5),
+      I1 => W6(5),
+      O => \comp_low.C6[7]_i_5_n_0\
+    );
+\comp_low.C6[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(4),
+      I1 => W6(4),
+      O => \comp_low.C6[7]_i_6_n_0\
+    );
+\comp_low.C6[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(3),
+      I1 => W6(3),
+      O => \comp_low.C6[7]_i_7_n_0\
+    );
+\comp_low.C6[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(2),
+      I1 => W6(2),
+      O => \comp_low.C6[7]_i_8_n_0\
+    );
+\comp_low.C6[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_1_in__0\(1),
+      I1 => W6(1),
+      O => \comp_low.C6[7]_i_9_n_0\
+    );
+\comp_low.C6_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(0),
+      Q => C6(0),
+      R => '0'
+    );
+\comp_low.C6_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(10),
+      Q => C6(10),
+      R => '0'
+    );
+\comp_low.C6_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(11),
+      Q => C6(11),
+      R => '0'
+    );
+\comp_low.C6_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(12),
+      Q => C6(12),
+      R => '0'
+    );
+\comp_low.C6_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(13),
+      Q => C6(13),
+      R => '0'
+    );
+\comp_low.C6_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(14),
+      Q => C6(14),
+      R => '0'
+    );
+\comp_low.C6_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(15),
+      Q => C6(15),
+      R => '0'
+    );
+\comp_low.C6_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C6_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C6_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C6_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C6_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C6_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C6_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C6_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C6_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C6_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => \p_1_in__0\(15 downto 8),
+      O(7 downto 0) => \comp_low.C6_reg0\(15 downto 8),
+      S(7) => \comp_low.C6[15]_i_3_n_0\,
+      S(6) => \comp_low.C6[15]_i_4_n_0\,
+      S(5) => \comp_low.C6[15]_i_5_n_0\,
+      S(4) => \comp_low.C6[15]_i_6_n_0\,
+      S(3) => \comp_low.C6[15]_i_7_n_0\,
+      S(2) => \comp_low.C6[15]_i_8_n_0\,
+      S(1) => \comp_low.C6[15]_i_9_n_0\,
+      S(0) => \comp_low.C6[15]_i_10_n_0\
+    );
+\comp_low.C6_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C6_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C6_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C6_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C6_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C6_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C6_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C6_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C6_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C6_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N6(15 downto 8),
+      O(7 downto 0) => \p_1_in__0\(15 downto 8),
+      S(7) => \comp_low.C6[15]_i_11_n_0\,
+      S(6) => \comp_low.C6[15]_i_12_n_0\,
+      S(5) => \comp_low.C6[15]_i_13_n_0\,
+      S(4) => \comp_low.C6[15]_i_14_n_0\,
+      S(3) => \comp_low.C6[15]_i_15_n_0\,
+      S(2) => \comp_low.C6[15]_i_16_n_0\,
+      S(1) => \comp_low.C6[15]_i_17_n_0\,
+      S(0) => \comp_low.C6[15]_i_18_n_0\
+    );
+\comp_low.C6_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(16),
+      Q => C6(16),
+      R => '0'
+    );
+\comp_low.C6_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(17),
+      Q => C6(17),
+      R => '0'
+    );
+\comp_low.C6_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C6_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C6_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C6_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => \p_1_in__0\(16),
+      O(7 downto 2) => \NLW_comp_low.C6_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C6_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C6[17]_i_3_n_0\,
+      S(0) => \comp_low.C6[17]_i_4_n_0\
+    );
+\comp_low.C6_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C6_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C6_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C6_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N6(16),
+      O(7 downto 2) => \NLW_comp_low.C6_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \p_1_in__0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C6[17]_i_5_n_0\,
+      S(0) => \comp_low.C6[17]_i_6_n_0\
+    );
+\comp_low.C6_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(1),
+      Q => C6(1),
+      R => '0'
+    );
+\comp_low.C6_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(2),
+      Q => C6(2),
+      R => '0'
+    );
+\comp_low.C6_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(3),
+      Q => C6(3),
+      R => '0'
+    );
+\comp_low.C6_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(4),
+      Q => C6(4),
+      R => '0'
+    );
+\comp_low.C6_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(5),
+      Q => C6(5),
+      R => '0'
+    );
+\comp_low.C6_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(6),
+      Q => C6(6),
+      R => '0'
+    );
+\comp_low.C6_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(7),
+      Q => C6(7),
+      R => '0'
+    );
+\comp_low.C6_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C6_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C6_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C6_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C6_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C6_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C6_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C6_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C6_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => \p_1_in__0\(7 downto 0),
+      O(7 downto 0) => \comp_low.C6_reg0\(7 downto 0),
+      S(7) => \comp_low.C6[7]_i_3_n_0\,
+      S(6) => \comp_low.C6[7]_i_4_n_0\,
+      S(5) => \comp_low.C6[7]_i_5_n_0\,
+      S(4) => \comp_low.C6[7]_i_6_n_0\,
+      S(3) => \comp_low.C6[7]_i_7_n_0\,
+      S(2) => \comp_low.C6[7]_i_8_n_0\,
+      S(1) => \comp_low.C6[7]_i_9_n_0\,
+      S(0) => \comp_low.C6[7]_i_10_n_0\
+    );
+\comp_low.C6_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C6_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C6_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C6_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C6_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C6_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C6_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C6_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C6_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N6(7 downto 0),
+      O(7 downto 0) => \p_1_in__0\(7 downto 0),
+      S(7) => \comp_low.C6[7]_i_11_n_0\,
+      S(6) => \comp_low.C6[7]_i_12_n_0\,
+      S(5) => \comp_low.C6[7]_i_13_n_0\,
+      S(4) => \comp_low.C6[7]_i_14_n_0\,
+      S(3) => \comp_low.C6[7]_i_15_n_0\,
+      S(2) => \comp_low.C6[7]_i_16_n_0\,
+      S(1) => \comp_low.C6[7]_i_17_n_0\,
+      S(0) => \comp_low.C6[7]_i_18_n_0\
+    );
+\comp_low.C6_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(8),
+      Q => C6(8),
+      R => '0'
+    );
+\comp_low.C6_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C6_reg0\(9),
+      Q => C6(9),
+      R => '0'
+    );
+\comp_low.C7[15]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(8),
+      I1 => W7(8),
+      O => \comp_low.C7[15]_i_10_n_0\
+    );
+\comp_low.C7[15]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(15),
+      I1 => E7(15),
+      O => \comp_low.C7[15]_i_11_n_0\
+    );
+\comp_low.C7[15]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(14),
+      I1 => E7(14),
+      O => \comp_low.C7[15]_i_12_n_0\
+    );
+\comp_low.C7[15]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(13),
+      I1 => E7(13),
+      O => \comp_low.C7[15]_i_13_n_0\
+    );
+\comp_low.C7[15]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(12),
+      I1 => E7(12),
+      O => \comp_low.C7[15]_i_14_n_0\
+    );
+\comp_low.C7[15]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(11),
+      I1 => E7(11),
+      O => \comp_low.C7[15]_i_15_n_0\
+    );
+\comp_low.C7[15]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(10),
+      I1 => E7(10),
+      O => \comp_low.C7[15]_i_16_n_0\
+    );
+\comp_low.C7[15]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(9),
+      I1 => E7(9),
+      O => \comp_low.C7[15]_i_17_n_0\
+    );
+\comp_low.C7[15]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(8),
+      I1 => E7(8),
+      O => \comp_low.C7[15]_i_18_n_0\
+    );
+\comp_low.C7[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(15),
+      I1 => W7(15),
+      O => \comp_low.C7[15]_i_3_n_0\
+    );
+\comp_low.C7[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(14),
+      I1 => W7(14),
+      O => \comp_low.C7[15]_i_4_n_0\
+    );
+\comp_low.C7[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(13),
+      I1 => W7(13),
+      O => \comp_low.C7[15]_i_5_n_0\
+    );
+\comp_low.C7[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(12),
+      I1 => W7(12),
+      O => \comp_low.C7[15]_i_6_n_0\
+    );
+\comp_low.C7[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(11),
+      I1 => W7(11),
+      O => \comp_low.C7[15]_i_7_n_0\
+    );
+\comp_low.C7[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(10),
+      I1 => W7(10),
+      O => \comp_low.C7[15]_i_8_n_0\
+    );
+\comp_low.C7[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(9),
+      I1 => W7(9),
+      O => \comp_low.C7[15]_i_9_n_0\
+    );
+\comp_low.C7[17]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(17),
+      I1 => W7(17),
+      O => \comp_low.C7[17]_i_3_n_0\
+    );
+\comp_low.C7[17]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(16),
+      I1 => W7(16),
+      O => \comp_low.C7[17]_i_4_n_0\
+    );
+\comp_low.C7[17]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(17),
+      I1 => E7(17),
+      O => \comp_low.C7[17]_i_5_n_0\
+    );
+\comp_low.C7[17]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(16),
+      I1 => E7(16),
+      O => \comp_low.C7[17]_i_6_n_0\
+    );
+\comp_low.C7[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(0),
+      I1 => W7(0),
+      O => \comp_low.C7[7]_i_10_n_0\
+    );
+\comp_low.C7[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(7),
+      I1 => E7(7),
+      O => \comp_low.C7[7]_i_11_n_0\
+    );
+\comp_low.C7[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(6),
+      I1 => E7(6),
+      O => \comp_low.C7[7]_i_12_n_0\
+    );
+\comp_low.C7[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(5),
+      I1 => E7(5),
+      O => \comp_low.C7[7]_i_13_n_0\
+    );
+\comp_low.C7[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(4),
+      I1 => E7(4),
+      O => \comp_low.C7[7]_i_14_n_0\
+    );
+\comp_low.C7[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(3),
+      I1 => E7(3),
+      O => \comp_low.C7[7]_i_15_n_0\
+    );
+\comp_low.C7[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(2),
+      I1 => E7(2),
+      O => \comp_low.C7[7]_i_16_n_0\
+    );
+\comp_low.C7[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(1),
+      I1 => E7(1),
+      O => \comp_low.C7[7]_i_17_n_0\
+    );
+\comp_low.C7[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => N7(0),
+      I1 => E7(0),
+      O => \comp_low.C7[7]_i_18_n_0\
+    );
+\comp_low.C7[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(7),
+      I1 => W7(7),
+      O => \comp_low.C7[7]_i_3_n_0\
+    );
+\comp_low.C7[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(6),
+      I1 => W7(6),
+      O => \comp_low.C7[7]_i_4_n_0\
+    );
+\comp_low.C7[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(5),
+      I1 => W7(5),
+      O => \comp_low.C7[7]_i_5_n_0\
+    );
+\comp_low.C7[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(4),
+      I1 => W7(4),
+      O => \comp_low.C7[7]_i_6_n_0\
+    );
+\comp_low.C7[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(3),
+      I1 => W7(3),
+      O => \comp_low.C7[7]_i_7_n_0\
+    );
+\comp_low.C7[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(2),
+      I1 => W7(2),
+      O => \comp_low.C7[7]_i_8_n_0\
+    );
+\comp_low.C7[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \p_0_in__1\(1),
+      I1 => W7(1),
+      O => \comp_low.C7[7]_i_9_n_0\
+    );
+\comp_low.C7_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(0),
+      Q => C7(0),
+      R => '0'
+    );
+\comp_low.C7_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(10),
+      Q => C7(10),
+      R => '0'
+    );
+\comp_low.C7_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(11),
+      Q => C7(11),
+      R => '0'
+    );
+\comp_low.C7_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(12),
+      Q => C7(12),
+      R => '0'
+    );
+\comp_low.C7_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(13),
+      Q => C7(13),
+      R => '0'
+    );
+\comp_low.C7_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(14),
+      Q => C7(14),
+      R => '0'
+    );
+\comp_low.C7_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(15),
+      Q => C7(15),
+      R => '0'
+    );
+\comp_low.C7_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C7_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C7_reg[15]_i_1_n_0\,
+      CO(6) => \comp_low.C7_reg[15]_i_1_n_1\,
+      CO(5) => \comp_low.C7_reg[15]_i_1_n_2\,
+      CO(4) => \comp_low.C7_reg[15]_i_1_n_3\,
+      CO(3) => \comp_low.C7_reg[15]_i_1_n_4\,
+      CO(2) => \comp_low.C7_reg[15]_i_1_n_5\,
+      CO(1) => \comp_low.C7_reg[15]_i_1_n_6\,
+      CO(0) => \comp_low.C7_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => \p_0_in__1\(15 downto 8),
+      O(7 downto 0) => \comp_low.C7_reg0\(15 downto 8),
+      S(7) => \comp_low.C7[15]_i_3_n_0\,
+      S(6) => \comp_low.C7[15]_i_4_n_0\,
+      S(5) => \comp_low.C7[15]_i_5_n_0\,
+      S(4) => \comp_low.C7[15]_i_6_n_0\,
+      S(3) => \comp_low.C7[15]_i_7_n_0\,
+      S(2) => \comp_low.C7[15]_i_8_n_0\,
+      S(1) => \comp_low.C7[15]_i_9_n_0\,
+      S(0) => \comp_low.C7[15]_i_10_n_0\
+    );
+\comp_low.C7_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C7_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_low.C7_reg[15]_i_2_n_0\,
+      CO(6) => \comp_low.C7_reg[15]_i_2_n_1\,
+      CO(5) => \comp_low.C7_reg[15]_i_2_n_2\,
+      CO(4) => \comp_low.C7_reg[15]_i_2_n_3\,
+      CO(3) => \comp_low.C7_reg[15]_i_2_n_4\,
+      CO(2) => \comp_low.C7_reg[15]_i_2_n_5\,
+      CO(1) => \comp_low.C7_reg[15]_i_2_n_6\,
+      CO(0) => \comp_low.C7_reg[15]_i_2_n_7\,
+      DI(7 downto 0) => N7(15 downto 8),
+      O(7 downto 0) => \p_0_in__1\(15 downto 8),
+      S(7) => \comp_low.C7[15]_i_11_n_0\,
+      S(6) => \comp_low.C7[15]_i_12_n_0\,
+      S(5) => \comp_low.C7[15]_i_13_n_0\,
+      S(4) => \comp_low.C7[15]_i_14_n_0\,
+      S(3) => \comp_low.C7[15]_i_15_n_0\,
+      S(2) => \comp_low.C7[15]_i_16_n_0\,
+      S(1) => \comp_low.C7[15]_i_17_n_0\,
+      S(0) => \comp_low.C7[15]_i_18_n_0\
+    );
+\comp_low.C7_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(16),
+      Q => C7(16),
+      R => '0'
+    );
+\comp_low.C7_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(17),
+      Q => C7(17),
+      R => '0'
+    );
+\comp_low.C7_reg[17]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C7_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C7_reg[17]_i_1_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C7_reg[17]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => \p_0_in__1\(16),
+      O(7 downto 2) => \NLW_comp_low.C7_reg[17]_i_1_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \comp_low.C7_reg0\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C7[17]_i_3_n_0\,
+      S(0) => \comp_low.C7[17]_i_4_n_0\
+    );
+\comp_low.C7_reg[17]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_low.C7_reg[15]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 1) => \NLW_comp_low.C7_reg[17]_i_2_CO_UNCONNECTED\(7 downto 1),
+      CO(0) => \comp_low.C7_reg[17]_i_2_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => N7(16),
+      O(7 downto 2) => \NLW_comp_low.C7_reg[17]_i_2_O_UNCONNECTED\(7 downto 2),
+      O(1 downto 0) => \p_0_in__1\(17 downto 16),
+      S(7 downto 2) => B"000000",
+      S(1) => \comp_low.C7[17]_i_5_n_0\,
+      S(0) => \comp_low.C7[17]_i_6_n_0\
+    );
+\comp_low.C7_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(1),
+      Q => C7(1),
+      R => '0'
+    );
+\comp_low.C7_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(2),
+      Q => C7(2),
+      R => '0'
+    );
+\comp_low.C7_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(3),
+      Q => C7(3),
+      R => '0'
+    );
+\comp_low.C7_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(4),
+      Q => C7(4),
+      R => '0'
+    );
+\comp_low.C7_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(5),
+      Q => C7(5),
+      R => '0'
+    );
+\comp_low.C7_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(6),
+      Q => C7(6),
+      R => '0'
+    );
+\comp_low.C7_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(7),
+      Q => C7(7),
+      R => '0'
+    );
+\comp_low.C7_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C7_reg[7]_i_1_n_0\,
+      CO(6) => \comp_low.C7_reg[7]_i_1_n_1\,
+      CO(5) => \comp_low.C7_reg[7]_i_1_n_2\,
+      CO(4) => \comp_low.C7_reg[7]_i_1_n_3\,
+      CO(3) => \comp_low.C7_reg[7]_i_1_n_4\,
+      CO(2) => \comp_low.C7_reg[7]_i_1_n_5\,
+      CO(1) => \comp_low.C7_reg[7]_i_1_n_6\,
+      CO(0) => \comp_low.C7_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => \p_0_in__1\(7 downto 0),
+      O(7 downto 0) => \comp_low.C7_reg0\(7 downto 0),
+      S(7) => \comp_low.C7[7]_i_3_n_0\,
+      S(6) => \comp_low.C7[7]_i_4_n_0\,
+      S(5) => \comp_low.C7[7]_i_5_n_0\,
+      S(4) => \comp_low.C7[7]_i_6_n_0\,
+      S(3) => \comp_low.C7[7]_i_7_n_0\,
+      S(2) => \comp_low.C7[7]_i_8_n_0\,
+      S(1) => \comp_low.C7[7]_i_9_n_0\,
+      S(0) => \comp_low.C7[7]_i_10_n_0\
+    );
+\comp_low.C7_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_low.C7_reg[7]_i_2_n_0\,
+      CO(6) => \comp_low.C7_reg[7]_i_2_n_1\,
+      CO(5) => \comp_low.C7_reg[7]_i_2_n_2\,
+      CO(4) => \comp_low.C7_reg[7]_i_2_n_3\,
+      CO(3) => \comp_low.C7_reg[7]_i_2_n_4\,
+      CO(2) => \comp_low.C7_reg[7]_i_2_n_5\,
+      CO(1) => \comp_low.C7_reg[7]_i_2_n_6\,
+      CO(0) => \comp_low.C7_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => N7(7 downto 0),
+      O(7 downto 0) => \p_0_in__1\(7 downto 0),
+      S(7) => \comp_low.C7[7]_i_11_n_0\,
+      S(6) => \comp_low.C7[7]_i_12_n_0\,
+      S(5) => \comp_low.C7[7]_i_13_n_0\,
+      S(4) => \comp_low.C7[7]_i_14_n_0\,
+      S(3) => \comp_low.C7[7]_i_15_n_0\,
+      S(2) => \comp_low.C7[7]_i_16_n_0\,
+      S(1) => \comp_low.C7[7]_i_17_n_0\,
+      S(0) => \comp_low.C7[7]_i_18_n_0\
+    );
+\comp_low.C7_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(8),
+      Q => C7(8),
+      R => '0'
+    );
+\comp_low.C7_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.C7_reg0\(9),
+      Q => C7(9),
+      R => '0'
+    );
 \comp_low.E0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -105215,6 +110308,22 @@ begin
       Q => E1(15),
       R => '0'
     );
+\comp_low.E1_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(31),
+      Q => E1(16),
+      R => '0'
+    );
+\comp_low.E1_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(31),
+      Q => E1(17),
+      R => '0'
+    );
 \comp_low.E1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -105341,6 +110450,22 @@ begin
       CE => '1',
       D => data_E(47),
       Q => E2(15),
+      R => '0'
+    );
+\comp_low.E2_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(47),
+      Q => E2(16),
+      R => '0'
+    );
+\comp_low.E2_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(47),
+      Q => E2(17),
       R => '0'
     );
 \comp_low.E2_reg[1]\: unisim.vcomponents.FDRE
@@ -105471,6 +110596,22 @@ begin
       Q => E3(15),
       R => '0'
     );
+\comp_low.E3_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(63),
+      Q => E3(16),
+      R => '0'
+    );
+\comp_low.E3_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(63),
+      Q => E3(17),
+      R => '0'
+    );
 \comp_low.E3_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -105597,6 +110738,22 @@ begin
       CE => '1',
       D => data_E(79),
       Q => E4(15),
+      R => '0'
+    );
+\comp_low.E4_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(79),
+      Q => E4(16),
+      R => '0'
+    );
+\comp_low.E4_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(79),
+      Q => E4(17),
       R => '0'
     );
 \comp_low.E4_reg[1]\: unisim.vcomponents.FDRE
@@ -105727,6 +110884,22 @@ begin
       Q => E5(15),
       R => '0'
     );
+\comp_low.E5_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(95),
+      Q => E5(16),
+      R => '0'
+    );
+\comp_low.E5_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(95),
+      Q => E5(17),
+      R => '0'
+    );
 \comp_low.E5_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -105855,6 +111028,22 @@ begin
       Q => E6(15),
       R => '0'
     );
+\comp_low.E6_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(111),
+      Q => E6(16),
+      R => '0'
+    );
+\comp_low.E6_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(111),
+      Q => E6(17),
+      R => '0'
+    );
 \comp_low.E6_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -105981,6 +111170,22 @@ begin
       CE => '1',
       D => data_E(127),
       Q => E7(15),
+      R => '0'
+    );
+\comp_low.E7_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(127),
+      Q => E7(16),
+      R => '0'
+    );
+\comp_low.E7_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_E(127),
+      Q => E7(17),
       R => '0'
     );
 \comp_low.E7_reg[1]\: unisim.vcomponents.FDRE
@@ -106239,6 +111444,22 @@ begin
       Q => N1(15),
       R => '0'
     );
+\comp_low.N1_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(31),
+      Q => N1(16),
+      R => '0'
+    );
+\comp_low.N1_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(31),
+      Q => N1(17),
+      R => '0'
+    );
 \comp_low.N1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -106365,6 +111586,22 @@ begin
       CE => '1',
       D => data_N(47),
       Q => N2(15),
+      R => '0'
+    );
+\comp_low.N2_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(47),
+      Q => N2(16),
+      R => '0'
+    );
+\comp_low.N2_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(47),
+      Q => N2(17),
       R => '0'
     );
 \comp_low.N2_reg[1]\: unisim.vcomponents.FDRE
@@ -106495,6 +111732,22 @@ begin
       Q => N3(15),
       R => '0'
     );
+\comp_low.N3_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(63),
+      Q => N3(16),
+      R => '0'
+    );
+\comp_low.N3_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(63),
+      Q => N3(17),
+      R => '0'
+    );
 \comp_low.N3_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -106621,6 +111874,22 @@ begin
       CE => '1',
       D => data_N(79),
       Q => N4(15),
+      R => '0'
+    );
+\comp_low.N4_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(79),
+      Q => N4(16),
+      R => '0'
+    );
+\comp_low.N4_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(79),
+      Q => N4(17),
       R => '0'
     );
 \comp_low.N4_reg[1]\: unisim.vcomponents.FDRE
@@ -106751,6 +112020,22 @@ begin
       Q => N5(15),
       R => '0'
     );
+\comp_low.N5_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(95),
+      Q => N5(16),
+      R => '0'
+    );
+\comp_low.N5_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(95),
+      Q => N5(17),
+      R => '0'
+    );
 \comp_low.N5_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -106879,6 +112164,22 @@ begin
       Q => N6(15),
       R => '0'
     );
+\comp_low.N6_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(111),
+      Q => N6(16),
+      R => '0'
+    );
+\comp_low.N6_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(111),
+      Q => N6(17),
+      R => '0'
+    );
 \comp_low.N6_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -107005,6 +112306,22 @@ begin
       CE => '1',
       D => data_N(127),
       Q => N7(15),
+      R => '0'
+    );
+\comp_low.N7_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(127),
+      Q => N7(16),
+      R => '0'
+    );
+\comp_low.N7_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_N(127),
+      Q => N7(17),
       R => '0'
     );
 \comp_low.N7_reg[1]\: unisim.vcomponents.FDRE
@@ -107263,6 +112580,22 @@ begin
       Q => W1(15),
       R => '0'
     );
+\comp_low.W1_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(31),
+      Q => W1(16),
+      R => '0'
+    );
+\comp_low.W1_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(31),
+      Q => W1(17),
+      R => '0'
+    );
 \comp_low.W1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -107389,6 +112722,22 @@ begin
       CE => '1',
       D => data_W(47),
       Q => W2(15),
+      R => '0'
+    );
+\comp_low.W2_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(47),
+      Q => W2(16),
+      R => '0'
+    );
+\comp_low.W2_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(47),
+      Q => W2(17),
       R => '0'
     );
 \comp_low.W2_reg[1]\: unisim.vcomponents.FDRE
@@ -107519,6 +112868,22 @@ begin
       Q => W3(15),
       R => '0'
     );
+\comp_low.W3_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(63),
+      Q => W3(16),
+      R => '0'
+    );
+\comp_low.W3_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(63),
+      Q => W3(17),
+      R => '0'
+    );
 \comp_low.W3_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -107645,6 +113010,22 @@ begin
       CE => '1',
       D => data_W(79),
       Q => W4(15),
+      R => '0'
+    );
+\comp_low.W4_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(79),
+      Q => W4(16),
+      R => '0'
+    );
+\comp_low.W4_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(79),
+      Q => W4(17),
       R => '0'
     );
 \comp_low.W4_reg[1]\: unisim.vcomponents.FDRE
@@ -107775,6 +113156,22 @@ begin
       Q => W5(15),
       R => '0'
     );
+\comp_low.W5_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(95),
+      Q => W5(16),
+      R => '0'
+    );
+\comp_low.W5_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(95),
+      Q => W5(17),
+      R => '0'
+    );
 \comp_low.W5_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -107903,6 +113300,22 @@ begin
       Q => W6(15),
       R => '0'
     );
+\comp_low.W6_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(111),
+      Q => W6(16),
+      R => '0'
+    );
+\comp_low.W6_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(111),
+      Q => W6(17),
+      R => '0'
+    );
 \comp_low.W6_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -108029,6 +113442,22 @@ begin
       CE => '1',
       D => data_W(127),
       Q => W7(15),
+      R => '0'
+    );
+\comp_low.W7_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(127),
+      Q => W7(16),
+      R => '0'
+    );
+\comp_low.W7_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => data_W(127),
+      Q => W7(17),
       R => '0'
     );
 \comp_low.W7_reg[1]\: unisim.vcomponents.FDRE
@@ -116375,7 +121804,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(0),
+      D => \p_0_in__2\(0),
       Q => raw_sample(0),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116383,7 +121812,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(10),
+      D => \p_0_in__2\(10),
       Q => raw_sample(10),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116391,7 +121820,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(11),
+      D => \p_0_in__2\(11),
       Q => raw_sample(11),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116399,7 +121828,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(12),
+      D => \p_0_in__2\(12),
       Q => raw_sample(12),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116407,7 +121836,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(13),
+      D => \p_0_in__2\(13),
       Q => raw_sample(13),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116415,7 +121844,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(14),
+      D => \p_0_in__2\(14),
       Q => raw_sample(14),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116423,7 +121852,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(15),
+      D => \p_0_in__2\(15),
       Q => raw_sample(15),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116440,14 +121869,14 @@ begin
       CO(1) => \comp_low.raw_sample_reg[15]_i_1_n_6\,
       CO(0) => \comp_low.raw_sample_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => \p_0_in__1\(15 downto 8),
+      O(7 downto 0) => \p_0_in__2\(15 downto 8),
       S(7 downto 0) => raw_sample(15 downto 8)
     );
 \comp_low.raw_sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(16),
+      D => \p_0_in__2\(16),
       Q => raw_sample(16),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116455,7 +121884,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(17),
+      D => \p_0_in__2\(17),
       Q => raw_sample(17),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116463,7 +121892,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(18),
+      D => \p_0_in__2\(18),
       Q => raw_sample(18),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116471,7 +121900,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(19),
+      D => \p_0_in__2\(19),
       Q => raw_sample(19),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116479,7 +121908,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(1),
+      D => \p_0_in__2\(1),
       Q => raw_sample(1),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116487,7 +121916,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(20),
+      D => \p_0_in__2\(20),
       Q => raw_sample(20),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116495,7 +121924,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(21),
+      D => \p_0_in__2\(21),
       Q => raw_sample(21),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116503,7 +121932,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(22),
+      D => \p_0_in__2\(22),
       Q => raw_sample(22),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116511,7 +121940,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(23),
+      D => \p_0_in__2\(23),
       Q => raw_sample(23),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116528,14 +121957,14 @@ begin
       CO(1) => \comp_low.raw_sample_reg[23]_i_1_n_6\,
       CO(0) => \comp_low.raw_sample_reg[23]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => \p_0_in__1\(23 downto 16),
+      O(7 downto 0) => \p_0_in__2\(23 downto 16),
       S(7 downto 0) => raw_sample(23 downto 16)
     );
 \comp_low.raw_sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(24),
+      D => \p_0_in__2\(24),
       Q => raw_sample(24),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116543,7 +121972,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(25),
+      D => \p_0_in__2\(25),
       Q => raw_sample(25),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116551,7 +121980,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(26),
+      D => \p_0_in__2\(26),
       Q => raw_sample(26),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116559,7 +121988,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(27),
+      D => \p_0_in__2\(27),
       Q => raw_sample(27),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116567,7 +121996,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(28),
+      D => \p_0_in__2\(28),
       Q => raw_sample(28),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116575,7 +122004,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(29),
+      D => \p_0_in__2\(29),
       Q => raw_sample(29),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116583,7 +122012,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(2),
+      D => \p_0_in__2\(2),
       Q => raw_sample(2),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116591,7 +122020,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(30),
+      D => \p_0_in__2\(30),
       Q => raw_sample(30),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116599,7 +122028,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(31),
+      D => \p_0_in__2\(31),
       Q => raw_sample(31),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116616,7 +122045,7 @@ begin
       CO(1) => \comp_low.raw_sample_reg[31]_i_2_n_6\,
       CO(0) => \comp_low.raw_sample_reg[31]_i_2_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => \p_0_in__1\(31 downto 24),
+      O(7 downto 0) => \p_0_in__2\(31 downto 24),
       S(7 downto 0) => raw_sample(31 downto 24)
     );
 \comp_low.raw_sample_reg[32]\: unisim.vcomponents.FDRE
@@ -116705,7 +122134,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(3),
+      D => \p_0_in__2\(3),
       Q => raw_sample(3),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116809,7 +122238,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(4),
+      D => \p_0_in__2\(4),
       Q => raw_sample(4),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116913,7 +122342,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(5),
+      D => \p_0_in__2\(5),
       Q => raw_sample(5),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116969,7 +122398,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(6),
+      D => \p_0_in__2\(6),
       Q => raw_sample(6),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116977,7 +122406,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(7),
+      D => \p_0_in__2\(7),
       Q => raw_sample(7),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -116995,7 +122424,7 @@ begin
       CO(0) => \comp_low.raw_sample_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
       DI(0) => raw_sample(0),
-      O(7 downto 0) => \p_0_in__1\(7 downto 0),
+      O(7 downto 0) => \p_0_in__2\(7 downto 0),
       S(7 downto 1) => raw_sample(7 downto 1),
       S(0) => \comp_low.raw_sample[7]_i_2_n_0\
     );
@@ -117003,7 +122432,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(8),
+      D => \p_0_in__2\(8),
       Q => raw_sample(8),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -117011,7 +122440,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__1\(9),
+      D => \p_0_in__2\(9),
       Q => raw_sample(9),
       R => \comp_low.raw_sample[31]_i_1_n_0\
     );
@@ -117063,32 +122492,16 @@ ila_i: component ps_comp_low_0_0_ila_0
       probe12(0) => raw_empty,
       probe13(9 downto 0) => raw_delay(9 downto 0),
       probe14(63 downto 0) => raw_sample(63 downto 0),
-      probe15(15 downto 0) => N0(15 downto 0),
-      probe16(15 downto 0) => N1(15 downto 0),
-      probe17(15 downto 0) => N2(15 downto 0),
-      probe18(15 downto 0) => N3(15 downto 0),
-      probe19(15 downto 0) => N4(15 downto 0),
+      probe15(17 downto 0) => C0(17 downto 0),
+      probe16(17 downto 0) => C1(17 downto 0),
+      probe17(17 downto 0) => C2(17 downto 0),
+      probe18(17 downto 0) => C3(17 downto 0),
+      probe19(17 downto 0) => C4(17 downto 0),
       probe2(4 downto 0) => ana_delay(4 downto 0),
-      probe20(15 downto 0) => N5(15 downto 0),
-      probe21(15 downto 0) => N6(15 downto 0),
-      probe22(15 downto 0) => N7(15 downto 0),
-      probe23(15 downto 0) => E0(15 downto 0),
-      probe24(15 downto 0) => E1(15 downto 0),
-      probe25(15 downto 0) => E2(15 downto 0),
-      probe26(15 downto 0) => E3(15 downto 0),
-      probe27(15 downto 0) => E4(15 downto 0),
-      probe28(15 downto 0) => E5(15 downto 0),
-      probe29(15 downto 0) => E6(15 downto 0),
+      probe20(17 downto 0) => C5(17 downto 0),
+      probe21(17 downto 0) => C6(17 downto 0),
+      probe22(17 downto 0) => C7(17 downto 0),
       probe3(31 downto 0) => curr_sample(31 downto 0),
-      probe30(15 downto 0) => E7(15 downto 0),
-      probe31(15 downto 0) => W0(15 downto 0),
-      probe32(15 downto 0) => W1(15 downto 0),
-      probe33(15 downto 0) => W2(15 downto 0),
-      probe34(15 downto 0) => W3(15 downto 0),
-      probe35(15 downto 0) => W4(15 downto 0),
-      probe36(15 downto 0) => W5(15 downto 0),
-      probe37(15 downto 0) => W6(15 downto 0),
-      probe38(15 downto 0) => W7(15 downto 0),
       probe4(0) => ana_burst,
       probe5(8 downto 0) => ana_size(8 downto 0),
       probe6(19 downto 0) => ana_freq(19 downto 0),

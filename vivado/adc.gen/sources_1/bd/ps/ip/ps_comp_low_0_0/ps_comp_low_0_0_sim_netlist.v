@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sat Jan 10 20:32:32 2026
+// Date        : Sat Jan 10 23:05:09 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -121,30 +121,38 @@ module ps_comp_low_0_0_comp_low
   input clk;
   input reset;
 
-  (* MARK_DEBUG *) wire [15:0]E0;
-  (* MARK_DEBUG *) wire [15:0]E1;
-  (* MARK_DEBUG *) wire [15:0]E2;
-  (* MARK_DEBUG *) wire [15:0]E3;
-  (* MARK_DEBUG *) wire [15:0]E4;
-  (* MARK_DEBUG *) wire [15:0]E5;
-  (* MARK_DEBUG *) wire [15:0]E6;
-  (* MARK_DEBUG *) wire [15:0]E7;
-  (* MARK_DEBUG *) wire [15:0]N0;
-  (* MARK_DEBUG *) wire [15:0]N1;
-  (* MARK_DEBUG *) wire [15:0]N2;
-  (* MARK_DEBUG *) wire [15:0]N3;
-  (* MARK_DEBUG *) wire [15:0]N4;
-  (* MARK_DEBUG *) wire [15:0]N5;
-  (* MARK_DEBUG *) wire [15:0]N6;
-  (* MARK_DEBUG *) wire [15:0]N7;
-  (* MARK_DEBUG *) wire [15:0]W0;
-  (* MARK_DEBUG *) wire [15:0]W1;
-  (* MARK_DEBUG *) wire [15:0]W2;
-  (* MARK_DEBUG *) wire [15:0]W3;
-  (* MARK_DEBUG *) wire [15:0]W4;
-  (* MARK_DEBUG *) wire [15:0]W5;
-  (* MARK_DEBUG *) wire [15:0]W6;
-  (* MARK_DEBUG *) wire [15:0]W7;
+  (* MARK_DEBUG *) wire [17:0]C0;
+  (* MARK_DEBUG *) wire [17:0]C1;
+  (* MARK_DEBUG *) wire [17:0]C2;
+  (* MARK_DEBUG *) wire [17:0]C3;
+  (* MARK_DEBUG *) wire [17:0]C4;
+  (* MARK_DEBUG *) wire [17:0]C5;
+  (* MARK_DEBUG *) wire [17:0]C6;
+  (* MARK_DEBUG *) wire [17:0]C7;
+  wire [15:0]E0;
+  wire [17:0]E1;
+  wire [17:0]E2;
+  wire [17:0]E3;
+  wire [17:0]E4;
+  wire [17:0]E5;
+  wire [17:0]E6;
+  wire [17:0]E7;
+  wire [15:0]N0;
+  wire [17:0]N1;
+  wire [17:0]N2;
+  wire [17:0]N3;
+  wire [17:0]N4;
+  wire [17:0]N5;
+  wire [17:0]N6;
+  wire [17:0]N7;
+  wire [15:0]W0;
+  wire [17:0]W1;
+  wire [17:0]W2;
+  wire [17:0]W3;
+  wire [17:0]W4;
+  wire [17:0]W5;
+  wire [17:0]W6;
+  wire [17:0]W7;
   (* MARK_DEBUG *) wire [15:0]ana_angle;
   (* MARK_DEBUG *) wire ana_burst;
   (* MARK_DEBUG *) wire [4:0]ana_delay;
@@ -168,6 +176,574 @@ module ps_comp_low_0_0_comp_low
   (* MARK_DEBUG *) wire [8:0]ana_size;
   wire ana_wr;
   wire clk;
+  wire \comp_low.C0[15]_i_10_n_0 ;
+  wire \comp_low.C0[15]_i_11_n_0 ;
+  wire \comp_low.C0[15]_i_12_n_0 ;
+  wire \comp_low.C0[15]_i_13_n_0 ;
+  wire \comp_low.C0[15]_i_14_n_0 ;
+  wire \comp_low.C0[15]_i_15_n_0 ;
+  wire \comp_low.C0[15]_i_16_n_0 ;
+  wire \comp_low.C0[15]_i_17_n_0 ;
+  wire \comp_low.C0[15]_i_18_n_0 ;
+  wire \comp_low.C0[15]_i_19_n_0 ;
+  wire \comp_low.C0[15]_i_3_n_0 ;
+  wire \comp_low.C0[15]_i_4_n_0 ;
+  wire \comp_low.C0[15]_i_5_n_0 ;
+  wire \comp_low.C0[15]_i_6_n_0 ;
+  wire \comp_low.C0[15]_i_7_n_0 ;
+  wire \comp_low.C0[15]_i_8_n_0 ;
+  wire \comp_low.C0[15]_i_9_n_0 ;
+  wire \comp_low.C0[17]_i_2_n_0 ;
+  wire \comp_low.C0[17]_i_3_n_0 ;
+  wire \comp_low.C0[17]_i_4_n_0 ;
+  wire \comp_low.C0[7]_i_10_n_0 ;
+  wire \comp_low.C0[7]_i_11_n_0 ;
+  wire \comp_low.C0[7]_i_12_n_0 ;
+  wire \comp_low.C0[7]_i_13_n_0 ;
+  wire \comp_low.C0[7]_i_14_n_0 ;
+  wire \comp_low.C0[7]_i_15_n_0 ;
+  wire \comp_low.C0[7]_i_16_n_0 ;
+  wire \comp_low.C0[7]_i_17_n_0 ;
+  wire \comp_low.C0[7]_i_18_n_0 ;
+  wire \comp_low.C0[7]_i_3_n_0 ;
+  wire \comp_low.C0[7]_i_4_n_0 ;
+  wire \comp_low.C0[7]_i_5_n_0 ;
+  wire \comp_low.C0[7]_i_6_n_0 ;
+  wire \comp_low.C0[7]_i_7_n_0 ;
+  wire \comp_low.C0[7]_i_8_n_0 ;
+  wire \comp_low.C0[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C0_reg0 ;
+  wire \comp_low.C0_reg[15]_i_1_n_0 ;
+  wire \comp_low.C0_reg[15]_i_1_n_1 ;
+  wire \comp_low.C0_reg[15]_i_1_n_2 ;
+  wire \comp_low.C0_reg[15]_i_1_n_3 ;
+  wire \comp_low.C0_reg[15]_i_1_n_4 ;
+  wire \comp_low.C0_reg[15]_i_1_n_5 ;
+  wire \comp_low.C0_reg[15]_i_1_n_6 ;
+  wire \comp_low.C0_reg[15]_i_1_n_7 ;
+  wire \comp_low.C0_reg[15]_i_2_n_0 ;
+  wire \comp_low.C0_reg[15]_i_2_n_1 ;
+  wire \comp_low.C0_reg[15]_i_2_n_2 ;
+  wire \comp_low.C0_reg[15]_i_2_n_3 ;
+  wire \comp_low.C0_reg[15]_i_2_n_4 ;
+  wire \comp_low.C0_reg[15]_i_2_n_5 ;
+  wire \comp_low.C0_reg[15]_i_2_n_6 ;
+  wire \comp_low.C0_reg[15]_i_2_n_7 ;
+  wire \comp_low.C0_reg[17]_i_1_n_7 ;
+  wire \comp_low.C0_reg[17]_i_5_n_7 ;
+  wire \comp_low.C0_reg[7]_i_1_n_0 ;
+  wire \comp_low.C0_reg[7]_i_1_n_1 ;
+  wire \comp_low.C0_reg[7]_i_1_n_2 ;
+  wire \comp_low.C0_reg[7]_i_1_n_3 ;
+  wire \comp_low.C0_reg[7]_i_1_n_4 ;
+  wire \comp_low.C0_reg[7]_i_1_n_5 ;
+  wire \comp_low.C0_reg[7]_i_1_n_6 ;
+  wire \comp_low.C0_reg[7]_i_1_n_7 ;
+  wire \comp_low.C0_reg[7]_i_2_n_0 ;
+  wire \comp_low.C0_reg[7]_i_2_n_1 ;
+  wire \comp_low.C0_reg[7]_i_2_n_2 ;
+  wire \comp_low.C0_reg[7]_i_2_n_3 ;
+  wire \comp_low.C0_reg[7]_i_2_n_4 ;
+  wire \comp_low.C0_reg[7]_i_2_n_5 ;
+  wire \comp_low.C0_reg[7]_i_2_n_6 ;
+  wire \comp_low.C0_reg[7]_i_2_n_7 ;
+  wire \comp_low.C1[15]_i_10_n_0 ;
+  wire \comp_low.C1[15]_i_11_n_0 ;
+  wire \comp_low.C1[15]_i_12_n_0 ;
+  wire \comp_low.C1[15]_i_13_n_0 ;
+  wire \comp_low.C1[15]_i_14_n_0 ;
+  wire \comp_low.C1[15]_i_15_n_0 ;
+  wire \comp_low.C1[15]_i_16_n_0 ;
+  wire \comp_low.C1[15]_i_17_n_0 ;
+  wire \comp_low.C1[15]_i_18_n_0 ;
+  wire \comp_low.C1[15]_i_3_n_0 ;
+  wire \comp_low.C1[15]_i_4_n_0 ;
+  wire \comp_low.C1[15]_i_5_n_0 ;
+  wire \comp_low.C1[15]_i_6_n_0 ;
+  wire \comp_low.C1[15]_i_7_n_0 ;
+  wire \comp_low.C1[15]_i_8_n_0 ;
+  wire \comp_low.C1[15]_i_9_n_0 ;
+  wire \comp_low.C1[17]_i_3_n_0 ;
+  wire \comp_low.C1[17]_i_4_n_0 ;
+  wire \comp_low.C1[17]_i_5_n_0 ;
+  wire \comp_low.C1[17]_i_6_n_0 ;
+  wire \comp_low.C1[7]_i_10_n_0 ;
+  wire \comp_low.C1[7]_i_11_n_0 ;
+  wire \comp_low.C1[7]_i_12_n_0 ;
+  wire \comp_low.C1[7]_i_13_n_0 ;
+  wire \comp_low.C1[7]_i_14_n_0 ;
+  wire \comp_low.C1[7]_i_15_n_0 ;
+  wire \comp_low.C1[7]_i_16_n_0 ;
+  wire \comp_low.C1[7]_i_17_n_0 ;
+  wire \comp_low.C1[7]_i_18_n_0 ;
+  wire \comp_low.C1[7]_i_3_n_0 ;
+  wire \comp_low.C1[7]_i_4_n_0 ;
+  wire \comp_low.C1[7]_i_5_n_0 ;
+  wire \comp_low.C1[7]_i_6_n_0 ;
+  wire \comp_low.C1[7]_i_7_n_0 ;
+  wire \comp_low.C1[7]_i_8_n_0 ;
+  wire \comp_low.C1[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C1_reg0 ;
+  wire \comp_low.C1_reg[15]_i_1_n_0 ;
+  wire \comp_low.C1_reg[15]_i_1_n_1 ;
+  wire \comp_low.C1_reg[15]_i_1_n_2 ;
+  wire \comp_low.C1_reg[15]_i_1_n_3 ;
+  wire \comp_low.C1_reg[15]_i_1_n_4 ;
+  wire \comp_low.C1_reg[15]_i_1_n_5 ;
+  wire \comp_low.C1_reg[15]_i_1_n_6 ;
+  wire \comp_low.C1_reg[15]_i_1_n_7 ;
+  wire \comp_low.C1_reg[15]_i_2_n_0 ;
+  wire \comp_low.C1_reg[15]_i_2_n_1 ;
+  wire \comp_low.C1_reg[15]_i_2_n_2 ;
+  wire \comp_low.C1_reg[15]_i_2_n_3 ;
+  wire \comp_low.C1_reg[15]_i_2_n_4 ;
+  wire \comp_low.C1_reg[15]_i_2_n_5 ;
+  wire \comp_low.C1_reg[15]_i_2_n_6 ;
+  wire \comp_low.C1_reg[15]_i_2_n_7 ;
+  wire \comp_low.C1_reg[17]_i_1_n_7 ;
+  wire \comp_low.C1_reg[17]_i_2_n_7 ;
+  wire \comp_low.C1_reg[7]_i_1_n_0 ;
+  wire \comp_low.C1_reg[7]_i_1_n_1 ;
+  wire \comp_low.C1_reg[7]_i_1_n_2 ;
+  wire \comp_low.C1_reg[7]_i_1_n_3 ;
+  wire \comp_low.C1_reg[7]_i_1_n_4 ;
+  wire \comp_low.C1_reg[7]_i_1_n_5 ;
+  wire \comp_low.C1_reg[7]_i_1_n_6 ;
+  wire \comp_low.C1_reg[7]_i_1_n_7 ;
+  wire \comp_low.C1_reg[7]_i_2_n_0 ;
+  wire \comp_low.C1_reg[7]_i_2_n_1 ;
+  wire \comp_low.C1_reg[7]_i_2_n_2 ;
+  wire \comp_low.C1_reg[7]_i_2_n_3 ;
+  wire \comp_low.C1_reg[7]_i_2_n_4 ;
+  wire \comp_low.C1_reg[7]_i_2_n_5 ;
+  wire \comp_low.C1_reg[7]_i_2_n_6 ;
+  wire \comp_low.C1_reg[7]_i_2_n_7 ;
+  wire \comp_low.C2[15]_i_10_n_0 ;
+  wire \comp_low.C2[15]_i_11_n_0 ;
+  wire \comp_low.C2[15]_i_12_n_0 ;
+  wire \comp_low.C2[15]_i_13_n_0 ;
+  wire \comp_low.C2[15]_i_14_n_0 ;
+  wire \comp_low.C2[15]_i_15_n_0 ;
+  wire \comp_low.C2[15]_i_16_n_0 ;
+  wire \comp_low.C2[15]_i_17_n_0 ;
+  wire \comp_low.C2[15]_i_18_n_0 ;
+  wire \comp_low.C2[15]_i_3_n_0 ;
+  wire \comp_low.C2[15]_i_4_n_0 ;
+  wire \comp_low.C2[15]_i_5_n_0 ;
+  wire \comp_low.C2[15]_i_6_n_0 ;
+  wire \comp_low.C2[15]_i_7_n_0 ;
+  wire \comp_low.C2[15]_i_8_n_0 ;
+  wire \comp_low.C2[15]_i_9_n_0 ;
+  wire \comp_low.C2[17]_i_3_n_0 ;
+  wire \comp_low.C2[17]_i_4_n_0 ;
+  wire \comp_low.C2[17]_i_5_n_0 ;
+  wire \comp_low.C2[17]_i_6_n_0 ;
+  wire \comp_low.C2[7]_i_10_n_0 ;
+  wire \comp_low.C2[7]_i_11_n_0 ;
+  wire \comp_low.C2[7]_i_12_n_0 ;
+  wire \comp_low.C2[7]_i_13_n_0 ;
+  wire \comp_low.C2[7]_i_14_n_0 ;
+  wire \comp_low.C2[7]_i_15_n_0 ;
+  wire \comp_low.C2[7]_i_16_n_0 ;
+  wire \comp_low.C2[7]_i_17_n_0 ;
+  wire \comp_low.C2[7]_i_18_n_0 ;
+  wire \comp_low.C2[7]_i_3_n_0 ;
+  wire \comp_low.C2[7]_i_4_n_0 ;
+  wire \comp_low.C2[7]_i_5_n_0 ;
+  wire \comp_low.C2[7]_i_6_n_0 ;
+  wire \comp_low.C2[7]_i_7_n_0 ;
+  wire \comp_low.C2[7]_i_8_n_0 ;
+  wire \comp_low.C2[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C2_reg0 ;
+  wire \comp_low.C2_reg[15]_i_1_n_0 ;
+  wire \comp_low.C2_reg[15]_i_1_n_1 ;
+  wire \comp_low.C2_reg[15]_i_1_n_2 ;
+  wire \comp_low.C2_reg[15]_i_1_n_3 ;
+  wire \comp_low.C2_reg[15]_i_1_n_4 ;
+  wire \comp_low.C2_reg[15]_i_1_n_5 ;
+  wire \comp_low.C2_reg[15]_i_1_n_6 ;
+  wire \comp_low.C2_reg[15]_i_1_n_7 ;
+  wire \comp_low.C2_reg[15]_i_2_n_0 ;
+  wire \comp_low.C2_reg[15]_i_2_n_1 ;
+  wire \comp_low.C2_reg[15]_i_2_n_2 ;
+  wire \comp_low.C2_reg[15]_i_2_n_3 ;
+  wire \comp_low.C2_reg[15]_i_2_n_4 ;
+  wire \comp_low.C2_reg[15]_i_2_n_5 ;
+  wire \comp_low.C2_reg[15]_i_2_n_6 ;
+  wire \comp_low.C2_reg[15]_i_2_n_7 ;
+  wire \comp_low.C2_reg[17]_i_1_n_7 ;
+  wire \comp_low.C2_reg[17]_i_2_n_7 ;
+  wire \comp_low.C2_reg[7]_i_1_n_0 ;
+  wire \comp_low.C2_reg[7]_i_1_n_1 ;
+  wire \comp_low.C2_reg[7]_i_1_n_2 ;
+  wire \comp_low.C2_reg[7]_i_1_n_3 ;
+  wire \comp_low.C2_reg[7]_i_1_n_4 ;
+  wire \comp_low.C2_reg[7]_i_1_n_5 ;
+  wire \comp_low.C2_reg[7]_i_1_n_6 ;
+  wire \comp_low.C2_reg[7]_i_1_n_7 ;
+  wire \comp_low.C2_reg[7]_i_2_n_0 ;
+  wire \comp_low.C2_reg[7]_i_2_n_1 ;
+  wire \comp_low.C2_reg[7]_i_2_n_2 ;
+  wire \comp_low.C2_reg[7]_i_2_n_3 ;
+  wire \comp_low.C2_reg[7]_i_2_n_4 ;
+  wire \comp_low.C2_reg[7]_i_2_n_5 ;
+  wire \comp_low.C2_reg[7]_i_2_n_6 ;
+  wire \comp_low.C2_reg[7]_i_2_n_7 ;
+  wire \comp_low.C3[15]_i_10_n_0 ;
+  wire \comp_low.C3[15]_i_11_n_0 ;
+  wire \comp_low.C3[15]_i_12_n_0 ;
+  wire \comp_low.C3[15]_i_13_n_0 ;
+  wire \comp_low.C3[15]_i_14_n_0 ;
+  wire \comp_low.C3[15]_i_15_n_0 ;
+  wire \comp_low.C3[15]_i_16_n_0 ;
+  wire \comp_low.C3[15]_i_17_n_0 ;
+  wire \comp_low.C3[15]_i_18_n_0 ;
+  wire \comp_low.C3[15]_i_3_n_0 ;
+  wire \comp_low.C3[15]_i_4_n_0 ;
+  wire \comp_low.C3[15]_i_5_n_0 ;
+  wire \comp_low.C3[15]_i_6_n_0 ;
+  wire \comp_low.C3[15]_i_7_n_0 ;
+  wire \comp_low.C3[15]_i_8_n_0 ;
+  wire \comp_low.C3[15]_i_9_n_0 ;
+  wire \comp_low.C3[17]_i_3_n_0 ;
+  wire \comp_low.C3[17]_i_4_n_0 ;
+  wire \comp_low.C3[17]_i_5_n_0 ;
+  wire \comp_low.C3[17]_i_6_n_0 ;
+  wire \comp_low.C3[7]_i_10_n_0 ;
+  wire \comp_low.C3[7]_i_11_n_0 ;
+  wire \comp_low.C3[7]_i_12_n_0 ;
+  wire \comp_low.C3[7]_i_13_n_0 ;
+  wire \comp_low.C3[7]_i_14_n_0 ;
+  wire \comp_low.C3[7]_i_15_n_0 ;
+  wire \comp_low.C3[7]_i_16_n_0 ;
+  wire \comp_low.C3[7]_i_17_n_0 ;
+  wire \comp_low.C3[7]_i_18_n_0 ;
+  wire \comp_low.C3[7]_i_3_n_0 ;
+  wire \comp_low.C3[7]_i_4_n_0 ;
+  wire \comp_low.C3[7]_i_5_n_0 ;
+  wire \comp_low.C3[7]_i_6_n_0 ;
+  wire \comp_low.C3[7]_i_7_n_0 ;
+  wire \comp_low.C3[7]_i_8_n_0 ;
+  wire \comp_low.C3[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C3_reg0 ;
+  wire \comp_low.C3_reg[15]_i_1_n_0 ;
+  wire \comp_low.C3_reg[15]_i_1_n_1 ;
+  wire \comp_low.C3_reg[15]_i_1_n_2 ;
+  wire \comp_low.C3_reg[15]_i_1_n_3 ;
+  wire \comp_low.C3_reg[15]_i_1_n_4 ;
+  wire \comp_low.C3_reg[15]_i_1_n_5 ;
+  wire \comp_low.C3_reg[15]_i_1_n_6 ;
+  wire \comp_low.C3_reg[15]_i_1_n_7 ;
+  wire \comp_low.C3_reg[15]_i_2_n_0 ;
+  wire \comp_low.C3_reg[15]_i_2_n_1 ;
+  wire \comp_low.C3_reg[15]_i_2_n_2 ;
+  wire \comp_low.C3_reg[15]_i_2_n_3 ;
+  wire \comp_low.C3_reg[15]_i_2_n_4 ;
+  wire \comp_low.C3_reg[15]_i_2_n_5 ;
+  wire \comp_low.C3_reg[15]_i_2_n_6 ;
+  wire \comp_low.C3_reg[15]_i_2_n_7 ;
+  wire \comp_low.C3_reg[17]_i_1_n_7 ;
+  wire \comp_low.C3_reg[17]_i_2_n_7 ;
+  wire \comp_low.C3_reg[7]_i_1_n_0 ;
+  wire \comp_low.C3_reg[7]_i_1_n_1 ;
+  wire \comp_low.C3_reg[7]_i_1_n_2 ;
+  wire \comp_low.C3_reg[7]_i_1_n_3 ;
+  wire \comp_low.C3_reg[7]_i_1_n_4 ;
+  wire \comp_low.C3_reg[7]_i_1_n_5 ;
+  wire \comp_low.C3_reg[7]_i_1_n_6 ;
+  wire \comp_low.C3_reg[7]_i_1_n_7 ;
+  wire \comp_low.C3_reg[7]_i_2_n_0 ;
+  wire \comp_low.C3_reg[7]_i_2_n_1 ;
+  wire \comp_low.C3_reg[7]_i_2_n_2 ;
+  wire \comp_low.C3_reg[7]_i_2_n_3 ;
+  wire \comp_low.C3_reg[7]_i_2_n_4 ;
+  wire \comp_low.C3_reg[7]_i_2_n_5 ;
+  wire \comp_low.C3_reg[7]_i_2_n_6 ;
+  wire \comp_low.C3_reg[7]_i_2_n_7 ;
+  wire \comp_low.C4[15]_i_10_n_0 ;
+  wire \comp_low.C4[15]_i_11_n_0 ;
+  wire \comp_low.C4[15]_i_12_n_0 ;
+  wire \comp_low.C4[15]_i_13_n_0 ;
+  wire \comp_low.C4[15]_i_14_n_0 ;
+  wire \comp_low.C4[15]_i_15_n_0 ;
+  wire \comp_low.C4[15]_i_16_n_0 ;
+  wire \comp_low.C4[15]_i_17_n_0 ;
+  wire \comp_low.C4[15]_i_18_n_0 ;
+  wire \comp_low.C4[15]_i_3_n_0 ;
+  wire \comp_low.C4[15]_i_4_n_0 ;
+  wire \comp_low.C4[15]_i_5_n_0 ;
+  wire \comp_low.C4[15]_i_6_n_0 ;
+  wire \comp_low.C4[15]_i_7_n_0 ;
+  wire \comp_low.C4[15]_i_8_n_0 ;
+  wire \comp_low.C4[15]_i_9_n_0 ;
+  wire \comp_low.C4[17]_i_3_n_0 ;
+  wire \comp_low.C4[17]_i_4_n_0 ;
+  wire \comp_low.C4[17]_i_5_n_0 ;
+  wire \comp_low.C4[17]_i_6_n_0 ;
+  wire \comp_low.C4[7]_i_10_n_0 ;
+  wire \comp_low.C4[7]_i_11_n_0 ;
+  wire \comp_low.C4[7]_i_12_n_0 ;
+  wire \comp_low.C4[7]_i_13_n_0 ;
+  wire \comp_low.C4[7]_i_14_n_0 ;
+  wire \comp_low.C4[7]_i_15_n_0 ;
+  wire \comp_low.C4[7]_i_16_n_0 ;
+  wire \comp_low.C4[7]_i_17_n_0 ;
+  wire \comp_low.C4[7]_i_18_n_0 ;
+  wire \comp_low.C4[7]_i_3_n_0 ;
+  wire \comp_low.C4[7]_i_4_n_0 ;
+  wire \comp_low.C4[7]_i_5_n_0 ;
+  wire \comp_low.C4[7]_i_6_n_0 ;
+  wire \comp_low.C4[7]_i_7_n_0 ;
+  wire \comp_low.C4[7]_i_8_n_0 ;
+  wire \comp_low.C4[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C4_reg0 ;
+  wire \comp_low.C4_reg[15]_i_1_n_0 ;
+  wire \comp_low.C4_reg[15]_i_1_n_1 ;
+  wire \comp_low.C4_reg[15]_i_1_n_2 ;
+  wire \comp_low.C4_reg[15]_i_1_n_3 ;
+  wire \comp_low.C4_reg[15]_i_1_n_4 ;
+  wire \comp_low.C4_reg[15]_i_1_n_5 ;
+  wire \comp_low.C4_reg[15]_i_1_n_6 ;
+  wire \comp_low.C4_reg[15]_i_1_n_7 ;
+  wire \comp_low.C4_reg[15]_i_2_n_0 ;
+  wire \comp_low.C4_reg[15]_i_2_n_1 ;
+  wire \comp_low.C4_reg[15]_i_2_n_2 ;
+  wire \comp_low.C4_reg[15]_i_2_n_3 ;
+  wire \comp_low.C4_reg[15]_i_2_n_4 ;
+  wire \comp_low.C4_reg[15]_i_2_n_5 ;
+  wire \comp_low.C4_reg[15]_i_2_n_6 ;
+  wire \comp_low.C4_reg[15]_i_2_n_7 ;
+  wire \comp_low.C4_reg[17]_i_1_n_7 ;
+  wire \comp_low.C4_reg[17]_i_2_n_7 ;
+  wire \comp_low.C4_reg[7]_i_1_n_0 ;
+  wire \comp_low.C4_reg[7]_i_1_n_1 ;
+  wire \comp_low.C4_reg[7]_i_1_n_2 ;
+  wire \comp_low.C4_reg[7]_i_1_n_3 ;
+  wire \comp_low.C4_reg[7]_i_1_n_4 ;
+  wire \comp_low.C4_reg[7]_i_1_n_5 ;
+  wire \comp_low.C4_reg[7]_i_1_n_6 ;
+  wire \comp_low.C4_reg[7]_i_1_n_7 ;
+  wire \comp_low.C4_reg[7]_i_2_n_0 ;
+  wire \comp_low.C4_reg[7]_i_2_n_1 ;
+  wire \comp_low.C4_reg[7]_i_2_n_2 ;
+  wire \comp_low.C4_reg[7]_i_2_n_3 ;
+  wire \comp_low.C4_reg[7]_i_2_n_4 ;
+  wire \comp_low.C4_reg[7]_i_2_n_5 ;
+  wire \comp_low.C4_reg[7]_i_2_n_6 ;
+  wire \comp_low.C4_reg[7]_i_2_n_7 ;
+  wire \comp_low.C5[15]_i_10_n_0 ;
+  wire \comp_low.C5[15]_i_11_n_0 ;
+  wire \comp_low.C5[15]_i_12_n_0 ;
+  wire \comp_low.C5[15]_i_13_n_0 ;
+  wire \comp_low.C5[15]_i_14_n_0 ;
+  wire \comp_low.C5[15]_i_15_n_0 ;
+  wire \comp_low.C5[15]_i_16_n_0 ;
+  wire \comp_low.C5[15]_i_17_n_0 ;
+  wire \comp_low.C5[15]_i_18_n_0 ;
+  wire \comp_low.C5[15]_i_3_n_0 ;
+  wire \comp_low.C5[15]_i_4_n_0 ;
+  wire \comp_low.C5[15]_i_5_n_0 ;
+  wire \comp_low.C5[15]_i_6_n_0 ;
+  wire \comp_low.C5[15]_i_7_n_0 ;
+  wire \comp_low.C5[15]_i_8_n_0 ;
+  wire \comp_low.C5[15]_i_9_n_0 ;
+  wire \comp_low.C5[17]_i_3_n_0 ;
+  wire \comp_low.C5[17]_i_4_n_0 ;
+  wire \comp_low.C5[17]_i_5_n_0 ;
+  wire \comp_low.C5[17]_i_6_n_0 ;
+  wire \comp_low.C5[7]_i_10_n_0 ;
+  wire \comp_low.C5[7]_i_11_n_0 ;
+  wire \comp_low.C5[7]_i_12_n_0 ;
+  wire \comp_low.C5[7]_i_13_n_0 ;
+  wire \comp_low.C5[7]_i_14_n_0 ;
+  wire \comp_low.C5[7]_i_15_n_0 ;
+  wire \comp_low.C5[7]_i_16_n_0 ;
+  wire \comp_low.C5[7]_i_17_n_0 ;
+  wire \comp_low.C5[7]_i_18_n_0 ;
+  wire \comp_low.C5[7]_i_3_n_0 ;
+  wire \comp_low.C5[7]_i_4_n_0 ;
+  wire \comp_low.C5[7]_i_5_n_0 ;
+  wire \comp_low.C5[7]_i_6_n_0 ;
+  wire \comp_low.C5[7]_i_7_n_0 ;
+  wire \comp_low.C5[7]_i_8_n_0 ;
+  wire \comp_low.C5[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C5_reg0 ;
+  wire \comp_low.C5_reg[15]_i_1_n_0 ;
+  wire \comp_low.C5_reg[15]_i_1_n_1 ;
+  wire \comp_low.C5_reg[15]_i_1_n_2 ;
+  wire \comp_low.C5_reg[15]_i_1_n_3 ;
+  wire \comp_low.C5_reg[15]_i_1_n_4 ;
+  wire \comp_low.C5_reg[15]_i_1_n_5 ;
+  wire \comp_low.C5_reg[15]_i_1_n_6 ;
+  wire \comp_low.C5_reg[15]_i_1_n_7 ;
+  wire \comp_low.C5_reg[15]_i_2_n_0 ;
+  wire \comp_low.C5_reg[15]_i_2_n_1 ;
+  wire \comp_low.C5_reg[15]_i_2_n_2 ;
+  wire \comp_low.C5_reg[15]_i_2_n_3 ;
+  wire \comp_low.C5_reg[15]_i_2_n_4 ;
+  wire \comp_low.C5_reg[15]_i_2_n_5 ;
+  wire \comp_low.C5_reg[15]_i_2_n_6 ;
+  wire \comp_low.C5_reg[15]_i_2_n_7 ;
+  wire \comp_low.C5_reg[17]_i_1_n_7 ;
+  wire \comp_low.C5_reg[17]_i_2_n_7 ;
+  wire \comp_low.C5_reg[7]_i_1_n_0 ;
+  wire \comp_low.C5_reg[7]_i_1_n_1 ;
+  wire \comp_low.C5_reg[7]_i_1_n_2 ;
+  wire \comp_low.C5_reg[7]_i_1_n_3 ;
+  wire \comp_low.C5_reg[7]_i_1_n_4 ;
+  wire \comp_low.C5_reg[7]_i_1_n_5 ;
+  wire \comp_low.C5_reg[7]_i_1_n_6 ;
+  wire \comp_low.C5_reg[7]_i_1_n_7 ;
+  wire \comp_low.C5_reg[7]_i_2_n_0 ;
+  wire \comp_low.C5_reg[7]_i_2_n_1 ;
+  wire \comp_low.C5_reg[7]_i_2_n_2 ;
+  wire \comp_low.C5_reg[7]_i_2_n_3 ;
+  wire \comp_low.C5_reg[7]_i_2_n_4 ;
+  wire \comp_low.C5_reg[7]_i_2_n_5 ;
+  wire \comp_low.C5_reg[7]_i_2_n_6 ;
+  wire \comp_low.C5_reg[7]_i_2_n_7 ;
+  wire \comp_low.C6[15]_i_10_n_0 ;
+  wire \comp_low.C6[15]_i_11_n_0 ;
+  wire \comp_low.C6[15]_i_12_n_0 ;
+  wire \comp_low.C6[15]_i_13_n_0 ;
+  wire \comp_low.C6[15]_i_14_n_0 ;
+  wire \comp_low.C6[15]_i_15_n_0 ;
+  wire \comp_low.C6[15]_i_16_n_0 ;
+  wire \comp_low.C6[15]_i_17_n_0 ;
+  wire \comp_low.C6[15]_i_18_n_0 ;
+  wire \comp_low.C6[15]_i_3_n_0 ;
+  wire \comp_low.C6[15]_i_4_n_0 ;
+  wire \comp_low.C6[15]_i_5_n_0 ;
+  wire \comp_low.C6[15]_i_6_n_0 ;
+  wire \comp_low.C6[15]_i_7_n_0 ;
+  wire \comp_low.C6[15]_i_8_n_0 ;
+  wire \comp_low.C6[15]_i_9_n_0 ;
+  wire \comp_low.C6[17]_i_3_n_0 ;
+  wire \comp_low.C6[17]_i_4_n_0 ;
+  wire \comp_low.C6[17]_i_5_n_0 ;
+  wire \comp_low.C6[17]_i_6_n_0 ;
+  wire \comp_low.C6[7]_i_10_n_0 ;
+  wire \comp_low.C6[7]_i_11_n_0 ;
+  wire \comp_low.C6[7]_i_12_n_0 ;
+  wire \comp_low.C6[7]_i_13_n_0 ;
+  wire \comp_low.C6[7]_i_14_n_0 ;
+  wire \comp_low.C6[7]_i_15_n_0 ;
+  wire \comp_low.C6[7]_i_16_n_0 ;
+  wire \comp_low.C6[7]_i_17_n_0 ;
+  wire \comp_low.C6[7]_i_18_n_0 ;
+  wire \comp_low.C6[7]_i_3_n_0 ;
+  wire \comp_low.C6[7]_i_4_n_0 ;
+  wire \comp_low.C6[7]_i_5_n_0 ;
+  wire \comp_low.C6[7]_i_6_n_0 ;
+  wire \comp_low.C6[7]_i_7_n_0 ;
+  wire \comp_low.C6[7]_i_8_n_0 ;
+  wire \comp_low.C6[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C6_reg0 ;
+  wire \comp_low.C6_reg[15]_i_1_n_0 ;
+  wire \comp_low.C6_reg[15]_i_1_n_1 ;
+  wire \comp_low.C6_reg[15]_i_1_n_2 ;
+  wire \comp_low.C6_reg[15]_i_1_n_3 ;
+  wire \comp_low.C6_reg[15]_i_1_n_4 ;
+  wire \comp_low.C6_reg[15]_i_1_n_5 ;
+  wire \comp_low.C6_reg[15]_i_1_n_6 ;
+  wire \comp_low.C6_reg[15]_i_1_n_7 ;
+  wire \comp_low.C6_reg[15]_i_2_n_0 ;
+  wire \comp_low.C6_reg[15]_i_2_n_1 ;
+  wire \comp_low.C6_reg[15]_i_2_n_2 ;
+  wire \comp_low.C6_reg[15]_i_2_n_3 ;
+  wire \comp_low.C6_reg[15]_i_2_n_4 ;
+  wire \comp_low.C6_reg[15]_i_2_n_5 ;
+  wire \comp_low.C6_reg[15]_i_2_n_6 ;
+  wire \comp_low.C6_reg[15]_i_2_n_7 ;
+  wire \comp_low.C6_reg[17]_i_1_n_7 ;
+  wire \comp_low.C6_reg[17]_i_2_n_7 ;
+  wire \comp_low.C6_reg[7]_i_1_n_0 ;
+  wire \comp_low.C6_reg[7]_i_1_n_1 ;
+  wire \comp_low.C6_reg[7]_i_1_n_2 ;
+  wire \comp_low.C6_reg[7]_i_1_n_3 ;
+  wire \comp_low.C6_reg[7]_i_1_n_4 ;
+  wire \comp_low.C6_reg[7]_i_1_n_5 ;
+  wire \comp_low.C6_reg[7]_i_1_n_6 ;
+  wire \comp_low.C6_reg[7]_i_1_n_7 ;
+  wire \comp_low.C6_reg[7]_i_2_n_0 ;
+  wire \comp_low.C6_reg[7]_i_2_n_1 ;
+  wire \comp_low.C6_reg[7]_i_2_n_2 ;
+  wire \comp_low.C6_reg[7]_i_2_n_3 ;
+  wire \comp_low.C6_reg[7]_i_2_n_4 ;
+  wire \comp_low.C6_reg[7]_i_2_n_5 ;
+  wire \comp_low.C6_reg[7]_i_2_n_6 ;
+  wire \comp_low.C6_reg[7]_i_2_n_7 ;
+  wire \comp_low.C7[15]_i_10_n_0 ;
+  wire \comp_low.C7[15]_i_11_n_0 ;
+  wire \comp_low.C7[15]_i_12_n_0 ;
+  wire \comp_low.C7[15]_i_13_n_0 ;
+  wire \comp_low.C7[15]_i_14_n_0 ;
+  wire \comp_low.C7[15]_i_15_n_0 ;
+  wire \comp_low.C7[15]_i_16_n_0 ;
+  wire \comp_low.C7[15]_i_17_n_0 ;
+  wire \comp_low.C7[15]_i_18_n_0 ;
+  wire \comp_low.C7[15]_i_3_n_0 ;
+  wire \comp_low.C7[15]_i_4_n_0 ;
+  wire \comp_low.C7[15]_i_5_n_0 ;
+  wire \comp_low.C7[15]_i_6_n_0 ;
+  wire \comp_low.C7[15]_i_7_n_0 ;
+  wire \comp_low.C7[15]_i_8_n_0 ;
+  wire \comp_low.C7[15]_i_9_n_0 ;
+  wire \comp_low.C7[17]_i_3_n_0 ;
+  wire \comp_low.C7[17]_i_4_n_0 ;
+  wire \comp_low.C7[17]_i_5_n_0 ;
+  wire \comp_low.C7[17]_i_6_n_0 ;
+  wire \comp_low.C7[7]_i_10_n_0 ;
+  wire \comp_low.C7[7]_i_11_n_0 ;
+  wire \comp_low.C7[7]_i_12_n_0 ;
+  wire \comp_low.C7[7]_i_13_n_0 ;
+  wire \comp_low.C7[7]_i_14_n_0 ;
+  wire \comp_low.C7[7]_i_15_n_0 ;
+  wire \comp_low.C7[7]_i_16_n_0 ;
+  wire \comp_low.C7[7]_i_17_n_0 ;
+  wire \comp_low.C7[7]_i_18_n_0 ;
+  wire \comp_low.C7[7]_i_3_n_0 ;
+  wire \comp_low.C7[7]_i_4_n_0 ;
+  wire \comp_low.C7[7]_i_5_n_0 ;
+  wire \comp_low.C7[7]_i_6_n_0 ;
+  wire \comp_low.C7[7]_i_7_n_0 ;
+  wire \comp_low.C7[7]_i_8_n_0 ;
+  wire \comp_low.C7[7]_i_9_n_0 ;
+  wire [17:0]\comp_low.C7_reg0 ;
+  wire \comp_low.C7_reg[15]_i_1_n_0 ;
+  wire \comp_low.C7_reg[15]_i_1_n_1 ;
+  wire \comp_low.C7_reg[15]_i_1_n_2 ;
+  wire \comp_low.C7_reg[15]_i_1_n_3 ;
+  wire \comp_low.C7_reg[15]_i_1_n_4 ;
+  wire \comp_low.C7_reg[15]_i_1_n_5 ;
+  wire \comp_low.C7_reg[15]_i_1_n_6 ;
+  wire \comp_low.C7_reg[15]_i_1_n_7 ;
+  wire \comp_low.C7_reg[15]_i_2_n_0 ;
+  wire \comp_low.C7_reg[15]_i_2_n_1 ;
+  wire \comp_low.C7_reg[15]_i_2_n_2 ;
+  wire \comp_low.C7_reg[15]_i_2_n_3 ;
+  wire \comp_low.C7_reg[15]_i_2_n_4 ;
+  wire \comp_low.C7_reg[15]_i_2_n_5 ;
+  wire \comp_low.C7_reg[15]_i_2_n_6 ;
+  wire \comp_low.C7_reg[15]_i_2_n_7 ;
+  wire \comp_low.C7_reg[17]_i_1_n_7 ;
+  wire \comp_low.C7_reg[17]_i_2_n_7 ;
+  wire \comp_low.C7_reg[7]_i_1_n_0 ;
+  wire \comp_low.C7_reg[7]_i_1_n_1 ;
+  wire \comp_low.C7_reg[7]_i_1_n_2 ;
+  wire \comp_low.C7_reg[7]_i_1_n_3 ;
+  wire \comp_low.C7_reg[7]_i_1_n_4 ;
+  wire \comp_low.C7_reg[7]_i_1_n_5 ;
+  wire \comp_low.C7_reg[7]_i_1_n_6 ;
+  wire \comp_low.C7_reg[7]_i_1_n_7 ;
+  wire \comp_low.C7_reg[7]_i_2_n_0 ;
+  wire \comp_low.C7_reg[7]_i_2_n_1 ;
+  wire \comp_low.C7_reg[7]_i_2_n_2 ;
+  wire \comp_low.C7_reg[7]_i_2_n_3 ;
+  wire \comp_low.C7_reg[7]_i_2_n_4 ;
+  wire \comp_low.C7_reg[7]_i_2_n_5 ;
+  wire \comp_low.C7_reg[7]_i_2_n_6 ;
+  wire \comp_low.C7_reg[7]_i_2_n_7 ;
   wire \comp_low.ana_burst_reg0 ;
   wire \comp_low.ana_delay[1]_i_1_n_0 ;
   wire \comp_low.ana_delay[2]_i_1_n_0 ;
@@ -257,7 +833,15 @@ module ps_comp_low_0_0_comp_low
   wire [127:0]data_N;
   wire [127:0]data_W;
   wire [63:32]p_0_in__0;
-  wire [31:0]p_0_in__1;
+  wire [17:0]p_0_in__1;
+  wire [31:0]p_0_in__2;
+  wire [17:0]p_1_in__0;
+  wire [17:0]p_2_in;
+  wire [17:0]p_3_in;
+  wire [17:0]p_4_in;
+  wire [17:0]p_5_in;
+  wire [17:0]p_6_in;
+  wire [17:0]p_7_in;
   wire [127:0]raw_E;
   wire [127:0]raw_N;
   wire raw_N0;
@@ -277,6 +861,38 @@ module ps_comp_low_0_0_comp_low
   wire raw_sample_cy;
   wire raw_wr;
   wire reset;
+  wire [7:1]\NLW_comp_low.C0_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C0_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C0_reg[17]_i_5_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C0_reg[17]_i_5_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C1_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C1_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C1_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C1_reg[17]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C2_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C2_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C2_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C2_reg[17]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C3_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C3_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C3_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C3_reg[17]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C4_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C4_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C4_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C4_reg[17]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C5_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C5_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C5_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C5_reg[17]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C6_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C6_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C6_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C6_reg[17]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C7_reg[17]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C7_reg[17]_i_1_O_UNCONNECTED ;
+  wire [7:1]\NLW_comp_low.C7_reg[17]_i_2_CO_UNCONNECTED ;
+  wire [7:2]\NLW_comp_low.C7_reg[17]_i_2_O_UNCONNECTED ;
   wire [7:7]\NLW_comp_low.raw_sample_reg[31]_i_2_CO_UNCONNECTED ;
   wire [7:7]\NLW_comp_low.raw_sample_reg[63]_i_2_CO_UNCONNECTED ;
   wire NLW_fifo_ana_i_full_UNCONNECTED;
@@ -287,2688 +903,5674 @@ module ps_comp_low_0_0_comp_low
   wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
 
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_10 
+       (.I0(p_7_in[8]),
+        .I1(W0[8]),
+        .O(\comp_low.C0[15]_i_10_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \comp_low.C0[15]_i_11 
+       (.I0(N0[15]),
+        .O(\comp_low.C0[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_12 
+       (.I0(N0[15]),
+        .I1(E0[15]),
+        .O(\comp_low.C0[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_13 
+       (.I0(N0[14]),
+        .I1(E0[14]),
+        .O(\comp_low.C0[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_14 
+       (.I0(N0[13]),
+        .I1(E0[13]),
+        .O(\comp_low.C0[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_15 
+       (.I0(N0[12]),
+        .I1(E0[12]),
+        .O(\comp_low.C0[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_16 
+       (.I0(N0[11]),
+        .I1(E0[11]),
+        .O(\comp_low.C0[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_17 
+       (.I0(N0[10]),
+        .I1(E0[10]),
+        .O(\comp_low.C0[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_18 
+       (.I0(N0[9]),
+        .I1(E0[9]),
+        .O(\comp_low.C0[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_19 
+       (.I0(N0[8]),
+        .I1(E0[8]),
+        .O(\comp_low.C0[15]_i_19_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_3 
+       (.I0(W0[15]),
+        .I1(p_7_in[15]),
+        .O(\comp_low.C0[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_4 
+       (.I0(p_7_in[14]),
+        .I1(W0[14]),
+        .O(\comp_low.C0[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_5 
+       (.I0(p_7_in[13]),
+        .I1(W0[13]),
+        .O(\comp_low.C0[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_6 
+       (.I0(p_7_in[12]),
+        .I1(W0[12]),
+        .O(\comp_low.C0[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_7 
+       (.I0(p_7_in[11]),
+        .I1(W0[11]),
+        .O(\comp_low.C0[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_8 
+       (.I0(p_7_in[10]),
+        .I1(W0[10]),
+        .O(\comp_low.C0[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[15]_i_9 
+       (.I0(p_7_in[9]),
+        .I1(W0[9]),
+        .O(\comp_low.C0[15]_i_9_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \comp_low.C0[17]_i_2 
+       (.I0(W0[15]),
+        .O(\comp_low.C0[17]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \comp_low.C0[17]_i_3 
+       (.I0(p_7_in[16]),
+        .I1(p_7_in[17]),
+        .O(\comp_low.C0[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[17]_i_4 
+       (.I0(W0[15]),
+        .I1(p_7_in[16]),
+        .O(\comp_low.C0[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_10 
+       (.I0(p_7_in[0]),
+        .I1(W0[0]),
+        .O(\comp_low.C0[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_11 
+       (.I0(N0[7]),
+        .I1(E0[7]),
+        .O(\comp_low.C0[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_12 
+       (.I0(N0[6]),
+        .I1(E0[6]),
+        .O(\comp_low.C0[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_13 
+       (.I0(N0[5]),
+        .I1(E0[5]),
+        .O(\comp_low.C0[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_14 
+       (.I0(N0[4]),
+        .I1(E0[4]),
+        .O(\comp_low.C0[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_15 
+       (.I0(N0[3]),
+        .I1(E0[3]),
+        .O(\comp_low.C0[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_16 
+       (.I0(N0[2]),
+        .I1(E0[2]),
+        .O(\comp_low.C0[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_17 
+       (.I0(N0[1]),
+        .I1(E0[1]),
+        .O(\comp_low.C0[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_18 
+       (.I0(N0[0]),
+        .I1(E0[0]),
+        .O(\comp_low.C0[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_3 
+       (.I0(p_7_in[7]),
+        .I1(W0[7]),
+        .O(\comp_low.C0[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_4 
+       (.I0(p_7_in[6]),
+        .I1(W0[6]),
+        .O(\comp_low.C0[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_5 
+       (.I0(p_7_in[5]),
+        .I1(W0[5]),
+        .O(\comp_low.C0[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_6 
+       (.I0(p_7_in[4]),
+        .I1(W0[4]),
+        .O(\comp_low.C0[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_7 
+       (.I0(p_7_in[3]),
+        .I1(W0[3]),
+        .O(\comp_low.C0[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_8 
+       (.I0(p_7_in[2]),
+        .I1(W0[2]),
+        .O(\comp_low.C0[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C0[7]_i_9 
+       (.I0(p_7_in[1]),
+        .I1(W0[1]),
+        .O(\comp_low.C0[7]_i_9_n_0 ));
   (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [0]),
+        .Q(C0[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [10]),
+        .Q(C0[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [11]),
+        .Q(C0[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [12]),
+        .Q(C0[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [13]),
+        .Q(C0[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [14]),
+        .Q(C0[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [15]),
+        .Q(C0[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C0_reg[15]_i_1 
+       (.CI(\comp_low.C0_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C0_reg[15]_i_1_n_0 ,\comp_low.C0_reg[15]_i_1_n_1 ,\comp_low.C0_reg[15]_i_1_n_2 ,\comp_low.C0_reg[15]_i_1_n_3 ,\comp_low.C0_reg[15]_i_1_n_4 ,\comp_low.C0_reg[15]_i_1_n_5 ,\comp_low.C0_reg[15]_i_1_n_6 ,\comp_low.C0_reg[15]_i_1_n_7 }),
+        .DI({W0[15],p_7_in[14:8]}),
+        .O(\comp_low.C0_reg0 [15:8]),
+        .S({\comp_low.C0[15]_i_3_n_0 ,\comp_low.C0[15]_i_4_n_0 ,\comp_low.C0[15]_i_5_n_0 ,\comp_low.C0[15]_i_6_n_0 ,\comp_low.C0[15]_i_7_n_0 ,\comp_low.C0[15]_i_8_n_0 ,\comp_low.C0[15]_i_9_n_0 ,\comp_low.C0[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C0_reg[15]_i_2 
+       (.CI(\comp_low.C0_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C0_reg[15]_i_2_n_0 ,\comp_low.C0_reg[15]_i_2_n_1 ,\comp_low.C0_reg[15]_i_2_n_2 ,\comp_low.C0_reg[15]_i_2_n_3 ,\comp_low.C0_reg[15]_i_2_n_4 ,\comp_low.C0_reg[15]_i_2_n_5 ,\comp_low.C0_reg[15]_i_2_n_6 ,\comp_low.C0_reg[15]_i_2_n_7 }),
+        .DI({\comp_low.C0[15]_i_11_n_0 ,N0[14:8]}),
+        .O(p_7_in[15:8]),
+        .S({\comp_low.C0[15]_i_12_n_0 ,\comp_low.C0[15]_i_13_n_0 ,\comp_low.C0[15]_i_14_n_0 ,\comp_low.C0[15]_i_15_n_0 ,\comp_low.C0[15]_i_16_n_0 ,\comp_low.C0[15]_i_17_n_0 ,\comp_low.C0[15]_i_18_n_0 ,\comp_low.C0[15]_i_19_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [16]),
+        .Q(C0[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [17]),
+        .Q(C0[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C0_reg[17]_i_1 
+       (.CI(\comp_low.C0_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C0_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C0_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C0[17]_i_2_n_0 }),
+        .O({\NLW_comp_low.C0_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C0_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C0[17]_i_3_n_0 ,\comp_low.C0[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C0_reg[17]_i_5 
+       (.CI(\comp_low.C0_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C0_reg[17]_i_5_CO_UNCONNECTED [7:1],\comp_low.C0_reg[17]_i_5_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_comp_low.C0_reg[17]_i_5_O_UNCONNECTED [7:2],p_7_in[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1,1'b1}));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [1]),
+        .Q(C0[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [2]),
+        .Q(C0[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [3]),
+        .Q(C0[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [4]),
+        .Q(C0[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [5]),
+        .Q(C0[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [6]),
+        .Q(C0[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [7]),
+        .Q(C0[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C0_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C0_reg[7]_i_1_n_0 ,\comp_low.C0_reg[7]_i_1_n_1 ,\comp_low.C0_reg[7]_i_1_n_2 ,\comp_low.C0_reg[7]_i_1_n_3 ,\comp_low.C0_reg[7]_i_1_n_4 ,\comp_low.C0_reg[7]_i_1_n_5 ,\comp_low.C0_reg[7]_i_1_n_6 ,\comp_low.C0_reg[7]_i_1_n_7 }),
+        .DI(p_7_in[7:0]),
+        .O(\comp_low.C0_reg0 [7:0]),
+        .S({\comp_low.C0[7]_i_3_n_0 ,\comp_low.C0[7]_i_4_n_0 ,\comp_low.C0[7]_i_5_n_0 ,\comp_low.C0[7]_i_6_n_0 ,\comp_low.C0[7]_i_7_n_0 ,\comp_low.C0[7]_i_8_n_0 ,\comp_low.C0[7]_i_9_n_0 ,\comp_low.C0[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C0_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C0_reg[7]_i_2_n_0 ,\comp_low.C0_reg[7]_i_2_n_1 ,\comp_low.C0_reg[7]_i_2_n_2 ,\comp_low.C0_reg[7]_i_2_n_3 ,\comp_low.C0_reg[7]_i_2_n_4 ,\comp_low.C0_reg[7]_i_2_n_5 ,\comp_low.C0_reg[7]_i_2_n_6 ,\comp_low.C0_reg[7]_i_2_n_7 }),
+        .DI(N0[7:0]),
+        .O(p_7_in[7:0]),
+        .S({\comp_low.C0[7]_i_11_n_0 ,\comp_low.C0[7]_i_12_n_0 ,\comp_low.C0[7]_i_13_n_0 ,\comp_low.C0[7]_i_14_n_0 ,\comp_low.C0[7]_i_15_n_0 ,\comp_low.C0[7]_i_16_n_0 ,\comp_low.C0[7]_i_17_n_0 ,\comp_low.C0[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [8]),
+        .Q(C0[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C0_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C0_reg0 [9]),
+        .Q(C0[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_10 
+       (.I0(p_6_in[8]),
+        .I1(W1[8]),
+        .O(\comp_low.C1[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_11 
+       (.I0(N1[15]),
+        .I1(E1[15]),
+        .O(\comp_low.C1[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_12 
+       (.I0(N1[14]),
+        .I1(E1[14]),
+        .O(\comp_low.C1[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_13 
+       (.I0(N1[13]),
+        .I1(E1[13]),
+        .O(\comp_low.C1[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_14 
+       (.I0(N1[12]),
+        .I1(E1[12]),
+        .O(\comp_low.C1[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_15 
+       (.I0(N1[11]),
+        .I1(E1[11]),
+        .O(\comp_low.C1[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_16 
+       (.I0(N1[10]),
+        .I1(E1[10]),
+        .O(\comp_low.C1[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_17 
+       (.I0(N1[9]),
+        .I1(E1[9]),
+        .O(\comp_low.C1[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_18 
+       (.I0(N1[8]),
+        .I1(E1[8]),
+        .O(\comp_low.C1[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_3 
+       (.I0(p_6_in[15]),
+        .I1(W1[15]),
+        .O(\comp_low.C1[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_4 
+       (.I0(p_6_in[14]),
+        .I1(W1[14]),
+        .O(\comp_low.C1[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_5 
+       (.I0(p_6_in[13]),
+        .I1(W1[13]),
+        .O(\comp_low.C1[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_6 
+       (.I0(p_6_in[12]),
+        .I1(W1[12]),
+        .O(\comp_low.C1[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_7 
+       (.I0(p_6_in[11]),
+        .I1(W1[11]),
+        .O(\comp_low.C1[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_8 
+       (.I0(p_6_in[10]),
+        .I1(W1[10]),
+        .O(\comp_low.C1[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[15]_i_9 
+       (.I0(p_6_in[9]),
+        .I1(W1[9]),
+        .O(\comp_low.C1[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[17]_i_3 
+       (.I0(p_6_in[17]),
+        .I1(W1[17]),
+        .O(\comp_low.C1[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[17]_i_4 
+       (.I0(p_6_in[16]),
+        .I1(W1[16]),
+        .O(\comp_low.C1[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[17]_i_5 
+       (.I0(N1[17]),
+        .I1(E1[17]),
+        .O(\comp_low.C1[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[17]_i_6 
+       (.I0(N1[16]),
+        .I1(E1[16]),
+        .O(\comp_low.C1[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_10 
+       (.I0(p_6_in[0]),
+        .I1(W1[0]),
+        .O(\comp_low.C1[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_11 
+       (.I0(N1[7]),
+        .I1(E1[7]),
+        .O(\comp_low.C1[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_12 
+       (.I0(N1[6]),
+        .I1(E1[6]),
+        .O(\comp_low.C1[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_13 
+       (.I0(N1[5]),
+        .I1(E1[5]),
+        .O(\comp_low.C1[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_14 
+       (.I0(N1[4]),
+        .I1(E1[4]),
+        .O(\comp_low.C1[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_15 
+       (.I0(N1[3]),
+        .I1(E1[3]),
+        .O(\comp_low.C1[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_16 
+       (.I0(N1[2]),
+        .I1(E1[2]),
+        .O(\comp_low.C1[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_17 
+       (.I0(N1[1]),
+        .I1(E1[1]),
+        .O(\comp_low.C1[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_18 
+       (.I0(N1[0]),
+        .I1(E1[0]),
+        .O(\comp_low.C1[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_3 
+       (.I0(p_6_in[7]),
+        .I1(W1[7]),
+        .O(\comp_low.C1[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_4 
+       (.I0(p_6_in[6]),
+        .I1(W1[6]),
+        .O(\comp_low.C1[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_5 
+       (.I0(p_6_in[5]),
+        .I1(W1[5]),
+        .O(\comp_low.C1[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_6 
+       (.I0(p_6_in[4]),
+        .I1(W1[4]),
+        .O(\comp_low.C1[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_7 
+       (.I0(p_6_in[3]),
+        .I1(W1[3]),
+        .O(\comp_low.C1[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_8 
+       (.I0(p_6_in[2]),
+        .I1(W1[2]),
+        .O(\comp_low.C1[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C1[7]_i_9 
+       (.I0(p_6_in[1]),
+        .I1(W1[1]),
+        .O(\comp_low.C1[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [0]),
+        .Q(C1[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [10]),
+        .Q(C1[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [11]),
+        .Q(C1[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [12]),
+        .Q(C1[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [13]),
+        .Q(C1[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [14]),
+        .Q(C1[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [15]),
+        .Q(C1[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C1_reg[15]_i_1 
+       (.CI(\comp_low.C1_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C1_reg[15]_i_1_n_0 ,\comp_low.C1_reg[15]_i_1_n_1 ,\comp_low.C1_reg[15]_i_1_n_2 ,\comp_low.C1_reg[15]_i_1_n_3 ,\comp_low.C1_reg[15]_i_1_n_4 ,\comp_low.C1_reg[15]_i_1_n_5 ,\comp_low.C1_reg[15]_i_1_n_6 ,\comp_low.C1_reg[15]_i_1_n_7 }),
+        .DI(p_6_in[15:8]),
+        .O(\comp_low.C1_reg0 [15:8]),
+        .S({\comp_low.C1[15]_i_3_n_0 ,\comp_low.C1[15]_i_4_n_0 ,\comp_low.C1[15]_i_5_n_0 ,\comp_low.C1[15]_i_6_n_0 ,\comp_low.C1[15]_i_7_n_0 ,\comp_low.C1[15]_i_8_n_0 ,\comp_low.C1[15]_i_9_n_0 ,\comp_low.C1[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C1_reg[15]_i_2 
+       (.CI(\comp_low.C1_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C1_reg[15]_i_2_n_0 ,\comp_low.C1_reg[15]_i_2_n_1 ,\comp_low.C1_reg[15]_i_2_n_2 ,\comp_low.C1_reg[15]_i_2_n_3 ,\comp_low.C1_reg[15]_i_2_n_4 ,\comp_low.C1_reg[15]_i_2_n_5 ,\comp_low.C1_reg[15]_i_2_n_6 ,\comp_low.C1_reg[15]_i_2_n_7 }),
+        .DI(N1[15:8]),
+        .O(p_6_in[15:8]),
+        .S({\comp_low.C1[15]_i_11_n_0 ,\comp_low.C1[15]_i_12_n_0 ,\comp_low.C1[15]_i_13_n_0 ,\comp_low.C1[15]_i_14_n_0 ,\comp_low.C1[15]_i_15_n_0 ,\comp_low.C1[15]_i_16_n_0 ,\comp_low.C1[15]_i_17_n_0 ,\comp_low.C1[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [16]),
+        .Q(C1[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [17]),
+        .Q(C1[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C1_reg[17]_i_1 
+       (.CI(\comp_low.C1_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C1_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C1_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_6_in[16]}),
+        .O({\NLW_comp_low.C1_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C1_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C1[17]_i_3_n_0 ,\comp_low.C1[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C1_reg[17]_i_2 
+       (.CI(\comp_low.C1_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C1_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C1_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N1[16]}),
+        .O({\NLW_comp_low.C1_reg[17]_i_2_O_UNCONNECTED [7:2],p_6_in[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C1[17]_i_5_n_0 ,\comp_low.C1[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [1]),
+        .Q(C1[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [2]),
+        .Q(C1[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [3]),
+        .Q(C1[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [4]),
+        .Q(C1[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [5]),
+        .Q(C1[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [6]),
+        .Q(C1[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [7]),
+        .Q(C1[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C1_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C1_reg[7]_i_1_n_0 ,\comp_low.C1_reg[7]_i_1_n_1 ,\comp_low.C1_reg[7]_i_1_n_2 ,\comp_low.C1_reg[7]_i_1_n_3 ,\comp_low.C1_reg[7]_i_1_n_4 ,\comp_low.C1_reg[7]_i_1_n_5 ,\comp_low.C1_reg[7]_i_1_n_6 ,\comp_low.C1_reg[7]_i_1_n_7 }),
+        .DI(p_6_in[7:0]),
+        .O(\comp_low.C1_reg0 [7:0]),
+        .S({\comp_low.C1[7]_i_3_n_0 ,\comp_low.C1[7]_i_4_n_0 ,\comp_low.C1[7]_i_5_n_0 ,\comp_low.C1[7]_i_6_n_0 ,\comp_low.C1[7]_i_7_n_0 ,\comp_low.C1[7]_i_8_n_0 ,\comp_low.C1[7]_i_9_n_0 ,\comp_low.C1[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C1_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C1_reg[7]_i_2_n_0 ,\comp_low.C1_reg[7]_i_2_n_1 ,\comp_low.C1_reg[7]_i_2_n_2 ,\comp_low.C1_reg[7]_i_2_n_3 ,\comp_low.C1_reg[7]_i_2_n_4 ,\comp_low.C1_reg[7]_i_2_n_5 ,\comp_low.C1_reg[7]_i_2_n_6 ,\comp_low.C1_reg[7]_i_2_n_7 }),
+        .DI(N1[7:0]),
+        .O(p_6_in[7:0]),
+        .S({\comp_low.C1[7]_i_11_n_0 ,\comp_low.C1[7]_i_12_n_0 ,\comp_low.C1[7]_i_13_n_0 ,\comp_low.C1[7]_i_14_n_0 ,\comp_low.C1[7]_i_15_n_0 ,\comp_low.C1[7]_i_16_n_0 ,\comp_low.C1[7]_i_17_n_0 ,\comp_low.C1[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [8]),
+        .Q(C1[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C1_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C1_reg0 [9]),
+        .Q(C1[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_10 
+       (.I0(p_5_in[8]),
+        .I1(W2[8]),
+        .O(\comp_low.C2[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_11 
+       (.I0(N2[15]),
+        .I1(E2[15]),
+        .O(\comp_low.C2[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_12 
+       (.I0(N2[14]),
+        .I1(E2[14]),
+        .O(\comp_low.C2[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_13 
+       (.I0(N2[13]),
+        .I1(E2[13]),
+        .O(\comp_low.C2[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_14 
+       (.I0(N2[12]),
+        .I1(E2[12]),
+        .O(\comp_low.C2[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_15 
+       (.I0(N2[11]),
+        .I1(E2[11]),
+        .O(\comp_low.C2[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_16 
+       (.I0(N2[10]),
+        .I1(E2[10]),
+        .O(\comp_low.C2[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_17 
+       (.I0(N2[9]),
+        .I1(E2[9]),
+        .O(\comp_low.C2[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_18 
+       (.I0(N2[8]),
+        .I1(E2[8]),
+        .O(\comp_low.C2[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_3 
+       (.I0(p_5_in[15]),
+        .I1(W2[15]),
+        .O(\comp_low.C2[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_4 
+       (.I0(p_5_in[14]),
+        .I1(W2[14]),
+        .O(\comp_low.C2[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_5 
+       (.I0(p_5_in[13]),
+        .I1(W2[13]),
+        .O(\comp_low.C2[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_6 
+       (.I0(p_5_in[12]),
+        .I1(W2[12]),
+        .O(\comp_low.C2[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_7 
+       (.I0(p_5_in[11]),
+        .I1(W2[11]),
+        .O(\comp_low.C2[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_8 
+       (.I0(p_5_in[10]),
+        .I1(W2[10]),
+        .O(\comp_low.C2[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[15]_i_9 
+       (.I0(p_5_in[9]),
+        .I1(W2[9]),
+        .O(\comp_low.C2[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[17]_i_3 
+       (.I0(p_5_in[17]),
+        .I1(W2[17]),
+        .O(\comp_low.C2[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[17]_i_4 
+       (.I0(p_5_in[16]),
+        .I1(W2[16]),
+        .O(\comp_low.C2[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[17]_i_5 
+       (.I0(N2[17]),
+        .I1(E2[17]),
+        .O(\comp_low.C2[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[17]_i_6 
+       (.I0(N2[16]),
+        .I1(E2[16]),
+        .O(\comp_low.C2[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_10 
+       (.I0(p_5_in[0]),
+        .I1(W2[0]),
+        .O(\comp_low.C2[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_11 
+       (.I0(N2[7]),
+        .I1(E2[7]),
+        .O(\comp_low.C2[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_12 
+       (.I0(N2[6]),
+        .I1(E2[6]),
+        .O(\comp_low.C2[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_13 
+       (.I0(N2[5]),
+        .I1(E2[5]),
+        .O(\comp_low.C2[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_14 
+       (.I0(N2[4]),
+        .I1(E2[4]),
+        .O(\comp_low.C2[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_15 
+       (.I0(N2[3]),
+        .I1(E2[3]),
+        .O(\comp_low.C2[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_16 
+       (.I0(N2[2]),
+        .I1(E2[2]),
+        .O(\comp_low.C2[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_17 
+       (.I0(N2[1]),
+        .I1(E2[1]),
+        .O(\comp_low.C2[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_18 
+       (.I0(N2[0]),
+        .I1(E2[0]),
+        .O(\comp_low.C2[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_3 
+       (.I0(p_5_in[7]),
+        .I1(W2[7]),
+        .O(\comp_low.C2[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_4 
+       (.I0(p_5_in[6]),
+        .I1(W2[6]),
+        .O(\comp_low.C2[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_5 
+       (.I0(p_5_in[5]),
+        .I1(W2[5]),
+        .O(\comp_low.C2[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_6 
+       (.I0(p_5_in[4]),
+        .I1(W2[4]),
+        .O(\comp_low.C2[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_7 
+       (.I0(p_5_in[3]),
+        .I1(W2[3]),
+        .O(\comp_low.C2[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_8 
+       (.I0(p_5_in[2]),
+        .I1(W2[2]),
+        .O(\comp_low.C2[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C2[7]_i_9 
+       (.I0(p_5_in[1]),
+        .I1(W2[1]),
+        .O(\comp_low.C2[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [0]),
+        .Q(C2[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [10]),
+        .Q(C2[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [11]),
+        .Q(C2[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [12]),
+        .Q(C2[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [13]),
+        .Q(C2[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [14]),
+        .Q(C2[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [15]),
+        .Q(C2[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C2_reg[15]_i_1 
+       (.CI(\comp_low.C2_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C2_reg[15]_i_1_n_0 ,\comp_low.C2_reg[15]_i_1_n_1 ,\comp_low.C2_reg[15]_i_1_n_2 ,\comp_low.C2_reg[15]_i_1_n_3 ,\comp_low.C2_reg[15]_i_1_n_4 ,\comp_low.C2_reg[15]_i_1_n_5 ,\comp_low.C2_reg[15]_i_1_n_6 ,\comp_low.C2_reg[15]_i_1_n_7 }),
+        .DI(p_5_in[15:8]),
+        .O(\comp_low.C2_reg0 [15:8]),
+        .S({\comp_low.C2[15]_i_3_n_0 ,\comp_low.C2[15]_i_4_n_0 ,\comp_low.C2[15]_i_5_n_0 ,\comp_low.C2[15]_i_6_n_0 ,\comp_low.C2[15]_i_7_n_0 ,\comp_low.C2[15]_i_8_n_0 ,\comp_low.C2[15]_i_9_n_0 ,\comp_low.C2[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C2_reg[15]_i_2 
+       (.CI(\comp_low.C2_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C2_reg[15]_i_2_n_0 ,\comp_low.C2_reg[15]_i_2_n_1 ,\comp_low.C2_reg[15]_i_2_n_2 ,\comp_low.C2_reg[15]_i_2_n_3 ,\comp_low.C2_reg[15]_i_2_n_4 ,\comp_low.C2_reg[15]_i_2_n_5 ,\comp_low.C2_reg[15]_i_2_n_6 ,\comp_low.C2_reg[15]_i_2_n_7 }),
+        .DI(N2[15:8]),
+        .O(p_5_in[15:8]),
+        .S({\comp_low.C2[15]_i_11_n_0 ,\comp_low.C2[15]_i_12_n_0 ,\comp_low.C2[15]_i_13_n_0 ,\comp_low.C2[15]_i_14_n_0 ,\comp_low.C2[15]_i_15_n_0 ,\comp_low.C2[15]_i_16_n_0 ,\comp_low.C2[15]_i_17_n_0 ,\comp_low.C2[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [16]),
+        .Q(C2[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [17]),
+        .Q(C2[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C2_reg[17]_i_1 
+       (.CI(\comp_low.C2_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C2_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C2_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_5_in[16]}),
+        .O({\NLW_comp_low.C2_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C2_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C2[17]_i_3_n_0 ,\comp_low.C2[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C2_reg[17]_i_2 
+       (.CI(\comp_low.C2_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C2_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C2_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N2[16]}),
+        .O({\NLW_comp_low.C2_reg[17]_i_2_O_UNCONNECTED [7:2],p_5_in[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C2[17]_i_5_n_0 ,\comp_low.C2[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [1]),
+        .Q(C2[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [2]),
+        .Q(C2[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [3]),
+        .Q(C2[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [4]),
+        .Q(C2[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [5]),
+        .Q(C2[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [6]),
+        .Q(C2[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [7]),
+        .Q(C2[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C2_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C2_reg[7]_i_1_n_0 ,\comp_low.C2_reg[7]_i_1_n_1 ,\comp_low.C2_reg[7]_i_1_n_2 ,\comp_low.C2_reg[7]_i_1_n_3 ,\comp_low.C2_reg[7]_i_1_n_4 ,\comp_low.C2_reg[7]_i_1_n_5 ,\comp_low.C2_reg[7]_i_1_n_6 ,\comp_low.C2_reg[7]_i_1_n_7 }),
+        .DI(p_5_in[7:0]),
+        .O(\comp_low.C2_reg0 [7:0]),
+        .S({\comp_low.C2[7]_i_3_n_0 ,\comp_low.C2[7]_i_4_n_0 ,\comp_low.C2[7]_i_5_n_0 ,\comp_low.C2[7]_i_6_n_0 ,\comp_low.C2[7]_i_7_n_0 ,\comp_low.C2[7]_i_8_n_0 ,\comp_low.C2[7]_i_9_n_0 ,\comp_low.C2[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C2_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C2_reg[7]_i_2_n_0 ,\comp_low.C2_reg[7]_i_2_n_1 ,\comp_low.C2_reg[7]_i_2_n_2 ,\comp_low.C2_reg[7]_i_2_n_3 ,\comp_low.C2_reg[7]_i_2_n_4 ,\comp_low.C2_reg[7]_i_2_n_5 ,\comp_low.C2_reg[7]_i_2_n_6 ,\comp_low.C2_reg[7]_i_2_n_7 }),
+        .DI(N2[7:0]),
+        .O(p_5_in[7:0]),
+        .S({\comp_low.C2[7]_i_11_n_0 ,\comp_low.C2[7]_i_12_n_0 ,\comp_low.C2[7]_i_13_n_0 ,\comp_low.C2[7]_i_14_n_0 ,\comp_low.C2[7]_i_15_n_0 ,\comp_low.C2[7]_i_16_n_0 ,\comp_low.C2[7]_i_17_n_0 ,\comp_low.C2[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [8]),
+        .Q(C2[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C2_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C2_reg0 [9]),
+        .Q(C2[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_10 
+       (.I0(p_4_in[8]),
+        .I1(W3[8]),
+        .O(\comp_low.C3[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_11 
+       (.I0(N3[15]),
+        .I1(E3[15]),
+        .O(\comp_low.C3[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_12 
+       (.I0(N3[14]),
+        .I1(E3[14]),
+        .O(\comp_low.C3[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_13 
+       (.I0(N3[13]),
+        .I1(E3[13]),
+        .O(\comp_low.C3[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_14 
+       (.I0(N3[12]),
+        .I1(E3[12]),
+        .O(\comp_low.C3[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_15 
+       (.I0(N3[11]),
+        .I1(E3[11]),
+        .O(\comp_low.C3[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_16 
+       (.I0(N3[10]),
+        .I1(E3[10]),
+        .O(\comp_low.C3[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_17 
+       (.I0(N3[9]),
+        .I1(E3[9]),
+        .O(\comp_low.C3[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_18 
+       (.I0(N3[8]),
+        .I1(E3[8]),
+        .O(\comp_low.C3[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_3 
+       (.I0(p_4_in[15]),
+        .I1(W3[15]),
+        .O(\comp_low.C3[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_4 
+       (.I0(p_4_in[14]),
+        .I1(W3[14]),
+        .O(\comp_low.C3[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_5 
+       (.I0(p_4_in[13]),
+        .I1(W3[13]),
+        .O(\comp_low.C3[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_6 
+       (.I0(p_4_in[12]),
+        .I1(W3[12]),
+        .O(\comp_low.C3[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_7 
+       (.I0(p_4_in[11]),
+        .I1(W3[11]),
+        .O(\comp_low.C3[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_8 
+       (.I0(p_4_in[10]),
+        .I1(W3[10]),
+        .O(\comp_low.C3[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[15]_i_9 
+       (.I0(p_4_in[9]),
+        .I1(W3[9]),
+        .O(\comp_low.C3[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[17]_i_3 
+       (.I0(p_4_in[17]),
+        .I1(W3[17]),
+        .O(\comp_low.C3[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[17]_i_4 
+       (.I0(p_4_in[16]),
+        .I1(W3[16]),
+        .O(\comp_low.C3[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[17]_i_5 
+       (.I0(N3[17]),
+        .I1(E3[17]),
+        .O(\comp_low.C3[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[17]_i_6 
+       (.I0(N3[16]),
+        .I1(E3[16]),
+        .O(\comp_low.C3[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_10 
+       (.I0(p_4_in[0]),
+        .I1(W3[0]),
+        .O(\comp_low.C3[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_11 
+       (.I0(N3[7]),
+        .I1(E3[7]),
+        .O(\comp_low.C3[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_12 
+       (.I0(N3[6]),
+        .I1(E3[6]),
+        .O(\comp_low.C3[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_13 
+       (.I0(N3[5]),
+        .I1(E3[5]),
+        .O(\comp_low.C3[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_14 
+       (.I0(N3[4]),
+        .I1(E3[4]),
+        .O(\comp_low.C3[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_15 
+       (.I0(N3[3]),
+        .I1(E3[3]),
+        .O(\comp_low.C3[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_16 
+       (.I0(N3[2]),
+        .I1(E3[2]),
+        .O(\comp_low.C3[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_17 
+       (.I0(N3[1]),
+        .I1(E3[1]),
+        .O(\comp_low.C3[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_18 
+       (.I0(N3[0]),
+        .I1(E3[0]),
+        .O(\comp_low.C3[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_3 
+       (.I0(p_4_in[7]),
+        .I1(W3[7]),
+        .O(\comp_low.C3[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_4 
+       (.I0(p_4_in[6]),
+        .I1(W3[6]),
+        .O(\comp_low.C3[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_5 
+       (.I0(p_4_in[5]),
+        .I1(W3[5]),
+        .O(\comp_low.C3[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_6 
+       (.I0(p_4_in[4]),
+        .I1(W3[4]),
+        .O(\comp_low.C3[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_7 
+       (.I0(p_4_in[3]),
+        .I1(W3[3]),
+        .O(\comp_low.C3[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_8 
+       (.I0(p_4_in[2]),
+        .I1(W3[2]),
+        .O(\comp_low.C3[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C3[7]_i_9 
+       (.I0(p_4_in[1]),
+        .I1(W3[1]),
+        .O(\comp_low.C3[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [0]),
+        .Q(C3[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [10]),
+        .Q(C3[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [11]),
+        .Q(C3[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [12]),
+        .Q(C3[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [13]),
+        .Q(C3[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [14]),
+        .Q(C3[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [15]),
+        .Q(C3[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C3_reg[15]_i_1 
+       (.CI(\comp_low.C3_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C3_reg[15]_i_1_n_0 ,\comp_low.C3_reg[15]_i_1_n_1 ,\comp_low.C3_reg[15]_i_1_n_2 ,\comp_low.C3_reg[15]_i_1_n_3 ,\comp_low.C3_reg[15]_i_1_n_4 ,\comp_low.C3_reg[15]_i_1_n_5 ,\comp_low.C3_reg[15]_i_1_n_6 ,\comp_low.C3_reg[15]_i_1_n_7 }),
+        .DI(p_4_in[15:8]),
+        .O(\comp_low.C3_reg0 [15:8]),
+        .S({\comp_low.C3[15]_i_3_n_0 ,\comp_low.C3[15]_i_4_n_0 ,\comp_low.C3[15]_i_5_n_0 ,\comp_low.C3[15]_i_6_n_0 ,\comp_low.C3[15]_i_7_n_0 ,\comp_low.C3[15]_i_8_n_0 ,\comp_low.C3[15]_i_9_n_0 ,\comp_low.C3[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C3_reg[15]_i_2 
+       (.CI(\comp_low.C3_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C3_reg[15]_i_2_n_0 ,\comp_low.C3_reg[15]_i_2_n_1 ,\comp_low.C3_reg[15]_i_2_n_2 ,\comp_low.C3_reg[15]_i_2_n_3 ,\comp_low.C3_reg[15]_i_2_n_4 ,\comp_low.C3_reg[15]_i_2_n_5 ,\comp_low.C3_reg[15]_i_2_n_6 ,\comp_low.C3_reg[15]_i_2_n_7 }),
+        .DI(N3[15:8]),
+        .O(p_4_in[15:8]),
+        .S({\comp_low.C3[15]_i_11_n_0 ,\comp_low.C3[15]_i_12_n_0 ,\comp_low.C3[15]_i_13_n_0 ,\comp_low.C3[15]_i_14_n_0 ,\comp_low.C3[15]_i_15_n_0 ,\comp_low.C3[15]_i_16_n_0 ,\comp_low.C3[15]_i_17_n_0 ,\comp_low.C3[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [16]),
+        .Q(C3[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [17]),
+        .Q(C3[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C3_reg[17]_i_1 
+       (.CI(\comp_low.C3_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C3_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C3_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_4_in[16]}),
+        .O({\NLW_comp_low.C3_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C3_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C3[17]_i_3_n_0 ,\comp_low.C3[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C3_reg[17]_i_2 
+       (.CI(\comp_low.C3_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C3_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C3_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N3[16]}),
+        .O({\NLW_comp_low.C3_reg[17]_i_2_O_UNCONNECTED [7:2],p_4_in[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C3[17]_i_5_n_0 ,\comp_low.C3[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [1]),
+        .Q(C3[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [2]),
+        .Q(C3[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [3]),
+        .Q(C3[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [4]),
+        .Q(C3[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [5]),
+        .Q(C3[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [6]),
+        .Q(C3[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [7]),
+        .Q(C3[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C3_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C3_reg[7]_i_1_n_0 ,\comp_low.C3_reg[7]_i_1_n_1 ,\comp_low.C3_reg[7]_i_1_n_2 ,\comp_low.C3_reg[7]_i_1_n_3 ,\comp_low.C3_reg[7]_i_1_n_4 ,\comp_low.C3_reg[7]_i_1_n_5 ,\comp_low.C3_reg[7]_i_1_n_6 ,\comp_low.C3_reg[7]_i_1_n_7 }),
+        .DI(p_4_in[7:0]),
+        .O(\comp_low.C3_reg0 [7:0]),
+        .S({\comp_low.C3[7]_i_3_n_0 ,\comp_low.C3[7]_i_4_n_0 ,\comp_low.C3[7]_i_5_n_0 ,\comp_low.C3[7]_i_6_n_0 ,\comp_low.C3[7]_i_7_n_0 ,\comp_low.C3[7]_i_8_n_0 ,\comp_low.C3[7]_i_9_n_0 ,\comp_low.C3[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C3_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C3_reg[7]_i_2_n_0 ,\comp_low.C3_reg[7]_i_2_n_1 ,\comp_low.C3_reg[7]_i_2_n_2 ,\comp_low.C3_reg[7]_i_2_n_3 ,\comp_low.C3_reg[7]_i_2_n_4 ,\comp_low.C3_reg[7]_i_2_n_5 ,\comp_low.C3_reg[7]_i_2_n_6 ,\comp_low.C3_reg[7]_i_2_n_7 }),
+        .DI(N3[7:0]),
+        .O(p_4_in[7:0]),
+        .S({\comp_low.C3[7]_i_11_n_0 ,\comp_low.C3[7]_i_12_n_0 ,\comp_low.C3[7]_i_13_n_0 ,\comp_low.C3[7]_i_14_n_0 ,\comp_low.C3[7]_i_15_n_0 ,\comp_low.C3[7]_i_16_n_0 ,\comp_low.C3[7]_i_17_n_0 ,\comp_low.C3[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [8]),
+        .Q(C3[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C3_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C3_reg0 [9]),
+        .Q(C3[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_10 
+       (.I0(p_3_in[8]),
+        .I1(W4[8]),
+        .O(\comp_low.C4[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_11 
+       (.I0(N4[15]),
+        .I1(E4[15]),
+        .O(\comp_low.C4[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_12 
+       (.I0(N4[14]),
+        .I1(E4[14]),
+        .O(\comp_low.C4[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_13 
+       (.I0(N4[13]),
+        .I1(E4[13]),
+        .O(\comp_low.C4[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_14 
+       (.I0(N4[12]),
+        .I1(E4[12]),
+        .O(\comp_low.C4[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_15 
+       (.I0(N4[11]),
+        .I1(E4[11]),
+        .O(\comp_low.C4[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_16 
+       (.I0(N4[10]),
+        .I1(E4[10]),
+        .O(\comp_low.C4[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_17 
+       (.I0(N4[9]),
+        .I1(E4[9]),
+        .O(\comp_low.C4[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_18 
+       (.I0(N4[8]),
+        .I1(E4[8]),
+        .O(\comp_low.C4[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_3 
+       (.I0(p_3_in[15]),
+        .I1(W4[15]),
+        .O(\comp_low.C4[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_4 
+       (.I0(p_3_in[14]),
+        .I1(W4[14]),
+        .O(\comp_low.C4[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_5 
+       (.I0(p_3_in[13]),
+        .I1(W4[13]),
+        .O(\comp_low.C4[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_6 
+       (.I0(p_3_in[12]),
+        .I1(W4[12]),
+        .O(\comp_low.C4[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_7 
+       (.I0(p_3_in[11]),
+        .I1(W4[11]),
+        .O(\comp_low.C4[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_8 
+       (.I0(p_3_in[10]),
+        .I1(W4[10]),
+        .O(\comp_low.C4[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[15]_i_9 
+       (.I0(p_3_in[9]),
+        .I1(W4[9]),
+        .O(\comp_low.C4[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[17]_i_3 
+       (.I0(p_3_in[17]),
+        .I1(W4[17]),
+        .O(\comp_low.C4[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[17]_i_4 
+       (.I0(p_3_in[16]),
+        .I1(W4[16]),
+        .O(\comp_low.C4[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[17]_i_5 
+       (.I0(N4[17]),
+        .I1(E4[17]),
+        .O(\comp_low.C4[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[17]_i_6 
+       (.I0(N4[16]),
+        .I1(E4[16]),
+        .O(\comp_low.C4[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_10 
+       (.I0(p_3_in[0]),
+        .I1(W4[0]),
+        .O(\comp_low.C4[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_11 
+       (.I0(N4[7]),
+        .I1(E4[7]),
+        .O(\comp_low.C4[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_12 
+       (.I0(N4[6]),
+        .I1(E4[6]),
+        .O(\comp_low.C4[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_13 
+       (.I0(N4[5]),
+        .I1(E4[5]),
+        .O(\comp_low.C4[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_14 
+       (.I0(N4[4]),
+        .I1(E4[4]),
+        .O(\comp_low.C4[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_15 
+       (.I0(N4[3]),
+        .I1(E4[3]),
+        .O(\comp_low.C4[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_16 
+       (.I0(N4[2]),
+        .I1(E4[2]),
+        .O(\comp_low.C4[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_17 
+       (.I0(N4[1]),
+        .I1(E4[1]),
+        .O(\comp_low.C4[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_18 
+       (.I0(N4[0]),
+        .I1(E4[0]),
+        .O(\comp_low.C4[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_3 
+       (.I0(p_3_in[7]),
+        .I1(W4[7]),
+        .O(\comp_low.C4[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_4 
+       (.I0(p_3_in[6]),
+        .I1(W4[6]),
+        .O(\comp_low.C4[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_5 
+       (.I0(p_3_in[5]),
+        .I1(W4[5]),
+        .O(\comp_low.C4[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_6 
+       (.I0(p_3_in[4]),
+        .I1(W4[4]),
+        .O(\comp_low.C4[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_7 
+       (.I0(p_3_in[3]),
+        .I1(W4[3]),
+        .O(\comp_low.C4[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_8 
+       (.I0(p_3_in[2]),
+        .I1(W4[2]),
+        .O(\comp_low.C4[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C4[7]_i_9 
+       (.I0(p_3_in[1]),
+        .I1(W4[1]),
+        .O(\comp_low.C4[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [0]),
+        .Q(C4[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [10]),
+        .Q(C4[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [11]),
+        .Q(C4[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [12]),
+        .Q(C4[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [13]),
+        .Q(C4[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [14]),
+        .Q(C4[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [15]),
+        .Q(C4[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C4_reg[15]_i_1 
+       (.CI(\comp_low.C4_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C4_reg[15]_i_1_n_0 ,\comp_low.C4_reg[15]_i_1_n_1 ,\comp_low.C4_reg[15]_i_1_n_2 ,\comp_low.C4_reg[15]_i_1_n_3 ,\comp_low.C4_reg[15]_i_1_n_4 ,\comp_low.C4_reg[15]_i_1_n_5 ,\comp_low.C4_reg[15]_i_1_n_6 ,\comp_low.C4_reg[15]_i_1_n_7 }),
+        .DI(p_3_in[15:8]),
+        .O(\comp_low.C4_reg0 [15:8]),
+        .S({\comp_low.C4[15]_i_3_n_0 ,\comp_low.C4[15]_i_4_n_0 ,\comp_low.C4[15]_i_5_n_0 ,\comp_low.C4[15]_i_6_n_0 ,\comp_low.C4[15]_i_7_n_0 ,\comp_low.C4[15]_i_8_n_0 ,\comp_low.C4[15]_i_9_n_0 ,\comp_low.C4[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C4_reg[15]_i_2 
+       (.CI(\comp_low.C4_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C4_reg[15]_i_2_n_0 ,\comp_low.C4_reg[15]_i_2_n_1 ,\comp_low.C4_reg[15]_i_2_n_2 ,\comp_low.C4_reg[15]_i_2_n_3 ,\comp_low.C4_reg[15]_i_2_n_4 ,\comp_low.C4_reg[15]_i_2_n_5 ,\comp_low.C4_reg[15]_i_2_n_6 ,\comp_low.C4_reg[15]_i_2_n_7 }),
+        .DI(N4[15:8]),
+        .O(p_3_in[15:8]),
+        .S({\comp_low.C4[15]_i_11_n_0 ,\comp_low.C4[15]_i_12_n_0 ,\comp_low.C4[15]_i_13_n_0 ,\comp_low.C4[15]_i_14_n_0 ,\comp_low.C4[15]_i_15_n_0 ,\comp_low.C4[15]_i_16_n_0 ,\comp_low.C4[15]_i_17_n_0 ,\comp_low.C4[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [16]),
+        .Q(C4[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [17]),
+        .Q(C4[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C4_reg[17]_i_1 
+       (.CI(\comp_low.C4_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C4_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C4_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_3_in[16]}),
+        .O({\NLW_comp_low.C4_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C4_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C4[17]_i_3_n_0 ,\comp_low.C4[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C4_reg[17]_i_2 
+       (.CI(\comp_low.C4_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C4_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C4_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N4[16]}),
+        .O({\NLW_comp_low.C4_reg[17]_i_2_O_UNCONNECTED [7:2],p_3_in[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C4[17]_i_5_n_0 ,\comp_low.C4[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [1]),
+        .Q(C4[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [2]),
+        .Q(C4[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [3]),
+        .Q(C4[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [4]),
+        .Q(C4[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [5]),
+        .Q(C4[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [6]),
+        .Q(C4[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [7]),
+        .Q(C4[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C4_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C4_reg[7]_i_1_n_0 ,\comp_low.C4_reg[7]_i_1_n_1 ,\comp_low.C4_reg[7]_i_1_n_2 ,\comp_low.C4_reg[7]_i_1_n_3 ,\comp_low.C4_reg[7]_i_1_n_4 ,\comp_low.C4_reg[7]_i_1_n_5 ,\comp_low.C4_reg[7]_i_1_n_6 ,\comp_low.C4_reg[7]_i_1_n_7 }),
+        .DI(p_3_in[7:0]),
+        .O(\comp_low.C4_reg0 [7:0]),
+        .S({\comp_low.C4[7]_i_3_n_0 ,\comp_low.C4[7]_i_4_n_0 ,\comp_low.C4[7]_i_5_n_0 ,\comp_low.C4[7]_i_6_n_0 ,\comp_low.C4[7]_i_7_n_0 ,\comp_low.C4[7]_i_8_n_0 ,\comp_low.C4[7]_i_9_n_0 ,\comp_low.C4[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C4_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C4_reg[7]_i_2_n_0 ,\comp_low.C4_reg[7]_i_2_n_1 ,\comp_low.C4_reg[7]_i_2_n_2 ,\comp_low.C4_reg[7]_i_2_n_3 ,\comp_low.C4_reg[7]_i_2_n_4 ,\comp_low.C4_reg[7]_i_2_n_5 ,\comp_low.C4_reg[7]_i_2_n_6 ,\comp_low.C4_reg[7]_i_2_n_7 }),
+        .DI(N4[7:0]),
+        .O(p_3_in[7:0]),
+        .S({\comp_low.C4[7]_i_11_n_0 ,\comp_low.C4[7]_i_12_n_0 ,\comp_low.C4[7]_i_13_n_0 ,\comp_low.C4[7]_i_14_n_0 ,\comp_low.C4[7]_i_15_n_0 ,\comp_low.C4[7]_i_16_n_0 ,\comp_low.C4[7]_i_17_n_0 ,\comp_low.C4[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [8]),
+        .Q(C4[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C4_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C4_reg0 [9]),
+        .Q(C4[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_10 
+       (.I0(p_2_in[8]),
+        .I1(W5[8]),
+        .O(\comp_low.C5[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_11 
+       (.I0(N5[15]),
+        .I1(E5[15]),
+        .O(\comp_low.C5[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_12 
+       (.I0(N5[14]),
+        .I1(E5[14]),
+        .O(\comp_low.C5[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_13 
+       (.I0(N5[13]),
+        .I1(E5[13]),
+        .O(\comp_low.C5[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_14 
+       (.I0(N5[12]),
+        .I1(E5[12]),
+        .O(\comp_low.C5[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_15 
+       (.I0(N5[11]),
+        .I1(E5[11]),
+        .O(\comp_low.C5[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_16 
+       (.I0(N5[10]),
+        .I1(E5[10]),
+        .O(\comp_low.C5[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_17 
+       (.I0(N5[9]),
+        .I1(E5[9]),
+        .O(\comp_low.C5[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_18 
+       (.I0(N5[8]),
+        .I1(E5[8]),
+        .O(\comp_low.C5[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_3 
+       (.I0(p_2_in[15]),
+        .I1(W5[15]),
+        .O(\comp_low.C5[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_4 
+       (.I0(p_2_in[14]),
+        .I1(W5[14]),
+        .O(\comp_low.C5[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_5 
+       (.I0(p_2_in[13]),
+        .I1(W5[13]),
+        .O(\comp_low.C5[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_6 
+       (.I0(p_2_in[12]),
+        .I1(W5[12]),
+        .O(\comp_low.C5[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_7 
+       (.I0(p_2_in[11]),
+        .I1(W5[11]),
+        .O(\comp_low.C5[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_8 
+       (.I0(p_2_in[10]),
+        .I1(W5[10]),
+        .O(\comp_low.C5[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[15]_i_9 
+       (.I0(p_2_in[9]),
+        .I1(W5[9]),
+        .O(\comp_low.C5[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[17]_i_3 
+       (.I0(p_2_in[17]),
+        .I1(W5[17]),
+        .O(\comp_low.C5[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[17]_i_4 
+       (.I0(p_2_in[16]),
+        .I1(W5[16]),
+        .O(\comp_low.C5[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[17]_i_5 
+       (.I0(N5[17]),
+        .I1(E5[17]),
+        .O(\comp_low.C5[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[17]_i_6 
+       (.I0(N5[16]),
+        .I1(E5[16]),
+        .O(\comp_low.C5[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_10 
+       (.I0(p_2_in[0]),
+        .I1(W5[0]),
+        .O(\comp_low.C5[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_11 
+       (.I0(N5[7]),
+        .I1(E5[7]),
+        .O(\comp_low.C5[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_12 
+       (.I0(N5[6]),
+        .I1(E5[6]),
+        .O(\comp_low.C5[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_13 
+       (.I0(N5[5]),
+        .I1(E5[5]),
+        .O(\comp_low.C5[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_14 
+       (.I0(N5[4]),
+        .I1(E5[4]),
+        .O(\comp_low.C5[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_15 
+       (.I0(N5[3]),
+        .I1(E5[3]),
+        .O(\comp_low.C5[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_16 
+       (.I0(N5[2]),
+        .I1(E5[2]),
+        .O(\comp_low.C5[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_17 
+       (.I0(N5[1]),
+        .I1(E5[1]),
+        .O(\comp_low.C5[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_18 
+       (.I0(N5[0]),
+        .I1(E5[0]),
+        .O(\comp_low.C5[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_3 
+       (.I0(p_2_in[7]),
+        .I1(W5[7]),
+        .O(\comp_low.C5[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_4 
+       (.I0(p_2_in[6]),
+        .I1(W5[6]),
+        .O(\comp_low.C5[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_5 
+       (.I0(p_2_in[5]),
+        .I1(W5[5]),
+        .O(\comp_low.C5[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_6 
+       (.I0(p_2_in[4]),
+        .I1(W5[4]),
+        .O(\comp_low.C5[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_7 
+       (.I0(p_2_in[3]),
+        .I1(W5[3]),
+        .O(\comp_low.C5[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_8 
+       (.I0(p_2_in[2]),
+        .I1(W5[2]),
+        .O(\comp_low.C5[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C5[7]_i_9 
+       (.I0(p_2_in[1]),
+        .I1(W5[1]),
+        .O(\comp_low.C5[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [0]),
+        .Q(C5[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [10]),
+        .Q(C5[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [11]),
+        .Q(C5[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [12]),
+        .Q(C5[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [13]),
+        .Q(C5[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [14]),
+        .Q(C5[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [15]),
+        .Q(C5[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C5_reg[15]_i_1 
+       (.CI(\comp_low.C5_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C5_reg[15]_i_1_n_0 ,\comp_low.C5_reg[15]_i_1_n_1 ,\comp_low.C5_reg[15]_i_1_n_2 ,\comp_low.C5_reg[15]_i_1_n_3 ,\comp_low.C5_reg[15]_i_1_n_4 ,\comp_low.C5_reg[15]_i_1_n_5 ,\comp_low.C5_reg[15]_i_1_n_6 ,\comp_low.C5_reg[15]_i_1_n_7 }),
+        .DI(p_2_in[15:8]),
+        .O(\comp_low.C5_reg0 [15:8]),
+        .S({\comp_low.C5[15]_i_3_n_0 ,\comp_low.C5[15]_i_4_n_0 ,\comp_low.C5[15]_i_5_n_0 ,\comp_low.C5[15]_i_6_n_0 ,\comp_low.C5[15]_i_7_n_0 ,\comp_low.C5[15]_i_8_n_0 ,\comp_low.C5[15]_i_9_n_0 ,\comp_low.C5[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C5_reg[15]_i_2 
+       (.CI(\comp_low.C5_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C5_reg[15]_i_2_n_0 ,\comp_low.C5_reg[15]_i_2_n_1 ,\comp_low.C5_reg[15]_i_2_n_2 ,\comp_low.C5_reg[15]_i_2_n_3 ,\comp_low.C5_reg[15]_i_2_n_4 ,\comp_low.C5_reg[15]_i_2_n_5 ,\comp_low.C5_reg[15]_i_2_n_6 ,\comp_low.C5_reg[15]_i_2_n_7 }),
+        .DI(N5[15:8]),
+        .O(p_2_in[15:8]),
+        .S({\comp_low.C5[15]_i_11_n_0 ,\comp_low.C5[15]_i_12_n_0 ,\comp_low.C5[15]_i_13_n_0 ,\comp_low.C5[15]_i_14_n_0 ,\comp_low.C5[15]_i_15_n_0 ,\comp_low.C5[15]_i_16_n_0 ,\comp_low.C5[15]_i_17_n_0 ,\comp_low.C5[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [16]),
+        .Q(C5[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [17]),
+        .Q(C5[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C5_reg[17]_i_1 
+       (.CI(\comp_low.C5_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C5_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C5_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_2_in[16]}),
+        .O({\NLW_comp_low.C5_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C5_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C5[17]_i_3_n_0 ,\comp_low.C5[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C5_reg[17]_i_2 
+       (.CI(\comp_low.C5_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C5_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C5_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N5[16]}),
+        .O({\NLW_comp_low.C5_reg[17]_i_2_O_UNCONNECTED [7:2],p_2_in[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C5[17]_i_5_n_0 ,\comp_low.C5[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [1]),
+        .Q(C5[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [2]),
+        .Q(C5[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [3]),
+        .Q(C5[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [4]),
+        .Q(C5[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [5]),
+        .Q(C5[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [6]),
+        .Q(C5[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [7]),
+        .Q(C5[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C5_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C5_reg[7]_i_1_n_0 ,\comp_low.C5_reg[7]_i_1_n_1 ,\comp_low.C5_reg[7]_i_1_n_2 ,\comp_low.C5_reg[7]_i_1_n_3 ,\comp_low.C5_reg[7]_i_1_n_4 ,\comp_low.C5_reg[7]_i_1_n_5 ,\comp_low.C5_reg[7]_i_1_n_6 ,\comp_low.C5_reg[7]_i_1_n_7 }),
+        .DI(p_2_in[7:0]),
+        .O(\comp_low.C5_reg0 [7:0]),
+        .S({\comp_low.C5[7]_i_3_n_0 ,\comp_low.C5[7]_i_4_n_0 ,\comp_low.C5[7]_i_5_n_0 ,\comp_low.C5[7]_i_6_n_0 ,\comp_low.C5[7]_i_7_n_0 ,\comp_low.C5[7]_i_8_n_0 ,\comp_low.C5[7]_i_9_n_0 ,\comp_low.C5[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C5_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C5_reg[7]_i_2_n_0 ,\comp_low.C5_reg[7]_i_2_n_1 ,\comp_low.C5_reg[7]_i_2_n_2 ,\comp_low.C5_reg[7]_i_2_n_3 ,\comp_low.C5_reg[7]_i_2_n_4 ,\comp_low.C5_reg[7]_i_2_n_5 ,\comp_low.C5_reg[7]_i_2_n_6 ,\comp_low.C5_reg[7]_i_2_n_7 }),
+        .DI(N5[7:0]),
+        .O(p_2_in[7:0]),
+        .S({\comp_low.C5[7]_i_11_n_0 ,\comp_low.C5[7]_i_12_n_0 ,\comp_low.C5[7]_i_13_n_0 ,\comp_low.C5[7]_i_14_n_0 ,\comp_low.C5[7]_i_15_n_0 ,\comp_low.C5[7]_i_16_n_0 ,\comp_low.C5[7]_i_17_n_0 ,\comp_low.C5[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [8]),
+        .Q(C5[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C5_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C5_reg0 [9]),
+        .Q(C5[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_10 
+       (.I0(p_1_in__0[8]),
+        .I1(W6[8]),
+        .O(\comp_low.C6[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_11 
+       (.I0(N6[15]),
+        .I1(E6[15]),
+        .O(\comp_low.C6[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_12 
+       (.I0(N6[14]),
+        .I1(E6[14]),
+        .O(\comp_low.C6[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_13 
+       (.I0(N6[13]),
+        .I1(E6[13]),
+        .O(\comp_low.C6[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_14 
+       (.I0(N6[12]),
+        .I1(E6[12]),
+        .O(\comp_low.C6[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_15 
+       (.I0(N6[11]),
+        .I1(E6[11]),
+        .O(\comp_low.C6[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_16 
+       (.I0(N6[10]),
+        .I1(E6[10]),
+        .O(\comp_low.C6[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_17 
+       (.I0(N6[9]),
+        .I1(E6[9]),
+        .O(\comp_low.C6[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_18 
+       (.I0(N6[8]),
+        .I1(E6[8]),
+        .O(\comp_low.C6[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_3 
+       (.I0(p_1_in__0[15]),
+        .I1(W6[15]),
+        .O(\comp_low.C6[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_4 
+       (.I0(p_1_in__0[14]),
+        .I1(W6[14]),
+        .O(\comp_low.C6[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_5 
+       (.I0(p_1_in__0[13]),
+        .I1(W6[13]),
+        .O(\comp_low.C6[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_6 
+       (.I0(p_1_in__0[12]),
+        .I1(W6[12]),
+        .O(\comp_low.C6[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_7 
+       (.I0(p_1_in__0[11]),
+        .I1(W6[11]),
+        .O(\comp_low.C6[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_8 
+       (.I0(p_1_in__0[10]),
+        .I1(W6[10]),
+        .O(\comp_low.C6[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[15]_i_9 
+       (.I0(p_1_in__0[9]),
+        .I1(W6[9]),
+        .O(\comp_low.C6[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[17]_i_3 
+       (.I0(p_1_in__0[17]),
+        .I1(W6[17]),
+        .O(\comp_low.C6[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[17]_i_4 
+       (.I0(p_1_in__0[16]),
+        .I1(W6[16]),
+        .O(\comp_low.C6[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[17]_i_5 
+       (.I0(N6[17]),
+        .I1(E6[17]),
+        .O(\comp_low.C6[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[17]_i_6 
+       (.I0(N6[16]),
+        .I1(E6[16]),
+        .O(\comp_low.C6[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_10 
+       (.I0(p_1_in__0[0]),
+        .I1(W6[0]),
+        .O(\comp_low.C6[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_11 
+       (.I0(N6[7]),
+        .I1(E6[7]),
+        .O(\comp_low.C6[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_12 
+       (.I0(N6[6]),
+        .I1(E6[6]),
+        .O(\comp_low.C6[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_13 
+       (.I0(N6[5]),
+        .I1(E6[5]),
+        .O(\comp_low.C6[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_14 
+       (.I0(N6[4]),
+        .I1(E6[4]),
+        .O(\comp_low.C6[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_15 
+       (.I0(N6[3]),
+        .I1(E6[3]),
+        .O(\comp_low.C6[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_16 
+       (.I0(N6[2]),
+        .I1(E6[2]),
+        .O(\comp_low.C6[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_17 
+       (.I0(N6[1]),
+        .I1(E6[1]),
+        .O(\comp_low.C6[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_18 
+       (.I0(N6[0]),
+        .I1(E6[0]),
+        .O(\comp_low.C6[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_3 
+       (.I0(p_1_in__0[7]),
+        .I1(W6[7]),
+        .O(\comp_low.C6[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_4 
+       (.I0(p_1_in__0[6]),
+        .I1(W6[6]),
+        .O(\comp_low.C6[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_5 
+       (.I0(p_1_in__0[5]),
+        .I1(W6[5]),
+        .O(\comp_low.C6[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_6 
+       (.I0(p_1_in__0[4]),
+        .I1(W6[4]),
+        .O(\comp_low.C6[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_7 
+       (.I0(p_1_in__0[3]),
+        .I1(W6[3]),
+        .O(\comp_low.C6[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_8 
+       (.I0(p_1_in__0[2]),
+        .I1(W6[2]),
+        .O(\comp_low.C6[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C6[7]_i_9 
+       (.I0(p_1_in__0[1]),
+        .I1(W6[1]),
+        .O(\comp_low.C6[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [0]),
+        .Q(C6[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [10]),
+        .Q(C6[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [11]),
+        .Q(C6[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [12]),
+        .Q(C6[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [13]),
+        .Q(C6[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [14]),
+        .Q(C6[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [15]),
+        .Q(C6[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C6_reg[15]_i_1 
+       (.CI(\comp_low.C6_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C6_reg[15]_i_1_n_0 ,\comp_low.C6_reg[15]_i_1_n_1 ,\comp_low.C6_reg[15]_i_1_n_2 ,\comp_low.C6_reg[15]_i_1_n_3 ,\comp_low.C6_reg[15]_i_1_n_4 ,\comp_low.C6_reg[15]_i_1_n_5 ,\comp_low.C6_reg[15]_i_1_n_6 ,\comp_low.C6_reg[15]_i_1_n_7 }),
+        .DI(p_1_in__0[15:8]),
+        .O(\comp_low.C6_reg0 [15:8]),
+        .S({\comp_low.C6[15]_i_3_n_0 ,\comp_low.C6[15]_i_4_n_0 ,\comp_low.C6[15]_i_5_n_0 ,\comp_low.C6[15]_i_6_n_0 ,\comp_low.C6[15]_i_7_n_0 ,\comp_low.C6[15]_i_8_n_0 ,\comp_low.C6[15]_i_9_n_0 ,\comp_low.C6[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C6_reg[15]_i_2 
+       (.CI(\comp_low.C6_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C6_reg[15]_i_2_n_0 ,\comp_low.C6_reg[15]_i_2_n_1 ,\comp_low.C6_reg[15]_i_2_n_2 ,\comp_low.C6_reg[15]_i_2_n_3 ,\comp_low.C6_reg[15]_i_2_n_4 ,\comp_low.C6_reg[15]_i_2_n_5 ,\comp_low.C6_reg[15]_i_2_n_6 ,\comp_low.C6_reg[15]_i_2_n_7 }),
+        .DI(N6[15:8]),
+        .O(p_1_in__0[15:8]),
+        .S({\comp_low.C6[15]_i_11_n_0 ,\comp_low.C6[15]_i_12_n_0 ,\comp_low.C6[15]_i_13_n_0 ,\comp_low.C6[15]_i_14_n_0 ,\comp_low.C6[15]_i_15_n_0 ,\comp_low.C6[15]_i_16_n_0 ,\comp_low.C6[15]_i_17_n_0 ,\comp_low.C6[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [16]),
+        .Q(C6[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [17]),
+        .Q(C6[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C6_reg[17]_i_1 
+       (.CI(\comp_low.C6_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C6_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C6_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_1_in__0[16]}),
+        .O({\NLW_comp_low.C6_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C6_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C6[17]_i_3_n_0 ,\comp_low.C6[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C6_reg[17]_i_2 
+       (.CI(\comp_low.C6_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C6_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C6_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N6[16]}),
+        .O({\NLW_comp_low.C6_reg[17]_i_2_O_UNCONNECTED [7:2],p_1_in__0[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C6[17]_i_5_n_0 ,\comp_low.C6[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [1]),
+        .Q(C6[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [2]),
+        .Q(C6[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [3]),
+        .Q(C6[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [4]),
+        .Q(C6[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [5]),
+        .Q(C6[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [6]),
+        .Q(C6[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [7]),
+        .Q(C6[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C6_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C6_reg[7]_i_1_n_0 ,\comp_low.C6_reg[7]_i_1_n_1 ,\comp_low.C6_reg[7]_i_1_n_2 ,\comp_low.C6_reg[7]_i_1_n_3 ,\comp_low.C6_reg[7]_i_1_n_4 ,\comp_low.C6_reg[7]_i_1_n_5 ,\comp_low.C6_reg[7]_i_1_n_6 ,\comp_low.C6_reg[7]_i_1_n_7 }),
+        .DI(p_1_in__0[7:0]),
+        .O(\comp_low.C6_reg0 [7:0]),
+        .S({\comp_low.C6[7]_i_3_n_0 ,\comp_low.C6[7]_i_4_n_0 ,\comp_low.C6[7]_i_5_n_0 ,\comp_low.C6[7]_i_6_n_0 ,\comp_low.C6[7]_i_7_n_0 ,\comp_low.C6[7]_i_8_n_0 ,\comp_low.C6[7]_i_9_n_0 ,\comp_low.C6[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C6_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C6_reg[7]_i_2_n_0 ,\comp_low.C6_reg[7]_i_2_n_1 ,\comp_low.C6_reg[7]_i_2_n_2 ,\comp_low.C6_reg[7]_i_2_n_3 ,\comp_low.C6_reg[7]_i_2_n_4 ,\comp_low.C6_reg[7]_i_2_n_5 ,\comp_low.C6_reg[7]_i_2_n_6 ,\comp_low.C6_reg[7]_i_2_n_7 }),
+        .DI(N6[7:0]),
+        .O(p_1_in__0[7:0]),
+        .S({\comp_low.C6[7]_i_11_n_0 ,\comp_low.C6[7]_i_12_n_0 ,\comp_low.C6[7]_i_13_n_0 ,\comp_low.C6[7]_i_14_n_0 ,\comp_low.C6[7]_i_15_n_0 ,\comp_low.C6[7]_i_16_n_0 ,\comp_low.C6[7]_i_17_n_0 ,\comp_low.C6[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [8]),
+        .Q(C6[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C6_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C6_reg0 [9]),
+        .Q(C6[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_10 
+       (.I0(p_0_in__1[8]),
+        .I1(W7[8]),
+        .O(\comp_low.C7[15]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_11 
+       (.I0(N7[15]),
+        .I1(E7[15]),
+        .O(\comp_low.C7[15]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_12 
+       (.I0(N7[14]),
+        .I1(E7[14]),
+        .O(\comp_low.C7[15]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_13 
+       (.I0(N7[13]),
+        .I1(E7[13]),
+        .O(\comp_low.C7[15]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_14 
+       (.I0(N7[12]),
+        .I1(E7[12]),
+        .O(\comp_low.C7[15]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_15 
+       (.I0(N7[11]),
+        .I1(E7[11]),
+        .O(\comp_low.C7[15]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_16 
+       (.I0(N7[10]),
+        .I1(E7[10]),
+        .O(\comp_low.C7[15]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_17 
+       (.I0(N7[9]),
+        .I1(E7[9]),
+        .O(\comp_low.C7[15]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_18 
+       (.I0(N7[8]),
+        .I1(E7[8]),
+        .O(\comp_low.C7[15]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_3 
+       (.I0(p_0_in__1[15]),
+        .I1(W7[15]),
+        .O(\comp_low.C7[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_4 
+       (.I0(p_0_in__1[14]),
+        .I1(W7[14]),
+        .O(\comp_low.C7[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_5 
+       (.I0(p_0_in__1[13]),
+        .I1(W7[13]),
+        .O(\comp_low.C7[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_6 
+       (.I0(p_0_in__1[12]),
+        .I1(W7[12]),
+        .O(\comp_low.C7[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_7 
+       (.I0(p_0_in__1[11]),
+        .I1(W7[11]),
+        .O(\comp_low.C7[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_8 
+       (.I0(p_0_in__1[10]),
+        .I1(W7[10]),
+        .O(\comp_low.C7[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[15]_i_9 
+       (.I0(p_0_in__1[9]),
+        .I1(W7[9]),
+        .O(\comp_low.C7[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[17]_i_3 
+       (.I0(p_0_in__1[17]),
+        .I1(W7[17]),
+        .O(\comp_low.C7[17]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[17]_i_4 
+       (.I0(p_0_in__1[16]),
+        .I1(W7[16]),
+        .O(\comp_low.C7[17]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[17]_i_5 
+       (.I0(N7[17]),
+        .I1(E7[17]),
+        .O(\comp_low.C7[17]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[17]_i_6 
+       (.I0(N7[16]),
+        .I1(E7[16]),
+        .O(\comp_low.C7[17]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_10 
+       (.I0(p_0_in__1[0]),
+        .I1(W7[0]),
+        .O(\comp_low.C7[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_11 
+       (.I0(N7[7]),
+        .I1(E7[7]),
+        .O(\comp_low.C7[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_12 
+       (.I0(N7[6]),
+        .I1(E7[6]),
+        .O(\comp_low.C7[7]_i_12_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_13 
+       (.I0(N7[5]),
+        .I1(E7[5]),
+        .O(\comp_low.C7[7]_i_13_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_14 
+       (.I0(N7[4]),
+        .I1(E7[4]),
+        .O(\comp_low.C7[7]_i_14_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_15 
+       (.I0(N7[3]),
+        .I1(E7[3]),
+        .O(\comp_low.C7[7]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_16 
+       (.I0(N7[2]),
+        .I1(E7[2]),
+        .O(\comp_low.C7[7]_i_16_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_17 
+       (.I0(N7[1]),
+        .I1(E7[1]),
+        .O(\comp_low.C7[7]_i_17_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_18 
+       (.I0(N7[0]),
+        .I1(E7[0]),
+        .O(\comp_low.C7[7]_i_18_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_3 
+       (.I0(p_0_in__1[7]),
+        .I1(W7[7]),
+        .O(\comp_low.C7[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_4 
+       (.I0(p_0_in__1[6]),
+        .I1(W7[6]),
+        .O(\comp_low.C7[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_5 
+       (.I0(p_0_in__1[5]),
+        .I1(W7[5]),
+        .O(\comp_low.C7[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_6 
+       (.I0(p_0_in__1[4]),
+        .I1(W7[4]),
+        .O(\comp_low.C7[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_7 
+       (.I0(p_0_in__1[3]),
+        .I1(W7[3]),
+        .O(\comp_low.C7[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_8 
+       (.I0(p_0_in__1[2]),
+        .I1(W7[2]),
+        .O(\comp_low.C7[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \comp_low.C7[7]_i_9 
+       (.I0(p_0_in__1[1]),
+        .I1(W7[1]),
+        .O(\comp_low.C7[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [0]),
+        .Q(C7[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [10]),
+        .Q(C7[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [11]),
+        .Q(C7[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [12]),
+        .Q(C7[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [13]),
+        .Q(C7[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [14]),
+        .Q(C7[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [15]),
+        .Q(C7[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C7_reg[15]_i_1 
+       (.CI(\comp_low.C7_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C7_reg[15]_i_1_n_0 ,\comp_low.C7_reg[15]_i_1_n_1 ,\comp_low.C7_reg[15]_i_1_n_2 ,\comp_low.C7_reg[15]_i_1_n_3 ,\comp_low.C7_reg[15]_i_1_n_4 ,\comp_low.C7_reg[15]_i_1_n_5 ,\comp_low.C7_reg[15]_i_1_n_6 ,\comp_low.C7_reg[15]_i_1_n_7 }),
+        .DI(p_0_in__1[15:8]),
+        .O(\comp_low.C7_reg0 [15:8]),
+        .S({\comp_low.C7[15]_i_3_n_0 ,\comp_low.C7[15]_i_4_n_0 ,\comp_low.C7[15]_i_5_n_0 ,\comp_low.C7[15]_i_6_n_0 ,\comp_low.C7[15]_i_7_n_0 ,\comp_low.C7[15]_i_8_n_0 ,\comp_low.C7[15]_i_9_n_0 ,\comp_low.C7[15]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C7_reg[15]_i_2 
+       (.CI(\comp_low.C7_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C7_reg[15]_i_2_n_0 ,\comp_low.C7_reg[15]_i_2_n_1 ,\comp_low.C7_reg[15]_i_2_n_2 ,\comp_low.C7_reg[15]_i_2_n_3 ,\comp_low.C7_reg[15]_i_2_n_4 ,\comp_low.C7_reg[15]_i_2_n_5 ,\comp_low.C7_reg[15]_i_2_n_6 ,\comp_low.C7_reg[15]_i_2_n_7 }),
+        .DI(N7[15:8]),
+        .O(p_0_in__1[15:8]),
+        .S({\comp_low.C7[15]_i_11_n_0 ,\comp_low.C7[15]_i_12_n_0 ,\comp_low.C7[15]_i_13_n_0 ,\comp_low.C7[15]_i_14_n_0 ,\comp_low.C7[15]_i_15_n_0 ,\comp_low.C7[15]_i_16_n_0 ,\comp_low.C7[15]_i_17_n_0 ,\comp_low.C7[15]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [16]),
+        .Q(C7[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [17]),
+        .Q(C7[17]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C7_reg[17]_i_1 
+       (.CI(\comp_low.C7_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C7_reg[17]_i_1_CO_UNCONNECTED [7:1],\comp_low.C7_reg[17]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,p_0_in__1[16]}),
+        .O({\NLW_comp_low.C7_reg[17]_i_1_O_UNCONNECTED [7:2],\comp_low.C7_reg0 [17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C7[17]_i_3_n_0 ,\comp_low.C7[17]_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C7_reg[17]_i_2 
+       (.CI(\comp_low.C7_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_comp_low.C7_reg[17]_i_2_CO_UNCONNECTED [7:1],\comp_low.C7_reg[17]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,N7[16]}),
+        .O({\NLW_comp_low.C7_reg[17]_i_2_O_UNCONNECTED [7:2],p_0_in__1[17:16]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.C7[17]_i_5_n_0 ,\comp_low.C7[17]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [1]),
+        .Q(C7[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [2]),
+        .Q(C7[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [3]),
+        .Q(C7[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [4]),
+        .Q(C7[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [5]),
+        .Q(C7[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [6]),
+        .Q(C7[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [7]),
+        .Q(C7[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C7_reg[7]_i_1 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C7_reg[7]_i_1_n_0 ,\comp_low.C7_reg[7]_i_1_n_1 ,\comp_low.C7_reg[7]_i_1_n_2 ,\comp_low.C7_reg[7]_i_1_n_3 ,\comp_low.C7_reg[7]_i_1_n_4 ,\comp_low.C7_reg[7]_i_1_n_5 ,\comp_low.C7_reg[7]_i_1_n_6 ,\comp_low.C7_reg[7]_i_1_n_7 }),
+        .DI(p_0_in__1[7:0]),
+        .O(\comp_low.C7_reg0 [7:0]),
+        .S({\comp_low.C7[7]_i_3_n_0 ,\comp_low.C7[7]_i_4_n_0 ,\comp_low.C7[7]_i_5_n_0 ,\comp_low.C7[7]_i_6_n_0 ,\comp_low.C7[7]_i_7_n_0 ,\comp_low.C7[7]_i_8_n_0 ,\comp_low.C7[7]_i_9_n_0 ,\comp_low.C7[7]_i_10_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \comp_low.C7_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\comp_low.C7_reg[7]_i_2_n_0 ,\comp_low.C7_reg[7]_i_2_n_1 ,\comp_low.C7_reg[7]_i_2_n_2 ,\comp_low.C7_reg[7]_i_2_n_3 ,\comp_low.C7_reg[7]_i_2_n_4 ,\comp_low.C7_reg[7]_i_2_n_5 ,\comp_low.C7_reg[7]_i_2_n_6 ,\comp_low.C7_reg[7]_i_2_n_7 }),
+        .DI(N7[7:0]),
+        .O(p_0_in__1[7:0]),
+        .S({\comp_low.C7[7]_i_11_n_0 ,\comp_low.C7[7]_i_12_n_0 ,\comp_low.C7[7]_i_13_n_0 ,\comp_low.C7[7]_i_14_n_0 ,\comp_low.C7[7]_i_15_n_0 ,\comp_low.C7[7]_i_16_n_0 ,\comp_low.C7[7]_i_17_n_0 ,\comp_low.C7[7]_i_18_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [8]),
+        .Q(C7[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.C7_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.C7_reg0 [9]),
+        .Q(C7[9]),
+        .R(1'b0));
   FDRE \comp_low.E0_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[0]),
         .Q(E0[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[10]),
         .Q(E0[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[11]),
         .Q(E0[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[12]),
         .Q(E0[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[13]),
         .Q(E0[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[14]),
         .Q(E0[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[15]),
         .Q(E0[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[1]),
         .Q(E0[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[2]),
         .Q(E0[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[3]),
         .Q(E0[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[4]),
         .Q(E0[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[5]),
         .Q(E0[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[6]),
         .Q(E0[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[7]),
         .Q(E0[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[8]),
         .Q(E0[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E0_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[9]),
         .Q(E0[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[16]),
         .Q(E1[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[26]),
         .Q(E1[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[27]),
         .Q(E1[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[28]),
         .Q(E1[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[29]),
         .Q(E1[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[30]),
         .Q(E1[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[31]),
         .Q(E1[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E1_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[31]),
+        .Q(E1[16]),
+        .R(1'b0));
+  FDRE \comp_low.E1_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[31]),
+        .Q(E1[17]),
+        .R(1'b0));
   FDRE \comp_low.E1_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[17]),
         .Q(E1[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[18]),
         .Q(E1[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[19]),
         .Q(E1[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[20]),
         .Q(E1[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[21]),
         .Q(E1[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[22]),
         .Q(E1[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[23]),
         .Q(E1[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[24]),
         .Q(E1[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E1_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[25]),
         .Q(E1[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[32]),
         .Q(E2[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[42]),
         .Q(E2[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[43]),
         .Q(E2[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[44]),
         .Q(E2[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[45]),
         .Q(E2[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[46]),
         .Q(E2[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[47]),
         .Q(E2[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E2_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[47]),
+        .Q(E2[16]),
+        .R(1'b0));
+  FDRE \comp_low.E2_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[47]),
+        .Q(E2[17]),
+        .R(1'b0));
   FDRE \comp_low.E2_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[33]),
         .Q(E2[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[34]),
         .Q(E2[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[35]),
         .Q(E2[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[36]),
         .Q(E2[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[37]),
         .Q(E2[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[38]),
         .Q(E2[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[39]),
         .Q(E2[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[40]),
         .Q(E2[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E2_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[41]),
         .Q(E2[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[48]),
         .Q(E3[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[58]),
         .Q(E3[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[59]),
         .Q(E3[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[60]),
         .Q(E3[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[61]),
         .Q(E3[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[62]),
         .Q(E3[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[63]),
         .Q(E3[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[63]),
+        .Q(E3[16]),
+        .R(1'b0));
+  FDRE \comp_low.E3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[63]),
+        .Q(E3[17]),
+        .R(1'b0));
   FDRE \comp_low.E3_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[49]),
         .Q(E3[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[50]),
         .Q(E3[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[51]),
         .Q(E3[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[52]),
         .Q(E3[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[53]),
         .Q(E3[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[54]),
         .Q(E3[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[55]),
         .Q(E3[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[56]),
         .Q(E3[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E3_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[57]),
         .Q(E3[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[64]),
         .Q(E4[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[74]),
         .Q(E4[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[75]),
         .Q(E4[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[76]),
         .Q(E4[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[77]),
         .Q(E4[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[78]),
         .Q(E4[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[79]),
         .Q(E4[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E4_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[79]),
+        .Q(E4[16]),
+        .R(1'b0));
+  FDRE \comp_low.E4_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[79]),
+        .Q(E4[17]),
+        .R(1'b0));
   FDRE \comp_low.E4_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[65]),
         .Q(E4[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[66]),
         .Q(E4[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[67]),
         .Q(E4[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[68]),
         .Q(E4[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[69]),
         .Q(E4[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[70]),
         .Q(E4[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[71]),
         .Q(E4[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[72]),
         .Q(E4[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E4_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[73]),
         .Q(E4[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[80]),
         .Q(E5[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[90]),
         .Q(E5[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[91]),
         .Q(E5[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[92]),
         .Q(E5[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[93]),
         .Q(E5[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[94]),
         .Q(E5[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[95]),
         .Q(E5[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E5_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[95]),
+        .Q(E5[16]),
+        .R(1'b0));
+  FDRE \comp_low.E5_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[95]),
+        .Q(E5[17]),
+        .R(1'b0));
   FDRE \comp_low.E5_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[81]),
         .Q(E5[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[82]),
         .Q(E5[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[83]),
         .Q(E5[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[84]),
         .Q(E5[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[85]),
         .Q(E5[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[86]),
         .Q(E5[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[87]),
         .Q(E5[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[88]),
         .Q(E5[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E5_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[89]),
         .Q(E5[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[96]),
         .Q(E6[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[106]),
         .Q(E6[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[107]),
         .Q(E6[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[108]),
         .Q(E6[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[109]),
         .Q(E6[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[110]),
         .Q(E6[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[111]),
         .Q(E6[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E6_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[111]),
+        .Q(E6[16]),
+        .R(1'b0));
+  FDRE \comp_low.E6_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[111]),
+        .Q(E6[17]),
+        .R(1'b0));
   FDRE \comp_low.E6_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[97]),
         .Q(E6[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[98]),
         .Q(E6[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[99]),
         .Q(E6[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[100]),
         .Q(E6[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[101]),
         .Q(E6[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[102]),
         .Q(E6[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[103]),
         .Q(E6[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[104]),
         .Q(E6[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E6_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[105]),
         .Q(E6[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[112]),
         .Q(E7[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[122]),
         .Q(E7[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[123]),
         .Q(E7[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[124]),
         .Q(E7[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[125]),
         .Q(E7[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[126]),
         .Q(E7[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[127]),
         .Q(E7[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.E7_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[127]),
+        .Q(E7[16]),
+        .R(1'b0));
+  FDRE \comp_low.E7_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_E[127]),
+        .Q(E7[17]),
+        .R(1'b0));
   FDRE \comp_low.E7_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[113]),
         .Q(E7[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[114]),
         .Q(E7[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[115]),
         .Q(E7[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[116]),
         .Q(E7[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[117]),
         .Q(E7[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[118]),
         .Q(E7[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[119]),
         .Q(E7[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[120]),
         .Q(E7[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.E7_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_E[121]),
         .Q(E7[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[0]),
         .Q(N0[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[10]),
         .Q(N0[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[11]),
         .Q(N0[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[12]),
         .Q(N0[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[13]),
         .Q(N0[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[14]),
         .Q(N0[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[15]),
         .Q(N0[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[1]),
         .Q(N0[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[2]),
         .Q(N0[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[3]),
         .Q(N0[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[4]),
         .Q(N0[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[5]),
         .Q(N0[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[6]),
         .Q(N0[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[7]),
         .Q(N0[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[8]),
         .Q(N0[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N0_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[9]),
         .Q(N0[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[16]),
         .Q(N1[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[26]),
         .Q(N1[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[27]),
         .Q(N1[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[28]),
         .Q(N1[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[29]),
         .Q(N1[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[30]),
         .Q(N1[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[31]),
         .Q(N1[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N1_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[31]),
+        .Q(N1[16]),
+        .R(1'b0));
+  FDRE \comp_low.N1_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[31]),
+        .Q(N1[17]),
+        .R(1'b0));
   FDRE \comp_low.N1_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[17]),
         .Q(N1[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[18]),
         .Q(N1[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[19]),
         .Q(N1[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[20]),
         .Q(N1[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[21]),
         .Q(N1[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[22]),
         .Q(N1[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[23]),
         .Q(N1[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[24]),
         .Q(N1[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N1_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[25]),
         .Q(N1[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[32]),
         .Q(N2[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[42]),
         .Q(N2[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[43]),
         .Q(N2[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[44]),
         .Q(N2[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[45]),
         .Q(N2[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[46]),
         .Q(N2[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[47]),
         .Q(N2[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N2_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[47]),
+        .Q(N2[16]),
+        .R(1'b0));
+  FDRE \comp_low.N2_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[47]),
+        .Q(N2[17]),
+        .R(1'b0));
   FDRE \comp_low.N2_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[33]),
         .Q(N2[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[34]),
         .Q(N2[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[35]),
         .Q(N2[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[36]),
         .Q(N2[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[37]),
         .Q(N2[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[38]),
         .Q(N2[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[39]),
         .Q(N2[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[40]),
         .Q(N2[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N2_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[41]),
         .Q(N2[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[48]),
         .Q(N3[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[58]),
         .Q(N3[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[59]),
         .Q(N3[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[60]),
         .Q(N3[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[61]),
         .Q(N3[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[62]),
         .Q(N3[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[63]),
         .Q(N3[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[63]),
+        .Q(N3[16]),
+        .R(1'b0));
+  FDRE \comp_low.N3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[63]),
+        .Q(N3[17]),
+        .R(1'b0));
   FDRE \comp_low.N3_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[49]),
         .Q(N3[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[50]),
         .Q(N3[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[51]),
         .Q(N3[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[52]),
         .Q(N3[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[53]),
         .Q(N3[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[54]),
         .Q(N3[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[55]),
         .Q(N3[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[56]),
         .Q(N3[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N3_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[57]),
         .Q(N3[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[64]),
         .Q(N4[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[74]),
         .Q(N4[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[75]),
         .Q(N4[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[76]),
         .Q(N4[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[77]),
         .Q(N4[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[78]),
         .Q(N4[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[79]),
         .Q(N4[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N4_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[79]),
+        .Q(N4[16]),
+        .R(1'b0));
+  FDRE \comp_low.N4_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[79]),
+        .Q(N4[17]),
+        .R(1'b0));
   FDRE \comp_low.N4_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[65]),
         .Q(N4[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[66]),
         .Q(N4[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[67]),
         .Q(N4[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[68]),
         .Q(N4[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[69]),
         .Q(N4[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[70]),
         .Q(N4[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[71]),
         .Q(N4[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[72]),
         .Q(N4[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N4_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[73]),
         .Q(N4[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[80]),
         .Q(N5[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[90]),
         .Q(N5[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[91]),
         .Q(N5[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[92]),
         .Q(N5[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[93]),
         .Q(N5[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[94]),
         .Q(N5[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[95]),
         .Q(N5[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N5_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[95]),
+        .Q(N5[16]),
+        .R(1'b0));
+  FDRE \comp_low.N5_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[95]),
+        .Q(N5[17]),
+        .R(1'b0));
   FDRE \comp_low.N5_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[81]),
         .Q(N5[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[82]),
         .Q(N5[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[83]),
         .Q(N5[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[84]),
         .Q(N5[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[85]),
         .Q(N5[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[86]),
         .Q(N5[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[87]),
         .Q(N5[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[88]),
         .Q(N5[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N5_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[89]),
         .Q(N5[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[96]),
         .Q(N6[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[106]),
         .Q(N6[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[107]),
         .Q(N6[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[108]),
         .Q(N6[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[109]),
         .Q(N6[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[110]),
         .Q(N6[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[111]),
         .Q(N6[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N6_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[111]),
+        .Q(N6[16]),
+        .R(1'b0));
+  FDRE \comp_low.N6_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[111]),
+        .Q(N6[17]),
+        .R(1'b0));
   FDRE \comp_low.N6_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[97]),
         .Q(N6[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[98]),
         .Q(N6[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[99]),
         .Q(N6[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[100]),
         .Q(N6[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[101]),
         .Q(N6[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[102]),
         .Q(N6[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[103]),
         .Q(N6[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[104]),
         .Q(N6[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N6_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[105]),
         .Q(N6[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[112]),
         .Q(N7[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[122]),
         .Q(N7[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[123]),
         .Q(N7[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[124]),
         .Q(N7[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[125]),
         .Q(N7[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[126]),
         .Q(N7[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[127]),
         .Q(N7[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.N7_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[127]),
+        .Q(N7[16]),
+        .R(1'b0));
+  FDRE \comp_low.N7_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_N[127]),
+        .Q(N7[17]),
+        .R(1'b0));
   FDRE \comp_low.N7_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[113]),
         .Q(N7[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[114]),
         .Q(N7[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[115]),
         .Q(N7[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[116]),
         .Q(N7[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[117]),
         .Q(N7[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[118]),
         .Q(N7[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[119]),
         .Q(N7[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[120]),
         .Q(N7[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.N7_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_N[121]),
         .Q(N7[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[0]),
         .Q(W0[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[10]),
         .Q(W0[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[11]),
         .Q(W0[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[12]),
         .Q(W0[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[13]),
         .Q(W0[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[14]),
         .Q(W0[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[15]),
         .Q(W0[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[1]),
         .Q(W0[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[2]),
         .Q(W0[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[3]),
         .Q(W0[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[4]),
         .Q(W0[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[5]),
         .Q(W0[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[6]),
         .Q(W0[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[7]),
         .Q(W0[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[8]),
         .Q(W0[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W0_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[9]),
         .Q(W0[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[16]),
         .Q(W1[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[26]),
         .Q(W1[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[27]),
         .Q(W1[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[28]),
         .Q(W1[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[29]),
         .Q(W1[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[30]),
         .Q(W1[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[31]),
         .Q(W1[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W1_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[31]),
+        .Q(W1[16]),
+        .R(1'b0));
+  FDRE \comp_low.W1_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[31]),
+        .Q(W1[17]),
+        .R(1'b0));
   FDRE \comp_low.W1_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[17]),
         .Q(W1[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[18]),
         .Q(W1[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[19]),
         .Q(W1[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[20]),
         .Q(W1[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[21]),
         .Q(W1[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[22]),
         .Q(W1[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[23]),
         .Q(W1[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[24]),
         .Q(W1[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W1_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[25]),
         .Q(W1[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[32]),
         .Q(W2[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[42]),
         .Q(W2[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[43]),
         .Q(W2[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[44]),
         .Q(W2[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[45]),
         .Q(W2[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[46]),
         .Q(W2[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[47]),
         .Q(W2[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W2_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[47]),
+        .Q(W2[16]),
+        .R(1'b0));
+  FDRE \comp_low.W2_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[47]),
+        .Q(W2[17]),
+        .R(1'b0));
   FDRE \comp_low.W2_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[33]),
         .Q(W2[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[34]),
         .Q(W2[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[35]),
         .Q(W2[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[36]),
         .Q(W2[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[37]),
         .Q(W2[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[38]),
         .Q(W2[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[39]),
         .Q(W2[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[40]),
         .Q(W2[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W2_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[41]),
         .Q(W2[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[48]),
         .Q(W3[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[58]),
         .Q(W3[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[59]),
         .Q(W3[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[60]),
         .Q(W3[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[61]),
         .Q(W3[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[62]),
         .Q(W3[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[63]),
         .Q(W3[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W3_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[63]),
+        .Q(W3[16]),
+        .R(1'b0));
+  FDRE \comp_low.W3_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[63]),
+        .Q(W3[17]),
+        .R(1'b0));
   FDRE \comp_low.W3_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[49]),
         .Q(W3[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[50]),
         .Q(W3[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[51]),
         .Q(W3[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[52]),
         .Q(W3[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[53]),
         .Q(W3[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[54]),
         .Q(W3[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[55]),
         .Q(W3[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[56]),
         .Q(W3[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W3_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[57]),
         .Q(W3[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[64]),
         .Q(W4[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[74]),
         .Q(W4[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[75]),
         .Q(W4[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[76]),
         .Q(W4[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[77]),
         .Q(W4[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[78]),
         .Q(W4[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[79]),
         .Q(W4[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W4_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[79]),
+        .Q(W4[16]),
+        .R(1'b0));
+  FDRE \comp_low.W4_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[79]),
+        .Q(W4[17]),
+        .R(1'b0));
   FDRE \comp_low.W4_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[65]),
         .Q(W4[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[66]),
         .Q(W4[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[67]),
         .Q(W4[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[68]),
         .Q(W4[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[69]),
         .Q(W4[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[70]),
         .Q(W4[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[71]),
         .Q(W4[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[72]),
         .Q(W4[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W4_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[73]),
         .Q(W4[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[80]),
         .Q(W5[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[90]),
         .Q(W5[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[91]),
         .Q(W5[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[92]),
         .Q(W5[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[93]),
         .Q(W5[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[94]),
         .Q(W5[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[95]),
         .Q(W5[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W5_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[95]),
+        .Q(W5[16]),
+        .R(1'b0));
+  FDRE \comp_low.W5_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[95]),
+        .Q(W5[17]),
+        .R(1'b0));
   FDRE \comp_low.W5_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[81]),
         .Q(W5[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[82]),
         .Q(W5[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[83]),
         .Q(W5[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[84]),
         .Q(W5[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[85]),
         .Q(W5[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[86]),
         .Q(W5[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[87]),
         .Q(W5[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[88]),
         .Q(W5[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W5_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[89]),
         .Q(W5[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[96]),
         .Q(W6[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[106]),
         .Q(W6[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[107]),
         .Q(W6[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[108]),
         .Q(W6[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[109]),
         .Q(W6[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[110]),
         .Q(W6[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[111]),
         .Q(W6[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W6_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[111]),
+        .Q(W6[16]),
+        .R(1'b0));
+  FDRE \comp_low.W6_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[111]),
+        .Q(W6[17]),
+        .R(1'b0));
   FDRE \comp_low.W6_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[97]),
         .Q(W6[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[98]),
         .Q(W6[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[99]),
         .Q(W6[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[100]),
         .Q(W6[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[101]),
         .Q(W6[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[102]),
         .Q(W6[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[103]),
         .Q(W6[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[104]),
         .Q(W6[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W6_reg[9] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[105]),
         .Q(W6[9]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[0] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[112]),
         .Q(W7[0]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[10] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[122]),
         .Q(W7[10]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[123]),
         .Q(W7[11]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[124]),
         .Q(W7[12]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[13] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[125]),
         .Q(W7[13]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[14] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[126]),
         .Q(W7[14]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[127]),
         .Q(W7[15]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
+  FDRE \comp_low.W7_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[127]),
+        .Q(W7[16]),
+        .R(1'b0));
+  FDRE \comp_low.W7_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(data_W[127]),
+        .Q(W7[17]),
+        .R(1'b0));
   FDRE \comp_low.W7_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[113]),
         .Q(W7[1]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[114]),
         .Q(W7[2]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[115]),
         .Q(W7[3]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[116]),
         .Q(W7[4]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[117]),
         .Q(W7[5]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[118]),
         .Q(W7[6]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[119]),
         .Q(W7[7]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(data_W[120]),
         .Q(W7[8]),
         .R(1'b0));
-  (* KEEP = "yes" *) 
   FDRE \comp_low.W7_reg[9] 
        (.C(clk),
         .CE(1'b1),
@@ -9322,49 +12924,49 @@ module ps_comp_low_0_0_comp_low
   FDRE \comp_low.raw_sample_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[0]),
+        .D(p_0_in__2[0]),
         .Q(raw_sample[0]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[10]),
+        .D(p_0_in__2[10]),
         .Q(raw_sample[10]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[11] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[11]),
+        .D(p_0_in__2[11]),
         .Q(raw_sample[11]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[12] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[12]),
+        .D(p_0_in__2[12]),
         .Q(raw_sample[12]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[13] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[13]),
+        .D(p_0_in__2[13]),
         .Q(raw_sample[13]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[14] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[14]),
+        .D(p_0_in__2[14]),
         .Q(raw_sample[14]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[15] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[15]),
+        .D(p_0_in__2[15]),
         .Q(raw_sample[15]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9373,69 +12975,69 @@ module ps_comp_low_0_0_comp_low
         .CI_TOP(1'b0),
         .CO({\comp_low.raw_sample_reg[15]_i_1_n_0 ,\comp_low.raw_sample_reg[15]_i_1_n_1 ,\comp_low.raw_sample_reg[15]_i_1_n_2 ,\comp_low.raw_sample_reg[15]_i_1_n_3 ,\comp_low.raw_sample_reg[15]_i_1_n_4 ,\comp_low.raw_sample_reg[15]_i_1_n_5 ,\comp_low.raw_sample_reg[15]_i_1_n_6 ,\comp_low.raw_sample_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in__1[15:8]),
+        .O(p_0_in__2[15:8]),
         .S(raw_sample[15:8]));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[16] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[16]),
+        .D(p_0_in__2[16]),
         .Q(raw_sample[16]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[17] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[17]),
+        .D(p_0_in__2[17]),
         .Q(raw_sample[17]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[18] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[18]),
+        .D(p_0_in__2[18]),
         .Q(raw_sample[18]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[19] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[19]),
+        .D(p_0_in__2[19]),
         .Q(raw_sample[19]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[1]),
+        .D(p_0_in__2[1]),
         .Q(raw_sample[1]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[20] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[20]),
+        .D(p_0_in__2[20]),
         .Q(raw_sample[20]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[21] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[21]),
+        .D(p_0_in__2[21]),
         .Q(raw_sample[21]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[22] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[22]),
+        .D(p_0_in__2[22]),
         .Q(raw_sample[22]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[23] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[23]),
+        .D(p_0_in__2[23]),
         .Q(raw_sample[23]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9444,69 +13046,69 @@ module ps_comp_low_0_0_comp_low
         .CI_TOP(1'b0),
         .CO({\comp_low.raw_sample_reg[23]_i_1_n_0 ,\comp_low.raw_sample_reg[23]_i_1_n_1 ,\comp_low.raw_sample_reg[23]_i_1_n_2 ,\comp_low.raw_sample_reg[23]_i_1_n_3 ,\comp_low.raw_sample_reg[23]_i_1_n_4 ,\comp_low.raw_sample_reg[23]_i_1_n_5 ,\comp_low.raw_sample_reg[23]_i_1_n_6 ,\comp_low.raw_sample_reg[23]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in__1[23:16]),
+        .O(p_0_in__2[23:16]),
         .S(raw_sample[23:16]));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[24] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[24]),
+        .D(p_0_in__2[24]),
         .Q(raw_sample[24]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[25] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[25]),
+        .D(p_0_in__2[25]),
         .Q(raw_sample[25]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[26] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[26]),
+        .D(p_0_in__2[26]),
         .Q(raw_sample[26]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[27] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[27]),
+        .D(p_0_in__2[27]),
         .Q(raw_sample[27]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[28] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[28]),
+        .D(p_0_in__2[28]),
         .Q(raw_sample[28]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[29] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[29]),
+        .D(p_0_in__2[29]),
         .Q(raw_sample[29]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[2]),
+        .D(p_0_in__2[2]),
         .Q(raw_sample[2]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[30] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[30]),
+        .D(p_0_in__2[30]),
         .Q(raw_sample[30]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[31] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[31]),
+        .D(p_0_in__2[31]),
         .Q(raw_sample[31]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9515,7 +13117,7 @@ module ps_comp_low_0_0_comp_low
         .CI_TOP(1'b0),
         .CO({\NLW_comp_low.raw_sample_reg[31]_i_2_CO_UNCONNECTED [7],\comp_low.raw_sample_reg[31]_i_2_n_1 ,\comp_low.raw_sample_reg[31]_i_2_n_2 ,\comp_low.raw_sample_reg[31]_i_2_n_3 ,\comp_low.raw_sample_reg[31]_i_2_n_4 ,\comp_low.raw_sample_reg[31]_i_2_n_5 ,\comp_low.raw_sample_reg[31]_i_2_n_6 ,\comp_low.raw_sample_reg[31]_i_2_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in__1[31:24]),
+        .O(p_0_in__2[31:24]),
         .S(raw_sample[31:24]));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[32] 
@@ -9585,7 +13187,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \comp_low.raw_sample_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[3]),
+        .D(p_0_in__2[3]),
         .Q(raw_sample[3]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -9670,7 +13272,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \comp_low.raw_sample_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[4]),
+        .D(p_0_in__2[4]),
         .Q(raw_sample[4]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -9755,7 +13357,7 @@ module ps_comp_low_0_0_comp_low
   FDRE \comp_low.raw_sample_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[5]),
+        .D(p_0_in__2[5]),
         .Q(raw_sample[5]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -9798,14 +13400,14 @@ module ps_comp_low_0_0_comp_low
   FDRE \comp_low.raw_sample_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[6]),
+        .D(p_0_in__2[6]),
         .Q(raw_sample[6]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[7]),
+        .D(p_0_in__2[7]),
         .Q(raw_sample[7]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9814,20 +13416,20 @@ module ps_comp_low_0_0_comp_low
         .CI_TOP(1'b0),
         .CO({\comp_low.raw_sample_reg[7]_i_1_n_0 ,\comp_low.raw_sample_reg[7]_i_1_n_1 ,\comp_low.raw_sample_reg[7]_i_1_n_2 ,\comp_low.raw_sample_reg[7]_i_1_n_3 ,\comp_low.raw_sample_reg[7]_i_1_n_4 ,\comp_low.raw_sample_reg[7]_i_1_n_5 ,\comp_low.raw_sample_reg[7]_i_1_n_6 ,\comp_low.raw_sample_reg[7]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,raw_sample[0]}),
-        .O(p_0_in__1[7:0]),
+        .O(p_0_in__2[7:0]),
         .S({raw_sample[7:1],\comp_low.raw_sample[7]_i_2_n_0 }));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[8]),
+        .D(p_0_in__2[8]),
         .Q(raw_sample[8]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_0_in__1[9]),
+        .D(p_0_in__2[9]),
         .Q(raw_sample[9]),
         .R(\comp_low.raw_sample[31]_i_1_n_0 ));
   FDRE \comp_low.raw_wr_reg 
@@ -9878,32 +13480,16 @@ module ps_comp_low_0_0_comp_low
         .probe12(raw_empty),
         .probe13(raw_delay),
         .probe14(raw_sample),
-        .probe15(N0),
-        .probe16(N1),
-        .probe17(N2),
-        .probe18(N3),
-        .probe19(N4),
+        .probe15(C0),
+        .probe16(C1),
+        .probe17(C2),
+        .probe18(C3),
+        .probe19(C4),
         .probe2(ana_delay),
-        .probe20(N5),
-        .probe21(N6),
-        .probe22(N7),
-        .probe23(E0),
-        .probe24(E1),
-        .probe25(E2),
-        .probe26(E3),
-        .probe27(E4),
-        .probe28(E5),
-        .probe29(E6),
+        .probe20(C5),
+        .probe21(C6),
+        .probe22(C7),
         .probe3(curr_sample),
-        .probe30(E7),
-        .probe31(W0),
-        .probe32(W1),
-        .probe33(W2),
-        .probe34(W3),
-        .probe35(W4),
-        .probe36(W5),
-        .probe37(W6),
-        .probe38(W7),
         .probe4(ana_burst),
         .probe5(ana_size),
         .probe6(ana_freq),
@@ -90598,23 +94184,7 @@ module ps_comp_low_0_0_ila_0
     probe19,
     probe20,
     probe21,
-    probe22,
-    probe23,
-    probe24,
-    probe25,
-    probe26,
-    probe27,
-    probe28,
-    probe29,
-    probe30,
-    probe31,
-    probe32,
-    probe33,
-    probe34,
-    probe35,
-    probe36,
-    probe37,
-    probe38);
+    probe22);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -90631,30 +94201,14 @@ module ps_comp_low_0_0_ila_0
   input [0:0]probe12;
   input [9:0]probe13;
   input [63:0]probe14;
-  input [15:0]probe15;
-  input [15:0]probe16;
-  input [15:0]probe17;
-  input [15:0]probe18;
-  input [15:0]probe19;
-  input [15:0]probe20;
-  input [15:0]probe21;
-  input [15:0]probe22;
-  input [15:0]probe23;
-  input [15:0]probe24;
-  input [15:0]probe25;
-  input [15:0]probe26;
-  input [15:0]probe27;
-  input [15:0]probe28;
-  input [15:0]probe29;
-  input [15:0]probe30;
-  input [15:0]probe31;
-  input [15:0]probe32;
-  input [15:0]probe33;
-  input [15:0]probe34;
-  input [15:0]probe35;
-  input [15:0]probe36;
-  input [15:0]probe37;
-  input [15:0]probe38;
+  input [17:0]probe15;
+  input [17:0]probe16;
+  input [17:0]probe17;
+  input [17:0]probe18;
+  input [17:0]probe19;
+  input [17:0]probe20;
+  input [17:0]probe21;
+  input [17:0]probe22;
 
 
 endmodule
