@@ -58,15 +58,6 @@ fifo_raw_high fifo_raw_i (
   .empty(raw_empty)              // output wire empty
 );
 
-	ila_0 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(raw_empty),           // input wire [0:0]  probe3
-		.probe1(raw_rd),              // input wire [0:0]  probe3
-		.probe2(raw_delay),           // input wire [8:0]  probe3
-		.probe3(active),              // input wire [0:0]  probe3
-		.probe4(sample)               // input wire [63:0]  probe3
-	);
-
 generate
   begin : raw
 

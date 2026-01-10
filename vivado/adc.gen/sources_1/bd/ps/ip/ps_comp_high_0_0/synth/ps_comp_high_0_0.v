@@ -56,60 +56,69 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_comp_high_0_0 (
-  fifo_clk,
-  fifo_wr,
-  fifo_sample,
-  fifo_size,
-  fifo_freq,
-  fifo_angle,
-  fifo_sample_N,
-  fifo_sample_E,
-  fifo_sample_W,
+  ana_fifo_clk,
+  ana_fifo_wr,
+  ana_fifo_sample,
+  ana_fifo_size,
+  ana_fifo_freq,
+  ana_fifo_angle,
+  ana_fifo_sample_N,
+  ana_fifo_sample_E,
+  ana_fifo_sample_W,
+  raw_fifo_clk,
+  raw_fifo_wr,
+  raw_fifo_N,
+  raw_fifo_E,
+  raw_fifo_W,
   clk,
-  raw_active,
-  raw_sample,
-  raw_N,
-  raw_E,
-  raw_W
+  reset
 );
 
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ana_fifo_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *)
-input wire fifo_clk;
-input wire fifo_wr;
-input wire [31 : 0] fifo_sample;
-input wire [8 : 0] fifo_size;
-input wire [19 : 0] fifo_freq;
-input wire [15 : 0] fifo_angle;
-input wire [5 : 0] fifo_sample_N;
-input wire [5 : 0] fifo_sample_E;
-input wire [5 : 0] fifo_sample_W;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana_fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *)
+input wire ana_fifo_clk;
+input wire ana_fifo_wr;
+input wire [31 : 0] ana_fifo_sample;
+input wire [8 : 0] ana_fifo_size;
+input wire [19 : 0] ana_fifo_freq;
+input wire [15 : 0] ana_fifo_angle;
+input wire [5 : 0] ana_fifo_sample_N;
+input wire [5 : 0] ana_fifo_sample_E;
+input wire [5 : 0] ana_fifo_sample_W;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 raw_fifo_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME raw_fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
+input wire raw_fifo_clk;
+input wire raw_fifo_wr;
+input wire [127 : 0] raw_fifo_N;
+input wire [127 : 0] raw_fifo_E;
+input wire [127 : 0] raw_fifo_W;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *)
 input wire clk;
-input wire raw_active;
-input wire [63 : 0] raw_sample;
-input wire [127 : 0] raw_N;
-input wire [127 : 0] raw_E;
-input wire [127 : 0] raw_W;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+input wire reset;
 
   comp_high inst (
-    .fifo_clk(fifo_clk),
-    .fifo_wr(fifo_wr),
-    .fifo_sample(fifo_sample),
-    .fifo_size(fifo_size),
-    .fifo_freq(fifo_freq),
-    .fifo_angle(fifo_angle),
-    .fifo_sample_N(fifo_sample_N),
-    .fifo_sample_E(fifo_sample_E),
-    .fifo_sample_W(fifo_sample_W),
+    .ana_fifo_clk(ana_fifo_clk),
+    .ana_fifo_wr(ana_fifo_wr),
+    .ana_fifo_sample(ana_fifo_sample),
+    .ana_fifo_size(ana_fifo_size),
+    .ana_fifo_freq(ana_fifo_freq),
+    .ana_fifo_angle(ana_fifo_angle),
+    .ana_fifo_sample_N(ana_fifo_sample_N),
+    .ana_fifo_sample_E(ana_fifo_sample_E),
+    .ana_fifo_sample_W(ana_fifo_sample_W),
+    .raw_fifo_clk(raw_fifo_clk),
+    .raw_fifo_wr(raw_fifo_wr),
+    .raw_fifo_N(raw_fifo_N),
+    .raw_fifo_E(raw_fifo_E),
+    .raw_fifo_W(raw_fifo_W),
     .clk(clk),
-    .raw_active(raw_active),
-    .raw_sample(raw_sample),
-    .raw_N(raw_N),
-    .raw_E(raw_E),
-    .raw_W(raw_W)
+    .reset(reset)
   );
 endmodule

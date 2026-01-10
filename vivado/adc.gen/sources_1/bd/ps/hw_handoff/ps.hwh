@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jan 10 14:20:26 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jan 10 20:33:42 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -328,7 +328,7 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="angle" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_angle">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_angle"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_angle"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_ana1_clk">
@@ -338,7 +338,7 @@
         </PORT>
         <PORT DIR="O" NAME="comp_wr" SIGIS="undef" SIGNAME="ana_high_comp_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_wr"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
@@ -398,7 +398,7 @@
         </PORT>
         <PORT DIR="O" LEFT="19" NAME="freq" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_freq">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_freq"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_freq"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="19" NAME="phase_E" RIGHT="0" SIGIS="undef" SIGNAME="freq_high_189_0_phase_E">
@@ -423,27 +423,27 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="sample" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_sample"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_sample"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="5" NAME="sample_E" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_E">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_sample_E"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_sample_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="5" NAME="sample_N" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_N">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_sample_N"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_sample_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="5" NAME="sample_W" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_W">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_sample_W"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_sample_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="8" NAME="size" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_size">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_size"/>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_size"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -463,7 +463,7 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="angle" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_angle">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_angle"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_angle"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_ana0_clk">
@@ -473,7 +473,7 @@
         </PORT>
         <PORT DIR="O" NAME="comp_wr" SIGIS="undef" SIGNAME="ana_low_comp_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_wr"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
@@ -533,7 +533,7 @@
         </PORT>
         <PORT DIR="O" LEFT="19" NAME="freq" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_freq">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_freq"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_freq"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="19" NAME="phase_E" RIGHT="0" SIGIS="undef" SIGNAME="freq_low_46_0_phase_E">
@@ -558,27 +558,27 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="sample" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_sample"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_sample"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="5" NAME="sample_E" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_E">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_sample_E"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_sample_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="5" NAME="sample_N" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_N">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_sample_N"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_sample_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="5" NAME="sample_W" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_W">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_sample_W"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_sample_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="8" NAME="size" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_size">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_size"/>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_size"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2899,79 +2899,84 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="ana_fifo_angle" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_angle">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="angle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="ana_fifo_clk" SIGIS="clk" SIGNAME="mts_0_ana1_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="ana1_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="ana_fifo_freq" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_freq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="freq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ana_fifo_sample" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="sample"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ana_fifo_sample_E" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_E">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="sample_E"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ana_fifo_sample_N" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_N">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="sample_N"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ana_fifo_sample_W" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_W">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="sample_W"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="ana_fifo_size" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ana_fifo_wr" SIGIS="undef" SIGNAME="ana_high_comp_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_high" PORT="comp_wr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="fifo_angle" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_angle">
+        <PORT DIR="I" LEFT="127" NAME="raw_fifo_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_E">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="angle"/>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_E"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="fifo_clk" SIGIS="clk" SIGNAME="mts_0_ana1_clk">
+        <PORT DIR="I" LEFT="127" NAME="raw_fifo_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_N">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="ana1_clk"/>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="19" NAME="fifo_freq" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_freq">
+        <PORT DIR="I" LEFT="127" NAME="raw_fifo_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_W">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="freq"/>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_W"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="fifo_sample" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_fifo_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="sample"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="5" NAME="fifo_sample_E" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_E">
+        <PORT DIR="I" NAME="raw_fifo_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="sample_E"/>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="5" NAME="fifo_sample_N" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_N">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="sample_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="5" NAME="fifo_sample_W" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_sample_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="sample_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="8" NAME="fifo_size" RIGHT="0" SIGIS="undef" SIGNAME="ana_high_size">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="size"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="fifo_wr" SIGIS="undef" SIGNAME="ana_high_comp_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_high" PORT="comp_wr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_raw_E">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="raw_E"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_raw_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="raw_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_raw_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="raw_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="raw_active" SIGIS="undef" SIGNAME="raw_high_active">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="active"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="63" NAME="raw_sample" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_sample">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="sample"/>
+            <CONNECTION INSTANCE="mts_0" PORT="comp1_reset"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2984,79 +2989,84 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="ana_fifo_angle" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_angle">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="angle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="ana_fifo_clk" SIGIS="clk" SIGNAME="mts_0_ana0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="ana0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="ana_fifo_freq" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_freq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="freq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ana_fifo_sample" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="sample"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ana_fifo_sample_E" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_E">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="sample_E"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ana_fifo_sample_N" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_N">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="sample_N"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ana_fifo_sample_W" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_W">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="sample_W"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="ana_fifo_size" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ana_fifo_wr" SIGIS="undef" SIGNAME="ana_low_comp_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ana_low" PORT="comp_wr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="fifo_angle" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_angle">
+        <PORT DIR="I" LEFT="127" NAME="raw_fifo_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_E">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="angle"/>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_E"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="fifo_clk" SIGIS="clk" SIGNAME="mts_0_ana0_clk">
+        <PORT DIR="I" LEFT="127" NAME="raw_fifo_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_N">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="ana0_clk"/>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="19" NAME="fifo_freq" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_freq">
+        <PORT DIR="I" LEFT="127" NAME="raw_fifo_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_W">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="freq"/>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_W"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="fifo_sample" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="raw_fifo_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="sample"/>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="5" NAME="fifo_sample_E" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_E">
+        <PORT DIR="I" NAME="raw_fifo_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="sample_E"/>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="5" NAME="fifo_sample_N" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_N">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="sample_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="5" NAME="fifo_sample_W" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_sample_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="sample_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="8" NAME="fifo_size" RIGHT="0" SIGIS="undef" SIGNAME="ana_low_size">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="size"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="fifo_wr" SIGIS="undef" SIGNAME="ana_low_comp_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ana_low" PORT="comp_wr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_raw_E">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="raw_E"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_raw_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="raw_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_raw_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="raw_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="raw_active" SIGIS="undef" SIGNAME="raw_low_active">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="active"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="63" NAME="raw_sample" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_sample">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="sample"/>
+            <CONNECTION INSTANCE="mts_0" PORT="comp0_reset"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3116,22 +3126,22 @@
         </PORT>
         <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_E">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="raw_in_E"/>
+            <CONNECTION INSTANCE="comp_high" PORT="raw_fifo_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_N">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="raw_in_N"/>
+            <CONNECTION INSTANCE="comp_high" PORT="raw_fifo_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_W">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="raw_in_W"/>
+            <CONNECTION INSTANCE="comp_high" PORT="raw_fifo_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="fifo_wr"/>
+            <CONNECTION INSTANCE="comp_high" PORT="raw_fifo_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
@@ -3246,22 +3256,22 @@
         </PORT>
         <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_E">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="raw_in_E"/>
+            <CONNECTION INSTANCE="comp_low" PORT="raw_fifo_E"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_N">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="raw_in_N"/>
+            <CONNECTION INSTANCE="comp_low" PORT="raw_fifo_N"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_W">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="raw_in_W"/>
+            <CONNECTION INSTANCE="comp_low" PORT="raw_fifo_W"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="fifo_wr"/>
+            <CONNECTION INSTANCE="comp_low" PORT="raw_fifo_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
@@ -3877,8 +3887,8 @@
       <PORTS>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="ana0_clk" SIGIS="clk" SIGNAME="mts_0_ana0_clk">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_low" PORT="ana_fifo_clk"/>
             <CONNECTION INSTANCE="ana_low" PORT="clk"/>
-            <CONNECTION INSTANCE="comp_low" PORT="fifo_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ana0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_ana0_reset">
@@ -3888,8 +3898,8 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="ana1_clk" SIGIS="clk" SIGNAME="mts_0_ana1_clk">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_high" PORT="ana_fifo_clk"/>
             <CONNECTION INSTANCE="ana_high" PORT="clk"/>
-            <CONNECTION INSTANCE="comp_high" PORT="fifo_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ana1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_ana1_reset">
@@ -3930,24 +3940,22 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp0_clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="clk"/>
             <CONNECTION INSTANCE="comp_low" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_low" PORT="reset"/>
+            <CONNECTION INSTANCE="comp_low" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp1_clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="clk"/>
             <CONNECTION INSTANCE="comp_high" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="raw_high" PORT="reset"/>
+            <CONNECTION INSTANCE="comp_high" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_adc_active" SIGIS="undef" SIGNAME="mts_0_deci_adc_active">
@@ -3966,8 +3974,8 @@
             <CONNECTION INSTANCE="deci_high" PORT="clk"/>
             <CONNECTION INSTANCE="freq_low_46_0" PORT="fifo_clk"/>
             <CONNECTION INSTANCE="freq_high_189_0" PORT="fifo_clk"/>
-            <CONNECTION INSTANCE="raw_high" PORT="fifo_clk"/>
-            <CONNECTION INSTANCE="raw_low" PORT="fifo_clk"/>
+            <CONNECTION INSTANCE="comp_high" PORT="raw_fifo_clk"/>
+            <CONNECTION INSTANCE="comp_low" PORT="raw_fifo_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
@@ -4655,146 +4663,6 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/raw_high" HWVERSION="1.0" INSTANCE="raw_high" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="raw" VLNV="xilinx.com:module_ref:raw:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_raw_0_1"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" NAME="active" SIGIS="undef" SIGNAME="raw_high_active">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="raw_active"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="fifo_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="fifo_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="raw_wr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_raw_E">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="raw_E"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_raw_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="raw_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_raw_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="raw_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_in_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_E">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="raw_E"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_in_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="raw_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_in_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_high" PORT="raw_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="comp1_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="63" NAME="sample" RIGHT="0" SIGIS="undef" SIGNAME="raw_high_sample">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_high" PORT="raw_sample"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/raw_low" HWVERSION="1.0" INSTANCE="raw_low" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="raw" VLNV="xilinx.com:module_ref:raw:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="ps_raw_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" NAME="active" SIGIS="undef" SIGNAME="raw_low_active">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="raw_active"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="fifo_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="fifo_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_wr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_raw_E">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="raw_E"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_raw_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="raw_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_raw_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="raw_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_in_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_E">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_E"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_in_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="raw_in_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_W">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="deci_low" PORT="raw_W"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="comp0_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="63" NAME="sample" RIGHT="0" SIGIS="undef" SIGNAME="raw_low_sample">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_low" PORT="raw_sample"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="17" FULLNAME="/rst_ps8_0_99M" HWVERSION="5.0" INSTANCE="rst_ps8_0_99M" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
       <DOCUMENTS>
