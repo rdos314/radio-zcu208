@@ -1,17 +1,17 @@
-// (c) Copyright 2023 Advanced Micro Devices, Inc. All rights reserved.
-//
+// (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
+// 
 // This file contains confidential and proprietary information
-// of AMD and is protected under U.S. and
-// international copyright and other intellectual property
-// laws.
-//
+// of AMD and is protected under U.S. and international copyright
+// and other intellectual property laws.
+// 
 // DISCLAIMER
 // This disclaimer is not a license and does not grant any
 // rights to the materials distributed herewith. Except as
 // otherwise provided in a valid license issued to you by
 // AMD, and to the maximum extent permitted by applicable
 // law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND
-// WITH ALL FAULTS, AND HEREBY DISCLAIMS ALL WARRANTIES
+// WITH ALL FAULTS, AND AMD HEREBY DISCLAIMS ALL WARRANTIES
 // AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
 // BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-
 // INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and
@@ -26,7 +26,7 @@
 // by a third party) even if such damage or loss was
 // reasonably foreseeable or AMD had been advised of the
 // possibility of the same.
-//
+// 
 // CRITICAL APPLICATIONS
 // AMD products are not designed or intended to be fail-
 // safe, or for use in any application requiring fail-safe
@@ -40,36 +40,69 @@
 // liability of any use of AMD products in Critical
 // Applications, subject only to applicable laws and
 // regulations governing limitations on product liability.
-//
+// 
 // THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
 // PART OF THIS FILE AT ALL TIMES.
-//
+// 
 // DO NOT MODIFY THIS FILE.
 
 
-// The following must be inserted into your Verilog file for this
-// core to be instantiated. Change the instance name and port connections
-// (in parentheses) to your own signal names.
+// IP VLNV: xilinx.com:module_ref:raw:1.0
+// IP Revision: 1
 
-//----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
+`timescale 1ns/1ps
 
-ila_0 your_instance_name (
-	.clk(clk), // input wire clk
-
-
-	.probe0(probe0), // input wire [0:0]  probe0  
-	.probe1(probe1), // input wire [31:0]  probe1 
-	.probe2(probe2), // input wire [8:0]  probe2 
-	.probe3(probe3), // input wire [19:0]  probe3 
-	.probe4(probe4), // input wire [15:0]  probe4 
-	.probe5(probe5), // input wire [15:0]  probe5 
-	.probe6(probe6) // input wire [15:0]  probe6
+(* IP_DEFINITION_SOURCE = "module_ref" *)
+(* DowngradeIPIdentifiedWarnings = "yes" *)
+module ps_raw_0_1 (
+  fifo_clk,
+  fifo_wr,
+  raw_in_N,
+  raw_in_E,
+  raw_in_W,
+  clk,
+  reset,
+  active,
+  sample,
+  raw_N,
+  raw_E,
+  raw_W
 );
 
-// INST_TAG_END ------ End INSTANTIATION Template ---------
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *)
+input wire fifo_clk;
+input wire fifo_wr;
+input wire [127 : 0] raw_in_N;
+input wire [127 : 0] raw_in_E;
+input wire [127 : 0] raw_in_W;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *)
+input wire clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+input wire reset;
+output wire active;
+output wire [63 : 0] sample;
+output wire [127 : 0] raw_N;
+output wire [127 : 0] raw_E;
+output wire [127 : 0] raw_W;
 
-// You must compile the wrapper file ila_0 when simulating
-// the core, ila_0. When compiling the wrapper file, be sure to
-// reference the Verilog simulation library.
-
-
+  raw inst (
+    .fifo_clk(fifo_clk),
+    .fifo_wr(fifo_wr),
+    .raw_in_N(raw_in_N),
+    .raw_in_E(raw_in_E),
+    .raw_in_W(raw_in_W),
+    .clk(clk),
+    .reset(reset),
+    .active(active),
+    .sample(sample),
+    .raw_N(raw_N),
+    .raw_E(raw_E),
+    .raw_W(raw_W)
+  );
+endmodule

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Jan  9 23:54:15 2026
+//Date        : Sat Jan 10 12:28:47 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=19,numReposBlks=19,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=8,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=21,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=10,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -187,11 +187,17 @@ module ps
   wire [31:0]deci_high_freq_N;
   wire [31:0]deci_high_freq_W;
   wire deci_high_freq_wr;
+  wire [127:0]deci_high_raw_E;
+  wire [127:0]deci_high_raw_N;
+  wire [127:0]deci_high_raw_W;
   wire deci_high_raw_wr;
   wire [15:0]deci_low_freq_E;
   wire [15:0]deci_low_freq_N;
   wire [15:0]deci_low_freq_W;
   wire deci_low_freq_wr;
+  wire [127:0]deci_low_raw_E;
+  wire [127:0]deci_low_raw_N;
+  wire [127:0]deci_low_raw_W;
   wire deci_low_raw_wr;
   wire deci_low_sim_active;
   wire freq_high_189_0_ana_wr;
@@ -219,6 +225,10 @@ module ps
   wire mts_0_ana0_reset;
   wire mts_0_ana1_clk;
   wire mts_0_ana1_reset;
+  wire mts_0_comp0_clk;
+  wire mts_0_comp0_reset;
+  wire mts_0_comp1_clk;
+  wire mts_0_comp1_reset;
   wire mts_0_deci_adc_active;
   wire mts_0_deci_clk;
   wire mts_0_deci_resetn;
@@ -589,6 +599,9 @@ module ps
         .freq_N(deci_high_freq_N),
         .freq_W(deci_high_freq_W),
         .freq_wr(deci_high_freq_wr),
+        .raw_E(deci_high_raw_E),
+        .raw_N(deci_high_raw_N),
+        .raw_W(deci_high_raw_W),
         .raw_wr(deci_high_raw_wr),
         .ready_E(usp_rf_data_converter_0_m22_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m20_axis_tvalid),
@@ -611,6 +624,9 @@ module ps
         .freq_N(deci_low_freq_N),
         .freq_W(deci_low_freq_W),
         .freq_wr(deci_low_freq_wr),
+        .raw_E(deci_low_raw_E),
+        .raw_N(deci_low_raw_N),
+        .raw_W(deci_low_raw_W),
         .raw_wr(deci_low_raw_wr),
         .ready_E(usp_rf_data_converter_0_m02_axis_tvalid),
         .ready_N(usp_rf_data_converter_0_m00_axis_tvalid),
@@ -691,6 +707,10 @@ module ps
         .axi_clk(zynq_ultra_ps_e_0_pl_clk0),
         .axi_sim_active(adc_control_0_sim_active),
         .axi_sim_start(adc_control_0_sim_start),
+        .comp0_clk(mts_0_comp0_clk),
+        .comp0_reset(mts_0_comp0_reset),
+        .comp1_clk(mts_0_comp1_clk),
+        .comp1_reset(mts_0_comp1_reset),
         .deci_adc_active(mts_0_deci_adc_active),
         .deci_clk(mts_0_deci_clk),
         .deci_resetn(mts_0_deci_resetn),
@@ -737,6 +757,22 @@ module ps
         .s_axi_wready(axi_smc_M01_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M01_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M01_AXI_WVALID));
+  ps_raw_0_1 raw_high
+       (.clk(mts_0_comp1_clk),
+        .fifo_clk(mts_0_deci_clk),
+        .fifo_wr(deci_high_raw_wr),
+        .raw_in_E(deci_high_raw_E),
+        .raw_in_N(deci_high_raw_N),
+        .raw_in_W(deci_high_raw_W),
+        .reset(mts_0_comp1_reset));
+  ps_raw_0_0 raw_low
+       (.clk(mts_0_comp0_clk),
+        .fifo_clk(mts_0_deci_clk),
+        .fifo_wr(deci_low_raw_wr),
+        .raw_in_E(deci_low_raw_E),
+        .raw_in_N(deci_low_raw_N),
+        .raw_in_W(deci_low_raw_W),
+        .reset(mts_0_comp0_reset));
   ps_rst_ps8_0_99M_0 rst_ps8_0_99M
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),

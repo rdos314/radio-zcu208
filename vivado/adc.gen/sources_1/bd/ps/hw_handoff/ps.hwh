@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jan  9 23:54:18 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jan 10 12:28:49 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -2880,10 +2880,26 @@
             <CONNECTION INSTANCE="freq_high_189_0" PORT="freq_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="raw_wr" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_E">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_high" PORT="raw_in_E"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_N">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_high" PORT="raw_in_N"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_W">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_high" PORT="raw_in_W"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_high" PORT="fifo_wr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m22_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m22_axis_tvalid"/>
@@ -2994,10 +3010,26 @@
             <CONNECTION INSTANCE="freq_low_46_0" PORT="freq_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="raw_wr" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_E">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_low" PORT="raw_in_E"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_N">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_low" PORT="raw_in_N"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_W">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_low" PORT="raw_in_W"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="raw_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_low" PORT="fifo_wr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="ready_E" SIGIS="undef" SIGNAME="usp_rf_data_converter_0_m02_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usp_rf_data_converter_0" PORT="m02_axis_tvalid"/>
@@ -3660,10 +3692,26 @@
             <CONNECTION INSTANCE="adc_control_0" PORT="sim_start"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp0_clk" SIGIS="clk"/>
-        <PORT DIR="O" NAME="comp0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp1_clk" SIGIS="clk"/>
-        <PORT DIR="O" NAME="comp1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp0_clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_low" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="comp0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_low" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp1_clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_high" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="comp1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="raw_high" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="deci_adc_active" SIGIS="undef" SIGNAME="mts_0_deci_adc_active">
           <CONNECTIONS>
             <CONNECTION INSTANCE="deci_low" PORT="adc_active"/>
@@ -3680,6 +3728,8 @@
             <CONNECTION INSTANCE="deci_high" PORT="clk"/>
             <CONNECTION INSTANCE="freq_low_46_0" PORT="fifo_clk"/>
             <CONNECTION INSTANCE="freq_high_189_0" PORT="fifo_clk"/>
+            <CONNECTION INSTANCE="raw_high" PORT="fifo_clk"/>
+            <CONNECTION INSTANCE="raw_low" PORT="fifo_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="deci_resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_deci_resetn">
@@ -4367,6 +4417,106 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/raw_high" HWVERSION="1.0" INSTANCE="raw_high" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="raw" VLNV="xilinx.com:module_ref:raw:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_raw_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" NAME="active" SIGIS="undef"/>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp1_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp1_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="fifo_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="fifo_wr" SIGIS="undef" SIGNAME="deci_high_raw_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="127" NAME="raw_in_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_E">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_E"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="127" NAME="raw_in_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_N">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_N"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="127" NAME="raw_in_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_high_raw_W">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_high" PORT="raw_W"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp1_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp1_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="63" NAME="sample" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/raw_low" HWVERSION="1.0" INSTANCE="raw_low" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="raw" VLNV="xilinx.com:module_ref:raw:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_raw_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" NAME="active" SIGIS="undef"/>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="fifo_clk" SIGIS="clk" SIGNAME="mts_0_deci_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="deci_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="fifo_wr" SIGIS="undef" SIGNAME="deci_low_raw_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="raw_E" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="raw_N" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="raw_W" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="127" NAME="raw_in_E" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_E">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_E"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="127" NAME="raw_in_N" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_N">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_N"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="127" NAME="raw_in_W" RIGHT="0" SIGIS="undef" SIGNAME="deci_low_raw_W">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="deci_low" PORT="raw_W"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp0_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="63" NAME="sample" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="17" FULLNAME="/rst_ps8_0_99M" HWVERSION="5.0" INSTANCE="rst_ps8_0_99M" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
       <DOCUMENTS>
