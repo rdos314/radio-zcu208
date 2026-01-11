@@ -1,0 +1,23 @@
+!define BLANK ""
+C:\radio-zcu208\morlet\morlet.obj : C:\radio-zcu208\morlet\morlet.cpp .AUTOD&
+EPEND
+ @C:
+ cd C:\radio-zcu208\morlet
+ *wpp386 morlet.cpp -i="c:\watcom/h;c:\watcom/h/nt" -w4 -e25 -zq -od -d2 -6r&
+ -bt=nt -fo=.obj -mf -xs -xr
+
+C:\radio-zcu208\morlet\morlet.exe : C:\radio-zcu208\morlet\morlet.obj .AUTOD&
+EPEND
+ @C:
+ cd C:\radio-zcu208\morlet
+ @%write morlet.lk1 FIL morlet.obj
+ @%append morlet.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b morlet.imp 
+ @%append morlet.lk1 LIBR morlet.imp
+!endif
+!ifneq BLANK ""
+ @%append morlet.lk1 
+!endif
+ *wlink name morlet d all sys nt op m op maxe=25 op q op symf @morlet.lk1
+

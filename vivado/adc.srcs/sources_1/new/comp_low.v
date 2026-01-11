@@ -38,11 +38,20 @@ module comp_low(
     input wire [127:0] raw_fifo_W,
 
     input wire clk,
-    input wire reset
+    input wire reset,
+    
+    output reg active,
+    output reg [63:0] re,
+    output reg [63:0] im,
+
+	output reg burst,
+	output reg [31:0] sample,
+	output reg [8:0] size,
+	output reg [19:0] freq,
+	output reg [15:0] angle
 );
 
-  reg raw_active;
-  reg [63:0] raw_sample;
+  reg [31:0] raw_sample;
   reg [127:0] raw_N;
   reg [127:0] raw_E;
   reg [127:0] raw_W;
@@ -55,7 +64,6 @@ module comp_low(
   wire raw_empty;
 
   reg [9:0] raw_delay;
-  reg raw_sample_cy;
     
   reg [94:0] ana_in_data;
   reg ana_wr;
@@ -114,6 +122,52 @@ module comp_low(
   reg [17:0] C5;
   reg [17:0] C6;
   reg [17:0] C7;
+  
+  reg [4:0] fir_delay;
+  reg fir_active;
+  wire deci_active;
+  reg morlet_active;
+  wire fir_re_run;
+  wire fir_im_run;
+  reg fir_saved;
+  
+  reg [191:0] deci_in;
+  wire [159:0] deci_out;
+
+  wire [39:0] deci_out_0 = deci_out[39:0];
+  wire [39:0] deci_out_1 = deci_out[79:40];
+  wire [39:0] deci_out_2 = deci_out[119:80];
+  wire [39:0] deci_out_3 = deci_out[159:120];
+  
+  reg [15:0] deci_0;
+  reg [15:0] deci_1;
+  reg [15:0] deci_2;
+  reg [15:0] deci_3;
+  
+  wire [63:0] fir_in = {deci_3, deci_2, deci_1, deci_0};
+  
+  wire [159:0] re_data;
+  wire [159:0] im_data;
+  
+  wire [39:0] re_out_0 = re_data[39:0];
+  wire [39:0] re_out_1 = re_data[79:40];
+  wire [39:0] re_out_2 = re_data[119:80];
+  wire [39:0] re_out_3 = re_data[159:120];
+    
+  wire [39:0] im_out_0 = im_data[39:0];
+  wire [39:0] im_out_1 = im_data[79:40];
+  wire [39:0] im_out_2 = im_data[119:80];
+  wire [39:0] im_out_3 = im_data[159:120];
+
+  reg [15:0] re_0;  
+  reg [15:0] re_1;  
+  reg [15:0] re_2;  
+  reg [15:0] re_3;  
+
+  reg [15:0] im_0;  
+  reg [15:0] im_1;  
+  reg [15:0] im_2;  
+  reg [15:0] im_3;  
 
 fifo_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
@@ -161,31 +215,42 @@ comp_sel6 sel_W_i (
     .data_out(data_W)
     );
 
+fir_comp_deci fir_deci_i (
+  .aclk(clk),                               // input wire aclk
+  .s_axis_data_tvalid(fir_active),          // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(deci_in),              // input wire [191 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(deci_active),         // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(deci_out)              // output wire [159 : 0] m_axis_data_tdata
+);
+
+fir_comp_low_re fir_re_i (
+  .aclk(clk),                               // input wire aclk
+  .s_axis_data_tvalid(morlet_active),       // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(fir_in),               // input wire [63 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(fir_re_run),          // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(re_data)               // output wire [159 : 0] m_axis_data_tdata
+);
+
+fir_comp_low_im fir_im_i (
+  .aclk(clk),                               // input wire aclk
+  .s_axis_data_tvalid(morlet_active),       // input wire s_axis_data_tvalid
+  .s_axis_data_tdata(fir_in),               // input wire [63 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(fir_im_run),          // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
+);
+
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(ana_empty),           // input wire [0:0]  probe3
-		.probe1(ana_rd),              // input wire [0:0]  probe3
-		.probe2(ana_delay),           // input wire [4:0]  probe3
-		.probe3(curr_sample),         // input wire [31:0]  probe3
-		.probe4(ana_burst),           // input wire [0:0]  probe3
-		.probe5(ana_size),            // input wire [8:0]  probe3
-		.probe6(ana_freq),            // input wire [19:0]  probe3
-		.probe7(ana_angle),           // input wire [15:0]  probe3
-		.probe8(ana_sample_N),        // input wire [5:0]  probe3
-		.probe9(ana_sample_E),        // input wire [5:0]  probe3
-		.probe10(ana_sample_W),       // input wire [5:0]  probe3
-		.probe11(raw_rd),             // input wire [0:0]  probe3
-		.probe12(raw_empty),          // input wire [0:0]  probe3
-		.probe13(raw_delay),          // input wire [9:0]  probe3
-		.probe14(raw_sample),         // input wire [63:0]  probe3
-		.probe15(C0),                 // input wire [17:0]  probe3
-		.probe16(C1),                 // input wire [17:0]  probe3
-		.probe17(C2),                 // input wire [17:0]  probe3
-		.probe18(C3),                 // input wire [17:0]  probe3
-		.probe19(C4),                 // input wire [17:0]  probe3
-		.probe20(C5),                 // input wire [17:0]  probe3
-		.probe21(C6),                 // input wire [17:0]  probe3
-		.probe22(C7)                  // input wire [17:0]  probe3
+		.probe0(raw_rd),              // input wire [0:0]  probe3
+		.probe1(raw_empty),           // input wire [0:0]  probe3
+		.probe2(raw_delay),           // input wire [9:0]  probe3
+		.probe3(raw_sample),          // input wire [31:0]  probe3
+		.probe4(fir_delay),           // input wire [4:0]  probe3
+		.probe5(fir_active),          // input wire [0:0]  probe3
+		.probe6(deci_active),         // input wire [0:0]  probe3
+		.probe7(active),              // input wire [0:0]  probe3
+		.probe8(re),                  // input wire [63:0]  probe3
+		.probe9(im)                   // input wire [63:0]  probe3
 	);
 
 generate
@@ -224,39 +289,32 @@ generate
     end
 
     always @(posedge clk) 
-    begin
-		if (raw_rd)
-		begin
-			if (raw_sample[31:0] == 32'hFFFFFFFE)
-				raw_sample_cy <= 1;
-			else
-				raw_sample_cy <= 0;
-				
-			raw_sample[31:0] <= raw_sample[31:0] + 1;
-	
-			if (raw_sample_cy)
-				raw_sample[63:32] <= raw_sample[63:32] + 1;
-		end
-		else
-		begin
-			raw_sample <= 0;
-			raw_sample_cy <= 0;
-		end
-	end
-
-    always @(posedge clk) 
 	begin
         if (raw_rd & (!raw_empty))
         begin
 			raw_N <= raw_out_data[127:0];
 			raw_E <= raw_out_data[255:128];
 			raw_W <= raw_out_data[383:256];
-			raw_active <= 1;
+
+			if (fir_delay == 19)
+			    fir_active <= 1;
+			else
+                fir_delay <= fir_delay + 1;
 		end
 		else
-			raw_active <= 0;
+		begin
+		    fir_delay <= 0;
+		    fir_active <= 0;
+		end
 	end
 
+    always @(posedge clk) 
+    begin
+		if (fir_active)
+			raw_sample <= raw_sample + 1;
+		else
+			raw_sample <= 0;
+	end
 
     always @(posedge ana_fifo_clk) 
     begin
@@ -352,7 +410,121 @@ generate
 	   C6 <= N6 + E6 + W6;
 	   C7 <= N7 + E7 + W7;
 	end
-  
+
+    always @(posedge clk) 
+	begin
+	   deci_in[23:0] <= {C0[17], C0[17], C0[17], C0[17], C0[17], C0[17], C0};
+	   deci_in[47:24] <= {C1[17], C1[17], C1[17], C1[17], C1[17], C1[17], C1};
+	   deci_in[71:48] <= {C2[17], C2[17], C2[17], C2[17], C2[17], C2[17], C2};
+	   deci_in[95:72] <= {C3[17], C3[17], C3[17], C3[17], C3[17], C3[17], C3};
+	   deci_in[119:96] <= {C4[17], C4[17], C4[17], C4[17], C4[17], C4[17], C4};
+	   deci_in[143:120] <= {C5[17], C5[17], C5[17], C5[17], C5[17], C5[17], C5};
+	   deci_in[167:144] <= {C6[17], C6[17], C6[17], C6[17], C6[17], C6[17], C6};
+	   deci_in[191:168] <= {C7[17], C7[17], C7[17], C7[17], C7[17], C7[17], C7};	      
+	end
+
+    always @(posedge clk) 
+	begin
+	   if (deci_out_0[16])
+    	   deci_0 <= deci_out_0[32:17] + 1;
+        else
+    	   deci_0 <= deci_out_0[32:17];
+
+	   if (deci_out_1[16])
+    	   deci_1 <= deci_out_1[32:17] + 1;
+        else
+    	   deci_1 <= deci_out_1[32:17];
+
+	   if (deci_out_2[16])
+    	   deci_2 <= deci_out_2[32:17] + 1;
+        else
+    	   deci_2 <= deci_out_2[32:17];
+
+	   if (deci_out_3[16])
+    	   deci_3 <= deci_out_3[32:17] + 1;
+        else
+    	   deci_3 <= deci_out_3[32:17];
+	end
+
+    always @(posedge clk) 
+	begin
+        morlet_active <= deci_active;
+    end
+
+    always @(posedge clk) 
+	begin
+	    if (re_out_0[19])
+            re_0 <= re_out_0[35:20] + 1;
+        else
+            re_0 <= re_out_0[35:20];
+
+	    if (re_out_1[19])
+            re_1 <= re_out_1[35:20] + 1;
+        else
+            re_1 <= re_out_1[35:20];
+
+	    if (re_out_2[19])
+            re_2 <= re_out_2[35:20] + 1;
+        else
+            re_2 <= re_out_2[35:20];
+
+	    if (re_out_3[19])
+            re_3 <= re_out_3[35:20] + 1;
+        else
+            re_3 <= re_out_3[35:20];
+    end
+
+    always @(posedge clk) 
+	begin
+	    if (im_out_0[19])
+            im_0 <= im_out_0[35:20] + 1;
+        else
+            im_0 <= im_out_0[35:20];
+
+	    if (im_out_1[19])
+            im_1 <= im_out_1[35:20] + 1;
+        else
+            im_1 <= im_out_1[35:20];
+
+	    if (im_out_2[19])
+            im_2 <= im_out_2[35:20] + 1;
+        else
+            im_2 <= im_out_2[35:20];
+
+	    if (im_out_3[19])
+            im_3 <= im_out_3[35:20] + 1;
+        else
+            im_3 <= im_out_3[35:20];
+    end
+
+    always @(posedge clk) 
+	begin
+        fir_saved <= fir_re_run;
+        active <= fir_saved;
+    end
+
+    always @(posedge clk) 
+	begin
+	    if (fir_saved)
+	    begin
+	       re[15:0] <= re_0;
+	       re[31:16] <= re_1;
+	       re[47:32] <= re_2;
+	       re[63:48] <= re_3;
+	    end
+    end
+
+    always @(posedge clk) 
+	begin
+	    if (fir_saved)
+	    begin
+	       im[15:0] <= im_0;
+	       im[31:16] <= im_1;
+	       im[47:32] <= im_2;
+	       im[63:48] <= im_3;
+	    end
+    end
+
   end
     
 endgenerate

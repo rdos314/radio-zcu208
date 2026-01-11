@@ -1,0 +1,5 @@
+morlet.cpp(46): Warning! W914: col(1) 'main' must return 'int'
+morlet.cpp(189): Warning! W014: col(1) no reference to symbol 'lval'
+morlet.cpp(50): Note! N392: col(15) definition: '__int64 lval' in 'void main( void )'
+morlet.cpp(189): Warning! W014: col(1) no reference to symbol 'norm'
+morlet.cpp(57): Note! N392: col(12) definition: 'double norm' in 'void main( void )'
