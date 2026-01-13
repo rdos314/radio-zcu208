@@ -20,6 +20,8 @@ create_generated_clock -name freq0_clk [get_pins ps_i/mts_0/inst/clk_wiz_freq_i/
 create_generated_clock -name freq1_clk [get_pins ps_i/mts_0/inst/clk_wiz_freq_i/inst/plle4_adv_inst/CLKOUT0B]
 create_generated_clock -name comp0_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_i/inst/plle4_adv_inst/CLKOUT0]
 create_generated_clock -name comp1_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_i/inst/plle4_adv_inst/CLKOUT0B]
+create_generated_clock -name comp_ana0_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_ana_i/inst/plle4_adv_inst/CLKOUT0]
+create_generated_clock -name comp_ana1_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_ana_i/inst/plle4_adv_inst/CLKOUT0B]
 
 set_input_delay -clock [get_clocks pl_clk] -min -add_delay 7.931 [get_ports pl_sysref_p]
 set_input_delay -clock [get_clocks pl_clk] -max -add_delay 7.985 [get_ports pl_sysref_p]
@@ -37,6 +39,8 @@ set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.freq1_reset_1_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.comp0_reset_1_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.comp1_reset_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.comp_ana0_reset_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.comp_ana1_reset_1_reg/D]
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_reset_1_reg/D]
 
 #set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CE}]

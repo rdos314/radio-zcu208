@@ -62,6 +62,10 @@ create_clock -period 2 -name comp0_clk [get_ports comp0_clk]
 
 create_clock -period 2 -name comp1_clk [get_ports comp1_clk]
 
+create_clock -period 2 -name comp_ana0_clk [get_ports comp_ana0_clk]
+
+create_clock -period 2 -name comp_ana1_clk [get_ports comp_ana1_clk]
+
 create_clock -period 2 -name deci_clk [get_ports deci_clk]
 
 create_clock -period 2 -name freq0_clk [get_ports freq0_clk]

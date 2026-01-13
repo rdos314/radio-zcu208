@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Jan 12 23:59:50 2026
+// Date        : Tue Jan 13 21:18:13 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -221,7 +221,7 @@ module ps_comp_low_0_0_comp_low
   wire ana_fifo_wr;
   wire [94:0]ana_in_data;
   wire [94:0]ana_out_data;
-  (* MARK_DEBUG *) wire ana_run;
+  (* MARK_DEBUG *) wire ana_trig;
   wire ana_wr;
   (* MARK_DEBUG *) wire [15:0]angle;
   (* MARK_DEBUG *) wire burst;
@@ -643,8 +643,19 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.C7_reg[7]_i_1_n_5 ;
   wire \comp_low.C7_reg[7]_i_1_n_6 ;
   wire \comp_low.C7_reg[7]_i_1_n_7 ;
-  wire \comp_low.ana_run_i_1_n_0 ;
-  wire \comp_low.ana_run_i_2_n_0 ;
+  wire \comp_low.ana_trig_i_10_n_0 ;
+  wire \comp_low.ana_trig_i_11_n_0 ;
+  wire \comp_low.ana_trig_i_12_n_0 ;
+  wire \comp_low.ana_trig_i_13_n_0 ;
+  wire \comp_low.ana_trig_i_1_n_0 ;
+  wire \comp_low.ana_trig_i_2_n_0 ;
+  wire \comp_low.ana_trig_i_3_n_0 ;
+  wire \comp_low.ana_trig_i_4_n_0 ;
+  wire \comp_low.ana_trig_i_5_n_0 ;
+  wire \comp_low.ana_trig_i_6_n_0 ;
+  wire \comp_low.ana_trig_i_7_n_0 ;
+  wire \comp_low.ana_trig_i_8_n_0 ;
+  wire \comp_low.ana_trig_i_9_n_0 ;
   wire \comp_low.angle[0]_i_1_n_0 ;
   wire \comp_low.angle[10]_i_1_n_0 ;
   wire \comp_low.angle[11]_i_1_n_0 ;
@@ -885,6 +896,8 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.raw_delay[9]_i_3_n_0 ;
   wire [9:0]\comp_low.raw_delay_reg0 ;
   wire \comp_low.raw_rd_i_1_n_0 ;
+  wire \comp_low.raw_run_i_1_n_0 ;
+  wire \comp_low.raw_run_i_2_n_0 ;
   wire \comp_low.raw_sample[31]_i_1_n_0 ;
   wire \comp_low.raw_sample_reg[16]_i_1_n_0 ;
   wire \comp_low.raw_sample_reg[16]_i_1_n_1 ;
@@ -1077,17 +1090,6 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.sample[7]_i_1_n_0 ;
   wire \comp_low.sample[8]_i_1_n_0 ;
   wire \comp_low.sample[9]_i_1_n_0 ;
-  wire \comp_low.sample_E[5]_i_10_n_0 ;
-  wire \comp_low.sample_E[5]_i_11_n_0 ;
-  wire \comp_low.sample_E[5]_i_12_n_0 ;
-  wire \comp_low.sample_E[5]_i_13_n_0 ;
-  wire \comp_low.sample_E[5]_i_3_n_0 ;
-  wire \comp_low.sample_E[5]_i_4_n_0 ;
-  wire \comp_low.sample_E[5]_i_5_n_0 ;
-  wire \comp_low.sample_E[5]_i_6_n_0 ;
-  wire \comp_low.sample_E[5]_i_7_n_0 ;
-  wire \comp_low.sample_E[5]_i_8_n_0 ;
-  wire \comp_low.sample_E[5]_i_9_n_0 ;
   wire \comp_low.sample_E_reg[0]_rep__0_n_0 ;
   wire \comp_low.sample_E_reg[0]_rep__1_n_0 ;
   wire \comp_low.sample_E_reg[0]_rep__2_n_0 ;
@@ -1109,17 +1111,6 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.sample_E_reg[3]_rep__1_n_0 ;
   wire \comp_low.sample_E_reg[3]_rep_n_0 ;
   wire \comp_low.sample_E_reg[4]_rep_n_0 ;
-  wire \comp_low.sample_E_reg[5]_i_1_n_5 ;
-  wire \comp_low.sample_E_reg[5]_i_1_n_6 ;
-  wire \comp_low.sample_E_reg[5]_i_1_n_7 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_0 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_1 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_2 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_3 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_4 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_5 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_6 ;
-  wire \comp_low.sample_E_reg[5]_i_2_n_7 ;
   wire \comp_low.sample_N_reg[0]_rep__0_n_0 ;
   wire \comp_low.sample_N_reg[0]_rep__1_n_0 ;
   wire \comp_low.sample_N_reg[0]_rep__2_n_0 ;
@@ -1141,6 +1132,12 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.sample_N_reg[3]_rep__1_n_0 ;
   wire \comp_low.sample_N_reg[3]_rep_n_0 ;
   wire \comp_low.sample_N_reg[4]_rep_n_0 ;
+  wire \comp_low.sample_N_reg_n_0_[0] ;
+  wire \comp_low.sample_N_reg_n_0_[1] ;
+  wire \comp_low.sample_N_reg_n_0_[2] ;
+  wire \comp_low.sample_N_reg_n_0_[3] ;
+  wire \comp_low.sample_N_reg_n_0_[4] ;
+  wire \comp_low.sample_N_reg_n_0_[5] ;
   wire \comp_low.sample_W_reg[0]_rep__0_n_0 ;
   wire \comp_low.sample_W_reg[0]_rep__1_n_0 ;
   wire \comp_low.sample_W_reg[0]_rep__2_n_0 ;
@@ -1210,6 +1207,7 @@ module ps_comp_low_0_0_comp_low
   wire [383:0]raw_in_data;
   wire [383:0]raw_out_data;
   (* MARK_DEBUG *) wire raw_rd;
+  (* MARK_DEBUG *) wire raw_run;
   (* MARK_DEBUG *) wire [31:0]raw_sample;
   wire raw_wr;
   (* MARK_DEBUG *) wire [63:0]re;
@@ -1219,9 +1217,10 @@ module ps_comp_low_0_0_comp_low
   wire [15:0]re_3;
   wire [155:19]re_data;
   wire reset;
+  wire reset_int;
   (* MARK_DEBUG *) wire [31:0]sample;
   wire [5:0]sample_E;
-  wire [5:0]sample_N;
+  wire sample_N;
   wire [5:0]sample_W;
   (* MARK_DEBUG *) wire [8:0]size;
   wire [7:1]\NLW_comp_low.C0_reg[17]_i_1_CO_UNCONNECTED ;
@@ -1254,9 +1253,6 @@ module ps_comp_low_0_0_comp_low
   wire [7:7]\NLW_comp_low.re_1_reg[15]_i_1_CO_UNCONNECTED ;
   wire [7:7]\NLW_comp_low.re_2_reg[15]_i_1_CO_UNCONNECTED ;
   wire [7:7]\NLW_comp_low.re_3_reg[15]_i_1_CO_UNCONNECTED ;
-  wire [7:3]\NLW_comp_low.sample_E_reg[5]_i_1_CO_UNCONNECTED ;
-  wire [7:0]\NLW_comp_low.sample_E_reg[5]_i_1_O_UNCONNECTED ;
-  wire [7:0]\NLW_comp_low.sample_E_reg[5]_i_2_O_UNCONNECTED ;
   wire NLW_fifo_ana_i_full_UNCONNECTED;
   wire NLW_fifo_ana_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_ana_i_wr_rst_busy_UNCONNECTED;
@@ -7416,31 +7412,140 @@ module ps_comp_low_0_0_comp_low
         .D(ana_fifo_sample[9]),
         .Q(ana_in_data[9]),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \comp_low.ana_trig_i_1 
+       (.I0(\comp_low.ana_trig_i_2_n_0 ),
+        .I1(\comp_low.ana_trig_i_3_n_0 ),
+        .I2(\comp_low.ana_trig_i_4_n_0 ),
+        .I3(\comp_low.ana_trig_i_5_n_0 ),
+        .O(\comp_low.ana_trig_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h222222F2000000F0)) 
-    \comp_low.ana_run_i_1 
-       (.I0(raw_rd),
-        .I1(raw_empty),
-        .I2(\comp_low.ana_run_i_2_n_0 ),
-        .I3(fir_delay[0]),
-        .I4(fir_delay[1]),
-        .I5(ana_run),
-        .O(\comp_low.ana_run_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000200)) 
-    \comp_low.ana_run_i_2 
-       (.I0(raw_rd),
-        .I1(raw_empty),
-        .I2(fir_delay[2]),
-        .I3(fir_delay[4]),
-        .I4(fir_delay[3]),
-        .O(\comp_low.ana_run_i_2_n_0 ));
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_10 
+       (.I0(ana_out_data[12]),
+        .I1(raw_sample[12]),
+        .I2(raw_sample[14]),
+        .I3(ana_out_data[14]),
+        .I4(raw_sample[13]),
+        .I5(ana_out_data[13]),
+        .O(\comp_low.ana_trig_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_11 
+       (.I0(ana_out_data[15]),
+        .I1(raw_sample[15]),
+        .I2(raw_sample[17]),
+        .I3(ana_out_data[17]),
+        .I4(raw_sample[16]),
+        .I5(ana_out_data[16]),
+        .O(\comp_low.ana_trig_i_11_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_12 
+       (.I0(ana_out_data[3]),
+        .I1(raw_sample[3]),
+        .I2(raw_sample[5]),
+        .I3(ana_out_data[5]),
+        .I4(raw_sample[4]),
+        .I5(ana_out_data[4]),
+        .O(\comp_low.ana_trig_i_12_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_13 
+       (.I0(ana_out_data[0]),
+        .I1(raw_sample[0]),
+        .I2(raw_sample[2]),
+        .I3(ana_out_data[2]),
+        .I4(raw_sample[1]),
+        .I5(ana_out_data[1]),
+        .O(\comp_low.ana_trig_i_13_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_2 
+       (.I0(ana_out_data[27]),
+        .I1(raw_sample[27]),
+        .I2(raw_sample[29]),
+        .I3(ana_out_data[29]),
+        .I4(raw_sample[28]),
+        .I5(ana_out_data[28]),
+        .O(\comp_low.ana_trig_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_3 
+       (.I0(ana_out_data[24]),
+        .I1(raw_sample[24]),
+        .I2(raw_sample[26]),
+        .I3(ana_out_data[26]),
+        .I4(raw_sample[25]),
+        .I5(ana_out_data[25]),
+        .O(\comp_low.ana_trig_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
+    \comp_low.ana_trig_i_4 
+       (.I0(\comp_low.ana_trig_i_6_n_0 ),
+        .I1(\comp_low.ana_trig_i_7_n_0 ),
+        .I2(\comp_low.ana_trig_i_8_n_0 ),
+        .I3(\comp_low.ana_trig_i_9_n_0 ),
+        .I4(\comp_low.ana_trig_i_10_n_0 ),
+        .I5(\comp_low.ana_trig_i_11_n_0 ),
+        .O(\comp_low.ana_trig_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000000000)) 
+    \comp_low.ana_trig_i_5 
+       (.I0(raw_sample[31]),
+        .I1(ana_out_data[31]),
+        .I2(raw_sample[30]),
+        .I3(ana_out_data[30]),
+        .I4(\comp_low.ana_trig_i_12_n_0 ),
+        .I5(\comp_low.ana_trig_i_13_n_0 ),
+        .O(\comp_low.ana_trig_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_6 
+       (.I0(ana_out_data[9]),
+        .I1(raw_sample[9]),
+        .I2(raw_sample[11]),
+        .I3(ana_out_data[11]),
+        .I4(raw_sample[10]),
+        .I5(ana_out_data[10]),
+        .O(\comp_low.ana_trig_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_7 
+       (.I0(ana_out_data[6]),
+        .I1(raw_sample[6]),
+        .I2(raw_sample[8]),
+        .I3(ana_out_data[8]),
+        .I4(raw_sample[7]),
+        .I5(ana_out_data[7]),
+        .O(\comp_low.ana_trig_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_8 
+       (.I0(ana_out_data[18]),
+        .I1(raw_sample[18]),
+        .I2(raw_sample[20]),
+        .I3(ana_out_data[20]),
+        .I4(raw_sample[19]),
+        .I5(ana_out_data[19]),
+        .O(\comp_low.ana_trig_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \comp_low.ana_trig_i_9 
+       (.I0(ana_out_data[21]),
+        .I1(raw_sample[21]),
+        .I2(raw_sample[23]),
+        .I3(ana_out_data[23]),
+        .I4(raw_sample[22]),
+        .I5(ana_out_data[22]),
+        .O(\comp_low.ana_trig_i_9_n_0 ));
   (* KEEP = "yes" *) 
-  FDRE \comp_low.ana_run_reg 
+  FDRE \comp_low.ana_trig_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_low.ana_run_i_1_n_0 ),
-        .Q(ana_run),
+        .D(\comp_low.ana_trig_i_1_n_0 ),
+        .Q(ana_trig),
         .R(1'b0));
   FDRE \comp_low.ana_wr_reg 
        (.C(ana_fifo_clk),
@@ -7448,120 +7553,135 @@ module ps_comp_low_0_0_comp_low
         .D(ana_fifo_wr),
         .Q(ana_wr),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[0]_i_1 
-       (.I0(angle[0]),
-        .I1(ana_empty),
-        .I2(ana_out_data[61]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[61]),
+        .I2(ana_trig),
+        .I3(angle[0]),
         .O(\comp_low.angle[0]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[10]_i_1 
-       (.I0(angle[10]),
-        .I1(ana_empty),
-        .I2(ana_out_data[71]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[71]),
+        .I2(ana_trig),
+        .I3(angle[10]),
         .O(\comp_low.angle[10]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[11]_i_1 
-       (.I0(angle[11]),
-        .I1(ana_empty),
-        .I2(ana_out_data[72]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[72]),
+        .I2(ana_trig),
+        .I3(angle[11]),
         .O(\comp_low.angle[11]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[12]_i_1 
-       (.I0(angle[12]),
-        .I1(ana_empty),
-        .I2(ana_out_data[73]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[73]),
+        .I2(ana_trig),
+        .I3(angle[12]),
         .O(\comp_low.angle[12]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[13]_i_1 
-       (.I0(angle[13]),
-        .I1(ana_empty),
-        .I2(ana_out_data[74]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[74]),
+        .I2(ana_trig),
+        .I3(angle[13]),
         .O(\comp_low.angle[13]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[14]_i_1 
-       (.I0(angle[14]),
-        .I1(ana_empty),
-        .I2(ana_out_data[75]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[75]),
+        .I2(ana_trig),
+        .I3(angle[14]),
         .O(\comp_low.angle[14]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[15]_i_1 
-       (.I0(angle[15]),
-        .I1(ana_empty),
-        .I2(ana_out_data[76]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[76]),
+        .I2(ana_trig),
+        .I3(angle[15]),
         .O(\comp_low.angle[15]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[1]_i_1 
-       (.I0(angle[1]),
-        .I1(ana_empty),
-        .I2(ana_out_data[62]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[62]),
+        .I2(ana_trig),
+        .I3(angle[1]),
         .O(\comp_low.angle[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[2]_i_1 
-       (.I0(angle[2]),
-        .I1(ana_empty),
-        .I2(ana_out_data[63]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[63]),
+        .I2(ana_trig),
+        .I3(angle[2]),
         .O(\comp_low.angle[2]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[3]_i_1 
-       (.I0(angle[3]),
-        .I1(ana_empty),
-        .I2(ana_out_data[64]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[64]),
+        .I2(ana_trig),
+        .I3(angle[3]),
         .O(\comp_low.angle[3]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[4]_i_1 
-       (.I0(angle[4]),
-        .I1(ana_empty),
-        .I2(ana_out_data[65]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[65]),
+        .I2(ana_trig),
+        .I3(angle[4]),
         .O(\comp_low.angle[4]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[5]_i_1 
-       (.I0(angle[5]),
-        .I1(ana_empty),
-        .I2(ana_out_data[66]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[66]),
+        .I2(ana_trig),
+        .I3(angle[5]),
         .O(\comp_low.angle[5]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[6]_i_1 
-       (.I0(angle[6]),
-        .I1(ana_empty),
-        .I2(ana_out_data[67]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[67]),
+        .I2(ana_trig),
+        .I3(angle[6]),
         .O(\comp_low.angle[6]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[7]_i_1 
-       (.I0(angle[7]),
-        .I1(ana_empty),
-        .I2(ana_out_data[68]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[68]),
+        .I2(ana_trig),
+        .I3(angle[7]),
         .O(\comp_low.angle[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[8]_i_1 
-       (.I0(angle[8]),
-        .I1(ana_empty),
-        .I2(ana_out_data[69]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[69]),
+        .I2(ana_trig),
+        .I3(angle[8]),
         .O(\comp_low.angle[8]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.angle[9]_i_1 
-       (.I0(angle[9]),
-        .I1(ana_empty),
-        .I2(ana_out_data[70]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[70]),
+        .I2(ana_trig),
+        .I3(angle[9]),
         .O(\comp_low.angle[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[0] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7569,7 +7689,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[10] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7577,7 +7696,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[11] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7585,7 +7703,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[12] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7593,7 +7710,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[13] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7601,7 +7717,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[14] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7609,7 +7724,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[15] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7617,7 +7731,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[1] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7625,7 +7738,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[2] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7633,7 +7745,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[3] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7641,7 +7752,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[4] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7649,7 +7759,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[5] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7657,7 +7766,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[6] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7665,7 +7773,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[7] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7673,7 +7780,6 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[8] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -7681,18 +7787,18 @@ module ps_comp_low_0_0_comp_low
         .Q(angle[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.angle_reg[9] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
         .D(\comp_low.angle[9]_i_1_n_0 ),
         .Q(angle[9]),
         .R(1'b0));
-  LUT2 #(
-    .INIT(4'h2)) 
+  LUT3 #(
+    .INIT(8'h02)) 
     \comp_low.burst_i_1 
-       (.I0(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+       (.I0(ana_trig),
         .I1(ana_empty),
+        .I2(reset_int),
         .O(\comp_low.burst_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.burst_reg 
@@ -9150,148 +9256,167 @@ module ps_comp_low_0_0_comp_low
         .D(fir_re_run),
         .Q(fir_saved),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[0]_i_1 
-       (.I0(freq[0]),
-        .I1(ana_empty),
-        .I2(ana_out_data[41]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[41]),
+        .I2(ana_trig),
+        .I3(freq[0]),
         .O(\comp_low.freq[0]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[10]_i_1 
-       (.I0(freq[10]),
-        .I1(ana_empty),
-        .I2(ana_out_data[51]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[51]),
+        .I2(ana_trig),
+        .I3(freq[10]),
         .O(\comp_low.freq[10]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[11]_i_1 
-       (.I0(freq[11]),
-        .I1(ana_empty),
-        .I2(ana_out_data[52]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[52]),
+        .I2(ana_trig),
+        .I3(freq[11]),
         .O(\comp_low.freq[11]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[12]_i_1 
-       (.I0(freq[12]),
-        .I1(ana_empty),
-        .I2(ana_out_data[53]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[53]),
+        .I2(ana_trig),
+        .I3(freq[12]),
         .O(\comp_low.freq[12]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[13]_i_1 
-       (.I0(freq[13]),
-        .I1(ana_empty),
-        .I2(ana_out_data[54]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[54]),
+        .I2(ana_trig),
+        .I3(freq[13]),
         .O(\comp_low.freq[13]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[14]_i_1 
-       (.I0(freq[14]),
-        .I1(ana_empty),
-        .I2(ana_out_data[55]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[55]),
+        .I2(ana_trig),
+        .I3(freq[14]),
         .O(\comp_low.freq[14]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[15]_i_1 
-       (.I0(freq[15]),
-        .I1(ana_empty),
-        .I2(ana_out_data[56]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[56]),
+        .I2(ana_trig),
+        .I3(freq[15]),
         .O(\comp_low.freq[15]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[16]_i_1 
-       (.I0(freq[16]),
-        .I1(ana_empty),
-        .I2(ana_out_data[57]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[57]),
+        .I2(ana_trig),
+        .I3(freq[16]),
         .O(\comp_low.freq[16]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[17]_i_1 
-       (.I0(freq[17]),
-        .I1(ana_empty),
-        .I2(ana_out_data[58]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[58]),
+        .I2(ana_trig),
+        .I3(freq[17]),
         .O(\comp_low.freq[17]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[18]_i_1 
-       (.I0(freq[18]),
-        .I1(ana_empty),
-        .I2(ana_out_data[59]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[59]),
+        .I2(ana_trig),
+        .I3(freq[18]),
         .O(\comp_low.freq[18]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[19]_i_1 
-       (.I0(freq[19]),
-        .I1(ana_empty),
-        .I2(ana_out_data[60]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[60]),
+        .I2(ana_trig),
+        .I3(freq[19]),
         .O(\comp_low.freq[19]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[1]_i_1 
-       (.I0(freq[1]),
-        .I1(ana_empty),
-        .I2(ana_out_data[42]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[42]),
+        .I2(ana_trig),
+        .I3(freq[1]),
         .O(\comp_low.freq[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[2]_i_1 
-       (.I0(freq[2]),
-        .I1(ana_empty),
-        .I2(ana_out_data[43]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[43]),
+        .I2(ana_trig),
+        .I3(freq[2]),
         .O(\comp_low.freq[2]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[3]_i_1 
-       (.I0(freq[3]),
-        .I1(ana_empty),
-        .I2(ana_out_data[44]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[44]),
+        .I2(ana_trig),
+        .I3(freq[3]),
         .O(\comp_low.freq[3]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[4]_i_1 
-       (.I0(freq[4]),
-        .I1(ana_empty),
-        .I2(ana_out_data[45]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[45]),
+        .I2(ana_trig),
+        .I3(freq[4]),
         .O(\comp_low.freq[4]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[5]_i_1 
-       (.I0(freq[5]),
-        .I1(ana_empty),
-        .I2(ana_out_data[46]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[46]),
+        .I2(ana_trig),
+        .I3(freq[5]),
         .O(\comp_low.freq[5]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[6]_i_1 
-       (.I0(freq[6]),
-        .I1(ana_empty),
-        .I2(ana_out_data[47]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[47]),
+        .I2(ana_trig),
+        .I3(freq[6]),
         .O(\comp_low.freq[6]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[7]_i_1 
-       (.I0(freq[7]),
-        .I1(ana_empty),
-        .I2(ana_out_data[48]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[48]),
+        .I2(ana_trig),
+        .I3(freq[7]),
         .O(\comp_low.freq[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[8]_i_1 
-       (.I0(freq[8]),
-        .I1(ana_empty),
-        .I2(ana_out_data[49]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[49]),
+        .I2(ana_trig),
+        .I3(freq[8]),
         .O(\comp_low.freq[8]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.freq[9]_i_1 
-       (.I0(freq[9]),
-        .I1(ana_empty),
-        .I2(ana_out_data[50]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[50]),
+        .I2(ana_trig),
+        .I3(freq[9]),
         .O(\comp_low.freq[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[0] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9299,7 +9424,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[10] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9307,7 +9431,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[11] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9315,7 +9438,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[12] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9323,7 +9445,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[13] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9331,7 +9452,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[14] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9339,7 +9459,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[15] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9347,7 +9466,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[16] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9355,7 +9473,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[17] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9363,7 +9480,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[18] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9371,7 +9487,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[19] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9379,7 +9494,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[1] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9387,7 +9501,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[2] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9395,7 +9508,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[3] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9403,7 +9515,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[4] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9411,7 +9522,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[5] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9419,7 +9529,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[6] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9427,7 +9536,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[7] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9435,7 +9543,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[8] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -9443,7 +9550,6 @@ module ps_comp_low_0_0_comp_low
         .Q(freq[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.freq_reg[9] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -15245,6 +15351,32 @@ module ps_comp_low_0_0_comp_low
         .D(\comp_low.raw_rd_i_1_n_0 ),
         .Q(raw_rd),
         .R(1'b0));
+  LUT6 #(
+    .INIT(64'h222222F2000000F0)) 
+    \comp_low.raw_run_i_1 
+       (.I0(raw_rd),
+        .I1(raw_empty),
+        .I2(\comp_low.raw_run_i_2_n_0 ),
+        .I3(fir_delay[0]),
+        .I4(fir_delay[1]),
+        .I5(raw_run),
+        .O(\comp_low.raw_run_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000200)) 
+    \comp_low.raw_run_i_2 
+       (.I0(raw_rd),
+        .I1(raw_empty),
+        .I2(fir_delay[2]),
+        .I3(fir_delay[4]),
+        .I4(fir_delay[3]),
+        .O(\comp_low.raw_run_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \comp_low.raw_run_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\comp_low.raw_run_i_1_n_0 ),
+        .Q(raw_run),
+        .R(1'b0));
   LUT1 #(
     .INIT(2'h1)) 
     \comp_low.raw_sample[0]_i_1 
@@ -15253,7 +15385,7 @@ module ps_comp_low_0_0_comp_low
   LUT1 #(
     .INIT(2'h1)) 
     \comp_low.raw_sample[31]_i_1 
-       (.I0(ana_run),
+       (.I0(raw_run),
         .O(\comp_low.raw_sample[31]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_low.raw_sample_reg[0] 
@@ -16501,924 +16633,844 @@ module ps_comp_low_0_0_comp_low
         .D(\comp_low.re_0_reg_n_0_[9] ),
         .Q(re[9]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[0]_i_1 
-       (.I0(sample[0]),
-        .I1(ana_out_data[0]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[0]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[10]_i_1 
-       (.I0(sample[10]),
-        .I1(ana_out_data[10]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[10]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[11]_i_1 
-       (.I0(sample[11]),
-        .I1(ana_out_data[11]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[11]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[12]_i_1 
-       (.I0(sample[12]),
-        .I1(ana_out_data[12]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[12]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[13]_i_1 
-       (.I0(sample[13]),
-        .I1(ana_out_data[13]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[13]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[14]_i_1 
-       (.I0(sample[14]),
-        .I1(ana_out_data[14]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[14]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[15]_i_1 
-       (.I0(sample[15]),
-        .I1(ana_out_data[15]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[15]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[16]_i_1 
-       (.I0(sample[16]),
-        .I1(ana_out_data[16]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[16]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[17]_i_1 
-       (.I0(sample[17]),
-        .I1(ana_out_data[17]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[17]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[18]_i_1 
-       (.I0(sample[18]),
-        .I1(ana_out_data[18]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[18]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[19]_i_1 
-       (.I0(sample[19]),
-        .I1(ana_out_data[19]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[19]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[1]_i_1 
-       (.I0(sample[1]),
-        .I1(ana_out_data[1]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[20]_i_1 
-       (.I0(sample[20]),
-        .I1(ana_out_data[20]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[20]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[21]_i_1 
-       (.I0(sample[21]),
-        .I1(ana_out_data[21]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[21]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[22]_i_1 
-       (.I0(sample[22]),
-        .I1(ana_out_data[22]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[22]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[23]_i_1 
-       (.I0(sample[23]),
-        .I1(ana_out_data[23]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[23]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[24]_i_1 
-       (.I0(sample[24]),
-        .I1(ana_out_data[24]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[24]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[25]_i_1 
-       (.I0(sample[25]),
-        .I1(ana_out_data[25]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[25]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[26]_i_1 
-       (.I0(sample[26]),
-        .I1(ana_out_data[26]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[26]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[27]_i_1 
-       (.I0(sample[27]),
-        .I1(ana_out_data[27]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[27]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[28]_i_1 
-       (.I0(sample[28]),
-        .I1(ana_out_data[28]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[28]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[29]_i_1 
-       (.I0(sample[29]),
-        .I1(ana_out_data[29]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[29]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[2]_i_1 
-       (.I0(sample[2]),
-        .I1(ana_out_data[2]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[2]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[30]_i_1 
-       (.I0(sample[30]),
-        .I1(ana_out_data[30]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[30]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \comp_low.sample[31]_i_1 
-       (.I0(ana_empty),
-        .I1(\comp_low.sample_E_reg[5]_i_1_n_5 ),
-        .O(\comp_low.sample[31]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[31]_i_2 
-       (.I0(sample[31]),
-        .I1(ana_out_data[31]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[31]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[3]_i_1 
-       (.I0(sample[3]),
-        .I1(ana_out_data[3]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[3]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[4]_i_1 
-       (.I0(sample[4]),
-        .I1(ana_out_data[4]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[4]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[5]_i_1 
-       (.I0(sample[5]),
-        .I1(ana_out_data[5]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[5]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[6]_i_1 
-       (.I0(sample[6]),
-        .I1(ana_out_data[6]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[6]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[7]_i_1 
-       (.I0(sample[7]),
-        .I1(ana_out_data[7]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[8]_i_1 
-       (.I0(sample[8]),
-        .I1(ana_out_data[8]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[8]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAC)) 
-    \comp_low.sample[9]_i_1 
-       (.I0(sample[9]),
-        .I1(ana_out_data[9]),
-        .I2(ana_empty),
-        .O(\comp_low.sample[9]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_10 
-       (.I0(ana_out_data[9]),
-        .I1(raw_sample[9]),
-        .I2(raw_sample[11]),
-        .I3(ana_out_data[11]),
-        .I4(raw_sample[10]),
-        .I5(ana_out_data[10]),
-        .O(\comp_low.sample_E[5]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_11 
-       (.I0(ana_out_data[6]),
-        .I1(raw_sample[6]),
-        .I2(raw_sample[8]),
-        .I3(ana_out_data[8]),
-        .I4(raw_sample[7]),
-        .I5(ana_out_data[7]),
-        .O(\comp_low.sample_E[5]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_12 
-       (.I0(ana_out_data[3]),
-        .I1(raw_sample[3]),
-        .I2(raw_sample[5]),
-        .I3(ana_out_data[5]),
-        .I4(raw_sample[4]),
-        .I5(ana_out_data[4]),
-        .O(\comp_low.sample_E[5]_i_12_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_13 
-       (.I0(ana_out_data[0]),
-        .I1(raw_sample[0]),
-        .I2(raw_sample[2]),
-        .I3(ana_out_data[2]),
-        .I4(raw_sample[1]),
-        .I5(ana_out_data[1]),
-        .O(\comp_low.sample_E[5]_i_13_n_0 ));
+  FDRE \comp_low.reset_int_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(reset),
+        .Q(reset_int),
+        .R(1'b0));
   LUT4 #(
-    .INIT(16'h9009)) 
-    \comp_low.sample_E[5]_i_3 
-       (.I0(ana_out_data[30]),
-        .I1(raw_sample[30]),
-        .I2(ana_out_data[31]),
-        .I3(raw_sample[31]),
-        .O(\comp_low.sample_E[5]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_4 
-       (.I0(ana_out_data[27]),
-        .I1(raw_sample[27]),
-        .I2(raw_sample[29]),
-        .I3(ana_out_data[29]),
-        .I4(raw_sample[28]),
-        .I5(ana_out_data[28]),
-        .O(\comp_low.sample_E[5]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_5 
-       (.I0(ana_out_data[24]),
-        .I1(raw_sample[24]),
-        .I2(raw_sample[26]),
-        .I3(ana_out_data[26]),
-        .I4(raw_sample[25]),
-        .I5(ana_out_data[25]),
-        .O(\comp_low.sample_E[5]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_6 
-       (.I0(ana_out_data[21]),
-        .I1(raw_sample[21]),
-        .I2(raw_sample[23]),
-        .I3(ana_out_data[23]),
-        .I4(raw_sample[22]),
-        .I5(ana_out_data[22]),
-        .O(\comp_low.sample_E[5]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_7 
-       (.I0(ana_out_data[18]),
-        .I1(raw_sample[18]),
-        .I2(raw_sample[20]),
-        .I3(ana_out_data[20]),
-        .I4(raw_sample[19]),
-        .I5(ana_out_data[19]),
-        .O(\comp_low.sample_E[5]_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_8 
-       (.I0(ana_out_data[15]),
-        .I1(raw_sample[15]),
-        .I2(raw_sample[17]),
-        .I3(ana_out_data[17]),
-        .I4(raw_sample[16]),
-        .I5(ana_out_data[16]),
-        .O(\comp_low.sample_E[5]_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_low.sample_E[5]_i_9 
-       (.I0(ana_out_data[12]),
-        .I1(raw_sample[12]),
-        .I2(raw_sample[14]),
-        .I3(ana_out_data[14]),
-        .I4(raw_sample[13]),
-        .I5(ana_out_data[13]),
-        .O(\comp_low.sample_E[5]_i_9_n_0 ));
+    .INIT(16'hEF40)) 
+    \comp_low.sample[0]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[0]),
+        .I2(ana_trig),
+        .I3(sample[0]),
+        .O(\comp_low.sample[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[10]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[10]),
+        .I2(ana_trig),
+        .I3(sample[10]),
+        .O(\comp_low.sample[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[11]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[11]),
+        .I2(ana_trig),
+        .I3(sample[11]),
+        .O(\comp_low.sample[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[12]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[12]),
+        .I2(ana_trig),
+        .I3(sample[12]),
+        .O(\comp_low.sample[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[13]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[13]),
+        .I2(ana_trig),
+        .I3(sample[13]),
+        .O(\comp_low.sample[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[14]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[14]),
+        .I2(ana_trig),
+        .I3(sample[14]),
+        .O(\comp_low.sample[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[15]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[15]),
+        .I2(ana_trig),
+        .I3(sample[15]),
+        .O(\comp_low.sample[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[16]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[16]),
+        .I2(ana_trig),
+        .I3(sample[16]),
+        .O(\comp_low.sample[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[17]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[17]),
+        .I2(ana_trig),
+        .I3(sample[17]),
+        .O(\comp_low.sample[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[18]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[18]),
+        .I2(ana_trig),
+        .I3(sample[18]),
+        .O(\comp_low.sample[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[19]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[19]),
+        .I2(ana_trig),
+        .I3(sample[19]),
+        .O(\comp_low.sample[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[1]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[1]),
+        .I2(ana_trig),
+        .I3(sample[1]),
+        .O(\comp_low.sample[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[20]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[20]),
+        .I2(ana_trig),
+        .I3(sample[20]),
+        .O(\comp_low.sample[20]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[21]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[21]),
+        .I2(ana_trig),
+        .I3(sample[21]),
+        .O(\comp_low.sample[21]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[22]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[22]),
+        .I2(ana_trig),
+        .I3(sample[22]),
+        .O(\comp_low.sample[22]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[23]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[23]),
+        .I2(ana_trig),
+        .I3(sample[23]),
+        .O(\comp_low.sample[23]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[24]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[24]),
+        .I2(ana_trig),
+        .I3(sample[24]),
+        .O(\comp_low.sample[24]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[25]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[25]),
+        .I2(ana_trig),
+        .I3(sample[25]),
+        .O(\comp_low.sample[25]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[26]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[26]),
+        .I2(ana_trig),
+        .I3(sample[26]),
+        .O(\comp_low.sample[26]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[27]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[27]),
+        .I2(ana_trig),
+        .I3(sample[27]),
+        .O(\comp_low.sample[27]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[28]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[28]),
+        .I2(ana_trig),
+        .I3(sample[28]),
+        .O(\comp_low.sample[28]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[29]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[29]),
+        .I2(ana_trig),
+        .I3(sample[29]),
+        .O(\comp_low.sample[29]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[2]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[2]),
+        .I2(ana_trig),
+        .I3(sample[2]),
+        .O(\comp_low.sample[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[30]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[30]),
+        .I2(ana_trig),
+        .I3(sample[30]),
+        .O(\comp_low.sample[30]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \comp_low.sample[31]_i_1 
+       (.I0(reset_int),
+        .O(\comp_low.sample[31]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[31]_i_2 
+       (.I0(ana_empty),
+        .I1(ana_out_data[31]),
+        .I2(ana_trig),
+        .I3(sample[31]),
+        .O(\comp_low.sample[31]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[3]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[3]),
+        .I2(ana_trig),
+        .I3(sample[3]),
+        .O(\comp_low.sample[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[4]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[4]),
+        .I2(ana_trig),
+        .I3(sample[4]),
+        .O(\comp_low.sample[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[5]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[5]),
+        .I2(ana_trig),
+        .I3(sample[5]),
+        .O(\comp_low.sample[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[6]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[6]),
+        .I2(ana_trig),
+        .I3(sample[6]),
+        .O(\comp_low.sample[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[7]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[7]),
+        .I2(ana_trig),
+        .I3(sample[7]),
+        .O(\comp_low.sample[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[8]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[8]),
+        .I2(ana_trig),
+        .I3(sample[8]),
+        .O(\comp_low.sample[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hEF40)) 
+    \comp_low.sample[9]_i_1 
+       (.I0(ana_empty),
+        .I1(ana_out_data[9]),
+        .I2(ana_trig),
+        .I3(sample[9]),
+        .O(\comp_low.sample[9]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \comp_low.sample_E[5]_i_1 
+       (.I0(ana_trig),
+        .I1(ana_empty),
+        .O(sample_N));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(sample_E[0]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep__2 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep__2_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep__3 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep__3_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep__4 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep__4_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[0]" *) 
   FDRE \comp_low.sample_E_reg[0]_rep__5 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[83]),
         .Q(\comp_low.sample_E_reg[0]_rep__5_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(sample_E[1]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep__2 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep__2_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep__3 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep__3_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep__4 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep__4_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[1]" *) 
   FDRE \comp_low.sample_E_reg[1]_rep__5 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[84]),
         .Q(\comp_low.sample_E_reg[1]_rep__5_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[2]" *) 
   FDRE \comp_low.sample_E_reg[2] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[85]),
         .Q(sample_E[2]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[2]" *) 
   FDRE \comp_low.sample_E_reg[2]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[85]),
         .Q(\comp_low.sample_E_reg[2]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[2]" *) 
   FDRE \comp_low.sample_E_reg[2]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[85]),
         .Q(\comp_low.sample_E_reg[2]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[2]" *) 
   FDRE \comp_low.sample_E_reg[2]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[85]),
         .Q(\comp_low.sample_E_reg[2]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[3]" *) 
   FDRE \comp_low.sample_E_reg[3] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[86]),
         .Q(sample_E[3]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[3]" *) 
   FDRE \comp_low.sample_E_reg[3]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[86]),
         .Q(\comp_low.sample_E_reg[3]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[3]" *) 
   FDRE \comp_low.sample_E_reg[3]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[86]),
         .Q(\comp_low.sample_E_reg[3]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[3]" *) 
   FDRE \comp_low.sample_E_reg[3]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[86]),
         .Q(\comp_low.sample_E_reg[3]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[4]" *) 
   FDRE \comp_low.sample_E_reg[4] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[87]),
         .Q(sample_E[4]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_E_reg[4]" *) 
   FDRE \comp_low.sample_E_reg[4]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[87]),
         .Q(\comp_low.sample_E_reg[4]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   FDRE \comp_low.sample_E_reg[5] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[88]),
         .Q(sample_E[5]),
-        .R(ana_empty));
-  CARRY8 \comp_low.sample_E_reg[5]_i_1 
-       (.CI(\comp_low.sample_E_reg[5]_i_2_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_comp_low.sample_E_reg[5]_i_1_CO_UNCONNECTED [7:3],\comp_low.sample_E_reg[5]_i_1_n_5 ,\comp_low.sample_E_reg[5]_i_1_n_6 ,\comp_low.sample_E_reg[5]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(\NLW_comp_low.sample_E_reg[5]_i_1_O_UNCONNECTED [7:0]),
-        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\comp_low.sample_E[5]_i_3_n_0 ,\comp_low.sample_E[5]_i_4_n_0 ,\comp_low.sample_E[5]_i_5_n_0 }));
-  CARRY8 \comp_low.sample_E_reg[5]_i_2 
-       (.CI(1'b1),
-        .CI_TOP(1'b0),
-        .CO({\comp_low.sample_E_reg[5]_i_2_n_0 ,\comp_low.sample_E_reg[5]_i_2_n_1 ,\comp_low.sample_E_reg[5]_i_2_n_2 ,\comp_low.sample_E_reg[5]_i_2_n_3 ,\comp_low.sample_E_reg[5]_i_2_n_4 ,\comp_low.sample_E_reg[5]_i_2_n_5 ,\comp_low.sample_E_reg[5]_i_2_n_6 ,\comp_low.sample_E_reg[5]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(\NLW_comp_low.sample_E_reg[5]_i_2_O_UNCONNECTED [7:0]),
-        .S({\comp_low.sample_E[5]_i_6_n_0 ,\comp_low.sample_E[5]_i_7_n_0 ,\comp_low.sample_E[5]_i_8_n_0 ,\comp_low.sample_E[5]_i_9_n_0 ,\comp_low.sample_E[5]_i_10_n_0 ,\comp_low.sample_E[5]_i_11_n_0 ,\comp_low.sample_E[5]_i_12_n_0 ,\comp_low.sample_E[5]_i_13_n_0 }));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
-        .Q(sample_N[0]),
-        .R(ana_empty));
+        .Q(\comp_low.sample_N_reg_n_0_[0] ),
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep__2 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep__2_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep__3 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep__3_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep__4 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep__4_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[0]" *) 
   FDRE \comp_low.sample_N_reg[0]_rep__5 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[77]),
         .Q(\comp_low.sample_N_reg[0]_rep__5_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
-        .Q(sample_N[1]),
-        .R(ana_empty));
+        .Q(\comp_low.sample_N_reg_n_0_[1] ),
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep__2 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep__2_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep__3 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep__3_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep__4 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep__4_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[1]" *) 
   FDRE \comp_low.sample_N_reg[1]_rep__5 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[78]),
         .Q(\comp_low.sample_N_reg[1]_rep__5_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[2]" *) 
   FDRE \comp_low.sample_N_reg[2] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[79]),
-        .Q(sample_N[2]),
-        .R(ana_empty));
+        .Q(\comp_low.sample_N_reg_n_0_[2] ),
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[2]" *) 
   FDRE \comp_low.sample_N_reg[2]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[79]),
         .Q(\comp_low.sample_N_reg[2]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[2]" *) 
   FDRE \comp_low.sample_N_reg[2]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[79]),
         .Q(\comp_low.sample_N_reg[2]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[2]" *) 
   FDRE \comp_low.sample_N_reg[2]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[79]),
         .Q(\comp_low.sample_N_reg[2]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[3]" *) 
   FDRE \comp_low.sample_N_reg[3] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[80]),
-        .Q(sample_N[3]),
-        .R(ana_empty));
+        .Q(\comp_low.sample_N_reg_n_0_[3] ),
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[3]" *) 
   FDRE \comp_low.sample_N_reg[3]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[80]),
         .Q(\comp_low.sample_N_reg[3]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[3]" *) 
   FDRE \comp_low.sample_N_reg[3]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[80]),
         .Q(\comp_low.sample_N_reg[3]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[3]" *) 
   FDRE \comp_low.sample_N_reg[3]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[80]),
         .Q(\comp_low.sample_N_reg[3]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[4]" *) 
   FDRE \comp_low.sample_N_reg[4] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[81]),
-        .Q(sample_N[4]),
-        .R(ana_empty));
+        .Q(\comp_low.sample_N_reg_n_0_[4] ),
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_N_reg[4]" *) 
   FDRE \comp_low.sample_N_reg[4]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[81]),
         .Q(\comp_low.sample_N_reg[4]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   FDRE \comp_low.sample_N_reg[5] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[82]),
-        .Q(sample_N[5]),
-        .R(ana_empty));
+        .Q(\comp_low.sample_N_reg_n_0_[5] ),
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(sample_W[0]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep__2 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep__2_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep__3 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep__3_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep__4 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep__4_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[0]" *) 
   FDRE \comp_low.sample_W_reg[0]_rep__5 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[89]),
         .Q(\comp_low.sample_W_reg[0]_rep__5_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(sample_W[1]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep__2 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep__2_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep__3 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep__3_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep__4 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep__4_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[1]" *) 
   FDRE \comp_low.sample_W_reg[1]_rep__5 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[90]),
         .Q(\comp_low.sample_W_reg[1]_rep__5_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[2]" *) 
   FDRE \comp_low.sample_W_reg[2] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[91]),
         .Q(sample_W[2]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[2]" *) 
   FDRE \comp_low.sample_W_reg[2]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[91]),
         .Q(\comp_low.sample_W_reg[2]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[2]" *) 
   FDRE \comp_low.sample_W_reg[2]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[91]),
         .Q(\comp_low.sample_W_reg[2]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[2]" *) 
   FDRE \comp_low.sample_W_reg[2]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[91]),
         .Q(\comp_low.sample_W_reg[2]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[3]" *) 
   FDRE \comp_low.sample_W_reg[3] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[92]),
         .Q(sample_W[3]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[3]" *) 
   FDRE \comp_low.sample_W_reg[3]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[92]),
         .Q(\comp_low.sample_W_reg[3]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[3]" *) 
   FDRE \comp_low.sample_W_reg[3]_rep__0 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[92]),
         .Q(\comp_low.sample_W_reg[3]_rep__0_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[3]" *) 
   FDRE \comp_low.sample_W_reg[3]_rep__1 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[92]),
         .Q(\comp_low.sample_W_reg[3]_rep__1_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[4]" *) 
   FDRE \comp_low.sample_W_reg[4] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[93]),
         .Q(sample_W[4]),
-        .R(ana_empty));
+        .R(reset_int));
   (* ORIG_CELL_NAME = "comp_low.sample_W_reg[4]" *) 
   FDRE \comp_low.sample_W_reg[4]_rep 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[93]),
         .Q(\comp_low.sample_W_reg[4]_rep_n_0 ),
-        .R(ana_empty));
+        .R(reset_int));
   FDRE \comp_low.sample_W_reg[5] 
        (.C(clk),
-        .CE(\comp_low.sample_E_reg[5]_i_1_n_5 ),
+        .CE(sample_N),
         .D(ana_out_data[94]),
         .Q(sample_W[5]),
-        .R(ana_empty));
+        .R(reset_int));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[0] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17426,7 +17478,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[10] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17434,7 +17485,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[11] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17442,7 +17492,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[12] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17450,7 +17499,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[13] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17458,7 +17506,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[14] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17466,7 +17513,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[15] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17474,7 +17520,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[16] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17482,7 +17527,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[17] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17490,7 +17534,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[18] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17498,7 +17541,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[19] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17506,7 +17548,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[1] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17514,7 +17555,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[20] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17522,7 +17562,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[21] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17530,7 +17569,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[22] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17538,7 +17576,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[23] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17546,7 +17583,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[23]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[24] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17554,7 +17590,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[25] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17562,7 +17597,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[26] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17570,7 +17604,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[27] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17578,7 +17611,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[28] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17586,7 +17618,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[29] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17594,7 +17625,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[2] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17602,7 +17632,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[30] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17610,7 +17639,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[31] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17618,7 +17646,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[31]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[3] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17626,7 +17653,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[4] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17634,7 +17660,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[5] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17642,7 +17667,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[6] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17650,7 +17674,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[7] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17658,7 +17681,6 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[8] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17666,78 +17688,85 @@ module ps_comp_low_0_0_comp_low
         .Q(sample[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.sample_reg[9] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
         .D(\comp_low.sample[9]_i_1_n_0 ),
         .Q(sample[9]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[0]_i_1 
-       (.I0(size[0]),
-        .I1(ana_empty),
-        .I2(ana_out_data[32]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[32]),
+        .I2(ana_trig),
+        .I3(size[0]),
         .O(\comp_low.size[0]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[1]_i_1 
-       (.I0(size[1]),
-        .I1(ana_empty),
-        .I2(ana_out_data[33]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[33]),
+        .I2(ana_trig),
+        .I3(size[1]),
         .O(\comp_low.size[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[2]_i_1 
-       (.I0(size[2]),
-        .I1(ana_empty),
-        .I2(ana_out_data[34]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[34]),
+        .I2(ana_trig),
+        .I3(size[2]),
         .O(\comp_low.size[2]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[3]_i_1 
-       (.I0(size[3]),
-        .I1(ana_empty),
-        .I2(ana_out_data[35]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[35]),
+        .I2(ana_trig),
+        .I3(size[3]),
         .O(\comp_low.size[3]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[4]_i_1 
-       (.I0(size[4]),
-        .I1(ana_empty),
-        .I2(ana_out_data[36]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[36]),
+        .I2(ana_trig),
+        .I3(size[4]),
         .O(\comp_low.size[4]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[5]_i_1 
-       (.I0(size[5]),
-        .I1(ana_empty),
-        .I2(ana_out_data[37]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[37]),
+        .I2(ana_trig),
+        .I3(size[5]),
         .O(\comp_low.size[5]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[6]_i_1 
-       (.I0(size[6]),
-        .I1(ana_empty),
-        .I2(ana_out_data[38]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[38]),
+        .I2(ana_trig),
+        .I3(size[6]),
         .O(\comp_low.size[6]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[7]_i_1 
-       (.I0(size[7]),
-        .I1(ana_empty),
-        .I2(ana_out_data[39]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[39]),
+        .I2(ana_trig),
+        .I3(size[7]),
         .O(\comp_low.size[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT4 #(
+    .INIT(16'hEF40)) 
     \comp_low.size[8]_i_1 
-       (.I0(size[8]),
-        .I1(ana_empty),
-        .I2(ana_out_data[40]),
+       (.I0(ana_empty),
+        .I1(ana_out_data[40]),
+        .I2(ana_trig),
+        .I3(size[8]),
         .O(\comp_low.size[8]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[0] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17745,7 +17774,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[1] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17753,7 +17781,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[2] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17761,7 +17788,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[3] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17769,7 +17795,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[4] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17777,7 +17802,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[5] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17785,7 +17809,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[6] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17793,7 +17816,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[7] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17801,7 +17823,6 @@ module ps_comp_low_0_0_comp_low
         .Q(size[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_low.size_reg[8] 
        (.C(clk),
         .CE(\comp_low.sample[31]_i_1_n_0 ),
@@ -17875,20 +17896,21 @@ module ps_comp_low_0_0_comp_low
        (.clk(clk),
         .probe0(raw_rd),
         .probe1(raw_empty),
-        .probe10(sample),
-        .probe11(size),
-        .probe12(freq),
-        .probe13(angle),
-        .probe14(re),
-        .probe15(im),
+        .probe10(burst),
+        .probe11(sample),
+        .probe12(size),
+        .probe13(freq),
+        .probe14(angle),
+        .probe15(re),
+        .probe16(im),
         .probe2(raw_delay),
         .probe3(raw_sample),
         .probe4(fir_delay),
         .probe5(fir_active),
         .probe6(deci_active),
-        .probe7(ana_run),
+        .probe7(raw_run),
         .probe8(active),
-        .probe9(burst));
+        .probe9(ana_trig));
   ps_comp_low_0_0_comp_sel6 sel_E_i
        (.Q(raw_E),
         .clk(clk),
@@ -17932,7 +17954,7 @@ module ps_comp_low_0_0_comp_low
         .\comp_select_6.data_out[48]_i_7_1 (\comp_low.sample_N_reg[0]_rep_n_0 ),
         .\comp_select_6.data_out[8]_i_7_0 (\comp_low.sample_N_reg[1]_rep__4_n_0 ),
         .\comp_select_6.data_out[8]_i_7_1 (\comp_low.sample_N_reg[0]_rep__4_n_0 ),
-        .\comp_select_6.data_out_reg[0]_0 (sample_N),
+        .\comp_select_6.data_out_reg[0]_0 ({\comp_low.sample_N_reg_n_0_[5] ,\comp_low.sample_N_reg_n_0_[4] ,\comp_low.sample_N_reg_n_0_[3] ,\comp_low.sample_N_reg_n_0_[2] ,\comp_low.sample_N_reg_n_0_[1] ,\comp_low.sample_N_reg_n_0_[0] }),
         .\comp_select_6.data_out_reg[0]_i_3_0 (\comp_low.sample_N_reg[3]_rep__1_n_0 ),
         .\comp_select_6.data_out_reg[0]_i_3_1 (\comp_low.sample_N_reg[2]_rep__1_n_0 ),
         .\comp_select_6.data_out_reg[32]_i_3_0 (\comp_low.sample_N_reg[3]_rep__0_n_0 ),
@@ -98870,7 +98892,8 @@ module ps_comp_low_0_0_ila_0
     probe12,
     probe13,
     probe14,
-    probe15);
+    probe15,
+    probe16);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -98882,12 +98905,13 @@ module ps_comp_low_0_0_ila_0
   input [0:0]probe7;
   input [0:0]probe8;
   input [0:0]probe9;
-  input [31:0]probe10;
-  input [8:0]probe11;
-  input [19:0]probe12;
-  input [15:0]probe13;
-  input [63:0]probe14;
+  input [0:0]probe10;
+  input [31:0]probe11;
+  input [8:0]probe12;
+  input [19:0]probe13;
+  input [15:0]probe14;
   input [63:0]probe15;
+  input [63:0]probe16;
 
 
 endmodule

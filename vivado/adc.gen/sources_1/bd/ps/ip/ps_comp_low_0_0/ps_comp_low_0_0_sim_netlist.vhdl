@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Jan 12 23:59:50 2026
+-- Date        : Tue Jan 13 21:18:13 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -104276,12 +104276,13 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 63 downto 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 63 downto 0 )
   );
   end component ps_comp_low_0_0_ila_0;
   signal C00 : STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -104329,8 +104330,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal ana_empty : STD_LOGIC;
   signal ana_in_data : STD_LOGIC_VECTOR ( 94 downto 0 );
   signal ana_out_data : STD_LOGIC_VECTOR ( 94 downto 0 );
-  signal ana_run : STD_LOGIC;
-  attribute MARK_DEBUG of ana_run : signal is std.standard.true;
+  signal ana_trig : STD_LOGIC;
+  attribute MARK_DEBUG of ana_trig : signal is std.standard.true;
   signal ana_wr : STD_LOGIC;
   signal \^angle\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^angle\ : signal is std.standard.true;
@@ -104753,8 +104754,19 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.C7_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \comp_low.C7_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \comp_low.C7_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_low.ana_run_i_1_n_0\ : STD_LOGIC;
-  signal \comp_low.ana_run_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_10_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_11_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_12_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_13_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_3_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_4_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_5_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_6_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_7_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_8_n_0\ : STD_LOGIC;
+  signal \comp_low.ana_trig_i_9_n_0\ : STD_LOGIC;
   signal \comp_low.angle[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.angle[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.angle[11]_i_1_n_0\ : STD_LOGIC;
@@ -104995,6 +105007,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.raw_delay[9]_i_3_n_0\ : STD_LOGIC;
   signal \comp_low.raw_delay_reg0\ : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal \comp_low.raw_rd_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.raw_run_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.raw_run_i_2_n_0\ : STD_LOGIC;
   signal \comp_low.raw_sample[31]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.raw_sample_reg[16]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.raw_sample_reg[16]_i_1_n_1\ : STD_LOGIC;
@@ -105187,17 +105201,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.sample[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.sample[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.sample[9]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E[5]_i_9_n_0\ : STD_LOGIC;
   signal \comp_low.sample_E_reg[0]_rep__0_n_0\ : STD_LOGIC;
   signal \comp_low.sample_E_reg[0]_rep__1_n_0\ : STD_LOGIC;
   signal \comp_low.sample_E_reg[0]_rep__2_n_0\ : STD_LOGIC;
@@ -105219,17 +105222,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.sample_E_reg[3]_rep__1_n_0\ : STD_LOGIC;
   signal \comp_low.sample_E_reg[3]_rep_n_0\ : STD_LOGIC;
   signal \comp_low.sample_E_reg[4]_rep_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_low.sample_E_reg[5]_i_2_n_7\ : STD_LOGIC;
   signal \comp_low.sample_N_reg[0]_rep__0_n_0\ : STD_LOGIC;
   signal \comp_low.sample_N_reg[0]_rep__1_n_0\ : STD_LOGIC;
   signal \comp_low.sample_N_reg[0]_rep__2_n_0\ : STD_LOGIC;
@@ -105251,6 +105243,12 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.sample_N_reg[3]_rep__1_n_0\ : STD_LOGIC;
   signal \comp_low.sample_N_reg[3]_rep_n_0\ : STD_LOGIC;
   signal \comp_low.sample_N_reg[4]_rep_n_0\ : STD_LOGIC;
+  signal \comp_low.sample_N_reg_n_0_[0]\ : STD_LOGIC;
+  signal \comp_low.sample_N_reg_n_0_[1]\ : STD_LOGIC;
+  signal \comp_low.sample_N_reg_n_0_[2]\ : STD_LOGIC;
+  signal \comp_low.sample_N_reg_n_0_[3]\ : STD_LOGIC;
+  signal \comp_low.sample_N_reg_n_0_[4]\ : STD_LOGIC;
+  signal \comp_low.sample_N_reg_n_0_[5]\ : STD_LOGIC;
   signal \comp_low.sample_W_reg[0]_rep__0_n_0\ : STD_LOGIC;
   signal \comp_low.sample_W_reg[0]_rep__1_n_0\ : STD_LOGIC;
   signal \comp_low.sample_W_reg[0]_rep__2_n_0\ : STD_LOGIC;
@@ -105323,6 +105321,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal raw_out_data : STD_LOGIC_VECTOR ( 383 downto 0 );
   signal raw_rd : STD_LOGIC;
   attribute MARK_DEBUG of raw_rd : signal is std.standard.true;
+  signal raw_run : STD_LOGIC;
+  attribute MARK_DEBUG of raw_run : signal is std.standard.true;
   signal raw_sample : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of raw_sample : signal is std.standard.true;
   signal raw_wr : STD_LOGIC;
@@ -105333,10 +105333,11 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal re_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_data : STD_LOGIC_VECTOR ( 155 downto 19 );
+  signal reset_int : STD_LOGIC;
   signal \^sample\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
   signal sample_E : STD_LOGIC_VECTOR ( 5 downto 0 );
-  signal sample_N : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal sample_N : STD_LOGIC;
   signal sample_W : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal \^size\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of \^size\ : signal is std.standard.true;
@@ -105370,9 +105371,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \NLW_comp_low.re_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_low.re_2_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_low.re_3_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_low.sample_E_reg[5]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_comp_low.sample_E_reg[5]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_low.sample_E_reg[5]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_fifo_ana_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_ana_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_ana_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
@@ -105413,40 +105411,23 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute ADDER_THRESHOLD of \comp_low.C7_reg[7]_i_1\ : label is 35;
   attribute KEEP : string;
   attribute KEEP of \comp_low.active_reg\ : label is "yes";
-  attribute KEEP of \comp_low.ana_run_reg\ : label is "yes";
+  attribute KEEP of \comp_low.ana_trig_reg\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[0]\ : label is "yes";
-  attribute mark_debug_string : string;
-  attribute mark_debug_string of \comp_low.angle_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[10]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[11]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[12]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[13]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[14]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[15]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[1]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[2]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[3]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[4]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[5]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[6]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[7]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[8]\ : label is "yes";
   attribute KEEP of \comp_low.angle_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.angle_reg[9]\ : label is "yes";
   attribute KEEP of \comp_low.burst_reg\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_low.deci_0_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.deci_0_reg[7]_i_1\ : label is 35;
@@ -105463,45 +105444,25 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute KEEP of \comp_low.fir_delay_reg[3]\ : label is "yes";
   attribute KEEP of \comp_low.fir_delay_reg[4]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[10]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[11]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[12]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[13]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[14]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[15]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[16]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[17]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[18]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[19]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[1]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[2]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[3]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[4]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[5]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[6]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[7]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[8]\ : label is "yes";
   attribute KEEP of \comp_low.freq_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.freq_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_low.im_0_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_0_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_1_reg[15]_i_1\ : label is 35;
@@ -105511,6 +105472,7 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute ADDER_THRESHOLD of \comp_low.im_3_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_3_reg[7]_i_1\ : label is 35;
   attribute KEEP of \comp_low.im_reg[0]\ : label is "yes";
+  attribute mark_debug_string : string;
   attribute mark_debug_string of \comp_low.im_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.im_reg[10]\ : label is "yes";
   attribute mark_debug_string of \comp_low.im_reg[10]\ : label is "yes";
@@ -105659,6 +105621,7 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute KEEP of \comp_low.raw_delay_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_low.raw_delay_reg[9]\ : label is "yes";
   attribute KEEP of \comp_low.raw_rd_reg\ : label is "yes";
+  attribute KEEP of \comp_low.raw_run_reg\ : label is "yes";
   attribute KEEP of \comp_low.raw_sample_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.raw_sample_reg[10]\ : label is "yes";
   attribute KEEP of \comp_low.raw_sample_reg[11]\ : label is "yes";
@@ -105911,87 +105874,46 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute ORIG_CELL_NAME of \comp_low.sample_W_reg[4]\ : label is "comp_low.sample_W_reg[4]";
   attribute ORIG_CELL_NAME of \comp_low.sample_W_reg[4]_rep\ : label is "comp_low.sample_W_reg[4]";
   attribute KEEP of \comp_low.sample_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[10]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[11]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[12]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[13]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[14]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[15]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[16]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[17]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[18]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[19]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[1]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[20]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[21]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[22]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[23]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[24]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[25]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[26]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[27]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[28]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[29]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[2]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[30]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[31]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[3]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[4]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[5]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[6]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[7]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[8]\ : label is "yes";
   attribute KEEP of \comp_low.sample_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.sample_reg[9]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[0]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[1]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[2]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[3]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[4]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[5]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[6]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[7]\ : label is "yes";
   attribute KEEP of \comp_low.size_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \comp_low.size_reg[8]\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_ana_i : label is "fifo_ana,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -114598,37 +114520,179 @@ begin
       Q => ana_in_data(9),
       R => '0'
     );
-\comp_low.ana_run_i_1\: unisim.vcomponents.LUT6
+\comp_low.ana_trig_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"222222F2000000F0"
+      INIT => X"8000"
     )
         port map (
-      I0 => raw_rd,
-      I1 => raw_empty,
-      I2 => \comp_low.ana_run_i_2_n_0\,
-      I3 => fir_delay(0),
-      I4 => fir_delay(1),
-      I5 => ana_run,
-      O => \comp_low.ana_run_i_1_n_0\
+      I0 => \comp_low.ana_trig_i_2_n_0\,
+      I1 => \comp_low.ana_trig_i_3_n_0\,
+      I2 => \comp_low.ana_trig_i_4_n_0\,
+      I3 => \comp_low.ana_trig_i_5_n_0\,
+      O => \comp_low.ana_trig_i_1_n_0\
     );
-\comp_low.ana_run_i_2\: unisim.vcomponents.LUT5
+\comp_low.ana_trig_i_10\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000200"
+      INIT => X"9009000000009009"
     )
         port map (
-      I0 => raw_rd,
-      I1 => raw_empty,
-      I2 => fir_delay(2),
-      I3 => fir_delay(4),
-      I4 => fir_delay(3),
-      O => \comp_low.ana_run_i_2_n_0\
+      I0 => ana_out_data(12),
+      I1 => raw_sample(12),
+      I2 => raw_sample(14),
+      I3 => ana_out_data(14),
+      I4 => raw_sample(13),
+      I5 => ana_out_data(13),
+      O => \comp_low.ana_trig_i_10_n_0\
     );
-\comp_low.ana_run_reg\: unisim.vcomponents.FDRE
+\comp_low.ana_trig_i_11\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(15),
+      I1 => raw_sample(15),
+      I2 => raw_sample(17),
+      I3 => ana_out_data(17),
+      I4 => raw_sample(16),
+      I5 => ana_out_data(16),
+      O => \comp_low.ana_trig_i_11_n_0\
+    );
+\comp_low.ana_trig_i_12\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(3),
+      I1 => raw_sample(3),
+      I2 => raw_sample(5),
+      I3 => ana_out_data(5),
+      I4 => raw_sample(4),
+      I5 => ana_out_data(4),
+      O => \comp_low.ana_trig_i_12_n_0\
+    );
+\comp_low.ana_trig_i_13\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(0),
+      I1 => raw_sample(0),
+      I2 => raw_sample(2),
+      I3 => ana_out_data(2),
+      I4 => raw_sample(1),
+      I5 => ana_out_data(1),
+      O => \comp_low.ana_trig_i_13_n_0\
+    );
+\comp_low.ana_trig_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(27),
+      I1 => raw_sample(27),
+      I2 => raw_sample(29),
+      I3 => ana_out_data(29),
+      I4 => raw_sample(28),
+      I5 => ana_out_data(28),
+      O => \comp_low.ana_trig_i_2_n_0\
+    );
+\comp_low.ana_trig_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(24),
+      I1 => raw_sample(24),
+      I2 => raw_sample(26),
+      I3 => ana_out_data(26),
+      I4 => raw_sample(25),
+      I5 => ana_out_data(25),
+      O => \comp_low.ana_trig_i_3_n_0\
+    );
+\comp_low.ana_trig_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_low.ana_trig_i_6_n_0\,
+      I1 => \comp_low.ana_trig_i_7_n_0\,
+      I2 => \comp_low.ana_trig_i_8_n_0\,
+      I3 => \comp_low.ana_trig_i_9_n_0\,
+      I4 => \comp_low.ana_trig_i_10_n_0\,
+      I5 => \comp_low.ana_trig_i_11_n_0\,
+      O => \comp_low.ana_trig_i_4_n_0\
+    );
+\comp_low.ana_trig_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000000000"
+    )
+        port map (
+      I0 => raw_sample(31),
+      I1 => ana_out_data(31),
+      I2 => raw_sample(30),
+      I3 => ana_out_data(30),
+      I4 => \comp_low.ana_trig_i_12_n_0\,
+      I5 => \comp_low.ana_trig_i_13_n_0\,
+      O => \comp_low.ana_trig_i_5_n_0\
+    );
+\comp_low.ana_trig_i_6\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(9),
+      I1 => raw_sample(9),
+      I2 => raw_sample(11),
+      I3 => ana_out_data(11),
+      I4 => raw_sample(10),
+      I5 => ana_out_data(10),
+      O => \comp_low.ana_trig_i_6_n_0\
+    );
+\comp_low.ana_trig_i_7\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(6),
+      I1 => raw_sample(6),
+      I2 => raw_sample(8),
+      I3 => ana_out_data(8),
+      I4 => raw_sample(7),
+      I5 => ana_out_data(7),
+      O => \comp_low.ana_trig_i_7_n_0\
+    );
+\comp_low.ana_trig_i_8\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(18),
+      I1 => raw_sample(18),
+      I2 => raw_sample(20),
+      I3 => ana_out_data(20),
+      I4 => raw_sample(19),
+      I5 => ana_out_data(19),
+      O => \comp_low.ana_trig_i_8_n_0\
+    );
+\comp_low.ana_trig_i_9\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => ana_out_data(21),
+      I1 => raw_sample(21),
+      I2 => raw_sample(23),
+      I3 => ana_out_data(23),
+      I4 => raw_sample(22),
+      I5 => ana_out_data(22),
+      O => \comp_low.ana_trig_i_9_n_0\
+    );
+\comp_low.ana_trig_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_low.ana_run_i_1_n_0\,
-      Q => ana_run,
+      D => \comp_low.ana_trig_i_1_n_0\,
+      Q => ana_trig,
       R => '0'
     );
 \comp_low.ana_wr_reg\: unisim.vcomponents.FDRE
@@ -114639,164 +114703,180 @@ begin
       Q => ana_wr,
       R => '0'
     );
-\comp_low.angle[0]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(0),
-      I1 => ana_empty,
-      I2 => ana_out_data(61),
+      I0 => ana_empty,
+      I1 => ana_out_data(61),
+      I2 => ana_trig,
+      I3 => \^angle\(0),
       O => \comp_low.angle[0]_i_1_n_0\
     );
-\comp_low.angle[10]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(10),
-      I1 => ana_empty,
-      I2 => ana_out_data(71),
+      I0 => ana_empty,
+      I1 => ana_out_data(71),
+      I2 => ana_trig,
+      I3 => \^angle\(10),
       O => \comp_low.angle[10]_i_1_n_0\
     );
-\comp_low.angle[11]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[11]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(11),
-      I1 => ana_empty,
-      I2 => ana_out_data(72),
+      I0 => ana_empty,
+      I1 => ana_out_data(72),
+      I2 => ana_trig,
+      I3 => \^angle\(11),
       O => \comp_low.angle[11]_i_1_n_0\
     );
-\comp_low.angle[12]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[12]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(12),
-      I1 => ana_empty,
-      I2 => ana_out_data(73),
+      I0 => ana_empty,
+      I1 => ana_out_data(73),
+      I2 => ana_trig,
+      I3 => \^angle\(12),
       O => \comp_low.angle[12]_i_1_n_0\
     );
-\comp_low.angle[13]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[13]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(13),
-      I1 => ana_empty,
-      I2 => ana_out_data(74),
+      I0 => ana_empty,
+      I1 => ana_out_data(74),
+      I2 => ana_trig,
+      I3 => \^angle\(13),
       O => \comp_low.angle[13]_i_1_n_0\
     );
-\comp_low.angle[14]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[14]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(14),
-      I1 => ana_empty,
-      I2 => ana_out_data(75),
+      I0 => ana_empty,
+      I1 => ana_out_data(75),
+      I2 => ana_trig,
+      I3 => \^angle\(14),
       O => \comp_low.angle[14]_i_1_n_0\
     );
-\comp_low.angle[15]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[15]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(15),
-      I1 => ana_empty,
-      I2 => ana_out_data(76),
+      I0 => ana_empty,
+      I1 => ana_out_data(76),
+      I2 => ana_trig,
+      I3 => \^angle\(15),
       O => \comp_low.angle[15]_i_1_n_0\
     );
-\comp_low.angle[1]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(1),
-      I1 => ana_empty,
-      I2 => ana_out_data(62),
+      I0 => ana_empty,
+      I1 => ana_out_data(62),
+      I2 => ana_trig,
+      I3 => \^angle\(1),
       O => \comp_low.angle[1]_i_1_n_0\
     );
-\comp_low.angle[2]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(2),
-      I1 => ana_empty,
-      I2 => ana_out_data(63),
+      I0 => ana_empty,
+      I1 => ana_out_data(63),
+      I2 => ana_trig,
+      I3 => \^angle\(2),
       O => \comp_low.angle[2]_i_1_n_0\
     );
-\comp_low.angle[3]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(3),
-      I1 => ana_empty,
-      I2 => ana_out_data(64),
+      I0 => ana_empty,
+      I1 => ana_out_data(64),
+      I2 => ana_trig,
+      I3 => \^angle\(3),
       O => \comp_low.angle[3]_i_1_n_0\
     );
-\comp_low.angle[4]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[4]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(4),
-      I1 => ana_empty,
-      I2 => ana_out_data(65),
+      I0 => ana_empty,
+      I1 => ana_out_data(65),
+      I2 => ana_trig,
+      I3 => \^angle\(4),
       O => \comp_low.angle[4]_i_1_n_0\
     );
-\comp_low.angle[5]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(5),
-      I1 => ana_empty,
-      I2 => ana_out_data(66),
+      I0 => ana_empty,
+      I1 => ana_out_data(66),
+      I2 => ana_trig,
+      I3 => \^angle\(5),
       O => \comp_low.angle[5]_i_1_n_0\
     );
-\comp_low.angle[6]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(6),
-      I1 => ana_empty,
-      I2 => ana_out_data(67),
+      I0 => ana_empty,
+      I1 => ana_out_data(67),
+      I2 => ana_trig,
+      I3 => \^angle\(6),
       O => \comp_low.angle[6]_i_1_n_0\
     );
-\comp_low.angle[7]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(7),
-      I1 => ana_empty,
-      I2 => ana_out_data(68),
+      I0 => ana_empty,
+      I1 => ana_out_data(68),
+      I2 => ana_trig,
+      I3 => \^angle\(7),
       O => \comp_low.angle[7]_i_1_n_0\
     );
-\comp_low.angle[8]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(8),
-      I1 => ana_empty,
-      I2 => ana_out_data(69),
+      I0 => ana_empty,
+      I1 => ana_out_data(69),
+      I2 => ana_trig,
+      I3 => \^angle\(8),
       O => \comp_low.angle[8]_i_1_n_0\
     );
-\comp_low.angle[9]_i_1\: unisim.vcomponents.LUT3
+\comp_low.angle[9]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^angle\(9),
-      I1 => ana_empty,
-      I2 => ana_out_data(70),
+      I0 => ana_empty,
+      I1 => ana_out_data(70),
+      I2 => ana_trig,
+      I3 => \^angle\(9),
       O => \comp_low.angle[9]_i_1_n_0\
     );
 \comp_low.angle_reg[0]\: unisim.vcomponents.FDRE
@@ -114927,13 +115007,14 @@ begin
       Q => \^angle\(9),
       R => '0'
     );
-\comp_low.burst_i_1\: unisim.vcomponents.LUT2
+\comp_low.burst_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2"
+      INIT => X"02"
     )
         port map (
-      I0 => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      I0 => ana_trig,
       I1 => ana_empty,
+      I2 => reset_int,
       O => \comp_low.burst_i_1_n_0\
     );
 \comp_low.burst_reg\: unisim.vcomponents.FDRE
@@ -116922,204 +117003,224 @@ begin
       Q => fir_saved,
       R => '0'
     );
-\comp_low.freq[0]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(0),
-      I1 => ana_empty,
-      I2 => ana_out_data(41),
+      I0 => ana_empty,
+      I1 => ana_out_data(41),
+      I2 => ana_trig,
+      I3 => \^freq\(0),
       O => \comp_low.freq[0]_i_1_n_0\
     );
-\comp_low.freq[10]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(10),
-      I1 => ana_empty,
-      I2 => ana_out_data(51),
+      I0 => ana_empty,
+      I1 => ana_out_data(51),
+      I2 => ana_trig,
+      I3 => \^freq\(10),
       O => \comp_low.freq[10]_i_1_n_0\
     );
-\comp_low.freq[11]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[11]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(11),
-      I1 => ana_empty,
-      I2 => ana_out_data(52),
+      I0 => ana_empty,
+      I1 => ana_out_data(52),
+      I2 => ana_trig,
+      I3 => \^freq\(11),
       O => \comp_low.freq[11]_i_1_n_0\
     );
-\comp_low.freq[12]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[12]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(12),
-      I1 => ana_empty,
-      I2 => ana_out_data(53),
+      I0 => ana_empty,
+      I1 => ana_out_data(53),
+      I2 => ana_trig,
+      I3 => \^freq\(12),
       O => \comp_low.freq[12]_i_1_n_0\
     );
-\comp_low.freq[13]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[13]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(13),
-      I1 => ana_empty,
-      I2 => ana_out_data(54),
+      I0 => ana_empty,
+      I1 => ana_out_data(54),
+      I2 => ana_trig,
+      I3 => \^freq\(13),
       O => \comp_low.freq[13]_i_1_n_0\
     );
-\comp_low.freq[14]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[14]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(14),
-      I1 => ana_empty,
-      I2 => ana_out_data(55),
+      I0 => ana_empty,
+      I1 => ana_out_data(55),
+      I2 => ana_trig,
+      I3 => \^freq\(14),
       O => \comp_low.freq[14]_i_1_n_0\
     );
-\comp_low.freq[15]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[15]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(15),
-      I1 => ana_empty,
-      I2 => ana_out_data(56),
+      I0 => ana_empty,
+      I1 => ana_out_data(56),
+      I2 => ana_trig,
+      I3 => \^freq\(15),
       O => \comp_low.freq[15]_i_1_n_0\
     );
-\comp_low.freq[16]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[16]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(16),
-      I1 => ana_empty,
-      I2 => ana_out_data(57),
+      I0 => ana_empty,
+      I1 => ana_out_data(57),
+      I2 => ana_trig,
+      I3 => \^freq\(16),
       O => \comp_low.freq[16]_i_1_n_0\
     );
-\comp_low.freq[17]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[17]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(17),
-      I1 => ana_empty,
-      I2 => ana_out_data(58),
+      I0 => ana_empty,
+      I1 => ana_out_data(58),
+      I2 => ana_trig,
+      I3 => \^freq\(17),
       O => \comp_low.freq[17]_i_1_n_0\
     );
-\comp_low.freq[18]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[18]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(18),
-      I1 => ana_empty,
-      I2 => ana_out_data(59),
+      I0 => ana_empty,
+      I1 => ana_out_data(59),
+      I2 => ana_trig,
+      I3 => \^freq\(18),
       O => \comp_low.freq[18]_i_1_n_0\
     );
-\comp_low.freq[19]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[19]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(19),
-      I1 => ana_empty,
-      I2 => ana_out_data(60),
+      I0 => ana_empty,
+      I1 => ana_out_data(60),
+      I2 => ana_trig,
+      I3 => \^freq\(19),
       O => \comp_low.freq[19]_i_1_n_0\
     );
-\comp_low.freq[1]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(1),
-      I1 => ana_empty,
-      I2 => ana_out_data(42),
+      I0 => ana_empty,
+      I1 => ana_out_data(42),
+      I2 => ana_trig,
+      I3 => \^freq\(1),
       O => \comp_low.freq[1]_i_1_n_0\
     );
-\comp_low.freq[2]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(2),
-      I1 => ana_empty,
-      I2 => ana_out_data(43),
+      I0 => ana_empty,
+      I1 => ana_out_data(43),
+      I2 => ana_trig,
+      I3 => \^freq\(2),
       O => \comp_low.freq[2]_i_1_n_0\
     );
-\comp_low.freq[3]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(3),
-      I1 => ana_empty,
-      I2 => ana_out_data(44),
+      I0 => ana_empty,
+      I1 => ana_out_data(44),
+      I2 => ana_trig,
+      I3 => \^freq\(3),
       O => \comp_low.freq[3]_i_1_n_0\
     );
-\comp_low.freq[4]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[4]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(4),
-      I1 => ana_empty,
-      I2 => ana_out_data(45),
+      I0 => ana_empty,
+      I1 => ana_out_data(45),
+      I2 => ana_trig,
+      I3 => \^freq\(4),
       O => \comp_low.freq[4]_i_1_n_0\
     );
-\comp_low.freq[5]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(5),
-      I1 => ana_empty,
-      I2 => ana_out_data(46),
+      I0 => ana_empty,
+      I1 => ana_out_data(46),
+      I2 => ana_trig,
+      I3 => \^freq\(5),
       O => \comp_low.freq[5]_i_1_n_0\
     );
-\comp_low.freq[6]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(6),
-      I1 => ana_empty,
-      I2 => ana_out_data(47),
+      I0 => ana_empty,
+      I1 => ana_out_data(47),
+      I2 => ana_trig,
+      I3 => \^freq\(6),
       O => \comp_low.freq[6]_i_1_n_0\
     );
-\comp_low.freq[7]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(7),
-      I1 => ana_empty,
-      I2 => ana_out_data(48),
+      I0 => ana_empty,
+      I1 => ana_out_data(48),
+      I2 => ana_trig,
+      I3 => \^freq\(7),
       O => \comp_low.freq[7]_i_1_n_0\
     );
-\comp_low.freq[8]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(8),
-      I1 => ana_empty,
-      I2 => ana_out_data(49),
+      I0 => ana_empty,
+      I1 => ana_out_data(49),
+      I2 => ana_trig,
+      I3 => \^freq\(8),
       O => \comp_low.freq[8]_i_1_n_0\
     );
-\comp_low.freq[9]_i_1\: unisim.vcomponents.LUT3
+\comp_low.freq[9]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^freq\(9),
-      I1 => ana_empty,
-      I2 => ana_out_data(50),
+      I0 => ana_empty,
+      I1 => ana_out_data(50),
+      I2 => ana_trig,
+      I3 => \^freq\(9),
       O => \comp_low.freq[9]_i_1_n_0\
     );
 \comp_low.freq_reg[0]\: unisim.vcomponents.FDRE
@@ -124870,6 +124971,39 @@ begin
       Q => raw_rd,
       R => '0'
     );
+\comp_low.raw_run_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"222222F2000000F0"
+    )
+        port map (
+      I0 => raw_rd,
+      I1 => raw_empty,
+      I2 => \comp_low.raw_run_i_2_n_0\,
+      I3 => fir_delay(0),
+      I4 => fir_delay(1),
+      I5 => raw_run,
+      O => \comp_low.raw_run_i_1_n_0\
+    );
+\comp_low.raw_run_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000200"
+    )
+        port map (
+      I0 => raw_rd,
+      I1 => raw_empty,
+      I2 => fir_delay(2),
+      I3 => fir_delay(4),
+      I4 => fir_delay(3),
+      O => \comp_low.raw_run_i_2_n_0\
+    );
+\comp_low.raw_run_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_low.raw_run_i_1_n_0\,
+      Q => raw_run,
+      R => '0'
+    );
 \comp_low.raw_sample[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
@@ -124883,7 +125017,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => ana_run,
+      I0 => raw_run,
       O => \comp_low.raw_sample[31]_i_1_n_0\
     );
 \comp_low.raw_sample_reg[0]\: unisim.vcomponents.FDRE
@@ -126411,1161 +126545,1030 @@ begin
       Q => \^re\(9),
       R => '0'
     );
-\comp_low.sample[0]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(0),
-      I1 => ana_out_data(0),
-      I2 => ana_empty,
-      O => \comp_low.sample[0]_i_1_n_0\
+\comp_low.reset_int_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => reset,
+      Q => reset_int,
+      R => '0'
     );
-\comp_low.sample[10]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(10),
-      I1 => ana_out_data(10),
-      I2 => ana_empty,
-      O => \comp_low.sample[10]_i_1_n_0\
-    );
-\comp_low.sample[11]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(11),
-      I1 => ana_out_data(11),
-      I2 => ana_empty,
-      O => \comp_low.sample[11]_i_1_n_0\
-    );
-\comp_low.sample[12]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(12),
-      I1 => ana_out_data(12),
-      I2 => ana_empty,
-      O => \comp_low.sample[12]_i_1_n_0\
-    );
-\comp_low.sample[13]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(13),
-      I1 => ana_out_data(13),
-      I2 => ana_empty,
-      O => \comp_low.sample[13]_i_1_n_0\
-    );
-\comp_low.sample[14]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(14),
-      I1 => ana_out_data(14),
-      I2 => ana_empty,
-      O => \comp_low.sample[14]_i_1_n_0\
-    );
-\comp_low.sample[15]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(15),
-      I1 => ana_out_data(15),
-      I2 => ana_empty,
-      O => \comp_low.sample[15]_i_1_n_0\
-    );
-\comp_low.sample[16]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(16),
-      I1 => ana_out_data(16),
-      I2 => ana_empty,
-      O => \comp_low.sample[16]_i_1_n_0\
-    );
-\comp_low.sample[17]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(17),
-      I1 => ana_out_data(17),
-      I2 => ana_empty,
-      O => \comp_low.sample[17]_i_1_n_0\
-    );
-\comp_low.sample[18]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(18),
-      I1 => ana_out_data(18),
-      I2 => ana_empty,
-      O => \comp_low.sample[18]_i_1_n_0\
-    );
-\comp_low.sample[19]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(19),
-      I1 => ana_out_data(19),
-      I2 => ana_empty,
-      O => \comp_low.sample[19]_i_1_n_0\
-    );
-\comp_low.sample[1]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(1),
-      I1 => ana_out_data(1),
-      I2 => ana_empty,
-      O => \comp_low.sample[1]_i_1_n_0\
-    );
-\comp_low.sample[20]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(20),
-      I1 => ana_out_data(20),
-      I2 => ana_empty,
-      O => \comp_low.sample[20]_i_1_n_0\
-    );
-\comp_low.sample[21]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(21),
-      I1 => ana_out_data(21),
-      I2 => ana_empty,
-      O => \comp_low.sample[21]_i_1_n_0\
-    );
-\comp_low.sample[22]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(22),
-      I1 => ana_out_data(22),
-      I2 => ana_empty,
-      O => \comp_low.sample[22]_i_1_n_0\
-    );
-\comp_low.sample[23]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(23),
-      I1 => ana_out_data(23),
-      I2 => ana_empty,
-      O => \comp_low.sample[23]_i_1_n_0\
-    );
-\comp_low.sample[24]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(24),
-      I1 => ana_out_data(24),
-      I2 => ana_empty,
-      O => \comp_low.sample[24]_i_1_n_0\
-    );
-\comp_low.sample[25]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(25),
-      I1 => ana_out_data(25),
-      I2 => ana_empty,
-      O => \comp_low.sample[25]_i_1_n_0\
-    );
-\comp_low.sample[26]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(26),
-      I1 => ana_out_data(26),
-      I2 => ana_empty,
-      O => \comp_low.sample[26]_i_1_n_0\
-    );
-\comp_low.sample[27]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(27),
-      I1 => ana_out_data(27),
-      I2 => ana_empty,
-      O => \comp_low.sample[27]_i_1_n_0\
-    );
-\comp_low.sample[28]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(28),
-      I1 => ana_out_data(28),
-      I2 => ana_empty,
-      O => \comp_low.sample[28]_i_1_n_0\
-    );
-\comp_low.sample[29]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(29),
-      I1 => ana_out_data(29),
-      I2 => ana_empty,
-      O => \comp_low.sample[29]_i_1_n_0\
-    );
-\comp_low.sample[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(2),
-      I1 => ana_out_data(2),
-      I2 => ana_empty,
-      O => \comp_low.sample[2]_i_1_n_0\
-    );
-\comp_low.sample[30]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => \^sample\(30),
-      I1 => ana_out_data(30),
-      I2 => ana_empty,
-      O => \comp_low.sample[30]_i_1_n_0\
-    );
-\comp_low.sample[31]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
+      INIT => X"EF40"
     )
         port map (
       I0 => ana_empty,
-      I1 => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      I1 => ana_out_data(0),
+      I2 => ana_trig,
+      I3 => \^sample\(0),
+      O => \comp_low.sample[0]_i_1_n_0\
+    );
+\comp_low.sample[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(10),
+      I2 => ana_trig,
+      I3 => \^sample\(10),
+      O => \comp_low.sample[10]_i_1_n_0\
+    );
+\comp_low.sample[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(11),
+      I2 => ana_trig,
+      I3 => \^sample\(11),
+      O => \comp_low.sample[11]_i_1_n_0\
+    );
+\comp_low.sample[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(12),
+      I2 => ana_trig,
+      I3 => \^sample\(12),
+      O => \comp_low.sample[12]_i_1_n_0\
+    );
+\comp_low.sample[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(13),
+      I2 => ana_trig,
+      I3 => \^sample\(13),
+      O => \comp_low.sample[13]_i_1_n_0\
+    );
+\comp_low.sample[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(14),
+      I2 => ana_trig,
+      I3 => \^sample\(14),
+      O => \comp_low.sample[14]_i_1_n_0\
+    );
+\comp_low.sample[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(15),
+      I2 => ana_trig,
+      I3 => \^sample\(15),
+      O => \comp_low.sample[15]_i_1_n_0\
+    );
+\comp_low.sample[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(16),
+      I2 => ana_trig,
+      I3 => \^sample\(16),
+      O => \comp_low.sample[16]_i_1_n_0\
+    );
+\comp_low.sample[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(17),
+      I2 => ana_trig,
+      I3 => \^sample\(17),
+      O => \comp_low.sample[17]_i_1_n_0\
+    );
+\comp_low.sample[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(18),
+      I2 => ana_trig,
+      I3 => \^sample\(18),
+      O => \comp_low.sample[18]_i_1_n_0\
+    );
+\comp_low.sample[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(19),
+      I2 => ana_trig,
+      I3 => \^sample\(19),
+      O => \comp_low.sample[19]_i_1_n_0\
+    );
+\comp_low.sample[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(1),
+      I2 => ana_trig,
+      I3 => \^sample\(1),
+      O => \comp_low.sample[1]_i_1_n_0\
+    );
+\comp_low.sample[20]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(20),
+      I2 => ana_trig,
+      I3 => \^sample\(20),
+      O => \comp_low.sample[20]_i_1_n_0\
+    );
+\comp_low.sample[21]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(21),
+      I2 => ana_trig,
+      I3 => \^sample\(21),
+      O => \comp_low.sample[21]_i_1_n_0\
+    );
+\comp_low.sample[22]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(22),
+      I2 => ana_trig,
+      I3 => \^sample\(22),
+      O => \comp_low.sample[22]_i_1_n_0\
+    );
+\comp_low.sample[23]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(23),
+      I2 => ana_trig,
+      I3 => \^sample\(23),
+      O => \comp_low.sample[23]_i_1_n_0\
+    );
+\comp_low.sample[24]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(24),
+      I2 => ana_trig,
+      I3 => \^sample\(24),
+      O => \comp_low.sample[24]_i_1_n_0\
+    );
+\comp_low.sample[25]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(25),
+      I2 => ana_trig,
+      I3 => \^sample\(25),
+      O => \comp_low.sample[25]_i_1_n_0\
+    );
+\comp_low.sample[26]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(26),
+      I2 => ana_trig,
+      I3 => \^sample\(26),
+      O => \comp_low.sample[26]_i_1_n_0\
+    );
+\comp_low.sample[27]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(27),
+      I2 => ana_trig,
+      I3 => \^sample\(27),
+      O => \comp_low.sample[27]_i_1_n_0\
+    );
+\comp_low.sample[28]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(28),
+      I2 => ana_trig,
+      I3 => \^sample\(28),
+      O => \comp_low.sample[28]_i_1_n_0\
+    );
+\comp_low.sample[29]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(29),
+      I2 => ana_trig,
+      I3 => \^sample\(29),
+      O => \comp_low.sample[29]_i_1_n_0\
+    );
+\comp_low.sample[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(2),
+      I2 => ana_trig,
+      I3 => \^sample\(2),
+      O => \comp_low.sample[2]_i_1_n_0\
+    );
+\comp_low.sample[30]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"EF40"
+    )
+        port map (
+      I0 => ana_empty,
+      I1 => ana_out_data(30),
+      I2 => ana_trig,
+      I3 => \^sample\(30),
+      O => \comp_low.sample[30]_i_1_n_0\
+    );
+\comp_low.sample[31]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => reset_int,
       O => \comp_low.sample[31]_i_1_n_0\
     );
-\comp_low.sample[31]_i_2\: unisim.vcomponents.LUT3
+\comp_low.sample[31]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(31),
+      I0 => ana_empty,
       I1 => ana_out_data(31),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(31),
       O => \comp_low.sample[31]_i_2_n_0\
     );
-\comp_low.sample[3]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(3),
+      I0 => ana_empty,
       I1 => ana_out_data(3),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(3),
       O => \comp_low.sample[3]_i_1_n_0\
     );
-\comp_low.sample[4]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[4]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(4),
+      I0 => ana_empty,
       I1 => ana_out_data(4),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(4),
       O => \comp_low.sample[4]_i_1_n_0\
     );
-\comp_low.sample[5]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(5),
+      I0 => ana_empty,
       I1 => ana_out_data(5),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(5),
       O => \comp_low.sample[5]_i_1_n_0\
     );
-\comp_low.sample[6]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(6),
+      I0 => ana_empty,
       I1 => ana_out_data(6),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(6),
       O => \comp_low.sample[6]_i_1_n_0\
     );
-\comp_low.sample[7]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(7),
+      I0 => ana_empty,
       I1 => ana_out_data(7),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(7),
       O => \comp_low.sample[7]_i_1_n_0\
     );
-\comp_low.sample[8]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(8),
+      I0 => ana_empty,
       I1 => ana_out_data(8),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(8),
       O => \comp_low.sample[8]_i_1_n_0\
     );
-\comp_low.sample[9]_i_1\: unisim.vcomponents.LUT3
+\comp_low.sample[9]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AC"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^sample\(9),
+      I0 => ana_empty,
       I1 => ana_out_data(9),
-      I2 => ana_empty,
+      I2 => ana_trig,
+      I3 => \^sample\(9),
       O => \comp_low.sample[9]_i_1_n_0\
     );
-\comp_low.sample_E[5]_i_10\: unisim.vcomponents.LUT6
+\comp_low.sample_E[5]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"2"
     )
         port map (
-      I0 => ana_out_data(9),
-      I1 => raw_sample(9),
-      I2 => raw_sample(11),
-      I3 => ana_out_data(11),
-      I4 => raw_sample(10),
-      I5 => ana_out_data(10),
-      O => \comp_low.sample_E[5]_i_10_n_0\
-    );
-\comp_low.sample_E[5]_i_11\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(6),
-      I1 => raw_sample(6),
-      I2 => raw_sample(8),
-      I3 => ana_out_data(8),
-      I4 => raw_sample(7),
-      I5 => ana_out_data(7),
-      O => \comp_low.sample_E[5]_i_11_n_0\
-    );
-\comp_low.sample_E[5]_i_12\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(3),
-      I1 => raw_sample(3),
-      I2 => raw_sample(5),
-      I3 => ana_out_data(5),
-      I4 => raw_sample(4),
-      I5 => ana_out_data(4),
-      O => \comp_low.sample_E[5]_i_12_n_0\
-    );
-\comp_low.sample_E[5]_i_13\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(0),
-      I1 => raw_sample(0),
-      I2 => raw_sample(2),
-      I3 => ana_out_data(2),
-      I4 => raw_sample(1),
-      I5 => ana_out_data(1),
-      O => \comp_low.sample_E[5]_i_13_n_0\
-    );
-\comp_low.sample_E[5]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => ana_out_data(30),
-      I1 => raw_sample(30),
-      I2 => ana_out_data(31),
-      I3 => raw_sample(31),
-      O => \comp_low.sample_E[5]_i_3_n_0\
-    );
-\comp_low.sample_E[5]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(27),
-      I1 => raw_sample(27),
-      I2 => raw_sample(29),
-      I3 => ana_out_data(29),
-      I4 => raw_sample(28),
-      I5 => ana_out_data(28),
-      O => \comp_low.sample_E[5]_i_4_n_0\
-    );
-\comp_low.sample_E[5]_i_5\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(24),
-      I1 => raw_sample(24),
-      I2 => raw_sample(26),
-      I3 => ana_out_data(26),
-      I4 => raw_sample(25),
-      I5 => ana_out_data(25),
-      O => \comp_low.sample_E[5]_i_5_n_0\
-    );
-\comp_low.sample_E[5]_i_6\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(21),
-      I1 => raw_sample(21),
-      I2 => raw_sample(23),
-      I3 => ana_out_data(23),
-      I4 => raw_sample(22),
-      I5 => ana_out_data(22),
-      O => \comp_low.sample_E[5]_i_6_n_0\
-    );
-\comp_low.sample_E[5]_i_7\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(18),
-      I1 => raw_sample(18),
-      I2 => raw_sample(20),
-      I3 => ana_out_data(20),
-      I4 => raw_sample(19),
-      I5 => ana_out_data(19),
-      O => \comp_low.sample_E[5]_i_7_n_0\
-    );
-\comp_low.sample_E[5]_i_8\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(15),
-      I1 => raw_sample(15),
-      I2 => raw_sample(17),
-      I3 => ana_out_data(17),
-      I4 => raw_sample(16),
-      I5 => ana_out_data(16),
-      O => \comp_low.sample_E[5]_i_8_n_0\
-    );
-\comp_low.sample_E[5]_i_9\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => ana_out_data(12),
-      I1 => raw_sample(12),
-      I2 => raw_sample(14),
-      I3 => ana_out_data(14),
-      I4 => raw_sample(13),
-      I5 => ana_out_data(13),
-      O => \comp_low.sample_E[5]_i_9_n_0\
+      I0 => ana_trig,
+      I1 => ana_empty,
+      O => sample_N
     );
 \comp_low.sample_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => sample_E(0),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep__2\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep__2_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep__3\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep__3_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep__4\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep__4_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[0]_rep__5\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(83),
       Q => \comp_low.sample_E_reg[0]_rep__5_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => sample_E(1),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep__2\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep__2_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep__3\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep__3_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep__4\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep__4_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[1]_rep__5\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(84),
       Q => \comp_low.sample_E_reg[1]_rep__5_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(85),
       Q => sample_E(2),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[2]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(85),
       Q => \comp_low.sample_E_reg[2]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[2]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(85),
       Q => \comp_low.sample_E_reg[2]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[2]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(85),
       Q => \comp_low.sample_E_reg[2]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(86),
       Q => sample_E(3),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[3]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(86),
       Q => \comp_low.sample_E_reg[3]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[3]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(86),
       Q => \comp_low.sample_E_reg[3]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[3]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(86),
       Q => \comp_low.sample_E_reg[3]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(87),
       Q => sample_E(4),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[4]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(87),
       Q => \comp_low.sample_E_reg[4]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_E_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(88),
       Q => sample_E(5),
-      R => ana_empty
-    );
-\comp_low.sample_E_reg[5]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_low.sample_E_reg[5]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 3) => \NLW_comp_low.sample_E_reg[5]_i_1_CO_UNCONNECTED\(7 downto 3),
-      CO(2) => \comp_low.sample_E_reg[5]_i_1_n_5\,
-      CO(1) => \comp_low.sample_E_reg[5]_i_1_n_6\,
-      CO(0) => \comp_low.sample_E_reg[5]_i_1_n_7\,
-      DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => \NLW_comp_low.sample_E_reg[5]_i_1_O_UNCONNECTED\(7 downto 0),
-      S(7 downto 3) => B"00000",
-      S(2) => \comp_low.sample_E[5]_i_3_n_0\,
-      S(1) => \comp_low.sample_E[5]_i_4_n_0\,
-      S(0) => \comp_low.sample_E[5]_i_5_n_0\
-    );
-\comp_low.sample_E_reg[5]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_low.sample_E_reg[5]_i_2_n_0\,
-      CO(6) => \comp_low.sample_E_reg[5]_i_2_n_1\,
-      CO(5) => \comp_low.sample_E_reg[5]_i_2_n_2\,
-      CO(4) => \comp_low.sample_E_reg[5]_i_2_n_3\,
-      CO(3) => \comp_low.sample_E_reg[5]_i_2_n_4\,
-      CO(2) => \comp_low.sample_E_reg[5]_i_2_n_5\,
-      CO(1) => \comp_low.sample_E_reg[5]_i_2_n_6\,
-      CO(0) => \comp_low.sample_E_reg[5]_i_2_n_7\,
-      DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => \NLW_comp_low.sample_E_reg[5]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_low.sample_E[5]_i_6_n_0\,
-      S(6) => \comp_low.sample_E[5]_i_7_n_0\,
-      S(5) => \comp_low.sample_E[5]_i_8_n_0\,
-      S(4) => \comp_low.sample_E[5]_i_9_n_0\,
-      S(3) => \comp_low.sample_E[5]_i_10_n_0\,
-      S(2) => \comp_low.sample_E[5]_i_11_n_0\,
-      S(1) => \comp_low.sample_E[5]_i_12_n_0\,
-      S(0) => \comp_low.sample_E[5]_i_13_n_0\
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
-      Q => sample_N(0),
-      R => ana_empty
+      Q => \comp_low.sample_N_reg_n_0_[0]\,
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep__2\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep__2_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep__3\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep__3_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep__4\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep__4_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[0]_rep__5\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(77),
       Q => \comp_low.sample_N_reg[0]_rep__5_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
-      Q => sample_N(1),
-      R => ana_empty
+      Q => \comp_low.sample_N_reg_n_0_[1]\,
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep__2\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep__2_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep__3\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep__3_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep__4\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep__4_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[1]_rep__5\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(78),
       Q => \comp_low.sample_N_reg[1]_rep__5_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(79),
-      Q => sample_N(2),
-      R => ana_empty
+      Q => \comp_low.sample_N_reg_n_0_[2]\,
+      R => reset_int
     );
 \comp_low.sample_N_reg[2]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(79),
       Q => \comp_low.sample_N_reg[2]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[2]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(79),
       Q => \comp_low.sample_N_reg[2]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[2]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(79),
       Q => \comp_low.sample_N_reg[2]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(80),
-      Q => sample_N(3),
-      R => ana_empty
+      Q => \comp_low.sample_N_reg_n_0_[3]\,
+      R => reset_int
     );
 \comp_low.sample_N_reg[3]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(80),
       Q => \comp_low.sample_N_reg[3]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[3]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(80),
       Q => \comp_low.sample_N_reg[3]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[3]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(80),
       Q => \comp_low.sample_N_reg[3]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(81),
-      Q => sample_N(4),
-      R => ana_empty
+      Q => \comp_low.sample_N_reg_n_0_[4]\,
+      R => reset_int
     );
 \comp_low.sample_N_reg[4]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(81),
       Q => \comp_low.sample_N_reg[4]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_N_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(82),
-      Q => sample_N(5),
-      R => ana_empty
+      Q => \comp_low.sample_N_reg_n_0_[5]\,
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => sample_W(0),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep__2\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep__2_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep__3\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep__3_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep__4\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep__4_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[0]_rep__5\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(89),
       Q => \comp_low.sample_W_reg[0]_rep__5_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => sample_W(1),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep__2\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep__2_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep__3\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep__3_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep__4\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep__4_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[1]_rep__5\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(90),
       Q => \comp_low.sample_W_reg[1]_rep__5_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(91),
       Q => sample_W(2),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[2]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(91),
       Q => \comp_low.sample_W_reg[2]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[2]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(91),
       Q => \comp_low.sample_W_reg[2]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[2]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(91),
       Q => \comp_low.sample_W_reg[2]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(92),
       Q => sample_W(3),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[3]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(92),
       Q => \comp_low.sample_W_reg[3]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[3]_rep__0\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(92),
       Q => \comp_low.sample_W_reg[3]_rep__0_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[3]_rep__1\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(92),
       Q => \comp_low.sample_W_reg[3]_rep__1_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(93),
       Q => sample_W(4),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[4]_rep\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(93),
       Q => \comp_low.sample_W_reg[4]_rep_n_0\,
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_W_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.sample_E_reg[5]_i_1_n_5\,
+      CE => sample_N,
       D => ana_out_data(94),
       Q => sample_W(5),
-      R => ana_empty
+      R => reset_int
     );
 \comp_low.sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -127823,94 +127826,103 @@ begin
       Q => \^sample\(9),
       R => '0'
     );
-\comp_low.size[0]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(0),
-      I1 => ana_empty,
-      I2 => ana_out_data(32),
+      I0 => ana_empty,
+      I1 => ana_out_data(32),
+      I2 => ana_trig,
+      I3 => \^size\(0),
       O => \comp_low.size[0]_i_1_n_0\
     );
-\comp_low.size[1]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(1),
-      I1 => ana_empty,
-      I2 => ana_out_data(33),
+      I0 => ana_empty,
+      I1 => ana_out_data(33),
+      I2 => ana_trig,
+      I3 => \^size\(1),
       O => \comp_low.size[1]_i_1_n_0\
     );
-\comp_low.size[2]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(2),
-      I1 => ana_empty,
-      I2 => ana_out_data(34),
+      I0 => ana_empty,
+      I1 => ana_out_data(34),
+      I2 => ana_trig,
+      I3 => \^size\(2),
       O => \comp_low.size[2]_i_1_n_0\
     );
-\comp_low.size[3]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(3),
-      I1 => ana_empty,
-      I2 => ana_out_data(35),
+      I0 => ana_empty,
+      I1 => ana_out_data(35),
+      I2 => ana_trig,
+      I3 => \^size\(3),
       O => \comp_low.size[3]_i_1_n_0\
     );
-\comp_low.size[4]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[4]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(4),
-      I1 => ana_empty,
-      I2 => ana_out_data(36),
+      I0 => ana_empty,
+      I1 => ana_out_data(36),
+      I2 => ana_trig,
+      I3 => \^size\(4),
       O => \comp_low.size[4]_i_1_n_0\
     );
-\comp_low.size[5]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(5),
-      I1 => ana_empty,
-      I2 => ana_out_data(37),
+      I0 => ana_empty,
+      I1 => ana_out_data(37),
+      I2 => ana_trig,
+      I3 => \^size\(5),
       O => \comp_low.size[5]_i_1_n_0\
     );
-\comp_low.size[6]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(6),
-      I1 => ana_empty,
-      I2 => ana_out_data(38),
+      I0 => ana_empty,
+      I1 => ana_out_data(38),
+      I2 => ana_trig,
+      I3 => \^size\(6),
       O => \comp_low.size[6]_i_1_n_0\
     );
-\comp_low.size[7]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(7),
-      I1 => ana_empty,
-      I2 => ana_out_data(39),
+      I0 => ana_empty,
+      I1 => ana_out_data(39),
+      I2 => ana_trig,
+      I3 => \^size\(7),
       O => \comp_low.size[7]_i_1_n_0\
     );
-\comp_low.size[8]_i_1\: unisim.vcomponents.LUT3
+\comp_low.size[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B8"
+      INIT => X"EF40"
     )
         port map (
-      I0 => \^size\(8),
-      I1 => ana_empty,
-      I2 => ana_out_data(40),
+      I0 => ana_empty,
+      I1 => ana_out_data(40),
+      I2 => ana_trig,
+      I3 => \^size\(8),
       O => \comp_low.size[8]_i_1_n_0\
     );
 \comp_low.size_reg[0]\: unisim.vcomponents.FDRE
@@ -128125,20 +128137,21 @@ ila_i: component ps_comp_low_0_0_ila_0
       clk => clk,
       probe0(0) => raw_rd,
       probe1(0) => raw_empty,
-      probe10(31 downto 0) => \^sample\(31 downto 0),
-      probe11(8 downto 0) => \^size\(8 downto 0),
-      probe12(19 downto 0) => \^freq\(19 downto 0),
-      probe13(15 downto 0) => \^angle\(15 downto 0),
-      probe14(63 downto 0) => \^re\(63 downto 0),
-      probe15(63 downto 0) => \^im\(63 downto 0),
+      probe10(0) => \^burst\,
+      probe11(31 downto 0) => \^sample\(31 downto 0),
+      probe12(8 downto 0) => \^size\(8 downto 0),
+      probe13(19 downto 0) => \^freq\(19 downto 0),
+      probe14(15 downto 0) => \^angle\(15 downto 0),
+      probe15(63 downto 0) => \^re\(63 downto 0),
+      probe16(63 downto 0) => \^im\(63 downto 0),
       probe2(9 downto 0) => raw_delay(9 downto 0),
       probe3(31 downto 0) => raw_sample(31 downto 0),
       probe4(4 downto 0) => fir_delay(4 downto 0),
       probe5(0) => fir_active,
       probe6(0) => deci_active,
-      probe7(0) => ana_run,
+      probe7(0) => raw_run,
       probe8(0) => \^active\,
-      probe9(0) => \^burst\
+      probe9(0) => ana_trig
     );
 sel_E_i: entity work.ps_comp_low_0_0_comp_sel6
      port map (
@@ -128186,7 +128199,12 @@ sel_N_i: entity work.ps_comp_low_0_0_comp_sel6_0
       \comp_select_6.data_out[48]_i_7_1\ => \comp_low.sample_N_reg[0]_rep_n_0\,
       \comp_select_6.data_out[8]_i_7_0\ => \comp_low.sample_N_reg[1]_rep__4_n_0\,
       \comp_select_6.data_out[8]_i_7_1\ => \comp_low.sample_N_reg[0]_rep__4_n_0\,
-      \comp_select_6.data_out_reg[0]_0\(5 downto 0) => sample_N(5 downto 0),
+      \comp_select_6.data_out_reg[0]_0\(5) => \comp_low.sample_N_reg_n_0_[5]\,
+      \comp_select_6.data_out_reg[0]_0\(4) => \comp_low.sample_N_reg_n_0_[4]\,
+      \comp_select_6.data_out_reg[0]_0\(3) => \comp_low.sample_N_reg_n_0_[3]\,
+      \comp_select_6.data_out_reg[0]_0\(2) => \comp_low.sample_N_reg_n_0_[2]\,
+      \comp_select_6.data_out_reg[0]_0\(1) => \comp_low.sample_N_reg_n_0_[1]\,
+      \comp_select_6.data_out_reg[0]_0\(0) => \comp_low.sample_N_reg_n_0_[0]\,
       \comp_select_6.data_out_reg[0]_i_3_0\ => \comp_low.sample_N_reg[3]_rep__1_n_0\,
       \comp_select_6.data_out_reg[0]_i_3_1\ => \comp_low.sample_N_reg[2]_rep__1_n_0\,
       \comp_select_6.data_out_reg[32]_i_3_0\ => \comp_low.sample_N_reg[3]_rep__0_n_0\,

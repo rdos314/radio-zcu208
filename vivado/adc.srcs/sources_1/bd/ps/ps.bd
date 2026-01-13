@@ -31,7 +31,9 @@
       "ana_high": "",
       "ana_low": "",
       "comp_low": "",
-      "comp_high": ""
+      "comp_high": "",
+      "comp_ana_low": "",
+      "comp_ana_high": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -2055,6 +2057,58 @@
           "comp1_reset": {
             "type": "rst",
             "direction": "O"
+          },
+          "comp_ana0_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "comp_ana0_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "comp_ana0_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "comp_ana1_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "comp_ana1_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "comp_ana1_reset": {
+            "type": "rst",
+            "direction": "O"
           }
         }
       },
@@ -3484,6 +3538,188 @@
             "right": "0"
           }
         }
+      },
+      "comp_ana_low": {
+        "vlnv": "xilinx.com:module_ref:comp_ana:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_comp_ana_0_0",
+        "xci_path": "ip\\ps_comp_ana_0_0\\ps_comp_ana_0_0.xci",
+        "inst_hier_path": "comp_ana_low",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "comp_ana",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "fifo_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp0_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "fifo_active": {
+            "direction": "I"
+          },
+          "fifo_re": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "fifo_im": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "fifo_burst": {
+            "direction": "I"
+          },
+          "fifo_sample": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "fifo_size": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "fifo_freq": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "fifo_angle": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp_ana0_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          }
+        }
+      },
+      "comp_ana_high": {
+        "vlnv": "xilinx.com:module_ref:comp_ana:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_comp_ana_0_1",
+        "xci_path": "ip\\ps_comp_ana_0_1\\ps_comp_ana_0_1.xci",
+        "inst_hier_path": "comp_ana_high",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "comp_ana",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "fifo_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp1_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "fifo_active": {
+            "direction": "I"
+          },
+          "fifo_re": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "fifo_im": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "fifo_burst": {
+            "direction": "I"
+          },
+          "fifo_sample": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "fifo_size": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "fifo_freq": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "fifo_angle": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "const_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_mts_0_0_comp_ana1_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -3829,6 +4065,102 @@
           "adc_control_0/data_in"
         ]
       },
+      "comp_high_active": {
+        "ports": [
+          "comp_high/active",
+          "comp_ana_high/fifo_active"
+        ]
+      },
+      "comp_high_angle": {
+        "ports": [
+          "comp_high/angle",
+          "comp_ana_high/fifo_angle"
+        ]
+      },
+      "comp_high_burst": {
+        "ports": [
+          "comp_high/burst",
+          "comp_ana_high/fifo_burst"
+        ]
+      },
+      "comp_high_freq": {
+        "ports": [
+          "comp_high/freq",
+          "comp_ana_high/fifo_freq"
+        ]
+      },
+      "comp_high_im": {
+        "ports": [
+          "comp_high/im",
+          "comp_ana_high/fifo_im"
+        ]
+      },
+      "comp_high_re": {
+        "ports": [
+          "comp_high/re",
+          "comp_ana_high/fifo_re"
+        ]
+      },
+      "comp_high_sample": {
+        "ports": [
+          "comp_high/sample",
+          "comp_ana_high/fifo_sample"
+        ]
+      },
+      "comp_high_size": {
+        "ports": [
+          "comp_high/size",
+          "comp_ana_high/fifo_size"
+        ]
+      },
+      "comp_low_active": {
+        "ports": [
+          "comp_low/active",
+          "comp_ana_low/fifo_active"
+        ]
+      },
+      "comp_low_angle": {
+        "ports": [
+          "comp_low/angle",
+          "comp_ana_low/fifo_angle"
+        ]
+      },
+      "comp_low_burst": {
+        "ports": [
+          "comp_low/burst",
+          "comp_ana_low/fifo_burst"
+        ]
+      },
+      "comp_low_freq": {
+        "ports": [
+          "comp_low/freq",
+          "comp_ana_low/fifo_freq"
+        ]
+      },
+      "comp_low_im": {
+        "ports": [
+          "comp_low/im",
+          "comp_ana_low/fifo_im"
+        ]
+      },
+      "comp_low_re": {
+        "ports": [
+          "comp_low/re",
+          "comp_ana_low/fifo_re"
+        ]
+      },
+      "comp_low_sample": {
+        "ports": [
+          "comp_low/sample",
+          "comp_ana_low/fifo_sample"
+        ]
+      },
+      "comp_low_size": {
+        "ports": [
+          "comp_low/size",
+          "comp_ana_low/fifo_size"
+        ]
+      },
       "deci_high_freq_E": {
         "ports": [
           "deci_high/freq_E",
@@ -4080,7 +4412,8 @@
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
-          "comp_low/clk"
+          "comp_low/clk",
+          "comp_ana_low/fifo_clk"
         ]
       },
       "mts_0_comp0_reset": {
@@ -4092,13 +4425,38 @@
       "mts_0_comp1_clk": {
         "ports": [
           "mts_0/comp1_clk",
-          "comp_high/clk"
+          "comp_high/clk",
+          "comp_ana_high/fifo_clk"
         ]
       },
       "mts_0_comp1_reset": {
         "ports": [
           "mts_0/comp1_reset",
           "comp_high/reset"
+        ]
+      },
+      "mts_0_comp_ana0_clk": {
+        "ports": [
+          "mts_0/comp_ana0_clk",
+          "comp_ana_low/clk"
+        ]
+      },
+      "mts_0_comp_ana0_reset": {
+        "ports": [
+          "mts_0/comp_ana0_reset",
+          "comp_ana_low/reset"
+        ]
+      },
+      "mts_0_comp_ana1_clk": {
+        "ports": [
+          "mts_0/comp_ana1_clk",
+          "comp_ana_high/clk"
+        ]
+      },
+      "mts_0_comp_ana1_reset": {
+        "ports": [
+          "mts_0/comp_ana1_reset",
+          "comp_ana_high/reset"
         ]
       },
       "mts_0_deci_adc_active": {
@@ -4326,11 +4684,11 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
           "adc_control_0/clk",
-          "mts_0/axi_clk",
           "deci_low/sim_clk",
           "deci_high/sim_clk",
           "ana_low/config_clk",
-          "ana_high/config_clk"
+          "ana_high/config_clk",
+          "mts_0/axi_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

@@ -64,7 +64,11 @@
         "comp0_clk": [ { "direction": "out" } ],
         "comp0_reset": [ { "direction": "out" } ],
         "comp1_clk": [ { "direction": "out" } ],
-        "comp1_reset": [ { "direction": "out" } ]
+        "comp1_reset": [ { "direction": "out" } ],
+        "comp_ana0_clk": [ { "direction": "out" } ],
+        "comp_ana0_reset": [ { "direction": "out" } ],
+        "comp_ana1_clk": [ { "direction": "out" } ],
+        "comp_ana1_reset": [ { "direction": "out" } ]
       },
       "interfaces": {
         "ana0_reset": {
@@ -113,6 +117,30 @@
           },
           "port_maps": {
             "RST": [ { "physical_name": "comp1_reset" } ]
+          }
+        },
+        "comp_ana0_reset": {
+          "vlnv": "xilinx.com:signal:reset:1.0",
+          "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "comp_ana0_reset" } ]
+          }
+        },
+        "comp_ana1_reset": {
+          "vlnv": "xilinx.com:signal:reset:1.0",
+          "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "comp_ana1_reset" } ]
           }
         },
         "deci_resetn": {
@@ -251,6 +279,42 @@
           },
           "port_maps": {
             "CLK": [ { "physical_name": "comp1_clk" } ]
+          }
+        },
+        "comp_ana0_clk": {
+          "vlnv": "xilinx.com:signal:clock:1.0",
+          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "ASSOCIATED_RESET": [ { "value": "comp_ana0_reset", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "FREQ_HZ": [ { "value": "500000000", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
+            "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
+            "PHASE": [ { "value": "0.0", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "CLK_DOMAIN": [ { "value": "ps_mts_0_0_comp_ana0_clk", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK": [ { "physical_name": "comp_ana0_clk" } ]
+          }
+        },
+        "comp_ana1_clk": {
+          "vlnv": "xilinx.com:signal:clock:1.0",
+          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "ASSOCIATED_RESET": [ { "value": "comp_ana1_reset", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "FREQ_HZ": [ { "value": "500000000", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
+            "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_src": "constant", "value_permission": "bd_and_user", "format": "long", "usage": "all" } ],
+            "PHASE": [ { "value": "0.0", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "CLK_DOMAIN": [ { "value": "ps_mts_0_0_comp_ana1_clk", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK": [ { "physical_name": "comp_ana1_clk" } ]
           }
         },
         "deci_clk": {

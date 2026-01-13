@@ -64,7 +64,15 @@ module mts(
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	output wire comp1_clk,
-    output reg  comp1_reset
+    output reg  comp1_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP_ANA0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire comp_ana0_clk,
+    output reg  comp_ana0_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP_ANA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire comp_ana1_clk,
+    output reg  comp_ana1_reset
  ); 
  
     reg adc_axi_start;
@@ -93,6 +101,7 @@ module mts(
     wire ana_locked;
     wire freq_locked;
     wire comp_locked;
+    wire comp_ana_locked;
 
 	(* ASYNC_REG="TRUE" *)  reg  sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
@@ -115,6 +124,10 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  comp0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  comp1_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  comp_ana0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  comp_ana0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  comp_ana1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  comp_ana1_reset_2;
 
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_2;
@@ -158,6 +171,13 @@ module mts(
 		.clk_out1	(comp0_clk),
 		.clk_out2	(comp1_clk),
 		.locked		(comp_locked)
+		);
+		
+	clk_wiz_adc clk_wiz_comp_ana_i (
+		.clk_in1	(pl_clk_buf),
+		.clk_out1	(comp_ana0_clk),
+		.clk_out2	(comp_ana1_clk),
+		.locked		(comp_ana_locked)
 		);
 
 
@@ -368,6 +388,20 @@ generate
 		comp1_reset_1 <= deci_reset_async | (~comp_locked);
 		comp1_reset_2 <= comp1_reset_1;
 		comp1_reset <= comp1_reset_2;
+	end
+
+	always @(posedge comp_ana0_clk) 
+	begin
+		comp_ana0_reset_1 <= deci_reset_async | (~comp_ana_locked);
+		comp_ana0_reset_2 <= comp_ana0_reset_1;
+		comp_ana0_reset <= comp_ana0_reset_2;
+	end
+
+	always @(posedge comp_ana1_clk) 
+	begin
+		comp_ana1_reset_1 <= deci_reset_async | (~comp_ana_locked);
+		comp_ana1_reset_2 <= comp_ana1_reset_1;
+		comp_ana1_reset <= comp_ana1_reset_2;
 	end
 
   end
