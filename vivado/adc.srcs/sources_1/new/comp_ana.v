@@ -45,7 +45,7 @@ module comp_ana(
   reg raw_rd;
   wire raw_empty;
   reg [4:0] raw_delay;
-  reg raw_valid;
+  reg raw_run;
   
   reg [31:0] raw_sample;
 
@@ -73,6 +73,7 @@ module comp_ana(
 
   reg run;
   reg [31:0] sample;
+  reg [8:0] count;
   reg [8:0] size;
   reg [19:0] freq;
   reg [15:0] angle;
@@ -113,7 +114,7 @@ fifo_comp_raw fifo_raw_i (
 
 morlet_to_phase_env phase_env_i_0 (
   .clk(clk),                               // input wire aclk
-  .active(raw_valid),
+  .active(raw_run),
   .re({re_0, 8'h00}),
   .im({im_0, 8'h00}),
   .valid(valid[0]),
@@ -123,7 +124,7 @@ morlet_to_phase_env phase_env_i_0 (
 
 morlet_to_phase_env phase_env_i_1 (
   .clk(clk),                               // input wire aclk
-  .active(raw_valid),
+  .active(raw_run),
   .re({re_1, 8'h00}),
   .im({im_1, 8'h00}),
   .valid(valid[1]),
@@ -133,7 +134,7 @@ morlet_to_phase_env phase_env_i_1 (
 
 morlet_to_phase_env phase_env_i_2 (
   .clk(clk),                               // input wire aclk
-  .active(raw_valid),
+  .active(raw_run),
   .re({re_2, 8'h00}),
   .im({im_2, 8'h00}),
   .valid(valid[2]),
@@ -143,7 +144,7 @@ morlet_to_phase_env phase_env_i_2 (
 
 morlet_to_phase_env phase_env_i_3 (
   .clk(clk),                               // input wire aclk
-  .active(raw_valid),
+  .active(raw_run),
   .re({re_3, 8'h00}),
   .im({im_3, 8'h00}),
   .valid(valid[3]),
@@ -157,7 +158,7 @@ morlet_to_phase_env phase_env_i_3 (
 		.probe1(raw_empty),           // input wire [0:0]  probe3
 		.probe2(raw_delay),           // input wire [4:0]  probe3
 		.probe3(raw_sample),          // input wire [31:0]  probe3
-		.probe4(raw_valid),           // input wire [0:0]  probe3
+		.probe4(raw_run),             // input wire [0:0]  probe3
 		.probe5(ana_rd),              // input wire [0:0]  probe3
 		.probe6(ana_empty),           // input wire [0:0]  probe3
 		.probe7(curr_sample),         // input wire [31:0]  probe3
@@ -165,25 +166,26 @@ morlet_to_phase_env phase_env_i_3 (
 		.probe9(run),                 // input wire [0:0]  probe3
 		.probe10(sample),             // input wire [31:0]  probe3
 		.probe11(size),               // input wire [8:0]  probe3
-		.probe12(freq),               // input wire [19:0]  probe3
-		.probe13(angle),              // input wire [15:0]  probe3
-		.probe14(re_0),               // input wire [15:0]  probe3
-		.probe15(re_1),               // input wire [15:0]  probe3
-		.probe16(re_2),               // input wire [15:0]  probe3
-		.probe17(re_3),               // input wire [15:0]  probe3
-		.probe18(im_0),               // input wire [15:0]  probe3
-		.probe19(im_1),               // input wire [15:0]  probe3
-		.probe20(im_2),               // input wire [15:0]  probe3
-		.probe21(im_3),               // input wire [15:0]  probe3
-		.probe22(valid),              // input wire [3:0]  probe3
-		.probe23(env_0),              // input wire [15:0]  probe3
-		.probe24(env_1),              // input wire [15:0]  probe3
-		.probe25(env_2),              // input wire [15:0]  probe3
-		.probe26(env_3),              // input wire [15:0]  probe3
-		.probe27(phase_0),            // input wire [19:0]  probe3
-		.probe28(phase_1),            // input wire [19:0]  probe3
-		.probe29(phase_2),            // input wire [19:0]  probe3
-		.probe30(phase_3)             // input wire [19:0]  probe3
+		.probe12(count),              // input wire [8:0]  probe3
+		.probe13(freq),               // input wire [19:0]  probe3
+		.probe14(angle),              // input wire [15:0]  probe3
+		.probe15(re_0),               // input wire [15:0]  probe3
+		.probe16(re_1),               // input wire [15:0]  probe3
+		.probe17(re_2),               // input wire [15:0]  probe3
+		.probe18(re_3),               // input wire [15:0]  probe3
+		.probe19(im_0),               // input wire [15:0]  probe3
+		.probe20(im_1),               // input wire [15:0]  probe3
+		.probe21(im_2),               // input wire [15:0]  probe3
+		.probe22(im_3),               // input wire [15:0]  probe3
+		.probe23(valid),              // input wire [3:0]  probe3
+		.probe24(env_0),              // input wire [15:0]  probe3
+		.probe25(env_1),              // input wire [15:0]  probe3
+		.probe26(env_2),              // input wire [15:0]  probe3
+		.probe27(env_3),              // input wire [15:0]  probe3
+		.probe28(phase_0),            // input wire [19:0]  probe3
+		.probe29(phase_1),            // input wire [19:0]  probe3
+		.probe30(phase_2),            // input wire [19:0]  probe3
+		.probe31(phase_3)             // input wire [19:0]  probe3
 	);
 
 generate
@@ -238,7 +240,7 @@ generate
 	begin
         if (raw_rd & (!raw_empty))
         begin
-            raw_valid <= 1;
+            raw_run <= 1;
 
             re_0 <= raw_re[15:0];
             re_1 <= raw_re[31:16];
@@ -251,12 +253,12 @@ generate
             im_3 <= raw_im[63:48];
         end
         else
-            raw_valid <= 0;
+            raw_run <= 0;
 	end
 
     always @(posedge clk) 
     begin
-		if (raw_valid)
+		if (valid[0])
 			raw_sample <= raw_sample + 1;
 		else
 			raw_sample <= 0;
@@ -283,6 +285,7 @@ generate
             run <= 1;
             sample <= ana_out_data[31:0];
             size <= ana_out_data[40:32];
+            count <= ana_out_data[40:32];
             freq <= ana_out_data[60:41];
             angle <= ana_out_data[76:61];
         end
@@ -290,8 +293,8 @@ generate
         begin
             ana_rd <= 0;
             
-            if (size)
-                size <= size - 1;
+            if (count)
+                count <= count - 1;
             else
                 run <= 0;
         end

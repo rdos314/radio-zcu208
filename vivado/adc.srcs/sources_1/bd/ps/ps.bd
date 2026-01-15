@@ -4477,8 +4477,8 @@
           "deci_high/clk",
           "freq_low_46_0/fifo_clk",
           "freq_high_189_0/fifo_clk",
-          "comp_low/raw_fifo_clk",
-          "comp_high/raw_fifo_clk"
+          "comp_high/raw_fifo_clk",
+          "comp_low/raw_fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {

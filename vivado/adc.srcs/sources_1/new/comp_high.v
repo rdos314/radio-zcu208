@@ -120,13 +120,12 @@ module comp_high(
   reg [17:0] C6;
   reg [17:0] C7;
   
-  reg [4:0] fir_delay;
-  reg fir_active;
+  reg [4:0] select_delay;
+  reg deci_run;
   wire deci_active;
-  reg morlet_active;
-  wire fir_re_run;
-  wire fir_im_run;
-  reg fir_saved;
+  reg fir_run;
+  wire fir_re_active;
+  wire fir_im_active;
   
   reg [191:0] deci_in;
   wire [159:0] deci_out;
@@ -214,7 +213,7 @@ comp_sel4 sel_W_i (
 
 fir_comp_deci fir_deci_i (
   .aclk(clk),                               // input wire aclk
-  .s_axis_data_tvalid(fir_active),          // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(deci_run),           // input wire s_axis_data_tvalid
   .s_axis_data_tdata(deci_in),              // input wire [191 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(deci_active),         // output wire m_axis_data_tvalid
   .m_axis_data_tdata(deci_out)              // output wire [159 : 0] m_axis_data_tdata
@@ -222,20 +221,19 @@ fir_comp_deci fir_deci_i (
 
 fir_comp_high_re fir_re_i (
   .aclk(clk),                               // input wire aclk
-  .s_axis_data_tvalid(morlet_active),       // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(fir_run),             // input wire s_axis_data_tvalid
   .s_axis_data_tdata(fir_in),               // input wire [63 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(fir_re_run),          // output wire m_axis_data_tvalid
+  .m_axis_data_tvalid(fir_re_active),       // output wire m_axis_data_tvalid
   .m_axis_data_tdata(re_data)               // output wire [159 : 0] m_axis_data_tdata
 );
 
 fir_comp_high_im fir_im_i (
   .aclk(clk),                               // input wire aclk
-  .s_axis_data_tvalid(morlet_active),       // input wire s_axis_data_tvalid
+  .s_axis_data_tvalid(fir_run),             // input wire s_axis_data_tvalid
   .s_axis_data_tdata(fir_in),               // input wire [63 : 0] s_axis_data_tdata
-  .m_axis_data_tvalid(fir_im_run),          // output wire m_axis_data_tvalid
+  .m_axis_data_tvalid(fir_im_active),       // output wire m_axis_data_tvalid
   .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
 );
-
 
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
@@ -243,19 +241,25 @@ fir_comp_high_im fir_im_i (
 		.probe1(raw_empty),           // input wire [0:0]  probe3
 		.probe2(raw_delay),           // input wire [9:0]  probe3
 		.probe3(raw_sample),          // input wire [31:0]  probe3
-		.probe4(fir_delay),           // input wire [4:0]  probe3
-		.probe5(fir_active),          // input wire [0:0]  probe3
+		.probe4(select_delay),        // input wire [4:0]  probe3
+		.probe5(deci_run),            // input wire [0:0]  probe3
 		.probe6(deci_active),         // input wire [0:0]  probe3
 		.probe7(raw_run),             // input wire [0:0]  probe3
-		.probe8(active),              // input wire [0:0]  probe3
-		.probe9(ana_trig),            // input wire [0:0]  probe3
-		.probe10(burst),              // input wire [0:0]  probe3
-		.probe11(sample),             // input wire [31:0]  probe3
-		.probe12(size),               // input wire [8:0]  probe3
-		.probe13(freq),               // input wire [19:0]  probe3
-		.probe14(angle),              // input wire [15:0]  probe3
-		.probe15(re),                 // input wire [63:0]  probe3
-		.probe16(im)                  // input wire [63:0]  probe3
+		.probe8(fir_run),             // input wire [0:0]  probe3
+		.probe9(fir_re_active),       // input wire [0:0]  probe3
+		.probe10(fir_im_active),      // input wire [0:0]  probe3
+		.probe11(sample_N),           // input wire [5:0]  probe3
+		.probe12(sample_E),           // input wire [5:0]  probe3
+		.probe13(sample_W),           // input wire [5:0]  probe3
+		.probe14(active),             // input wire [0:0]  probe3
+		.probe15(ana_trig),           // input wire [0:0]  probe3
+		.probe16(burst),              // input wire [0:0]  probe3
+		.probe17(sample),             // input wire [31:0]  probe3
+		.probe18(size),               // input wire [8:0]  probe3
+		.probe19(freq),               // input wire [19:0]  probe3
+		.probe20(angle),              // input wire [15:0]  probe3
+		.probe21(re),                 // input wire [63:0]  probe3
+		.probe22(im)                  // input wire [63:0]  probe3
 	);
 
 generate
@@ -318,18 +322,18 @@ generate
 			raw_E <= raw_out_data[255:128];
 			raw_W <= raw_out_data[383:256];
 			
-			if (fir_delay == 16)
+			if (select_delay == 4)
 				raw_run <= 1;
 
-			if (fir_delay == 19)
-			    fir_active <= 1;
+			if (select_delay == 7)
+			    deci_run <= 1;
 			else
-                fir_delay <= fir_delay + 1;
+                select_delay <= select_delay + 1;
 		end
 		else
 		begin
-		    fir_delay <= 0;
-		    fir_active <= 0;
+		    select_delay <= 0;
+		    deci_run <= 0;
 			raw_run <= 0;
 		end
 	end
@@ -466,7 +470,7 @@ generate
 
     always @(posedge clk) 
 	begin
-        morlet_active <= deci_active;
+        fir_run <= deci_active;
     end
 
     always @(posedge clk) 
@@ -517,13 +521,12 @@ generate
 
     always @(posedge clk) 
 	begin
-        fir_saved <= fir_re_run;
-        active <= fir_saved;
+        active <= fir_re_active;
     end
 
     always @(posedge clk) 
 	begin
-	    if (fir_saved)
+	    if (fir_re_active)
 	    begin
 	       re[15:0] <= re_0;
 	       re[31:16] <= re_1;
@@ -534,7 +537,7 @@ generate
 
     always @(posedge clk) 
 	begin
-	    if (fir_saved)
+	    if (fir_re_active)
 	    begin
 	       im[15:0] <= im_0;
 	       im[31:16] <= im_1;
