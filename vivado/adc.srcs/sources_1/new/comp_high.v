@@ -253,13 +253,10 @@ fir_comp_high_im fir_im_i (
 		.probe13(sample_W),           // input wire [5:0]  probe3
 		.probe14(active),             // input wire [0:0]  probe3
 		.probe15(ana_trig),           // input wire [0:0]  probe3
-		.probe16(burst),              // input wire [0:0]  probe3
-		.probe17(sample),             // input wire [31:0]  probe3
-		.probe18(size),               // input wire [8:0]  probe3
-		.probe19(freq),               // input wire [19:0]  probe3
-		.probe20(angle),              // input wire [15:0]  probe3
-		.probe21(re),                 // input wire [63:0]  probe3
-		.probe22(im)                  // input wire [63:0]  probe3
+		.probe16(deci_0),             // input wire [15:0]  probe3
+		.probe17(deci_1),             // input wire [15:0]  probe3
+		.probe18(deci_2),             // input wire [15:0]  probe3
+		.probe19(deci_3)              // input wire [15:0]  probe3
 	);
 
 generate
@@ -322,10 +319,10 @@ generate
 			raw_E <= raw_out_data[255:128];
 			raw_W <= raw_out_data[383:256];
 			
-			if (select_delay == 4)
+			if (select_delay == 1)
 				raw_run <= 1;
 
-			if (select_delay == 7)
+			if (select_delay == 4)
 			    deci_run <= 1;
 			else
                 select_delay <= select_delay + 1;

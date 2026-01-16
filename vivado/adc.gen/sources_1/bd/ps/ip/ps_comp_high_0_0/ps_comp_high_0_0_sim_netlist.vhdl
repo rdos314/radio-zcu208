@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Jan 14 21:23:17 2026
+-- Date        : Thu Jan 15 20:39:57 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.vhdl
@@ -28172,13 +28172,10 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
     probe13 : in STD_LOGIC_VECTOR ( 5 downto 0 );
     probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 63 downto 0 )
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_high_0_0_ila_0;
   signal C00 : STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -28229,10 +28226,7 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal ana_trig : STD_LOGIC;
   attribute MARK_DEBUG of ana_trig : signal is std.standard.true;
   signal ana_wr : STD_LOGIC;
-  signal \^angle\ : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of \^angle\ : signal is std.standard.true;
   signal \^burst\ : STD_LOGIC;
-  attribute MARK_DEBUG of burst : signal is std.standard.true;
   signal \comp_high.C0[15]_i_10_n_0\ : STD_LOGIC;
   signal \comp_high.C0[15]_i_11_n_0\ : STD_LOGIC;
   signal \comp_high.C0[15]_i_12_n_0\ : STD_LOGIC;
@@ -28663,22 +28657,6 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal \comp_high.ana_trig_i_7_n_0\ : STD_LOGIC;
   signal \comp_high.ana_trig_i_8_n_0\ : STD_LOGIC;
   signal \comp_high.ana_trig_i_9_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[10]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[11]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[13]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[14]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.angle[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.burst_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.deci_0[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_high.deci_0_reg[15]_i_1_n_1\ : STD_LOGIC;
@@ -28745,26 +28723,6 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal \comp_high.deci_3_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \comp_high.deci_3_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \comp_high.deci_run_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[10]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[11]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[13]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[14]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[16]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[17]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[18]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[19]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.freq[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.im_0[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_high.im_0_reg[15]_i_1_n_1\ : STD_LOGIC;
   signal \comp_high.im_0_reg[15]_i_1_n_2\ : STD_LOGIC;
@@ -29067,39 +29025,7 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal \comp_high.re_3_reg_n_0_[7]\ : STD_LOGIC;
   signal \comp_high.re_3_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_high.re_3_reg_n_0_[9]\ : STD_LOGIC;
-  signal \comp_high.sample[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[10]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[11]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[13]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[14]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[16]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[17]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[18]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[19]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[20]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[21]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[22]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[23]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[24]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[25]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[26]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[27]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[28]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[29]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[30]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.sample[31]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[31]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.sample[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.sample_E[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.sample_E[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.sample_E[2]_i_1_n_0\ : STD_LOGIC;
@@ -29119,22 +29045,21 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal \comp_high.select_delay[3]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.select_delay[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_high.select_delay[4]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_high.size[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_high.size[8]_i_1_n_0\ : STD_LOGIC;
   signal data_E : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal data_N : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal data_W : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal deci_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of deci_0 : signal is std.standard.true;
+  signal \deci_0__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal deci_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of deci_1 : signal is std.standard.true;
+  signal \deci_1__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal deci_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of deci_2 : signal is std.standard.true;
+  signal \deci_2__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal deci_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of deci_3 : signal is std.standard.true;
+  signal \deci_3__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal deci_active : STD_LOGIC;
   attribute MARK_DEBUG of deci_active : signal is std.standard.true;
   signal deci_in : STD_LOGIC_VECTOR ( 191 downto 0 );
@@ -29143,15 +29068,10 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute MARK_DEBUG of deci_run : signal is std.standard.true;
   signal fir_im_active : STD_LOGIC;
   attribute MARK_DEBUG of fir_im_active : signal is std.standard.true;
-  signal fir_in : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal fir_re_active : STD_LOGIC;
   attribute MARK_DEBUG of fir_re_active : signal is std.standard.true;
   signal fir_run : STD_LOGIC;
   attribute MARK_DEBUG of fir_run : signal is std.standard.true;
-  signal \^freq\ : STD_LOGIC_VECTOR ( 19 downto 0 );
-  attribute MARK_DEBUG of \^freq\ : signal is std.standard.true;
-  signal \^im\ : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute MARK_DEBUG of \^im\ : signal is std.standard.true;
   signal im_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal im_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal im_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -29176,16 +29096,12 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal raw_sample : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of raw_sample : signal is std.standard.true;
   signal raw_wr : STD_LOGIC;
-  signal \^re\ : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute MARK_DEBUG of \^re\ : signal is std.standard.true;
   signal re_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_data : STD_LOGIC_VECTOR ( 153 downto 17 );
   signal reset_int : STD_LOGIC;
-  signal \^sample\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
   signal sample_E : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of sample_E : signal is std.standard.true;
   signal sample_N : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -29194,8 +29110,6 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute MARK_DEBUG of sample_W : signal is std.standard.true;
   signal select_delay : STD_LOGIC_VECTOR ( 4 downto 0 );
   attribute MARK_DEBUG of select_delay : signal is std.standard.true;
-  signal \^size\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of \^size\ : signal is std.standard.true;
   signal \NLW_comp_high.C0_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_comp_high.C0_reg[17]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_comp_high.C1_reg[17]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
@@ -29267,53 +29181,80 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute KEEP : string;
   attribute KEEP of \comp_high.active_reg\ : label is "yes";
   attribute KEEP of \comp_high.ana_trig_reg\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_high.angle_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_high.burst_reg\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_0_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_0_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_0_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_0_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_0_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_1_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_1_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_1_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_1_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_1_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_2_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_2_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_2_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_2_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_2_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[15]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_3_reg[15]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_3_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[7]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.deci_3_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_high.deci_3_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_high.deci_3_reg[9]\ : label is "yes";
   attribute KEEP of \comp_high.deci_run_reg\ : label is "yes";
   attribute KEEP of \comp_high.fir_run_reg\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[16]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[17]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[18]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[19]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_high.freq_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_high.im_0_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_high.im_0_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_high.im_1_reg[15]_i_1\ : label is 35;
@@ -29322,136 +29263,8 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute ADDER_THRESHOLD of \comp_high.im_2_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_high.im_3_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_high.im_3_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \comp_high.im_reg[0]\ : label is "yes";
-  attribute mark_debug_string : string;
-  attribute mark_debug_string of \comp_high.im_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[16]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[17]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[18]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[19]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[20]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[21]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[22]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[23]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[24]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[25]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[26]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[27]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[28]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[29]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[30]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[31]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[32]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[33]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[34]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[35]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[36]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[37]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[38]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[39]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[40]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[41]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[42]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[43]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[44]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[45]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[46]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[47]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[48]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[49]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[50]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[51]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[52]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[53]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[54]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[55]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[56]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[57]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[58]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[59]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[60]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[61]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[62]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[63]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_high.im_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.im_reg[9]\ : label is "yes";
   attribute KEEP of \comp_high.raw_delay_reg[0]\ : label is "yes";
+  attribute mark_debug_string : string;
   attribute mark_debug_string of \comp_high.raw_delay_reg[0]\ : label is "yes";
   attribute KEEP of \comp_high.raw_delay_reg[1]\ : label is "yes";
   attribute mark_debug_string of \comp_high.raw_delay_reg[1]\ : label is "yes";
@@ -29517,134 +29330,6 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute ADDER_THRESHOLD of \comp_high.re_2_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_high.re_3_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_high.re_3_reg[7]_i_1\ : label is 35;
-  attribute KEEP of \comp_high.re_reg[0]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[10]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[11]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[12]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[13]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[14]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[15]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[16]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[17]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[18]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[19]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[20]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[21]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[22]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[23]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[24]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[25]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[26]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[27]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[28]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[29]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[30]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[31]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[32]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[32]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[33]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[33]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[34]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[34]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[35]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[35]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[36]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[36]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[37]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[37]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[38]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[38]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[39]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[39]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[40]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[40]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[41]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[41]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[42]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[42]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[43]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[43]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[44]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[44]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[45]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[45]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[46]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[46]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[47]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[47]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[48]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[48]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[49]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[49]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[4]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[50]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[50]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[51]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[51]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[52]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[52]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[53]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[53]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[54]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[54]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[55]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[55]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[56]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[56]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[57]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[57]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[58]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[58]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[59]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[59]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[5]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[60]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[60]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[61]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[61]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[62]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[62]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[63]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[63]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[6]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[7]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[8]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_high.re_reg[9]\ : label is "yes";
-  attribute mark_debug_string of \comp_high.re_reg[9]\ : label is "yes";
   attribute KEEP of \comp_high.sample_E_reg[0]\ : label is "yes";
   attribute KEEP of \comp_high.sample_E_reg[1]\ : label is "yes";
   attribute KEEP of \comp_high.sample_E_reg[2]\ : label is "yes";
@@ -29657,52 +29342,11 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute KEEP of \comp_high.sample_W_reg[1]\ : label is "yes";
   attribute KEEP of \comp_high.sample_W_reg[2]\ : label is "yes";
   attribute KEEP of \comp_high.sample_W_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[10]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[11]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[12]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[13]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[14]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[15]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[16]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[17]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[18]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[19]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[20]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[21]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[22]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[23]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[24]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[25]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[26]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[27]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[28]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[29]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[30]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[31]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[8]\ : label is "yes";
-  attribute KEEP of \comp_high.sample_reg[9]\ : label is "yes";
   attribute KEEP of \comp_high.select_delay_reg[0]\ : label is "yes";
   attribute KEEP of \comp_high.select_delay_reg[1]\ : label is "yes";
   attribute KEEP of \comp_high.select_delay_reg[2]\ : label is "yes";
   attribute KEEP of \comp_high.select_delay_reg[3]\ : label is "yes";
   attribute KEEP of \comp_high.select_delay_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_high.size_reg[8]\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_ana_i : label is "fifo_ana,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -29729,13 +29373,7 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   attribute KEEP_HIERARCHY of sel_W_i : label is "soft";
 begin
   active <= \^active\;
-  angle(15 downto 0) <= \^angle\(15 downto 0);
   burst <= \^burst\;
-  freq(19 downto 0) <= \^freq\(19 downto 0);
-  im(63 downto 0) <= \^im\(63 downto 0);
-  re(63 downto 0) <= \^re\(63 downto 0);
-  sample(31 downto 0) <= \^sample\(31 downto 0);
-  size(8 downto 0) <= \^size\(8 downto 0);
 \comp_high.C0[15]_i_10\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"17E8E817E81717E8"
@@ -38495,308 +38133,132 @@ begin
       Q => ana_wr,
       R => '0'
     );
-\comp_high.angle[0]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(61),
-      I2 => ana_trig,
-      I3 => \^angle\(0),
-      O => \comp_high.angle[0]_i_1_n_0\
-    );
-\comp_high.angle[10]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(71),
-      I2 => ana_trig,
-      I3 => \^angle\(10),
-      O => \comp_high.angle[10]_i_1_n_0\
-    );
-\comp_high.angle[11]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(72),
-      I2 => ana_trig,
-      I3 => \^angle\(11),
-      O => \comp_high.angle[11]_i_1_n_0\
-    );
-\comp_high.angle[12]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(73),
-      I2 => ana_trig,
-      I3 => \^angle\(12),
-      O => \comp_high.angle[12]_i_1_n_0\
-    );
-\comp_high.angle[13]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(74),
-      I2 => ana_trig,
-      I3 => \^angle\(13),
-      O => \comp_high.angle[13]_i_1_n_0\
-    );
-\comp_high.angle[14]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(75),
-      I2 => ana_trig,
-      I3 => \^angle\(14),
-      O => \comp_high.angle[14]_i_1_n_0\
-    );
-\comp_high.angle[15]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(76),
-      I2 => ana_trig,
-      I3 => \^angle\(15),
-      O => \comp_high.angle[15]_i_1_n_0\
-    );
-\comp_high.angle[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(62),
-      I2 => ana_trig,
-      I3 => \^angle\(1),
-      O => \comp_high.angle[1]_i_1_n_0\
-    );
-\comp_high.angle[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(63),
-      I2 => ana_trig,
-      I3 => \^angle\(2),
-      O => \comp_high.angle[2]_i_1_n_0\
-    );
-\comp_high.angle[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(64),
-      I2 => ana_trig,
-      I3 => \^angle\(3),
-      O => \comp_high.angle[3]_i_1_n_0\
-    );
-\comp_high.angle[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(65),
-      I2 => ana_trig,
-      I3 => \^angle\(4),
-      O => \comp_high.angle[4]_i_1_n_0\
-    );
-\comp_high.angle[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(66),
-      I2 => ana_trig,
-      I3 => \^angle\(5),
-      O => \comp_high.angle[5]_i_1_n_0\
-    );
-\comp_high.angle[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(67),
-      I2 => ana_trig,
-      I3 => \^angle\(6),
-      O => \comp_high.angle[6]_i_1_n_0\
-    );
-\comp_high.angle[7]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(68),
-      I2 => ana_trig,
-      I3 => \^angle\(7),
-      O => \comp_high.angle[7]_i_1_n_0\
-    );
-\comp_high.angle[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(69),
-      I2 => ana_trig,
-      I3 => \^angle\(8),
-      O => \comp_high.angle[8]_i_1_n_0\
-    );
-\comp_high.angle[9]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(70),
-      I2 => ana_trig,
-      I3 => \^angle\(9),
-      O => \comp_high.angle[9]_i_1_n_0\
-    );
 \comp_high.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[0]_i_1_n_0\,
-      Q => \^angle\(0),
+      D => ana_out_data(61),
+      Q => angle(0),
       R => '0'
     );
 \comp_high.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[10]_i_1_n_0\,
-      Q => \^angle\(10),
+      D => ana_out_data(71),
+      Q => angle(10),
       R => '0'
     );
 \comp_high.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[11]_i_1_n_0\,
-      Q => \^angle\(11),
+      D => ana_out_data(72),
+      Q => angle(11),
       R => '0'
     );
 \comp_high.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[12]_i_1_n_0\,
-      Q => \^angle\(12),
+      D => ana_out_data(73),
+      Q => angle(12),
       R => '0'
     );
 \comp_high.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[13]_i_1_n_0\,
-      Q => \^angle\(13),
+      D => ana_out_data(74),
+      Q => angle(13),
       R => '0'
     );
 \comp_high.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[14]_i_1_n_0\,
-      Q => \^angle\(14),
+      D => ana_out_data(75),
+      Q => angle(14),
       R => '0'
     );
 \comp_high.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[15]_i_1_n_0\,
-      Q => \^angle\(15),
+      D => ana_out_data(76),
+      Q => angle(15),
       R => '0'
     );
 \comp_high.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[1]_i_1_n_0\,
-      Q => \^angle\(1),
+      D => ana_out_data(62),
+      Q => angle(1),
       R => '0'
     );
 \comp_high.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[2]_i_1_n_0\,
-      Q => \^angle\(2),
+      D => ana_out_data(63),
+      Q => angle(2),
       R => '0'
     );
 \comp_high.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[3]_i_1_n_0\,
-      Q => \^angle\(3),
+      D => ana_out_data(64),
+      Q => angle(3),
       R => '0'
     );
 \comp_high.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[4]_i_1_n_0\,
-      Q => \^angle\(4),
+      D => ana_out_data(65),
+      Q => angle(4),
       R => '0'
     );
 \comp_high.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[5]_i_1_n_0\,
-      Q => \^angle\(5),
+      D => ana_out_data(66),
+      Q => angle(5),
       R => '0'
     );
 \comp_high.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[6]_i_1_n_0\,
-      Q => \^angle\(6),
+      D => ana_out_data(67),
+      Q => angle(6),
       R => '0'
     );
 \comp_high.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[7]_i_1_n_0\,
-      Q => \^angle\(7),
+      D => ana_out_data(68),
+      Q => angle(7),
       R => '0'
     );
 \comp_high.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[8]_i_1_n_0\,
-      Q => \^angle\(8),
+      D => ana_out_data(69),
+      Q => angle(8),
       R => '0'
     );
 \comp_high.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.angle[9]_i_1_n_0\,
-      Q => \^angle\(9),
+      D => ana_out_data(70),
+      Q => angle(9),
       R => '0'
     );
 \comp_high.burst_i_1\: unisim.vcomponents.LUT3
@@ -38830,56 +38292,56 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(0),
-      Q => fir_in(0),
+      D => \deci_0__0\(0),
+      Q => deci_0(0),
       R => '0'
     );
 \comp_high.deci_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(10),
-      Q => fir_in(10),
+      D => \deci_0__0\(10),
+      Q => deci_0(10),
       R => '0'
     );
 \comp_high.deci_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(11),
-      Q => fir_in(11),
+      D => \deci_0__0\(11),
+      Q => deci_0(11),
       R => '0'
     );
 \comp_high.deci_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(12),
-      Q => fir_in(12),
+      D => \deci_0__0\(12),
+      Q => deci_0(12),
       R => '0'
     );
 \comp_high.deci_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(13),
-      Q => fir_in(13),
+      D => \deci_0__0\(13),
+      Q => deci_0(13),
       R => '0'
     );
 \comp_high.deci_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(14),
-      Q => fir_in(14),
+      D => \deci_0__0\(14),
+      Q => deci_0(14),
       R => '0'
     );
 \comp_high.deci_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(15),
-      Q => fir_in(15),
+      D => \deci_0__0\(15),
+      Q => deci_0(15),
       R => '0'
     );
 \comp_high.deci_0_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -38895,63 +38357,63 @@ begin
       CO(1) => \comp_high.deci_0_reg[15]_i_1_n_6\,
       CO(0) => \comp_high.deci_0_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => deci_0(15 downto 8),
+      O(7 downto 0) => \deci_0__0\(15 downto 8),
       S(7 downto 0) => deci_out(32 downto 25)
     );
 \comp_high.deci_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(1),
-      Q => fir_in(1),
+      D => \deci_0__0\(1),
+      Q => deci_0(1),
       R => '0'
     );
 \comp_high.deci_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(2),
-      Q => fir_in(2),
+      D => \deci_0__0\(2),
+      Q => deci_0(2),
       R => '0'
     );
 \comp_high.deci_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(3),
-      Q => fir_in(3),
+      D => \deci_0__0\(3),
+      Q => deci_0(3),
       R => '0'
     );
 \comp_high.deci_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(4),
-      Q => fir_in(4),
+      D => \deci_0__0\(4),
+      Q => deci_0(4),
       R => '0'
     );
 \comp_high.deci_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(5),
-      Q => fir_in(5),
+      D => \deci_0__0\(5),
+      Q => deci_0(5),
       R => '0'
     );
 \comp_high.deci_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(6),
-      Q => fir_in(6),
+      D => \deci_0__0\(6),
+      Q => deci_0(6),
       R => '0'
     );
 \comp_high.deci_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(7),
-      Q => fir_in(7),
+      D => \deci_0__0\(7),
+      Q => deci_0(7),
       R => '0'
     );
 \comp_high.deci_0_reg[7]_i_1\: unisim.vcomponents.CARRY8
@@ -38968,7 +38430,7 @@ begin
       CO(0) => \comp_high.deci_0_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
       DI(0) => deci_out(17),
-      O(7 downto 0) => deci_0(7 downto 0),
+      O(7 downto 0) => \deci_0__0\(7 downto 0),
       S(7 downto 1) => deci_out(24 downto 18),
       S(0) => \comp_high.deci_0[7]_i_2_n_0\
     );
@@ -38976,16 +38438,16 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(8),
-      Q => fir_in(8),
+      D => \deci_0__0\(8),
+      Q => deci_0(8),
       R => '0'
     );
 \comp_high.deci_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_0(9),
-      Q => fir_in(9),
+      D => \deci_0__0\(9),
+      Q => deci_0(9),
       R => '0'
     );
 \comp_high.deci_1[7]_i_2\: unisim.vcomponents.LUT2
@@ -39001,56 +38463,56 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(0),
-      Q => fir_in(16),
+      D => \deci_1__0\(0),
+      Q => deci_1(0),
       R => '0'
     );
 \comp_high.deci_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(10),
-      Q => fir_in(26),
+      D => \deci_1__0\(10),
+      Q => deci_1(10),
       R => '0'
     );
 \comp_high.deci_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(11),
-      Q => fir_in(27),
+      D => \deci_1__0\(11),
+      Q => deci_1(11),
       R => '0'
     );
 \comp_high.deci_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(12),
-      Q => fir_in(28),
+      D => \deci_1__0\(12),
+      Q => deci_1(12),
       R => '0'
     );
 \comp_high.deci_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(13),
-      Q => fir_in(29),
+      D => \deci_1__0\(13),
+      Q => deci_1(13),
       R => '0'
     );
 \comp_high.deci_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(14),
-      Q => fir_in(30),
+      D => \deci_1__0\(14),
+      Q => deci_1(14),
       R => '0'
     );
 \comp_high.deci_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(15),
-      Q => fir_in(31),
+      D => \deci_1__0\(15),
+      Q => deci_1(15),
       R => '0'
     );
 \comp_high.deci_1_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -39066,63 +38528,63 @@ begin
       CO(1) => \comp_high.deci_1_reg[15]_i_1_n_6\,
       CO(0) => \comp_high.deci_1_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => deci_1(15 downto 8),
+      O(7 downto 0) => \deci_1__0\(15 downto 8),
       S(7 downto 0) => deci_out(72 downto 65)
     );
 \comp_high.deci_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(1),
-      Q => fir_in(17),
+      D => \deci_1__0\(1),
+      Q => deci_1(1),
       R => '0'
     );
 \comp_high.deci_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(2),
-      Q => fir_in(18),
+      D => \deci_1__0\(2),
+      Q => deci_1(2),
       R => '0'
     );
 \comp_high.deci_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(3),
-      Q => fir_in(19),
+      D => \deci_1__0\(3),
+      Q => deci_1(3),
       R => '0'
     );
 \comp_high.deci_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(4),
-      Q => fir_in(20),
+      D => \deci_1__0\(4),
+      Q => deci_1(4),
       R => '0'
     );
 \comp_high.deci_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(5),
-      Q => fir_in(21),
+      D => \deci_1__0\(5),
+      Q => deci_1(5),
       R => '0'
     );
 \comp_high.deci_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(6),
-      Q => fir_in(22),
+      D => \deci_1__0\(6),
+      Q => deci_1(6),
       R => '0'
     );
 \comp_high.deci_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(7),
-      Q => fir_in(23),
+      D => \deci_1__0\(7),
+      Q => deci_1(7),
       R => '0'
     );
 \comp_high.deci_1_reg[7]_i_1\: unisim.vcomponents.CARRY8
@@ -39139,7 +38601,7 @@ begin
       CO(0) => \comp_high.deci_1_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
       DI(0) => deci_out(57),
-      O(7 downto 0) => deci_1(7 downto 0),
+      O(7 downto 0) => \deci_1__0\(7 downto 0),
       S(7 downto 1) => deci_out(64 downto 58),
       S(0) => \comp_high.deci_1[7]_i_2_n_0\
     );
@@ -39147,16 +38609,16 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(8),
-      Q => fir_in(24),
+      D => \deci_1__0\(8),
+      Q => deci_1(8),
       R => '0'
     );
 \comp_high.deci_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_1(9),
-      Q => fir_in(25),
+      D => \deci_1__0\(9),
+      Q => deci_1(9),
       R => '0'
     );
 \comp_high.deci_2[7]_i_2\: unisim.vcomponents.LUT2
@@ -39172,56 +38634,56 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(0),
-      Q => fir_in(32),
+      D => \deci_2__0\(0),
+      Q => deci_2(0),
       R => '0'
     );
 \comp_high.deci_2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(10),
-      Q => fir_in(42),
+      D => \deci_2__0\(10),
+      Q => deci_2(10),
       R => '0'
     );
 \comp_high.deci_2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(11),
-      Q => fir_in(43),
+      D => \deci_2__0\(11),
+      Q => deci_2(11),
       R => '0'
     );
 \comp_high.deci_2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(12),
-      Q => fir_in(44),
+      D => \deci_2__0\(12),
+      Q => deci_2(12),
       R => '0'
     );
 \comp_high.deci_2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(13),
-      Q => fir_in(45),
+      D => \deci_2__0\(13),
+      Q => deci_2(13),
       R => '0'
     );
 \comp_high.deci_2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(14),
-      Q => fir_in(46),
+      D => \deci_2__0\(14),
+      Q => deci_2(14),
       R => '0'
     );
 \comp_high.deci_2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(15),
-      Q => fir_in(47),
+      D => \deci_2__0\(15),
+      Q => deci_2(15),
       R => '0'
     );
 \comp_high.deci_2_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -39237,63 +38699,63 @@ begin
       CO(1) => \comp_high.deci_2_reg[15]_i_1_n_6\,
       CO(0) => \comp_high.deci_2_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => deci_2(15 downto 8),
+      O(7 downto 0) => \deci_2__0\(15 downto 8),
       S(7 downto 0) => deci_out(112 downto 105)
     );
 \comp_high.deci_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(1),
-      Q => fir_in(33),
+      D => \deci_2__0\(1),
+      Q => deci_2(1),
       R => '0'
     );
 \comp_high.deci_2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(2),
-      Q => fir_in(34),
+      D => \deci_2__0\(2),
+      Q => deci_2(2),
       R => '0'
     );
 \comp_high.deci_2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(3),
-      Q => fir_in(35),
+      D => \deci_2__0\(3),
+      Q => deci_2(3),
       R => '0'
     );
 \comp_high.deci_2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(4),
-      Q => fir_in(36),
+      D => \deci_2__0\(4),
+      Q => deci_2(4),
       R => '0'
     );
 \comp_high.deci_2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(5),
-      Q => fir_in(37),
+      D => \deci_2__0\(5),
+      Q => deci_2(5),
       R => '0'
     );
 \comp_high.deci_2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(6),
-      Q => fir_in(38),
+      D => \deci_2__0\(6),
+      Q => deci_2(6),
       R => '0'
     );
 \comp_high.deci_2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(7),
-      Q => fir_in(39),
+      D => \deci_2__0\(7),
+      Q => deci_2(7),
       R => '0'
     );
 \comp_high.deci_2_reg[7]_i_1\: unisim.vcomponents.CARRY8
@@ -39310,7 +38772,7 @@ begin
       CO(0) => \comp_high.deci_2_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
       DI(0) => deci_out(97),
-      O(7 downto 0) => deci_2(7 downto 0),
+      O(7 downto 0) => \deci_2__0\(7 downto 0),
       S(7 downto 1) => deci_out(104 downto 98),
       S(0) => \comp_high.deci_2[7]_i_2_n_0\
     );
@@ -39318,16 +38780,16 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(8),
-      Q => fir_in(40),
+      D => \deci_2__0\(8),
+      Q => deci_2(8),
       R => '0'
     );
 \comp_high.deci_2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_2(9),
-      Q => fir_in(41),
+      D => \deci_2__0\(9),
+      Q => deci_2(9),
       R => '0'
     );
 \comp_high.deci_3[7]_i_2\: unisim.vcomponents.LUT2
@@ -39343,56 +38805,56 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(0),
-      Q => fir_in(48),
+      D => \deci_3__0\(0),
+      Q => deci_3(0),
       R => '0'
     );
 \comp_high.deci_3_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(10),
-      Q => fir_in(58),
+      D => \deci_3__0\(10),
+      Q => deci_3(10),
       R => '0'
     );
 \comp_high.deci_3_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(11),
-      Q => fir_in(59),
+      D => \deci_3__0\(11),
+      Q => deci_3(11),
       R => '0'
     );
 \comp_high.deci_3_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(12),
-      Q => fir_in(60),
+      D => \deci_3__0\(12),
+      Q => deci_3(12),
       R => '0'
     );
 \comp_high.deci_3_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(13),
-      Q => fir_in(61),
+      D => \deci_3__0\(13),
+      Q => deci_3(13),
       R => '0'
     );
 \comp_high.deci_3_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(14),
-      Q => fir_in(62),
+      D => \deci_3__0\(14),
+      Q => deci_3(14),
       R => '0'
     );
 \comp_high.deci_3_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(15),
-      Q => fir_in(63),
+      D => \deci_3__0\(15),
+      Q => deci_3(15),
       R => '0'
     );
 \comp_high.deci_3_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -39408,63 +38870,63 @@ begin
       CO(1) => \comp_high.deci_3_reg[15]_i_1_n_6\,
       CO(0) => \comp_high.deci_3_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7 downto 0) => deci_3(15 downto 8),
+      O(7 downto 0) => \deci_3__0\(15 downto 8),
       S(7 downto 0) => deci_out(152 downto 145)
     );
 \comp_high.deci_3_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(1),
-      Q => fir_in(49),
+      D => \deci_3__0\(1),
+      Q => deci_3(1),
       R => '0'
     );
 \comp_high.deci_3_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(2),
-      Q => fir_in(50),
+      D => \deci_3__0\(2),
+      Q => deci_3(2),
       R => '0'
     );
 \comp_high.deci_3_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(3),
-      Q => fir_in(51),
+      D => \deci_3__0\(3),
+      Q => deci_3(3),
       R => '0'
     );
 \comp_high.deci_3_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(4),
-      Q => fir_in(52),
+      D => \deci_3__0\(4),
+      Q => deci_3(4),
       R => '0'
     );
 \comp_high.deci_3_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(5),
-      Q => fir_in(53),
+      D => \deci_3__0\(5),
+      Q => deci_3(5),
       R => '0'
     );
 \comp_high.deci_3_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(6),
-      Q => fir_in(54),
+      D => \deci_3__0\(6),
+      Q => deci_3(6),
       R => '0'
     );
 \comp_high.deci_3_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(7),
-      Q => fir_in(55),
+      D => \deci_3__0\(7),
+      Q => deci_3(7),
       R => '0'
     );
 \comp_high.deci_3_reg[7]_i_1\: unisim.vcomponents.CARRY8
@@ -39481,7 +38943,7 @@ begin
       CO(0) => \comp_high.deci_3_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
       DI(0) => deci_out(137),
-      O(7 downto 0) => deci_3(7 downto 0),
+      O(7 downto 0) => \deci_3__0\(7 downto 0),
       S(7 downto 1) => deci_out(144 downto 138),
       S(0) => \comp_high.deci_3[7]_i_2_n_0\
     );
@@ -39489,16 +38951,16 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(8),
-      Q => fir_in(56),
+      D => \deci_3__0\(8),
+      Q => deci_3(8),
       R => '0'
     );
 \comp_high.deci_3_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => deci_3(9),
-      Q => fir_in(57),
+      D => \deci_3__0\(9),
+      Q => deci_3(9),
       R => '0'
     );
 \comp_high.deci_in_reg[0]\: unisim.vcomponents.FDRE
@@ -40655,14 +40117,14 @@ begin
     );
 \comp_high.deci_run_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2222222202000000"
+      INIT => X"2222222200020000"
     )
         port map (
       I0 => raw_rd,
       I1 => raw_empty,
       I2 => \comp_high.raw_run_i_2_n_0\,
-      I3 => select_delay(1),
-      I4 => select_delay(0),
+      I3 => select_delay(0),
+      I4 => select_delay(2),
       I5 => deci_run,
       O => \comp_high.deci_run_i_1_n_0\
     );
@@ -40682,384 +40144,164 @@ begin
       Q => fir_run,
       R => '0'
     );
-\comp_high.freq[0]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(41),
-      I2 => ana_trig,
-      I3 => \^freq\(0),
-      O => \comp_high.freq[0]_i_1_n_0\
-    );
-\comp_high.freq[10]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(51),
-      I2 => ana_trig,
-      I3 => \^freq\(10),
-      O => \comp_high.freq[10]_i_1_n_0\
-    );
-\comp_high.freq[11]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(52),
-      I2 => ana_trig,
-      I3 => \^freq\(11),
-      O => \comp_high.freq[11]_i_1_n_0\
-    );
-\comp_high.freq[12]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(53),
-      I2 => ana_trig,
-      I3 => \^freq\(12),
-      O => \comp_high.freq[12]_i_1_n_0\
-    );
-\comp_high.freq[13]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(54),
-      I2 => ana_trig,
-      I3 => \^freq\(13),
-      O => \comp_high.freq[13]_i_1_n_0\
-    );
-\comp_high.freq[14]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(55),
-      I2 => ana_trig,
-      I3 => \^freq\(14),
-      O => \comp_high.freq[14]_i_1_n_0\
-    );
-\comp_high.freq[15]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(56),
-      I2 => ana_trig,
-      I3 => \^freq\(15),
-      O => \comp_high.freq[15]_i_1_n_0\
-    );
-\comp_high.freq[16]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(57),
-      I2 => ana_trig,
-      I3 => \^freq\(16),
-      O => \comp_high.freq[16]_i_1_n_0\
-    );
-\comp_high.freq[17]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(58),
-      I2 => ana_trig,
-      I3 => \^freq\(17),
-      O => \comp_high.freq[17]_i_1_n_0\
-    );
-\comp_high.freq[18]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(59),
-      I2 => ana_trig,
-      I3 => \^freq\(18),
-      O => \comp_high.freq[18]_i_1_n_0\
-    );
-\comp_high.freq[19]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(60),
-      I2 => ana_trig,
-      I3 => \^freq\(19),
-      O => \comp_high.freq[19]_i_1_n_0\
-    );
-\comp_high.freq[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(42),
-      I2 => ana_trig,
-      I3 => \^freq\(1),
-      O => \comp_high.freq[1]_i_1_n_0\
-    );
-\comp_high.freq[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(43),
-      I2 => ana_trig,
-      I3 => \^freq\(2),
-      O => \comp_high.freq[2]_i_1_n_0\
-    );
-\comp_high.freq[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(44),
-      I2 => ana_trig,
-      I3 => \^freq\(3),
-      O => \comp_high.freq[3]_i_1_n_0\
-    );
-\comp_high.freq[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(45),
-      I2 => ana_trig,
-      I3 => \^freq\(4),
-      O => \comp_high.freq[4]_i_1_n_0\
-    );
-\comp_high.freq[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(46),
-      I2 => ana_trig,
-      I3 => \^freq\(5),
-      O => \comp_high.freq[5]_i_1_n_0\
-    );
-\comp_high.freq[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(47),
-      I2 => ana_trig,
-      I3 => \^freq\(6),
-      O => \comp_high.freq[6]_i_1_n_0\
-    );
-\comp_high.freq[7]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(48),
-      I2 => ana_trig,
-      I3 => \^freq\(7),
-      O => \comp_high.freq[7]_i_1_n_0\
-    );
-\comp_high.freq[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(49),
-      I2 => ana_trig,
-      I3 => \^freq\(8),
-      O => \comp_high.freq[8]_i_1_n_0\
-    );
-\comp_high.freq[9]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(50),
-      I2 => ana_trig,
-      I3 => \^freq\(9),
-      O => \comp_high.freq[9]_i_1_n_0\
-    );
 \comp_high.freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[0]_i_1_n_0\,
-      Q => \^freq\(0),
+      D => ana_out_data(41),
+      Q => freq(0),
       R => '0'
     );
 \comp_high.freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[10]_i_1_n_0\,
-      Q => \^freq\(10),
+      D => ana_out_data(51),
+      Q => freq(10),
       R => '0'
     );
 \comp_high.freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[11]_i_1_n_0\,
-      Q => \^freq\(11),
+      D => ana_out_data(52),
+      Q => freq(11),
       R => '0'
     );
 \comp_high.freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[12]_i_1_n_0\,
-      Q => \^freq\(12),
+      D => ana_out_data(53),
+      Q => freq(12),
       R => '0'
     );
 \comp_high.freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[13]_i_1_n_0\,
-      Q => \^freq\(13),
+      D => ana_out_data(54),
+      Q => freq(13),
       R => '0'
     );
 \comp_high.freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[14]_i_1_n_0\,
-      Q => \^freq\(14),
+      D => ana_out_data(55),
+      Q => freq(14),
       R => '0'
     );
 \comp_high.freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[15]_i_1_n_0\,
-      Q => \^freq\(15),
+      D => ana_out_data(56),
+      Q => freq(15),
       R => '0'
     );
 \comp_high.freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[16]_i_1_n_0\,
-      Q => \^freq\(16),
+      D => ana_out_data(57),
+      Q => freq(16),
       R => '0'
     );
 \comp_high.freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[17]_i_1_n_0\,
-      Q => \^freq\(17),
+      D => ana_out_data(58),
+      Q => freq(17),
       R => '0'
     );
 \comp_high.freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[18]_i_1_n_0\,
-      Q => \^freq\(18),
+      D => ana_out_data(59),
+      Q => freq(18),
       R => '0'
     );
 \comp_high.freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[19]_i_1_n_0\,
-      Q => \^freq\(19),
+      D => ana_out_data(60),
+      Q => freq(19),
       R => '0'
     );
 \comp_high.freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[1]_i_1_n_0\,
-      Q => \^freq\(1),
+      D => ana_out_data(42),
+      Q => freq(1),
       R => '0'
     );
 \comp_high.freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[2]_i_1_n_0\,
-      Q => \^freq\(2),
+      D => ana_out_data(43),
+      Q => freq(2),
       R => '0'
     );
 \comp_high.freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[3]_i_1_n_0\,
-      Q => \^freq\(3),
+      D => ana_out_data(44),
+      Q => freq(3),
       R => '0'
     );
 \comp_high.freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[4]_i_1_n_0\,
-      Q => \^freq\(4),
+      D => ana_out_data(45),
+      Q => freq(4),
       R => '0'
     );
 \comp_high.freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[5]_i_1_n_0\,
-      Q => \^freq\(5),
+      D => ana_out_data(46),
+      Q => freq(5),
       R => '0'
     );
 \comp_high.freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[6]_i_1_n_0\,
-      Q => \^freq\(6),
+      D => ana_out_data(47),
+      Q => freq(6),
       R => '0'
     );
 \comp_high.freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[7]_i_1_n_0\,
-      Q => \^freq\(7),
+      D => ana_out_data(48),
+      Q => freq(7),
       R => '0'
     );
 \comp_high.freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[8]_i_1_n_0\,
-      Q => \^freq\(8),
+      D => ana_out_data(49),
+      Q => freq(8),
       R => '0'
     );
 \comp_high.freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.freq[9]_i_1_n_0\,
-      Q => \^freq\(9),
+      D => ana_out_data(50),
+      Q => freq(9),
       R => '0'
     );
 \comp_high.im_0[7]_i_2\: unisim.vcomponents.LUT2
@@ -41751,7 +40993,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[0]\,
-      Q => \^im\(0),
+      Q => im(0),
       R => '0'
     );
 \comp_high.im_reg[10]\: unisim.vcomponents.FDRE
@@ -41759,7 +41001,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[10]\,
-      Q => \^im\(10),
+      Q => im(10),
       R => '0'
     );
 \comp_high.im_reg[11]\: unisim.vcomponents.FDRE
@@ -41767,7 +41009,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[11]\,
-      Q => \^im\(11),
+      Q => im(11),
       R => '0'
     );
 \comp_high.im_reg[12]\: unisim.vcomponents.FDRE
@@ -41775,7 +41017,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[12]\,
-      Q => \^im\(12),
+      Q => im(12),
       R => '0'
     );
 \comp_high.im_reg[13]\: unisim.vcomponents.FDRE
@@ -41783,7 +41025,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[13]\,
-      Q => \^im\(13),
+      Q => im(13),
       R => '0'
     );
 \comp_high.im_reg[14]\: unisim.vcomponents.FDRE
@@ -41791,7 +41033,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[14]\,
-      Q => \^im\(14),
+      Q => im(14),
       R => '0'
     );
 \comp_high.im_reg[15]\: unisim.vcomponents.FDRE
@@ -41799,7 +41041,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[15]\,
-      Q => \^im\(15),
+      Q => im(15),
       R => '0'
     );
 \comp_high.im_reg[16]\: unisim.vcomponents.FDRE
@@ -41807,7 +41049,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[0]\,
-      Q => \^im\(16),
+      Q => im(16),
       R => '0'
     );
 \comp_high.im_reg[17]\: unisim.vcomponents.FDRE
@@ -41815,7 +41057,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[1]\,
-      Q => \^im\(17),
+      Q => im(17),
       R => '0'
     );
 \comp_high.im_reg[18]\: unisim.vcomponents.FDRE
@@ -41823,7 +41065,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[2]\,
-      Q => \^im\(18),
+      Q => im(18),
       R => '0'
     );
 \comp_high.im_reg[19]\: unisim.vcomponents.FDRE
@@ -41831,7 +41073,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[3]\,
-      Q => \^im\(19),
+      Q => im(19),
       R => '0'
     );
 \comp_high.im_reg[1]\: unisim.vcomponents.FDRE
@@ -41839,7 +41081,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[1]\,
-      Q => \^im\(1),
+      Q => im(1),
       R => '0'
     );
 \comp_high.im_reg[20]\: unisim.vcomponents.FDRE
@@ -41847,7 +41089,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[4]\,
-      Q => \^im\(20),
+      Q => im(20),
       R => '0'
     );
 \comp_high.im_reg[21]\: unisim.vcomponents.FDRE
@@ -41855,7 +41097,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[5]\,
-      Q => \^im\(21),
+      Q => im(21),
       R => '0'
     );
 \comp_high.im_reg[22]\: unisim.vcomponents.FDRE
@@ -41863,7 +41105,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[6]\,
-      Q => \^im\(22),
+      Q => im(22),
       R => '0'
     );
 \comp_high.im_reg[23]\: unisim.vcomponents.FDRE
@@ -41871,7 +41113,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[7]\,
-      Q => \^im\(23),
+      Q => im(23),
       R => '0'
     );
 \comp_high.im_reg[24]\: unisim.vcomponents.FDRE
@@ -41879,7 +41121,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[8]\,
-      Q => \^im\(24),
+      Q => im(24),
       R => '0'
     );
 \comp_high.im_reg[25]\: unisim.vcomponents.FDRE
@@ -41887,7 +41129,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[9]\,
-      Q => \^im\(25),
+      Q => im(25),
       R => '0'
     );
 \comp_high.im_reg[26]\: unisim.vcomponents.FDRE
@@ -41895,7 +41137,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[10]\,
-      Q => \^im\(26),
+      Q => im(26),
       R => '0'
     );
 \comp_high.im_reg[27]\: unisim.vcomponents.FDRE
@@ -41903,7 +41145,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[11]\,
-      Q => \^im\(27),
+      Q => im(27),
       R => '0'
     );
 \comp_high.im_reg[28]\: unisim.vcomponents.FDRE
@@ -41911,7 +41153,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[12]\,
-      Q => \^im\(28),
+      Q => im(28),
       R => '0'
     );
 \comp_high.im_reg[29]\: unisim.vcomponents.FDRE
@@ -41919,7 +41161,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[13]\,
-      Q => \^im\(29),
+      Q => im(29),
       R => '0'
     );
 \comp_high.im_reg[2]\: unisim.vcomponents.FDRE
@@ -41927,7 +41169,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[2]\,
-      Q => \^im\(2),
+      Q => im(2),
       R => '0'
     );
 \comp_high.im_reg[30]\: unisim.vcomponents.FDRE
@@ -41935,7 +41177,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[14]\,
-      Q => \^im\(30),
+      Q => im(30),
       R => '0'
     );
 \comp_high.im_reg[31]\: unisim.vcomponents.FDRE
@@ -41943,7 +41185,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_1_reg_n_0_[15]\,
-      Q => \^im\(31),
+      Q => im(31),
       R => '0'
     );
 \comp_high.im_reg[32]\: unisim.vcomponents.FDRE
@@ -41951,7 +41193,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[0]\,
-      Q => \^im\(32),
+      Q => im(32),
       R => '0'
     );
 \comp_high.im_reg[33]\: unisim.vcomponents.FDRE
@@ -41959,7 +41201,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[1]\,
-      Q => \^im\(33),
+      Q => im(33),
       R => '0'
     );
 \comp_high.im_reg[34]\: unisim.vcomponents.FDRE
@@ -41967,7 +41209,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[2]\,
-      Q => \^im\(34),
+      Q => im(34),
       R => '0'
     );
 \comp_high.im_reg[35]\: unisim.vcomponents.FDRE
@@ -41975,7 +41217,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[3]\,
-      Q => \^im\(35),
+      Q => im(35),
       R => '0'
     );
 \comp_high.im_reg[36]\: unisim.vcomponents.FDRE
@@ -41983,7 +41225,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[4]\,
-      Q => \^im\(36),
+      Q => im(36),
       R => '0'
     );
 \comp_high.im_reg[37]\: unisim.vcomponents.FDRE
@@ -41991,7 +41233,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[5]\,
-      Q => \^im\(37),
+      Q => im(37),
       R => '0'
     );
 \comp_high.im_reg[38]\: unisim.vcomponents.FDRE
@@ -41999,7 +41241,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[6]\,
-      Q => \^im\(38),
+      Q => im(38),
       R => '0'
     );
 \comp_high.im_reg[39]\: unisim.vcomponents.FDRE
@@ -42007,7 +41249,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[7]\,
-      Q => \^im\(39),
+      Q => im(39),
       R => '0'
     );
 \comp_high.im_reg[3]\: unisim.vcomponents.FDRE
@@ -42015,7 +41257,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[3]\,
-      Q => \^im\(3),
+      Q => im(3),
       R => '0'
     );
 \comp_high.im_reg[40]\: unisim.vcomponents.FDRE
@@ -42023,7 +41265,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[8]\,
-      Q => \^im\(40),
+      Q => im(40),
       R => '0'
     );
 \comp_high.im_reg[41]\: unisim.vcomponents.FDRE
@@ -42031,7 +41273,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[9]\,
-      Q => \^im\(41),
+      Q => im(41),
       R => '0'
     );
 \comp_high.im_reg[42]\: unisim.vcomponents.FDRE
@@ -42039,7 +41281,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[10]\,
-      Q => \^im\(42),
+      Q => im(42),
       R => '0'
     );
 \comp_high.im_reg[43]\: unisim.vcomponents.FDRE
@@ -42047,7 +41289,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[11]\,
-      Q => \^im\(43),
+      Q => im(43),
       R => '0'
     );
 \comp_high.im_reg[44]\: unisim.vcomponents.FDRE
@@ -42055,7 +41297,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[12]\,
-      Q => \^im\(44),
+      Q => im(44),
       R => '0'
     );
 \comp_high.im_reg[45]\: unisim.vcomponents.FDRE
@@ -42063,7 +41305,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[13]\,
-      Q => \^im\(45),
+      Q => im(45),
       R => '0'
     );
 \comp_high.im_reg[46]\: unisim.vcomponents.FDRE
@@ -42071,7 +41313,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[14]\,
-      Q => \^im\(46),
+      Q => im(46),
       R => '0'
     );
 \comp_high.im_reg[47]\: unisim.vcomponents.FDRE
@@ -42079,7 +41321,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_2_reg_n_0_[15]\,
-      Q => \^im\(47),
+      Q => im(47),
       R => '0'
     );
 \comp_high.im_reg[48]\: unisim.vcomponents.FDRE
@@ -42087,7 +41329,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[0]\,
-      Q => \^im\(48),
+      Q => im(48),
       R => '0'
     );
 \comp_high.im_reg[49]\: unisim.vcomponents.FDRE
@@ -42095,7 +41337,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[1]\,
-      Q => \^im\(49),
+      Q => im(49),
       R => '0'
     );
 \comp_high.im_reg[4]\: unisim.vcomponents.FDRE
@@ -42103,7 +41345,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[4]\,
-      Q => \^im\(4),
+      Q => im(4),
       R => '0'
     );
 \comp_high.im_reg[50]\: unisim.vcomponents.FDRE
@@ -42111,7 +41353,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[2]\,
-      Q => \^im\(50),
+      Q => im(50),
       R => '0'
     );
 \comp_high.im_reg[51]\: unisim.vcomponents.FDRE
@@ -42119,7 +41361,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[3]\,
-      Q => \^im\(51),
+      Q => im(51),
       R => '0'
     );
 \comp_high.im_reg[52]\: unisim.vcomponents.FDRE
@@ -42127,7 +41369,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[4]\,
-      Q => \^im\(52),
+      Q => im(52),
       R => '0'
     );
 \comp_high.im_reg[53]\: unisim.vcomponents.FDRE
@@ -42135,7 +41377,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[5]\,
-      Q => \^im\(53),
+      Q => im(53),
       R => '0'
     );
 \comp_high.im_reg[54]\: unisim.vcomponents.FDRE
@@ -42143,7 +41385,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[6]\,
-      Q => \^im\(54),
+      Q => im(54),
       R => '0'
     );
 \comp_high.im_reg[55]\: unisim.vcomponents.FDRE
@@ -42151,7 +41393,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[7]\,
-      Q => \^im\(55),
+      Q => im(55),
       R => '0'
     );
 \comp_high.im_reg[56]\: unisim.vcomponents.FDRE
@@ -42159,7 +41401,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[8]\,
-      Q => \^im\(56),
+      Q => im(56),
       R => '0'
     );
 \comp_high.im_reg[57]\: unisim.vcomponents.FDRE
@@ -42167,7 +41409,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[9]\,
-      Q => \^im\(57),
+      Q => im(57),
       R => '0'
     );
 \comp_high.im_reg[58]\: unisim.vcomponents.FDRE
@@ -42175,7 +41417,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[10]\,
-      Q => \^im\(58),
+      Q => im(58),
       R => '0'
     );
 \comp_high.im_reg[59]\: unisim.vcomponents.FDRE
@@ -42183,7 +41425,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[11]\,
-      Q => \^im\(59),
+      Q => im(59),
       R => '0'
     );
 \comp_high.im_reg[5]\: unisim.vcomponents.FDRE
@@ -42191,7 +41433,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[5]\,
-      Q => \^im\(5),
+      Q => im(5),
       R => '0'
     );
 \comp_high.im_reg[60]\: unisim.vcomponents.FDRE
@@ -42199,7 +41441,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[12]\,
-      Q => \^im\(60),
+      Q => im(60),
       R => '0'
     );
 \comp_high.im_reg[61]\: unisim.vcomponents.FDRE
@@ -42207,7 +41449,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[13]\,
-      Q => \^im\(61),
+      Q => im(61),
       R => '0'
     );
 \comp_high.im_reg[62]\: unisim.vcomponents.FDRE
@@ -42215,7 +41457,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[14]\,
-      Q => \^im\(62),
+      Q => im(62),
       R => '0'
     );
 \comp_high.im_reg[63]\: unisim.vcomponents.FDRE
@@ -42223,7 +41465,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_3_reg_n_0_[15]\,
-      Q => \^im\(63),
+      Q => im(63),
       R => '0'
     );
 \comp_high.im_reg[6]\: unisim.vcomponents.FDRE
@@ -42231,7 +41473,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[6]\,
-      Q => \^im\(6),
+      Q => im(6),
       R => '0'
     );
 \comp_high.im_reg[7]\: unisim.vcomponents.FDRE
@@ -42239,7 +41481,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[7]\,
-      Q => \^im\(7),
+      Q => im(7),
       R => '0'
     );
 \comp_high.im_reg[8]\: unisim.vcomponents.FDRE
@@ -42247,7 +41489,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[8]\,
-      Q => \^im\(8),
+      Q => im(8),
       R => '0'
     );
 \comp_high.im_reg[9]\: unisim.vcomponents.FDRE
@@ -42255,7 +41497,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.im_0_reg_n_0_[9]\,
-      Q => \^im\(9),
+      Q => im(9),
       R => '0'
     );
 \comp_high.raw_E[127]_i_1\: unisim.vcomponents.LUT2
@@ -48644,25 +47886,25 @@ begin
     );
 \comp_high.raw_run_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2222222200000002"
+      INIT => X"2222222200020000"
     )
         port map (
       I0 => raw_rd,
       I1 => raw_empty,
       I2 => \comp_high.raw_run_i_2_n_0\,
-      I3 => select_delay(1),
+      I3 => select_delay(2),
       I4 => select_delay(0),
       I5 => raw_run,
       O => \comp_high.raw_run_i_1_n_0\
     );
 \comp_high.raw_run_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"EF"
+      INIT => X"FE"
     )
         port map (
       I0 => select_delay(4),
       I1 => select_delay(3),
-      I2 => select_delay(2),
+      I2 => select_delay(1),
       O => \comp_high.raw_run_i_2_n_0\
     );
 \comp_high.raw_run_reg\: unisim.vcomponents.FDRE
@@ -49707,7 +48949,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[0]\,
-      Q => \^re\(0),
+      Q => re(0),
       R => '0'
     );
 \comp_high.re_reg[10]\: unisim.vcomponents.FDRE
@@ -49715,7 +48957,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[10]\,
-      Q => \^re\(10),
+      Q => re(10),
       R => '0'
     );
 \comp_high.re_reg[11]\: unisim.vcomponents.FDRE
@@ -49723,7 +48965,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[11]\,
-      Q => \^re\(11),
+      Q => re(11),
       R => '0'
     );
 \comp_high.re_reg[12]\: unisim.vcomponents.FDRE
@@ -49731,7 +48973,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[12]\,
-      Q => \^re\(12),
+      Q => re(12),
       R => '0'
     );
 \comp_high.re_reg[13]\: unisim.vcomponents.FDRE
@@ -49739,7 +48981,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[13]\,
-      Q => \^re\(13),
+      Q => re(13),
       R => '0'
     );
 \comp_high.re_reg[14]\: unisim.vcomponents.FDRE
@@ -49747,7 +48989,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[14]\,
-      Q => \^re\(14),
+      Q => re(14),
       R => '0'
     );
 \comp_high.re_reg[15]\: unisim.vcomponents.FDRE
@@ -49755,7 +48997,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[15]\,
-      Q => \^re\(15),
+      Q => re(15),
       R => '0'
     );
 \comp_high.re_reg[16]\: unisim.vcomponents.FDRE
@@ -49763,7 +49005,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[0]\,
-      Q => \^re\(16),
+      Q => re(16),
       R => '0'
     );
 \comp_high.re_reg[17]\: unisim.vcomponents.FDRE
@@ -49771,7 +49013,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[1]\,
-      Q => \^re\(17),
+      Q => re(17),
       R => '0'
     );
 \comp_high.re_reg[18]\: unisim.vcomponents.FDRE
@@ -49779,7 +49021,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[2]\,
-      Q => \^re\(18),
+      Q => re(18),
       R => '0'
     );
 \comp_high.re_reg[19]\: unisim.vcomponents.FDRE
@@ -49787,7 +49029,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[3]\,
-      Q => \^re\(19),
+      Q => re(19),
       R => '0'
     );
 \comp_high.re_reg[1]\: unisim.vcomponents.FDRE
@@ -49795,7 +49037,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[1]\,
-      Q => \^re\(1),
+      Q => re(1),
       R => '0'
     );
 \comp_high.re_reg[20]\: unisim.vcomponents.FDRE
@@ -49803,7 +49045,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[4]\,
-      Q => \^re\(20),
+      Q => re(20),
       R => '0'
     );
 \comp_high.re_reg[21]\: unisim.vcomponents.FDRE
@@ -49811,7 +49053,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[5]\,
-      Q => \^re\(21),
+      Q => re(21),
       R => '0'
     );
 \comp_high.re_reg[22]\: unisim.vcomponents.FDRE
@@ -49819,7 +49061,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[6]\,
-      Q => \^re\(22),
+      Q => re(22),
       R => '0'
     );
 \comp_high.re_reg[23]\: unisim.vcomponents.FDRE
@@ -49827,7 +49069,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[7]\,
-      Q => \^re\(23),
+      Q => re(23),
       R => '0'
     );
 \comp_high.re_reg[24]\: unisim.vcomponents.FDRE
@@ -49835,7 +49077,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[8]\,
-      Q => \^re\(24),
+      Q => re(24),
       R => '0'
     );
 \comp_high.re_reg[25]\: unisim.vcomponents.FDRE
@@ -49843,7 +49085,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[9]\,
-      Q => \^re\(25),
+      Q => re(25),
       R => '0'
     );
 \comp_high.re_reg[26]\: unisim.vcomponents.FDRE
@@ -49851,7 +49093,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[10]\,
-      Q => \^re\(26),
+      Q => re(26),
       R => '0'
     );
 \comp_high.re_reg[27]\: unisim.vcomponents.FDRE
@@ -49859,7 +49101,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[11]\,
-      Q => \^re\(27),
+      Q => re(27),
       R => '0'
     );
 \comp_high.re_reg[28]\: unisim.vcomponents.FDRE
@@ -49867,7 +49109,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[12]\,
-      Q => \^re\(28),
+      Q => re(28),
       R => '0'
     );
 \comp_high.re_reg[29]\: unisim.vcomponents.FDRE
@@ -49875,7 +49117,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[13]\,
-      Q => \^re\(29),
+      Q => re(29),
       R => '0'
     );
 \comp_high.re_reg[2]\: unisim.vcomponents.FDRE
@@ -49883,7 +49125,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[2]\,
-      Q => \^re\(2),
+      Q => re(2),
       R => '0'
     );
 \comp_high.re_reg[30]\: unisim.vcomponents.FDRE
@@ -49891,7 +49133,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[14]\,
-      Q => \^re\(30),
+      Q => re(30),
       R => '0'
     );
 \comp_high.re_reg[31]\: unisim.vcomponents.FDRE
@@ -49899,7 +49141,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_1_reg_n_0_[15]\,
-      Q => \^re\(31),
+      Q => re(31),
       R => '0'
     );
 \comp_high.re_reg[32]\: unisim.vcomponents.FDRE
@@ -49907,7 +49149,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[0]\,
-      Q => \^re\(32),
+      Q => re(32),
       R => '0'
     );
 \comp_high.re_reg[33]\: unisim.vcomponents.FDRE
@@ -49915,7 +49157,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[1]\,
-      Q => \^re\(33),
+      Q => re(33),
       R => '0'
     );
 \comp_high.re_reg[34]\: unisim.vcomponents.FDRE
@@ -49923,7 +49165,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[2]\,
-      Q => \^re\(34),
+      Q => re(34),
       R => '0'
     );
 \comp_high.re_reg[35]\: unisim.vcomponents.FDRE
@@ -49931,7 +49173,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[3]\,
-      Q => \^re\(35),
+      Q => re(35),
       R => '0'
     );
 \comp_high.re_reg[36]\: unisim.vcomponents.FDRE
@@ -49939,7 +49181,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[4]\,
-      Q => \^re\(36),
+      Q => re(36),
       R => '0'
     );
 \comp_high.re_reg[37]\: unisim.vcomponents.FDRE
@@ -49947,7 +49189,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[5]\,
-      Q => \^re\(37),
+      Q => re(37),
       R => '0'
     );
 \comp_high.re_reg[38]\: unisim.vcomponents.FDRE
@@ -49955,7 +49197,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[6]\,
-      Q => \^re\(38),
+      Q => re(38),
       R => '0'
     );
 \comp_high.re_reg[39]\: unisim.vcomponents.FDRE
@@ -49963,7 +49205,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[7]\,
-      Q => \^re\(39),
+      Q => re(39),
       R => '0'
     );
 \comp_high.re_reg[3]\: unisim.vcomponents.FDRE
@@ -49971,7 +49213,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[3]\,
-      Q => \^re\(3),
+      Q => re(3),
       R => '0'
     );
 \comp_high.re_reg[40]\: unisim.vcomponents.FDRE
@@ -49979,7 +49221,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[8]\,
-      Q => \^re\(40),
+      Q => re(40),
       R => '0'
     );
 \comp_high.re_reg[41]\: unisim.vcomponents.FDRE
@@ -49987,7 +49229,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[9]\,
-      Q => \^re\(41),
+      Q => re(41),
       R => '0'
     );
 \comp_high.re_reg[42]\: unisim.vcomponents.FDRE
@@ -49995,7 +49237,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[10]\,
-      Q => \^re\(42),
+      Q => re(42),
       R => '0'
     );
 \comp_high.re_reg[43]\: unisim.vcomponents.FDRE
@@ -50003,7 +49245,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[11]\,
-      Q => \^re\(43),
+      Q => re(43),
       R => '0'
     );
 \comp_high.re_reg[44]\: unisim.vcomponents.FDRE
@@ -50011,7 +49253,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[12]\,
-      Q => \^re\(44),
+      Q => re(44),
       R => '0'
     );
 \comp_high.re_reg[45]\: unisim.vcomponents.FDRE
@@ -50019,7 +49261,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[13]\,
-      Q => \^re\(45),
+      Q => re(45),
       R => '0'
     );
 \comp_high.re_reg[46]\: unisim.vcomponents.FDRE
@@ -50027,7 +49269,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[14]\,
-      Q => \^re\(46),
+      Q => re(46),
       R => '0'
     );
 \comp_high.re_reg[47]\: unisim.vcomponents.FDRE
@@ -50035,7 +49277,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_2_reg_n_0_[15]\,
-      Q => \^re\(47),
+      Q => re(47),
       R => '0'
     );
 \comp_high.re_reg[48]\: unisim.vcomponents.FDRE
@@ -50043,7 +49285,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[0]\,
-      Q => \^re\(48),
+      Q => re(48),
       R => '0'
     );
 \comp_high.re_reg[49]\: unisim.vcomponents.FDRE
@@ -50051,7 +49293,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[1]\,
-      Q => \^re\(49),
+      Q => re(49),
       R => '0'
     );
 \comp_high.re_reg[4]\: unisim.vcomponents.FDRE
@@ -50059,7 +49301,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[4]\,
-      Q => \^re\(4),
+      Q => re(4),
       R => '0'
     );
 \comp_high.re_reg[50]\: unisim.vcomponents.FDRE
@@ -50067,7 +49309,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[2]\,
-      Q => \^re\(50),
+      Q => re(50),
       R => '0'
     );
 \comp_high.re_reg[51]\: unisim.vcomponents.FDRE
@@ -50075,7 +49317,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[3]\,
-      Q => \^re\(51),
+      Q => re(51),
       R => '0'
     );
 \comp_high.re_reg[52]\: unisim.vcomponents.FDRE
@@ -50083,7 +49325,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[4]\,
-      Q => \^re\(52),
+      Q => re(52),
       R => '0'
     );
 \comp_high.re_reg[53]\: unisim.vcomponents.FDRE
@@ -50091,7 +49333,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[5]\,
-      Q => \^re\(53),
+      Q => re(53),
       R => '0'
     );
 \comp_high.re_reg[54]\: unisim.vcomponents.FDRE
@@ -50099,7 +49341,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[6]\,
-      Q => \^re\(54),
+      Q => re(54),
       R => '0'
     );
 \comp_high.re_reg[55]\: unisim.vcomponents.FDRE
@@ -50107,7 +49349,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[7]\,
-      Q => \^re\(55),
+      Q => re(55),
       R => '0'
     );
 \comp_high.re_reg[56]\: unisim.vcomponents.FDRE
@@ -50115,7 +49357,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[8]\,
-      Q => \^re\(56),
+      Q => re(56),
       R => '0'
     );
 \comp_high.re_reg[57]\: unisim.vcomponents.FDRE
@@ -50123,7 +49365,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[9]\,
-      Q => \^re\(57),
+      Q => re(57),
       R => '0'
     );
 \comp_high.re_reg[58]\: unisim.vcomponents.FDRE
@@ -50131,7 +49373,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[10]\,
-      Q => \^re\(58),
+      Q => re(58),
       R => '0'
     );
 \comp_high.re_reg[59]\: unisim.vcomponents.FDRE
@@ -50139,7 +49381,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[11]\,
-      Q => \^re\(59),
+      Q => re(59),
       R => '0'
     );
 \comp_high.re_reg[5]\: unisim.vcomponents.FDRE
@@ -50147,7 +49389,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[5]\,
-      Q => \^re\(5),
+      Q => re(5),
       R => '0'
     );
 \comp_high.re_reg[60]\: unisim.vcomponents.FDRE
@@ -50155,7 +49397,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[12]\,
-      Q => \^re\(60),
+      Q => re(60),
       R => '0'
     );
 \comp_high.re_reg[61]\: unisim.vcomponents.FDRE
@@ -50163,7 +49405,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[13]\,
-      Q => \^re\(61),
+      Q => re(61),
       R => '0'
     );
 \comp_high.re_reg[62]\: unisim.vcomponents.FDRE
@@ -50171,7 +49413,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[14]\,
-      Q => \^re\(62),
+      Q => re(62),
       R => '0'
     );
 \comp_high.re_reg[63]\: unisim.vcomponents.FDRE
@@ -50179,7 +49421,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_3_reg_n_0_[15]\,
-      Q => \^re\(63),
+      Q => re(63),
       R => '0'
     );
 \comp_high.re_reg[6]\: unisim.vcomponents.FDRE
@@ -50187,7 +49429,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[6]\,
-      Q => \^re\(6),
+      Q => re(6),
       R => '0'
     );
 \comp_high.re_reg[7]\: unisim.vcomponents.FDRE
@@ -50195,7 +49437,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[7]\,
-      Q => \^re\(7),
+      Q => re(7),
       R => '0'
     );
 \comp_high.re_reg[8]\: unisim.vcomponents.FDRE
@@ -50203,7 +49445,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[8]\,
-      Q => \^re\(8),
+      Q => re(8),
       R => '0'
     );
 \comp_high.re_reg[9]\: unisim.vcomponents.FDRE
@@ -50211,7 +49453,7 @@ begin
       C => clk,
       CE => fir_re_active,
       D => \comp_high.re_0_reg_n_0_[9]\,
-      Q => \^re\(9),
+      Q => re(9),
       R => '0'
     );
 \comp_high.reset_int_reg\: unisim.vcomponents.FDRE
@@ -50222,365 +49464,15 @@ begin
       Q => reset_int,
       R => '0'
     );
-\comp_high.sample[0]_i_1\: unisim.vcomponents.LUT4
+\comp_high.sample[31]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"EF40"
+      INIT => X"04"
     )
         port map (
       I0 => ana_empty,
-      I1 => ana_out_data(0),
-      I2 => ana_trig,
-      I3 => \^sample\(0),
-      O => \comp_high.sample[0]_i_1_n_0\
-    );
-\comp_high.sample[10]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(10),
-      I2 => ana_trig,
-      I3 => \^sample\(10),
-      O => \comp_high.sample[10]_i_1_n_0\
-    );
-\comp_high.sample[11]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(11),
-      I2 => ana_trig,
-      I3 => \^sample\(11),
-      O => \comp_high.sample[11]_i_1_n_0\
-    );
-\comp_high.sample[12]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(12),
-      I2 => ana_trig,
-      I3 => \^sample\(12),
-      O => \comp_high.sample[12]_i_1_n_0\
-    );
-\comp_high.sample[13]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(13),
-      I2 => ana_trig,
-      I3 => \^sample\(13),
-      O => \comp_high.sample[13]_i_1_n_0\
-    );
-\comp_high.sample[14]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(14),
-      I2 => ana_trig,
-      I3 => \^sample\(14),
-      O => \comp_high.sample[14]_i_1_n_0\
-    );
-\comp_high.sample[15]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(15),
-      I2 => ana_trig,
-      I3 => \^sample\(15),
-      O => \comp_high.sample[15]_i_1_n_0\
-    );
-\comp_high.sample[16]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(16),
-      I2 => ana_trig,
-      I3 => \^sample\(16),
-      O => \comp_high.sample[16]_i_1_n_0\
-    );
-\comp_high.sample[17]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(17),
-      I2 => ana_trig,
-      I3 => \^sample\(17),
-      O => \comp_high.sample[17]_i_1_n_0\
-    );
-\comp_high.sample[18]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(18),
-      I2 => ana_trig,
-      I3 => \^sample\(18),
-      O => \comp_high.sample[18]_i_1_n_0\
-    );
-\comp_high.sample[19]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(19),
-      I2 => ana_trig,
-      I3 => \^sample\(19),
-      O => \comp_high.sample[19]_i_1_n_0\
-    );
-\comp_high.sample[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(1),
-      I2 => ana_trig,
-      I3 => \^sample\(1),
-      O => \comp_high.sample[1]_i_1_n_0\
-    );
-\comp_high.sample[20]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(20),
-      I2 => ana_trig,
-      I3 => \^sample\(20),
-      O => \comp_high.sample[20]_i_1_n_0\
-    );
-\comp_high.sample[21]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(21),
-      I2 => ana_trig,
-      I3 => \^sample\(21),
-      O => \comp_high.sample[21]_i_1_n_0\
-    );
-\comp_high.sample[22]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(22),
-      I2 => ana_trig,
-      I3 => \^sample\(22),
-      O => \comp_high.sample[22]_i_1_n_0\
-    );
-\comp_high.sample[23]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(23),
-      I2 => ana_trig,
-      I3 => \^sample\(23),
-      O => \comp_high.sample[23]_i_1_n_0\
-    );
-\comp_high.sample[24]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(24),
-      I2 => ana_trig,
-      I3 => \^sample\(24),
-      O => \comp_high.sample[24]_i_1_n_0\
-    );
-\comp_high.sample[25]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(25),
-      I2 => ana_trig,
-      I3 => \^sample\(25),
-      O => \comp_high.sample[25]_i_1_n_0\
-    );
-\comp_high.sample[26]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(26),
-      I2 => ana_trig,
-      I3 => \^sample\(26),
-      O => \comp_high.sample[26]_i_1_n_0\
-    );
-\comp_high.sample[27]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(27),
-      I2 => ana_trig,
-      I3 => \^sample\(27),
-      O => \comp_high.sample[27]_i_1_n_0\
-    );
-\comp_high.sample[28]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(28),
-      I2 => ana_trig,
-      I3 => \^sample\(28),
-      O => \comp_high.sample[28]_i_1_n_0\
-    );
-\comp_high.sample[29]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(29),
-      I2 => ana_trig,
-      I3 => \^sample\(29),
-      O => \comp_high.sample[29]_i_1_n_0\
-    );
-\comp_high.sample[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(2),
-      I2 => ana_trig,
-      I3 => \^sample\(2),
-      O => \comp_high.sample[2]_i_1_n_0\
-    );
-\comp_high.sample[30]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(30),
-      I2 => ana_trig,
-      I3 => \^sample\(30),
-      O => \comp_high.sample[30]_i_1_n_0\
-    );
-\comp_high.sample[31]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => reset_int,
+      I1 => ana_trig,
+      I2 => reset_int,
       O => \comp_high.sample[31]_i_1_n_0\
-    );
-\comp_high.sample[31]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(31),
-      I2 => ana_trig,
-      I3 => \^sample\(31),
-      O => \comp_high.sample[31]_i_2_n_0\
-    );
-\comp_high.sample[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(3),
-      I2 => ana_trig,
-      I3 => \^sample\(3),
-      O => \comp_high.sample[3]_i_1_n_0\
-    );
-\comp_high.sample[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(4),
-      I2 => ana_trig,
-      I3 => \^sample\(4),
-      O => \comp_high.sample[4]_i_1_n_0\
-    );
-\comp_high.sample[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(5),
-      I2 => ana_trig,
-      I3 => \^sample\(5),
-      O => \comp_high.sample[5]_i_1_n_0\
-    );
-\comp_high.sample[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(6),
-      I2 => ana_trig,
-      I3 => \^sample\(6),
-      O => \comp_high.sample[6]_i_1_n_0\
-    );
-\comp_high.sample[7]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(7),
-      I2 => ana_trig,
-      I3 => \^sample\(7),
-      O => \comp_high.sample[7]_i_1_n_0\
-    );
-\comp_high.sample[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(8),
-      I2 => ana_trig,
-      I3 => \^sample\(8),
-      O => \comp_high.sample[8]_i_1_n_0\
-    );
-\comp_high.sample[9]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(9),
-      I2 => ana_trig,
-      I3 => \^sample\(9),
-      O => \comp_high.sample[9]_i_1_n_0\
     );
 \comp_high.sample_E[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -50810,304 +49702,298 @@ begin
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[0]_i_1_n_0\,
-      Q => \^sample\(0),
+      D => ana_out_data(0),
+      Q => sample(0),
       R => '0'
     );
 \comp_high.sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[10]_i_1_n_0\,
-      Q => \^sample\(10),
+      D => ana_out_data(10),
+      Q => sample(10),
       R => '0'
     );
 \comp_high.sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[11]_i_1_n_0\,
-      Q => \^sample\(11),
+      D => ana_out_data(11),
+      Q => sample(11),
       R => '0'
     );
 \comp_high.sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[12]_i_1_n_0\,
-      Q => \^sample\(12),
+      D => ana_out_data(12),
+      Q => sample(12),
       R => '0'
     );
 \comp_high.sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[13]_i_1_n_0\,
-      Q => \^sample\(13),
+      D => ana_out_data(13),
+      Q => sample(13),
       R => '0'
     );
 \comp_high.sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[14]_i_1_n_0\,
-      Q => \^sample\(14),
+      D => ana_out_data(14),
+      Q => sample(14),
       R => '0'
     );
 \comp_high.sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[15]_i_1_n_0\,
-      Q => \^sample\(15),
+      D => ana_out_data(15),
+      Q => sample(15),
       R => '0'
     );
 \comp_high.sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[16]_i_1_n_0\,
-      Q => \^sample\(16),
+      D => ana_out_data(16),
+      Q => sample(16),
       R => '0'
     );
 \comp_high.sample_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[17]_i_1_n_0\,
-      Q => \^sample\(17),
+      D => ana_out_data(17),
+      Q => sample(17),
       R => '0'
     );
 \comp_high.sample_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[18]_i_1_n_0\,
-      Q => \^sample\(18),
+      D => ana_out_data(18),
+      Q => sample(18),
       R => '0'
     );
 \comp_high.sample_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[19]_i_1_n_0\,
-      Q => \^sample\(19),
+      D => ana_out_data(19),
+      Q => sample(19),
       R => '0'
     );
 \comp_high.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[1]_i_1_n_0\,
-      Q => \^sample\(1),
+      D => ana_out_data(1),
+      Q => sample(1),
       R => '0'
     );
 \comp_high.sample_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[20]_i_1_n_0\,
-      Q => \^sample\(20),
+      D => ana_out_data(20),
+      Q => sample(20),
       R => '0'
     );
 \comp_high.sample_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[21]_i_1_n_0\,
-      Q => \^sample\(21),
+      D => ana_out_data(21),
+      Q => sample(21),
       R => '0'
     );
 \comp_high.sample_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[22]_i_1_n_0\,
-      Q => \^sample\(22),
+      D => ana_out_data(22),
+      Q => sample(22),
       R => '0'
     );
 \comp_high.sample_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[23]_i_1_n_0\,
-      Q => \^sample\(23),
+      D => ana_out_data(23),
+      Q => sample(23),
       R => '0'
     );
 \comp_high.sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[24]_i_1_n_0\,
-      Q => \^sample\(24),
+      D => ana_out_data(24),
+      Q => sample(24),
       R => '0'
     );
 \comp_high.sample_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[25]_i_1_n_0\,
-      Q => \^sample\(25),
+      D => ana_out_data(25),
+      Q => sample(25),
       R => '0'
     );
 \comp_high.sample_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[26]_i_1_n_0\,
-      Q => \^sample\(26),
+      D => ana_out_data(26),
+      Q => sample(26),
       R => '0'
     );
 \comp_high.sample_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[27]_i_1_n_0\,
-      Q => \^sample\(27),
+      D => ana_out_data(27),
+      Q => sample(27),
       R => '0'
     );
 \comp_high.sample_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[28]_i_1_n_0\,
-      Q => \^sample\(28),
+      D => ana_out_data(28),
+      Q => sample(28),
       R => '0'
     );
 \comp_high.sample_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[29]_i_1_n_0\,
-      Q => \^sample\(29),
+      D => ana_out_data(29),
+      Q => sample(29),
       R => '0'
     );
 \comp_high.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[2]_i_1_n_0\,
-      Q => \^sample\(2),
+      D => ana_out_data(2),
+      Q => sample(2),
       R => '0'
     );
 \comp_high.sample_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[30]_i_1_n_0\,
-      Q => \^sample\(30),
+      D => ana_out_data(30),
+      Q => sample(30),
       R => '0'
     );
 \comp_high.sample_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[31]_i_2_n_0\,
-      Q => \^sample\(31),
+      D => ana_out_data(31),
+      Q => sample(31),
       R => '0'
     );
 \comp_high.sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[3]_i_1_n_0\,
-      Q => \^sample\(3),
+      D => ana_out_data(3),
+      Q => sample(3),
       R => '0'
     );
 \comp_high.sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[4]_i_1_n_0\,
-      Q => \^sample\(4),
+      D => ana_out_data(4),
+      Q => sample(4),
       R => '0'
     );
 \comp_high.sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[5]_i_1_n_0\,
-      Q => \^sample\(5),
+      D => ana_out_data(5),
+      Q => sample(5),
       R => '0'
     );
 \comp_high.sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[6]_i_1_n_0\,
-      Q => \^sample\(6),
+      D => ana_out_data(6),
+      Q => sample(6),
       R => '0'
     );
 \comp_high.sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[7]_i_1_n_0\,
-      Q => \^sample\(7),
+      D => ana_out_data(7),
+      Q => sample(7),
       R => '0'
     );
 \comp_high.sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[8]_i_1_n_0\,
-      Q => \^sample\(8),
+      D => ana_out_data(8),
+      Q => sample(8),
       R => '0'
     );
 \comp_high.sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.sample[9]_i_1_n_0\,
-      Q => \^sample\(9),
+      D => ana_out_data(9),
+      Q => sample(9),
       R => '0'
     );
 \comp_high.select_delay[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"10FF00FF"
-    )
-        port map (
-      I0 => select_delay(4),
-      I1 => select_delay(3),
-      I2 => select_delay(2),
-      I3 => select_delay(0),
-      I4 => select_delay(1),
-      O => \comp_high.select_delay[0]_i_1_n_0\
-    );
-\comp_high.select_delay[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"02FFFF00"
+      INIT => X"33333331"
     )
         port map (
       I0 => select_delay(2),
-      I1 => select_delay(3),
-      I2 => select_delay(4),
-      I3 => select_delay(0),
-      I4 => select_delay(1),
-      O => \comp_high.select_delay[1]_i_1_n_0\
-    );
-\comp_high.select_delay[2]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"777F8888"
-    )
-        port map (
-      I0 => select_delay(0),
-      I1 => select_delay(1),
+      I1 => select_delay(0),
       I2 => select_delay(4),
       I3 => select_delay(3),
-      I4 => select_delay(2),
-      O => \comp_high.select_delay[2]_i_1_n_0\
+      I4 => select_delay(1),
+      O => \comp_high.select_delay[0]_i_1_n_0\
     );
-\comp_high.select_delay[3]_i_1\: unisim.vcomponents.LUT5
+\comp_high.select_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"77FF8000"
+      INIT => X"6"
     )
         port map (
       I0 => select_delay(0),
       I1 => select_delay(1),
-      I2 => select_delay(4),
-      I3 => select_delay(2),
-      I4 => select_delay(3),
+      O => \comp_high.select_delay[1]_i_1_n_0\
+    );
+\comp_high.select_delay[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => select_delay(1),
+      I1 => select_delay(0),
+      I2 => select_delay(2),
+      O => \comp_high.select_delay[2]_i_1_n_0\
+    );
+\comp_high.select_delay[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => select_delay(0),
+      I1 => select_delay(1),
+      I2 => select_delay(2),
+      I3 => select_delay(3),
       O => \comp_high.select_delay[3]_i_1_n_0\
     );
 \comp_high.select_delay[4]_i_1\: unisim.vcomponents.LUT2
@@ -51124,10 +50010,10 @@ begin
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => select_delay(0),
-      I1 => select_delay(1),
-      I2 => select_delay(2),
-      I3 => select_delay(3),
+      I0 => select_delay(2),
+      I1 => select_delay(3),
+      I2 => select_delay(0),
+      I3 => select_delay(1),
       I4 => select_delay(4),
       O => \comp_high.select_delay[4]_i_2_n_0\
     );
@@ -51171,175 +50057,76 @@ begin
       Q => select_delay(4),
       R => \comp_high.select_delay[4]_i_1_n_0\
     );
-\comp_high.size[0]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(32),
-      I2 => ana_trig,
-      I3 => \^size\(0),
-      O => \comp_high.size[0]_i_1_n_0\
-    );
-\comp_high.size[1]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(33),
-      I2 => ana_trig,
-      I3 => \^size\(1),
-      O => \comp_high.size[1]_i_1_n_0\
-    );
-\comp_high.size[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(34),
-      I2 => ana_trig,
-      I3 => \^size\(2),
-      O => \comp_high.size[2]_i_1_n_0\
-    );
-\comp_high.size[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(35),
-      I2 => ana_trig,
-      I3 => \^size\(3),
-      O => \comp_high.size[3]_i_1_n_0\
-    );
-\comp_high.size[4]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(36),
-      I2 => ana_trig,
-      I3 => \^size\(4),
-      O => \comp_high.size[4]_i_1_n_0\
-    );
-\comp_high.size[5]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(37),
-      I2 => ana_trig,
-      I3 => \^size\(5),
-      O => \comp_high.size[5]_i_1_n_0\
-    );
-\comp_high.size[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(38),
-      I2 => ana_trig,
-      I3 => \^size\(6),
-      O => \comp_high.size[6]_i_1_n_0\
-    );
-\comp_high.size[7]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(39),
-      I2 => ana_trig,
-      I3 => \^size\(7),
-      O => \comp_high.size[7]_i_1_n_0\
-    );
-\comp_high.size[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"EF40"
-    )
-        port map (
-      I0 => ana_empty,
-      I1 => ana_out_data(40),
-      I2 => ana_trig,
-      I3 => \^size\(8),
-      O => \comp_high.size[8]_i_1_n_0\
-    );
 \comp_high.size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[0]_i_1_n_0\,
-      Q => \^size\(0),
+      D => ana_out_data(32),
+      Q => size(0),
       R => '0'
     );
 \comp_high.size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[1]_i_1_n_0\,
-      Q => \^size\(1),
+      D => ana_out_data(33),
+      Q => size(1),
       R => '0'
     );
 \comp_high.size_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[2]_i_1_n_0\,
-      Q => \^size\(2),
+      D => ana_out_data(34),
+      Q => size(2),
       R => '0'
     );
 \comp_high.size_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[3]_i_1_n_0\,
-      Q => \^size\(3),
+      D => ana_out_data(35),
+      Q => size(3),
       R => '0'
     );
 \comp_high.size_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[4]_i_1_n_0\,
-      Q => \^size\(4),
+      D => ana_out_data(36),
+      Q => size(4),
       R => '0'
     );
 \comp_high.size_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[5]_i_1_n_0\,
-      Q => \^size\(5),
+      D => ana_out_data(37),
+      Q => size(5),
       R => '0'
     );
 \comp_high.size_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[6]_i_1_n_0\,
-      Q => \^size\(6),
+      D => ana_out_data(38),
+      Q => size(6),
       R => '0'
     );
 \comp_high.size_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[7]_i_1_n_0\,
-      Q => \^size\(7),
+      D => ana_out_data(39),
+      Q => size(7),
       R => '0'
     );
 \comp_high.size_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_high.sample[31]_i_1_n_0\,
-      D => \comp_high.size[8]_i_1_n_0\,
-      Q => \^size\(8),
+      D => ana_out_data(40),
+      Q => size(8),
       R => '0'
     );
 fifo_ana_i: component ps_comp_high_0_0_fifo_ana
@@ -51461,7 +50248,10 @@ fir_im_i: component ps_comp_high_0_0_fir_comp_high_im
       m_axis_data_tdata(33 downto 17) => im_data(33 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => fir_im_active,
-      s_axis_data_tdata(63 downto 0) => fir_in(63 downto 0),
+      s_axis_data_tdata(63 downto 48) => deci_3(15 downto 0),
+      s_axis_data_tdata(47 downto 32) => deci_2(15 downto 0),
+      s_axis_data_tdata(31 downto 16) => deci_1(15 downto 0),
+      s_axis_data_tdata(15 downto 0) => deci_0(15 downto 0),
       s_axis_data_tready => NLW_fir_im_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => fir_run
     );
@@ -51478,7 +50268,10 @@ fir_re_i: component ps_comp_high_0_0_fir_comp_high_re
       m_axis_data_tdata(33 downto 17) => re_data(33 downto 17),
       m_axis_data_tdata(16 downto 0) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
       m_axis_data_tvalid => fir_re_active,
-      s_axis_data_tdata(63 downto 0) => fir_in(63 downto 0),
+      s_axis_data_tdata(63 downto 48) => deci_3(15 downto 0),
+      s_axis_data_tdata(47 downto 32) => deci_2(15 downto 0),
+      s_axis_data_tdata(31 downto 16) => deci_1(15 downto 0),
+      s_axis_data_tdata(15 downto 0) => deci_0(15 downto 0),
       s_axis_data_tready => NLW_fir_re_i_s_axis_data_tready_UNCONNECTED,
       s_axis_data_tvalid => fir_run
     );
@@ -51496,14 +50289,11 @@ ila_i: component ps_comp_high_0_0_ila_0
       probe13(3 downto 0) => sample_W(3 downto 0),
       probe14(0) => \^active\,
       probe15(0) => ana_trig,
-      probe16(0) => \^burst\,
-      probe17(31 downto 0) => \^sample\(31 downto 0),
-      probe18(8 downto 0) => \^size\(8 downto 0),
-      probe19(19 downto 0) => \^freq\(19 downto 0),
+      probe16(15 downto 0) => deci_0(15 downto 0),
+      probe17(15 downto 0) => deci_1(15 downto 0),
+      probe18(15 downto 0) => deci_2(15 downto 0),
+      probe19(15 downto 0) => deci_3(15 downto 0),
       probe2(9 downto 0) => raw_delay(9 downto 0),
-      probe20(15 downto 0) => \^angle\(15 downto 0),
-      probe21(63 downto 0) => \^re\(63 downto 0),
-      probe22(63 downto 0) => \^im\(63 downto 0),
       probe3(31 downto 0) => raw_sample(31 downto 0),
       probe4(4 downto 0) => select_delay(4 downto 0),
       probe5(0) => deci_run,
