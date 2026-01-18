@@ -42,7 +42,7 @@ module ana(
     input wire reset,
     
     output reg comp_wr,
-    output reg [31:0] sample,
+    output reg [15:0] sample,
     output reg [8:0] size,
     output reg [19:0] freq,
     output reg [15:0] angle,
@@ -71,7 +71,7 @@ module ana(
   reg cfg_rd;
   wire cfg_empty;
   
-  wire [31:0] curr_sample;
+  wire [15:0] curr_sample;
   wire [8:0] curr_size;
   wire [19:0] curr_freq;
   wire [19:0] curr_phase_NE;
@@ -83,14 +83,14 @@ module ana(
   reg [1:0] burst;
   wire [1:0] save;
   
-  reg [31:0] sample_0;
+  reg [15:0] sample_0;
   reg [8:0] size_0;
   reg [19:0] freq_0;
   reg [19:0] phase_NE_0;
   reg [19:0] phase_EW_0;
   reg [19:0] phase_WN_0;
 
-  wire [31:0] save_sample_0;
+  wire [15:0] save_sample_0;
   wire [8:0] save_size_0;
   wire [19:0] save_freq_0;
   wire [15:0] save_angle_0;
@@ -99,14 +99,14 @@ module ana(
   wire [5:0] save_sample_E_0;
   wire [5:0] save_sample_W_0;
 
-  reg [31:0] sample_1;
+  reg [15:0] sample_1;
   reg [8:0] size_1;
   reg [19:0] freq_1;
   reg [19:0] phase_NE_1;
   reg [19:0] phase_EW_1;
   reg [19:0] phase_WN_1;
 
-  wire [31:0] save_sample_1;
+  wire [15:0] save_sample_1;
   wire [8:0] save_size_1;
   wire [19:0] save_freq_1;
   wire [15:0] save_angle_1;
@@ -200,11 +200,10 @@ doa_calc doa_calc_1 (
     .sample_W(save_sample_W_1)    
 );
 
-
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(curr_burst),          // input wire [0:0]  probe3
-		.probe1(curr_sample),         // input wire [31:0]  probe3
+		.probe1(curr_sample),         // input wire [15:0]  probe3
 		.probe2(curr_size),           // input wire [8:0]  probe3
 		.probe3(curr_freq),           // input wire [19:0]  probe3
 		.probe4(curr_phase_NE),       // input wire [19:0]  probe3
@@ -214,7 +213,7 @@ doa_calc doa_calc_1 (
 		.probe8(burst),              // input wire [1:0]  probe3
 		.probe9(save),               // input wire [1:0]  probe3
 		.probe10(comp_wr),           // input wire [0:0]  probe3
-		.probe11(sample),            // input wire [31:0]  probe3
+		.probe11(sample),            // input wire [15:0]  probe3
 		.probe12(size),              // input wire [8:0]  probe3
 		.probe13(freq),              // input wire [19:0]  probe3
 		.probe14(angle),             // input wire [15:0]  probe3

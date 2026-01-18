@@ -77,7 +77,7 @@ input wire fifo_active;
 input wire [63 : 0] fifo_re;
 input wire [63 : 0] fifo_im;
 input wire fifo_burst;
-input wire [31 : 0] fifo_sample;
+input wire [15 : 0] fifo_sample;
 input wire [8 : 0] fifo_size;
 input wire [19 : 0] fifo_freq;
 input wire [15 : 0] fifo_angle;

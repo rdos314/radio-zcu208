@@ -27,7 +27,7 @@ module comp_ana(
     input wire [63:0] fifo_im,
 
 	input wire fifo_burst,
-	input wire [31:0] fifo_sample,
+	input wire [15:0] fifo_sample,
 	input wire [8:0] fifo_size,
 	input wire [19:0] fifo_freq,
 	input wire [15:0] fifo_angle,
@@ -47,7 +47,7 @@ module comp_ana(
   reg [4:0] raw_delay;
   reg raw_run;
   
-  reg [31:0] raw_sample;
+  reg [15:0] raw_sample;
 
   wire [63:0] raw_re = raw_out_data[63:0];
   wire [63:0] raw_im = raw_out_data[127:64];
@@ -62,17 +62,17 @@ module comp_ana(
   reg [15:0] im_2;
   reg [15:0] im_3;
 
-  reg [76:0] ana_in_data;
+  reg [60:0] ana_in_data;
   reg ana_wr;
   
-  wire [76:0] ana_out_data;
+  wire [60:0] ana_out_data;
   reg ana_rd;
   wire ana_empty;
   reg ana_trig;
-  wire [31:0] curr_sample = ana_out_data[31:0];
+  wire [15:0] curr_sample = ana_out_data[15:0];
 
   reg run;
-  reg [31:0] sample;
+  reg [15:0] sample;
   reg [8:0] count;
   reg [8:0] size;
   reg [19:0] freq;
@@ -94,10 +94,10 @@ fifo_comp_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
   .wr_clk(fifo_clk),            // input wire wr_clk
   .rd_clk(clk),                 // input wire rd_clk
-  .din(ana_in_data),            // input wire [76 : 0] din
+  .din(ana_in_data),            // input wire [60 : 0] din
   .wr_en(ana_wr),               // input wire wr_en
   .rd_en(ana_rd),               // input wire rd_en
-  .dout(ana_out_data),          // output wire [76 : 0] dout
+  .dout(ana_out_data),          // output wire [60 : 0] dout
   .empty(ana_empty)             // output wire empty
 );
 
@@ -157,14 +157,14 @@ morlet_to_phase_env phase_env_i_3 (
 		.probe0(raw_rd),              // input wire [0:0]  probe3
 		.probe1(raw_empty),           // input wire [0:0]  probe3
 		.probe2(raw_delay),           // input wire [4:0]  probe3
-		.probe3(raw_sample),          // input wire [31:0]  probe3
+		.probe3(raw_sample),          // input wire [15:0]  probe3
 		.probe4(raw_run),             // input wire [0:0]  probe3
 		.probe5(ana_rd),              // input wire [0:0]  probe3
 		.probe6(ana_empty),           // input wire [0:0]  probe3
-		.probe7(curr_sample),         // input wire [31:0]  probe3
+		.probe7(curr_sample),         // input wire [15:0]  probe3
 		.probe8(ana_trig),            // input wire [0:0]  probe3
 		.probe9(run),                 // input wire [0:0]  probe3
-		.probe10(sample),             // input wire [31:0]  probe3
+		.probe10(sample),             // input wire [15:0]  probe3
 		.probe11(size),               // input wire [8:0]  probe3
 		.probe12(count),              // input wire [8:0]  probe3
 		.probe13(freq),               // input wire [19:0]  probe3
@@ -207,10 +207,10 @@ generate
     begin
 	   if (fifo_burst)
        begin
-            ana_in_data[31:0] <= fifo_sample;
-            ana_in_data[40:32] <= fifo_size;
-            ana_in_data[60:41] <= fifo_freq;
-            ana_in_data[76:61] <= fifo_angle;
+            ana_in_data[15:0] <= fifo_sample;
+            ana_in_data[24:16] <= fifo_size;
+            ana_in_data[44:25] <= fifo_freq;
+            ana_in_data[60:45] <= fifo_angle;
             ana_wr <= 1;
        end
        else
@@ -283,11 +283,11 @@ generate
         begin
             ana_rd <= 1;
             run <= 1;
-            sample <= ana_out_data[31:0];
-            size <= ana_out_data[40:32];
-            count <= ana_out_data[40:32];
-            freq <= ana_out_data[60:41];
-            angle <= ana_out_data[76:61];
+            sample <= ana_out_data[15:0];
+            size <= ana_out_data[24:16];
+            count <= ana_out_data[24:16];
+            freq <= ana_out_data[44:25];
+            angle <= ana_out_data[60:45];
         end
         else
         begin

@@ -111,7 +111,7 @@ module doa_angle(
     input wire reset,
     input wire start,
 
-    input wire [31:0] sample_in,
+    input wire [15:0] sample_in,
     input wire [8:0] size_in,
     input wire [19:0] freq_in,
 
@@ -129,7 +129,7 @@ module doa_angle(
     
     output reg done,
 
-    output reg [31:0] sample,
+    output reg [15:0] sample,
     output reg [8:0] size,
     output reg [19:0] freq,
 
@@ -188,7 +188,7 @@ module doa_angle(
   reg [15:0] delay_diff;
 
   reg cordic_start;
-  reg [31:0] sample_run;
+  reg [15:0] sample_run;
   reg [8:0] size_run;
   reg [19:0] freq_run;
   reg [15:0] angle_run;
@@ -209,7 +209,7 @@ module doa_angle(
   wire [19:0] sqrt3 = 454047;
   wire [39:0] delay_mul;
 
-  reg [31:0] sample_cordic;
+  reg [15:0] sample_cordic;
   reg [8:0] size_cordic;
   reg [19:0] freq_cordic;
   reg [15:0] angle_cordic;

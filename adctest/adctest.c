@@ -194,9 +194,9 @@ void CalcLowDist(double compass_deg, double dist[3])
     double avg;
 
     xp[0] = 0.0;
-    yp[0] = (LOW_DIST - 0.1) / sqrt(3.0);
+    yp[0] = LOW_DIST / sqrt(3.0);
     
-    xp[1] = 0.5 * (LOW_DIST - 0.1);
+    xp[1] = 0.5 * LOW_DIST;
     yp[1] = -0.5 * yp[0];
     
     xp[2] = -xp[1];

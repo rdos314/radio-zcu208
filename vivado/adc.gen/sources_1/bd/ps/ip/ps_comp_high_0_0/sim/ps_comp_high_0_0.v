@@ -86,7 +86,7 @@ module ps_comp_high_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana_fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *)
 input wire ana_fifo_clk;
 input wire ana_fifo_wr;
-input wire [31 : 0] ana_fifo_sample;
+input wire [15 : 0] ana_fifo_sample;
 input wire [8 : 0] ana_fifo_size;
 input wire [19 : 0] ana_fifo_freq;
 input wire [15 : 0] ana_fifo_angle;
@@ -113,7 +113,7 @@ output wire active;
 output wire [63 : 0] re;
 output wire [63 : 0] im;
 output wire burst;
-output wire [31 : 0] sample;
+output wire [15 : 0] sample;
 output wire [8 : 0] size;
 output wire [19 : 0] freq;
 output wire [15 : 0] angle;

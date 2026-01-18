@@ -113,7 +113,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
 output wire comp_wr;
-output wire [31 : 0] sample;
+output wire [15 : 0] sample;
 output wire [8 : 0] size;
 output wire [19 : 0] freq;
 output wire [15 : 0] angle;

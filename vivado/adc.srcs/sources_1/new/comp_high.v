@@ -23,7 +23,7 @@
 module comp_high(
 	input wire ana_fifo_clk,
 	input wire ana_fifo_wr,
-	input wire [31:0] ana_fifo_sample,
+	input wire [15:0] ana_fifo_sample,
 	input wire [8:0] ana_fifo_size,
 	input wire [19:0] ana_fifo_freq,
 	input wire [15:0] ana_fifo_angle,
@@ -45,7 +45,7 @@ module comp_high(
     output reg [63:0] im,
 
 	output reg burst,
-	output reg [31:0] sample,
+	output reg [15:0] sample,
 	output reg [8:0] size,
 	output reg [19:0] freq,
 	output reg [15:0] angle
@@ -53,7 +53,7 @@ module comp_high(
 
   reg reset_int;
 
-  reg [31:0] raw_sample;
+  reg [15:0] raw_sample;
   reg [127:0] raw_N;
   reg [127:0] raw_E;
   reg [127:0] raw_W;
@@ -68,12 +68,12 @@ module comp_high(
 
   reg [9:0] raw_delay;
     
-  reg [94:0] ana_in_data;
+  reg [78:0] ana_in_data;
   reg ana_wr;
   
-  wire [94:0] ana_out_data;
+  wire [78:0] ana_out_data;
   wire ana_empty;
-  wire [31:0] curr_sample = ana_out_data[31:0];
+  wire [15:0] curr_sample = ana_out_data[15:0];
   reg ana_trig;
   
   reg [3:0] sample_N;
@@ -135,12 +135,12 @@ module comp_high(
   wire [39:0] deci_out_2 = deci_out[119:80];
   wire [39:0] deci_out_3 = deci_out[159:120];
   
-  reg [15:0] deci_0;
-  reg [15:0] deci_1;
-  reg [15:0] deci_2;
-  reg [15:0] deci_3;
+  reg [19:0] deci_0;
+  reg [19:0] deci_1;
+  reg [19:0] deci_2;
+  reg [19:0] deci_3;
   
-  wire [63:0] fir_in = {deci_3, deci_2, deci_1, deci_0};
+  wire [63:0] fir_in = {deci_3[15:0], deci_2[15:0], deci_1[15:0], deci_0[15:0]};
   
   wire [159:0] re_data;
   wire [159:0] im_data;
@@ -155,15 +155,15 @@ module comp_high(
   wire [39:0] im_out_2 = im_data[119:80];
   wire [39:0] im_out_3 = im_data[159:120];
 
-  reg [15:0] re_0;  
-  reg [15:0] re_1;  
-  reg [15:0] re_2;  
-  reg [15:0] re_3;  
+  reg [19:0] re_0;  
+  reg [19:0] re_1;  
+  reg [19:0] re_2;  
+  reg [19:0] re_3;  
 
-  reg [15:0] im_0;  
-  reg [15:0] im_1;  
-  reg [15:0] im_2;  
-  reg [15:0] im_3;  
+  reg [19:0] im_0;  
+  reg [19:0] im_1;  
+  reg [19:0] im_2;  
+  reg [19:0] im_3;  
   
 fifo_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
@@ -235,12 +235,13 @@ fir_comp_high_im fir_im_i (
   .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
 );
 
+/*
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(raw_rd),              // input wire [0:0]  probe3
 		.probe1(raw_empty),           // input wire [0:0]  probe3
 		.probe2(raw_delay),           // input wire [9:0]  probe3
-		.probe3(raw_sample),          // input wire [31:0]  probe3
+		.probe3(raw_sample),          // input wire [15:0]  probe3
 		.probe4(select_delay),        // input wire [4:0]  probe3
 		.probe5(deci_run),            // input wire [0:0]  probe3
 		.probe6(deci_active),         // input wire [0:0]  probe3
@@ -248,16 +249,14 @@ fir_comp_high_im fir_im_i (
 		.probe8(fir_run),             // input wire [0:0]  probe3
 		.probe9(fir_re_active),       // input wire [0:0]  probe3
 		.probe10(fir_im_active),      // input wire [0:0]  probe3
-		.probe11(sample_N),           // input wire [5:0]  probe3
-		.probe12(sample_E),           // input wire [5:0]  probe3
-		.probe13(sample_W),           // input wire [5:0]  probe3
-		.probe14(active),             // input wire [0:0]  probe3
-		.probe15(ana_trig),           // input wire [0:0]  probe3
-		.probe16(deci_0),             // input wire [15:0]  probe3
-		.probe17(deci_1),             // input wire [15:0]  probe3
-		.probe18(deci_2),             // input wire [15:0]  probe3
-		.probe19(deci_3)              // input wire [15:0]  probe3
+		.probe11(active),             // input wire [0:0]  probe3
+		.probe12(ana_trig),           // input wire [0:0]  probe3
+		.probe13(deci_0),             // input wire [19:0]  probe3
+		.probe14(sample_N),           // input wire [5:0]  probe3
+		.probe15(sample_E),           // input wire [5:0]  probe3
+		.probe16(sample_W)            // input wire [5:0]  probe3
 	);
+*/
 
 generate
   begin : comp_high
@@ -279,13 +278,13 @@ generate
     begin
 	   if (ana_fifo_wr)
        begin
-            ana_in_data[31:0] <= ana_fifo_sample;
-            ana_in_data[40:32] <= ana_fifo_size;
-            ana_in_data[60:41] <= ana_fifo_freq;
-            ana_in_data[76:61] <= ana_fifo_angle;
-            ana_in_data[82:77] <= ana_fifo_sample_N;
-            ana_in_data[88:83] <= ana_fifo_sample_E;
-            ana_in_data[94:89] <= ana_fifo_sample_W;
+            ana_in_data[15:0] <= ana_fifo_sample;
+            ana_in_data[24:16] <= ana_fifo_size;
+            ana_in_data[44:25] <= ana_fifo_freq;
+            ana_in_data[60:45] <= ana_fifo_angle;
+            ana_in_data[66:61] <= ana_fifo_sample_N;
+            ana_in_data[72:67] <= ana_fifo_sample_E;
+            ana_in_data[78:73] <= ana_fifo_sample_W;
             ana_wr <= 1;
        end
        else
@@ -350,10 +349,20 @@ generate
 
     always @(posedge clk) 
 	begin
-        if (curr_sample == raw_sample)
-            ana_trig <= 1;
-        else
-            ana_trig <= 0;
+	   if (ana_empty)
+	       ana_trig <= 0;
+	   else
+	   begin
+	        if (raw_run)
+	        begin
+                if (curr_sample == raw_sample)
+                    ana_trig <= 1;
+                else
+                    ana_trig <= 0;
+            end
+            else
+                ana_trig <= 0;
+        end
     end
     
     always @(posedge clk) 
@@ -367,24 +376,19 @@ generate
         end
         else
         begin
-            if (ana_empty)
-                burst <= 0;
-            else
+            if (ana_trig)
             begin
-                if (ana_trig)
-                begin
-                    burst <= 1;
-                    sample <= ana_out_data[31:0];
-                    size <= ana_out_data[40:32];
-                    freq <= ana_out_data[60:41];
-                    angle <= ana_out_data[76:61];
-                    sample_N <= ana_out_data[82:77];
-                    sample_E <= ana_out_data[88:83];
-                    sample_W <= ana_out_data[94:89];
-                end
-                else
-                    burst <= 0;
+                burst <= 1;
+                sample <= ana_out_data[15:0];
+                size <= ana_out_data[24:16];
+                freq <= ana_out_data[44:25];
+                angle <= ana_out_data[60:45];
+                sample_N <= ana_out_data[66:61];
+                sample_E <= ana_out_data[72:67];
+                sample_W <= ana_out_data[78:73];
             end
+            else
+                burst <= 0;
         end
 	end
     
@@ -445,24 +449,24 @@ generate
     always @(posedge clk) 
 	begin
 	   if (deci_out_0[16])
-    	   deci_0 <= deci_out_0[32:17] + 1;
+    	   deci_0 <= deci_out_0[36:17] + 1;
         else
-    	   deci_0 <= deci_out_0[32:17];
+    	   deci_0 <= deci_out_0[36:17];
 
 	   if (deci_out_1[16])
-    	   deci_1 <= deci_out_1[32:17] + 1;
+    	   deci_1 <= deci_out_1[36:17] + 1;
         else
-    	   deci_1 <= deci_out_1[32:17];
+    	   deci_1 <= deci_out_1[36:17];
 
 	   if (deci_out_2[16])
-    	   deci_2 <= deci_out_2[32:17] + 1;
+    	   deci_2 <= deci_out_2[36:17] + 1;
         else
-    	   deci_2 <= deci_out_2[32:17];
+    	   deci_2 <= deci_out_2[36:17];
 
 	   if (deci_out_3[16])
-    	   deci_3 <= deci_out_3[32:17] + 1;
+    	   deci_3 <= deci_out_3[36:17] + 1;
         else
-    	   deci_3 <= deci_out_3[32:17];
+    	   deci_3 <= deci_out_3[36:17];
 	end
 
     always @(posedge clk) 
@@ -473,47 +477,47 @@ generate
     always @(posedge clk) 
 	begin
 	    if (re_out_0[17])
-            re_0 <= re_out_0[33:18] + 1;
+            re_0 <= re_out_0[37:18] + 1;
         else
-            re_0 <= re_out_0[33:18];
+            re_0 <= re_out_0[37:18];
 
 	    if (re_out_1[17])
-            re_1 <= re_out_1[33:18] + 1;
+            re_1 <= re_out_1[37:18] + 1;
         else
-            re_1 <= re_out_1[33:18];
+            re_1 <= re_out_1[37:18];
 
 	    if (re_out_2[17])
-            re_2 <= re_out_2[33:18] + 1;
+            re_2 <= re_out_2[37:18] + 1;
         else
-            re_2 <= re_out_2[33:18];
+            re_2 <= re_out_2[37:18];
 
 	    if (re_out_3[17])
-            re_3 <= re_out_3[33:18] + 1;
+            re_3 <= re_out_3[37:18] + 1;
         else
-            re_3 <= re_out_3[33:18];
+            re_3 <= re_out_3[37:18];
     end
 
     always @(posedge clk) 
 	begin
 	    if (im_out_0[17])
-            im_0 <= im_out_0[33:18] + 1;
+            im_0 <= im_out_0[37:18] + 1;
         else
-            im_0 <= im_out_0[33:18];
+            im_0 <= im_out_0[37:18];
 
 	    if (im_out_1[17])
-            im_1 <= im_out_1[33:18] + 1;
+            im_1 <= im_out_1[37:18] + 1;
         else
-            im_1 <= im_out_1[33:18];
+            im_1 <= im_out_1[37:18];
 
 	    if (im_out_2[17])
-            im_2 <= im_out_2[33:18] + 1;
+            im_2 <= im_out_2[37:18] + 1;
         else
-            im_2 <= im_out_2[33:18];
+            im_2 <= im_out_2[37:18];
 
 	    if (im_out_3[17])
-            im_3 <= im_out_3[33:18] + 1;
+            im_3 <= im_out_3[37:18] + 1;
         else
-            im_3 <= im_out_3[33:18];
+            im_3 <= im_out_3[37:18];
     end
 
     always @(posedge clk) 
@@ -525,10 +529,10 @@ generate
 	begin
 	    if (fir_re_active)
 	    begin
-	       re[15:0] <= re_0;
-	       re[31:16] <= re_1;
-	       re[47:32] <= re_2;
-	       re[63:48] <= re_3;
+	       re[15:0] <= re_0[15:0];
+	       re[31:16] <= re_1[15:0];
+	       re[47:32] <= re_2[15:0];
+	       re[63:48] <= re_3[15:0];
 	    end
     end
 
@@ -536,10 +540,10 @@ generate
 	begin
 	    if (fir_re_active)
 	    begin
-	       im[15:0] <= im_0;
-	       im[31:16] <= im_1;
-	       im[47:32] <= im_2;
-	       im[63:48] <= im_3;
+	       im[15:0] <= im_0[15:0];
+	       im[31:16] <= im_1[15:0];
+	       im[47:32] <= im_2[15:0];
+	       im[63:48] <= im_3[15:0];
 	    end
     end
 

@@ -29,7 +29,7 @@ module doa_calc(
     input wire [31:0] config_data,
 
     input wire start,
-    input wire [31:0] sample_in,
+    input wire [15:0] sample_in,
     input wire [8:0] size_in,
     input wire [19:0] freq_in,
 
@@ -41,7 +41,7 @@ module doa_calc(
     output reg pair_error,
     output reg phase_error,
 
-    output reg [31:0] sample,
+    output reg [15:0] sample,
     output reg [8:0] size,
     output reg [19:0] freq,
     output reg [15:0] angle,
@@ -66,7 +66,7 @@ module doa_calc(
   wire [19:0] k = k_out[43:24];
 
   reg start_div;
-  reg [31:0] sample_div;
+  reg [15:0] sample_div;
   reg [8:0] size_div;
   reg [19:0] freq_div;
 
@@ -75,7 +75,7 @@ module doa_calc(
   reg [19:0] phase_WN_div;
 
   reg start_pair;
-  reg [31:0] sample_pair;
+  reg [15:0] sample_pair;
   reg [8:0] size_pair;
   reg [19:0] freq_pair;
 
@@ -95,7 +95,7 @@ module doa_calc(
   wire shadow_EW;
   wire shadow_WN;
 
-  wire [31:0] sample_doa;
+  wire [15:0] sample_doa;
   wire [8:0] size_doa;
   wire [19:0] freq_doa;
 
@@ -146,7 +146,7 @@ module doa_calc(
   reg [19:0] diff_EW;
   reg [19:0] diff_WN;
 
-  reg [31:0] sample_val;
+  reg [15:0] sample_val;
   reg [8:0] size_val;
   reg [19:0] freq_val;
 
@@ -335,6 +335,23 @@ mult_20x20 mul_pm_i
   .B(antenna_pm),             // input wire [19 : 0] B
   .P(err_pm)                  // output wire [39 : 0] P
 );
+
+/*
+	ila_2 ila_i (
+		.clk(clk),                    // input wire clk
+		.probe0(done),                // input wire [0:0]  probe3
+		.probe1(angle),               // input wire [15:0]  probe3
+		.probe2(sample_N),            // input wire [5:0]  probe3
+		.probe3(sample_E),            // input wire [5:0]  probe3
+		.probe4(sample_W),            // input wire [5:0]  probe3
+		.probe5(dist_N),              // input wire [15:0]  probe3
+		.probe6(dist_E),              // input wire [15:0]  probe3
+		.probe7(dist_W),              // input wire [15:0]  probe3
+		.probe8(delay_NE),            // input wire [15:0]  probe3
+		.probe9(delay_EW),            // input wire [15:0]  probe3
+		.probe10(delay_WN)            // input wire [15:0]  probe3
+);
+*/
 
 generate
   begin : doa_calc

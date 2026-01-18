@@ -168,7 +168,7 @@ module det_signal(
     input wire active,
     input wire [143:0] data,
     
-    output reg [31:0] signal_sample,
+    output reg [15:0] signal_sample,
     output reg [8:0] signal_size,
     output reg [19:0] signal_freq,
     output reg [19:0] signal_phase_NE,
@@ -278,8 +278,8 @@ module det_signal(
   wire [79:0] div_phase_WN;
   wire [19:0] phase_WN = div_phase_WN[51:32];
 
-  reg [31:0] sample_counter;
-  reg [31:0] start_sample;
+  reg [15:0] sample_counter;
+  reg [15:0] start_sample;
   reg [8:0] sample_count;
   reg sample_count_ok;
   

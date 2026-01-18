@@ -38,7 +38,7 @@
       "ports": {
         "ana_fifo_clk": [ { "direction": "in" } ],
         "ana_fifo_wr": [ { "direction": "in" } ],
-        "ana_fifo_sample": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "ana_fifo_sample": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "ana_fifo_size": [ { "direction": "in", "size_left": "8", "size_right": "0" } ],
         "ana_fifo_freq": [ { "direction": "in", "size_left": "19", "size_right": "0" } ],
         "ana_fifo_angle": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
@@ -56,7 +56,7 @@
         "re": [ { "direction": "out", "size_left": "63", "size_right": "0" } ],
         "im": [ { "direction": "out", "size_left": "63", "size_right": "0" } ],
         "burst": [ { "direction": "out" } ],
-        "sample": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],
+        "sample": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
         "size": [ { "direction": "out", "size_left": "8", "size_right": "0" } ],
         "freq": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
         "angle": [ { "direction": "out", "size_left": "15", "size_right": "0" } ]

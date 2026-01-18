@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Jan 15 19:04:31 2026
+-- Date        : Fri Jan 16 21:56:48 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_stub.vhdl
@@ -20,7 +20,7 @@ entity ps_comp_ana_0_1 is
     fifo_re : in STD_LOGIC_VECTOR ( 63 downto 0 );
     fifo_im : in STD_LOGIC_VECTOR ( 63 downto 0 );
     fifo_burst : in STD_LOGIC;
-    fifo_sample : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    fifo_sample : in STD_LOGIC_VECTOR ( 15 downto 0 );
     fifo_size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     fifo_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -42,7 +42,7 @@ architecture stub of ps_comp_ana_0_1 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "fifo_clk,fifo_active,fifo_re[63:0],fifo_im[63:0],fifo_burst,fifo_sample[31:0],fifo_size[8:0],fifo_freq[19:0],fifo_angle[15:0],clk,reset";
+  attribute black_box_pad_pin of stub : architecture is "fifo_clk,fifo_active,fifo_re[63:0],fifo_im[63:0],fifo_burst,fifo_sample[15:0],fifo_size[8:0],fifo_freq[19:0],fifo_angle[15:0],clk,reset";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

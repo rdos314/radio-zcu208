@@ -56,10 +56,10 @@ COMPONENT fifo_comp_ana
     rst : IN STD_LOGIC;
     wr_clk : IN STD_LOGIC;
     rd_clk : IN STD_LOGIC;
-    din : IN STD_LOGIC_VECTOR(76 DOWNTO 0);
+    din : IN STD_LOGIC_VECTOR(60 DOWNTO 0);
     wr_en : IN STD_LOGIC;
     rd_en : IN STD_LOGIC;
-    dout : OUT STD_LOGIC_VECTOR(76 DOWNTO 0);
+    dout : OUT STD_LOGIC_VECTOR(60 DOWNTO 0);
     full : OUT STD_LOGIC;
     empty : OUT STD_LOGIC;
     wr_rst_busy : OUT STD_LOGIC;

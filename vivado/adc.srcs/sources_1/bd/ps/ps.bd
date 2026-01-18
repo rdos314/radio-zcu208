@@ -3006,7 +3006,7 @@
           },
           "sample": {
             "direction": "O",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "size": {
@@ -3174,7 +3174,7 @@
           },
           "sample": {
             "direction": "O",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "size": {
@@ -3245,7 +3245,7 @@
           },
           "ana_fifo_sample": {
             "direction": "I",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "ana_fifo_size": {
@@ -3354,7 +3354,7 @@
           },
           "sample": {
             "direction": "O",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "size": {
@@ -3410,7 +3410,7 @@
           },
           "ana_fifo_sample": {
             "direction": "I",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "ana_fifo_size": {
@@ -3519,7 +3519,7 @@
           },
           "sample": {
             "direction": "O",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "size": {
@@ -3588,7 +3588,7 @@
           },
           "fifo_sample": {
             "direction": "I",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "fifo_size": {
@@ -3679,7 +3679,7 @@
           },
           "fifo_sample": {
             "direction": "I",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "fifo_size": {
@@ -3854,15 +3854,15 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "ana_low/config_adr",
-          "ana_high/config_adr"
+          "ana_high/config_adr",
+          "ana_low/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "ana_low/config_data",
-          "ana_high/config_data"
+          "ana_high/config_data",
+          "ana_low/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -4386,8 +4386,8 @@
       "mts_0_ana0_clk": {
         "ports": [
           "mts_0/ana0_clk",
-          "ana_low/clk",
-          "comp_low/ana_fifo_clk"
+          "comp_low/ana_fifo_clk",
+          "ana_low/clk"
         ]
       },
       "mts_0_ana0_reset": {
@@ -4399,8 +4399,8 @@
       "mts_0_ana1_clk": {
         "ports": [
           "mts_0/ana1_clk",
-          "ana_high/clk",
-          "comp_high/ana_fifo_clk"
+          "comp_high/ana_fifo_clk",
+          "ana_high/clk"
         ]
       },
       "mts_0_ana1_reset": {
@@ -4477,8 +4477,8 @@
           "deci_high/clk",
           "freq_low_46_0/fifo_clk",
           "freq_high_189_0/fifo_clk",
-          "comp_low/raw_fifo_clk",
-          "comp_high/raw_fifo_clk"
+          "comp_high/raw_fifo_clk",
+          "comp_low/raw_fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -4686,9 +4686,9 @@
           "adc_control_0/clk",
           "deci_low/sim_clk",
           "deci_high/sim_clk",
-          "ana_low/config_clk",
+          "mts_0/axi_clk",
           "ana_high/config_clk",
-          "mts_0/axi_clk"
+          "ana_low/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

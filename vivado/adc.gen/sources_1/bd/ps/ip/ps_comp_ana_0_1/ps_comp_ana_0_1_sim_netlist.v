@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Jan 15 19:04:31 2026
+// Date        : Fri Jan 16 21:56:48 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.v
@@ -85,7 +85,7 @@ module ps_comp_ana_0_1
   input [63:0]fifo_re;
   input [63:0]fifo_im;
   input fifo_burst;
-  input [31:0]fifo_sample;
+  input [15:0]fifo_sample;
   input [8:0]fifo_size;
   input [19:0]fifo_freq;
   input [15:0]fifo_angle;
@@ -100,7 +100,7 @@ module ps_comp_ana_0_1
   wire [19:0]fifo_freq;
   wire [63:0]fifo_im;
   wire [63:0]fifo_re;
-  wire [31:0]fifo_sample;
+  wire [15:0]fifo_sample;
   wire [8:0]fifo_size;
   wire reset;
 
@@ -136,7 +136,7 @@ module ps_comp_ana_0_1_comp_ana
   input [63:0]fifo_re;
   input [63:0]fifo_im;
   input fifo_burst;
-  input [31:0]fifo_sample;
+  input [15:0]fifo_sample;
   input [8:0]fifo_size;
   input [19:0]fifo_freq;
   input [15:0]fifo_angle;
@@ -144,26 +144,20 @@ module ps_comp_ana_0_1_comp_ana
   input reset;
 
   (* MARK_DEBUG *) wire ana_empty;
-  wire [76:0]ana_in_data;
-  wire [76:32]ana_out_data;
+  wire [60:0]ana_in_data;
+  wire [60:16]ana_out_data;
   (* MARK_DEBUG *) wire ana_rd;
   (* MARK_DEBUG *) wire ana_trig;
   wire ana_wr;
   (* MARK_DEBUG *) wire [15:0]angle;
   wire clk;
   wire \comp_ana.ana_rd_reg0 ;
-  wire \comp_ana.ana_trig_i_10_n_0 ;
-  wire \comp_ana.ana_trig_i_11_n_0 ;
-  wire \comp_ana.ana_trig_i_12_n_0 ;
-  wire \comp_ana.ana_trig_i_13_n_0 ;
   wire \comp_ana.ana_trig_i_2_n_0 ;
   wire \comp_ana.ana_trig_i_3_n_0 ;
   wire \comp_ana.ana_trig_i_4_n_0 ;
   wire \comp_ana.ana_trig_i_5_n_0 ;
   wire \comp_ana.ana_trig_i_6_n_0 ;
   wire \comp_ana.ana_trig_i_7_n_0 ;
-  wire \comp_ana.ana_trig_i_8_n_0 ;
-  wire \comp_ana.ana_trig_i_9_n_0 ;
   wire \comp_ana.count[0]_i_1_n_0 ;
   wire \comp_ana.count[1]_i_1_n_0 ;
   wire \comp_ana.count[2]_i_1_n_0 ;
@@ -187,53 +181,21 @@ module ps_comp_ana_0_1_comp_ana
   wire \comp_ana.raw_rd_i_1_n_0 ;
   wire \comp_ana.raw_run_reg0 ;
   wire \comp_ana.raw_sample[7]_i_2_n_0 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_0 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_1 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_10 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_11 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_12 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_13 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_14 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_15 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_2 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_3 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_4 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_5 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_6 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_7 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_8 ;
-  wire \comp_ana.raw_sample_reg[15]_i_1_n_9 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_0 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_1 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_10 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_11 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_12 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_13 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_14 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_15 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_2 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_3 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_4 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_5 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_6 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_7 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_8 ;
-  wire \comp_ana.raw_sample_reg[23]_i_1_n_9 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_1 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_10 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_11 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_12 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_13 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_14 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_15 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_2 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_3 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_4 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_5 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_6 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_7 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_8 ;
-  wire \comp_ana.raw_sample_reg[31]_i_2_n_9 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_1 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_10 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_11 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_12 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_13 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_14 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_15 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_2 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_3 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_4 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_5 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_6 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_7 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_8 ;
+  wire \comp_ana.raw_sample_reg[15]_i_2_n_9 ;
   wire \comp_ana.raw_sample_reg[7]_i_1_n_0 ;
   wire \comp_ana.raw_sample_reg[7]_i_1_n_1 ;
   wire \comp_ana.raw_sample_reg[7]_i_1_n_10 ;
@@ -252,7 +214,7 @@ module ps_comp_ana_0_1_comp_ana
   wire \comp_ana.raw_sample_reg[7]_i_1_n_9 ;
   wire \comp_ana.run_i_1_n_0 ;
   (* MARK_DEBUG *) wire [8:0]count;
-  (* MARK_DEBUG *) wire [31:0]curr_sample;
+  (* MARK_DEBUG *) wire [15:0]curr_sample;
   (* MARK_DEBUG *) wire [15:0]env_0;
   (* MARK_DEBUG *) wire [15:0]env_1;
   (* MARK_DEBUG *) wire [15:0]env_2;
@@ -264,7 +226,7 @@ module ps_comp_ana_0_1_comp_ana
   wire [19:0]fifo_freq;
   wire [63:0]fifo_im;
   wire [63:0]fifo_re;
-  wire [31:0]fifo_sample;
+  wire [15:0]fifo_sample;
   wire [8:0]fifo_size;
   (* MARK_DEBUG *) wire [19:0]freq;
   (* MARK_DEBUG *) wire [15:0]im_0;
@@ -282,7 +244,7 @@ module ps_comp_ana_0_1_comp_ana
   wire [127:0]raw_out_data;
   (* MARK_DEBUG *) wire raw_rd;
   (* MARK_DEBUG *) wire raw_run;
-  (* MARK_DEBUG *) wire [31:0]raw_sample;
+  (* MARK_DEBUG *) wire [15:0]raw_sample;
   wire [0:0]raw_sample__0;
   wire raw_wr;
   (* MARK_DEBUG *) wire [15:0]re_0;
@@ -291,10 +253,10 @@ module ps_comp_ana_0_1_comp_ana
   (* MARK_DEBUG *) wire [15:0]re_3;
   wire reset;
   (* MARK_DEBUG *) wire run;
-  (* MARK_DEBUG *) wire [31:0]sample;
+  (* MARK_DEBUG *) wire [15:0]sample;
   (* MARK_DEBUG *) wire [8:0]size;
   (* MARK_DEBUG *) wire [3:0]valid;
-  wire [7:7]\NLW_comp_ana.raw_sample_reg[31]_i_2_CO_UNCONNECTED ;
+  wire [7:7]\NLW_comp_ana.raw_sample_reg[15]_i_2_CO_UNCONNECTED ;
   wire NLW_fifo_ana_i_full_UNCONNECTED;
   wire NLW_fifo_ana_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_ana_i_wr_rst_busy_UNCONNECTED;
@@ -347,25 +309,25 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.ana_in_data_reg[16] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[16]),
+        .D(fifo_size[0]),
         .Q(ana_in_data[16]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[17] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[17]),
+        .D(fifo_size[1]),
         .Q(ana_in_data[17]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[18] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[18]),
+        .D(fifo_size[2]),
         .Q(ana_in_data[18]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[19] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[19]),
+        .D(fifo_size[3]),
         .Q(ana_in_data[19]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[1] 
@@ -377,61 +339,61 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.ana_in_data_reg[20] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[20]),
+        .D(fifo_size[4]),
         .Q(ana_in_data[20]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[21] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[21]),
+        .D(fifo_size[5]),
         .Q(ana_in_data[21]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[22] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[22]),
+        .D(fifo_size[6]),
         .Q(ana_in_data[22]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[23] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[23]),
+        .D(fifo_size[7]),
         .Q(ana_in_data[23]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[24] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[24]),
+        .D(fifo_size[8]),
         .Q(ana_in_data[24]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[25] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[25]),
+        .D(fifo_freq[0]),
         .Q(ana_in_data[25]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[26] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[26]),
+        .D(fifo_freq[1]),
         .Q(ana_in_data[26]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[27] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[27]),
+        .D(fifo_freq[2]),
         .Q(ana_in_data[27]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[28] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[28]),
+        .D(fifo_freq[3]),
         .Q(ana_in_data[28]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[29] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[29]),
+        .D(fifo_freq[4]),
         .Q(ana_in_data[29]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[2] 
@@ -443,61 +405,61 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.ana_in_data_reg[30] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[30]),
+        .D(fifo_freq[5]),
         .Q(ana_in_data[30]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[31] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_sample[31]),
+        .D(fifo_freq[6]),
         .Q(ana_in_data[31]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[32] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[0]),
+        .D(fifo_freq[7]),
         .Q(ana_in_data[32]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[33] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[1]),
+        .D(fifo_freq[8]),
         .Q(ana_in_data[33]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[34] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[2]),
+        .D(fifo_freq[9]),
         .Q(ana_in_data[34]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[35] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[3]),
+        .D(fifo_freq[10]),
         .Q(ana_in_data[35]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[36] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[4]),
+        .D(fifo_freq[11]),
         .Q(ana_in_data[36]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[37] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[5]),
+        .D(fifo_freq[12]),
         .Q(ana_in_data[37]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[38] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[6]),
+        .D(fifo_freq[13]),
         .Q(ana_in_data[38]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[39] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[7]),
+        .D(fifo_freq[14]),
         .Q(ana_in_data[39]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[3] 
@@ -509,61 +471,61 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.ana_in_data_reg[40] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_size[8]),
+        .D(fifo_freq[15]),
         .Q(ana_in_data[40]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[41] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[0]),
+        .D(fifo_freq[16]),
         .Q(ana_in_data[41]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[42] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[1]),
+        .D(fifo_freq[17]),
         .Q(ana_in_data[42]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[43] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[2]),
+        .D(fifo_freq[18]),
         .Q(ana_in_data[43]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[44] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[3]),
+        .D(fifo_freq[19]),
         .Q(ana_in_data[44]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[45] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[4]),
+        .D(fifo_angle[0]),
         .Q(ana_in_data[45]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[46] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[5]),
+        .D(fifo_angle[1]),
         .Q(ana_in_data[46]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[47] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[6]),
+        .D(fifo_angle[2]),
         .Q(ana_in_data[47]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[48] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[7]),
+        .D(fifo_angle[3]),
         .Q(ana_in_data[48]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[49] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[8]),
+        .D(fifo_angle[4]),
         .Q(ana_in_data[49]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[4] 
@@ -575,61 +537,61 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.ana_in_data_reg[50] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[9]),
+        .D(fifo_angle[5]),
         .Q(ana_in_data[50]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[51] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[10]),
+        .D(fifo_angle[6]),
         .Q(ana_in_data[51]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[52] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[11]),
+        .D(fifo_angle[7]),
         .Q(ana_in_data[52]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[53] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[12]),
+        .D(fifo_angle[8]),
         .Q(ana_in_data[53]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[54] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[13]),
+        .D(fifo_angle[9]),
         .Q(ana_in_data[54]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[55] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[14]),
+        .D(fifo_angle[10]),
         .Q(ana_in_data[55]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[56] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[15]),
+        .D(fifo_angle[11]),
         .Q(ana_in_data[56]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[57] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[16]),
+        .D(fifo_angle[12]),
         .Q(ana_in_data[57]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[58] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[17]),
+        .D(fifo_angle[13]),
         .Q(ana_in_data[58]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[59] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[18]),
+        .D(fifo_angle[14]),
         .Q(ana_in_data[59]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[5] 
@@ -641,110 +603,14 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.ana_in_data_reg[60] 
        (.C(fifo_clk),
         .CE(fifo_burst),
-        .D(fifo_freq[19]),
+        .D(fifo_angle[15]),
         .Q(ana_in_data[60]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[61] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[0]),
-        .Q(ana_in_data[61]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[62] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[1]),
-        .Q(ana_in_data[62]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[63] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[2]),
-        .Q(ana_in_data[63]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[64] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[3]),
-        .Q(ana_in_data[64]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[65] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[4]),
-        .Q(ana_in_data[65]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[66] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[5]),
-        .Q(ana_in_data[66]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[67] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[6]),
-        .Q(ana_in_data[67]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[68] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[7]),
-        .Q(ana_in_data[68]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[69] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[8]),
-        .Q(ana_in_data[69]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[6] 
        (.C(fifo_clk),
         .CE(fifo_burst),
         .D(fifo_sample[6]),
         .Q(ana_in_data[6]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[70] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[9]),
-        .Q(ana_in_data[70]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[71] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[10]),
-        .Q(ana_in_data[71]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[72] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[11]),
-        .Q(ana_in_data[72]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[73] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[12]),
-        .Q(ana_in_data[73]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[74] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[13]),
-        .Q(ana_in_data[74]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[75] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[14]),
-        .Q(ana_in_data[75]),
-        .R(1'b0));
-  FDRE \comp_ana.ana_in_data_reg[76] 
-       (.C(fifo_clk),
-        .CE(fifo_burst),
-        .D(fifo_angle[15]),
-        .Q(ana_in_data[76]),
         .R(1'b0));
   FDRE \comp_ana.ana_in_data_reg[7] 
        (.C(fifo_clk),
@@ -777,134 +643,72 @@ module ps_comp_ana_0_1_comp_ana
         .D(\comp_ana.ana_rd_reg0 ),
         .Q(ana_rd),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h8000)) 
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
     \comp_ana.ana_trig_i_1 
        (.I0(\comp_ana.ana_trig_i_2_n_0 ),
         .I1(\comp_ana.ana_trig_i_3_n_0 ),
         .I2(\comp_ana.ana_trig_i_4_n_0 ),
         .I3(\comp_ana.ana_trig_i_5_n_0 ),
+        .I4(\comp_ana.ana_trig_i_6_n_0 ),
+        .I5(\comp_ana.ana_trig_i_7_n_0 ),
         .O(p_0_in__0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_10 
+    \comp_ana.ana_trig_i_2 
        (.I0(curr_sample[12]),
         .I1(raw_sample[12]),
         .I2(raw_sample[14]),
         .I3(curr_sample[14]),
         .I4(raw_sample[13]),
         .I5(curr_sample[13]),
-        .O(\comp_ana.ana_trig_i_10_n_0 ));
+        .O(\comp_ana.ana_trig_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_11 
-       (.I0(curr_sample[15]),
-        .I1(raw_sample[15]),
-        .I2(raw_sample[17]),
-        .I3(curr_sample[17]),
-        .I4(raw_sample[16]),
-        .I5(curr_sample[16]),
-        .O(\comp_ana.ana_trig_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_12 
+    \comp_ana.ana_trig_i_3 
        (.I0(curr_sample[3]),
         .I1(raw_sample[3]),
         .I2(raw_sample[5]),
         .I3(curr_sample[5]),
         .I4(raw_sample[4]),
         .I5(curr_sample[4]),
-        .O(\comp_ana.ana_trig_i_12_n_0 ));
+        .O(\comp_ana.ana_trig_i_3_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_13 
+    \comp_ana.ana_trig_i_4 
        (.I0(curr_sample[0]),
         .I1(raw_sample[0]),
         .I2(raw_sample[2]),
         .I3(curr_sample[2]),
         .I4(raw_sample[1]),
         .I5(curr_sample[1]),
-        .O(\comp_ana.ana_trig_i_13_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_2 
-       (.I0(curr_sample[27]),
-        .I1(raw_sample[27]),
-        .I2(raw_sample[29]),
-        .I3(curr_sample[29]),
-        .I4(raw_sample[28]),
-        .I5(curr_sample[28]),
-        .O(\comp_ana.ana_trig_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_3 
-       (.I0(curr_sample[24]),
-        .I1(raw_sample[24]),
-        .I2(raw_sample[26]),
-        .I3(curr_sample[26]),
-        .I4(raw_sample[25]),
-        .I5(curr_sample[25]),
-        .O(\comp_ana.ana_trig_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \comp_ana.ana_trig_i_4 
-       (.I0(\comp_ana.ana_trig_i_6_n_0 ),
-        .I1(\comp_ana.ana_trig_i_7_n_0 ),
-        .I2(\comp_ana.ana_trig_i_8_n_0 ),
-        .I3(\comp_ana.ana_trig_i_9_n_0 ),
-        .I4(\comp_ana.ana_trig_i_10_n_0 ),
-        .I5(\comp_ana.ana_trig_i_11_n_0 ),
         .O(\comp_ana.ana_trig_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h9009000000000000)) 
-    \comp_ana.ana_trig_i_5 
-       (.I0(raw_sample[31]),
-        .I1(curr_sample[31]),
-        .I2(raw_sample[30]),
-        .I3(curr_sample[30]),
-        .I4(\comp_ana.ana_trig_i_12_n_0 ),
-        .I5(\comp_ana.ana_trig_i_13_n_0 ),
-        .O(\comp_ana.ana_trig_i_5_n_0 ));
-  LUT6 #(
     .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_6 
+    \comp_ana.ana_trig_i_5 
        (.I0(curr_sample[9]),
         .I1(raw_sample[9]),
         .I2(raw_sample[11]),
         .I3(curr_sample[11]),
         .I4(raw_sample[10]),
         .I5(curr_sample[10]),
-        .O(\comp_ana.ana_trig_i_6_n_0 ));
+        .O(\comp_ana.ana_trig_i_5_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_7 
+    \comp_ana.ana_trig_i_6 
        (.I0(curr_sample[6]),
         .I1(raw_sample[6]),
         .I2(raw_sample[8]),
         .I3(curr_sample[8]),
         .I4(raw_sample[7]),
         .I5(curr_sample[7]),
+        .O(\comp_ana.ana_trig_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \comp_ana.ana_trig_i_7 
+       (.I0(raw_sample[15]),
+        .I1(curr_sample[15]),
         .O(\comp_ana.ana_trig_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_8 
-       (.I0(curr_sample[18]),
-        .I1(raw_sample[18]),
-        .I2(raw_sample[20]),
-        .I3(curr_sample[20]),
-        .I4(raw_sample[19]),
-        .I5(curr_sample[19]),
-        .O(\comp_ana.ana_trig_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \comp_ana.ana_trig_i_9 
-       (.I0(curr_sample[21]),
-        .I1(raw_sample[21]),
-        .I2(raw_sample[23]),
-        .I3(curr_sample[23]),
-        .I4(raw_sample[22]),
-        .I5(curr_sample[22]),
-        .O(\comp_ana.ana_trig_i_9_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.ana_trig_reg 
        (.C(clk),
@@ -923,7 +727,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[0] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[61]),
+        .D(ana_out_data[45]),
         .Q(angle[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -931,7 +735,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[10] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[71]),
+        .D(ana_out_data[55]),
         .Q(angle[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -939,7 +743,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[11] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[72]),
+        .D(ana_out_data[56]),
         .Q(angle[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -947,7 +751,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[12] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[73]),
+        .D(ana_out_data[57]),
         .Q(angle[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -955,7 +759,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[13] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[74]),
+        .D(ana_out_data[58]),
         .Q(angle[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -963,7 +767,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[14] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[75]),
+        .D(ana_out_data[59]),
         .Q(angle[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -971,7 +775,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[15] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[76]),
+        .D(ana_out_data[60]),
         .Q(angle[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -979,7 +783,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[1] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[62]),
+        .D(ana_out_data[46]),
         .Q(angle[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -987,7 +791,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[2] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[63]),
+        .D(ana_out_data[47]),
         .Q(angle[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -995,7 +799,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[3] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[64]),
+        .D(ana_out_data[48]),
         .Q(angle[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1003,7 +807,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[4] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[65]),
+        .D(ana_out_data[49]),
         .Q(angle[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1011,7 +815,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[5] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[66]),
+        .D(ana_out_data[50]),
         .Q(angle[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1019,7 +823,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[6] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[67]),
+        .D(ana_out_data[51]),
         .Q(angle[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1027,7 +831,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[7] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[68]),
+        .D(ana_out_data[52]),
         .Q(angle[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1035,7 +839,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[8] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[69]),
+        .D(ana_out_data[53]),
         .Q(angle[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1043,7 +847,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.angle_reg[9] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[70]),
+        .D(ana_out_data[54]),
         .Q(angle[9]),
         .R(1'b0));
   LUT4 #(
@@ -1052,12 +856,12 @@ module ps_comp_ana_0_1_comp_ana
        (.I0(count[0]),
         .I1(ana_empty),
         .I2(ana_trig),
-        .I3(ana_out_data[32]),
+        .I3(ana_out_data[16]),
         .O(\comp_ana.count[0]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hEF2020EF)) 
     \comp_ana.count[1]_i_1 
-       (.I0(ana_out_data[33]),
+       (.I0(ana_out_data[17]),
         .I1(ana_empty),
         .I2(ana_trig),
         .I3(count[0]),
@@ -1066,7 +870,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hEFEFEF20202020EF)) 
     \comp_ana.count[2]_i_1 
-       (.I0(ana_out_data[34]),
+       (.I0(ana_out_data[18]),
         .I1(ana_empty),
         .I2(ana_trig),
         .I3(count[1]),
@@ -1076,7 +880,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hFFFC0003AAAAAAAA)) 
     \comp_ana.count[3]_i_1 
-       (.I0(ana_out_data[35]),
+       (.I0(ana_out_data[19]),
         .I1(count[2]),
         .I2(count[0]),
         .I3(count[1]),
@@ -1086,7 +890,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT5 #(
     .INIT(32'hC3AAC3C3)) 
     \comp_ana.count[4]_i_1 
-       (.I0(ana_out_data[36]),
+       (.I0(ana_out_data[20]),
         .I1(\comp_ana.count[4]_i_2_n_0 ),
         .I2(count[4]),
         .I3(ana_empty),
@@ -1103,7 +907,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT5 #(
     .INIT(32'hC3AAC3C3)) 
     \comp_ana.count[5]_i_1 
-       (.I0(ana_out_data[37]),
+       (.I0(ana_out_data[21]),
         .I1(\comp_ana.count[5]_i_2_n_0 ),
         .I2(count[5]),
         .I3(ana_empty),
@@ -1121,7 +925,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT5 #(
     .INIT(32'hC3AAC3C3)) 
     \comp_ana.count[6]_i_1 
-       (.I0(ana_out_data[38]),
+       (.I0(ana_out_data[22]),
         .I1(\comp_ana.count[8]_i_3_n_0 ),
         .I2(count[6]),
         .I3(ana_empty),
@@ -1130,7 +934,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hFC03AAAAFC03FC03)) 
     \comp_ana.count[7]_i_1 
-       (.I0(ana_out_data[39]),
+       (.I0(ana_out_data[23]),
         .I1(count[6]),
         .I2(\comp_ana.count[8]_i_3_n_0 ),
         .I3(count[7]),
@@ -1150,7 +954,7 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hFFFC0003AAAAAAAA)) 
     \comp_ana.count[8]_i_2 
-       (.I0(ana_out_data[40]),
+       (.I0(ana_out_data[24]),
         .I1(count[7]),
         .I2(\comp_ana.count[8]_i_3_n_0 ),
         .I3(count[6]),
@@ -1250,7 +1054,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[0] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[41]),
+        .D(ana_out_data[25]),
         .Q(freq[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1258,7 +1062,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[10] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[51]),
+        .D(ana_out_data[35]),
         .Q(freq[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1266,7 +1070,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[11] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[52]),
+        .D(ana_out_data[36]),
         .Q(freq[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1274,7 +1078,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[12] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[53]),
+        .D(ana_out_data[37]),
         .Q(freq[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1282,7 +1086,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[13] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[54]),
+        .D(ana_out_data[38]),
         .Q(freq[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1290,7 +1094,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[14] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[55]),
+        .D(ana_out_data[39]),
         .Q(freq[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1298,7 +1102,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[15] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[56]),
+        .D(ana_out_data[40]),
         .Q(freq[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1306,7 +1110,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[16] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[57]),
+        .D(ana_out_data[41]),
         .Q(freq[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1314,7 +1118,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[17] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[58]),
+        .D(ana_out_data[42]),
         .Q(freq[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1322,7 +1126,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[18] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[59]),
+        .D(ana_out_data[43]),
         .Q(freq[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1330,7 +1134,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[19] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[60]),
+        .D(ana_out_data[44]),
         .Q(freq[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1338,7 +1142,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[1] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[42]),
+        .D(ana_out_data[26]),
         .Q(freq[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1346,7 +1150,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[2] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[43]),
+        .D(ana_out_data[27]),
         .Q(freq[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1354,7 +1158,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[3] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[44]),
+        .D(ana_out_data[28]),
         .Q(freq[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1362,7 +1166,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[4] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[45]),
+        .D(ana_out_data[29]),
         .Q(freq[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1370,7 +1174,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[5] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[46]),
+        .D(ana_out_data[30]),
         .Q(freq[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1378,7 +1182,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[6] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[47]),
+        .D(ana_out_data[31]),
         .Q(freq[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1386,7 +1190,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[7] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[48]),
+        .D(ana_out_data[32]),
         .Q(freq[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1394,7 +1198,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[8] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[49]),
+        .D(ana_out_data[33]),
         .Q(freq[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -1402,7 +1206,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.freq_reg[9] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[50]),
+        .D(ana_out_data[34]),
         .Q(freq[9]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -2801,7 +2605,7 @@ module ps_comp_ana_0_1_comp_ana
         .R(1'b0));
   LUT1 #(
     .INIT(2'h1)) 
-    \comp_ana.raw_sample[31]_i_1 
+    \comp_ana.raw_sample[15]_i_1 
        (.I0(valid[0]),
         .O(raw_sample__0));
   LUT1 #(
@@ -2820,80 +2624,52 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.raw_sample_reg[10] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_13 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_13 ),
         .Q(raw_sample[10]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[11] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_12 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_12 ),
         .Q(raw_sample[11]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[12] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_11 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_11 ),
         .Q(raw_sample[12]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[13] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_10 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_10 ),
         .Q(raw_sample[13]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[14] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_9 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_9 ),
         .Q(raw_sample[14]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[15] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_8 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_8 ),
         .Q(raw_sample[15]),
         .R(raw_sample__0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \comp_ana.raw_sample_reg[15]_i_1 
+  CARRY8 \comp_ana.raw_sample_reg[15]_i_2 
        (.CI(\comp_ana.raw_sample_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
-        .CO({\comp_ana.raw_sample_reg[15]_i_1_n_0 ,\comp_ana.raw_sample_reg[15]_i_1_n_1 ,\comp_ana.raw_sample_reg[15]_i_1_n_2 ,\comp_ana.raw_sample_reg[15]_i_1_n_3 ,\comp_ana.raw_sample_reg[15]_i_1_n_4 ,\comp_ana.raw_sample_reg[15]_i_1_n_5 ,\comp_ana.raw_sample_reg[15]_i_1_n_6 ,\comp_ana.raw_sample_reg[15]_i_1_n_7 }),
+        .CO({\NLW_comp_ana.raw_sample_reg[15]_i_2_CO_UNCONNECTED [7],\comp_ana.raw_sample_reg[15]_i_2_n_1 ,\comp_ana.raw_sample_reg[15]_i_2_n_2 ,\comp_ana.raw_sample_reg[15]_i_2_n_3 ,\comp_ana.raw_sample_reg[15]_i_2_n_4 ,\comp_ana.raw_sample_reg[15]_i_2_n_5 ,\comp_ana.raw_sample_reg[15]_i_2_n_6 ,\comp_ana.raw_sample_reg[15]_i_2_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\comp_ana.raw_sample_reg[15]_i_1_n_8 ,\comp_ana.raw_sample_reg[15]_i_1_n_9 ,\comp_ana.raw_sample_reg[15]_i_1_n_10 ,\comp_ana.raw_sample_reg[15]_i_1_n_11 ,\comp_ana.raw_sample_reg[15]_i_1_n_12 ,\comp_ana.raw_sample_reg[15]_i_1_n_13 ,\comp_ana.raw_sample_reg[15]_i_1_n_14 ,\comp_ana.raw_sample_reg[15]_i_1_n_15 }),
+        .O({\comp_ana.raw_sample_reg[15]_i_2_n_8 ,\comp_ana.raw_sample_reg[15]_i_2_n_9 ,\comp_ana.raw_sample_reg[15]_i_2_n_10 ,\comp_ana.raw_sample_reg[15]_i_2_n_11 ,\comp_ana.raw_sample_reg[15]_i_2_n_12 ,\comp_ana.raw_sample_reg[15]_i_2_n_13 ,\comp_ana.raw_sample_reg[15]_i_2_n_14 ,\comp_ana.raw_sample_reg[15]_i_2_n_15 }),
         .S(raw_sample[15:8]));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[16] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_15 ),
-        .Q(raw_sample[16]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[17] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_14 ),
-        .Q(raw_sample[17]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[18] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_13 ),
-        .Q(raw_sample[18]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[19] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_12 ),
-        .Q(raw_sample[19]),
-        .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[1] 
        (.C(clk),
@@ -2902,112 +2678,12 @@ module ps_comp_ana_0_1_comp_ana
         .Q(raw_sample[1]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[20] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_11 ),
-        .Q(raw_sample[20]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[21] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_10 ),
-        .Q(raw_sample[21]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[22] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_9 ),
-        .Q(raw_sample[22]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[23] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[23]_i_1_n_8 ),
-        .Q(raw_sample[23]),
-        .R(raw_sample__0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \comp_ana.raw_sample_reg[23]_i_1 
-       (.CI(\comp_ana.raw_sample_reg[15]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\comp_ana.raw_sample_reg[23]_i_1_n_0 ,\comp_ana.raw_sample_reg[23]_i_1_n_1 ,\comp_ana.raw_sample_reg[23]_i_1_n_2 ,\comp_ana.raw_sample_reg[23]_i_1_n_3 ,\comp_ana.raw_sample_reg[23]_i_1_n_4 ,\comp_ana.raw_sample_reg[23]_i_1_n_5 ,\comp_ana.raw_sample_reg[23]_i_1_n_6 ,\comp_ana.raw_sample_reg[23]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\comp_ana.raw_sample_reg[23]_i_1_n_8 ,\comp_ana.raw_sample_reg[23]_i_1_n_9 ,\comp_ana.raw_sample_reg[23]_i_1_n_10 ,\comp_ana.raw_sample_reg[23]_i_1_n_11 ,\comp_ana.raw_sample_reg[23]_i_1_n_12 ,\comp_ana.raw_sample_reg[23]_i_1_n_13 ,\comp_ana.raw_sample_reg[23]_i_1_n_14 ,\comp_ana.raw_sample_reg[23]_i_1_n_15 }),
-        .S(raw_sample[23:16]));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[24] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_15 ),
-        .Q(raw_sample[24]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[25] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_14 ),
-        .Q(raw_sample[25]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[26] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_13 ),
-        .Q(raw_sample[26]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[27] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_12 ),
-        .Q(raw_sample[27]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[28] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_11 ),
-        .Q(raw_sample[28]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[29] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_10 ),
-        .Q(raw_sample[29]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(\comp_ana.raw_sample_reg[7]_i_1_n_13 ),
         .Q(raw_sample[2]),
         .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[30] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_9 ),
-        .Q(raw_sample[30]),
-        .R(raw_sample__0));
-  (* KEEP = "yes" *) 
-  FDRE \comp_ana.raw_sample_reg[31] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[31]_i_2_n_8 ),
-        .Q(raw_sample[31]),
-        .R(raw_sample__0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \comp_ana.raw_sample_reg[31]_i_2 
-       (.CI(\comp_ana.raw_sample_reg[23]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_comp_ana.raw_sample_reg[31]_i_2_CO_UNCONNECTED [7],\comp_ana.raw_sample_reg[31]_i_2_n_1 ,\comp_ana.raw_sample_reg[31]_i_2_n_2 ,\comp_ana.raw_sample_reg[31]_i_2_n_3 ,\comp_ana.raw_sample_reg[31]_i_2_n_4 ,\comp_ana.raw_sample_reg[31]_i_2_n_5 ,\comp_ana.raw_sample_reg[31]_i_2_n_6 ,\comp_ana.raw_sample_reg[31]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\comp_ana.raw_sample_reg[31]_i_2_n_8 ,\comp_ana.raw_sample_reg[31]_i_2_n_9 ,\comp_ana.raw_sample_reg[31]_i_2_n_10 ,\comp_ana.raw_sample_reg[31]_i_2_n_11 ,\comp_ana.raw_sample_reg[31]_i_2_n_12 ,\comp_ana.raw_sample_reg[31]_i_2_n_13 ,\comp_ana.raw_sample_reg[31]_i_2_n_14 ,\comp_ana.raw_sample_reg[31]_i_2_n_15 }),
-        .S(raw_sample[31:24]));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[3] 
        (.C(clk),
@@ -3055,14 +2731,14 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.raw_sample_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_15 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_15 ),
         .Q(raw_sample[8]),
         .R(raw_sample__0));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.raw_sample_reg[9] 
        (.C(clk),
         .CE(1'b1),
-        .D(\comp_ana.raw_sample_reg[15]_i_1_n_14 ),
+        .D(\comp_ana.raw_sample_reg[15]_i_2_n_14 ),
         .Q(raw_sample[9]),
         .R(raw_sample__0));
   FDRE \comp_ana.raw_wr_reg 
@@ -3658,38 +3334,6 @@ module ps_comp_ana_0_1_comp_ana
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[16] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[16]),
-        .Q(sample[16]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[17] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[17]),
-        .Q(sample[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[18] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[18]),
-        .Q(sample[18]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[19] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[19]),
-        .Q(sample[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_ana.sample_reg[1] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
@@ -3698,107 +3342,11 @@ module ps_comp_ana_0_1_comp_ana
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[20] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[20]),
-        .Q(sample[20]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[21] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[21]),
-        .Q(sample[21]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[22] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[22]),
-        .Q(sample[22]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[23] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[23]),
-        .Q(sample[23]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[24] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[24]),
-        .Q(sample[24]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[25] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[25]),
-        .Q(sample[25]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[26] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[26]),
-        .Q(sample[26]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[27] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[27]),
-        .Q(sample[27]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[28] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[28]),
-        .Q(sample[28]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[29] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[29]),
-        .Q(sample[29]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \comp_ana.sample_reg[2] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
         .D(curr_sample[2]),
         .Q(sample[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[30] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[30]),
-        .Q(sample[30]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \comp_ana.sample_reg[31] 
-       (.C(clk),
-        .CE(\comp_ana.ana_rd_reg0 ),
-        .D(curr_sample[31]),
-        .Q(sample[31]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -3861,7 +3409,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[0] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[32]),
+        .D(ana_out_data[16]),
         .Q(size[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3869,7 +3417,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[1] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[33]),
+        .D(ana_out_data[17]),
         .Q(size[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3877,7 +3425,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[2] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[34]),
+        .D(ana_out_data[18]),
         .Q(size[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3885,7 +3433,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[3] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[35]),
+        .D(ana_out_data[19]),
         .Q(size[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3893,7 +3441,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[4] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[36]),
+        .D(ana_out_data[20]),
         .Q(size[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3901,7 +3449,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[5] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[37]),
+        .D(ana_out_data[21]),
         .Q(size[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3909,7 +3457,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[6] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[38]),
+        .D(ana_out_data[22]),
         .Q(size[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3917,7 +3465,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[7] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[39]),
+        .D(ana_out_data[23]),
         .Q(size[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -3925,7 +3473,7 @@ module ps_comp_ana_0_1_comp_ana
   FDRE \comp_ana.size_reg[8] 
        (.C(clk),
         .CE(\comp_ana.ana_rd_reg0 ),
-        .D(ana_out_data[40]),
+        .D(ana_out_data[24]),
         .Q(size[8]),
         .R(1'b0));
   (* CHECK_LICENSE_TYPE = "fifo_comp_ana,fifo_generator_v13_2_13,{}" *) 
@@ -4088,10 +3636,10 @@ module ps_comp_ana_0_1_fifo_comp_ana
   (* syn_isclock = "1" *) input wr_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
   (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [76:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [60:0]din;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [76:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [60:0]dout;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
   output wr_rst_busy;
@@ -4171,14 +3719,14 @@ module ps_comp_ana_0_1_ila_1
   input [0:0]probe0;
   input [0:0]probe1;
   input [4:0]probe2;
-  input [31:0]probe3;
+  input [15:0]probe3;
   input [0:0]probe4;
   input [0:0]probe5;
   input [0:0]probe6;
-  input [31:0]probe7;
+  input [15:0]probe7;
   input [0:0]probe8;
   input [0:0]probe9;
-  input [31:0]probe10;
+  input [15:0]probe10;
   input [8:0]probe11;
   input [8:0]probe12;
   input [19:0]probe13;

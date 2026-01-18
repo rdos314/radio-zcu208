@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Jan 15 19:03:54 2026
+-- Date        : Sun Jan 18 22:35:26 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_1/ps_ana_0_1_sim_netlist.vhdl
@@ -24,7 +24,7 @@ entity ps_ana_0_1_det_signal is
     config_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     active : in STD_LOGIC;
     data : in STD_LOGIC_VECTOR ( 143 downto 0 );
-    signal_sample : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    signal_sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     signal_size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     signal_freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     signal_phase_NE : out STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -390,12 +390,12 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   signal \det_signal.div_counter[1]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[2]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[3]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.div_counter[3]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[4]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_4_n_0\ : STD_LOGIC;
+  signal \det_signal.div_counter[5]_i_5_n_0\ : STD_LOGIC;
   signal \det_signal.div_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_delay[2]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.div_delay[3]_i_1_n_0\ : STD_LOGIC;
@@ -1554,76 +1554,27 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   signal \det_signal.sample_count_ok_i_3_n_0\ : STD_LOGIC;
   signal \det_signal.sample_count_ok_i_4_n_0\ : STD_LOGIC;
   signal \det_signal.sample_count_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal \det_signal.sample_counter[0]_i_3_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \det_signal.sample_counter_reg[0]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[0]_i_2_n_9\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[16]_i_1_n_9\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_15\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_2\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_3\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_4\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_5\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_6\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[24]_i_1_n_9\ : STD_LOGIC;
+  signal \det_signal.sample_counter[0]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \det_signal.sample_counter_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \det_signal.sample_counter_reg[15]_i_2_n_7\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_1\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_10\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_11\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_12\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_13\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_14\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_15\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_2\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_3\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_4\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_5\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \det_signal.sample_counter_reg[8]_i_1_n_7\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_8\ : STD_LOGIC;
-  signal \det_signal.sample_counter_reg[8]_i_1_n_9\ : STD_LOGIC;
   signal \det_signal.signal_done_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.signal_done_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.signal_freq[19]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.signal_freq[19]_i_2_n_0\ : STD_LOGIC;
-  signal \det_signal.signal_sample[31]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.signal_sample[15]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.start_proc_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.start_proc_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.start_proc_reg_n_0\ : STD_LOGIC;
@@ -1634,24 +1585,8 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   signal \det_signal.start_sample_reg_n_0_[13]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[14]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[15]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[16]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[17]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[18]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[19]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[1]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[20]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[21]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[22]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[23]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[24]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[25]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[26]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[27]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[28]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[29]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[2]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[30]\ : STD_LOGIC;
-  signal \det_signal.start_sample_reg_n_0_[31]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[3]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[4]\ : STD_LOGIC;
   signal \det_signal.start_sample_reg_n_0_[5]\ : STD_LOGIC;
@@ -1741,6 +1676,7 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   signal p_0_in : STD_LOGIC_VECTOR ( 8 downto 1 );
   signal p_0_in11_in : STD_LOGIC;
   signal p_0_in9_in : STD_LOGIC;
+  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 15 downto 1 );
   signal p_1_in : STD_LOGIC_VECTOR ( 22 downto 0 );
   signal p_1_in10_in : STD_LOGIC;
   signal p_1_in13_in : STD_LOGIC;
@@ -1824,7 +1760,8 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   signal \NLW_det_signal.min_freq_diff_reg[20]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.min_freq_diff_reg[20]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_det_signal.min_freq_diff_reg[20]_i_8_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_det_signal.sample_counter_reg[24]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_det_signal.sample_counter_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
+  signal \NLW_det_signal.sample_counter_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal NLW_div_incr_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_div_incr_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 79 downto 0 );
   signal NLW_div_phase_EW_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
@@ -1844,15 +1781,13 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.diff_phase_W_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.diff_phase_W_reg[7]_i_1\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \det_signal.div_counter[0]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[1]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[3]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[3]_i_2\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[4]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[5]_i_4\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[1]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[1]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[3]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[1]_i_1\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \det_signal.div_delay[2]_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[3]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[3]_i_1\ : label is "soft_lutpair5";
   attribute ADDER_THRESHOLD of \det_signal.div_env_all_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_env_all_reg[23]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_env_all_reg[31]_i_1\ : label is 35;
@@ -1874,7 +1809,7 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[23]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[25]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[7]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.div_start_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \det_signal.div_start_i_1\ : label is "soft_lutpair5";
   attribute ADDER_THRESHOLD of \det_signal.dsp_phase_EW_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.dsp_phase_EW_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.dsp_phase_EW_reg[7]_i_1\ : label is 35;
@@ -1899,24 +1834,22 @@ architecture STRUCTURE of ps_ana_0_1_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.env_sum_W_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.env_sum_W_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.env_sum_W_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.err_count[0]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \det_signal.err_count[1]_i_3\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[1]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[2]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[3]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[4]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[7]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \det_signal.min_samples[8]_i_2\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[0]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[1]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \det_signal.err_count[0]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \det_signal.err_count[1]_i_3\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[1]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[2]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[3]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[4]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[7]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \det_signal.min_samples[8]_i_2\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[1]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \det_signal.sample_count[2]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[3]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[4]_i_1\ : label is "soft_lutpair3";
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[0]_i_2\ : label is 16;
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[16]_i_1\ : label is 16;
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[24]_i_1\ : label is 16;
-  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[8]_i_1\ : label is 16;
-  attribute SOFT_HLUTNM of \det_signal.valid_count_i_3\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[3]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[4]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[8]_i_2\ : label is "soft_lutpair2";
+  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[15]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[8]_i_1\ : label is 35;
+  attribute SOFT_HLUTNM of \det_signal.valid_count_i_3\ : label is "soft_lutpair4";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of div_incr_i : label is "div_weighted,div_gen_v5_1_24,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -4392,30 +4325,21 @@ begin
       I0 => div_delay(2),
       I1 => div_delay(0),
       I2 => div_counter(3),
-      I3 => \det_signal.div_counter[3]_i_2_n_0\,
+      I3 => \det_signal.signal_freq[19]_i_2_n_0\,
       I4 => div_delay(1),
       O => \det_signal.div_counter[3]_i_1_n_0\
     );
-\det_signal.div_counter[3]_i_2\: unisim.vcomponents.LUT3
+\det_signal.div_counter[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => div_counter(2),
-      I1 => div_counter(1),
-      I2 => div_counter(0),
-      O => \det_signal.div_counter[3]_i_2_n_0\
-    );
-\det_signal.div_counter[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000110"
+      INIT => X"0000000010100110"
     )
         port map (
       I0 => div_delay(2),
       I1 => div_delay(0),
       I2 => div_counter(4),
-      I3 => \det_signal.div_counter[5]_i_4_n_0\,
-      I4 => div_delay(1),
+      I3 => div_counter(3),
+      I4 => \det_signal.signal_freq[19]_i_2_n_0\,
+      I5 => div_delay(1),
       O => \det_signal.div_counter[4]_i_1_n_0\
     );
 \det_signal.div_counter[5]_i_1\: unisim.vcomponents.LUT1
@@ -4431,7 +4355,7 @@ begin
       INIT => X"FFFD00FC"
     )
         port map (
-      I0 => \det_signal.signal_freq[19]_i_2_n_0\,
+      I0 => \det_signal.div_counter[5]_i_4_n_0\,
       I1 => div_delay(1),
       I2 => div_delay(0),
       I3 => div_delay(2),
@@ -4440,27 +4364,38 @@ begin
     );
 \det_signal.div_counter[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0001010101000000"
+      INIT => X"2020202002202020"
     )
         port map (
-      I0 => div_delay(1),
-      I1 => div_delay(0),
-      I2 => div_delay(2),
-      I3 => \det_signal.div_counter[5]_i_4_n_0\,
-      I4 => div_counter(4),
-      I5 => div_counter(5),
+      I0 => \det_signal.div_counter[5]_i_5_n_0\,
+      I1 => div_delay(2),
+      I2 => div_counter(5),
+      I3 => div_counter(4),
+      I4 => div_counter(3),
+      I5 => \det_signal.signal_freq[19]_i_2_n_0\,
       O => \det_signal.div_counter[5]_i_3_n_0\
     );
-\det_signal.div_counter[5]_i_4\: unisim.vcomponents.LUT4
+\det_signal.div_counter[5]_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8000"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => div_counter(1),
-      I1 => div_counter(0),
-      I2 => div_counter(2),
-      I3 => div_counter(3),
+      I0 => div_counter(5),
+      I1 => div_counter(4),
+      I2 => div_counter(3),
+      I3 => div_counter(2),
+      I4 => div_counter(0),
+      I5 => div_counter(1),
       O => \det_signal.div_counter[5]_i_4_n_0\
+    );
+\det_signal.div_counter[5]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => div_delay(0),
+      I1 => div_delay(1),
+      O => \det_signal.div_counter[5]_i_5_n_0\
     );
 \det_signal.div_counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -4810,7 +4745,7 @@ begin
 \det_signal.div_env_NE_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(0),
       Q => div_env_sum_NE(0),
       R => '0'
@@ -4818,7 +4753,7 @@ begin
 \det_signal.div_env_NE_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(10),
       Q => div_env_sum_NE(10),
       R => '0'
@@ -4826,7 +4761,7 @@ begin
 \det_signal.div_env_NE_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(11),
       Q => div_env_sum_NE(11),
       R => '0'
@@ -4834,7 +4769,7 @@ begin
 \det_signal.div_env_NE_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(12),
       Q => div_env_sum_NE(12),
       R => '0'
@@ -4842,7 +4777,7 @@ begin
 \det_signal.div_env_NE_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(13),
       Q => div_env_sum_NE(13),
       R => '0'
@@ -4850,7 +4785,7 @@ begin
 \det_signal.div_env_NE_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(14),
       Q => div_env_sum_NE(14),
       R => '0'
@@ -4858,7 +4793,7 @@ begin
 \det_signal.div_env_NE_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(15),
       Q => div_env_sum_NE(15),
       R => '0'
@@ -4889,7 +4824,7 @@ begin
 \det_signal.div_env_NE_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(16),
       Q => div_env_sum_NE(16),
       R => '0'
@@ -4897,7 +4832,7 @@ begin
 \det_signal.div_env_NE_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(17),
       Q => div_env_sum_NE(17),
       R => '0'
@@ -4905,7 +4840,7 @@ begin
 \det_signal.div_env_NE_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(18),
       Q => div_env_sum_NE(18),
       R => '0'
@@ -4913,7 +4848,7 @@ begin
 \det_signal.div_env_NE_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(19),
       Q => div_env_sum_NE(19),
       R => '0'
@@ -4921,7 +4856,7 @@ begin
 \det_signal.div_env_NE_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(1),
       Q => div_env_sum_NE(1),
       R => '0'
@@ -4929,7 +4864,7 @@ begin
 \det_signal.div_env_NE_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(20),
       Q => div_env_sum_NE(20),
       R => '0'
@@ -4937,7 +4872,7 @@ begin
 \det_signal.div_env_NE_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(21),
       Q => div_env_sum_NE(21),
       R => '0'
@@ -4945,7 +4880,7 @@ begin
 \det_signal.div_env_NE_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(22),
       Q => div_env_sum_NE(22),
       R => '0'
@@ -4953,7 +4888,7 @@ begin
 \det_signal.div_env_NE_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(23),
       Q => div_env_sum_NE(23),
       R => '0'
@@ -4984,7 +4919,7 @@ begin
 \det_signal.div_env_NE_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(24),
       Q => div_env_sum_NE(24),
       R => '0'
@@ -5002,7 +4937,7 @@ begin
 \det_signal.div_env_NE_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(2),
       Q => div_env_sum_NE(2),
       R => '0'
@@ -5010,7 +4945,7 @@ begin
 \det_signal.div_env_NE_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(3),
       Q => div_env_sum_NE(3),
       R => '0'
@@ -5018,7 +4953,7 @@ begin
 \det_signal.div_env_NE_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(4),
       Q => div_env_sum_NE(4),
       R => '0'
@@ -5026,7 +4961,7 @@ begin
 \det_signal.div_env_NE_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(5),
       Q => div_env_sum_NE(5),
       R => '0'
@@ -5034,7 +4969,7 @@ begin
 \det_signal.div_env_NE_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(6),
       Q => div_env_sum_NE(6),
       R => '0'
@@ -5042,7 +4977,7 @@ begin
 \det_signal.div_env_NE_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(7),
       Q => div_env_sum_NE(7),
       R => '0'
@@ -5073,7 +5008,7 @@ begin
 \det_signal.div_env_NE_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(8),
       Q => div_env_sum_NE(8),
       R => '0'
@@ -5081,7 +5016,7 @@ begin
 \det_signal.div_env_NE_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_NE0(9),
       Q => div_env_sum_NE(9),
       R => '0'
@@ -5756,7 +5691,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(24),
       Q => \det_signal.div_env_all_reg_n_0_[24]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -5764,7 +5699,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(25),
       Q => \det_signal.div_env_all_reg_n_0_[25]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -5772,7 +5707,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(26),
       Q => \det_signal.div_env_all_reg_n_0_[26]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -5780,7 +5715,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(27),
       Q => \det_signal.div_env_all_reg_n_0_[27]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -5788,7 +5723,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(28),
       Q => \det_signal.div_env_all_reg_n_0_[28]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -5796,7 +5731,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(29),
       Q => \det_signal.div_env_all_reg_n_0_[29]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -5812,7 +5747,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(30),
       Q => \det_signal.div_env_all_reg_n_0_[30]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -5820,7 +5755,7 @@ begin
       CE => \det_signal.div_env_all[23]_i_1_n_0\,
       D => div_env_all0(31),
       Q => \det_signal.div_env_all_reg_n_0_[31]\,
-      R => \det_signal.signal_sample[31]_i_1_n_0\
+      R => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.div_env_all_reg[31]_i_1\: unisim.vcomponents.CARRY8
      port map (
@@ -6151,7 +6086,7 @@ begin
 \det_signal.div_env_sum_EW_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(0),
       Q => div_env_sum_EW(0),
       R => '0'
@@ -6159,7 +6094,7 @@ begin
 \det_signal.div_env_sum_EW_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(10),
       Q => div_env_sum_EW(10),
       R => '0'
@@ -6167,7 +6102,7 @@ begin
 \det_signal.div_env_sum_EW_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(11),
       Q => div_env_sum_EW(11),
       R => '0'
@@ -6175,7 +6110,7 @@ begin
 \det_signal.div_env_sum_EW_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(12),
       Q => div_env_sum_EW(12),
       R => '0'
@@ -6183,7 +6118,7 @@ begin
 \det_signal.div_env_sum_EW_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(13),
       Q => div_env_sum_EW(13),
       R => '0'
@@ -6191,7 +6126,7 @@ begin
 \det_signal.div_env_sum_EW_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(14),
       Q => div_env_sum_EW(14),
       R => '0'
@@ -6199,7 +6134,7 @@ begin
 \det_signal.div_env_sum_EW_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(15),
       Q => div_env_sum_EW(15),
       R => '0'
@@ -6237,7 +6172,7 @@ begin
 \det_signal.div_env_sum_EW_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(16),
       Q => div_env_sum_EW(16),
       R => '0'
@@ -6245,7 +6180,7 @@ begin
 \det_signal.div_env_sum_EW_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(17),
       Q => div_env_sum_EW(17),
       R => '0'
@@ -6253,7 +6188,7 @@ begin
 \det_signal.div_env_sum_EW_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(18),
       Q => div_env_sum_EW(18),
       R => '0'
@@ -6261,7 +6196,7 @@ begin
 \det_signal.div_env_sum_EW_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(19),
       Q => div_env_sum_EW(19),
       R => '0'
@@ -6269,7 +6204,7 @@ begin
 \det_signal.div_env_sum_EW_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(1),
       Q => div_env_sum_EW(1),
       R => '0'
@@ -6277,7 +6212,7 @@ begin
 \det_signal.div_env_sum_EW_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(20),
       Q => div_env_sum_EW(20),
       R => '0'
@@ -6285,7 +6220,7 @@ begin
 \det_signal.div_env_sum_EW_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(21),
       Q => div_env_sum_EW(21),
       R => '0'
@@ -6293,7 +6228,7 @@ begin
 \det_signal.div_env_sum_EW_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(22),
       Q => div_env_sum_EW(22),
       R => '0'
@@ -6301,7 +6236,7 @@ begin
 \det_signal.div_env_sum_EW_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(23),
       Q => div_env_sum_EW(23),
       R => '0'
@@ -6339,7 +6274,7 @@ begin
 \det_signal.div_env_sum_EW_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(24),
       Q => div_env_sum_EW(24),
       R => '0'
@@ -6357,7 +6292,7 @@ begin
 \det_signal.div_env_sum_EW_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(2),
       Q => div_env_sum_EW(2),
       R => '0'
@@ -6365,7 +6300,7 @@ begin
 \det_signal.div_env_sum_EW_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(3),
       Q => div_env_sum_EW(3),
       R => '0'
@@ -6373,7 +6308,7 @@ begin
 \det_signal.div_env_sum_EW_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(4),
       Q => div_env_sum_EW(4),
       R => '0'
@@ -6381,7 +6316,7 @@ begin
 \det_signal.div_env_sum_EW_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(5),
       Q => div_env_sum_EW(5),
       R => '0'
@@ -6389,7 +6324,7 @@ begin
 \det_signal.div_env_sum_EW_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(6),
       Q => div_env_sum_EW(6),
       R => '0'
@@ -6397,7 +6332,7 @@ begin
 \det_signal.div_env_sum_EW_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(7),
       Q => div_env_sum_EW(7),
       R => '0'
@@ -6435,7 +6370,7 @@ begin
 \det_signal.div_env_sum_EW_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(8),
       Q => div_env_sum_EW(8),
       R => '0'
@@ -6443,7 +6378,7 @@ begin
 \det_signal.div_env_sum_EW_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_EW0(9),
       Q => div_env_sum_EW(9),
       R => '0'
@@ -6667,7 +6602,7 @@ begin
 \det_signal.div_env_sum_WN_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(0),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[0]\,
       R => '0'
@@ -6675,7 +6610,7 @@ begin
 \det_signal.div_env_sum_WN_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(10),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[10]\,
       R => '0'
@@ -6683,7 +6618,7 @@ begin
 \det_signal.div_env_sum_WN_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(11),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[11]\,
       R => '0'
@@ -6691,7 +6626,7 @@ begin
 \det_signal.div_env_sum_WN_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(12),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[12]\,
       R => '0'
@@ -6699,7 +6634,7 @@ begin
 \det_signal.div_env_sum_WN_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(13),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[13]\,
       R => '0'
@@ -6707,7 +6642,7 @@ begin
 \det_signal.div_env_sum_WN_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(14),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[14]\,
       R => '0'
@@ -6715,7 +6650,7 @@ begin
 \det_signal.div_env_sum_WN_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(15),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[15]\,
       R => '0'
@@ -6753,7 +6688,7 @@ begin
 \det_signal.div_env_sum_WN_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(16),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[16]\,
       R => '0'
@@ -6761,7 +6696,7 @@ begin
 \det_signal.div_env_sum_WN_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(17),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[17]\,
       R => '0'
@@ -6769,7 +6704,7 @@ begin
 \det_signal.div_env_sum_WN_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(18),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[18]\,
       R => '0'
@@ -6777,7 +6712,7 @@ begin
 \det_signal.div_env_sum_WN_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(19),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[19]\,
       R => '0'
@@ -6785,7 +6720,7 @@ begin
 \det_signal.div_env_sum_WN_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(1),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[1]\,
       R => '0'
@@ -6793,7 +6728,7 @@ begin
 \det_signal.div_env_sum_WN_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(20),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[20]\,
       R => '0'
@@ -6801,7 +6736,7 @@ begin
 \det_signal.div_env_sum_WN_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(21),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[21]\,
       R => '0'
@@ -6809,7 +6744,7 @@ begin
 \det_signal.div_env_sum_WN_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(22),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[22]\,
       R => '0'
@@ -6817,7 +6752,7 @@ begin
 \det_signal.div_env_sum_WN_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(23),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[23]\,
       R => '0'
@@ -6855,7 +6790,7 @@ begin
 \det_signal.div_env_sum_WN_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(24),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[24]\,
       R => '0'
@@ -6873,7 +6808,7 @@ begin
 \det_signal.div_env_sum_WN_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(2),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[2]\,
       R => '0'
@@ -6881,7 +6816,7 @@ begin
 \det_signal.div_env_sum_WN_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(3),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[3]\,
       R => '0'
@@ -6889,7 +6824,7 @@ begin
 \det_signal.div_env_sum_WN_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(4),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[4]\,
       R => '0'
@@ -6897,7 +6832,7 @@ begin
 \det_signal.div_env_sum_WN_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(5),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[5]\,
       R => '0'
@@ -6905,7 +6840,7 @@ begin
 \det_signal.div_env_sum_WN_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(6),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[6]\,
       R => '0'
@@ -6913,7 +6848,7 @@ begin
 \det_signal.div_env_sum_WN_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(7),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[7]\,
       R => '0'
@@ -6951,7 +6886,7 @@ begin
 \det_signal.div_env_sum_WN_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(8),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[8]\,
       R => '0'
@@ -6959,7 +6894,7 @@ begin
 \det_signal.div_env_sum_WN_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => div_env_sum_WN0(9),
       Q => \det_signal.div_env_sum_WN_reg_n_0_[9]\,
       R => '0'
@@ -10056,10 +9991,10 @@ begin
     )
         port map (
       I0 => \det_signal.sample_count_reg\(8),
-      I1 => \det_signal.sample_count_reg\(4),
-      I2 => \det_signal.sample_count_reg\(6),
-      I3 => \det_signal.sample_count_reg\(7),
-      I4 => \det_signal.sample_count_reg\(5),
+      I1 => \det_signal.sample_count_reg\(7),
+      I2 => \det_signal.sample_count_reg\(4),
+      I3 => \det_signal.sample_count_reg\(5),
+      I4 => \det_signal.sample_count_reg\(6),
       O => \det_signal.div_sample_count[8]_i_2_n_0\
     );
 \det_signal.div_sample_count_reg[0]\: unisim.vcomponents.FDRE
@@ -15816,15 +15751,15 @@ begin
     );
 \det_signal.min_freq_diff[20]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"4000000000000000"
+      INIT => X"0000000080000000"
     )
         port map (
-      I0 => div_counter(0),
-      I1 => div_counter(1),
-      I2 => div_counter(5),
-      I3 => div_counter(4),
-      I4 => div_counter(3),
-      I5 => div_counter(2),
+      I0 => div_counter(5),
+      I1 => div_counter(4),
+      I2 => div_counter(3),
+      I3 => div_counter(1),
+      I4 => div_counter(2),
+      I5 => div_counter(0),
       O => max_freq_diff
     );
 \det_signal.min_freq_diff[20]_i_10\: unisim.vcomponents.LUT2
@@ -17406,12 +17341,12 @@ begin
       INIT => X"8000000000000001"
     )
         port map (
-      I0 => div_counter(1),
-      I1 => div_counter(0),
-      I2 => div_counter(2),
-      I3 => div_counter(5),
-      I4 => div_counter(3),
-      I5 => div_counter(4),
+      I0 => div_counter(3),
+      I1 => div_counter(5),
+      I2 => div_counter(4),
+      I3 => div_counter(2),
+      I4 => div_counter(0),
+      I5 => div_counter(1),
       O => \det_signal.proc_done_i_2_n_0\
     );
 \det_signal.proc_done_reg\: unisim.vcomponents.FDRE
@@ -17527,47 +17462,51 @@ begin
       I5 => \det_signal.sample_count_reg\(4),
       O => p_0_in(5)
     );
-\det_signal.sample_count[6]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \det_signal.sample_count_reg\(6),
-      I1 => \det_signal.sample_count[8]_i_2_n_0\,
-      O => p_0_in(6)
-    );
-\det_signal.sample_count[7]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"6A"
-    )
-        port map (
-      I0 => \det_signal.sample_count_reg\(7),
-      I1 => \det_signal.sample_count[8]_i_2_n_0\,
-      I2 => \det_signal.sample_count_reg\(6),
-      O => p_0_in(7)
-    );
-\det_signal.sample_count[8]_i_1\: unisim.vcomponents.LUT4
+\det_signal.sample_count[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"6AAA"
     )
         port map (
-      I0 => \det_signal.sample_count_reg\(8),
-      I1 => \det_signal.sample_count_reg\(6),
-      I2 => \det_signal.sample_count_reg\(7),
+      I0 => \det_signal.sample_count_reg\(6),
+      I1 => \det_signal.sample_count_reg\(4),
+      I2 => \det_signal.sample_count_reg\(5),
       I3 => \det_signal.sample_count[8]_i_2_n_0\,
-      O => p_0_in(8)
+      O => p_0_in(6)
     );
-\det_signal.sample_count[8]_i_2\: unisim.vcomponents.LUT6
+\det_signal.sample_count[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8000000000000000"
+      INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => \det_signal.sample_count_reg\(2),
-      I1 => \det_signal.sample_count_reg\(0),
-      I2 => \det_signal.sample_count_reg\(1),
-      I3 => \det_signal.sample_count_reg\(3),
-      I4 => \det_signal.sample_count_reg\(5),
-      I5 => \det_signal.sample_count_reg\(4),
+      I0 => \det_signal.sample_count_reg\(7),
+      I1 => \det_signal.sample_count[8]_i_2_n_0\,
+      I2 => \det_signal.sample_count_reg\(5),
+      I3 => \det_signal.sample_count_reg\(4),
+      I4 => \det_signal.sample_count_reg\(6),
+      O => p_0_in(7)
+    );
+\det_signal.sample_count[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \det_signal.sample_count_reg\(8),
+      I1 => \det_signal.sample_count_reg\(6),
+      I2 => \det_signal.sample_count_reg\(4),
+      I3 => \det_signal.sample_count_reg\(5),
+      I4 => \det_signal.sample_count[8]_i_2_n_0\,
+      I5 => \det_signal.sample_count_reg\(7),
+      O => p_0_in(8)
+    );
+\det_signal.sample_count[8]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \det_signal.sample_count_reg\(3),
+      I1 => \det_signal.sample_count_reg\(1),
+      I2 => \det_signal.sample_count_reg\(0),
+      I3 => \det_signal.sample_count_reg\(2),
       O => \det_signal.sample_count[8]_i_2_n_0\
     );
 \det_signal.sample_count_ok_i_1\: unisim.vcomponents.LUT5
@@ -17589,10 +17528,10 @@ begin
         port map (
       I0 => \det_signal.min_samples_reg_n_0_[3]\,
       I1 => \det_signal.sample_count_reg\(3),
-      I2 => \det_signal.sample_count_reg\(4),
-      I3 => \det_signal.min_samples_reg_n_0_[4]\,
-      I4 => \det_signal.sample_count_reg\(5),
-      I5 => \det_signal.min_samples_reg_n_0_[5]\,
+      I2 => \det_signal.sample_count_reg\(5),
+      I3 => \det_signal.min_samples_reg_n_0_[5]\,
+      I4 => \det_signal.sample_count_reg\(4),
+      I5 => \det_signal.min_samples_reg_n_0_[4]\,
       O => \det_signal.sample_count_ok_i_2_n_0\
     );
 \det_signal.sample_count_ok_i_3\: unisim.vcomponents.LUT6
@@ -17602,10 +17541,10 @@ begin
         port map (
       I0 => \det_signal.min_samples_reg_n_0_[8]\,
       I1 => \det_signal.sample_count_reg\(8),
-      I2 => \det_signal.sample_count_reg\(6),
-      I3 => \det_signal.min_samples_reg_n_0_[6]\,
-      I4 => \det_signal.sample_count_reg\(7),
-      I5 => \det_signal.min_samples_reg_n_0_[7]\,
+      I2 => \det_signal.sample_count_reg\(7),
+      I3 => \det_signal.min_samples_reg_n_0_[7]\,
+      I4 => \det_signal.sample_count_reg\(6),
+      I5 => \det_signal.min_samples_reg_n_0_[6]\,
       O => \det_signal.sample_count_ok_i_3_n_0\
     );
 \det_signal.sample_count_ok_i_4\: unisim.vcomponents.LUT6
@@ -17615,10 +17554,10 @@ begin
         port map (
       I0 => \det_signal.min_samples_reg_n_0_[0]\,
       I1 => \det_signal.sample_count_reg\(0),
-      I2 => \det_signal.sample_count_reg\(2),
-      I3 => \det_signal.min_samples_reg_n_0_[2]\,
-      I4 => \det_signal.sample_count_reg\(1),
-      I5 => \det_signal.min_samples_reg_n_0_[1]\,
+      I2 => \det_signal.sample_count_reg\(1),
+      I3 => \det_signal.min_samples_reg_n_0_[1]\,
+      I4 => \det_signal.sample_count_reg\(2),
+      I5 => \det_signal.min_samples_reg_n_0_[2]\,
       O => \det_signal.sample_count_ok_i_4_n_0\
     );
 \det_signal.sample_count_ok_reg\: unisim.vcomponents.FDRE
@@ -17701,7 +17640,16 @@ begin
       Q => \det_signal.sample_count_reg\(8),
       R => \det_signal.dsp_phase_W[19]_i_1_n_0\
     );
-\det_signal.sample_counter[0]_i_1\: unisim.vcomponents.LUT1
+\det_signal.sample_counter[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \det_signal.run_reg[2]__0\,
+      I1 => \det_signal.sample_counter_reg\(0),
+      O => \det_signal.sample_counter[0]_i_1_n_0\
+    );
+\det_signal.sample_counter[15]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
@@ -17709,51 +17657,19 @@ begin
       I0 => \det_signal.run_reg[2]__0\,
       O => clear
     );
-\det_signal.sample_counter[0]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \det_signal.sample_counter_reg\(0),
-      O => \det_signal.sample_counter[0]_i_3_n_0\
-    );
 \det_signal.sample_counter_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_15\,
+      D => \det_signal.sample_counter[0]_i_1_n_0\,
       Q => \det_signal.sample_counter_reg\(0),
-      R => clear
-    );
-\det_signal.sample_counter_reg[0]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '0',
-      CI_TOP => '0',
-      CO(7) => \det_signal.sample_counter_reg[0]_i_2_n_0\,
-      CO(6) => \det_signal.sample_counter_reg[0]_i_2_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[0]_i_2_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[0]_i_2_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[0]_i_2_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[0]_i_2_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[0]_i_2_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[0]_i_2_n_7\,
-      DI(7 downto 0) => B"00000001",
-      O(7) => \det_signal.sample_counter_reg[0]_i_2_n_8\,
-      O(6) => \det_signal.sample_counter_reg[0]_i_2_n_9\,
-      O(5) => \det_signal.sample_counter_reg[0]_i_2_n_10\,
-      O(4) => \det_signal.sample_counter_reg[0]_i_2_n_11\,
-      O(3) => \det_signal.sample_counter_reg[0]_i_2_n_12\,
-      O(2) => \det_signal.sample_counter_reg[0]_i_2_n_13\,
-      O(1) => \det_signal.sample_counter_reg[0]_i_2_n_14\,
-      O(0) => \det_signal.sample_counter_reg[0]_i_2_n_15\,
-      S(7 downto 1) => \det_signal.sample_counter_reg\(7 downto 1),
-      S(0) => \det_signal.sample_counter[0]_i_3_n_0\
+      R => '0'
     );
 \det_signal.sample_counter_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_13\,
+      D => \p_0_in__0\(10),
       Q => \det_signal.sample_counter_reg\(10),
       R => clear
     );
@@ -17761,7 +17677,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_12\,
+      D => \p_0_in__0\(11),
       Q => \det_signal.sample_counter_reg\(11),
       R => clear
     );
@@ -17769,7 +17685,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_11\,
+      D => \p_0_in__0\(12),
       Q => \det_signal.sample_counter_reg\(12),
       R => clear
     );
@@ -17777,7 +17693,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_10\,
+      D => \p_0_in__0\(13),
       Q => \det_signal.sample_counter_reg\(13),
       R => clear
     );
@@ -17785,7 +17701,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_9\,
+      D => \p_0_in__0\(14),
       Q => \det_signal.sample_counter_reg\(14),
       R => clear
     );
@@ -17793,205 +17709,48 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_8\,
+      D => \p_0_in__0\(15),
       Q => \det_signal.sample_counter_reg\(15),
       R => clear
     );
-\det_signal.sample_counter_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_15\,
-      Q => \det_signal.sample_counter_reg\(16),
-      R => clear
-    );
-\det_signal.sample_counter_reg[16]_i_1\: unisim.vcomponents.CARRY8
+\det_signal.sample_counter_reg[15]_i_2\: unisim.vcomponents.CARRY8
      port map (
       CI => \det_signal.sample_counter_reg[8]_i_1_n_0\,
       CI_TOP => '0',
-      CO(7) => \det_signal.sample_counter_reg[16]_i_1_n_0\,
-      CO(6) => \det_signal.sample_counter_reg[16]_i_1_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[16]_i_1_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[16]_i_1_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[16]_i_1_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[16]_i_1_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[16]_i_1_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[16]_i_1_n_7\,
+      CO(7 downto 6) => \NLW_det_signal.sample_counter_reg[15]_i_2_CO_UNCONNECTED\(7 downto 6),
+      CO(5) => \det_signal.sample_counter_reg[15]_i_2_n_2\,
+      CO(4) => \det_signal.sample_counter_reg[15]_i_2_n_3\,
+      CO(3) => \det_signal.sample_counter_reg[15]_i_2_n_4\,
+      CO(2) => \det_signal.sample_counter_reg[15]_i_2_n_5\,
+      CO(1) => \det_signal.sample_counter_reg[15]_i_2_n_6\,
+      CO(0) => \det_signal.sample_counter_reg[15]_i_2_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7) => \det_signal.sample_counter_reg[16]_i_1_n_8\,
-      O(6) => \det_signal.sample_counter_reg[16]_i_1_n_9\,
-      O(5) => \det_signal.sample_counter_reg[16]_i_1_n_10\,
-      O(4) => \det_signal.sample_counter_reg[16]_i_1_n_11\,
-      O(3) => \det_signal.sample_counter_reg[16]_i_1_n_12\,
-      O(2) => \det_signal.sample_counter_reg[16]_i_1_n_13\,
-      O(1) => \det_signal.sample_counter_reg[16]_i_1_n_14\,
-      O(0) => \det_signal.sample_counter_reg[16]_i_1_n_15\,
-      S(7 downto 0) => \det_signal.sample_counter_reg\(23 downto 16)
-    );
-\det_signal.sample_counter_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_14\,
-      Q => \det_signal.sample_counter_reg\(17),
-      R => clear
-    );
-\det_signal.sample_counter_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_13\,
-      Q => \det_signal.sample_counter_reg\(18),
-      R => clear
-    );
-\det_signal.sample_counter_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_12\,
-      Q => \det_signal.sample_counter_reg\(19),
-      R => clear
+      O(7) => \NLW_det_signal.sample_counter_reg[15]_i_2_O_UNCONNECTED\(7),
+      O(6 downto 0) => \p_0_in__0\(15 downto 9),
+      S(7) => '0',
+      S(6 downto 0) => \det_signal.sample_counter_reg\(15 downto 9)
     );
 \det_signal.sample_counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_14\,
+      D => \p_0_in__0\(1),
       Q => \det_signal.sample_counter_reg\(1),
-      R => clear
-    );
-\det_signal.sample_counter_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_11\,
-      Q => \det_signal.sample_counter_reg\(20),
-      R => clear
-    );
-\det_signal.sample_counter_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_10\,
-      Q => \det_signal.sample_counter_reg\(21),
-      R => clear
-    );
-\det_signal.sample_counter_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_9\,
-      Q => \det_signal.sample_counter_reg\(22),
-      R => clear
-    );
-\det_signal.sample_counter_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[16]_i_1_n_8\,
-      Q => \det_signal.sample_counter_reg\(23),
-      R => clear
-    );
-\det_signal.sample_counter_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_15\,
-      Q => \det_signal.sample_counter_reg\(24),
-      R => clear
-    );
-\det_signal.sample_counter_reg[24]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \det_signal.sample_counter_reg[16]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_det_signal.sample_counter_reg[24]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \det_signal.sample_counter_reg[24]_i_1_n_1\,
-      CO(5) => \det_signal.sample_counter_reg[24]_i_1_n_2\,
-      CO(4) => \det_signal.sample_counter_reg[24]_i_1_n_3\,
-      CO(3) => \det_signal.sample_counter_reg[24]_i_1_n_4\,
-      CO(2) => \det_signal.sample_counter_reg[24]_i_1_n_5\,
-      CO(1) => \det_signal.sample_counter_reg[24]_i_1_n_6\,
-      CO(0) => \det_signal.sample_counter_reg[24]_i_1_n_7\,
-      DI(7 downto 0) => B"00000000",
-      O(7) => \det_signal.sample_counter_reg[24]_i_1_n_8\,
-      O(6) => \det_signal.sample_counter_reg[24]_i_1_n_9\,
-      O(5) => \det_signal.sample_counter_reg[24]_i_1_n_10\,
-      O(4) => \det_signal.sample_counter_reg[24]_i_1_n_11\,
-      O(3) => \det_signal.sample_counter_reg[24]_i_1_n_12\,
-      O(2) => \det_signal.sample_counter_reg[24]_i_1_n_13\,
-      O(1) => \det_signal.sample_counter_reg[24]_i_1_n_14\,
-      O(0) => \det_signal.sample_counter_reg[24]_i_1_n_15\,
-      S(7 downto 0) => \det_signal.sample_counter_reg\(31 downto 24)
-    );
-\det_signal.sample_counter_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_14\,
-      Q => \det_signal.sample_counter_reg\(25),
-      R => clear
-    );
-\det_signal.sample_counter_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_13\,
-      Q => \det_signal.sample_counter_reg\(26),
-      R => clear
-    );
-\det_signal.sample_counter_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_12\,
-      Q => \det_signal.sample_counter_reg\(27),
-      R => clear
-    );
-\det_signal.sample_counter_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_11\,
-      Q => \det_signal.sample_counter_reg\(28),
-      R => clear
-    );
-\det_signal.sample_counter_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_10\,
-      Q => \det_signal.sample_counter_reg\(29),
       R => clear
     );
 \det_signal.sample_counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_13\,
+      D => \p_0_in__0\(2),
       Q => \det_signal.sample_counter_reg\(2),
-      R => clear
-    );
-\det_signal.sample_counter_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_9\,
-      Q => \det_signal.sample_counter_reg\(30),
-      R => clear
-    );
-\det_signal.sample_counter_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \det_signal.sample_counter_reg[24]_i_1_n_8\,
-      Q => \det_signal.sample_counter_reg\(31),
       R => clear
     );
 \det_signal.sample_counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_12\,
+      D => \p_0_in__0\(3),
       Q => \det_signal.sample_counter_reg\(3),
       R => clear
     );
@@ -17999,7 +17758,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_11\,
+      D => \p_0_in__0\(4),
       Q => \det_signal.sample_counter_reg\(4),
       R => clear
     );
@@ -18007,7 +17766,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_10\,
+      D => \p_0_in__0\(5),
       Q => \det_signal.sample_counter_reg\(5),
       R => clear
     );
@@ -18015,7 +17774,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_9\,
+      D => \p_0_in__0\(6),
       Q => \det_signal.sample_counter_reg\(6),
       R => clear
     );
@@ -18023,7 +17782,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[0]_i_2_n_8\,
+      D => \p_0_in__0\(7),
       Q => \det_signal.sample_counter_reg\(7),
       R => clear
     );
@@ -18031,13 +17790,13 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_15\,
+      D => \p_0_in__0\(8),
       Q => \det_signal.sample_counter_reg\(8),
       R => clear
     );
 \det_signal.sample_counter_reg[8]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \det_signal.sample_counter_reg[0]_i_2_n_0\,
+      CI => \det_signal.sample_counter_reg\(0),
       CI_TOP => '0',
       CO(7) => \det_signal.sample_counter_reg[8]_i_1_n_0\,
       CO(6) => \det_signal.sample_counter_reg[8]_i_1_n_1\,
@@ -18048,33 +17807,26 @@ begin
       CO(1) => \det_signal.sample_counter_reg[8]_i_1_n_6\,
       CO(0) => \det_signal.sample_counter_reg[8]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
-      O(7) => \det_signal.sample_counter_reg[8]_i_1_n_8\,
-      O(6) => \det_signal.sample_counter_reg[8]_i_1_n_9\,
-      O(5) => \det_signal.sample_counter_reg[8]_i_1_n_10\,
-      O(4) => \det_signal.sample_counter_reg[8]_i_1_n_11\,
-      O(3) => \det_signal.sample_counter_reg[8]_i_1_n_12\,
-      O(2) => \det_signal.sample_counter_reg[8]_i_1_n_13\,
-      O(1) => \det_signal.sample_counter_reg[8]_i_1_n_14\,
-      O(0) => \det_signal.sample_counter_reg[8]_i_1_n_15\,
-      S(7 downto 0) => \det_signal.sample_counter_reg\(15 downto 8)
+      O(7 downto 0) => \p_0_in__0\(8 downto 1),
+      S(7 downto 0) => \det_signal.sample_counter_reg\(8 downto 1)
     );
 \det_signal.sample_counter_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.sample_counter_reg[8]_i_1_n_14\,
+      D => \p_0_in__0\(9),
       Q => \det_signal.sample_counter_reg\(9),
       R => clear
     );
 \det_signal.signal_done_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000FF40"
+      INIT => X"00002E22"
     )
         port map (
-      I0 => min_freq_diff(20),
-      I1 => \det_signal.max_freq_diff_reg_n_0_[20]\,
-      I2 => \det_signal.signal_freq[19]_i_2_n_0\,
-      I3 => \^signal_done\,
+      I0 => \^signal_done\,
+      I1 => \det_signal.signal_freq[19]_i_1_n_0\,
+      I2 => min_freq_diff(20),
+      I3 => \det_signal.max_freq_diff_reg_n_0_[20]\,
       I4 => \det_signal.signal_done_i_2_n_0\,
       O => \det_signal.signal_done_i_1_n_0\
     );
@@ -18083,12 +17835,12 @@ begin
       INIT => X"0000000000000001"
     )
         port map (
-      I0 => div_counter(0),
+      I0 => div_counter(2),
       I1 => div_counter(1),
-      I2 => div_counter(2),
-      I3 => div_counter(5),
+      I2 => div_counter(0),
+      I3 => div_counter(4),
       I4 => div_counter(3),
-      I5 => div_counter(4),
+      I5 => div_counter(5),
       O => \det_signal.signal_done_i_2_n_0\
     );
 \det_signal.signal_done_reg\: unisim.vcomponents.FDRE
@@ -18099,27 +17851,27 @@ begin
       Q => \^signal_done\,
       R => '0'
     );
-\det_signal.signal_freq[19]_i_1\: unisim.vcomponents.LUT3
+\det_signal.signal_freq[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"40"
+      INIT => X"0400000000000000"
     )
         port map (
       I0 => min_freq_diff(20),
       I1 => \det_signal.max_freq_diff_reg_n_0_[20]\,
       I2 => \det_signal.signal_freq[19]_i_2_n_0\,
-      O => \det_signal.signal_freq[19]_i_1_n_0\
-    );
-\det_signal.signal_freq[19]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8000000000000000"
-    )
-        port map (
-      I0 => div_counter(3),
-      I1 => div_counter(2),
-      I2 => div_counter(0),
-      I3 => div_counter(1),
+      I3 => div_counter(3),
       I4 => div_counter(4),
       I5 => div_counter(5),
+      O => \det_signal.signal_freq[19]_i_1_n_0\
+    );
+\det_signal.signal_freq[19]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => div_counter(1),
+      I1 => div_counter(0),
+      I2 => div_counter(2),
       O => \det_signal.signal_freq[19]_i_2_n_0\
     );
 \det_signal.signal_freq_reg[0]\: unisim.vcomponents.FDRE
@@ -18762,7 +18514,7 @@ begin
       Q => signal_phase_WN(9),
       R => '0'
     );
-\det_signal.signal_sample[31]_i_1\: unisim.vcomponents.LUT5
+\det_signal.signal_sample[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000002"
     )
@@ -18772,12 +18524,12 @@ begin
       I2 => div_delay(0),
       I3 => div_delay(3),
       I4 => div_delay(2),
-      O => \det_signal.signal_sample[31]_i_1_n_0\
+      O => \det_signal.signal_sample[15]_i_1_n_0\
     );
 \det_signal.signal_sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[0]\,
       Q => signal_sample(0),
       R => '0'
@@ -18785,7 +18537,7 @@ begin
 \det_signal.signal_sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[10]\,
       Q => signal_sample(10),
       R => '0'
@@ -18793,7 +18545,7 @@ begin
 \det_signal.signal_sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[11]\,
       Q => signal_sample(11),
       R => '0'
@@ -18801,7 +18553,7 @@ begin
 \det_signal.signal_sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[12]\,
       Q => signal_sample(12),
       R => '0'
@@ -18809,7 +18561,7 @@ begin
 \det_signal.signal_sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[13]\,
       Q => signal_sample(13),
       R => '0'
@@ -18817,7 +18569,7 @@ begin
 \det_signal.signal_sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[14]\,
       Q => signal_sample(14),
       R => '0'
@@ -18825,159 +18577,31 @@ begin
 \det_signal.signal_sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[15]\,
       Q => signal_sample(15),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[16]\,
-      Q => signal_sample(16),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[17]\,
-      Q => signal_sample(17),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[18]\,
-      Q => signal_sample(18),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[19]\,
-      Q => signal_sample(19),
       R => '0'
     );
 \det_signal.signal_sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[1]\,
       Q => signal_sample(1),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[20]\,
-      Q => signal_sample(20),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[21]\,
-      Q => signal_sample(21),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[22]\,
-      Q => signal_sample(22),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[23]\,
-      Q => signal_sample(23),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[24]\,
-      Q => signal_sample(24),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[25]\,
-      Q => signal_sample(25),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[26]\,
-      Q => signal_sample(26),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[27]\,
-      Q => signal_sample(27),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[28]\,
-      Q => signal_sample(28),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[29]\,
-      Q => signal_sample(29),
       R => '0'
     );
 \det_signal.signal_sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[2]\,
       Q => signal_sample(2),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[30]\,
-      Q => signal_sample(30),
-      R => '0'
-    );
-\det_signal.signal_sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
-      D => \det_signal.start_sample_reg_n_0_[31]\,
-      Q => signal_sample(31),
       R => '0'
     );
 \det_signal.signal_sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[3]\,
       Q => signal_sample(3),
       R => '0'
@@ -18985,7 +18609,7 @@ begin
 \det_signal.signal_sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[4]\,
       Q => signal_sample(4),
       R => '0'
@@ -18993,7 +18617,7 @@ begin
 \det_signal.signal_sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[5]\,
       Q => signal_sample(5),
       R => '0'
@@ -19001,7 +18625,7 @@ begin
 \det_signal.signal_sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[6]\,
       Q => signal_sample(6),
       R => '0'
@@ -19009,7 +18633,7 @@ begin
 \det_signal.signal_sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[7]\,
       Q => signal_sample(7),
       R => '0'
@@ -19017,7 +18641,7 @@ begin
 \det_signal.signal_sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[8]\,
       Q => signal_sample(8),
       R => '0'
@@ -19025,7 +18649,7 @@ begin
 \det_signal.signal_sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.start_sample_reg_n_0_[9]\,
       Q => signal_sample(9),
       R => '0'
@@ -19033,7 +18657,7 @@ begin
 \det_signal.signal_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[0]\,
       Q => signal_size(0),
       R => '0'
@@ -19041,7 +18665,7 @@ begin
 \det_signal.signal_size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[1]\,
       Q => signal_size(1),
       R => '0'
@@ -19049,7 +18673,7 @@ begin
 \det_signal.signal_size_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[2]\,
       Q => signal_size(2),
       R => '0'
@@ -19057,7 +18681,7 @@ begin
 \det_signal.signal_size_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[3]\,
       Q => signal_size(3),
       R => '0'
@@ -19065,7 +18689,7 @@ begin
 \det_signal.signal_size_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[4]\,
       Q => signal_size(4),
       R => '0'
@@ -19073,7 +18697,7 @@ begin
 \det_signal.signal_size_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[5]\,
       Q => signal_size(5),
       R => '0'
@@ -19081,7 +18705,7 @@ begin
 \det_signal.signal_size_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[6]\,
       Q => signal_size(6),
       R => '0'
@@ -19089,7 +18713,7 @@ begin
 \det_signal.signal_size_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[7]\,
       Q => signal_size(7),
       R => '0'
@@ -19097,7 +18721,7 @@ begin
 \det_signal.signal_size_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \det_signal.signal_sample[31]_i_1_n_0\,
+      CE => \det_signal.signal_sample[15]_i_1_n_0\,
       D => \det_signal.div_sample_count_reg_n_0_[8]\,
       Q => signal_size(8),
       R => '0'
@@ -19144,7 +18768,7 @@ begin
       Q => \det_signal.start_proc_reg_n_0\,
       R => '0'
     );
-\det_signal.start_sample[31]_i_1\: unisim.vcomponents.LUT6
+\det_signal.start_sample[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000080000000"
     )
@@ -19213,38 +18837,6 @@ begin
       Q => \det_signal.start_sample_reg_n_0_[15]\,
       R => '0'
     );
-\det_signal.start_sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(16),
-      Q => \det_signal.start_sample_reg_n_0_[16]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(17),
-      Q => \det_signal.start_sample_reg_n_0_[17]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(18),
-      Q => \det_signal.start_sample_reg_n_0_[18]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(19),
-      Q => \det_signal.start_sample_reg_n_0_[19]\,
-      R => '0'
-    );
 \det_signal.start_sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -19253,108 +18845,12 @@ begin
       Q => \det_signal.start_sample_reg_n_0_[1]\,
       R => '0'
     );
-\det_signal.start_sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(20),
-      Q => \det_signal.start_sample_reg_n_0_[20]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(21),
-      Q => \det_signal.start_sample_reg_n_0_[21]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(22),
-      Q => \det_signal.start_sample_reg_n_0_[22]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(23),
-      Q => \det_signal.start_sample_reg_n_0_[23]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(24),
-      Q => \det_signal.start_sample_reg_n_0_[24]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(25),
-      Q => \det_signal.start_sample_reg_n_0_[25]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(26),
-      Q => \det_signal.start_sample_reg_n_0_[26]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(27),
-      Q => \det_signal.start_sample_reg_n_0_[27]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(28),
-      Q => \det_signal.start_sample_reg_n_0_[28]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(29),
-      Q => \det_signal.start_sample_reg_n_0_[29]\,
-      R => '0'
-    );
 \det_signal.start_sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => start_sample,
       D => \det_signal.sample_counter_reg\(2),
       Q => \det_signal.start_sample_reg_n_0_[2]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(30),
-      Q => \det_signal.start_sample_reg_n_0_[30]\,
-      R => '0'
-    );
-\det_signal.start_sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_sample,
-      D => \det_signal.sample_counter_reg\(31),
-      Q => \det_signal.start_sample_reg_n_0_[31]\,
       R => '0'
     );
 \det_signal.start_sample_reg[3]\: unisim.vcomponents.FDRE
@@ -19432,9 +18928,9 @@ begin
       I0 => \det_signal.sample_count_reg\(5),
       I1 => \det_signal.sample_count_reg\(4),
       I2 => \det_signal.run_reg[1]__0\,
-      I3 => \det_signal.sample_count_reg\(8),
-      I4 => \det_signal.sample_count_reg\(6),
-      I5 => \det_signal.sample_count_reg\(7),
+      I3 => \det_signal.sample_count_reg\(6),
+      I4 => \det_signal.sample_count_reg\(7),
+      I5 => \det_signal.sample_count_reg\(8),
       O => \det_signal.valid_count_i_2_n_0\
     );
 \det_signal.valid_count_i_3\: unisim.vcomponents.LUT4
@@ -19763,7 +19259,7 @@ entity ps_ana_0_1_doa_angle is
     Q : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_WN_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_EW_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    \doa_angle.sample_reg[31]_0\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    \doa_angle.sample_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.size_reg[8]_0\ : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -19792,7 +19288,7 @@ entity ps_ana_0_1_doa_angle is
     \doa_calc.diff_EW_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.diff_WN_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     D : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \doa_angle.sample_run_reg[31]_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    \doa_angle.sample_run_reg[15]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.size_run_reg[8]_0\ : in STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_angle.freq_run_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.second_angle_reg[14]_0\ : in STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -20518,8 +20014,8 @@ architecture STRUCTURE of ps_ana_0_1_doa_angle is
   signal phase_WN_cordic : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_WN_doa : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_WN_run : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal sample_cordic : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_run : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal sample_cordic : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal sample_run : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal shadow : STD_LOGIC;
   signal shadow_err : STD_LOGIC;
   signal shadow_id : STD_LOGIC;
@@ -20565,64 +20061,64 @@ architecture STRUCTURE of ps_ana_0_1_doa_angle is
   attribute ADDER_THRESHOLD of delay_prev0_carry : label is 35;
   attribute ADDER_THRESHOLD of \delay_prev0_carry__0\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[0]_i_1\ : label is "soft_lutpair392";
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[1]_i_1\ : label is "soft_lutpair391";
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[2]_i_1\ : label is "soft_lutpair371";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[0]_i_1\ : label is "soft_lutpair391";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[1]_i_1\ : label is "soft_lutpair390";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[2]_i_1\ : label is "soft_lutpair370";
   attribute ADDER_THRESHOLD of \doa_angle.d_curr_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_curr_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair372";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair382";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair383";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair384";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair385";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair386";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair387";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair373";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair374";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair375";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair376";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair377";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair378";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair379";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair380";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair381";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair372";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair382";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair383";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair384";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair385";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair386";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair387";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair373";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair374";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair375";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair376";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair377";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair378";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair379";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair380";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair381";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[13]_i_1\ : label is "soft_lutpair390";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair389";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair388";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair390";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[1]_i_1\ : label is "soft_lutpair388";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[2]_i_1\ : label is "soft_lutpair389";
-  attribute SOFT_HLUTNM of \doa_angle.delay_id[0]_i_1\ : label is "soft_lutpair394";
-  attribute SOFT_HLUTNM of \doa_angle.delay_id[1]_i_1\ : label is "soft_lutpair393";
-  attribute SOFT_HLUTNM of \doa_angle.run[1]_i_1\ : label is "soft_lutpair396";
-  attribute SOFT_HLUTNM of \doa_angle.run[2]_i_1\ : label is "soft_lutpair396";
-  attribute SOFT_HLUTNM of \doa_angle.run[3]_i_1\ : label is "soft_lutpair395";
-  attribute SOFT_HLUTNM of \doa_angle.run[4]_i_2\ : label is "soft_lutpair395";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[13]_i_1\ : label is "soft_lutpair392";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[14]_i_1\ : label is "soft_lutpair391";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[15]_i_1\ : label is "soft_lutpair371";
-  attribute SOFT_HLUTNM of \doa_angle.use_id[0]_i_1\ : label is "soft_lutpair394";
-  attribute SOFT_HLUTNM of \doa_angle.use_id[1]_i_1\ : label is "soft_lutpair393";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair371";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair381";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair382";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair383";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair384";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair385";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair386";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair372";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair373";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair374";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair375";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair376";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair377";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair378";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair379";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair380";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair371";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair381";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair382";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair383";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair384";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair385";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair386";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair372";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair373";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair374";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair375";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair376";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair377";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair378";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair379";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair380";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[13]_i_1\ : label is "soft_lutpair389";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair388";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair387";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair389";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[1]_i_1\ : label is "soft_lutpair387";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[2]_i_1\ : label is "soft_lutpair388";
+  attribute SOFT_HLUTNM of \doa_angle.delay_id[0]_i_1\ : label is "soft_lutpair393";
+  attribute SOFT_HLUTNM of \doa_angle.delay_id[1]_i_1\ : label is "soft_lutpair392";
+  attribute SOFT_HLUTNM of \doa_angle.run[1]_i_1\ : label is "soft_lutpair395";
+  attribute SOFT_HLUTNM of \doa_angle.run[2]_i_1\ : label is "soft_lutpair395";
+  attribute SOFT_HLUTNM of \doa_angle.run[3]_i_1\ : label is "soft_lutpair394";
+  attribute SOFT_HLUTNM of \doa_angle.run[4]_i_2\ : label is "soft_lutpair394";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[13]_i_1\ : label is "soft_lutpair391";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[14]_i_1\ : label is "soft_lutpair390";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[15]_i_1\ : label is "soft_lutpair370";
+  attribute SOFT_HLUTNM of \doa_angle.use_id[0]_i_1\ : label is "soft_lutpair393";
+  attribute SOFT_HLUTNM of \doa_angle.use_id[1]_i_1\ : label is "soft_lutpair392";
   attribute ADDER_THRESHOLD of \doa_calc.delay_E_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.delay_E_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.delay_N_reg[15]_i_1\ : label is 35;
@@ -27125,38 +26621,6 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       Q => sample_cordic(15),
       R => '0'
     );
-\doa_angle.sample_cordic_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(16),
-      Q => sample_cordic(16),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(17),
-      Q => sample_cordic(17),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(18),
-      Q => sample_cordic(18),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(19),
-      Q => sample_cordic(19),
-      R => '0'
-    );
 \doa_angle.sample_cordic_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -27165,108 +26629,12 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       Q => sample_cordic(1),
       R => '0'
     );
-\doa_angle.sample_cordic_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(20),
-      Q => sample_cordic(20),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(21),
-      Q => sample_cordic(21),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(22),
-      Q => sample_cordic(22),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(23),
-      Q => sample_cordic(23),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(24),
-      Q => sample_cordic(24),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(25),
-      Q => sample_cordic(25),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(26),
-      Q => sample_cordic(26),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(27),
-      Q => sample_cordic(27),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(28),
-      Q => sample_cordic(28),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(29),
-      Q => sample_cordic(29),
-      R => '0'
-    );
 \doa_angle.sample_cordic_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => cordic_done,
       D => sample_run(2),
       Q => sample_cordic(2),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(30),
-      Q => sample_cordic(30),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(31),
-      Q => sample_cordic(31),
       R => '0'
     );
 \doa_angle.sample_cordic_reg[3]\: unisim.vcomponents.FDRE
@@ -27330,7 +26698,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(0),
-      Q => \doa_angle.sample_reg[31]_0\(0),
+      Q => \doa_angle.sample_reg[15]_0\(0),
       R => '0'
     );
 \doa_angle.sample_reg[10]\: unisim.vcomponents.FDRE
@@ -27338,7 +26706,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(10),
-      Q => \doa_angle.sample_reg[31]_0\(10),
+      Q => \doa_angle.sample_reg[15]_0\(10),
       R => '0'
     );
 \doa_angle.sample_reg[11]\: unisim.vcomponents.FDRE
@@ -27346,7 +26714,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(11),
-      Q => \doa_angle.sample_reg[31]_0\(11),
+      Q => \doa_angle.sample_reg[15]_0\(11),
       R => '0'
     );
 \doa_angle.sample_reg[12]\: unisim.vcomponents.FDRE
@@ -27354,7 +26722,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(12),
-      Q => \doa_angle.sample_reg[31]_0\(12),
+      Q => \doa_angle.sample_reg[15]_0\(12),
       R => '0'
     );
 \doa_angle.sample_reg[13]\: unisim.vcomponents.FDRE
@@ -27362,7 +26730,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(13),
-      Q => \doa_angle.sample_reg[31]_0\(13),
+      Q => \doa_angle.sample_reg[15]_0\(13),
       R => '0'
     );
 \doa_angle.sample_reg[14]\: unisim.vcomponents.FDRE
@@ -27370,7 +26738,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(14),
-      Q => \doa_angle.sample_reg[31]_0\(14),
+      Q => \doa_angle.sample_reg[15]_0\(14),
       R => '0'
     );
 \doa_angle.sample_reg[15]\: unisim.vcomponents.FDRE
@@ -27378,39 +26746,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(15),
-      Q => \doa_angle.sample_reg[31]_0\(15),
-      R => '0'
-    );
-\doa_angle.sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(16),
-      Q => \doa_angle.sample_reg[31]_0\(16),
-      R => '0'
-    );
-\doa_angle.sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(17),
-      Q => \doa_angle.sample_reg[31]_0\(17),
-      R => '0'
-    );
-\doa_angle.sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(18),
-      Q => \doa_angle.sample_reg[31]_0\(18),
-      R => '0'
-    );
-\doa_angle.sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(19),
-      Q => \doa_angle.sample_reg[31]_0\(19),
+      Q => \doa_angle.sample_reg[15]_0\(15),
       R => '0'
     );
 \doa_angle.sample_reg[1]\: unisim.vcomponents.FDRE
@@ -27418,87 +26754,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(1),
-      Q => \doa_angle.sample_reg[31]_0\(1),
-      R => '0'
-    );
-\doa_angle.sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(20),
-      Q => \doa_angle.sample_reg[31]_0\(20),
-      R => '0'
-    );
-\doa_angle.sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(21),
-      Q => \doa_angle.sample_reg[31]_0\(21),
-      R => '0'
-    );
-\doa_angle.sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(22),
-      Q => \doa_angle.sample_reg[31]_0\(22),
-      R => '0'
-    );
-\doa_angle.sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(23),
-      Q => \doa_angle.sample_reg[31]_0\(23),
-      R => '0'
-    );
-\doa_angle.sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(24),
-      Q => \doa_angle.sample_reg[31]_0\(24),
-      R => '0'
-    );
-\doa_angle.sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(25),
-      Q => \doa_angle.sample_reg[31]_0\(25),
-      R => '0'
-    );
-\doa_angle.sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(26),
-      Q => \doa_angle.sample_reg[31]_0\(26),
-      R => '0'
-    );
-\doa_angle.sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(27),
-      Q => \doa_angle.sample_reg[31]_0\(27),
-      R => '0'
-    );
-\doa_angle.sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(28),
-      Q => \doa_angle.sample_reg[31]_0\(28),
-      R => '0'
-    );
-\doa_angle.sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(29),
-      Q => \doa_angle.sample_reg[31]_0\(29),
+      Q => \doa_angle.sample_reg[15]_0\(1),
       R => '0'
     );
 \doa_angle.sample_reg[2]\: unisim.vcomponents.FDRE
@@ -27506,23 +26762,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(2),
-      Q => \doa_angle.sample_reg[31]_0\(2),
-      R => '0'
-    );
-\doa_angle.sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(30),
-      Q => \doa_angle.sample_reg[31]_0\(30),
-      R => '0'
-    );
-\doa_angle.sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(31),
-      Q => \doa_angle.sample_reg[31]_0\(31),
+      Q => \doa_angle.sample_reg[15]_0\(2),
       R => '0'
     );
 \doa_angle.sample_reg[3]\: unisim.vcomponents.FDRE
@@ -27530,7 +26770,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(3),
-      Q => \doa_angle.sample_reg[31]_0\(3),
+      Q => \doa_angle.sample_reg[15]_0\(3),
       R => '0'
     );
 \doa_angle.sample_reg[4]\: unisim.vcomponents.FDRE
@@ -27538,7 +26778,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(4),
-      Q => \doa_angle.sample_reg[31]_0\(4),
+      Q => \doa_angle.sample_reg[15]_0\(4),
       R => '0'
     );
 \doa_angle.sample_reg[5]\: unisim.vcomponents.FDRE
@@ -27546,7 +26786,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(5),
-      Q => \doa_angle.sample_reg[31]_0\(5),
+      Q => \doa_angle.sample_reg[15]_0\(5),
       R => '0'
     );
 \doa_angle.sample_reg[6]\: unisim.vcomponents.FDRE
@@ -27554,7 +26794,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(6),
-      Q => \doa_angle.sample_reg[31]_0\(6),
+      Q => \doa_angle.sample_reg[15]_0\(6),
       R => '0'
     );
 \doa_angle.sample_reg[7]\: unisim.vcomponents.FDRE
@@ -27562,7 +26802,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(7),
-      Q => \doa_angle.sample_reg[31]_0\(7),
+      Q => \doa_angle.sample_reg[15]_0\(7),
       R => '0'
     );
 \doa_angle.sample_reg[8]\: unisim.vcomponents.FDRE
@@ -27570,7 +26810,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(8),
-      Q => \doa_angle.sample_reg[31]_0\(8),
+      Q => \doa_angle.sample_reg[15]_0\(8),
       R => '0'
     );
 \doa_angle.sample_reg[9]\: unisim.vcomponents.FDRE
@@ -27578,14 +26818,14 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(9),
-      Q => \doa_angle.sample_reg[31]_0\(9),
+      Q => \doa_angle.sample_reg[15]_0\(9),
       R => '0'
     );
 \doa_angle.sample_run_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(0),
+      D => \doa_angle.sample_run_reg[15]_0\(0),
       Q => sample_run(0),
       R => '0'
     );
@@ -27593,7 +26833,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(10),
+      D => \doa_angle.sample_run_reg[15]_0\(10),
       Q => sample_run(10),
       R => '0'
     );
@@ -27601,7 +26841,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(11),
+      D => \doa_angle.sample_run_reg[15]_0\(11),
       Q => sample_run(11),
       R => '0'
     );
@@ -27609,7 +26849,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(12),
+      D => \doa_angle.sample_run_reg[15]_0\(12),
       Q => sample_run(12),
       R => '0'
     );
@@ -27617,7 +26857,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(13),
+      D => \doa_angle.sample_run_reg[15]_0\(13),
       Q => sample_run(13),
       R => '0'
     );
@@ -27625,7 +26865,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(14),
+      D => \doa_angle.sample_run_reg[15]_0\(14),
       Q => sample_run(14),
       R => '0'
     );
@@ -27633,159 +26873,31 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(15),
+      D => \doa_angle.sample_run_reg[15]_0\(15),
       Q => sample_run(15),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(16),
-      Q => sample_run(16),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(17),
-      Q => sample_run(17),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(18),
-      Q => sample_run(18),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(19),
-      Q => sample_run(19),
       R => '0'
     );
 \doa_angle.sample_run_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(1),
+      D => \doa_angle.sample_run_reg[15]_0\(1),
       Q => sample_run(1),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(20),
-      Q => sample_run(20),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(21),
-      Q => sample_run(21),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(22),
-      Q => sample_run(22),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(23),
-      Q => sample_run(23),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(24),
-      Q => sample_run(24),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(25),
-      Q => sample_run(25),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(26),
-      Q => sample_run(26),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(27),
-      Q => sample_run(27),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(28),
-      Q => sample_run(28),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(29),
-      Q => sample_run(29),
       R => '0'
     );
 \doa_angle.sample_run_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(2),
+      D => \doa_angle.sample_run_reg[15]_0\(2),
       Q => sample_run(2),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(30),
-      Q => sample_run(30),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(31),
-      Q => sample_run(31),
       R => '0'
     );
 \doa_angle.sample_run_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(3),
+      D => \doa_angle.sample_run_reg[15]_0\(3),
       Q => sample_run(3),
       R => '0'
     );
@@ -27793,7 +26905,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(4),
+      D => \doa_angle.sample_run_reg[15]_0\(4),
       Q => sample_run(4),
       R => '0'
     );
@@ -27801,7 +26913,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(5),
+      D => \doa_angle.sample_run_reg[15]_0\(5),
       Q => sample_run(5),
       R => '0'
     );
@@ -27809,7 +26921,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(6),
+      D => \doa_angle.sample_run_reg[15]_0\(6),
       Q => sample_run(6),
       R => '0'
     );
@@ -27817,7 +26929,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(7),
+      D => \doa_angle.sample_run_reg[15]_0\(7),
       Q => sample_run(7),
       R => '0'
     );
@@ -27825,7 +26937,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(8),
+      D => \doa_angle.sample_run_reg[15]_0\(8),
       Q => sample_run(8),
       R => '0'
     );
@@ -27833,7 +26945,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(9),
+      D => \doa_angle.sample_run_reg[15]_0\(9),
       Q => sample_run(9),
       R => '0'
     );
@@ -30025,7 +29137,7 @@ entity \ps_ana_0_1_doa_angle__xdcDup__1\ is
     Q : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_WN_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_EW_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    \doa_angle.sample_reg[31]_0\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    \doa_angle.sample_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.size_reg[8]_0\ : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -30054,7 +29166,7 @@ entity \ps_ana_0_1_doa_angle__xdcDup__1\ is
     \doa_calc.diff_EW_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.diff_WN_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     D : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \doa_angle.sample_run_reg[31]_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    \doa_angle.sample_run_reg[15]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.size_run_reg[8]_0\ : in STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_angle.freq_run_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.second_angle_reg[14]_0\ : in STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -30780,8 +29892,8 @@ architecture STRUCTURE of \ps_ana_0_1_doa_angle__xdcDup__1\ is
   signal phase_WN_cordic : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_WN_doa : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_WN_run : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal sample_cordic : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_run : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal sample_cordic : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal sample_run : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal shadow : STD_LOGIC;
   signal shadow_err : STD_LOGIC;
   signal shadow_id : STD_LOGIC;
@@ -30827,64 +29939,64 @@ architecture STRUCTURE of \ps_ana_0_1_doa_angle__xdcDup__1\ is
   attribute ADDER_THRESHOLD of delay_prev0_carry : label is 35;
   attribute ADDER_THRESHOLD of \delay_prev0_carry__0\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[0]_i_1\ : label is "soft_lutpair195";
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[1]_i_1\ : label is "soft_lutpair194";
-  attribute SOFT_HLUTNM of \doa_angle.base_angle[2]_i_1\ : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[0]_i_1\ : label is "soft_lutpair194";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[1]_i_1\ : label is "soft_lutpair193";
+  attribute SOFT_HLUTNM of \doa_angle.base_angle[2]_i_1\ : label is "soft_lutpair173";
   attribute ADDER_THRESHOLD of \doa_angle.d_curr_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_curr_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair185";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair190";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair178";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair183";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair185";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair190";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair178";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair183";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[13]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair191";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[1]_i_1\ : label is "soft_lutpair191";
-  attribute SOFT_HLUTNM of \doa_angle.delay_base[2]_i_1\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \doa_angle.delay_id[0]_i_1\ : label is "soft_lutpair197";
-  attribute SOFT_HLUTNM of \doa_angle.delay_id[1]_i_1\ : label is "soft_lutpair196";
-  attribute SOFT_HLUTNM of \doa_angle.run[1]_i_1\ : label is "soft_lutpair199";
-  attribute SOFT_HLUTNM of \doa_angle.run[2]_i_1\ : label is "soft_lutpair199";
-  attribute SOFT_HLUTNM of \doa_angle.run[3]_i_1\ : label is "soft_lutpair198";
-  attribute SOFT_HLUTNM of \doa_angle.run[4]_i_2\ : label is "soft_lutpair198";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[13]_i_1\ : label is "soft_lutpair195";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[14]_i_1\ : label is "soft_lutpair194";
-  attribute SOFT_HLUTNM of \doa_angle.use_angle[15]_i_1\ : label is "soft_lutpair174";
-  attribute SOFT_HLUTNM of \doa_angle.use_id[0]_i_1\ : label is "soft_lutpair197";
-  attribute SOFT_HLUTNM of \doa_angle.use_id[1]_i_1\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair184";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair185";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair186";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair184";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair185";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair186";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[13]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair191";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[1]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \doa_angle.delay_base[2]_i_1\ : label is "soft_lutpair191";
+  attribute SOFT_HLUTNM of \doa_angle.delay_id[0]_i_1\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \doa_angle.delay_id[1]_i_1\ : label is "soft_lutpair195";
+  attribute SOFT_HLUTNM of \doa_angle.run[1]_i_1\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \doa_angle.run[2]_i_1\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \doa_angle.run[3]_i_1\ : label is "soft_lutpair197";
+  attribute SOFT_HLUTNM of \doa_angle.run[4]_i_2\ : label is "soft_lutpair197";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[13]_i_1\ : label is "soft_lutpair194";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[14]_i_1\ : label is "soft_lutpair193";
+  attribute SOFT_HLUTNM of \doa_angle.use_angle[15]_i_1\ : label is "soft_lutpair173";
+  attribute SOFT_HLUTNM of \doa_angle.use_id[0]_i_1\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \doa_angle.use_id[1]_i_1\ : label is "soft_lutpair195";
   attribute ADDER_THRESHOLD of \doa_calc.delay_E_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.delay_E_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.delay_N_reg[15]_i_1\ : label is 35;
@@ -37387,38 +36499,6 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       Q => sample_cordic(15),
       R => '0'
     );
-\doa_angle.sample_cordic_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(16),
-      Q => sample_cordic(16),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(17),
-      Q => sample_cordic(17),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(18),
-      Q => sample_cordic(18),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(19),
-      Q => sample_cordic(19),
-      R => '0'
-    );
 \doa_angle.sample_cordic_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -37427,108 +36507,12 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       Q => sample_cordic(1),
       R => '0'
     );
-\doa_angle.sample_cordic_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(20),
-      Q => sample_cordic(20),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(21),
-      Q => sample_cordic(21),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(22),
-      Q => sample_cordic(22),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(23),
-      Q => sample_cordic(23),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(24),
-      Q => sample_cordic(24),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(25),
-      Q => sample_cordic(25),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(26),
-      Q => sample_cordic(26),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(27),
-      Q => sample_cordic(27),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(28),
-      Q => sample_cordic(28),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(29),
-      Q => sample_cordic(29),
-      R => '0'
-    );
 \doa_angle.sample_cordic_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => cordic_done,
       D => sample_run(2),
       Q => sample_cordic(2),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(30),
-      Q => sample_cordic(30),
-      R => '0'
-    );
-\doa_angle.sample_cordic_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => cordic_done,
-      D => sample_run(31),
-      Q => sample_cordic(31),
       R => '0'
     );
 \doa_angle.sample_cordic_reg[3]\: unisim.vcomponents.FDRE
@@ -37592,7 +36576,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(0),
-      Q => \doa_angle.sample_reg[31]_0\(0),
+      Q => \doa_angle.sample_reg[15]_0\(0),
       R => '0'
     );
 \doa_angle.sample_reg[10]\: unisim.vcomponents.FDRE
@@ -37600,7 +36584,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(10),
-      Q => \doa_angle.sample_reg[31]_0\(10),
+      Q => \doa_angle.sample_reg[15]_0\(10),
       R => '0'
     );
 \doa_angle.sample_reg[11]\: unisim.vcomponents.FDRE
@@ -37608,7 +36592,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(11),
-      Q => \doa_angle.sample_reg[31]_0\(11),
+      Q => \doa_angle.sample_reg[15]_0\(11),
       R => '0'
     );
 \doa_angle.sample_reg[12]\: unisim.vcomponents.FDRE
@@ -37616,7 +36600,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(12),
-      Q => \doa_angle.sample_reg[31]_0\(12),
+      Q => \doa_angle.sample_reg[15]_0\(12),
       R => '0'
     );
 \doa_angle.sample_reg[13]\: unisim.vcomponents.FDRE
@@ -37624,7 +36608,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(13),
-      Q => \doa_angle.sample_reg[31]_0\(13),
+      Q => \doa_angle.sample_reg[15]_0\(13),
       R => '0'
     );
 \doa_angle.sample_reg[14]\: unisim.vcomponents.FDRE
@@ -37632,7 +36616,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(14),
-      Q => \doa_angle.sample_reg[31]_0\(14),
+      Q => \doa_angle.sample_reg[15]_0\(14),
       R => '0'
     );
 \doa_angle.sample_reg[15]\: unisim.vcomponents.FDRE
@@ -37640,39 +36624,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(15),
-      Q => \doa_angle.sample_reg[31]_0\(15),
-      R => '0'
-    );
-\doa_angle.sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(16),
-      Q => \doa_angle.sample_reg[31]_0\(16),
-      R => '0'
-    );
-\doa_angle.sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(17),
-      Q => \doa_angle.sample_reg[31]_0\(17),
-      R => '0'
-    );
-\doa_angle.sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(18),
-      Q => \doa_angle.sample_reg[31]_0\(18),
-      R => '0'
-    );
-\doa_angle.sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(19),
-      Q => \doa_angle.sample_reg[31]_0\(19),
+      Q => \doa_angle.sample_reg[15]_0\(15),
       R => '0'
     );
 \doa_angle.sample_reg[1]\: unisim.vcomponents.FDRE
@@ -37680,87 +36632,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(1),
-      Q => \doa_angle.sample_reg[31]_0\(1),
-      R => '0'
-    );
-\doa_angle.sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(20),
-      Q => \doa_angle.sample_reg[31]_0\(20),
-      R => '0'
-    );
-\doa_angle.sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(21),
-      Q => \doa_angle.sample_reg[31]_0\(21),
-      R => '0'
-    );
-\doa_angle.sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(22),
-      Q => \doa_angle.sample_reg[31]_0\(22),
-      R => '0'
-    );
-\doa_angle.sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(23),
-      Q => \doa_angle.sample_reg[31]_0\(23),
-      R => '0'
-    );
-\doa_angle.sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(24),
-      Q => \doa_angle.sample_reg[31]_0\(24),
-      R => '0'
-    );
-\doa_angle.sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(25),
-      Q => \doa_angle.sample_reg[31]_0\(25),
-      R => '0'
-    );
-\doa_angle.sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(26),
-      Q => \doa_angle.sample_reg[31]_0\(26),
-      R => '0'
-    );
-\doa_angle.sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(27),
-      Q => \doa_angle.sample_reg[31]_0\(27),
-      R => '0'
-    );
-\doa_angle.sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(28),
-      Q => \doa_angle.sample_reg[31]_0\(28),
-      R => '0'
-    );
-\doa_angle.sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(29),
-      Q => \doa_angle.sample_reg[31]_0\(29),
+      Q => \doa_angle.sample_reg[15]_0\(1),
       R => '0'
     );
 \doa_angle.sample_reg[2]\: unisim.vcomponents.FDRE
@@ -37768,23 +36640,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(2),
-      Q => \doa_angle.sample_reg[31]_0\(2),
-      R => '0'
-    );
-\doa_angle.sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(30),
-      Q => \doa_angle.sample_reg[31]_0\(30),
-      R => '0'
-    );
-\doa_angle.sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.d_run_reg_n_0_[5]\,
-      D => sample_cordic(31),
-      Q => \doa_angle.sample_reg[31]_0\(31),
+      Q => \doa_angle.sample_reg[15]_0\(2),
       R => '0'
     );
 \doa_angle.sample_reg[3]\: unisim.vcomponents.FDRE
@@ -37792,7 +36648,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(3),
-      Q => \doa_angle.sample_reg[31]_0\(3),
+      Q => \doa_angle.sample_reg[15]_0\(3),
       R => '0'
     );
 \doa_angle.sample_reg[4]\: unisim.vcomponents.FDRE
@@ -37800,7 +36656,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(4),
-      Q => \doa_angle.sample_reg[31]_0\(4),
+      Q => \doa_angle.sample_reg[15]_0\(4),
       R => '0'
     );
 \doa_angle.sample_reg[5]\: unisim.vcomponents.FDRE
@@ -37808,7 +36664,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(5),
-      Q => \doa_angle.sample_reg[31]_0\(5),
+      Q => \doa_angle.sample_reg[15]_0\(5),
       R => '0'
     );
 \doa_angle.sample_reg[6]\: unisim.vcomponents.FDRE
@@ -37816,7 +36672,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(6),
-      Q => \doa_angle.sample_reg[31]_0\(6),
+      Q => \doa_angle.sample_reg[15]_0\(6),
       R => '0'
     );
 \doa_angle.sample_reg[7]\: unisim.vcomponents.FDRE
@@ -37824,7 +36680,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(7),
-      Q => \doa_angle.sample_reg[31]_0\(7),
+      Q => \doa_angle.sample_reg[15]_0\(7),
       R => '0'
     );
 \doa_angle.sample_reg[8]\: unisim.vcomponents.FDRE
@@ -37832,7 +36688,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(8),
-      Q => \doa_angle.sample_reg[31]_0\(8),
+      Q => \doa_angle.sample_reg[15]_0\(8),
       R => '0'
     );
 \doa_angle.sample_reg[9]\: unisim.vcomponents.FDRE
@@ -37840,14 +36696,14 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => sample_cordic(9),
-      Q => \doa_angle.sample_reg[31]_0\(9),
+      Q => \doa_angle.sample_reg[15]_0\(9),
       R => '0'
     );
 \doa_angle.sample_run_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(0),
+      D => \doa_angle.sample_run_reg[15]_0\(0),
       Q => sample_run(0),
       R => '0'
     );
@@ -37855,7 +36711,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(10),
+      D => \doa_angle.sample_run_reg[15]_0\(10),
       Q => sample_run(10),
       R => '0'
     );
@@ -37863,7 +36719,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(11),
+      D => \doa_angle.sample_run_reg[15]_0\(11),
       Q => sample_run(11),
       R => '0'
     );
@@ -37871,7 +36727,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(12),
+      D => \doa_angle.sample_run_reg[15]_0\(12),
       Q => sample_run(12),
       R => '0'
     );
@@ -37879,7 +36735,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(13),
+      D => \doa_angle.sample_run_reg[15]_0\(13),
       Q => sample_run(13),
       R => '0'
     );
@@ -37887,7 +36743,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(14),
+      D => \doa_angle.sample_run_reg[15]_0\(14),
       Q => sample_run(14),
       R => '0'
     );
@@ -37895,159 +36751,31 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(15),
+      D => \doa_angle.sample_run_reg[15]_0\(15),
       Q => sample_run(15),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(16),
-      Q => sample_run(16),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(17),
-      Q => sample_run(17),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(18),
-      Q => sample_run(18),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(19),
-      Q => sample_run(19),
       R => '0'
     );
 \doa_angle.sample_run_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(1),
+      D => \doa_angle.sample_run_reg[15]_0\(1),
       Q => sample_run(1),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(20),
-      Q => sample_run(20),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(21),
-      Q => sample_run(21),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(22),
-      Q => sample_run(22),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(23),
-      Q => sample_run(23),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(24),
-      Q => sample_run(24),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(25),
-      Q => sample_run(25),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(26),
-      Q => sample_run(26),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(27),
-      Q => sample_run(27),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(28),
-      Q => sample_run(28),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(29),
-      Q => sample_run(29),
       R => '0'
     );
 \doa_angle.sample_run_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(2),
+      D => \doa_angle.sample_run_reg[15]_0\(2),
       Q => sample_run(2),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(30),
-      Q => sample_run(30),
-      R => '0'
-    );
-\doa_angle.sample_run_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(31),
-      Q => sample_run(31),
       R => '0'
     );
 \doa_angle.sample_run_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(3),
+      D => \doa_angle.sample_run_reg[15]_0\(3),
       Q => sample_run(3),
       R => '0'
     );
@@ -38055,7 +36783,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(4),
+      D => \doa_angle.sample_run_reg[15]_0\(4),
       Q => sample_run(4),
       R => '0'
     );
@@ -38063,7 +36791,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(5),
+      D => \doa_angle.sample_run_reg[15]_0\(5),
       Q => sample_run(5),
       R => '0'
     );
@@ -38071,7 +36799,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(6),
+      D => \doa_angle.sample_run_reg[15]_0\(6),
       Q => sample_run(6),
       R => '0'
     );
@@ -38079,7 +36807,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(7),
+      D => \doa_angle.sample_run_reg[15]_0\(7),
       Q => sample_run(7),
       R => '0'
     );
@@ -38087,7 +36815,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(8),
+      D => \doa_angle.sample_run_reg[15]_0\(8),
       Q => sample_run(8),
       R => '0'
     );
@@ -38095,7 +36823,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \doa_angle.run_reg_n_0_[4]\,
-      D => \doa_angle.sample_run_reg[31]_0\(9),
+      D => \doa_angle.sample_run_reg[15]_0\(9),
       Q => sample_run(9),
       R => '0'
     );
@@ -40596,105 +39324,105 @@ architecture STRUCTURE of ps_ana_0_1_doa_pair is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_angle.id[0]_i_1\ : label is "soft_lutpair350";
-  attribute SOFT_HLUTNM of \doa_angle.id[1]_i_1\ : label is "soft_lutpair350";
-  attribute SOFT_HLUTNM of \doa_angle.run[0]_i_1\ : label is "soft_lutpair320";
-  attribute SOFT_HLUTNM of \doa_angle.shadow_W_loc_i_2\ : label is "soft_lutpair318";
-  attribute SOFT_HLUTNM of \doa_angle.shadow_err_i_2\ : label is "soft_lutpair318";
-  attribute SOFT_HLUTNM of \doa_angle.sign_i_1\ : label is "soft_lutpair320";
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__1\ : label is "soft_lutpair315";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair330";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair336";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__1\ : label is "soft_lutpair333";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair331";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair336";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair337";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair337";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair338";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair334";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair334";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair330";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair335";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair331";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair338";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__1\ : label is "soft_lutpair333";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair335";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__1\ : label is "soft_lutpair370";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__1\ : label is "soft_lutpair370";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__1\ : label is "soft_lutpair319";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__1\ : label is "soft_lutpair319";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__1\ : label is "soft_lutpair315";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__1\ : label is "soft_lutpair316";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__1\ : label is "soft_lutpair317";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__1\ : label is "soft_lutpair332";
-  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__1\ : label is "soft_lutpair332";
+  attribute SOFT_HLUTNM of \doa_angle.id[0]_i_1\ : label is "soft_lutpair349";
+  attribute SOFT_HLUTNM of \doa_angle.id[1]_i_1\ : label is "soft_lutpair349";
+  attribute SOFT_HLUTNM of \doa_angle.run[0]_i_1\ : label is "soft_lutpair319";
+  attribute SOFT_HLUTNM of \doa_angle.shadow_W_loc_i_2\ : label is "soft_lutpair317";
+  attribute SOFT_HLUTNM of \doa_angle.shadow_err_i_2\ : label is "soft_lutpair317";
+  attribute SOFT_HLUTNM of \doa_angle.sign_i_1\ : label is "soft_lutpair319";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__1\ : label is "soft_lutpair314";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair329";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair335";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__1\ : label is "soft_lutpair332";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair330";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair335";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair336";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair336";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair337";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair333";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair333";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair329";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair334";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair330";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair337";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__1\ : label is "soft_lutpair332";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair334";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__1\ : label is "soft_lutpair369";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__1\ : label is "soft_lutpair369";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__1\ : label is "soft_lutpair318";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__1\ : label is "soft_lutpair318";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__1\ : label is "soft_lutpair314";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__1\ : label is "soft_lutpair315";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__1\ : label is "soft_lutpair316";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__1\ : label is "soft_lutpair331";
+  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__1\ : label is "soft_lutpair331";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1__1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2__1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7__1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__1\ : label is "soft_lutpair317";
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__1\ : label is "soft_lutpair316";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__1\ : label is "soft_lutpair316";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__1\ : label is "soft_lutpair315";
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3__1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1__1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1__1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__1\ : label is "soft_lutpair339";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__1\ : label is "soft_lutpair325";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__1\ : label is "soft_lutpair326";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__1\ : label is "soft_lutpair326";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__1\ : label is "soft_lutpair327";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__1\ : label is "soft_lutpair327";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__1\ : label is "soft_lutpair328";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__1\ : label is "soft_lutpair328";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__1\ : label is "soft_lutpair329";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__1\ : label is "soft_lutpair329";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__1\ : label is "soft_lutpair339";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__1\ : label is "soft_lutpair321";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__1\ : label is "soft_lutpair321";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__1\ : label is "soft_lutpair322";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__1\ : label is "soft_lutpair322";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__1\ : label is "soft_lutpair323";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__1\ : label is "soft_lutpair323";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__1\ : label is "soft_lutpair324";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__1\ : label is "soft_lutpair324";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__1\ : label is "soft_lutpair325";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair360";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair355";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair355";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair354";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair354";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair353";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair353";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair352";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair352";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair351";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair351";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair360";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair359";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair359";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair358";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair358";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair357";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair357";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair356";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair356";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__1\ : label is "soft_lutpair361";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__1\ : label is "soft_lutpair366";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__1\ : label is "soft_lutpair366";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__1\ : label is "soft_lutpair367";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__1\ : label is "soft_lutpair367";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__1\ : label is "soft_lutpair368";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__1\ : label is "soft_lutpair368";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__1\ : label is "soft_lutpair369";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__1\ : label is "soft_lutpair369";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__1\ : label is "soft_lutpair361";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__1\ : label is "soft_lutpair362";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__1\ : label is "soft_lutpair362";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__1\ : label is "soft_lutpair363";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__1\ : label is "soft_lutpair363";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__1\ : label is "soft_lutpair364";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__1\ : label is "soft_lutpair364";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__1\ : label is "soft_lutpair365";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__1\ : label is "soft_lutpair365";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__1\ : label is "soft_lutpair338";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__1\ : label is "soft_lutpair324";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__1\ : label is "soft_lutpair325";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__1\ : label is "soft_lutpair325";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__1\ : label is "soft_lutpair326";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__1\ : label is "soft_lutpair326";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__1\ : label is "soft_lutpair327";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__1\ : label is "soft_lutpair327";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__1\ : label is "soft_lutpair328";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__1\ : label is "soft_lutpair328";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__1\ : label is "soft_lutpair338";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__1\ : label is "soft_lutpair320";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__1\ : label is "soft_lutpair320";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__1\ : label is "soft_lutpair321";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__1\ : label is "soft_lutpair321";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__1\ : label is "soft_lutpair322";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__1\ : label is "soft_lutpair322";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__1\ : label is "soft_lutpair323";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__1\ : label is "soft_lutpair323";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__1\ : label is "soft_lutpair324";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair359";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair354";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair354";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair353";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair353";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair352";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair352";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair351";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair351";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair350";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair350";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair359";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair358";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair358";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair357";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair357";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair356";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair356";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair355";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair355";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__1\ : label is "soft_lutpair360";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__1\ : label is "soft_lutpair365";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__1\ : label is "soft_lutpair365";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__1\ : label is "soft_lutpair366";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__1\ : label is "soft_lutpair366";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__1\ : label is "soft_lutpair367";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__1\ : label is "soft_lutpair367";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__1\ : label is "soft_lutpair368";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__1\ : label is "soft_lutpair368";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__1\ : label is "soft_lutpair360";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__1\ : label is "soft_lutpair361";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__1\ : label is "soft_lutpair361";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__1\ : label is "soft_lutpair362";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__1\ : label is "soft_lutpair362";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__1\ : label is "soft_lutpair363";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__1\ : label is "soft_lutpair363";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__1\ : label is "soft_lutpair364";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__1\ : label is "soft_lutpair364";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -40710,26 +39438,26 @@ architecture STRUCTURE of ps_ana_0_1_doa_pair is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of \mul_x_i_i_10__1\ : label is "soft_lutpair344";
-  attribute SOFT_HLUTNM of \mul_x_i_i_11__1\ : label is "soft_lutpair345";
-  attribute SOFT_HLUTNM of \mul_x_i_i_12__1\ : label is "soft_lutpair345";
-  attribute SOFT_HLUTNM of \mul_x_i_i_13__1\ : label is "soft_lutpair346";
-  attribute SOFT_HLUTNM of \mul_x_i_i_14__1\ : label is "soft_lutpair346";
-  attribute SOFT_HLUTNM of \mul_x_i_i_15__1\ : label is "soft_lutpair347";
-  attribute SOFT_HLUTNM of \mul_x_i_i_16__1\ : label is "soft_lutpair347";
-  attribute SOFT_HLUTNM of \mul_x_i_i_17__1\ : label is "soft_lutpair348";
-  attribute SOFT_HLUTNM of \mul_x_i_i_18__1\ : label is "soft_lutpair348";
-  attribute SOFT_HLUTNM of \mul_x_i_i_19__1\ : label is "soft_lutpair349";
-  attribute SOFT_HLUTNM of \mul_x_i_i_1__1\ : label is "soft_lutpair340";
-  attribute SOFT_HLUTNM of \mul_x_i_i_20__1\ : label is "soft_lutpair349";
-  attribute SOFT_HLUTNM of \mul_x_i_i_2__1\ : label is "soft_lutpair340";
-  attribute SOFT_HLUTNM of \mul_x_i_i_3__1\ : label is "soft_lutpair341";
-  attribute SOFT_HLUTNM of \mul_x_i_i_4__1\ : label is "soft_lutpair341";
-  attribute SOFT_HLUTNM of \mul_x_i_i_5__1\ : label is "soft_lutpair342";
-  attribute SOFT_HLUTNM of \mul_x_i_i_6__1\ : label is "soft_lutpair342";
-  attribute SOFT_HLUTNM of \mul_x_i_i_7__1\ : label is "soft_lutpair343";
-  attribute SOFT_HLUTNM of \mul_x_i_i_8__1\ : label is "soft_lutpair343";
-  attribute SOFT_HLUTNM of \mul_x_i_i_9__1\ : label is "soft_lutpair344";
+  attribute SOFT_HLUTNM of \mul_x_i_i_10__1\ : label is "soft_lutpair343";
+  attribute SOFT_HLUTNM of \mul_x_i_i_11__1\ : label is "soft_lutpair344";
+  attribute SOFT_HLUTNM of \mul_x_i_i_12__1\ : label is "soft_lutpair344";
+  attribute SOFT_HLUTNM of \mul_x_i_i_13__1\ : label is "soft_lutpair345";
+  attribute SOFT_HLUTNM of \mul_x_i_i_14__1\ : label is "soft_lutpair345";
+  attribute SOFT_HLUTNM of \mul_x_i_i_15__1\ : label is "soft_lutpair346";
+  attribute SOFT_HLUTNM of \mul_x_i_i_16__1\ : label is "soft_lutpair346";
+  attribute SOFT_HLUTNM of \mul_x_i_i_17__1\ : label is "soft_lutpair347";
+  attribute SOFT_HLUTNM of \mul_x_i_i_18__1\ : label is "soft_lutpair347";
+  attribute SOFT_HLUTNM of \mul_x_i_i_19__1\ : label is "soft_lutpair348";
+  attribute SOFT_HLUTNM of \mul_x_i_i_1__1\ : label is "soft_lutpair339";
+  attribute SOFT_HLUTNM of \mul_x_i_i_20__1\ : label is "soft_lutpair348";
+  attribute SOFT_HLUTNM of \mul_x_i_i_2__1\ : label is "soft_lutpair339";
+  attribute SOFT_HLUTNM of \mul_x_i_i_3__1\ : label is "soft_lutpair340";
+  attribute SOFT_HLUTNM of \mul_x_i_i_4__1\ : label is "soft_lutpair340";
+  attribute SOFT_HLUTNM of \mul_x_i_i_5__1\ : label is "soft_lutpair341";
+  attribute SOFT_HLUTNM of \mul_x_i_i_6__1\ : label is "soft_lutpair341";
+  attribute SOFT_HLUTNM of \mul_x_i_i_7__1\ : label is "soft_lutpair342";
+  attribute SOFT_HLUTNM of \mul_x_i_i_8__1\ : label is "soft_lutpair342";
+  attribute SOFT_HLUTNM of \mul_x_i_i_9__1\ : label is "soft_lutpair343";
 begin
   \doa_pair.angle_reg[15]_0\(15 downto 0) <= \^doa_pair.angle_reg[15]_0\(15 downto 0);
   shadow_WN <= \^shadow_wn\;
@@ -44765,99 +43493,99 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__1\ is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair117";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair117";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_2\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_3\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair116";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair116";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_2\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_3\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2\ : label is "soft_lutpair79";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5\ : label is "soft_lutpair65";
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair113";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair113";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair114";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair114";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair115";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair115";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair116";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair116";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair110";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair110";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair112";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair113";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair113";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair114";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair114";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair115";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair115";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair111";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair111";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -44873,26 +43601,26 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__1\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair91";
 begin
   \doa_pair.angle_reg[15]_1\(15 downto 0) <= \^doa_pair.angle_reg[15]_1\(15 downto 0);
   shadow_NE <= \^shadow_ne\;
@@ -48508,99 +47236,99 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__2\ is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__0\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__0\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__0\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__0\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__0\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__0\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__0\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__0\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__0\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__0\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__0\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__0\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__0\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__0\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__0\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__0\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__0\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__0\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__0\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__0\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__0\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__0\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__0\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__0\ : label is "soft_lutpair26";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1__0\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2__0\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7__0\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__0\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__0\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__0\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__0\ : label is "soft_lutpair12";
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3__0\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1__0\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1__0\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__0\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__0\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__0\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__0\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__0\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__0\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__0\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__0\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__0\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__0\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__0\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__0\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__0\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__0\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__0\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__0\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__0\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__0\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__0\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__0\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__0\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__0\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__0\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__0\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__0\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__0\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__0\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__0\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__0\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__0\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__0\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__0\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__0\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__0\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__0\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__0\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__0\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__0\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__0\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__0\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__0\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__0\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__0\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__0\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__0\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__0\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__0\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__0\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__0\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__0\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__0\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__0\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__0\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__0\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__0\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__0\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__0\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__0\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__0\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__0\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__0\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__0\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__0\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__0\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__0\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__0\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__0\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__0\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__0\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__0\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__0\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__0\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__0\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__0\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__0\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__0\ : label is "soft_lutpair58";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -48616,26 +47344,26 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__2\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of \mul_x_i_i_10__0\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \mul_x_i_i_11__0\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \mul_x_i_i_12__0\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \mul_x_i_i_13__0\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \mul_x_i_i_14__0\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \mul_x_i_i_15__0\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \mul_x_i_i_16__0\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \mul_x_i_i_17__0\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \mul_x_i_i_18__0\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \mul_x_i_i_19__0\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \mul_x_i_i_1__0\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \mul_x_i_i_20__0\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \mul_x_i_i_2__0\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \mul_x_i_i_3__0\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \mul_x_i_i_4__0\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \mul_x_i_i_5__0\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \mul_x_i_i_6__0\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \mul_x_i_i_7__0\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \mul_x_i_i_8__0\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \mul_x_i_i_9__0\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \mul_x_i_i_10__0\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \mul_x_i_i_11__0\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \mul_x_i_i_12__0\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \mul_x_i_i_13__0\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \mul_x_i_i_14__0\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \mul_x_i_i_15__0\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \mul_x_i_i_16__0\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \mul_x_i_i_17__0\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \mul_x_i_i_18__0\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \mul_x_i_i_19__0\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \mul_x_i_i_1__0\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \mul_x_i_i_20__0\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \mul_x_i_i_2__0\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \mul_x_i_i_3__0\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \mul_x_i_i_4__0\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \mul_x_i_i_5__0\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \mul_x_i_i_6__0\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \mul_x_i_i_7__0\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \mul_x_i_i_8__0\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \mul_x_i_i_9__0\ : label is "soft_lutpair38";
 begin
   \doa_pair.angle_reg[15]_1\(15 downto 0) <= \^doa_pair.angle_reg[15]_1\(15 downto 0);
   shadow_EW <= \^shadow_ew\;
@@ -52247,105 +50975,105 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__3\ is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_angle.id[0]_i_1\ : label is "soft_lutpair153";
-  attribute SOFT_HLUTNM of \doa_angle.id[1]_i_1\ : label is "soft_lutpair153";
-  attribute SOFT_HLUTNM of \doa_angle.run[0]_i_1\ : label is "soft_lutpair123";
-  attribute SOFT_HLUTNM of \doa_angle.shadow_W_loc_i_2\ : label is "soft_lutpair121";
-  attribute SOFT_HLUTNM of \doa_angle.shadow_err_i_2\ : label is "soft_lutpair121";
-  attribute SOFT_HLUTNM of \doa_angle.sign_i_1\ : label is "soft_lutpair123";
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__1\ : label is "soft_lutpair118";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair133";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair139";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__1\ : label is "soft_lutpair136";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair134";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair139";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair140";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair140";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair141";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair137";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair137";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair133";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair138";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair134";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair141";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__1\ : label is "soft_lutpair136";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair138";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__1\ : label is "soft_lutpair173";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__1\ : label is "soft_lutpair173";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__1\ : label is "soft_lutpair122";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__1\ : label is "soft_lutpair122";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__1\ : label is "soft_lutpair118";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__1\ : label is "soft_lutpair119";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__1\ : label is "soft_lutpair120";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__1\ : label is "soft_lutpair135";
-  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__1\ : label is "soft_lutpair135";
+  attribute SOFT_HLUTNM of \doa_angle.id[0]_i_1\ : label is "soft_lutpair152";
+  attribute SOFT_HLUTNM of \doa_angle.id[1]_i_1\ : label is "soft_lutpair152";
+  attribute SOFT_HLUTNM of \doa_angle.run[0]_i_1\ : label is "soft_lutpair122";
+  attribute SOFT_HLUTNM of \doa_angle.shadow_W_loc_i_2\ : label is "soft_lutpair120";
+  attribute SOFT_HLUTNM of \doa_angle.shadow_err_i_2\ : label is "soft_lutpair120";
+  attribute SOFT_HLUTNM of \doa_angle.sign_i_1\ : label is "soft_lutpair122";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__1\ : label is "soft_lutpair117";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair132";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair138";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__1\ : label is "soft_lutpair135";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair133";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair138";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair139";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair139";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair140";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair136";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair136";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair132";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair133";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair140";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__1\ : label is "soft_lutpair135";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__1\ : label is "soft_lutpair172";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__1\ : label is "soft_lutpair172";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__1\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__1\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__1\ : label is "soft_lutpair117";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__1\ : label is "soft_lutpair118";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__1\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__1\ : label is "soft_lutpair134";
+  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__1\ : label is "soft_lutpair134";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1__1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2__1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7__1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__1\ : label is "soft_lutpair120";
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__1\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__1\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__1\ : label is "soft_lutpair118";
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3__1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1__1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1__1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__1\ : label is "soft_lutpair142";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__1\ : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__1\ : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__1\ : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__1\ : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__1\ : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__1\ : label is "soft_lutpair131";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__1\ : label is "soft_lutpair131";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__1\ : label is "soft_lutpair132";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__1\ : label is "soft_lutpair132";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__1\ : label is "soft_lutpair142";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__1\ : label is "soft_lutpair124";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__1\ : label is "soft_lutpair124";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__1\ : label is "soft_lutpair125";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__1\ : label is "soft_lutpair125";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__1\ : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__1\ : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__1\ : label is "soft_lutpair127";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__1\ : label is "soft_lutpair127";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__1\ : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair163";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair158";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair158";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair157";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair157";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair156";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair156";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair155";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair155";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair154";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair154";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair163";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair162";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair162";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair161";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair161";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair160";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair160";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair159";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair159";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__1\ : label is "soft_lutpair164";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__1\ : label is "soft_lutpair169";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__1\ : label is "soft_lutpair169";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__1\ : label is "soft_lutpair170";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__1\ : label is "soft_lutpair170";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__1\ : label is "soft_lutpair171";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__1\ : label is "soft_lutpair171";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__1\ : label is "soft_lutpair172";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__1\ : label is "soft_lutpair172";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__1\ : label is "soft_lutpair164";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__1\ : label is "soft_lutpair165";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__1\ : label is "soft_lutpair165";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__1\ : label is "soft_lutpair166";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__1\ : label is "soft_lutpair166";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__1\ : label is "soft_lutpair167";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__1\ : label is "soft_lutpair167";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__1\ : label is "soft_lutpair168";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__1\ : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__1\ : label is "soft_lutpair141";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__1\ : label is "soft_lutpair129";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__1\ : label is "soft_lutpair129";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__1\ : label is "soft_lutpair130";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__1\ : label is "soft_lutpair130";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__1\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__1\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__1\ : label is "soft_lutpair141";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__1\ : label is "soft_lutpair123";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__1\ : label is "soft_lutpair123";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__1\ : label is "soft_lutpair124";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__1\ : label is "soft_lutpair124";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__1\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__1\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__1\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__1\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair162";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair157";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair157";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair156";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair156";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair155";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair155";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair154";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair154";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair153";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair153";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair162";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair161";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair161";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair160";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair160";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair159";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair159";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair158";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair158";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__1\ : label is "soft_lutpair163";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__1\ : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__1\ : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__1\ : label is "soft_lutpair169";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__1\ : label is "soft_lutpair169";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__1\ : label is "soft_lutpair170";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__1\ : label is "soft_lutpair170";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__1\ : label is "soft_lutpair171";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__1\ : label is "soft_lutpair171";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__1\ : label is "soft_lutpair163";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__1\ : label is "soft_lutpair164";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__1\ : label is "soft_lutpair164";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__1\ : label is "soft_lutpair165";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__1\ : label is "soft_lutpair165";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__1\ : label is "soft_lutpair166";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__1\ : label is "soft_lutpair166";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__1\ : label is "soft_lutpair167";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__1\ : label is "soft_lutpair167";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -52361,26 +51089,26 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__3\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of \mul_x_i_i_10__1\ : label is "soft_lutpair147";
-  attribute SOFT_HLUTNM of \mul_x_i_i_11__1\ : label is "soft_lutpair148";
-  attribute SOFT_HLUTNM of \mul_x_i_i_12__1\ : label is "soft_lutpair148";
-  attribute SOFT_HLUTNM of \mul_x_i_i_13__1\ : label is "soft_lutpair149";
-  attribute SOFT_HLUTNM of \mul_x_i_i_14__1\ : label is "soft_lutpair149";
-  attribute SOFT_HLUTNM of \mul_x_i_i_15__1\ : label is "soft_lutpair150";
-  attribute SOFT_HLUTNM of \mul_x_i_i_16__1\ : label is "soft_lutpair150";
-  attribute SOFT_HLUTNM of \mul_x_i_i_17__1\ : label is "soft_lutpair151";
-  attribute SOFT_HLUTNM of \mul_x_i_i_18__1\ : label is "soft_lutpair151";
-  attribute SOFT_HLUTNM of \mul_x_i_i_19__1\ : label is "soft_lutpair152";
-  attribute SOFT_HLUTNM of \mul_x_i_i_1__1\ : label is "soft_lutpair143";
-  attribute SOFT_HLUTNM of \mul_x_i_i_20__1\ : label is "soft_lutpair152";
-  attribute SOFT_HLUTNM of \mul_x_i_i_2__1\ : label is "soft_lutpair143";
-  attribute SOFT_HLUTNM of \mul_x_i_i_3__1\ : label is "soft_lutpair144";
-  attribute SOFT_HLUTNM of \mul_x_i_i_4__1\ : label is "soft_lutpair144";
-  attribute SOFT_HLUTNM of \mul_x_i_i_5__1\ : label is "soft_lutpair145";
-  attribute SOFT_HLUTNM of \mul_x_i_i_6__1\ : label is "soft_lutpair145";
-  attribute SOFT_HLUTNM of \mul_x_i_i_7__1\ : label is "soft_lutpair146";
-  attribute SOFT_HLUTNM of \mul_x_i_i_8__1\ : label is "soft_lutpair146";
-  attribute SOFT_HLUTNM of \mul_x_i_i_9__1\ : label is "soft_lutpair147";
+  attribute SOFT_HLUTNM of \mul_x_i_i_10__1\ : label is "soft_lutpair146";
+  attribute SOFT_HLUTNM of \mul_x_i_i_11__1\ : label is "soft_lutpair147";
+  attribute SOFT_HLUTNM of \mul_x_i_i_12__1\ : label is "soft_lutpair147";
+  attribute SOFT_HLUTNM of \mul_x_i_i_13__1\ : label is "soft_lutpair148";
+  attribute SOFT_HLUTNM of \mul_x_i_i_14__1\ : label is "soft_lutpair148";
+  attribute SOFT_HLUTNM of \mul_x_i_i_15__1\ : label is "soft_lutpair149";
+  attribute SOFT_HLUTNM of \mul_x_i_i_16__1\ : label is "soft_lutpair149";
+  attribute SOFT_HLUTNM of \mul_x_i_i_17__1\ : label is "soft_lutpair150";
+  attribute SOFT_HLUTNM of \mul_x_i_i_18__1\ : label is "soft_lutpair150";
+  attribute SOFT_HLUTNM of \mul_x_i_i_19__1\ : label is "soft_lutpair151";
+  attribute SOFT_HLUTNM of \mul_x_i_i_1__1\ : label is "soft_lutpair142";
+  attribute SOFT_HLUTNM of \mul_x_i_i_20__1\ : label is "soft_lutpair151";
+  attribute SOFT_HLUTNM of \mul_x_i_i_2__1\ : label is "soft_lutpair142";
+  attribute SOFT_HLUTNM of \mul_x_i_i_3__1\ : label is "soft_lutpair143";
+  attribute SOFT_HLUTNM of \mul_x_i_i_4__1\ : label is "soft_lutpair143";
+  attribute SOFT_HLUTNM of \mul_x_i_i_5__1\ : label is "soft_lutpair144";
+  attribute SOFT_HLUTNM of \mul_x_i_i_6__1\ : label is "soft_lutpair144";
+  attribute SOFT_HLUTNM of \mul_x_i_i_7__1\ : label is "soft_lutpair145";
+  attribute SOFT_HLUTNM of \mul_x_i_i_8__1\ : label is "soft_lutpair145";
+  attribute SOFT_HLUTNM of \mul_x_i_i_9__1\ : label is "soft_lutpair146";
 begin
   \doa_pair.angle_reg[15]_0\(15 downto 0) <= \^doa_pair.angle_reg[15]_0\(15 downto 0);
   shadow_WN <= \^shadow_wn\;
@@ -56416,99 +55144,99 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__4\ is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair262";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair275";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair281";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair278";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair276";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair281";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair282";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair282";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair283";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair279";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair279";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair275";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair280";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair276";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair283";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair278";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair280";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair314";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair314";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair265";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair265";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2\ : label is "soft_lutpair262";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_2\ : label is "soft_lutpair263";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_3\ : label is "soft_lutpair264";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair277";
-  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2\ : label is "soft_lutpair277";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2\ : label is "soft_lutpair261";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair274";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair280";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1\ : label is "soft_lutpair277";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair275";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair280";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair281";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair281";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair282";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair278";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair278";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair274";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair279";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair275";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair282";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1\ : label is "soft_lutpair277";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair279";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1\ : label is "soft_lutpair313";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1\ : label is "soft_lutpair313";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1\ : label is "soft_lutpair264";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1\ : label is "soft_lutpair264";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2\ : label is "soft_lutpair261";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_2\ : label is "soft_lutpair262";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_3\ : label is "soft_lutpair263";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1\ : label is "soft_lutpair276";
+  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2\ : label is "soft_lutpair276";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3\ : label is "soft_lutpair264";
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5\ : label is "soft_lutpair263";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3\ : label is "soft_lutpair263";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5\ : label is "soft_lutpair262";
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair284";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair270";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair271";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair271";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair272";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair272";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair273";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair273";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair274";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2\ : label is "soft_lutpair274";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair284";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair266";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair266";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair267";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair267";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair268";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair268";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair269";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair269";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair270";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair304";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair299";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair299";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair298";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair298";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair297";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair297";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair296";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair296";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair295";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair295";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair304";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair303";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair303";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair302";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair302";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair301";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair301";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair300";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair300";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair305";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair310";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair310";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair311";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair311";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair312";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair312";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair313";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair313";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair305";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair306";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair306";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair307";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair307";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair308";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair308";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair309";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair309";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1\ : label is "soft_lutpair283";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1\ : label is "soft_lutpair269";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1\ : label is "soft_lutpair270";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1\ : label is "soft_lutpair270";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1\ : label is "soft_lutpair271";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1\ : label is "soft_lutpair271";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1\ : label is "soft_lutpair272";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1\ : label is "soft_lutpair272";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1\ : label is "soft_lutpair273";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2\ : label is "soft_lutpair273";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2\ : label is "soft_lutpair283";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1\ : label is "soft_lutpair265";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1\ : label is "soft_lutpair265";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1\ : label is "soft_lutpair266";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1\ : label is "soft_lutpair266";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1\ : label is "soft_lutpair267";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1\ : label is "soft_lutpair267";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1\ : label is "soft_lutpair268";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1\ : label is "soft_lutpair268";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1\ : label is "soft_lutpair269";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair303";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair298";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair298";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair297";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair297";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair296";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair296";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair295";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair295";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair294";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair294";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair303";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair302";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair302";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair301";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair301";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair300";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair300";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair299";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair299";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1\ : label is "soft_lutpair304";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1\ : label is "soft_lutpair309";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1\ : label is "soft_lutpair309";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1\ : label is "soft_lutpair310";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1\ : label is "soft_lutpair310";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1\ : label is "soft_lutpair311";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1\ : label is "soft_lutpair311";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1\ : label is "soft_lutpair312";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1\ : label is "soft_lutpair312";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1\ : label is "soft_lutpair304";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1\ : label is "soft_lutpair305";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1\ : label is "soft_lutpair305";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1\ : label is "soft_lutpair306";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1\ : label is "soft_lutpair306";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1\ : label is "soft_lutpair307";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1\ : label is "soft_lutpair307";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1\ : label is "soft_lutpair308";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1\ : label is "soft_lutpair308";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -56524,26 +55252,26 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__4\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair285";
-  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair289";
-  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair290";
-  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair290";
-  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair291";
-  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair291";
-  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair292";
-  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair292";
-  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair293";
-  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair293";
-  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair294";
-  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair285";
-  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair294";
-  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair286";
-  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair286";
-  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair287";
-  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair287";
-  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair288";
-  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair288";
-  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair289";
+  attribute SOFT_HLUTNM of mul_x_i_i_1 : label is "soft_lutpair284";
+  attribute SOFT_HLUTNM of mul_x_i_i_10 : label is "soft_lutpair288";
+  attribute SOFT_HLUTNM of mul_x_i_i_11 : label is "soft_lutpair289";
+  attribute SOFT_HLUTNM of mul_x_i_i_12 : label is "soft_lutpair289";
+  attribute SOFT_HLUTNM of mul_x_i_i_13 : label is "soft_lutpair290";
+  attribute SOFT_HLUTNM of mul_x_i_i_14 : label is "soft_lutpair290";
+  attribute SOFT_HLUTNM of mul_x_i_i_15 : label is "soft_lutpair291";
+  attribute SOFT_HLUTNM of mul_x_i_i_16 : label is "soft_lutpair291";
+  attribute SOFT_HLUTNM of mul_x_i_i_17 : label is "soft_lutpair292";
+  attribute SOFT_HLUTNM of mul_x_i_i_18 : label is "soft_lutpair292";
+  attribute SOFT_HLUTNM of mul_x_i_i_19 : label is "soft_lutpair293";
+  attribute SOFT_HLUTNM of mul_x_i_i_2 : label is "soft_lutpair284";
+  attribute SOFT_HLUTNM of mul_x_i_i_20 : label is "soft_lutpair293";
+  attribute SOFT_HLUTNM of mul_x_i_i_3 : label is "soft_lutpair285";
+  attribute SOFT_HLUTNM of mul_x_i_i_4 : label is "soft_lutpair285";
+  attribute SOFT_HLUTNM of mul_x_i_i_5 : label is "soft_lutpair286";
+  attribute SOFT_HLUTNM of mul_x_i_i_6 : label is "soft_lutpair286";
+  attribute SOFT_HLUTNM of mul_x_i_i_7 : label is "soft_lutpair287";
+  attribute SOFT_HLUTNM of mul_x_i_i_8 : label is "soft_lutpair287";
+  attribute SOFT_HLUTNM of mul_x_i_i_9 : label is "soft_lutpair288";
 begin
   \doa_pair.angle_reg[15]_1\(15 downto 0) <= \^doa_pair.angle_reg[15]_1\(15 downto 0);
   shadow_NE <= \^shadow_ne\;
@@ -60159,99 +58887,99 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__5\ is
   signal NLW_mul_x2_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal NLW_mul_x_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__0\ : label is "soft_lutpair209";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair222";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair228";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__0\ : label is "soft_lutpair225";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair223";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair228";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair229";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair229";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair230";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair226";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair226";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair222";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair227";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair223";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair230";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__0\ : label is "soft_lutpair225";
-  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair227";
-  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__0\ : label is "soft_lutpair261";
-  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__0\ : label is "soft_lutpair261";
-  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__0\ : label is "soft_lutpair212";
-  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__0\ : label is "soft_lutpair212";
-  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__0\ : label is "soft_lutpair209";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__0\ : label is "soft_lutpair210";
-  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__0\ : label is "soft_lutpair211";
-  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__0\ : label is "soft_lutpair224";
-  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__0\ : label is "soft_lutpair224";
+  attribute SOFT_HLUTNM of \doa_pair.angle[15]_i_2__0\ : label is "soft_lutpair208";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[0]_i_1\ : label is "soft_lutpair221";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[10]_i_1\ : label is "soft_lutpair227";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[11]_i_1__0\ : label is "soft_lutpair224";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[12]_i_1\ : label is "soft_lutpair222";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[13]_i_1\ : label is "soft_lutpair227";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[14]_i_1\ : label is "soft_lutpair228";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[15]_i_1\ : label is "soft_lutpair228";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[18]_i_1\ : label is "soft_lutpair229";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[1]_i_1\ : label is "soft_lutpair225";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[2]_i_1\ : label is "soft_lutpair225";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[4]_i_1\ : label is "soft_lutpair221";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[5]_i_1\ : label is "soft_lutpair226";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[6]_i_1\ : label is "soft_lutpair222";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[7]_i_1\ : label is "soft_lutpair229";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[8]_i_1__0\ : label is "soft_lutpair224";
+  attribute SOFT_HLUTNM of \doa_pair.coeff[9]_i_1\ : label is "soft_lutpair226";
+  attribute SOFT_HLUTNM of \doa_pair.counter[0]_i_1__0\ : label is "soft_lutpair260";
+  attribute SOFT_HLUTNM of \doa_pair.counter[1]_i_1__0\ : label is "soft_lutpair260";
+  attribute SOFT_HLUTNM of \doa_pair.counter[2]_i_1__0\ : label is "soft_lutpair211";
+  attribute SOFT_HLUTNM of \doa_pair.counter[3]_i_1__0\ : label is "soft_lutpair211";
+  attribute SOFT_HLUTNM of \doa_pair.counter[4]_i_2__0\ : label is "soft_lutpair208";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_2__0\ : label is "soft_lutpair209";
+  attribute SOFT_HLUTNM of \doa_pair.fail_i_3__0\ : label is "soft_lutpair210";
+  attribute SOFT_HLUTNM of \doa_pair.ind[1]_i_1__0\ : label is "soft_lutpair223";
+  attribute SOFT_HLUTNM of \doa_pair.ind[2]_i_2__0\ : label is "soft_lutpair223";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_1__0\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_2__0\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_pair.shadow_diff_reg[19]_i_7__0\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__0\ : label is "soft_lutpair211";
-  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__0\ : label is "soft_lutpair210";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_3__0\ : label is "soft_lutpair210";
+  attribute SOFT_HLUTNM of \doa_pair.shadow_i_5__0\ : label is "soft_lutpair209";
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[0]_i_3__0\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[16]_i_1__0\ : label is 16;
   attribute ADDER_THRESHOLD of \doa_pair.sum_reg[8]_i_1__0\ : label is 16;
-  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__0\ : label is "soft_lutpair231";
-  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__0\ : label is "soft_lutpair217";
-  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__0\ : label is "soft_lutpair218";
-  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__0\ : label is "soft_lutpair218";
-  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__0\ : label is "soft_lutpair219";
-  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__0\ : label is "soft_lutpair219";
-  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__0\ : label is "soft_lutpair220";
-  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__0\ : label is "soft_lutpair220";
-  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__0\ : label is "soft_lutpair221";
-  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__0\ : label is "soft_lutpair221";
-  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__0\ : label is "soft_lutpair231";
-  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__0\ : label is "soft_lutpair213";
-  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__0\ : label is "soft_lutpair213";
-  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__0\ : label is "soft_lutpair214";
-  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__0\ : label is "soft_lutpair214";
-  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__0\ : label is "soft_lutpair215";
-  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__0\ : label is "soft_lutpair215";
-  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__0\ : label is "soft_lutpair216";
-  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__0\ : label is "soft_lutpair216";
-  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__0\ : label is "soft_lutpair217";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair251";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair246";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair246";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair245";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair245";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair244";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair244";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair243";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair243";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair242";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair242";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair251";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair250";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair250";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair249";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair249";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair248";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair248";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair247";
-  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair247";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__0\ : label is "soft_lutpair252";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__0\ : label is "soft_lutpair257";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__0\ : label is "soft_lutpair257";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__0\ : label is "soft_lutpair258";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__0\ : label is "soft_lutpair258";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__0\ : label is "soft_lutpair259";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__0\ : label is "soft_lutpair259";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__0\ : label is "soft_lutpair260";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__0\ : label is "soft_lutpair260";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__0\ : label is "soft_lutpair252";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__0\ : label is "soft_lutpair253";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__0\ : label is "soft_lutpair253";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__0\ : label is "soft_lutpair254";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__0\ : label is "soft_lutpair254";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__0\ : label is "soft_lutpair255";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__0\ : label is "soft_lutpair255";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__0\ : label is "soft_lutpair256";
-  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__0\ : label is "soft_lutpair256";
+  attribute SOFT_HLUTNM of \doa_pair.x[0]_i_1__0\ : label is "soft_lutpair230";
+  attribute SOFT_HLUTNM of \doa_pair.x[10]_i_1__0\ : label is "soft_lutpair216";
+  attribute SOFT_HLUTNM of \doa_pair.x[11]_i_1__0\ : label is "soft_lutpair217";
+  attribute SOFT_HLUTNM of \doa_pair.x[12]_i_1__0\ : label is "soft_lutpair217";
+  attribute SOFT_HLUTNM of \doa_pair.x[13]_i_1__0\ : label is "soft_lutpair218";
+  attribute SOFT_HLUTNM of \doa_pair.x[14]_i_1__0\ : label is "soft_lutpair218";
+  attribute SOFT_HLUTNM of \doa_pair.x[15]_i_1__0\ : label is "soft_lutpair219";
+  attribute SOFT_HLUTNM of \doa_pair.x[16]_i_1__0\ : label is "soft_lutpair219";
+  attribute SOFT_HLUTNM of \doa_pair.x[17]_i_1__0\ : label is "soft_lutpair220";
+  attribute SOFT_HLUTNM of \doa_pair.x[18]_i_2__0\ : label is "soft_lutpair220";
+  attribute SOFT_HLUTNM of \doa_pair.x[19]_i_2__0\ : label is "soft_lutpair230";
+  attribute SOFT_HLUTNM of \doa_pair.x[1]_i_1__0\ : label is "soft_lutpair212";
+  attribute SOFT_HLUTNM of \doa_pair.x[2]_i_1__0\ : label is "soft_lutpair212";
+  attribute SOFT_HLUTNM of \doa_pair.x[3]_i_1__0\ : label is "soft_lutpair213";
+  attribute SOFT_HLUTNM of \doa_pair.x[4]_i_1__0\ : label is "soft_lutpair213";
+  attribute SOFT_HLUTNM of \doa_pair.x[5]_i_1__0\ : label is "soft_lutpair214";
+  attribute SOFT_HLUTNM of \doa_pair.x[6]_i_1__0\ : label is "soft_lutpair214";
+  attribute SOFT_HLUTNM of \doa_pair.x[7]_i_1__0\ : label is "soft_lutpair215";
+  attribute SOFT_HLUTNM of \doa_pair.x[8]_i_1__0\ : label is "soft_lutpair215";
+  attribute SOFT_HLUTNM of \doa_pair.x[9]_i_1__0\ : label is "soft_lutpair216";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[0]_i_1\ : label is "soft_lutpair250";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[10]_i_1\ : label is "soft_lutpair245";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[11]_i_1\ : label is "soft_lutpair245";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[12]_i_1\ : label is "soft_lutpair244";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[13]_i_1\ : label is "soft_lutpair244";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[14]_i_1\ : label is "soft_lutpair243";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[15]_i_1\ : label is "soft_lutpair243";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[16]_i_1\ : label is "soft_lutpair242";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[17]_i_1\ : label is "soft_lutpair242";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[18]_i_1\ : label is "soft_lutpair241";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[19]_i_1\ : label is "soft_lutpair241";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[1]_i_1\ : label is "soft_lutpair250";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[2]_i_1\ : label is "soft_lutpair249";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[3]_i_1\ : label is "soft_lutpair249";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[4]_i_1\ : label is "soft_lutpair248";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[5]_i_1\ : label is "soft_lutpair248";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[6]_i_1\ : label is "soft_lutpair247";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[7]_i_1\ : label is "soft_lutpair247";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[8]_i_1\ : label is "soft_lutpair246";
+  attribute SOFT_HLUTNM of \doa_pair.x_abs[9]_i_1\ : label is "soft_lutpair246";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[0]_i_1__0\ : label is "soft_lutpair251";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[10]_i_1__0\ : label is "soft_lutpair256";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[11]_i_1__0\ : label is "soft_lutpair256";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[12]_i_1__0\ : label is "soft_lutpair257";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[13]_i_1__0\ : label is "soft_lutpair257";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[14]_i_1__0\ : label is "soft_lutpair258";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[15]_i_1__0\ : label is "soft_lutpair258";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[16]_i_1__0\ : label is "soft_lutpair259";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[17]_i_1__0\ : label is "soft_lutpair259";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[1]_i_1__0\ : label is "soft_lutpair251";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[2]_i_1__0\ : label is "soft_lutpair252";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[3]_i_1__0\ : label is "soft_lutpair252";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[4]_i_1__0\ : label is "soft_lutpair253";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[5]_i_1__0\ : label is "soft_lutpair253";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[6]_i_1__0\ : label is "soft_lutpair254";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[7]_i_1__0\ : label is "soft_lutpair254";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[8]_i_1__0\ : label is "soft_lutpair255";
+  attribute SOFT_HLUTNM of \doa_pair.x_diff[9]_i_1__0\ : label is "soft_lutpair255";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mul_c_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -60267,26 +58995,26 @@ architecture STRUCTURE of \ps_ana_0_1_doa_pair__xdcDup__5\ is
   attribute CHECK_LICENSE_TYPE of mul_x_i : label is "mult_20x20,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings of mul_x_i : label is "yes";
   attribute x_core_info of mul_x_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
-  attribute SOFT_HLUTNM of \mul_x_i_i_10__0\ : label is "soft_lutpair236";
-  attribute SOFT_HLUTNM of \mul_x_i_i_11__0\ : label is "soft_lutpair237";
-  attribute SOFT_HLUTNM of \mul_x_i_i_12__0\ : label is "soft_lutpair237";
-  attribute SOFT_HLUTNM of \mul_x_i_i_13__0\ : label is "soft_lutpair238";
-  attribute SOFT_HLUTNM of \mul_x_i_i_14__0\ : label is "soft_lutpair238";
-  attribute SOFT_HLUTNM of \mul_x_i_i_15__0\ : label is "soft_lutpair239";
-  attribute SOFT_HLUTNM of \mul_x_i_i_16__0\ : label is "soft_lutpair239";
-  attribute SOFT_HLUTNM of \mul_x_i_i_17__0\ : label is "soft_lutpair240";
-  attribute SOFT_HLUTNM of \mul_x_i_i_18__0\ : label is "soft_lutpair240";
-  attribute SOFT_HLUTNM of \mul_x_i_i_19__0\ : label is "soft_lutpair241";
-  attribute SOFT_HLUTNM of \mul_x_i_i_1__0\ : label is "soft_lutpair232";
-  attribute SOFT_HLUTNM of \mul_x_i_i_20__0\ : label is "soft_lutpair241";
-  attribute SOFT_HLUTNM of \mul_x_i_i_2__0\ : label is "soft_lutpair232";
-  attribute SOFT_HLUTNM of \mul_x_i_i_3__0\ : label is "soft_lutpair233";
-  attribute SOFT_HLUTNM of \mul_x_i_i_4__0\ : label is "soft_lutpair233";
-  attribute SOFT_HLUTNM of \mul_x_i_i_5__0\ : label is "soft_lutpair234";
-  attribute SOFT_HLUTNM of \mul_x_i_i_6__0\ : label is "soft_lutpair234";
-  attribute SOFT_HLUTNM of \mul_x_i_i_7__0\ : label is "soft_lutpair235";
-  attribute SOFT_HLUTNM of \mul_x_i_i_8__0\ : label is "soft_lutpair235";
-  attribute SOFT_HLUTNM of \mul_x_i_i_9__0\ : label is "soft_lutpair236";
+  attribute SOFT_HLUTNM of \mul_x_i_i_10__0\ : label is "soft_lutpair235";
+  attribute SOFT_HLUTNM of \mul_x_i_i_11__0\ : label is "soft_lutpair236";
+  attribute SOFT_HLUTNM of \mul_x_i_i_12__0\ : label is "soft_lutpair236";
+  attribute SOFT_HLUTNM of \mul_x_i_i_13__0\ : label is "soft_lutpair237";
+  attribute SOFT_HLUTNM of \mul_x_i_i_14__0\ : label is "soft_lutpair237";
+  attribute SOFT_HLUTNM of \mul_x_i_i_15__0\ : label is "soft_lutpair238";
+  attribute SOFT_HLUTNM of \mul_x_i_i_16__0\ : label is "soft_lutpair238";
+  attribute SOFT_HLUTNM of \mul_x_i_i_17__0\ : label is "soft_lutpair239";
+  attribute SOFT_HLUTNM of \mul_x_i_i_18__0\ : label is "soft_lutpair239";
+  attribute SOFT_HLUTNM of \mul_x_i_i_19__0\ : label is "soft_lutpair240";
+  attribute SOFT_HLUTNM of \mul_x_i_i_1__0\ : label is "soft_lutpair231";
+  attribute SOFT_HLUTNM of \mul_x_i_i_20__0\ : label is "soft_lutpair240";
+  attribute SOFT_HLUTNM of \mul_x_i_i_2__0\ : label is "soft_lutpair231";
+  attribute SOFT_HLUTNM of \mul_x_i_i_3__0\ : label is "soft_lutpair232";
+  attribute SOFT_HLUTNM of \mul_x_i_i_4__0\ : label is "soft_lutpair232";
+  attribute SOFT_HLUTNM of \mul_x_i_i_5__0\ : label is "soft_lutpair233";
+  attribute SOFT_HLUTNM of \mul_x_i_i_6__0\ : label is "soft_lutpair233";
+  attribute SOFT_HLUTNM of \mul_x_i_i_7__0\ : label is "soft_lutpair234";
+  attribute SOFT_HLUTNM of \mul_x_i_i_8__0\ : label is "soft_lutpair234";
+  attribute SOFT_HLUTNM of \mul_x_i_i_9__0\ : label is "soft_lutpair235";
 begin
   \doa_pair.angle_reg[15]_1\(15 downto 0) <= \^doa_pair.angle_reg[15]_1\(15 downto 0);
   shadow_EW <= \^shadow_ew\;
@@ -63588,7 +62316,7 @@ entity ps_ana_0_1_doa_calc is
     config_adr : in STD_LOGIC_VECTOR ( 7 downto 0 );
     config_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     start : in STD_LOGIC;
-    sample_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    sample_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
     size_in : in STD_LOGIC_VECTOR ( 8 downto 0 );
     freq_in : in STD_LOGIC_VECTOR ( 19 downto 0 );
     phase_NE_in : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -63597,7 +62325,7 @@ entity ps_ana_0_1_doa_calc is
     done : out STD_LOGIC;
     pair_error : out STD_LOGIC;
     phase_error : out STD_LOGIC;
-    sample : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -63891,11 +62619,11 @@ architecture STRUCTURE of ps_ana_0_1_doa_calc is
   signal sample_N_val : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal sample_W_val : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal sample_dist : STD_LOGIC;
-  signal sample_div : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_doa : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal sample_div : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal sample_doa : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal sample_fact : STD_LOGIC;
-  signal sample_pair : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_val : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal sample_pair : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal sample_val : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal second_angle : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal shadow_EW : STD_LOGIC;
   signal shadow_NE : STD_LOGIC;
@@ -63932,27 +62660,27 @@ architecture STRUCTURE of ps_ana_0_1_doa_calc is
   attribute x_core_info : string;
   attribute x_core_info of div_k_i : label is "div_gen_v5_1_24,Vivado 2025.1";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_calc.counter[2]_i_1\ : label is "soft_lutpair402";
-  attribute SOFT_HLUTNM of \doa_calc.counter[3]_i_1\ : label is "soft_lutpair402";
-  attribute SOFT_HLUTNM of \doa_calc.counter[4]_i_3\ : label is "soft_lutpair397";
+  attribute SOFT_HLUTNM of \doa_calc.counter[2]_i_1\ : label is "soft_lutpair401";
+  attribute SOFT_HLUTNM of \doa_calc.counter[3]_i_1\ : label is "soft_lutpair401";
+  attribute SOFT_HLUTNM of \doa_calc.counter[4]_i_3\ : label is "soft_lutpair396";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[9]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[9]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_3\ : label is "soft_lutpair397";
-  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_4\ : label is "soft_lutpair401";
-  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_5\ : label is "soft_lutpair401";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[1]_i_1\ : label is "soft_lutpair404";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[2]_i_1\ : label is "soft_lutpair404";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[3]_i_1\ : label is "soft_lutpair399";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[5]_i_2\ : label is "soft_lutpair399";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[1]_i_1\ : label is "soft_lutpair403";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[2]_i_1\ : label is "soft_lutpair403";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[3]_i_1\ : label is "soft_lutpair398";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[5]_i_2\ : label is "soft_lutpair398";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[1]_i_1\ : label is "soft_lutpair405";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[2]_i_1\ : label is "soft_lutpair405";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[3]_i_1\ : label is "soft_lutpair400";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[5]_i_2\ : label is "soft_lutpair400";
+  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_3\ : label is "soft_lutpair396";
+  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_4\ : label is "soft_lutpair400";
+  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_5\ : label is "soft_lutpair400";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[1]_i_1\ : label is "soft_lutpair403";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[2]_i_1\ : label is "soft_lutpair403";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[3]_i_1\ : label is "soft_lutpair398";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[5]_i_2\ : label is "soft_lutpair398";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[1]_i_1\ : label is "soft_lutpair402";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[2]_i_1\ : label is "soft_lutpair402";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[3]_i_1\ : label is "soft_lutpair397";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[5]_i_2\ : label is "soft_lutpair397";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[1]_i_1\ : label is "soft_lutpair404";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[2]_i_1\ : label is "soft_lutpair404";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[3]_i_1\ : label is "soft_lutpair399";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[5]_i_2\ : label is "soft_lutpair399";
   attribute CHECK_LICENSE_TYPE of err_sqr_sum_i : label is "dsp_err_sqr,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of err_sqr_sum_i : label is "yes";
   attribute x_core_info of err_sqr_sum_i : label is "dsp_macro_v1_0_8,Vivado 2025.1";
@@ -64160,8 +62888,8 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       \doa_angle.phase_NE_run_reg[19]_0\(19 downto 0) => phase_NE_pair(19 downto 0),
       \doa_angle.phase_WN_reg[19]_0\(17 downto 0) => diff_WN00_out(19 downto 2),
       \doa_angle.phase_WN_run_reg[19]_0\(19 downto 0) => phase_WN_pair(19 downto 0),
-      \doa_angle.sample_reg[31]_0\(31 downto 0) => sample_doa(31 downto 0),
-      \doa_angle.sample_run_reg[31]_0\(31 downto 0) => sample_pair(31 downto 0),
+      \doa_angle.sample_reg[15]_0\(15 downto 0) => sample_doa(15 downto 0),
+      \doa_angle.sample_run_reg[15]_0\(15 downto 0) => sample_pair(15 downto 0),
       \doa_angle.second_angle_reg[14]_0\(14 downto 0) => second_angle(14 downto 0),
       \doa_angle.shadow_E_loc_reg_0\ => doa_EW_i_n_2,
       \doa_angle.shadow_N_loc_reg_0\ => doa_NE_i_n_19,
@@ -69022,38 +67750,6 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample_div(15),
       R => '0'
     );
-\doa_calc.sample_div_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(16),
-      Q => sample_div(16),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(17),
-      Q => sample_div(17),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(18),
-      Q => sample_div(18),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(19),
-      Q => sample_div(19),
-      R => '0'
-    );
 \doa_calc.sample_div_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -69062,108 +67758,12 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample_div(1),
       R => '0'
     );
-\doa_calc.sample_div_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(20),
-      Q => sample_div(20),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(21),
-      Q => sample_div(21),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(22),
-      Q => sample_div(22),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(23),
-      Q => sample_div(23),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(24),
-      Q => sample_div(24),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(25),
-      Q => sample_div(25),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(26),
-      Q => sample_div(26),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(27),
-      Q => sample_div(27),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(28),
-      Q => sample_div(28),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(29),
-      Q => sample_div(29),
-      R => '0'
-    );
 \doa_calc.sample_div_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid_k,
       D => sample_in(2),
       Q => sample_div(2),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(30),
-      Q => sample_div(30),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(31),
-      Q => sample_div(31),
       R => '0'
     );
 \doa_calc.sample_div_reg[3]\: unisim.vcomponents.FDRE
@@ -69451,38 +68051,6 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample_pair(15),
       R => '0'
     );
-\doa_calc.sample_pair_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(16),
-      Q => sample_pair(16),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(17),
-      Q => sample_pair(17),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(18),
-      Q => sample_pair(18),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(19),
-      Q => sample_pair(19),
-      R => '0'
-    );
 \doa_calc.sample_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -69491,108 +68059,12 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample_pair(1),
       R => '0'
     );
-\doa_calc.sample_pair_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(20),
-      Q => sample_pair(20),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(21),
-      Q => sample_pair(21),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(22),
-      Q => sample_pair(22),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(23),
-      Q => sample_pair(23),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(24),
-      Q => sample_pair(24),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(25),
-      Q => sample_pair(25),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(26),
-      Q => sample_pair(26),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(27),
-      Q => sample_pair(27),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(28),
-      Q => sample_pair(28),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(29),
-      Q => sample_pair(29),
-      R => '0'
-    );
 \doa_calc.sample_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => start_pair0,
       D => sample_div(2),
       Q => sample_pair(2),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(30),
-      Q => sample_pair(30),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(31),
-      Q => sample_pair(31),
       R => '0'
     );
 \doa_calc.sample_pair_reg[3]\: unisim.vcomponents.FDRE
@@ -69707,38 +68179,6 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample(15),
       R => '0'
     );
-\doa_calc.sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(16),
-      Q => sample(16),
-      R => '0'
-    );
-\doa_calc.sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(17),
-      Q => sample(17),
-      R => '0'
-    );
-\doa_calc.sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(18),
-      Q => sample(18),
-      R => '0'
-    );
-\doa_calc.sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(19),
-      Q => sample(19),
-      R => '0'
-    );
 \doa_calc.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -69747,108 +68187,12 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample(1),
       R => '0'
     );
-\doa_calc.sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(20),
-      Q => sample(20),
-      R => '0'
-    );
-\doa_calc.sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(21),
-      Q => sample(21),
-      R => '0'
-    );
-\doa_calc.sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(22),
-      Q => sample(22),
-      R => '0'
-    );
-\doa_calc.sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(23),
-      Q => sample(23),
-      R => '0'
-    );
-\doa_calc.sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(24),
-      Q => sample(24),
-      R => '0'
-    );
-\doa_calc.sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(25),
-      Q => sample(25),
-      R => '0'
-    );
-\doa_calc.sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(26),
-      Q => sample(26),
-      R => '0'
-    );
-\doa_calc.sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(27),
-      Q => sample(27),
-      R => '0'
-    );
-\doa_calc.sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(28),
-      Q => sample(28),
-      R => '0'
-    );
-\doa_calc.sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(29),
-      Q => sample(29),
-      R => '0'
-    );
 \doa_calc.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_calc.done_i_1_n_0\,
       D => sample_val(2),
       Q => sample(2),
-      R => '0'
-    );
-\doa_calc.sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(30),
-      Q => sample(30),
-      R => '0'
-    );
-\doa_calc.sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(31),
-      Q => sample(31),
       R => '0'
     );
 \doa_calc.sample_reg[3]\: unisim.vcomponents.FDRE
@@ -69963,38 +68307,6 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample_val(15),
       R => '0'
     );
-\doa_calc.sample_val_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(16),
-      Q => sample_val(16),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(17),
-      Q => sample_val(17),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(18),
-      Q => sample_val(18),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(19),
-      Q => sample_val(19),
-      R => '0'
-    );
 \doa_calc.sample_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -70003,108 +68315,12 @@ doa_angle_i: entity work.ps_ana_0_1_doa_angle
       Q => sample_val(1),
       R => '0'
     );
-\doa_calc.sample_val_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(20),
-      Q => sample_val(20),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(21),
-      Q => sample_val(21),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(22),
-      Q => sample_val(22),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(23),
-      Q => sample_val(23),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(24),
-      Q => sample_val(24),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(25),
-      Q => sample_val(25),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(26),
-      Q => sample_val(26),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(27),
-      Q => sample_val(27),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(28),
-      Q => sample_val(28),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(29),
-      Q => sample_val(29),
-      R => '0'
-    );
 \doa_calc.sample_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
       D => sample_doa(2),
       Q => sample_val(2),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(30),
-      Q => sample_val(30),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(31),
-      Q => sample_val(31),
       R => '0'
     );
 \doa_calc.sample_val_reg[3]\: unisim.vcomponents.FDRE
@@ -70844,7 +69060,7 @@ entity \ps_ana_0_1_doa_calc__xdcDup__1\ is
     config_adr : in STD_LOGIC_VECTOR ( 7 downto 0 );
     config_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     start : in STD_LOGIC;
-    sample_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    sample_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
     size_in : in STD_LOGIC_VECTOR ( 8 downto 0 );
     freq_in : in STD_LOGIC_VECTOR ( 19 downto 0 );
     phase_NE_in : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -70853,7 +69069,7 @@ entity \ps_ana_0_1_doa_calc__xdcDup__1\ is
     done : out STD_LOGIC;
     pair_error : out STD_LOGIC;
     phase_error : out STD_LOGIC;
-    sample : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -71147,11 +69363,11 @@ architecture STRUCTURE of \ps_ana_0_1_doa_calc__xdcDup__1\ is
   signal sample_N_val : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal sample_W_val : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal sample_dist : STD_LOGIC;
-  signal sample_div : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_doa : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal sample_div : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal sample_doa : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal sample_fact : STD_LOGIC;
-  signal sample_pair : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal sample_val : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal sample_pair : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal sample_val : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal second_angle : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal shadow_EW : STD_LOGIC;
   signal shadow_NE : STD_LOGIC;
@@ -71188,27 +69404,27 @@ architecture STRUCTURE of \ps_ana_0_1_doa_calc__xdcDup__1\ is
   attribute x_core_info : string;
   attribute x_core_info of div_k_i : label is "div_gen_v5_1_24,Vivado 2025.1";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \doa_calc.counter[2]_i_1\ : label is "soft_lutpair205";
-  attribute SOFT_HLUTNM of \doa_calc.counter[3]_i_1\ : label is "soft_lutpair205";
-  attribute SOFT_HLUTNM of \doa_calc.counter[4]_i_3\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \doa_calc.counter[2]_i_1\ : label is "soft_lutpair204";
+  attribute SOFT_HLUTNM of \doa_calc.counter[3]_i_1\ : label is "soft_lutpair204";
+  attribute SOFT_HLUTNM of \doa_calc.counter[4]_i_3\ : label is "soft_lutpair199";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[9]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_calc.err_diff_reg[9]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_3\ : label is "soft_lutpair200";
-  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_4\ : label is "soft_lutpair204";
-  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_5\ : label is "soft_lutpair204";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[1]_i_1\ : label is "soft_lutpair207";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[2]_i_1\ : label is "soft_lutpair207";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[3]_i_1\ : label is "soft_lutpair202";
-  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[5]_i_2\ : label is "soft_lutpair202";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[1]_i_1\ : label is "soft_lutpair206";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[2]_i_1\ : label is "soft_lutpair206";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[3]_i_1\ : label is "soft_lutpair201";
-  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[5]_i_2\ : label is "soft_lutpair201";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[1]_i_1\ : label is "soft_lutpair208";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[2]_i_1\ : label is "soft_lutpair208";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[3]_i_1\ : label is "soft_lutpair203";
-  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[5]_i_2\ : label is "soft_lutpair203";
+  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_3\ : label is "soft_lutpair199";
+  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_4\ : label is "soft_lutpair203";
+  attribute SOFT_HLUTNM of \doa_calc.err_in[17]_i_5\ : label is "soft_lutpair203";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[1]_i_1\ : label is "soft_lutpair206";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[2]_i_1\ : label is "soft_lutpair206";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[3]_i_1\ : label is "soft_lutpair201";
+  attribute SOFT_HLUTNM of \doa_calc.sample_E_val[5]_i_2\ : label is "soft_lutpair201";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[1]_i_1\ : label is "soft_lutpair205";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[2]_i_1\ : label is "soft_lutpair205";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[3]_i_1\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \doa_calc.sample_N_val[5]_i_2\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[1]_i_1\ : label is "soft_lutpair207";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[2]_i_1\ : label is "soft_lutpair207";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[3]_i_1\ : label is "soft_lutpair202";
+  attribute SOFT_HLUTNM of \doa_calc.sample_W_val[5]_i_2\ : label is "soft_lutpair202";
   attribute CHECK_LICENSE_TYPE of err_sqr_sum_i : label is "dsp_err_sqr,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of err_sqr_sum_i : label is "yes";
   attribute x_core_info of err_sqr_sum_i : label is "dsp_macro_v1_0_8,Vivado 2025.1";
@@ -71416,8 +69632,8 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       \doa_angle.phase_NE_run_reg[19]_0\(19 downto 0) => phase_NE_pair(19 downto 0),
       \doa_angle.phase_WN_reg[19]_0\(17 downto 0) => diff_WN00_out(19 downto 2),
       \doa_angle.phase_WN_run_reg[19]_0\(19 downto 0) => phase_WN_pair(19 downto 0),
-      \doa_angle.sample_reg[31]_0\(31 downto 0) => sample_doa(31 downto 0),
-      \doa_angle.sample_run_reg[31]_0\(31 downto 0) => sample_pair(31 downto 0),
+      \doa_angle.sample_reg[15]_0\(15 downto 0) => sample_doa(15 downto 0),
+      \doa_angle.sample_run_reg[15]_0\(15 downto 0) => sample_pair(15 downto 0),
       \doa_angle.second_angle_reg[14]_0\(14 downto 0) => second_angle(14 downto 0),
       \doa_angle.shadow_E_loc_reg_0\ => doa_EW_i_n_2,
       \doa_angle.shadow_N_loc_reg_0\ => doa_NE_i_n_19,
@@ -76278,38 +74494,6 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample_div(15),
       R => '0'
     );
-\doa_calc.sample_div_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(16),
-      Q => sample_div(16),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(17),
-      Q => sample_div(17),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(18),
-      Q => sample_div(18),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(19),
-      Q => sample_div(19),
-      R => '0'
-    );
 \doa_calc.sample_div_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -76318,108 +74502,12 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample_div(1),
       R => '0'
     );
-\doa_calc.sample_div_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(20),
-      Q => sample_div(20),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(21),
-      Q => sample_div(21),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(22),
-      Q => sample_div(22),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(23),
-      Q => sample_div(23),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(24),
-      Q => sample_div(24),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(25),
-      Q => sample_div(25),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(26),
-      Q => sample_div(26),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(27),
-      Q => sample_div(27),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(28),
-      Q => sample_div(28),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(29),
-      Q => sample_div(29),
-      R => '0'
-    );
 \doa_calc.sample_div_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => valid_k,
       D => sample_in(2),
       Q => sample_div(2),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(30),
-      Q => sample_div(30),
-      R => '0'
-    );
-\doa_calc.sample_div_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => valid_k,
-      D => sample_in(31),
-      Q => sample_div(31),
       R => '0'
     );
 \doa_calc.sample_div_reg[3]\: unisim.vcomponents.FDRE
@@ -76707,38 +74795,6 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample_pair(15),
       R => '0'
     );
-\doa_calc.sample_pair_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(16),
-      Q => sample_pair(16),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(17),
-      Q => sample_pair(17),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(18),
-      Q => sample_pair(18),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(19),
-      Q => sample_pair(19),
-      R => '0'
-    );
 \doa_calc.sample_pair_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -76747,108 +74803,12 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample_pair(1),
       R => '0'
     );
-\doa_calc.sample_pair_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(20),
-      Q => sample_pair(20),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(21),
-      Q => sample_pair(21),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(22),
-      Q => sample_pair(22),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(23),
-      Q => sample_pair(23),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(24),
-      Q => sample_pair(24),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(25),
-      Q => sample_pair(25),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(26),
-      Q => sample_pair(26),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(27),
-      Q => sample_pair(27),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(28),
-      Q => sample_pair(28),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(29),
-      Q => sample_pair(29),
-      R => '0'
-    );
 \doa_calc.sample_pair_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => start_pair0,
       D => sample_div(2),
       Q => sample_pair(2),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(30),
-      Q => sample_pair(30),
-      R => '0'
-    );
-\doa_calc.sample_pair_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => start_pair0,
-      D => sample_div(31),
-      Q => sample_pair(31),
       R => '0'
     );
 \doa_calc.sample_pair_reg[3]\: unisim.vcomponents.FDRE
@@ -76963,38 +74923,6 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample(15),
       R => '0'
     );
-\doa_calc.sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(16),
-      Q => sample(16),
-      R => '0'
-    );
-\doa_calc.sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(17),
-      Q => sample(17),
-      R => '0'
-    );
-\doa_calc.sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(18),
-      Q => sample(18),
-      R => '0'
-    );
-\doa_calc.sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(19),
-      Q => sample(19),
-      R => '0'
-    );
 \doa_calc.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -77003,108 +74931,12 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample(1),
       R => '0'
     );
-\doa_calc.sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(20),
-      Q => sample(20),
-      R => '0'
-    );
-\doa_calc.sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(21),
-      Q => sample(21),
-      R => '0'
-    );
-\doa_calc.sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(22),
-      Q => sample(22),
-      R => '0'
-    );
-\doa_calc.sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(23),
-      Q => sample(23),
-      R => '0'
-    );
-\doa_calc.sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(24),
-      Q => sample(24),
-      R => '0'
-    );
-\doa_calc.sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(25),
-      Q => sample(25),
-      R => '0'
-    );
-\doa_calc.sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(26),
-      Q => sample(26),
-      R => '0'
-    );
-\doa_calc.sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(27),
-      Q => sample(27),
-      R => '0'
-    );
-\doa_calc.sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(28),
-      Q => sample(28),
-      R => '0'
-    );
-\doa_calc.sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(29),
-      Q => sample(29),
-      R => '0'
-    );
 \doa_calc.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \doa_calc.done_i_1_n_0\,
       D => sample_val(2),
       Q => sample(2),
-      R => '0'
-    );
-\doa_calc.sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(30),
-      Q => sample(30),
-      R => '0'
-    );
-\doa_calc.sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.done_i_1_n_0\,
-      D => sample_val(31),
-      Q => sample(31),
       R => '0'
     );
 \doa_calc.sample_reg[3]\: unisim.vcomponents.FDRE
@@ -77219,38 +75051,6 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample_val(15),
       R => '0'
     );
-\doa_calc.sample_val_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(16),
-      Q => sample_val(16),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(17),
-      Q => sample_val(17),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(18),
-      Q => sample_val(18),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(19),
-      Q => sample_val(19),
-      R => '0'
-    );
 \doa_calc.sample_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -77259,108 +75059,12 @@ doa_angle_i: entity work.\ps_ana_0_1_doa_angle__xdcDup__1\
       Q => sample_val(1),
       R => '0'
     );
-\doa_calc.sample_val_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(20),
-      Q => sample_val(20),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(21),
-      Q => sample_val(21),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(22),
-      Q => sample_val(22),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(23),
-      Q => sample_val(23),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(24),
-      Q => sample_val(24),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(25),
-      Q => sample_val(25),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(26),
-      Q => sample_val(26),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(27),
-      Q => sample_val(27),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(28),
-      Q => sample_val(28),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(29),
-      Q => sample_val(29),
-      R => '0'
-    );
 \doa_calc.sample_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => err_sqrt_start,
       D => sample_doa(2),
       Q => sample_val(2),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(30),
-      Q => sample_val(30),
-      R => '0'
-    );
-\doa_calc.sample_val_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => err_sqrt_start,
-      D => sample_doa(31),
-      Q => sample_val(31),
       R => '0'
     );
 \doa_calc.sample_val_reg[3]\: unisim.vcomponents.FDRE
@@ -78112,7 +75816,7 @@ entity ps_ana_0_1_ana is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     comp_wr : out STD_LOGIC;
-    sample : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -78161,7 +75865,7 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 8 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe4 : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -78171,7 +75875,7 @@ architecture STRUCTURE of ps_ana_0_1_ana is
     probe8 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 8 downto 0 );
     probe13 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -78254,24 +75958,8 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   signal \ana.sample[13]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[14]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[15]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[16]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[17]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[18]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[19]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[20]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[21]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[22]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[23]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[24]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[25]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[26]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[27]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[28]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[29]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[30]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[31]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[3]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[4]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample[5]_i_1_n_0\ : STD_LOGIC;
@@ -78286,24 +75974,8 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   signal \ana.sample_0_reg_n_0_[13]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[14]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[15]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[16]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[17]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[18]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[19]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[1]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[20]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[21]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[22]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[23]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[24]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[25]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[26]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[27]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[28]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[29]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[2]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[30]\ : STD_LOGIC;
-  signal \ana.sample_0_reg_n_0_[31]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[3]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[4]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[5]\ : STD_LOGIC;
@@ -78318,24 +75990,8 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   signal \ana.sample_1_reg_n_0_[13]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[14]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[15]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[16]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[17]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[18]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[19]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[1]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[20]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[21]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[22]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[23]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[24]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[25]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[26]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[27]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[28]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[29]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[2]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[30]\ : STD_LOGIC;
-  signal \ana.sample_1_reg_n_0_[31]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[3]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[4]\ : STD_LOGIC;
   signal \ana.sample_1_reg_n_0_[5]\ : STD_LOGIC;
@@ -78401,7 +76057,7 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   attribute MARK_DEBUG of curr_phase_NE : signal is std.standard.true;
   signal curr_phase_WN : STD_LOGIC_VECTOR ( 19 downto 0 );
   attribute MARK_DEBUG of curr_phase_WN : signal is std.standard.true;
-  signal curr_sample : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal curr_sample : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of curr_sample : signal is std.standard.true;
   signal curr_size : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of curr_size : signal is std.standard.true;
@@ -78415,7 +76071,7 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   signal phase_NE_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_NE_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_WN_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal \^sample\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \^sample\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
   signal sample_1 : STD_LOGIC;
   signal \^sample_e\ : STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -78430,8 +76086,8 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   signal save_angle_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal save_freq_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal save_freq_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal save_sample_0 : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal save_sample_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal save_sample_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal save_sample_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal save_sample_E_0 : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal save_sample_E_1 : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal save_sample_N_0 : STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -78457,10 +76113,10 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   signal NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \ana.ana_delay[0]_i_1\ : label is "soft_lutpair407";
-  attribute SOFT_HLUTNM of \ana.ana_delay[1]_i_1\ : label is "soft_lutpair407";
-  attribute SOFT_HLUTNM of \ana.ana_delay[2]_i_1\ : label is "soft_lutpair406";
-  attribute SOFT_HLUTNM of \ana.ana_delay[3]_i_2\ : label is "soft_lutpair406";
+  attribute SOFT_HLUTNM of \ana.ana_delay[0]_i_1\ : label is "soft_lutpair406";
+  attribute SOFT_HLUTNM of \ana.ana_delay[1]_i_1\ : label is "soft_lutpair406";
+  attribute SOFT_HLUTNM of \ana.ana_delay[2]_i_1\ : label is "soft_lutpair405";
+  attribute SOFT_HLUTNM of \ana.ana_delay[3]_i_2\ : label is "soft_lutpair405";
   attribute KEEP : string;
   attribute KEEP of \ana.angle_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -78590,42 +76246,10 @@ architecture STRUCTURE of ps_ana_0_1_ana is
   attribute mark_debug_string of \ana.sample_reg[14]\ : label is "yes";
   attribute KEEP of \ana.sample_reg[15]\ : label is "yes";
   attribute mark_debug_string of \ana.sample_reg[15]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[16]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[16]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[17]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[17]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[18]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[18]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[19]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[19]\ : label is "yes";
   attribute KEEP of \ana.sample_reg[1]\ : label is "yes";
   attribute mark_debug_string of \ana.sample_reg[1]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[20]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[20]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[21]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[21]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[22]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[22]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[23]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[23]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[24]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[24]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[25]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[25]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[26]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[26]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[27]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[27]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[28]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[28]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[29]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[29]\ : label is "yes";
   attribute KEEP of \ana.sample_reg[2]\ : label is "yes";
   attribute mark_debug_string of \ana.sample_reg[2]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[30]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[30]\ : label is "yes";
-  attribute KEEP of \ana.sample_reg[31]\ : label is "yes";
-  attribute mark_debug_string of \ana.sample_reg[31]\ : label is "yes";
   attribute KEEP of \ana.sample_reg[3]\ : label is "yes";
   attribute mark_debug_string of \ana.sample_reg[3]\ : label is "yes";
   attribute KEEP of \ana.sample_reg[4]\ : label is "yes";
@@ -78677,7 +76301,7 @@ begin
   angle(15 downto 0) <= \^angle\(15 downto 0);
   comp_wr <= \^comp_wr\;
   freq(19 downto 0) <= \^freq\(19 downto 0);
-  sample(31 downto 0) <= \^sample\(31 downto 0);
+  sample(15 downto 0) <= \^sample\(15 downto 0);
   sample_E(5 downto 0) <= \^sample_e\(5 downto 0);
   sample_N(5 downto 0) <= \^sample_n\(5 downto 0);
   sample_W(5 downto 0) <= \^sample_w\(5 downto 0);
@@ -83210,46 +80834,6 @@ begin
       I2 => save(1),
       O => \ana.sample[15]_i_1_n_0\
     );
-\ana.sample[16]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(16),
-      I1 => save_sample_0(16),
-      I2 => save(1),
-      O => \ana.sample[16]_i_1_n_0\
-    );
-\ana.sample[17]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(17),
-      I1 => save_sample_0(17),
-      I2 => save(1),
-      O => \ana.sample[17]_i_1_n_0\
-    );
-\ana.sample[18]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(18),
-      I1 => save_sample_0(18),
-      I2 => save(1),
-      O => \ana.sample[18]_i_1_n_0\
-    );
-\ana.sample[19]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(19),
-      I1 => save_sample_0(19),
-      I2 => save(1),
-      O => \ana.sample[19]_i_1_n_0\
-    );
 \ana.sample[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
@@ -83260,106 +80844,6 @@ begin
       I2 => save(1),
       O => \ana.sample[1]_i_1_n_0\
     );
-\ana.sample[20]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(20),
-      I1 => save_sample_0(20),
-      I2 => save(1),
-      O => \ana.sample[20]_i_1_n_0\
-    );
-\ana.sample[21]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(21),
-      I1 => save_sample_0(21),
-      I2 => save(1),
-      O => \ana.sample[21]_i_1_n_0\
-    );
-\ana.sample[22]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(22),
-      I1 => save_sample_0(22),
-      I2 => save(1),
-      O => \ana.sample[22]_i_1_n_0\
-    );
-\ana.sample[23]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(23),
-      I1 => save_sample_0(23),
-      I2 => save(1),
-      O => \ana.sample[23]_i_1_n_0\
-    );
-\ana.sample[24]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(24),
-      I1 => save_sample_0(24),
-      I2 => save(1),
-      O => \ana.sample[24]_i_1_n_0\
-    );
-\ana.sample[25]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(25),
-      I1 => save_sample_0(25),
-      I2 => save(1),
-      O => \ana.sample[25]_i_1_n_0\
-    );
-\ana.sample[26]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(26),
-      I1 => save_sample_0(26),
-      I2 => save(1),
-      O => \ana.sample[26]_i_1_n_0\
-    );
-\ana.sample[27]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(27),
-      I1 => save_sample_0(27),
-      I2 => save(1),
-      O => \ana.sample[27]_i_1_n_0\
-    );
-\ana.sample[28]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(28),
-      I1 => save_sample_0(28),
-      I2 => save(1),
-      O => \ana.sample[28]_i_1_n_0\
-    );
-\ana.sample[29]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(29),
-      I1 => save_sample_0(29),
-      I2 => save(1),
-      O => \ana.sample[29]_i_1_n_0\
-    );
 \ana.sample[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"AC"
@@ -83369,26 +80853,6 @@ begin
       I1 => save_sample_0(2),
       I2 => save(1),
       O => \ana.sample[2]_i_1_n_0\
-    );
-\ana.sample[30]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(30),
-      I1 => save_sample_0(30),
-      I2 => save(1),
-      O => \ana.sample[30]_i_1_n_0\
-    );
-\ana.sample[31]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AC"
-    )
-        port map (
-      I0 => save_sample_1(31),
-      I1 => save_sample_0(31),
-      I2 => save(1),
-      O => \ana.sample[31]_i_1_n_0\
     );
 \ana.sample[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -83516,38 +80980,6 @@ begin
       Q => \ana.sample_0_reg_n_0_[15]\,
       R => '0'
     );
-\ana.sample_0_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(16),
-      Q => \ana.sample_0_reg_n_0_[16]\,
-      R => '0'
-    );
-\ana.sample_0_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(17),
-      Q => \ana.sample_0_reg_n_0_[17]\,
-      R => '0'
-    );
-\ana.sample_0_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(18),
-      Q => \ana.sample_0_reg_n_0_[18]\,
-      R => '0'
-    );
-\ana.sample_0_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(19),
-      Q => \ana.sample_0_reg_n_0_[19]\,
-      R => '0'
-    );
 \ana.sample_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -83556,108 +80988,12 @@ begin
       Q => \ana.sample_0_reg_n_0_[1]\,
       R => '0'
     );
-\ana.sample_0_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(20),
-      Q => \ana.sample_0_reg_n_0_[20]\,
-      R => '0'
-    );
-\ana.sample_0_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(21),
-      Q => \ana.sample_0_reg_n_0_[21]\,
-      R => '0'
-    );
-\ana.sample_0_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(22),
-      Q => \ana.sample_0_reg_n_0_[22]\,
-      R => '0'
-    );
-\ana.sample_0_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(23),
-      Q => \ana.sample_0_reg_n_0_[23]\,
-      R => '0'
-    );
-\ana.sample_0_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(24),
-      Q => \ana.sample_0_reg_n_0_[24]\,
-      R => '0'
-    );
-\ana.sample_0_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(25),
-      Q => \ana.sample_0_reg_n_0_[25]\,
-      R => '0'
-    );
-\ana.sample_0_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(26),
-      Q => \ana.sample_0_reg_n_0_[26]\,
-      R => '0'
-    );
-\ana.sample_0_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(27),
-      Q => \ana.sample_0_reg_n_0_[27]\,
-      R => '0'
-    );
-\ana.sample_0_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(28),
-      Q => \ana.sample_0_reg_n_0_[28]\,
-      R => '0'
-    );
-\ana.sample_0_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(29),
-      Q => \ana.sample_0_reg_n_0_[29]\,
-      R => '0'
-    );
 \ana.sample_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \ana.burst[0]_i_1_n_0\,
       D => curr_sample(2),
       Q => \ana.sample_0_reg_n_0_[2]\,
-      R => '0'
-    );
-\ana.sample_0_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(30),
-      Q => \ana.sample_0_reg_n_0_[30]\,
-      R => '0'
-    );
-\ana.sample_0_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.burst[0]_i_1_n_0\,
-      D => curr_sample(31),
-      Q => \ana.sample_0_reg_n_0_[31]\,
       R => '0'
     );
 \ana.sample_0_reg[3]\: unisim.vcomponents.FDRE
@@ -83716,7 +81052,7 @@ begin
       Q => \ana.sample_0_reg_n_0_[9]\,
       R => '0'
     );
-\ana.sample_1[31]_i_1\: unisim.vcomponents.LUT2
+\ana.sample_1[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
@@ -83781,38 +81117,6 @@ begin
       Q => \ana.sample_1_reg_n_0_[15]\,
       R => '0'
     );
-\ana.sample_1_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(16),
-      Q => \ana.sample_1_reg_n_0_[16]\,
-      R => '0'
-    );
-\ana.sample_1_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(17),
-      Q => \ana.sample_1_reg_n_0_[17]\,
-      R => '0'
-    );
-\ana.sample_1_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(18),
-      Q => \ana.sample_1_reg_n_0_[18]\,
-      R => '0'
-    );
-\ana.sample_1_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(19),
-      Q => \ana.sample_1_reg_n_0_[19]\,
-      R => '0'
-    );
 \ana.sample_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -83821,108 +81125,12 @@ begin
       Q => \ana.sample_1_reg_n_0_[1]\,
       R => '0'
     );
-\ana.sample_1_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(20),
-      Q => \ana.sample_1_reg_n_0_[20]\,
-      R => '0'
-    );
-\ana.sample_1_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(21),
-      Q => \ana.sample_1_reg_n_0_[21]\,
-      R => '0'
-    );
-\ana.sample_1_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(22),
-      Q => \ana.sample_1_reg_n_0_[22]\,
-      R => '0'
-    );
-\ana.sample_1_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(23),
-      Q => \ana.sample_1_reg_n_0_[23]\,
-      R => '0'
-    );
-\ana.sample_1_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(24),
-      Q => \ana.sample_1_reg_n_0_[24]\,
-      R => '0'
-    );
-\ana.sample_1_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(25),
-      Q => \ana.sample_1_reg_n_0_[25]\,
-      R => '0'
-    );
-\ana.sample_1_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(26),
-      Q => \ana.sample_1_reg_n_0_[26]\,
-      R => '0'
-    );
-\ana.sample_1_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(27),
-      Q => \ana.sample_1_reg_n_0_[27]\,
-      R => '0'
-    );
-\ana.sample_1_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(28),
-      Q => \ana.sample_1_reg_n_0_[28]\,
-      R => '0'
-    );
-\ana.sample_1_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(29),
-      Q => \ana.sample_1_reg_n_0_[29]\,
-      R => '0'
-    );
 \ana.sample_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => sample_1,
       D => curr_sample(2),
       Q => \ana.sample_1_reg_n_0_[2]\,
-      R => '0'
-    );
-\ana.sample_1_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(30),
-      Q => \ana.sample_1_reg_n_0_[30]\,
-      R => '0'
-    );
-\ana.sample_1_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => sample_1,
-      D => curr_sample(31),
-      Q => \ana.sample_1_reg_n_0_[31]\,
       R => '0'
     );
 \ana.sample_1_reg[3]\: unisim.vcomponents.FDRE
@@ -84361,38 +81569,6 @@ begin
       Q => \^sample\(15),
       R => '0'
     );
-\ana.sample_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[16]_i_1_n_0\,
-      Q => \^sample\(16),
-      R => '0'
-    );
-\ana.sample_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[17]_i_1_n_0\,
-      Q => \^sample\(17),
-      R => '0'
-    );
-\ana.sample_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[18]_i_1_n_0\,
-      Q => \^sample\(18),
-      R => '0'
-    );
-\ana.sample_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[19]_i_1_n_0\,
-      Q => \^sample\(19),
-      R => '0'
-    );
 \ana.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -84401,108 +81577,12 @@ begin
       Q => \^sample\(1),
       R => '0'
     );
-\ana.sample_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[20]_i_1_n_0\,
-      Q => \^sample\(20),
-      R => '0'
-    );
-\ana.sample_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[21]_i_1_n_0\,
-      Q => \^sample\(21),
-      R => '0'
-    );
-\ana.sample_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[22]_i_1_n_0\,
-      Q => \^sample\(22),
-      R => '0'
-    );
-\ana.sample_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[23]_i_1_n_0\,
-      Q => \^sample\(23),
-      R => '0'
-    );
-\ana.sample_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[24]_i_1_n_0\,
-      Q => \^sample\(24),
-      R => '0'
-    );
-\ana.sample_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[25]_i_1_n_0\,
-      Q => \^sample\(25),
-      R => '0'
-    );
-\ana.sample_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[26]_i_1_n_0\,
-      Q => \^sample\(26),
-      R => '0'
-    );
-\ana.sample_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[27]_i_1_n_0\,
-      Q => \^sample\(27),
-      R => '0'
-    );
-\ana.sample_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[28]_i_1_n_0\,
-      Q => \^sample\(28),
-      R => '0'
-    );
-\ana.sample_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[29]_i_1_n_0\,
-      Q => \^sample\(29),
-      R => '0'
-    );
 \ana.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \ana.comp_wr_i_1_n_0\,
       D => \ana.sample[2]_i_1_n_0\,
       Q => \^sample\(2),
-      R => '0'
-    );
-\ana.sample_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[30]_i_1_n_0\,
-      Q => \^sample\(30),
-      R => '0'
-    );
-\ana.sample_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \ana.comp_wr_i_1_n_0\,
-      D => \ana.sample[31]_i_1_n_0\,
-      Q => \^sample\(31),
       R => '0'
     );
 \ana.sample_reg[3]\: unisim.vcomponents.FDRE
@@ -84882,7 +81962,7 @@ det_sig_i: entity work.ps_ana_0_1_det_signal
       signal_phase_EW(19 downto 0) => curr_phase_EW(19 downto 0),
       signal_phase_NE(19 downto 0) => curr_phase_NE(19 downto 0),
       signal_phase_WN(19 downto 0) => curr_phase_WN(19 downto 0),
-      signal_sample(31 downto 0) => curr_sample(31 downto 0),
+      signal_sample(15 downto 0) => curr_sample(15 downto 0),
       signal_size(8 downto 0) => curr_size(8 downto 0)
     );
 det_sig_i_i_1: unisim.vcomponents.LUT1
@@ -84929,26 +82009,10 @@ doa_calc_0: entity work.\ps_ana_0_1_doa_calc__xdcDup__1\
       phase_WN_in(0) => \ana.phase_WN_0_reg_n_0_[0]\,
       phase_error => NLW_doa_calc_0_phase_error_UNCONNECTED,
       reset => reset,
-      sample(31 downto 0) => save_sample_0(31 downto 0),
+      sample(15 downto 0) => save_sample_0(15 downto 0),
       sample_E(5 downto 0) => save_sample_E_0(5 downto 0),
       sample_N(5 downto 0) => save_sample_N_0(5 downto 0),
       sample_W(5 downto 0) => save_sample_W_0(5 downto 0),
-      sample_in(31) => \ana.sample_0_reg_n_0_[31]\,
-      sample_in(30) => \ana.sample_0_reg_n_0_[30]\,
-      sample_in(29) => \ana.sample_0_reg_n_0_[29]\,
-      sample_in(28) => \ana.sample_0_reg_n_0_[28]\,
-      sample_in(27) => \ana.sample_0_reg_n_0_[27]\,
-      sample_in(26) => \ana.sample_0_reg_n_0_[26]\,
-      sample_in(25) => \ana.sample_0_reg_n_0_[25]\,
-      sample_in(24) => \ana.sample_0_reg_n_0_[24]\,
-      sample_in(23) => \ana.sample_0_reg_n_0_[23]\,
-      sample_in(22) => \ana.sample_0_reg_n_0_[22]\,
-      sample_in(21) => \ana.sample_0_reg_n_0_[21]\,
-      sample_in(20) => \ana.sample_0_reg_n_0_[20]\,
-      sample_in(19) => \ana.sample_0_reg_n_0_[19]\,
-      sample_in(18) => \ana.sample_0_reg_n_0_[18]\,
-      sample_in(17) => \ana.sample_0_reg_n_0_[17]\,
-      sample_in(16) => \ana.sample_0_reg_n_0_[16]\,
       sample_in(15) => \ana.sample_0_reg_n_0_[15]\,
       sample_in(14) => \ana.sample_0_reg_n_0_[14]\,
       sample_in(13) => \ana.sample_0_reg_n_0_[13]\,
@@ -84986,26 +82050,10 @@ doa_calc_1: entity work.ps_ana_0_1_doa_calc
       phase_WN_in(19 downto 0) => phase_WN_1(19 downto 0),
       phase_error => NLW_doa_calc_1_phase_error_UNCONNECTED,
       reset => reset,
-      sample(31 downto 0) => save_sample_1(31 downto 0),
+      sample(15 downto 0) => save_sample_1(15 downto 0),
       sample_E(5 downto 0) => save_sample_E_1(5 downto 0),
       sample_N(5 downto 0) => save_sample_N_1(5 downto 0),
       sample_W(5 downto 0) => save_sample_W_1(5 downto 0),
-      sample_in(31) => \ana.sample_1_reg_n_0_[31]\,
-      sample_in(30) => \ana.sample_1_reg_n_0_[30]\,
-      sample_in(29) => \ana.sample_1_reg_n_0_[29]\,
-      sample_in(28) => \ana.sample_1_reg_n_0_[28]\,
-      sample_in(27) => \ana.sample_1_reg_n_0_[27]\,
-      sample_in(26) => \ana.sample_1_reg_n_0_[26]\,
-      sample_in(25) => \ana.sample_1_reg_n_0_[25]\,
-      sample_in(24) => \ana.sample_1_reg_n_0_[24]\,
-      sample_in(23) => \ana.sample_1_reg_n_0_[23]\,
-      sample_in(22) => \ana.sample_1_reg_n_0_[22]\,
-      sample_in(21) => \ana.sample_1_reg_n_0_[21]\,
-      sample_in(20) => \ana.sample_1_reg_n_0_[20]\,
-      sample_in(19) => \ana.sample_1_reg_n_0_[19]\,
-      sample_in(18) => \ana.sample_1_reg_n_0_[18]\,
-      sample_in(17) => \ana.sample_1_reg_n_0_[17]\,
-      sample_in(16) => \ana.sample_1_reg_n_0_[16]\,
       sample_in(15) => \ana.sample_1_reg_n_0_[15]\,
       sample_in(14) => \ana.sample_1_reg_n_0_[14]\,
       sample_in(13) => \ana.sample_1_reg_n_0_[13]\,
@@ -85059,9 +82107,9 @@ ila_i: component ps_ana_0_1_ila_6
      port map (
       clk => clk,
       probe0(0) => curr_burst,
-      probe1(31 downto 0) => curr_sample(31 downto 0),
+      probe1(15 downto 0) => curr_sample(15 downto 0),
       probe10(0) => \^comp_wr\,
-      probe11(31 downto 0) => \^sample\(31 downto 0),
+      probe11(15 downto 0) => \^sample\(15 downto 0),
       probe12(8 downto 0) => \^size\(8 downto 0),
       probe13(19 downto 0) => \^freq\(19 downto 0),
       probe14(15 downto 0) => \^angle\(15 downto 0),
@@ -85102,7 +82150,7 @@ entity ps_ana_0_1 is
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     comp_wr : out STD_LOGIC;
-    sample : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -85161,7 +82209,7 @@ inst: entity work.ps_ana_0_1_ana
       phase_N(19 downto 0) => phase_N(19 downto 0),
       phase_W(19 downto 0) => phase_W(19 downto 0),
       reset => reset,
-      sample(31 downto 0) => sample(31 downto 0),
+      sample(15 downto 0) => sample(15 downto 0),
       sample_E(5 downto 0) => sample_E(5 downto 0),
       sample_N(5 downto 0) => sample_N(5 downto 0),
       sample_W(5 downto 0) => sample_W(5 downto 0),

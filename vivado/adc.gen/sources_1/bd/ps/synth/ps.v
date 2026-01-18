@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Thu Jan 15 20:39:03 2026
+//Date        : Sun Jan 18 22:34:17 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -80,7 +80,7 @@ module ps
   wire [15:0]ana_high_angle;
   wire ana_high_comp_wr;
   wire [19:0]ana_high_freq;
-  wire [31:0]ana_high_sample;
+  wire [15:0]ana_high_sample;
   wire [5:0]ana_high_sample_E;
   wire [5:0]ana_high_sample_N;
   wire [5:0]ana_high_sample_W;
@@ -88,7 +88,7 @@ module ps
   wire [15:0]ana_low_angle;
   wire ana_low_comp_wr;
   wire [19:0]ana_low_freq;
-  wire [31:0]ana_low_sample;
+  wire [15:0]ana_low_sample;
   wire [5:0]ana_low_sample_E;
   wire [5:0]ana_low_sample_N;
   wire [5:0]ana_low_sample_W;
@@ -205,7 +205,7 @@ module ps
   wire [19:0]comp_high_freq;
   wire [63:0]comp_high_im;
   wire [63:0]comp_high_re;
-  wire [31:0]comp_high_sample;
+  wire [15:0]comp_high_sample;
   wire [8:0]comp_high_size;
   wire comp_low_active;
   wire [15:0]comp_low_angle;
@@ -213,7 +213,7 @@ module ps
   wire [19:0]comp_low_freq;
   wire [63:0]comp_low_im;
   wire [63:0]comp_low_re;
-  wire [31:0]comp_low_sample;
+  wire [15:0]comp_low_sample;
   wire [8:0]comp_low_size;
   wire [31:0]deci_high_freq_E;
   wire [31:0]deci_high_freq_N;
