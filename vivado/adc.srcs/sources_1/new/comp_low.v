@@ -57,6 +57,33 @@ module comp_low(
   reg [127:0] raw_N;
   reg [127:0] raw_E;
   reg [127:0] raw_W;
+  
+  wire [15:0] raw_N0 = raw_N[15:0];
+  wire [15:0] raw_N1 = raw_N[31:16];
+  wire [15:0] raw_N2 = raw_N[47:32];
+  wire [15:0] raw_N3 = raw_N[63:48];
+  wire [15:0] raw_N4 = raw_N[79:64];
+  wire [15:0] raw_N5 = raw_N[95:80];
+  wire [15:0] raw_N6 = raw_N[111:96];
+  wire [15:0] raw_N7 = raw_N[127:112];
+
+  wire [15:0] raw_E0 = raw_E[15:0];
+  wire [15:0] raw_E1 = raw_E[31:16];
+  wire [15:0] raw_E2 = raw_E[47:32];
+  wire [15:0] raw_E3 = raw_E[63:48];
+  wire [15:0] raw_E4 = raw_E[79:64];
+  wire [15:0] raw_E5 = raw_E[95:80];
+  wire [15:0] raw_E6 = raw_E[111:96];
+  wire [15:0] raw_E7 = raw_E[127:112];
+
+  wire [15:0] raw_W0 = raw_W[15:0];
+  wire [15:0] raw_W1 = raw_W[31:16];
+  wire [15:0] raw_W2 = raw_W[47:32];
+  wire [15:0] raw_W3 = raw_W[63:48];
+  wire [15:0] raw_W4 = raw_W[79:64];
+  wire [15:0] raw_W5 = raw_W[95:80];
+  wire [15:0] raw_W6 = raw_W[111:96];
+  wire [15:0] raw_W7 = raw_W[127:112];
 
   reg [383:0] raw_in_data;
   reg raw_wr;
@@ -83,6 +110,33 @@ module comp_low(
   wire [127:0] data_N;
   wire [127:0] data_E;
   wire [127:0] data_W;
+  
+  wire [15:0] data_N0 = data_N[15:0];
+  wire [15:0] data_N1 = data_N[31:16];
+  wire [15:0] data_N2 = data_N[47:32];
+  wire [15:0] data_N3 = data_N[63:48];
+  wire [15:0] data_N4 = data_N[79:64];
+  wire [15:0] data_N5 = data_N[95:80];
+  wire [15:0] data_N6 = data_N[111:96];
+  wire [15:0] data_N7 = data_N[127:112];
+  
+  wire [15:0] data_E0 = data_E[15:0];
+  wire [15:0] data_E1 = data_E[31:16];
+  wire [15:0] data_E2 = data_E[47:32];
+  wire [15:0] data_E3 = data_E[63:48];
+  wire [15:0] data_E4 = data_E[79:64];
+  wire [15:0] data_E5 = data_E[95:80];
+  wire [15:0] data_E6 = data_E[111:96];
+  wire [15:0] data_E7 = data_E[127:112];
+  
+  wire [15:0] data_W0 = data_W[15:0];
+  wire [15:0] data_W1 = data_W[31:16];
+  wire [15:0] data_W2 = data_W[47:32];
+  wire [15:0] data_W3 = data_W[63:48];
+  wire [15:0] data_W4 = data_W[79:64];
+  wire [15:0] data_W5 = data_W[95:80];
+  wire [15:0] data_W6 = data_W[111:96];
+  wire [15:0] data_W7 = data_W[127:112];
   
   reg [17:0] N0;
   reg [17:0] N1;
@@ -124,8 +178,8 @@ module comp_low(
   reg deci_run;
   wire deci_active;
   reg fir_run;
-  wire fir_re_active;
-  wire fir_im_active;
+  wire fir_re_active = 0;
+  wire fir_im_active = 0;
   
   reg [191:0] deci_in;
   wire [159:0] deci_out;
@@ -142,8 +196,8 @@ module comp_low(
   
   wire [63:0] fir_in = {deci_3[15:0], deci_2[15:0], deci_1[15:0], deci_0[15:0]};
   
-  wire [159:0] re_data;
-  wire [159:0] im_data;
+  wire [159:0] re_data = 0;
+  wire [159:0] im_data = 0;
   
   wire [39:0] re_out_0 = re_data[39:0];
   wire [39:0] re_out_1 = re_data[79:40];
@@ -219,6 +273,7 @@ fir_comp_deci fir_deci_i (
   .m_axis_data_tdata(deci_out)              // output wire [159 : 0] m_axis_data_tdata
 );
 
+/*
 fir_comp_low_re fir_re_i (
   .aclk(clk),                               // input wire aclk
   .s_axis_data_tvalid(fir_run),             // input wire s_axis_data_tvalid
@@ -234,29 +289,63 @@ fir_comp_low_im fir_im_i (
   .m_axis_data_tvalid(fir_im_active),       // output wire m_axis_data_tvalid
   .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
 );
+*/
 
-/*
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(raw_rd),              // input wire [0:0]  probe3
-		.probe1(raw_empty),           // input wire [0:0]  probe3
-		.probe2(raw_delay),           // input wire [9:0]  probe3
-		.probe3(raw_sample),          // input wire [15:0]  probe3
-		.probe4(select_delay),        // input wire [4:0]  probe3
-		.probe5(deci_run),            // input wire [0:0]  probe3
-		.probe6(deci_active),         // input wire [0:0]  probe3
-		.probe7(raw_run),             // input wire [0:0]  probe3
-		.probe8(fir_run),             // input wire [0:0]  probe3
-		.probe9(fir_re_active),       // input wire [0:0]  probe3
-		.probe10(fir_im_active),      // input wire [0:0]  probe3
-		.probe11(active),             // input wire [0:0]  probe3
-		.probe12(ana_trig),           // input wire [0:0]  probe3
-		.probe13(deci_0),             // input wire [19:0]  probe3
-		.probe14(sample_N),           // input wire [5:0]  probe3
-		.probe15(sample_E),           // input wire [5:0]  probe3
-		.probe16(sample_W)            // input wire [5:0]  probe3
+		.probe0(ana_trig),            // input wire [0:0]  probe3
+		.probe1(sample_N),            // input wire [5:0]  probe3
+		.probe2(sample_E),            // input wire [5:0]  probe3
+		.probe3(sample_W),            // input wire [5:0]  probe3
+		.probe4(raw_N0),              // input wire [15:0]  probe3
+		.probe5(raw_N1),              // input wire [15:0]  probe3
+		.probe6(raw_N2),              // input wire [15:0]  probe3
+		.probe7(raw_N3),              // input wire [15:0]  probe3
+		.probe8(raw_N4),              // input wire [15:0]  probe3
+		.probe9(raw_N5),              // input wire [15:0]  probe3
+		.probe10(raw_N6),             // input wire [15:0]  probe3
+		.probe11(raw_N7),             // input wire [15:0]  probe3
+		.probe12(raw_E0),              // input wire [15:0]  probe3
+		.probe13(raw_E1),              // input wire [15:0]  probe3
+		.probe14(raw_E2),              // input wire [15:0]  probe3
+		.probe15(raw_E3),              // input wire [15:0]  probe3
+		.probe16(raw_E4),              // input wire [15:0]  probe3
+		.probe17(raw_E5),              // input wire [15:0]  probe3
+		.probe18(raw_E6),              // input wire [15:0]  probe3
+		.probe19(raw_E7),              // input wire [15:0]  probe3
+		.probe20(raw_W0),              // input wire [15:0]  probe3
+		.probe21(raw_W1),              // input wire [15:0]  probe3
+		.probe22(raw_W2),              // input wire [15:0]  probe3
+		.probe23(raw_W3),              // input wire [15:0]  probe3
+		.probe24(raw_W4),              // input wire [15:0]  probe3
+		.probe25(raw_W5),              // input wire [15:0]  probe3
+		.probe26(raw_W6),              // input wire [15:0]  probe3
+		.probe27(raw_W7),              // input wire [15:0]  probe3
+		.probe28(data_N0),             // input wire [15:0]  probe3
+		.probe29(data_N1),             // input wire [15:0]  probe3
+		.probe30(data_N2),             // input wire [15:0]  probe3
+		.probe31(data_N3),             // input wire [15:0]  probe3
+		.probe32(data_N4),             // input wire [15:0]  probe3
+		.probe33(data_N5),             // input wire [15:0]  probe3
+		.probe34(data_N6),             // input wire [15:0]  probe3
+		.probe35(data_N7),             // input wire [15:0]  probe3
+		.probe36(data_E0),             // input wire [15:0]  probe3
+		.probe37(data_E1),             // input wire [15:0]  probe3
+		.probe38(data_E2),             // input wire [15:0]  probe3
+		.probe39(data_E3),             // input wire [15:0]  probe3
+		.probe40(data_E4),             // input wire [15:0]  probe3
+		.probe41(data_E5),             // input wire [15:0]  probe3
+		.probe42(data_E6),             // input wire [15:0]  probe3
+		.probe43(data_E7),             // input wire [15:0]  probe3
+		.probe44(data_W0),             // input wire [15:0]  probe3
+		.probe45(data_W1),             // input wire [15:0]  probe3
+		.probe46(data_W2),             // input wire [15:0]  probe3
+		.probe47(data_W3),             // input wire [15:0]  probe3
+		.probe48(data_W4),             // input wire [15:0]  probe3
+		.probe49(data_W5),             // input wire [15:0]  probe3
+		.probe50(data_W6),             // input wire [15:0]  probe3
+		.probe51(data_W7)              // input wire [15:0]  probe3
 	);
-*/
 
 generate
   begin : comp_low
