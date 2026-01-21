@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Jan 18 22:35:26 2026
+-- Date        : Wed Jan 21 01:08:53 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_sim_netlist.vhdl
@@ -391,6 +391,7 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   signal \det_signal.div_counter[2]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[3]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[4]_i_1_n_0\ : STD_LOGIC;
+  signal \det_signal.div_counter[4]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.div_counter[5]_i_3_n_0\ : STD_LOGIC;
@@ -1373,7 +1374,6 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   signal \det_signal.err_ov_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.err_ov_reg_n_0\ : STD_LOGIC;
   signal \det_signal.has_signal_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.max_doa_diff[11]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.max_doa_diff_reg_n_0_[0]\ : STD_LOGIC;
   signal \det_signal.max_doa_diff_reg_n_0_[10]\ : STD_LOGIC;
   signal \det_signal.max_doa_diff_reg_n_0_[11]\ : STD_LOGIC;
@@ -1426,7 +1426,6 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   signal \det_signal.max_freq_diff_reg[20]_i_7_n_5\ : STD_LOGIC;
   signal \det_signal.max_freq_diff_reg[20]_i_7_n_6\ : STD_LOGIC;
   signal \det_signal.max_freq_diff_reg[20]_i_7_n_7\ : STD_LOGIC;
-  signal \det_signal.max_freq_diff_reg_n_0_[20]\ : STD_LOGIC;
   signal \det_signal.max_freq_reg_n_0_[0]\ : STD_LOGIC;
   signal \det_signal.max_freq_reg_n_0_[10]\ : STD_LOGIC;
   signal \det_signal.max_freq_reg_n_0_[11]\ : STD_LOGIC;
@@ -1447,6 +1446,7 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   signal \det_signal.max_freq_reg_n_0_[7]\ : STD_LOGIC;
   signal \det_signal.max_freq_reg_n_0_[8]\ : STD_LOGIC;
   signal \det_signal.max_freq_reg_n_0_[9]\ : STD_LOGIC;
+  signal \det_signal.min_env[15]_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.min_env_reg_n_0_[0]\ : STD_LOGIC;
   signal \det_signal.min_env_reg_n_0_[10]\ : STD_LOGIC;
   signal \det_signal.min_env_reg_n_0_[11]\ : STD_LOGIC;
@@ -1542,7 +1542,6 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   signal \det_signal.min_samples_reg_n_0_[7]\ : STD_LOGIC;
   signal \det_signal.min_samples_reg_n_0_[8]\ : STD_LOGIC;
   signal \det_signal.proc_done_i_1_n_0\ : STD_LOGIC;
-  signal \det_signal.proc_done_i_2_n_0\ : STD_LOGIC;
   signal \det_signal.proc_signal_i_1_n_0\ : STD_LOGIC;
   signal \det_signal.run_reg[0]__0\ : STD_LOGIC;
   signal \det_signal.run_reg[1]__0\ : STD_LOGIC;
@@ -1674,15 +1673,16 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   signal min_samples : STD_LOGIC;
   signal min_samples0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal p_0_in : STD_LOGIC_VECTOR ( 8 downto 1 );
-  signal p_0_in11_in : STD_LOGIC;
-  signal p_0_in9_in : STD_LOGIC;
+  signal p_0_in12_in : STD_LOGIC;
+  signal p_0_in15_in : STD_LOGIC;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 15 downto 1 );
   signal p_1_in : STD_LOGIC_VECTOR ( 22 downto 0 );
   signal p_1_in10_in : STD_LOGIC;
-  signal p_1_in13_in : STD_LOGIC;
-  signal p_2_in : STD_LOGIC;
-  signal p_2_in12_in : STD_LOGIC;
-  signal \p_2_in__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal p_1_in14_in : STD_LOGIC;
+  signal p_1_in17_in : STD_LOGIC;
+  signal p_2_in : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal p_2_in13_in : STD_LOGIC;
+  signal p_2_in16_in : STD_LOGIC;
   signal phase_E : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_N : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_W : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -1783,11 +1783,11 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \det_signal.div_counter[0]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \det_signal.div_counter[1]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \det_signal.div_counter[3]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[0]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[1]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[2]_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \det_signal.div_delay[3]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[4]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \det_signal.div_counter[5]_i_4\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[1]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[2]_i_2\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \det_signal.div_delay[3]_i_1\ : label is "soft_lutpair4";
   attribute ADDER_THRESHOLD of \det_signal.div_env_all_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_env_all_reg[23]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_env_all_reg[31]_i_1\ : label is 35;
@@ -1809,7 +1809,7 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[23]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[25]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.div_lo_freq_sum_reg[7]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.div_start_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \det_signal.div_start_i_1\ : label is "soft_lutpair4";
   attribute ADDER_THRESHOLD of \det_signal.dsp_phase_EW_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.dsp_phase_EW_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.dsp_phase_EW_reg[7]_i_1\ : label is 35;
@@ -1842,14 +1842,14 @@ architecture STRUCTURE of ps_ana_0_0_det_signal is
   attribute SOFT_HLUTNM of \det_signal.min_samples[4]_i_1\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \det_signal.min_samples[7]_i_1\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \det_signal.min_samples[8]_i_2\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[1]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[2]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[3]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[1]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[2]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \det_signal.sample_count[3]_i_1\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \det_signal.sample_count[4]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \det_signal.sample_count[8]_i_2\ : label is "soft_lutpair2";
   attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \det_signal.sample_counter_reg[8]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \det_signal.valid_count_i_3\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \det_signal.valid_count_i_3\ : label is "soft_lutpair2";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of div_incr_i : label is "div_weighted,div_gen_v5_1_24,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -2075,7 +2075,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_env_E0(16),
-      Q => p_0_in11_in,
+      Q => p_0_in15_in,
       R => '0'
     );
 \det_signal.diff_env_E_reg[16]_i_1\: unisim.vcomponents.CARRY8
@@ -2297,7 +2297,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_env_N0(16),
-      Q => p_1_in13_in,
+      Q => p_1_in17_in,
       R => '0'
     );
 \det_signal.diff_env_N_reg[16]_i_1\: unisim.vcomponents.CARRY8
@@ -2519,7 +2519,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_env_W0(16),
-      Q => p_2_in12_in,
+      Q => p_2_in16_in,
       R => '0'
     );
 \det_signal.diff_env_W_reg[16]_i_1\: unisim.vcomponents.CARRY8
@@ -2705,7 +2705,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_err_EW0(12),
-      Q => p_0_in9_in,
+      Q => p_0_in12_in,
       R => '0'
     );
 \det_signal.diff_err_EW_reg[12]_i_1\: unisim.vcomponents.CARRY8
@@ -2864,7 +2864,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_err_NE0(12),
-      Q => p_1_in10_in,
+      Q => p_1_in14_in,
       R => '0'
     );
 \det_signal.diff_err_NE_reg[12]_i_1\: unisim.vcomponents.CARRY8
@@ -3023,7 +3023,7 @@ begin
       C => clk,
       CE => \det_signal.run_reg[0]__0\,
       D => diff_err_WN0(12),
-      Q => p_2_in,
+      Q => p_2_in13_in,
       R => '0'
     );
 \det_signal.diff_err_WN_reg[12]_i_1\: unisim.vcomponents.CARRY8
@@ -4306,41 +4306,52 @@ begin
     );
 \det_signal.div_counter[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000000000006A"
+      INIT => X"0000000001101010"
     )
         port map (
-      I0 => div_counter(2),
-      I1 => div_counter(1),
-      I2 => div_counter(0),
-      I3 => div_delay(1),
-      I4 => div_delay(0),
-      I5 => div_delay(2),
+      I0 => div_delay(2),
+      I1 => div_delay(0),
+      I2 => div_counter(2),
+      I3 => div_counter(1),
+      I4 => div_counter(0),
+      I5 => div_delay(1),
       O => \det_signal.div_counter[2]_i_1_n_0\
     );
-\det_signal.div_counter[3]_i_1\: unisim.vcomponents.LUT5
+\det_signal.div_counter[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00001001"
+      INIT => X"0000000001101010"
     )
         port map (
       I0 => div_delay(2),
       I1 => div_delay(0),
       I2 => div_counter(3),
-      I3 => \det_signal.signal_freq[19]_i_2_n_0\,
-      I4 => div_delay(1),
+      I3 => \det_signal.div_counter[5]_i_5_n_0\,
+      I4 => div_counter(2),
+      I5 => div_delay(1),
       O => \det_signal.div_counter[3]_i_1_n_0\
     );
-\det_signal.div_counter[4]_i_1\: unisim.vcomponents.LUT6
+\det_signal.div_counter[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000000010100110"
+      INIT => X"00000110"
     )
         port map (
       I0 => div_delay(2),
       I1 => div_delay(0),
       I2 => div_counter(4),
-      I3 => div_counter(3),
-      I4 => \det_signal.signal_freq[19]_i_2_n_0\,
-      I5 => div_delay(1),
+      I3 => \det_signal.div_counter[4]_i_2_n_0\,
+      I4 => div_delay(1),
       O => \det_signal.div_counter[4]_i_1_n_0\
+    );
+\det_signal.div_counter[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => div_counter(1),
+      I1 => div_counter(0),
+      I2 => div_counter(2),
+      I3 => div_counter(3),
+      O => \det_signal.div_counter[4]_i_2_n_0\
     );
 \det_signal.div_counter[5]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -4355,7 +4366,7 @@ begin
       INIT => X"FFFD00FC"
     )
         port map (
-      I0 => \det_signal.div_counter[5]_i_4_n_0\,
+      I0 => \det_signal.signal_freq[19]_i_2_n_0\,
       I1 => div_delay(1),
       I2 => div_delay(0),
       I3 => div_delay(2),
@@ -4364,37 +4375,34 @@ begin
     );
 \det_signal.div_counter[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2020202002202020"
+      INIT => X"2AAA8000AAAA0000"
     )
         port map (
-      I0 => \det_signal.div_counter[5]_i_5_n_0\,
-      I1 => div_delay(2),
-      I2 => div_counter(5),
-      I3 => div_counter(4),
-      I4 => div_counter(3),
-      I5 => \det_signal.signal_freq[19]_i_2_n_0\,
+      I0 => \det_signal.div_counter[5]_i_4_n_0\,
+      I1 => \det_signal.div_counter[5]_i_5_n_0\,
+      I2 => div_counter(2),
+      I3 => div_counter(3),
+      I4 => div_counter(5),
+      I5 => div_counter(4),
       O => \det_signal.div_counter[5]_i_3_n_0\
     );
-\det_signal.div_counter[5]_i_4\: unisim.vcomponents.LUT6
+\det_signal.div_counter[5]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"8000000000000000"
+      INIT => X"01"
     )
         port map (
-      I0 => div_counter(5),
-      I1 => div_counter(4),
-      I2 => div_counter(3),
-      I3 => div_counter(2),
-      I4 => div_counter(0),
-      I5 => div_counter(1),
+      I0 => div_delay(1),
+      I1 => div_delay(0),
+      I2 => div_delay(2),
       O => \det_signal.div_counter[5]_i_4_n_0\
     );
 \det_signal.div_counter[5]_i_5\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"8"
     )
         port map (
-      I0 => div_delay(0),
-      I1 => div_delay(1),
+      I0 => div_counter(0),
+      I1 => div_counter(1),
       O => \det_signal.div_counter[5]_i_5_n_0\
     );
 \det_signal.div_counter_reg[0]\: unisim.vcomponents.FDRE
@@ -4451,7 +4459,7 @@ begin
     )
         port map (
       I0 => div_delay(0),
-      O => \p_2_in__0\(0)
+      O => p_2_in(0)
     );
 \det_signal.div_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -4460,7 +4468,7 @@ begin
         port map (
       I0 => div_delay(0),
       I1 => div_delay(1),
-      O => \p_2_in__0\(1)
+      O => p_2_in(1)
     );
 \det_signal.div_delay[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -4498,7 +4506,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.div_delay[2]_i_1_n_0\,
-      D => \p_2_in__0\(0),
+      D => p_2_in(0),
       Q => div_delay(0),
       R => \det_signal.div_counter[5]_i_1_n_0\
     );
@@ -4506,7 +4514,7 @@ begin
      port map (
       C => clk,
       CE => \det_signal.div_delay[2]_i_1_n_0\,
-      D => \p_2_in__0\(1),
+      D => p_2_in(1),
       Q => div_delay(1),
       R => \det_signal.div_counter[5]_i_1_n_0\
     );
@@ -14969,8 +14977,8 @@ begin
       INIT => X"8000FFFF"
     )
         port map (
-      I0 => accept_new_burst,
-      I1 => valid_env,
+      I0 => valid_env,
+      I1 => accept_new_burst,
       I2 => \det_signal.valid_count_reg_n_0\,
       I3 => valid_err,
       I4 => \det_signal.run_reg[2]__0\,
@@ -15037,8 +15045,8 @@ begin
         port map (
       I0 => valid_err,
       I1 => \det_signal.valid_count_reg_n_0\,
-      I2 => valid_env,
-      I3 => accept_new_burst,
+      I2 => accept_new_burst,
+      I3 => valid_env,
       I4 => has_signal,
       I5 => \det_signal.err_ov_reg_n_0\,
       O => \det_signal.has_signal_i_1_n_0\
@@ -15057,23 +15065,11 @@ begin
     )
         port map (
       I0 => config_wr,
-      I1 => \det_signal.max_doa_diff[11]_i_2_n_0\,
+      I1 => \det_signal.min_env[15]_i_2_n_0\,
       I2 => config_adr(2),
       I3 => config_adr(0),
       I4 => config_adr(1),
       O => max_doa_diff
-    );
-\det_signal.max_doa_diff[11]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => config_adr(7),
-      I1 => config_adr(4),
-      I2 => config_adr(3),
-      I3 => config_adr(6),
-      I4 => config_adr(5),
-      O => \det_signal.max_doa_diff[11]_i_2_n_0\
     );
 \det_signal.max_doa_diff_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -15177,7 +15173,7 @@ begin
     )
         port map (
       I0 => config_wr,
-      I1 => \det_signal.max_doa_diff[11]_i_2_n_0\,
+      I1 => \det_signal.min_env[15]_i_2_n_0\,
       I2 => config_adr(1),
       I3 => config_adr(2),
       I4 => config_adr(0),
@@ -15368,7 +15364,7 @@ begin
       C => clk,
       CE => max_freq_diff,
       D => max_freq_diff0(20),
-      Q => \det_signal.max_freq_diff_reg_n_0_[20]\,
+      Q => p_1_in10_in,
       R => '0'
     );
 \det_signal.max_freq_diff_reg[20]_i_1\: unisim.vcomponents.CARRY8
@@ -15603,11 +15599,23 @@ begin
     )
         port map (
       I0 => config_wr,
-      I1 => \det_signal.max_doa_diff[11]_i_2_n_0\,
+      I1 => \det_signal.min_env[15]_i_2_n_0\,
       I2 => config_adr(2),
       I3 => config_adr(0),
       I4 => config_adr(1),
       O => min_env
+    );
+\det_signal.min_env[15]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => config_adr(7),
+      I1 => config_adr(4),
+      I2 => config_adr(3),
+      I3 => config_adr(6),
+      I4 => config_adr(5),
+      O => \det_signal.min_env[15]_i_2_n_0\
     );
 \det_signal.min_env_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -15743,7 +15751,7 @@ begin
     )
         port map (
       I0 => config_wr,
-      I1 => \det_signal.max_doa_diff[11]_i_2_n_0\,
+      I1 => \det_signal.min_env[15]_i_2_n_0\,
       I2 => config_adr(0),
       I3 => config_adr(2),
       I4 => config_adr(1),
@@ -15754,11 +15762,11 @@ begin
       INIT => X"0000000080000000"
     )
         port map (
-      I0 => div_counter(5),
-      I1 => div_counter(4),
-      I2 => div_counter(3),
-      I3 => div_counter(1),
-      I4 => div_counter(2),
+      I0 => div_counter(3),
+      I1 => div_counter(2),
+      I2 => div_counter(1),
+      I3 => div_counter(5),
+      I4 => div_counter(4),
       I5 => div_counter(0),
       O => max_freq_diff
     );
@@ -16264,7 +16272,7 @@ begin
     )
         port map (
       I0 => config_wr,
-      I1 => \det_signal.max_doa_diff[11]_i_2_n_0\,
+      I1 => \det_signal.min_env[15]_i_2_n_0\,
       I2 => config_adr(2),
       I3 => config_adr(0),
       I4 => config_adr(1),
@@ -17328,26 +17336,13 @@ begin
     );
 \det_signal.proc_done_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"38"
     )
         port map (
-      I0 => div_counter(5),
-      I1 => \det_signal.proc_done_i_2_n_0\,
+      I0 => proc_signal,
+      I1 => \det_signal.signal_freq[19]_i_2_n_0\,
       I2 => proc_done,
       O => \det_signal.proc_done_i_1_n_0\
-    );
-\det_signal.proc_done_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8000000000000001"
-    )
-        port map (
-      I0 => div_counter(3),
-      I1 => div_counter(5),
-      I2 => div_counter(4),
-      I3 => div_counter(2),
-      I4 => div_counter(0),
-      I5 => div_counter(1),
-      O => \det_signal.proc_done_i_2_n_0\
     );
 \det_signal.proc_done_reg\: unisim.vcomponents.FDRE
      port map (
@@ -17355,7 +17350,7 @@ begin
       CE => '1',
       D => \det_signal.proc_done_i_1_n_0\,
       Q => proc_done,
-      R => '0'
+      R => \det_signal.signal_done_i_1_n_0\
     );
 \det_signal.proc_signal_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -17462,51 +17457,47 @@ begin
       I5 => \det_signal.sample_count_reg\(4),
       O => p_0_in(5)
     );
-\det_signal.sample_count[6]_i_1\: unisim.vcomponents.LUT4
+\det_signal.sample_count[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"6AAA"
+      INIT => X"6"
     )
         port map (
       I0 => \det_signal.sample_count_reg\(6),
-      I1 => \det_signal.sample_count_reg\(4),
-      I2 => \det_signal.sample_count_reg\(5),
-      I3 => \det_signal.sample_count[8]_i_2_n_0\,
+      I1 => \det_signal.sample_count[8]_i_2_n_0\,
       O => p_0_in(6)
     );
-\det_signal.sample_count[7]_i_1\: unisim.vcomponents.LUT5
+\det_signal.sample_count[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6AAAAAAA"
+      INIT => X"6A"
     )
         port map (
       I0 => \det_signal.sample_count_reg\(7),
       I1 => \det_signal.sample_count[8]_i_2_n_0\,
-      I2 => \det_signal.sample_count_reg\(5),
-      I3 => \det_signal.sample_count_reg\(4),
-      I4 => \det_signal.sample_count_reg\(6),
+      I2 => \det_signal.sample_count_reg\(6),
       O => p_0_in(7)
     );
-\det_signal.sample_count[8]_i_1\: unisim.vcomponents.LUT6
+\det_signal.sample_count[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
+      INIT => X"6AAA"
     )
         port map (
       I0 => \det_signal.sample_count_reg\(8),
       I1 => \det_signal.sample_count_reg\(6),
-      I2 => \det_signal.sample_count_reg\(4),
-      I3 => \det_signal.sample_count_reg\(5),
-      I4 => \det_signal.sample_count[8]_i_2_n_0\,
-      I5 => \det_signal.sample_count_reg\(7),
+      I2 => \det_signal.sample_count_reg\(7),
+      I3 => \det_signal.sample_count[8]_i_2_n_0\,
       O => p_0_in(8)
     );
-\det_signal.sample_count[8]_i_2\: unisim.vcomponents.LUT4
+\det_signal.sample_count[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8000"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => \det_signal.sample_count_reg\(3),
-      I1 => \det_signal.sample_count_reg\(1),
-      I2 => \det_signal.sample_count_reg\(0),
-      I3 => \det_signal.sample_count_reg\(2),
+      I0 => \det_signal.sample_count_reg\(2),
+      I1 => \det_signal.sample_count_reg\(0),
+      I2 => \det_signal.sample_count_reg\(1),
+      I3 => \det_signal.sample_count_reg\(3),
+      I4 => \det_signal.sample_count_reg\(5),
+      I5 => \det_signal.sample_count_reg\(4),
       O => \det_signal.sample_count[8]_i_2_n_0\
     );
 \det_signal.sample_count_ok_i_1\: unisim.vcomponents.LUT5
@@ -17818,60 +17809,63 @@ begin
       Q => \det_signal.sample_counter_reg\(9),
       R => clear
     );
-\det_signal.signal_done_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00002E22"
-    )
-        port map (
-      I0 => \^signal_done\,
-      I1 => \det_signal.signal_freq[19]_i_1_n_0\,
-      I2 => min_freq_diff(20),
-      I3 => \det_signal.max_freq_diff_reg_n_0_[20]\,
-      I4 => \det_signal.signal_done_i_2_n_0\,
-      O => \det_signal.signal_done_i_1_n_0\
-    );
-\det_signal.signal_done_i_2\: unisim.vcomponents.LUT6
+\det_signal.signal_done_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000000000001"
     )
         port map (
-      I0 => div_counter(2),
-      I1 => div_counter(1),
-      I2 => div_counter(0),
+      I0 => div_counter(1),
+      I1 => div_counter(0),
+      I2 => div_counter(5),
       I3 => div_counter(4),
       I4 => div_counter(3),
-      I5 => div_counter(5),
+      I5 => div_counter(2),
+      O => \det_signal.signal_done_i_1_n_0\
+    );
+\det_signal.signal_done_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5555FF5500000800"
+    )
+        port map (
+      I0 => \det_signal.signal_freq[19]_i_2_n_0\,
+      I1 => p_1_in10_in,
+      I2 => min_freq_diff(20),
+      I3 => proc_signal,
+      I4 => proc_done,
+      I5 => \^signal_done\,
       O => \det_signal.signal_done_i_2_n_0\
     );
 \det_signal.signal_done_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \det_signal.signal_done_i_1_n_0\,
+      D => \det_signal.signal_done_i_2_n_0\,
       Q => \^signal_done\,
-      R => '0'
+      R => \det_signal.signal_done_i_1_n_0\
     );
-\det_signal.signal_freq[19]_i_1\: unisim.vcomponents.LUT6
+\det_signal.signal_freq[19]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0400000000000000"
+      INIT => X"00200000"
     )
         port map (
-      I0 => min_freq_diff(20),
-      I1 => \det_signal.max_freq_diff_reg_n_0_[20]\,
-      I2 => \det_signal.signal_freq[19]_i_2_n_0\,
-      I3 => div_counter(3),
-      I4 => div_counter(4),
-      I5 => div_counter(5),
+      I0 => p_1_in10_in,
+      I1 => min_freq_diff(20),
+      I2 => proc_signal,
+      I3 => proc_done,
+      I4 => \det_signal.signal_freq[19]_i_2_n_0\,
       O => \det_signal.signal_freq[19]_i_1_n_0\
     );
-\det_signal.signal_freq[19]_i_2\: unisim.vcomponents.LUT3
+\det_signal.signal_freq[19]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7F"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => div_counter(1),
-      I1 => div_counter(0),
+      I0 => div_counter(0),
+      I1 => div_counter(1),
       I2 => div_counter(2),
+      I3 => div_counter(3),
+      I4 => div_counter(5),
+      I5 => div_counter(4),
       O => \det_signal.signal_freq[19]_i_2_n_0\
     );
 \det_signal.signal_freq_reg[0]\: unisim.vcomponents.FDRE
@@ -18756,8 +18750,8 @@ begin
         port map (
       I0 => valid_err,
       I1 => \det_signal.valid_count_reg_n_0\,
-      I2 => valid_env,
-      I3 => accept_new_burst,
+      I2 => accept_new_burst,
+      I3 => valid_env,
       O => err_count0
     );
 \det_signal.start_proc_reg\: unisim.vcomponents.FDRE
@@ -18776,8 +18770,8 @@ begin
       I0 => \det_signal.run_reg[2]__0\,
       I1 => valid_err,
       I2 => \det_signal.valid_count_reg_n_0\,
-      I3 => valid_env,
-      I4 => accept_new_burst,
+      I3 => accept_new_burst,
+      I4 => valid_env,
       I5 => has_signal,
       O => start_sample
     );
@@ -18925,12 +18919,12 @@ begin
       INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => \det_signal.sample_count_reg\(5),
-      I1 => \det_signal.sample_count_reg\(4),
+      I0 => \det_signal.sample_count_reg\(7),
+      I1 => \det_signal.sample_count_reg\(6),
       I2 => \det_signal.run_reg[1]__0\,
-      I3 => \det_signal.sample_count_reg\(6),
-      I4 => \det_signal.sample_count_reg\(7),
-      I5 => \det_signal.sample_count_reg\(8),
+      I3 => \det_signal.sample_count_reg\(8),
+      I4 => \det_signal.sample_count_reg\(4),
+      I5 => \det_signal.sample_count_reg\(5),
       O => \det_signal.valid_count_i_2_n_0\
     );
 \det_signal.valid_count_i_3\: unisim.vcomponents.LUT4
@@ -18957,9 +18951,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => p_2_in12_in,
-      I1 => p_0_in11_in,
-      I2 => p_1_in13_in,
+      I0 => p_2_in16_in,
+      I1 => p_0_in15_in,
+      I2 => p_1_in17_in,
       O => valid_env0
     );
 \det_signal.valid_env_reg\: unisim.vcomponents.FDRE
@@ -18975,9 +18969,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => p_2_in,
-      I1 => p_0_in9_in,
-      I2 => p_1_in10_in,
+      I0 => p_0_in12_in,
+      I1 => p_2_in13_in,
+      I2 => p_1_in14_in,
       O => valid_err0
     );
 \det_signal.valid_err_reg\: unisim.vcomponents.FDRE
@@ -19264,8 +19258,8 @@ entity ps_ana_0_0_doa_angle is
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_NE_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O366 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O367 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O368 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O369 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_EW_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_WN_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -27940,7 +27934,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_E_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O366(15 downto 8),
+      O(7 downto 0) => O368(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[15]_i_4_n_0\,
@@ -27963,7 +27957,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_E_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O366(7 downto 0),
+      O(7 downto 0) => O368(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[7]_i_4_n_0\,
@@ -28322,7 +28316,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_W_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O367(15 downto 8),
+      O(7 downto 0) => O369(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[15]_i_4_n_0\,
@@ -28345,7 +28339,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_W_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O367(7 downto 0),
+      O(7 downto 0) => O369(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[7]_i_4_n_0\,
@@ -29142,8 +29136,8 @@ entity \ps_ana_0_0_doa_angle__xdcDup__1\ is
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_NE_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O260 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O261 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O262 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O263 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_EW_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_WN_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -37818,7 +37812,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_E_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O260(15 downto 8),
+      O(7 downto 0) => O262(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[15]_i_4_n_0\,
@@ -37841,7 +37835,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_E_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O260(7 downto 0),
+      O(7 downto 0) => O262(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[7]_i_4_n_0\,
@@ -38200,7 +38194,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_W_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O261(15 downto 8),
+      O(7 downto 0) => O263(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[15]_i_4_n_0\,
@@ -38223,7 +38217,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_W_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O261(7 downto 0),
+      O(7 downto 0) => O263(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[7]_i_4_n_0\,
@@ -62867,8 +62861,8 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
      port map (
       D(0) => doa_WN_i_n_51,
       E(0) => sign,
-      O366(15 downto 0) => delay_E01_out(15 downto 0),
-      O367(15 downto 0) => delay_W00_out(15 downto 0),
+      O368(15 downto 0) => delay_E01_out(15 downto 0),
+      O369(15 downto 0) => delay_W00_out(15 downto 0),
       P(19 downto 0) => mul_NE(34 downto 15),
       Q(15 downto 0) => delay_NE(15 downto 0),
       clk => clk,
@@ -69611,8 +69605,8 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
      port map (
       D(0) => doa_WN_i_n_51,
       E(0) => sign,
-      O260(15 downto 0) => delay_E01_out(15 downto 0),
-      O261(15 downto 0) => delay_W00_out(15 downto 0),
+      O262(15 downto 0) => delay_E01_out(15 downto 0),
+      O263(15 downto 0) => delay_W00_out(15 downto 0),
       P(19 downto 0) => mul_NE(34 downto 15),
       Q(15 downto 0) => delay_NE(15 downto 0),
       clk => clk,

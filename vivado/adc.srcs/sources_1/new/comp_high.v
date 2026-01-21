@@ -124,8 +124,8 @@ module comp_high(
   reg deci_run;
   wire deci_active;
   reg fir_run;
-  wire fir_re_active = 0;
-  wire fir_im_active = 0;
+  wire fir_re_active;
+  wire fir_im_active;
   
   reg [191:0] deci_in;
   wire [159:0] deci_out;
@@ -142,8 +142,8 @@ module comp_high(
   
   wire [63:0] fir_in = {deci_3[15:0], deci_2[15:0], deci_1[15:0], deci_0[15:0]};
   
-  wire [159:0] re_data = 0;
-  wire [159:0] im_data = 0;
+  wire [159:0] re_data;
+  wire [159:0] im_data;
     
   wire [39:0] re_out_0 = re_data[39:0];
   wire [39:0] re_out_1 = re_data[79:40];
@@ -219,7 +219,6 @@ fir_comp_deci fir_deci_i (
   .m_axis_data_tdata(deci_out)              // output wire [159 : 0] m_axis_data_tdata
 );
 
-/*
 fir_comp_high_re fir_re_i (
   .aclk(clk),                               // input wire aclk
   .s_axis_data_tvalid(fir_run),             // input wire s_axis_data_tvalid
@@ -235,7 +234,6 @@ fir_comp_high_im fir_im_i (
   .m_axis_data_tvalid(fir_im_active),       // output wire m_axis_data_tvalid
   .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
 );
-*/
 
 /*
 	ila_0 ila_i (

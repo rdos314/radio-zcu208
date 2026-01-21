@@ -4386,8 +4386,8 @@
       "mts_0_ana0_clk": {
         "ports": [
           "mts_0/ana0_clk",
-          "ana_low/clk",
-          "comp_low/ana_fifo_clk"
+          "comp_low/ana_fifo_clk",
+          "ana_low/clk"
         ]
       },
       "mts_0_ana0_reset": {
@@ -4399,8 +4399,8 @@
       "mts_0_ana1_clk": {
         "ports": [
           "mts_0/ana1_clk",
-          "ana_high/clk",
-          "comp_high/ana_fifo_clk"
+          "comp_high/ana_fifo_clk",
+          "ana_high/clk"
         ]
       },
       "mts_0_ana1_reset": {

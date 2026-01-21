@@ -727,15 +727,23 @@ generate
 
             63: 
                 begin
-                    if (!min_freq_diff[20] & max_freq_diff[20])
-                    begin
-                        signal_freq <= freq;
-                        signal_phase_NE <= phase_NE;
-                        signal_phase_EW <= phase_EW;
-                        signal_phase_WN <= phase_WN;
-                        signal_done <= 1;
-                    end
-                    proc_done <= 1;
+					if (proc_signal & !proc_done)
+					begin
+						if (!min_freq_diff[20] & max_freq_diff[20])
+						begin
+							signal_freq <= freq;
+							signal_phase_NE <= phase_NE;
+							signal_phase_EW <= phase_EW;
+							signal_phase_WN <= phase_WN;
+							signal_done <= 1;
+						end
+						proc_done <= 1;
+					end
+					else
+					begin
+						signal_done <= 0;
+						proc_done <= 0;
+					end
                 end
         endcase
     end

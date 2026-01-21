@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Jan 18 22:35:26 2026
+// Date        : Wed Jan 21 01:08:53 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_sim_netlist.v
@@ -5273,6 +5273,7 @@ module ps_ana_0_0_det_signal
   wire \det_signal.div_counter[2]_i_1_n_0 ;
   wire \det_signal.div_counter[3]_i_1_n_0 ;
   wire \det_signal.div_counter[4]_i_1_n_0 ;
+  wire \det_signal.div_counter[4]_i_2_n_0 ;
   wire \det_signal.div_counter[5]_i_1_n_0 ;
   wire \det_signal.div_counter[5]_i_2_n_0 ;
   wire \det_signal.div_counter[5]_i_3_n_0 ;
@@ -6255,7 +6256,6 @@ module ps_ana_0_0_det_signal
   wire \det_signal.err_ov_i_1_n_0 ;
   wire \det_signal.err_ov_reg_n_0 ;
   wire \det_signal.has_signal_i_1_n_0 ;
-  wire \det_signal.max_doa_diff[11]_i_2_n_0 ;
   wire \det_signal.max_doa_diff_reg_n_0_[0] ;
   wire \det_signal.max_doa_diff_reg_n_0_[10] ;
   wire \det_signal.max_doa_diff_reg_n_0_[11] ;
@@ -6308,7 +6308,6 @@ module ps_ana_0_0_det_signal
   wire \det_signal.max_freq_diff_reg[20]_i_7_n_5 ;
   wire \det_signal.max_freq_diff_reg[20]_i_7_n_6 ;
   wire \det_signal.max_freq_diff_reg[20]_i_7_n_7 ;
-  wire \det_signal.max_freq_diff_reg_n_0_[20] ;
   wire \det_signal.max_freq_reg_n_0_[0] ;
   wire \det_signal.max_freq_reg_n_0_[10] ;
   wire \det_signal.max_freq_reg_n_0_[11] ;
@@ -6329,6 +6328,7 @@ module ps_ana_0_0_det_signal
   wire \det_signal.max_freq_reg_n_0_[7] ;
   wire \det_signal.max_freq_reg_n_0_[8] ;
   wire \det_signal.max_freq_reg_n_0_[9] ;
+  wire \det_signal.min_env[15]_i_2_n_0 ;
   wire \det_signal.min_env_reg_n_0_[0] ;
   wire \det_signal.min_env_reg_n_0_[10] ;
   wire \det_signal.min_env_reg_n_0_[11] ;
@@ -6424,7 +6424,6 @@ module ps_ana_0_0_det_signal
   wire \det_signal.min_samples_reg_n_0_[7] ;
   wire \det_signal.min_samples_reg_n_0_[8] ;
   wire \det_signal.proc_done_i_1_n_0 ;
-  wire \det_signal.proc_done_i_2_n_0 ;
   wire \det_signal.proc_signal_i_1_n_0 ;
   wire \det_signal.run_reg[0]__0 ;
   wire \det_signal.run_reg[1]__0 ;
@@ -6556,15 +6555,16 @@ module ps_ana_0_0_det_signal
   wire min_samples;
   wire [0:0]min_samples0;
   wire [8:1]p_0_in;
-  wire p_0_in11_in;
-  wire p_0_in9_in;
+  wire p_0_in12_in;
+  wire p_0_in15_in;
   wire [15:1]p_0_in__0;
   wire [22:0]p_1_in;
   wire p_1_in10_in;
-  wire p_1_in13_in;
-  wire p_2_in;
-  wire p_2_in12_in;
-  wire [1:0]p_2_in__0;
+  wire p_1_in14_in;
+  wire p_1_in17_in;
+  wire [1:0]p_2_in;
+  wire p_2_in13_in;
+  wire p_2_in16_in;
   wire [19:0]phase_E;
   wire [19:0]phase_N;
   wire [19:0]phase_W;
@@ -6790,7 +6790,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
         .D(diff_env_E0),
-        .Q(p_0_in11_in),
+        .Q(p_0_in15_in),
         .R(1'b0));
   CARRY8 \det_signal.diff_env_E_reg[16]_i_1 
        (.CI(\det_signal.diff_env_E_reg[16]_i_2_n_0 ),
@@ -6913,7 +6913,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
         .D(diff_env_N0),
-        .Q(p_1_in13_in),
+        .Q(p_1_in17_in),
         .R(1'b0));
   CARRY8 \det_signal.diff_env_N_reg[16]_i_1 
        (.CI(\det_signal.diff_env_N_reg[16]_i_2_n_0 ),
@@ -7036,7 +7036,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
         .D(diff_env_W0),
-        .Q(p_2_in12_in),
+        .Q(p_2_in16_in),
         .R(1'b0));
   CARRY8 \det_signal.diff_env_W_reg[16]_i_1 
        (.CI(\det_signal.diff_env_W_reg[16]_i_2_n_0 ),
@@ -7135,7 +7135,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
         .D(diff_err_EW0),
-        .Q(p_0_in9_in),
+        .Q(p_0_in12_in),
         .R(1'b0));
   CARRY8 \det_signal.diff_err_EW_reg[12]_i_1 
        (.CI(\det_signal.diff_err_EW_reg[12]_i_2_n_0 ),
@@ -7227,7 +7227,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
         .D(diff_err_NE0),
-        .Q(p_1_in10_in),
+        .Q(p_1_in14_in),
         .R(1'b0));
   CARRY8 \det_signal.diff_err_NE_reg[12]_i_1 
        (.CI(\det_signal.diff_err_NE_reg[12]_i_2_n_0 ),
@@ -7319,7 +7319,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(\det_signal.run_reg[0]__0 ),
         .D(diff_err_WN0),
-        .Q(p_2_in),
+        .Q(p_2_in13_in),
         .R(1'b0));
   CARRY8 \det_signal.diff_err_WN_reg[12]_i_1 
        (.CI(\det_signal.diff_err_WN_reg[12]_i_2_n_0 ),
@@ -8147,35 +8147,43 @@ module ps_ana_0_0_det_signal
         .I4(div_counter[0]),
         .O(\det_signal.div_counter[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000000000000006A)) 
+    .INIT(64'h0000000001101010)) 
     \det_signal.div_counter[2]_i_1 
-       (.I0(div_counter[2]),
-        .I1(div_counter[1]),
-        .I2(div_counter[0]),
-        .I3(div_delay[1]),
-        .I4(div_delay[0]),
-        .I5(div_delay[2]),
+       (.I0(div_delay[2]),
+        .I1(div_delay[0]),
+        .I2(div_counter[2]),
+        .I3(div_counter[1]),
+        .I4(div_counter[0]),
+        .I5(div_delay[1]),
         .O(\det_signal.div_counter[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h00001001)) 
+  LUT6 #(
+    .INIT(64'h0000000001101010)) 
     \det_signal.div_counter[3]_i_1 
        (.I0(div_delay[2]),
         .I1(div_delay[0]),
         .I2(div_counter[3]),
-        .I3(\det_signal.signal_freq[19]_i_2_n_0 ),
-        .I4(div_delay[1]),
+        .I3(\det_signal.div_counter[5]_i_5_n_0 ),
+        .I4(div_counter[2]),
+        .I5(div_delay[1]),
         .O(\det_signal.div_counter[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000010100110)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h00000110)) 
     \det_signal.div_counter[4]_i_1 
        (.I0(div_delay[2]),
         .I1(div_delay[0]),
         .I2(div_counter[4]),
-        .I3(div_counter[3]),
-        .I4(\det_signal.signal_freq[19]_i_2_n_0 ),
-        .I5(div_delay[1]),
+        .I3(\det_signal.div_counter[4]_i_2_n_0 ),
+        .I4(div_delay[1]),
         .O(\det_signal.div_counter[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \det_signal.div_counter[4]_i_2 
+       (.I0(div_counter[1]),
+        .I1(div_counter[0]),
+        .I2(div_counter[2]),
+        .I3(div_counter[3]),
+        .O(\det_signal.div_counter[4]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \det_signal.div_counter[5]_i_1 
@@ -8184,37 +8192,35 @@ module ps_ana_0_0_det_signal
   LUT5 #(
     .INIT(32'hFFFD00FC)) 
     \det_signal.div_counter[5]_i_2 
-       (.I0(\det_signal.div_counter[5]_i_4_n_0 ),
+       (.I0(\det_signal.signal_freq[19]_i_2_n_0 ),
         .I1(div_delay[1]),
         .I2(div_delay[0]),
         .I3(div_delay[2]),
         .I4(div_delay[3]),
         .O(\det_signal.div_counter[5]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h2020202002202020)) 
+    .INIT(64'h2AAA8000AAAA0000)) 
     \det_signal.div_counter[5]_i_3 
-       (.I0(\det_signal.div_counter[5]_i_5_n_0 ),
-        .I1(div_delay[2]),
-        .I2(div_counter[5]),
-        .I3(div_counter[4]),
-        .I4(div_counter[3]),
-        .I5(\det_signal.signal_freq[19]_i_2_n_0 ),
+       (.I0(\det_signal.div_counter[5]_i_4_n_0 ),
+        .I1(\det_signal.div_counter[5]_i_5_n_0 ),
+        .I2(div_counter[2]),
+        .I3(div_counter[3]),
+        .I4(div_counter[5]),
+        .I5(div_counter[4]),
         .O(\det_signal.div_counter[5]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT3 #(
+    .INIT(8'h01)) 
     \det_signal.div_counter[5]_i_4 
-       (.I0(div_counter[5]),
-        .I1(div_counter[4]),
-        .I2(div_counter[3]),
-        .I3(div_counter[2]),
-        .I4(div_counter[0]),
-        .I5(div_counter[1]),
+       (.I0(div_delay[1]),
+        .I1(div_delay[0]),
+        .I2(div_delay[2]),
         .O(\det_signal.div_counter[5]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'h8)) 
     \det_signal.div_counter[5]_i_5 
-       (.I0(div_delay[0]),
-        .I1(div_delay[1]),
+       (.I0(div_counter[0]),
+        .I1(div_counter[1]),
         .O(\det_signal.div_counter[5]_i_5_n_0 ));
   FDRE \det_signal.div_counter_reg[0] 
        (.C(clk),
@@ -8252,19 +8258,18 @@ module ps_ana_0_0_det_signal
         .D(\det_signal.div_counter[5]_i_3_n_0 ),
         .Q(div_counter[5]),
         .R(\det_signal.div_counter[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \det_signal.div_delay[0]_i_1 
        (.I0(div_delay[0]),
-        .O(p_2_in__0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+        .O(p_2_in[0]));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \det_signal.div_delay[1]_i_1 
        (.I0(div_delay[0]),
         .I1(div_delay[1]),
-        .O(p_2_in__0[1]));
+        .O(p_2_in[1]));
   LUT4 #(
     .INIT(16'hFFFD)) 
     \det_signal.div_delay[2]_i_1 
@@ -8273,7 +8278,7 @@ module ps_ana_0_0_det_signal
         .I2(div_delay[0]),
         .I3(div_delay[1]),
         .O(\det_signal.div_delay[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \det_signal.div_delay[2]_i_2 
@@ -8281,7 +8286,7 @@ module ps_ana_0_0_det_signal
         .I1(div_delay[1]),
         .I2(div_delay[0]),
         .O(\det_signal.div_delay[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \det_signal.div_delay[3]_i_1 
@@ -8293,13 +8298,13 @@ module ps_ana_0_0_det_signal
   FDRE \det_signal.div_delay_reg[0] 
        (.C(clk),
         .CE(\det_signal.div_delay[2]_i_1_n_0 ),
-        .D(p_2_in__0[0]),
+        .D(p_2_in[0]),
         .Q(div_delay[0]),
         .R(\det_signal.div_counter[5]_i_1_n_0 ));
   FDRE \det_signal.div_delay_reg[1] 
        (.C(clk),
         .CE(\det_signal.div_delay[2]_i_1_n_0 ),
-        .D(p_2_in__0[1]),
+        .D(p_2_in[1]),
         .Q(div_delay[1]),
         .R(\det_signal.div_counter[5]_i_1_n_0 ));
   FDRE \det_signal.div_delay_reg[2] 
@@ -12079,7 +12084,7 @@ module ps_ana_0_0_det_signal
         .D(\det_signal.sample_count_reg [8]),
         .Q(\det_signal.div_sample_count_reg_n_0_[8] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h2000)) 
     \det_signal.div_start_i_1 
@@ -15417,8 +15422,8 @@ module ps_ana_0_0_det_signal
   LUT5 #(
     .INIT(32'h8000FFFF)) 
     \det_signal.err_count[1]_i_1 
-       (.I0(accept_new_burst),
-        .I1(valid_env),
+       (.I0(valid_env),
+        .I1(accept_new_burst),
         .I2(\det_signal.valid_count_reg_n_0 ),
         .I3(valid_err),
         .I4(\det_signal.run_reg[2]__0 ),
@@ -15468,8 +15473,8 @@ module ps_ana_0_0_det_signal
     \det_signal.has_signal_i_1 
        (.I0(valid_err),
         .I1(\det_signal.valid_count_reg_n_0 ),
-        .I2(valid_env),
-        .I3(accept_new_burst),
+        .I2(accept_new_burst),
+        .I3(valid_env),
         .I4(has_signal),
         .I5(\det_signal.err_ov_reg_n_0 ),
         .O(\det_signal.has_signal_i_1_n_0 ));
@@ -15483,20 +15488,11 @@ module ps_ana_0_0_det_signal
     .INIT(32'h02000000)) 
     \det_signal.max_doa_diff[11]_i_1 
        (.I0(config_wr),
-        .I1(\det_signal.max_doa_diff[11]_i_2_n_0 ),
+        .I1(\det_signal.min_env[15]_i_2_n_0 ),
         .I2(config_adr[2]),
         .I3(config_adr[0]),
         .I4(config_adr[1]),
         .O(max_doa_diff));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \det_signal.max_doa_diff[11]_i_2 
-       (.I0(config_adr[7]),
-        .I1(config_adr[4]),
-        .I2(config_adr[3]),
-        .I3(config_adr[6]),
-        .I4(config_adr[5]),
-        .O(\det_signal.max_doa_diff[11]_i_2_n_0 ));
   FDRE \det_signal.max_doa_diff_reg[0] 
        (.C(clk),
         .CE(max_doa_diff),
@@ -15573,7 +15569,7 @@ module ps_ana_0_0_det_signal
     .INIT(32'h00000020)) 
     \det_signal.max_freq[19]_i_1 
        (.I0(config_wr),
-        .I1(\det_signal.max_doa_diff[11]_i_2_n_0 ),
+        .I1(\det_signal.min_env[15]_i_2_n_0 ),
         .I2(config_adr[1]),
         .I3(config_adr[2]),
         .I4(config_adr[0]),
@@ -15702,7 +15698,7 @@ module ps_ana_0_0_det_signal
        (.C(clk),
         .CE(max_freq_diff),
         .D(max_freq_diff0),
-        .Q(\det_signal.max_freq_diff_reg_n_0_[20] ),
+        .Q(p_1_in10_in),
         .R(1'b0));
   CARRY8 \det_signal.max_freq_diff_reg[20]_i_1 
        (.CI(\det_signal.max_freq_diff_reg[20]_i_2_n_0 ),
@@ -15849,11 +15845,20 @@ module ps_ana_0_0_det_signal
     .INIT(32'h00000002)) 
     \det_signal.min_env[15]_i_1 
        (.I0(config_wr),
-        .I1(\det_signal.max_doa_diff[11]_i_2_n_0 ),
+        .I1(\det_signal.min_env[15]_i_2_n_0 ),
         .I2(config_adr[2]),
         .I3(config_adr[0]),
         .I4(config_adr[1]),
         .O(min_env));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \det_signal.min_env[15]_i_2 
+       (.I0(config_adr[7]),
+        .I1(config_adr[4]),
+        .I2(config_adr[3]),
+        .I3(config_adr[6]),
+        .I4(config_adr[5]),
+        .O(\det_signal.min_env[15]_i_2_n_0 ));
   FDRE \det_signal.min_env_reg[0] 
        (.C(clk),
         .CE(min_env),
@@ -15954,7 +15959,7 @@ module ps_ana_0_0_det_signal
     .INIT(32'h00000020)) 
     \det_signal.min_freq[19]_i_1 
        (.I0(config_wr),
-        .I1(\det_signal.max_doa_diff[11]_i_2_n_0 ),
+        .I1(\det_signal.min_env[15]_i_2_n_0 ),
         .I2(config_adr[0]),
         .I3(config_adr[2]),
         .I4(config_adr[1]),
@@ -15962,11 +15967,11 @@ module ps_ana_0_0_det_signal
   LUT6 #(
     .INIT(64'h0000000080000000)) 
     \det_signal.min_freq_diff[20]_i_1 
-       (.I0(div_counter[5]),
-        .I1(div_counter[4]),
-        .I2(div_counter[3]),
-        .I3(div_counter[1]),
-        .I4(div_counter[2]),
+       (.I0(div_counter[3]),
+        .I1(div_counter[2]),
+        .I2(div_counter[1]),
+        .I3(div_counter[5]),
+        .I4(div_counter[4]),
         .I5(div_counter[0]),
         .O(max_freq_diff));
   LUT2 #(
@@ -16303,7 +16308,7 @@ module ps_ana_0_0_det_signal
     .INIT(32'h00000020)) 
     \det_signal.min_samples[8]_i_1 
        (.I0(config_wr),
-        .I1(\det_signal.max_doa_diff[11]_i_2_n_0 ),
+        .I1(\det_signal.min_env[15]_i_2_n_0 ),
         .I2(config_adr[2]),
         .I3(config_adr[0]),
         .I4(config_adr[1]),
@@ -17102,28 +17107,18 @@ module ps_ana_0_0_det_signal
         .Q(prev_phase_W[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'h38)) 
     \det_signal.proc_done_i_1 
-       (.I0(div_counter[5]),
-        .I1(\det_signal.proc_done_i_2_n_0 ),
+       (.I0(proc_signal),
+        .I1(\det_signal.signal_freq[19]_i_2_n_0 ),
         .I2(proc_done),
         .O(\det_signal.proc_done_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000001)) 
-    \det_signal.proc_done_i_2 
-       (.I0(div_counter[3]),
-        .I1(div_counter[5]),
-        .I2(div_counter[4]),
-        .I3(div_counter[2]),
-        .I4(div_counter[0]),
-        .I5(div_counter[1]),
-        .O(\det_signal.proc_done_i_2_n_0 ));
   FDRE \det_signal.proc_done_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\det_signal.proc_done_i_1_n_0 ),
         .Q(proc_done),
-        .R(1'b0));
+        .R(\det_signal.signal_done_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h0E)) 
     \det_signal.proc_signal_i_1 
@@ -17155,19 +17150,20 @@ module ps_ana_0_0_det_signal
         .D(\det_signal.run_reg[1]__0 ),
         .Q(\det_signal.run_reg[2]__0 ),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \det_signal.sample_count[0]_i_1 
        (.I0(\det_signal.sample_count_reg [0]),
         .O(\det_signal.sample_count[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \det_signal.sample_count[1]_i_1 
        (.I0(\det_signal.sample_count_reg [1]),
         .I1(\det_signal.sample_count_reg [0]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \det_signal.sample_count[2]_i_1 
@@ -17175,7 +17171,7 @@ module ps_ana_0_0_det_signal
         .I1(\det_signal.sample_count_reg [0]),
         .I2(\det_signal.sample_count_reg [2]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \det_signal.sample_count[3]_i_1 
@@ -17204,41 +17200,36 @@ module ps_ana_0_0_det_signal
         .I4(\det_signal.sample_count_reg [2]),
         .I5(\det_signal.sample_count_reg [4]),
         .O(p_0_in[5]));
-  LUT4 #(
-    .INIT(16'h6AAA)) 
+  LUT2 #(
+    .INIT(4'h6)) 
     \det_signal.sample_count[6]_i_1 
        (.I0(\det_signal.sample_count_reg [6]),
-        .I1(\det_signal.sample_count_reg [4]),
-        .I2(\det_signal.sample_count_reg [5]),
-        .I3(\det_signal.sample_count[8]_i_2_n_0 ),
+        .I1(\det_signal.sample_count[8]_i_2_n_0 ),
         .O(p_0_in[6]));
-  LUT5 #(
-    .INIT(32'h6AAAAAAA)) 
+  LUT3 #(
+    .INIT(8'h6A)) 
     \det_signal.sample_count[7]_i_1 
        (.I0(\det_signal.sample_count_reg [7]),
         .I1(\det_signal.sample_count[8]_i_2_n_0 ),
-        .I2(\det_signal.sample_count_reg [5]),
-        .I3(\det_signal.sample_count_reg [4]),
-        .I4(\det_signal.sample_count_reg [6]),
+        .I2(\det_signal.sample_count_reg [6]),
         .O(p_0_in[7]));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+  LUT4 #(
+    .INIT(16'h6AAA)) 
     \det_signal.sample_count[8]_i_1 
        (.I0(\det_signal.sample_count_reg [8]),
         .I1(\det_signal.sample_count_reg [6]),
-        .I2(\det_signal.sample_count_reg [4]),
-        .I3(\det_signal.sample_count_reg [5]),
-        .I4(\det_signal.sample_count[8]_i_2_n_0 ),
-        .I5(\det_signal.sample_count_reg [7]),
+        .I2(\det_signal.sample_count_reg [7]),
+        .I3(\det_signal.sample_count[8]_i_2_n_0 ),
         .O(p_0_in[8]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'h8000)) 
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
     \det_signal.sample_count[8]_i_2 
-       (.I0(\det_signal.sample_count_reg [3]),
-        .I1(\det_signal.sample_count_reg [1]),
-        .I2(\det_signal.sample_count_reg [0]),
-        .I3(\det_signal.sample_count_reg [2]),
+       (.I0(\det_signal.sample_count_reg [2]),
+        .I1(\det_signal.sample_count_reg [0]),
+        .I2(\det_signal.sample_count_reg [1]),
+        .I3(\det_signal.sample_count_reg [3]),
+        .I4(\det_signal.sample_count_reg [5]),
+        .I5(\det_signal.sample_count_reg [4]),
         .O(\det_signal.sample_count[8]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hAAAB0000)) 
@@ -17462,47 +17453,50 @@ module ps_ana_0_0_det_signal
         .D(p_0_in__0[9]),
         .Q(\det_signal.sample_counter_reg [9]),
         .R(clear));
-  LUT5 #(
-    .INIT(32'h00002E22)) 
-    \det_signal.signal_done_i_1 
-       (.I0(signal_done),
-        .I1(\det_signal.signal_freq[19]_i_1_n_0 ),
-        .I2(min_freq_diff),
-        .I3(\det_signal.max_freq_diff_reg_n_0_[20] ),
-        .I4(\det_signal.signal_done_i_2_n_0 ),
-        .O(\det_signal.signal_done_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \det_signal.signal_done_i_2 
-       (.I0(div_counter[2]),
-        .I1(div_counter[1]),
-        .I2(div_counter[0]),
+    \det_signal.signal_done_i_1 
+       (.I0(div_counter[1]),
+        .I1(div_counter[0]),
+        .I2(div_counter[5]),
         .I3(div_counter[4]),
         .I4(div_counter[3]),
-        .I5(div_counter[5]),
+        .I5(div_counter[2]),
+        .O(\det_signal.signal_done_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h5555FF5500000800)) 
+    \det_signal.signal_done_i_2 
+       (.I0(\det_signal.signal_freq[19]_i_2_n_0 ),
+        .I1(p_1_in10_in),
+        .I2(min_freq_diff),
+        .I3(proc_signal),
+        .I4(proc_done),
+        .I5(signal_done),
         .O(\det_signal.signal_done_i_2_n_0 ));
   FDRE \det_signal.signal_done_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\det_signal.signal_done_i_1_n_0 ),
+        .D(\det_signal.signal_done_i_2_n_0 ),
         .Q(signal_done),
-        .R(1'b0));
-  LUT6 #(
-    .INIT(64'h0400000000000000)) 
+        .R(\det_signal.signal_done_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h00200000)) 
     \det_signal.signal_freq[19]_i_1 
-       (.I0(min_freq_diff),
-        .I1(\det_signal.max_freq_diff_reg_n_0_[20] ),
-        .I2(\det_signal.signal_freq[19]_i_2_n_0 ),
-        .I3(div_counter[3]),
-        .I4(div_counter[4]),
-        .I5(div_counter[5]),
+       (.I0(p_1_in10_in),
+        .I1(min_freq_diff),
+        .I2(proc_signal),
+        .I3(proc_done),
+        .I4(\det_signal.signal_freq[19]_i_2_n_0 ),
         .O(\det_signal.signal_freq[19]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h7F)) 
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
     \det_signal.signal_freq[19]_i_2 
-       (.I0(div_counter[1]),
-        .I1(div_counter[0]),
+       (.I0(div_counter[0]),
+        .I1(div_counter[1]),
         .I2(div_counter[2]),
+        .I3(div_counter[3]),
+        .I4(div_counter[5]),
+        .I5(div_counter[4]),
         .O(\det_signal.signal_freq[19]_i_2_n_0 ));
   FDRE \det_signal.signal_freq_reg[0] 
        (.C(clk),
@@ -18165,8 +18159,8 @@ module ps_ana_0_0_det_signal
     \det_signal.start_proc_i_3 
        (.I0(valid_err),
         .I1(\det_signal.valid_count_reg_n_0 ),
-        .I2(valid_env),
-        .I3(accept_new_burst),
+        .I2(accept_new_burst),
+        .I3(valid_env),
         .O(err_count0));
   FDRE \det_signal.start_proc_reg 
        (.C(clk),
@@ -18180,8 +18174,8 @@ module ps_ana_0_0_det_signal
        (.I0(\det_signal.run_reg[2]__0 ),
         .I1(valid_err),
         .I2(\det_signal.valid_count_reg_n_0 ),
-        .I3(valid_env),
-        .I4(accept_new_burst),
+        .I3(accept_new_burst),
+        .I4(valid_env),
         .I5(has_signal),
         .O(start_sample));
   FDRE \det_signal.start_sample_reg[0] 
@@ -18291,14 +18285,14 @@ module ps_ana_0_0_det_signal
   LUT6 #(
     .INIT(64'h7FFFFFFFFFFFFFFF)) 
     \det_signal.valid_count_i_2 
-       (.I0(\det_signal.sample_count_reg [5]),
-        .I1(\det_signal.sample_count_reg [4]),
+       (.I0(\det_signal.sample_count_reg [7]),
+        .I1(\det_signal.sample_count_reg [6]),
         .I2(\det_signal.run_reg[1]__0 ),
-        .I3(\det_signal.sample_count_reg [6]),
-        .I4(\det_signal.sample_count_reg [7]),
-        .I5(\det_signal.sample_count_reg [8]),
+        .I3(\det_signal.sample_count_reg [8]),
+        .I4(\det_signal.sample_count_reg [4]),
+        .I5(\det_signal.sample_count_reg [5]),
         .O(\det_signal.valid_count_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \det_signal.valid_count_i_3 
@@ -18316,9 +18310,9 @@ module ps_ana_0_0_det_signal
   LUT3 #(
     .INIT(8'h80)) 
     \det_signal.valid_env_i_1 
-       (.I0(p_2_in12_in),
-        .I1(p_0_in11_in),
-        .I2(p_1_in13_in),
+       (.I0(p_2_in16_in),
+        .I1(p_0_in15_in),
+        .I2(p_1_in17_in),
         .O(valid_env0));
   FDRE \det_signal.valid_env_reg 
        (.C(clk),
@@ -18329,9 +18323,9 @@ module ps_ana_0_0_det_signal
   LUT3 #(
     .INIT(8'h80)) 
     \det_signal.valid_err_i_1 
-       (.I0(p_2_in),
-        .I1(p_0_in9_in),
-        .I2(p_1_in10_in),
+       (.I0(p_0_in12_in),
+        .I1(p_2_in13_in),
+        .I2(p_1_in14_in),
         .O(valid_err0));
   FDRE \det_signal.valid_err_reg 
        (.C(clk),
@@ -18519,8 +18513,8 @@ module ps_ana_0_0_doa_angle
     \doa_angle.freq_reg[19]_0 ,
     \doa_angle.angle_reg[15]_0 ,
     \doa_angle.delay_NE_reg[14]_0 ,
-    O366,
-    O367,
+    O368,
+    O369,
     \doa_angle.phase_NE_reg[19]_0 ,
     \doa_angle.phase_EW_reg[19]_0 ,
     \doa_angle.phase_WN_reg[19]_0 ,
@@ -18564,8 +18558,8 @@ module ps_ana_0_0_doa_angle
   output [19:0]\doa_angle.freq_reg[19]_0 ;
   output [15:0]\doa_angle.angle_reg[15]_0 ;
   output [15:0]\doa_angle.delay_NE_reg[14]_0 ;
-  output [15:0]O366;
-  output [15:0]O367;
+  output [15:0]O368;
+  output [15:0]O369;
   output [17:0]\doa_angle.phase_NE_reg[19]_0 ;
   output [17:0]\doa_angle.phase_EW_reg[19]_0 ;
   output [17:0]\doa_angle.phase_WN_reg[19]_0 ;
@@ -18600,8 +18594,8 @@ module ps_ana_0_0_doa_angle
 
   wire [0:0]D;
   wire [0:0]E;
-  wire [15:0]O366;
-  wire [15:0]O367;
+  wire [15:0]O368;
+  wire [15:0]O369;
   wire [19:0]P;
   wire [15:0]Q;
   wire [15:0]angle_cordic;
@@ -24927,7 +24921,7 @@ module ps_ana_0_0_doa_angle
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_E_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_E_reg[15]_i_1_n_1 ,\doa_calc.delay_E_reg[15]_i_1_n_2 ,\doa_calc.delay_E_reg[15]_i_1_n_3 ,\doa_calc.delay_E_reg[15]_i_1_n_4 ,\doa_calc.delay_E_reg[15]_i_1_n_5 ,\doa_calc.delay_E_reg[15]_i_1_n_6 ,\doa_calc.delay_E_reg[15]_i_1_n_7 }),
         .DI({1'b0,\doa_angle.delay_EW_reg[15]_0 [14:8]}),
-        .O(O366[15:8]),
+        .O(O368[15:8]),
         .S({\doa_calc.delay_E[15]_i_2_n_0 ,\doa_calc.delay_E[15]_i_3_n_0 ,\doa_calc.delay_E[15]_i_4_n_0 ,\doa_calc.delay_E[15]_i_5_n_0 ,\doa_calc.delay_E[15]_i_6_n_0 ,\doa_calc.delay_E[15]_i_7_n_0 ,\doa_calc.delay_E[15]_i_8_n_0 ,\doa_calc.delay_E[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_E_reg[7]_i_1 
@@ -24935,7 +24929,7 @@ module ps_ana_0_0_doa_angle
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_E_reg[7]_i_1_n_0 ,\doa_calc.delay_E_reg[7]_i_1_n_1 ,\doa_calc.delay_E_reg[7]_i_1_n_2 ,\doa_calc.delay_E_reg[7]_i_1_n_3 ,\doa_calc.delay_E_reg[7]_i_1_n_4 ,\doa_calc.delay_E_reg[7]_i_1_n_5 ,\doa_calc.delay_E_reg[7]_i_1_n_6 ,\doa_calc.delay_E_reg[7]_i_1_n_7 }),
         .DI(\doa_angle.delay_EW_reg[15]_0 [7:0]),
-        .O(O366[7:0]),
+        .O(O368[7:0]),
         .S({\doa_calc.delay_E[7]_i_2_n_0 ,\doa_calc.delay_E[7]_i_3_n_0 ,\doa_calc.delay_E[7]_i_4_n_0 ,\doa_calc.delay_E[7]_i_5_n_0 ,\doa_calc.delay_E[7]_i_6_n_0 ,\doa_calc.delay_E[7]_i_7_n_0 ,\doa_calc.delay_E[7]_i_8_n_0 ,\doa_calc.delay_E[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
@@ -25151,7 +25145,7 @@ module ps_ana_0_0_doa_angle
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_W_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_W_reg[15]_i_1_n_1 ,\doa_calc.delay_W_reg[15]_i_1_n_2 ,\doa_calc.delay_W_reg[15]_i_1_n_3 ,\doa_calc.delay_W_reg[15]_i_1_n_4 ,\doa_calc.delay_W_reg[15]_i_1_n_5 ,\doa_calc.delay_W_reg[15]_i_1_n_6 ,\doa_calc.delay_W_reg[15]_i_1_n_7 }),
         .DI({1'b0,\doa_angle.delay_WN_reg[15]_0 [14:8]}),
-        .O(O367[15:8]),
+        .O(O369[15:8]),
         .S({\doa_calc.delay_W[15]_i_2_n_0 ,\doa_calc.delay_W[15]_i_3_n_0 ,\doa_calc.delay_W[15]_i_4_n_0 ,\doa_calc.delay_W[15]_i_5_n_0 ,\doa_calc.delay_W[15]_i_6_n_0 ,\doa_calc.delay_W[15]_i_7_n_0 ,\doa_calc.delay_W[15]_i_8_n_0 ,\doa_calc.delay_W[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_W_reg[7]_i_1 
@@ -25159,7 +25153,7 @@ module ps_ana_0_0_doa_angle
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_W_reg[7]_i_1_n_0 ,\doa_calc.delay_W_reg[7]_i_1_n_1 ,\doa_calc.delay_W_reg[7]_i_1_n_2 ,\doa_calc.delay_W_reg[7]_i_1_n_3 ,\doa_calc.delay_W_reg[7]_i_1_n_4 ,\doa_calc.delay_W_reg[7]_i_1_n_5 ,\doa_calc.delay_W_reg[7]_i_1_n_6 ,\doa_calc.delay_W_reg[7]_i_1_n_7 }),
         .DI(\doa_angle.delay_WN_reg[15]_0 [7:0]),
-        .O(O367[7:0]),
+        .O(O369[7:0]),
         .S({\doa_calc.delay_W[7]_i_2_n_0 ,\doa_calc.delay_W[7]_i_3_n_0 ,\doa_calc.delay_W[7]_i_4_n_0 ,\doa_calc.delay_W[7]_i_5_n_0 ,\doa_calc.delay_W[7]_i_6_n_0 ,\doa_calc.delay_W[7]_i_7_n_0 ,\doa_calc.delay_W[7]_i_8_n_0 ,\doa_calc.delay_W[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
@@ -25633,8 +25627,8 @@ module ps_ana_0_0_doa_angle__xdcDup__1
     \doa_angle.freq_reg[19]_0 ,
     \doa_angle.angle_reg[15]_0 ,
     \doa_angle.delay_NE_reg[14]_0 ,
-    O260,
-    O261,
+    O262,
+    O263,
     \doa_angle.phase_NE_reg[19]_0 ,
     \doa_angle.phase_EW_reg[19]_0 ,
     \doa_angle.phase_WN_reg[19]_0 ,
@@ -25678,8 +25672,8 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   output [19:0]\doa_angle.freq_reg[19]_0 ;
   output [15:0]\doa_angle.angle_reg[15]_0 ;
   output [15:0]\doa_angle.delay_NE_reg[14]_0 ;
-  output [15:0]O260;
-  output [15:0]O261;
+  output [15:0]O262;
+  output [15:0]O263;
   output [17:0]\doa_angle.phase_NE_reg[19]_0 ;
   output [17:0]\doa_angle.phase_EW_reg[19]_0 ;
   output [17:0]\doa_angle.phase_WN_reg[19]_0 ;
@@ -25714,8 +25708,8 @@ module ps_ana_0_0_doa_angle__xdcDup__1
 
   wire [0:0]D;
   wire [0:0]E;
-  wire [15:0]O260;
-  wire [15:0]O261;
+  wire [15:0]O262;
+  wire [15:0]O263;
   wire [19:0]P;
   wire [15:0]Q;
   wire [15:0]angle_cordic;
@@ -32041,7 +32035,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_E_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_E_reg[15]_i_1_n_1 ,\doa_calc.delay_E_reg[15]_i_1_n_2 ,\doa_calc.delay_E_reg[15]_i_1_n_3 ,\doa_calc.delay_E_reg[15]_i_1_n_4 ,\doa_calc.delay_E_reg[15]_i_1_n_5 ,\doa_calc.delay_E_reg[15]_i_1_n_6 ,\doa_calc.delay_E_reg[15]_i_1_n_7 }),
         .DI({1'b0,\doa_angle.delay_EW_reg[15]_0 [14:8]}),
-        .O(O260[15:8]),
+        .O(O262[15:8]),
         .S({\doa_calc.delay_E[15]_i_2_n_0 ,\doa_calc.delay_E[15]_i_3_n_0 ,\doa_calc.delay_E[15]_i_4_n_0 ,\doa_calc.delay_E[15]_i_5_n_0 ,\doa_calc.delay_E[15]_i_6_n_0 ,\doa_calc.delay_E[15]_i_7_n_0 ,\doa_calc.delay_E[15]_i_8_n_0 ,\doa_calc.delay_E[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_E_reg[7]_i_1 
@@ -32049,7 +32043,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_E_reg[7]_i_1_n_0 ,\doa_calc.delay_E_reg[7]_i_1_n_1 ,\doa_calc.delay_E_reg[7]_i_1_n_2 ,\doa_calc.delay_E_reg[7]_i_1_n_3 ,\doa_calc.delay_E_reg[7]_i_1_n_4 ,\doa_calc.delay_E_reg[7]_i_1_n_5 ,\doa_calc.delay_E_reg[7]_i_1_n_6 ,\doa_calc.delay_E_reg[7]_i_1_n_7 }),
         .DI(\doa_angle.delay_EW_reg[15]_0 [7:0]),
-        .O(O260[7:0]),
+        .O(O262[7:0]),
         .S({\doa_calc.delay_E[7]_i_2_n_0 ,\doa_calc.delay_E[7]_i_3_n_0 ,\doa_calc.delay_E[7]_i_4_n_0 ,\doa_calc.delay_E[7]_i_5_n_0 ,\doa_calc.delay_E[7]_i_6_n_0 ,\doa_calc.delay_E[7]_i_7_n_0 ,\doa_calc.delay_E[7]_i_8_n_0 ,\doa_calc.delay_E[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
@@ -32265,7 +32259,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_W_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_W_reg[15]_i_1_n_1 ,\doa_calc.delay_W_reg[15]_i_1_n_2 ,\doa_calc.delay_W_reg[15]_i_1_n_3 ,\doa_calc.delay_W_reg[15]_i_1_n_4 ,\doa_calc.delay_W_reg[15]_i_1_n_5 ,\doa_calc.delay_W_reg[15]_i_1_n_6 ,\doa_calc.delay_W_reg[15]_i_1_n_7 }),
         .DI({1'b0,\doa_angle.delay_WN_reg[15]_0 [14:8]}),
-        .O(O261[15:8]),
+        .O(O263[15:8]),
         .S({\doa_calc.delay_W[15]_i_2_n_0 ,\doa_calc.delay_W[15]_i_3_n_0 ,\doa_calc.delay_W[15]_i_4_n_0 ,\doa_calc.delay_W[15]_i_5_n_0 ,\doa_calc.delay_W[15]_i_6_n_0 ,\doa_calc.delay_W[15]_i_7_n_0 ,\doa_calc.delay_W[15]_i_8_n_0 ,\doa_calc.delay_W[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_W_reg[7]_i_1 
@@ -32273,7 +32267,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_W_reg[7]_i_1_n_0 ,\doa_calc.delay_W_reg[7]_i_1_n_1 ,\doa_calc.delay_W_reg[7]_i_1_n_2 ,\doa_calc.delay_W_reg[7]_i_1_n_3 ,\doa_calc.delay_W_reg[7]_i_1_n_4 ,\doa_calc.delay_W_reg[7]_i_1_n_5 ,\doa_calc.delay_W_reg[7]_i_1_n_6 ,\doa_calc.delay_W_reg[7]_i_1_n_7 }),
         .DI(\doa_angle.delay_WN_reg[15]_0 [7:0]),
-        .O(O261[7:0]),
+        .O(O263[7:0]),
         .S({\doa_calc.delay_W[7]_i_2_n_0 ,\doa_calc.delay_W[7]_i_3_n_0 ,\doa_calc.delay_W[7]_i_4_n_0 ,\doa_calc.delay_W[7]_i_5_n_0 ,\doa_calc.delay_W[7]_i_6_n_0 ,\doa_calc.delay_W[7]_i_7_n_0 ,\doa_calc.delay_W[7]_i_8_n_0 ,\doa_calc.delay_W[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
@@ -33164,8 +33158,8 @@ module ps_ana_0_0_doa_calc
   ps_ana_0_0_doa_angle doa_angle_i
        (.D(doa_WN_i_n_51),
         .E(sign),
-        .O366(delay_E01_out),
-        .O367(delay_W00_out),
+        .O368(delay_E01_out),
+        .O369(delay_W00_out),
         .P(mul_NE),
         .Q(delay_NE),
         .clk(clk),
@@ -38169,8 +38163,8 @@ module ps_ana_0_0_doa_calc__xdcDup__1
   ps_ana_0_0_doa_angle__xdcDup__1 doa_angle_i
        (.D(doa_WN_i_n_51),
         .E(sign),
-        .O260(delay_E01_out),
-        .O261(delay_W00_out),
+        .O262(delay_E01_out),
+        .O263(delay_W00_out),
         .P(mul_NE),
         .Q(delay_NE),
         .clk(clk),
