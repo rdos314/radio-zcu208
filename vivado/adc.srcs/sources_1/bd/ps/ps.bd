@@ -3854,15 +3854,15 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "ana_high/config_adr",
-          "ana_low/config_adr"
+          "ana_low/config_adr",
+          "ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "ana_high/config_data",
-          "ana_low/config_data"
+          "ana_low/config_data",
+          "ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -4687,8 +4687,8 @@
           "deci_low/sim_clk",
           "deci_high/sim_clk",
           "mts_0/axi_clk",
-          "ana_high/config_clk",
-          "ana_low/config_clk"
+          "ana_low/config_clk",
+          "ana_high/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

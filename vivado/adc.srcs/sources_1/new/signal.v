@@ -295,6 +295,9 @@ module det_signal(
   reg start_proc;
   reg proc_signal;
   reg proc_done;
+  
+  reg report_signal;
+  reg valid_signal;
 
 dsp_incr_env dsp_incr_env_N (
   .CLK(clk),           // input wire CLK
@@ -713,39 +716,48 @@ generate
     always @(posedge clk) 
 	begin
         case (div_counter)
-            0:  
-                begin
-                    proc_done <= 0;
-                    signal_done <= 0;
-                end
+            0:  report_signal <= 0;
             
-            62:
+            61:
                 begin
                     min_freq_diff <= {1'b0, freq} - {1'b0, min_freq};
                     max_freq_diff <= {1'b0, freq} - {1'b0, max_freq};
                 end
 
-            63: 
+            62: 
                 begin
-					if (proc_signal & !proc_done)
-					begin
-						if (!min_freq_diff[20] & max_freq_diff[20])
-						begin
-							signal_freq <= freq;
-							signal_phase_NE <= phase_NE;
-							signal_phase_EW <= phase_EW;
-							signal_phase_WN <= phase_WN;
-							signal_done <= 1;
-						end
-						proc_done <= 1;
-					end
-					else
-					begin
-						signal_done <= 0;
-						proc_done <= 0;
-					end
+                    report_signal <= 1;
+                    valid_signal = !min_freq_diff[20] & max_freq_diff[20];
                 end
+
         endcase
+    end
+
+    always @(posedge clk) 
+	begin
+        if (report_signal)
+        begin
+            signal_freq <= freq;
+            signal_phase_NE <= phase_NE;
+            signal_phase_EW <= phase_EW;
+            signal_phase_WN <= phase_WN;
+			
+            if (proc_signal & !proc_done)
+            begin
+                signal_done <= valid_signal;
+                proc_done <= 1;
+            end
+            else
+            begin
+                signal_done <= 0;
+                proc_done <= 0;
+            end
+        end
+        else
+        begin
+            signal_done <= 0;
+            proc_done <= 0;
+        end
     end
 
   end
