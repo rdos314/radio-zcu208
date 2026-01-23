@@ -53,11 +53,12 @@ void main()
     double mult;
     double gaus;
     double incr;
-    double sum = 0.0;
     double norm;
     double i, r;
     double f;
     double fs;
+    double sr, si;
+    double s, c;
     double scale;
     int periods;
     double *SinArr;
@@ -73,7 +74,6 @@ void main()
     f = (double)ival;
 
     incr = 2.0 * PI * f / fs;
-    sum = 0.0;
 
     printf("Input periods\r\n");
     scanf("%d", &ival);
@@ -93,21 +93,25 @@ void main()
     CosArr = new double[size];
     SinArr = new double[size];
 
+    sr = 1.0;
+    si = 0.0;
+
     for (p = 0; p < size; p++)
     {
         dval = (double)(p + 1);
         gaus = exp(mult * dval * dval);
-        r = gaus * cos(dval * incr);
 
-        CosArr[p] = r;
-        sum += r * r;
+        c = gaus * cos(dval * incr);
+        s = gaus * sin(dval * incr);
 
-        i = gaus * sin(dval * incr);
-        SinArr[p] = i;
-        sum += i * i;
+        CosArr[p] = c;
+        SinArr[p] = s;
+
+        sr += 2.0 * c;
+        si += 2.0 * s;
     }
 
-    scale = 1.0 + 2.0 * sum;
+    scale = sqrt(sr * sr + si * si);
 
     rot = 0;
 

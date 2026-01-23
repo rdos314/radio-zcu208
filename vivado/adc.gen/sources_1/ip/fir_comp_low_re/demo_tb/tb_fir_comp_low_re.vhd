@@ -112,10 +112,10 @@ architecture tb of tb_fir_comp_low_re is
   signal s_axis_data_tdata_vect3        : std_logic_vector(15 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_vect0        : std_logic_vector(35 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect1        : std_logic_vector(35 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect2        : std_logic_vector(35 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect3        : std_logic_vector(35 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect0        : std_logic_vector(36 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect1        : std_logic_vector(36 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect2        : std_logic_vector(36 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect3        : std_logic_vector(36 downto 0) := (others => '0');
 
 
 begin
@@ -259,9 +259,9 @@ begin
   s_axis_data_tdata_vect3        <= s_axis_data_tdata(63 downto 48);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_vect0        <= m_axis_data_tdata(35 downto 0) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect1        <= m_axis_data_tdata(75 downto 40) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect2        <= m_axis_data_tdata(115 downto 80) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect3        <= m_axis_data_tdata(155 downto 120) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect0        <= m_axis_data_tdata(36 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect1        <= m_axis_data_tdata(76 downto 40) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect2        <= m_axis_data_tdata(116 downto 80) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect3        <= m_axis_data_tdata(156 downto 120) when m_axis_data_tvalid = '1';
 
 end tb;
