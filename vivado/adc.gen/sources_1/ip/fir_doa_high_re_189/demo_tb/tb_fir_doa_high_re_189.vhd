@@ -111,7 +111,7 @@ architecture tb of tb_fir_doa_high_re_189 is
   signal s_axis_data_tdata_vect1        : std_logic_vector(15 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_data        : std_logic_vector(34 downto 0) := (others => '0');
+  signal m_axis_data_tdata_data        : std_logic_vector(35 downto 0) := (others => '0');
 
 
 begin
@@ -263,6 +263,6 @@ begin
   s_axis_data_tdata_vect1        <= s_axis_data_tdata(31 downto 16);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_data        <= m_axis_data_tdata(34 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_data        <= m_axis_data_tdata(35 downto 0) when m_axis_data_tvalid = '1';
 
 end tb;

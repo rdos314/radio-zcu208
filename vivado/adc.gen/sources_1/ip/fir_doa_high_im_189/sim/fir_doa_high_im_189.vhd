@@ -1,5 +1,5 @@
 -- (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
--- (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+-- (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of AMD and is protected under U.S. and international copyright
@@ -228,10 +228,10 @@ BEGIN
       C_PX_PATH_SRC => "1,1",
       C_DATA_PATH_SIGN => "0,0",
       C_COEF_PATH_SIGN => "0,0",
-      C_ACCUM_PATH_WIDTHS => "35,35",
-      C_OUTPUT_WIDTH => 35,
-      C_OUTPUT_PATH_WIDTHS => "35",
-      C_ACCUM_OP_PATH_WIDTHS => "35",
+      C_ACCUM_PATH_WIDTHS => "36,36",
+      C_OUTPUT_WIDTH => 36,
+      C_OUTPUT_PATH_WIDTHS => "36",
+      C_ACCUM_OP_PATH_WIDTHS => "36",
       C_EXT_MULT_CNFG => "none",
       C_DATA_PATH_PSAMP_SRC => "-0,1;0,-1",
       C_OP_PATH_PSAMP_SRC => "0,-1",
