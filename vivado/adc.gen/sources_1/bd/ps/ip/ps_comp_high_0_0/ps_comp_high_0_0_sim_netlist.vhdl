@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Jan 22 23:30:11 2026
+-- Date        : Fri Jan 23 18:59:50 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.vhdl
@@ -29018,7 +29018,7 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal im_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal im_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal im_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal im_data : STD_LOGIC_VECTOR ( 153 downto 17 );
+  signal im_data : STD_LOGIC_VECTOR ( 152 downto 16 );
   signal p_0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal p_0_in0 : STD_LOGIC;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -29036,7 +29036,7 @@ architecture STRUCTURE of ps_comp_high_0_0_comp_high is
   signal re_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal re_data : STD_LOGIC_VECTOR ( 153 downto 17 );
+  signal re_data : STD_LOGIC_VECTOR ( 152 downto 16 );
   signal reset_int : STD_LOGIC;
   signal sample_E : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal sample_N : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -39912,8 +39912,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => im_data(18),
-      I1 => im_data(17),
+      I0 => im_data(17),
+      I1 => im_data(16),
       O => \comp_high.im_0[7]_i_2_n_0\
     );
 \comp_high.im_0_reg[0]\: unisim.vcomponents.FDRE
@@ -39986,7 +39986,7 @@ begin
       CO(0) => \comp_high.im_0_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => im_0(15 downto 8),
-      S(7 downto 0) => im_data(33 downto 26)
+      S(7 downto 0) => im_data(32 downto 25)
     );
 \comp_high.im_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -40057,9 +40057,9 @@ begin
       CO(1) => \comp_high.im_0_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.im_0_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => im_data(18),
+      DI(0) => im_data(17),
       O(7 downto 0) => im_0(7 downto 0),
-      S(7 downto 1) => im_data(25 downto 19),
+      S(7 downto 1) => im_data(24 downto 18),
       S(0) => \comp_high.im_0[7]_i_2_n_0\
     );
 \comp_high.im_0_reg[8]\: unisim.vcomponents.FDRE
@@ -40083,8 +40083,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => im_data(58),
-      I1 => im_data(57),
+      I0 => im_data(57),
+      I1 => im_data(56),
       O => \comp_high.im_1[7]_i_2_n_0\
     );
 \comp_high.im_1_reg[0]\: unisim.vcomponents.FDRE
@@ -40157,7 +40157,7 @@ begin
       CO(0) => \comp_high.im_1_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => im_1(15 downto 8),
-      S(7 downto 0) => im_data(73 downto 66)
+      S(7 downto 0) => im_data(72 downto 65)
     );
 \comp_high.im_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -40228,9 +40228,9 @@ begin
       CO(1) => \comp_high.im_1_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.im_1_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => im_data(58),
+      DI(0) => im_data(57),
       O(7 downto 0) => im_1(7 downto 0),
-      S(7 downto 1) => im_data(65 downto 59),
+      S(7 downto 1) => im_data(64 downto 58),
       S(0) => \comp_high.im_1[7]_i_2_n_0\
     );
 \comp_high.im_1_reg[8]\: unisim.vcomponents.FDRE
@@ -40254,8 +40254,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => im_data(98),
-      I1 => im_data(97),
+      I0 => im_data(97),
+      I1 => im_data(96),
       O => \comp_high.im_2[7]_i_2_n_0\
     );
 \comp_high.im_2_reg[0]\: unisim.vcomponents.FDRE
@@ -40328,7 +40328,7 @@ begin
       CO(0) => \comp_high.im_2_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => im_2(15 downto 8),
-      S(7 downto 0) => im_data(113 downto 106)
+      S(7 downto 0) => im_data(112 downto 105)
     );
 \comp_high.im_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -40399,9 +40399,9 @@ begin
       CO(1) => \comp_high.im_2_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.im_2_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => im_data(98),
+      DI(0) => im_data(97),
       O(7 downto 0) => im_2(7 downto 0),
-      S(7 downto 1) => im_data(105 downto 99),
+      S(7 downto 1) => im_data(104 downto 98),
       S(0) => \comp_high.im_2[7]_i_2_n_0\
     );
 \comp_high.im_2_reg[8]\: unisim.vcomponents.FDRE
@@ -40425,8 +40425,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => im_data(138),
-      I1 => im_data(137),
+      I0 => im_data(137),
+      I1 => im_data(136),
       O => \comp_high.im_3[7]_i_2_n_0\
     );
 \comp_high.im_3_reg[0]\: unisim.vcomponents.FDRE
@@ -40499,7 +40499,7 @@ begin
       CO(0) => \comp_high.im_3_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => im_3(15 downto 8),
-      S(7 downto 0) => im_data(153 downto 146)
+      S(7 downto 0) => im_data(152 downto 145)
     );
 \comp_high.im_3_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -40570,9 +40570,9 @@ begin
       CO(1) => \comp_high.im_3_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.im_3_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => im_data(138),
+      DI(0) => im_data(137),
       O(7 downto 0) => im_3(7 downto 0),
-      S(7 downto 1) => im_data(145 downto 139),
+      S(7 downto 1) => im_data(144 downto 138),
       S(0) => \comp_high.im_3[7]_i_2_n_0\
     );
 \comp_high.im_3_reg[8]\: unisim.vcomponents.FDRE
@@ -47728,8 +47728,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => re_data(18),
-      I1 => re_data(17),
+      I0 => re_data(17),
+      I1 => re_data(16),
       O => \comp_high.re_0[7]_i_2_n_0\
     );
 \comp_high.re_0_reg[0]\: unisim.vcomponents.FDRE
@@ -47802,7 +47802,7 @@ begin
       CO(0) => \comp_high.re_0_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => re_0(15 downto 8),
-      S(7 downto 0) => re_data(33 downto 26)
+      S(7 downto 0) => re_data(32 downto 25)
     );
 \comp_high.re_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -47873,9 +47873,9 @@ begin
       CO(1) => \comp_high.re_0_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.re_0_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => re_data(18),
+      DI(0) => re_data(17),
       O(7 downto 0) => re_0(7 downto 0),
-      S(7 downto 1) => re_data(25 downto 19),
+      S(7 downto 1) => re_data(24 downto 18),
       S(0) => \comp_high.re_0[7]_i_2_n_0\
     );
 \comp_high.re_0_reg[8]\: unisim.vcomponents.FDRE
@@ -47899,8 +47899,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => re_data(58),
-      I1 => re_data(57),
+      I0 => re_data(57),
+      I1 => re_data(56),
       O => \comp_high.re_1[7]_i_2_n_0\
     );
 \comp_high.re_1_reg[0]\: unisim.vcomponents.FDRE
@@ -47973,7 +47973,7 @@ begin
       CO(0) => \comp_high.re_1_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => re_1(15 downto 8),
-      S(7 downto 0) => re_data(73 downto 66)
+      S(7 downto 0) => re_data(72 downto 65)
     );
 \comp_high.re_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -48044,9 +48044,9 @@ begin
       CO(1) => \comp_high.re_1_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.re_1_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => re_data(58),
+      DI(0) => re_data(57),
       O(7 downto 0) => re_1(7 downto 0),
-      S(7 downto 1) => re_data(65 downto 59),
+      S(7 downto 1) => re_data(64 downto 58),
       S(0) => \comp_high.re_1[7]_i_2_n_0\
     );
 \comp_high.re_1_reg[8]\: unisim.vcomponents.FDRE
@@ -48070,8 +48070,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => re_data(98),
-      I1 => re_data(97),
+      I0 => re_data(97),
+      I1 => re_data(96),
       O => \comp_high.re_2[7]_i_2_n_0\
     );
 \comp_high.re_2_reg[0]\: unisim.vcomponents.FDRE
@@ -48144,7 +48144,7 @@ begin
       CO(0) => \comp_high.re_2_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => re_2(15 downto 8),
-      S(7 downto 0) => re_data(113 downto 106)
+      S(7 downto 0) => re_data(112 downto 105)
     );
 \comp_high.re_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -48215,9 +48215,9 @@ begin
       CO(1) => \comp_high.re_2_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.re_2_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => re_data(98),
+      DI(0) => re_data(97),
       O(7 downto 0) => re_2(7 downto 0),
-      S(7 downto 1) => re_data(105 downto 99),
+      S(7 downto 1) => re_data(104 downto 98),
       S(0) => \comp_high.re_2[7]_i_2_n_0\
     );
 \comp_high.re_2_reg[8]\: unisim.vcomponents.FDRE
@@ -48241,8 +48241,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => re_data(138),
-      I1 => re_data(137),
+      I0 => re_data(137),
+      I1 => re_data(136),
       O => \comp_high.re_3[7]_i_2_n_0\
     );
 \comp_high.re_3_reg[0]\: unisim.vcomponents.FDRE
@@ -48315,7 +48315,7 @@ begin
       CO(0) => \comp_high.re_3_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => re_3(15 downto 8),
-      S(7 downto 0) => re_data(153 downto 146)
+      S(7 downto 0) => re_data(152 downto 145)
     );
 \comp_high.re_3_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -48386,9 +48386,9 @@ begin
       CO(1) => \comp_high.re_3_reg[7]_i_1_n_6\,
       CO(0) => \comp_high.re_3_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => re_data(138),
+      DI(0) => re_data(137),
       O(7 downto 0) => re_3(7 downto 0),
-      S(7 downto 1) => re_data(145 downto 139),
+      S(7 downto 1) => re_data(144 downto 138),
       S(0) => \comp_high.re_3[7]_i_2_n_0\
     );
 \comp_high.re_3_reg[8]\: unisim.vcomponents.FDRE
@@ -49539,15 +49539,15 @@ fir_deci_i: component ps_comp_high_0_0_fir_comp_deci
 fir_im_i: component ps_comp_high_0_0_fir_comp_high_im
      port map (
       aclk => clk,
-      m_axis_data_tdata(159 downto 154) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(159 downto 154),
-      m_axis_data_tdata(153 downto 137) => im_data(153 downto 137),
-      m_axis_data_tdata(136 downto 114) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(136 downto 114),
-      m_axis_data_tdata(113 downto 97) => im_data(113 downto 97),
-      m_axis_data_tdata(96 downto 74) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(96 downto 74),
-      m_axis_data_tdata(73 downto 57) => im_data(73 downto 57),
-      m_axis_data_tdata(56 downto 34) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(56 downto 34),
-      m_axis_data_tdata(33 downto 17) => im_data(33 downto 17),
-      m_axis_data_tdata(16 downto 0) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
+      m_axis_data_tdata(159 downto 153) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(159 downto 153),
+      m_axis_data_tdata(152 downto 136) => im_data(152 downto 136),
+      m_axis_data_tdata(135 downto 113) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(135 downto 113),
+      m_axis_data_tdata(112 downto 96) => im_data(112 downto 96),
+      m_axis_data_tdata(95 downto 73) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(95 downto 73),
+      m_axis_data_tdata(72 downto 56) => im_data(72 downto 56),
+      m_axis_data_tdata(55 downto 33) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(55 downto 33),
+      m_axis_data_tdata(32 downto 16) => im_data(32 downto 16),
+      m_axis_data_tdata(15 downto 0) => NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED(15 downto 0),
       m_axis_data_tvalid => NLW_fir_im_i_m_axis_data_tvalid_UNCONNECTED,
       s_axis_data_tdata(63 downto 0) => fir_in(63 downto 0),
       s_axis_data_tready => NLW_fir_im_i_s_axis_data_tready_UNCONNECTED,
@@ -49556,15 +49556,15 @@ fir_im_i: component ps_comp_high_0_0_fir_comp_high_im
 fir_re_i: component ps_comp_high_0_0_fir_comp_high_re
      port map (
       aclk => clk,
-      m_axis_data_tdata(159 downto 154) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(159 downto 154),
-      m_axis_data_tdata(153 downto 137) => re_data(153 downto 137),
-      m_axis_data_tdata(136 downto 114) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(136 downto 114),
-      m_axis_data_tdata(113 downto 97) => re_data(113 downto 97),
-      m_axis_data_tdata(96 downto 74) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(96 downto 74),
-      m_axis_data_tdata(73 downto 57) => re_data(73 downto 57),
-      m_axis_data_tdata(56 downto 34) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(56 downto 34),
-      m_axis_data_tdata(33 downto 17) => re_data(33 downto 17),
-      m_axis_data_tdata(16 downto 0) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(16 downto 0),
+      m_axis_data_tdata(159 downto 153) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(159 downto 153),
+      m_axis_data_tdata(152 downto 136) => re_data(152 downto 136),
+      m_axis_data_tdata(135 downto 113) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(135 downto 113),
+      m_axis_data_tdata(112 downto 96) => re_data(112 downto 96),
+      m_axis_data_tdata(95 downto 73) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(95 downto 73),
+      m_axis_data_tdata(72 downto 56) => re_data(72 downto 56),
+      m_axis_data_tdata(55 downto 33) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(55 downto 33),
+      m_axis_data_tdata(32 downto 16) => re_data(32 downto 16),
+      m_axis_data_tdata(15 downto 0) => NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED(15 downto 0),
       m_axis_data_tvalid => fir_re_active,
       s_axis_data_tdata(63 downto 0) => fir_in(63 downto 0),
       s_axis_data_tready => NLW_fir_re_i_s_axis_data_tready_UNCONNECTED,

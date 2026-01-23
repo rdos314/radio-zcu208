@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Jan 22 23:30:11 2026
+// Date        : Fri Jan 23 18:59:50 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.v
@@ -1041,7 +1041,7 @@ module ps_comp_high_0_0_comp_high
   wire [15:0]im_1;
   wire [15:0]im_2;
   wire [15:0]im_3;
-  wire [153:17]im_data;
+  wire [152:16]im_data;
   wire [4:0]p_0_in;
   wire p_0_in0;
   wire [15:0]p_0_in__0;
@@ -1065,7 +1065,7 @@ module ps_comp_high_0_0_comp_high
   wire [15:0]re_1;
   wire [15:0]re_2;
   wire [15:0]re_3;
-  wire [153:17]re_data;
+  wire [152:16]re_data;
   wire reset;
   wire reset_int;
   wire [15:0]sample;
@@ -8835,8 +8835,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.im_0[7]_i_2 
-       (.I0(im_data[18]),
-        .I1(im_data[17]),
+       (.I0(im_data[17]),
+        .I1(im_data[16]),
         .O(\comp_high.im_0[7]_i_2_n_0 ));
   FDRE \comp_high.im_0_reg[0] 
        (.C(clk),
@@ -8887,7 +8887,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.im_0_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.im_0_reg[15]_i_1_n_1 ,\comp_high.im_0_reg[15]_i_1_n_2 ,\comp_high.im_0_reg[15]_i_1_n_3 ,\comp_high.im_0_reg[15]_i_1_n_4 ,\comp_high.im_0_reg[15]_i_1_n_5 ,\comp_high.im_0_reg[15]_i_1_n_6 ,\comp_high.im_0_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(im_0[15:8]),
-        .S(im_data[33:26]));
+        .S(im_data[32:25]));
   FDRE \comp_high.im_0_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -8935,9 +8935,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.im_0_reg[7]_i_1_n_0 ,\comp_high.im_0_reg[7]_i_1_n_1 ,\comp_high.im_0_reg[7]_i_1_n_2 ,\comp_high.im_0_reg[7]_i_1_n_3 ,\comp_high.im_0_reg[7]_i_1_n_4 ,\comp_high.im_0_reg[7]_i_1_n_5 ,\comp_high.im_0_reg[7]_i_1_n_6 ,\comp_high.im_0_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[18]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[17]}),
         .O(im_0[7:0]),
-        .S({im_data[25:19],\comp_high.im_0[7]_i_2_n_0 }));
+        .S({im_data[24:18],\comp_high.im_0[7]_i_2_n_0 }));
   FDRE \comp_high.im_0_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -8953,8 +8953,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.im_1[7]_i_2 
-       (.I0(im_data[58]),
-        .I1(im_data[57]),
+       (.I0(im_data[57]),
+        .I1(im_data[56]),
         .O(\comp_high.im_1[7]_i_2_n_0 ));
   FDRE \comp_high.im_1_reg[0] 
        (.C(clk),
@@ -9005,7 +9005,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.im_1_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.im_1_reg[15]_i_1_n_1 ,\comp_high.im_1_reg[15]_i_1_n_2 ,\comp_high.im_1_reg[15]_i_1_n_3 ,\comp_high.im_1_reg[15]_i_1_n_4 ,\comp_high.im_1_reg[15]_i_1_n_5 ,\comp_high.im_1_reg[15]_i_1_n_6 ,\comp_high.im_1_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(im_1[15:8]),
-        .S(im_data[73:66]));
+        .S(im_data[72:65]));
   FDRE \comp_high.im_1_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -9053,9 +9053,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.im_1_reg[7]_i_1_n_0 ,\comp_high.im_1_reg[7]_i_1_n_1 ,\comp_high.im_1_reg[7]_i_1_n_2 ,\comp_high.im_1_reg[7]_i_1_n_3 ,\comp_high.im_1_reg[7]_i_1_n_4 ,\comp_high.im_1_reg[7]_i_1_n_5 ,\comp_high.im_1_reg[7]_i_1_n_6 ,\comp_high.im_1_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[58]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[57]}),
         .O(im_1[7:0]),
-        .S({im_data[65:59],\comp_high.im_1[7]_i_2_n_0 }));
+        .S({im_data[64:58],\comp_high.im_1[7]_i_2_n_0 }));
   FDRE \comp_high.im_1_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -9071,8 +9071,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.im_2[7]_i_2 
-       (.I0(im_data[98]),
-        .I1(im_data[97]),
+       (.I0(im_data[97]),
+        .I1(im_data[96]),
         .O(\comp_high.im_2[7]_i_2_n_0 ));
   FDRE \comp_high.im_2_reg[0] 
        (.C(clk),
@@ -9123,7 +9123,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.im_2_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.im_2_reg[15]_i_1_n_1 ,\comp_high.im_2_reg[15]_i_1_n_2 ,\comp_high.im_2_reg[15]_i_1_n_3 ,\comp_high.im_2_reg[15]_i_1_n_4 ,\comp_high.im_2_reg[15]_i_1_n_5 ,\comp_high.im_2_reg[15]_i_1_n_6 ,\comp_high.im_2_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(im_2[15:8]),
-        .S(im_data[113:106]));
+        .S(im_data[112:105]));
   FDRE \comp_high.im_2_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -9171,9 +9171,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.im_2_reg[7]_i_1_n_0 ,\comp_high.im_2_reg[7]_i_1_n_1 ,\comp_high.im_2_reg[7]_i_1_n_2 ,\comp_high.im_2_reg[7]_i_1_n_3 ,\comp_high.im_2_reg[7]_i_1_n_4 ,\comp_high.im_2_reg[7]_i_1_n_5 ,\comp_high.im_2_reg[7]_i_1_n_6 ,\comp_high.im_2_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[98]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[97]}),
         .O(im_2[7:0]),
-        .S({im_data[105:99],\comp_high.im_2[7]_i_2_n_0 }));
+        .S({im_data[104:98],\comp_high.im_2[7]_i_2_n_0 }));
   FDRE \comp_high.im_2_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -9189,8 +9189,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.im_3[7]_i_2 
-       (.I0(im_data[138]),
-        .I1(im_data[137]),
+       (.I0(im_data[137]),
+        .I1(im_data[136]),
         .O(\comp_high.im_3[7]_i_2_n_0 ));
   FDRE \comp_high.im_3_reg[0] 
        (.C(clk),
@@ -9241,7 +9241,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.im_3_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.im_3_reg[15]_i_1_n_1 ,\comp_high.im_3_reg[15]_i_1_n_2 ,\comp_high.im_3_reg[15]_i_1_n_3 ,\comp_high.im_3_reg[15]_i_1_n_4 ,\comp_high.im_3_reg[15]_i_1_n_5 ,\comp_high.im_3_reg[15]_i_1_n_6 ,\comp_high.im_3_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(im_3[15:8]),
-        .S(im_data[153:146]));
+        .S(im_data[152:145]));
   FDRE \comp_high.im_3_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -9289,9 +9289,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.im_3_reg[7]_i_1_n_0 ,\comp_high.im_3_reg[7]_i_1_n_1 ,\comp_high.im_3_reg[7]_i_1_n_2 ,\comp_high.im_3_reg[7]_i_1_n_3 ,\comp_high.im_3_reg[7]_i_1_n_4 ,\comp_high.im_3_reg[7]_i_1_n_5 ,\comp_high.im_3_reg[7]_i_1_n_6 ,\comp_high.im_3_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[138]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,im_data[137]}),
         .O(im_3[7:0]),
-        .S({im_data[145:139],\comp_high.im_3[7]_i_2_n_0 }));
+        .S({im_data[144:138],\comp_high.im_3[7]_i_2_n_0 }));
   FDRE \comp_high.im_3_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -14644,8 +14644,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.re_0[7]_i_2 
-       (.I0(re_data[18]),
-        .I1(re_data[17]),
+       (.I0(re_data[17]),
+        .I1(re_data[16]),
         .O(\comp_high.re_0[7]_i_2_n_0 ));
   FDRE \comp_high.re_0_reg[0] 
        (.C(clk),
@@ -14696,7 +14696,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.re_0_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.re_0_reg[15]_i_1_n_1 ,\comp_high.re_0_reg[15]_i_1_n_2 ,\comp_high.re_0_reg[15]_i_1_n_3 ,\comp_high.re_0_reg[15]_i_1_n_4 ,\comp_high.re_0_reg[15]_i_1_n_5 ,\comp_high.re_0_reg[15]_i_1_n_6 ,\comp_high.re_0_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(re_0[15:8]),
-        .S(re_data[33:26]));
+        .S(re_data[32:25]));
   FDRE \comp_high.re_0_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -14744,9 +14744,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.re_0_reg[7]_i_1_n_0 ,\comp_high.re_0_reg[7]_i_1_n_1 ,\comp_high.re_0_reg[7]_i_1_n_2 ,\comp_high.re_0_reg[7]_i_1_n_3 ,\comp_high.re_0_reg[7]_i_1_n_4 ,\comp_high.re_0_reg[7]_i_1_n_5 ,\comp_high.re_0_reg[7]_i_1_n_6 ,\comp_high.re_0_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[18]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[17]}),
         .O(re_0[7:0]),
-        .S({re_data[25:19],\comp_high.re_0[7]_i_2_n_0 }));
+        .S({re_data[24:18],\comp_high.re_0[7]_i_2_n_0 }));
   FDRE \comp_high.re_0_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -14762,8 +14762,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.re_1[7]_i_2 
-       (.I0(re_data[58]),
-        .I1(re_data[57]),
+       (.I0(re_data[57]),
+        .I1(re_data[56]),
         .O(\comp_high.re_1[7]_i_2_n_0 ));
   FDRE \comp_high.re_1_reg[0] 
        (.C(clk),
@@ -14814,7 +14814,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.re_1_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.re_1_reg[15]_i_1_n_1 ,\comp_high.re_1_reg[15]_i_1_n_2 ,\comp_high.re_1_reg[15]_i_1_n_3 ,\comp_high.re_1_reg[15]_i_1_n_4 ,\comp_high.re_1_reg[15]_i_1_n_5 ,\comp_high.re_1_reg[15]_i_1_n_6 ,\comp_high.re_1_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(re_1[15:8]),
-        .S(re_data[73:66]));
+        .S(re_data[72:65]));
   FDRE \comp_high.re_1_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -14862,9 +14862,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.re_1_reg[7]_i_1_n_0 ,\comp_high.re_1_reg[7]_i_1_n_1 ,\comp_high.re_1_reg[7]_i_1_n_2 ,\comp_high.re_1_reg[7]_i_1_n_3 ,\comp_high.re_1_reg[7]_i_1_n_4 ,\comp_high.re_1_reg[7]_i_1_n_5 ,\comp_high.re_1_reg[7]_i_1_n_6 ,\comp_high.re_1_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[58]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[57]}),
         .O(re_1[7:0]),
-        .S({re_data[65:59],\comp_high.re_1[7]_i_2_n_0 }));
+        .S({re_data[64:58],\comp_high.re_1[7]_i_2_n_0 }));
   FDRE \comp_high.re_1_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -14880,8 +14880,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.re_2[7]_i_2 
-       (.I0(re_data[98]),
-        .I1(re_data[97]),
+       (.I0(re_data[97]),
+        .I1(re_data[96]),
         .O(\comp_high.re_2[7]_i_2_n_0 ));
   FDRE \comp_high.re_2_reg[0] 
        (.C(clk),
@@ -14932,7 +14932,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.re_2_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.re_2_reg[15]_i_1_n_1 ,\comp_high.re_2_reg[15]_i_1_n_2 ,\comp_high.re_2_reg[15]_i_1_n_3 ,\comp_high.re_2_reg[15]_i_1_n_4 ,\comp_high.re_2_reg[15]_i_1_n_5 ,\comp_high.re_2_reg[15]_i_1_n_6 ,\comp_high.re_2_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(re_2[15:8]),
-        .S(re_data[113:106]));
+        .S(re_data[112:105]));
   FDRE \comp_high.re_2_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -14980,9 +14980,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.re_2_reg[7]_i_1_n_0 ,\comp_high.re_2_reg[7]_i_1_n_1 ,\comp_high.re_2_reg[7]_i_1_n_2 ,\comp_high.re_2_reg[7]_i_1_n_3 ,\comp_high.re_2_reg[7]_i_1_n_4 ,\comp_high.re_2_reg[7]_i_1_n_5 ,\comp_high.re_2_reg[7]_i_1_n_6 ,\comp_high.re_2_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[98]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[97]}),
         .O(re_2[7:0]),
-        .S({re_data[105:99],\comp_high.re_2[7]_i_2_n_0 }));
+        .S({re_data[104:98],\comp_high.re_2[7]_i_2_n_0 }));
   FDRE \comp_high.re_2_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -14998,8 +14998,8 @@ module ps_comp_high_0_0_comp_high
   LUT2 #(
     .INIT(4'h6)) 
     \comp_high.re_3[7]_i_2 
-       (.I0(re_data[138]),
-        .I1(re_data[137]),
+       (.I0(re_data[137]),
+        .I1(re_data[136]),
         .O(\comp_high.re_3[7]_i_2_n_0 ));
   FDRE \comp_high.re_3_reg[0] 
        (.C(clk),
@@ -15050,7 +15050,7 @@ module ps_comp_high_0_0_comp_high
         .CO({\NLW_comp_high.re_3_reg[15]_i_1_CO_UNCONNECTED [7],\comp_high.re_3_reg[15]_i_1_n_1 ,\comp_high.re_3_reg[15]_i_1_n_2 ,\comp_high.re_3_reg[15]_i_1_n_3 ,\comp_high.re_3_reg[15]_i_1_n_4 ,\comp_high.re_3_reg[15]_i_1_n_5 ,\comp_high.re_3_reg[15]_i_1_n_6 ,\comp_high.re_3_reg[15]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .O(re_3[15:8]),
-        .S(re_data[153:146]));
+        .S(re_data[152:145]));
   FDRE \comp_high.re_3_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -15098,9 +15098,9 @@ module ps_comp_high_0_0_comp_high
        (.CI(1'b0),
         .CI_TOP(1'b0),
         .CO({\comp_high.re_3_reg[7]_i_1_n_0 ,\comp_high.re_3_reg[7]_i_1_n_1 ,\comp_high.re_3_reg[7]_i_1_n_2 ,\comp_high.re_3_reg[7]_i_1_n_3 ,\comp_high.re_3_reg[7]_i_1_n_4 ,\comp_high.re_3_reg[7]_i_1_n_5 ,\comp_high.re_3_reg[7]_i_1_n_6 ,\comp_high.re_3_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[138]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,re_data[137]}),
         .O(re_3[7:0]),
-        .S({re_data[145:139],\comp_high.re_3[7]_i_2_n_0 }));
+        .S({re_data[144:138],\comp_high.re_3[7]_i_2_n_0 }));
   FDRE \comp_high.re_3_reg[8] 
        (.C(clk),
         .CE(1'b1),
@@ -15944,7 +15944,7 @@ module ps_comp_high_0_0_comp_high
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
   ps_comp_high_0_0_fir_comp_high_im fir_im_i
        (.aclk(clk),
-        .m_axis_data_tdata({NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED[159:154],im_data,NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
+        .m_axis_data_tdata({NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED[159:153],im_data,NLW_fir_im_i_m_axis_data_tdata_UNCONNECTED[15:0]}),
         .m_axis_data_tvalid(NLW_fir_im_i_m_axis_data_tvalid_UNCONNECTED),
         .s_axis_data_tdata(fir_in),
         .s_axis_data_tready(NLW_fir_im_i_s_axis_data_tready_UNCONNECTED),
@@ -15954,7 +15954,7 @@ module ps_comp_high_0_0_comp_high
   (* x_core_info = "fir_compiler_v7_2_24,Vivado 2025.1" *) 
   ps_comp_high_0_0_fir_comp_high_re fir_re_i
        (.aclk(clk),
-        .m_axis_data_tdata({NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED[159:154],re_data,NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED[16:0]}),
+        .m_axis_data_tdata({NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED[159:153],re_data,NLW_fir_re_i_m_axis_data_tdata_UNCONNECTED[15:0]}),
         .m_axis_data_tvalid(fir_re_active),
         .s_axis_data_tdata(fir_in),
         .s_axis_data_tready(NLW_fir_re_i_s_axis_data_tready_UNCONNECTED),

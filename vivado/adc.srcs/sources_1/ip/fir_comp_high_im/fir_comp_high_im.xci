@@ -10,7 +10,7 @@
         "Component_Name": [ { "value": "fir_comp_high_im", "resolve_type": "user", "usage": "all" } ],
         "GUI_Behaviour": [ { "value": "Coregen", "resolve_type": "user", "usage": "all" } ],
         "CoefficientSource": [ { "value": "Vector", "resolve_type": "user", "usage": "all" } ],
-        "CoefficientVector": [ { "value": "8, -102, -325, -610, -750, -387, 806, 2786, 4812, 5486, 3405, -1777, -8552, -13828, -14463, -9253, 0, 9253, 14463, 13828, 8552, 1777, -3405, -5486, -4812, -2786, -806, 387, 750, 610, 325, 102, -8", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "CoefficientVector": [ { "value": "9, -112, -357, -669, -822, -425, 884, 3055, 5277, 6017, 3734, -1949, -9378, -15164, -15861, -10147, 0, 10147, 15861, 15164, 9378, 1949, -3734, -6017, -5277, -3055, -884, 425, 822, 669, 357, 112, -9", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Coefficient_File": [ { "value": "no_coe_file_loaded", "resolve_type": "user", "usage": "all" } ],
         "Coefficient_Sets": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Coefficient_Reload": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],

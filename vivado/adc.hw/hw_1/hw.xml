@@ -380,7 +380,7 @@
     <Object name="ps_i/ana_low/inst/doa_calc_1/done" gui_info="Trigger Setup=0"/>
     <Object name="ps_i/ana_low/inst/doa_calc_i/start" gui_info="Trigger Setup=0"/>
     <Object name="ps_i/comp_ana_high/inst/run" gui_info="Trigger Setup=0"/>
-    <Object name="ps_i/comp_ana_low/inst/run" gui_info="Trigger Setup=0"/>
+    <Object name="ps_i/comp_ana_low/inst/run" gui_info=""/>
     <Object name="ps_i/comp_high/inst/ana_burst" gui_info="Trigger Setup=0"/>
     <Object name="ps_i/comp_high/inst/cfg_rd" gui_info="Trigger Setup=0"/>
     <Object name="ps_i/comp_high/inst/det_sig_i/active" gui_info="Trigger Setup=0"/>

@@ -476,48 +476,48 @@ generate
 
     always @(posedge clk) 
 	begin
-	    if (re_out_0[17])
-            re_0 <= re_out_0[37:18] + 1;
+	    if (re_out_0[16])
+            re_0 <= re_out_0[36:17] + 1;
         else
-            re_0 <= re_out_0[37:18];
+            re_0 <= re_out_0[36:17];
 
-	    if (re_out_1[17])
-            re_1 <= re_out_1[37:18] + 1;
+	    if (re_out_1[16])
+            re_1 <= re_out_1[36:17] + 1;
         else
-            re_1 <= re_out_1[37:18];
+            re_1 <= re_out_1[36:17];
 
-	    if (re_out_2[17])
-            re_2 <= re_out_2[37:18] + 1;
+	    if (re_out_2[16])
+            re_2 <= re_out_2[36:17] + 1;
         else
-            re_2 <= re_out_2[37:18];
+            re_2 <= re_out_2[36:17];
 
-	    if (re_out_3[17])
-            re_3 <= re_out_3[37:18] + 1;
+	    if (re_out_3[16])
+            re_3 <= re_out_3[36:17] + 1;
         else
-            re_3 <= re_out_3[37:18];
+            re_3 <= re_out_3[36:17];
     end
 
     always @(posedge clk) 
 	begin
-	    if (im_out_0[17])
-            im_0 <= im_out_0[37:18] + 1;
+	    if (im_out_0[16])
+            im_0 <= im_out_0[36:17] + 1;
         else
-            im_0 <= im_out_0[37:18];
+            im_0 <= im_out_0[36:17];
 
-	    if (im_out_1[17])
-            im_1 <= im_out_1[37:18] + 1;
+	    if (im_out_1[16])
+            im_1 <= im_out_1[36:17] + 1;
         else
-            im_1 <= im_out_1[37:18];
+            im_1 <= im_out_1[36:17];
 
-	    if (im_out_2[17])
-            im_2 <= im_out_2[37:18] + 1;
+	    if (im_out_2[16])
+            im_2 <= im_out_2[36:17] + 1;
         else
-            im_2 <= im_out_2[37:18];
+            im_2 <= im_out_2[36:17];
 
-	    if (im_out_3[17])
-            im_3 <= im_out_3[37:18] + 1;
+	    if (im_out_3[16])
+            im_3 <= im_out_3[36:17] + 1;
         else
-            im_3 <= im_out_3[37:18];
+            im_3 <= im_out_3[36:17];
     end
 
     always @(posedge clk) 

@@ -47,18 +47,15 @@ void main()
     int p;
     int size;
     int ival;
-    long long lval;
     double dval;
     double rho;
     double mult;
     double gaus;
     double incr;
-    double norm;
-    double i, r;
+    double sum = 0.0;
+    double r;
     double f;
     double fs;
-    double sr, si;
-    double s, c;
     double scale;
     int periods;
     double *SinArr;
@@ -93,25 +90,26 @@ void main()
     CosArr = new double[size];
     SinArr = new double[size];
 
-    sr = 1.0;
-    si = 0.0;
+    sum = 0.0;
 
     for (p = 0; p < size; p++)
     {
         dval = (double)(p + 1);
         gaus = exp(mult * dval * dval);
 
-        c = gaus * cos(dval * incr);
-        s = gaus * sin(dval * incr);
+        CosArr[p] = gaus * cos(dval * incr);
+        SinArr[p] = gaus * sin(dval * incr);
 
-        CosArr[p] = c;
-        SinArr[p] = s;
-
-        sr += 2.0 * c;
-        si += 2.0 * s;
+        sum += gaus * gaus;
     }
 
-    scale = sqrt(sr * sr + si * si);
+    scale = sqrt(1.0 + 2.0 * sum);
+
+// high compensation
+//  scale = scale * 1.184;
+
+// low compensation
+    scale = scale * 1.029;
 
     rot = 0;
 
