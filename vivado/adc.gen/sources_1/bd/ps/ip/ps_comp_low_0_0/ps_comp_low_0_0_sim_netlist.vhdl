@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Jan 23 19:04:24 2026
+-- Date        : Mon Jan 26 21:10:02 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -105150,8 +105150,9 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.sample_W_reg[3]_rep__1_n_0\ : STD_LOGIC;
   signal \comp_low.sample_W_reg[3]_rep_n_0\ : STD_LOGIC;
   signal \comp_low.sample_W_reg[4]_rep_n_0\ : STD_LOGIC;
-  signal \comp_low.select_delay[4]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_low.select_delay_reg\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \comp_low.select_delay[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.select_delay[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_low.select_delay_reg\ : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal data_E : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal data_N : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal data_W : STD_LOGIC_VECTOR ( 127 downto 0 );
@@ -105171,7 +105172,7 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal im_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal im_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal im_data : STD_LOGIC_VECTOR ( 154 downto 18 );
-  signal p_0_in : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal p_0_in : STD_LOGIC_VECTOR ( 5 downto 1 );
   signal p_0_in0 : STD_LOGIC;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal raw_E : STD_LOGIC_VECTOR ( 127 downto 0 );
@@ -105270,8 +105271,6 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute ADDER_THRESHOLD of \comp_low.deci_2_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.deci_3_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.deci_3_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_low.deci_run_i_2\ : label is "soft_lutpair0";
   attribute ADDER_THRESHOLD of \comp_low.im_0_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_0_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_1_reg[15]_i_1\ : label is 35;
@@ -105280,11 +105279,11 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute ADDER_THRESHOLD of \comp_low.im_2_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_3_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.im_3_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_low.raw_delay[1]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \comp_low.raw_delay[2]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \comp_low.raw_delay[3]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \comp_low.raw_delay[4]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \comp_low.raw_run_i_2\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \comp_low.raw_delay[1]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \comp_low.raw_delay[2]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \comp_low.raw_delay[3]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \comp_low.raw_delay[4]_i_1\ : label is "soft_lutpair1";
   attribute ADDER_THRESHOLD of \comp_low.raw_sample_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.raw_sample_reg[8]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_low.re_0_reg[15]_i_1\ : label is 35;
@@ -105374,10 +105373,10 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   attribute ORIG_CELL_NAME of \comp_low.sample_W_reg[3]_rep__1\ : label is "comp_low.sample_W_reg[3]";
   attribute ORIG_CELL_NAME of \comp_low.sample_W_reg[4]\ : label is "comp_low.sample_W_reg[4]";
   attribute ORIG_CELL_NAME of \comp_low.sample_W_reg[4]_rep\ : label is "comp_low.sample_W_reg[4]";
-  attribute SOFT_HLUTNM of \comp_low.select_delay[1]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \comp_low.select_delay[2]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \comp_low.select_delay[3]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \comp_low.select_delay[4]_i_3\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \comp_low.select_delay[1]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \comp_low.select_delay[2]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \comp_low.select_delay[3]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \comp_low.select_delay[4]_i_1\ : label is "soft_lutpair0";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_ana_i : label is "fifo_ana,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -115943,16 +115942,17 @@ begin
       I3 => deci_run,
       O => \comp_low.deci_run_i_1_n_0\
     );
-\comp_low.deci_run_i_2\: unisim.vcomponents.LUT5
+\comp_low.deci_run_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000020"
+      INIT => X"0000100000000000"
     )
         port map (
-      I0 => \comp_low.select_delay_reg\(0),
+      I0 => \comp_low.select_delay_reg\(5),
       I1 => \comp_low.select_delay_reg\(2),
-      I2 => \comp_low.select_delay_reg\(4),
-      I3 => \comp_low.select_delay_reg\(3),
-      I4 => \comp_low.select_delay_reg\(1),
+      I2 => \comp_low.select_delay_reg\(1),
+      I3 => \comp_low.select_delay_reg\(0),
+      I4 => \comp_low.select_delay_reg\(3),
+      I5 => \comp_low.select_delay_reg\(4),
       O => deci_run
     );
 \comp_low.deci_run_reg\: unisim.vcomponents.FDRE
@@ -123743,16 +123743,17 @@ begin
       I3 => \raw_run__0\,
       O => \comp_low.raw_run_i_1_n_0\
     );
-\comp_low.raw_run_i_2\: unisim.vcomponents.LUT5
+\comp_low.raw_run_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00400000"
+      INIT => X"0000000000000100"
     )
         port map (
-      I0 => \comp_low.select_delay_reg\(0),
-      I1 => \comp_low.select_delay_reg\(1),
-      I2 => \comp_low.select_delay_reg\(2),
+      I0 => \comp_low.select_delay_reg\(5),
+      I1 => \comp_low.select_delay_reg\(0),
+      I2 => \comp_low.select_delay_reg\(1),
       I3 => \comp_low.select_delay_reg\(4),
       I4 => \comp_low.select_delay_reg\(3),
+      I5 => \comp_low.select_delay_reg\(2),
       O => \raw_run__0\
     );
 \comp_low.raw_run_reg\: unisim.vcomponents.FDRE
@@ -125934,7 +125935,7 @@ begin
     )
         port map (
       I0 => \comp_low.select_delay_reg\(0),
-      O => p_0_in(0)
+      O => \comp_low.select_delay[0]_i_1_n_0\
     );
 \comp_low.select_delay[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -125966,28 +125967,7 @@ begin
       I3 => \comp_low.select_delay_reg\(3),
       O => p_0_in(3)
     );
-\comp_low.select_delay[4]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => raw_empty,
-      I1 => raw_rd,
-      O => clear
-    );
-\comp_low.select_delay[4]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFDFFFF"
-    )
-        port map (
-      I0 => \comp_low.select_delay_reg\(0),
-      I1 => \comp_low.select_delay_reg\(1),
-      I2 => \comp_low.select_delay_reg\(2),
-      I3 => \comp_low.select_delay_reg\(3),
-      I4 => \comp_low.select_delay_reg\(4),
-      O => \comp_low.select_delay[4]_i_2_n_0\
-    );
-\comp_low.select_delay[4]_i_3\: unisim.vcomponents.LUT5
+\comp_low.select_delay[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"7FFF8000"
     )
@@ -125999,18 +125979,53 @@ begin
       I4 => \comp_low.select_delay_reg\(4),
       O => p_0_in(4)
     );
+\comp_low.select_delay[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => raw_empty,
+      I1 => raw_rd,
+      O => clear
+    );
+\comp_low.select_delay[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFF7FFFFFFFF"
+    )
+        port map (
+      I0 => \comp_low.select_delay_reg\(1),
+      I1 => \comp_low.select_delay_reg\(4),
+      I2 => \comp_low.select_delay_reg\(2),
+      I3 => \comp_low.select_delay_reg\(3),
+      I4 => \comp_low.select_delay_reg\(5),
+      I5 => \comp_low.select_delay_reg\(0),
+      O => \comp_low.select_delay[5]_i_2_n_0\
+    );
+\comp_low.select_delay[5]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
+    )
+        port map (
+      I0 => \comp_low.select_delay_reg\(3),
+      I1 => \comp_low.select_delay_reg\(1),
+      I2 => \comp_low.select_delay_reg\(0),
+      I3 => \comp_low.select_delay_reg\(2),
+      I4 => \comp_low.select_delay_reg\(4),
+      I5 => \comp_low.select_delay_reg\(5),
+      O => p_0_in(5)
+    );
 \comp_low.select_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.select_delay[4]_i_2_n_0\,
-      D => p_0_in(0),
+      CE => \comp_low.select_delay[5]_i_2_n_0\,
+      D => \comp_low.select_delay[0]_i_1_n_0\,
       Q => \comp_low.select_delay_reg\(0),
       R => clear
     );
 \comp_low.select_delay_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.select_delay[4]_i_2_n_0\,
+      CE => \comp_low.select_delay[5]_i_2_n_0\,
       D => p_0_in(1),
       Q => \comp_low.select_delay_reg\(1),
       R => clear
@@ -126018,7 +126033,7 @@ begin
 \comp_low.select_delay_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.select_delay[4]_i_2_n_0\,
+      CE => \comp_low.select_delay[5]_i_2_n_0\,
       D => p_0_in(2),
       Q => \comp_low.select_delay_reg\(2),
       R => clear
@@ -126026,7 +126041,7 @@ begin
 \comp_low.select_delay_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.select_delay[4]_i_2_n_0\,
+      CE => \comp_low.select_delay[5]_i_2_n_0\,
       D => p_0_in(3),
       Q => \comp_low.select_delay_reg\(3),
       R => clear
@@ -126034,9 +126049,17 @@ begin
 \comp_low.select_delay_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_low.select_delay[4]_i_2_n_0\,
+      CE => \comp_low.select_delay[5]_i_2_n_0\,
       D => p_0_in(4),
       Q => \comp_low.select_delay_reg\(4),
+      R => clear
+    );
+\comp_low.select_delay_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.select_delay[5]_i_2_n_0\,
+      D => p_0_in(5),
+      Q => \comp_low.select_delay_reg\(5),
       R => clear
     );
 \comp_low.size_reg[0]\: unisim.vcomponents.FDRE

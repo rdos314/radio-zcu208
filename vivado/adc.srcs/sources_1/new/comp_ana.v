@@ -41,11 +41,14 @@ module comp_ana(
   reg [127:0] raw_in_data;
   reg raw_wr;
 
-  wire [127:0] raw_out_data;
+  wire [127:0] raw_out_1;
   reg raw_rd;
   wire raw_empty;
   reg [4:0] raw_delay;
   reg raw_run;
+
+ reg [127:0] raw_out_2;
+  reg [127:0] raw_out_data;
   
   reg [15:0] raw_sample;
 
@@ -108,7 +111,7 @@ fifo_comp_raw fifo_raw_i (
   .din(raw_in_data),             // input wire [127 : 0] din
   .wr_en(raw_wr),                // input wire wr_en
   .rd_en(raw_rd),                // input wire rd_en
-  .dout(raw_out_data),           // output wire [127 : 0] dout
+  .dout(raw_out_1),              // output wire [127 : 0] dout
   .empty(raw_empty)              // output wire empty
 );
 
@@ -169,23 +172,15 @@ morlet_to_phase_env phase_env_i_3 (
 		.probe12(count),              // input wire [8:0]  probe3
 		.probe13(freq),               // input wire [19:0]  probe3
 		.probe14(angle),              // input wire [15:0]  probe3
-		.probe15(re_0),               // input wire [15:0]  probe3
-		.probe16(re_1),               // input wire [15:0]  probe3
-		.probe17(re_2),               // input wire [15:0]  probe3
-		.probe18(re_3),               // input wire [15:0]  probe3
-		.probe19(im_0),               // input wire [15:0]  probe3
-		.probe20(im_1),               // input wire [15:0]  probe3
-		.probe21(im_2),               // input wire [15:0]  probe3
-		.probe22(im_3),               // input wire [15:0]  probe3
-		.probe23(valid),              // input wire [3:0]  probe3
-		.probe24(env_0),              // input wire [15:0]  probe3
-		.probe25(env_1),              // input wire [15:0]  probe3
-		.probe26(env_2),              // input wire [15:0]  probe3
-		.probe27(env_3),              // input wire [15:0]  probe3
-		.probe28(phase_0),            // input wire [19:0]  probe3
-		.probe29(phase_1),            // input wire [19:0]  probe3
-		.probe30(phase_2),            // input wire [19:0]  probe3
-		.probe31(phase_3)             // input wire [19:0]  probe3
+		.probe15(valid),              // input wire [3:0]  probe3
+		.probe16(env_0),              // input wire [15:0]  probe3
+		.probe17(env_1),              // input wire [15:0]  probe3
+		.probe18(env_2),              // input wire [15:0]  probe3
+		.probe19(env_3),              // input wire [15:0]  probe3
+		.probe20(phase_0),            // input wire [19:0]  probe3
+		.probe21(phase_1),            // input wire [19:0]  probe3
+		.probe22(phase_2),            // input wire [19:0]  probe3
+		.probe23(phase_3)             // input wire [19:0]  probe3
 	);
 
 generate
@@ -237,6 +232,12 @@ generate
     end
 
     always @(posedge clk) 
+    begin
+        raw_out_2 <= raw_out_1;
+        raw_out_data <= raw_out_2;
+    end
+
+    always @(posedge clk) 
 	begin
         if (raw_rd & (!raw_empty))
         begin
@@ -258,7 +259,7 @@ generate
 
     always @(posedge clk) 
     begin
-		if (valid[0])
+		if (valid)
 			raw_sample <= raw_sample + 1;
 		else
 			raw_sample <= 0;

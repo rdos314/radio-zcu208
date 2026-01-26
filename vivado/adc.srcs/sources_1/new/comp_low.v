@@ -120,7 +120,7 @@ module comp_low(
   reg [17:0] C6;
   reg [17:0] C7;
   
-  reg [4:0] select_delay;
+  reg [5:0] select_delay;
   reg deci_run;
   wire deci_active;
   reg fir_run;
@@ -353,10 +353,10 @@ generate
 			raw_E <= raw_out_data[255:128];
 			raw_W <= raw_out_data[383:256];
 			
-			if (select_delay == 14)
+			if (select_delay == 16)
 				raw_run <= 1;
 
-			if (select_delay == 17)
+			if (select_delay == 19)
 			    deci_run <= 1;
 			else
                 select_delay <= select_delay + 1;

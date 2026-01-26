@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Jan 23 19:04:24 2026
+// Date        : Mon Jan 26 21:10:02 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -1070,8 +1070,9 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.sample_W_reg[3]_rep__1_n_0 ;
   wire \comp_low.sample_W_reg[3]_rep_n_0 ;
   wire \comp_low.sample_W_reg[4]_rep_n_0 ;
-  wire \comp_low.select_delay[4]_i_2_n_0 ;
-  wire [4:0]\comp_low.select_delay_reg ;
+  wire \comp_low.select_delay[0]_i_1_n_0 ;
+  wire \comp_low.select_delay[5]_i_2_n_0 ;
+  wire [5:0]\comp_low.select_delay_reg ;
   wire [127:0]data_E;
   wire [127:0]data_N;
   wire [127:0]data_W;
@@ -1093,7 +1094,7 @@ module ps_comp_low_0_0_comp_low
   wire [15:0]im_2;
   wire [15:0]im_3;
   wire [154:18]im_data;
-  wire [4:0]p_0_in;
+  wire [5:1]p_0_in;
   wire p_0_in0;
   wire [15:0]p_0_in__0;
   wire [127:0]raw_E;
@@ -8749,15 +8750,15 @@ module ps_comp_low_0_0_comp_low
         .I2(\comp_low.deci_run_reg_n_0 ),
         .I3(deci_run),
         .O(\comp_low.deci_run_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h00000020)) 
+  LUT6 #(
+    .INIT(64'h0000100000000000)) 
     \comp_low.deci_run_i_2 
-       (.I0(\comp_low.select_delay_reg [0]),
+       (.I0(\comp_low.select_delay_reg [5]),
         .I1(\comp_low.select_delay_reg [2]),
-        .I2(\comp_low.select_delay_reg [4]),
-        .I3(\comp_low.select_delay_reg [3]),
-        .I4(\comp_low.select_delay_reg [1]),
+        .I2(\comp_low.select_delay_reg [1]),
+        .I3(\comp_low.select_delay_reg [0]),
+        .I4(\comp_low.select_delay_reg [3]),
+        .I5(\comp_low.select_delay_reg [4]),
         .O(deci_run));
   FDRE \comp_low.deci_run_reg 
        (.C(clk),
@@ -12062,14 +12063,14 @@ module ps_comp_low_0_0_comp_low
     \comp_low.raw_delay[0]_i_1 
        (.I0(\comp_low.raw_delay_reg [0]),
         .O(raw_delay0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_low.raw_delay[1]_i_1 
        (.I0(\comp_low.raw_delay_reg [0]),
         .I1(\comp_low.raw_delay_reg [1]),
         .O(\comp_low.raw_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hE1)) 
     \comp_low.raw_delay[2]_i_1 
@@ -12077,7 +12078,7 @@ module ps_comp_low_0_0_comp_low
         .I1(\comp_low.raw_delay_reg [0]),
         .I2(\comp_low.raw_delay_reg [2]),
         .O(\comp_low.raw_delay[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'hFE01)) 
     \comp_low.raw_delay[3]_i_1 
@@ -12086,7 +12087,7 @@ module ps_comp_low_0_0_comp_low
         .I2(\comp_low.raw_delay_reg [1]),
         .I3(\comp_low.raw_delay_reg [3]),
         .O(\comp_low.raw_delay[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'hFFFE0001)) 
     \comp_low.raw_delay[4]_i_1 
@@ -14558,15 +14559,15 @@ module ps_comp_low_0_0_comp_low
         .I2(raw_run),
         .I3(raw_run__0),
         .O(\comp_low.raw_run_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h00400000)) 
+  LUT6 #(
+    .INIT(64'h0000000000000100)) 
     \comp_low.raw_run_i_2 
-       (.I0(\comp_low.select_delay_reg [0]),
-        .I1(\comp_low.select_delay_reg [1]),
-        .I2(\comp_low.select_delay_reg [2]),
+       (.I0(\comp_low.select_delay_reg [5]),
+        .I1(\comp_low.select_delay_reg [0]),
+        .I2(\comp_low.select_delay_reg [1]),
         .I3(\comp_low.select_delay_reg [4]),
         .I4(\comp_low.select_delay_reg [3]),
+        .I5(\comp_low.select_delay_reg [2]),
         .O(raw_run__0));
   FDRE \comp_low.raw_run_reg 
        (.C(clk),
@@ -16228,15 +16229,15 @@ module ps_comp_low_0_0_comp_low
     .INIT(2'h1)) 
     \comp_low.select_delay[0]_i_1 
        (.I0(\comp_low.select_delay_reg [0]),
-        .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+        .O(\comp_low.select_delay[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_low.select_delay[1]_i_1 
        (.I0(\comp_low.select_delay_reg [0]),
         .I1(\comp_low.select_delay_reg [1]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_low.select_delay[2]_i_1 
@@ -16244,7 +16245,7 @@ module ps_comp_low_0_0_comp_low
         .I1(\comp_low.select_delay_reg [1]),
         .I2(\comp_low.select_delay_reg [2]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_low.select_delay[3]_i_1 
@@ -16253,60 +16254,77 @@ module ps_comp_low_0_0_comp_low
         .I2(\comp_low.select_delay_reg [2]),
         .I3(\comp_low.select_delay_reg [3]),
         .O(p_0_in[3]));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \comp_low.select_delay[4]_i_1 
-       (.I0(raw_empty),
-        .I1(raw_rd),
-        .O(clear));
-  LUT5 #(
-    .INIT(32'hFFFDFFFF)) 
-    \comp_low.select_delay[4]_i_2 
-       (.I0(\comp_low.select_delay_reg [0]),
-        .I1(\comp_low.select_delay_reg [1]),
-        .I2(\comp_low.select_delay_reg [2]),
-        .I3(\comp_low.select_delay_reg [3]),
-        .I4(\comp_low.select_delay_reg [4]),
-        .O(\comp_low.select_delay[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
-    \comp_low.select_delay[4]_i_3 
+    \comp_low.select_delay[4]_i_1 
        (.I0(\comp_low.select_delay_reg [2]),
         .I1(\comp_low.select_delay_reg [0]),
         .I2(\comp_low.select_delay_reg [1]),
         .I3(\comp_low.select_delay_reg [3]),
         .I4(\comp_low.select_delay_reg [4]),
         .O(p_0_in[4]));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \comp_low.select_delay[5]_i_1 
+       (.I0(raw_empty),
+        .I1(raw_rd),
+        .O(clear));
+  LUT6 #(
+    .INIT(64'hFFFFFFF7FFFFFFFF)) 
+    \comp_low.select_delay[5]_i_2 
+       (.I0(\comp_low.select_delay_reg [1]),
+        .I1(\comp_low.select_delay_reg [4]),
+        .I2(\comp_low.select_delay_reg [2]),
+        .I3(\comp_low.select_delay_reg [3]),
+        .I4(\comp_low.select_delay_reg [5]),
+        .I5(\comp_low.select_delay_reg [0]),
+        .O(\comp_low.select_delay[5]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
+    \comp_low.select_delay[5]_i_3 
+       (.I0(\comp_low.select_delay_reg [3]),
+        .I1(\comp_low.select_delay_reg [1]),
+        .I2(\comp_low.select_delay_reg [0]),
+        .I3(\comp_low.select_delay_reg [2]),
+        .I4(\comp_low.select_delay_reg [4]),
+        .I5(\comp_low.select_delay_reg [5]),
+        .O(p_0_in[5]));
   FDRE \comp_low.select_delay_reg[0] 
        (.C(clk),
-        .CE(\comp_low.select_delay[4]_i_2_n_0 ),
-        .D(p_0_in[0]),
+        .CE(\comp_low.select_delay[5]_i_2_n_0 ),
+        .D(\comp_low.select_delay[0]_i_1_n_0 ),
         .Q(\comp_low.select_delay_reg [0]),
         .R(clear));
   FDRE \comp_low.select_delay_reg[1] 
        (.C(clk),
-        .CE(\comp_low.select_delay[4]_i_2_n_0 ),
+        .CE(\comp_low.select_delay[5]_i_2_n_0 ),
         .D(p_0_in[1]),
         .Q(\comp_low.select_delay_reg [1]),
         .R(clear));
   FDRE \comp_low.select_delay_reg[2] 
        (.C(clk),
-        .CE(\comp_low.select_delay[4]_i_2_n_0 ),
+        .CE(\comp_low.select_delay[5]_i_2_n_0 ),
         .D(p_0_in[2]),
         .Q(\comp_low.select_delay_reg [2]),
         .R(clear));
   FDRE \comp_low.select_delay_reg[3] 
        (.C(clk),
-        .CE(\comp_low.select_delay[4]_i_2_n_0 ),
+        .CE(\comp_low.select_delay[5]_i_2_n_0 ),
         .D(p_0_in[3]),
         .Q(\comp_low.select_delay_reg [3]),
         .R(clear));
   FDRE \comp_low.select_delay_reg[4] 
        (.C(clk),
-        .CE(\comp_low.select_delay[4]_i_2_n_0 ),
+        .CE(\comp_low.select_delay[5]_i_2_n_0 ),
         .D(p_0_in[4]),
         .Q(\comp_low.select_delay_reg [4]),
+        .R(clear));
+  FDRE \comp_low.select_delay_reg[5] 
+       (.C(clk),
+        .CE(\comp_low.select_delay[5]_i_2_n_0 ),
+        .D(p_0_in[5]),
+        .Q(\comp_low.select_delay_reg [5]),
         .R(clear));
   FDRE \comp_low.size_reg[0] 
        (.C(clk),
