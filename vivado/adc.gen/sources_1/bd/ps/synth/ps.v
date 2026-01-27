@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Mon Jan 26 22:47:29 2026
+//Date        : Tue Jan 27 23:07:52 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -643,6 +643,10 @@ module ps
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
   ps_comp_ana_0_1 comp_ana_high
        (.clk(mts_0_comp_ana1_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_high_wr),
         .fifo_active(comp_high_active),
         .fifo_angle(comp_high_angle),
         .fifo_burst(comp_high_burst),
@@ -655,6 +659,10 @@ module ps
         .reset(mts_0_comp_ana1_reset));
   ps_comp_ana_0_0 comp_ana_low
        (.clk(mts_0_comp_ana0_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_low_wr),
         .fifo_active(comp_low_active),
         .fifo_angle(comp_low_angle),
         .fifo_burst(comp_low_burst),
